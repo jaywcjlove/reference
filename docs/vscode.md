@@ -1,4 +1,4 @@
-VSCode 备忘单
+VSCode 备忘清单
 ===
 
 这个 VSCode (Visual Studio Code) 快速参考备忘单显示了它的键盘快捷键和命令。

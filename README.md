@@ -10,6 +10,7 @@ Quick Reference
 ## 编程
 
 [JavaScript](./docs/javascript.md)
+[Markdown](./docs/markdown.md)
 
 ## 工具包
 
