@@ -1,6 +1,8 @@
 import markdown from '@wcj/markdown-to-html';
 import rehypeDocument from 'rehype-document';
 import rehypeFormat from 'rehype-format';
+import { rehypeUrls } from './nodes/rehypeUrls.mjs';
+import { htmlTagAddAttri } from './nodes/htmlTagAddAttri.mjs';
 
 /** 标记 Number */
 function panelAddNumber(arr = [], result = []) {
@@ -58,9 +60,10 @@ export function getTocsTree(arr = [], result = []) {
       const headerCls = ['warp-header', `h${level}warp`];
 
       if (level === 1) warpCls.push('max-container');
-
       const warpStyle = toc.properties['data-warp-style'];
+      const bodyStyle = toc.properties['data-body-style'];
       delete toc.properties['data-warp-style']
+      delete toc.properties['data-body-style']
 
       const panle = {
         type: 'element',
@@ -91,7 +94,7 @@ export function getTocsTree(arr = [], result = []) {
         panle.children = panle.children.concat({
           type: 'element',
           tagName: 'div',
-          properties: { class: `h${level}warp-body` },
+          properties: { class: `h${level}warp-body`, style: bodyStyle },
           children: [...resultChilds]
         });
       }
@@ -119,6 +122,8 @@ export function create(str = '', options = {}) {
       }],
     ],
     rewrite: (node, index, parent) => {
+      htmlTagAddAttri(node);
+      rehypeUrls(node);
       if (node.type === 'element' && node.tagName === 'body') {
         node.children = getTocsTree([ ...node.children ]);
       }

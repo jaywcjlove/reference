@@ -5,9 +5,16 @@ Quick Reference
 
 如果您发现此处的备忘单不合适，您可以通过提交 PR 来修复它或提供更好的备忘单，只针对【中文】用户。
 
-以下是开源天使提供的一些备忘单和快速参考。:)
+以下是开源天使提供的一些备忘单和快速参考 :)。
+
+## 编程
+
+[JavaScript](./docs/javascript.md)
+
+## 工具包
+
+[VSCode](./docs/vscode.md)
 
 ## License
 
-MIT © Randy8080
-
+MIT © [Kenny Wong](https://github.com/jaywcjlove)
