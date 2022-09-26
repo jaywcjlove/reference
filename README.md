@@ -9,7 +9,9 @@ Quick Reference
 
 ## 编程
 
+[TOML](./docs/toml.md)
 [JavaScript](./docs/javascript.md)
+[JSON](./docs/json.md)
 [Markdown](./docs/markdown.md)
 
 ## 工具包

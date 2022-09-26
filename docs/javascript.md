@@ -10,7 +10,7 @@ JavaScript 备忘清单
 
 JavaScript 是一种轻量级的解释型编程语言。
 
-- [JSON 备忘清单](/json)
+- [JSON 备忘清单](json.md)
 - [JavaScript 中的正则表达式](/regex#regex-in-javascript)
 
 ### 打印调试
@@ -1411,7 +1411,7 @@ const getSuggestions = async () => {
   const wordQuery = inputField.value;
   const endpoint = `${url}${queryParams}${wordQuery}`;
   try{
-const response = await fetch(endpoint, {cache: 'no-cache'});
+    const response = await fetch(endpoint, {cache: 'no-cache'});
     if(response.ok){
       const jsonResponse = await response.json()
     }
