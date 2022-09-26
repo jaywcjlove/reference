@@ -3,6 +3,7 @@ import rehypeDocument from 'rehype-document';
 import rehypeFormat from 'rehype-format';
 import { rehypeUrls } from './nodes/rehypeUrls.mjs';
 import { htmlTagAddAttri } from './nodes/htmlTagAddAttri.mjs';
+import { footer } from './nodes/footer.mjs';
 
 /** 标记 Number */
 function panelAddNumber(arr = [], result = []) {
@@ -61,10 +62,10 @@ export function getTocsTree(arr = [], result = []) {
 
       if (level === 1) warpCls.push('max-container');
       const warpStyle = toc.properties['data-warp-style'];
-      const bodyStyle = toc.properties['data-body-style'];
       delete toc.properties['data-warp-style']
-      delete toc.properties['data-body-style']
-
+      const warpClass = toc.properties['warp-class'];
+      if (warpClass) warpCls.push(warpClass);
+      delete toc.properties['warp-class'];
       const panle = {
         type: 'element',
         tagName: 'div',
@@ -91,10 +92,15 @@ export function getTocsTree(arr = [], result = []) {
       const childs = getChilds([...data.slice(n + 1)], level);
       const resultChilds = getTocsTree(childs);
       if (resultChilds.length > 0) {
+        const bodyStyle = toc.properties['data-body-style'];
+        delete toc.properties['data-body-style']
+
+        const bodyClass = toc.properties['body-class'];
+        delete toc.properties['body-class']
         panle.children = panle.children.concat({
           type: 'element',
           tagName: 'div',
-          properties: { class: `h${level}warp-body`, style: bodyStyle },
+          properties: { class: [`h${level}warp-body`, bodyClass], style: bodyStyle },
           children: [...resultChilds]
         });
       }
@@ -126,6 +132,7 @@ export function create(str = '', options = {}) {
       rehypeUrls(node);
       if (node.type === 'element' && node.tagName === 'body') {
         node.children = getTocsTree([ ...node.children ]);
+        node.children.push(footer());
       }
     }
   }

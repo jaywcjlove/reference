@@ -1053,7 +1053,7 @@ module.exports = {
 }
 ```
 
-### Require Module
+### 加载模块
 
 ```javascript
 // main.js
@@ -1068,7 +1068,7 @@ JavaScript Promises
 ----
 <!--rehype:data-body-style=grid-template-columns: repeat(2,minmax(0,1fr));-->
 
-### Promise states 
+### Promise 状态 
 <!--rehype:data-warp-style=grid-row: span 2/span 2;-->
 
 <!--rehype:-->
@@ -1086,7 +1086,7 @@ const promise = new Promise((resolve, reject) => {
 promise.then((res) => console.log(res), (err) => console.error(err));
 ```
 
-### Executor function
+### 执行器函数
 
 ```javascript
 const executorFn = (resolve, reject) => {
@@ -1104,7 +1104,7 @@ const loginAlert = () =>{
 setTimeout(loginAlert, 6000);
 ```
 
-### .then() method
+### .then() 方法
 
 ```javascript
 const promise = new Promise((resolve, reject) => {    
@@ -1119,7 +1119,7 @@ promise.then((res) => {
 });
 ```
 
-### .catch() method
+### .catch() 方法
 
 ```javascript
 const promise = new Promise((resolve, reject) => {  
@@ -1154,7 +1154,7 @@ Promise.all([promise1, promise2]).then((res) => {
 });
 ```
 
-### Avoiding nested Promise and .then()
+### 避免嵌套的 Promise 和 .then()
 
 ```javascript
 const promise = new Promise((resolve, reject) => {  
@@ -1171,11 +1171,11 @@ const oneDot = (star) => {
 const print = (val) => {
   console.log(val);
 };
-// Chaining them all together
+// 将它们链接在一起
 promise.then(twoStars).then(oneDot).then(print);
 ```
 
-### Creating
+### 创建
 
 ```javascript
 const executorFn = (resolve, reject) => {
@@ -1184,7 +1184,7 @@ const executorFn = (resolve, reject) => {
 const promise = new Promise(executorFn);
 ```
 
-### Chaining multiple .then()
+### 链接多个 .then()
 
 ```javascript
 const promise = new Promise(resolve => setTimeout(() => resolve('dAlan'), 100));
@@ -1201,7 +1201,7 @@ JavaScript Async-Await
 ----
 <!--rehype:data-body-style=grid-template-columns: repeat(2,minmax(0,1fr));-->
 
-### Asynchronous
+### 异步
 
 ```javascript
 function helloWorld() {
@@ -1211,19 +1211,19 @@ function helloWorld() {
     }, 2000);
   });
 }
-const msg = async function() { //Async Function Expression
+const msg = async function() { // 异步函数表达式
   const msg = await helloWorld();
   console.log('Message:', msg);
 }
-const msg1 = async () => { //Async Arrow Function
+const msg1 = async () => { // 异步箭头函数
   const msg = await helloWorld();
   console.log('Message:', msg);
 }
-msg(); // Message: Hello World! <-- after 2 seconds
-msg1(); // Message: Hello World! <-- after 2 seconds
+msg(); // Message: Hello World! <-- 2 秒后
+msg1(); // Message: Hello World! <-- 2 秒后
 ```
 
-### Resolving Promises
+### 解决 Promises
 
 ```javascript
 let pro1 = Promise.resolve(5);
@@ -1237,7 +1237,7 @@ Promise.all([pro1, pro2, pro3]).then(function(values) {
 // expected => Array [5, 44, "foo"]
 ```
 
-### Async Await Promises
+### 异步等待 Promises
 
 ```javascript
 function helloWorld() {
@@ -1251,22 +1251,22 @@ async function msg() {
   const msg = await helloWorld();
   console.log('Message:', msg);
 }
-msg(); // Message: Hello World! <-- after 2 seconds
+msg(); // Message: Hello World! <-- 2 秒后
 ```
 
-### Error Handling
+### 错误处理
 
 ```javascript
-let json = '{ "age": 30 }'; // incomplete data
+let json = '{ "age": 30 }'; // 数据不完整
 try {
-  let user = JSON.parse(json); // <-- no errors
+  let user = JSON.parse(json); // <-- 没有错误
   console.log( user.name ); // no name!
 } catch (e) {
   console.error( "Invalid JSON data!" );
 }
 ```
 
-### Aysnc await operator
+### 异步等待运算符
 
 ```javascript
 function helloWorld() {
@@ -1280,7 +1280,7 @@ async function msg() {
   const msg = await helloWorld();
   console.log('Message:', msg);
 }
-msg(); // Message: Hello World! <-- after 2 seconds
+msg(); // Message: Hello World! <-- 2 秒后
 ```
 
 JavaScript 请求
@@ -1402,7 +1402,7 @@ fetch('https://api-xxx.com/endpoint', {
 })
 ```
 
-### async await syntax
+### async await 语法
 <!--rehype:data-warp-style=grid-column: span 2/span 2;-->
 
 <!--rehype:-->
