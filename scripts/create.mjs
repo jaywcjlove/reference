@@ -4,6 +4,7 @@ import rehypeFormat from 'rehype-format';
 import { rehypeUrls } from './nodes/rehypeUrls.mjs';
 import { htmlTagAddAttri } from './nodes/htmlTagAddAttri.mjs';
 import { footer } from './nodes/footer.mjs';
+import { header } from './nodes/header.mjs';
 
 /** 标记 Number */
 function panelAddNumber(arr = [], result = []) {
@@ -113,25 +114,30 @@ export function getTocsTree(arr = [], result = []) {
 }
 
 export function create(str = '', options = {}) {
+  let title = str.match(/[^===]+(?=[===])/g);
+  let description = str.match(/\n==={1,}\n+([\s\S]*?)\n/g);
+  title = title[0] || '';
+  description = (description[0] || '').replace(/^\n[=\n]+/, '').replace(/\[([\s\S]*?)?\]\(([\s\S]*?)?\)/g, '$1').replace(/\n/, '');
   const mdOptions = {
     hastNode: false,
     remarkPlugins: [],
     rehypePlugins: [
       rehypeFormat,
       [rehypeDocument, {
-        title: "Quick Reference",
+        title: `${title ? `${title} & ` : ''} Quick Reference`,
         css: [ ...options.css ],
         meta: [
-          { description: '为开发人员分享快速参考备忘单。' },
+          { description: `${description}为开发人员分享快速参考备忘单。` },
           { keywords: 'Quick,Reference' }
         ]
       }],
     ],
     rewrite: (node, index, parent) => {
-      htmlTagAddAttri(node);
+      htmlTagAddAttri(node, options);
       rehypeUrls(node);
       if (node.type === 'element' && node.tagName === 'body') {
         node.children = getTocsTree([ ...node.children ]);
+        node.children.unshift(header(options));
         node.children.push(footer());
       }
     }

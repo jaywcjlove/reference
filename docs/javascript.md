@@ -75,7 +75,6 @@ var a;
 console.log(a); // => undefined
 ```
 
-
 ### 字符串
 
 ```javascript
@@ -94,7 +93,6 @@ console.log(single.length);
 10 / 5 = 2     // 除法 Division
 10 % 5 = 0     // 取模 Modulo
 ```
-
 
 ### 注释
 

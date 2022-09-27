@@ -15,13 +15,18 @@ async function createHTML(files = [], num = 0) {
     return;
   }
   ++num;
+  const githubURL = `https://github.com/jaywcjlove/reference/blob/main/${path.relative(process.cwd(), dataFile.path).replace(path.sep, '/')}`;
   
   const mdstr = await fs.readFile(dataFile.path);
   const htmlPath = path.relative(DOCS, dataFile.path);
   const outputHTMLPath = path.resolve(OUTOUT, 'docs', htmlPath).replace(/README.md$/i, 'index.html').replace(/.md$/, '.html');
 
   await fs.ensureDir(path.dirname(outputHTMLPath));
+
   const html = create(mdstr.toString(), {
+    isHome: /README.md$/.test(path.relative(process.cwd(), dataFile.path)),
+    githubURL,
+    homePath: path.relative(path.dirname(outputHTMLPath), path.resolve(OUTOUT, 'index.html')),
     css: [path.relative(path.dirname(outputHTMLPath), CSS_OUTPUT_PATH)]
   });
   await fs.writeFile(outputHTMLPath, html);
