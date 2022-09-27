@@ -12,6 +12,7 @@ JavaScript 是一种轻量级的解释型编程语言。
 
 - [JSON 备忘清单](json.md)
 - [JavaScript 中的正则表达式](/regex#regex-in-javascript)
+- [TypeScript 备忘清单](./typescript.md)
 
 ### 打印调试
 
@@ -29,6 +30,7 @@ console.error(new Error('Oops!'));
 ```javascript
 let amount = 6;
 let price = 4.99;
+let home = 1e2;
 ```
 
 ### 变量

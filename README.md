@@ -10,6 +10,7 @@ Quick Reference
 ## 编程
 
 [TOML](./docs/toml.md)
+[TypeScript](./docs/typescript.md)
 [JavaScript](./docs/javascript.md)
 [JSON](./docs/json.md)
 [Markdown](./docs/markdown.md)
