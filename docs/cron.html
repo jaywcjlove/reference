@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Cron 备忘清单
+ &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="Cron 最适合安排重复性任务。 可以使用关联的 at 实用程序来完成一次性任务的调度。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em"><path opacity=".5" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="white"></path><path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#cbd5e1"></path><path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#292D32"></path></svg><span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/cron.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="warp max-container"><header class="warp-header h1warp"><h1>Cron 备忘清单</h1><div class="warp-body">
+<p><a href="https://en.wikipedia.org/wiki/Cron">Cron</a> 最适合安排重复性任务。 可以使用关联的 at 实用程序来完成一次性任务的调度。</p>
+</div></header><div class="h1warp-body"><div class="warp"><div class="warp-header h2warp"><h2>Crontab 格式</h2><div class="warp-body"><!--rehype:body-class=cols-2-->
+</div></div><div class="h2warp-body cols-2"><div class="warp"><div class="warp-header h3warp"><h3>格式</h3><div class="warp-body">
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">Min  Hour Day  Mon  Weekday
+</span><span class="code-line line-number" line="2">分钟  小时  天   月  周
+</span></code></pre>
+<hr>
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">*    *    *    *    *  要执行的命令
+</span><span class="code-line line-number" line="2">┬    ┬    ┬    ┬    ┬
+</span><span class="code-line line-number" line="3">│    │    │    │    └─  星期几         (0=周日 .. 6=星期六)
+</span><span class="code-line line-number" line="4">│    │    │    └──────  月            (1..12)
+</span><span class="code-line line-number" line="5">│    │    └───────────  月份中的某天    (1..31)
+</span><span class="code-line line-number" line="6">│    └────────────────  小时           (0..23)
+</span><span class="code-line line-number" line="7">└─────────────────────  分钟           (0..59)
+</span></code></pre>
+<hr>
+<table>
+  <thead>
+    <tr>
+      <th>字段</th>
+      <th>范围</th>
+      <th>特殊字符</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>分钟 Minute</td>
+      <td>0 - 59</td>
+      <td>, - * /</td>
+    </tr>
+    <tr>
+      <td>小时 Hour</td>
+      <td>0 - 23</td>
+      <td>, - * /</td>
+    </tr>
+    <tr>
+      <td>月份中的某天</td>
+      <td>1 - 31</td>
+      <td>, - * ? / L W</td>
+    </tr>
+    <tr>
+      <td>月 Month</td>
+      <td>1 - 12</td>
+      <td>, - * /</td>
+    </tr>
+    <tr>
+      <td>星期几</td>
+      <td>0 - 6</td>
+      <td>, - * ? / L #</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>示例</h3><div class="warp-body">
+<table class="table-thead-hide">
+  <thead>
+    <tr>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>*/15 * * * *</code></td>
+      <td>每 15 分钟</td>
+    </tr>
+    <tr>
+      <td><code>0 * * * *</code></td>
+      <td>每隔一小时</td>
+    </tr>
+    <tr>
+      <td><code>0 */2 * * *</code></td>
+      <td>每 2 小时</td>
+    </tr>
+    <tr>
+      <td><code>15 2 * * *</code></td>
+      <td>每天凌晨 2 点 15 分</td>
+    </tr>
+    <tr>
+      <td><code>15 2 * * ?</code></td>
+      <td>每天凌晨 2 点 15 分</td>
+    </tr>
+    <tr>
+      <td><code>10 9 * * 5</code></td>
+      <td>每周五上午 9:10</td>
+    </tr>
+    <tr>
+      <td><code>0 0 * * 0</code></td>
+      <td>每个星期日的午夜</td>
+    </tr>
+    <tr>
+      <td><code>15 2 * * 1L</code></td>
+      <td>每月最后一个星期一凌晨 2 点 15 分</td>
+    </tr>
+    <tr>
+      <td><code>15 0 * * 4#2</code></td>
+      <td>每个月的第二个星期四早上 00:15</td>
+    </tr>
+    <tr>
+      <td><code>0 0 0 1 * *</code></td>
+      <td>每个月的 1 日（每月）</td>
+    </tr>
+    <tr>
+      <td><code>0 0 0 1 1 *</code></td>
+      <td>每年 1 月 1 日（每年）</td>
+    </tr>
+    <tr>
+      <td><code>@reboot</code></td>
+      <td>每次重启 <em>(非标准)</em></td>
+    </tr>
+  </tbody>
+</table><!--rehype:class=table-thead-hide-->
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>特殊字符串</h3><div class="warp-body">
+<table>
+  <thead>
+    <tr>
+      <th>特殊字符串</th>
+      <th>意义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>@reboot</td>
+      <td>运行一次，在系统启动时 <em>（非标准）</em></td>
+    </tr>
+    <tr>
+      <td>@yearly</td>
+      <td>每年运行一次，“0 0 1 1 *” <em>（非标准）</em></td>
+    </tr>
+    <tr>
+      <td>@annually</td>
+      <td>（与@yearly 相同）<em>（非标准）</em></td>
+    </tr>
+    <tr>
+      <td>@monthly</td>
+      <td>每月运行一次，“0 0 1 * *” <em>（非标准）</em></td>
+    </tr>
+    <tr>
+      <td>@weekly</td>
+      <td>每周运行一次，“0 0 * * 0” <em>（非标准）</em></td>
+    </tr>
+    <tr>
+      <td>@daily</td>
+      <td>每天运行一次，“0 0 * * *” <em>（非标准）</em></td>
+    </tr>
+    <tr>
+      <td>@midnight</td>
+      <td>（与@daily 相同）<em>（非标准）</em></td>
+    </tr>
+    <tr>
+      <td>@hourly</td>
+      <td>每小时运行一次，“0 * * * *” <em>（非标准）</em></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>Crontab 命令</h3><div class="warp-body">
+<table class="table-thead-hide">
+  <thead>
+    <tr>
+      <th>-</th>
+      <th>-</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>crontab -e</code></td>
+      <td>如果不存在，则编辑或创建一个 crontab 文件。</td>
+    </tr>
+    <tr>
+      <td><code>crontab -l</code></td>
+      <td>显示 crontab 文件。</td>
+    </tr>
+    <tr>
+      <td><code>crontab -r</code></td>
+      <td>删除 crontab 文件。</td>
+    </tr>
+    <tr>
+      <td><code>crontab -v</code></td>
+      <td>显示您上次编辑 crontab 文件的时间。 <em>（非标准）</em></td>
+    </tr>
+  </tbody>
+</table><!--rehype:class=table-thead-hide-->
+</div></div></div><div class="warp col-span-2"><div class="warp-header h3warp"><h3>特殊字符</h3><div class="warp-body"><!--rehype:warp-class=col-span-2--><!--rehype:-->
+<table>
+  <thead>
+    <tr>
+      <th>特殊字符</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Asterik(*)</code></td>
+      <td>匹配字段中的所有值或任何可能的值。</td>
+    </tr>
+    <tr>
+      <td><code>Hyphen(-)</code></td>
+      <td>用于定义范围。例如：第 5 个字段（星期几）中的 1-5 每个工作日，即星期一到星期五</td>
+    </tr>
+    <tr>
+      <td><code>Slash (/)</code></td>
+      <td>第一个字段（分钟）/15 表示每十五分钟或范围的增量。</td>
+    </tr>
+    <tr>
+      <td><code>Comma (,)</code></td>
+      <td>用于分隔项目。例如：第二个字段（小时）中的 2、6、8 在凌晨 2 点、早上 6 点和早上 8 点执行</td>
+    </tr>
+    <tr>
+      <td><code>L</code></td>
+      <td>仅允许用于 <code>月份中的某天</code> 或 <code>星期几</code> 字段，<code>星期几</code> 中的 <code>2L</code> 表示每个月的最后一个星期二</td>
+    </tr>
+    <tr>
+      <td><code>Hash (#)</code></td>
+      <td>仅允许用于 <code>星期几</code> 字段，后面必须在 1 到 5 的范围内。例如，<code>4#1</code> 表示给定月份的“第一个星期四”。</td>
+    </tr>
+    <tr>
+      <td><code>Question mark (?)</code></td>
+      <td>可以代替“*”并允许用于月份和星期几。使用仅限于 cron 表达式中的 <code>月份中的某天</code> 或 <code>星期几</code>。</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div></div></div><div class="warp"><div class="warp-header h2warp"><h2>Also see</h2><div class="warp-body">
+<ul>
+  <li><a href="https://devhints.io/cron">Devhints</a> <em>(devhints.io)</em></li>
+  <li><a href="https://crontab-generator.org/">Crontab Generator</a> <em>(crontab-generator.org)</em></li>
+  <li><a href="https://crontab.guru/">Crontab guru</a> <em>(crontab.guru)</em></li>
+</ul>
+
+</div></div></div></div></div><footer class="footer-warp"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>

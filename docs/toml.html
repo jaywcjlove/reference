@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>TOML 备忘清单
+ &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这是 TOML 格式配置文件语法的快速参考备忘单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em"><path opacity=".5" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="white"></path><path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#cbd5e1"></path><path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#292D32"></path></svg><span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/toml.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="warp max-container"><header class="warp-header h1warp"><h1>TOML 备忘清单</h1><div class="warp-body">
+<p>这是 TOML 格式配置文件语法的快速参考备忘单。</p>
+</div></header><div class="h1warp-body"><div class="warp"><div class="warp-header h2warp"><h2>入门</h2><div class="warp-body">
+</div></div><div class="h2warp-body"><div class="warp"><div class="warp-header h3warp"><h3>介绍</h3><div class="warp-body">
+<p><a href="https://toml.io/en/">TOML</a> 是一种最小的配置文件格式，由于明显的语义而易于阅读。</p>
+<ul>
+  <li><a href="https://toml.io/en/latest">Document</a> <em>(toml.io)</em></li>
+  <li><a href="https://learnxinyminutes.com/docs/toml/">Learn X in Y minutes</a> <em>(learnxinyminutes.com)</em></li>
+</ul>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>示例</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">bool</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">date</span> <span class="token punctuation">=</span> <span class="token date number">2006-05-27T07:32:00Z</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">string</span> <span class="token punctuation">=</span> <span class="token string">"hello"</span>
+</span><span class="code-line line-number" line="4"><span class="token key property">number</span> <span class="token punctuation">=</span> <span class="token number">42</span>
+</span><span class="code-line line-number" line="5"><span class="token key property">float</span> <span class="token punctuation">=</span> <span class="token number">3.14</span>
+</span><span class="code-line line-number" line="6"><span class="token key property">scientificNotation</span> <span class="token punctuation">=</span> <span class="token number">1e+12</span>
+</span></code></pre>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>注释</h3><div class="warp-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># A single line comment example</span>
+</span><span class="code-line line-number" line="2"><span class="token comment"># block level comment example</span>
+</span><span class="code-line line-number" line="3"><span class="token comment"># 注释行 1</span>
+</span><span class="code-line line-number" line="4"><span class="token comment"># 注释行 2</span>
+</span><span class="code-line line-number" line="5"><span class="token comment"># 注释行 3</span>
+</span></code></pre>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>整数</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">int1</span> <span class="token punctuation">=</span> <span class="token number">+42</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">int2</span> <span class="token punctuation">=</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">int3</span> <span class="token punctuation">=</span> <span class="token number">-21</span>
+</span><span class="code-line line-number" line="4"><span class="token key property">integerRange</span> <span class="token punctuation">=</span> <span class="token number">64</span>
+</span></code></pre>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>浮点数</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">float2</span> <span class="token punctuation">=</span> <span class="token number">3.1415</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">float4</span> <span class="token punctuation">=</span> <span class="token number">5e+22</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">float7</span> <span class="token punctuation">=</span> <span class="token number">6.626e-34</span>
+</span></code></pre>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>布尔值</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">bool1</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">bool2</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">boolMustBeLowercase</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span></code></pre>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>时间日期</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">date1</span> <span class="token punctuation">=</span> <span class="token date number">1989-05-27T07:32:00Z</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">date2</span> <span class="token punctuation">=</span> <span class="token date number">1989-05-26T15:32:00-07:00</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">date3</span> <span class="token punctuation">=</span> <span class="token date number">1989-05-27T07:32:00</span>
+</span><span class="code-line line-number" line="4"><span class="token key property">date4</span> <span class="token punctuation">=</span> <span class="token date number">1989-05-27</span>
+</span><span class="code-line line-number" line="5"><span class="token key property">time1</span> <span class="token punctuation">=</span> <span class="token date number">07:32:00</span>
+</span><span class="code-line line-number" line="6"><span class="token key property">time2</span> <span class="token punctuation">=</span> <span class="token date number">00:32:00.999999</span>
+</span></code></pre>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>字符串</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">str1</span> <span class="token punctuation">=</span> <span class="token string">"I'm a string."</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">str2</span> <span class="token punctuation">=</span> <span class="token string">"You can \"quote\" me."</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">str3</span> <span class="token punctuation">=</span> <span class="token string">"Name\tJos\u00E9\nLoc\tSF."</span>
+</span></code></pre>
+<p>See: <a href="#toml-strings">Strings</a></p>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>Table</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">[</span><span class="token table class-name">owner</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"Tom Preston-Werner"</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">dob</span> <span class="token punctuation">=</span> <span class="token date number">1979-05-27T07:32:00-08:00</span>
+</span></code></pre>
+<p>See: <a href="#toml-tables">Tables</a></p>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>数组</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">array1</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">array2</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"Commas"</span><span class="token punctuation">,</span> <span class="token string">"are"</span><span class="token punctuation">,</span> <span class="token string">"delimiter"</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">array3</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token number">8001</span><span class="token punctuation">,</span> <span class="token number">8001</span><span class="token punctuation">,</span> <span class="token number">8002</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="warp" style="grid-column: span 2/span 2;"><div class="warp-header h3warp"><h3>友好数组</h3><div class="warp-body"><!--rehype:data-warp-style=grid-column: span 2/span 2;--><!--rehype:-->
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">array1</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span> <span class="token string">"Don't mix"</span><span class="token punctuation">,</span> <span class="token string">"different"</span><span class="token punctuation">,</span> <span class="token string">"types"</span> <span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">array2</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span> <span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token number">2.4</span> <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"all"</span><span class="token punctuation">,</span> <span class="token string">'strings'</span><span class="token punctuation">,</span> <span class="token string">"""are the same"""</span><span class="token punctuation">,</span> <span class="token string">'''type'''</span><span class="token punctuation">]</span> <span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">array3</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line line-number" line="4">  <span class="token string">"Whitespace"</span><span class="token punctuation">,</span> <span class="token string">"is"</span><span class="token punctuation">,</span> 
+</span><span class="code-line line-number" line="5">  <span class="token string">"ignored"</span>
+</span><span class="code-line line-number" line="6"><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div></div></div><div class="warp"><div class="warp-header h2warp"><h2>TOML 字符串</h2><div class="warp-body">
+</div></div><div class="h2warp-body"><div class="warp"><div class="warp-header h3warp"><h3>多行字符串</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">multiLineString</span> <span class="token punctuation">=</span> <span class="token string">"""
+</span></span><span class="code-line line-number" line="2"><span class="token string">Multi-line basic strings are surrounded
+</span></span><span class="code-line line-number" line="3"><span class="token string">by three quotation marks on each side
+</span></span><span class="code-line line-number" line="4"><span class="token string">and allow newlines. 
+</span></span><span class="code-line line-number" line="5"><span class="token string">"""</span>
+</span></code></pre>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>文字字符串</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">path</span> <span class="token punctuation">=</span> <span class="token string">'C:\Users\nodejs\templates'</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">path2</span> <span class="token punctuation">=</span> <span class="token string">'\\User\admin$\system32'</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">quoted</span> <span class="token punctuation">=</span> <span class="token string">'Tom "Dubs" Preston-Werner'</span>
+</span><span class="code-line line-number" line="4"><span class="token key property">regex</span> <span class="token punctuation">=</span> <span class="token string">'&#x3C;\i\c*\s*>'</span>
+</span></code></pre>
+<p>用单引号括起来。不允许转义。</p>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>多行文字字符串</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">re</span> <span class="token punctuation">=</span> <span class="token string">'''\d{2} apps is t[wo]o many'''</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">lines</span> <span class="token punctuation">=</span> <span class="token string">'''
+</span></span><span class="code-line line-number" line="3"><span class="token string">The first newline is
+</span></span><span class="code-line line-number" line="4"><span class="token string">trimmed in raw strings.
+</span></span><span class="code-line line-number" line="5"><span class="token string">All other whitespace
+</span></span><span class="code-line line-number" line="6"><span class="token string">is preserved.
+</span></span><span class="code-line line-number" line="7"><span class="token string">'''</span>
+</span></code></pre>
+</div></div></div></div></div><div class="warp"><div class="warp-header h2warp"><h2>TOML Tables</h2><div class="warp-body">
+</div></div><div class="h2warp-body"><div class="warp"><div class="warp-header h3warp"><h3>基本的</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">[</span><span class="token table class-name">name</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">foo</span> <span class="token punctuation">=</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">bar</span> <span class="token punctuation">=</span> <span class="token number">2</span>
+</span></code></pre>
+<p><code>foo</code> 和 <code>bar</code> 是名为<code>name</code> 的表中的键</p>
+</div></div></div><div class="warp"><div class="warp-header h3warp"><h3>嵌套</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">[</span><span class="token table class-name">table1</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2">	<span class="token key property">foo</span> <span class="token punctuation">=</span> <span class="token string">"bar"</span>
+</span><span class="code-line line-number" line="3"><span class="token punctuation">[</span><span class="token table class-name">table1.nested_table</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="4">	<span class="token key property">baz</span> <span class="token punctuation">=</span> <span class="token string">"bat"</span>
+</span></code></pre>
+</div></div></div><div class="warp row-span-2"><div class="warp-header h3warp"><h3>类数组</h3><div class="warp-body"><!--rehype:warp-class=row-span-2--><!--rehype:-->
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">comments</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">author</span> <span class="token punctuation">=</span> <span class="token string">"Nate"</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">text</span> <span class="token punctuation">=</span> <span class="token string">"Great Article!"</span>
+</span><span class="code-line line-number" line="4"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">comments</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="5"><span class="token key property">author</span> <span class="token punctuation">=</span> <span class="token string">"Anonymous"</span>
+</span><span class="code-line line-number" line="6"><span class="token key property">text</span> <span class="token punctuation">=</span> <span class="token string">"Love it!"</span>
+</span></code></pre>
+</div></div><div class="h3warp-body"><div class="warp"><div class="warp-header h4warp"><h4>↓ 等效的 JSON</h4><div class="warp-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">	<span class="token property">"comments"</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line line-number" line="3">		<span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">			<span class="token property">"author"</span> <span class="token operator">:</span> <span class="token string">"Nate"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="5">			<span class="token property">"text"</span> <span class="token operator">:</span> <span class="token string">"Great Article!"</span>
+</span><span class="code-line line-number" line="6">		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="7">		<span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="8">			<span class="token property">"author"</span> <span class="token operator">:</span> <span class="token string">"Anonymous"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="9">			<span class="token property">"text"</span> <span class="token operator">:</span> <span class="token string">"Love It!"</span>
+</span><span class="code-line line-number" line="10">		<span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="11">	<span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="12"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="warp"><div class="warp-header h3warp"><h3>点分隔</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">[</span><span class="token table class-name">dog."tater.man"</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">type</span> <span class="token punctuation">=</span> <span class="token string">"pug"</span>
+</span></code></pre>
+</div></div><div class="h3warp-body"><div class="warp"><div class="warp-header h4warp"><h4>↓ 等效的 JSON</h4><div class="warp-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token property">"dog"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token property">"tater.man"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pug"</span>
+</span><span class="code-line line-number" line="5">    <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="6">  <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="7"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="warp"><div class="warp-header h3warp"><h3>多嵌套</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">[</span><span class="token table class-name">foo.bar.baz</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">bat</span> <span class="token punctuation">=</span> <span class="token string">"hi"</span>
+</span></code></pre>
+</div></div><div class="h3warp-body"><div class="warp"><div class="warp-header h4warp"><h4>↓ 等效的 JSON</h4><div class="warp-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">	<span class="token property">"foo"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">		<span class="token property">"bar"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">			<span class="token property">"baz"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="5">				<span class="token property">"bat"</span> <span class="token operator">:</span> <span class="token string">"hi"</span>
+</span><span class="code-line line-number" line="6">			<span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="7">		<span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="8">	<span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="9"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="warp"><div class="warp-header h3warp"><h3>忽略空格</h3><div class="warp-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">[</span><span class="token table class-name">a.b.c</span><span class="token punctuation">]</span>          <span class="token comment"># this is best practice</span>
+</span><span class="code-line line-number" line="2"><span class="token punctuation">[</span> <span class="token table class-name">d.e.f</span> <span class="token punctuation">]</span>        <span class="token comment"># same as [d.e.f]</span>
+</span><span class="code-line line-number" line="3"><span class="token punctuation">[</span> <span class="token table class-name">g .  h  .i</span> <span class="token punctuation">]</span>   <span class="token comment"># same as [g.h.i]</span>
+</span><span class="code-line line-number" line="4"><span class="token punctuation">[</span> <span class="token table class-name">j . "ʞ" .'l'</span> <span class="token punctuation">]</span> <span class="token comment"># same as [j."ʞ".'l']</span>
+</span></code></pre>
+</div></div></div><div class="warp col-span-2"><div class="warp-header h3warp"><h3>Inline Table</h3><div class="warp-body"><!--rehype:warp-class=col-span-2--><!--rehype:-->
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1"><span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token key property">first</span> <span class="token punctuation">=</span> <span class="token string">"Tom"</span><span class="token punctuation">,</span> <span class="token key property">last</span> <span class="token punctuation">=</span> <span class="token string">"Preston-Werner"</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="2"><span class="token key property">point</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token key property">x</span> <span class="token punctuation">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token key property">y</span> <span class="token punctuation">=</span> <span class="token number">2</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="3"><span class="token key property">animal</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token key property">type.name</span> <span class="token punctuation">=</span> <span class="token string">"pug"</span> <span class="token punctuation">}</span>
+</span></code></pre>
+
+</div></div></div></div></div></div></div><footer class="footer-warp"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
