@@ -25,12 +25,42 @@ console.warn('hello %s', 'QuickReference');
 console.error(new Error('Oops!'));
 ```
 
+### 断点调试
+
+```javascript
+function potentiallyBuggyCode() {
+  debugger;
+  // 做可能有问题的东西来检查，逐步通过等。
+}
+```
+
+**debugger** 语句调用任何可用的调试功能。
+
 ### 数字
 
 ```javascript
 let amount = 6;
 let price = 4.99;
 let home = 1e2;
+let m = 0644;   // 八进制数字 420
+```
+
+### let 关键字
+
+```javascript
+let count; 
+console.log(count); // => undefined
+count = 10;
+console.log(count); // => 10
+```
+
+
+### const 关键字
+
+```javascript
+const numberOfColumns = 4;
+// TypeError: Assignment to constant...
+numberOfColumns = 8;
 ```
 
 ### 变量
@@ -98,49 +128,128 @@ let age = 7;
 `Tommy is ${age} years old.`;
 ```
 
-### let 关键字
+### 字符串
+<!--rehype:warp-class=col-span-2-->
 
-```javascript
-let count; 
-console.log(count); // => undefined
-count = 10;
-console.log(count); // => 10
+<!--rehype:-->
+```js
+var abc = "abcdefghijklmnopqrstuvwxyz";
+var esc = 'I don\'t \n know';    // \n 换行
+var len = abc.length;            // 字符串长度
+abc.indexOf("lmno");             // 查找子字符串，如果不包含则 -1
+abc.lastIndexOf("lmno");         // 最后一次出现
+abc.slice(3, 6);                 // 去掉“def”，负值从后面计算
+abc.replace("abc","123");        // 查找和替换，接受正则表达式
+abc.toUpperCase();               // 转换为大写
+abc.toLowerCase();               // 转换为小写
+abc.concat(" ", str2);           // abc + " " + str2
+abc.charAt(2);                   // 索引处的字符：“c”
+abc[2];                          // 不安全，abc[2] = "C" 不起作用
+// 索引处的字符代码：“c”-> 99
+abc.charCodeAt(2);            
+// 用逗号分割字符串给出一个数组
+abc.split(",");               
+// 分割字符
+abc.split("");                
+// 数字转为十六进制 (16)、八进制 (8) 或二进制 (2)
+128.toString(16);             
 ```
 
+### 数字
+<!--rehype:warp-class=row-span-2-->
 
-### const 关键字
-
-```javascript
-const numberOfColumns = 4;
-// TypeError: Assignment to constant...
-numberOfColumns = 8;
+<!--rehype:-->
+```js
+var pi = 3.141;
+pi.toFixed(0);    // 返回 3             
+pi.toFixed(2);    // 返回 3.14 - 使用金钱
+pi.toPrecision(2) // 返回 3.1
+pi.valueOf();     // 返回号码
+Number(true);     // 转换为数字
+// 自 1970 年以来的毫秒数
+Number(new Date())          
+// 返回第一个数字：3
+parseInt("3 months");       
+// 返回 3.5
+parseFloat("3.5 days");     
+// 最大可能的 JS 数
+Number.MAX_VALUE            
+// 最小可能的 JS 编号
+Number.MIN_VALUE            
+// -无穷
+Number.NEGATIVE_INFINITY    
+// 无穷
+Number.POSITIVE_INFINITY    
 ```
+
+#### Math
+
+```ts
+const pi = Math.PI; // 3.141592653589793
+Math.round(4.4);  // = 4 - 数字四舍五入
+Math.round(4.5);  // = 5
+Math.pow(2,8);    // = 256 - 2 的 8 次方    
+Math.sqrt(49);    // = 7 - 平方根
+Math.abs(-3.14);  // = 3.14 - 绝对，正值
+Math.ceil(3.14);  // = 4 - 返回 >= 最小整数
+// = 3 - 返回 <= 最大整数
+Math.floor(3.99);       
+// = 0 - 正弦
+Math.sin(0);            
+// OTHERS: tan,atan,asin,acos,余弦值
+Math.cos(Math.PI);      
+// = -2 - 最低值
+Math.min(0, 3, -2, 2);  
+// = 3 - 最高值
+Math.max(0, 3, -2, 2);  
+// = 0 自然对数
+Math.log(1);            
+// = 2.7182pow(E,x) 自然对数的底数
+Math.exp(1);            
+// 0 到 1 之间的随机数
+Math.random();          
+// 随机整数，从 1
+Math.floor(Math.random() * 5) + 1;  
+```
+
+### 全局函数
+<!--rehype:warp-class=col-span-2-->
+
+<!--rehype:-->
+```js
+// 像脚本代码一样执行字符串
+eval();                     
+// 从数字返回字符串
+String(23);                 
+// 从数字返回字符串
+(23).toString();            
+// 从字符串返回数字
+Number("23");               
+// 解码 URI。 结果：“我的 page.asp”
+decodeURI(enc);             
+// 编码 URI。 结果：“my%page.asp”
+encodeURI(uri);             
+// 解码 URI 组件
+decodeURIComponent(enc);    
+// 对 URI 组件进行编码
+encodeURIComponent(uri);    
+// 是一个有限的合法数
+isFinite();                 
+// 是一个非法数字
+isNaN();                    
+// 返回字符串的浮点数
+parseFloat();               
+// 解析一个字符串并返回一个整数
+parseInt();                 
+```
+
 
 JavaScript 条件
 ----
 
 
-### if Statement (if 语句)
-
-```javascript
-const isMailSent = true;
-
-if (isMailSent) {
-  console.log('Mail sent to recipient');
-}
-```
-
-### Ternary Operator (三元运算符)
-
-```javascript
-var x=1;
-
-// => true
-result = (x == 1) ? true : false;
-```
-
-### Operators
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+### 操作符
+<!--rehype:warp-class=row-span-3-->
 
 <!--rehype:-->
 ```javascript
@@ -189,14 +298,29 @@ false ?? 'I lose'        //  false
 '' ?? 'Damn it'          //  ''
 ```
 
+### if Statement (if 语句)
+
+```javascript
+const isMailSent = true;
+if (isMailSent) {
+  console.log('Mail sent to recipient');
+}
+```
+
+### Ternary Operator (三元运算符)
+
+```javascript
+var age = 1;
+
+// => true
+var status = (age >= 18) ? true : false;
+```
+
 ### else if
 
 ```javascript
 const size = 10;
-
-if (size > 100) {
-  console.log('Big');
-} else if (size > 20) {
+if (size > 20) {
   console.log('Medium');
 } else if (size > 4) {
   console.log('Small');
@@ -206,30 +330,13 @@ if (size > 100) {
 // Print: Small
 ```
 
-### switch 语句
-
-```javascript
-const food = 'salad';
-
-switch (food) {
-  case 'oyster':
-    console.log('海的味道');
-    break;
-  case 'pizza':
-    console.log('美味的馅饼');
-    break;
-  default:
-    console.log('请您用餐');
-}
-```
-
 ### == vs ===
 
 ```javascript
-0 == false   // true
-0 === false  // false, 不同类型
-1 == "1"     // true,  自动类型转换
-1 === "1"    // false, 不同类型
+0 == false     // true
+0 === false    // false, 不同类型
+1 == "1"       // true,  自动类型转换
+1 === "1"      // false, 不同类型
 null == undefined  // true
 null === undefined // false
 '0' == false       // true
@@ -237,6 +344,36 @@ null === undefined // false
 ```
 
 `==` 只检查值，`===` 检查值和类型。
+
+### switch 语句
+
+```javascript
+const food = 'salad';
+
+switch (food) {
+  case 'oyster': console.log('海的味道');
+    break;
+  case 'pizza': console.log('美味的馅饼');
+    break;
+  default:
+    console.log('请您用餐');
+}
+```
+
+### switch 多 case - 单一操作
+
+```javascript
+const food = 'salad';
+
+switch (food) {
+  case 'oyster':
+  case 'pizza':
+    console.log('美味的馅饼');
+    break;
+  default:
+    console.log('请您用餐');
+}
+```
 
 JavaScript Functions 函数
 ----
@@ -266,8 +403,9 @@ const rocketToMars = function() {
 ```
 
 ### 箭头函数 (ES6)
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:warp-class=row-span-2-->
 
+<!--rehype:-->
 #### 有两个参数
 
 ```javascript
@@ -440,7 +578,7 @@ JavaScript Arrays
 ### 数组
 
 ```javascript
-const fruits = ["apple", "orange", "banana"];
+const fruits = ["apple", "dew", "banana"];
 // 不同的数据类型
 const data = [1, 'chicken', false];
 ```
@@ -463,7 +601,7 @@ console.log(myArray[1]); // 200
 
 ### 可变图表
 
-|           | add | remove | start | end |
+|           | 添加 | 删除 | 开始 | 结束 |
 |:----------|:---:|:------:|:-----:|:---:|
 | `push`    | ✅  |        |       | ✅  |
 | `pop`     |     | ✅     |       | ✅  |
@@ -481,17 +619,18 @@ const numbers = [1, 2];
 numbers.push(3, 4, 5);
 ```
 
-将项目添加到末尾并返回新的数组长度。
+将项目**添加到末尾**并返回新的数组长度。
 
 ### 方法 .pop()
 
 ```javascript
-const fruits = ["apple", "orange", "banana"];
+const fruits = ["apple", "dew", "banana"];
 const fruit = fruits.pop(); // 'banana'
-console.log(fruits); // ["apple", "orange"]
+
+console.log(fruits); // ["apple", "dew"]
 ```
 
-从末尾删除一个项目并返回已删除的项目。
+从**末尾删除**一个项目并返回已删除的项目。
 
 ### 方法 .shift()
 
@@ -500,7 +639,7 @@ let cats = ['Bob', 'Willy', 'Mini'];
 cats.shift(); // ['Willy', 'Mini']
 ```
 
-从头删除一个项目并返回已删除的项目。
+**从头删除**一个项目并返回已删除的项目。
 
 ### 方法 .unshift()
 
@@ -512,7 +651,7 @@ cats.unshift('Willy');
 cats.unshift('Puff', 'George');
 ```
 
-将项目添加到开头并返回新的数组长度。
+将项目**添加到开头**并返回新的数组长度。
 
 ### 方法 .concat()
 
@@ -529,7 +668,6 @@ numbers.concat(newFirstNumber)
 
 如果你想避免改变你的原始数组，你可以使用 concat。
 
-
 JavaScript 循环
 ----
 
@@ -537,7 +675,7 @@ JavaScript 循环
 
 ```javascript
 while (condition) {
-  // code block to be executed
+  // 要执行的代码块
 }
 let i = 0;
 while (i < 5) {        
@@ -549,12 +687,12 @@ while (i < 5) {
 ### 反向循环
 
 ```javascript
-const fruits = ["apple", "orange", "banana"];
+const fruits = ["apple", "dew", "berry"];
 for (let i = fruits.length - 1; i >= 0; i--) {
   console.log(`${i}. ${fruits[i]}`);
 }
-// => 2. banana
-// => 1. orange
+// => 2. berry
+// => 1. dew
 // => 0. apple
 ```
 
@@ -605,7 +743,9 @@ for (let i = 0; i < 99; i += 1) {
 
 ```javascript
 for (i = 0; i < 10; i++) {
-  if (i === 3) { continue; }
+  if (i === 3) {
+    continue;
+  }
   text += "The number is " + i + "<br>";
 }
 ```
@@ -632,6 +772,28 @@ for (let index in fruits) {
 // => 2
 ```
 
+### label 语句
+<!--rehype:warp-class= row-span-2-->
+
+<!--rehype:-->
+```js
+var num = 0;
+
+outPoint:
+for(var i = 0; i < 10; i++) {
+  for(var j = 0; j < 10; j++) {
+    if(i == 5 && j == 5) {
+      continue outPoint;
+    }
+    num++;
+  }
+}
+
+alert(num);  // 95
+```
+
+从 `alert(num)` 的值可以看出，`continue outPoint;` 语句的作用是跳出当前循环，并跳转到 `outPoint`（标签）下的 `for` 循环继续执行。
+
 ### for...of 循环
 
 ```javascript
@@ -644,10 +806,46 @@ for (let fruit of fruits) {
 // => banana
 ```
 
+### for await...of
+<!--rehype:warp-class= row-span-2-->
+
+<!--rehype:-->
+```javascript
+async function* asyncGenerator() {
+  var i = 0;
+  while (i < 3) {
+    yield i++;
+  }
+}
+
+(async function() {
+  for await (num of asyncGenerator()) {
+    console.log(num);
+  }
+})();
+
+// 0
+// 1
+// 2
+```
+
+### 可选的 for 表达式
+
+```js
+var i = 0;
+
+for (;;) {
+  if (i > 3) break;
+  console.log(i);
+  i++;
+}
+```
+
 JavaScript 迭代器(Iterators)
 ----
-<!--rehype:data-body-style=grid-template-columns: repeat(2,minmax(0,1fr));-->
+<!--rehype:body-class=cols-2-->
 
+<!--rehype:-->
 ### 分配给变量的函数
 
 ```javascript
@@ -716,8 +914,9 @@ const filteredArray = randomNumbers.filter(n => {
 
 JavaScript 对象(Objects)
 ----
-<!--rehype:data-body-style=grid-template-columns: repeat(2,minmax(0,1fr));-->
+<!--rehype:body-class=cols-2-->
 
+<!--rehype:-->
 ### 访问属性
 
 ```javascript
@@ -753,7 +952,7 @@ console.log(classElection.place); // undefined
 ```
 
 ### 可变的
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:warp-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -821,6 +1020,25 @@ console.log(origNum);
 console.log(origObj.color);
 ```
 
+### 工厂函数
+<!--rehype:warp-class=row-span-2-->
+
+<!--rehype:-->
+```javascript
+// 一个接受 'name'，'age' 和 'breed' 的工厂函数，
+//  参数返回一个自定义的 dog 对象。
+const dogFactory = (name, age, breed) => {
+  return {
+    name: name,
+    age: age,
+    breed: breed,
+    bark() {
+      console.log('Woof!');  
+    }
+  };
+};
+```
+
 ### 速记对象创建
 
 ```javascript
@@ -840,23 +1058,6 @@ const cat = {
   }
 };
 console.log(cat.whatName()); // => Pipey
-```
-
-### 工厂函数
-
-```javascript
-// 一个接受 'name'，'age' 和 'breed' 的工厂函数，
-//  参数返回一个自定义的 dog 对象。
-const dogFactory = (name, age, breed) => {
-  return {
-    name: name,
-    age: age,
-    breed: breed,
-    bark() {
-      console.log('Woof!');  
-    }
-  };
-};
 ```
 
 ### 方法
@@ -897,8 +1098,10 @@ myCat.name = 'Yankee';
 JavaScript Classes
 ----
 
-### Static Methods
+### 静态方法/字段
+<!--rehype:warp-class=row-span-2-->
 
+<!--rehype:-->
 ```javascript
 class Dog {
   constructor(name) {
@@ -909,15 +1112,32 @@ class Dog {
     console.log('This is ' + this._name + ' !');  
   }
   
-  // A static method
+  // 静态方法
   static bark() {
     console.log('Woof!');  
   }
+
+  static {
+    console.log('类静态初始化块调用');
+  }
 }
+
 const myDog = new Dog('Buster');
 myDog.introduce();
-// Calling the static method
+
+// 调用静态方法
 Dog.bark();
+```
+
+#### 公有静态字段
+
+```js
+class ClassStaticField {
+  static staticField = 'static field'
+}
+
+console.log(ClassStaticField.staticField)
+// 预期输出值："static field"​ 
 ```
 
 ### Class
@@ -933,8 +1153,33 @@ class Song {
     console.log('Song playing!');
   }
 }
+
 const mySong = new Song();
 mySong.play();
+```
+
+### extends
+
+```javascript
+// Parent class
+class Media {
+  constructor(info) {
+    this.publishDate = info.publishDate;
+    this.name = info.name;
+  }
+}
+// Child class
+class Song extends Media {
+  constructor(songData) {
+    super(songData);
+    this.artist = songData.artist;
+  }
+}
+const mySong = new Song({ 
+  artist: 'Queen', 
+  name: 'Bohemian Rhapsody', 
+  publishDate: 1975
+});
 ```
 
 ### Class Constructor
@@ -964,68 +1209,44 @@ class Song {
 }
 ```
 
-### extends
-
-```javascript
-// Parent class
-class Media {
-  constructor(info) {
-    this.publishDate = info.publishDate;
-    this.name = info.name;
-  }
-}
-// Child class
-class Song extends Media {
-  constructor(songData) {
-    super(songData);
-    this.artist = songData.artist;
-  }
-}
-const mySong = new Song({ 
-  artist: 'Queen', 
-  name: 'Bohemian Rhapsody', 
-  publishDate: 1975
-});
-```
 
 JavaScript Modules
 ----
-<!--rehype:data-body-style=grid-template-columns: repeat(2,minmax(0,1fr));-->
+<!--rehype:body-class=cols-2-->
 
-### Export 
+### Export / Import
 
 ```javascript
 // myMath.js
-// Default export
+// 默认导出 Default export
 export default function add(x,y){
-    return x + y
+  return x + y
 }
-// Normal export
+// 正常导出 Normal export
 export function subtract(x,y){
-    return x - y
+  return x - y
 }
-// Multiple exports
+// 多重导出 Multiple exports
 function multiply(x,y){
-    return x * y
+  return x * y
 }
 function duplicate(x){
-    return x * 2
+  return x * 2
 }
 export {
-    multiply,
-    duplicate
+  multiply, duplicate
 }
 ```
 
-### Import 
+#### import 加载模块
 
 ```javascript
 // main.js
 import add, { subtract, multiply, duplicate } from './myMath.js';
-console.log(add(6, 2)); // 8 
-console.log(subtract(6, 2)) // 4
+console.log(add(6, 2));      // 8 
+console.log(subtract(6, 2))  // 4
 console.log(multiply(6, 2)); // 12
-console.log(duplicate(5)) // 10
+console.log(duplicate(5))    // 10
 // index.html
 <script type="module" src="main.js"></script>
 ```
@@ -1035,43 +1256,43 @@ console.log(duplicate(5)) // 10
 ```javascript
 // myMath.js
 function add(x,y){
-    return x + y
+  return x + y
 }
 function subtract(x,y){
-    return x - y
+  return x - y
 }
 function multiply(x,y){
-    return x * y
+  return x * y
 }
 function duplicate(x){
-    return x * 2
+  return x * 2
 }
-// Multiple exports in node.js
+// node.js 中的多个导出
 module.exports = {
-    add,
-    subtract,
-    multiply,
-    duplicate
+  add,
+  subtract,
+  multiply,
+  duplicate
 }
 ```
 
-### 加载模块
+#### require 加载模块
 
 ```javascript
 // main.js
 const myMath = require('./myMath.js')
-console.log(myMath.add(6, 2)); // 8 
-console.log(myMath.subtract(6, 2)) // 4
+console.log(myMath.add(6, 2));      // 8 
+console.log(myMath.subtract(6, 2))  // 4
 console.log(myMath.multiply(6, 2)); // 12
-console.log(myMath.duplicate(5)) // 10
+console.log(myMath.duplicate(5))    // 10
 ```
 
 JavaScript Promises
 ----
-<!--rehype:data-body-style=grid-template-columns: repeat(2,minmax(0,1fr));-->
+<!--rehype:body-class=cols-2-->
 
 ### Promise 状态 
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:warp-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1201,7 +1422,7 @@ promise.then(res => {
 
 JavaScript Async-Await
 ----
-<!--rehype:data-body-style=grid-template-columns: repeat(2,minmax(0,1fr));-->
+<!--rehype:body-class=cols-2-->
 
 ### 异步
 
@@ -1298,7 +1519,7 @@ const jsonObj = {
 };
 ```
 
-另见：[JSON 备忘单](./json)
+另见：[JSON 备忘单](./json.md)
 
 ### XMLHttpRequest
 

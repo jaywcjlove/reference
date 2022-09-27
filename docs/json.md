@@ -82,7 +82,7 @@ Have to be delimited by double quotes
 
 
 ### 数字
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:warp-class=row-span-2-->
 
 <!--rehype:-->
 | Type       | Description                            |
