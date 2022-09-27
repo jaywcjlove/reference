@@ -23,6 +23,7 @@ Quick Reference
 ## Linux 命令
 
 [Cron](./docs/cron.md)
+[Git](./docs/git.md)
 <!--rehype:class=home-card-->
 
 ## License
