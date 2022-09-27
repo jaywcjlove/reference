@@ -24,6 +24,7 @@ async function createHTML(files = [], num = 0) {
   await fs.ensureDir(path.dirname(outputHTMLPath));
 
   const html = create(mdstr.toString(), {
+    filename: path.basename(outputHTMLPath, '.html'),
     isHome: /README.md$/.test(path.relative(process.cwd(), dataFile.path)),
     githubURL,
     homePath: path.relative(path.dirname(outputHTMLPath), path.resolve(OUTOUT, 'index.html')),

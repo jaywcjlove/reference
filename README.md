@@ -17,6 +17,7 @@ Quick Reference
 ## 工具包
 
 [VSCode](./docs/vscode.md)
+[Sketch](./docs/sketch.md)
 [Jest](./docs/jest.md)
 <!--rehype:class=home-card-->
 

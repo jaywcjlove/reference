@@ -12,7 +12,7 @@ Crontab 格式
 
 ```
 Min  Hour Day  Mon  Weekday
-分钟  小时  天   月  周
+分钟  小时  天   月   周
 ```
 
 -------
@@ -79,6 +79,7 @@ Min  Hour Day  Mon  Weekday
 | `crontab -l` | 显示 crontab 文件。 |
 | `crontab -r` | 删除 crontab 文件。 |
 | `crontab -v` | 显示您上次编辑 crontab 文件的时间。 _（非标准）_ |
+| `echo "@reboot echo hi" | crontab` | 轻松添加任务 |
 <!--rehype:class=table-thead-hide-->
 
 
