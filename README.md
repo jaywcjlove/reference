@@ -16,6 +16,7 @@ Quick Reference
 
 ## 工具包
 
+[npm](./docs/npm.md)
 [VSCode](./docs/vscode.md)
 [Sketch](./docs/sketch.md)
 [Jest](./docs/jest.md)
