@@ -1,3 +1,10 @@
+---
+name: 备忘单请求
+about: 请求添加备忘单和参考。
+title: '备忘清单 请求: '
+labels: request
+assignees: jaywcjlove
+---
 备忘清单标题 备忘清单
 ===
 
