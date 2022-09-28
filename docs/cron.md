@@ -36,6 +36,7 @@ Min  Hour Day  Mon  Weekday
 | 月份中的某天   | 1 - 31 | , - * ? / L W      |
 | 月 Month     | 1 - 12 | , - * /            |
 | 星期几        | 0 - 6  | , - * ? / L #      |
+<!--rehype:className=show-header -->
 
 
 ### 示例
@@ -54,7 +55,6 @@ Min  Hour Day  Mon  Weekday
 | `0 0 0 1 * *`  | 每个月的 1 日（每月）   |
 | `0 0 0 1 1 *`  | 每年 1 月 1 日（每年）   |
 | `@reboot`      | 每次重启 _(非标准)_   |
-<!--rehype:class=table-thead-hide-->
 
 
 ### 特殊字符串
@@ -69,6 +69,7 @@ Min  Hour Day  Mon  Weekday
 | @daily         | 每天运行一次，“0 0 * * *” _（非标准）_ |
 | @midnight      | （与@daily 相同）_（非标准）_ |
 | @hourly        | 每小时运行一次，“0 * * * *” _（非标准）_ |
+<!--rehype:className=show-header -->
 
 
 ### Crontab 命令
@@ -80,13 +81,11 @@ Min  Hour Day  Mon  Weekday
 | `crontab -r` | 删除 crontab 文件。 |
 | `crontab -v` | 显示您上次编辑 crontab 文件的时间。 _（非标准）_ |
 | `echo "@reboot echo hi" | crontab` | 轻松添加任务 |
-<!--rehype:class=table-thead-hide-->
 
 
 ### 特殊字符
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 | 特殊字符             | 说明 |
 |---------------------|------------|
 `星号(*)`  | 匹配字段中的所有值或任何可能的值。
@@ -96,6 +95,7 @@ Min  Hour Day  Mon  Weekday
 `L`       | 仅允许用于 `月份中的某天` 或 `星期几` 字段，`星期几` 中的 `2L` 表示每个月的最后一个星期二
 `井号 (#)` | 仅允许用于 `星期几` 字段，后面必须在 1 到 5 的范围内。例如，`4#1` 表示给定月份的“第一个星期四”。
 `问号(?)`  | 可以代替“*”并允许用于月份和星期几。使用仅限于 cron 表达式中的 `月份中的某天` 或 `星期几`。
+<!--rehype:className=show-header -->
 
 
 ## Also see

@@ -21,6 +21,91 @@ body {
 blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   margin: 0;
 }
+h1,h2,h3,h4,h5,h6 {
+  font-size: inherit;
+  font-weight: inherit
+}
+ol, ul, menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wrap-body > p > code {
+  --text-opacity: 1;
+  color: rgb(5 150 105/var(--text-opacity));
+}
+
+table {
+  width: 100%;
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse
+}
+
+table td:not(:last-child)>code, ul li > code, kbd {
+  background-color: rgb(51 65 85/0.5);
+  color: rgb(203 213 225/1);
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
+  letter-spacing: 0.075rem;
+  padding: 0.1em 0.54em;
+  border: 1px solid rgb(204,204,204);
+  border-color: rgb(51 65 85/1);
+  line-height: 1.5;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 12px;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+table tr+tr {
+  border-top: solid 1px #ececec94;
+  border-color: rgb(51 65 85/0.5);
+}
+
+table td:first-child {
+  white-space: nowrap;
+}
+table td, table th {
+  padding: 9px 14px;
+  text-align: left;
+}
+table tr th:last-child, table tr td:last-child {
+  text-align: right;
+}
+
+table thead th {
+  white-space: nowrap;
+  font-weight: normal;
+  color: rgb(16 185 129/1);
+}
+
+table thead {
+  display: none;
+  border-bottom: solid 1px rgba(85,102,119,0.3);
+}
+
+table.show-header thead {
+  display: table-header-group;
+}
+
+tt, code {
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 1em;
+}
+pre:only-child {
+  height: 100%;
+}
+
+pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  word-wrap: normal;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 1rem;
+}
 
 .max-container a {
   color: rgb(2 132 199/1);
@@ -241,7 +326,7 @@ body.home .h1wrap p {
   width: 100%;
 }
 
-.wrap-header.h3wrap > .wrap-body p:last-child {
+.wrap-header.h3wrap > .wrap-body p:not(:first-child):last-child {
   margin-top: auto;
 }
 
@@ -265,12 +350,6 @@ body.home .h1wrap p {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   text-align: center;
-}
-
-ol, ul, menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .h4wrap > .wrap-body ul,
@@ -346,87 +425,25 @@ ol, ul, menu {
   box-shadow: 0 0 #0000, 0 0 #0000, 0 6px 8px rgba(102,119,136,0.03),0 1px 2px rgba(102,119,136,0.3);
 }
 
-table {
-  text-indent: 0;
-  border-color: inherit;
-  border-collapse: collapse
-}
-
-
-table td:not(:last-child)>code, ul li > code, kbd {
-  background-color: rgb(51 65 85/0.5);
-  color: rgb(203 213 225/1);
-  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
-  letter-spacing: 0.075rem;
-  padding: 0.1em 0.54em;
-  border: 1px solid rgb(204,204,204);
-  border-color: rgb(51 65 85/1);
-  line-height: 1.6;
-  font-family: Arial,Helvetica,sans-serif;
-  font-size: 12px;
-  display: inline-block;
-  border-radius: 3px;
-}
-
-table tr+tr {
-  border-top: solid 1px #ececec94;
-  border-color: rgb(51 65 85/0.5);
-}
-
-table td:first-child {
-  white-space: nowrap;
-}
-table td, table th {
-  padding: 9px 14px;
-  text-align: left;
-}
-table tr th:last-child, table tr td:last-child {
-  text-align: right;
-}
-
-table thead th {
-  white-space: nowrap;
-  font-weight: normal;
-  color: rgb(16 185 129/1);
-}
-
-table thead {
-  display: table-header-group;
-  border-bottom: solid 1px rgba(85,102,119,0.3);
-}
-
-.table-thead-hide thead {
-  display: none;
-}
-
-tt, code {
-  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-  font-size: 1em;
-}
-pre:only-child {
-  height: 100%;
-}
-
-pre {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-  word-wrap: normal;
-  line-height: 1.5;
-  overflow: hidden;
-  padding: 1rem;
-}
-
 .code-highlight {
   display: block;
   overflow-x: auto;
 }
 
 .cols-1 {
-  grid-template-columns: repeat(1,minmax(0,1fr));
+  grid-template-columns: repeat(1,minmax(0,1fr)) !important;
 }
 .cols-2 {
-  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+}
+.cols-3 {
+  grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+}
+.cols-4 {
+  grid-template-columns: repeat(4,minmax(0,1fr)) !important;
+}
+.cols-5 {
+  grid-template-columns: repeat(5,minmax(0,1fr)) !important;
 }
 .col-span-2 {
   grid-column: span 2/span 2;

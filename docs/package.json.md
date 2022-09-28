@@ -51,7 +51,6 @@ package.json 备忘清单
 ### 安装 `name` 包
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```sh
 yarn add [包名]
 # or
@@ -89,7 +88,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### `license`
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-<!--rehype:-->
 所有包都应该指定许可证，以便让用户了解他们是在什么授权下使用此包，以及此包还有哪些附加限制。
 
 ```json
@@ -140,7 +138,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### `repository`
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-<!--rehype:-->
 ```json
 {
   "repository": {
@@ -188,7 +185,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### `contributors`
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```json
 {
   "contributors": [
@@ -290,7 +286,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### `esnext`
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-<!--rehype:-->
 完整的[提案在这里](http://2ality.com/2017/04/transpiling-dependencies-babel.html)。 简短说明：
 
 - `esnext`：ES模块中使用阶段4功能（或更旧版本）的源代码，未编译。
@@ -358,7 +353,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### 特定的 `scripts`
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-<!--rehype:-->
 对于以下脚本，`npm` 支持 `package.json` 文件的 `scripts` 默认命令字段：
 
 - `prepublish`: 在打包并发布包之前运行，以及在没有任何参数的本地 `npm` 安装之前运行。 （见下文）
@@ -411,7 +405,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### `dependencies`
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-<!--rehype:-->
 这些是你的包的开发版和发布版都需要的依赖。
 
 ```json
@@ -442,7 +435,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### workspaces
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```json
 {
   "name": "my-workspaces-powered-project",
@@ -486,7 +478,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### `peerDependencies`
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```json
 {
   "peerDependencies": {
@@ -547,7 +538,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### `engines`
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-<!--rehype:-->
 指定使用你的包客户必须使用的版本，这将检查 `process.versions` 以及当前 `yarn` 版本。
 
 ```json
@@ -602,7 +592,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ### `publishConfig`
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 这些配置值将在你的包发布时使用。比如，你可以给包打标签。
 
 ```json
@@ -635,7 +624,6 @@ Yarn
 ### `resolutions`
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```json
 {
   "resolutions": {

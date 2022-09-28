@@ -44,12 +44,10 @@ JSON 备忘清单
 | `Value`   | 字符串、数字、布尔值、空值等         |
 | `Object`  | 键/值对的无序集合                 |
 | `null`    | Null 或 Empty                   |
-<!--rehype:class=table-thead-hide-->
 
 ### 字符串
-<!--rehype:data-wrap-style=grid-row: span 3/span 3;-->
+<!--rehype:wrap-style=grid-row: span 3/span 3;-->
 
-<!--rehype:-->
 |      |                            |
 |------|----------------------------|
 | `\"` | 双引号 Double quote         |
@@ -61,7 +59,6 @@ JSON 备忘清单
 | `\r` | 回车 Carriage return        |
 | `\t` | 标签 Tab                    |
 | `\u` | 后跟四个十六进制数字           |
-<!--rehype:class=table-thead-hide-->
 
 #### 示例
 
@@ -84,12 +81,12 @@ Have to be delimited by double quotes
 ### 数字
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
-| Type       | Description                            |
-|------------|----------------------------------------|
-| `Integer`  | Digits 1-9, 0 and positive or negative |
-| `Fraction` | Fractions like 0.3, 3.9                |
-| `Exponent` | Exponent like e, e+, e-, E, E+, E      |
+ 类型 | 说明 
+-----|------
+`Integer`  | 数字 1-9、0 和正数或负数
+`Fraction` | 0.3、3.9 等分数
+`Exponent` | 指数，如 e、e+、e-、E、E+、E
+<!--rehype:className=show-header -->
 
 #### 示例
 
@@ -226,12 +223,10 @@ let myObject = {
 | `myObject.age`     | 39        |
 | `myObject.other`   | undefined |
 | `myObject[0]`      | undefined |
-<!--rehype:class=table-thead-hide-->
 
 ### 访问嵌套
-<!--rehype:data-wrap-style=grid-row: span 2/span 2;-->
+<!--rehype:wrap-style=grid-row: span 2/span 2;-->
 
-<!--rehype:-->
 ```javascript
 let myObject = {
     "ref": {
@@ -270,12 +265,10 @@ let myObject = {
 | `myObject.jdoe`          | ["Jason", "Doe", 39 ...] |
 | `myObject.jsmith[3]`     | "F"                      |
 | `myObject[1]`            | undefined                |
-<!--rehype:class=table-thead-hide-->
 
 ### 访问对象数组
-<!--rehype:data-wrap-style=grid-row: span 2/span 2;-->
+<!--rehype:wrap-style=grid-row: span 2/span 2;-->
 
-<!--rehype:-->
 ```javascript
 let myArray = [
   {
@@ -313,7 +306,6 @@ let myArray = [
 | `myArray[1][2]`     | 42                         |
 | `myArray[3]`        | undefined                  |
 | `myArray[3].gender` | TypeError: Cannot read...  |
-<!--rehype:class=table-thead-hide-->
 
 ### 访问阵列
 
@@ -335,7 +327,6 @@ let myArray = [
 | `myArray[1]` | "Doe"     |
 | `myArray[5]` | true      |
 | `myArray[6]` | undefined |
-<!--rehype:class=table-thead-hide-->
 
 
 另见

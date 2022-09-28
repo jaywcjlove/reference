@@ -42,7 +42,7 @@ export async function run() {
   await fs.copyFile(CSSPATH, CSS_OUTPUT_PATH)
   const files = await recursiveReaddirFiles(process.cwd(), {
     ignored: /\/(node_modules|\.git)/,
-    exclude: /(\.json|mjs)$/,
+    exclude: /(\.json|\.mjs|CONTRIBUTING\.md)$/,
     filter: (item) => item.ext === 'md',
   });
   createHTML(files);

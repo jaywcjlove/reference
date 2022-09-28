@@ -42,9 +42,8 @@ Header 2
 ```
 
 ### 无序列表
-<!--rehype:data-wrap-style=grid-row: span 2/span 2;-->
+<!--rehype:wrap-style=grid-row: span 2/span 2;-->
 
-<!--rehype:-->
 ```markdown
 * Item 1
 * Item 2
@@ -166,9 +165,8 @@ console.log("This is a block code")
 ```
 
 ### 表格
-<!--rehype:data-wrap-style=grid-column: span 2/span 2;-->
+<!--rehype:wrap-style=grid-column: span 2/span 2;-->
 
-<!--rehype:-->
 ```markdown
 |     左栏     |     中间栏     |     右栏     |
 |:------------|:-------------:|-------------:|
@@ -188,9 +186,8 @@ console.log("This is a block code")
 Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 
 ### 图片
-<!--rehype:data-wrap-style=grid-column: span 2/span 2;-->
+<!--rehype:wrap-style=grid-column: span 2/span 2;-->
 
-<!--rehype:-->
 ```markdown
 ![GitHub Logo](/images/logo.png)
 

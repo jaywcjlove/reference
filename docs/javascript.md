@@ -129,7 +129,6 @@ let age = 7;
 ### 字符串
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```js
 var abc = "abcdefghijklmnopqrstuvwxyz";
 var esc = 'I don\'t \n know';    // \n 换行
@@ -156,7 +155,6 @@ abc.split("");
 ### 数字
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```js
 var pi = 3.141;
 pi.toFixed(0);    // 返回 3             
@@ -213,7 +211,6 @@ Math.floor(Math.random() * 5) + 1;
 ### 全局函数
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```js
 // 像脚本代码一样执行字符串
 eval();                     
@@ -249,7 +246,6 @@ JavaScript 条件
 ### 操作符
 <!--rehype:wrap-class=row-span-3-->
 
-<!--rehype:-->
 ```javascript
 true || false;       // true
 10 > 5 || 10 > 20;   // true
@@ -403,7 +399,6 @@ const rocketToMars = function() {
 ### 箭头函数 (ES6)
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 #### 有两个参数
 
 ```javascript
@@ -496,7 +491,6 @@ JavaScript 范围
 ### 范围
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```javascript
 function myFunction() {
   var pizzaName = "Margarita";
@@ -795,7 +789,6 @@ for (let index in fruits) {
 ### label 语句
 <!--rehype:wrap-class= row-span-2-->
 
-<!--rehype:-->
 ```js
 var num = 0;
 
@@ -829,7 +822,6 @@ for (let fruit of fruits) {
 ### for await...of
 <!--rehype:wrap-class= row-span-2-->
 
-<!--rehype:-->
 ```javascript
 async function* asyncGenerator() {
   var i = 0;
@@ -865,7 +857,6 @@ JavaScript 迭代器(Iterators)
 ----
 <!--rehype:body-class=cols-2-->
 
-<!--rehype:-->
 ### 分配给变量的函数
 
 ```javascript
@@ -936,7 +927,6 @@ JavaScript 对象(Objects)
 ----
 <!--rehype:body-class=cols-2-->
 
-<!--rehype:-->
 ### 访问属性
 
 ```javascript
@@ -974,7 +964,6 @@ console.log(classElection.place); // undefined
 ### 可变的
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```javascript
 const student = {
   name: 'Sheldon',
@@ -1043,7 +1032,6 @@ console.log(origObj.color);
 ### 工厂函数
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```javascript
 // 一个接受 'name'，'age' 和 'breed' 的工厂函数，
 //  参数返回一个自定义的 dog 对象。
@@ -1121,7 +1109,6 @@ JavaScript Classes
 ### 静态方法/字段
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```javascript
 class Dog {
   constructor(name) {
@@ -1313,7 +1300,6 @@ JavaScript Promises
 ### Promise
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 创建 promises
 
 ```javascript
@@ -1418,7 +1404,6 @@ promise.catch((err) => {
 ### Promise.all()
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```javascript
 const promise1 = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -1459,7 +1444,6 @@ promise.then(res => {
 ### 避免嵌套的 Promise 和 .then()
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```javascript
 const promise = new Promise((resolve, reject) => {  
   setTimeout(() => {
@@ -1486,7 +1470,6 @@ JavaScript Async-Await
 ### 异步
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```javascript
 function helloWorld() {
   return new Promise(resolve => {
@@ -1613,7 +1596,6 @@ req.send();
 ### POST
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```javascript
 const data = { weight: '1.5 KG' };
 const xhr = new XMLHttpRequest();
@@ -1636,7 +1618,6 @@ xhr.onerror = () => {
 ### fetch api
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```javascript
 fetch(url, {
     method: 'POST',
@@ -1697,7 +1678,6 @@ fetch('https://api-xxx.com/endpoint', {
 ### async await 语法
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```javascript
 const getSuggestions = async () => {
   const wordQuery = inputField.value;

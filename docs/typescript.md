@@ -68,7 +68,6 @@ Object, String, Number, Boolean
 ### 通用语法
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```ts
 /** 可选择从现有接口或类型(Response, HTTPAble)中获取属性 */
 interface JSONResponse extends Response, HTTPAble {
@@ -263,7 +262,6 @@ const data: import("./data").data
 ### 对象字面量语法
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```ts
 type JSONResponse = {
   version: number;                        // 字段
@@ -302,7 +300,6 @@ type ArtistSub = Subscriber<Artist>
 ### 模板联合类型
 <!--rehype:wrap-class=col-span-3-->
 
-<!--rehype:-->
 ```ts
 type SupportedLangs =  "en" | "pt" | "zh";
 type FooterLocaleIDs = "header" | "footer";
@@ -316,7 +313,6 @@ type AllLocaleIDs = `${SupportedLangs}_${FooterLocaleIDs}_id`;
 ### 条件类型
 <!--rehype:wrap-class=col-span-3-->
 
-<!--rehype:-->
 ```ts
 type HasFourLegs<Animal> = Animal extends { legs: 4 } ? Animal : never
 type Animals = Bird | Dog | Ant | Wolf;
@@ -379,7 +375,6 @@ if (Array.isArray(input)) {
 ### 任务
 <!--rehype:wrap-class=row-span-3-->
 
-<!--rehype:-->
 ```ts
 const data1 = {
   name: "Zagreus"
@@ -558,7 +553,6 @@ class C implements Bag {}
 ### 通用语法
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```ts
 // 确保类符合一组接口或类型  ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▶┈┈╮
 // 子类这个类 ┈┈┈┈┈┈┈┈↘                 ┈┈┈┈┈┈┈┈┈┈┈┈┈┴┈┈┈┈┈┈┈
@@ -645,7 +639,6 @@ class Dog extends Animal { getName(): { ... } }
 ### 装饰器和属性
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```ts
 import { Syncable, triggersSync, preferCache, required } from "mylib"
 
@@ -1145,7 +1138,6 @@ declare namespace JSX {
 ### 函数组件
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```tsx
 interface FooProp {
   name: string;
@@ -1189,7 +1181,6 @@ function Dog(prop:CeProps): JSX.Element {
 ### 函数子组件
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```tsx
 interface MenuProps extends React.LiHTMLAttributes<HTMLUListElement> { ... }
 const InternalMenu = (props: MenuProps, ref?: React.ForwardedRef<HTMLUListElement>) => (
@@ -1213,7 +1204,6 @@ Menu.SubMenu = SubMenu;
 ### 有效组件
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```tsx
 declare namespace JSX {
   interface ElementClass {
@@ -1247,7 +1237,6 @@ function NotAValidFactoryFunction() {
 ### 类组件
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```ts
 type Props = {
   header: React.ReactNode;

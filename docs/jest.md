@@ -19,7 +19,6 @@ Jest 是一款优雅、简洁的 JavaScript 测试框架。
 ### 测试结构
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```js
 describe('makePoniesPink', () => {
   beforeAll(() => {
@@ -152,7 +151,6 @@ expect([{ a: 1 }, { b: 2 }]).toEqual([
 ### 模拟函数
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```js
 // const fn = jest.fn()
 // const fn = jest.fn().mockName('Unicorn') -- 命名为 mock, Jest 22+
@@ -295,7 +293,6 @@ expect(fn).toThrowErrorMatchingSnapshot()
 ### 实例
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 请参阅 Jest 文档中的 [更多示例](https://jestjs.io/docs/en/tutorial-async)。
 
 在异步测试中指定一些预期的断言是一个很好的做法，所以如果你的断言根本没有被调用，测试将会失败。
@@ -332,7 +329,6 @@ test('async test', async () => {
 ### done() 回调
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```js
 test('async test', (done) => {
   expect.assertions(1)
@@ -373,7 +369,6 @@ test('async test', () => {
 ### 模拟函数
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```js
 test('call the callback', () => {
   const callback = jest.fn()
@@ -506,7 +501,6 @@ const setTitle = jest
 ### 定时器模拟
 <!--rehype:wrap-class=row-span-3-->
 
-<!--rehype:-->
 为使用本机计时器函数（`setTimeout`、`setInterval`、`clearTimeout`、`clearInterval`）的代码编写同步测试。
 
 ```js
@@ -558,7 +552,6 @@ Object.defineProperty(location, 'title', {
 ### 清除和恢复模拟
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 对于一个模拟
 
 ```js

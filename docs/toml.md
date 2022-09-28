@@ -102,7 +102,6 @@ array3 = [8001, 8001, 8002]
 ### 友好数组
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```toml
 array1 = [ "Don't mix", "different", "types" ]
 array2 = [ [ 1.2, 2.4 ], ["all", 'strings', """are the same""", '''type'''] ]
@@ -173,7 +172,6 @@ bar = 2
 ### 类数组
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 ```toml
 [[comments]]
 author = "Nate"
@@ -251,7 +249,6 @@ bat = "hi"
 ### Inline Table
 <!--rehype:wrap-class=col-span-2-->
 
-<!--rehype:-->
 ```toml 
 name = { first = "Tom", last = "Preston-Werner" }
 point = { x = 1, y = 2 }

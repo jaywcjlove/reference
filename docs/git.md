@@ -29,7 +29,6 @@ $ git clone git_url 指定目录
 ### 做出改变
 <!--rehype:wrap-class=row-span-2-->
 
-<!--rehype:-->
 在工作目录中**显示**修改后的文件，为您的下一次提交暂存
 
 ```shell
@@ -444,7 +443,6 @@ $ git rm -r --cached <目录/文件>
 ### 修改远程 Commit 记录
 <!--rehype:wrap-class=row-span-4-->
 
-<!--rehype:-->
 ```shell
 $ git rebase -i HEAD~3
 # 表示要修改当前版本的倒数第三次状态

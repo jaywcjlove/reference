@@ -62,8 +62,8 @@ export function getTocsTree(arr = [], result = []) {
       const headerCls = ['wrap-header', `h${level}wrap`];
 
       if (level === 1) wrapCls.push('max-container');
-      const wrapStyle = toc.properties['data-wrap-style'];
-      delete toc.properties['data-wrap-style']
+      const wrapStyle = toc.properties['wrap-style'];
+      delete toc.properties['wrap-style']
       const wrapClass = toc.properties['wrap-class'];
       if (wrapClass) wrapCls.push(wrapClass);
       delete toc.properties['wrap-class'];
@@ -93,9 +93,8 @@ export function getTocsTree(arr = [], result = []) {
       const childs = getChilds([...data.slice(n + 1)], level);
       const resultChilds = getTocsTree(childs);
       if (resultChilds.length > 0) {
-        const bodyStyle = toc.properties['data-body-style'];
-        delete toc.properties['data-body-style']
-
+        const bodyStyle = toc.properties['body-style'];
+        delete toc.properties['body-style']
         const bodyClass = toc.properties['body-class'];
         delete toc.properties['body-class']
         panle.children = panle.children.concat({

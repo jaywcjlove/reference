@@ -51,7 +51,6 @@ $ docker run -it -p 8001:8080 --name my-nginx nginx
 | `docker port <container>`           | 显示容器的端口映射                                  |
 | `docker top <container>`            | 列出进程                                  |
 | `docker kill <container>`           | 杀死一个容器                                  |
-<!--rehype:class=table-thead-hide-->
 
 参数 `<container>` 可以是容器 id 或名称
 
@@ -71,7 +70,6 @@ Docker 容器
 `docker wait nginx-server`    | 阻塞容器
 `docker kill nginx-server`    | 发送 SIGKILL
 `docker attach nginx-server`  | 连接到现有容器
-<!--rehype:class=table-thead-hide-->
 
 ### 说明
 
@@ -86,7 +84,6 @@ Docker 容器
 `docker top nginx-server`     | 运行进程
 `docker stats nginx-server`   | 容器资源使用
 `docker diff nginx-server`    | 列出对容器所做的更改
-<!--rehype:class=table-thead-hide-->
 
 
 ### 创建容器
@@ -131,9 +128,6 @@ docker rm nginx-server
 docker update --cpu-shares 512 -m 300M nginx-server
 ```
 
-
-
-
 Docker Images
 ----
 <!--rehype:body-class=cols-2-->
@@ -151,8 +145,6 @@ Docker Images
 `docker commit nginx`              | 将容器另存为镜像。
 `docker tag nginx eon01/nginx`     | 标记镜像
 `docker push eon01/nginx`          | 推送镜像
-<!--rehype:class=table-thead-hide-->
-
 
 ### 构建镜像
 
@@ -165,8 +157,6 @@ $ docker build -t eon/nginx-server .
 $ docker build -f myOtherDockerfile .
 $ curl example.com/remote/Dockerfile | docker build -f - .
 ```
-
-
 
 Docker 联网
 ----
@@ -228,9 +218,6 @@ docker network create -d overlay \
   MyOverlayNetwork
 ```
 
-
-
-
 各种各样的
 ----
 <!--rehype:body-class=cols-2-->
@@ -243,7 +230,6 @@ docker network create -d overlay \
 `docker pull user/image   ` | 从 docker hub 下载镜像。
 `docker login             ` | 向 docker hub 进行身份验证
 `docker push user/image   ` | 将镜像上传到 docker hub。
-<!--rehype:class=table-thead-hide-->
 
 ### 注册表命令
 <!--rehype:wrap-class=row-span-3-->
@@ -290,8 +276,6 @@ $ docker push eon01/nginx localhost:5000/myadmin/nginx
 `docker stop -f $(docker ps -a -q)` | 停止所有容器
 `docker rm -f $(docker ps -a -q)` | 删除所有容器
 `docker rmi -f $(docker images -q)` | 删除所有图像
-<!--rehype:class=table-thead-hide-->
-
 
 ### 卷 volume
 
