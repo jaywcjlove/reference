@@ -127,7 +127,7 @@ let age = 7;
 ```
 
 ### 字符串
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```js
@@ -154,7 +154,7 @@ abc.split("");
 ```
 
 ### 数字
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```js
@@ -211,7 +211,7 @@ Math.floor(Math.random() * 5) + 1;
 ```
 
 ### 全局函数
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```js
@@ -247,7 +247,7 @@ JavaScript 条件
 
 
 ### 操作符
-<!--rehype:warp-class=row-span-3-->
+<!--rehype:wrap-class=row-span-3-->
 
 <!--rehype:-->
 ```javascript
@@ -401,7 +401,7 @@ const rocketToMars = function() {
 ```
 
 ### 箭头函数 (ES6)
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 #### 有两个参数
@@ -494,7 +494,7 @@ JavaScript 范围
 ----
 
 ### 范围
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -793,7 +793,7 @@ for (let index in fruits) {
 ```
 
 ### label 语句
-<!--rehype:warp-class= row-span-2-->
+<!--rehype:wrap-class= row-span-2-->
 
 <!--rehype:-->
 ```js
@@ -827,7 +827,7 @@ for (let fruit of fruits) {
 ```
 
 ### for await...of
-<!--rehype:warp-class= row-span-2-->
+<!--rehype:wrap-class= row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -972,7 +972,7 @@ console.log(classElection.place); // undefined
 ```
 
 ### 可变的
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1041,7 +1041,7 @@ console.log(origObj.color);
 ```
 
 ### 工厂函数
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1119,7 +1119,7 @@ JavaScript Classes
 ----
 
 ### 静态方法/字段
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1311,7 +1311,7 @@ JavaScript Promises
 ----
 
 ### Promise
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 创建 promises
@@ -1416,7 +1416,7 @@ promise.catch((err) => {
 ```
 
 ### Promise.all()
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1457,7 +1457,7 @@ promise.then(res => {
 ```
 
 ### 避免嵌套的 Promise 和 .then()
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1484,7 +1484,7 @@ JavaScript Async-Await
 <!--rehype:body-class=cols-2-->
 
 ### 异步
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1611,7 +1611,7 @@ req.send();
 ```
 
 ### POST
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1634,7 +1634,7 @@ xhr.onerror = () => {
 ```
 
 ### fetch api
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1695,7 +1695,7 @@ fetch('https://api-xxx.com/endpoint', {
 ```
 
 ### async await 语法
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```javascript

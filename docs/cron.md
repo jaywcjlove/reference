@@ -84,7 +84,7 @@ Min  Hour Day  Mon  Weekday
 
 
 ### 特殊字符
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 | 特殊字符             | 说明                                                                                     |

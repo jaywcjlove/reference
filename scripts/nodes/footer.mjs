@@ -4,7 +4,7 @@ export function footer() {
     type: 'element',
     tagName: 'footer',
     properties: {
-      class: 'footer-warp',
+      class: 'footer-wrap',
     },
     children: [
       {

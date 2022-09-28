@@ -24,7 +24,7 @@ Sketch 备忘清单
 
 
 ### 类型
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 | 快捷键 | 类型 |
@@ -46,7 +46,7 @@ Sketch 备忘清单
 
 ### 画布视图
 
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 | 画布视图 | 快捷键 |

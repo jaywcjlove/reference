@@ -47,7 +47,7 @@ JSON 备忘清单
 <!--rehype:class=table-thead-hide-->
 
 ### 字符串
-<!--rehype:data-warp-style=grid-row: span 3/span 3;-->
+<!--rehype:data-wrap-style=grid-row: span 3/span 3;-->
 
 <!--rehype:-->
 |      |                            |
@@ -82,7 +82,7 @@ Have to be delimited by double quotes
 
 
 ### 数字
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 | Type       | Description                            |
@@ -229,7 +229,7 @@ let myObject = {
 <!--rehype:class=table-thead-hide-->
 
 ### 访问嵌套
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:data-wrap-style=grid-row: span 2/span 2;-->
 
 <!--rehype:-->
 ```javascript
@@ -273,7 +273,7 @@ let myObject = {
 <!--rehype:class=table-thead-hide-->
 
 ### 访问对象数组
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:data-wrap-style=grid-row: span 2/span 2;-->
 
 <!--rehype:-->
 ```javascript

@@ -27,7 +27,7 @@ $ git clone git_url 指定目录
 ```
 
 ### 做出改变
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 在工作目录中**显示**修改后的文件，为您的下一次提交暂存
@@ -368,10 +368,10 @@ $ git log -p <file_name>
 ```shell
 $ git log --pretty=oneline --graph --decorate --all
 ```
-<!--rehype:className=wrap-->
+<!--rehype:className=wrap-text-->
 
 ### 分支
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 列出所有分支及其上游
 
@@ -442,7 +442,7 @@ $ git rm -r --cached <目录/文件>
 ```
 
 ### 修改远程 Commit 记录
-<!--rehype:warp-class=row-span-4-->
+<!--rehype:wrap-class=row-span-4-->
 
 <!--rehype:-->
 ```shell
@@ -519,7 +519,7 @@ $ git rev-parse --short HEAD # e10721c
 ```shell
 $ git branch --merged master | grep -v '^\*\|  master' | xargs -n 1 git branch -d
 ```
-<!--rehype:className=wrap-->
+<!--rehype:className=wrap-text-->
 
 ### 中文乱码的解决方案
 

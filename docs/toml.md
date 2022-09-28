@@ -100,7 +100,7 @@ array3 = [8001, 8001, 8002]
 ```
 
 ### 友好数组
-<!--rehype:data-warp-style=grid-column: span 2/span 2;-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```toml
@@ -171,7 +171,7 @@ bar = 2
 ```
 
 ### 类数组
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```toml
@@ -249,7 +249,7 @@ bat = "hi"
 ```
 
 ### Inline Table
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```toml 

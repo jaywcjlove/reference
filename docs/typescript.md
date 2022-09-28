@@ -66,7 +66,7 @@ Object, String, Number, Boolean
 ```
 
 ### 通用语法
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```ts
@@ -93,7 +93,7 @@ interface JSONResponse extends Response, HTTPAble {
 ```
 
 ### 泛型
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 声明一个可以在你的 Interface 中改变的类型
 
@@ -182,7 +182,7 @@ Type
 ----
 
 ### Type vs Interface
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 - Interface 只能描述对象形状
 - Interface 可以通过多次声明来扩展
@@ -261,7 +261,7 @@ const data: import("./data").data
 这些功能非常适合构建库、描述现有的 JavaScript 代码，您可能会发现在大多数 TypeScript 应用程序中很少使用它们。
 
 ### 对象字面量语法
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```ts
@@ -300,7 +300,7 @@ type ArtistSub = Subscriber<Artist>
 类似于类型系统的映射语句，允许输入类型更改新类型的结构。
 
 ### 模板联合类型
-<!--rehype:warp-class=col-span-3-->
+<!--rehype:wrap-class=col-span-3-->
 
 <!--rehype:-->
 ```ts
@@ -314,7 +314,7 @@ type AllLocaleIDs = `${SupportedLangs}_${FooterLocaleIDs}_id`;
 ```
 
 ### 条件类型
-<!--rehype:warp-class=col-span-3-->
+<!--rehype:wrap-class=col-span-3-->
 
 <!--rehype:-->
 ```ts
@@ -330,7 +330,7 @@ type FourLegs = HasFourLegs<Animals>
 ----
 
 ### If 声明
-<!--rehype:warp-class=row-span-3-->
+<!--rehype:wrap-class=row-span-3-->
 
 #### typeof（用于原语）
 
@@ -377,7 +377,7 @@ if (Array.isArray(input)) {
 ```
 
 ### 任务
-<!--rehype:warp-class=row-span-3-->
+<!--rehype:wrap-class=row-span-3-->
 
 <!--rehype:-->
 ```ts
@@ -556,7 +556,7 @@ class C implements Bag {}
 ```
 
 ### 通用语法
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```ts
@@ -643,7 +643,7 @@ class Dog extends Animal { getName(): { ... } }
 一个类可以被声明为不可实现，但可以在类型系统中被子类化。 class 成员也可以。
 
 ### 装饰器和属性
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```ts
@@ -1143,7 +1143,7 @@ declare namespace JSX {
 ```
 
 ### 函数组件
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```tsx
@@ -1187,7 +1187,7 @@ function Dog(prop:CeProps): JSX.Element {
 ```
 
 ### 函数子组件
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```tsx
@@ -1211,7 +1211,7 @@ Menu.SubMenu = SubMenu;
 ```
 
 ### 有效组件
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```tsx
@@ -1245,7 +1245,7 @@ function NotAValidFactoryFunction() {
 
 
 ### 类组件
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```ts

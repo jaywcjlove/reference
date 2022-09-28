@@ -56,7 +56,7 @@ npm 备忘清单
 
 
 ### 杂项功能
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 将某人添加为所有者
 

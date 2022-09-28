@@ -58,19 +58,19 @@ export function getTocsTree(arr = [], result = []) {
 
     if (toc.number === level && titleNum === level) {
       const header = getHeader(data.slice(n), level);
-      const warpCls = ['warp'];
-      const headerCls = ['warp-header', `h${level}warp`];
+      const wrapCls = ['wrap'];
+      const headerCls = ['wrap-header', `h${level}wrap`];
 
-      if (level === 1) warpCls.push('max-container');
-      const warpStyle = toc.properties['data-warp-style'];
-      delete toc.properties['data-warp-style']
-      const warpClass = toc.properties['warp-class'];
-      if (warpClass) warpCls.push(warpClass);
-      delete toc.properties['warp-class'];
+      if (level === 1) wrapCls.push('max-container');
+      const wrapStyle = toc.properties['data-wrap-style'];
+      delete toc.properties['data-wrap-style']
+      const wrapClass = toc.properties['wrap-class'];
+      if (wrapClass) wrapCls.push(wrapClass);
+      delete toc.properties['wrap-class'];
       const panle = {
         type: 'element',
         tagName: 'div',
-        properties: { class: warpCls, style: warpStyle },
+        properties: { class: wrapCls, style: wrapStyle },
         children: [
           {
             type: 'element',
@@ -81,7 +81,7 @@ export function getTocsTree(arr = [], result = []) {
               {
                 type: 'element',
                 tagName: 'div',
-                properties: { class: 'warp-body' },
+                properties: { class: 'wrap-body' },
                 children: [
                   ...header
                 ],
@@ -101,7 +101,7 @@ export function getTocsTree(arr = [], result = []) {
         panle.children = panle.children.concat({
           type: 'element',
           tagName: 'div',
-          properties: { class: [`h${level}warp-body`, bodyClass], style: bodyStyle },
+          properties: { class: [`h${level}wrap-body`, bodyClass], style: bodyStyle },
           children: [...resultChilds]
         });
       }

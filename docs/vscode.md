@@ -19,7 +19,7 @@ VSCode 备忘清单
 
 
 ### 基本编辑
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:data-wrap-style=grid-row: span 2/span 2;-->
 
 | -                         | -                                  |
 |---------------------------|------------------------------------|

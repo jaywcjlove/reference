@@ -17,7 +17,7 @@ Jest 是一款优雅、简洁的 JavaScript 测试框架。
 - 代码覆盖， 无需其他操作，您仅需添加 --coverage 参数来生成代码覆盖率报告。
 
 ### 测试结构
-<!--rehype:warp-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 <!--rehype:-->
 ```js
@@ -150,7 +150,7 @@ expect([{ a: 1 }, { b: 2 }]).toEqual([
 ```
 
 ### 模拟函数
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```js
@@ -293,7 +293,7 @@ expect(fn).toThrowErrorMatchingSnapshot()
 ----
 
 ### 实例
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 请参阅 Jest 文档中的 [更多示例](https://jestjs.io/docs/en/tutorial-async)。
@@ -330,7 +330,7 @@ test('async test', async () => {
 ```
 
 ### done() 回调
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```js
@@ -371,7 +371,7 @@ test('async test', () => {
 ## 模拟
 
 ### 模拟函数
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 ```js
@@ -409,7 +409,7 @@ const callback = jest.fn(() => true)
 [模拟函数文档](https://jestjs.io/docs/en/mock-function-api)
 
 ### 返回、解析和拒绝值
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 您的模拟可以返回值：
 
@@ -504,7 +504,7 @@ const setTitle = jest
 ```
 
 ### 定时器模拟
-<!--rehype:warp-class=row-span-3-->
+<!--rehype:wrap-class=row-span-3-->
 
 <!--rehype:-->
 为使用本机计时器函数（`setTimeout`、`setInterval`、`clearTimeout`、`clearInterval`）的代码编写同步测试。
@@ -556,7 +556,7 @@ Object.defineProperty(location, 'title', {
 ```
 
 ### 清除和恢复模拟
-<!--rehype:warp-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 <!--rehype:-->
 对于一个模拟

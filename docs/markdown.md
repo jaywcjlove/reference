@@ -42,7 +42,7 @@ Header 2
 ```
 
 ### 无序列表
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:data-wrap-style=grid-row: span 2/span 2;-->
 
 <!--rehype:-->
 ```markdown
@@ -166,7 +166,7 @@ console.log("This is a block code")
 ```
 
 ### 表格
-<!--rehype:data-warp-style=grid-column: span 2/span 2;-->
+<!--rehype:data-wrap-style=grid-column: span 2/span 2;-->
 
 <!--rehype:-->
 ```markdown
@@ -188,7 +188,7 @@ console.log("This is a block code")
 Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 
 ### 图片
-<!--rehype:data-warp-style=grid-column: span 2/span 2;-->
+<!--rehype:data-wrap-style=grid-column: span 2/span 2;-->
 
 <!--rehype:-->
 ```markdown
