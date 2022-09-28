@@ -16,10 +16,11 @@ TypeScript 是具有类型语法的 JavaScript。Interface 是为了匹配它们
 ### 内置类型基元
 
 ```ts
+any, void,
 boolean, string, number,
 undefined, null,
-any, unknown, never,
-void, bigint, symbol
+unknown, never,
+bigint, symbol
 ```
 
 ### 常见的内置 JS 对象
@@ -388,7 +389,7 @@ const data1 = {
 // }
 ```
 
-使用 `as const` 缩小类型
+👇 使用 `as const` 缩小类型 👇
 
 ```ts
 const data2 = {
@@ -484,6 +485,27 @@ assertResponse(res)
 
 res // SuccessResponse
 ```
+
+### in 操作符
+
+```ts
+interface A {
+  x: number;
+}
+interface B {
+  y: string;
+}
+
+function doStuff(q: A | B) {
+  if ('x' in q) {
+    // q: A
+  } else {
+    // q: B
+  }
+}
+```
+
+操作符可以安全的检查一个对象上是否存在一个属性，它通常也被作为类型保护使用
 
 Class
 ----
@@ -1080,7 +1102,7 @@ JSX 规范是对 ECMAScript 的类似 XML 的语法扩展。
 
 ```ts
 const foo = <foo>bar;
-// 不允许在 .tsx 👆 文件中使用尖括号类型断言。
+// ❌ 不允许在 .tsx 👆 文件中使用尖括号类型断言。
 
 const foo = bar as foo;
 ```
@@ -1157,9 +1179,9 @@ interface SideProps extends CeProps {
   side: JSX.Element | string;
 }
  
-function Dog(prop: HomeProps): JSX.Element;
-function Dog(prop: SideProps): JSX.Element;
-function Dog(prop: CeProps): JSX.Element {
+function Dog(prop:HomeProps): JSX.Element;
+function Dog(prop:SideProps): JSX.Element;
+function Dog(prop:CeProps): JSX.Element {
   // ...
 }
 ```
@@ -1184,34 +1206,14 @@ const Menu: MenuComponent = React.forwardRef<HTMLUListElement>(
 Menu.Item = MenuItem;
 Menu.SubMenu = SubMenu;
 
-<Menu.Item />     // ok
-<Menu.SubMenu />  // ok
+<Menu.Item />     // ✅ ok
+<Menu.SubMenu />  // ✅ ok
 ```
 
-### 类组件
+### 有效组件
+<!--rehype:warp-class=row-span-2-->
 
-```ts
-class MyComponent {
-  render() {}
-}
-// 使用构造签名
-const myComponent = new MyComponent();
-// element class type => MyComponent
-// element instance type => { render: () => void }
-
-function MyFactoryFunction() {
-  return {
-    render: () => {},
-  };
-}
-// 使用调用签名
-const myComponent = MyFactoryFunction();
-// element class type => MyFactoryFunction
-// element instance type => { render: () => void }
-```
-
-元素实例类型很有趣，因为它必须可以分配给JSX。ElementClass，否则将导致错误。默认情况下，JSX。ElementClass 是 {}，但可以对其进行扩展，以将JSX的使用限制为仅限于符合适当接口的类型。
-
+<!--rehype:-->
 ```tsx
 declare namespace JSX {
   interface ElementClass {
@@ -1224,9 +1226,13 @@ class MyComponent {
 function MyFactoryFunction() {
   return { render: () => {} };
 }
-<MyComponent />; // ok
-<MyFactoryFunction />; // ok
+<MyComponent />;       // ✅ 有效类组件
+<MyFactoryFunction />; // ✅ 有效函数组件
+```
 
+元素实例类型必须可以分配给 `JSX.ElementClass`，否则将导致错误。
+
+```tsx
 class NotAValidComponent {}
 function NotAValidFactoryFunction() {
   return {};
@@ -1235,3 +1241,40 @@ function NotAValidFactoryFunction() {
 <NotAValidFactoryFunction />; // ❌ error
 ```
 
+默认情况下，`JSX.ElementClass` 是 {}，但可以对其进行扩展，以将 `JSX` 的使用限制为仅限于符合适当接口的类型。
+
+
+### 类组件
+<!--rehype:warp-class=col-span-2-->
+
+<!--rehype:-->
+```ts
+type Props = {
+  header: React.ReactNode;
+  body: React.ReactNode;
+};
+
+class MyComponent extends React.Component<Props, {}> {
+  render() {
+    return (
+      <div>
+        {this.props.header}
+        {this.props.body}
+      </div>
+    );
+  }
+}
+
+<MyComponent header={<h1>Header</h1>} body={<i>body</i>} />
+```
+
+### 泛型组件
+
+```tsx
+// 一个泛型组件
+type SelectProps<T> = { items: T[] };
+class Select<T> extends React.Component<SelectProps<T>, any> {}
+
+// 使用
+const Form = () => <Select<string> items={['a', 'b']} />;
+```
