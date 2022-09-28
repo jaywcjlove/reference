@@ -271,52 +271,80 @@
 </span><span class="code-line line-number" line="5"><span class="token punctuation">}</span>
 </span></code></pre>
 <p>配置你的脚本的选项或参数。</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token property">"run"</span><span class="token operator">:</span> <span class="token string">"echo $npm_package_config_port"</span>
+</span><span class="code-line line-number" line="4">  <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="5"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>配置中的键作为环境变量公开给脚本(scripts)。</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2>依赖描述类字段</h2><div class="wrap-body">
 <p>你的包很可能依赖其他包。你可以在你的 <code>package.json</code> 文件里指定那些依赖。</p>
-</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3><code>dependencies</code></h3><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3><code>dependencies</code></h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2 row-span-2--><!--rehype:-->
 <p>这些是你的包的开发版和发布版都需要的依赖。</p>
 <pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="3">    <span class="token property">"package-1"</span><span class="token operator">:</span> <span class="token string">"^3.1.4"</span><span class="token punctuation">,</span>
-</span><span class="code-line line-number" line="4">    <span class="token property">"package-2"</span><span class="token operator">:</span> <span class="token string">"file:./path/to/dir"</span>
-</span><span class="code-line line-number" line="5">  <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="6"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="3">    <span class="token property">"colors"</span><span class="token operator">:</span>   <span class="token string">"*"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="4">    <span class="token property">"foo"</span><span class="token operator">:</span> <span class="token string">"1.0.0 - 2.9999.9999"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="5">    <span class="token property">"bar"</span><span class="token operator">:</span> <span class="token string">">=1.0.2 &#x3C;2.1.2"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="6">    <span class="token property">"baz"</span><span class="token operator">:</span> <span class="token string">">1.0.2 &#x3C;=2.3.4"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="7">    <span class="token property">"boo"</span><span class="token operator">:</span> <span class="token string">"2.0.1"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="8">    <span class="token property">"qux"</span><span class="token operator">:</span> <span class="token string">"&#x3C;1.0.0 || >=2.3.1 &#x3C;2.4.5 || >=2.5.2 &#x3C;3.0.0"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="9">    <span class="token property">"asd"</span><span class="token operator">:</span> <span class="token string">"http://asdf.com/asdf.tar.gz"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="10">    <span class="token property">"til"</span><span class="token operator">:</span> <span class="token string">"~1.2"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="11">    <span class="token property">"elf"</span><span class="token operator">:</span> <span class="token string">"~1.2.3"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="12">    <span class="token property">"two"</span><span class="token operator">:</span> <span class="token string">"2.x"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="13">    <span class="token property">"thr"</span><span class="token operator">:</span> <span class="token string">"3.3.x"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="14">    <span class="token property">"lat"</span><span class="token operator">:</span> <span class="token string">"latest"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="15">    <span class="token property">"dyl"</span><span class="token operator">:</span> <span class="token string">"file:./path/to/dyl"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="16">    <span class="token property">"pla"</span><span class="token operator">:</span> <span class="token string">"https://github.com/user/project/tarball/branch"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="17">    <span class="token property">"stu"</span><span class="token operator">:</span> <span class="token string">"git://github.com/user/project.git#commit-ish"</span>
+</span><span class="code-line line-number" line="18">  <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="19"><span class="token punctuation">}</span>
 </span></code></pre>
-<blockquote>
-  <p>你可以指定一个确切的版本、一个最小的版本 (比如 <code>>=</code>) 或者一个版本范围 (比如 <code>>= ... &#x3C;</code>)。<br>包也可以指向本地的一个目录文件夹。</p>
-</blockquote>
+<p>
+  你可以指定一个确切的版本、一个最小的版本 (比如 <code>>=</code>) 或者一个版本范围 (比如 <code>>= ... &#x3C;</code>)。 包也可以指向本地的一个目录文件夹。
+  参考文档：<a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies">npm docs</a>.
+</p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3>workspaces</h3><div class="wrap-body"><!--rehype:wrap-class=row-span-2--><!--rehype:-->
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"my-workspaces-powered-project"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="3">  <span class="token property">"workspaces"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line line-number" line="4">    <span class="token string">"./pkg/*"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="5">    <span class="token string">"packages/a"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="6">    <span class="token string">"packages/b"</span>
+</span><span class="code-line line-number" line="7">  <span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="8"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>支持从单个顶级根包中管理本地文件系统中的多个包。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">├┈┈ node_modules
+</span><span class="code-line line-number" line="2">┆  ├┈┈ a -<span class="token operator">></span> <span class="token punctuation">..</span>/packages/a
+</span><span class="code-line line-number" line="3">┆  ╰┈┈ b -<span class="token operator">></span> <span class="token punctuation">..</span>/packages/b
+</span><span class="code-line line-number" line="4">├┈┈ package-lock.json
+</span><span class="code-line line-number" line="5">├┈┈ package.json
+</span><span class="code-line line-number" line="6">╰┈┈ packages
+</span><span class="code-line line-number" line="7">   ├┈┈ a
+</span><span class="code-line line-number" line="8">   ┆   ╰┈┈ package.json
+</span><span class="code-line line-number" line="9">   ├┈┈ b
+</span><span class="code-line line-number" line="10">   ┆   ╰┈┈ package.json
+</span></code></pre>
+<p>参考文档：<a href="https://docs.npmjs.com/cli/v8/using-npm/workspaces">workspaces</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3><code>devDependencies</code></h3><div class="wrap-body">
-<p>这些是只在你的包开发期间需要，但是生产环境不会被安装的包。</p>
 <pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="3">    <span class="token property">"package-2"</span><span class="token operator">:</span> <span class="token string">"^0.4.2"</span>
 </span><span class="code-line line-number" line="4">  <span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="5"><span class="token punctuation">}</span>
 </span></code></pre>
-</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3><code>peerDependencies</code></h3><div class="wrap-body">
-<p>平行依赖允许你说明你的包和其他包版本的兼容性。</p>
+<p>这些是只在你的包开发期间需要，但是生产环境不会被安装的包。</p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3><code>peerDependencies</code></h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2--><!--rehype:-->
 <pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  <span class="token property">"peerDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="3">    <span class="token property">"package-3"</span><span class="token operator">:</span> <span class="token string">"^2.7.18"</span>
 </span><span class="code-line line-number" line="4">  <span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="5"><span class="token punctuation">}</span>
 </span></code></pre>
-</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3><code>peerDependenciesMeta</code></h3><div class="wrap-body">
-<pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="2">  <span class="token property">"peerDependenciesMeta"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="3">    <span class="token property">"node-sass"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="4">      <span class="token property">"optional"</span><span class="token operator">:</span> <span class="token boolean">true</span>
-</span><span class="code-line line-number" line="5">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-</span><span class="code-line line-number" line="6">    <span class="token property">"sass"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="7">      <span class="token property">"optional"</span><span class="token operator">:</span> <span class="token boolean">true</span>
-</span><span class="code-line line-number" line="8">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-</span><span class="code-line line-number" line="9">    <span class="token property">"fibers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="10">      <span class="token property">"optional"</span><span class="token operator">:</span> <span class="token boolean">true</span>
-</span><span class="code-line line-number" line="11">    <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="12">  <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="13"><span class="token punctuation">}</span>
-</span></code></pre>
-<p>添加可选设置以消除丢失的对等依赖性警告，<a href="https://github.com/yarnpkg/yarn/pull/6671">#6671</a> 。</p>
+<p>平行依赖允许你说明你的包和其他包版本的兼容性。添加可选设置以消除丢失的对等依赖性警告，<a href="https://github.com/yarnpkg/yarn/pull/6671">#6671</a> 。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3><code>optionalDependencies</code></h3><div class="wrap-body">
 <pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  <span class="token property">"optionalDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -333,6 +361,21 @@
 </span><span class="code-line line-number" line="5"><span class="token punctuation">}</span>
 </span></code></pre>
 <p>打包依赖是发布你的包时将会一起打包的一个包名数组。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3><code>peerDependenciesMeta</code></h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token property">"peerDependenciesMeta"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token property">"node-sass"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">      <span class="token property">"optional"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line line-number" line="5">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="6">    <span class="token property">"sass"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="7">      <span class="token property">"optional"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line line-number" line="8">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="9">    <span class="token property">"fibers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="10">      <span class="token property">"optional"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line line-number" line="11">    <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="12">  <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="13"><span class="token punctuation">}</span>
+</span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2>系统</h2><div class="wrap-body">
 <p>你可以提供和你的包关联的系统级的信息，比如操作系统兼容性之类。</p>
 </div></div><div class="h2wrap-body"><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3><code>engines</code></h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2 row-span-2--><!--rehype:-->
