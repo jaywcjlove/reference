@@ -394,29 +394,84 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 配置你的脚本的选项或参数。
 
+```json
+{
+  "scripts": {
+    "run": "echo $npm_package_config_port"
+  }
+}
+```
+
+配置中的键作为环境变量公开给脚本(scripts)。
+
 ## 依赖描述类字段
 
 你的包很可能依赖其他包。你可以在你的 `package.json` 文件里指定那些依赖。
 
 ### `dependencies`
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
+<!--rehype:-->
 这些是你的包的开发版和发布版都需要的依赖。
 
 ```json
 {
   "dependencies": {
-    "package-1": "^3.1.4",
-    "package-2": "file:./path/to/dir"
+    "colors":   "*",
+    "foo": "1.0.0 - 2.9999.9999",
+    "bar": ">=1.0.2 <2.1.2",
+    "baz": ">1.0.2 <=2.3.4",
+    "boo": "2.0.1",
+    "qux": "<1.0.0 || >=2.3.1 <2.4.5 || >=2.5.2 <3.0.0",
+    "asd": "http://asdf.com/asdf.tar.gz",
+    "til": "~1.2",
+    "elf": "~1.2.3",
+    "two": "2.x",
+    "thr": "3.3.x",
+    "lat": "latest",
+    "dyl": "file:./path/to/dyl",
+    "pla": "https://github.com/user/project/tarball/branch",
+    "stu": "git://github.com/user/project.git#commit-ish"
   }
 }
 ```
 
-> 你可以指定一个确切的版本、一个最小的版本 (比如 `>=`) 或者一个版本范围 (比如 `>= ... <`)。  
-> 包也可以指向本地的一个目录文件夹。  
+你可以指定一个确切的版本、一个最小的版本 (比如 `>=`) 或者一个版本范围 (比如 `>= ... <`)。 包也可以指向本地的一个目录文件夹。
+参考文档：[npm docs](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies).
+
+### workspaces
+<!--rehype:wrap-class=row-span-2-->
+
+<!--rehype:-->
+```json
+{
+  "name": "my-workspaces-powered-project",
+  "workspaces": [
+    "./pkg/*",
+    "packages/a",
+    "packages/b"
+  ]
+}
+```
+
+支持从单个顶级根包中管理本地文件系统中的多个包。
+
+```shell
+├┈┈ node_modules
+┆  ├┈┈ a -> ../packages/a
+┆  ╰┈┈ b -> ../packages/b
+├┈┈ package-lock.json
+├┈┈ package.json
+╰┈┈ packages
+   ├┈┈ a
+   ┆   ╰┈┈ package.json
+   ├┈┈ b
+   ┆   ╰┈┈ package.json
+```
+
+参考文档：[workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces)
 
 ### `devDependencies`
-
-这些是只在你的包开发期间需要，但是生产环境不会被安装的包。
 
 ```json
 {
@@ -426,10 +481,12 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 }
 ```
 
+这些是只在你的包开发期间需要，但是生产环境不会被安装的包。
+
 ### `peerDependencies`
+<!--rehype:wrap-class=col-span-2-->
 
-平行依赖允许你说明你的包和其他包版本的兼容性。
-
+<!--rehype:-->
 ```json
 {
   "peerDependencies": {
@@ -438,25 +495,7 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 }
 ```
 
-### `peerDependenciesMeta`
-
-```json
-{
-  "peerDependenciesMeta": {
-    "node-sass": {
-      "optional": true
-    },
-    "sass": {
-      "optional": true
-    },
-    "fibers": {
-      "optional": true
-    }
-  }
-}
-```
-
-添加可选设置以消除丢失的对等依赖性警告，[#6671](https://github.com/yarnpkg/yarn/pull/6671) 。
+平行依赖允许你说明你的包和其他包版本的兼容性。添加可选设置以消除丢失的对等依赖性警告，[#6671](https://github.com/yarnpkg/yarn/pull/6671) 。
 
 ### `optionalDependencies`
 
@@ -482,7 +521,26 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 打包依赖是发布你的包时将会一起打包的一个包名数组。
 
-## 系统
+### `peerDependenciesMeta`
+
+```json
+{
+  "peerDependenciesMeta": {
+    "node-sass": {
+      "optional": true
+    },
+    "sass": {
+      "optional": true
+    },
+    "fibers": {
+      "optional": true
+    }
+  }
+}
+```
+
+系统
+----
 
 你可以提供和你的包关联的系统级的信息，比如操作系统兼容性之类。
 
@@ -528,7 +586,8 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 使用这个选项指定你的包将只能在某些 CPU 体系架构上运行，这会检查 `process.arch`。
 
-## 发布
+发布
+----
 
 ### `private`
 
@@ -558,7 +617,8 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 可以覆盖任何配置值，但只有 `tag`，`registry` 和 `access` 可能对于发布而言很重要，[npm-config](https://docs.npmjs.com/misc/config#config-settings)。
 
-## Yarn
+Yarn
+----
 
 ### `flat`
 
