@@ -60,13 +60,13 @@ npm install [包名]
 
 安装后存放位置
 
-```
+```bash
 node_modules/[包名]
 ```
 
 npmjs 下载地址
 
-```
+```bash
 https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 ```
 <!--rehype:className=wrap-text-->

@@ -19,6 +19,7 @@ Quick Reference
 [npm](./docs/npm.md)
 [package.json](./docs/package.json.md)
 [VSCode](./docs/vscode.md)
+[Semver](./docs/semver.md)
 [Sketch](./docs/sketch.md)
 [Jest](./docs/jest.md)
 <!--rehype:class=home-card-->
