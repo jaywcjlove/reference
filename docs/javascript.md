@@ -184,12 +184,12 @@ Number.POSITIVE_INFINITY
 
 ```ts
 const pi = Math.PI; // 3.141592653589793
-Math.round(4.4);  // = 4 - 数字四舍五入
-Math.round(4.5);  // = 5
-Math.pow(2,8);    // = 256 - 2 的 8 次方    
-Math.sqrt(49);    // = 7 - 平方根
-Math.abs(-3.14);  // = 3.14 - 绝对，正值
-Math.ceil(3.14);  // = 4 - 返回 >= 最小整数
+Math.round(4.4); // = 4 - 数字四舍五入
+Math.round(4.5); // = 5
+Math.pow(2,8);   // = 256 - 2 的 8 次方    
+Math.sqrt(49);   // = 7 - 平方根
+Math.abs(-3.14); // = 3.14 - 绝对，正值
+Math.ceil(3.14); // = 4 - 返回 >= 最小整数
 // = 3 - 返回 <= 最大整数
 Math.floor(3.99);       
 // = 0 - 正弦
@@ -494,18 +494,41 @@ JavaScript 范围
 ----
 
 ### 范围
+<!--rehype:warp-class=row-span-2-->
 
+<!--rehype:-->
 ```javascript
 function myFunction() {
-  
   var pizzaName = "Margarita";
   // 这里的代码可以使用 PizzaName
   
 }
-// 这里的代码不能使用 PizzaName
+// ❌ PizzaName 不能在这里使用
 ```
 
-### Block Scoped Variables
+`{ }` 块内声明的变量
+
+```javascript
+{
+  let x = 2;
+}
+// ❌ x 不能在这里使用
+
+{
+  var x = 2;
+}
+// ✅ x 能在这里使用
+```
+
+```javascript
+var x = 2;       // Global scope
+let x = 2;       // Global scope
+const x = 2;       // Global scope
+```
+
+ES6 引入了两个重要的新 JavaScript 关键字：let 和 const。这两个关键字在 JavaScript 中提供了块作用域。
+
+### 块作用域变量
 
 ```javascript
 const isLoggedIn = true;
@@ -525,6 +548,7 @@ const color = 'blue';
 function printColor() {
   console.log(color);
 }
+
 printColor(); // => blue
 ```
 
@@ -729,9 +753,7 @@ for (let i = 0; i < array.length; i++){
 
 ```javascript
 for (let i = 0; i < 99; i += 1) {
-  if (i > 5) {
-     break;
-  }
+  if (i > 5) break;
   console.log(i)
 }
 // => 0 1 2 3 4 5
@@ -1287,24 +1309,38 @@ console.log(myMath.duplicate(5))    // 10
 
 JavaScript Promises
 ----
-<!--rehype:body-class=cols-2-->
 
-### Promise 状态 
+### Promise
 <!--rehype:warp-class=row-span-2-->
 
 <!--rehype:-->
+创建 promises
+
 ```javascript
-const promise = new Promise((resolve, reject) => {
-  const res = true;
-  // An asynchronous operation.
-  if (res) {
-    resolve('Resolved!');
+new Promise((resolve, reject) => {
+  if (ok) {
+    resolve(result)
+  } else {
+    reject(error)
   }
-  else {
-    reject(Error('Error'));
-  }
-});
-promise.then((res) => console.log(res), (err) => console.error(err));
+})
+```
+
+#### 使用 promises
+
+```javascript
+promise
+  .then((result) => { ··· })
+  .catch((error) => { ··· })
+```
+
+#### Promise 方法
+
+```javascript
+Promise.all(···)
+Promise.race(···)
+Promise.reject(···)
+Promise.resolve(···)
 ```
 
 ### 执行器函数
@@ -1319,10 +1355,29 @@ const promise = new Promise(executorFn);
 ### setTimeout()
 
 ```javascript
-const loginAlert = () =>{
+const loginAlert = () => {
   console.log('Login');
 };
 setTimeout(loginAlert, 6000);
+```
+
+### Promise 状态
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  const res = true;
+  // 一个异步操作。
+  if (res) {
+    resolve('Resolved!');
+  }
+  else {
+    reject(Error('Error'));
+  }
+});
+promise.then(
+  (res) => console.log(res),
+  (err) => console.error(err)
+);
 ```
 
 ### .then() 方法
@@ -1333,6 +1388,7 @@ const promise = new Promise((resolve, reject) => {
     resolve('Result');
   }, 200);
 });
+
 promise.then((res) => {
   console.log(res);
 }, (err) => {
@@ -1343,21 +1399,26 @@ promise.then((res) => {
 ### .catch() 方法
 
 ```javascript
-const promise = new Promise((resolve, reject) => {  
+const promise = new Promise(
+  (resolve, reject) => {  
   setTimeout(() => {
-    reject(Error('Promise Rejected Unconditionally.'));
+    reject(Error('Promise 无条件拒绝。'));
   }, 1000);
 });
+
 promise.then((res) => {
   console.log(value);
 });
+
 promise.catch((err) => {
   console.error(err);
 });
 ```
 
 ### Promise.all()
+<!--rehype:warp-class=col-span-2-->
 
+<!--rehype:-->
 ```javascript
 const promise1 = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -1375,8 +1436,30 @@ Promise.all([promise1, promise2]).then((res) => {
 });
 ```
 
-### 避免嵌套的 Promise 和 .then()
+### 链接多个 .then()
 
+```javascript
+const promise = new Promise(
+  resolve => 
+    setTimeout(() => resolve('dAlan'),100)
+);
+
+promise.then(res => {
+  return res === 'Alan' 
+    ? Promise.resolve('Hey Alan!')
+    : Promise.reject('Who are you?')
+})
+.then((res) => {
+  console.log(res)
+}, (err) => {
+  console.error(err)
+});
+```
+
+### 避免嵌套的 Promise 和 .then()
+<!--rehype:warp-class=col-span-2-->
+
+<!--rehype:-->
 ```javascript
 const promise = new Promise((resolve, reject) => {  
   setTimeout(() => {
@@ -1396,34 +1479,14 @@ const print = (val) => {
 promise.then(twoStars).then(oneDot).then(print);
 ```
 
-### 创建
-
-```javascript
-const executorFn = (resolve, reject) => {
-  console.log('The executor function of the promise!');
-};
-const promise = new Promise(executorFn);
-```
-
-### 链接多个 .then()
-
-```javascript
-const promise = new Promise(resolve => setTimeout(() => resolve('dAlan'), 100));
-promise.then(res => {
-  return res === 'Alan' ? Promise.resolve('Hey Alan!') : Promise.reject('Who are you?')
-}).then((res) => {
-  console.log(res)
-}, (err) => {
-  console.error(err)
-});
-```
-
 JavaScript Async-Await
 ----
 <!--rehype:body-class=cols-2-->
 
 ### 异步
+<!--rehype:warp-class=row-span-2-->
 
+<!--rehype:-->
 ```javascript
 function helloWorld() {
   return new Promise(resolve => {
@@ -1432,14 +1495,19 @@ function helloWorld() {
     }, 2000);
   });
 }
-const msg = async function() { // 异步函数表达式
+
+// 异步函数表达式
+const msg = async function() {
   const msg = await helloWorld();
   console.log('Message:', msg);
 }
-const msg1 = async () => { // 异步箭头函数
+
+// 异步箭头函数
+const msg1 = async () => {
   const msg = await helloWorld();
   console.log('Message:', msg);
 }
+
 msg(); // Message: Hello World! <-- 2 秒后
 msg1(); // Message: Hello World! <-- 2 秒后
 ```
@@ -1478,10 +1546,12 @@ msg(); // Message: Hello World! <-- 2 秒后
 ### 错误处理
 
 ```javascript
-let json = '{ "age": 30 }'; // 数据不完整
+// 数据不完整
+let json = '{ "age": 30 }';
+
 try {
   let user = JSON.parse(json); // <-- 没有错误
-  console.log( user.name ); // no name!
+  console.log( user.name );    // no name!
 } catch (e) {
   console.error( "Invalid JSON data!" );
 }
@@ -1541,26 +1611,30 @@ req.send();
 ```
 
 ### POST
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:warp-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
-const data = {
-  fish: 'Salmon',
-  weight: '1.5 KG',
-  units: 5
-};
+const data = { weight: '1.5 KG' };
 const xhr = new XMLHttpRequest();
+// 初始化一个请求。
 xhr.open('POST', '/inventory/add');
+// 一个用于定义响应类型的枚举值
 xhr.responseType = 'json';
+// 发送请求以及数据。
 xhr.send(JSON.stringify(data));
+// 请求成功完成时触发。
 xhr.onload = () => {
   console.log(xhr.response);
-};
+}
+// 当 request 遭遇错误时触发。
+xhr.onerror = () => {
+  console.log(xhr.response);
+}
 ```
 
 ### fetch api
-<!--rehype:data-warp-style=grid-row: span 2/span 2;-->
+<!--rehype:warp-class=row-span-2-->
 
 <!--rehype:-->
 ```javascript
@@ -1571,38 +1645,35 @@ fetch(url, {
       'apikey': apiKey
     },
     body: data
-  }).then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-    throw new Error('Request failed!');
-  }, networkError => {
-    console.log(networkError.message)
-  })
-}
+}).then(response => {
+  if (response.ok) {
+    return response.json();
+  }
+  throw new Error('Request failed!');
+}, networkError => {
+  console.log(networkError.message)
+})
 ```
 
 ### JSON 格式
 
 ```javascript
 fetch('url-that-returns-JSON')
-.then(response => response.json())
-.then(jsonResponse => {
-  console.log(jsonResponse);
-});
+  .then(response => response.json())
+  .then(jsonResponse => {
+    console.log(jsonResponse);
+  });
 ```
 
 ### promise url 参数获取 API
 
 ```javascript
 fetch('url')
-.then(
-  response  => {
+  .then(response  => {
     console.log(response);
-  },
- rejection => {
+  }, rejection => {
     console.error(rejection.message);
-);
+  });
 ```
 
 ### Fetch API 函数
@@ -1613,9 +1684,9 @@ fetch('https://api-xxx.com/endpoint', {
   body: JSON.stringify({id: "200"})
 }).then(response => {
   if(response.ok){
-	  return response.json();  
+    return response.json();  
   }
-	throw new Error('Request failed!');
+  throw new Error('Request failed!');
 }, networkError => {
   console.log(networkError.message);
 }).then(jsonResponse => {
@@ -1624,7 +1695,7 @@ fetch('https://api-xxx.com/endpoint', {
 ```
 
 ### async await 语法
-<!--rehype:data-warp-style=grid-column: span 2/span 2;-->
+<!--rehype:warp-class=col-span-2-->
 
 <!--rehype:-->
 ```javascript
