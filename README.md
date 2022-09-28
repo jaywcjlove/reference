@@ -31,6 +31,12 @@ Quick Reference
 [Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
+## 其它
+
+[Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+<!--rehype:class=home-card-->
+
+
 ## License
 
 MIT © [Kenny Wong](https://github.com/jaywcjlove)
