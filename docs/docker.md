@@ -63,14 +63,14 @@ Docker 容器
 
 | Description                   | Example                             |
 |-------------------------------|-------------------------------------|
-| `docker start nginx-server`   | Starting                            |
-| `docker stop nginx-server`    | Stopping                            |
-| `docker restart nginx-server` | Restarting                          |
-| `docker pause nginx-server`   | Pausing                             |
-| `docker unpause nginx-server` | Unpausing                           |
-| `docker wait nginx-server`    | Blocking a Container                |
-| `docker kill nginx-server`    | Sending a SIGKILL                   |
-| `docker attach nginx-server`  | Connecting to an Existing Container |
+`docker start nginx-server`   | 开始
+`docker stop nginx-server`    | 停止
+`docker restart nginx-server` | 重启
+`docker pause nginx-server`   | 暂停
+`docker unpause nginx-server` | 取消暂停
+`docker wait nginx-server`    | 阻塞容器
+`docker kill nginx-server`    | 发送 SIGKILL
+`docker attach nginx-server`  | 连接到现有容器
 <!--rehype:class=table-thead-hide-->
 
 ### 说明
