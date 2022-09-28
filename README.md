@@ -7,27 +7,27 @@ Quick Reference
 
 ## 编程
 
-[TOML](./docs/toml.md)
-[TypeScript](./docs/typescript.md)
-[JavaScript](./docs/javascript.md)
-[JSON](./docs/json.md)
-[Markdown](./docs/markdown.md)
+[TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
+[TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198/var(\-\-bg\-opacity));-->
+[JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31/var(\-\-bg\-opacity));-->
+[JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
+[Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(78 57 104/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 工具包
 
-[npm](./docs/npm.md)
-[package.json](./docs/package.json.md)
-[VSCode](./docs/vscode.md)
-[Semver](./docs/semver.md)
-[Sketch](./docs/sketch.md)
-[Jest](./docs/jest.md)
+[npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
+[package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
+[Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141/var(\-\-bg\-opacity));-->
+[Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(255 169 0/var(\-\-bg\-opacity));-->
+[Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
+[VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## Linux 命令
 
-[Cron](./docs/cron.md)
-[Git](./docs/git.md)
+[Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68/var(\-\-bg\-opacity));-->
+[Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## License

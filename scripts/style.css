@@ -22,8 +22,10 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
   margin: 0;
 }
 
-.max-container a, .max-container a:visited {
+.max-container a {
   color: rgb(2 132 199/1);
+}
+.max-container a, .max-container a:visited {
   text-decoration: none;
   background-image: linear-gradient(transparent,transparent 6px,#34495e 6px,#34495e);
   background-position: bottom;
@@ -78,7 +80,9 @@ body.home .h1wrap p {
 }
 
 .home-card {
-  grid-template-columns: repeat(4,minmax(0,1fr));
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2,minmax(0,1fr));
 }
 
 .home-card a {
@@ -87,9 +91,9 @@ body.home .h1wrap p {
   cursor: pointer;
   border-radius: 0.5rem;
   padding: 1rem;
-  color: rgb(30 41 59/1);
   box-shadow: 0 0 #0000,0 0 #0000,0 1px 2px 0 rgba(0,0,0,0.05);
-  color: rgb(203 213 225/1);
+  --text-opacity: 1;
+  color: rgb(203 213 225/var(--text-opacity));
   --bg-opacity: 0.5;
   background-color: rgb(62 69 72/var(--bg-opacity));
   transition: all .3s;
@@ -617,15 +621,17 @@ pre {
 }
 
 @media (min-width: 1024px) {
-  .home-card {
-    display: grid;
-    gap: 2rem;
-  }
   .h2wrap-body {
     display: grid;
     gap: 1.75rem;
   }
   .h2wrap-body > .wrap {
     margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-card {
+    grid-template-columns: repeat(4,minmax(0,1fr));
   }
 }
