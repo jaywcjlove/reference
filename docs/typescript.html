@@ -47,7 +47,7 @@
 </div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4>避免</h4><div class="wrap-body">
 <pre><code class="code-highlight"><span class="code-line line-number" line="1">Object, String, Number, Boolean
 </span></code></pre>
-</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>通用语法</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2--><!--rehype:-->
+</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>通用语法</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token comment">/** 可选择从现有接口或类型(Response, HTTPAble)中获取属性 */</span>
 </span><span class="code-line line-number" line="2"><span class="token keyword">interface</span> <span class="token class-name">JSONResponse</span> <span class="token keyword">extends</span> <span class="token class-name">Response</span><span class="token punctuation">,</span> HTTPAble <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="3">  version<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
@@ -172,7 +172,7 @@
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">const</span> data<span class="token operator">:</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"./data"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>data
 </span></code></pre>
 <p>这些功能非常适合构建库、描述现有的 JavaScript 代码，您可能会发现在大多数 TypeScript 应用程序中很少使用它们。</p>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>对象字面量语法</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2--><!--rehype:-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>对象字面量语法</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">type</span> <span class="token class-name">JSONResponse</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  version<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>                        <span class="token comment">// 字段</span>
 </span><span class="code-line line-number" line="3">  <span class="token comment">/** In bytes */</span>                         <span class="token comment">// 附加文档</span>
@@ -201,7 +201,7 @@
 </span><span class="code-line line-number" line="11"><span class="token comment">//    void, bio: (nv: string) => void }</span>
 </span></code></pre>
 <p>类似于类型系统的映射语句，允许输入类型更改新类型的结构。</p>
-</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3>模板联合类型</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-3--><!--rehype:-->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3>模板联合类型</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-3-->
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">type</span> <span class="token class-name">SupportedLangs</span> <span class="token operator">=</span>  <span class="token string">"en"</span> <span class="token operator">|</span> <span class="token string">"pt"</span> <span class="token operator">|</span> <span class="token string">"zh"</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="2"><span class="token keyword">type</span> <span class="token class-name">FooterLocaleIDs</span> <span class="token operator">=</span> <span class="token string">"header"</span> <span class="token operator">|</span> <span class="token string">"footer"</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="3"><span class="token keyword">type</span> <span class="token class-name">AllLocaleIDs</span> <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>SupportedLangs<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">_</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>FooterLocaleIDs<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">_id</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
@@ -210,7 +210,7 @@
 </span><span class="code-line line-number" line="6"><span class="token comment">//         | "pt_header_id" | "pt_footer_id"</span>
 </span><span class="code-line line-number" line="7"><span class="token comment">//         | "zh_header_id" | "zh_footer_id"</span>
 </span></code></pre>
-</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3>条件类型</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-3--><!--rehype:-->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3>条件类型</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-3-->
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">type</span> <span class="token class-name">HasFourLegs<span class="token operator">&#x3C;</span>Animal<span class="token operator">></span></span> <span class="token operator">=</span> Animal <span class="token keyword">extends</span> <span class="token punctuation">{</span> legs<span class="token operator">:</span> <span class="token number">4</span> <span class="token punctuation">}</span> <span class="token operator">?</span> Animal <span class="token operator">:</span> <span class="token builtin">never</span>
 </span><span class="code-line line-number" line="2"><span class="token keyword">type</span> <span class="token class-name">Animals</span> <span class="token operator">=</span> Bird <span class="token operator">|</span> Dog <span class="token operator">|</span> Ant <span class="token operator">|</span> Wolf<span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="3"><span class="token keyword">type</span> <span class="token class-name">FourLegs</span> <span class="token operator">=</span> HasFourLegs<span class="token operator">&#x3C;</span>Animals<span class="token operator">></span>
@@ -251,7 +251,7 @@
 </span><span class="code-line line-number" line="5">  input <span class="token comment">// number[]</span>
 </span><span class="code-line line-number" line="6"><span class="token punctuation">}</span>
 </span></code></pre>
-</div></div></div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3>任务</h3><div class="wrap-body"><!--rehype:wrap-class=row-span-3--><!--rehype:-->
+</div></div></div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3>任务</h3><div class="wrap-body"><!--rehype:wrap-class=row-span-3-->
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">const</span> data1 <span class="token operator">=</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  name<span class="token operator">:</span> <span class="token string">"Zagreus"</span>
 </span><span class="code-line line-number" line="3"><span class="token punctuation">}</span>
@@ -369,7 +369,7 @@
 <p>所以，小心不要这样做：</p>
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">class</span> <span class="token class-name"><span class="token constant">C</span></span> <span class="token keyword">implements</span> <span class="token class-name">Bag</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 </span></code></pre>
-</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>通用语法</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2--><!--rehype:-->
+</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>通用语法</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token comment">// 确保类符合一组接口或类型  ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▶┈┈╮</span>
 </span><span class="code-line line-number" line="2"><span class="token comment">// 子类这个类 ┈┈┈┈┈┈┈┈↘                 ┈┈┈┈┈┈┈┈┈┈┈┈┈┴┈┈┈┈┈┈┈</span>
 </span><span class="code-line line-number" line="3"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">Account</span> <span class="token keyword">implements</span> <span class="token class-name">Updatable</span><span class="token punctuation">,</span> Serializable <span class="token punctuation">{</span>
@@ -438,7 +438,7 @@
 </span><span class="code-line line-number" line="7"><span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
 </span></code></pre>
 <p>一个类可以被声明为不可实现，但可以在类型系统中被子类化。 class 成员也可以。</p>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>装饰器和属性</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2--><!--rehype:-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>装饰器和属性</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">import</span> <span class="token punctuation">{</span> Syncable<span class="token punctuation">,</span> triggersSync<span class="token punctuation">,</span> preferCache<span class="token punctuation">,</span> required <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"mylib"</span>
 </span><span class="code-line line-number" line="2">
 </span><span class="code-line line-number" line="3"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Syncable</span></span>
@@ -822,7 +822,7 @@
 </span><span class="code-line line-number" line="4">  <span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="5"><span class="token punctuation">}</span>
 </span></code></pre>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>函数组件</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2--><!--rehype:-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>函数组件</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
 <pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">interface</span> <span class="token class-name">FooProp</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="3">  <span class="token constant">X</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
@@ -857,7 +857,7 @@
 </span><span class="code-line line-number" line="16">  <span class="token comment">// ...</span>
 </span><span class="code-line line-number" line="17"><span class="token punctuation">}</span>
 </span></code></pre>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>函数子组件</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2--><!--rehype:-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>函数子组件</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
 <pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">interface</span> <span class="token class-name">MenuProps</span> <span class="token keyword">extends</span> <span class="token class-name">React</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">LiHTMLAttributes</span></span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">HTMLUListElement</span><span class="token operator">></span> <span class="token punctuation">{</span> <span class="token spread operator">...</span> <span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="2"><span class="token keyword">const</span> <span class="token function-variable function">InternalMenu</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token operator">:</span> <span class="token maybe-class-name">MenuProps</span><span class="token punctuation">,</span> ref<span class="token operator">?</span><span class="token operator">:</span> <span class="token maybe-class-name">React</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">ForwardedRef</span></span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">HTMLUListElement</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">(</span>
 </span><span class="code-line line-number" line="3">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span> <span class="token spread"><span class="token punctuation">{</span><span class="token spread operator">...</span>props<span class="token punctuation">}</span></span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ref<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
@@ -876,7 +876,7 @@
 </span><span class="code-line line-number" line="16"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">Menu.Item</span></span> <span class="token punctuation">/></span></span>     <span class="token comment">// ✅ ok</span>
 </span><span class="code-line line-number" line="17"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">Menu.SubMenu</span></span> <span class="token punctuation">/></span></span>  <span class="token comment">// ✅ ok</span>
 </span></code></pre>
-</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3>有效组件</h3><div class="wrap-body"><!--rehype:wrap-class=row-span-2--><!--rehype:-->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3>有效组件</h3><div class="wrap-body"><!--rehype:wrap-class=row-span-2-->
 <pre class="language-tsx"><code class="language-tsx code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">declare</span> <span class="token keyword">namespace</span> <span class="token constant">JSX</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  <span class="token keyword">interface</span> <span class="token class-name">ElementClass</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="3">    render<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
@@ -900,7 +900,7 @@
 </span><span class="code-line line-number" line="6"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">NotAValidFactoryFunction</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span> <span class="token comment">// ❌ error</span>
 </span></code></pre>
 <p>默认情况下，<code>JSX.ElementClass</code> 是 {}，但可以对其进行扩展，以将 <code>JSX</code> 的使用限制为仅限于符合适当接口的类型。</p>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>类组件</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2--><!--rehype:-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3>类组件</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
 <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">type</span> <span class="token class-name">Props</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="2">  header<span class="token operator">:</span> React<span class="token punctuation">.</span>ReactNode<span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="3">  body<span class="token operator">:</span> React<span class="token punctuation">.</span>ReactNode<span class="token punctuation">;</span>
