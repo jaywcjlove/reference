@@ -15,6 +15,7 @@ Quick Reference 备忘清单
 ```shell
 git clone git@github.com:jaywcjlove/reference.git
 ```
+<!--rehype:className=wrap-text -->
 
 #### 安装依赖编译生成 HTML 页面
 
@@ -200,7 +201,7 @@ H2 部分
 `row-span-4` | `4` 行占位
 <!--rehype:className=show-header -->
 
-### 卡片 1 列布局
+### 卡片合并行布局
 
 ```shell
 ╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╮
@@ -211,7 +212,7 @@ H2 部分
 ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
 ```
 
-Markdown 源码
+上面布局效果 Markdown 源码：
 
 ```markdown
 ### H3 Title 1
@@ -223,8 +224,151 @@ Markdown 源码
 ### Title 4
 ```
 
-默认 3 列布局，第一标题添加 `col-span-3` 占位类
+第一标题添加 `col-span-3` 占位类
 
+### 卡片列合并布局
+
+```shell
+╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+┆ 1 ┆ ┆ 2 ┆ ┆ 3 ┆
+┆   ┆ ╰┈┈┈╯ ╰┈┈┈╯
+┆   ┆ ╭┈┈┈╮ ╭┈┈┈╮
+┆   ┆ ┆ 4 ┆ ┆ 5 ┆
+╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+```
+
+上面布局效果 Markdown 源码：
+
+```markdown
+### Title 1
+<!--rehype:wrap-class=row-span-2-->
+### Title 2
+### Title 3
+### Title 4
+### Title 5
+```
+
+在 `Title 1` 标题添加 `row-span-2` 占位类
+
+### 卡片列合并布局
+
+```shell
+╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+┆ 1 ┆ ┆ 2 ┆ ┆ 3 ┆
+╰┈┈┈╯ ┆   ┆ ╰┈┈┈╯
+╭┈┈┈╮ ┆   ┆ ╭┈┈┈╮
+┆ 4 ┆ ┆   ┆ ┆ 5 ┆
+╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+```
+
+上面布局效果 Markdown 源码：
+
+```markdown
+### Title 1
+### Title 2
+<!--rehype:wrap-class=row-span-2-->
+### Title 3
+### Title 4
+### Title 5
+```
+
+在 `Title 2` 标题添加 `row-span-2` 占位类
+
+### 卡片列合并布局
+
+```shell
+╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+┆ 1 ┆ ┆ 2 ┆ ┆ 3 ┆
+╰┈┈┈╯ ╰┈┈┈╯ ┆   ┆
+╭┈┈┈╮ ╭┈┈┈╮ ┆   ┆
+┆ 4 ┆ ┆ 5 ┆ ┆   ┆
+╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+```
+
+上面布局效果 Markdown 源码：
+
+```markdown
+### Title 1
+### Title 2
+### Title 3
+<!--rehype:wrap-class=row-span-2-->
+### Title 4
+### Title 5
+```
+
+在 `Title 3` 标题添加 `row-span-2` 占位类
+
+### 卡片列合并布局
+
+```shell
+╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+┆ 1 ┆ ┆ 2 ┆ ┆ 3 ┆
+╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯ 
+╭┈┈┈╮ ╭┈┈┈┈┈┈┈┈┈╮
+┆ 4 ┆ ┆ 5       ┆
+╰┈┈┈╯ ╰┈┈┈┈┈┈┈┈┈╯
+```
+
+上面布局效果 Markdown 源码：
+
+```markdown
+### Title 1
+### Title 2
+### Title 3
+### Title 4
+### Title 5
+<!--rehype:wrap-class=col-span-2-->
+```
+
+在 `Title 5` 标题添加 `col-span-2` 占位类
+
+### 卡片列合并布局
+
+```shell
+╭┈┈┈╮ ╭┈┈┈┈┈┈┈┈┈╮
+┆ 1 ┆ ┆ 2       ┆
+╰┈┈┈╯ ╰┈┈┈┈┈┈┈┈┈╯
+╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+┆ 3 ┆ ┆ 4 ┆ ┆ 5 ┆
+╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+```
+
+上面布局效果 Markdown 源码：
+
+```markdown
+### Title 1
+### Title 2
+<!--rehype:wrap-class=col-span-2-->
+### Title 3
+### Title 4
+### Title 5
+```
+
+在 `Title 5` 标题添加 `col-span-2` 占位类
+
+### 卡片列合并布局
+
+```shell
+╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+┆ 1 ┆ ┆ 2 ┆ ┆ 3 ┆
+╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+╭┈┈┈┈┈┈┈┈┈╮ ╭┈┈┈╮
+┆ 4       ┆ ┆ 5 ┆
+╰┈┈┈┈┈┈┈┈┈╯ ╰┈┈┈╯
+```
+
+上面布局效果 Markdown 源码：
+
+```markdown
+### Title 1
+### Title 2
+### Title 3
+### Title 4
+<!--rehype:wrap-class=col-span-2-->
+### Title 5
+```
+
+在 `Title 5` 标题添加 `col-span-2` 占位类
 
 表格
 ---
@@ -311,6 +455,7 @@ H2 部分 - 5列效果展示
 <!--rehype:body-class=cols-5-->
 
 ### One
+<!--rehype:wrap-style=background:#dba300;-->
 
 ```
 ...
@@ -407,3 +552,12 @@ H3 部分 - 占位效果展示
 每个盒子(卡片)都是一个 `H3` 部分。 盒子将包含 `H3` 自身内的所有东西。
 
 这是一个包含段落的基本部分。
+
+### H3 部分背景颜色
+<!--rehype:wrap-style=background: #1b5064;-->
+
+```markdown
+注释配置：
+`<!--rehype:wrap-style=background: #1b5064;-->`
+```
+<!--rehype:className=wrap-text -->
