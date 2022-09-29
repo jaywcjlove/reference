@@ -15,8 +15,8 @@
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3>本地编译预览</h3><div class="wrap-body">
 <p>简单的将仓库克隆下来本地调试页面展示。</p>
 </div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4>克隆仓库</h4><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">git</span> clone git@github.com:jaywcjlove/reference.git
-</span></code></pre>
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">git</span> clone git@github.com:jaywcjlove/reference.git
+</span></code></pre><!--rehype:className=wrap-text -->
 </div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4>安装依赖编译生成 HTML 页面</h4><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">npm</span> i         <span class="token comment"># 安装依赖</span>
 </span><span class="code-line line-number" line="2"><span class="token function">npm</span> run build <span class="token comment"># 编译输出 HTML</span>
@@ -200,7 +200,7 @@
     </tr>
   </tbody>
 </table><!--rehype:className=show-header -->
-</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>卡片 1 列布局</h3><div class="wrap-body">
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>卡片合并行布局</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╮
 </span><span class="code-line line-number" line="2">┆   H3 Title <span class="token number">1</span>  ┆
 </span><span class="code-line line-number" line="3">╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╯
@@ -208,7 +208,7 @@
 </span><span class="code-line line-number" line="5">┆ <span class="token number">2</span> ┆ ┆ <span class="token number">3</span> ┆ ┆ <span class="token number">4</span> ┆
 </span><span class="code-line line-number" line="6">╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
 </span></code></pre>
-<p>Markdown 源码</p>
+<p>上面布局效果 Markdown 源码：</p>
 <pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line line-number" line="1"><span class="token title important"><span class="token punctuation">###</span> H3 Title 1</span>
 </span><span class="code-line line-number" line="2"><span class="token comment">&#x3C;!--rehype:wrap-class=col-span-3--></span>
 </span><span class="code-line line-number" line="3"><span class="token title important"><span class="token punctuation">###</span> Title 2</span>
@@ -217,7 +217,109 @@
 </span><span class="code-line line-number" line="6">
 </span><span class="code-line line-number" line="7"><span class="token title important"><span class="token punctuation">###</span> Title 4</span>
 </span></code></pre>
-<p>默认 3 列布局，第一标题添加 <code>col-span-3</code> 占位类</p>
+<p>第一标题添加 <code>col-span-3</code> 占位类</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>卡片列合并布局</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+</span><span class="code-line line-number" line="2">┆ <span class="token number">1</span> ┆ ┆ <span class="token number">2</span> ┆ ┆ <span class="token number">3</span> ┆
+</span><span class="code-line line-number" line="3">┆   ┆ ╰┈┈┈╯ ╰┈┈┈╯
+</span><span class="code-line line-number" line="4">┆   ┆ ╭┈┈┈╮ ╭┈┈┈╮
+</span><span class="code-line line-number" line="5">┆   ┆ ┆ <span class="token number">4</span> ┆ ┆ <span class="token number">5</span> ┆
+</span><span class="code-line line-number" line="6">╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+</span></code></pre>
+<p>上面布局效果 Markdown 源码：</p>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line line-number" line="1"><span class="token title important"><span class="token punctuation">###</span> Title 1</span>
+</span><span class="code-line line-number" line="2"><span class="token comment">&#x3C;!--rehype:wrap-class=row-span-2--></span>
+</span><span class="code-line line-number" line="3"><span class="token title important"><span class="token punctuation">###</span> Title 2</span>
+</span><span class="code-line line-number" line="4"><span class="token title important"><span class="token punctuation">###</span> Title 3</span>
+</span><span class="code-line line-number" line="5"><span class="token title important"><span class="token punctuation">###</span> Title 4</span>
+</span><span class="code-line line-number" line="6"><span class="token title important"><span class="token punctuation">###</span> Title 5</span>
+</span></code></pre>
+<p>在 <code>Title 1</code> 标题添加 <code>row-span-2</code> 占位类</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>卡片列合并布局</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+</span><span class="code-line line-number" line="2">┆ <span class="token number">1</span> ┆ ┆ <span class="token number">2</span> ┆ ┆ <span class="token number">3</span> ┆
+</span><span class="code-line line-number" line="3">╰┈┈┈╯ ┆   ┆ ╰┈┈┈╯
+</span><span class="code-line line-number" line="4">╭┈┈┈╮ ┆   ┆ ╭┈┈┈╮
+</span><span class="code-line line-number" line="5">┆ <span class="token number">4</span> ┆ ┆   ┆ ┆ <span class="token number">5</span> ┆
+</span><span class="code-line line-number" line="6">╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+</span></code></pre>
+<p>上面布局效果 Markdown 源码：</p>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line line-number" line="1"><span class="token title important"><span class="token punctuation">###</span> Title 1</span>
+</span><span class="code-line line-number" line="2"><span class="token title important"><span class="token punctuation">###</span> Title 2</span>
+</span><span class="code-line line-number" line="3"><span class="token comment">&#x3C;!--rehype:wrap-class=row-span-2--></span>
+</span><span class="code-line line-number" line="4"><span class="token title important"><span class="token punctuation">###</span> Title 3</span>
+</span><span class="code-line line-number" line="5"><span class="token title important"><span class="token punctuation">###</span> Title 4</span>
+</span><span class="code-line line-number" line="6"><span class="token title important"><span class="token punctuation">###</span> Title 5</span>
+</span></code></pre>
+<p>在 <code>Title 2</code> 标题添加 <code>row-span-2</code> 占位类</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>卡片列合并布局</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+</span><span class="code-line line-number" line="2">┆ <span class="token number">1</span> ┆ ┆ <span class="token number">2</span> ┆ ┆ <span class="token number">3</span> ┆
+</span><span class="code-line line-number" line="3">╰┈┈┈╯ ╰┈┈┈╯ ┆   ┆
+</span><span class="code-line line-number" line="4">╭┈┈┈╮ ╭┈┈┈╮ ┆   ┆
+</span><span class="code-line line-number" line="5">┆ <span class="token number">4</span> ┆ ┆ <span class="token number">5</span> ┆ ┆   ┆
+</span><span class="code-line line-number" line="6">╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+</span></code></pre>
+<p>上面布局效果 Markdown 源码：</p>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line line-number" line="1"><span class="token title important"><span class="token punctuation">###</span> Title 1</span>
+</span><span class="code-line line-number" line="2"><span class="token title important"><span class="token punctuation">###</span> Title 2</span>
+</span><span class="code-line line-number" line="3"><span class="token title important"><span class="token punctuation">###</span> Title 3</span>
+</span><span class="code-line line-number" line="4"><span class="token comment">&#x3C;!--rehype:wrap-class=row-span-2--></span>
+</span><span class="code-line line-number" line="5"><span class="token title important"><span class="token punctuation">###</span> Title 4</span>
+</span><span class="code-line line-number" line="6"><span class="token title important"><span class="token punctuation">###</span> Title 5</span>
+</span></code></pre>
+<p>在 <code>Title 3</code> 标题添加 <code>row-span-2</code> 占位类</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>卡片列合并布局</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+</span><span class="code-line line-number" line="2">┆ <span class="token number">1</span> ┆ ┆ <span class="token number">2</span> ┆ ┆ <span class="token number">3</span> ┆
+</span><span class="code-line line-number" line="3">╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯ 
+</span><span class="code-line line-number" line="4">╭┈┈┈╮ ╭┈┈┈┈┈┈┈┈┈╮
+</span><span class="code-line line-number" line="5">┆ <span class="token number">4</span> ┆ ┆ <span class="token number">5</span>       ┆
+</span><span class="code-line line-number" line="6">╰┈┈┈╯ ╰┈┈┈┈┈┈┈┈┈╯
+</span></code></pre>
+<p>上面布局效果 Markdown 源码：</p>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line line-number" line="1"><span class="token title important"><span class="token punctuation">###</span> Title 1</span>
+</span><span class="code-line line-number" line="2"><span class="token title important"><span class="token punctuation">###</span> Title 2</span>
+</span><span class="code-line line-number" line="3"><span class="token title important"><span class="token punctuation">###</span> Title 3</span>
+</span><span class="code-line line-number" line="4"><span class="token title important"><span class="token punctuation">###</span> Title 4</span>
+</span><span class="code-line line-number" line="5"><span class="token title important"><span class="token punctuation">###</span> Title 5</span>
+</span><span class="code-line line-number" line="6"><span class="token comment">&#x3C;!--rehype:wrap-class=col-span-2--></span>
+</span></code></pre>
+<p>在 <code>Title 5</code> 标题添加 <code>col-span-2</code> 占位类</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>卡片列合并布局</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">╭┈┈┈╮ ╭┈┈┈┈┈┈┈┈┈╮
+</span><span class="code-line line-number" line="2">┆ <span class="token number">1</span> ┆ ┆ <span class="token number">2</span>       ┆
+</span><span class="code-line line-number" line="3">╰┈┈┈╯ ╰┈┈┈┈┈┈┈┈┈╯
+</span><span class="code-line line-number" line="4">╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+</span><span class="code-line line-number" line="5">┆ <span class="token number">3</span> ┆ ┆ <span class="token number">4</span> ┆ ┆ <span class="token number">5</span> ┆
+</span><span class="code-line line-number" line="6">╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+</span></code></pre>
+<p>上面布局效果 Markdown 源码：</p>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line line-number" line="1"><span class="token title important"><span class="token punctuation">###</span> Title 1</span>
+</span><span class="code-line line-number" line="2"><span class="token title important"><span class="token punctuation">###</span> Title 2</span>
+</span><span class="code-line line-number" line="3"><span class="token comment">&#x3C;!--rehype:wrap-class=col-span-2--></span>
+</span><span class="code-line line-number" line="4"><span class="token title important"><span class="token punctuation">###</span> Title 3</span>
+</span><span class="code-line line-number" line="5"><span class="token title important"><span class="token punctuation">###</span> Title 4</span>
+</span><span class="code-line line-number" line="6"><span class="token title important"><span class="token punctuation">###</span> Title 5</span>
+</span></code></pre>
+<p>在 <code>Title 5</code> 标题添加 <code>col-span-2</code> 占位类</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>卡片列合并布局</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+</span><span class="code-line line-number" line="2">┆ <span class="token number">1</span> ┆ ┆ <span class="token number">2</span> ┆ ┆ <span class="token number">3</span> ┆
+</span><span class="code-line line-number" line="3">╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+</span><span class="code-line line-number" line="4">╭┈┈┈┈┈┈┈┈┈╮ ╭┈┈┈╮
+</span><span class="code-line line-number" line="5">┆ <span class="token number">4</span>       ┆ ┆ <span class="token number">5</span> ┆
+</span><span class="code-line line-number" line="6">╰┈┈┈┈┈┈┈┈┈╯ ╰┈┈┈╯
+</span></code></pre>
+<p>上面布局效果 Markdown 源码：</p>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line line-number" line="1"><span class="token title important"><span class="token punctuation">###</span> Title 1</span>
+</span><span class="code-line line-number" line="2"><span class="token title important"><span class="token punctuation">###</span> Title 2</span>
+</span><span class="code-line line-number" line="3"><span class="token title important"><span class="token punctuation">###</span> Title 3</span>
+</span><span class="code-line line-number" line="4"><span class="token title important"><span class="token punctuation">###</span> Title 4</span>
+</span><span class="code-line line-number" line="5"><span class="token comment">&#x3C;!--rehype:wrap-class=col-span-2--></span>
+</span><span class="code-line line-number" line="6"><span class="token title important"><span class="token punctuation">###</span> Title 5</span>
+</span></code></pre>
+<p>在 <code>Title 5</code> 标题添加 <code>col-span-2</code> 占位类</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2>表格</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3>基本表格</h3><div class="wrap-body">
 </div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4>Date</h4><div class="wrap-body">
@@ -360,7 +462,7 @@
 </ul><!--rehype:className=cols-3 style-none-->
 <p><code>&#x3C;!--rehype:className=cols-3 style-none--></code></p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2>H2 部分 - 5列效果展示</h2><div class="wrap-body"><!--rehype:body-class=cols-5-->
-</div></div><div class="h2wrap-body cols-5"><div class="wrap"><div class="wrap-header h3wrap"><h3>One</h3><div class="wrap-body">
+</div></div><div class="h2wrap-body cols-5"><div class="wrap" style="background:#dba300;"><div class="wrap-header h3wrap"><h3>One</h3><div class="wrap-body"><!--rehype:wrap-style=background:#dba300;-->
 <pre><code class="code-highlight"><span class="code-line line-number" line="1">...
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>Two</h3><div class="wrap-body">
@@ -412,6 +514,10 @@
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3>H3 部分</h3><div class="wrap-body">
 <p>每个盒子(卡片)都是一个 <code>H3</code> 部分。 盒子将包含 <code>H3</code> 自身内的所有东西。</p>
 <p>这是一个包含段落的基本部分。</p>
+</div></div></div><div class="wrap" style="background: #1b5064;"><div class="wrap-header h3wrap"><h3>H3 部分背景颜色</h3><div class="wrap-body"><!--rehype:wrap-style=background: #1b5064;-->
+<pre class="wrap-text "><code class="language-markdown code-highlight"><span class="code-line line-number" line="1">注释配置：
+</span><span class="code-line line-number" line="2"><span class="token code-snippet code keyword">`&#x3C;!--rehype:wrap-style=background: #1b5064;-->`</span>
+</span></code></pre><!--rehype:className=wrap-text -->
 
 </div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
 </html>
