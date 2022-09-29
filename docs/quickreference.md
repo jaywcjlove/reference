@@ -123,6 +123,29 @@ function () {}
 
 注释配置添加 `show-header` 类，放置在表格下面，表头将被展示出来。
 
+### Tooltips
+
+[鼠标移动到上面有提示](https://github.com/jaywcjlove/reference) _Tooltips 的提示内容_<!--rehype:tooltips-->
+
+添加注释配置 `<!--rehype:tooltips-->` 添加一个 tooltips 提示。
+
+### H3 部分(卡片)背景颜色
+<!--rehype:wrap-style=background: #00c69357;-->
+
+```markdown
+### H3 部分(卡片)背景颜色
+<!--rehype:wrap-style=background: #00c69357;-->
+```
+<!--rehype:className=wrap-text -->
+
+### 红色标题
+<!--rehype:style=background:#e91e63;-->
+
+```markdown
+### 红色标题
+<!--rehype:style=background:#e91e63;-->
+```
+
 布局
 ---
 

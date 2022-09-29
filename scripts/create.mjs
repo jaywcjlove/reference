@@ -1,45 +1,14 @@
 import markdown from '@wcj/markdown-to-html';
 import rehypeDocument from 'rehype-document';
 import rehypeFormat from 'rehype-format';
-import { rehypeUrls } from './nodes/rehypeUrls.mjs';
+import remarkGemoji from 'remark-gemoji'
 import { htmlTagAddAttri } from './nodes/htmlTagAddAttri.mjs';
 import { footer } from './nodes/footer.mjs';
 import { header } from './nodes/header.mjs';
-
-/** 标记 Number */
-function panelAddNumber(arr = [], result = []) {
-  let n = 0;
-  let level = -1;
-  while (n < arr.length) {
-    const toc = arr[n];
-    const titleNum = Number(toc?.tagName?.replace(/^h/, ''));
-    if (titleNum && titleNum > -1) {
-      level = titleNum;
-    }
-    if (toc) {
-      result.push({ ...toc, number: level })
-    }
-    n++;
-  }
-  return result
-}
-
-function getChilds(data = [], level, result = []) {
-  for (let i = 1; i <= data.length; i++) {
-    const titleNum = Number(data[i]?.tagName?.replace(/^h/, ''));
-    if (titleNum && titleNum === level) break;
-    result.push(data[i]);
-  }
-  return result;
-}
-/** 获取 Heading 到下一个 Heading 之间的内容*/
-function getHeader(data = [], level, result = []) {
-  for (let i = 1; i <= data.length; i++) {
-    if (/^h\d$/.test(data[i]?.tagName) || data[i]?.number !== level) break;
-    result.push(data[i]);
-  }
-  return result;
-}
+import { rehypeUrls } from './utils/rehypeUrls.mjs';
+import { tooltips } from './utils/tooltips.mjs';
+import { panelAddNumber } from './utils/panelAddNumber.mjs';
+import { getChilds, getHeader } from './utils/childs.mjs';
 
 /** Markdown 文档转成树形结构 */
 export function getTocsTree(arr = [], result = []) {
@@ -120,7 +89,7 @@ export function create(str = '', options = {}) {
   const subTitle = options.filename && !options.isHome ? `${options.filename} cheatsheet & `: ''
   const mdOptions = {
     hastNode: false,
-    remarkPlugins: [],
+    remarkPlugins: [remarkGemoji],
     rehypePlugins: [
       rehypeFormat,
       [rehypeDocument, {
@@ -133,6 +102,7 @@ export function create(str = '', options = {}) {
       }],
     ],
     rewrite: (node, index, parent) => {
+      tooltips(node, index, parent);
       htmlTagAddAttri(node, options);
       rehypeUrls(node);
       if (node.type === 'element' && node.tagName === 'body') {

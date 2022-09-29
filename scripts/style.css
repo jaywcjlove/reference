@@ -62,10 +62,6 @@ table tr+tr {
   border-top: solid 1px #ececec94;
   border-color: rgb(51 65 85/0.5);
 }
-
-table td:first-child {
-  white-space: nowrap;
-}
 table td, table th {
   padding: 9px 14px;
   text-align: left;
@@ -322,6 +318,7 @@ a.text-grey {
   right: 0px;
   top: 0px;
   z-index: 10;
+  border-top-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   background-color: #228e6c;
   padding-left: 0.75rem;
@@ -447,7 +444,6 @@ a.text-grey {
   position: relative;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   border-radius: 0.5rem;
   padding-top: 1.5rem;
   margin-bottom: 1rem;
@@ -495,6 +491,46 @@ a.text-grey {
 .wrap-text {
   white-space: pre-wrap !important;
   overflow-wrap: break-word !important;
+  word-break: break-all;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltiptext {
+  display: none;
+  font-style: inherit;
+  position: absolute;
+  background-color: rgb(67 67 67 / 66%);
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 12px;
+  opacity: 0;
+  border-radius: 0.5rem;
+  z-index: 1;
+  transition: opacity .6s;
+  line-height: 1.5;
+
+  width: 220px;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -110px;
+}
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(67 67 67 / 66%) transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  display: inline-block;
+  opacity: 1;
 }
 
 [data-color-mode*='light'], [data-color-mode*='light'] body {

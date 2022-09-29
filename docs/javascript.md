@@ -623,6 +623,7 @@ console.log(myArray[1]); // 200
 | `pop`     |     | ✅     |       | ✅  |
 | `unshift` | ✅  |        | ✅    |     |
 | `shift`   |     | ✅     | ✅    |     |
+<!--rehype:className=show-header-->
 
 ### 方法 .push()
 
