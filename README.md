@@ -34,6 +34,7 @@ Quick Reference
 ## 其它
 
 [Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Emoji](./docs/emoji.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 看到缺少什么了吗？
@@ -41,8 +42,8 @@ Quick Reference
 
 上面的列表没有看到你想要的？ 您是否正在寻找一些备忘清单或参考资料，或者您有一些片段备忘清单要分享，这是一个最好的机会！
 
-[请求添加备忘单](https://github.com/jaywcjlove/reference/issues/new?title=备忘清单+请求%3A+&labels=request&template=cheatsheet-request.md&assignee=jaywcjlove)<!--rehype:class=home-button&style=margin-top:2rem-->
-[我有一张备忘单](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)<!--rehype:class=home-button text-grey-->
+[`请求添加备忘单`](https://github.com/jaywcjlove/reference/issues/new?title=备忘清单+请求%3A+&labels=request&template=cheatsheet-request.md&assignee=jaywcjlove)<!--rehype:class=home-button&style=margin-top:2rem&target=__blank-->
+[`我有一张备忘单`](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)<!--rehype:class=home-button text-grey&target=__blank-->
 <!--rehype:style=margin-top:3rem-->
 
 <!--rehype:ignore:start-->
