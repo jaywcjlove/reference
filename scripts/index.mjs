@@ -3,15 +3,15 @@ import path from 'path';
 import recursiveReaddirFiles from 'recursive-readdir-files';
 import { create } from './create.mjs';
 
-const OUTOUT = path.resolve(process.cwd(), 'dist');
-const DOCS = path.resolve(process.cwd(), 'docs');
-const CSSPATH = path.resolve(process.cwd(), 'scripts/style.css');
-const CSS_OUTPUT_PATH = path.resolve(OUTOUT, 'style/style.css');
+export const OUTOUT = path.resolve(process.cwd(), 'dist');
+export const DOCS = path.resolve(process.cwd(), 'docs');
+export const CSSPATH = path.resolve(process.cwd(), 'scripts/style.css');
+export const CSS_OUTPUT_PATH = path.resolve(OUTOUT, 'style/style.css');
 
-async function createHTML(files = [], num = 0) {
+export async function createHTML(files = [], num = 0) {
   const dataFile = files[num];
   if (!dataFile) {
-    console.log('\ndone!')
+    console.log(' \n done!\n')
     return;
   }
   ++num;

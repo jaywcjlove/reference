@@ -22,6 +22,7 @@ git clone git@github.com:jaywcjlove/reference.git
 ```shell
 npm i         # 安装依赖
 npm run build # 编译输出 HTML
+npm run start # 监听 md 文件编译输出 HTML
 ```
 
 HTML 存放在仓库根目录下的 `dist` 目录中，将 `dist/index.html` 静态页面在浏览器中打开预览。
