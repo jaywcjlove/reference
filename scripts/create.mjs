@@ -82,8 +82,8 @@ export function getTocsTree(arr = [], result = []) {
 }
 
 export function create(str = '', options = {}) {
-  let title = str.match(/[^===]+(?=[===])/g);
-  let description = str.match(/\n==={1,}\n+([\s\S]*?)\n/g);
+  let title = str.match(/[^===]+(?=[===])/g) || [];
+  let description = str.match(/\n==={1,}\n+([\s\S]*?)\n/g) || [];
   title = title[0] || '';
   description = (description[0] || '').replace(/^\n[=\n]+/, '').replace(/\[([\s\S]*?)?\]\(([\s\S]*?)?\)/g, '$1').replace(/\n/, '');
   const subTitle = options.filename && !options.isHome ? `${options.filename} cheatsheet & `: ''
