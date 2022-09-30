@@ -1,6 +1,10 @@
-import { logo, github, editor } from './logo.mjs';
+import path from 'path';
+import { github, editor } from './logo.mjs';
+import { getSVGNode } from '../utils/getSVGNode.mjs';
 
+const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets/quickreference.svg')
 export function header({ homePath, githubURL = '' }) {
+  const svgNode = getSVGNode(ICONS_PATH)
   const data = [
     {
       href: githubURL,
@@ -35,7 +39,19 @@ export function header({ homePath, githubURL = '' }) {
               href: homePath,
               class: ['logo'],
             },
-            children: logo,
+            children: [
+              ...svgNode,
+              {
+                type: 'element',
+                tagName: 'span',
+                properties: {
+                  class: ['title'],
+                },
+                children: [
+                  { type: 'text', value: 'Quick Reference' }
+                ]
+              }
+            ],
           },
           {
             type: 'element',

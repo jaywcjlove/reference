@@ -1,0 +1,155 @@
+Dockerfile 备忘清单
+===
+
+这是 [Dockerfile](https://docs.docker.com/engine/reference/builder/) 的快速参考备忘单。包含用户可以在命令行上调用以组装镜像的所有命令。
+
+参考
+----
+
+### 继承
+
+默认 `Dockerfile` 位于上下文的根目录中。
+
+- [Docker 备忘清单](./docker.md) _(github.io)_
+
+```shell
+docker build -f /path/to/a/Dockerfile .
+```
+
+使用 `-f` 指向文件系统中任何位置的 `Dockerfile`。
+
+### 继承
+
+```dockerfile
+FROM [--platform=<platform>] <image> [AS <name>]
+```
+<!--rehype:className=wrap-text -->
+
+示例
+
+```dockerfile
+FROM ruby:2.2.2
+FROM golang:1.19-alpine3.16 AS build-env
+```
+
+### 变量
+
+```dockerfile
+ENV <key>=<value> ...
+```
+
+```dockerfile
+ENV APP_HOME /myapp
+RUN mkdir $APP_HOME
+```
+
+```dockerfile
+ENV MY_NAME="John Doe" MY_DOG=Rex\ The\ Dog \
+    MY_CAT=fluffy
+```
+
+### 初始化
+<!--rehype:wrap-class=row-span-2 -->
+
+```dockerfile
+RUN bundle install
+```
+
+```dockerfile
+WORKDIR /myapp
+```
+
+```dockerfile
+VOLUME ["/data"]
+# 安装点规范
+```
+
+```dockerfile
+ADD file.xyz /file.xyz
+COPY --chown=user:group host_file.xyz /path/container_file.xyz
+```
+<!--rehype:className=wrap-text -->
+
+### Onbuild
+
+```dockerfile
+ONBUILD RUN bundle install
+# 与另一个文件一起使用时
+```
+
+### 命令
+
+```dockerfile
+EXPOSE 5900
+CMD ["bundle", "exec", "rails", "server"]
+```
+
+### 在严格的 shell 中运行命令
+
+```dockerfile
+ENV my_var
+SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+# With strict mode:
+RUN false         # ails 像使用 && 一样构建
+RUN echo "$myvar" # 由于拼写错误会抛出错误
+RUN true | false  # 将脱离管道
+```
+<!--rehype:className=wrap-text -->
+
+使用 `shell` 将为 shell 命令打开严格模式。
+
+### 入口点
+
+```dockerfile
+ENTRYPOINT ["executable", "param1", "param2"]
+ENTRYPOINT command param1 param2
+```
+<!--rehype:className=wrap-text -->
+
+配置将作为可执行文件运行的容器。
+
+```dockerfile
+ENTRYPOINT exec top -b
+```
+
+这将使用 shell 处理来替换 shell 变量，并将忽略任何 `CMD` 或 `docker run` 命令行参数。
+
+### 元数据
+
+```dockerfile
+LABEL version="1.0"
+```
+
+```dockerfile
+LABEL "com.example.vendor"="ACME Incorporated"
+LABEL com.example.label-with-value="foo"
+LABEL version="1.0"
+```
+<!--rehype:className=wrap-text -->
+
+```dockerfile
+LABEL description="本文说明\
+标签值可以跨越多行。"
+LABEL multi.label1="value1" \
+      multi.label2="value2" \
+      other="value3"
+```
+
+### 主要命令
+<!--rehype:wrap-class=col-span-2 -->
+
+命令 | 说明
+:- | -
+`FROM image` | 构建的基础镜像
+~~`MAINTAINER email`~~ | (已弃用)维护者的名字
+`COPY [--chown=<user>:<group>] <src>... <dest>` | 将上下文中的路径复制到位置 `dest` 的容器中
+`ADD [--chown=<user>:<group>] <src>... <dest>` | 与 `COPY` 相同，但解压缩存档并接受 http url。
+`RUN <command>` | 在容器内运行任意命令。
+`USER <user>[:<group>]` | 设置默认用户名。
+`WORKDIR /path/to/workdir` | 设置默认工作目录。
+`CMD command param1 param2` | 设置默认命令
+`ENV <key>=<value> ...` | 设置环境变量
+`EXPOSE <port> [<port>/<protocol>...]` | 运行时侦听指定的网络端口
+
+## 也可以看看
+- [Dockerfile reference](https://docs.docker.com/engine/reference/builder/) _(docker.com)_

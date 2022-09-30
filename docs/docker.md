@@ -128,7 +128,7 @@ docker rm nginx-server
 docker update --cpu-shares 512 -m 300M nginx-server
 ```
 
-Docker Images
+Docker 镜像
 ----
 <!--rehype:body-class=cols-2-->
 
@@ -158,7 +158,7 @@ $ docker build -f myOtherDockerfile .
 $ curl example.com/remote/Dockerfile | docker build -f - .
 ```
 
-Docker 联网
+Docker 网络
 ----
 <!--rehype:body-class=cols-2-->
 

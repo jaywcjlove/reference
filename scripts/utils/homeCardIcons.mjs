@@ -1,19 +1,8 @@
 import fs from 'fs-extra';
-import rehypeParse from 'rehype-parse'
-import {unified} from 'unified'
 import path from 'path';
-import { VFile } from 'vfile';
+import { getSVGNode } from './getSVGNode.mjs';
 
 const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets')
-
-function getSVGNode(iconPath) {
-  const svgStr = fs.readFileSync(iconPath);
-  const processor = unified().use(rehypeParse,{ fragment: true, space: "svg" })
-  const file = new VFile();
-  file.value = svgStr.toString();
-  const hastNode = processor.runSync(processor.parse(file), file);
-  return hastNode.children || []
-}
 
 export function homeCardIcons(node, parent, isHome) {
   if (isHome && node && node.type === 'element' && node.properties?.class?.includes('home-card')) {
