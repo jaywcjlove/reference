@@ -2,7 +2,7 @@
 name: 🐞 错误报告
 about: 当出现问题时提交报告以便修复！
 title: '错误报告: xxx.md'
-labels: request
+labels: bug
 assignees: jaywcjlove
 ---
 
