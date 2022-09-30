@@ -23,6 +23,7 @@ Quick Reference
 [Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
 [Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
+[XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## Linux 命令
