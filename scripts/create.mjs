@@ -7,6 +7,7 @@ import { footer } from './nodes/footer.mjs';
 import { header } from './nodes/header.mjs';
 import { rehypeUrls } from './utils/rehypeUrls.mjs';
 import { tooltips } from './utils/tooltips.mjs';
+import { homeCardIcons } from './utils/homeCardIcons.mjs';
 import { panelAddNumber } from './utils/panelAddNumber.mjs';
 import { getChilds, getHeader } from './utils/childs.mjs';
 
@@ -102,6 +103,7 @@ export function create(str = '', options = {}) {
       }],
     ],
     rewrite: (node, index, parent) => {
+      homeCardIcons(node, parent, options.isHome);
       tooltips(node, index, parent);
       htmlTagAddAttri(node, options);
       rehypeUrls(node);
