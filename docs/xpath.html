@@ -40,7 +40,7 @@
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
 <p>XPath 即为 XML 路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的计算机语言。</p>
 <ul>
-  <li><a href="http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm">Xpath test bed</a> <em>(whitebeam.org)</em></li>
+<li><a href="http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm">Xpath test bed</a> <em>(whitebeam.org)</em></li>
 </ul>
 <p>在 Firefox 或 Chrome 控制台中测试：</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'/html/body'</span><span class="token punctuation">)</span>
@@ -49,294 +49,303 @@
 </span><span class="code-line line-number" line="4"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//a[text()="XPath"]'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="后代选择器"><a aria-hidden="true" tabindex="-1" href="#后代选择器"><span class="icon icon-link"></span></a>后代选择器</h3><div class="wrap-body">
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Xpath</th>
-      <th>CSS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//h1</code></td>
-      <td>h1</td>
-    </tr>
-    <tr>
-      <td><code>//div//p</code></td>
-      <td>div p</td>
-    </tr>
-    <tr>
-      <td><code>//ul/li</code></td>
-      <td>ul > li</td>
-    </tr>
-    <tr>
-      <td><code>//ul/li/a</code></td>
-      <td>ul > li > a</td>
-    </tr>
-    <tr>
-      <td><code>//div/*</code></td>
-      <td>div > *</td>
-    </tr>
-    <tr>
-      <td><code>/</code></td>
-      <td>:root</td>
-    </tr>
-    <tr>
-      <td><code>/html/body</code></td>
-      <td>:root > body</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//h1</code></td><td>h1</td></tr><tr><td><code>//div//p</code></td><td>div p</td></tr><tr><td><code>//ul/li</code></td><td>ul > li</td></tr><tr><td><code>//ul/li/a</code></td><td>ul > li > a</td></tr><tr><td><code>//div/*</code></td><td>div > *</td></tr><tr><td><code>/</code></td><td>:root</td></tr><tr><td><code>/html/body</code></td><td>:root > body</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="有序选择器"><a aria-hidden="true" tabindex="-1" href="#有序选择器"><span class="icon icon-link"></span></a>有序选择器</h3><div class="wrap-body">
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Xpath</th>
-      <th>CSS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//ul/li[1]</code></td>
-      <td>ul > li:first-child</td>
-    </tr>
-    <tr>
-      <td><code>//ul/li[2]</code></td>
-      <td>ul > li:nth-child(2)</td>
-    </tr>
-    <tr>
-      <td><code>//ul/li[last()]</code></td>
-      <td>ul > li:last-child</td>
-    </tr>
-    <tr>
-      <td><code>//li[@id="id"][1]</code></td>
-      <td>li#id:first-child</td>
-    </tr>
-    <tr>
-      <td><code>//a[1]</code></td>
-      <td>a:first-child</td>
-    </tr>
-    <tr>
-      <td><code>//a[last()]</code></td>
-      <td>a:last-child</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
-</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="属性选择器"><a aria-hidden="true" tabindex="-1" href="#属性选择器"><span class="icon icon-link"></span></a>属性选择器</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2 row-span-2-->
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Xpath</th>
-      <th>CSS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//*[@id="id"]</code></td>
-      <td>#id</td>
-    </tr>
-    <tr>
-      <td><code>//*[@class="class"]</code></td>
-      <td>.class</td>
-    </tr>
-    <tr>
-      <td><code>//input[@type="submit"]</code></td>
-      <td>input[type="submit"]</td>
-    </tr>
-    <tr>
-      <td><code>//a[@id="abc"][@for="xyz"]</code></td>
-      <td>a#abc[for="xyz"]</td>
-    </tr>
-    <tr>
-      <td><code>//a[@rel]</code></td>
-      <td>a[rel]</td>
-    </tr>
-    <tr>
-      <td><code>//a[starts-with(@href, '/')]</code></td>
-      <td>a[href^='/']</td>
-    </tr>
-    <tr>
-      <td><code>//a[ends-with(@href, '.pdf')]</code></td>
-      <td>a[href$='pdf']</td>
-    </tr>
-    <tr>
-      <td><code>//a[contains(@href, '://')]</code></td>
-      <td>a[href*='<code>:</code>//']</td>
-    </tr>
-    <tr>
-      <td><code>//a[contains(@rel, 'help')]</code></td>
-      <td>a[rel~='help']</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//ul/li[1]</code></td><td>ul > li:first-child</td></tr><tr><td><code>//ul/li[2]</code></td><td>ul > li:nth-child(2)</td></tr><tr><td><code>//ul/li[last()]</code></td><td>ul > li:last-child</td></tr><tr><td><code>//li[@id="id"][1]</code></td><td>li#id:first-child</td></tr><tr><td><code>//a[1]</code></td><td>a:first-child</td></tr><tr><td><code>//a[last()]</code></td><td>a:last-child</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="属性选择器"><a aria-hidden="true" tabindex="-1" href="#属性选择器"><span class="icon icon-link"></span></a>属性选择器</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//*[@id="id"]</code></td><td>#id</td></tr><tr><td><code>//*[@class="class"]</code></td><td>.class</td></tr><tr><td><code>//input[@type="submit"]</code></td><td>input[type="submit"]</td></tr><tr><td><code>//a[@id="abc"][@for="xyz"]</code></td><td>a#abc[for="xyz"]</td></tr><tr><td><code>//a[@rel]</code></td><td>a[rel]</td></tr><tr><td><code>//a[starts-with(@href, '/')]</code></td><td>a[href^='/']</td></tr><tr><td><code>//a[ends-with(@href, '.pdf')]</code></td><td>a[href$='pdf']</td></tr><tr><td><code>//a[contains(@href, '://')]</code></td><td>a[href*='<code>:</code>//']</td></tr><tr><td><code>//a[contains(@rel, 'help')]</code></td><td>a[rel~='help']</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="兄弟姐妹选择器"><a aria-hidden="true" tabindex="-1" href="#兄弟姐妹选择器"><span class="icon icon-link"></span></a>兄弟姐妹选择器</h3><div class="wrap-body">
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Xpath</th>
-      <th>CSS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//h1/following-sibling::ul</code></td>
-      <td>h1 ~ ul</td>
-    </tr>
-    <tr>
-      <td><code>//h1/following-sibling::ul[1]</code></td>
-      <td>h1 + ul</td>
-    </tr>
-    <tr>
-      <td><code>//h1/following-sibling::[@id="id"]</code></td>
-      <td>h1 ~ #id</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//h1/following-sibling::ul</code></td><td>h1 ~ ul</td></tr><tr><td><code>//h1/following-sibling::ul[1]</code></td><td>h1 + ul</td></tr><tr><td><code>//h1/following-sibling::[@id="id"]</code></td><td>h1 ~ #id</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="jquery"><a aria-hidden="true" tabindex="-1" href="#jquery"><span class="icon icon-link"></span></a>jQuery</h3><div class="wrap-body">
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Xpath</th>
-      <th>CSS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//ul/li/..</code></td>
-      <td>$('ul > li').parent()</td>
-    </tr>
-    <tr>
-      <td><code>//li/ancestor-or-self::section</code></td>
-      <td>$('li').closest('section')</td>
-    </tr>
-    <tr>
-      <td><code>//a/@href</code></td>
-      <td>$('a').attr('href')</td>
-    </tr>
-    <tr>
-      <td><code>//span/text()</code></td>
-      <td>$('span').text()</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//ul/li/..</code></td><td>$('ul > li').parent()</td></tr><tr><td><code>//li/ancestor-or-self::section</code></td><td>$('li').closest('section')</td></tr><tr><td><code>//a/@href</code></td><td>$('a').attr('href')</td></tr><tr><td><code>//span/text()</code></td><td>$('span').text()</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="杂项选择器"><a aria-hidden="true" tabindex="-1" href="#杂项选择器"><span class="icon icon-link"></span></a>杂项选择器</h3><div class="wrap-body">
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Xpath</th>
-      <th>CSS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//h1[not(@id)]</code></td>
-      <td>h1:not([id])</td>
-    </tr>
-    <tr>
-      <td><code>//button[text()="Submit"]</code></td>
-      <td>文字匹配</td>
-    </tr>
-    <tr>
-      <td><code>//button[contains(text(),"Go")]</code></td>
-      <td>文本包含（子字符串）</td>
-    </tr>
-    <tr>
-      <td><code>//product[@price > 2.50]</code></td>
-      <td>算术</td>
-    </tr>
-    <tr>
-      <td><code>//ul[*]</code></td>
-      <td>有孩子</td>
-    </tr>
-    <tr>
-      <td><code>//ul[li]</code></td>
-      <td>有孩子（具体）</td>
-    </tr>
-    <tr>
-      <td><code>//a[@name or @href]</code></td>
-      <td>或逻辑</td>
-    </tr>
-    <tr>
-      <td>`//a</td>
-      <td>//div`</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//h1[not(@id)]</code></td><td>h1:not([id])</td></tr><tr><td><code>//button[text()="Submit"]</code></td><td>文字匹配</td></tr><tr><td><code>//button[contains(text(),"Go")]</code></td><td>文本包含（子字符串）</td></tr><tr><td><code>//product[@price > 2.50]</code></td><td>算术</td></tr><tr><td><code>//ul[*]</code></td><td>有孩子</td></tr><tr><td><code>//ul[li]</code></td><td>有孩子（具体）</td></tr><tr><td><code>//a[@name or @href]</code></td><td>或逻辑</td></tr><tr><td>`//a</td><td>//div`</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-表达式"><a aria-hidden="true" tabindex="-1" href="#xpath-表达式"><span class="icon icon-link"></span></a>XPath 表达式</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="步骤和轴"><a aria-hidden="true" tabindex="-1" href="#步骤和轴"><span class="icon icon-link"></span></a>步骤和轴</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>-</th>
-      <th>-</th>
-      <th>-</th>
-      <th>-</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//</code></td>
-      <td><code>ul</code></td>
-      <td><code>/</code></td>
-      <td><code>a[@id='link']</code></td>
-    </tr>
-    <tr>
-      <td>Axis</td>
-      <td>Step</td>
-      <td>Axis</td>
-      <td>Step</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>-</th><th>-</th><th>-</th><th>-</th></tr></thead><tbody><tr><td><code>//</code></td><td><code>ul</code></td><td><code>/</code></td><td><code>a[@id='link']</code></td></tr><tr><td>Axis</td><td>Step</td><td>Axis</td><td>Step</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="前缀"><a aria-hidden="true" tabindex="-1" href="#前缀"><span class="icon icon-link"></span></a>前缀</h3><div class="wrap-body">
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>前缀</th>
-      <th>例子</th>
-      <th>意思是</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//</code></td>
-      <td><code>//hr[@class='edge']</code></td>
-      <td>任何地方</td>
-    </tr>
-    <tr>
-      <td><code>/</code></td>
-      <td><code>/html/body/div</code></td>
-      <td>根</td>
-    </tr>
-    <tr>
-      <td><code>./</code></td>
-      <td><code>./div/p</code></td>
-      <td>相对的</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>前缀</th><th>例子</th><th>意思是</th></tr></thead><tbody><tr><td><code>//</code></td><td><code>//hr[@class='edge']</code></td><td>任何地方</td></tr><tr><td><code>/</code></td><td><code>/html/body/div</code></td><td>根</td></tr><tr><td><code>./</code></td><td><code>./div/p</code></td><td>相对的</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="axes"><a aria-hidden="true" tabindex="-1" href="#axes"><span class="icon icon-link"></span></a>Axes</h3><div class="wrap-body">
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Axis(轴)</th>
-      <th>例子</th>
-      <th>意思是</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>/</code></td>
-      <td><code>//ul/li/a</code></td>
-      <td>孩子</td>
-    </tr>
-    <tr>
-      <td><code>//</code></td>
-      <td><code>//[@id="list"]//a</code></td>
-      <td>后裔</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Axis(轴)</th><th>例子</th><th>意思是</th></tr></thead><tbody><tr><td><code>/</code></td><td><code>//ul/li/a</code></td><td>孩子</td></tr><tr><td><code>//</code></td><td><code>//[@id="list"]//a</code></td><td>后裔</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-predicates谓词"><a aria-hidden="true" tabindex="-1" href="#xpath-predicates谓词"><span class="icon icon-link"></span></a>XPath Predicates(谓词)</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="predicates谓词"><a aria-hidden="true" tabindex="-1" href="#predicates谓词"><span class="icon icon-link"></span></a>Predicates(谓词)</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//div<span class="token punctuation">[</span>true<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
@@ -380,7 +389,8 @@
 <pre><code class="code-highlight"><span class="code-line line-number" line="1">//section[.//h1[@id='hi']]
 </span></code></pre>
 <p>如果它有一个具有 <code>id='hi'</code> 的 <code>&#x3C;h1></code> 后代，则返回 <code>&#x3C;section></code>。</p>
-</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-函数"><a aria-hidden="true" tabindex="-1" href="#xpath-函数"><span class="icon icon-link"></span></a>XPath 函数</h2><div class="wrap-body"><!--rehype:body-class=cols-2-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-函数"><a aria-hidden="true" tabindex="-1" href="#xpath-函数"><span class="icon icon-link"></span></a>XPath 函数</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="节点功能"><a aria-hidden="true" tabindex="-1" href="#节点功能"><span class="icon icon-link"></span></a>节点功能</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">name<span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment"># //[starts-with(name(), 'h')]</span>
 </span><span class="code-line line-number" line="2">text<span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment"># //button[text()="Submit"]</span>
@@ -412,7 +422,8 @@
 </span><span class="code-line line-number" line="2">number<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="3">boolean<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span></code></pre>
-</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-axes"><a aria-hidden="true" tabindex="-1" href="#xpath-axes"><span class="icon icon-link"></span></a>XPath Axes</h2><div class="wrap-body"><!--rehype:body-class=cols-2-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-axes"><a aria-hidden="true" tabindex="-1" href="#xpath-axes"><span class="icon icon-link"></span></a>XPath Axes</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="使用轴"><a aria-hidden="true" tabindex="-1" href="#使用轴"><span class="icon icon-link"></span></a>使用轴</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//ul/li                       <span class="token comment"># ul > li</span>
 </span><span class="code-line line-number" line="2">//ul/child::li                <span class="token comment"># ul > li (same)</span>
@@ -421,30 +432,30 @@
 </span><span class="code-line line-number" line="5">//ul/ancestor-or-self::li     <span class="token comment"># $('ul').closest('li')</span>
 </span></code></pre>
 <hr>
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>//</code></td>
-      <td><code>ul</code></td>
-      <td><code>/child::</code></td>
-      <td><code>li</code></td>
-    </tr>
-    <tr>
-      <td>Axis</td>
-      <td>Step</td>
-      <td>Axis</td>
-      <td>Step</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><code>//</code></td><td><code>ul</code></td><td><code>/child::</code></td><td><code>li</code></td></tr><tr><td>Axis</td><td>Step</td><td>Axis</td><td>Step</td></tr></tbody></table>
 <p>表达式的步骤由 <code>/</code> 分隔，通常用于选择子节点。 这并不总是正确的：您可以使用 <code>::</code> 指定不同的“轴”。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="子轴"><a aria-hidden="true" tabindex="-1" href="#子轴"><span class="icon icon-link"></span></a>子轴</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 都一样</span>
@@ -471,89 +482,92 @@
 </span><span class="code-line line-number" line="2">//ul//<span class="token punctuation">[</span>last<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 </span><span class="code-line line-number" line="3">//ul/descendant-or-self::<span class="token punctuation">[</span>last<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 </span></code></pre>
-</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="其他轴"><a aria-hidden="true" tabindex="-1" href="#其他轴"><span class="icon icon-link"></span></a>其他轴</h3><div class="wrap-body"><!--rehype:wrap-class=row-span-2-->
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Axis</th>
-      <th>Abbrev</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>ancestor</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>ancestor-or-self</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>attribute</code></td>
-      <td><code>@</code></td>
-      <td><code>@href</code> 是 <code>attribute::href</code> 的缩写</td>
-    </tr>
-    <tr>
-      <td><code>child</code></td>
-      <td></td>
-      <td><code>div</code> 是 <code>child::div</code> 的缩写</td>
-    </tr>
-    <tr>
-      <td><code>descendant</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>descendant-or-self</code></td>
-      <td><code>//</code></td>
-      <td><code>//</code> 是 <code>/descendant-or-self::node()/</code>的缩写</td>
-    </tr>
-    <tr>
-      <td><code>namespace</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>self</code></td>
-      <td><code>.</code></td>
-      <td><code>.</code> 是 <code>self::node()</code> 的缩写</td>
-    </tr>
-    <tr>
-      <td><code>parent</code></td>
-      <td><code>..</code></td>
-      <td><code>..</code> 是 <code>parent::node()</code> 的缩写</td>
-    </tr>
-    <tr>
-      <td><code>following</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>following-sibling</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>preceding</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>preceding-sibling</code></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="其他轴"><a aria-hidden="true" tabindex="-1" href="#其他轴"><span class="icon icon-link"></span></a>其他轴</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Axis</th><th>Abbrev</th><th>Notes</th></tr></thead><tbody><tr><td><code>ancestor</code></td><td></td><td></td></tr><tr><td><code>ancestor-or-self</code></td><td></td><td></td></tr><tr><td><code>attribute</code></td><td><code>@</code></td><td><code>@href</code> 是 <code>attribute::href</code> 的缩写</td></tr><tr><td><code>child</code></td><td></td><td><code>div</code> 是 <code>child::div</code> 的缩写</td></tr><tr><td><code>descendant</code></td><td></td><td></td></tr><tr><td><code>descendant-or-self</code></td><td><code>//</code></td><td><code>//</code> 是 <code>/descendant-or-self::node()/</code>的缩写</td></tr><tr><td><code>namespace</code></td><td></td><td></td></tr><tr><td><code>self</code></td><td><code>.</code></td><td><code>.</code> 是 <code>self::node()</code> 的缩写</td></tr><tr><td><code>parent</code></td><td><code>..</code></td><td><code>..</code> 是 <code>parent::node()</code> 的缩写</td></tr><tr><td><code>following</code></td><td></td><td></td></tr><tr><td><code>following-sibling</code></td><td></td><td></td></tr><tr><td><code>preceding</code></td><td></td><td></td></tr><tr><td><code>preceding-sibling</code></td><td></td><td></td></tr></tbody></table>
+<!--rehype:className=show-header-->
 <p>您还可以使用其他轴。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="联合"><a aria-hidden="true" tabindex="-1" href="#联合"><span class="icon icon-link"></span></a>联合</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//a <span class="token operator">|</span> //span
 </span></code></pre>
 <p>使用 <code>|</code> 连接两个表达式。</p>
-</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-更多示例"><a aria-hidden="true" tabindex="-1" href="#xpath-更多示例"><span class="icon icon-link"></span></a>XPath 更多示例</h2><div class="wrap-body"><!--rehype:body-class=cols-2-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-更多示例"><a aria-hidden="true" tabindex="-1" href="#xpath-更多示例"><span class="icon icon-link"></span></a>XPath 更多示例</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//*                 <span class="token comment"># 所有元素</span>
 </span><span class="code-line line-number" line="2">count<span class="token punctuation">(</span>//*<span class="token punctuation">)</span>          <span class="token comment"># 计算所有元素</span>
@@ -568,10 +582,8 @@
 <p>查找直接包含 <code>h1#section-name</code> 的 <code>&#x3C;section></code></p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//section<span class="token punctuation">[</span>//h1<span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">'section-name'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 </span></code></pre>
-<p>
-  查找包含 <code>h1#section-name</code> 的 <code>&#x3C;section></code>。
-  （与上面相同，但使用后代或自我而不是孩子）
-</p>
+<p>查找包含 <code>h1#section-name</code> 的 <code>&#x3C;section></code>。
+（与上面相同，但使用后代或自我而不是孩子）</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="最近的"><a aria-hidden="true" tabindex="-1" href="#最近的"><span class="icon icon-link"></span></a>最近的</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">./ancestor-or-self::<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">"box"</span><span class="token punctuation">]</span>
 </span></code></pre>
@@ -582,9 +594,8 @@
 <p>查找 <code>&#x3C;item></code> 并检查其属性</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
-  <li><a href="https://devhints.io/xpath">Devhints</a> <em>(devhints.io)</em></li>
-  <li><a href="http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm">Xpath test bed</a> <em>(whitebeam.org)</em></li>
+<li><a href="https://devhints.io/xpath">Devhints</a> <em>(devhints.io)</em></li>
+<li><a href="http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm">Xpath test bed</a> <em>(whitebeam.org)</em></li>
 </ul>
-
 </div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
 </html>

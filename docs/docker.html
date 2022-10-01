@@ -36,178 +36,180 @@
   }
 </script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="docker-备忘清单"><a aria-hidden="true" tabindex="-1" href="#docker-备忘清单"><span class="icon icon-link"></span></a>Docker 备忘清单</h1><div class="wrap-body">
 <p>这是 <a href="https://docs.docker.com/get-started/">Docker</a> 的快速参考备忘单。 你可以在这里找到最常见的 Docker 命令。</p>
-</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body"><!--rehype:body-class=cols-2-->
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="入门-1"><a aria-hidden="true" tabindex="-1" href="#入门-1"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
 <p>在后台创建和运行容器</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">80</span>:80 docker/getting-started
 </span></code></pre>
 <hr>
 <ul>
-  <li><code>-d</code> - 以分离模式运行容器</li>
-  <li><code>-p 80:80</code> - 将端口 80 映射到容器中的端口 80</li>
-  <li><code>docker/getting-started</code> - 要使用的镜像</li>
+<li><code>-d</code> - 以分离模式运行容器</li>
+<li><code>-p 80:80</code> -  将端口 80 映射到容器中的端口 80</li>
+<li><code>docker/getting-started</code> - 要使用的镜像</li>
 </ul>
 <p>在前台创建并运行容器</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-p</span> <span class="token number">8001</span>:8080 <span class="token parameter variable">--name</span> my-nginx nginx
 </span></code></pre>
 <hr>
 <ul>
-  <li><code>-it</code> - 交互式 bash 模式</li>
-  <li><code>-p 8001:8080</code> - 将 <code>8001</code> 端口映射到容器中的 <code>8080</code> 端口</li>
-  <li><code>--name my-nginx</code> - 指定名称</li>
-  <li><code>nginx</code> - 要使用的镜像</li>
+<li><code>-it</code> - 交互式 bash 模式</li>
+<li><code>-p 8001:8080</code> - 将 <code>8001</code> 端口映射到容器中的 <code>8080</code> 端口</li>
+<li><code>--name my-nginx</code> - 指定名称</li>
+<li><code>nginx</code> - 要使用的镜像</li>
 </ul>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="一般命令"><a aria-hidden="true" tabindex="-1" href="#一般命令"><span class="icon icon-link"></span></a>一般命令</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>Example</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>docker ps</code></td>
-      <td>列出正在运行的容器</td>
-    </tr>
-    <tr>
-      <td><code>docker ps -a</code></td>
-      <td>列出所有容器</td>
-    </tr>
-    <tr>
-      <td><code>docker ps -s</code></td>
-      <td>列出正在运行的容器 <em>(带 CPU / 内存)</em></td>
-    </tr>
-    <tr>
-      <td><code>docker images</code></td>
-      <td>列出所有镜像</td>
-    </tr>
-    <tr>
-      <td><code>docker exec -it &#x3C;container> bash</code></td>
-      <td>连接到容器</td>
-    </tr>
-    <tr>
-      <td><code>docker logs &#x3C;container></code></td>
-      <td>显示容器的控制台日志</td>
-    </tr>
-    <tr>
-      <td><code>docker stop &#x3C;container></code></td>
-      <td>停止容器</td>
-    </tr>
-    <tr>
-      <td><code>docker restart &#x3C;container></code></td>
-      <td>重启一个容器</td>
-    </tr>
-    <tr>
-      <td><code>docker rm &#x3C;container></code></td>
-      <td>移除一个容器</td>
-    </tr>
-    <tr>
-      <td><code>docker port &#x3C;container></code></td>
-      <td>显示容器的端口映射</td>
-    </tr>
-    <tr>
-      <td><code>docker top &#x3C;container></code></td>
-      <td>列出进程</td>
-    </tr>
-    <tr>
-      <td><code>docker kill &#x3C;container></code></td>
-      <td>杀死一个容器</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Example</th><th>Description</th></tr></thead><tbody><tr><td><code>docker ps</code></td><td>列出正在运行的容器</td></tr><tr><td><code>docker ps -a</code></td><td>列出所有容器</td></tr><tr><td><code>docker ps -s</code></td><td>列出正在运行的容器 <em>(带 CPU / 内存)</em></td></tr><tr><td><code>docker images</code></td><td>列出所有镜像</td></tr><tr><td><code>docker exec -it &#x3C;container>  bash</code></td><td>连接到容器</td></tr><tr><td><code>docker logs &#x3C;container></code></td><td>显示容器的控制台日志</td></tr><tr><td><code>docker stop &#x3C;container></code></td><td>停止容器</td></tr><tr><td><code>docker restart &#x3C;container></code></td><td>重启一个容器</td></tr><tr><td><code>docker rm &#x3C;container></code></td><td>移除一个容器</td></tr><tr><td><code>docker port &#x3C;container></code></td><td>显示容器的端口映射</td></tr><tr><td><code>docker top &#x3C;container></code></td><td>列出进程</td></tr><tr><td><code>docker kill &#x3C;container></code></td><td>杀死一个容器</td></tr></tbody></table>
 <p>参数 <code>&#x3C;container></code> 可以是容器 id 或名称</p>
-</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="docker-容器"><a aria-hidden="true" tabindex="-1" href="#docker-容器"><span class="icon icon-link"></span></a>Docker 容器</h2><div class="wrap-body"><!--rehype:body-class=cols-2-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="docker-容器"><a aria-hidden="true" tabindex="-1" href="#docker-容器"><span class="icon icon-link"></span></a>Docker 容器</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="启动和停止"><a aria-hidden="true" tabindex="-1" href="#启动和停止"><span class="icon icon-link"></span></a>启动和停止</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>docker start nginx-server</code></td>
-      <td>开始</td>
-    </tr>
-    <tr>
-      <td><code>docker stop nginx-server</code></td>
-      <td>停止</td>
-    </tr>
-    <tr>
-      <td><code>docker restart nginx-server</code></td>
-      <td>重启</td>
-    </tr>
-    <tr>
-      <td><code>docker pause nginx-server</code></td>
-      <td>暂停</td>
-    </tr>
-    <tr>
-      <td><code>docker unpause nginx-server</code></td>
-      <td>取消暂停</td>
-    </tr>
-    <tr>
-      <td><code>docker wait nginx-server</code></td>
-      <td>阻塞容器</td>
-    </tr>
-    <tr>
-      <td><code>docker kill nginx-server</code></td>
-      <td>发送 SIGKILL</td>
-    </tr>
-    <tr>
-      <td><code>docker attach nginx-server</code></td>
-      <td>连接到现有容器</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Description</th><th>Example</th></tr></thead><tbody><tr><td><code>docker start nginx-server</code></td><td>开始</td></tr><tr><td><code>docker stop nginx-server</code></td><td>停止</td></tr><tr><td><code>docker restart nginx-server</code></td><td>重启</td></tr><tr><td><code>docker pause nginx-server</code></td><td>暂停</td></tr><tr><td><code>docker unpause nginx-server</code></td><td>取消暂停</td></tr><tr><td><code>docker wait nginx-server</code></td><td>阻塞容器</td></tr><tr><td><code>docker kill nginx-server</code></td><td>发送 SIGKILL</td></tr><tr><td><code>docker attach nginx-server</code></td><td>连接到现有容器</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="说明"><a aria-hidden="true" tabindex="-1" href="#说明"><span class="icon icon-link"></span></a>说明</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>Example</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>docker ps</code></td>
-      <td>列出正在运行的容器</td>
-    </tr>
-    <tr>
-      <td><code>docker ps -a</code></td>
-      <td>列出所有容器</td>
-    </tr>
-    <tr>
-      <td><code>docker logs nginx-server</code></td>
-      <td>容器日志</td>
-    </tr>
-    <tr>
-      <td><code>docker inspect nginx-server</code></td>
-      <td>检查容器</td>
-    </tr>
-    <tr>
-      <td><code>docker events nginx-server</code></td>
-      <td>容器事件</td>
-    </tr>
-    <tr>
-      <td><code>docker port nginx-server</code></td>
-      <td>公共端口</td>
-    </tr>
-    <tr>
-      <td><code>docker top nginx-server</code></td>
-      <td>运行进程</td>
-    </tr>
-    <tr>
-      <td><code>docker stats nginx-server</code></td>
-      <td>容器资源使用</td>
-    </tr>
-    <tr>
-      <td><code>docker diff nginx-server</code></td>
-      <td>列出对容器所做的更改</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Example</th><th>Description</th></tr></thead><tbody><tr><td><code>docker ps</code></td><td>列出正在运行的容器</td></tr><tr><td><code>docker ps -a</code></td><td>列出所有容器</td></tr><tr><td><code>docker logs nginx-server</code></td><td>容器日志</td></tr><tr><td><code>docker inspect nginx-server</code></td><td>检查容器</td></tr><tr><td><code>docker events nginx-server</code></td><td>容器事件</td></tr><tr><td><code>docker port nginx-server</code></td><td>公共端口</td></tr><tr><td><code>docker top nginx-server</code></td><td>运行进程</td></tr><tr><td><code>docker stats nginx-server</code></td><td>容器资源使用</td></tr><tr><td><code>docker diff nginx-server</code></td><td>列出对容器所做的更改</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="创建容器"><a aria-hidden="true" tabindex="-1" href="#创建容器"><span class="icon icon-link"></span></a>创建容器</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> create <span class="token punctuation">[</span>options<span class="token punctuation">]</span> IMAGE
 </span><span class="code-line line-number" line="2">  -a, <span class="token parameter variable">--attach</span>               <span class="token comment"># 附加标准输出/错误</span>
@@ -234,54 +236,55 @@
 <p>更新容器</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> update --cpu-shares <span class="token number">512</span> <span class="token parameter variable">-m</span> 300M nginx-server
 </span></code></pre>
-</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="docker-镜像"><a aria-hidden="true" tabindex="-1" href="#docker-镜像"><span class="icon icon-link"></span></a>Docker 镜像</h2><div class="wrap-body"><!--rehype:body-class=cols-2-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="docker-镜像"><a aria-hidden="true" tabindex="-1" href="#docker-镜像"><span class="icon icon-link"></span></a>Docker 镜像</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="操控-1"><a aria-hidden="true" tabindex="-1" href="#操控-1"><span class="icon icon-link"></span></a>操控</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th><code>Example</code></th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>docker images</code></td>
-      <td>列出镜像</td>
-    </tr>
-    <tr>
-      <td><code>docker rmi nginx</code></td>
-      <td>删除镜像</td>
-    </tr>
-    <tr>
-      <td><code>docker load &#x3C; ubuntu.tar.gz</code></td>
-      <td>加载一个 tarred 存储库</td>
-    </tr>
-    <tr>
-      <td><code>docker load --input ubuntu.tar</code></td>
-      <td>加载一个 tarred 存储库</td>
-    </tr>
-    <tr>
-      <td><code>docker save busybox > ubuntu.tar</code></td>
-      <td>将镜像保存到 tar 存档</td>
-    </tr>
-    <tr>
-      <td><code>docker history</code></td>
-      <td>显示镜像的历史</td>
-    </tr>
-    <tr>
-      <td><code>docker commit nginx</code></td>
-      <td>将容器另存为镜像。</td>
-    </tr>
-    <tr>
-      <td><code>docker tag nginx eon01/nginx</code></td>
-      <td>标记镜像</td>
-    </tr>
-    <tr>
-      <td><code>docker push eon01/nginx</code></td>
-      <td>推送镜像</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code>Example</code></th><th>Description</th></tr></thead><tbody><tr><td><code>docker images</code></td><td>列出镜像</td></tr><tr><td><code>docker rmi nginx</code></td><td>删除镜像</td></tr><tr><td><code>docker load &#x3C; ubuntu.tar.gz</code></td><td>加载一个 tarred 存储库</td></tr><tr><td><code>docker load --input ubuntu.tar</code></td><td>加载一个 tarred 存储库</td></tr><tr><td><code>docker save busybox > ubuntu.tar</code></td><td>将镜像保存到 tar 存档</td></tr><tr><td><code>docker history</code></td><td>显示镜像的历史</td></tr><tr><td><code>docker commit nginx</code></td><td>将容器另存为镜像。</td></tr><tr><td><code>docker tag nginx eon01/nginx</code></td><td>标记镜像</td></tr><tr><td><code>docker push eon01/nginx</code></td><td>推送镜像</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="构建镜像"><a aria-hidden="true" tabindex="-1" href="#构建镜像"><span class="icon icon-link"></span></a>构建镜像</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> build <span class="token builtin class-name">.</span>
 </span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> build github.com/creack/docker-firefox
@@ -291,7 +294,8 @@
 </span><span class="code-line line-number" line="6">$ <span class="token function">docker</span> build <span class="token parameter variable">-f</span> myOtherDockerfile <span class="token builtin class-name">.</span>
 </span><span class="code-line line-number" line="7">$ <span class="token function">curl</span> example.com/remote/Dockerfile <span class="token operator">|</span> <span class="token function">docker</span> build <span class="token parameter variable">-f</span> - <span class="token builtin class-name">.</span>
 </span></code></pre>
-</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="docker-网络"><a aria-hidden="true" tabindex="-1" href="#docker-网络"><span class="icon icon-link"></span></a>Docker 网络</h2><div class="wrap-body"><!--rehype:body-class=cols-2-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="docker-网络"><a aria-hidden="true" tabindex="-1" href="#docker-网络"><span class="icon icon-link"></span></a>Docker 网络</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="操作"><a aria-hidden="true" tabindex="-1" href="#操作"><span class="icon icon-link"></span></a>操作</h3><div class="wrap-body">
 <p>删除网络</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> network <span class="token function">rm</span> MyOverlayNetwork
@@ -326,35 +330,37 @@
 </span><span class="code-line line-number" line="12">  --aux-address<span class="token operator">=</span><span class="token string">"my-nas=192.170.1.6"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="13">  MyOverlayNetwork
 </span></code></pre>
-</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="各种各样的"><a aria-hidden="true" tabindex="-1" href="#各种各样的"><span class="icon icon-link"></span></a>各种各样的</h2><div class="wrap-body"><!--rehype:body-class=cols-2-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="各种各样的"><a aria-hidden="true" tabindex="-1" href="#各种各样的"><span class="icon icon-link"></span></a>各种各样的</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="docker-hub"><a aria-hidden="true" tabindex="-1" href="#docker-hub"><span class="icon icon-link"></span></a>Docker Hub</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>Docker 语法</th>
-      <th>说明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>docker search search_word</code></td>
-      <td>在 docker hub 中搜索镜像。</td>
-    </tr>
-    <tr>
-      <td><code>docker pull user/image</code></td>
-      <td>从 docker hub 下载镜像。</td>
-    </tr>
-    <tr>
-      <td><code>docker login</code></td>
-      <td>向 docker hub 进行身份验证</td>
-    </tr>
-    <tr>
-      <td><code>docker push user/image</code></td>
-      <td>将镜像上传到 docker hub。</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="注册表命令"><a aria-hidden="true" tabindex="-1" href="#注册表命令"><span class="icon icon-link"></span></a>注册表命令</h3><div class="wrap-body"><!--rehype:wrap-class=row-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Docker 语法</th><th>说明</th></tr></thead><tbody><tr><td><code>docker search search_word</code></td><td>在 docker hub 中搜索镜像。</td></tr><tr><td><code>docker pull user/image   </code></td><td>从 docker hub 下载镜像。</td></tr><tr><td><code>docker login             </code></td><td>向 docker hub 进行身份验证</td></tr><tr><td><code>docker push user/image   </code></td><td>将镜像上传到 docker hub。</td></tr></tbody></table>
+</div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="注册表命令"><a aria-hidden="true" tabindex="-1" href="#注册表命令"><span class="icon icon-link"></span></a>注册表命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
 <p>登录到注册表</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> login
 </span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> login localhost:8080
@@ -376,28 +382,28 @@
 </span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> push eon01/nginx localhost:5000/myadmin/nginx
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="批量清除"><a aria-hidden="true" tabindex="-1" href="#批量清除"><span class="icon icon-link"></span></a>批量清除</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>实例</th>
-      <th>说明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>docker stop -f $(docker ps -a -q)</code></td>
-      <td>停止所有容器</td>
-    </tr>
-    <tr>
-      <td><code>docker rm -f $(docker ps -a -q)</code></td>
-      <td>删除所有容器</td>
-    </tr>
-    <tr>
-      <td><code>docker rmi -f $(docker images -q)</code></td>
-      <td>删除所有图像</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>实例</th><th>说明</th></tr></thead><tbody><tr><td><code>docker stop -f $(docker ps -a -q)</code></td><td>停止所有容器</td></tr><tr><td><code>docker rm -f $(docker ps -a -q)</code></td><td>删除所有容器</td></tr><tr><td><code>docker rmi -f $(docker images -q)</code></td><td>删除所有图像</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="卷-volume"><a aria-hidden="true" tabindex="-1" href="#卷-volume"><span class="icon icon-link"></span></a>卷 volume</h3><div class="wrap-body">
 <p>检查卷</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> volume <span class="token function">ls</span>
@@ -407,10 +413,9 @@
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
-  <li><a href="./dockerfile.html">Dockerfile 备忘清单</a> <em>(github.io)</em></li>
-  <li><a href="https://docs.docker.com/get-started/">Docker 官方入门教程</a> <em>(docker.com)</em></li>
-  <li><a href="https://jaywcjlove.github.io/docker-tutorial">Docker入门学习笔记</a> <em>(github.io)</em></li>
+<li><a href="./dockerfile.html">Dockerfile 备忘清单</a> <em>(github.io)</em></li>
+<li><a href="https://docs.docker.com/get-started/">Docker 官方入门教程</a> <em>(docker.com)</em></li>
+<li><a href="https://jaywcjlove.github.io/docker-tutorial">Docker入门学习笔记</a> <em>(github.io)</em></li>
 </ul>
-
 </div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
 </html>

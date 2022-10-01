@@ -1,0 +1,1729 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>RegEX 备忘清单
+ &#x26;  regex cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="正则表达式 (regex) 的快速参考，包括符号、范围、分组、断言和一些示例模式，以帮助您入门。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,regex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/regex.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="regex-备忘清单"><a aria-hidden="true" tabindex="-1" href="#regex-备忘清单"><span class="icon icon-link"></span></a>RegEX 备忘清单</h1><div class="wrap-body">
+<p>正则表达式 (regex) 的快速参考，包括符号、范围、分组、断言和一些示例模式，以帮助您入门。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>这是开始使用正则表达式(Regex)的快速备忘单。</p>
+<ul class="cols-2">
+<li><a href="#python-%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">Python 中的 Regex</a> <em>(Quick Reference)</em></li>
+<li><a href="#javascript-%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">JavaScript 中的 Regex</a> <em>(Quick Reference)</em></li>
+<li><a href="#php%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">PHP 中的 Regex</a> <em>(Quick Reference)</em></li>
+<li><a href="#java-%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">Java 中的 Regex</a> <em>(Quick Reference)</em></li>
+<li><a href="#mysql%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">MySQL 中的 Regex</a> <em>(Quick Reference)</em></li>
+<li><a href="./vim#vim-%E6%90%9C%E7%B4%A2%E5%92%8C%E6%9B%BF%E6%8D%A2">Vim 中的 Regex</a> <em>(Quick Reference)</em></li>
+<li><a href="https://regex101.com/">在线 Regex 测试器</a> <em>(regex101.com)</em></li>
+</ul>
+<!--rehype:className=cols-2-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符类"><a aria-hidden="true" tabindex="-1" href="#字符类"><span class="icon icon-link"></span></a>字符类</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>[abc]</code></td><td>单个字符：a、b 或 c</td></tr><tr><td align="left"><code>[^abc]</code></td><td>一个字符，除了：a、b 或 c</td></tr><tr><td align="left"><code>[a-z]</code></td><td>范围内的字符：a-z</td></tr><tr><td align="left"><code>[^a-z]</code></td><td>不在范围内的字符：a-z</td></tr><tr><td align="left"><code>[0-9]</code></td><td>范围内的数字：0-9</td></tr><tr><td align="left"><code>[a-zA-Z]</code></td><td>范围内的字符：<br>a-z 或 A-Z</td></tr><tr><td align="left"><code>[a-zA-Z0-9]</code></td><td>范围内的字符：<br>a-z、A-Z 或 0-9</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="量词"><a aria-hidden="true" tabindex="-1" href="#量词"><span class="icon icon-link"></span></a>量词</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>a?</code></td><td>零个或一个<code>a</code></td></tr><tr><td align="left"><code>a*</code></td><td>零个或多个 <code>a</code></td></tr><tr><td align="left"><code>a+</code></td><td>一个或多个<code>a</code></td></tr><tr><td align="left"><code>[0-9]+</code></td><td><code>0-9</code>中的一个或多个</td></tr><tr><td align="left"><code>a{3}</code></td><td>正好 <code>3</code> 个 <code>a</code></td></tr><tr><td align="left"><code>a{3,}</code></td><td>3个或更多的<code>a</code></td></tr><tr><td align="left"><code>a{3,6}</code></td><td><code>a</code> 的 <code>3</code> 到 <code>6</code> 之间</td></tr><tr><td align="left"><code>a*</code></td><td>贪心量词</td></tr><tr><td align="left"><code>a*?</code></td><td>惰性量词</td></tr><tr><td align="left"><code>a*+</code></td><td>占有量词</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="常用元字符"><a aria-hidden="true" tabindex="-1" href="#常用元字符"><span class="icon icon-link"></span></a>常用元字符</h3><div class="wrap-body">
+<ul class="cols-3">
+<li>^</li>
+<li>{</li>
+<li>+</li>
+<li>&#x3C;</li>
+<li>[</li>
+<li>*</li>
+<li>)</li>
+<li>></li>
+<li>.</li>
+<li>(</li>
+<li>|</li>
+<li>$</li>
+<li>\</li>
+<li>?</li>
+</ul>
+<!--rehype:className=cols-3-->
+<p>使用 <code>\</code> 转义这些特殊字符</p>
+</div></div></div><div class="wrap row-span-4"><div class="wrap-header h3wrap"><h3 id="元序列"><a aria-hidden="true" tabindex="-1" href="#元序列"><span class="icon icon-link"></span></a>元序列</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-4-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>.</code></td><td>任何单个字符</td></tr><tr><td align="left"><code>\s</code></td><td>任何空白字符</td></tr><tr><td align="left"><code>\S</code></td><td>任何非空白字符</td></tr><tr><td align="left"><code>\d</code></td><td>任何数字，与 <code>[0-9]</code> 相同</td></tr><tr><td align="left"><code>\D</code></td><td>任何非数字，与 <code>[^0-9]</code> 相同</td></tr><tr><td align="left"><code>\w</code></td><td>任何单词字符</td></tr><tr><td align="left"><code>\W</code></td><td>任何非单词字符</td></tr><tr><td align="left"><code>\X</code></td><td>任何 Unicode 序列，包括换行符</td></tr><tr><td align="left"><code>\C</code></td><td>匹配一个数据单元</td></tr><tr><td align="left"><code>\R</code></td><td>Unicode 换行符</td></tr><tr><td align="left"><code>\v</code></td><td>垂直空白字符</td></tr><tr><td align="left"><code>\V</code></td><td><code>\v</code> 的否定 - 除了换行符和垂直制表符之外的任何内容</td></tr><tr><td align="left"><code>\h</code></td><td>水平空白字符</td></tr><tr><td align="left"><code>\H</code></td><td><code>\h</code> 的否定</td></tr><tr><td align="left"><code>\K</code></td><td>重置匹配</td></tr><tr><td align="left"><code>\n</code></td><td>匹配第 <code>n</code> 个子模式</td></tr><tr><td align="left"><code>\pX</code></td><td><code>Unicode</code> 属性 <code>X</code></td></tr><tr><td align="left"><code>\p{...}</code></td><td><code>Unicode</code> 属性或脚本类别</td></tr><tr><td align="left"><code>\PX</code></td><td><code>\pX</code> 的否定</td></tr><tr><td align="left"><code>\P{...}</code></td><td><code>\p</code> 的否定</td></tr><tr><td align="left"><code>\Q...\E</code></td><td>引用;视为文字</td></tr><tr><td align="left"><code>\k&#x3C;name></code></td><td>匹配子模式<code>name</code></td></tr><tr><td align="left"><code>\k'name'</code></td><td>匹配子模式<code>name</code></td></tr><tr><td align="left"><code>\k{name}</code></td><td>匹配子模式<code>name</code></td></tr><tr><td align="left"><code>\gn</code></td><td>匹配第 n 个子模式</td></tr><tr><td align="left"><code>\g{n}</code></td><td>匹配第 n 个子模式</td></tr><tr><td align="left"><code>\g&#x3C;n></code></td><td>递归第 n 个捕获组</td></tr><tr><td align="left"><code>\g'n'</code></td><td>递归第 n 个捕获组。</td></tr><tr><td align="left"><code>\g{-n}</code></td><td>匹配第 n 个相对前一个子模式</td></tr><tr><td align="left"><code>\g&#x3C;+n></code></td><td>递归第 n 个相对即将到来的子模式</td></tr><tr><td align="left"><code>\g'+n'</code></td><td>匹配第 n 个相对即将到来的子模式</td></tr><tr><td align="left"><code>\g'letter'</code></td><td>递归命名捕获组 <code>字母</code></td></tr><tr><td align="left"><code>\g{letter}</code></td><td>匹配先前命名的捕获组 <code>字母</code></td></tr><tr><td align="left"><code>\g&#x3C;letter></code></td><td>递归命名捕获组 <code>字母</code></td></tr><tr><td align="left"><code>\xYY</code></td><td>十六进制字符 <code>YY</code></td></tr><tr><td align="left"><code>\x{YYYY}</code></td><td>十六进制字符 <code>YYYY</code></td></tr><tr><td align="left"><code>\ddd</code></td><td>八进制字符<code>ddd</code></td></tr><tr><td align="left"><code>\cY</code></td><td>控制字符 <code>Y</code></td></tr><tr><td align="left"><code>[\b]</code></td><td>退格字符</td></tr><tr><td align="left"><code>\</code></td><td>使任何字符文字</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="锚点"><a aria-hidden="true" tabindex="-1" href="#锚点"><span class="icon icon-link"></span></a>锚点</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>\G</code></td><td>比赛开始</td></tr><tr><td align="left"><code>^</code></td><td>字符串的开始</td></tr><tr><td align="left"><code>$</code></td><td>字符串结束</td></tr><tr><td align="left"><code>\A</code></td><td>字符串的开始</td></tr><tr><td align="left"><code>\Z</code></td><td>字符串结束</td></tr><tr><td align="left"><code>\z</code></td><td>字符串的绝对结尾</td></tr><tr><td align="left"><code>\b</code></td><td>一个词的边界</td></tr><tr><td align="left"><code>\B</code></td><td>非单词边界</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="替代"><a aria-hidden="true" tabindex="-1" href="#替代"><span class="icon icon-link"></span></a>替代</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>\0</code></td><td>完整的比赛内容</td></tr><tr><td align="left"><code>\1</code></td><td>捕获组 <code>1</code> 中的内容</td></tr><tr><td align="left"><code>$1</code></td><td>捕获组 <code>1</code> 中的内容</td></tr><tr><td align="left"><code>${foo}</code></td><td>捕获组 <code>foo</code> 中的内容</td></tr><tr><td align="left"><code>\x20</code></td><td>十六进制替换值</td></tr><tr><td align="left"><code>\x{06fa}</code></td><td>十六进制替换值</td></tr><tr><td align="left"><code>\t</code></td><td>标签</td></tr><tr><td align="left"><code>\r</code></td><td>回车</td></tr><tr><td align="left"><code>\n</code></td><td>新队</td></tr><tr><td align="left"><code>\f</code></td><td>换页</td></tr><tr><td align="left"><code>\U</code></td><td>大写转换</td></tr><tr><td align="left"><code>\L</code></td><td>小写转换</td></tr><tr><td align="left"><code>\E</code></td><td>终止任何转换</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="组构造"><a aria-hidden="true" tabindex="-1" href="#组构造"><span class="icon icon-link"></span></a>组构造</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>(...)</code></td><td>捕获所有封闭的东西</td></tr><tr><td align="left"><code>(a|b)</code></td><td>匹配 <code>a</code> 或 <code>b</code></td></tr><tr><td align="left"><code>(?:...)</code></td><td>匹配随附的所有内容</td></tr><tr><td align="left"><code>(?>...)</code></td><td>原子组（非捕获）</td></tr><tr><td align="left"><code>(?|...)</code></td><td>重复的子模式组号</td></tr><tr><td align="left"><code>(?#...)</code></td><td>注解</td></tr><tr><td align="left"><code>(?'name'...)</code></td><td>命名捕获组</td></tr><tr><td align="left"><code>(?&#x3C;name>...)</code></td><td>命名捕获组</td></tr><tr><td align="left"><code>(?P&#x3C;name>...)</code></td><td>命名捕获组</td></tr><tr><td align="left"><code>(?imsxXU)</code></td><td>内联修饰符</td></tr><tr><td align="left"><code>(?(DEFINE)...)</code></td><td>在使用它们之前预定义模式</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="断言"><a aria-hidden="true" tabindex="-1" href="#断言"><span class="icon icon-link"></span></a>断言</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>(?(1)yes|no)</code></td><td>条件语句</td></tr><tr><td align="left"><code>(?(R)yes|no)</code></td><td>条件语句</td></tr><tr><td align="left"><code>(?(R#)yes|no)</code></td><td>递归条件语句</td></tr><tr><td align="left"><code>(?(R&#x26;name)yes|no)</code></td><td>条件语句</td></tr><tr><td align="left"><code>(?(?=...)yes|no)</code></td><td>有条件的前瞻</td></tr><tr><td align="left"><code>(?(?&#x3C;=...)yes|no)</code></td><td>有条件的往后看</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="零宽度断言"><a aria-hidden="true" tabindex="-1" href="#零宽度断言"><span class="icon icon-link"></span></a>零宽度断言</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>(?=...)</code></td><td>正先行断言</td></tr><tr><td align="left"><code>(?!...)</code></td><td>负先行断言</td></tr><tr><td align="left"><code>(?&#x3C;=...)</code></td><td>正后发断言</td></tr><tr><td align="left"><code>(?&#x3C;!...)</code></td><td>负后发断言</td></tr></tbody></table>
+<p>零宽度断言 允许您在主模式之前（向后看）或之后（lookahead）匹配一个组，而不会将其包含在结果中。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="标志修饰符"><a aria-hidden="true" tabindex="-1" href="#标志修饰符"><span class="icon icon-link"></span></a>标志/修饰符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>g</code></td><td>全球的</td></tr><tr><td align="left"><code>m</code></td><td>多行</td></tr><tr><td align="left"><code>i</code></td><td>不区分大小写</td></tr><tr><td align="left"><code>x</code></td><td>忽略空格</td></tr><tr><td align="left"><code>s</code></td><td>单线</td></tr><tr><td align="left"><code>u</code></td><td>统一码</td></tr><tr><td align="left"><code>X</code></td><td>扩展</td></tr><tr><td align="left"><code>U</code></td><td>不贪心</td></tr><tr><td align="left"><code>A</code></td><td>锚</td></tr><tr><td align="left"><code>J</code></td><td>重复的组名</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="递归"><a aria-hidden="true" tabindex="-1" href="#递归"><span class="icon icon-link"></span></a>递归</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>(?R)</code></td><td>递归整个模式</td></tr><tr><td align="left"><code>(?1)</code></td><td>递归第一个子模式</td></tr><tr><td align="left"><code>(?+1)</code></td><td>递归第一个相对子模式</td></tr><tr><td align="left"><code>(?&#x26;name)</code></td><td>递归子模式<code>name</code></td></tr><tr><td align="left"><code>(?P=name)</code></td><td>匹配子模式<code>name</code></td></tr><tr><td align="left"><code>(?P>name)</code></td><td>递归子模式<code>name</code></td></tr></tbody></table>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="posix-字符类"><a aria-hidden="true" tabindex="-1" href="#posix-字符类"><span class="icon icon-link"></span></a>POSIX 字符类</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">字符类</th><th>如同</th><th>意义</th></tr></thead><tbody><tr><td align="left"><code>[[:alnum:]]</code></td><td><code>[0-9A-Za-z]</code></td><td>字母和数字</td></tr><tr><td align="left"><code>[[:alpha:]]</code></td><td><code>[A-Za-z]</code></td><td>字母</td></tr><tr><td align="left"><code>[[:ascii:]]</code></td><td><code>[\x00-\x7F]</code></td><td>ASCII 码 0-127</td></tr><tr><td align="left"><code>[[:blank:]]</code></td><td><code>[\t ]</code></td><td>仅空格或制表符</td></tr><tr><td align="left"><code>[[:cntrl:]]</code></td><td><code>[\x00-\x1F\x7F]</code></td><td>控制字符</td></tr><tr><td align="left"><code>[[:digit:]]</code></td><td><code>[0-9]</code></td><td>十进制数字</td></tr><tr><td align="left"><code>[[:graph:]]</code></td><td><code>[[:alnum:][:punct:]]</code></td><td>可见字符（不是空格）</td></tr><tr><td align="left"><code>[[:lower:]]</code></td><td><code>[a-z]</code></td><td>小写字母</td></tr><tr><td align="left"><code>[[:print:]]</code></td><td><code>[ -~] == [ [:graph:]]</code></td><td>可见字符</td></tr><tr><td align="left"><code>[[:punct:]]</code></td><td><code>[!"#$%&#x26;’()*+,-./:;&#x3C;=>?@[]^_`{|}~]</code></td><td>可见标点符号</td></tr><tr><td align="left"><code>[[:space:]]</code></td><td><code>[\t\n\v\f\r ]</code></td><td>空白</td></tr><tr><td align="left"><code>[[:upper:]]</code></td><td><code>[A-Z]</code></td><td>大写字母</td></tr><tr><td align="left"><code>[[:word:]]</code></td><td><code>[0-9A-Za-z_]</code></td><td>单词字符</td></tr><tr><td align="left"><code>[[:xdigit:]]</code></td><td><code>[0-9A-Fa-f]</code></td><td>十六进制数字</td></tr><tr><td align="left"><code>[[:&#x3C;:]]</code></td><td><code>[\b(?=\w)]</code></td><td>词的开头</td></tr><tr><td align="left"><code>[[:>:]]</code></td><td><code>[\b(?&#x3C;=\w)]</code></td><td>词尾</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="控制动词"><a aria-hidden="true" tabindex="-1" href="#控制动词"><span class="icon icon-link"></span></a>控制动词</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>(*ACCEPT)</code></td><td>控制动词</td></tr><tr><td align="left"><code>(*FAIL)</code></td><td>控制动词</td></tr><tr><td align="left"><code>(*MARK:NAME)</code></td><td>控制动词</td></tr><tr><td align="left"><code>(*COMMIT)</code></td><td>控制动词</td></tr><tr><td align="left"><code>(*PRUNE)</code></td><td>控制动词</td></tr><tr><td align="left"><code>(*SKIP)</code></td><td>控制动词</td></tr><tr><td align="left"><code>(*THEN)</code></td><td>控制动词</td></tr><tr><td align="left"><code>(*UTF)</code></td><td>图案修饰符</td></tr><tr><td align="left"><code>(*UTF8)</code></td><td>图案修饰符</td></tr><tr><td align="left"><code>(*UTF16)</code></td><td>图案修饰符</td></tr><tr><td align="left"><code>(*UTF32)</code></td><td>图案修饰符</td></tr><tr><td align="left"><code>(*UCP)</code></td><td>图案修饰符</td></tr><tr><td align="left"><code>(*CR)</code></td><td>换行修饰符</td></tr><tr><td align="left"><code>(*LF)</code></td><td>换行修饰符</td></tr><tr><td align="left"><code>(*CRLF)</code></td><td>换行修饰符</td></tr><tr><td align="left"><code>(*ANYCRLF)</code></td><td>换行修饰符</td></tr><tr><td align="left"><code>(*ANY)</code></td><td>换行修饰符</td></tr><tr><td align="left"><code>\R</code></td><td>换行修饰符</td></tr><tr><td align="left"><code>(*BSR_ANYCRLF)</code></td><td>换行修饰符</td></tr><tr><td align="left"><code>(*BSR_UNICODE)</code></td><td>换行修饰符</td></tr><tr><td align="left"><code>(*LIMIT_MATCH=x)</code></td><td>正则表达式引擎修饰符</td></tr><tr><td align="left"><code>(*LIMIT_RECURSION=d)</code></td><td>正则表达式引擎修饰符</td></tr><tr><td align="left"><code>(*NO_AUTO_POSSESS)</code></td><td>正则表达式引擎修饰符</td></tr><tr><td align="left"><code>(*NO_START_OPT)</code></td><td>正则表达式引擎修饰符</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="正则表达式示例"><a aria-hidden="true" tabindex="-1" href="#正则表达式示例"><span class="icon icon-link"></span></a>正则表达式示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符串"><a aria-hidden="true" tabindex="-1" href="#字符串"><span class="icon icon-link"></span></a>字符串</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>ring        </code></td><td>匹配 <yel>ring</yel> sp<yel>ring</yel>board 等。</td></tr><tr><td align="left"><code>.           </code></td><td>匹配 <yel>a</yel>、<yel>9</yel>、<yel>+</yel> 等。</td></tr><tr><td align="left"><code>h.o         </code></td><td>匹配 <yel>hoo</yel>、<yel>h2o</yel>、<yel>h/o</yel> 等。</td></tr><tr><td align="left"><code>ring\?      </code></td><td>匹配 <yel>ring?</yel></td></tr><tr><td align="left"><code>\(quiet\)   </code></td><td>匹配<yel>（安静）</yel></td></tr><tr><td align="left"><code>c:\\windows </code></td><td>匹配 <yel>c:\windows</yel></td></tr></tbody></table>
+<p>使用 <code>\</code> 搜索这些特殊字符：<br> <code>[ \ ^ $ . | ? * + ( ) { }</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="备择方案"><a aria-hidden="true" tabindex="-1" href="#备择方案"><span class="icon icon-link"></span></a>备择方案</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>cat|dog     </code></td><td>匹配 <yel>cat</yel> 或 <yel>dog</yel></td></tr><tr><td align="left"><code>id|identity </code></td><td>匹配 <yel>id</yel> 或 <yel>id</yel>entity</td></tr><tr><td align="left"><code>identity|id </code></td><td>匹配 <yel>id</yel> 或 <yel>identity</yel></td></tr></tbody></table>
+<p>当替代品重叠时，命令从长到短</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符类-1"><a aria-hidden="true" tabindex="-1" href="#字符类-1"><span class="icon icon-link"></span></a>字符类</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>[aeiou]</code></td><td>匹配任何元音</td></tr><tr><td align="left"><code>[^aeiou]</code></td><td>匹配一个非元音</td></tr><tr><td align="left"><code>r[iau]ng</code></td><td>匹配<yel>ring</yel>、w<yel>rang</yel>le、sp<yel>rung</yel>等。</td></tr><tr><td align="left"><code>gr[ae]y</code></td><td>匹配 <yel>gray</yel> 或 <yel>grey</yel></td></tr><tr><td align="left"><code>[a-zA-Z0-9]</code></td><td>匹配任何字母或数字</td></tr></tbody></table>
+<p>在 <code>[ ]</code> 中总是转义 <code>. \ ]</code> 有时是 <code>^ - .</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="速记类"><a aria-hidden="true" tabindex="-1" href="#速记类"><span class="icon icon-link"></span></a>速记类</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>\w            </code></td><td>“单词”字符 <br> <em>(字母、数字或下划线)</em></td></tr><tr><td align="left"><code>\d            </code></td><td>数字</td></tr><tr><td align="left"><code>\s            </code></td><td>空格 <br> <em>(空格、制表符、vtab、换行符)</em></td></tr><tr><td align="left"><code>\W, \D, or \S </code></td><td>不是单词、数字或空格</td></tr><tr><td align="left"><code>[\D\S]        </code></td><td>表示不是数字或空格，两者都匹配</td></tr><tr><td align="left"><code>[^\d\s]       </code></td><td>禁止数字和空格</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="出现次数"><a aria-hidden="true" tabindex="-1" href="#出现次数"><span class="icon icon-link"></span></a>出现次数</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>colou?r</code></td><td>匹配 <yel>color</yel> 或 <yel>color</yel></td></tr><tr><td align="left"><code>[BW]ill[ieamy's]*</code></td><td>匹配 <yel>Bill</yel>、<yel>Willy</yel>、<yel>William's</yel> 等。</td></tr><tr><td align="left"><code>[a-zA-Z]+</code></td><td>匹配 1 个或多个字母</td></tr><tr><td align="left"><code>\d{3}-\d{2}-\d{4}</code></td><td>匹配 SSN</td></tr><tr><td align="left"><code>[a-z]\w{1,7}</code></td><td>匹配 UW NetID</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="贪婪与懒惰"><a aria-hidden="true" tabindex="-1" href="#贪婪与懒惰"><span class="icon icon-link"></span></a>贪婪与懒惰</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>*  + {n,}</code><br><em>greedy</em></td><td>尽可能匹配</td></tr><tr><td align="left"><code>&#x3C;.+>   </code></td><td>在 <yel>&#x3C;b>bold&#x3C;/b></yel> 中找到 1 个大匹配项</td></tr><tr><td align="left"><code>*?  +? {n,}?</code><br><em>lazy</em></td><td>尽可能少匹配</td></tr><tr><td align="left"><code>&#x3C;.+?></code></td><td>在 &#x3C;<yel>b</yel>>bold&#x3C;<yel>/b</yel>> 中找到 2 个匹配项</td></tr></tbody></table>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="范围"><a aria-hidden="true" tabindex="-1" href="#范围"><span class="icon icon-link"></span></a>范围</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>\b              </code></td><td>“单词”边缘（非“单词”字符旁边）</td></tr><tr><td align="left"><code>\bring          </code></td><td>单词以“ring”开头，例如 <yel>ringtone</yel></td></tr><tr><td align="left"><code>ring\b          </code></td><td>单词以“ring”结尾，例如 <yel>spring</yel></td></tr><tr><td align="left"><code>\b9\b           </code></td><td>匹配单个数字 <yel>9</yel>，而不是 19、91、99 等。</td></tr><tr><td align="left"><code>\b[a-zA-Z]{6}\b </code></td><td>匹配 6 个字母的单词</td></tr><tr><td align="left"><code>\B              </code></td><td>不是字边</td></tr><tr><td align="left"><code>\Bring\B        </code></td><td>匹配 <yel>springs</yel> 和 <yel>wringer</yel></td></tr><tr><td align="left"><code>^\d*$           </code></td><td>整个字符串必须是数字</td></tr><tr><td align="left"><code>^[a-zA-Z]{4,20}$</code></td><td>字符串必须有 4-20 个字母</td></tr><tr><td align="left"><code>^[A-Z]          </code></td><td>字符串必须以大写字母开头</td></tr><tr><td align="left"><code>[\.!?"')]$      </code></td><td>字符串必须以终端标点结尾</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="修饰"><a aria-hidden="true" tabindex="-1" href="#修饰"><span class="icon icon-link"></span></a>修饰</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>(?i)</code>[a-z]*<code>(?-i)</code></td><td>忽略大小写开/关</td></tr><tr><td align="left"><code>(?s)</code>.*<code>(?-s)</code></td><td>匹配多行（导致 . 匹配换行符）</td></tr><tr><td align="left"><code>(?m)</code>^.*;$<code>(?-m)</code></td><td><yel>^</yel> &#x26; <yel>$</yel> 匹配行不是整个字符串</td></tr><tr><td align="left"><code>(?x)</code></td><td>#free-spacing 模式，此 EOL 注释被忽略</td></tr><tr><td align="left"><code>(?-x)</code></td><td>自由空间模式关闭</td></tr><tr><td align="left">/regex/<code>ismx</code></td><td>修改整个字符串的模式</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="组"><a aria-hidden="true" tabindex="-1" href="#组"><span class="icon icon-link"></span></a>组</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>(in|out)put  </code></td><td>匹配 <yel>input</yel> 或 <yel>output</yel></td></tr><tr><td align="left"><code>\d{5}(-\d{4})?</code></td><td>美国邮政编码 <em>(“+ 4”可选)</em></td></tr></tbody></table>
+<p>如果组后匹配失败，解析器会尝试每个替代方案。
+<br>
+可能导致灾难性的回溯。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="反向引用"><a aria-hidden="true" tabindex="-1" href="#反向引用"><span class="icon icon-link"></span></a>反向引用</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>(to) (be) or not \1 \2</code></td><td>匹配 <yel>to be or not to be</yel></td></tr><tr><td align="left"><code>([^\s])\1{2}</code></td><td>匹配非空格，然后再相同两次   <yel>aaa</yel>, <yel>...</yel></td></tr><tr><td align="left"><code>\b(\w+)\s+\1\b</code></td><td>匹配双字</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="非捕获组"><a aria-hidden="true" tabindex="-1" href="#非捕获组"><span class="icon icon-link"></span></a>非捕获组</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>on(?:click|load)</code></td><td>快于：<br><code>on(click|load)</code></td></tr></tbody></table>
+<p>尽可能使用非捕获或原子组</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="原子组"><a aria-hidden="true" tabindex="-1" href="#原子组"><span class="icon icon-link"></span></a>原子组</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>(?>red|green|blue)</code></td><td>比非捕获更快</td></tr><tr><td align="left"><code>(?>id|identity)\b</code></td><td>匹配 <yel>id</yel>，但不匹配 <yel>id</yel>entity</td></tr></tbody></table>
+<p>"id" 匹配，但 <code>\b</code> 在原子组之后失败，
+解析器不会回溯到组以重试“身份”
+<br>
+<br>
+如果替代品重叠，请从长到短命令。</p>
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="零宽度断言-lookaround前后预查"><a aria-hidden="true" tabindex="-1" href="#零宽度断言-lookaround前后预查"><span class="icon icon-link"></span></a>零宽度断言 Lookaround(前后预查)</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>(?= )</code></td><td>向前看，如果你能提前找到</td></tr><tr><td align="left"><code>(?! )</code></td><td>向前看，如果你找不到前面</td></tr><tr><td align="left"><code>(?&#x3C;= )</code></td><td>向后看，如果你能找到后面</td></tr><tr><td align="left"><code>(?&#x3C;! )</code></td><td>向后看，如果你找不到后面</td></tr><tr><td align="left"><code>\b\w+?(?=ing\b)</code></td><td>匹配 <yel>warbl</yel>ing, <yel>str</yel>ing, <yel>fish</yel>ing, ...</td></tr><tr><td align="left"><code>\b(?!\w+ing\b)\w+\b</code></td><td>不以“ing”结尾的单词</td></tr><tr><td align="left"><code>(?&#x3C;=\bpre).*?\b </code></td><td>匹配 pre<yel>tend</yel>、pre<yel>sent</yel>、pre<yel>fix</yel>、...</td></tr><tr><td align="left"><code>\b\w{3}(?&#x3C;!pre)\w*?\b</code></td><td>不以“pre”开头的词</td></tr><tr><td align="left"><code>\b\w+(?&#x3C;!ing)\b</code></td><td>匹配不以“ing”结尾的单词</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="if-then-else"><a aria-hidden="true" tabindex="-1" href="#if-then-else"><span class="icon icon-link"></span></a>If-then-else</h3><div class="wrap-body">
+<p>匹配 <code>Mr.</code> 或 <code>Ms.</code> 如果单词 <code>her</code> 稍后在字符串中</p>
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">M(?(?=.*?\bher\b)s|r)\.
+</span></code></pre>
+<p>需要环顾 IF 条件</p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="python-中的正则表达式"><a aria-hidden="true" tabindex="-1" href="#python-中的正则表达式"><span class="icon icon-link"></span></a>Python 中的正则表达式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="入门-1"><a aria-hidden="true" tabindex="-1" href="#入门-1"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
+<p>导入正则表达式模块</p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">import</span> re
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2 row-span-3"><div class="wrap-header h3wrap"><h3 id="实例"><a aria-hidden="true" tabindex="-1" href="#实例"><span class="icon icon-link"></span></a>实例</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="research"><a aria-hidden="true" tabindex="-1" href="#research"><span class="icon icon-link"></span></a>re.search()</h4><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line line-number" line="1"><span class="token operator">>></span><span class="token operator">></span> sentence <span class="token operator">=</span> <span class="token string">'This is a sample string'</span>
+</span><span class="code-line line-number" line="2"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">bool</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'this'</span><span class="token punctuation">,</span> sentence<span class="token punctuation">,</span> flags<span class="token operator">=</span>re<span class="token punctuation">.</span>I<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="3"><span class="token boolean">True</span>
+</span><span class="code-line line-number" line="4"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">bool</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'xyz'</span><span class="token punctuation">,</span> sentence<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="5"><span class="token boolean">False</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="refindall"><a aria-hidden="true" tabindex="-1" href="#refindall"><span class="icon icon-link"></span></a>re.findall()</h4><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line line-number" line="1"><span class="token operator">>></span><span class="token operator">></span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r'\bs?pare?\b'</span><span class="token punctuation">,</span> <span class="token string">'par spar apparent spare part pare'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2"><span class="token punctuation">[</span><span class="token string">'par'</span><span class="token punctuation">,</span> <span class="token string">'spar'</span><span class="token punctuation">,</span> <span class="token string">'spare'</span><span class="token punctuation">,</span> <span class="token string">'pare'</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="3"><span class="token operator">>></span><span class="token operator">></span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r'\b0*[1-9]\d{2,}\b'</span><span class="token punctuation">,</span> <span class="token string">'0501 035 154 12 26 98234'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="4"><span class="token punctuation">[</span><span class="token string">'0501'</span><span class="token punctuation">,</span> <span class="token string">'154'</span><span class="token punctuation">,</span> <span class="token string">'98234'</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="refinditer"><a aria-hidden="true" tabindex="-1" href="#refinditer"><span class="icon icon-link"></span></a>re.finditer()</h4><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line line-number" line="1"><span class="token operator">>></span><span class="token operator">></span> m_iter <span class="token operator">=</span> re<span class="token punctuation">.</span>finditer<span class="token punctuation">(</span><span class="token string">r'[0-9]+'</span><span class="token punctuation">,</span> <span class="token string">'45 349 651 593 4 204'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">[</span>m<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token keyword">for</span> m <span class="token keyword">in</span> m_iter <span class="token keyword">if</span> <span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&#x3C;</span> <span class="token number">350</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="3"><span class="token punctuation">[</span><span class="token string">'45'</span><span class="token punctuation">,</span> <span class="token string">'349'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'204'</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="resplit"><a aria-hidden="true" tabindex="-1" href="#resplit"><span class="icon icon-link"></span></a>re.split()</h4><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line line-number" line="1"><span class="token operator">>></span><span class="token operator">></span> re<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">r'\d+'</span><span class="token punctuation">,</span> <span class="token string">'Sample123string42with777numbers'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2"><span class="token punctuation">[</span><span class="token string">'Sample'</span><span class="token punctuation">,</span> <span class="token string">'string'</span><span class="token punctuation">,</span> <span class="token string">'with'</span><span class="token punctuation">,</span> <span class="token string">'numbers'</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="resub"><a aria-hidden="true" tabindex="-1" href="#resub"><span class="icon icon-link"></span></a>re.sub()</h4><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line line-number" line="1"><span class="token operator">>></span><span class="token operator">></span> ip_lines <span class="token operator">=</span> <span class="token string">"catapults\nconcatenate\ncat"</span>
+</span><span class="code-line line-number" line="2"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">r'^'</span><span class="token punctuation">,</span> <span class="token string">r'* '</span><span class="token punctuation">,</span> ip_lines<span class="token punctuation">,</span> flags<span class="token operator">=</span>re<span class="token punctuation">.</span>M<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="3"><span class="token operator">*</span> catapults
+</span><span class="code-line line-number" line="4"><span class="token operator">*</span> concatenate
+</span><span class="code-line line-number" line="5"><span class="token operator">*</span> cat
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="recompile"><a aria-hidden="true" tabindex="-1" href="#recompile"><span class="icon icon-link"></span></a>re.compile()</h4><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line line-number" line="1"><span class="token operator">>></span><span class="token operator">></span> pet <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">r'dog'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>pet<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="3"><span class="token operator">&#x3C;</span><span class="token keyword">class</span> <span class="token string">'_sre.SRE_Pattern'</span><span class="token operator">></span>
+</span><span class="code-line line-number" line="4"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">bool</span><span class="token punctuation">(</span>pet<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'They bought a dog'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="5"><span class="token boolean">True</span>
+</span><span class="code-line line-number" line="6"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">bool</span><span class="token punctuation">(</span>pet<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'A cat crossed their path'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="7"><span class="token boolean">False</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">函数</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>re.findall</code></td><td>返回包含所有匹配项的列表</td></tr><tr><td align="left"><code>re.finditer</code></td><td>返回一个可迭代的匹配对象（每个匹配一个）</td></tr><tr><td align="left"><code>re.search</code></td><td>如果字符串中的任何位置存在匹配项，则返回 Match 对象</td></tr><tr><td align="left"><code>re.split</code></td><td>返回一个列表，其中字符串在每次匹配时被拆分</td></tr><tr><td align="left"><code>re.sub</code></td><td>用字符串替换一个或多个匹配项</td></tr><tr><td align="left"><code>re.compile</code></td><td>编译正则表达式模式供以后使用</td></tr><tr><td align="left"><code>re.escape</code></td><td>返回所有非字母数字反斜杠的字符串</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="flags-标志"><a aria-hidden="true" tabindex="-1" href="#flags-标志"><span class="icon icon-link"></span></a>Flags 标志</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>re.I</code></td><td><code>re.IGNORECASE</code></td><td>忽略大小写</td></tr><tr><td align="left"><code>re.M</code></td><td><code>re.MULTILINE</code></td><td>多行</td></tr><tr><td align="left"><code>re.L</code></td><td><code>re.LOCALE</code></td><td>使 <code>\w</code>、<code>\b</code>、<code>\s</code> <em>locale 依赖</em></td></tr><tr><td align="left"><code>re.S</code></td><td><code>re.DOTALL</code></td><td>点匹配所有 <em>（包括换行符）</em></td></tr><tr><td align="left"><code>re.U</code></td><td><code>re.UNICODE</code></td><td>使 <code>\w</code>、<code>\b</code>、<code>\d</code>、<code>\s</code> <em>unicode 依赖</em></td></tr><tr><td align="left"><code>re.X</code></td><td><code>re.VERBOSE</code></td><td>可读风格</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="javascript-中的正则表达式"><a aria-hidden="true" tabindex="-1" href="#javascript-中的正则表达式"><span class="icon icon-link"></span></a>JavaScript 中的正则表达式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="test"><a aria-hidden="true" tabindex="-1" href="#test"><span class="icon icon-link"></span></a>test()</h3><div class="wrap-body">
+<pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">let</span> textA <span class="token operator">=</span> <span class="token string">'I like APPles very much'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token keyword">let</span> textB <span class="token operator">=</span> <span class="token string">'I like APPles'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token keyword">let</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">apples<span class="token anchor function">$</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
+</span><span class="code-line line-number" line="4"> 
+</span><span class="code-line line-number" line="5"><span class="token comment">// Output: false</span>
+</span><span class="code-line line-number" line="6"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>regex<span class="token punctuation">.</span><span class="token method function property-access">test</span><span class="token punctuation">(</span>textA<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7"> 
+</span><span class="code-line line-number" line="8"><span class="token comment">// Output: true</span>
+</span><span class="code-line line-number" line="9"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>regex<span class="token punctuation">.</span><span class="token method function property-access">test</span><span class="token punctuation">(</span>textB<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="search"><a aria-hidden="true" tabindex="-1" href="#search"><span class="icon icon-link"></span></a>search()</h3><div class="wrap-body">
+<pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token string">'I like APPles very much'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token keyword">let</span> regexA <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">apples</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token keyword">let</span> regexB <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">apples</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4"> 
+</span><span class="code-line line-number" line="5"><span class="token comment">// Output: -1</span>
+</span><span class="code-line line-number" line="6"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token method function property-access">search</span><span class="token punctuation">(</span>regexA<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7"> 
+</span><span class="code-line line-number" line="8"><span class="token comment">// Output: 7</span>
+</span><span class="code-line line-number" line="9"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token method function property-access">search</span><span class="token punctuation">(</span>regexB<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="exec"><a aria-hidden="true" tabindex="-1" href="#exec"><span class="icon icon-link"></span></a>exec()</h3><div class="wrap-body">
+<pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token string">'Do you like apples?'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token keyword">let</span> regex<span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">apples</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"> 
+</span><span class="code-line line-number" line="4"><span class="token comment">// Output: apples</span>
+</span><span class="code-line line-number" line="5"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>regex<span class="token punctuation">.</span><span class="token method function property-access">exec</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6"> 
+</span><span class="code-line line-number" line="7"><span class="token comment">// Output: Do you like apples?</span>
+</span><span class="code-line line-number" line="8"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>regex<span class="token punctuation">.</span><span class="token method function property-access">exec</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">input</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="match"><a aria-hidden="true" tabindex="-1" href="#match"><span class="icon icon-link"></span></a>match()</h3><div class="wrap-body">
+<pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token string">'Here are apples and apPleS'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token keyword">let</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">apples</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"> 
+</span><span class="code-line line-number" line="4"><span class="token comment">// Output: [ "apples", "apPleS" ]</span>
+</span><span class="code-line line-number" line="5"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token method function property-access">match</span><span class="token punctuation">(</span>regex<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="split"><a aria-hidden="true" tabindex="-1" href="#split"><span class="icon icon-link"></span></a>split()</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token string">'This 593 string will be brok294en at places where d1gits are.'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token keyword">let</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token char-set class-name">\d</span><span class="token quantifier number">+</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
+</span><span class="code-line line-number" line="3"> 
+</span><span class="code-line line-number" line="4"><span class="token comment">// Output: [ "This ", " string will be brok", "en at places where d", "gits are." ] </span>
+</span><span class="code-line line-number" line="5"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token method function property-access">split</span><span class="token punctuation">(</span>regex<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="matchall"><a aria-hidden="true" tabindex="-1" href="#matchall"><span class="icon icon-link"></span></a>matchAll()</h3><div class="wrap-body">
+<pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">let</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">t<span class="token group punctuation">(</span>e<span class="token group punctuation">)</span><span class="token group punctuation">(</span>st<span class="token group punctuation">(</span><span class="token char-set class-name">\d</span><span class="token quantifier number">?</span><span class="token group punctuation">)</span><span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token string">'test1test2'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token keyword">let</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token spread operator">...</span>text<span class="token punctuation">.</span><span class="token method function property-access">matchAll</span><span class="token punctuation">(</span>regex<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4"><span class="token comment">// Output: ["test1", "e", "st1", "1"]</span>
+</span><span class="code-line line-number" line="5"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6"><span class="token comment">// Output: ["test2", "e", "st2", "2"]</span>
+</span><span class="code-line line-number" line="7"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>array<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="replace"><a aria-hidden="true" tabindex="-1" href="#replace"><span class="icon icon-link"></span></a>replace()</h3><div class="wrap-body">
+<pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token string">'Do you like aPPles?'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token keyword">let</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">apples</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
+</span><span class="code-line line-number" line="3"> 
+</span><span class="code-line line-number" line="4"><span class="token comment">// Output: Do you like mangoes?</span>
+</span><span class="code-line line-number" line="5"><span class="token keyword">let</span> result <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span> <span class="token string">'mangoes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="replaceall"><a aria-hidden="true" tabindex="-1" href="#replaceall"><span class="icon icon-link"></span></a>replaceAll()</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">let</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">apples</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token string">'Here are apples and apPleS'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token comment">// Output: Here are mangoes and mangoes</span>
+</span><span class="code-line line-number" line="4"><span class="token keyword">let</span> result <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token method function property-access">replaceAll</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span> <span class="token string">"mangoes"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="5"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="php中的正则表达式"><a aria-hidden="true" tabindex="-1" href="#php中的正则表达式"><span class="icon icon-link"></span></a>PHP中的正则表达式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="函数-1"><a aria-hidden="true" tabindex="-1" href="#函数-1"><span class="icon icon-link"></span></a>函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>preg_match()</code></td><td>执行正则表达式匹配</td></tr><tr><td align="left"><code>preg_match_all()</code></td><td>执行全局正则表达式匹配</td></tr><tr><td align="left"><code>preg_replace_callback()</code></td><td>使用回调执行正则表达式搜索和替换</td></tr><tr><td align="left"><code>preg_replace()</code></td><td>执行正则表达式搜索和替换</td></tr><tr><td align="left"><code>preg_split()</code></td><td>按正则表达式模式拆分字符串</td></tr><tr><td align="left"><code>preg_grep()</code></td><td>返回与模式匹配的数组条目</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="preg_replace"><a aria-hidden="true" tabindex="-1" href="#preg_replace"><span class="icon icon-link"></span></a>preg_replace</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-php code-highlight"><span class="code-line line-number" line="1"><span class="token variable">$str</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"Visit Microsoft!"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token variable">$regex</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"/microsoft/i"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token comment">// Output: Visit QuickRef!</span>
+</span><span class="code-line line-number" line="4"><span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token variable">$regex</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"QuickRef"</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="preg_match"><a aria-hidden="true" tabindex="-1" href="#preg_match"><span class="icon icon-link"></span></a>preg_match</h3><div class="wrap-body">
+<pre class="language-php"><code class="language-php code-highlight"><span class="code-line line-number" line="1"><span class="token variable">$str</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"Visit QuickRef"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token variable">$regex</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"#quickref#i"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token comment">// Output: 1</span>
+</span><span class="code-line line-number" line="4"><span class="token keyword">echo</span> <span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token variable">$regex</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="preg_matchall"><a aria-hidden="true" tabindex="-1" href="#preg_matchall"><span class="icon icon-link"></span></a>preg_matchall</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-php"><code class="language-php code-highlight"><span class="code-line line-number" line="1"><span class="token variable">$regex</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"/[a-zA-Z]+ (\d+)/"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token variable">$input_str</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"June 24, August 13, and December 30"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match_all</span><span class="token punctuation">(</span><span class="token variable">$regex</span><span class="token punctuation">,</span> <span class="token variable">$input_str</span><span class="token punctuation">,</span> <span class="token variable">$matches_out</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">    <span class="token comment">// Output: 2</span>
+</span><span class="code-line line-number" line="5">    <span class="token keyword">echo</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$matches_out</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6">    <span class="token comment">// Output: 3</span>
+</span><span class="code-line line-number" line="7">    <span class="token keyword">echo</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$matches_out</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="8">    <span class="token comment">// Output: Array("June 24", "August 13", "December 30")</span>
+</span><span class="code-line line-number" line="9">    <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$matches_out</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="10">    <span class="token comment">// Output: Array("24", "13", "30")</span>
+</span><span class="code-line line-number" line="11">    <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$matches_out</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="12"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="preg_grep"><a aria-hidden="true" tabindex="-1" href="#preg_grep"><span class="icon icon-link"></span></a>preg_grep</h3><div class="wrap-body">
+<pre class="language-php"><code class="language-php code-highlight"><span class="code-line line-number" line="1"><span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">"Jane"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"jane"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"Joan"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"JANE"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token variable">$regex</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"/Jane/"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token comment">// Output: Jane</span>
+</span><span class="code-line line-number" line="4"><span class="token keyword">echo</span> <span class="token function">preg_grep</span><span class="token punctuation">(</span><span class="token variable">$regex</span><span class="token punctuation">,</span> <span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="preg_split"><a aria-hidden="true" tabindex="-1" href="#preg_split"><span class="icon icon-link"></span></a>preg_split</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-php"><code class="language-php code-highlight"><span class="code-line line-number" line="1"><span class="token variable">$str</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"Jane\tKate\nLucy Marion"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token variable">$regex</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"@\s@"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token comment">// Output: Array("Jane", "Kate", "Lucy", "Marion")</span>
+</span><span class="code-line line-number" line="4"><span class="token function">print_r</span><span class="token punctuation">(</span><span class="token function">preg_split</span><span class="token punctuation">(</span><span class="token variable">$regex</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="java-中的正则表达式"><a aria-hidden="true" tabindex="-1" href="#java-中的正则表达式"><span class="icon icon-link"></span></a>Java 中的正则表达式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="风格"><a aria-hidden="true" tabindex="-1" href="#风格"><span class="icon icon-link"></span></a>风格</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="第一种方式"><a aria-hidden="true" tabindex="-1" href="#第一种方式"><span class="icon icon-link"></span></a>第一种方式</h4><div class="wrap-body">
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line line-number" line="1"><span class="token class-name">Pattern</span> p <span class="token operator">=</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span><span class="token string">".s"</span><span class="token punctuation">,</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token constant">CASE_INSENSITIVE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token class-name">Matcher</span> m <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span><span class="token string">"aS"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+</span><span class="code-line line-number" line="3"><span class="token keyword">boolean</span> s1 <span class="token operator">=</span> m<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+</span><span class="code-line line-number" line="4"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Outputs: true</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="第二种方式"><a aria-hidden="true" tabindex="-1" href="#第二种方式"><span class="icon icon-link"></span></a>第二种方式</h4><div class="wrap-body">
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">boolean</span> s2 <span class="token operator">=</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span><span class="token string">"[0-9]+"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span><span class="token string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+</span><span class="code-line line-number" line="2"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Outputs: true</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="第三种方式"><a aria-hidden="true" tabindex="-1" href="#第三种方式"><span class="icon icon-link"></span></a>第三种方式</h4><div class="wrap-body">
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">boolean</span> s3 <span class="token operator">=</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token string">".s"</span><span class="token punctuation">,</span> <span class="token string">"XXXX"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+</span><span class="code-line line-number" line="2"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s3<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Outputs: false</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="模式字段"><a aria-hidden="true" tabindex="-1" href="#模式字段"><span class="icon icon-link"></span></a>模式字段</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>CANON_EQ</code></td><td>规范等价</td></tr><tr><td align="left"><code>CASE_INSENSITIVE</code></td><td>不区分大小写的匹配</td></tr><tr><td align="left"><code>COMMENTS</code></td><td>允许空格和注释</td></tr><tr><td align="left"><code>DOTALL</code></td><td>圆点模式</td></tr><tr><td align="left"><code>MULTILINE</code></td><td>多行模式</td></tr><tr><td align="left"><code>UNICODE_CASE</code></td><td>Unicode 感知大小写折叠</td></tr><tr><td align="left"><code>UNIX_LINES</code></td><td>Unix 行模式</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="方法"><a aria-hidden="true" tabindex="-1" href="#方法"><span class="icon icon-link"></span></a>方法</h3><div class="wrap-body">
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="pattern"><a aria-hidden="true" tabindex="-1" href="#pattern"><span class="icon icon-link"></span></a>Pattern</h4><div class="wrap-body">
+<ul>
+<li>模式编译 compile(字符串正则表达式 [,int flags])</li>
+<li>布尔匹配 matches([字符串正则表达式,] CharSequence 输入)</li>
+<li>String[] 拆分 split(字符串正则表达式 [,int 限制])</li>
+<li>字符串引用 quote(字符串 s)</li>
+</ul>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="匹配器"><a aria-hidden="true" tabindex="-1" href="#匹配器"><span class="icon icon-link"></span></a>匹配器</h4><div class="wrap-body">
+<ul>
+<li>int start([int group | 字符串名称])</li>
+<li>int end([int group | 字符串名称])</li>
+<li>布尔 find([int start])</li>
+<li>字符 group([int 组 | 字符串名称])</li>
+<li>匹配器重置 reset()</li>
+</ul>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="string"><a aria-hidden="true" tabindex="-1" href="#string"><span class="icon icon-link"></span></a>String</h4><div class="wrap-body">
+<ul>
+<li>boolean matches(String regex)</li>
+<li>String replaceAll(String regex, 字符串替换)</li>
+<li>String[] split(String regex[, int limit])</li>
+</ul>
+<p>还有更多方法...</p>
+</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="例子"><a aria-hidden="true" tabindex="-1" href="#例子"><span class="icon icon-link"></span></a>例子</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>替换句子：</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line line-number" line="1"><span class="token class-name">String</span> regex <span class="token operator">=</span> <span class="token string">"[A-Z\n]{5}$"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token class-name">String</span> str <span class="token operator">=</span> <span class="token string">"I like APP\nLE"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token class-name">Pattern</span> p <span class="token operator">=</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token constant">MULTILINE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4"><span class="token class-name">Matcher</span> m <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="5"><span class="token comment">// Outputs: I like Apple!</span>
+</span><span class="code-line line-number" line="6"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"pple!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>所有匹配的数组：</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line line-number" line="1"><span class="token class-name">String</span> str <span class="token operator">=</span> <span class="token string">"She sells seashells by the Seashore"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token class-name">String</span> regex <span class="token operator">=</span> <span class="token string">"\\w*se\\w*"</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token class-name">Pattern</span> p <span class="token operator">=</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token constant">CASE_INSENSITIVE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4"><span class="token class-name">Matcher</span> m <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="5"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> matches <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6"><span class="token keyword">while</span> <span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="7">    matches<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="8"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="9"><span class="token comment">// Outputs: [sells, seashells, Seashore]</span>
+</span><span class="code-line line-number" line="10"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>matches<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="mysql中的正则表达式"><a aria-hidden="true" tabindex="-1" href="#mysql中的正则表达式"><span class="icon icon-link"></span></a>MySQL中的正则表达式</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数-2"><a aria-hidden="true" tabindex="-1" href="#函数-2"><span class="icon icon-link"></span></a>函数</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">函数名称</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>REGEXP          </code></td><td>字符串是否匹配正则表达式</td></tr><tr><td align="left"><code>REGEXP_INSTR()  </code></td><td>匹配正则表达式的子字符串的起始索引 <br><em>（注意：仅限 MySQL 8.0+）</em></td></tr><tr><td align="left"><code>REGEXP_LIKE()   </code></td><td>字符串是否匹配正则表达式 <br><em>(注意：仅 MySQL 8.0+)</em></td></tr><tr><td align="left"><code>REGEXP_REPLACE()</code></td><td>替换匹配正则表达式的子字符串 <br><em>（注意：仅限 MySQL 8.0+）</em></td></tr><tr><td align="left"><code>REGEXP_SUBSTR() </code></td><td>返回匹配正则表达式的子字符串 <br><em>(注意：仅 MySQL 8.0+)</em></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="regexp"><a aria-hidden="true" tabindex="-1" href="#regexp"><span class="icon icon-link"></span></a>REGEXP</h3><div class="wrap-body">
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line line-number" line="1">expr <span class="token operator">REGEXP</span> pat 
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="examples"><a aria-hidden="true" tabindex="-1" href="#examples"><span class="icon icon-link"></span></a>Examples</h4><div class="wrap-body">
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line line-number" line="1">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> <span class="token string">'abc'</span> <span class="token operator">REGEXP</span> <span class="token string">'^[a-d]'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token number">1</span>
+</span><span class="code-line line-number" line="3">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> name <span class="token keyword">FROM</span> cities <span class="token keyword">WHERE</span> name <span class="token operator">REGEXP</span> <span class="token string">'^A'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> name <span class="token keyword">FROM</span> cities <span class="token keyword">WHERE</span> name <span class="token operator">NOT</span> <span class="token operator">REGEXP</span> <span class="token string">'^A'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="5">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> name <span class="token keyword">FROM</span> cities <span class="token keyword">WHERE</span> name <span class="token operator">REGEXP</span> <span class="token string">'A|B|R'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> <span class="token string">'a'</span> <span class="token operator">REGEXP</span> <span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'a'</span> <span class="token operator">REGEXP</span> <span class="token keyword">BINARY</span> <span class="token string">'A'</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7"><span class="token number">1</span>   <span class="token number">0</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="regexp_replace"><a aria-hidden="true" tabindex="-1" href="#regexp_replace"><span class="icon icon-link"></span></a>REGEXP_REPLACE</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">REGEXP_REPLACE(expr, pat, repl[, pos[, occurrence[, match_type]]])
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="例子-1"><a aria-hidden="true" tabindex="-1" href="#例子-1"><span class="icon icon-link"></span></a>例子</h4><div class="wrap-body">
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line line-number" line="1">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> REGEXP_REPLACE<span class="token punctuation">(</span><span class="token string">'a b c'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'X'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2">a X c
+</span><span class="code-line line-number" line="3">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> REGEXP_REPLACE<span class="token punctuation">(</span><span class="token string">'abc ghi'</span><span class="token punctuation">,</span> <span class="token string">'[a-z]+'</span><span class="token punctuation">,</span> <span class="token string">'X'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4">abc X
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="regexp_substr"><a aria-hidden="true" tabindex="-1" href="#regexp_substr"><span class="icon icon-link"></span></a>REGEXP_SUBSTR</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">REGEXP_SUBSTR(expr, pat[, pos[, occurrence[, match_type]]])
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="例子-2"><a aria-hidden="true" tabindex="-1" href="#例子-2"><span class="icon icon-link"></span></a>例子</h4><div class="wrap-body">
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line line-number" line="1">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> REGEXP_SUBSTR<span class="token punctuation">(</span><span class="token string">'abc def ghi'</span><span class="token punctuation">,</span> <span class="token string">'[a-z]+'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2">abc
+</span><span class="code-line line-number" line="3">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> REGEXP_SUBSTR<span class="token punctuation">(</span><span class="token string">'abc def ghi'</span><span class="token punctuation">,</span> <span class="token string">'[a-z]+'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4">ghi
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="regexp_like"><a aria-hidden="true" tabindex="-1" href="#regexp_like"><span class="icon icon-link"></span></a>REGEXP_LIKE</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">REGEXP_LIKE(expr, pat[, match_type])
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="例子-3"><a aria-hidden="true" tabindex="-1" href="#例子-3"><span class="icon icon-link"></span></a>例子</h4><div class="wrap-body">
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line line-number" line="1">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_like<span class="token punctuation">(</span><span class="token string">'aba'</span><span class="token punctuation">,</span> <span class="token string">'b+'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2"><span class="token number">1</span>
+</span><span class="code-line line-number" line="3">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_like<span class="token punctuation">(</span><span class="token string">'aba'</span><span class="token punctuation">,</span> <span class="token string">'b{2}'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="4"><span class="token number">0</span>
+</span><span class="code-line line-number" line="5">mysql<span class="token operator">></span> <span class="token comment"># i: case-insensitive</span>
+</span><span class="code-line line-number" line="6">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_like<span class="token punctuation">(</span><span class="token string">'Abba'</span><span class="token punctuation">,</span> <span class="token string">'ABBA'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7"><span class="token number">1</span>
+</span><span class="code-line line-number" line="8">mysql<span class="token operator">></span> <span class="token comment"># m: multi-line</span>
+</span><span class="code-line line-number" line="9">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_like<span class="token punctuation">(</span><span class="token string">'a\nb\nc'</span><span class="token punctuation">,</span> <span class="token string">'^b$'</span><span class="token punctuation">,</span> <span class="token string">'m'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="10"><span class="token number">1</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="regexp_instr"><a aria-hidden="true" tabindex="-1" href="#regexp_instr"><span class="icon icon-link"></span></a>REGEXP_INSTR</h3><div class="wrap-body">
+<pre><code class="language-{.wrap} code-highlight"><span class="code-line line-number" line="1">REGEXP_INSTR(expr, pat[, pos[, occurrence[, return_option[, match_type]]]])
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="例子-4"><a aria-hidden="true" tabindex="-1" href="#例子-4"><span class="icon icon-link"></span></a>例子</h4><div class="wrap-body">
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line line-number" line="1">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_instr<span class="token punctuation">(</span><span class="token string">'aa aaa aaaa'</span><span class="token punctuation">,</span> <span class="token string">'a{3}'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token number">2</span>
+</span><span class="code-line line-number" line="3">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_instr<span class="token punctuation">(</span><span class="token string">'abba'</span><span class="token punctuation">,</span> <span class="token string">'b{2}'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4"><span class="token number">2</span>
+</span><span class="code-line line-number" line="5">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_instr<span class="token punctuation">(</span><span class="token string">'abbabba'</span><span class="token punctuation">,</span> <span class="token string">'b{2}'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6"><span class="token number">5</span>
+</span><span class="code-line line-number" line="7">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_instr<span class="token punctuation">(</span><span class="token string">'abbabba'</span><span class="token punctuation">,</span> <span class="token string">'b{2}'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="8"><span class="token number">7</span>
+</span></code></pre>
+</div></div></div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>

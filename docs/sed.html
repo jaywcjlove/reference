@@ -45,43 +45,45 @@
 </span></code></pre>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token builtin class-name">echo</span> <span class="token string">'123abc'</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/[0-9]+//g'</span>
 </span></code></pre>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="选项示例"><a aria-hidden="true" tabindex="-1" href="#选项示例"><span class="icon icon-link"></span></a>选项示例</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>参数</th>
-      <th>示例</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>-i</code></td>
-      <td>sed -ibak 's/On/Off/' php.ini</td>
-      <td>直接备份和修改输入文件</td>
-    </tr>
-    <tr>
-      <td><code>-E</code></td>
-      <td>sed -E 's/[0-9]+//g' input-file</td>
-      <td>使用扩展正则表达式</td>
-    </tr>
-    <tr>
-      <td><code>-n</code></td>
-      <td>sed -n '3 p' config.conf</td>
-      <td>禁止默认图案空间打印</td>
-    </tr>
-    <tr>
-      <td><code>-f</code></td>
-      <td>sed -f script.sed config.conf</td>
-      <td>执行 sed 脚本文件</td>
-    </tr>
-    <tr>
-      <td><code>-e</code></td>
-      <td>sed -e 'command1' -e 'command2' input-file</td>
-      <td>执行多个 sed 命令</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="选项示例"><a aria-hidden="true" tabindex="-1" href="#选项示例"><span class="icon icon-link"></span></a>选项示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>参数</th><th>示例</th><th>描述</th></tr></thead><tbody><tr><td><code>-i</code></td><td>sed -ibak 's/On/Off/' php.ini</td><td>直接备份和修改输入文件</td></tr><tr><td><code>-E</code></td><td>sed -E 's/[0-9]+//g' input-file</td><td>使用扩展正则表达式</td></tr><tr><td><code>-n</code></td><td>sed -n '3 p' config.conf</td><td>禁止默认图案空间打印</td></tr><tr><td><code>-f</code></td><td>sed -f script.sed config.conf</td><td>执行 sed 脚本文件</td></tr><tr><td><code>-e</code></td><td>sed -e 'command1' -e 'command2' input-file</td><td>执行多个 sed 命令</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多个命令"><a aria-hidden="true" tabindex="-1" href="#多个命令"><span class="icon icon-link"></span></a>多个命令</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token builtin class-name">echo</span> <span class="token string">"hello world"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token parameter variable">-e</span> <span class="token string">'s/h/H/g'</span> <span class="token parameter variable">-e</span> <span class="token string">'s/w/W/g'</span>
 </span><span class="code-line line-number" line="2">Hello World
@@ -101,181 +103,184 @@
 </span><span class="code-line line-number" line="4">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> <span class="token parameter variable">-i.backup</span> file.txt
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="sed-命令"><a aria-hidden="true" tabindex="-1" href="#sed-命令"><span class="icon icon-link"></span></a>Sed 命令</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="命令"><a aria-hidden="true" tabindex="-1" href="#命令"><span class="icon icon-link"></span></a>命令</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
-<table class="show-header">
-  <thead>
-    <tr>
-      <th>Command</th>
-      <th>Example</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>p</code></td>
-      <td>sed -n '1,4 p' input.txt</td>
-      <td>Print lines 1-4</td>
-    </tr>
-    <tr>
-      <td><code>p</code></td>
-      <td>sed -n -e '1,4 p' -e '6,7 p' input.txt</td>
-      <td>Print lines 1-4 and 6-7</td>
-    </tr>
-    <tr>
-      <td><code>d</code></td>
-      <td>sed '1,4 d' input.txt</td>
-      <td>Print lines except 1-4</td>
-    </tr>
-    <tr>
-      <td><code>w</code></td>
-      <td>sed -n '1,4 w output.txt' input.txt</td>
-      <td>Write pattern space to file</td>
-    </tr>
-    <tr>
-      <td><code>a</code></td>
-      <td>sed '2 a new-line' input.txt</td>
-      <td>Append line after</td>
-    </tr>
-    <tr>
-      <td><code>i</code></td>
-      <td>sed '2 i new-line' input.txt</td>
-      <td>Insert line before</td>
-    </tr>
-  </tbody>
-</table><!--rehype:className=show-header-->
+</div></div><div class="h2wrap-body"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="命令"><a aria-hidden="true" tabindex="-1" href="#命令"><span class="icon icon-link"></span></a>命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Command</th><th>Example</th><th>Description</th></tr></thead><tbody><tr><td><code>p</code></td><td>sed -n '1,4 p' input.txt</td><td>Print lines 1-4</td></tr><tr><td><code>p</code></td><td>sed -n -e '1,4 p' -e '6,7 p' input.txt</td><td>Print lines 1-4 and 6-7</td></tr><tr><td><code>d</code></td><td>sed '1,4 d' input.txt</td><td>Print lines except 1-4</td></tr><tr><td><code>w</code></td><td>sed -n '1,4 w output.txt' input.txt</td><td>Write pattern space to file</td></tr><tr><td><code>a</code></td><td>sed '2 a new-line' input.txt</td><td>Append line after</td></tr><tr><td><code>i</code></td><td>sed '2 i new-line' input.txt</td><td>Insert line before</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="空间命令"><a aria-hidden="true" tabindex="-1" href="#空间命令"><span class="icon icon-link"></span></a>空间命令</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>Command</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>n</code></td>
-      <td>打印模式空间，空模式空间，读取下一行</td>
-    </tr>
-    <tr>
-      <td><code>x</code></td>
-      <td>用保持空间交换模式空间</td>
-    </tr>
-    <tr>
-      <td><code>h</code></td>
-      <td>复制模式空间以保持空间</td>
-    </tr>
-    <tr>
-      <td><code>H</code></td>
-      <td>追加模式空间以保持空间</td>
-    </tr>
-    <tr>
-      <td><code>g</code></td>
-      <td>将保持空间复制到模式空间</td>
-    </tr>
-    <tr>
-      <td><code>G</code></td>
-      <td>将保持空间附加到模式空间</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>n</code></td><td>打印模式空间，空模式空间，读取下一行</td></tr><tr><td><code>x</code></td><td>用保持空间交换模式空间</td></tr><tr><td><code>h</code></td><td>复制模式空间以保持空间</td></tr><tr><td><code>H</code></td><td>追加模式空间以保持空间</td></tr><tr><td><code>g</code></td><td>将保持空间复制到模式空间</td></tr><tr><td><code>G</code></td><td>将保持空间附加到模式空间</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="flags"><a aria-hidden="true" tabindex="-1" href="#flags"><span class="icon icon-link"></span></a>Flags</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/old/new/[flags]'</span> <span class="token punctuation">[</span>input-file<span class="token punctuation">]</span>
 </span></code></pre>
 <hr>
-<table>
-  <thead>
-    <tr>
-      <th>Flag</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>g</code></td>
-      <td>全球替代</td>
-    </tr>
-    <tr>
-      <td><code>1,2...</code></td>
-      <td>替换第 n 次出现</td>
-    </tr>
-    <tr>
-      <td><code>p</code></td>
-      <td>仅打印替换的行</td>
-    </tr>
-    <tr>
-      <td><code>w</code></td>
-      <td>仅将替换的行写入文件</td>
-    </tr>
-    <tr>
-      <td><code>I</code></td>
-      <td>搜索时忽略大小写</td>
-    </tr>
-    <tr>
-      <td><code>e</code></td>
-      <td>在命令行中替换并执行</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Description</th></tr></thead><tbody><tr><td><code>g</code></td><td>全球替代</td></tr><tr><td><code>1,2...</code></td><td>替换第 n 次出现</td></tr><tr><td><code>p</code></td><td>仅打印替换的行</td></tr><tr><td><code>w</code></td><td>仅将替换的行写入文件</td></tr><tr><td><code>I</code></td><td>搜索时忽略大小写</td></tr><tr><td><code>e</code></td><td>在命令行中替换并执行</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="循环命令"><a aria-hidden="true" tabindex="-1" href="#循环命令"><span class="icon icon-link"></span></a>循环命令</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>Command</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>b label</code></td>
-      <td>分支到标签（用于循环）</td>
-    </tr>
-    <tr>
-      <td><code>t label</code></td>
-      <td>仅在成功替换时分支到标签（用于循环）</td>
-    </tr>
-    <tr>
-      <td><code>:label</code></td>
-      <td>b 和 t 命令的标签（用于循环）</td>
-    </tr>
-    <tr>
-      <td><code>N</code></td>
-      <td>将下一行追加到模式空间</td>
-    </tr>
-    <tr>
-      <td><code>P</code></td>
-      <td>多行打印第一行</td>
-    </tr>
-    <tr>
-      <td><code>D</code></td>
-      <td>删除多行中的第一行</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>b label</code></td><td>分支到标签（用于循环）</td></tr><tr><td><code>t label</code></td><td>仅在成功替换时分支到标签（用于循环）</td></tr><tr><td><code>:label</code></td><td>b 和 t 命令的标签（用于循环）</td></tr><tr><td><code>N</code></td><td>将下一行追加到模式空间</td></tr><tr><td><code>P</code></td><td>多行打印第一行</td></tr><tr><td><code>D</code></td><td>删除多行中的第一行</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="杂项标志"><a aria-hidden="true" tabindex="-1" href="#杂项标志"><span class="icon icon-link"></span></a>杂项标志</h3><div class="wrap-body">
-<table>
-  <thead>
-    <tr>
-      <th>Flag</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>/ | ^ @ ! #</code></td>
-      <td>替换分隔符可以是任何字符</td>
-    </tr>
-    <tr>
-      <td><code>&#x26;</code></td>
-      <td>获取匹配的模式</td>
-    </tr>
-    <tr>
-      <td><code>( ) \1 \2 \3</code></td>
-      <td>使用 <code>(</code> 和 <code>)</code> 进行分组。<br>使用 <code>\1</code>、<code>\2</code> 替换来引用组</td>
-    </tr>
-  </tbody>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Description</th></tr></thead><tbody><tr><td><code>/ | ^ @ ! #</code></td><td>替换分隔符可以是任何字符</td></tr><tr><td><code>&#x26;</code></td><td>获取匹配的模式</td></tr><tr><td><code>( ) \1 \2 \3</code></td><td>使用 <code>(</code> 和 <code>)</code> 进行分组。<br>使用 <code>\1</code>、<code>\2</code> 替换来引用组</td></tr></tbody></table>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="sed-示例"><a aria-hidden="true" tabindex="-1" href="#sed-示例"><span class="icon icon-link"></span></a>Sed 示例</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="替换文本"><a aria-hidden="true" tabindex="-1" href="#替换文本"><span class="icon icon-link"></span></a>替换文本</h3><div class="wrap-body"><!--rehype:wrap-class=row-span-2-->
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="替换文本"><a aria-hidden="true" tabindex="-1" href="#替换文本"><span class="icon icon-link"></span></a>替换文本</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
 <p>替换所有出现的字符串</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> file.txt
 </span></code></pre>
@@ -317,7 +322,8 @@
 <p>从第 3 行开始，每 3 行后追加一行</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'3~3a Some text'</span> file.txt
 </span></code></pre>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="编号"><a aria-hidden="true" tabindex="-1" href="#编号"><span class="icon icon-link"></span></a>编号</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-2-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="编号"><a aria-hidden="true" tabindex="-1" href="#编号"><span class="icon icon-link"></span></a>编号</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
 <p>文件的数字行（简单的左对齐）</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token operator">=</span> file.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'N;s/\n/\t/'</span>
 </span></code></pre>
@@ -380,8 +386,7 @@
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
-  <li><a href="https://gist.github.com/ssstonebraker/6140154">sed 备忘单</a> <em>(gist.github.com)</em></li>
+<li><a href="https://gist.github.com/ssstonebraker/6140154">sed 备忘单</a> <em>(gist.github.com)</em></li>
 </ul>
-
 </div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
 </html>
