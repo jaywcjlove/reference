@@ -161,9 +161,23 @@
     </tr>
   </tbody>
 </table>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="服务静态网站的最小-docker-镜像"><a aria-hidden="true" tabindex="-1" href="#服务静态网站的最小-docker-镜像"><span class="icon icon-link"></span></a>服务静态网站的最小 Docker 镜像</h3><div class="wrap-body"><!--rehype:wrap-class=col-span-3-->
+<pre class="language-dockerfile"><code class="language-dockerfile code-highlight"><span class="code-line line-number" line="1"><span class="token instruction"><span class="token keyword">FROM</span> lipanski/docker-static-website:latest</span>
+</span><span class="code-line line-number" line="2"><span class="token comment"># 使用 .dockerignore 文件来控制图像中的内容！</span>
+</span><span class="code-line line-number" line="3"><span class="token comment"># 复制当前目录内容，到容器中</span>
+</span><span class="code-line line-number" line="4"><span class="token instruction"><span class="token keyword">COPY</span> ./ .</span>
+</span></code></pre>
+<p>这会产生一个 <strong><code>154KB +</code></strong> 的单层镜像。 如果您需要以不同的方式配置 <code>httpd</code>，您可以覆盖 CMD 行：</p>
+<pre class="language-dockerfile"><code class="language-dockerfile code-highlight"><span class="code-line line-number" line="1"><span class="token instruction"><span class="token keyword">FROM</span> lipanski/docker-static-website:latest</span>
+</span><span class="code-line line-number" line="2"><span class="token instruction"><span class="token keyword">COPY</span> . .</span>
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">"/busybox"</span>, <span class="token string">"httpd"</span>, <span class="token string">"-f"</span>, <span class="token string">"-v"</span>, <span class="token string">"-p"</span>, <span class="token string">"3000"</span>, <span class="token string">"-c"</span>, <span class="token string">"httpd.conf"</span>]</span>
+</span></code></pre>
+<p>缩小镜像过程<a href="https://lipanski.com/posts/smallest-docker-image-static-website">查看原文</a>，镜像 <a href="https://github.com/lipanski/docker-static-website">Dockerfile 源码</a>。</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="也可以看看"><a aria-hidden="true" tabindex="-1" href="#也可以看看"><span class="icon icon-link"></span></a>也可以看看</h2><div class="wrap-body">
 <ul>
   <li><a href="https://docs.docker.com/engine/reference/builder/">Dockerfile reference</a> <em>(docker.com)</em></li>
+  <li><a href="./docker.html">Docker 备忘清单</a> <em>(github.io)</em></li>
 </ul>
 
 </div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
