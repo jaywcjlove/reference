@@ -151,5 +151,28 @@ LABEL multi.label1="value1" \
 `ENV <key>=<value> ...` | 设置环境变量
 `EXPOSE <port> [<port>/<protocol>...]` | 运行时侦听指定的网络端口
 
+### 服务静态网站的最小 Docker 镜像
+<!--rehype:wrap-class=col-span-3-->
+
+```dockerfile
+FROM lipanski/docker-static-website:latest
+# 使用 .dockerignore 文件来控制图像中的内容！
+# 复制当前目录内容，到容器中
+COPY ./ .
+```
+
+这会产生一个 **`154KB +`** 的单层镜像。 如果您需要以不同的方式配置 `httpd`，您可以覆盖 CMD 行：
+
+```dockerfile
+FROM lipanski/docker-static-website:latest
+COPY . .
+
+CMD ["/busybox", "httpd", "-f", "-v", "-p", "3000", "-c", "httpd.conf"]
+```
+
+缩小镜像过程[查看原文](https://lipanski.com/posts/smallest-docker-image-static-website)，镜像 [Dockerfile 源码](https://github.com/lipanski/docker-static-website)。
+
 ## 也可以看看
+
 - [Dockerfile reference](https://docs.docker.com/engine/reference/builder/) _(docker.com)_
+- [Docker 备忘清单](./docker.md) _(github.io)_
