@@ -147,6 +147,35 @@ function () {}
 <!--rehype:style=background:#e91e63;-->
 ```
 
+### 快捷键样式
+
+| Key | value | 
+| ---- | ---- |
+| `快捷键` | 说明    |
+| `快捷键` | 说明    |
+<!--rehype:className=shortcuts-->
+
+列表添加 `<!--rehype:className=shortcuts-->` 样式类，展示快捷键样式。
+
+### 内置类样式
+
+:- | -
+:- | -
+`shortcuts` | 快捷键样式
+`wrap-text` | 超出换行
+`show-header` | 展示表头
+<!--rehype:className=shortcuts-->
+
+### 颜色标签
+
+:- | -
+:- | -
+`<yel>` | 黄色
+`<pur>` | 紫色
+`<code>` 或 <code>\`\`</code> | 绿色
+<!--rehype:className=shortcuts-->
+
+
 布局
 ---
 

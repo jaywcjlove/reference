@@ -1,6 +1,5 @@
 import markdown from '@wcj/markdown-to-html';
 import rehypeDocument from 'rehype-document';
-import rehypeFormat from 'rehype-format';
 import remarkGemoji from 'remark-gemoji';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -26,7 +25,6 @@ export function create(str = '', options = {}) {
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings,
-      rehypeFormat,
       [rehypeDocument, {
         title: `${title ? `${title} & ` : ''} ${subTitle} Quick Reference`,
         css: [ ...options.css ],

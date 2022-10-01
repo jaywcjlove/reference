@@ -27,7 +27,7 @@ body {
   --color-prettylights-syntax-entity-tag: #116329;
   --color-prettylights-syntax-keyword: #cf222e;
   --color-prettylights-syntax-string: #0a3069;
-  --color-prettylights-syntax-variable: #953800;
+  --color-prettylights-syntax-variable: #d15104;
   --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
   --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
   --color-prettylights-syntax-invalid-illegal-bg: #82071e;
@@ -136,9 +136,20 @@ ol, ul, menu {
   padding: 0;
 }
 
-.wrap-body > p > code {
+yel {
+  color: var(--color-prettylights-syntax-variable);
+}
+pur {
+  color: var(--color-prettylights-syntax-entity);
+}
+
+.wrap-body > p > code, .wrap-body > ul li > code, .wrap-body tbody td code {
   --text-opacity: 1;
   color: rgb(5 150 105/var(--text-opacity));
+}
+
+.wrap-body em, .wrap-body sup, .wrap-body sub {
+  color: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
 }
 
 table {
@@ -147,8 +158,11 @@ table {
   border-color: inherit;
   border-collapse: collapse
 }
+table td:first-child {
+  white-space: nowrap;
+}
 
-table td:not(:last-child)>code, table td:not(:last-child)>del>code, ul li > code, kbd {
+table.shortcuts td:not(:last-child)>code, table.shortcuts td:not(:last-child)>del>code, ul.shortcuts li > code, kbd {
   background-color: var(--color-neutral-muted);
   color: var(--color-fg-subtle);
   box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000;
@@ -570,7 +584,6 @@ body:not(.home) .h2wrap > h2 a::after {
 
 .h2wrap-body {
   font-size: 0.925rem;
-  line-height: 1.325rem;
   grid-template-columns: repeat(3,minmax(0,1fr));
   flex-direction: column;
 }
@@ -690,7 +703,7 @@ body:not(.home) .h2wrap > h2 a::after {
   color: var(--color-prettylights-syntax-constant);
 }
 .token.punctuation {
-  color: var(--color-prettylights-syntax-markup-bold);
+  color: var(--color-prettylights-syntax-markup-ignored-bg);
 }
 .code-line .token.deleted {
   background-color: var(--color-prettylights-syntax-markup-deleted-bg);

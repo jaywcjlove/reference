@@ -20,6 +20,7 @@ Sketch 备忘清单
 | `v` | (Vector Point) 向量点 |
 | `p` | (Pencil) 铅笔 |
 | `t` | (Text) 文本 |
+<!--rehype:className=shortcuts-->
 
 
 ### 类型
@@ -40,6 +41,7 @@ Sketch 备忘清单
 | `Cmd + Shift + \` | 居中对齐 |
 | `Cmd + Shift + }` | 右对齐 |
 | `Control + Cmd + Space`  | 特殊字符 |
+<!--rehype:className=shortcuts-->
 
 ### 画布视图
 
@@ -50,7 +52,7 @@ Sketch 备忘清单
 | `Cmd (+) +` | 放大 |
 | `Cmd (+) -` | 缩小 |
 | `Cmd + 0` | 实际尺寸 |
-| `Cmd + 1` | 中心帆布 |
+| `Cmd + 1` | 中心画布 |
 | `Cmd + 2` | 缩放选择 |
 | `Cmd + 3` | 中心选择 |
 | `§` | 临时缩放到实际大小 |
@@ -62,6 +64,7 @@ Sketch 备忘清单
 | `Control + H` | 切换选择手柄 |
 | `Control + X` | 切换像素网格 |
 | `Space + Drag` | 移动画布 |
+<!--rehype:className=shortcuts-->
 
 ### 窗口
 
@@ -74,6 +77,7 @@ Sketch 备忘清单
 | `Alt + Cmd + T` | 切换工具栏 |
 | `Cmd + .` | 演示模式 |
 | `Control + Cmd + F` | 进入全屏 |
+<!--rehype:className=shortcuts-->
 
 ### 编辑形状
 
@@ -88,6 +92,7 @@ Sketch 备忘清单
 | `Cmd + Arrows` | 更改对象大小 |
 | `Shift + Cmd + Arrows` | 将单位更改 10 |
 | `1, 2, 3, 4` | 更改矢量点样式 |
+<!--rehype:className=shortcuts-->
 
 ### 编辑图层
 
@@ -103,6 +108,7 @@ Sketch 备忘清单
 | `Shift + Cmd + R` | 旋转 |
 | `F` | 切换填充 |
 | `B` | 切换边框 |
+<!--rehype:className=shortcuts-->
 
 ### 排列图层、组和画板
 
@@ -123,6 +129,7 @@ Sketch 备忘清单
 | `Cmd + F` | 按名称查找图层 |
 | `Fn + ↑` | 选择上方页面 |
 | `Fn + ↓` | 选择下面的页面 |
+<!--rehype:className=shortcuts-->
 
 
 另见

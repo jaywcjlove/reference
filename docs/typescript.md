@@ -457,12 +457,12 @@ switch(response.status) {
 ```
 
 ### 断言函数
+<!--rehype:wrap-class=col-span-2-->
 
 描述影响当前范围的 CFA 更改的函数，因为它抛出而不是返回 false。
 
 ```ts
-function assertResponse(obj: any):
-    asserts obj is SuccessResponse {
+function assertResponse(obj: any): asserts obj is SuccessResponse {
   if (!(obj instanceof SuccessResponse)) {
     throw new Error('Not a success!')
   }

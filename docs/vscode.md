@@ -15,6 +15,7 @@ VSCode 备忘清单
 | `Ctrl` `Shift` `W`          | 关闭窗口                |
 | `Ctrl` `,`                  | 用户设置                |
 | `Ctrl` `K` `Ctrl` `S`       | 键盘快捷键               |
+<!--rehype:className=shortcuts-->
 
 ### 基本编辑
 <!--rehype:wrap-style=grid-row: span 2/span 2;-->
@@ -46,6 +47,7 @@ VSCode 备忘清单
 | `Ctrl` `/`                | 切换行注释                           |
 | `Shift` `Alt` `A`         | 切换块评论                           |
 | `Alt` `Z`                 | 切换自动换行                         |
+<!--rehype:className=shortcuts-->
 
 ### 导航
 
@@ -61,6 +63,7 @@ VSCode 备忘清单
 | `Ctrl` `Shift` `Tab` | 浏览编辑组历史       |
 | `Alt` ` ←` _/_ `→`   | 后退/前进           |
 | `Ctrl` `M`           | 切换 Tab 移动焦点   |
+<!--rehype:className=shortcuts-->
 
 
 ### 搜索和替换
@@ -74,6 +77,7 @@ VSCode 备忘清单
 | `Ctrl` `D`                | 将选择添加到下一个查找匹配项         |
 | `Ctrl` `K` `Ctrl` `D`     | 将最后一个选择移动到下一个查找匹配项  |
 | `Alt` `C` _/_ `R` _/_ `W` | 切换区分大小写/正则表达式/整个单词   |
+<!--rehype:className=shortcuts-->
 
 ### 多光标和选择
 
@@ -91,6 +95,7 @@ VSCode 备忘清单
 | `Shift` `Alt` `<Drag>`                 | 列（框）选择                   |
 | `Ctrl` `Shift` `Alt` `<Arrow>`         | 列（框）选择                   |
 | `Ctrl` `Shift` `Alt` `PgUp` _/_ `PgDn` | 列（框）选择页上/下             |
+<!--rehype:className=shortcuts-->
 
 ### 丰富的语言编辑
 
@@ -108,6 +113,7 @@ VSCode 备忘清单
 | `F2`                        | 重命名符号       |
 | `Ctrl` `K` `Ctrl` `X`       | 修剪尾随空格      |
 | `Ctrl` `K` `M`              | 更改文件语言      |
+<!--rehype:className=shortcuts-->
 
 
 ### 编辑管理
@@ -121,7 +127,7 @@ VSCode 备忘清单
 | `Ctrl` `K` `Ctrl` `←` _/_ `→`    | 专注于上一个/下一个编辑组    |
 | `Ctrl` `Shift` `PgUp` _/_ `PgDn` | 向左/向右移动编辑器         |
 | `Ctrl` `K` `←` _/_ `→`           | 移动活动编辑器组            |
-
+<!--rehype:className=shortcuts-->
 
 ### 文件管理
 
@@ -141,6 +147,7 @@ VSCode 备忘清单
 | `Ctrl` `K` `P`        | 复制活动文件的路径             |
 | `Ctrl` `K` `R`        | 在资源管理器中显示活动文件      |
 | `Ctrl` `K` `O`        | 在新窗口/实例中显示活动文件     |
+<!--rehype:className=shortcuts-->
 
 ### 展示
 
@@ -161,6 +168,7 @@ VSCode 备忘清单
 | `Ctrl` `Shift` `V` | 打开 Markdown 预览                         |
 | `Ctrl` `K` `V`     | 打开 Markdown 预览到一边                    |
 | `Ctrl` `K` `Z`     | Zen 模式（Esc Esc 退出）                    |
+<!--rehype:className=shortcuts-->
 
 
 ### 调试
@@ -180,3 +188,4 @@ VSCode 备忘清单
 | `Ctrl` `↑` _/_ `↓`             | 向上/向下滚动                   |
 | `Shift` `PgUp` _/_ `PgDn`      | 向上/向下滚动页面               |
 | `Ctrl` `Home` _/_ `End`        | 滚动到顶部/底部                 |
+<!--rehype:className=shortcuts-->

@@ -15,7 +15,6 @@ Semver 备忘清单
 
 ### Semver
 
-
 | -               | -                      |
 |-----------------|------------------------|
 | `主版本号(MAJOR)` | 当你做了不兼容的 API 修改 |
@@ -52,6 +51,7 @@ Semver 备忘清单
 | `1`      | 相同的               |                    |
 | `*`      | 任何版本             |                    |
 | `x`      | 相同的               |                    |
+<!--rehype:className=shortcuts-->
 
 ### 连字符范围
 <!--rehype:wrap-class=row-span-3-->
@@ -59,20 +59,22 @@ Semver 备忘清单
 | 范围               | 描述           |
 | ---                | ---                   |
 | `1.2.3 - 2.3.4`    | 是 `>=1.2.3 <=2.3.4`  |
-<!--rehype:className=show-header -->
+<!--rehype:className=shortcuts show-header-->
 
 #### 部分向右
 
-| 范围            | 描述           |
-| ---             | ---                   |
+| 范围            | 描述 |
+| ---             | --- |
 | `1.2.3 - 2.3`   | 是 `>=1.2.3 <2.4.0`   |
 | `1.2.3 - 2`     | 是 `>=1.2.3 <3.0.0`   |
+<!--rehype:className=shortcuts-->
 
 #### 部分向左
 
 | 范围           | 描述           |
 | ---            | ---                   |
 | `1.2 - 2.3.0`  | 是 `1.2.0 - 2.3.0`    |
+<!--rehype:className=shortcuts-->
 
 当右侧为部分（例如，`2.3`）时，假定缺失的部分为`x`（例如，` 2.3.x`）。
 
@@ -84,7 +86,7 @@ Semver 备忘清单
 | ---                | ---                   |
 | `>=0.14 <16`       | 和 (空格分隔) |
 | `0.14.x \|\| 15.x.x` | 或 (双竖线分隔)   |
-<!--rehype:className=show-header -->
+<!--rehype:className=shortcuts show-header-->
 
 ### 预发布
 
@@ -100,6 +102,7 @@ Semver 备忘清单
 | `~`     | 意思是“相当接近”     |
 | `0.x.x` | 用于“初始开发”     |
 | `1.x.x` | 表示定义了公共 API     |
+<!--rehype:className=shortcuts-->
 
 
 另见

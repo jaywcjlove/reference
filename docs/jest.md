@@ -10,11 +10,11 @@ Jest 是一款优雅、简洁的 JavaScript 测试框架。
 
 [Jest](https://jestjs.io/) 是一款优雅、简洁的 JavaScript 测试框架。
 
-- 无需配置，大多数 JS 项目中即装即用，无需配置
-- 优秀接口，从 it 到 expect - Jest 将工具包整合在一处。文档齐全、不断维护，非常不错。
-- 隔离的，并行进行测试，发挥每一丝算力。
-- 快照， 轻松编写持续追踪大型对象的测试，并在测试旁或代码内显示实时快照。
-- 代码覆盖， 无需其他操作，您仅需添加 --coverage 参数来生成代码覆盖率报告。
+- `无需配置` 大多数 JS 项目中即装即用，无需配置
+- `优秀接口` 从 `it` 到 `expect` - Jest 将工具包整合在一处。文档齐全、不断维护，非常不错。
+- `隔离的` 并行进行测试，发挥每一丝算力。
+- `快照` 轻松编写持续追踪大型对象的测试，并在测试旁或代码内显示实时快照。
+- `代码覆盖` 无需其他操作，您仅需添加 `--coverage` 参数来生成代码覆盖率报告。
 
 ### 测试结构
 <!--rehype:wrap-class=col-span-2-->
@@ -347,7 +347,7 @@ test('async test', (done) => {
 })
 ```
 
-将断言包装在 try/catch 块中，否则 Jest 将忽略失败
+将断言包装在 `try/catch` 块中，否则 `Jest` 将忽略失败
 
 ### Promises
 
@@ -361,7 +361,7 @@ test('async test', () => {
 })
 ```
 
-从你的测试中 _返回_ 一个 Promise
+从你的测试中 _返回_ 一个 `Promise`
 
 
 ## 模拟
@@ -628,7 +628,7 @@ describe.each([
 })
 ```
 
-[describe.each() 文档](https://jestjs.io/docs/en/api#describeeachtablename-fn-timeout)、[test.each() 文档](https://jestjs.io/docs/en/api#testeachtablename-fn-timeout),
+[describe.each()](https://jestjs.io/docs/en/api#describeeachtablename-fn-timeout) 文档、[test.each()](https://jestjs.io/docs/en/api#testeachtablename-fn-timeout) 文档
 
 跳过测试
 ----
@@ -671,7 +671,7 @@ test('第二个文本', () => {
 })
 ```
 
-Node.js 和 Jest 会缓存你需要的模块。 要测试具有副作用的模块，您需要在测试之间重置模块注册表
+`Node.js` 和 `Jest` 会缓存你需要的模块。 要测试具有副作用的模块，您需要在测试之间重置模块注册表
 
 
 另见
