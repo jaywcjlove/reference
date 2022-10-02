@@ -7,6 +7,7 @@ Quick Reference
 
 ## 编程
 
+[Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));-->
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31/var(\-\-bg\-opacity));-->

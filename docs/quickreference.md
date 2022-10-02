@@ -164,15 +164,16 @@ function () {}
 `shortcuts` | 快捷键样式
 `wrap-text` | 超出换行
 `show-header` | 展示表头
+`style-none` | 隐藏 `<ul>` 列表样式
 <!--rehype:className=shortcuts-->
 
 ### 颜色标签
 
 :- | -
 :- | -
-`<yel>` | 黄色
-`<pur>` | 紫色
-`<code>` 或 <code>\`\`</code> | 绿色
+`<yel>` | <yel>黄色</yel>
+`<pur>` | <pur>紫色</pur>
+`<code>` 或 <code>\`\`</code> | <code>绿</code>`色`
 <!--rehype:className=shortcuts-->
 
 

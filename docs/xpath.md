@@ -7,12 +7,18 @@ XPath 选择器
 --------
 
 ### 入门
+<!--rehype:wrap-class=row-span-2-->
 
 XPath 即为 XML 路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的计算机语言。
 
 - [Xpath test bed](http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm) _(whitebeam.org)_
+- XPath 代表 XML 路径语言
+- XPath 使用 `类似路径` 语法识别和导航 XML 文档中的节点
+- XPath 包含超过 200 个内置函数
+- XPath 是 XSLT 标准中的主要元素
+- XPath 是 W3C 推荐的
 
-在 Firefox 或 Chrome 控制台中测试：
+在 `Firefox` 或 `Chrome` 控制台中测试：
 
 ```js
 $x('/html/body')
@@ -71,17 +77,20 @@ $x('//a[text()="XPath"]')[0].click()
 | `//h1/following-sibling::[@id="id"]` | h1 ~ #id |
 <!--rehype:className=show-header-->
 
-### jQuery
+### 最有用的路径表达式
 
 | Xpath                            | CSS                        |
 |----------------------------------|----------------------------|
-| `//ul/li/..`                     | $('ul > li').parent()      |
-| `//li/ancestor-or-self::section` | $('li').closest('section') |
-| `//a/@href`                      | $('a').attr('href')        |
-| `//span/text()`                  | $('span').text()           |
+`nodename` | 选择名称为 `nodename` 的所有节点
+`/`  | 从根节点中选择
+`//` | 从当前节点中选择文档中与选择匹配的节点，无论它们在哪里
+`.`  | 选择当前节点
+`..` | 选择当前节点的父节点
+`@`  | 选择属性
 <!--rehype:className=show-header-->
 
 ### 杂项选择器
+<!--rehype:wrap-class=col-span-2-->
 
 | Xpath                             | CSS                       |
 |-----------------------------------|---------------------------|
@@ -92,8 +101,43 @@ $x('//a[text()="XPath"]')[0].click()
 | `//ul[*]`                         | 有孩子 |
 | `//ul[li]`                        | 有孩子（具体） |
 | `//a[@name or @href]`             | 或逻辑 |
-| `//a | //div`                     | 联合（加入结果） |
+| `//a \| //div`                    | 联合（加入结果） |
 <!--rehype:className=show-header-->
+
+### jQuery
+<!--rehype:wrap-class=col-span-2-->
+
+| Xpath                            | CSS                        |
+|----------------------------------|----------------------------|
+| `//ul/li/..`                     | $('ul > li').parent()      |
+| `//li/ancestor-or-self::section` | $('li').closest('section') |
+| `//a/@href`                      | $('a').attr('href')        |
+| `//span/text()`                  | $('span').text()           |
+<!--rehype:className=show-header-->
+
+### 运算符
+<!--rehype:wrap-class=col-span-2-->
+
+
+运算符 | 说明  |	示例
+:- | - | -
+`\|`  | 计算两个节点集 |	`//book \| //cd`
+`+`   | 添加 | `6 + 4`
+`-`   | 减法 | `6 - 4`
+`*`   | 乘法 | `6 * 4`
+`div` | 分配 | `8 div 4`
+`=`   | 平等的 | `price=9.80`
+`!=`  | 不相等 | `price!=9.80`
+`<`   | 小于   | `price<9.80`
+`<=`  | 小于或等于 | `price<=9.80`
+`>`   | 大于 | `price>9.80`
+`>=`  | 大于或等于 | `price>=9.80`
+`or`  | 或者 | `price=9.80` or `price=9.70`
+`and` | 和 | `price>9.00` and `price<9.90`
+`mod` | 模数（除法余数） | `5` mod `2`
+<!--rehype:className=show-header-->
+
+
 
 XPath 表达式
 -----------
@@ -311,19 +355,19 @@ XPath Axes
 
 | Axis               | Abbrev | Notes |
 |--------------------|--------|-------|
-| `ancestor`         |        |       |
-| `ancestor-or-self` |        |       |
-| `attribute`          | `@`    | `@href` 是 `attribute::href` 的缩写          |
-| `child`              |        | `div` 是 `child::div` 的缩写                 |
-| `descendant`         |        |                                            |
-| `descendant-or-self` | `//`   | `//` 是 `/descendant-or-self::node()/`的缩写 |
-| `namespace`          |        |                                             |
-| `self`               | `.`    | `.` 是 `self::node()` 的缩写                 |
-| `parent`             | `..`   | `..` 是 `parent::node()` 的缩写              |
-| `following`          |        |                                             |
-| `following-sibling`  |        |                                             |
-| `preceding`          |        |                                             |
-| `preceding-sibling`  |        |                                             |
+`ancestor`           |        | 选择当前节点的所有祖先(父母、祖父母等)
+`ancestor-or-self`   |        | 选择当前节点所有祖先(父、祖父等)和当前节点本身
+`attribute`          | `@`    | `@href` 是 `attribute::href` 的缩写 
+`child`              |        | `div` 是 `child::div` 的缩写 
+`descendant`         |        | 选择当前节点的所有后代（子、孙等） 
+`descendant-or-self` | `//`   | `//` 是 `/descendant-or-self::node()/`的缩写  选择当前节点和当前节点本身的所有后代（子、孙等）
+`namespace`          |        | 选择当前节点的所有命名空间节点 
+`self`               | `.`    | `.` 是 `self::node()` 的缩写，选择当前节点 
+`parent`             | `..`   | `..` 是 `parent::node()` 的缩写，选择当前节点的父节点
+`following`          |        | 选择文档中当前节点结束标记之后的所有内容
+`following-sibling`  |        | 选择当前节点之后的所有兄弟节点
+`preceding`          |        | 选择文档中出现在当前节点之前的所有节点，除了祖先、属性节点和命名空间节点
+`preceding-sibling`  |        | 选择当前节点之前的所有兄弟节点
 <!--rehype:className=show-header-->
 
 您还可以使用其他轴。
