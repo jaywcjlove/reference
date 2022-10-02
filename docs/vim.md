@@ -761,6 +761,91 @@ $ vim -d file1 file2 [file3]
 :%w !xsel -i -b        # GNU/Linux
 ```
 
+理解 Vim
+---
+
+### 动词理解
+
+```shell
+d  # 表示删除delete
+r  # 表示替换replace
+c  # 表示修改change
+y  # 表示复制yank
+v  # 表示选取visual select
+```
+
+动词代表了我们打算对文本进行什么样的操作
+
+### 名词理解
+
+```shell
+w  # 表示一个单词word
+s  # 表示一个句子sentence
+p  # 表示一个段落paragraph
+t  # 表示一个 HTML 标签tag
+```
+
+名词代表了我们即将处理的文本。引号或者各种括号所包含的文本称作一个文本块。
+
+### 介词理解
+
+```shell
+i  # 表示在...之内 inside
+a  # 表示环绕... around
+t  # 表示到...位置前 to
+f  # 表示到...位置上 forward
+```
+
+介词界定了待编辑文本的范围或者位置。
+
+### 数词理解
+<!--rehype:wrap-class=col-span-2-->
+
+数词指定了待编辑文本对象的数量，从这个角度而言，数词也可以看作是一种介词。引入数词之后，文本编辑命令的语法就升级成了下面这样：
+
+```shell
+动词 介词/数词 名词
+```
+
+下面是几个例子：
+
+```shell
+c3w  # 修改三个单词：change three words
+d2w  # 删除两个单词：delete two words
+```
+
+另外，数词也可以修饰动词，表示将操作执行 `n` 次。于是，我们又有了下面的语法：
+
+```shell
+数词 动词 名词
+```
+
+示例
+
+```shell
+2dw # 两次删除单词(等价于删除两个单词): twice delete word
+3x  # 三次删除字符(等价于删除三个字符): three times delete character
+```
+
+### 组词为句理解
+
+有了这些基本的语言元素，我们就可以着手构造一些简单的命令了。文本编辑命令的基本语法如下：
+
+```shell
+动词 介词 名词
+```
+
+下面是一些例子
+
+```shell
+dip # 删除一个段落: delete inside paragraph
+vis # 选取一个句子: visual select inside sentence
+ciw # 修改一个单词: change inside word
+caw # 修改一个单词: change around word
+dtx # 删除文本直到字符“x”(不包括字符“x”): delete to x
+dfx # 删除文本直到字符“x”(包括字符“x”): delete forward x
+```
+<!--rehype:className=wrap-text -->
 
 另见
 ---
