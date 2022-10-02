@@ -1923,6 +1923,58 @@
 </span><span class="code-line line-number" line="2">:%w <span class="token operator">!</span>xclip <span class="token parameter variable">-i</span> <span class="token parameter variable">-sel</span> c   <span class="token comment"># GNU/Linux</span>
 </span><span class="code-line line-number" line="3">:%w <span class="token operator">!</span>xsel <span class="token parameter variable">-i</span> <span class="token parameter variable">-b</span>        <span class="token comment"># GNU/Linux</span>
 </span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="理解-vim"><a aria-hidden="true" tabindex="-1" href="#理解-vim"><span class="icon icon-link"></span></a>理解 Vim</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="动词理解"><a aria-hidden="true" tabindex="-1" href="#动词理解"><span class="icon icon-link"></span></a>动词理解</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">d  <span class="token comment"># 表示删除delete</span>
+</span><span class="code-line line-number" line="2">r  <span class="token comment"># 表示替换replace</span>
+</span><span class="code-line line-number" line="3">c  <span class="token comment"># 表示修改change</span>
+</span><span class="code-line line-number" line="4">y  <span class="token comment"># 表示复制yank</span>
+</span><span class="code-line line-number" line="5"><span class="token function">v</span>  <span class="token comment"># 表示选取visual select</span>
+</span></code></pre>
+<p>动词代表了我们打算对文本进行什么样的操作</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="名词理解"><a aria-hidden="true" tabindex="-1" href="#名词理解"><span class="icon icon-link"></span></a>名词理解</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">w  <span class="token comment"># 表示一个单词word</span>
+</span><span class="code-line line-number" line="2">s  <span class="token comment"># 表示一个句子sentence</span>
+</span><span class="code-line line-number" line="3">p  <span class="token comment"># 表示一个段落paragraph</span>
+</span><span class="code-line line-number" line="4">t  <span class="token comment"># 表示一个 HTML 标签tag</span>
+</span></code></pre>
+<p>名词代表了我们即将处理的文本。引号或者各种括号所包含的文本称作一个文本块。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="介词理解"><a aria-hidden="true" tabindex="-1" href="#介词理解"><span class="icon icon-link"></span></a>介词理解</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">i  <span class="token comment"># 表示在...之内 inside</span>
+</span><span class="code-line line-number" line="2">a  <span class="token comment"># 表示环绕... around</span>
+</span><span class="code-line line-number" line="3">t  <span class="token comment"># 表示到...位置前 to</span>
+</span><span class="code-line line-number" line="4">f  <span class="token comment"># 表示到...位置上 forward</span>
+</span></code></pre>
+<p>介词界定了待编辑文本的范围或者位置。</p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="数词理解"><a aria-hidden="true" tabindex="-1" href="#数词理解"><span class="icon icon-link"></span></a>数词理解</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>数词指定了待编辑文本对象的数量，从这个角度而言，数词也可以看作是一种介词。引入数词之后，文本编辑命令的语法就升级成了下面这样：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">动词 介词/数词 名词
+</span></code></pre>
+<p>下面是几个例子：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">c3w  <span class="token comment"># 修改三个单词：change three words</span>
+</span><span class="code-line line-number" line="2">d2w  <span class="token comment"># 删除两个单词：delete two words</span>
+</span></code></pre>
+<p>另外，数词也可以修饰动词，表示将操作执行 <code>n</code> 次。于是，我们又有了下面的语法：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">数词 动词 名词
+</span></code></pre>
+<p>示例</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">2dw <span class="token comment"># 两次删除单词(等价于删除两个单词): twice delete word</span>
+</span><span class="code-line line-number" line="2">3x  <span class="token comment"># 三次删除字符(等价于删除三个字符): three times delete character</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="组词为句理解"><a aria-hidden="true" tabindex="-1" href="#组词为句理解"><span class="icon icon-link"></span></a>组词为句理解</h3><div class="wrap-body">
+<p>有了这些基本的语言元素，我们就可以着手构造一些简单的命令了。文本编辑命令的基本语法如下：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">动词 介词 名词
+</span></code></pre>
+<p>下面是一些例子</p>
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">dip <span class="token comment"># 删除一个段落: delete inside paragraph</span>
+</span><span class="code-line line-number" line="2">vis <span class="token comment"># 选取一个句子: visual select inside sentence</span>
+</span><span class="code-line line-number" line="3">ciw <span class="token comment"># 修改一个单词: change inside word</span>
+</span><span class="code-line line-number" line="4">caw <span class="token comment"># 修改一个单词: change around word</span>
+</span><span class="code-line line-number" line="5">dtx <span class="token comment"># 删除文本直到字符“x”(不包括字符“x”): delete to x</span>
+</span><span class="code-line line-number" line="6">dfx <span class="token comment"># 删除文本直到字符“x”(包括字符“x”): delete forward x</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://jaywcjlove.github.io/vim-web">搞得像IDE一样的 Vim</a> <em>(github.io)</em></li>
