@@ -37,12 +37,18 @@
 </script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="xpath-备忘清单"><a aria-hidden="true" tabindex="-1" href="#xpath-备忘清单"><span class="icon icon-link"></span></a>XPath 备忘清单</h1><div class="wrap-body">
 <p>这是一份 XPath 选择器备忘单，其中列出了常用的 <code>XPath</code> 定位方法和 <code>CSS</code> 选择器</p>
 </div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-选择器"><a aria-hidden="true" tabindex="-1" href="#xpath-选择器"><span class="icon icon-link"></span></a>XPath 选择器</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
 <p>XPath 即为 XML 路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的计算机语言。</p>
 <ul>
 <li><a href="http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm">Xpath test bed</a> <em>(whitebeam.org)</em></li>
+<li>XPath 代表 XML 路径语言</li>
+<li>XPath 使用 <code>类似路径</code> 语法识别和导航 XML 文档中的节点</li>
+<li>XPath 包含超过 200 个内置函数</li>
+<li>XPath 是 XSLT 标准中的主要元素</li>
+<li>XPath 是 W3C 推荐的</li>
 </ul>
-<p>在 Firefox 或 Chrome 控制台中测试：</p>
+<p>在 <code>Firefox</code> 或 <code>Chrome</code> 控制台中测试：</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'/html/body'</span><span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="2"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//h1'</span><span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="3"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//h1'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">innerText</span>
@@ -197,7 +203,89 @@
 
 <table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//h1/following-sibling::ul</code></td><td>h1 ~ ul</td></tr><tr><td><code>//h1/following-sibling::ul[1]</code></td><td>h1 + ul</td></tr><tr><td><code>//h1/following-sibling::[@id="id"]</code></td><td>h1 ~ #id</td></tr></tbody></table>
 <!--rehype:className=show-header-->
-</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="jquery"><a aria-hidden="true" tabindex="-1" href="#jquery"><span class="icon icon-link"></span></a>jQuery</h3><div class="wrap-body">
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="最有用的路径表达式"><a aria-hidden="true" tabindex="-1" href="#最有用的路径表达式"><span class="icon icon-link"></span></a>最有用的路径表达式</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>nodename</code></td><td>选择名称为 <code>nodename</code> 的所有节点</td></tr><tr><td><code>/</code></td><td>从根节点中选择</td></tr><tr><td><code>//</code></td><td>从当前节点中选择文档中与选择匹配的节点，无论它们在哪里</td></tr><tr><td><code>.</code></td><td>选择当前节点</td></tr><tr><td><code>..</code></td><td>选择当前节点的父节点</td></tr><tr><td><code>@</code></td><td>选择属性</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="杂项选择器"><a aria-hidden="true" tabindex="-1" href="#杂项选择器"><span class="icon icon-link"></span></a>杂项选择器</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//h1[not(@id)]</code></td><td>h1:not([id])</td></tr><tr><td><code>//button[text()="Submit"]</code></td><td>文字匹配</td></tr><tr><td><code>//button[contains(text(),"Go")]</code></td><td>文本包含（子字符串）</td></tr><tr><td><code>//product[@price > 2.50]</code></td><td>算术</td></tr><tr><td><code>//ul[*]</code></td><td>有孩子</td></tr><tr><td><code>//ul[li]</code></td><td>有孩子（具体）</td></tr><tr><td><code>//a[@name or @href]</code></td><td>或逻辑</td></tr><tr><td><code>//a | //div</code></td><td>联合（加入结果）</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="jquery"><a aria-hidden="true" tabindex="-1" href="#jquery"><span class="icon icon-link"></span></a>jQuery</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
 
 
 
@@ -225,7 +313,8 @@
 
 <table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//ul/li/..</code></td><td>$('ul > li').parent()</td></tr><tr><td><code>//li/ancestor-or-self::section</code></td><td>$('li').closest('section')</td></tr><tr><td><code>//a/@href</code></td><td>$('a').attr('href')</td></tr><tr><td><code>//span/text()</code></td><td>$('span').text()</td></tr></tbody></table>
 <!--rehype:className=show-header-->
-</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="杂项选择器"><a aria-hidden="true" tabindex="-1" href="#杂项选择器"><span class="icon icon-link"></span></a>杂项选择器</h3><div class="wrap-body">
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="运算符"><a aria-hidden="true" tabindex="-1" href="#运算符"><span class="icon icon-link"></span></a>运算符</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
 
 
 
@@ -267,7 +356,46 @@
 
 
 
-<table class="show-header"><thead><tr><th>Xpath</th><th>CSS</th></tr></thead><tbody><tr><td><code>//h1[not(@id)]</code></td><td>h1:not([id])</td></tr><tr><td><code>//button[text()="Submit"]</code></td><td>文字匹配</td></tr><tr><td><code>//button[contains(text(),"Go")]</code></td><td>文本包含（子字符串）</td></tr><tr><td><code>//product[@price > 2.50]</code></td><td>算术</td></tr><tr><td><code>//ul[*]</code></td><td>有孩子</td></tr><tr><td><code>//ul[li]</code></td><td>有孩子（具体）</td></tr><tr><td><code>//a[@name or @href]</code></td><td>或逻辑</td></tr><tr><td>`//a</td><td>//div`</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">运算符</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td align="left"><code>|</code></td><td>计算两个节点集</td><td><code>//book | //cd</code></td></tr><tr><td align="left"><code>+</code></td><td>添加</td><td><code>6 + 4</code></td></tr><tr><td align="left"><code>-</code></td><td>减法</td><td><code>6 - 4</code></td></tr><tr><td align="left"><code>*</code></td><td>乘法</td><td><code>6 * 4</code></td></tr><tr><td align="left"><code>div</code></td><td>分配</td><td><code>8 div 4</code></td></tr><tr><td align="left"><code>=</code></td><td>平等的</td><td><code>price=9.80</code></td></tr><tr><td align="left"><code>!=</code></td><td>不相等</td><td><code>price!=9.80</code></td></tr><tr><td align="left"><code>&#x3C;</code></td><td>小于</td><td><code>price&#x3C;9.80</code></td></tr><tr><td align="left"><code>&#x3C;=</code></td><td>小于或等于</td><td><code>price&#x3C;=9.80</code></td></tr><tr><td align="left"><code>></code></td><td>大于</td><td><code>price>9.80</code></td></tr><tr><td align="left"><code>>=</code></td><td>大于或等于</td><td><code>price>=9.80</code></td></tr><tr><td align="left"><code>or</code></td><td>或者</td><td><code>price=9.80</code> or <code>price=9.70</code></td></tr><tr><td align="left"><code>and</code></td><td>和</td><td><code>price>9.00</code> and <code>price&#x3C;9.90</code></td></tr><tr><td align="left"><code>mod</code></td><td>模数（除法余数）</td><td><code>5</code> mod <code>2</code></td></tr></tbody></table>
 <!--rehype:className=show-header-->
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-表达式"><a aria-hidden="true" tabindex="-1" href="#xpath-表达式"><span class="icon icon-link"></span></a>XPath 表达式</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="步骤和轴"><a aria-hidden="true" tabindex="-1" href="#步骤和轴"><span class="icon icon-link"></span></a>步骤和轴</h3><div class="wrap-body">
@@ -559,7 +687,7 @@
 
 
 
-<table class="show-header"><thead><tr><th>Axis</th><th>Abbrev</th><th>Notes</th></tr></thead><tbody><tr><td><code>ancestor</code></td><td></td><td></td></tr><tr><td><code>ancestor-or-self</code></td><td></td><td></td></tr><tr><td><code>attribute</code></td><td><code>@</code></td><td><code>@href</code> 是 <code>attribute::href</code> 的缩写</td></tr><tr><td><code>child</code></td><td></td><td><code>div</code> 是 <code>child::div</code> 的缩写</td></tr><tr><td><code>descendant</code></td><td></td><td></td></tr><tr><td><code>descendant-or-self</code></td><td><code>//</code></td><td><code>//</code> 是 <code>/descendant-or-self::node()/</code>的缩写</td></tr><tr><td><code>namespace</code></td><td></td><td></td></tr><tr><td><code>self</code></td><td><code>.</code></td><td><code>.</code> 是 <code>self::node()</code> 的缩写</td></tr><tr><td><code>parent</code></td><td><code>..</code></td><td><code>..</code> 是 <code>parent::node()</code> 的缩写</td></tr><tr><td><code>following</code></td><td></td><td></td></tr><tr><td><code>following-sibling</code></td><td></td><td></td></tr><tr><td><code>preceding</code></td><td></td><td></td></tr><tr><td><code>preceding-sibling</code></td><td></td><td></td></tr></tbody></table>
+<table class="show-header"><thead><tr><th>Axis</th><th>Abbrev</th><th>Notes</th></tr></thead><tbody><tr><td><code>ancestor</code></td><td></td><td>选择当前节点的所有祖先(父母、祖父母等)</td></tr><tr><td><code>ancestor-or-self</code></td><td></td><td>选择当前节点所有祖先(父、祖父等)和当前节点本身</td></tr><tr><td><code>attribute</code></td><td><code>@</code></td><td><code>@href</code> 是 <code>attribute::href</code> 的缩写</td></tr><tr><td><code>child</code></td><td></td><td><code>div</code> 是 <code>child::div</code> 的缩写</td></tr><tr><td><code>descendant</code></td><td></td><td>选择当前节点的所有后代（子、孙等）</td></tr><tr><td><code>descendant-or-self</code></td><td><code>//</code></td><td><code>//</code> 是 <code>/descendant-or-self::node()/</code>的缩写  选择当前节点和当前节点本身的所有后代（子、孙等）</td></tr><tr><td><code>namespace</code></td><td></td><td>选择当前节点的所有命名空间节点</td></tr><tr><td><code>self</code></td><td><code>.</code></td><td><code>.</code> 是 <code>self::node()</code> 的缩写，选择当前节点</td></tr><tr><td><code>parent</code></td><td><code>..</code></td><td><code>..</code> 是 <code>parent::node()</code> 的缩写，选择当前节点的父节点</td></tr><tr><td><code>following</code></td><td></td><td>选择文档中当前节点结束标记之后的所有内容</td></tr><tr><td><code>following-sibling</code></td><td></td><td>选择当前节点之后的所有兄弟节点</td></tr><tr><td><code>preceding</code></td><td></td><td>选择文档中出现在当前节点之前的所有节点，除了祖先、属性节点和命名空间节点</td></tr><tr><td><code>preceding-sibling</code></td><td></td><td>选择当前节点之前的所有兄弟节点</td></tr></tbody></table>
 <!--rehype:className=show-header-->
 <p>您还可以使用其他轴。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="联合"><a aria-hidden="true" tabindex="-1" href="#联合"><span class="icon icon-link"></span></a>联合</h3><div class="wrap-body">
