@@ -47,6 +47,8 @@
 <li><a href="#mysql%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">MySQL 中的 Regex</a> <em>(Quick Reference)</em></li>
 <li><a href="./vim#vim-%E6%90%9C%E7%B4%A2%E5%92%8C%E6%9B%BF%E6%8D%A2">Vim 中的 Regex</a> <em>(Quick Reference)</em></li>
 <li><a href="https://regex101.com/">在线 Regex 测试器</a> <em>(regex101.com)</em></li>
+<li><a href="https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md">轻松学习 Regex</a> <em>(github.com)</em></li>
+<li><a href="https://jaywcjlove.github.io/regexp-example">正则表达式实例搜集</a> <em>(jaywcjlove.github.io)</em></li>
 </ul>
 <!--rehype:className=cols-2-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符类"><a aria-hidden="true" tabindex="-1" href="#字符类"><span class="icon icon-link"></span></a>字符类</h3><div class="wrap-body">
@@ -87,7 +89,7 @@
 
 
 
-<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>[abc]</code></td><td>单个字符：a、b 或 c</td></tr><tr><td align="left"><code>[^abc]</code></td><td>一个字符，除了：a、b 或 c</td></tr><tr><td align="left"><code>[a-z]</code></td><td>范围内的字符：a-z</td></tr><tr><td align="left"><code>[^a-z]</code></td><td>不在范围内的字符：a-z</td></tr><tr><td align="left"><code>[0-9]</code></td><td>范围内的数字：0-9</td></tr><tr><td align="left"><code>[a-zA-Z]</code></td><td>范围内的字符：<br>a-z 或 A-Z</td></tr><tr><td align="left"><code>[a-zA-Z0-9]</code></td><td>范围内的字符：<br>a-z、A-Z 或 0-9</td></tr></tbody></table>
+<table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>[abc]</code></td><td>单个字符：<code>a</code>、<code>b</code> 或 <code>c</code></td></tr><tr><td align="left"><code>[^abc]</code></td><td>一个字符，除了：<code>a</code>、<code>b</code> 或 <code>c</code></td></tr><tr><td align="left"><code>[a-z]</code></td><td>范围内的字符：<code>a-z</code></td></tr><tr><td align="left"><code>[^a-z]</code></td><td>不在范围内的字符：<code>a-z</code></td></tr><tr><td align="left"><code>[0-9]</code></td><td>范围内的数字：<code>0-9</code></td></tr><tr><td align="left"><code>[a-zA-Z]</code></td><td>范围内的字符：<br><code>a-z</code> 或 <code>A-Z</code></td></tr><tr><td align="left"><code>[a-zA-Z0-9]</code></td><td>范围内的字符：<br><code>a-z</code>、<code>A-Z</code> 或 <code>0-9</code></td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="量词"><a aria-hidden="true" tabindex="-1" href="#量词"><span class="icon icon-link"></span></a>量词</h3><div class="wrap-body">
 
 
@@ -552,7 +554,23 @@
 
 
 
-<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>(?=...)</code></td><td>正先行断言</td></tr><tr><td align="left"><code>(?!...)</code></td><td>负先行断言</td></tr><tr><td align="left"><code>(?&#x3C;=...)</code></td><td>正后发断言</td></tr><tr><td align="left"><code>(?&#x3C;!...)</code></td><td>负后发断言</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>(?=...)</code></td><td>正先行断言</td></tr><tr><td align="left"><code>(?!...)</code></td><td>负先行断言</td></tr><tr><td align="left"><code>(?&#x3C;=...)</code></td><td>正后发断言</td></tr><tr><td align="left"><code>(?&#x3C;!...)</code></td><td>负后发断言</td></tr><tr><td align="left"><code>?= </code></td><td>正先行断言-存在</td></tr><tr><td align="left"><code>?! </code></td><td>负先行断言-排除</td></tr><tr><td align="left"><code>?&#x3C;=</code></td><td>正后发断言-存在</td></tr><tr><td align="left"><code>?&#x3C;!</code></td><td>负后发断言-排除</td></tr></tbody></table>
 <p>零宽度断言 允许您在主模式之前（向后看）或之后（lookahead）匹配一个组，而不会将其包含在结果中。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="标志修饰符"><a aria-hidden="true" tabindex="-1" href="#标志修饰符"><span class="icon icon-link"></span></a>标志/修饰符</h3><div class="wrap-body">
 
@@ -1199,10 +1217,8 @@
 
 <table><thead><tr><th align="left">范例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>(?>red|green|blue)</code></td><td>比非捕获更快</td></tr><tr><td align="left"><code>(?>id|identity)\b</code></td><td>匹配 <yel>id</yel>，但不匹配 <yel>id</yel>entity</td></tr></tbody></table>
 <p>"id" 匹配，但 <code>\b</code> 在原子组之后失败，
-解析器不会回溯到组以重试“身份”
-<br>
-<br>
-如果替代品重叠，请从长到短命令。</p>
+解析器不会回溯到组以重试“身份”</p>
+<p>如果替代品重叠，请从长到短命令。</p>
 </div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="零宽度断言-lookaround前后预查"><a aria-hidden="true" tabindex="-1" href="#零宽度断言-lookaround前后预查"><span class="icon icon-link"></span></a>零宽度断言 Lookaround(前后预查)</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
@@ -1255,7 +1271,474 @@
 <p>匹配 <code>Mr.</code> 或 <code>Ms.</code> 如果单词 <code>her</code> 稍后在字符串中</p>
 <pre><code class="code-highlight"><span class="code-line line-number" line="1">M(?(?=.*?\bher\b)s|r)\.
 </span></code></pre>
-<p>需要环顾 IF 条件</p>
+<p>需要环顾 <code>IF</code> 条件</p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="基础实例"><a aria-hidden="true" tabindex="-1" href="#基础实例"><span class="icon icon-link"></span></a>基础实例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="基本匹配"><a aria-hidden="true" tabindex="-1" href="#基本匹配"><span class="icon icon-link"></span></a>基本匹配</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>the</code></td><td>The fat cat sat on <code>the</code> mat.</td></tr><tr><td align="left"><code>The</code></td><td><code>The</code> fat cat sat on the mat.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>由字母<code>t</code>开始，接着是<code>h</code>，再接着是<code>e</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="点运算符-"><a aria-hidden="true" tabindex="-1" href="#点运算符-"><span class="icon icon-link"></span></a>点运算符 <code>.</code></h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>.ar</code></td><td>The <code>car</code> <code>par</code>ked in the <code>gar</code>age.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>表达式<code>.ar</code>匹配一个任意字符后面跟着是<code>a</code>和<code>r</code>的字符串</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符集"><a aria-hidden="true" tabindex="-1" href="#字符集"><span class="icon icon-link"></span></a>字符集</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>.ar</code></td><td>The <code>car</code> <code>par</code>ked in the <code>gar</code>age.</td></tr><tr><td align="left"><code>ar[.]</code></td><td>A garage is a good place to park a c<code>ar</code>.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>方括号的句号就表示句号。表达式 <code>ar[.]</code> 匹配 <code>ar.</code> 字符串</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="否定字符集"><a aria-hidden="true" tabindex="-1" href="#否定字符集"><span class="icon icon-link"></span></a>否定字符集</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>[^c]ar</code></td><td>The car <code>par</code>ked in the <code>gar</code>age.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>表达式 <code>[^c]ar</code> 匹配一个后面跟着 <code>ar</code> 的除了<code>c</code>的任意字符。</p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="重复次数"><a aria-hidden="true" tabindex="-1" href="#重复次数"><span class="icon icon-link"></span></a>重复次数</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-号"><a aria-hidden="true" tabindex="-1" href="#-号"><span class="icon icon-link"></span></a><code>*</code> 号</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>[a-z]*</code></td><td>T<code>he</code> <code>car</code> <code>parked</code> <code>in</code> <code>the</code> <code>garage</code> #21.</td></tr><tr><td align="left"><code>\s*cat\s*</code></td><td>The fat <code>cat</code> sat on the con<code>cat</code>enation.</td></tr></tbody></table>
+<p>表达式 <code>[a-z]*</code> 匹配一个行中所有以小写字母开头的字符串。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-号-1"><a aria-hidden="true" tabindex="-1" href="#-号-1"><span class="icon icon-link"></span></a><code>+</code> 号</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>c.+t</code></td><td>The <code>fat cat sat on the mat</code>.</td></tr></tbody></table>
+<p>表达式 <code>c.+t</code> 匹配以首字母c开头以t结尾，中间跟着至少一个字符的字符串。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-号-2"><a aria-hidden="true" tabindex="-1" href="#-号-2"><span class="icon icon-link"></span></a><code>?</code> 号</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>[T]he</code></td><td><code>The</code> car is parked in the garage.</td></tr><tr><td align="left"><code>[T]?he</code></td><td><code>The</code> car is parked in t<code>he</code> garage.</td></tr></tbody></table>
+<p>表达式 <code>[T]?he</code> 匹配字符串 <code>he</code> 和 <code>The</code>。</p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="-号-3"><a aria-hidden="true" tabindex="-1" href="#-号-3"><span class="icon icon-link"></span></a><code>{}</code> 号</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>[0-9]{2,3}</code></td><td>The number was 9.<code>999</code>7 but we rounded it off to <code>10</code>.0.</td></tr><tr><td align="left"><code>[0-9]{2,}</code></td><td>The number was 9.<code>9997</code> but we rounded it off to <code>10</code>.0.</td></tr><tr><td align="left"><code>[0-9]{3}</code></td><td>The number was 9.<code>999</code>7 but we rounded it off to 10.0.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="-特征标群"><a aria-hidden="true" tabindex="-1" href="#-特征标群"><span class="icon icon-link"></span></a><code>(...)</code> 特征标群</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(c|g|p)ar</code></td><td>The <code>car</code> is <code>par</code>ked in the <code>gar</code>age.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>表达式 <code>(c|g|p)ar</code> 匹配 <code>car</code> 或 <code>gar</code> 或 <code>par</code>。 注意 <code>\</code> 是在 Markdown 中为了不破坏表格转义 <code>|</code>。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="-或运算符"><a aria-hidden="true" tabindex="-1" href="#-或运算符"><span class="icon icon-link"></span></a><code>|</code> 或运算符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(T|t)he|car</code></td><td>The car is parked in the garage.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>表达式 <code>(T|t)he|car</code> 匹配 <code>(T|t)he</code> 或 <code>car</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="转码特殊字符"><a aria-hidden="true" tabindex="-1" href="#转码特殊字符"><span class="icon icon-link"></span></a>转码特殊字符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(f|c|m)at\.?</code></td><td>The <code>fat</code> <code>cat</code> sat on the <code>mat.</code></td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>如果想要匹配句子中的 <code>.</code> 则要写成 <code>\.</code> 以下这个例子 <code>\.?</code> 是选择性匹配.</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="锚点-1"><a aria-hidden="true" tabindex="-1" href="#锚点-1"><span class="icon icon-link"></span></a>锚点</h3><div class="wrap-body">
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-号-4"><a aria-hidden="true" tabindex="-1" href="#-号-4"><span class="icon icon-link"></span></a><code>^</code> 号</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(T|t)he</code></td><td><code>The</code> car is parked in <code>the</code> garage.</td></tr><tr><td align="left"><code>^(T|t)he</code></td><td><code>The</code> car is parked in the garage.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-号-5"><a aria-hidden="true" tabindex="-1" href="#-号-5"><span class="icon icon-link"></span></a><code>$</code> 号</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(at\.)</code></td><td>The fat c<code>at.</code> s<code>at.</code> on the m<code>at.</code></td></tr><tr><td align="left"><code>(at\.)$</code></td><td>The fat cat. sat. on the m<code>at</code>.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="简写字符集"><a aria-hidden="true" tabindex="-1" href="#简写字符集"><span class="icon icon-link"></span></a>简写字符集</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="center">简写</th><th>描述</th></tr></thead><tbody><tr><td align="center"><code>.</code></td><td>除换行符外的所有字符</td></tr><tr><td align="center"><code>\w</code></td><td>匹配所有字母数字，等同于 <code>[a-zA-Z0-9_]</code></td></tr><tr><td align="center"><code>\W</code></td><td>匹配所有非字母数字，即符号，等同于： <code>[^\w]</code></td></tr><tr><td align="center"><code>\d</code></td><td>匹配数字： <code>[0-9]</code></td></tr><tr><td align="center"><code>\D</code></td><td>匹配非数字： <code>[^\d]</code></td></tr><tr><td align="center"><code>\s</code></td><td>匹配所有空格字符，等同于： <code>[\t\n\f\r\p{Z}]</code></td></tr><tr><td align="center"><code>\S</code></td><td>匹配所有非空格字符： <code>[^\s]</code></td></tr><tr><td align="center"><code>\f</code></td><td>匹配一个换页符</td></tr><tr><td align="center"><code>\n</code></td><td>匹配一个换行符</td></tr><tr><td align="center"><code>\r</code></td><td>匹配一个回车符</td></tr><tr><td align="center"><code>\t</code></td><td>匹配一个制表符</td></tr><tr><td align="center"><code>\v</code></td><td>匹配一个垂直制表符</td></tr><tr><td align="center"><code>\p</code></td><td>匹配 CR/LF（等同于 <code>\r\n</code>），用来匹配 DOS 行终止符</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>正则表达式提供一些常用的字符集简写。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="-正先行断言"><a aria-hidden="true" tabindex="-1" href="#-正先行断言"><span class="icon icon-link"></span></a><code>?=...</code> 正先行断言</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(T|t)he(?=\sfat)</code></td><td><code>The</code> fat cat sat on the mat.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p><code>The</code> 和 <code>the</code> 后面紧跟着 <code>(空格)fat</code>。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="-负先行断言"><a aria-hidden="true" tabindex="-1" href="#-负先行断言"><span class="icon icon-link"></span></a><code>?!...</code> 负先行断言</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(T|t)he(?!\sfat)</code></td><td>The fat cat sat on <code>the</code> mat.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>匹配 <code>The</code> 和 <code>the</code>，且其后不跟着 <code>(空格)fat</code>。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="--正后发断言"><a aria-hidden="true" tabindex="-1" href="#--正后发断言"><span class="icon icon-link"></span></a><code>?&#x3C;= ...</code> 正后发断言</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(?&#x3C;=(T|t)he\s)(fat|mat)</code></td><td>The <code>fat</code> cat sat on the <code>mat</code>.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>匹配 <code>fat</code> 和 <code>mat</code>，且其前跟着 <code>The</code> 或 <code>the</code>。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="-负后发断言"><a aria-hidden="true" tabindex="-1" href="#-负后发断言"><span class="icon icon-link"></span></a><code>?&#x3C;!...</code> 负后发断言</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>(?&#x3C;!(T|t)he\s)(cat)</code></td><td>The cat sat on <code>cat</code>.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>匹配 <code>cat</code>，且其前不跟着 <code>The</code> 或 <code>the</code>。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="忽略大小写-case-insensitive"><a aria-hidden="true" tabindex="-1" href="#忽略大小写-case-insensitive"><span class="icon icon-link"></span></a>忽略大小写 (Case Insensitive)</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>The</code></td><td>The <code>fat</code> cat sat on the mat.</td></tr><tr><td align="left"><code>/The/gi</code></td><td>The <code>fat</code> <code>cat</code> <code>sat</code> on the <code>mat</code>.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>修饰语 <code>i</code> 用于忽略大小写，<code>g</code> 表示全局搜索。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="全局搜索-global-search"><a aria-hidden="true" tabindex="-1" href="#全局搜索-global-search"><span class="icon icon-link"></span></a>全局搜索 (Global search)</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>/.(at)/</code></td><td>The <code>fat</code> cat sat on the mat.</td></tr><tr><td align="left"><code>/.(at)/g</code></td><td>The <code>fat</code> <code>cat</code> <code>sat</code> on the <code>mat</code>.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>表达式 <code>/.(at)/g</code> 表示搜索 任意字符（除了换行）+ <code>at</code>，并返回全部结果。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多行修饰符-multiline"><a aria-hidden="true" tabindex="-1" href="#多行修饰符-multiline"><span class="icon icon-link"></span></a>多行修饰符 (Multiline)</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>/.at(.)?$/</code></td><td>The fat<br> cat sat<br> on the <code>mat</code>.</td></tr><tr><td align="left"><code>/.at(.)?$/gm</code></td><td>The <code>fat</code><br> cat <code>sat</code><br> on the <code>mat</code>.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="贪婪匹配与惰性匹配-greedy-vs-lazy-matching"><a aria-hidden="true" tabindex="-1" href="#贪婪匹配与惰性匹配-greedy-vs-lazy-matching"><span class="icon icon-link"></span></a>贪婪匹配与惰性匹配 (Greedy vs lazy matching)</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">表达式</th><th>匹配示例</th></tr></thead><tbody><tr><td align="left"><code>/(.*at)/</code></td><td><code>The fat cat sat on the mat</code>.</td></tr><tr><td align="left"><code>/(.*?at)/</code></td><td><code>The fat</code> cat sat on the mat.</td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="python-中的正则表达式"><a aria-hidden="true" tabindex="-1" href="#python-中的正则表达式"><span class="icon icon-link"></span></a>Python 中的正则表达式</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="入门-1"><a aria-hidden="true" tabindex="-1" href="#入门-1"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
 <p>导入正则表达式模块</p>
@@ -1725,5 +2208,11 @@
 </span><span class="code-line line-number" line="7">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> regexp_instr<span class="token punctuation">(</span><span class="token string">'abbabba'</span><span class="token punctuation">,</span> <span class="token string">'b{2}'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="8"><span class="token number">7</span>
 </span></code></pre>
-</div></div></div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</div></div></div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="也可以看看"><a aria-hidden="true" tabindex="-1" href="#也可以看看"><span class="icon icon-link"></span></a>也可以看看</h2><div class="wrap-body">
+<ul>
+<li><a href="https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md">轻松学习 Regex</a> <em>(github.com)</em></li>
+<li><a href="https://jaywcjlove.github.io/regexp-example">正则表达式实例搜集</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://github.com/jaywcjlove/handbook/blob/master/docs/JavaScript/RegExp.md">一些正则表达式随记</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
 </html>
