@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>SSH 备忘清单
+ &#x26;  ssh cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="此快速参考备忘单提供了使用 SSH 的各种方法。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,ssh">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/ssh.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="ssh-备忘清单"><a aria-hidden="true" tabindex="-1" href="#ssh-备忘清单"><span class="icon icon-link"></span></a>SSH 备忘清单</h1><div class="wrap-body">
+<p>此快速参考备忘单提供了使用 SSH 的各种方法。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="连接"><a aria-hidden="true" tabindex="-1" href="#连接"><span class="icon icon-link"></span></a>连接</h3><div class="wrap-body">
+<p>连接到服务器（默认端口 22）</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5
+</span></code></pre>
+<p>在特定端口上连接</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token parameter variable">-p</span> <span class="token number">6222</span>
+</span></code></pre>
+<p>通过 pem 文件连接（0400 权限）</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> <span class="token parameter variable">-i</span> /path/file.pem root@192.168.1.5
+</span></code></pre>
+<p>请参阅：<a href="./chmod.html#ssh-%E6%9D%83%E9%99%90">SSH 权限</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="执行"><a aria-hidden="true" tabindex="-1" href="#执行"><span class="icon icon-link"></span></a>执行</h3><div class="wrap-body">
+<p>执行远程命令</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token string">'ls -l'</span>
+</span></code></pre>
+<p>调用本地脚本</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token function">bash</span> <span class="token operator">&#x3C;</span> script.sh
+</span></code></pre>
+<p>从服务器压缩和下载</p>
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token string">"tar cvzf - ~/source"</span> <span class="token operator">></span> output.tgz
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="scp"><a aria-hidden="true" tabindex="-1" href="#scp"><span class="icon icon-link"></span></a>SCP</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>从远程复制到本地</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> user@server:/dir/file.ext dest/
+</span></code></pre>
+<p>两台服务器之间的副本</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> user@server:/file user@server:/dir
+</span></code></pre>
+<p>从本地复制到远程</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> dest/file.ext user@server:/dir
+</span></code></pre>
+<p>复制整个文件夹</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> <span class="token parameter variable">-r</span> user@server:/dir dest/
+</span></code></pre>
+<p>复制文件夹中的所有文件</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> user@server:/dir/* dest/
+</span></code></pre>
+<p>从服务器文件夹复制到当前文件夹</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> user@server:/dir/* <span class="token builtin class-name">.</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="配置位置"><a aria-hidden="true" tabindex="-1" href="#配置位置"><span class="icon icon-link"></span></a>配置位置</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">文件路径</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>/etc/ssh/ssh_config</code></td><td>系统范围的配置</td></tr><tr><td align="left"><code>~/.ssh/config</code></td><td>用户特定的配置</td></tr><tr><td align="left"><code>~/.ssh/id_{type}</code></td><td>私钥</td></tr><tr><td align="left"><code>~/.ssh/id_{type}.pub</code></td><td>公钥</td></tr><tr><td align="left"><code>~/.ssh/known_hosts</code></td><td>登录主机</td></tr><tr><td align="left"><code>~/.ssh/authorized_keys</code></td><td>授权登录密钥</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="scp-选项"><a aria-hidden="true" tabindex="-1" href="#scp-选项"><span class="icon icon-link"></span></a>SCP 选项</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th>说明</th></tr></thead><tbody><tr><td align="left">scp <code>-r</code></td><td>递归复制整个目录</td></tr><tr><td align="left">scp <code>-C</code></td><td>压缩数据</td></tr><tr><td align="left">scp <code>-v</code></td><td>打印详细信息</td></tr><tr><td align="left">scp <code>-P</code> 8080</td><td>使用特定端口</td></tr><tr><td align="left">scp <code>-B</code></td><td>批处理模式_（防止密码）_</td></tr><tr><td align="left">scp <code>-p</code></td><td>保留时间和模式</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="配置示例"><a aria-hidden="true" tabindex="-1" href="#配置示例"><span class="icon icon-link"></span></a>配置示例</h3><div class="wrap-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1">Host server1 
+</span><span class="code-line line-number" line="2">    HostName <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">1.5</span>
+</span><span class="code-line line-number" line="3">    User root
+</span><span class="code-line line-number" line="4">    Port <span class="token number">22</span>
+</span><span class="code-line line-number" line="5">    IdentityFile ~/<span class="token punctuation">.</span>ssh/server1<span class="token punctuation">.</span>key
+</span></code></pre>
+<p>通过别名启动</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> server1
+</span></code></pre>
+<p>请参阅：完整 <a href="https://linux.die.net/man/5/ssh_config">配置选项</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="proxyjump"><a aria-hidden="true" tabindex="-1" href="#proxyjump"><span class="icon icon-link"></span></a>ProxyJump</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> proxy_host1 remote_host2
+</span></code></pre>
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> user@proxy_host1 user@remote_host2
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>多次跳跃</p>
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> user@proxy_host1:port1,user@proxy_host2:port2 user@remote_host3
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ssh-copy-id"><a aria-hidden="true" tabindex="-1" href="#ssh-copy-id"><span class="icon icon-link"></span></a>ssh-copy-id</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-copy-id user@server
+</span></code></pre>
+<p>复制到别名服务器</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-copy-id server1
+</span></code></pre>
+<p>复制特定密钥</p>
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-copy-id <span class="token parameter variable">-i</span> ~/.ssh/id_rsa.pub user@server
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="ssh-keygen"><a aria-hidden="true" tabindex="-1" href="#ssh-keygen"><span class="icon icon-link"></span></a>SSH keygen</h2><div class="wrap-body">
+<!--rehype:body-class=cols-5-->
+</div></div><div class="h2wrap-body cols-5"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="ssh-keygen-1"><a aria-hidden="true" tabindex="-1" href="#ssh-keygen-1"><span class="icon icon-link"></span></a>ssh-keygen</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-b</span> <span class="token number">4096</span> <span class="token parameter variable">-C</span> <span class="token string">"your@mail.com"</span> 
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>-</th><th>-</th><th>-</th></tr></thead><tbody><tr><td></td><td><code>-t</code></td><td><a href="#%E9%92%A5%E5%8C%99%E7%B1%BB%E5%9E%8B">类型</a> 键</td></tr><tr><td></td><td><code>-b</code></td><td>密钥中的位数</td></tr><tr><td></td><td><code>-C</code></td><td>提供新评论</td></tr></tbody></table>
+<p>生成带有电子邮件作为注释的 RSA 4096 位密钥</p>
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="产生"><a aria-hidden="true" tabindex="-1" href="#产生"><span class="icon icon-link"></span></a>产生</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>以交互方式生成密钥</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen
+</span></code></pre>
+<p>指定文件名</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-f</span> ~/.ssh/filename
+</span></code></pre>
+<p>从私钥生成公钥</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-y</span> <span class="token parameter variable">-f</span> private.key <span class="token operator">></span> public.pub
+</span></code></pre>
+<p>更改评论</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-c</span> <span class="token parameter variable">-f</span> ~/.ssh/id_rsa
+</span></code></pre>
+<p>更改私钥密码</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-p</span> <span class="token parameter variable">-f</span> ~/.ssh/id_rsa
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="钥匙类型"><a aria-hidden="true" tabindex="-1" href="#钥匙类型"><span class="icon icon-link"></span></a>钥匙类型</h3><div class="wrap-body">
+<ul>
+<li>rsa</li>
+<li>ed25519</li>
+<li>dsa</li>
+<li>ecdsa</li>
+</ul>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="known_hosts"><a aria-hidden="true" tabindex="-1" href="#known_hosts"><span class="icon icon-link"></span></a>known_hosts</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>从 known_hosts 搜索</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-F</span> <span class="token operator">&#x3C;</span>ip/hostname<span class="token operator">></span>
+</span></code></pre>
+<p>从 known_hosts 中删除</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-R</span> <span class="token operator">&#x3C;</span>ip/hostname<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="密钥格式"><a aria-hidden="true" tabindex="-1" href="#密钥格式"><span class="icon icon-link"></span></a>密钥格式</h3><div class="wrap-body">
+<ul>
+<li>PEM</li>
+<li>PKCS8</li>
+</ul>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/">OpenSSH 配置文件示例</a> <em>(cyberciti.biz)</em></li>
+<li><a href="https://linux.die.net/man/5/ssh_config">ssh_config</a> <em>(linux.die.net)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
