@@ -17,19 +17,21 @@ RegEX 备忘清单
 - [MySQL 中的 Regex](#mysql中的正则表达式) _(Quick Reference)_
 - [Vim 中的 Regex](./vim#vim-搜索和替换) _(Quick Reference)_
 - [在线 Regex 测试器](https://regex101.com/) _(regex101.com)_
+- [轻松学习 Regex](https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md) _(github.com)_
+- [正则表达式实例搜集](https://jaywcjlove.github.io/regexp-example) _(jaywcjlove.github.io)_
 <!--rehype:className=cols-2-->
 
 ### 字符类
 
 范例 | 说明
 :-|-
-`[abc]`       | 单个字符：a、b 或 c
-`[^abc]`      | 一个字符，除了：a、b 或 c
-`[a-z]`       | 范围内的字符：a-z
-`[^a-z]`      | 不在范围内的字符：a-z
-`[0-9]`       | 范围内的数字：0-9
-`[a-zA-Z]`    | 范围内的字符：<br>a-z 或 A-Z
-`[a-zA-Z0-9]` | 范围内的字符：<br>a-z、A-Z 或 0-9
+`[abc]`       | 单个字符：`a`、`b` 或 `c`
+`[^abc]`      | 一个字符，除了：`a`、`b` 或 `c`
+`[a-z]`       | 范围内的字符：`a-z`
+`[^a-z]`      | 不在范围内的字符：`a-z`
+`[0-9]`       | 范围内的数字：`0-9`
+`[a-zA-Z]`    | 范围内的字符：<br>`a-z` 或 `A-Z`
+`[a-zA-Z0-9]` | 范围内的字符：<br>`a-z`、`A-Z` 或 `0-9`
 
 
 ### 量词
@@ -181,6 +183,10 @@ RegEX 备忘清单
 `(?!...)`  | 负先行断言
 `(?<=...)` | 正后发断言
 `(?<!...)` | 负后发断言
+`?= `|正先行断言-存在
+`?! `|负先行断言-排除
+`?<=`|正后发断言-存在
+`?<!`|负后发断言-排除
 
 零宽度断言 允许您在主模式之前（向后看）或之后（lookahead）匹配一个组，而不会将其包含在结果中。
 
@@ -401,11 +407,8 @@ RegEX 备忘清单
 
 "id" 匹配，但 `\b` 在原子组之后失败，
 解析器不会回溯到组以重试“身份”
-<br>
-<br>
+
 如果替代品重叠，请从长到短命令。
-
-
 
 ### 零宽度断言 Lookaround(前后预查)
 <!--rehype:wrap-class=col-span-2 row-span-2-->
@@ -431,8 +434,225 @@ RegEX 备忘清单
 M(?(?=.*?\bher\b)s|r)\.
 ```
 
-需要环顾 IF 条件
+需要环顾 `IF` 条件
 
+基础实例
+---
+
+### 基本匹配
+
+表达式 | 匹配示例
+:- | -
+`the` | The fat cat sat on `the` mat.
+`The` | `The` fat cat sat on the mat.
+<!--rehype:className=show-header-->
+
+由字母`t`开始，接着是`h`，再接着是`e`
+
+### 点运算符 `.`
+
+表达式 | 匹配示例
+:- | -
+`.ar` | The `car` `par`ked in the `gar`age.
+<!--rehype:className=show-header-->
+
+表达式`.ar`匹配一个任意字符后面跟着是`a`和`r`的字符串
+
+### 字符集
+
+表达式 | 匹配示例
+:- | -
+`.ar` | The `car` `par`ked in the `gar`age.
+`ar[.]` | A garage is a good place to park a c`ar`.
+<!--rehype:className=show-header-->
+
+方括号的句号就表示句号。表达式 `ar[.]` 匹配 `ar.` 字符串
+
+### 否定字符集
+
+表达式 | 匹配示例
+:- | -
+`[^c]ar` | The car `par`ked in the `gar`age.
+<!--rehype:className=show-header-->
+
+表达式 `[^c]ar` 匹配一个后面跟着 `ar` 的除了`c`的任意字符。
+
+### 重复次数
+<!--rehype:wrap-class=row-span-2-->
+
+#### `*` 号
+
+表达式 | 匹配示例
+:- | -
+`[a-z]*` | T`he` `car` `parked` `in` `the` `garage` #21.
+`\s*cat\s*` | The fat `cat` sat on the con`cat`enation.
+
+表达式 `[a-z]*` 匹配一个行中所有以小写字母开头的字符串。
+
+#### `+` 号
+
+表达式 | 匹配示例
+:- | -
+`c.+t` | The `fat cat sat on the mat`.
+
+表达式 `c.+t` 匹配以首字母c开头以t结尾，中间跟着至少一个字符的字符串。
+
+#### `?` 号
+
+表达式 | 匹配示例
+:- | -
+`[T]he` | `The` car is parked in the garage.
+`[T]?he` | `The` car is parked in t`he` garage.
+
+表达式 `[T]?he` 匹配字符串 `he` 和 `The`。
+
+### `{}` 号
+
+表达式 | 匹配示例
+:- | -
+`[0-9]{2,3}` | The number was 9.`999`7 but we rounded it off to `10`.0.
+`[0-9]{2,}` | The number was 9.`9997` but we rounded it off to `10`.0.
+`[0-9]{3}` | The number was 9.`999`7 but we rounded it off to 10.0.
+<!--rehype:className=show-header-->
+
+### `(...)` 特征标群
+
+表达式 | 匹配示例
+:- | -
+`(c\|g\|p)ar` | The `car` is `par`ked in the `gar`age.
+<!--rehype:className=show-header-->
+
+表达式 `(c|g|p)ar` 匹配 `car` 或 `gar` 或 `par`。 注意 `\` 是在 Markdown 中为了不破坏表格转义 `|`。
+
+### `|` 或运算符
+
+表达式 | 匹配示例
+:- | -
+`(T\|t)he\|car` | The car is parked in the garage.
+<!--rehype:className=show-header-->
+
+表达式 `(T|t)he|car` 匹配 `(T|t)he` 或 `car`
+
+### 转码特殊字符
+
+表达式 | 匹配示例
+:- | -
+`(f\|c\|m)at\.?` | The `fat` `cat` sat on the `mat.`
+<!--rehype:className=show-header-->
+
+如果想要匹配句子中的 `.` 则要写成 `\.` 以下这个例子 `\.?` 是选择性匹配.
+
+### 锚点
+
+#### `^` 号
+
+表达式 | 匹配示例
+:- | -
+`(T\|t)he` | `The` car is parked in `the` garage.
+`^(T\|t)he` | `The` car is parked in the garage.
+<!--rehype:className=show-header-->
+
+#### `$` 号
+
+表达式 | 匹配示例
+:- | -
+`(at\.)` | The fat c`at.` s`at.` on the m`at.`
+`(at\.)$` | The fat cat. sat. on the m`at`.
+<!--rehype:className=show-header-->
+
+### 简写字符集
+<!--rehype:wrap-class=row-span-3-->
+
+|简写|描述|
+|:----:|----|
+|`.`|除换行符外的所有字符|
+|`\w`|匹配所有字母数字，等同于 `[a-zA-Z0-9_]`|
+|`\W`|匹配所有非字母数字，即符号，等同于： `[^\w]`|
+|`\d`|匹配数字： `[0-9]`|
+|`\D`|匹配非数字： `[^\d]`|
+|`\s`|匹配所有空格字符，等同于： `[\t\n\f\r\p{Z}]`|
+|`\S`|匹配所有非空格字符： `[^\s]`|
+|`\f`|匹配一个换页符|
+|`\n`|匹配一个换行符|
+|`\r`|匹配一个回车符|
+|`\t`|匹配一个制表符|
+|`\v`|匹配一个垂直制表符|
+|`\p`|匹配 CR/LF（等同于 `\r\n`），用来匹配 DOS 行终止符|
+<!--rehype:className=show-header-->
+
+正则表达式提供一些常用的字符集简写。
+
+### `?=...` 正先行断言
+
+表达式 | 匹配示例
+:- | -
+`(T\|t)he(?=\sfat)` | `The` fat cat sat on the mat.
+<!--rehype:className=show-header-->
+
+`The` 和 `the` 后面紧跟着 `(空格)fat`。
+
+### `?!...` 负先行断言
+
+表达式 | 匹配示例
+:- | -
+`(T\|t)he(?!\sfat)` | The fat cat sat on `the` mat.
+<!--rehype:className=show-header-->
+
+匹配 `The` 和 `the`，且其后不跟着 `(空格)fat`。
+
+### `?<= ...` 正后发断言
+
+表达式 | 匹配示例
+:- | -
+`(?<=(T\|t)he\s)(fat\|mat)` | The `fat` cat sat on the `mat`.
+<!--rehype:className=show-header-->
+
+匹配 `fat` 和 `mat`，且其前跟着 `The` 或 `the`。
+
+### `?<!...` 负后发断言
+
+表达式 | 匹配示例
+:- | -
+`(?<!(T\|t)he\s)(cat)` | The cat sat on `cat`.
+<!--rehype:className=show-header-->
+
+匹配 `cat`，且其前不跟着 `The` 或 `the`。
+
+### 忽略大小写 (Case Insensitive)
+
+表达式 | 匹配示例
+:- | -
+`The` | The `fat` cat sat on the mat.
+`/The/gi` | The `fat` `cat` `sat` on the `mat`.
+<!--rehype:className=show-header-->
+
+修饰语 `i` 用于忽略大小写，`g` 表示全局搜索。
+
+### 全局搜索 (Global search)
+
+表达式 | 匹配示例
+:- | -
+`/.(at)/` | The `fat` cat sat on the mat.
+`/.(at)/g` | The `fat` `cat` `sat` on the `mat`.
+<!--rehype:className=show-header-->
+
+表达式 `/.(at)/g` 表示搜索 任意字符（除了换行）+ `at`，并返回全部结果。
+
+### 多行修饰符 (Multiline)
+
+表达式 | 匹配示例
+:- | -
+`/.at(.)?$/` | The fat<br /> cat sat<br /> on the `mat`.
+`/.at(.)?$/gm` | The `fat`<br /> cat `sat`<br /> on the `mat`.
+<!--rehype:className=show-header-->
+
+### 贪婪匹配与惰性匹配 (Greedy vs lazy matching)
+
+表达式 | 匹配示例
+:- | -
+`/(.*at)/` | `The fat cat sat on the mat`. 
+`/(.*?at)/` | `The fat` cat sat on the mat. 
+<!--rehype:className=show-header-->
 
 Python 中的正则表达式
 ---------------
@@ -921,3 +1141,10 @@ mysql> SELECT regexp_instr('abbabba', 'b{2}', 1, 2);
 mysql> SELECT regexp_instr('abbabba', 'b{2}', 1, 3, 1);
 7
 ```
+
+也可以看看
+----------
+
+- [轻松学习 Regex](https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md) _(github.com)_
+- [正则表达式实例搜集](https://jaywcjlove.github.io/regexp-example) _(jaywcjlove.github.io)_
+- [一些正则表达式随记](https://github.com/jaywcjlove/handbook/blob/master/docs/JavaScript/RegExp.md) _(jaywcjlove.github.io)_
