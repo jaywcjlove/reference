@@ -425,6 +425,33 @@ H2 部分
 在 `Title 4` 标题添加 `col-span-2` 占位类
 
 ### 卡片列合并布局 8
+
+```shell
+╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╮
+┆     H3 Title 1      ┆
+╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╯
+╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮ ╭┈┈┈╮
+┆ 2 ┆ ┆ 3 ┆ ┆ 4 ┆ ┆ 5 ┆
+╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
+```
+
+上面布局效果 Markdown 源码：
+
+```markdown
+H2 部分
+----
+<!--rehype:body-class=cols-4-->
+### Title 1
+<!--rehype:wrap-class=col-span-4-->
+### Title 2
+### Title 3
+### Title 4
+### Title 5
+```
+
+在 `H2 部分` 标题添加 `cols-4`，和 `Title 1` 添加 `col-span-4` 合并栏
+
+### 卡片列合并布局 9
 <!--rehype:wrap-class=col-span-2-->
 
 ```shell
