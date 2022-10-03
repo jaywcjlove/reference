@@ -784,4 +784,7 @@ Hooks
 另见
 ----
 
-- [反应生命周期方法图](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+- [React 官方中文文档](https://zh-hans.reactjs.org/) _(zh-hans.reactjs.org)_
+- [反应生命周期方法图](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) _(projects.wojtekmaj.pl)_
+- [React 16 Cheat Sheet](https://reactcheatsheet.com)
+- [Awesome React](https://github.com/enaqx/awesome-react) _(github.com)_
