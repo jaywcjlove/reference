@@ -264,8 +264,10 @@ function addNumbers(x1, x2) {
 }
 
 const element = (
-  <div>{addNumbers(2, 5)}</div>
-)
+  <div>
+    {addNumbers(2, 5)}
+  </div>
+);
 ```
 
 ### 嵌套
@@ -286,23 +288,6 @@ function Student() {
 }
 ```
 
-### Fragment
-
-```jsx
-import { Fragment } from 'react'
-import Avatar from './Avatar';
-import Profile from './Profile';
-
-const Student = () => (
-  <Fragment>
-    <Avatar src="./demo.jpg" />
-    <Profile username="name" />
-  </Fragment>
-)
-```
-
-从 `v16.2.0` 开始 `Fragment` 可用于返回多个子节点，而无需向 DOM 添加额外的包装节点。或者使用 `<></>` 效果是一样的。
-
 ### Portals
 
 React 并*没有*创建一个新的 `div`。它只是把子元素渲染到 `domNode` 中。`domNode` 是一个可以在任何位置的有效 DOM 节点。
@@ -317,6 +302,56 @@ render() {
 ```
 
 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案
+
+### Fragment
+<!--rehype:wrap-class=row-span-2-->
+
+```jsx
+import { Fragment } from 'react'
+import Avatar from './Avatar';
+import Profile from './Profile';
+
+const Student = () => (
+  <Fragment>
+    <Avatar src="./demo.jpg" />
+    <Profile username="name" />
+  </Fragment>
+);
+```
+
+从 `v16.2.0` 开始 `Fragment` 可用于返回多个子节点，而无需向 DOM 添加额外的包装节点。或者使用 `<></>` 效果是一样的。
+
+```jsx
+const Student = () => (
+  <>
+    <Avatar src="./demo.jpg" />
+    <Profile username="name" />
+  </>
+);
+```
+
+查看: [Fragments & strings](https://reactjs.org/blog/2017/09/26/react-v16.0.html#new-render-return-types-fragments-and-strings)
+
+### 返回字符串
+
+```jsx
+render() {
+  return 'Look ma, no spans!';
+}
+```
+
+您可以只返回一个字符串。查看: [Fragments & strings](https://reactjs.org/blog/2017/09/26/react-v16.0.html#new-render-return-types-fragments-and-strings)
+
+### 返回数组
+
+```jsx
+const Student = () => [
+  <li key="A">First item</li>,
+  <li key="B">Second item</li>
+];
+```
+
+不要忘记 `key`！查看: [Fragments & strings](https://reactjs.org/blog/2017/09/26/react-v16.0.html#new-render-return-types-fragments-and-strings)
 
 ### Refs 转发
 
@@ -344,7 +379,7 @@ const ref = React.createRef();
 ### Class 组件内部使用 ref 属性
 
 ```jsx
-import { Component,createRef } from 'react';
+import {Component,createRef} from 'react'
 
 class MyComponent extends Component {
   constructor(props) {
@@ -828,40 +863,6 @@ class MessageBox extends PureComponent {
   ···
 }
 ```
-### 嵌入内部组件
-
-```jsx
-import React from 'react';
-import UserAvatar from "./UserAvatar";
-
-export default function UserProfile() {
-  return (
-    <div className="UserProfile">
-      <UserAvatar />
-      <UserAvatar />
-    </div>
-  );
-}
-```
-
-注意：假设 `UserAvatar` 在 `UserAvatar.js` 中声明。
-
-### 嵌入外部组件
-
-```jsx
-import React from 'react';
-import CompName from 'component-name';
-
-export default function UserProfile() {
-  return (
-    <div className="UserProfile">
-      <CompName />
-    </div>
-  );
-}
-```
-
-注意：外部组件在 [npmjs.com](https://www.npmjs.com) 上找到，需要先安装导入。
 
 ### 高阶组件
 
@@ -891,6 +892,97 @@ const LowComponent = (props) => (
 
 const MyComp = with('Hello')(LowComponent)
 ```
+
+### 包含关系
+
+```jsx
+function FancyBorder(props) {
+  return (
+    <div className={'Fancy'+props.color}>
+      {props.children}
+    </div>
+  );
+}
+```
+
+组件可以通过 JSX 嵌套
+
+```jsx
+function WelcomeDialog() {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="title">欢迎</h1>
+      <p className="message">
+        感谢您访问我们的宇宙飞船
+      </p>
+    </FancyBorder>
+  );
+}
+```
+
+### 作为参数传递
+
+```jsx
+function SplitPane(props) {
+  return (
+    <div className="SplitPane">
+      <div className="left">
+        {props.left}
+      </div>
+      <div className="right">
+        {props.right}
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <SplitPane
+      left={<Contacts />}
+      right={<Chat />}
+    />
+  );
+}
+```
+
+给组件 `SplitPane` 传递 `left` 和 `right` 两个组件参数
+
+### 嵌入内部组件
+
+```jsx
+import React from 'react';
+import UserAvatar from "./UserAvatar";
+
+export default function UserProfile() {
+  return (
+    <div className="UserProfile">
+      <UserAvatar />
+      <UserAvatar />
+    </div>
+  );
+}
+```
+
+注意：假设 `UserAvatar` 在 `UserAvatar.js` 中声明
+
+### 嵌入外部组件
+
+```jsx
+import React from 'react';
+import {Button} from 'uiw';
+export default function UserProfile() {
+  return (
+    <div className="UserProfile">
+      <Button type="primary">
+        主要按钮
+      </Button>
+    </div>
+  );
+}
+```
+
+注意：外部组件在 [npmjs.com](https://www.npmjs.com) 上找到，需要先安装导入
 
 生命周期
 ---
@@ -1107,6 +1199,8 @@ MyComponent.propTypes = {
   message: PropTypes.instanceOf(Message),
 };
 ```
+
+声明 `message` 为类的实例
 
 另见
 ----
