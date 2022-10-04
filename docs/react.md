@@ -301,7 +301,7 @@ const Student = () => (
 )
 ```
 
-从 @v16.2.0 开始，`Fragment` 可用于返回多个子节点，而无需向 DOM 添加额外的包装节点。
+从 `v16.2.0` 开始 `Fragment` 可用于返回多个子节点，而无需向 DOM 添加额外的包装节点。或者使用 `<></>` 效果是一样的。
 
 ### Portals
 
@@ -317,6 +317,69 @@ render() {
 ```
 
 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案
+
+### Refs 转发
+
+```jsx
+const FancyButton = React.forwardRef(
+  (props, ref) => (
+    <button ref={ref} className="btn">
+      {props.children}
+    </button>
+  )
+);
+```
+
+#### 使用
+
+```jsx
+// 你可以直接获取 DOM button 的 ref：
+const ref = React.createRef();
+
+<FancyButton ref={ref}>
+  点击我
+</FancyButton>;
+```
+
+### Class 组件内部使用 ref 属性
+
+```jsx
+import { Component,createRef } from 'react';
+
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.myRef = createRef();
+  }
+
+  render() {
+    return <div ref={this.myRef} />;
+  }
+}
+```
+
+提示：Refs 适用于类组件，但不适用于函数组件（除非您使用 useRef hook，请参阅[hooks](#hooks)）
+
+### 函数组件内部使用 ref 属性
+
+```jsx
+function CustomTextInput(props) {
+  // 这里必须声明 $input，这样 ref 才可以引用它
+  const $input = useRef(null);
+  function handleClick() {
+    $input.current.focus();
+  }
+  return (
+    <div>
+      <input type="text" ref={$input} />
+      <input
+        type="button" value="聚焦文本输入"
+        onClick={handleClick}
+      />
+    </div>
+  );
+}
+```
 
 默认值
 ---
@@ -444,6 +507,7 @@ let emptyHeading = <h1 />;
 const root = ReactDOM.createRoot(
   document.getElementById('root')
 );
+
 const element = <h1>Hello, world</h1>;
 root.render(element);
 ```
@@ -453,9 +517,8 @@ root.render(element);
 ### JSX 属性
 
 ```jsx
-const element = (
-  <img src={user.avatarUrl} />
-);
+const avatarUrl = "img/picture.jpg"
+const element = <img src={avatarUrl} />;
 
 const element = (
   <button className="btn">
@@ -469,7 +532,7 @@ const element = (
 ### JSX 表达式
 
 ```jsx
-let name = 'Josh Perez';
+let name = '张三';
 let element = <h1>Hello, {name}</h1>;
 
 function fullName(firstName, lastName) {
@@ -477,7 +540,7 @@ function fullName(firstName, lastName) {
 }
 let element = (
   <h1>
-    Hello, {fullName('Julie', 'Johnson')}
+    Hello, {fullName('三', '张')}
   </h1>
 );
 ```
