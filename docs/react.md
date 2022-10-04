@@ -27,6 +27,12 @@ const root = createRoot(elm);
 root.render(<App />);
 ```
 
+#### 快速创建 **React** 项目 ([CRA](https://github.com/facebook/create-react-app))
+
+```shell
+npx create-react-app my-app
+```
+
 ### 导入多个导出
 
 ```jsx
@@ -1008,7 +1014,7 @@ import PropTypes from 'prop-types'
 `any` | 任意类型
 `(props, propName, 组件名称)=>{}` | 自定义验证器
 
-#### 基础
+#### _基础_
 
 :- | -
 :- | -
@@ -1018,7 +1024,7 @@ import PropTypes from 'prop-types'
 `bool` | 布尔值
 `symbol` | -
 
-#### 枚举 Enum
+#### _枚举 Enum_
 
 :- | -
 :- | -
@@ -1026,14 +1032,14 @@ import PropTypes from 'prop-types'
 `oneOfType([type])` | 几种类型中的任意一个类型
 
 
-#### 数组 Array
+#### _数组 Array_
 
 :- | -
 :- | -
 `array` | 数组
 `arrayOf` | 数组由某一类型的元素组成
 
-#### 对象 Object
+#### _对象 Object_
 
 :- | -
 :- | -
@@ -1043,7 +1049,7 @@ import PropTypes from 'prop-types'
 `shape` | 对象由特定的类型值组成
 `exact` | 有额外属性警告
 
-#### 元素 Elements
+#### _元素 Elements_
 
 :- | -
 :- | -
@@ -1051,7 +1057,7 @@ import PropTypes from 'prop-types'
 `elementType` | React 元素类型(即 `MyComponent`)
 `node` | DOM 节点
 
-#### 必需的
+#### _必需的_
 
 :- | -
 :- | -
