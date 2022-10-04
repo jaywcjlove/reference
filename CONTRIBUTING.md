@@ -38,5 +38,6 @@ Contributing 贡献
 
 ```bash
 npm i          # 安装依赖
-npm run build  # 编译生成静态页面
+npm run build  # 编译输出 HTML
+npm run start  # 监听 md 文件编译输出 HTML
 ```
