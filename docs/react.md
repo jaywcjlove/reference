@@ -381,6 +381,61 @@ function CustomTextInput(props) {
 }
 ```
 
+### 严格模式 StrictMode
+
+```jsx
+<div>
+  <Header />
+  <React.StrictMode>
+    <div>
+      <ComponentOne />
+      <ComponentTwo />
+    </div>
+  </React.StrictMode>
+  <Footer />
+</div>
+```
+
+----
+
+- [识别不安全的生命周期](https://zh-hans.reactjs.org/docs/strict-mode.html#identifying-unsafe-lifecycles)
+- [关于使用过时字符串 ref API 的警告](https://zh-hans.reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)
+- [关于使用废弃的 findDOMNode 方法的警告](https://zh-hans.reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+- [检测意外的副作用](https://zh-hans.reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects)
+- [检测过时的 context API](https://zh-hans.reactjs.org/docs/strict-mode.html#detecting-legacy-context-api)
+- [确保可复用的状态](https://zh-hans.reactjs.org/docs/strict-mode.html#ensuring-reusable-state)
+
+突出显示应用程序中潜在问题的工具。请参阅：[严格模式](https://zh-hans.reactjs.org/docs/strict-mode.html)
+
+### Profiler
+<!--rehype:wrap-class=col-span-2-->
+
+测量一个 React 应用多久渲染一次以及渲染一次的 `代价`
+
+```jsx
+<Profiler id="Navigation" onRender={callback}>
+  <Navigation {...props} />
+</Profiler>
+```
+
+为了分析 `Navigation` 组件和它的子代。应该在需要时才去使用它。
+
+:- | :-
+:- | :-
+`id(string)` | 发生提交的 `Profiler` 树的 `id`
+`onRender(function)` | 组件树任何组件 “提交” 一个更新的时候调用这个函数
+
+#### onRender 回调函数
+
+:- | :-
+:- | :-
+`phase: "mount" \| "update"` |  判断是由 `props`/`state`/`hooks` 改变 或 “第一次装载” 引起的重渲染
+`actualDuration: number` | 本次更新在渲染 Profiler 和它的子代上花费的时间
+`baseDuration: number` | 在 Profiler 树中最近一次每一个组件 render 的持续时间
+`startTime: number` | 本次更新中 React 开始渲染的时间戳
+`commitTime: number` | 本次更新中 React commit 阶段结束的时间戳
+`interactions: Set` | 当更新被制定时，“[interactions](https://fb.me/react-interaction-tracing)” 的集合会被追踪
+
 默认值
 ---
 
@@ -843,6 +898,215 @@ const MyComp = with('Hello')(LowComponent)
 Hooks
 ---
 
+
+PropTypes 属性类型检查
+---
+
+### PropTypes
+<!--rehype:wrap-class=row-span-3-->
+
+```jsx
+import PropTypes from 'prop-types'
+```
+
+----
+
+:- | -
+:- | -
+`any` | 任意类型
+`(props, propName, 组件名称)=>{}` | 自定义验证器
+
+#### 基础
+
+:- | -
+:- | -
+`string` | 字符串
+`number` | 数组
+`func` | 函数
+`bool` | 布尔值
+`symbol` | -
+
+#### 枚举 Enum
+
+:- | -
+:- | -
+`oneOf(any)` | 枚举类型
+`oneOfType([type])` | 几种类型中的任意一个类型
+
+
+#### 数组 Array
+
+:- | -
+:- | -
+`array` | 数组
+`arrayOf` | 数组由某一类型的元素组成
+
+#### 对象 Object
+
+:- | -
+:- | -
+`object` | 对象
+`objectOf` | 对象由某一类型的值组成
+`instanceOf(...)` | 类的实例
+`shape` | 对象由特定的类型值组成
+`exact` | 有额外属性警告
+
+#### 元素 Elements
+
+:- | -
+:- | -
+`element` | React 元素
+`elementType` | React 元素类型(即 `MyComponent`)
+`node` | DOM 节点
+
+#### 必需的
+
+:- | -
+:- | -
+`(···).isRequired` | 必需的
+
+请参阅：[使用 PropTypes 进行类型检查](https://zh-hans.reactjs.org/docs/typechecking-with-proptypes.html)
+
+### 基本类型
+
+```jsx
+MyComponent.propTypes = {
+  email:      PropTypes.string,
+  seats:      PropTypes.number,
+  callback:   PropTypes.func,
+  isClosed:   PropTypes.bool,
+  any:        PropTypes.any
+  symbol:     PropTypes.symbol,
+}
+```
+
+你可以将属性声明为 JS 原生类型，默认都是可选的。
+
+### 必需的
+
+```jsx
+MyComponent.propTypes = {
+  // 确保这个 prop 没有被提供时，会打印警告信息
+  requiredFunc: PropTypes.func.isRequired,
+
+  // 任意类型的必需数据
+  requiredAny: PropTypes.any.isRequired,
+}
+```
+
+你可以在任何 `PropTypes` 属性后面加上 `isRequired`。
+
+### 枚举
+
+```js
+MyComponent.propTypes = {
+  // 只能是特定的值，枚举类型。
+  optionalEnum: PropTypes.oneOf([
+    'News', 'Photos'
+  ]),
+  // 一个对象可以是几种类型中的任意一个类型
+  optionalUnion: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.instanceOf(Message)
+  ]),
+}
+```
+
+### 元素 Elements
+
+```jsx
+MyComponent.propTypes = {
+  // 任何可被渲染的元素
+  // (包括数字、字符串、元素或数组)
+  // (或 Fragment) 也包含这些类型。
+  node: PropTypes.node,
+
+  // 一个 React 元素。
+  element: PropTypes.element,
+
+  // 一个 React 元素类型（即，MyComponent）
+  elementType: PropTypes.elementType,
+}
+```
+
+### 对象 Object
+
+```jsx
+MyComponent.propTypes = {
+  // 可以指定一个对象由某一类型的值组成
+  objectOf: PropTypes.objectOf(
+    PropTypes.number
+  ),
+  // 可以指定一个对象由特定的类型值组成
+  objectWithShape: PropTypes.shape({
+    color: PropTypes.string,
+    fontSize: PropTypes.number
+  }),
+  // 带有额外属性警告的对象
+  objectWithStrictShape: PropTypes.exact({
+    name: PropTypes.string,
+    quantity: PropTypes.number
+  }),
+}
+```
+
+### 自定义验证器
+
+```jsx
+MyComponent.propTypes = {
+  custom: (props, propName, compName) => {
+    if (!/matchm/.test(props[propName])) {
+      // 它在验证失败时应返回一个 Error 对象
+      return new Error(
+        '无效的prop `'
+        ` \`${propName}\` 提供给` + 
+        ` \`${compName}\`。验证失败。`
+      );
+
+    }
+  },
+}
+```
+
+请不要使用 `console.warn` 或抛出异常，因为这在 `oneOfType` 中不会起作用。
+
+### 自定义的 `arrayOf` 或 `objectOf` 验证器
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```jsx
+MyComponent.propTypes = {
+  arrayProp: PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
+    if (!/matchme/.test(propValue[key])) {
+      // 它应该在验证失败时返回一个 Error 对象。
+      return new Error(
+        'Invalid prop `' + propFullName + '` supplied to' +
+        ' `' + componentName + '`. Validation failed.'
+      );
+    }
+  })
+}
+```
+
+`propValue` 是数组或对象本身，`key` 是他们当前的键。
+
+### 数组
+
+```jsx
+MyComponent.propTypes = {
+  arr: PropTypes.arrayOf(PropTypes.number),
+};
+```
+
+可以指定一个数组由某一类型的元素组成
+
+### 验证类的实例
+
+```jsx
+MyComponent.propTypes = {
+  message: PropTypes.instanceOf(Message),
+};
+```
 
 另见
 ----
