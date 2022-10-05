@@ -71,22 +71,6 @@ jobs:
             http://localhost:9667/
             ```
 
-      # Create Docker Image
-      - name: Docker login
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-      
-      - name: Tags & Push image(latest)
-        run: |
-          docker tag reference ${{ secrets.DOCKER_USER }}/reference:latest
-          docker push ${{ secrets.DOCKER_USER }}/reference:latest
-
-      - name: Tags & Push image
-        if: steps.create_tag.outputs.successful
-        run: |
-          echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
-          docker tag reference ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
-          docker push ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
-
       # Create Docker Image in Github
       - name: Login to GitHub registry
         run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -103,3 +87,20 @@ jobs:
           echo "version: v${{ steps.changelog.outputs.version }}"
           docker tag ghcr.io/jaywcjlove/reference:latest ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
           docker push ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+
+      # Create Docker Image
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Tags & Push image(latest)
+        run: |
+          echo "DOCKER_USER: ${{ secrets.DOCKER_USER }}"
+          docker tag reference ${{ secrets.DOCKER_USER }}/reference:latest
+          docker push ${{ secrets.DOCKER_USER }}/reference:latest
+
+      - name: Tags & Push image
+        if: steps.create_tag.outputs.successful
+        run: |
+          echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
+          docker tag reference ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
+          docker push ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
