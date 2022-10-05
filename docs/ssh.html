@@ -39,45 +39,45 @@
 </div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="连接"><a aria-hidden="true" tabindex="-1" href="#连接"><span class="icon icon-link"></span></a>连接</h3><div class="wrap-body">
 <p>连接到服务器（默认端口 22）</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> root@192.168.1.5
 </span></code></pre>
 <p>在特定端口上连接</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token parameter variable">-p</span> <span class="token number">6222</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token parameter variable">-p</span> <span class="token number">6222</span>
 </span></code></pre>
 <p>通过 pem 文件连接（0400 权限）</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> <span class="token parameter variable">-i</span> /path/file.pem root@192.168.1.5
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> <span class="token parameter variable">-i</span> /path/file.pem root@192.168.1.5
 </span></code></pre>
 <p>请参阅：<a href="./chmod.html#ssh-%E6%9D%83%E9%99%90">SSH 权限</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="执行"><a aria-hidden="true" tabindex="-1" href="#执行"><span class="icon icon-link"></span></a>执行</h3><div class="wrap-body">
 <p>执行远程命令</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token string">'ls -l'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token string">'ls -l'</span>
 </span></code></pre>
 <p>调用本地脚本</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token function">bash</span> <span class="token operator">&#x3C;</span> script.sh
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token function">bash</span> <span class="token operator">&#x3C;</span> script.sh
 </span></code></pre>
 <p>从服务器压缩和下载</p>
-<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token string">"tar cvzf - ~/source"</span> <span class="token operator">></span> output.tgz
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> root@192.168.1.5 <span class="token string">"tar cvzf - ~/source"</span> <span class="token operator">></span> output.tgz
 </span></code></pre>
 <!--rehype:className=wrap-text -->
 </div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="scp"><a aria-hidden="true" tabindex="-1" href="#scp"><span class="icon icon-link"></span></a>SCP</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
 <p>从远程复制到本地</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> user@server:/dir/file.ext dest/
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">scp</span> user@server:/dir/file.ext dest/
 </span></code></pre>
 <p>两台服务器之间的副本</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> user@server:/file user@server:/dir
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">scp</span> user@server:/file user@server:/dir
 </span></code></pre>
 <p>从本地复制到远程</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> dest/file.ext user@server:/dir
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">scp</span> dest/file.ext user@server:/dir
 </span></code></pre>
 <p>复制整个文件夹</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> <span class="token parameter variable">-r</span> user@server:/dir dest/
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">scp</span> <span class="token parameter variable">-r</span> user@server:/dir dest/
 </span></code></pre>
 <p>复制文件夹中的所有文件</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> user@server:/dir/* dest/
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">scp</span> user@server:/dir/* dest/
 </span></code></pre>
 <p>从服务器文件夹复制到当前文件夹</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">scp</span> user@server:/dir/* <span class="token builtin class-name">.</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">scp</span> user@server:/dir/* <span class="token builtin class-name">.</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="配置位置"><a aria-hidden="true" tabindex="-1" href="#配置位置"><span class="icon icon-link"></span></a>配置位置</h3><div class="wrap-body">
 
@@ -150,41 +150,41 @@
 
 <table><thead><tr><th align="left">选项</th><th>说明</th></tr></thead><tbody><tr><td align="left">scp <code>-r</code></td><td>递归复制整个目录</td></tr><tr><td align="left">scp <code>-C</code></td><td>压缩数据</td></tr><tr><td align="left">scp <code>-v</code></td><td>打印详细信息</td></tr><tr><td align="left">scp <code>-P</code> 8080</td><td>使用特定端口</td></tr><tr><td align="left">scp <code>-B</code></td><td>批处理模式_（防止密码）_</td></tr><tr><td align="left">scp <code>-p</code></td><td>保留时间和模式</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="配置示例"><a aria-hidden="true" tabindex="-1" href="#配置示例"><span class="icon icon-link"></span></a>配置示例</h3><div class="wrap-body">
-<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line line-number" line="1">Host server1 
-</span><span class="code-line line-number" line="2">    HostName <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">1.5</span>
-</span><span class="code-line line-number" line="3">    User root
-</span><span class="code-line line-number" line="4">    Port <span class="token number">22</span>
-</span><span class="code-line line-number" line="5">    IdentityFile ~/<span class="token punctuation">.</span>ssh/server1<span class="token punctuation">.</span>key
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line">Host server1 
+</span><span class="code-line">    HostName <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">1.5</span>
+</span><span class="code-line">    User root
+</span><span class="code-line">    Port <span class="token number">22</span>
+</span><span class="code-line">    IdentityFile ~/<span class="token punctuation">.</span>ssh/server1<span class="token punctuation">.</span>key
 </span></code></pre>
 <p>通过别名启动</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> server1
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> server1
 </span></code></pre>
 <p>请参阅：完整 <a href="https://linux.die.net/man/5/ssh_config">配置选项</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="proxyjump"><a aria-hidden="true" tabindex="-1" href="#proxyjump"><span class="icon icon-link"></span></a>ProxyJump</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> proxy_host1 remote_host2
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> proxy_host1 remote_host2
 </span></code></pre>
-<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> user@proxy_host1 user@remote_host2
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> user@proxy_host1 user@remote_host2
 </span></code></pre>
 <!--rehype:className=wrap-text -->
 <p>多次跳跃</p>
-<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> user@proxy_host1:port1,user@proxy_host2:port2 user@remote_host3
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ssh</span> <span class="token parameter variable">-J</span> user@proxy_host1:port1,user@proxy_host2:port2 user@remote_host3
 </span></code></pre>
 <!--rehype:className=wrap-text -->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ssh-copy-id"><a aria-hidden="true" tabindex="-1" href="#ssh-copy-id"><span class="icon icon-link"></span></a>ssh-copy-id</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-copy-id user@server
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-copy-id user@server
 </span></code></pre>
 <p>复制到别名服务器</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-copy-id server1
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-copy-id server1
 </span></code></pre>
 <p>复制特定密钥</p>
-<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-copy-id <span class="token parameter variable">-i</span> ~/.ssh/id_rsa.pub user@server
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line">$ ssh-copy-id <span class="token parameter variable">-i</span> ~/.ssh/id_rsa.pub user@server
 </span></code></pre>
 <!--rehype:className=wrap-text -->
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="ssh-keygen"><a aria-hidden="true" tabindex="-1" href="#ssh-keygen"><span class="icon icon-link"></span></a>SSH keygen</h2><div class="wrap-body">
 <!--rehype:body-class=cols-5-->
 </div></div><div class="h2wrap-body cols-5"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="ssh-keygen-1"><a aria-hidden="true" tabindex="-1" href="#ssh-keygen-1"><span class="icon icon-link"></span></a>ssh-keygen</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-b</span> <span class="token number">4096</span> <span class="token parameter variable">-C</span> <span class="token string">"your@mail.com"</span> 
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-b</span> <span class="token number">4096</span> <span class="token parameter variable">-C</span> <span class="token string">"your@mail.com"</span> 
 </span></code></pre>
 <hr>
 
@@ -217,19 +217,19 @@
 </div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="产生"><a aria-hidden="true" tabindex="-1" href="#产生"><span class="icon icon-link"></span></a>产生</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 <p>以交互方式生成密钥</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen
 </span></code></pre>
 <p>指定文件名</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-f</span> ~/.ssh/filename
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen <span class="token parameter variable">-f</span> ~/.ssh/filename
 </span></code></pre>
 <p>从私钥生成公钥</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-y</span> <span class="token parameter variable">-f</span> private.key <span class="token operator">></span> public.pub
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen <span class="token parameter variable">-y</span> <span class="token parameter variable">-f</span> private.key <span class="token operator">></span> public.pub
 </span></code></pre>
 <p>更改评论</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-c</span> <span class="token parameter variable">-f</span> ~/.ssh/id_rsa
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen <span class="token parameter variable">-c</span> <span class="token parameter variable">-f</span> ~/.ssh/id_rsa
 </span></code></pre>
 <p>更改私钥密码</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-p</span> <span class="token parameter variable">-f</span> ~/.ssh/id_rsa
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen <span class="token parameter variable">-p</span> <span class="token parameter variable">-f</span> ~/.ssh/id_rsa
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="钥匙类型"><a aria-hidden="true" tabindex="-1" href="#钥匙类型"><span class="icon icon-link"></span></a>钥匙类型</h3><div class="wrap-body">
 <ul>
@@ -241,10 +241,10 @@
 </div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="known_hosts"><a aria-hidden="true" tabindex="-1" href="#known_hosts"><span class="icon icon-link"></span></a>known_hosts</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 <p>从 known_hosts 搜索</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-F</span> <span class="token operator">&#x3C;</span>ip/hostname<span class="token operator">></span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen <span class="token parameter variable">-F</span> <span class="token operator">&#x3C;</span>ip/hostname<span class="token operator">></span>
 </span></code></pre>
 <p>从 known_hosts 中删除</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ ssh-keygen <span class="token parameter variable">-R</span> <span class="token operator">&#x3C;</span>ip/hostname<span class="token operator">></span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen <span class="token parameter variable">-R</span> <span class="token operator">&#x3C;</span>ip/hostname<span class="token operator">></span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="密钥格式"><a aria-hidden="true" tabindex="-1" href="#密钥格式"><span class="icon icon-link"></span></a>密钥格式</h3><div class="wrap-body">
 <ul>

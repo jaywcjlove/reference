@@ -38,30 +38,30 @@
 <p>这是开始使用 linux bash shell 脚本的快速参考备忘单。</p>
 </div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="hellosh"><a aria-hidden="true" tabindex="-1" href="#hellosh"><span class="icon icon-link"></span></a>hello.sh</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token shebang important">#!/bin/bash</span>
-</span><span class="code-line line-number" line="2"><span class="token assign-left variable">VAR</span><span class="token operator">=</span><span class="token string">"world"</span>
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">echo</span> <span class="token string">"Hello <span class="token variable">$VAR</span>!"</span> <span class="token comment"># => Hello world!</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token shebang important">#!/bin/bash</span>
+</span><span class="code-line"><span class="token assign-left variable">VAR</span><span class="token operator">=</span><span class="token string">"world"</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"Hello <span class="token variable">$VAR</span>!"</span> <span class="token comment"># => Hello world!</span>
 </span></code></pre>
 <p>执行脚本</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">bash</span> hello.sh
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">bash</span> hello.sh
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">NAME</span><span class="token operator">=</span><span class="token string">"John"</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token variable">${NAME}</span>    <span class="token comment"># => John (变量)</span>
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">echo</span> <span class="token variable">$NAME</span>      <span class="token comment"># => John (变量)</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$NAME</span>"</span>    <span class="token comment"># => John (变量)</span>
-</span><span class="code-line line-number" line="5"><span class="token builtin class-name">echo</span> <span class="token string">'$NAME'</span>    <span class="token comment"># => $NAME (确切的字符串)</span>
-</span><span class="code-line line-number" line="6"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${NAME}</span>!"</span> <span class="token comment"># => John! (变量)</span>
-</span><span class="code-line line-number" line="7">NAME <span class="token operator">=</span> <span class="token string">"John"</span>   <span class="token comment"># => Error (关于空间)</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">NAME</span><span class="token operator">=</span><span class="token string">"John"</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${NAME}</span>    <span class="token comment"># => John (变量)</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">$NAME</span>      <span class="token comment"># => John (变量)</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$NAME</span>"</span>    <span class="token comment"># => John (变量)</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">'$NAME'</span>    <span class="token comment"># => $NAME (确切的字符串)</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${NAME}</span>!"</span> <span class="token comment"># => John! (变量)</span>
+</span><span class="code-line">NAME <span class="token operator">=</span> <span class="token string">"John"</span>   <span class="token comment"># => Error (关于空间)</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 这是一个内联 Bash 注释。</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 这是一个内联 Bash 注释。</span>
 </span></code></pre>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">:</span> <span class="token string">'
-</span></span><span class="code-line line-number" line="2"><span class="token string">这是一个
-</span></span><span class="code-line line-number" line="3"><span class="token string">非常整洁的评论
-</span></span><span class="code-line line-number" line="4"><span class="token string">在 bash
-</span></span><span class="code-line line-number" line="5"><span class="token string">'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token builtin class-name">:</span> <span class="token string">'
+</span></span><span class="code-line"><span class="token string">这是一个
+</span></span><span class="code-line"><span class="token string">非常整洁的评论
+</span></span><span class="code-line"><span class="token string">在 bash
+</span></span><span class="code-line"><span class="token string">'</span>
 </span></code></pre>
 <p>多行注释使用 <code>:'</code> 打开和 <code>'</code> 关闭</p>
 </div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="参数"><a aria-hidden="true" tabindex="-1" href="#参数"><span class="icon icon-link"></span></a>参数</h3><div class="wrap-body">
@@ -118,22 +118,22 @@
 <table><thead><tr><th align="left">表示</th><th>描述</th></tr></thead><tbody><tr><td align="left"><code>$1</code> … <code>$9</code></td><td>参数 1 ... 9</td></tr><tr><td align="left"><code>$0</code></td><td>脚本本身的名称</td></tr><tr><td align="left"><code>$1</code></td><td>第一个论点</td></tr><tr><td align="left"><code>${10}</code></td><td>位置参数 10</td></tr><tr><td align="left"><code>$#</code></td><td>参数数量</td></tr><tr><td align="left"><code>$$</code></td><td>shell 的进程 id</td></tr><tr><td align="left"><code>$*</code></td><td>所有论据</td></tr><tr><td align="left"><code>$@</code></td><td>所有参数，从第一个开始</td></tr><tr><td align="left"><code>$-</code></td><td>当前选项</td></tr><tr><td align="left"><code>$_</code></td><td>上一个命令的最后一个参数</td></tr></tbody></table>
 <p>见：<a href="http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables">特殊参数</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function-name function">get_name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"John"</span>
-</span><span class="code-line line-number" line="3"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token string">"You are <span class="token variable"><span class="token variable">$(</span>get_name<span class="token variable">)</span></span>"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function-name function">get_name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"John"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"You are <span class="token variable"><span class="token variable">$(</span>get_name<span class="token variable">)</span></span>"</span>
 </span></code></pre>
 <p>见：<a href="#bash-%E5%87%BD%E6%95%B0">函数</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="条件句"><a aria-hidden="true" tabindex="-1" href="#条件句"><span class="icon icon-link"></span></a>条件句</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$string</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"String is empty"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$string</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="4">    <span class="token builtin class-name">echo</span> <span class="token string">"String is not empty"</span>
-</span><span class="code-line line-number" line="5"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$string</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"String is empty"</span>
+</span><span class="code-line"><span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$string</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"String is not empty"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 <p>见：<a href="#bash-%E6%9D%A1%E4%BB%B6%E5%8F%A5">条件句</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="大括号扩展"><a aria-hidden="true" tabindex="-1" href="#大括号扩展"><span class="icon icon-link"></span></a>大括号扩展</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">echo</span> <span class="token punctuation">{</span>A,B<span class="token punctuation">}</span>.js
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token punctuation">{</span>A,B<span class="token punctuation">}</span>.js
 </span></code></pre>
 <hr>
 
@@ -160,10 +160,10 @@
 <table><thead><tr><th align="left">表示</th><th>描述</th></tr></thead><tbody><tr><td align="left"><code>{A,B}</code></td><td>与 <code>A B</code> 相同</td></tr><tr><td align="left"><code>{A,B}.js</code></td><td>与 <code>A.js B.js</code> 相同</td></tr><tr><td align="left"><code>{1..5}</code></td><td>与 <code>1 2 3 4 5</code> 相同</td></tr></tbody></table>
 <p>见：<a href="http://wiki.bash-hackers.org/syntax/expansion/brace">大括号扩展</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="shell-执行"><a aria-hidden="true" tabindex="-1" href="#shell-执行"><span class="icon icon-link"></span></a>Shell 执行</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># => I'm in /当前/的/路径</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token string">"I'm in <span class="token variable"><span class="token variable">$(</span><span class="token environment constant">PWD</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="3"><span class="token comment"># Same as:</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token string">"I'm in <span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">pwd</span><span class="token variable">`</span></span>"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># => I'm in /当前/的/路径</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"I'm in <span class="token variable"><span class="token variable">$(</span><span class="token environment constant">PWD</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line"><span class="token comment"># Same as:</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"I'm in <span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">pwd</span><span class="token variable">`</span></span>"</span>
 </span></code></pre>
 <p>见：<a href="http://wiki.bash-hackers.org/syntax/expansion/cmdsubst">命令替换</a></p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="bash-参数扩展"><a aria-hidden="true" tabindex="-1" href="#bash-参数扩展"><span class="icon icon-link"></span></a>Bash 参数扩展</h2><div class="wrap-body">
@@ -273,71 +273,71 @@
 
 <table><thead><tr><th align="left">表示</th><th>描述</th></tr></thead><tbody><tr><td align="left"><code>${FOO:-val}</code></td><td><code>$FOO</code>，如果未设置，则为 <code>val</code></td></tr><tr><td align="left"><code>${FOO:=val}</code></td><td>如果未设置，则将 <code>$FOO</code> 设置为 <code>val</code></td></tr><tr><td align="left"><code>${FOO:+val}</code></td><td><code>val</code> 如果设置了<code>$FOO</code></td></tr><tr><td align="left"><code>${FOO:?message}</code></td><td>如果 <code>$FOO</code> 未设置，则显示消息并退出</td></tr></tbody></table>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="替代-substitution"><a aria-hidden="true" tabindex="-1" href="#替代-substitution"><span class="icon icon-link"></span></a>替代 Substitution</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">echo</span> <span class="token variable">${food<span class="token operator">:-</span>Cake}</span>  <span class="token comment">#=> $food or "Cake"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${food<span class="token operator">:-</span>Cake}</span>  <span class="token comment">#=> $food or "Cake"</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">STR</span><span class="token operator">=</span><span class="token string">"/path/to/foo.cpp"</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">%</span>.cpp}</span>    <span class="token comment"># /path/to/foo</span>
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">%</span>.cpp}</span>.o  <span class="token comment"># /path/to/foo.o</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">%</span><span class="token operator">/</span>*}</span>      <span class="token comment"># /path/to</span>
-</span><span class="code-line line-number" line="5"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">##</span>*.}</span>     <span class="token comment"># cpp (extension)</span>
-</span><span class="code-line line-number" line="6"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">##</span>*<span class="token operator">/</span>}</span>     <span class="token comment"># foo.cpp (basepath)</span>
-</span><span class="code-line line-number" line="7"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">#</span>*<span class="token operator">/</span>}</span>      <span class="token comment"># path/to/foo.cpp</span>
-</span><span class="code-line line-number" line="8"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">##</span>*<span class="token operator">/</span>}</span>     <span class="token comment"># foo.cpp</span>
-</span><span class="code-line line-number" line="9"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">/</span>foo<span class="token operator">/</span>bar}</span> <span class="token comment"># /path/to/bar.cpp</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">STR</span><span class="token operator">=</span><span class="token string">"/path/to/foo.cpp"</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">%</span>.cpp}</span>    <span class="token comment"># /path/to/foo</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">%</span>.cpp}</span>.o  <span class="token comment"># /path/to/foo.o</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">%</span><span class="token operator">/</span>*}</span>      <span class="token comment"># /path/to</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">##</span>*.}</span>     <span class="token comment"># cpp (extension)</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">##</span>*<span class="token operator">/</span>}</span>     <span class="token comment"># foo.cpp (basepath)</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">#</span>*<span class="token operator">/</span>}</span>      <span class="token comment"># path/to/foo.cpp</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">##</span>*<span class="token operator">/</span>}</span>     <span class="token comment"># foo.cpp</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">/</span>foo<span class="token operator">/</span>bar}</span> <span class="token comment"># /path/to/bar.cpp</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="切片-slicing"><a aria-hidden="true" tabindex="-1" href="#切片-slicing"><span class="icon icon-link"></span></a>切片 Slicing</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"John"</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token variable">${name}</span>           <span class="token comment"># => John</span>
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>0<span class="token operator">:</span>2}</span>       <span class="token comment"># => Jo</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span><span class="token operator">:</span>2}</span>        <span class="token comment"># => Jo</span>
-</span><span class="code-line line-number" line="5"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span><span class="token operator">:-</span>1}</span>       <span class="token comment"># => Joh</span>
-</span><span class="code-line line-number" line="6"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>(-1)}</span>      <span class="token comment"># => n</span>
-</span><span class="code-line line-number" line="7"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>(-2)}</span>      <span class="token comment"># => hn</span>
-</span><span class="code-line line-number" line="8"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>(-2)<span class="token operator">:</span>2}</span>    <span class="token comment"># => hn</span>
-</span><span class="code-line line-number" line="9">
-</span><span class="code-line line-number" line="10"><span class="token assign-left variable">length</span><span class="token operator">=</span><span class="token number">2</span>
-</span><span class="code-line line-number" line="11"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>0<span class="token operator">:</span>length}</span>  <span class="token comment"># => Jo</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"John"</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${name}</span>           <span class="token comment"># => John</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>0<span class="token operator">:</span>2}</span>       <span class="token comment"># => Jo</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span><span class="token operator">:</span>2}</span>        <span class="token comment"># => Jo</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span><span class="token operator">:-</span>1}</span>       <span class="token comment"># => Joh</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>(-1)}</span>      <span class="token comment"># => n</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>(-2)}</span>      <span class="token comment"># => hn</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>(-2)<span class="token operator">:</span>2}</span>    <span class="token comment"># => hn</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token assign-left variable">length</span><span class="token operator">=</span><span class="token number">2</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${name<span class="token operator">:</span>0<span class="token operator">:</span>length}</span>  <span class="token comment"># => Jo</span>
 </span></code></pre>
 <p>见：<a href="http://wiki.bash-hackers.org/syntax/pe">参数扩展</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="基本路径和目录路径"><a aria-hidden="true" tabindex="-1" href="#基本路径和目录路径"><span class="icon icon-link"></span></a>基本路径和目录路径</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">SRC</span><span class="token operator">=</span><span class="token string">"/path/to/foo.cpp"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">SRC</span><span class="token operator">=</span><span class="token string">"/path/to/foo.cpp"</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">BASEPATH</span><span class="token operator">=</span><span class="token variable">${SRC<span class="token operator">##</span>*<span class="token operator">/</span>}</span>   
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token variable">$BASEPATH</span>  <span class="token comment"># => "foo.cpp"</span>
-</span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4"><span class="token assign-left variable">DIRPATH</span><span class="token operator">=</span><span class="token variable">${SRC<span class="token operator">%</span>$BASEPATH}</span>
-</span><span class="code-line line-number" line="5"><span class="token builtin class-name">echo</span> <span class="token variable">$DIRPATH</span>   <span class="token comment"># => "/path/to/"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">BASEPATH</span><span class="token operator">=</span><span class="token variable">${SRC<span class="token operator">##</span>*<span class="token operator">/</span>}</span>   
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">$BASEPATH</span>  <span class="token comment"># => "foo.cpp"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token assign-left variable">DIRPATH</span><span class="token operator">=</span><span class="token variable">${SRC<span class="token operator">%</span>$BASEPATH}</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">$DIRPATH</span>   <span class="token comment"># => "/path/to/"</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="transform"><a aria-hidden="true" tabindex="-1" href="#transform"><span class="icon icon-link"></span></a>Transform</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">STR</span><span class="token operator">=</span><span class="token string">"HELLO WORLD!"</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">,</span>}</span>      <span class="token comment"># => hELLO WORLD!</span>
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">,,</span>}</span>     <span class="token comment"># => hello world!</span>
-</span><span class="code-line line-number" line="4">
-</span><span class="code-line line-number" line="5"><span class="token assign-left variable">STR</span><span class="token operator">=</span><span class="token string">"hello world!"</span>
-</span><span class="code-line line-number" line="6"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">^</span>}</span>      <span class="token comment"># => Hello world!</span>
-</span><span class="code-line line-number" line="7"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">^^</span>}</span>     <span class="token comment"># => HELLO WORLD!</span>
-</span><span class="code-line line-number" line="8">
-</span><span class="code-line line-number" line="9"><span class="token assign-left variable">ARR</span><span class="token operator">=</span><span class="token punctuation">(</span>hello World<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="10"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${ARR<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token operator">,</span>}</span>"</span> <span class="token comment"># => hello world</span>
-</span><span class="code-line line-number" line="11"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${ARR<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token operator">^</span>}</span>"</span> <span class="token comment"># => Hello World</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">STR</span><span class="token operator">=</span><span class="token string">"HELLO WORLD!"</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">,</span>}</span>      <span class="token comment"># => hELLO WORLD!</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">,,</span>}</span>     <span class="token comment"># => hello world!</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token assign-left variable">STR</span><span class="token operator">=</span><span class="token string">"hello world!"</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">^</span>}</span>      <span class="token comment"># => Hello world!</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${STR<span class="token operator">^^</span>}</span>     <span class="token comment"># => HELLO WORLD!</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token assign-left variable">ARR</span><span class="token operator">=</span><span class="token punctuation">(</span>hello World<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${ARR<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token operator">,</span>}</span>"</span> <span class="token comment"># => hello world</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${ARR<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token operator">^</span>}</span>"</span> <span class="token comment"># => Hello World</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="bash-数组"><a aria-hidden="true" tabindex="-1" href="#bash-数组"><span class="icon icon-link"></span></a>Bash 数组</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="定义数组"><a aria-hidden="true" tabindex="-1" href="#定义数组"><span class="icon icon-link"></span></a>定义数组</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'Apple'</span> <span class="token string">'Banana'</span> <span class="token string">'Orange'</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2">
-</span><span class="code-line line-number" line="3">Fruits<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"Apple"</span>
-</span><span class="code-line line-number" line="4">Fruits<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"Banana"</span>
-</span><span class="code-line line-number" line="5">Fruits<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"Orange"</span>
-</span><span class="code-line line-number" line="6">
-</span><span class="code-line line-number" line="7"><span class="token assign-left variable">ARRAY1</span><span class="token operator">=</span><span class="token punctuation">(</span>foo<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment"># => foo1 foo2</span>
-</span><span class="code-line line-number" line="8"><span class="token assign-left variable">ARRAY2</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">{</span>A<span class="token punctuation">..</span>D<span class="token punctuation">}</span><span class="token punctuation">)</span>    <span class="token comment"># => A B C D</span>
-</span><span class="code-line line-number" line="9">
-</span><span class="code-line line-number" line="10"><span class="token comment"># 合并 => foo1 foo2 A B C D</span>
-</span><span class="code-line line-number" line="11"><span class="token assign-left variable">ARRAY3</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">${ARRAY1<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> <span class="token variable">${ARRAY2<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="12">
-</span><span class="code-line line-number" line="13"><span class="token comment"># 声明构造</span>
-</span><span class="code-line line-number" line="14"><span class="token builtin class-name">declare</span> <span class="token parameter variable">-a</span> <span class="token assign-left variable">Numbers</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="15"><span class="token assign-left variable">Numbers</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment"># 附加 => 1 2 3 4 5</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'Apple'</span> <span class="token string">'Banana'</span> <span class="token string">'Orange'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">Fruits<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"Apple"</span>
+</span><span class="code-line">Fruits<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"Banana"</span>
+</span><span class="code-line">Fruits<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"Orange"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token assign-left variable">ARRAY1</span><span class="token operator">=</span><span class="token punctuation">(</span>foo<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment"># => foo1 foo2</span>
+</span><span class="code-line"><span class="token assign-left variable">ARRAY2</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">{</span>A<span class="token punctuation">..</span>D<span class="token punctuation">}</span><span class="token punctuation">)</span>    <span class="token comment"># => A B C D</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 合并 => foo1 foo2 A B C D</span>
+</span><span class="code-line"><span class="token assign-left variable">ARRAY3</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">${ARRAY1<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> <span class="token variable">${ARRAY2<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 声明构造</span>
+</span><span class="code-line"><span class="token builtin class-name">declare</span> <span class="token parameter variable">-a</span> <span class="token assign-left variable">Numbers</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token assign-left variable">Numbers</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment"># 附加 => 1 2 3 4 5</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="索引"><a aria-hidden="true" tabindex="-1" href="#索引"><span class="icon icon-link"></span></a>索引</h3><div class="wrap-body">
 
@@ -387,61 +387,61 @@
 
 <table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>${Fruits[0]}</code></td><td>第一个元素</td></tr><tr><td align="left"><code>${Fruits[-1]}</code></td><td>最后一个元素</td></tr><tr><td align="left"><code>${Fruits[*]}</code></td><td>所有元素</td></tr><tr><td align="left"><code>${Fruits[@]}</code></td><td>所有元素</td></tr><tr><td align="left"><code>${#Fruits[@]}</code></td><td>总数</td></tr><tr><td align="left"><code>${#Fruits}</code></td><td>第一节长度</td></tr><tr><td align="left"><code>${#Fruits[3]}</code></td><td>第n个长度</td></tr><tr><td align="left"><code>${Fruits[@]:3:2}</code></td><td>范围</td></tr><tr><td align="left"><code>${!Fruits[@]}</code></td><td>所有 Key</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="迭代-iteration"><a aria-hidden="true" tabindex="-1" href="#迭代-iteration"><span class="icon icon-link"></span></a>迭代 Iteration</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'Apple'</span> <span class="token string">'Banana'</span> <span class="token string">'Orange'</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2"><span class="token keyword">for</span> <span class="token for-or-select variable">e</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="3">    <span class="token builtin class-name">echo</span> <span class="token variable">$e</span>
-</span><span class="code-line line-number" line="4"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'Apple'</span> <span class="token string">'Banana'</span> <span class="token string">'Orange'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">e</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">$e</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="with-index"><a aria-hidden="true" tabindex="-1" href="#with-index"><span class="icon icon-link"></span></a>With index</h4><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">  <span class="token builtin class-name">printf</span> <span class="token string">"%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$i</span>"</span> <span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>$i<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token builtin class-name">printf</span> <span class="token string">"%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$i</span>"</span> <span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>$i<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="操作"><a aria-hidden="true" tabindex="-1" href="#操作"><span class="icon icon-link"></span></a>操作</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token string">"Watermelon"</span><span class="token punctuation">)</span>         <span class="token comment"># 推</span>
-</span><span class="code-line line-number" line="2"><span class="token assign-left variable">Fruits</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token string">'Watermelon'</span><span class="token punctuation">)</span>                       <span class="token comment"># 也推</span>
-</span><span class="code-line line-number" line="3"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span> <span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token operator">/</span>Ap*<span class="token operator">/</span>}</span> <span class="token punctuation">)</span>                 <span class="token comment"># 通过正则表达式匹配删除</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">unset</span> Fruits<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>                              <span class="token comment"># 删除一项</span>
-</span><span class="code-line line-number" line="5"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">)</span>                      <span class="token comment"># 复制</span>
-</span><span class="code-line line-number" line="6"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token string">"<span class="token variable">${Veggies<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">)</span>      <span class="token comment"># 连接</span>
-</span><span class="code-line line-number" line="7"><span class="token assign-left variable">lines</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> <span class="token string">"logfile"</span><span class="token variable">`</span></span><span class="token punctuation">)</span>                      <span class="token comment"># 从文件中读取</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token string">"Watermelon"</span><span class="token punctuation">)</span>         <span class="token comment"># 推</span>
+</span><span class="code-line"><span class="token assign-left variable">Fruits</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token string">'Watermelon'</span><span class="token punctuation">)</span>                       <span class="token comment"># 也推</span>
+</span><span class="code-line"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span> <span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token operator">/</span>Ap*<span class="token operator">/</span>}</span> <span class="token punctuation">)</span>                 <span class="token comment"># 通过正则表达式匹配删除</span>
+</span><span class="code-line"><span class="token builtin class-name">unset</span> Fruits<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>                              <span class="token comment"># 删除一项</span>
+</span><span class="code-line"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">)</span>                      <span class="token comment"># 复制</span>
+</span><span class="code-line"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${Fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token string">"<span class="token variable">${Veggies<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">)</span>      <span class="token comment"># 连接</span>
+</span><span class="code-line"><span class="token assign-left variable">lines</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> <span class="token string">"logfile"</span><span class="token variable">`</span></span><span class="token punctuation">)</span>                      <span class="token comment"># 从文件中读取</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="数组作为参数"><a aria-hidden="true" tabindex="-1" href="#数组作为参数"><span class="icon icon-link"></span></a>数组作为参数</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">function</span> <span class="token function-name function">extract</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2"><span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="3">  <span class="token builtin class-name">local</span> <span class="token parameter variable">-n</span> <span class="token assign-left variable">myarray</span><span class="token operator">=</span><span class="token variable">$1</span>
-</span><span class="code-line line-number" line="4">  <span class="token builtin class-name">local</span> <span class="token assign-left variable">idx</span><span class="token operator">=</span><span class="token variable">$2</span>
-</span><span class="code-line line-number" line="5">  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${myarray<span class="token punctuation">[</span>$idx<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="6"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="7"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'Apple'</span> <span class="token string">'Banana'</span> <span class="token string">'Orange'</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="8">extract Fruits <span class="token number">2</span>     <span class="token comment"># => Orangle</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function-name function">extract</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token builtin class-name">local</span> <span class="token parameter variable">-n</span> <span class="token assign-left variable">myarray</span><span class="token operator">=</span><span class="token variable">$1</span>
+</span><span class="code-line">  <span class="token builtin class-name">local</span> <span class="token assign-left variable">idx</span><span class="token operator">=</span><span class="token variable">$2</span>
+</span><span class="code-line">  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${myarray<span class="token punctuation">[</span>$idx<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token assign-left variable">Fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'Apple'</span> <span class="token string">'Banana'</span> <span class="token string">'Orange'</span><span class="token punctuation">)</span>
+</span><span class="code-line">extract Fruits <span class="token number">2</span>     <span class="token comment"># => Orangle</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="bash-字典"><a aria-hidden="true" tabindex="-1" href="#bash-字典"><span class="icon icon-link"></span></a>Bash 字典</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="定义"><a aria-hidden="true" tabindex="-1" href="#定义"><span class="icon icon-link"></span></a>定义</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> sounds
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> sounds
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">sounds<span class="token punctuation">[</span>dog<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"bark"</span>
-</span><span class="code-line line-number" line="2">sounds<span class="token punctuation">[</span>cow<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"moo"</span>
-</span><span class="code-line line-number" line="3">sounds<span class="token punctuation">[</span>bird<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"tweet"</span>
-</span><span class="code-line line-number" line="4">sounds<span class="token punctuation">[</span>wolf<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"howl"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">sounds<span class="token punctuation">[</span>dog<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"bark"</span>
+</span><span class="code-line">sounds<span class="token punctuation">[</span>cow<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"moo"</span>
+</span><span class="code-line">sounds<span class="token punctuation">[</span>bird<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"tweet"</span>
+</span><span class="code-line">sounds<span class="token punctuation">[</span>wolf<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"howl"</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="使用字典"><a aria-hidden="true" tabindex="-1" href="#使用字典"><span class="icon icon-link"></span></a>使用字典</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">echo</span> <span class="token variable">${sounds<span class="token punctuation">[</span>dog<span class="token punctuation">]</span>}</span> <span class="token comment"># Dog's sound</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token variable">${sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>   <span class="token comment"># All values</span>
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token operator">!</span>sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>  <span class="token comment"># All keys</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token operator">#</span>sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>  <span class="token comment"># Number of elements</span>
-</span><span class="code-line line-number" line="5"><span class="token builtin class-name">unset</span> sounds<span class="token punctuation">[</span>dog<span class="token punctuation">]</span>   <span class="token comment"># Delete dog</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${sounds<span class="token punctuation">[</span>dog<span class="token punctuation">]</span>}</span> <span class="token comment"># Dog's sound</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>   <span class="token comment"># All values</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token operator">!</span>sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>  <span class="token comment"># All keys</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token operator">#</span>sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>  <span class="token comment"># Number of elements</span>
+</span><span class="code-line"><span class="token builtin class-name">unset</span> sounds<span class="token punctuation">[</span>dog<span class="token punctuation">]</span>   <span class="token comment"># Delete dog</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="迭代"><a aria-hidden="true" tabindex="-1" href="#迭代"><span class="icon icon-link"></span></a>迭代</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token for-or-select variable">val</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token variable">$val</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">val</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">$val</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 <hr>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token for-or-select variable">key</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token variable">$key</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">key</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>sounds<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">$key</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="bash-条件句"><a aria-hidden="true" tabindex="-1" href="#bash-条件句"><span class="icon icon-link"></span></a>Bash 条件句</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="整数条件"><a aria-hidden="true" tabindex="-1" href="#整数条件"><span class="icon icon-link"></span></a>整数条件</h3><div class="wrap-body">
@@ -541,38 +541,38 @@
 </div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="例子"><a aria-hidden="true" tabindex="-1" href="#例子"><span class="icon icon-link"></span></a>例子</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-3-->
 </div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="字符串"><a aria-hidden="true" tabindex="-1" href="#字符串"><span class="icon icon-link"></span></a>字符串</h4><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$string</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"String is empty"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$string</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="4">    <span class="token builtin class-name">echo</span> <span class="token string">"String is not empty"</span>
-</span><span class="code-line line-number" line="5"><span class="token keyword">else</span>
-</span><span class="code-line line-number" line="6">    <span class="token builtin class-name">echo</span> <span class="token string">"This never happens"</span>
-</span><span class="code-line line-number" line="7"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$string</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"String is empty"</span>
+</span><span class="code-line"><span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$string</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"String is not empty"</span>
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"This never happens"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="组合"><a aria-hidden="true" tabindex="-1" href="#组合"><span class="icon icon-link"></span></a>组合</h4><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> X <span class="token operator">&#x26;&#x26;</span> Y <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token punctuation">..</span>.
-</span><span class="code-line line-number" line="3"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> X <span class="token operator">&#x26;&#x26;</span> Y <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token punctuation">..</span>.
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="相等"><a aria-hidden="true" tabindex="-1" href="#相等"><span class="icon icon-link"></span></a>相等</h4><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$A</span>"</span> <span class="token operator">==</span> <span class="token string">"<span class="token variable">$B</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token punctuation">..</span>.
-</span><span class="code-line line-number" line="3"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$A</span>"</span> <span class="token operator">==</span> <span class="token string">"<span class="token variable">$B</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token punctuation">..</span>.
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="正则表达式"><a aria-hidden="true" tabindex="-1" href="#正则表达式"><span class="icon icon-link"></span></a>正则表达式</h4><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">'1. abc'</span> <span class="token operator">=~</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>a-z<span class="token punctuation">]</span>+<span class="token punctuation">)</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token environment constant">BASH_REMATCH</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span>}</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">'1. abc'</span> <span class="token operator">=~</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>a-z<span class="token punctuation">]</span>+<span class="token punctuation">)</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token environment constant">BASH_REMATCH</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span>}</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="更小"><a aria-hidden="true" tabindex="-1" href="#更小"><span class="icon icon-link"></span></a>更小</h4><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> $a <span class="token operator">&#x3C;</span> $b <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">   <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$a</span> is smaller than <span class="token variable">$b</span>"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> $a <span class="token operator">&#x3C;</span> $b <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">   <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$a</span> is smaller than <span class="token variable">$b</span>"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="存在"><a aria-hidden="true" tabindex="-1" href="#存在"><span class="icon icon-link"></span></a>存在</h4><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-e</span> <span class="token string">"file.txt"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"file exists"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-e</span> <span class="token string">"file.txt"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"file exists"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="文件条件"><a aria-hidden="true" tabindex="-1" href="#文件条件"><span class="icon icon-link"></span></a>文件条件</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
@@ -658,156 +658,156 @@
 
 <table><thead><tr><th align="left">条件</th><th>描述</th></tr></thead><tbody><tr><td align="left"><code>[[ -o noclobber ]]</code></td><td>如果启用 OPTION</td></tr><tr><td align="left"><code>[[ ! EXPR ]]</code></td><td>不是 Not</td></tr><tr><td align="left"><code>[[ X &#x26;&#x26; Y ]]</code></td><td>和 And</td></tr><tr><td align="left"><code>[[ X || Y ]]</code></td><td>或者 Or</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="逻辑和或"><a aria-hidden="true" tabindex="-1" href="#逻辑和或"><span class="icon icon-link"></span></a>逻辑和，或</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">=</span> <span class="token string">'y'</span> <span class="token parameter variable">-a</span> <span class="token variable">$2</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"yes"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="4"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">=</span> <span class="token string">'n'</span> <span class="token parameter variable">-o</span> <span class="token variable">$2</span> <span class="token parameter variable">-lt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="5">    <span class="token builtin class-name">echo</span> <span class="token string">"no"</span>
-</span><span class="code-line line-number" line="6"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">=</span> <span class="token string">'y'</span> <span class="token parameter variable">-a</span> <span class="token variable">$2</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"yes"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">=</span> <span class="token string">'n'</span> <span class="token parameter variable">-o</span> <span class="token variable">$2</span> <span class="token parameter variable">-lt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"no"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="bash-循环"><a aria-hidden="true" tabindex="-1" href="#bash-循环"><span class="icon icon-link"></span></a>Bash 循环</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="基本-for-循环"><a aria-hidden="true" tabindex="-1" href="#基本-for-循环"><span class="icon icon-link"></span></a>基本 for 循环</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> /etc/rc.*<span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> /etc/rc.*<span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="类似-c-的-for-循环"><a aria-hidden="true" tabindex="-1" href="#类似-c-的-for-循环"><span class="icon icon-link"></span></a>类似 C 的 for 循环</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token number">100</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token number">100</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="范围"><a aria-hidden="true" tabindex="-1" href="#范围"><span class="icon icon-link"></span></a>范围</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"Welcome <span class="token variable">$i</span>"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"Welcome <span class="token variable">$i</span>"</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="具有步长"><a aria-hidden="true" tabindex="-1" href="#具有步长"><span class="icon icon-link"></span></a>具有步长</h4><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">..</span><span class="token number">50</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"Welcome <span class="token variable">$i</span>"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">..</span><span class="token number">50</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"Welcome <span class="token variable">$i</span>"</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="自动递增"><a aria-hidden="true" tabindex="-1" href="#自动递增"><span class="icon icon-link"></span></a>自动递增</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="2"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$i</span> <span class="token parameter variable">-lt</span> <span class="token number">4</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="3">    <span class="token builtin class-name">echo</span> <span class="token string">"Number: <span class="token variable">$i</span>"</span>
-</span><span class="code-line line-number" line="4">    <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span>
-</span><span class="code-line line-number" line="5"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$i</span> <span class="token parameter variable">-lt</span> <span class="token number">4</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"Number: <span class="token variable">$i</span>"</span>
+</span><span class="code-line">    <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="自动递增-1"><a aria-hidden="true" tabindex="-1" href="#自动递增-1"><span class="icon icon-link"></span></a>自动递增</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">3</span>
-</span><span class="code-line line-number" line="2"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$i</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="3">    <span class="token builtin class-name">echo</span> <span class="token string">"Number: <span class="token variable">$i</span>"</span>
-</span><span class="code-line line-number" line="4">    <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">--</span><span class="token punctuation">))</span></span>
-</span><span class="code-line line-number" line="5"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">3</span>
+</span><span class="code-line"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$i</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"Number: <span class="token variable">$i</span>"</span>
+</span><span class="code-line">    <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">--</span><span class="token punctuation">))</span></span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="continue"><a aria-hidden="true" tabindex="-1" href="#continue"><span class="icon icon-link"></span></a>Continue</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token for-or-select variable">number</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">seq</span> <span class="token number">1</span> <span class="token number">3</span><span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$number</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="3">        <span class="token builtin class-name">continue</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="4">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="5">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$number</span>"</span>
-</span><span class="code-line line-number" line="6"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">number</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">seq</span> <span class="token number">1</span> <span class="token number">3</span><span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$number</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">        <span class="token builtin class-name">continue</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">fi</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$number</span>"</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="break"><a aria-hidden="true" tabindex="-1" href="#break"><span class="icon icon-link"></span></a>Break</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">for</span> <span class="token for-or-select variable">number</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">seq</span> <span class="token number">1</span> <span class="token number">3</span><span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$number</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="3">        <span class="token comment"># Skip entire rest of loop.</span>
-</span><span class="code-line line-number" line="4">        <span class="token builtin class-name">break</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="5">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="6">    <span class="token comment"># This will only print 1</span>
-</span><span class="code-line line-number" line="7">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$number</span>"</span>
-</span><span class="code-line line-number" line="8"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">number</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">seq</span> <span class="token number">1</span> <span class="token number">3</span><span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$number</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">        <span class="token comment"># Skip entire rest of loop.</span>
+</span><span class="code-line">        <span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">fi</span>
+</span><span class="code-line">    <span class="token comment"># This will only print 1</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$number</span>"</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="until"><a aria-hidden="true" tabindex="-1" href="#until"><span class="icon icon-link"></span></a>Until</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">0</span>
-</span><span class="code-line line-number" line="2"><span class="token keyword">until</span> <span class="token punctuation">[</span> <span class="token variable">$count</span> <span class="token parameter variable">-gt</span> <span class="token number">10</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="3">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$count</span>"</span>
-</span><span class="code-line line-number" line="4">    <span class="token variable"><span class="token punctuation">((</span>count<span class="token operator">++</span><span class="token punctuation">))</span></span>
-</span><span class="code-line line-number" line="5"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line"><span class="token keyword">until</span> <span class="token punctuation">[</span> <span class="token variable">$count</span> <span class="token parameter variable">-gt</span> <span class="token number">10</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$count</span>"</span>
+</span><span class="code-line">    <span class="token variable"><span class="token punctuation">((</span>count<span class="token operator">++</span><span class="token punctuation">))</span></span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="永远"><a aria-hidden="true" tabindex="-1" href="#永远"><span class="icon icon-link"></span></a>永远</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token comment"># here is some code.</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token comment"># here is some code.</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="永远简写"><a aria-hidden="true" tabindex="-1" href="#永远简写"><span class="icon icon-link"></span></a>永远（简写）</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">while</span> <span class="token builtin class-name">:</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token comment"># here is some code.</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">while</span> <span class="token builtin class-name">:</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token comment"># here is some code.</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="正在读取行"><a aria-hidden="true" tabindex="-1" href="#正在读取行"><span class="icon icon-link"></span></a>正在读取行</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">cat</span> file.txt <span class="token operator">|</span> <span class="token keyword">while</span> <span class="token builtin class-name">read</span> line<span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token variable">$line</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">done</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">cat</span> file.txt <span class="token operator">|</span> <span class="token keyword">while</span> <span class="token builtin class-name">read</span> line<span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">$line</span>
+</span><span class="code-line"><span class="token keyword">done</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="bash-函数"><a aria-hidden="true" tabindex="-1" href="#bash-函数"><span class="icon icon-link"></span></a>Bash 函数</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="定义函数"><a aria-hidden="true" tabindex="-1" href="#定义函数"><span class="icon icon-link"></span></a>定义函数</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function-name function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="2">  <span class="token builtin class-name">echo</span> <span class="token string">"hello <span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="3"><span class="token punctuation">}</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function-name function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token builtin class-name">echo</span> <span class="token string">"hello <span class="token variable">$1</span>"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 同上（替代语法）</span>
-</span><span class="code-line line-number" line="2"><span class="token keyword">function</span> <span class="token function-name function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="3">  <span class="token builtin class-name">echo</span> <span class="token string">"hello <span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="4"><span class="token punctuation">}</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 同上（替代语法）</span>
+</span><span class="code-line"><span class="token keyword">function</span> <span class="token function-name function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token builtin class-name">echo</span> <span class="token string">"hello <span class="token variable">$1</span>"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">myfunc <span class="token string">"John"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myfunc <span class="token string">"John"</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="返回值"><a aria-hidden="true" tabindex="-1" href="#返回值"><span class="icon icon-link"></span></a>返回值</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function-name function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">myresult</span><span class="token operator">=</span><span class="token string">'some value'</span>
-</span><span class="code-line line-number" line="3">    <span class="token builtin class-name">echo</span> <span class="token variable">$myresult</span>
-</span><span class="code-line line-number" line="4"><span class="token punctuation">}</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function-name function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">myresult</span><span class="token operator">=</span><span class="token string">'some value'</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">$myresult</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">result</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span>myfunc<span class="token variable">)</span></span>"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">result</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span>myfunc<span class="token variable">)</span></span>"</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="正在引发错误"><a aria-hidden="true" tabindex="-1" href="#正在引发错误"><span class="icon icon-link"></span></a>正在引发错误</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function-name function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="3"><span class="token punctuation">}</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function-name function">myfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> myfunc<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"success"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">else</span>
-</span><span class="code-line line-number" line="4">    <span class="token builtin class-name">echo</span> <span class="token string">"failure"</span>
-</span><span class="code-line line-number" line="5"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> myfunc<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"success"</span>
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"failure"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="bash-选项"><a aria-hidden="true" tabindex="-1" href="#bash-选项"><span class="icon icon-link"></span></a>Bash 选项</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="选项"><a aria-hidden="true" tabindex="-1" href="#选项"><span class="icon icon-link"></span></a>选项</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 避免覆盖文件</span>
-</span><span class="code-line line-number" line="2"><span class="token comment"># (echo "hi" > foo)</span>
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> noclobber
-</span><span class="code-line line-number" line="4">
-</span><span class="code-line line-number" line="5"><span class="token comment"># 用于出错时退出</span>
-</span><span class="code-line line-number" line="6"><span class="token comment"># 避免级联错误</span>
-</span><span class="code-line line-number" line="7"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> errexit   
-</span><span class="code-line line-number" line="8">
-</span><span class="code-line line-number" line="9"><span class="token comment"># 揭示隐藏的失败</span>
-</span><span class="code-line line-number" line="10"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> pipefail  
-</span><span class="code-line line-number" line="11">
-</span><span class="code-line line-number" line="12"><span class="token comment"># 公开未设置的变量</span>
-</span><span class="code-line line-number" line="13"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> nounset
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 避免覆盖文件</span>
+</span><span class="code-line"><span class="token comment"># (echo "hi" > foo)</span>
+</span><span class="code-line"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> noclobber
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 用于出错时退出</span>
+</span><span class="code-line"><span class="token comment"># 避免级联错误</span>
+</span><span class="code-line"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> errexit   
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 揭示隐藏的失败</span>
+</span><span class="code-line"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> pipefail  
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 公开未设置的变量</span>
+</span><span class="code-line"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> nounset
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="全局选项"><a aria-hidden="true" tabindex="-1" href="#全局选项"><span class="icon icon-link"></span></a>全局选项</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 不匹配的 glob 被删除</span>
-</span><span class="code-line line-number" line="2"><span class="token comment"># ('*.foo' => '')</span>
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> nullglob   
-</span><span class="code-line line-number" line="4">
-</span><span class="code-line line-number" line="5"><span class="token comment"># 不匹配的 glob 抛出错误</span>
-</span><span class="code-line line-number" line="6"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> failglob  
-</span><span class="code-line line-number" line="7">
-</span><span class="code-line line-number" line="8"><span class="token comment"># 不区分大小写的球体</span>
-</span><span class="code-line line-number" line="9"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> nocaseglob 
-</span><span class="code-line line-number" line="10">
-</span><span class="code-line line-number" line="11"><span class="token comment"># 通配符匹配点文件</span>
-</span><span class="code-line line-number" line="12"><span class="token comment"># ("*.sh" => ".foo.sh")</span>
-</span><span class="code-line line-number" line="13"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> dotglob    
-</span><span class="code-line line-number" line="14">
-</span><span class="code-line line-number" line="15"><span class="token comment"># 允许 ** 进行递归匹配</span>
-</span><span class="code-line line-number" line="16"><span class="token comment"># ('lib/**/*.rb' => 'lib/a/b/c.rb')</span>
-</span><span class="code-line line-number" line="17"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> globstar   
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 不匹配的 glob 被删除</span>
+</span><span class="code-line"><span class="token comment"># ('*.foo' => '')</span>
+</span><span class="code-line"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> nullglob   
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 不匹配的 glob 抛出错误</span>
+</span><span class="code-line"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> failglob  
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 不区分大小写的球体</span>
+</span><span class="code-line"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> nocaseglob 
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 通配符匹配点文件</span>
+</span><span class="code-line"><span class="token comment"># ("*.sh" => ".foo.sh")</span>
+</span><span class="code-line"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> dotglob    
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 允许 ** 进行递归匹配</span>
+</span><span class="code-line"><span class="token comment"># ('lib/**/*.rb' => 'lib/a/b/c.rb')</span>
+</span><span class="code-line"><span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> globstar   
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="bash-历史"><a aria-hidden="true" tabindex="-1" href="#bash-历史"><span class="icon icon-link"></span></a>Bash 历史</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
@@ -931,87 +931,87 @@
 <p><code>!!</code> 可以替换为任何有效的扩展，即 <code>!cat</code>、<code>!-2</code>、<code>!42</code> 等。</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="各种各样的"><a aria-hidden="true" tabindex="-1" href="#各种各样的"><span class="icon icon-link"></span></a>各种各样的</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="数值计算"><a aria-hidden="true" tabindex="-1" href="#数值计算"><span class="icon icon-link"></span></a>数值计算</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token variable"><span class="token variable">$((</span>a <span class="token operator">+</span> <span class="token number">200</span><span class="token variable">))</span></span>      <span class="token comment"># Add 200 to $a</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token variable"><span class="token variable">$((</span>a <span class="token operator">+</span> <span class="token number">200</span><span class="token variable">))</span></span>      <span class="token comment"># Add 200 to $a</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token variable"><span class="token variable">$((</span>$RANDOM<span class="token operator">%</span><span class="token number">200</span><span class="token variable">))</span></span>  <span class="token comment"># Random number 0..199</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token variable"><span class="token variable">$((</span>$RANDOM<span class="token operator">%</span><span class="token number">200</span><span class="token variable">))</span></span>  <span class="token comment"># Random number 0..199</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="子-shell"><a aria-hidden="true" tabindex="-1" href="#子-shell"><span class="icon icon-link"></span></a>子 shell</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">(</span>cd somedir<span class="token punctuation">;</span> <span class="token builtin class-name">echo</span> <span class="token string">"I'm now in <span class="token environment constant">$PWD</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">pwd</span> <span class="token comment"># still in first directory</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token punctuation">(</span>cd somedir<span class="token punctuation">;</span> <span class="token builtin class-name">echo</span> <span class="token string">"I'm now in <span class="token environment constant">$PWD</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token builtin class-name">pwd</span> <span class="token comment"># still in first directory</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="检查命令"><a aria-hidden="true" tabindex="-1" href="#检查命令"><span class="icon icon-link"></span></a>检查命令</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">command</span> <span class="token parameter variable">-V</span> <span class="token builtin class-name">cd</span>
-</span><span class="code-line line-number" line="2"><span class="token comment">#=> "cd is a function/alias/whatever"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">command</span> <span class="token parameter variable">-V</span> <span class="token builtin class-name">cd</span>
+</span><span class="code-line"><span class="token comment">#=> "cd is a function/alias/whatever"</span>
 </span></code></pre>
 </div></div></div><div class="wrap row-span-2 col-span-2"><div class="wrap-header h3wrap"><h3 id="重定向"><a aria-hidden="true" tabindex="-1" href="#重定向"><span class="icon icon-link"></span></a>重定向</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2 col-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">python hello.py <span class="token operator">></span> output.txt   <span class="token comment"># 标准输出到（文件）</span>
-</span><span class="code-line line-number" line="2">python hello.py <span class="token operator">>></span> output.txt  <span class="token comment"># 标准输出到（文件），追加</span>
-</span><span class="code-line line-number" line="3">python hello.py <span class="token operator"><span class="token file-descriptor important">2</span>></span> error.log   <span class="token comment"># 标准错误到（文件）</span>
-</span><span class="code-line line-number" line="4">python hello.py <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span>           <span class="token comment"># 标准错误到标准输出</span>
-</span><span class="code-line line-number" line="5">python hello.py <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null    <span class="token comment"># 标准错误到（空null）</span>
-</span><span class="code-line line-number" line="6">python hello.py <span class="token operator">&#x26;></span>/dev/null    <span class="token comment"># 标准输出和标准错误到（空null）</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">python hello.py <span class="token operator">></span> output.txt   <span class="token comment"># 标准输出到（文件）</span>
+</span><span class="code-line">python hello.py <span class="token operator">>></span> output.txt  <span class="token comment"># 标准输出到（文件），追加</span>
+</span><span class="code-line">python hello.py <span class="token operator"><span class="token file-descriptor important">2</span>></span> error.log   <span class="token comment"># 标准错误到（文件）</span>
+</span><span class="code-line">python hello.py <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span>           <span class="token comment"># 标准错误到标准输出</span>
+</span><span class="code-line">python hello.py <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null    <span class="token comment"># 标准错误到（空null）</span>
+</span><span class="code-line">python hello.py <span class="token operator">&#x26;></span>/dev/null    <span class="token comment"># 标准输出和标准错误到（空null）</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">python hello.py <span class="token operator">&#x3C;</span> foo.txt      <span class="token comment"># 将 foo.txt 提供给 python 的标准输入</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">python hello.py <span class="token operator">&#x3C;</span> foo.txt      <span class="token comment"># 将 foo.txt 提供给 python 的标准输入</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="来源相对"><a aria-hidden="true" tabindex="-1" href="#来源相对"><span class="icon icon-link"></span></a>来源相对</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">source</span> <span class="token string">"<span class="token variable">${0<span class="token operator">%</span><span class="token operator">/</span>*}</span>/../share/foo.sh"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">source</span> <span class="token string">"<span class="token variable">${0<span class="token operator">%</span><span class="token operator">/</span>*}</span>/../share/foo.sh"</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="脚本目录"><a aria-hidden="true" tabindex="-1" href="#脚本目录"><span class="icon icon-link"></span></a>脚本目录</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${0<span class="token operator">%</span><span class="token operator">/</span>*}</span>"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${0<span class="token operator">%</span><span class="token operator">/</span>*}</span>"</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="caseswitch"><a aria-hidden="true" tabindex="-1" href="#caseswitch"><span class="icon icon-link"></span></a>Case/switch</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="2">    start <span class="token operator">|</span> up<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="3">    vagrant up
-</span><span class="code-line line-number" line="4">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="5">    *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="6">    <span class="token builtin class-name">echo</span> <span class="token string">"Usage: <span class="token variable">$0</span> {start|stop|ssh}"</span>
-</span><span class="code-line line-number" line="7">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="8"><span class="token keyword">esac</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line">    start <span class="token operator">|</span> up<span class="token punctuation">)</span>
+</span><span class="code-line">    vagrant up
+</span><span class="code-line">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line">    *<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"Usage: <span class="token variable">$0</span> {start|stop|ssh}"</span>
+</span><span class="code-line">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">esac</span>
 </span></code></pre>
 </div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="陷阱错误"><a aria-hidden="true" tabindex="-1" href="#陷阱错误"><span class="icon icon-link"></span></a>陷阱错误</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">trap</span> <span class="token string">'echo Error at about $LINENO'</span> ERR
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">trap</span> <span class="token string">'echo Error at about $LINENO'</span> ERR
 </span></code></pre>
 <p>或者</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function-name function">traperr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"ERROR: <span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span>}</span> at about <span class="token variable">${<span class="token environment constant">BASH_LINENO</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="3"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> errtrace
-</span><span class="code-line line-number" line="5"><span class="token builtin class-name">trap</span> traperr ERR
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function-name function">traperr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"ERROR: <span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span>}</span> at about <span class="token variable">${<span class="token environment constant">BASH_LINENO</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token builtin class-name">set</span> <span class="token parameter variable">-o</span> errtrace
+</span><span class="code-line"><span class="token builtin class-name">trap</span> traperr ERR
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="printf"><a aria-hidden="true" tabindex="-1" href="#printf"><span class="icon icon-link"></span></a>printf</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">printf</span> <span class="token string">"Hello %s, I'm %s"</span> Sven Olga
-</span><span class="code-line line-number" line="2"><span class="token comment">#=> "Hello Sven, I'm Olga</span>
-</span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">printf</span> <span class="token string">"1 + 1 = %d"</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="5"><span class="token comment">#=> "1 + 1 = 2"</span>
-</span><span class="code-line line-number" line="6">
-</span><span class="code-line line-number" line="7"><span class="token builtin class-name">printf</span> <span class="token string">"Print a float: %f"</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="8"><span class="token comment">#=> "Print a float: 2.000000"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">printf</span> <span class="token string">"Hello %s, I'm %s"</span> Sven Olga
+</span><span class="code-line"><span class="token comment">#=> "Hello Sven, I'm Olga</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token builtin class-name">printf</span> <span class="token string">"1 + 1 = %d"</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token comment">#=> "1 + 1 = 2"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token builtin class-name">printf</span> <span class="token string">"Print a float: %f"</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token comment">#=> "Print a float: 2.000000"</span>
 </span></code></pre>
 </div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="获取选项"><a aria-hidden="true" tabindex="-1" href="#获取选项"><span class="icon icon-link"></span></a>获取选项</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">=~</span> ^- <span class="token operator">&#x26;&#x26;</span> <span class="token operator">!</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">==</span> <span class="token string">"--"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="2">    <span class="token parameter variable">-V</span> <span class="token operator">|</span> <span class="token parameter variable">--version</span> <span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="3">    <span class="token builtin class-name">echo</span> <span class="token variable">$version</span>
-</span><span class="code-line line-number" line="4">    <span class="token builtin class-name">exit</span>
-</span><span class="code-line line-number" line="5">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="6">    <span class="token parameter variable">-s</span> <span class="token operator">|</span> <span class="token parameter variable">--string</span> <span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="7">    <span class="token builtin class-name">shift</span><span class="token punctuation">;</span> <span class="token assign-left variable">string</span><span class="token operator">=</span><span class="token variable">$1</span>
-</span><span class="code-line line-number" line="8">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="9">    <span class="token parameter variable">-f</span> <span class="token operator">|</span> <span class="token parameter variable">--flag</span> <span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="10">    <span class="token assign-left variable">flag</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="11">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="12"><span class="token keyword">esac</span><span class="token punctuation">;</span> <span class="token builtin class-name">shift</span><span class="token punctuation">;</span> <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="13"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">==</span> <span class="token string">'--'</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">shift</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">=~</span> ^- <span class="token operator">&#x26;&#x26;</span> <span class="token operator">!</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">==</span> <span class="token string">"--"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span>
+</span><span class="code-line">    <span class="token parameter variable">-V</span> <span class="token operator">|</span> <span class="token parameter variable">--version</span> <span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token variable">$version</span>
+</span><span class="code-line">    <span class="token builtin class-name">exit</span>
+</span><span class="code-line">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token parameter variable">-s</span> <span class="token operator">|</span> <span class="token parameter variable">--string</span> <span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token builtin class-name">shift</span><span class="token punctuation">;</span> <span class="token assign-left variable">string</span><span class="token operator">=</span><span class="token variable">$1</span>
+</span><span class="code-line">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token parameter variable">-f</span> <span class="token operator">|</span> <span class="token parameter variable">--flag</span> <span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token assign-left variable">flag</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line">    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">esac</span><span class="token punctuation">;</span> <span class="token builtin class-name">shift</span><span class="token punctuation">;</span> <span class="token keyword">done</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">==</span> <span class="token string">'--'</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">shift</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="检查命令的结果"><a aria-hidden="true" tabindex="-1" href="#检查命令的结果"><span class="icon icon-link"></span></a>检查命令的结果</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token function">ping</span> <span class="token parameter variable">-c</span> <span class="token number">1</span> google.com<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"看来您的互联网连接正常"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token function">ping</span> <span class="token parameter variable">-c</span> <span class="token number">1</span> google.com<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"看来您的互联网连接正常"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="特殊变量"><a aria-hidden="true" tabindex="-1" href="#特殊变量"><span class="icon icon-link"></span></a>特殊变量</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
@@ -1044,9 +1044,9 @@
 <p>见<a href="http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables">特殊参数</a>。</p>
 </div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="grep-检查"><a aria-hidden="true" tabindex="-1" href="#grep-检查"><span class="icon icon-link"></span></a>grep 检查</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">if</span> <span class="token function">grep</span> <span class="token parameter variable">-q</span> <span class="token string">'foo'</span> ~/.bash_history<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">echo</span> <span class="token string">"您过去似乎输入过“foo”"</span>
-</span><span class="code-line line-number" line="3"><span class="token keyword">fi</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">if</span> <span class="token function">grep</span> <span class="token parameter variable">-q</span> <span class="token string">'foo'</span> ~/.bash_history<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"您过去似乎输入过“foo”"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
 </span></code></pre>
 </div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="反斜杠转义"><a aria-hidden="true" tabindex="-1" href="#反斜杠转义"><span class="icon icon-link"></span></a>反斜杠转义</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
@@ -1078,38 +1078,38 @@
 <!--rehype:className=cols-4 style-none-->
 <p>使用 <code>\</code> 转义这些特殊字符</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="heredoc"><a aria-hidden="true" tabindex="-1" href="#heredoc"><span class="icon icon-link"></span></a>Heredoc</h3><div class="wrap-body">
-<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line line-number" line="1"><span class="token function">cat</span> <span class="token operator">&#x3C;&#x3C;</span><span class="token string">END
-</span></span><span class="code-line line-number" line="2"><span class="token string">hello world
-</span></span><span class="code-line line-number" line="3"><span class="token string">END</span>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">cat</span> <span class="token operator">&#x3C;&#x3C;</span><span class="token string">END
+</span></span><span class="code-line"><span class="token string">hello world
+</span></span><span class="code-line"><span class="token string">END</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="转到上一个目录"><a aria-hidden="true" tabindex="-1" href="#转到上一个目录"><span class="icon icon-link"></span></a>转到上一个目录</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">pwd</span> <span class="token comment"># /home/user/foo</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">cd</span> bar/
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">pwd</span> <span class="token comment"># /home/user/foo/bar</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">cd</span> -
-</span><span class="code-line line-number" line="5"><span class="token builtin class-name">pwd</span> <span class="token comment"># /home/user/foo</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">pwd</span> <span class="token comment"># /home/user/foo</span>
+</span><span class="code-line"><span class="token builtin class-name">cd</span> bar/
+</span><span class="code-line"><span class="token builtin class-name">pwd</span> <span class="token comment"># /home/user/foo/bar</span>
+</span><span class="code-line"><span class="token builtin class-name">cd</span> -
+</span><span class="code-line"><span class="token builtin class-name">pwd</span> <span class="token comment"># /home/user/foo</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="读取输入"><a aria-hidden="true" tabindex="-1" href="#读取输入"><span class="icon icon-link"></span></a>读取输入</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"Proceed? [y/n]: "</span>
-</span><span class="code-line line-number" line="2"><span class="token builtin class-name">read</span> ans
-</span><span class="code-line line-number" line="3"><span class="token builtin class-name">echo</span> <span class="token variable">$ans</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"Proceed? [y/n]: "</span>
+</span><span class="code-line"><span class="token builtin class-name">read</span> ans
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token variable">$ans</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">read</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> ans    <span class="token comment"># 只有一个字符</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">read</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> ans    <span class="token comment"># 只有一个字符</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="条件执行"><a aria-hidden="true" tabindex="-1" href="#条件执行"><span class="icon icon-link"></span></a>条件执行</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">git</span> commit <span class="token operator">&#x26;&#x26;</span> <span class="token function">git</span> push
-</span><span class="code-line line-number" line="2"><span class="token function">git</span> commit <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Commit failed"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">git</span> commit <span class="token operator">&#x26;&#x26;</span> <span class="token function">git</span> push
+</span><span class="code-line"><span class="token function">git</span> commit <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Commit failed"</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="严格模式"><a aria-hidden="true" tabindex="-1" href="#严格模式"><span class="icon icon-link"></span></a>严格模式</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">set</span> <span class="token parameter variable">-euo</span> pipefail
-</span><span class="code-line line-number" line="2"><span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\n">\n</span><span class="token entity" title="\t">\t</span>'</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">set</span> <span class="token parameter variable">-euo</span> pipefail
+</span><span class="code-line"><span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\n">\n</span><span class="token entity" title="\t">\t</span>'</span>
 </span></code></pre>
 <p>参见：<a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">非官方 bash 严格模式</a></p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="可选参数"><a aria-hidden="true" tabindex="-1" href="#可选参数"><span class="icon icon-link"></span></a>可选参数</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">args</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">$@</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2"><span class="token assign-left variable">args</span><span class="token operator">+=</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="3"><span class="token assign-left variable">args</span><span class="token operator">+=</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${args<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token assign-left variable">args</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">$@</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token assign-left variable">args</span><span class="token operator">+=</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token assign-left variable">args</span><span class="token operator">+=</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${args<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
 </span></code></pre>
 <p>将参数放入数组中，然后追加</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">

@@ -49,10 +49,10 @@
 <li>XPath 是 W3C 推荐的</li>
 </ul>
 <p>在 <code>Firefox</code> 或 <code>Chrome</code> 控制台中测试：</p>
-<pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'/html/body'</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//h1'</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="3"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//h1'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">innerText</span>
-</span><span class="code-line line-number" line="4"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//a[text()="XPath"]'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'/html/body'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//h1'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//h1'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">innerText</span>
+</span><span class="code-line"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">'//a[text()="XPath"]'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="后代选择器"><a aria-hidden="true" tabindex="-1" href="#后代选择器"><span class="icon icon-link"></span></a>后代选择器</h3><div class="wrap-body">
 
@@ -476,88 +476,88 @@
 <!--rehype:className=show-header-->
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-predicates谓词"><a aria-hidden="true" tabindex="-1" href="#xpath-predicates谓词"><span class="icon icon-link"></span></a>XPath Predicates(谓词)</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="predicates谓词"><a aria-hidden="true" tabindex="-1" href="#predicates谓词"><span class="icon icon-link"></span></a>Predicates(谓词)</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//div<span class="token punctuation">[</span>true<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="2">//div<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">"head"</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="3">//div<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">"head"</span><span class="token punctuation">]</span><span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">"top"</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">//div<span class="token punctuation">[</span>true<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+</span><span class="code-line">//div<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">"head"</span><span class="token punctuation">]</span>
+</span><span class="code-line">//div<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">"head"</span><span class="token punctuation">]</span><span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">"top"</span><span class="token punctuation">]</span>
 </span></code></pre>
 <p>仅当某些条件为真时才限制节点集。它们可以被链接起来。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="操作符"><a aria-hidden="true" tabindex="-1" href="#操作符"><span class="icon icon-link"></span></a>操作符</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 比较</span>
-</span><span class="code-line line-number" line="2">//a<span class="token punctuation">[</span>@id <span class="token operator">=</span> <span class="token string">"xyz"</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="3">//a<span class="token punctuation">[</span>@id <span class="token operator">!=</span> <span class="token string">"xyz"</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="4">//a<span class="token punctuation">[</span>@price <span class="token operator">></span> <span class="token number">25</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 比较</span>
+</span><span class="code-line">//a<span class="token punctuation">[</span>@id <span class="token operator">=</span> <span class="token string">"xyz"</span><span class="token punctuation">]</span>
+</span><span class="code-line">//a<span class="token punctuation">[</span>@id <span class="token operator">!=</span> <span class="token string">"xyz"</span><span class="token punctuation">]</span>
+</span><span class="code-line">//a<span class="token punctuation">[</span>@price <span class="token operator">></span> <span class="token number">25</span><span class="token punctuation">]</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 逻辑 (and/or)</span>
-</span><span class="code-line line-number" line="2">//div<span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">"head"</span> and position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="3">//div<span class="token punctuation">[</span><span class="token punctuation">(</span>x and y<span class="token punctuation">)</span> or not<span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 逻辑 (and/or)</span>
+</span><span class="code-line">//div<span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">"head"</span> and position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">]</span>
+</span><span class="code-line">//div<span class="token punctuation">[</span><span class="token punctuation">(</span>x and y<span class="token punctuation">)</span> or not<span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">]</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="使用节点"><a aria-hidden="true" tabindex="-1" href="#使用节点"><span class="icon icon-link"></span></a>使用节点</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 在函数内部使用它们</span>
-</span><span class="code-line line-number" line="2">//ul<span class="token punctuation">[</span>count<span class="token punctuation">(</span>li<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="3">//ul<span class="token punctuation">[</span>count<span class="token punctuation">(</span>li<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">'hide'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 在函数内部使用它们</span>
+</span><span class="code-line">//ul<span class="token punctuation">[</span>count<span class="token punctuation">(</span>li<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span>
+</span><span class="code-line">//ul<span class="token punctuation">[</span>count<span class="token punctuation">(</span>li<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">'hide'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">]</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 返回具有 `&#x3C;li>` 子级的 `&#x3C;ul>`</span>
-</span><span class="code-line line-number" line="2">//ul<span class="token punctuation">[</span>li<span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 返回具有 `&#x3C;li>` 子级的 `&#x3C;ul>`</span>
+</span><span class="code-line">//ul<span class="token punctuation">[</span>li<span class="token punctuation">]</span>
 </span></code></pre>
 <p>您可以在谓词中使用节点。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="索引"><a aria-hidden="true" tabindex="-1" href="#索引"><span class="icon icon-link"></span></a>索引</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>                <span class="token comment"># 第一个&#x3C;a></span>
-</span><span class="code-line line-number" line="2">//a<span class="token punctuation">[</span>last<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>           <span class="token comment"># 最后一个&#x3C;a></span>
-</span><span class="code-line line-number" line="3">//ol/li<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>            <span class="token comment"># 第二个&#x3C;li></span>
-</span><span class="code-line line-number" line="4">//ol/li<span class="token punctuation">[</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token comment"># 和上面一样</span>
-</span><span class="code-line line-number" line="5">//ol/li<span class="token punctuation">[</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment">#:not(:first-child)</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">//a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>                <span class="token comment"># 第一个&#x3C;a></span>
+</span><span class="code-line">//a<span class="token punctuation">[</span>last<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>           <span class="token comment"># 最后一个&#x3C;a></span>
+</span><span class="code-line">//ol/li<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>            <span class="token comment"># 第二个&#x3C;li></span>
+</span><span class="code-line">//ol/li<span class="token punctuation">[</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token comment"># 和上面一样</span>
+</span><span class="code-line">//ol/li<span class="token punctuation">[</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment">#:not(:first-child)</span>
 </span></code></pre>
 <p>将 <code>[]</code> 与数字一起使用，或者使用 <code>last()</code> 或 <code>position()</code>。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="链接顺序"><a aria-hidden="true" tabindex="-1" href="#链接顺序"><span class="icon icon-link"></span></a>链接顺序</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>@href<span class="token operator">=</span><span class="token string">'/'</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="2">a<span class="token punctuation">[</span>@href<span class="token operator">=</span><span class="token string">'/'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>@href<span class="token operator">=</span><span class="token string">'/'</span><span class="token punctuation">]</span>
+</span><span class="code-line">a<span class="token punctuation">[</span>@href<span class="token operator">=</span><span class="token string">'/'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 </span></code></pre>
 <p>顺序很重要，这两个是不同的。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="嵌套谓词"><a aria-hidden="true" tabindex="-1" href="#嵌套谓词"><span class="icon icon-link"></span></a>嵌套谓词</h3><div class="wrap-body">
-<pre><code class="code-highlight"><span class="code-line line-number" line="1">//section[.//h1[@id='hi']]
+<pre><code class="code-highlight"><span class="code-line">//section[.//h1[@id='hi']]
 </span></code></pre>
 <p>如果它有一个具有 <code>id='hi'</code> 的 <code>&#x3C;h1></code> 后代，则返回 <code>&#x3C;section></code>。</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-函数"><a aria-hidden="true" tabindex="-1" href="#xpath-函数"><span class="icon icon-link"></span></a>XPath 函数</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="节点功能"><a aria-hidden="true" tabindex="-1" href="#节点功能"><span class="icon icon-link"></span></a>节点功能</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">name<span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment"># //[starts-with(name(), 'h')]</span>
-</span><span class="code-line line-number" line="2">text<span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment"># //button[text()="Submit"]</span>
-</span><span class="code-line line-number" line="3">                  <span class="token comment"># //button/text()</span>
-</span><span class="code-line line-number" line="4">lang<span class="token punctuation">(</span>str<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="5">namespace-uri<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">name<span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment"># //[starts-with(name(), 'h')]</span>
+</span><span class="code-line">text<span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment"># //button[text()="Submit"]</span>
+</span><span class="code-line">                  <span class="token comment"># //button/text()</span>
+</span><span class="code-line">lang<span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+</span><span class="code-line">namespace-uri<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">count<span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment"># //table[count(tr)=1]</span>
-</span><span class="code-line line-number" line="2">position<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment"># //ol/li[position()=2]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">count<span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment"># //table[count(tr)=1]</span>
+</span><span class="code-line">position<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment"># //ol/li[position()=2]</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符串函数"><a aria-hidden="true" tabindex="-1" href="#字符串函数"><span class="icon icon-link"></span></a>字符串函数</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">contains<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment"># font[contains(@class,"head")]</span>
-</span><span class="code-line line-number" line="2">starts-with<span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token comment"># font[starts-with(@class,"head")]</span>
-</span><span class="code-line line-number" line="3">ends-with<span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment"># font[ends-with(@class,"head")]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">contains<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment"># font[contains(@class,"head")]</span>
+</span><span class="code-line">starts-with<span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token comment"># font[starts-with(@class,"head")]</span>
+</span><span class="code-line">ends-with<span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment"># font[ends-with(@class,"head")]</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">concat<span class="token punctuation">(</span>x,y<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2">substring<span class="token punctuation">(</span>str, start, len<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="3">substring-before<span class="token punctuation">(</span><span class="token string">"01/02"</span>, <span class="token string">"/"</span><span class="token punctuation">)</span>  <span class="token comment">#=> 01</span>
-</span><span class="code-line line-number" line="4">substring-after<span class="token punctuation">(</span><span class="token string">"01/02"</span>, <span class="token string">"/"</span><span class="token punctuation">)</span>   <span class="token comment">#=> 02</span>
-</span><span class="code-line line-number" line="5">translate<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="6">normalize-space<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="7">string-length<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">concat<span class="token punctuation">(</span>x,y<span class="token punctuation">)</span>
+</span><span class="code-line">substring<span class="token punctuation">(</span>str, start, len<span class="token punctuation">)</span>
+</span><span class="code-line">substring-before<span class="token punctuation">(</span><span class="token string">"01/02"</span>, <span class="token string">"/"</span><span class="token punctuation">)</span>  <span class="token comment">#=> 01</span>
+</span><span class="code-line">substring-after<span class="token punctuation">(</span><span class="token string">"01/02"</span>, <span class="token string">"/"</span><span class="token punctuation">)</span>   <span class="token comment">#=> 02</span>
+</span><span class="code-line">translate<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">normalize-space<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">string-length<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="布尔函数"><a aria-hidden="true" tabindex="-1" href="#布尔函数"><span class="icon icon-link"></span></a>布尔函数</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">not<span class="token punctuation">(</span>expr<span class="token punctuation">)</span>         <span class="token comment"># button[not(starts-with(text(),"Submit"))]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">not<span class="token punctuation">(</span>expr<span class="token punctuation">)</span>         <span class="token comment"># button[not(starts-with(text(),"Submit"))]</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="类型转换"><a aria-hidden="true" tabindex="-1" href="#类型转换"><span class="icon icon-link"></span></a>类型转换</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">string<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2">number<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="3">boolean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">string<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">number<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">boolean<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-axes"><a aria-hidden="true" tabindex="-1" href="#xpath-axes"><span class="icon icon-link"></span></a>XPath Axes</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="使用轴"><a aria-hidden="true" tabindex="-1" href="#使用轴"><span class="icon icon-link"></span></a>使用轴</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//ul/li                       <span class="token comment"># ul > li</span>
-</span><span class="code-line line-number" line="2">//ul/child::li                <span class="token comment"># ul > li (same)</span>
-</span><span class="code-line line-number" line="3">//ul/following-sibling::li    <span class="token comment"># ul ~ li</span>
-</span><span class="code-line line-number" line="4">//ul/descendant-or-self::li   <span class="token comment"># ul li</span>
-</span><span class="code-line line-number" line="5">//ul/ancestor-or-self::li     <span class="token comment"># $('ul').closest('li')</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">//ul/li                       <span class="token comment"># ul > li</span>
+</span><span class="code-line">//ul/child::li                <span class="token comment"># ul > li (same)</span>
+</span><span class="code-line">//ul/following-sibling::li    <span class="token comment"># ul ~ li</span>
+</span><span class="code-line">//ul/descendant-or-self::li   <span class="token comment"># ul li</span>
+</span><span class="code-line">//ul/ancestor-or-self::li     <span class="token comment"># $('ul').closest('li')</span>
 </span></code></pre>
 <hr>
 
@@ -586,29 +586,29 @@
 <table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td><code>//</code></td><td><code>ul</code></td><td><code>/child::</code></td><td><code>li</code></td></tr><tr><td>Axis</td><td>Step</td><td>Axis</td><td>Step</td></tr></tbody></table>
 <p>表达式的步骤由 <code>/</code> 分隔，通常用于选择子节点。 这并不总是正确的：您可以使用 <code>::</code> 指定不同的“轴”。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="子轴"><a aria-hidden="true" tabindex="-1" href="#子轴"><span class="icon icon-link"></span></a>子轴</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 都一样</span>
-</span><span class="code-line line-number" line="2">//ul/li/a
-</span><span class="code-line line-number" line="3">//child::ul/child::li/child::a
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 都一样</span>
+</span><span class="code-line">//ul/li/a
+</span><span class="code-line">//child::ul/child::li/child::a
 </span></code></pre>
 <p><code>child::</code> is the default axis. This makes <code>//a/b/c</code> work.</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 都一样</span>
-</span><span class="code-line line-number" line="2"><span class="token comment"># 这是因为 `child::li` 是真实的</span>
-</span><span class="code-line line-number" line="3">//ul<span class="token punctuation">[</span>li<span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="4">//ul<span class="token punctuation">[</span>child::li<span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 都一样</span>
+</span><span class="code-line"><span class="token comment"># 这是因为 `child::li` 是真实的</span>
+</span><span class="code-line">//ul<span class="token punctuation">[</span>li<span class="token punctuation">]</span>
+</span><span class="code-line">//ul<span class="token punctuation">[</span>child::li<span class="token punctuation">]</span>
 </span></code></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 都一样</span>
-</span><span class="code-line line-number" line="2">//ul<span class="token punctuation">[</span>count<span class="token punctuation">(</span>li<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="3">//ul<span class="token punctuation">[</span>count<span class="token punctuation">(</span>child::li<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 都一样</span>
+</span><span class="code-line">//ul<span class="token punctuation">[</span>count<span class="token punctuation">(</span>li<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span>
+</span><span class="code-line">//ul<span class="token punctuation">[</span>count<span class="token punctuation">(</span>child::li<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="后代或自我轴"><a aria-hidden="true" tabindex="-1" href="#后代或自我轴"><span class="icon icon-link"></span></a>后代或自我轴</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 都一样</span>
-</span><span class="code-line line-number" line="2">//div//h4
-</span><span class="code-line line-number" line="3">//div/descendant-or-self::h4
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 都一样</span>
+</span><span class="code-line">//div//h4
+</span><span class="code-line">//div/descendant-or-self::h4
 </span></code></pre>
 <p><code>//</code> 是 <code>descendant-or-self::</code> 轴的缩写。</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 都一样</span>
-</span><span class="code-line line-number" line="2">//ul//<span class="token punctuation">[</span>last<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="3">//ul/descendant-or-self::<span class="token punctuation">[</span>last<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 都一样</span>
+</span><span class="code-line">//ul//<span class="token punctuation">[</span>last<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+</span><span class="code-line">//ul/descendant-or-self::<span class="token punctuation">[</span>last<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 </span></code></pre>
 </div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="其他轴"><a aria-hidden="true" tabindex="-1" href="#其他轴"><span class="icon icon-link"></span></a>其他轴</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
@@ -691,33 +691,33 @@
 <!--rehype:className=show-header-->
 <p>您还可以使用其他轴。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="联合"><a aria-hidden="true" tabindex="-1" href="#联合"><span class="icon icon-link"></span></a>联合</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//a <span class="token operator">|</span> //span
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">//a <span class="token operator">|</span> //span
 </span></code></pre>
 <p>使用 <code>|</code> 连接两个表达式。</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="xpath-更多示例"><a aria-hidden="true" tabindex="-1" href="#xpath-更多示例"><span class="icon icon-link"></span></a>XPath 更多示例</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//*                 <span class="token comment"># 所有元素</span>
-</span><span class="code-line line-number" line="2">count<span class="token punctuation">(</span>//*<span class="token punctuation">)</span>          <span class="token comment"># 计算所有元素</span>
-</span><span class="code-line line-number" line="3"><span class="token punctuation">(</span>//h1<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>/text<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment"># 第一个 h1 标题的文本</span>
-</span><span class="code-line line-number" line="4">//li<span class="token punctuation">[</span>span<span class="token punctuation">]</span>          <span class="token comment"># 找到一个 &#x3C;li> 里面有一个 &#x3C;span></span>
-</span><span class="code-line line-number" line="5">                    <span class="token comment"># ...扩展到 //li[child::span]</span>
-</span><span class="code-line line-number" line="6">//ul/li/<span class="token punctuation">..</span>          <span class="token comment"># 使用 .. 选择父级</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">//*                 <span class="token comment"># 所有元素</span>
+</span><span class="code-line">count<span class="token punctuation">(</span>//*<span class="token punctuation">)</span>          <span class="token comment"># 计算所有元素</span>
+</span><span class="code-line"><span class="token punctuation">(</span>//h1<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>/text<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment"># 第一个 h1 标题的文本</span>
+</span><span class="code-line">//li<span class="token punctuation">[</span>span<span class="token punctuation">]</span>          <span class="token comment"># 找到一个 &#x3C;li> 里面有一个 &#x3C;span></span>
+</span><span class="code-line">                    <span class="token comment"># ...扩展到 //li[child::span]</span>
+</span><span class="code-line">//ul/li/<span class="token punctuation">..</span>          <span class="token comment"># 使用 .. 选择父级</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="查找父家长"><a aria-hidden="true" tabindex="-1" href="#查找父家长"><span class="icon icon-link"></span></a>查找(父)家长</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//section<span class="token punctuation">[</span>h1<span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">'section-name'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">//section<span class="token punctuation">[</span>h1<span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">'section-name'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 </span></code></pre>
 <p>查找直接包含 <code>h1#section-name</code> 的 <code>&#x3C;section></code></p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//section<span class="token punctuation">[</span>//h1<span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">'section-name'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">//section<span class="token punctuation">[</span>//h1<span class="token punctuation">[</span>@id<span class="token operator">=</span><span class="token string">'section-name'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 </span></code></pre>
 <p>查找包含 <code>h1#section-name</code> 的 <code>&#x3C;section></code>。
 （与上面相同，但使用后代或自我而不是孩子）</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="最近的"><a aria-hidden="true" tabindex="-1" href="#最近的"><span class="icon icon-link"></span></a>最近的</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">./ancestor-or-self::<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">"box"</span><span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">./ancestor-or-self::<span class="token punctuation">[</span>@class<span class="token operator">=</span><span class="token string">"box"</span><span class="token punctuation">]</span>
 </span></code></pre>
 <p>像 <code>jQuery</code> 的 <code>$().closest('.box')</code> 一样工作。</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="属性"><a aria-hidden="true" tabindex="-1" href="#属性"><span class="icon icon-link"></span></a>属性</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">//item<span class="token punctuation">[</span>@price <span class="token operator">></span> <span class="token number">2</span>*@discount<span class="token punctuation">]</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">//item<span class="token punctuation">[</span>@price <span class="token operator">></span> <span class="token number">2</span>*@discount<span class="token punctuation">]</span>
 </span></code></pre>
 <p>查找 <code>&#x3C;item></code> 并检查其属性</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">

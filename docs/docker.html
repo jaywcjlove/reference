@@ -40,7 +40,7 @@
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="入门-1"><a aria-hidden="true" tabindex="-1" href="#入门-1"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
 <p>在后台创建和运行容器</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">80</span>:80 docker/getting-started
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">80</span>:80 docker/getting-started
 </span></code></pre>
 <hr>
 <ul>
@@ -49,7 +49,7 @@
 <li><code>docker/getting-started</code> - 要使用的镜像</li>
 </ul>
 <p>在前台创建并运行容器</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-p</span> <span class="token number">8001</span>:8080 <span class="token parameter variable">--name</span> my-nginx nginx
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-p</span> <span class="token number">8001</span>:8080 <span class="token parameter variable">--name</span> my-nginx nginx
 </span></code></pre>
 <hr>
 <ul>
@@ -211,30 +211,30 @@
 
 <table><thead><tr><th>Example</th><th>Description</th></tr></thead><tbody><tr><td><code>docker ps</code></td><td>列出正在运行的容器</td></tr><tr><td><code>docker ps -a</code></td><td>列出所有容器</td></tr><tr><td><code>docker logs nginx-server</code></td><td>容器日志</td></tr><tr><td><code>docker inspect nginx-server</code></td><td>检查容器</td></tr><tr><td><code>docker events nginx-server</code></td><td>容器事件</td></tr><tr><td><code>docker port nginx-server</code></td><td>公共端口</td></tr><tr><td><code>docker top nginx-server</code></td><td>运行进程</td></tr><tr><td><code>docker stats nginx-server</code></td><td>容器资源使用</td></tr><tr><td><code>docker diff nginx-server</code></td><td>列出对容器所做的更改</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="创建容器"><a aria-hidden="true" tabindex="-1" href="#创建容器"><span class="icon icon-link"></span></a>创建容器</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> create <span class="token punctuation">[</span>options<span class="token punctuation">]</span> IMAGE
-</span><span class="code-line line-number" line="2">  -a, <span class="token parameter variable">--attach</span>               <span class="token comment"># 附加标准输出/错误</span>
-</span><span class="code-line line-number" line="3">  -i, <span class="token parameter variable">--interactive</span>          <span class="token comment"># 附加标准输入（交互式）</span>
-</span><span class="code-line line-number" line="4">  -t, <span class="token parameter variable">--tty</span>                  <span class="token comment"># 伪终端 pseudo-tty</span>
-</span><span class="code-line line-number" line="5">      <span class="token parameter variable">--name</span> NAME            <span class="token comment"># 命名你的镜像</span>
-</span><span class="code-line line-number" line="6">  -p, <span class="token parameter variable">--publish</span> <span class="token number">5000</span>:5000    <span class="token comment"># 端口映射（主机:容器）</span>
-</span><span class="code-line line-number" line="7">      <span class="token parameter variable">--expose</span> <span class="token number">5432</span>          <span class="token comment"># 向容器公开端口 </span>
-</span><span class="code-line line-number" line="8">  -P, --publish-all          <span class="token comment"># 发布所有端口</span>
-</span><span class="code-line line-number" line="9">      <span class="token parameter variable">--link</span> container:alias <span class="token comment"># 链接 linking</span>
-</span><span class="code-line line-number" line="10">  -v, <span class="token parameter variable">--volume</span> <span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">pwd</span><span class="token variable">`</span></span>:/app    <span class="token comment"># mount（需要绝对路径）</span>
-</span><span class="code-line line-number" line="11">  -e, <span class="token parameter variable">--env</span> <span class="token assign-left variable">NAME</span><span class="token operator">=</span>hello       <span class="token comment"># 环境变量 env vars</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> create <span class="token punctuation">[</span>options<span class="token punctuation">]</span> IMAGE
+</span><span class="code-line">  -a, <span class="token parameter variable">--attach</span>               <span class="token comment"># 附加标准输出/错误</span>
+</span><span class="code-line">  -i, <span class="token parameter variable">--interactive</span>          <span class="token comment"># 附加标准输入（交互式）</span>
+</span><span class="code-line">  -t, <span class="token parameter variable">--tty</span>                  <span class="token comment"># 伪终端 pseudo-tty</span>
+</span><span class="code-line">      <span class="token parameter variable">--name</span> NAME            <span class="token comment"># 命名你的镜像</span>
+</span><span class="code-line">  -p, <span class="token parameter variable">--publish</span> <span class="token number">5000</span>:5000    <span class="token comment"># 端口映射（主机:容器）</span>
+</span><span class="code-line">      <span class="token parameter variable">--expose</span> <span class="token number">5432</span>          <span class="token comment"># 向容器公开端口 </span>
+</span><span class="code-line">  -P, --publish-all          <span class="token comment"># 发布所有端口</span>
+</span><span class="code-line">      <span class="token parameter variable">--link</span> container:alias <span class="token comment"># 链接 linking</span>
+</span><span class="code-line">  -v, <span class="token parameter variable">--volume</span> <span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">pwd</span><span class="token variable">`</span></span>:/app    <span class="token comment"># mount（需要绝对路径）</span>
+</span><span class="code-line">  -e, <span class="token parameter variable">--env</span> <span class="token assign-left variable">NAME</span><span class="token operator">=</span>hello       <span class="token comment"># 环境变量 env vars</span>
 </span></code></pre>
 </div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="实例"><a aria-hidden="true" tabindex="-1" href="#实例"><span class="icon icon-link"></span></a>实例</h4><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> create <span class="token parameter variable">--name</span> my_redis <span class="token parameter variable">--expose</span> <span class="token number">6379</span> redis:3.0.2
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> create <span class="token parameter variable">--name</span> my_redis <span class="token parameter variable">--expose</span> <span class="token number">6379</span> redis:3.0.2
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="操控"><a aria-hidden="true" tabindex="-1" href="#操控"><span class="icon icon-link"></span></a>操控</h3><div class="wrap-body">
 <p>重命名容器</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> <span class="token function">rename</span> my-nginx nginx-server
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> <span class="token function">rename</span> my-nginx nginx-server
 </span></code></pre>
 <p>移除容器</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> <span class="token function">rm</span> nginx-server
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> <span class="token function">rm</span> nginx-server
 </span></code></pre>
 <p>更新容器</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> update --cpu-shares <span class="token number">512</span> <span class="token parameter variable">-m</span> 300M nginx-server
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> update --cpu-shares <span class="token number">512</span> <span class="token parameter variable">-m</span> 300M nginx-server
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="docker-镜像"><a aria-hidden="true" tabindex="-1" href="#docker-镜像"><span class="icon icon-link"></span></a>Docker 镜像</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
@@ -286,49 +286,49 @@
 
 <table><thead><tr><th><code>Example</code></th><th>Description</th></tr></thead><tbody><tr><td><code>docker images</code></td><td>列出镜像</td></tr><tr><td><code>docker rmi nginx</code></td><td>删除镜像</td></tr><tr><td><code>docker load &#x3C; ubuntu.tar.gz</code></td><td>加载一个 tarred 存储库</td></tr><tr><td><code>docker load --input ubuntu.tar</code></td><td>加载一个 tarred 存储库</td></tr><tr><td><code>docker save busybox > ubuntu.tar</code></td><td>将镜像保存到 tar 存档</td></tr><tr><td><code>docker history</code></td><td>显示镜像的历史</td></tr><tr><td><code>docker commit nginx</code></td><td>将容器另存为镜像。</td></tr><tr><td><code>docker tag nginx eon01/nginx</code></td><td>标记镜像</td></tr><tr><td><code>docker push eon01/nginx</code></td><td>推送镜像</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="构建镜像"><a aria-hidden="true" tabindex="-1" href="#构建镜像"><span class="icon icon-link"></span></a>构建镜像</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> build <span class="token builtin class-name">.</span>
-</span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> build github.com/creack/docker-firefox
-</span><span class="code-line line-number" line="3">$ <span class="token function">docker</span> build - <span class="token operator">&#x3C;</span> Dockerfile
-</span><span class="code-line line-number" line="4">$ <span class="token function">docker</span> build - <span class="token operator">&#x3C;</span> context.tar.gz
-</span><span class="code-line line-number" line="5">$ <span class="token function">docker</span> build <span class="token parameter variable">-t</span> eon/nginx-server <span class="token builtin class-name">.</span>
-</span><span class="code-line line-number" line="6">$ <span class="token function">docker</span> build <span class="token parameter variable">-f</span> myOtherDockerfile <span class="token builtin class-name">.</span>
-</span><span class="code-line line-number" line="7">$ <span class="token function">curl</span> example.com/remote/Dockerfile <span class="token operator">|</span> <span class="token function">docker</span> build <span class="token parameter variable">-f</span> - <span class="token builtin class-name">.</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> build <span class="token builtin class-name">.</span>
+</span><span class="code-line">$ <span class="token function">docker</span> build github.com/creack/docker-firefox
+</span><span class="code-line">$ <span class="token function">docker</span> build - <span class="token operator">&#x3C;</span> Dockerfile
+</span><span class="code-line">$ <span class="token function">docker</span> build - <span class="token operator">&#x3C;</span> context.tar.gz
+</span><span class="code-line">$ <span class="token function">docker</span> build <span class="token parameter variable">-t</span> eon/nginx-server <span class="token builtin class-name">.</span>
+</span><span class="code-line">$ <span class="token function">docker</span> build <span class="token parameter variable">-f</span> myOtherDockerfile <span class="token builtin class-name">.</span>
+</span><span class="code-line">$ <span class="token function">curl</span> example.com/remote/Dockerfile <span class="token operator">|</span> <span class="token function">docker</span> build <span class="token parameter variable">-f</span> - <span class="token builtin class-name">.</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="docker-网络"><a aria-hidden="true" tabindex="-1" href="#docker-网络"><span class="icon icon-link"></span></a>Docker 网络</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="操作"><a aria-hidden="true" tabindex="-1" href="#操作"><span class="icon icon-link"></span></a>操作</h3><div class="wrap-body">
 <p>删除网络</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> network <span class="token function">rm</span> MyOverlayNetwork
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> network <span class="token function">rm</span> MyOverlayNetwork
 </span></code></pre>
 <p>列出网络</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> network <span class="token function">ls</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> network <span class="token function">ls</span>
 </span></code></pre>
 <p>获取有关网络的信息</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> network inspect MyOverlayNetwork
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> network inspect MyOverlayNetwork
 </span></code></pre>
 <p>将正在运行的容器连接到网络</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> network connect MyOverlayNetwork nginx
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> network connect MyOverlayNetwork nginx
 </span></code></pre>
 <p>启动时将容器连接到网络</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-d</span> <span class="token parameter variable">--network</span><span class="token operator">=</span>MyOverlayNetwork nginx
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-d</span> <span class="token parameter variable">--network</span><span class="token operator">=</span>MyOverlayNetwork nginx
 </span></code></pre>
 <p>断开容器与网络的连接</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> network disconnect MyOverlayNetwork nginx
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> network disconnect MyOverlayNetwork nginx
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="创建网络"><a aria-hidden="true" tabindex="-1" href="#创建网络"><span class="icon icon-link"></span></a>创建网络</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> network create <span class="token parameter variable">-d</span> overlay MyOverlayNetwork
-</span><span class="code-line line-number" line="2"><span class="token function">docker</span> network create <span class="token parameter variable">-d</span> bridge MyBridgeNetwork
-</span><span class="code-line line-number" line="3"><span class="token function">docker</span> network create <span class="token parameter variable">-d</span> overlay <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="4">  <span class="token parameter variable">--subnet</span><span class="token operator">=</span><span class="token number">192.168</span>.0.0/16 <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="5">  <span class="token parameter variable">--subnet</span><span class="token operator">=</span><span class="token number">192.170</span>.0.0/16 <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="6">  <span class="token parameter variable">--gateway</span><span class="token operator">=</span><span class="token number">192.168</span>.0.100 <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="7">  <span class="token parameter variable">--gateway</span><span class="token operator">=</span><span class="token number">192.170</span>.0.100 <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="8">  --ip-range<span class="token operator">=</span><span class="token number">192.168</span>.1.0/24 <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="9">  --aux-address<span class="token operator">=</span><span class="token string">"my-router=192.168.1.5"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="10">  --aux-address<span class="token operator">=</span><span class="token string">"my-switch=192.168.1.6"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="11">  --aux-address<span class="token operator">=</span><span class="token string">"my-printer=192.170.1.5"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="12">  --aux-address<span class="token operator">=</span><span class="token string">"my-nas=192.170.1.6"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="13">  MyOverlayNetwork
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">docker</span> network create <span class="token parameter variable">-d</span> overlay MyOverlayNetwork
+</span><span class="code-line"><span class="token function">docker</span> network create <span class="token parameter variable">-d</span> bridge MyBridgeNetwork
+</span><span class="code-line"><span class="token function">docker</span> network create <span class="token parameter variable">-d</span> overlay <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">--subnet</span><span class="token operator">=</span><span class="token number">192.168</span>.0.0/16 <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">--subnet</span><span class="token operator">=</span><span class="token number">192.170</span>.0.0/16 <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">--gateway</span><span class="token operator">=</span><span class="token number">192.168</span>.0.100 <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">--gateway</span><span class="token operator">=</span><span class="token number">192.170</span>.0.100 <span class="token punctuation">\</span>
+</span><span class="code-line">  --ip-range<span class="token operator">=</span><span class="token number">192.168</span>.1.0/24 <span class="token punctuation">\</span>
+</span><span class="code-line">  --aux-address<span class="token operator">=</span><span class="token string">"my-router=192.168.1.5"</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  --aux-address<span class="token operator">=</span><span class="token string">"my-switch=192.168.1.6"</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  --aux-address<span class="token operator">=</span><span class="token string">"my-printer=192.170.1.5"</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  --aux-address<span class="token operator">=</span><span class="token string">"my-nas=192.170.1.6"</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  MyOverlayNetwork
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="各种各样的"><a aria-hidden="true" tabindex="-1" href="#各种各样的"><span class="icon icon-link"></span></a>各种各样的</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
@@ -362,24 +362,24 @@
 </div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="注册表命令"><a aria-hidden="true" tabindex="-1" href="#注册表命令"><span class="icon icon-link"></span></a>注册表命令</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-3-->
 <p>登录到注册表</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> login
-</span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> login localhost:8080
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> login
+</span><span class="code-line">$ <span class="token function">docker</span> login localhost:8080
 </span></code></pre>
 <p>从注册表注销</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> <span class="token builtin class-name">logout</span>
-</span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> <span class="token builtin class-name">logout</span> localhost:8080
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> <span class="token builtin class-name">logout</span>
+</span><span class="code-line">$ <span class="token function">docker</span> <span class="token builtin class-name">logout</span> localhost:8080
 </span></code></pre>
 <p>搜索镜像</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> search nginx
-</span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> search nginx <span class="token parameter variable">--stars</span><span class="token operator">=</span><span class="token number">3</span> --no-trunc busybox
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> search nginx
+</span><span class="code-line">$ <span class="token function">docker</span> search nginx <span class="token parameter variable">--stars</span><span class="token operator">=</span><span class="token number">3</span> --no-trunc busybox
 </span></code></pre>
 <p>拉取镜像</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> pull nginx
-</span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> pull eon01/nginx localhost:5000/myadmin/nginx
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> pull nginx
+</span><span class="code-line">$ <span class="token function">docker</span> pull eon01/nginx localhost:5000/myadmin/nginx
 </span></code></pre>
 <p>推送镜像</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> push eon01/nginx
-</span><span class="code-line line-number" line="2">$ <span class="token function">docker</span> push eon01/nginx localhost:5000/myadmin/nginx
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> push eon01/nginx
+</span><span class="code-line">$ <span class="token function">docker</span> push eon01/nginx localhost:5000/myadmin/nginx
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="批量清除"><a aria-hidden="true" tabindex="-1" href="#批量清除"><span class="icon icon-link"></span></a>批量清除</h3><div class="wrap-body">
 
@@ -406,10 +406,10 @@
 <table><thead><tr><th>实例</th><th>说明</th></tr></thead><tbody><tr><td><code>docker stop -f $(docker ps -a -q)</code></td><td>停止所有容器</td></tr><tr><td><code>docker rm -f $(docker ps -a -q)</code></td><td>删除所有容器</td></tr><tr><td><code>docker rmi -f $(docker images -q)</code></td><td>删除所有图像</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="卷-volume"><a aria-hidden="true" tabindex="-1" href="#卷-volume"><span class="icon icon-link"></span></a>卷 volume</h3><div class="wrap-body">
 <p>检查卷</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> volume <span class="token function">ls</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> volume <span class="token function">ls</span>
 </span></code></pre>
 <p>清理未使用的卷</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">docker</span> volume prune
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> volume prune
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>

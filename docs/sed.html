@@ -38,12 +38,12 @@
 </div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="sed-用法"><a aria-hidden="true" tabindex="-1" href="#sed-用法"><span class="icon icon-link"></span></a>Sed 用法</h3><div class="wrap-body">
 <p>语法</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token builtin class-name">command</span> <span class="token punctuation">[</span>input-file<span class="token punctuation">]</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token builtin class-name">command</span> <span class="token punctuation">[</span>input-file<span class="token punctuation">]</span>
 </span></code></pre>
 <p>带管道</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">cat</span> report.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/Nick/John/g'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">cat</span> report.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/Nick/John/g'</span>
 </span></code></pre>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token builtin class-name">echo</span> <span class="token string">'123abc'</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/[0-9]+//g'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'123abc'</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/[0-9]+//g'</span>
 </span></code></pre>
 </div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="选项示例"><a aria-hidden="true" tabindex="-1" href="#选项示例"><span class="icon icon-link"></span></a>选项示例</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
@@ -85,22 +85,22 @@
 <table class="show-header"><thead><tr><th>参数</th><th>示例</th><th>描述</th></tr></thead><tbody><tr><td><code>-i</code></td><td>sed -ibak 's/On/Off/' php.ini</td><td>直接备份和修改输入文件</td></tr><tr><td><code>-E</code></td><td>sed -E 's/[0-9]+//g' input-file</td><td>使用扩展正则表达式</td></tr><tr><td><code>-n</code></td><td>sed -n '3 p' config.conf</td><td>禁止默认图案空间打印</td></tr><tr><td><code>-f</code></td><td>sed -f script.sed config.conf</td><td>执行 sed 脚本文件</td></tr><tr><td><code>-e</code></td><td>sed -e 'command1' -e 'command2' input-file</td><td>执行多个 sed 命令</td></tr></tbody></table>
 <!--rehype:className=show-header-->
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多个命令"><a aria-hidden="true" tabindex="-1" href="#多个命令"><span class="icon icon-link"></span></a>多个命令</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token builtin class-name">echo</span> <span class="token string">"hello world"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token parameter variable">-e</span> <span class="token string">'s/h/H/g'</span> <span class="token parameter variable">-e</span> <span class="token string">'s/w/W/g'</span>
-</span><span class="code-line line-number" line="2">Hello World
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">"hello world"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token parameter variable">-e</span> <span class="token string">'s/h/H/g'</span> <span class="token parameter variable">-e</span> <span class="token string">'s/w/W/g'</span>
+</span><span class="code-line">Hello World
 </span></code></pre>
 <p>使用 <code>-e</code> 执行多个 sed 命令</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="sed-脚本"><a aria-hidden="true" tabindex="-1" href="#sed-脚本"><span class="icon icon-link"></span></a>Sed 脚本</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token builtin class-name">echo</span> <span class="token string">'s/h/H/g'</span> <span class="token operator">>></span> hello.sed
-</span><span class="code-line line-number" line="2">$ <span class="token builtin class-name">echo</span> <span class="token string">'s/w/W/g'</span> <span class="token operator">>></span> hello.sed
-</span><span class="code-line line-number" line="3">$ <span class="token builtin class-name">echo</span> <span class="token string">"hello world"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token parameter variable">-f</span> hello.sed
-</span><span class="code-line line-number" line="4">Hello World
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'s/h/H/g'</span> <span class="token operator">>></span> hello.sed
+</span><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'s/w/W/g'</span> <span class="token operator">>></span> hello.sed
+</span><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">"hello world"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token parameter variable">-f</span> hello.sed
+</span><span class="code-line">Hello World
 </span></code></pre>
 <p>使用 <code>-f</code> 执行 sed 脚本文件</p>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="examples"><a aria-hidden="true" tabindex="-1" href="#examples"><span class="icon icon-link"></span></a>Examples</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> file.txt
-</span><span class="code-line line-number" line="2">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> file.txt <span class="token operator">></span> new.txt
-</span><span class="code-line line-number" line="3">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> <span class="token parameter variable">-i</span> file.txt
-</span><span class="code-line line-number" line="4">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> <span class="token parameter variable">-i.backup</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> file.txt
+</span><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> file.txt <span class="token operator">></span> new.txt
+</span><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> <span class="token parameter variable">-i</span> file.txt
+</span><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> <span class="token parameter variable">-i.backup</span> file.txt
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="sed-命令"><a aria-hidden="true" tabindex="-1" href="#sed-命令"><span class="icon icon-link"></span></a>Sed 命令</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="命令"><a aria-hidden="true" tabindex="-1" href="#命令"><span class="icon icon-link"></span></a>命令</h3><div class="wrap-body">
@@ -183,7 +183,7 @@
 
 <table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>n</code></td><td>打印模式空间，空模式空间，读取下一行</td></tr><tr><td><code>x</code></td><td>用保持空间交换模式空间</td></tr><tr><td><code>h</code></td><td>复制模式空间以保持空间</td></tr><tr><td><code>H</code></td><td>追加模式空间以保持空间</td></tr><tr><td><code>g</code></td><td>将保持空间复制到模式空间</td></tr><tr><td><code>G</code></td><td>将保持空间附加到模式空间</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="flags"><a aria-hidden="true" tabindex="-1" href="#flags"><span class="icon icon-link"></span></a>Flags</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/old/new/[flags]'</span> <span class="token punctuation">[</span>input-file<span class="token punctuation">]</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/old/new/[flags]'</span> <span class="token punctuation">[</span>input-file<span class="token punctuation">]</span>
 </span></code></pre>
 <hr>
 
@@ -282,107 +282,107 @@
 </div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="替换文本"><a aria-hidden="true" tabindex="-1" href="#替换文本"><span class="icon icon-link"></span></a>替换文本</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
 <p>替换所有出现的字符串</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/old/new/g'</span> file.txt
 </span></code></pre>
 <p>仅替换第 n 次出现的字符串</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/old/new/2'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/old/new/2'</span> file.txt
 </span></code></pre>
 <p>仅在第 5 行替换替换字符串</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'5 s/old/new/'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'5 s/old/new/'</span> file.txt
 </span></code></pre>
 <p>将“world”替换为“universe”，但前提是该行以“hello”开头</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/hello/s/world/universe/'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/hello/s/world/universe/'</span> file.txt
 </span></code></pre>
 <p>从每行的末尾删除“\”</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/\\$//'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/\\$//'</span> file.txt
 </span></code></pre>
 <p>删除每行开头的所有空格</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/^\s*//'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/^\s*//'</span> file.txt
 </span></code></pre>
 <p>删除评论。 即使是那些在行尾的</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'s/#.*$//'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'s/#.*$//'</span> file.txt
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="搜索文本"><a aria-hidden="true" tabindex="-1" href="#搜索文本"><span class="icon icon-link"></span></a>搜索文本</h3><div class="wrap-body">
 <p>搜索字符串并仅打印匹配的行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'/hello/p'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'/hello/p'</span> file.txt
 </span></code></pre>
 <p>不区分大小写的搜索</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'/hello/Ip'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'/hello/Ip'</span> file.txt
 </span></code></pre>
 <p>搜索字符串，但仅输出不匹配的行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'/hello/!p'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'/hello/!p'</span> file.txt
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="追加行"><a aria-hidden="true" tabindex="-1" href="#追加行"><span class="icon icon-link"></span></a>追加行</h3><div class="wrap-body">
 <p>在第 2 行之后追加一行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'2a Text after line 2'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'2a Text after line 2'</span> file.txt
 </span></code></pre>
 <p>在文件末尾追加一行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'$a THE END!'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'$a THE END!'</span> file.txt
 </span></code></pre>
 <p>从第 3 行开始，每 3 行后追加一行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'3~3a Some text'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'3~3a Some text'</span> file.txt
 </span></code></pre>
 </div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="编号"><a aria-hidden="true" tabindex="-1" href="#编号"><span class="icon icon-link"></span></a>编号</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 <p>文件的数字行（简单的左对齐）</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token operator">=</span> file.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'N;s/\n/\t/'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token operator">=</span> file.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'N;s/\n/\t/'</span>
 </span></code></pre>
 <p>文件的数字行（数字在左，右对齐）</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token operator">=</span> file.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'N; s/^/   /; s/ *\(.\{6,\}\)\n/\1  /'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token operator">=</span> file.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'N; s/^/   /; s/ *\(.\{6,\}\)\n/\1  /'</span>
 </span></code></pre>
 <p>文件的数字行，但如果行不为空，则仅打印数字</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/./='</span> file.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'/./N; s/\n/ /'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/./='</span> file.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'/./N; s/\n/ /'</span>
 </span></code></pre>
 <p>计算行数（模拟“wc -l”）</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'$='</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'$='</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="前置行"><a aria-hidden="true" tabindex="-1" href="#前置行"><span class="icon icon-link"></span></a>前置行</h3><div class="wrap-body">
 <p>在第 5 行之前插入文本</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'5i line number five'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'5i line number five'</span> file.txt
 </span></code></pre>
 <p>在包含“hello”的每一行之前插入“示例：”</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/hello/i Example: '</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/hello/i Example: '</span> file.txt
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="删除行"><a aria-hidden="true" tabindex="-1" href="#删除行"><span class="icon icon-link"></span></a>删除行</h3><div class="wrap-body">
 <p>删除文件中的第 5-7 行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'5,7d'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'5,7d'</span> file.txt
 </span></code></pre>
 <p>删除从第 3 行开始的每 2 行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'3~2d'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'3~2d'</span> file.txt
 </span></code></pre>
 <p>删除文件的最后一行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'$d'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'$d'</span> file.txt
 </span></code></pre>
 <p>删除以“Hello”开头的行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/^Hello/d'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/^Hello/d'</span> file.txt
 </span></code></pre>
 <p>删除所有空行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/^$/d'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/^$/d'</span> file.txt
 </span></code></pre>
 <p>删除以“#”开头的行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/^#/d'</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/^#/d'</span> file.txt
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="文件间距"><a aria-hidden="true" tabindex="-1" href="#文件间距"><span class="icon icon-link"></span></a>文件间距</h3><div class="wrap-body">
 <p>双倍行距</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> G
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> G
 </span></code></pre>
 <p>删除所有空行和双空格</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/^$/d;G'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/^$/d;G'</span>
 </span></code></pre>
 <p>三倍空间文件</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'G;G'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'G;G'</span>
 </span></code></pre>
 <p>撤消双倍行距</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'n;d'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'n;d'</span>
 </span></code></pre>
 <p>在匹配“正则表达式”的行上方插入一个空行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/regex/{x;p;x;}'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/regex/{x;p;x;}'</span>
 </span></code></pre>
 <p>在匹配“正则表达式”的行下方插入一个空行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/regex/G'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/regex/G'</span>
 </span></code></pre>
 <p>在匹配“正则表达式”的行周围插入一个空行</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">sed</span> <span class="token string">'/regex/{x;p;x;G;}'</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sed</span> <span class="token string">'/regex/{x;p;x;G;}'</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>

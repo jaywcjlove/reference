@@ -38,16 +38,16 @@
 <p>这份快速参考备忘单提供了文件权限的简要概述，以及 chmod 命令的操作</p>
 </div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="语法"><a aria-hidden="true" tabindex="-1" href="#语法"><span class="icon icon-link"></span></a>语法</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token operator">&#x3C;</span>permissions<span class="token operator">></span> <span class="token operator">&#x3C;</span>file<span class="token operator">></span> 
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token operator">&#x3C;</span>permissions<span class="token operator">></span> <span class="token operator">&#x3C;</span>file<span class="token operator">></span> 
 </span></code></pre>
 </div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h4><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token number">755</span> foo.txt
-</span><span class="code-line line-number" line="2">$ <span class="token function">chmod</span> +x quickref.py
-</span><span class="code-line line-number" line="3">$ <span class="token function">chmod</span> u-x quickref.py
-</span><span class="code-line line-number" line="4">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g<span class="token operator">=</span>rx,o<span class="token operator">=</span> quickref.sh
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">755</span> foo.txt
+</span><span class="code-line">$ <span class="token function">chmod</span> +x quickref.py
+</span><span class="code-line">$ <span class="token function">chmod</span> u-x quickref.py
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g<span class="token operator">=</span>rx,o<span class="token operator">=</span> quickref.sh
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="递归更改文件和目录"><a aria-hidden="true" tabindex="-1" href="#递归更改文件和目录"><span class="icon icon-link"></span></a>递归更改文件和目录</h4><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">755</span> my_directory
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">755</span> my_directory
 </span></code></pre>
 <p><code>chmod</code> 命令代表“更改模式”</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="chmod-生成器"><a aria-hidden="true" tabindex="-1" href="#chmod-生成器"><span class="icon icon-link"></span></a>Chmod 生成器</h3><div class="wrap-body">
@@ -111,18 +111,18 @@
 
 <table><thead><tr><th align="left">命令</th><th align="left">s</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left"><code>400</code></td><td align="left">r--------</td><td align="left">仅所有者可读</td></tr><tr><td align="left"><code>500</code></td><td align="left">r-x------</td><td align="left">避免改变</td></tr><tr><td align="left"><code>600</code></td><td align="left">rw-------</td><td align="left">可由用户更改</td></tr><tr><td align="left"><code>644</code></td><td align="left">rw-r--r--</td><td align="left">由用户读取和更改</td></tr><tr><td align="left"><code>660</code></td><td align="left">rw-rw----</td><td align="left">可由用户和组更改</td></tr><tr><td align="left"><code>700</code></td><td align="left">rwx------</td><td align="left">只有用户具有完全访问权限</td></tr><tr><td align="left"><code>755</code></td><td align="left">rwxr-xr-x</td><td align="left">只能由用户更改</td></tr><tr><td align="left"><code>775</code></td><td align="left">rwxrwxr-x</td><td align="left">群组共享模式</td></tr><tr><td align="left"><code>777</code></td><td align="left">rwxrwxrwx</td><td align="left">每个人都可以做任何事</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="解释"><a aria-hidden="true" tabindex="-1" href="#解释"><span class="icon icon-link"></span></a>解释</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">ls</span> <span class="token parameter variable">-l</span>
-</span><span class="code-line line-number" line="2">-rw-r--r--  <span class="token number">1</span> root root <span class="token number">3</span> Jun <span class="token number">29</span> <span class="token number">15</span>:35 a.log
-</span><span class="code-line line-number" line="3">drwxr-xr-x  <span class="token number">2</span> root root <span class="token number">2</span> Jun <span class="token number">30</span> <span class="token number">18</span>:06 <span class="token function">dir</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ls</span> <span class="token parameter variable">-l</span>
+</span><span class="code-line">-rw-r--r--  <span class="token number">1</span> root root <span class="token number">3</span> Jun <span class="token number">29</span> <span class="token number">15</span>:35 a.log
+</span><span class="code-line">drwxr-xr-x  <span class="token number">2</span> root root <span class="token number">2</span> Jun <span class="token number">30</span> <span class="token number">18</span>:06 <span class="token function">dir</span>
 </span></code></pre>
 </div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="dir-的权限分析"><a aria-hidden="true" tabindex="-1" href="#dir-的权限分析"><span class="icon icon-link"></span></a><code>dir</code> 的权限分析</h4><div class="wrap-body">
-<pre class="language-text"><code class="language-text code-highlight"><span class="code-line line-number" line="1">d  rwx  r-x  r-x
-</span><span class="code-line line-number" line="2">┬  ─┬─  ─┬─  ─┬─  
-</span><span class="code-line line-number" line="3">┆   ┆    ┆    ┆  
-</span><span class="code-line line-number" line="4">┆   ┆    ┆    ╰─ 4. Other｜5 (4+0+1)
-</span><span class="code-line line-number" line="5">┆   ┆    ╰────── 3. Group｜5 (4+0+1)
-</span><span class="code-line line-number" line="6">┆   ╰─────────── 2. User ｜7 (4+2+1)
-</span><span class="code-line line-number" line="7">╰─────────────── 1. File Type | directory
+<pre class="language-text"><code class="language-text code-highlight"><span class="code-line">d  rwx  r-x  r-x
+</span><span class="code-line">┬  ─┬─  ─┬─  ─┬─  
+</span><span class="code-line">┆   ┆    ┆    ┆  
+</span><span class="code-line">┆   ┆    ┆    ╰─ 4. Other｜5 (4+0+1)
+</span><span class="code-line">┆   ┆    ╰────── 3. Group｜5 (4+0+1)
+</span><span class="code-line">┆   ╰─────────── 2. User ｜7 (4+2+1)
+</span><span class="code-line">╰─────────────── 1. File Type | directory
 </span></code></pre>
 </div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="权限模式"><a aria-hidden="true" tabindex="-1" href="#权限模式"><span class="icon icon-link"></span></a>权限模式</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
@@ -297,79 +297,79 @@
 
 <table><thead><tr><th>Symbol</th><th>Description</th></tr></thead><tbody><tr><td><code>+</code></td><td>添加</td></tr><tr><td><code>-</code></td><td>删除</td></tr><tr><td><code>=</code></td><td>设置</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="chmod-600"><a aria-hidden="true" tabindex="-1" href="#chmod-600"><span class="icon icon-link"></span></a>chmod 600</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token number">600</span> example.txt
-</span><span class="code-line line-number" line="2">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rw,g<span class="token operator">=</span>,o<span class="token operator">=</span> example.txt
-</span><span class="code-line line-number" line="3">$ <span class="token function">chmod</span> a+rwx,u-x,g-rwx,o-rwx example.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">600</span> example.txt
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rw,g<span class="token operator">=</span>,o<span class="token operator">=</span> example.txt
+</span><span class="code-line">$ <span class="token function">chmod</span> a+rwx,u-x,g-rwx,o-rwx example.txt
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="chmod-664"><a aria-hidden="true" tabindex="-1" href="#chmod-664"><span class="icon icon-link"></span></a>chmod 664</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token number">664</span> example.txt
-</span><span class="code-line line-number" line="2">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rw,g<span class="token operator">=</span>rw,o<span class="token operator">=</span>r example.txt
-</span><span class="code-line line-number" line="3">$ <span class="token function">chmod</span> a+rwx,u-x,g-x,o-wx example.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">664</span> example.txt
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rw,g<span class="token operator">=</span>rw,o<span class="token operator">=</span>r example.txt
+</span><span class="code-line">$ <span class="token function">chmod</span> a+rwx,u-x,g-x,o-wx example.txt
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="chmod-777"><a aria-hidden="true" tabindex="-1" href="#chmod-777"><span class="icon icon-link"></span></a>chmod 777</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token number">777</span> example.txt
-</span><span class="code-line line-number" line="2">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g<span class="token operator">=</span>rwx,o<span class="token operator">=</span>rwx example.txt
-</span><span class="code-line line-number" line="3">$ <span class="token function">chmod</span> <span class="token assign-left variable">a</span><span class="token operator">=</span>rwx example.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">777</span> example.txt
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g<span class="token operator">=</span>rwx,o<span class="token operator">=</span>rwx example.txt
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token assign-left variable">a</span><span class="token operator">=</span>rwx example.txt
 </span></code></pre>
 </div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="符号模式"><a aria-hidden="true" tabindex="-1" href="#符号模式"><span class="icon icon-link"></span></a>符号模式</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-3-->
 <p>拒绝所有人的执行权限。</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> a-x chmodExampleFile.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> a-x chmodExampleFile.txt
 </span></code></pre>
 <p>向所有人授予读取权限。</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> a+r chmodExampleFile.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> a+r chmodExampleFile.txt
 </span></code></pre>
 <p>使文件可由组和其他人读写。</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> go+rw chmodExampleFile.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> go+rw chmodExampleFile.txt
 </span></code></pre>
 <p>使用户/所有者可执行 shell。</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> u+x chmodExampleScript.sh
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> u+x chmodExampleScript.sh
 </span></code></pre>
 <p>允许每个人读取、写入和执行文件并打开设置的 group-ID。</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token operator">=</span>rwx,g+s chmodExampleScript.sh
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token operator">=</span>rwx,g+s chmodExampleScript.sh
 </span></code></pre>
 </div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="删除权限"><a aria-hidden="true" tabindex="-1" href="#删除权限"><span class="icon icon-link"></span></a>删除权限</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-3-->
 <p>要删除赋予文件的读写权限，请使用以下语法：</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> o-rw example.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> o-rw example.txt
 </span></code></pre>
 <p>对于我们的文件 example.txt，我们可以通过运行以下命令使用 chmod for group 删除读写权限：</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span>  g-rx example.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span>  g-rx example.txt
 </span></code></pre>
 <p>要从组中删除 chmod 读写权限，同时向 public/others 添加读写权限，我们可以使用以下命令：</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> g-rx, o+rx example.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> g-rx, o+rx example.txt
 </span></code></pre>
 <p>但是，如果你想删除组和其他人的所有权限，你可以使用 go= 来代替：</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token assign-left variable">go</span><span class="token operator">=</span> example.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token assign-left variable">go</span><span class="token operator">=</span> example.txt
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="可执行文件"><a aria-hidden="true" tabindex="-1" href="#可执行文件"><span class="icon icon-link"></span></a>可执行文件</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> +x ~/example.py
-</span><span class="code-line line-number" line="2">$ <span class="token function">chmod</span> u+x ~/example.py
-</span><span class="code-line line-number" line="3">$ <span class="token function">chmod</span> a+x ~/example.py
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> +x ~/example.py
+</span><span class="code-line">$ <span class="token function">chmod</span> u+x ~/example.py
+</span><span class="code-line">$ <span class="token function">chmod</span> a+x ~/example.py
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="chmod-754"><a aria-hidden="true" tabindex="-1" href="#chmod-754"><span class="icon icon-link"></span></a>chmod 754</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token number">754</span> foo.sh
-</span><span class="code-line line-number" line="2">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g<span class="token operator">=</span>rx,o<span class="token operator">=</span>r foo.sh
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">754</span> foo.sh
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g<span class="token operator">=</span>rx,o<span class="token operator">=</span>r foo.sh
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="chmod-实践"><a aria-hidden="true" tabindex="-1" href="#chmod-实践"><span class="icon icon-link"></span></a>Chmod 实践</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ssh-权限"><a aria-hidden="true" tabindex="-1" href="#ssh-权限"><span class="icon icon-link"></span></a>SSH 权限</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token number">700</span> ~/.ssh
-</span><span class="code-line line-number" line="2">$ <span class="token function">chmod</span> <span class="token number">600</span> ~/.ssh/authorized_keys
-</span><span class="code-line line-number" line="3">$ <span class="token function">chmod</span> <span class="token number">600</span> ~/.ssh/id_rsa
-</span><span class="code-line line-number" line="4">$ <span class="token function">chmod</span> <span class="token number">600</span> ~/.ssh/id_rsa.pub
-</span><span class="code-line line-number" line="5">$ <span class="token function">chmod</span> <span class="token number">400</span> /path/to/access_key.pem
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">700</span> ~/.ssh
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">600</span> ~/.ssh/authorized_keys
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">600</span> ~/.ssh/id_rsa
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">600</span> ~/.ssh/id_rsa.pub
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">400</span> /path/to/access_key.pem
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="网络权限"><a aria-hidden="true" tabindex="-1" href="#网络权限"><span class="icon icon-link"></span></a>网络权限</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">644</span> /var/www/html/
-</span><span class="code-line line-number" line="2">$ <span class="token function">chmod</span> <span class="token number">644</span> .htaccess
-</span><span class="code-line line-number" line="3">$ <span class="token function">chmod</span> <span class="token number">644</span> robots.txt
-</span><span class="code-line line-number" line="4">$ <span class="token function">chmod</span> <span class="token number">755</span> /var/www/uploads/
-</span><span class="code-line line-number" line="5">$ <span class="token function">find</span> /var/www/html <span class="token parameter variable">-type</span> d <span class="token parameter variable">-exec</span> <span class="token function">chmod</span> <span class="token number">755</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">644</span> /var/www/html/
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">644</span> .htaccess
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">644</span> robots.txt
+</span><span class="code-line">$ <span class="token function">chmod</span> <span class="token number">755</span> /var/www/uploads/
+</span><span class="code-line">$ <span class="token function">find</span> /var/www/html <span class="token parameter variable">-type</span> d <span class="token parameter variable">-exec</span> <span class="token function">chmod</span> <span class="token number">755</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
 </span></code></pre>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="批量更改"><a aria-hidden="true" tabindex="-1" href="#批量更改"><span class="icon icon-link"></span></a>批量更改</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">644</span> /your_path
-</span><span class="code-line line-number" line="2">$ <span class="token function">find</span> /path <span class="token parameter variable">-type</span> d <span class="token parameter variable">-exec</span> <span class="token function">chmod</span> <span class="token number">755</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="3">$ <span class="token function">find</span> /path <span class="token parameter variable">-type</span> f <span class="token parameter variable">-exec</span> <span class="token function">chmod</span> <span class="token number">644</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">644</span> /your_path
+</span><span class="code-line">$ <span class="token function">find</span> /path <span class="token parameter variable">-type</span> d <span class="token parameter variable">-exec</span> <span class="token function">chmod</span> <span class="token number">755</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
+</span><span class="code-line">$ <span class="token function">find</span> /path <span class="token parameter variable">-type</span> f <span class="token parameter variable">-exec</span> <span class="token function">chmod</span> <span class="token number">644</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
 </span></code></pre>
 <p>请参阅：<a href="https://tldp.org/LDP/abs/html/commandsub.html">命令替换</a></p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
