@@ -327,7 +327,7 @@ const Student = () => (
 
 从 `v16.2.0` 开始 `Fragment` 可用于返回多个子节点，而无需向 DOM 添加额外的包装节点。或者使用 `<></>` 效果是一样的。
 
-```jsx
+```jsx {2,5}
 const Student = () => (
   <>
     <Avatar src="./demo.jpg" />
@@ -340,7 +340,7 @@ const Student = () => (
 
 ### 返回字符串
 
-```jsx
+```jsx {2}
 render() {
   return 'Look ma, no spans!';
 }
@@ -1011,12 +1011,313 @@ Menu.Item = ({ children }) => (
 <Menu>
 ```
 
-生命周期
----
-
 Hooks
 ---
 
+### Hooks API 参考
+<!--rehype:wrap-class=row-span-2-->
+
+#### 基础 Hook
+
+方法 | 描述
+:- | -
+`useState` | 返回一个 `state`，更新 `state` 的函数 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usestate)
+`useEffect` | 可能有副作用代码的函数 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#useeffect)
+`useContext` | 接收并返回该 `context` 的当前值 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecontext)
+
+#### 额外的 Hook
+
+方法 | 描述
+:- | -
+`useReducer` | `useState` 的替代方案 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usestate)
+`useCallback` | 返回一个回调函数 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback)
+`useMemo` | 返回一个 [memoized](https://en.wikipedia.org/wiki/Memoization) 值[#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usememo)
+`useRef` | 返回一个可变的 `ref` 对象 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#useref)
+`useImperativeHandle` | 暴露给父组件的实例值 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#useimperativehandle)
+`useLayoutEffect` | DOM 变更后同步调用函数 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#uselayouteffect)
+`useDebugValue` | 开发者工具中显示标签 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usedebugvalue)
+`useDeferredValue` | 接受并返回该值的新副本 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usedeferredvalue)
+`useTransition` | 过渡任务的等待状态 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usetransition)
+`useId` | 用于生成唯一 ID [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#useid)
+
+#### Library Hooks
+
+方法 | 描述
+:- | -
+`useSyncExternalStore` | 读取和订阅外部数据源 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usesyncexternalstore)
+`useInsertionEffect` |  DOM 突变之前 同步触发 [#](https://zh-hans.reactjs.org/docs/hooks-reference.html#usesyncexternalstore)
+
+### 函数式更新
+<!--rehype:wrap-class=col-span-2-->
+
+```jsx
+function Counter({ initialCount }) {
+  const [count, setCount] = useState(initialCount);
+  return (
+    <>
+      Count: {count} <button onClick={() => setCount(initialCount)}>Reset</button>
+      <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
+    </>
+  );
+}
+```
+
+### useRef
+
+```jsx
+function TextInputWithFocusButton() {
+  const $input = useRef(null);
+  const onButtonClick = () => {
+    $input.current.focus();
+  };
+  return (
+    <>
+      <input ref={$input} type="text" />
+      <button onClick={onButtonClick}>
+        聚焦输入
+      </button>
+    </>
+  );
+}
+```
+
+`current` 指向已挂载到 DOM 上的文本输入元素
+
+### useImperativeHandle
+
+```jsx
+function FancyInput(props, ref) {
+  const inputRef = useRef();
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    }
+  }));
+  return <input ref={inputRef} />;
+}
+FancyInput = forwardRef(FancyInput);
+```
+
+父组件使用
+
+```jsx
+<FancyInput ref={inputRef} />
+inputRef.current.focus()
+```
+
+### useEffect
+
+```jsx
+useEffect(() => {
+  const subs = props.source.subscribe();
+  return () => {
+    subs.unsubscribe();
+  };
+}, [props.source]);
+```
+
+### useCallback
+
+```jsx
+const memoizedCallback = useCallback(
+  () => {
+    doSomething(a, b);
+  },
+  [a, b],
+);
+```
+
+### useMemo
+
+```jsx
+const memoizedValue = useMemo(
+  () => {
+    return computeExpensiveValue(a, b)
+  },
+  [a, b]
+);
+```
+
+### useId
+
+```jsx
+function Checkbox() {
+  const id = useId();
+  return (
+    <>
+      <label htmlFor={id}>
+        你喜欢React吗？
+      </label>
+      <input id={id} type="checkbox" />
+    </>
+  );
+};
+```
+
+用于生成跨服务端和客户端稳定的唯一 `ID` 的同时避免 `hydration` 不匹配
+
+### useDebugValue
+
+```jsx
+function useFriendStatus(friendID) {
+  const [
+    isOnline, setIsOnline
+  ] = useState(null);
+  // ...
+  // 在开发者工具中的这个 Hook 旁边显示标签
+  // e.g. "FriendStatus: Online"
+  useDebugValue(
+    isOnline ? 'Online' : 'Offline'
+  );
+  return isOnline;
+}
+```
+<!--rehype:className=wrap-text -->
+
+不推荐你向每个自定义 `Hook` 添加 `debug` 值
+
+### componentDidMount & componentWillUnmount
+
+```jsx
+useEffect(
+  () => {
+    // componentDidMount
+    // 组件挂载时，可以在这里完成你的任务
+    return () => {
+      // componentWillUnmount
+      // 卸载时执行，清除 effect
+    };
+  },
+  [ ]
+);
+```
+
+这是一个类似 `class` 组件中 `componentDidMount` & `componentWillUnmount` 两个生命周期函数的写法。
+
+生命周期
+---
+<!--rehype:body-class=cols-2-->
+
+### 挂载
+<!--rehype:wrap-class=row-span-2-->
+
+方法 | 描述
+:- | -
+`constructor` _(props)_  | 渲染前 [#](https://zh-hans.reactjs.org/docs/react-component.html#constructor)
+`static getDerivedStateFromProps()` | 调用 `render` 方法之前调用 [#](https://zh-hans.reactjs.org/docs/react-component.html#static-getderivedstatefromprops)
+`render()`               |  `class` 组件中唯一必须实现的方法 [#](https://reactjs.org/docs/react-component.html#render)
+`componentDidMount()`    | 在组件挂载后(插入 DOM 树中)立即调用 [#](https://reactjs.org/docs/react-component.html#componentdidmount)
+`UNSAFE_componentWillMount()` | 在挂载之前被调用，建议使用 `constructor()` [#](https://zh-hans.reactjs.org/docs/react-component.html#unsafe_componentwillmount)
+
+在 `constructor()` 上设置初始状态。在 `componentDidMount()` 上添加 DOM 事件处理程序、计时器（等），然后在 `componentWillUnmount()` 上删除它们。
+
+### 卸载
+
+方法 | 描述
+:- | -
+`componentWillUnmount()` | 在组件卸载及销毁之前直接调用 [#](https://zh-hans.reactjs.org/docs/react-component.html#componentwillunmount)
+
+### 过时 API
+
+过时方法 | 新方法
+:- | -
+~~`componentWillMount()`~~ | `UNSAFE_componentWillMount()`  [#](https://zh-hans.reactjs.org/docs/react-component.html#unsafe_componentwillmount)
+~~`componentWillReceiveProps()`~~ | `UNSAFE_componentWillReceiveProps()`  [#](https://zh-hans.reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops)
+~~`componentWillUpdate()`~~ | `UNSAFE_componentWillUpdate()`  [#](https://zh-hans.reactjs.org/docs/react-component.html#unsafe_componentwillupdate)
+
+17+ 之后不再支持，在 `17` 版本之后，只有新的 `UNSAFE_` 生命周期名称可以使用。
+
+### 更新
+<!--rehype:wrap-class=col-span-2-->
+
+方法 | 描述
+:- | -
+`static getDerivedStateFromProps(props, state)` | 调用 `render` 之前调用，在初始挂载及后续更新时都会被调用 [#](https://zh-hans.reactjs.org/docs/react-component.html#static-getderivedstatefromprops)
+`shouldComponentUpdate(nextProps, nextState)` | 如果返回 `false`，则跳过 `render()` [#](https://zh-hans.reactjs.org/docs/react-component.html#static-getderivedstatefromprops)
+`render()` | 在不修改组件 `state` 的情况下，每次调用时都返回相同的结果 [#](https://zh-hans.reactjs.org/docs/react-component.html#render)
+`getSnapshotBeforeUpdate()` | 在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置） [#](https://zh-hans.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate)
+`componentDidUpdate()` | 这里使用 `setState()`，但记得比较 `props`。首次渲染不会执行此方法 [#](https://zh-hans.reactjs.org/docs/react-component.html#componentdidupdate)
+
+### 错误处理
+<!--rehype:wrap-class=col-span-2-->
+
+方法 | 描述
+:- | -
+`static getDerivedStateFromError(error)` | 后代组件抛出错误后被调用，它将抛出的错误作为参数，并返回一个值以更新 `state` [#](https://zh-hans.reactjs.org/docs/react-component.html#static-getderivedstatefromerror)
+`componentDidCatch(error, info)` | 在后代组件抛出错误后被调用，会在“提交”阶段被调用，因此允许执行副作用 [#](https://zh-hans.reactjs.org/docs/react-component.html#componentdidcatch)
+
+### render()
+
+```jsx {2}
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+
+### constructor()
+
+```jsx {1}
+constructor(props) {
+  super(props);
+  // 不要在这里调用 this.setState()
+  this.state = { counter: 0 };
+  this.handleClick = this.handleClick.bind(this);
+}
+```
+
+### static getDerivedStateFromError()
+<!--rehype:wrap-class=row-span-2-->
+
+```jsx {7,13}
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // 更新 state 使下一次渲染可以显降级 UI
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // 你可以渲染任何自定义的降级  UI
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children;
+  }
+}
+```
+
+### componentDidUpdate()
+
+```jsx {1}
+componentDidUpdate(prevProps) {
+  // 典型用法（不要忘记比较 props）：
+  if (this.props.uid !== prevProps.uid) {
+    this.fetchData(this.props.uid);
+  }
+}
+```
+
+### getSnapshotBeforeUpdate()
+
+```jsx
+getSnapshotBeforeUpdate(prevProps, prevState) {
+  // 我们是否在 list 中添加新的 items ？
+  // 捕获滚动​​位置以便我们稍后调整滚动位置。
+  if (prevProps.list.length < this.props.list.length) {
+    const list = this.listRef.current;
+    return list.scrollHeight - list.scrollTop;
+  }
+  return null;
+}
+```
 
 PropTypes 属性类型检查
 ---

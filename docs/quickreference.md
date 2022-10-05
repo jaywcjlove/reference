@@ -142,6 +142,8 @@ export const Student = (
   ```jsx {1,4-5}
 ```
 
+代码行高亮可以和代码行号一起使用。
+
 ### Tooltips
 
 [鼠标移动到上面有提示](https://github.com/jaywcjlove/reference) _Tooltips 的提示内容_<!--rehype:tooltips-->
@@ -180,11 +182,15 @@ export const Student = (
 ### 代码行号
 
 ```jsx showLineNumbers
-export const Student = (
-  <div className="Student"></div>
-);
+export const Student = <div>学生</div>;
+const school = <div>学校</div>;
 ```
 
+下面是 `Markdown` 代码示例
+
+```markdown
+  ```jsx showLineNumbers
+```
 
 ### 内置类样式
 
