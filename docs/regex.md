@@ -65,7 +65,7 @@ RegEX 备忘清单
 - \$
 - \\
 - \?
-<!--rehype:className=cols-3-->
+<!--rehype:className=cols-3 style-none-->
 
 使用 `\` 转义这些特殊字符
 
@@ -175,6 +175,33 @@ RegEX 备忘清单
 `(?(?=...)yes\|no)`  | 有条件的前瞻
 `(?(?<=...)yes\|no)` | 有条件的往后看
 
+### 递归
+
+:-|-
+:-|-
+`(?R)`      | 递归整个模式
+`(?1)`      | 递归第一个子模式
+`(?+1)`     | 递归第一个相对子模式
+`(?&name)`  | 递归子模式`name`
+`(?P=name)` | 匹配子模式`name`
+`(?P>name)` | 递归子模式`name`
+
+### 标志/修饰符
+
+:-|-
+:-|-
+`g`   | 全部
+`m`   | 多行
+`i`   | 不区分大小写
+`x`   | 忽略空格
+`s`   | 单线
+`u`   | 统一码
+`X`   | 扩展
+`U`   | 不贪心
+`A`   | 锚
+`J`   | 重复的组名
+`d`   | 结果包含捕获组子字符串开始和结束的索引
+
 ### 零宽度断言
 
 :-|-
@@ -189,34 +216,6 @@ RegEX 备忘清单
 `?<!`|负后发断言-排除
 
 零宽度断言 允许您在主模式之前（向后看）或之后（lookahead）匹配一个组，而不会将其包含在结果中。
-
-### 标志/修饰符
-
-:-|-
-:-|-
-`g`   | 全球的
-`m`   | 多行
-`i`   | 不区分大小写
-`x`   | 忽略空格
-`s`   | 单线
-`u`   | 统一码
-`X`   | 扩展
-`U`   | 不贪心
-`A`   | 锚
-`J`   | 重复的组名
-
-
-### 递归
-
-:-|-
-:-|-
-`(?R)`      | 递归整个模式
-`(?1)`      | 递归第一个子模式
-`(?+1)`     | 递归第一个相对子模式
-`(?&name)`  | 递归子模式`name`
-`(?P=name)` | 匹配子模式`name`
-`(?P>name)` | 递归子模式`name`
-
 
 ### POSIX 字符类
 <!--rehype:wrap-class=col-span-2-->
@@ -287,6 +286,27 @@ RegEX 备忘清单
 使用 `\` 搜索这些特殊字符：<br> `[ \ ^ $ . | ? * + ( ) { }`
 
 
+### 速记类
+
+范例 | 说明
+:-|-
+`\w            ` | “单词”字符 <br> _(字母、数字或下划线)_ 
+`\d            ` | 数字 
+`\s            ` | 空格 <br> _(空格、制表符、vtab、换行符)_ 
+`\W, \D, or \S ` | 不是单词、数字或空格 
+`[\D\S]        ` | 表示不是数字或空格，两者都匹配 
+`[^\d\s]       ` | 禁止数字和空格 
+
+### 出现次数
+
+范例 | 说明
+:-|-
+`colou?r`           | 匹配 <yel>color</yel> 或 <yel>color</yel>
+`[BW]ill[ieamy's]*` | 匹配 <yel>Bill</yel>、<yel>Willy</yel>、<yel>William's</yel> 等。
+`[a-zA-Z]+`         | 匹配 1 个或多个字母
+`\d{3}-\d{2}-\d{4}` | 匹配 SSN
+`[a-z]\w{1,7}`      | 匹配 UW NetID
+
 ### 备择方案
 
 范例 | 说明
@@ -309,28 +329,6 @@ RegEX 备忘清单
 
 在 `[ ]` 中总是转义 `. \ ]` 有时是 `^ - .`
 
-
-### 速记类
-
-范例 | 说明
-:-|-
-`\w            ` | “单词”字符 <br> _(字母、数字或下划线)_ 
-`\d            ` | 数字 
-`\s            ` | 空格 <br> _(空格、制表符、vtab、换行符)_ 
-`\W, \D, or \S ` | 不是单词、数字或空格 
-`[\D\S]        ` | 表示不是数字或空格，两者都匹配 
-`[^\d\s]       ` | 禁止数字和空格 
-
-### 出现次数
-
-范例 | 说明
-:-|-
-`colou?r`           | 匹配 <yel>color</yel> 或 <yel>color</yel>
-`[BW]ill[ieamy's]*` | 匹配 <yel>Bill</yel>、<yel>Willy</yel>、<yel>William's</yel> 等。
-`[a-zA-Z]+`         | 匹配 1 个或多个字母
-`\d{3}-\d{2}-\d{4}` | 匹配 SSN
-`[a-z]\w{1,7}`      | 匹配 UW NetID
-
 ### 贪婪与懒惰
 
 范例 | 说明
@@ -339,7 +337,6 @@ RegEX 备忘清单
 `<.+>   `                | 在 <yel>\<b>bold\<\/b></yel> 中找到 1 个大匹配项
 `*?  +? {n,}?`<br>_lazy_ | 尽可能少匹配
 `<.+?>`                  | 在 \<<yel>b</yel>>bold\<<yel>\/b</yel>> 中找到 2 个匹配项
-
 
 ### 范围
 <!--rehype:wrap-class=col-span-2-->
@@ -370,7 +367,6 @@ RegEX 备忘清单
 `(?-x)`             | 自由空间模式关闭
 /regex/`ismx`       | 修改整个字符串的模式
 
-
 ### 组
 
 范例 | 说明
@@ -394,7 +390,7 @@ RegEX 备忘清单
 
 范例 | 说明
 :-|-
-`on(?:click\|load)` | 快于：<br>`on(click\|load)`
+`on(?:click\|load)` | 快于：`on(click\|load)`
 
 尽可能使用非捕获或原子组
 
@@ -543,8 +539,11 @@ M(?(?=.*?\bher\b)s|r)\.
 如果想要匹配句子中的 `.` 则要写成 `\.` 以下这个例子 `\.?` 是选择性匹配.
 
 ### 锚点
+<!--rehype:wrap-class=row-span-2-->
 
-#### `^` 号
+匹配指定开头或结尾的字符串就要使用到锚点。
+
+#### `^` 号 (符串的开头)
 
 表达式 | 匹配示例
 :- | -
@@ -552,32 +551,32 @@ M(?(?=.*?\bher\b)s|r)\.
 `^(T\|t)he` | `The` car is parked in the garage.
 <!--rehype:className=show-header-->
 
-#### `$` 号
+#### `$` 号 (否是最后一个)
 
 表达式 | 匹配示例
 :- | -
 `(at\.)` | The fat c`at.` s`at.` on the m`at.`
-`(at\.)$` | The fat cat. sat. on the m`at`.
+`(at\.)$` | The fat cat. sat. on the m`at.`
 <!--rehype:className=show-header-->
 
 ### 简写字符集
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-4-->
 
 |简写|描述|
 |:----:|----|
 |`.`|除换行符外的所有字符|
-|`\w`|匹配所有字母数字，等同于 `[a-zA-Z0-9_]`|
-|`\W`|匹配所有非字母数字，即符号，等同于： `[^\w]`|
+|`\w`|匹配所有字母数字<br />等同于 `[a-zA-Z0-9_]`|
+|`\W`|匹配所有非字母数字，即符号<br />等同于： `[^\w]`|
 |`\d`|匹配数字： `[0-9]`|
 |`\D`|匹配非数字： `[^\d]`|
-|`\s`|匹配所有空格字符，等同于： `[\t\n\f\r\p{Z}]`|
+|`\s`|匹配所有空格字符<br />等同于：`[\t\n\f\r\p{Z}]`|
 |`\S`|匹配所有非空格字符： `[^\s]`|
 |`\f`|匹配一个换页符|
 |`\n`|匹配一个换行符|
 |`\r`|匹配一个回车符|
 |`\t`|匹配一个制表符|
 |`\v`|匹配一个垂直制表符|
-|`\p`|匹配 CR/LF（等同于 `\r\n`），用来匹配 DOS 行终止符|
+|`\p`|匹配 CR/LF(等同于 `\r\n`)<br />用来匹配 DOS 行终止符|
 <!--rehype:className=show-header-->
 
 正则表达式提供一些常用的字符集简写。
@@ -756,6 +755,38 @@ False
 JavaScript 中的正则表达式
 ---------------
 
+### RegExp
+<!--rehype:wrap-class=row-span-4-->
+
+#### 属性
+
+:- | :-
+:- | :-
+`dotAll` | 是否使用了 `s` 修饰符
+`flags` | 返回标志的字符串
+`global` | 是否使用了 `g` (全部)修饰符
+`hasIndices` | 是否使用了 `d` 修饰符
+`ignoreCase` | 匹配文本的时候是否忽略大小写 `i`
+`multiline` | 是否进行多行搜索 `m`
+`lastIndex` | 该索引表示从哪里开始下一个匹配
+`source` | 正则表达式的文本
+`sticky` | 搜索是否是 sticky
+`unicode` | Unicode 功能是否开启
+
+#### 方法
+
+:- | :-
+:- | :-
+`match()` | 获取匹配结果
+`matchAll()` | 所有匹配项
+`replace()` | 替换所有符合正则模式的匹配项
+`search()` | 搜索以取得匹配正则模式的项
+`split()` | 切割字符串返回字符串数组
+~~`compile()`~~ | （重新）编译正则表达式
+`exec()` | 指定字符串中执行一个搜索匹配
+`test()` | 正则表达式与指定的字符串是否匹配
+`toString()` | 返回该正则表达式的字符串
+
 ### test()
 
 ```javascript
@@ -763,11 +794,8 @@ let textA = 'I like APPles very much';
 let textB = 'I like APPles';
 let regex = /apples$/i
  
-// Output: false
-console.log(regex.test(textA));
- 
-// Output: true
-console.log(regex.test(textB));
+console.log(regex.test(textA)); // false
+console.log(regex.test(textB)); // true
 ```
 
 ### search()
@@ -776,28 +804,21 @@ console.log(regex.test(textB));
 let text = 'I like APPles very much';
 let regexA = /apples/;
 let regexB = /apples/i;
- 
-// Output: -1
-console.log(text.search(regexA));
- 
-// Output: 7
-console.log(text.search(regexB));
-```
 
+console.log(text.search(regexA)); // -1
+console.log(text.search(regexB)); // 7
+```
 
 ### exec()
 
 ```javascript
 let text = 'Do you like apples?';
 let regex= /apples/;
- 
 // Output: apples
 console.log(regex.exec(text)[0]);
- 
 // Output: Do you like apples?
 console.log(regex.exec(text).input);
 ```
-
 
 ### match()
 
@@ -808,7 +829,6 @@ let regex = /apples/gi;
 // Output: [ "apples", "apPleS" ]
 console.log(text.match(regex));
 ```
-
 
 ### split() 
 <!--rehype:wrap-class=col-span-2-->
@@ -844,15 +864,33 @@ let result = text.replace(regex, 'mangoes');
 console.log(result);
 ```
 
+### 属性示例
+
+```javascript
+/d/s.dotAll;             // => true
+/d/g.global;             // => true
+/d/ig.flags;             // => "gi"
+/d/d.hasIndices;         // => true
+/d/i.ignoreCase;         // => true
+```
+
+### 多行文本中使用正则表达式
+
+```js
+let s = "Please yes\nmake my day!";
+
+s.match(/yes[^]*day/);
+// 返回 'yes\nmake my day'
+```
 
 ### replaceAll()
 
 ```javascript
 let regex = /apples/gi;
 let text = 'Here are apples and apPleS';
-// Output: Here are mangoes and mangoes
-let result = text.replaceAll(regex, "mangoes");
-console.log(result);
+
+text.replaceAll(regex, "mangoes");
+// 返回: Here are mangoes and mangoes
 ```
 <!--rehype:className=wrap-text-->
 
@@ -879,6 +917,7 @@ PHP中的正则表达式
 ```php
 $str = "Visit Microsoft!";
 $regex = "/microsoft/i";
+
 // Output: Visit QuickRef!
 echo preg_replace($regex, "QuickRef", $str); 
 ```
