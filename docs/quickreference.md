@@ -124,6 +124,24 @@ function () {}
 
 注释配置添加 `show-header` 类，放置在表格下面，表头将被展示出来。
 
+### 代码行高亮
+<!--rehype:wrap-class=row-span-2-->
+
+```jsx {1,4-5}
+import React from "react";
+import "./Student.css";
+
+export const Student = (
+  <div className="Student"></div>
+);
+```
+
+上面 `{1,4-5}` 行代码高亮，下面是 `Markdown` 代码示例
+
+```markdown
+  ```jsx {1,4-5}
+```
+
 ### Tooltips
 
 [鼠标移动到上面有提示](https://github.com/jaywcjlove/reference) _Tooltips 的提示内容_<!--rehype:tooltips-->
@@ -147,6 +165,8 @@ function () {}
 <!--rehype:style=background:#e91e63;-->
 ```
 
+在 H3 标题下面添加样式标注 `<!--rehype:style=background:#e91e63;-->`
+
 ### 快捷键样式
 
 | Key | value | 
@@ -156,6 +176,15 @@ function () {}
 <!--rehype:className=shortcuts-->
 
 列表添加 `<!--rehype:className=shortcuts-->` 样式类，展示快捷键样式。
+
+### 代码行号
+
+```jsx showLineNumbers
+export const Student = (
+  <div className="Student"></div>
+);
+```
+
 
 ### 内置类样式
 

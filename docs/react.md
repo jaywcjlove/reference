@@ -61,7 +61,7 @@ const Example = <Hello />;
 
 ### React 组件中的 CSS
 
-```jsx
+```jsx {2,5}
 import React from "react";
 import "./Student.css";
 
@@ -127,7 +127,7 @@ function Example() {
 
 函数 `AlertBox` 组件
 
-```jsx
+```jsx {4}
 function AlertBox(props) {
   return (
     <div className="alert-box">
@@ -145,7 +145,7 @@ function AlertBox(props) {
 
 Class `AlertBox` 组件，与函数组件 `AlertBox` 组件相同
 
-```jsx
+```jsx {5}
 class AlertBox extends React.Component {
   render () {
     return (
@@ -170,14 +170,12 @@ class AlertBox extends React.Component {
 
 函数中的 State，Hook 是 React 16.8 的新增特性
 
-```jsx
+```jsx {4,8}
 import { useState } from 'react';
 
 function Student() {
-  // 声明一个叫 "count" 的 state 变量
   const [count, setCount] = useState(0);
   const click = () => setCount(count + 1);
-
   return (
     <div>
       <p>您点击了 {count} 次</p>
@@ -197,13 +195,15 @@ function Student() {
 
 #### Class 中的 State
 
-```jsx
+```jsx {6,12,20}
 import React from 'react';
 
 class Student extends React.Component {
   constructor(props) {
     super(props);
     this.state = {count: 1};
+    // 确保函数可以访问组件属性（ES2015）
+    this.click = this.click.bind(this);
   }
   click() {
     const count = this.state.count;
@@ -312,7 +312,7 @@ render() {
 ### Fragment
 <!--rehype:wrap-class=row-span-2-->
 
-```jsx
+```jsx {1,6,9}
 import { Fragment } from 'react'
 import Avatar from './Avatar';
 import Profile from './Profile';
@@ -384,7 +384,7 @@ const ref = React.createRef();
 
 ### Class 组件内部使用 ref 属性
 
-```jsx
+```jsx {6,10}
 import {Component,createRef} from 'react'
 
 class MyComponent extends Component {
@@ -403,7 +403,7 @@ class MyComponent extends Component {
 
 ### 函数组件内部使用 ref 属性
 
-```jsx
+```jsx {3,9}
 function CustomTextInput(props) {
   // 这里必须声明 $input，这样 ref 才可以引用它
   const $input = useRef(null);
@@ -424,7 +424,7 @@ function CustomTextInput(props) {
 
 ### 严格模式 StrictMode
 
-```jsx
+```jsx {3,8}
 <div>
   <Header />
   <React.StrictMode>
@@ -956,7 +956,7 @@ function App() {
 
 ### 嵌入内部组件
 
-```jsx
+```jsx {2}
 import React from 'react';
 import UserAvatar from "./UserAvatar";
 
@@ -974,7 +974,7 @@ export default function UserProfile() {
 
 ### 嵌入外部组件
 
-```jsx
+```jsx {2}
 import React from 'react';
 import {Button} from 'uiw';
 export default function UserProfile() {
@@ -988,7 +988,7 @@ export default function UserProfile() {
 }
 ```
 
-注意：外部组件在 [npmjs.com](https://www.npmjs.com) 上找到，需要先安装导入
+注意：[uiw](http://npmjs.com/uiw) 组件在 [npmjs.com](https://www.npmjs.com) 上找到，需要先安装导入
 
 生命周期
 ---

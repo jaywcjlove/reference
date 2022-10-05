@@ -20,6 +20,7 @@ export function create(str = '', options = {}) {
   description = (description[0] || '').replace(/^\n[=\n]+/, '').replace(/\[([\s\S]*?)?\]\(([\s\S]*?)?\)/g, '$1').replace(/\n/, '');
   const subTitle = options.filename && !options.isHome ? `${options.filename} cheatsheet & `: ''
   const mdOptions = {
+    showLineNumbers: false,
     hastNode: false,
     remarkPlugins: [remarkGemoji],
     rehypePlugins: [
