@@ -91,7 +91,10 @@ jobs:
       # Create Docker Image
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-      
+        
+      - name: Build reference image
+        run: docker image build -t reference .
+
       - name: Tags & Push image(latest)
         run: |
           echo "DOCKER_USER: ${{ secrets.DOCKER_USER }}"
