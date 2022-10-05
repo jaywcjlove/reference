@@ -42,7 +42,7 @@ Header 2
 ```
 
 ### 无序列表
-<!--rehype:wrap-style=grid-row: span 2/span 2;-->
+<!--rehype:wrap-class=row-span-3-->
 
 ```markdown
 * Item 1
@@ -64,7 +64,7 @@ Header 2
 + Item 1
 + Item 2
 ```
-或者
+或者**任务**列表
 
 ```markdown
 - [ ] Checkbox off
@@ -80,41 +80,27 @@ Header 2
     b. item 3b
 ```
 
-
-
 ### 链接
 
 ```markdown
 [link](http://google.com)
-```
 
-```markdown
 [link][google]
 [google]: http://google.com
-```
 
-```markdown
 <http://google.com>
 ```
 
 ### 强调
 
 ```markdown
-*斜体*
-_斜体_
-```
+*斜体*    _斜体_    **粗体**   __粗体__
 
-```markdown
-**粗体**
-__粗体__
-```
-
-```markdown
-`内联代码`
-~~删除~~
+`内联代码`  ~~删除~~
 ```
 
 ### 水平线
+<!--rehype:wrap-class=row-span-2-->
 
 连字符
 
@@ -134,9 +120,15 @@ __粗体__
 ___
 ```
 
+### 换行
 
+```markdown
+在当前行的结尾加 2 个空格··
+这行就会新起一行\
+反斜杠也可以换行
+```
 
-
+尾部添加两个空格，或者添加 `\` 反斜杠
 
 ### 代码
 
@@ -165,33 +157,49 @@ console.log("This is a block code")
 ```
 
 ### 表格
-<!--rehype:wrap-style=grid-column: span 2/span 2;-->
 
 ```markdown
-|     左栏     |     中间栏     |     右栏     |
-|:------------|:-------------:|-------------:|
-| 单元格 1     |   居中         |        $1600 |
-| 单元格 2     |   单元格 3     |          $12 |
+|     左栏   |     中间栏     |  右栏     |
+| ----------| ------------ | --------- |
+| 单元格 1   |   居中        |     $1600 |
+| 单元格 2   |   单元格 3    |       $12 |
 ```
 
 简单的风格
 
 ```markdown
-    左栏     |     中间栏     |     右栏
-:----------:|:-------------:|:-----------:
-  单元格 1   |   居中         |    $1600
-  单元格 2   |   单元格 3     |     $12
+ 左栏 | 中间栏 | 右栏
+:-------: | :-------:|:-------:
+单元格 1   | 居中      |    $1600
+单元格 2   | 单元格 3  |     $12
 ```
 
 Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 
-### 图片
-<!--rehype:wrap-style=grid-column: span 2/span 2;-->
+### 脚注 (Footnotes)
 
 ```markdown
-![GitHub Logo](/images/logo.png)
+这是一个简单的脚注[^1]。
 
-![Alt Text](url)
+一个脚注也可以有多行[^2]。
+
+你也可以使用文字，更贴合你的写作风格[^note]。
+
+[^1]：我的参考。
+[^2]：每个新行都应以 2 个空格为前缀。
+  这允许你有一个多行的脚注。
+[^note]：
+    推荐使用数字命名脚注，但文本更容易识别和链接。
+    脚注使用了不同的语法，使用 4 个空格作为新行。
+```
+
+### 图片
+<!--rehype:wrap-class=col-span-2-->
+
+```markdown
+![图片名称](http://图片网址/images/logo.png)
+
+![替代文字](url)
 ```
 
 #### 带链接的图片
@@ -199,13 +207,13 @@ Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 ```markdown
 [![GitHub Logo](/images/logo.png)](https://github.com/)
 
-[![Alt Text](image_url)](link_url)
+[![替代文字](image_url)](link_url)
 ```
 
 #### 参考风格
 
 ```markdown
-![alt text][logo]
+![替代文字][logo]
 
 [logo]: /images/logo.png "Logo Title"
 ```
@@ -227,3 +235,8 @@ Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 | \-         | \\\-   | minus sign \(hyphen\) 减号(连字符) |
 | \.         | \\\.   | dot 点                      |
 | \!         | \\\!   | exclamation mark 感叹号      |
+
+另见
+----
+
+- [GitHub 风格的 Markdown 规范](https://github.github.com/gfm/) _(github.com)_
