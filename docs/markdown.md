@@ -218,8 +218,8 @@ Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 [logo]: /images/logo.png "Logo Title"
 ```
 
-
 ### 反斜杠转义
+<!--rehype:wrap-class=row-span-2-->
 
 | 字符 | 转义 | 描述 |
 |------------|--------|-------------|
@@ -235,6 +235,13 @@ Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 | \-         | \\\-   | minus sign \(hyphen\) 减号(连字符) |
 | \.         | \\\.   | dot 点                      |
 | \!         | \\\!   | exclamation mark 感叹号      |
+
+### 行内 HTML 元素
+<!--rehype:wrap-class=col-span-2-->
+
+```html
+目前只支持部分段内 HTML 元素效果，包括 <kdb>, <b>, <i>, <em>, <sup>, <sub>, <br>
+```
 
 另见
 ----
