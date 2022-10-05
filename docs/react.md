@@ -990,6 +990,27 @@ export default function UserProfile() {
 
 注意：[uiw](http://npmjs.com/uiw) 组件在 [npmjs.com](https://www.npmjs.com) 上找到，需要先安装导入
 
+### 点组件语法技巧
+
+```jsx
+const Menu = ({ children }) => (
+  <div className="menu">{children}<div>
+);
+
+Menu.Item = ({ children }) => (
+  <div>{children}<div>
+);
+```
+
+----
+
+```jsx
+<Menu>
+  <Menu.Item>菜单一</Menu.Item>
+  <Menu.Item>菜单二</Menu.Item>
+<Menu>
+```
+
 生命周期
 ---
 
