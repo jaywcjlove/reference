@@ -27,6 +27,7 @@ Quick Reference
 
 ## 工具包
 
+[Emmet](./docs/emmet.md)<!--rehype:style=background: rgb(122 203 23/var(\-\-bg\-opacity));-->
 [npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141/var(\-\-bg\-opacity));-->

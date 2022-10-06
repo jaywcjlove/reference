@@ -1258,6 +1258,7 @@ class MyComponent extends React.Component<Props, {}> {
 ```
 
 ### 泛型组件
+<!--rehype:wrap-class=col-span-2-->
 
 ```tsx
 // 一个泛型组件

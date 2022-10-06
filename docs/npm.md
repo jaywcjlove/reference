@@ -138,6 +138,16 @@ npm unpublish <package-name>@<version>
 
 注意：如果您取消发布整个包，则必须在 24 小时后才能发布该包的任何新版本。
 
+### 发布包 npmjs.org
+
+```bash
+npm publish
+# 第一次需要指定公开参数
+npm publish --access public
+```
+
+发布公开包，到 npmjs.org
+
 配置
 ---
 

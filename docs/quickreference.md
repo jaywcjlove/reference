@@ -208,6 +208,7 @@ const school = <div>学校</div>;
 `<yel>` | <yel>黄色</yel>
 `<pur>` | <pur>紫色</pur>
 `<code>` 或 <code>\`\`</code> | <code>绿</code>`色`
+`<del>` 或 `~~删除~~` | <del>~~红色~~</del>
 <!--rehype:className=shortcuts-->
 
 
