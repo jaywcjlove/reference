@@ -291,6 +291,64 @@ $ docker volume ls
 $ docker volume prune
 ```
 
+### Docker Compose
+<!--rehype:wrap-class=col-span-2-->
+
+:- | :-
+:- | :-
+`docker-compose up` | 创建和启动容器
+`docker-compose up -d` | 以分离模式创建和启动容器
+`docker-compose down` | 停止和删除容器、网络、映像和卷
+`docker-compose logs` | 查看容器的输出
+`docker-compose restart` | 重启所有服务
+`docker-compose pull` | 拉取所有图片服务
+`docker-compose build` | 构建所有图像服务
+`docker-compose config` | 验证并查看 Compose 文件
+`docker-compose scale <service_name>=<replica>` | 规模特殊服务
+`docker-compose top` | 显示正在运行的进程
+`docker-compose run -rm -p 2022:22 web bash` | 启动 Web 服务并运行 bash 作为其命令，删除旧容器。
+
+### Docker Services
+
+:- | :-
+:- | :-
+`docker service create <options> <image> <command>`   | 创建新服务
+`docker service inspect --pretty <service_name>`      | 显示详细信息服务
+`docker service ls`                                   | 列出服务
+`docker service ps`                                   | 列出服务的任务
+`docker service scale <service_name>=<replica>`       | 规模特殊服务
+`docker service update <options> <service_name>`      | 更新服务选项
+
+### Docker Stack
+
+:- | :-
+:- | :-
+`docker stack ls`                                 | 列出此 Docker 主机上所有正在运行的应用程序
+`docker stack deploy -c <composefile> <appname>`  | 运行指定的 Compose 文件
+`docker stack services <appname>`                 | 列出与应用关联的服务
+`docker stack ps <appname>`                       | 列出与应用关联的正在运行的容器
+`docker stack rm <appname>`                       | 拆掉一个应用程序
+
+### Docker Machine
+<!--rehype:wrap-class=col-span-2-->
+
+:- | :-
+:- | :-
+`docker-machine create --driver virtualbox myvm1`                           | 创建虚拟机（Mac、Win7、Linux）
+`docker-machine create -d hyperv --hyperv-virtual-switch "myswitch" myvm1`  | Win10
+`docker-machine env myvm1`                                                  | 查看有关您的节点的基本信息
+`docker-machine ssh myvm1 "docker node ls"`                                 | 列出集群中的节点
+`docker-machine ssh myvm1 "docker node inspect <node ID>"`                  | 检查节点
+`docker-machine ssh myvm1 "docker swarm join-token -q worker"`              | 查看加入令牌
+`docker-machine ssh myvm1`                                                  | 打开与 VM 的 SSH 会话； 输入“exit”结束
+`docker-machine ssh myvm2 "docker swarm leave"`                             | 让工人离开群体
+`docker-machine ssh myvm1 "docker swarm leave -f"`                          | 让主人离开，杀群
+`docker-machine start myvm1`                                                | 启动当前未运行的 VM
+`docker-machine stop $(docker-machine ls -q)`                               | 停止所有正在运行的虚拟机
+`docker-machine rm $(docker-machine ls -q)`                                 | 删除所有虚拟机及其磁盘映像
+`docker-machine scp docker-compose.yml myvm1:~`                             | 将文件复制到节点的主目录
+`docker-machine ssh myvm1 "docker stack deploy -c <file> <app>"`            | 部署应用
+
 另见
 ----
 
