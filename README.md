@@ -31,6 +31,7 @@ Quick Reference
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141/var(\-\-bg\-opacity));-->
 [Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
+[Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
 [Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
 [RegEx](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155/var(\-\-bg\-opacity));-->
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
