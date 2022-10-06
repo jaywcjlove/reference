@@ -203,8 +203,7 @@ table td:first-child>code {
   --text-opacity: 1;
   color: rgb(5 150 105/var(--text-opacity));
 }
-table td:first-child>del>code {
-  text-decoration: inherit;
+table td > del, table td:first-child > del > code, .wrap-body p > del > code {
   color: var(--color-danger-fg);
 }
 
@@ -844,16 +843,7 @@ body:not(.home) .h2wrap > h2 a::after {
   }
 }
 
-@media (min-width: 768px) {
-  .home-card {
-    grid-template-columns: repeat(4,minmax(0,1fr));
-  }
-  .wrap-header.h3wrap > .wrap-body {
-    overflow: initial;
-  }
-}
-
-@media (min-width: 375px) {
+@media only screen and (max-width: 375px) {
   .header-nav .title {
     font-size: 1rem;
   }
@@ -877,6 +867,9 @@ body:not(.home) .h2wrap > h2 a::after {
   .wrap-header.h3wrap > .wrap-body {
     overflow: auto;
   }
+  .tooltip:hover .tooltiptext {
+    display: none;
+  }
   .h1wrap-body {
     gap: 2rem;
   }
@@ -892,5 +885,17 @@ body:not(.home) .h2wrap > h2 a::after {
   }
   .footer-wrap {
     font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-card {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+  }
+  .wrap-header.h3wrap > .wrap-body {
+    overflow: initial;
+  }
+  .tooltip:hover .tooltiptext {
+    display: inline-block;
   }
 }
