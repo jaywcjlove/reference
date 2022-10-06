@@ -1,7 +1,7 @@
 Quick Reference 备忘清单
 ===
 
-这是您可以在 Quick Reference 备忘单上使用的样式参考，快速参与贡献！
+这是您可以在 Quick Reference 备忘单上使用的样式参考，快速参与[贡献](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)！
 
 入门
 ---
@@ -71,7 +71,6 @@ HTML 存放在仓库根目录下的 `dist` 目录中，将 `dist/index.html` 静
 <!--rehype:wrap-class=row-span-3&style=color:red;-->
 ```
 <!--rehype:className=wrap-text -->
-
 
 #### 参数说明
 
@@ -584,6 +583,25 @@ H2 部分
 
 `<!--rehype:className=cols-4-->`
 
+### 列表步骤
+<!--rehype:wrap-class=row-span-2-->
+
+- **重命名为 new_name**
+  ```bash
+  $ git branch -m <new_name>
+  ```
+- 推送和**重置**
+  ```bash
+  $ git push origin -u <new_name>
+  ```
+- 删除远程分支
+  ```bash
+  $ git push origin --delete <old>
+  ```
+<!--rehype:className=style-timeline-->
+
+`<!--rehype:className=style-timeline-->`
+
 ### 没有标记
 
 - Item 1
@@ -592,9 +610,21 @@ H2 部分
 - Item 4
 - Item 5
 - Item 6
+- Item 7
+- Item 8
+- Item 9
 <!--rehype:className=cols-3 style-none-->
 
 `<!--rehype:className=cols-3 style-none-->`
+
+### 圆圈标记
+
+- Item 1
+- Item 2
+- Item 3
+<!--rehype:className=style-round-->
+
+`<!--rehype:className=style-round-->`
 
 H2 部分 - 5列效果展示
 ---
