@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>YAML 备忘清单
+ &#x26;  yaml cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这是理解和编写 YAML 格式配置文件的快速参考备忘单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,yaml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/yaml.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="yaml-备忘清单"><a aria-hidden="true" tabindex="-1" href="#yaml-备忘清单"><span class="icon icon-link"></span></a>YAML 备忘清单</h1><div class="wrap-body">
+<p>这是理解和编写 YAML 格式配置文件的快速参考备忘单。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p><a href="https://yaml.org/">YAML</a> 是一种数据序列化语言，旨在供人类直接读写</p>
+<ul class="style-round">
+<li>YAML 不允许使用制表符</li>
+<li>元素部分之间必须有空间</li>
+<li>YAML 区分大小写</li>
+<li>以 <code>.yaml</code> 或 <code>.yml</code> 扩展名结束您的 YAML 文件</li>
+<li>YAML 是 JSON 的超集</li>
+<li>Ansible playbook 是 YAML 文件</li>
+</ul>
+<!--rehype:className=style-round-->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="标量类型"><a aria-hidden="true" tabindex="-1" href="#标量类型"><span class="icon icon-link"></span></a>标量类型</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">n1</span><span class="token punctuation">:</span> <span class="token number">1</span>            <span class="token comment"># 整数</span>
+</span><span class="code-line"><span class="token key atrule">n2</span><span class="token punctuation">:</span> <span class="token number">1.234</span>        <span class="token comment"># 浮点</span>
+</span><span class="code-line"><span class="token key atrule">s1</span><span class="token punctuation">:</span> <span class="token string">'abc'</span>        <span class="token comment"># 字符串</span>
+</span><span class="code-line"><span class="token key atrule">s2</span><span class="token punctuation">:</span> <span class="token string">"abc"</span>        <span class="token comment"># 字符串</span>
+</span><span class="code-line"><span class="token key atrule">s3</span><span class="token punctuation">:</span> abc          <span class="token comment"># 字符串</span>
+</span><span class="code-line"><span class="token key atrule">b</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>         <span class="token comment"># 布尔类型</span>
+</span><span class="code-line"><span class="token key atrule">d</span><span class="token punctuation">:</span> <span class="token datetime number">2015-04-05</span>    <span class="token comment"># 日期类型</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json"><a aria-hidden="true" tabindex="-1" href="#-等效的-json"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"n1"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"n2"</span><span class="token operator">:</span> <span class="token number">1.234</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"s1"</span><span class="token operator">:</span> <span class="token string">"abc"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"s2"</span><span class="token operator">:</span> <span class="token string">"abc"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"s3"</span><span class="token operator">:</span> <span class="token string">"abc"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"b"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"d"</span><span class="token operator">:</span> <span class="token string">"2015-04-05"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>使用空格缩进。 元素部分之间必须有空间。</p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">some_thing</span><span class="token punctuation">:</span> <span class="token important">&#x26;VAR_NAME</span> foobar
+</span><span class="code-line"><span class="token key atrule">other_thing</span><span class="token punctuation">:</span> <span class="token important">*VAR_NAME</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-1"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-1"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"some_thing"</span><span class="token operator">:</span> <span class="token string">"foobar"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"other_thing"</span><span class="token operator">:</span> <span class="token string">"foobar"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token comment"># A single line comment example</span>
+</span><span class="code-line"><span class="token comment"># block level comment example</span>
+</span><span class="code-line"><span class="token comment"># comment line 1</span>
+</span><span class="code-line"><span class="token comment"># comment line 2</span>
+</span><span class="code-line"><span class="token comment"># comment line 3</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多行字符串"><a aria-hidden="true" tabindex="-1" href="#多行字符串"><span class="icon icon-link"></span></a>多行字符串</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">  hello
+</span></span><span class="code-line"><span class="token scalar string">  world</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-2"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-2"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span><span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"hello\nworld\n"</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="继承"><a aria-hidden="true" tabindex="-1" href="#继承"><span class="icon icon-link"></span></a>继承</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">parent</span><span class="token punctuation">:</span> <span class="token important">&#x26;defaults</span>
+</span><span class="code-line">  <span class="token key atrule">a</span><span class="token punctuation">:</span> <span class="token number">2</span>
+</span><span class="code-line">  <span class="token key atrule">b</span><span class="token punctuation">:</span> <span class="token number">3</span>
+</span><span class="code-line"><span class="token key atrule">child</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">&#x3C;&#x3C;</span><span class="token punctuation">:</span> <span class="token important">*defaults</span>
+</span><span class="code-line">  <span class="token key atrule">b</span><span class="token punctuation">:</span> <span class="token number">4</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-3"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-3"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"parent"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"a"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"b"</span><span class="token operator">:</span> <span class="token number">3</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"child"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"a"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"b"</span><span class="token operator">:</span> <span class="token number">4</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="参考"><a aria-hidden="true" tabindex="-1" href="#参考"><span class="icon icon-link"></span></a>参考</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">values</span><span class="token punctuation">:</span> <span class="token important">&#x26;ref</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> Will be
+</span><span class="code-line">  <span class="token punctuation">-</span> reused below
+</span><span class="code-line">  
+</span><span class="code-line"><span class="token key atrule">other_values</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">i_am_ref</span><span class="token punctuation">:</span> <span class="token important">*ref</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-4"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-4"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token string">"Will be"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">"reused below"</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"other_values"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"i_am_ref"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">      <span class="token string">"Will be"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token string">"reused below"</span>
+</span><span class="code-line">    <span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="折叠的字符串"><a aria-hidden="true" tabindex="-1" href="#折叠的字符串"><span class="icon icon-link"></span></a>折叠的字符串</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token punctuation">></span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">  hello
+</span></span><span class="code-line"><span class="token scalar string">  world</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-5"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-5"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span><span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"hello world\n"</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="两份文件"><a aria-hidden="true" tabindex="-1" href="#两份文件"><span class="icon icon-link"></span></a>两份文件</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token punctuation">---</span>
+</span><span class="code-line"><span class="token key atrule">document</span><span class="token punctuation">:</span> this is doc 1
+</span><span class="code-line"><span class="token punctuation">---</span>
+</span><span class="code-line"><span class="token key atrule">document</span><span class="token punctuation">:</span> this is doc 2
+</span></code></pre>
+<p>YAML使用<code>---</code>将指令与文档内容分开。</p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="yaml-collections"><a aria-hidden="true" tabindex="-1" href="#yaml-collections"><span class="icon icon-link"></span></a>YAML Collections</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="序列"><a aria-hidden="true" tabindex="-1" href="#序列"><span class="icon icon-link"></span></a>序列</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token punctuation">-</span> Mark McGwire
+</span><span class="code-line"><span class="token punctuation">-</span> Sammy Sosa
+</span><span class="code-line"><span class="token punctuation">-</span> Ken Griffey
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-6"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-6"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">[</span>
+</span><span class="code-line">  <span class="token string">"Mark McGwire"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string">"Sammy Sosa"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string">"Ken Griffey"</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="映射"><a aria-hidden="true" tabindex="-1" href="#映射"><span class="icon icon-link"></span></a>映射</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">hr</span><span class="token punctuation">:</span>  <span class="token number">65</span>       <span class="token comment"># Home runs</span>
+</span><span class="code-line"><span class="token key atrule">avg</span><span class="token punctuation">:</span> <span class="token number">0.278</span>    <span class="token comment"># Batting average</span>
+</span><span class="code-line"><span class="token key atrule">rbi</span><span class="token punctuation">:</span> <span class="token number">147</span>      <span class="token comment"># Runs Batted In</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-7"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-7"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"hr"</span><span class="token operator">:</span> <span class="token number">65</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"avg"</span><span class="token operator">:</span> <span class="token number">0.278</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"rbi"</span><span class="token operator">:</span> <span class="token number">147</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="映射到序列"><a aria-hidden="true" tabindex="-1" href="#映射到序列"><span class="icon icon-link"></span></a>映射到序列</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">attributes</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> a1
+</span><span class="code-line">  <span class="token punctuation">-</span> a2
+</span><span class="code-line"><span class="token key atrule">methods</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>getter<span class="token punctuation">,</span> setter<span class="token punctuation">]</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-8"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-8"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"attributes"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"a1"</span><span class="token punctuation">,</span> <span class="token string">"a2"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"methods"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"getter"</span><span class="token punctuation">,</span> <span class="token string">"setter"</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="映射序列"><a aria-hidden="true" tabindex="-1" href="#映射序列"><span class="icon icon-link"></span></a>映射序列</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">children</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Jimmy Smith
+</span><span class="code-line">    <span class="token key atrule">age</span><span class="token punctuation">:</span> <span class="token number">15</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Jimmy Smith
+</span><span class="code-line">    <span class="token key atrule">age</span><span class="token punctuation">:</span> <span class="token number">15</span>
+</span><span class="code-line">  <span class="token punctuation">-</span>
+</span><span class="code-line">    <span class="token key atrule">name</span><span class="token punctuation">:</span> Sammy Sosa
+</span><span class="code-line">    <span class="token key atrule">age</span><span class="token punctuation">:</span> <span class="token number">12</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-9"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-9"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"children"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Jimmy Smith"</span><span class="token punctuation">,</span> <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Jimmy Smith"</span><span class="token punctuation">,</span> <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Sammy Sosa"</span><span class="token punctuation">,</span> <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="序列的序列"><a aria-hidden="true" tabindex="-1" href="#序列的序列"><span class="icon icon-link"></span></a>序列的序列</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">my_sequences</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">-</span>  
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token number">7</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token number">8</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token number">9</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token number">0</span> 
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-10"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-10"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"my_sequences"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="映射的映射"><a aria-hidden="true" tabindex="-1" href="#映射的映射"><span class="icon icon-link"></span></a>映射的映射</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">Mark McGwire</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token key atrule">hr</span><span class="token punctuation">:</span> <span class="token number">65</span><span class="token punctuation">,</span> <span class="token key atrule">avg</span><span class="token punctuation">:</span> <span class="token number">0.278</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token key atrule">Sammy Sosa</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token key atrule">hr</span><span class="token punctuation">:</span> <span class="token number">63</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token key atrule">avg</span><span class="token punctuation">:</span> <span class="token number">0.288</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-11"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-11"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"Mark McGwire"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"hr"</span><span class="token operator">:</span> <span class="token number">65</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"avg"</span><span class="token operator">:</span> <span class="token number">0.278</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"Sammy Sosa"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"hr"</span><span class="token operator">:</span> <span class="token number">63</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"avg"</span><span class="token operator">:</span> <span class="token number">0.288</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="嵌套集合"><a aria-hidden="true" tabindex="-1" href="#嵌套集合"><span class="icon icon-link"></span></a>嵌套集合</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">Jack</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">id</span><span class="token punctuation">:</span> <span class="token number">1</span>
+</span><span class="code-line">  <span class="token key atrule">name</span><span class="token punctuation">:</span> Franc
+</span><span class="code-line">  <span class="token key atrule">salary</span><span class="token punctuation">:</span> <span class="token number">25000</span>
+</span><span class="code-line">  <span class="token key atrule">hobby</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> a
+</span><span class="code-line">    <span class="token punctuation">-</span> b
+</span><span class="code-line">  <span class="token key atrule">location</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token key atrule">country</span><span class="token punctuation">:</span> <span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token key atrule">city</span><span class="token punctuation">:</span> <span class="token string">"A-A"</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-12"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-12"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"Jack"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Franc"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"salary"</span><span class="token operator">:</span> <span class="token number">25000</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"hobby"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"location"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"country"</span><span class="token operator">:</span> <span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"A-A"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="无序集"><a aria-hidden="true" tabindex="-1" href="#无序集"><span class="icon icon-link"></span></a>无序集</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">set1</span><span class="token punctuation">:</span> <span class="token tag">!!set</span>
+</span><span class="code-line">  <span class="token punctuation">?</span> one
+</span><span class="code-line">  <span class="token punctuation">?</span> two
+</span><span class="code-line"><span class="token key atrule">set2</span><span class="token punctuation">:</span> <span class="token tag">!!set</span> <span class="token punctuation">{</span><span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token string">"two"</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-13"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-13"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"set1"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token property">"one"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property">"two"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"set2"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token property">"one"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property">"two"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>集合表示为一个映射，其中每个键都与一个空值相关联</p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="有序映射"><a aria-hidden="true" tabindex="-1" href="#有序映射"><span class="icon icon-link"></span></a>有序映射</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">ordered</span><span class="token punctuation">:</span> <span class="token tag">!!omap</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">Mark McGwire</span><span class="token punctuation">:</span> <span class="token number">65</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">Sammy Sosa</span><span class="token punctuation">:</span> <span class="token number">63</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">Ken Griffy</span><span class="token punctuation">:</span> <span class="token number">58</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="-等效的-json-14"><a aria-hidden="true" tabindex="-1" href="#-等效的-json-14"><span class="icon icon-link"></span></a>↓ 等效的 JSON</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"ordered"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">     <span class="token punctuation">{</span><span class="token property">"Mark McGwire"</span><span class="token operator">:</span> <span class="token number">65</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">     <span class="token punctuation">{</span><span class="token property">"Sammy Sosa"</span><span class="token operator">:</span> <span class="token number">63</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">     <span class="token punctuation">{</span><span class="token property">"Ken Griffy"</span><span class="token operator">:</span> <span class="token number">58</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="yaml-参考"><a aria-hidden="true" tabindex="-1" href="#yaml-参考"><span class="icon icon-link"></span></a>YAML 参考</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="条款"><a aria-hidden="true" tabindex="-1" href="#条款"><span class="icon icon-link"></span></a>条款</h3><div class="wrap-body">
+<ul class="style-round">
+<li>序列又名数组或列表</li>
+<li>标量又名字符串或数字</li>
+<li>映射又名哈希或字典</li>
+</ul>
+<!--rehype:className=style-round-->
+<p>基于 YAML.org <a href="https://yaml.org/refcard.html">refcard</a>。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="文档指标"><a aria-hidden="true" tabindex="-1" href="#文档指标"><span class="icon icon-link"></span></a>文档指标</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>%</code></td><td align="left">指令指标</td></tr><tr><td align="left"><code>---</code></td><td align="left">文档标题</td></tr><tr><td align="left"><code>...</code></td><td align="left">文档终结者</td></tr></tbody></table>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="收集指标"><a aria-hidden="true" tabindex="-1" href="#收集指标"><span class="icon icon-link"></span></a>收集指标</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>?</code></td><td align="left">关键指标</td></tr><tr><td align="left"><code>:</code></td><td align="left">价值指标</td></tr><tr><td align="left"><code>-</code></td><td align="left">嵌套系列条目指示器</td></tr><tr><td align="left"><code>,</code></td><td align="left">单独的内联分支条目</td></tr><tr><td align="left"><code>[]</code></td><td align="left">环绕串联系列分支</td></tr><tr><td align="left"><code>{}</code></td><td align="left">环绕在线键控分支</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="别名指标"><a aria-hidden="true" tabindex="-1" href="#别名指标"><span class="icon icon-link"></span></a>别名指标</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>&#x26;</code></td><td align="left">锚属性</td></tr><tr><td align="left"><code>*</code></td><td align="left">别名指示符</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="特殊键"><a aria-hidden="true" tabindex="-1" href="#特殊键"><span class="icon icon-link"></span></a>特殊键</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>=</code></td><td align="left">默认“值”映射键</td></tr><tr><td align="left"><code>&#x3C;&#x3C;</code></td><td align="left">合并来自另一个映射的键</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="标量指标"><a aria-hidden="true" tabindex="-1" href="#标量指标"><span class="icon icon-link"></span></a>标量指标</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>''</code></td><td align="left">环绕内联未转义标量</td></tr><tr><td align="left"><code>"</code></td><td align="left">环绕内嵌转义标量</td></tr><tr><td align="left">`</td><td align="left">`</td></tr><tr><td align="left"><code>></code></td><td align="left">折叠标量指示器</td></tr><tr><td align="left"><code>-</code></td><td align="left">剥离 chomp 修饰符（`</td></tr><tr><td align="left"><code>+</code></td><td align="left">保留 chomp 修饰符（`</td></tr><tr><td align="left"><code>1-9</code></td><td align="left">显式缩进修饰符（`</td></tr></tbody></table>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="标签属性通常未指定"><a aria-hidden="true" tabindex="-1" href="#标签属性通常未指定"><span class="icon icon-link"></span></a>标签属性（通常未指定）</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>none</code></td><td align="left">未指定的标签（由应用程序自动解析）</td></tr><tr><td align="left"><code>!</code></td><td align="left">非特定标签（默认情况下，<code>!!map</code>/<code>!!seq</code>/<code>!!str</code>）</td></tr><tr><td align="left"><code>!foo</code></td><td align="left">主要（按照惯例，表示本地 <code>!foo</code> 标记）</td></tr><tr><td align="left"><code>!!foo</code></td><td align="left">次要的（按照惯例，表示 <code>tag:yaml.org,2002:foo</code>）</td></tr><tr><td align="left"><code>!h!foo</code></td><td align="left">需要 <code>%TAG !h! &#x3C;prefix></code>（然后表示 <code>&#x3C;prefix>foo</code>）</td></tr><tr><td align="left"><code>!&#x3C;foo></code></td><td align="left">逐字标记（始终表示“foo”）</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="杂项指标"><a aria-hidden="true" tabindex="-1" href="#杂项指标"><span class="icon icon-link"></span></a>杂项指标</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><code>#</code></td><td>一次性评论指示器</td></tr><tr><td><code>`@</code></td><td>两者都保留供将来使用</td></tr></tbody></table>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="核心类型默认自动标签"><a aria-hidden="true" tabindex="-1" href="#核心类型默认自动标签"><span class="icon icon-link"></span></a>核心类型（默认自动标签）</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><code>!!map</code></td><td><code>{Hash table, dictionary, mapping}</code></td></tr><tr><td><code>!!seq</code></td><td><code>{List, array, tuple, vector, sequence}</code></td></tr><tr><td><code>!!str</code></td><td>Unicode 字符串</td></tr></tbody></table>
+</div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="转义码"><a aria-hidden="true" tabindex="-1" href="#转义码"><span class="icon icon-link"></span></a>转义码</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="numeric"><a aria-hidden="true" tabindex="-1" href="#numeric"><span class="icon icon-link"></span></a>Numeric</h4><div class="wrap-body">
+<ul class="cols-2 style-none">
+<li><code>\x12</code> (8-bit)</li>
+<li><code>\u1234</code> (16-bit)</li>
+<li><code>\U00102030</code> (32-bit)</li>
+</ul>
+<!--rehype:className=cols-2 style-none-->
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="protective"><a aria-hidden="true" tabindex="-1" href="#protective"><span class="icon icon-link"></span></a>Protective</h4><div class="wrap-body">
+<ul class="cols-3 style-none">
+<li><code>\\</code> (\)</li>
+<li><code>\"</code> (")</li>
+<li><code>\ </code> ( )</li>
+<li><code>\&#x3C;TAB></code> (TAB)</li>
+</ul>
+<!--rehype:className=cols-3 style-none-->
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="c"><a aria-hidden="true" tabindex="-1" href="#c"><span class="icon icon-link"></span></a>C</h4><div class="wrap-body">
+<ul class="cols-3 style-none">
+<li><code>\0</code> (NUL)</li>
+<li><code>\a</code> (BEL)</li>
+<li><code>\b</code> (BS)</li>
+<li><code>\f</code> (FF)</li>
+<li><code>\n</code> (LF)</li>
+<li><code>\r</code> (CR)</li>
+<li><code>\t</code> (TAB)</li>
+<li><code>\v</code> (VTAB)</li>
+</ul>
+<!--rehype:className=cols-3 style-none-->
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="额外的"><a aria-hidden="true" tabindex="-1" href="#额外的"><span class="icon icon-link"></span></a>额外的</h4><div class="wrap-body">
+<ul class="cols-3 style-none">
+<li><code>\e</code> (ESC)</li>
+<li><code>\_</code> (NBSP)</li>
+<li><code>\N</code> (NEL)</li>
+<li><code>\L</code> (LS)</li>
+<li><code>\P</code> (PS)</li>
+</ul>
+<!--rehype:className=cols-3 style-none-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="更多类型"><a aria-hidden="true" tabindex="-1" href="#更多类型"><span class="icon icon-link"></span></a>更多类型</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><code>!!set</code></td><td><code>{cherries, plums, apples}</code></td></tr><tr><td><code>!!omap</code></td><td><code>[one: 1, two: 2]</code></td></tr></tbody></table>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="与语言无关的标量类型"><a aria-hidden="true" tabindex="-1" href="#与语言无关的标量类型"><span class="icon icon-link"></span></a>与语言无关的标量类型</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><code>{~, null}</code></td><td>空（无值）。</td></tr><tr><td><code>[1234, 0x4D2, 02333]</code></td><td>[十进制整数、十六进制整数、八进制整数]</td></tr><tr><td><code>[1_230.15, 12.3015e+02]</code></td><td>[固定浮点数，指数浮点数]</td></tr><tr><td><code>[.inf, -.Inf, .NAN]</code></td><td>[无穷大（浮点数），负数，不是数字]</td></tr><tr><td><code>{Y, true, Yes, ON}</code></td><td>布尔真</td></tr><tr><td><code>{n, FALSE, No, off}</code></td><td>布尔假</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://yaml.org/refcard.html">YAML Reference Card</a> <em>(yaml.org)</em></li>
+<li><a href="https://learnxinyminutes.com/docs/yaml/">Learn X in Y minutes</a> <em>(learnxinyminutes.com)</em></li>
+<li><a href="http://www.yamllint.com/">YAML lint online</a> <em>(yamllint.com)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
