@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>NGINX 备忘清单
+ &#x26;  nginx cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这个 nginx 快速参考备忘单显示了它的常用命和配置使用清单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,nginx">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/nginx.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="nginx-备忘清单"><a aria-hidden="true" tabindex="-1" href="#nginx-备忘清单"><span class="icon icon-link"></span></a>NGINX 备忘清单</h1><div class="wrap-body">
+<p>这个 nginx 快速参考备忘单显示了它的常用命和配置使用清单。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="服务管理"><a aria-hidden="true" tabindex="-1" href="#服务管理"><span class="icon icon-link"></span></a>服务管理</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> systemctl status nginx <span class="token comment"># nginx当前状态</span>
+</span><span class="code-line"><span class="token function">sudo</span> systemctl reload nginx <span class="token comment"># 重新加载 nginx</span>
+</span><span class="code-line"><span class="token function">sudo</span> systemctl restart nginx <span class="token comment"># 重启nginx</span>
+</span><span class="code-line"><span class="token function">sudo</span> nginx <span class="token parameter variable">-t</span>   <span class="token comment"># 检查语法</span>
+</span><span class="code-line">nginx           <span class="token comment"># 启动</span>
+</span><span class="code-line">nginx <span class="token parameter variable">-s</span> reload <span class="token comment"># 重启</span>
+</span><span class="code-line">nginx <span class="token parameter variable">-s</span> stop   <span class="token comment"># 关闭进程</span>
+</span><span class="code-line">nginx <span class="token parameter variable">-s</span> quit   <span class="token comment"># 平滑关闭nginx</span>
+</span><span class="code-line">nginx <span class="token parameter variable">-V</span>        <span class="token comment"># 查看nginx的安装状态，</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="简单代理"><a aria-hidden="true" tabindex="-1" href="#简单代理"><span class="icon icon-link"></span></a>简单代理</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_pass</span> http://127.0.0.1:3000</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_redirect</span>      <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span>    Host <span class="token variable">$host</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 客户端的 IP 地址</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span>    X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># HTTP 请求端真实的IP</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2 row-span-4"><div class="wrap-header h3wrap"><h3 id="全局变量"><a aria-hidden="true" tabindex="-1" href="#全局变量"><span class="icon icon-link"></span></a>全局变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-4-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">变量</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>$args</code></td><td align="left">这个变量等于请求行中的参数，同 <code>$query_string</code></td></tr><tr><td align="left"><code>$remote_port</code></td><td align="left">客户端的端口</td></tr><tr><td align="left"><code>$content_length</code></td><td align="left">请求头中的 <code>Content-length</code> 字段</td></tr><tr><td align="left"><code>$remote_user</code></td><td align="left">已经经过 <code>Auth Basic Module</code> 验证的用户名</td></tr><tr><td align="left"><code>$content_type</code></td><td align="left">请求头中的 <code>Content-Type</code> 字段</td></tr><tr><td align="left"><code>$request_filename</code></td><td align="left">当前请求的文件路径，由 <code>root</code> 或alias指令与URI请求生成</td></tr><tr><td align="left"><code>$document_root</code></td><td align="left">当前请求在 <code>root</code> 指令中指定的值</td></tr><tr><td align="left"><code>$scheme</code></td><td align="left">HTTP方法（如http，https）</td></tr><tr><td align="left"><code>$host</code></td><td align="left">请求主机头字段，否则为服务器名称</td></tr><tr><td align="left"><code>$hostname</code></td><td align="left">主机名</td></tr><tr><td align="left"><code>$http_user_agent</code></td><td align="left">客户端<code>agent</code>信息</td></tr><tr><td align="left"><code>$http_cookie</code></td><td align="left">客户端<code>cookie</code>信息</td></tr><tr><td align="left"><code>$server_protocol</code></td><td align="left">请求使用的协议，通常是<code>HTTP/1.0</code>或<code>HTTP/1.1</code></td></tr><tr><td align="left"><code>$server_addr</code></td><td align="left">服务器地址，在完成一次系统调用后可以确定这个值</td></tr><tr><td align="left"><code>$server_name</code></td><td align="left">服务器名称</td></tr><tr><td align="left"><code>$server_port</code></td><td align="left">请求到达服务器的端口号</td></tr><tr><td align="left"><code>$limit_rate</code></td><td align="left">这个变量可以限制连接速率</td></tr><tr><td align="left"><code>$request_method</code></td><td align="left">客户端请求的动作，如 GET/POST</td></tr><tr><td align="left"><code>$request_uri</code></td><td align="left">包含请求参数的原始URI，不包含主机名，如：<code>/foo/bar.php?arg=baz</code></td></tr><tr><td align="left"><code>$remote_addr</code></td><td align="left">客户端的IP地址</td></tr><tr><td align="left"><code>$uri</code></td><td align="left">不带请求参数的当前URI，<code>$uri</code>不包含主机名，如 <code>/foo/bar.html</code></td></tr><tr><td align="left"><code>$document_uri</code></td><td align="left">与 <code>$uri</code> 相同</td></tr><tr><td align="left"><code>$nginx_version</code></td><td align="left"><code>nginx</code> 版本</td></tr></tbody></table>
+<p>更多全局变量<a href="https://nginx.org/en/docs/varindex.html">查看官方文档</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="监听端口"><a aria-hidden="true" tabindex="-1" href="#监听端口"><span class="icon icon-link"></span></a>监听端口</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>      <span class="token comment"># 标准 HTTP 协议</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">443</span> ssl</span><span class="token punctuation">;</span> <span class="token comment"># 标准 HTTPS 协议</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">443</span> ssl http2</span><span class="token punctuation">;</span> <span class="token comment"># 对于 http2</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> [::]:80</span><span class="token punctuation">;</span> <span class="token comment"># 使用 IPv6 在 80 上收听</span>
+</span><span class="code-line">  <span class="token comment"># 仅收听使用 IPv6</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> [::]:80 ipv6only=on</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="域名-server_name"><a aria-hidden="true" tabindex="-1" href="#域名-server_name"><span class="icon icon-link"></span></a>域名 (server_name)</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment"># 监听 example.com</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 监听多个域</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com www.example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 监听所有子域</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> *.example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 监听所有顶级域</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.*</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 监听未指定的主机名（监听 IP 地址本身）</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> <span class="token string">""</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="负载均衡简单实例"><a aria-hidden="true" tabindex="-1" href="#负载均衡简单实例"><span class="icon icon-link"></span></a>负载均衡(简单实例)</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> node_js</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 0.0.0.0:3000</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 0.0.0.0:4000</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.155.142.421</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="负载均衡权重"><a aria-hidden="true" tabindex="-1" href="#负载均衡权重"><span class="icon icon-link"></span></a>负载均衡(权重)</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> test</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8080 weight=9</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8081 weight=1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="upstream-ip_hash"><a aria-hidden="true" tabindex="-1" href="#upstream-ip_hash"><span class="icon icon-link"></span></a>upstream ip_hash</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> test</span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">  <span class="token directive"><span class="token keyword">ip_hash</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8081</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>解决负载均衡 <code>session</code> 的问题</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="upstream-fair"><a aria-hidden="true" tabindex="-1" href="#upstream-fair"><span class="icon icon-link"></span></a>upstream fair</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> backend</span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">  <span class="token directive"><span class="token keyword">fair</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8081</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>响应时间短的优先分配</p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="server-可选参数"><a aria-hidden="true" tabindex="-1" href="#server-可选参数"><span class="icon icon-link"></span></a>server 可选参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>weight</code></td><td align="left">访问权重数值越高，收到请求越多</td></tr><tr><td align="left"><code>fail_timeout</code></td><td align="left">指定的时间内必须提供响应</td></tr><tr><td align="left"><code>max_fails</code></td><td align="left">尝试失败服务器连接的最大次数</td></tr><tr><td align="left"><code>down</code></td><td align="left">标记一个服务器不再接受任何请求</td></tr><tr><td align="left"><code>backup</code></td><td align="left">有服务器宕机，标记的机器接收请求</td></tr></tbody></table>
+<p>配置示例</p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> test</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:83 weight=9</span><span class="token punctuation">;</span> <span class="token comment"># 权重</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:83 weight=1</span><span class="token punctuation">;</span> <span class="token comment"># 权重</span>
+</span><span class="code-line">  <span class="token comment"># 失败超时时间</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:83 max_fails=3</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:83 weight=3 down</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="upstream-url_hash"><a aria-hidden="true" tabindex="-1" href="#upstream-url_hash"><span class="icon icon-link"></span></a>upstream url_hash</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> backend</span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">  <span class="token directive"><span class="token keyword">hash</span> <span class="token variable">$request_uri</span></span><span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">  <span class="token directive"><span class="token keyword">hash_method</span> crc32</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8081</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>按访问url的hash结果来分配请求</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="upstream-keepalive"><a aria-hidden="true" tabindex="-1" href="#upstream-keepalive"><span class="icon icon-link"></span></a>upstream keepalive</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> memcached_backend</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:11211</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">server</span> 10.0.0.2:11211</span><span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">    <span class="token directive"><span class="token keyword">keepalive</span> <span class="token number">32</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>激活缓存以连接到上游服务器</p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="子文件夹中的代理"><a aria-hidden="true" tabindex="-1" href="#子文件夹中的代理"><span class="icon icon-link"></span></a>子文件夹中的代理</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line highlight-line"><span class="token directive"><span class="token keyword">location</span> /folder/</span> <span class="token punctuation">{</span> <span class="token comment"># / 很重要！</span>
+</span><span class="code-line highlight-line">  <span class="token directive"><span class="token keyword">proxy_pass</span> http://127.0.0.1:3000/</span><span class="token punctuation">;</span> <span class="token comment"># / 很重要！</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_redirect</span>      <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span>    Host            <span class="token variable">$host</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span>    X-Real-IP       <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span>    X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="反向代理"><a aria-hidden="true" tabindex="-1" href="#反向代理"><span class="icon icon-link"></span></a>反向代理</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="基础"><a aria-hidden="true" tabindex="-1" href="#基础"><span class="icon icon-link"></span></a>基础</h4><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_pass</span> http://0.0.0.0:3000</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># 其中 0.0.0.0:3000 是绑定在 </span>
+</span><span class="code-line">    <span class="token comment"># 0.0.0.0端口3000 列表上的 Node.js 服务器</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="基础--upstream"><a aria-hidden="true" tabindex="-1" href="#基础--upstream"><span class="icon icon-link"></span></a>基础 + (upstream)</h4><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> node_js</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 0.0.0.0:3000</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 其中 0.0.0.0:3000 是绑定在 </span>
+</span><span class="code-line">  <span class="token comment"># 0.0.0.0端口3000 列表上的 Node.js 服务器</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_pass</span> http://node_js</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="升级连接适用于支持-websockets-的应用程序"><a aria-hidden="true" tabindex="-1" href="#升级连接适用于支持-websockets-的应用程序"><span class="icon icon-link"></span></a>升级连接（适用于支持 WebSockets 的应用程序）</h4><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> node_js</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 0.0.0.0:3000</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_pass</span> http://node_js</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_redirect</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_http_version</span> 1.1</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_set_header</span> Upgrade <span class="token variable">$http_upgrade</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_set_header</span> Connection <span class="token string">"upgrade"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">	
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>适用于 Node.js、Streamlit、Jupyter 等</p>
+</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="静态资源传统-web-服务器"><a aria-hidden="true" tabindex="-1" href="#静态资源传统-web-服务器"><span class="icon icon-link"></span></a>静态资源（传统 Web 服务器）</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">root</span> /path/to/website</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># root /www/data/ 示例，如果里面没有'root'，它将寻找 /www/data/index.html</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /images/</span> <span class="token punctuation">{</span> <span class="token comment"># 如果里面没有“root”，它将寻找 /www/data/images/index.html</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /videos/</span> <span class="token punctuation">{</span> <span class="token comment"># 由于里面有“root”，它会寻找 /www/media/videos/index.html</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">root</span> /www/media</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="https-协议"><a aria-hidden="true" tabindex="-1" href="#https-协议"><span class="icon icon-link"></span></a>HTTPS 协议</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>大多数 SSL 选项取决于您的应用程序做什么或需要什么</p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">443</span> ssl http2</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_certificate</span> /path/to/cert.pem</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_certificate_key</span> /path/to/privkey.pem</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_stapling</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_stapling_verify</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_trusted_certificate</span> /path/to/fullchain.pem</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_protocols</span> TLSv1 TLSv1.1 TLSv1.2</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_session_timeout</span> <span class="token number">1d</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_session_cache</span> shared:SSL:50m</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">add_header</span> Strict-Transport-Security max-age=15768000</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>您可以使用 Let's Encrypt 轻松保护您的网站/应用程序。去 <a href="https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx.html">lets-encrypt</a> 获取更多信息</p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="重定向301永久"><a aria-hidden="true" tabindex="-1" href="#重定向301永久"><span class="icon icon-link"></span></a>重定向(301永久)</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>将 <a href="http://www.example.com">www.example.com</a> 重定向到 example.com</p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> www.example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">return</span> <span class="token number">301</span> http://example.com<span class="token variable">$request_uri</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>将 http 重定向到 https</p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">return</span> <span class="token number">301</span> https://example.com<span class="token variable">$request_uri</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="重定向302临时"><a aria-hidden="true" tabindex="-1" href="#重定向302临时"><span class="icon icon-link"></span></a>重定向(302临时)</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> yourdomain.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">return</span> <span class="token number">302</span> http://otherdomain.com</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="永久重定向到-https-安全域"><a aria-hidden="true" tabindex="-1" href="#永久重定向到-https-安全域"><span class="icon icon-link"></span></a>永久重定向到 HTTPS 安全域</h3><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> yourdomain.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">return</span> <span class="token number">301</span> https://<span class="token variable">$host</span><span class="token variable">$request_uri</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="重定向参数"><a aria-hidden="true" tabindex="-1" href="#重定向参数"><span class="icon icon-link"></span></a>重定向参数</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>permanent</code></td><td align="left">永久性重定向。日志中的状态码为 <code>301</code></td></tr><tr><td align="left"><code>redirect</code></td><td align="left">临时重定向。日志中的状态码为 <code>302</code></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="http-请求端真实的ip"><a aria-hidden="true" tabindex="-1" href="#http-请求端真实的ip"><span class="icon icon-link"></span></a>HTTP 请求端真实的IP</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h2><div class="wrap-body">
+<!--rehype:body-class=cols-6-->
+</div></div><div class="h2wrap-body cols-6"><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="websocket-的代理-keepalive"><a aria-hidden="true" tabindex="-1" href="#websocket-的代理-keepalive"><span class="icon icon-link"></span></a>websocket 的代理 keepalive</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token comment"># Upstreams</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> backend</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:3000</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">keepalive</span> <span class="token number">5</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment"># HTTP Server</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> your_hostname.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">error_log</span> /var/log/nginx/rocketchat.access.log</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_pass</span> http://backend</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_http_version</span> 1.1</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_set_header</span> Upgrade <span class="token variable">$http_upgrade</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_set_header</span> Connection <span class="token string">"upgrade"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$http_host</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forward-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forward-Proto http</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Nginx-Proxy true</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_redirect</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="apache-的反向代理"><a aria-hidden="true" tabindex="-1" href="#apache-的反向代理"><span class="icon icon-link"></span></a>Apache 的反向代理</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> domain.tld</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">access_log</span> /log/domain.tld.access.log</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">error_log</span> /log/domain.tld.error.log</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">root</span> /var/www/domain.tld/htdocs</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment"># 将请求传递给 Apache 后端</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_pass</span> http://backend</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token comment"># 使用后备处理静态文件</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|woff2|ttf|m4a|mp4|ttf|rss|atom|jpe?g|gif|cur|heic|png|tiff|ico|zip|webm|mp3|aac|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf|swf|webp)$</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">add_header</span> <span class="token string">"Access-Control-Allow-Origin"</span> <span class="token string">"*"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">access_log</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">log_not_found</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">expires</span> max</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">try_files</span> <span class="token variable">$uri</span> @fallback</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token comment"># 如果找不到文件，则回退以将请求传递给 Apache</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> @fallback</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_pass</span> http://backend</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-4 row-span-3"><div class="wrap-header h3wrap"><h3 id="gitlab-的反向代理"><a aria-hidden="true" tabindex="-1" href="#gitlab-的反向代理"><span class="icon icon-link"></span></a>Gitlab 的反向代理</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-4 row-span-3-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">#侦听的80端口</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span>  git.example.cn</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_pass</span>   http://localhost:3000</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># 以下是一些反向代理的配置可删除</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_redirect</span>             <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># 后端的Web服务器可以通过X-Forwarded-For获取用户真实IP</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_set_header</span>           Host <span class="token variable">$host</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">client_max_body_size</span>       <span class="token number">10m</span></span><span class="token punctuation">;</span>  <span class="token comment"># 允许客户端请求的最大单文件字节数</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">client_body_buffer_size</span>    <span class="token number">128k</span></span><span class="token punctuation">;</span> <span class="token comment"># 缓冲区代理缓冲用户端请求的最大字节数</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_connect_timeout</span>      <span class="token number">300</span></span><span class="token punctuation">;</span>  <span class="token comment"># nginx跟后端服务器连接超时时间(代理连接超时)</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_send_timeout</span>         <span class="token number">300</span></span><span class="token punctuation">;</span>  <span class="token comment"># 后端服务器数据回传时间(代理发送超时)</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_read_timeout</span>         <span class="token number">300</span></span><span class="token punctuation">;</span>  <span class="token comment"># 连接成功后，后端服务器响应时间(代理接收超时)</span>
+</span><span class="code-line">    <span class="token comment"># 设置代理服务器（nginx）保存用户头信息的缓冲区大小</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_buffer_size</span>          <span class="token number">4k</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># proxy_buffers缓冲区，网页平均在32k以下的话，这样设置</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_buffers</span>              <span class="token number">4</span> <span class="token number">32k</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># 高负荷下缓冲大小（proxy_buffers*2）</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_busy_buffers_size</span>    <span class="token number">64k</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="重定向整个网站"><a aria-hidden="true" tabindex="-1" href="#重定向整个网站"><span class="icon icon-link"></span></a>重定向整个网站</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> old-site.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">return</span> <span class="token number">301</span> <span class="token variable">$scheme</span>://new-site.com<span class="token variable">$request_uri</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="重定向单页"><a aria-hidden="true" tabindex="-1" href="#重定向单页"><span class="icon icon-link"></span></a>重定向单页</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> = /oldpage.html</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">return</span> <span class="token number">301</span> http://example.org/newpage.html</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="重定向整个子路径"><a aria-hidden="true" tabindex="-1" href="#重定向整个子路径"><span class="icon icon-link"></span></a>重定向整个子路径</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> /old-site</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">rewrite</span> ^/old-site/(.*) http://example.org/new-site/<span class="token variable">$1</span> permanent</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="负载均衡"><a aria-hidden="true" tabindex="-1" href="#负载均衡"><span class="icon icon-link"></span></a>负载均衡</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> example</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ip_hash</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># upstream的负载均衡，weight是权重，可以根据机器配置定义权重。</span>
+</span><span class="code-line">  <span class="token comment"># weigth参数表示权值，权值越高被分配到的几率越大。</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 192.168.122.11:8081</span> <span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:82 weight=3</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:83 weight=3 down</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:84 weight=3</span><span class="token punctuation">;</span> <span class="token directive"><span class="token keyword">max_fails=3</span>  fail_timeout=20s</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:85 weight=4</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">keepalive</span> <span class="token number">32</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">#侦听的80端口</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span>  git.example.cn</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token comment"># 在这里设置一个代理，和 upstream 的名字一样</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_pass</span>   http://example</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="内容缓存"><a aria-hidden="true" tabindex="-1" href="#内容缓存"><span class="icon icon-link"></span></a>内容缓存</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<p>允许浏览器基本上永久地缓存静态内容。 Nginx 将为您设置 Expires 和 Cache-Control 头信息</p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> /static</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">root</span> /data</span><span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">    <span class="token directive"><span class="token keyword">expires</span> max</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>如果要求浏览器永远不会缓存响应（例如用于跟踪请求），请使用 <code>-1</code></p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> = /empty.gif</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">empty_gif</span></span><span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">    <span class="token directive"><span class="token keyword">expires</span> -1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="跨域问题"><a aria-hidden="true" tabindex="-1" href="#跨域问题"><span class="icon icon-link"></span></a>跨域问题</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> api.xxx.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">    
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">add_header</span> <span class="token string">'Access-Control-Allow-Origin'</span> <span class="token string">'*'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">add_header</span> <span class="token string">'Access-Control-Allow-Credentials'</span> <span class="token string">'true'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">add_header</span> <span class="token string">'Access-Control-Allow-Methods'</span> <span class="token string">'GET,POST,HEAD'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_pass</span> http://127.0.0.1:3000</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_set_header</span> Host  <span class="token variable">$http_host</span></span><span class="token punctuation">;</span>    
+</span><span class="code-line">  <span class="token punctuation">}</span> 
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-3 row-span-2"><div class="wrap-header h3wrap"><h3 id="重定向-uri-来解决跨域问题"><a aria-hidden="true" tabindex="-1" href="#重定向-uri-来解决跨域问题"><span class="icon icon-link"></span></a>重定向 URI 来解决跨域问题</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3 row-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> test</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> localhost:8081</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> api.xxx.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span> 
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">root</span>  html</span><span class="token punctuation">;</span>                   <span class="token comment"># 去请求../html文件夹里的文件</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">index</span>  index.html index.htm</span><span class="token punctuation">;</span>  <span class="token comment"># 首页响应地址</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token comment"># 用于拦截请求，匹配任何以 /api/开头的地址，</span>
+</span><span class="code-line">  <span class="token comment"># 匹配符合以后，停止往下搜索正则。</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> ^~/api/</span><span class="token punctuation">{</span> 
+</span><span class="code-line">    <span class="token comment"># 代表重写拦截进来的请求，并且只能对域名后边的除去传递的参数外的字符串起作用</span>
+</span><span class="code-line">    <span class="token comment"># 例如www.a.com/api/msg?meth=1&#x26;par=2重写，只对/api/msg重写。</span>
+</span><span class="code-line">    <span class="token comment"># rewrite后面的参数是一个简单的正则 ^/api/(.*)$，</span>
+</span><span class="code-line">    <span class="token comment"># $1代表正则中的第一个()，$2代表第二个()的值，以此类推。</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">rewrite</span> ^/api/(.*)$ /<span class="token variable">$1</span> break</span><span class="token punctuation">;</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 把请求代理到其他主机 </span>
+</span><span class="code-line">    <span class="token comment"># 其中 http://www.b.com/ 写法和 http://www.b.com写法的区别如下</span>
+</span><span class="code-line">    <span class="token comment"># 如果你的请求地址是他 http://server/html/test.jsp</span>
+</span><span class="code-line">    <span class="token comment"># 配置一： http://www.b.com/ 后面有“/” </span>
+</span><span class="code-line">    <span class="token comment">#         将反向代理成 http://www.b.com/html/test.jsp 访问</span>
+</span><span class="code-line">    <span class="token comment"># 配置一： http://www.b.com 后面没有有“/” </span>
+</span><span class="code-line">    <span class="token comment">#         将反向代理成 http://www.b.com/test.jsp 访问</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_pass</span> http://test</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment"># 如果 proxy_pass  URL 是 http://a.xx.com/platform/ 这种情况</span>
+</span><span class="code-line">    <span class="token comment"># proxy_cookie_path应该设置成 /platform/ / (注意两个斜杠之间有空格)。</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_cookie_path</span> /platfrom/ /</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment"># 设置 Cookie 头通过</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">proxy_pass_header</span> Set-Cookie</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span> 
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="跳转到带-www-的域上面"><a aria-hidden="true" tabindex="-1" href="#跳转到带-www-的域上面"><span class="icon icon-link"></span></a>跳转到带 www 的域上面</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 配置正常的带www的域名</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> www.wangchujiang.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">root</span> /home/www/wabg/download</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span>/ /index.html =404</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment"># 将不带 www 的 wangchujiang.com </span>
+</span><span class="code-line">  <span class="token comment"># 永久性重定向到 https://www.wangchujiang.com</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> wangchujiang.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">rewrite</span> ^(.*) https://www.wangchujiang.com<span class="token variable">$1</span> permanent</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="代理转发"><a aria-hidden="true" tabindex="-1" href="#代理转发"><span class="icon icon-link"></span></a>代理转发</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> server-api</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment"># api 代理服务地址</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:3110</span><span class="token punctuation">;</span>    
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">upstream</span> server-resource</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment"># 静态资源 代理服务地址</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:3120</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">3111</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span> <span class="token comment"># 这里指定域名</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">root</span> /home/www/server-statics</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 匹配 api 路由的反向代理到API服务</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> ^~/api/</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">rewrite</span> ^/(.*)$ /<span class="token variable">$1</span> break</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_pass</span> http://server-api</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token comment"># 假设这里验证码也在API服务中</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> ^~/captcha</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">rewrite</span> ^/(.*)$ /<span class="token variable">$1</span> break</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_pass</span> http://server-api</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token comment"># 假设你的图片资源全部在另外一个服务上面</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> ^~/img/</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">rewrite</span> ^/(.*)$ /<span class="token variable">$1</span> break</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">proxy_pass</span> http://server-resource</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token comment"># 路由在前端，后端没有真实路由，</span>
+</span><span class="code-line">  <span class="token comment"># 路由不存在的 404 状态的页面返回 /index.html</span>
+</span><span class="code-line">  <span class="token comment"># 使用场景，用在 React/Vue项目没有真实路由</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span>/ /index.html =404</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment">#                      空格很重要 ^</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-4"><div class="wrap-header h3wrap"><h3 id="屏蔽-ip"><a aria-hidden="true" tabindex="-1" href="#屏蔽-ip"><span class="icon icon-link"></span></a>屏蔽 IP</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-4-->
+<p>可以放到 <code>http</code>, <code>server</code>, <code>location</code>, <code>limit_except</code> 语句块</p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">include</span> blockip.conf</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>在 <code>blockip.conf</code> 里面输入内容，如：</p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">deny</span> 165.91.122.67</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token directive"><span class="token keyword">deny</span> IP</span><span class="token punctuation">;</span>            <span class="token comment"># 屏蔽单个 ip 访问</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">allow</span> IP</span><span class="token punctuation">;</span>           <span class="token comment"># 允许单个 ip 访问</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>           <span class="token comment"># 屏蔽所有 ip 访问</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">allow</span> all</span><span class="token punctuation">;</span>          <span class="token comment"># 允许所有 ip 访问</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">deny</span> 123.0.0.0/8</span><span class="token punctuation">;</span>   <span class="token comment"># 屏蔽整个段即从 123.0.0.1 到 123.255.255.254 访问的命令</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">deny</span> 124.45.0.0/16</span><span class="token punctuation">;</span> <span class="token comment"># 屏蔽IP段即从 123.45.0.1 到 123.45.255.254 访问的命令</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">deny</span> 123.45.6.0/24</span><span class="token punctuation">;</span> <span class="token comment"># 屏蔽IP段即从 123.45.6.1 到 123.45.6.254 访问的命令</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 如果你想实现这样的应用，除了几个IP外，其他全部拒绝</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">allow</span> 1.1.1.1</span><span class="token punctuation">;</span> 
+</span><span class="code-line"><span class="token directive"><span class="token keyword">allow</span> 1.1.1.2</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span> 
+</span></code></pre>
+</div></div></div><div class="wrap col-span-4"><div class="wrap-header h3wrap"><h3 id="强制将-http-重定向到-https"><a aria-hidden="true" tabindex="-1" href="#强制将-http-重定向到-https"><span class="icon icon-link"></span></a>强制将 http 重定向到 https</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-4-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span>  example.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">rewrite</span> ^ https://<span class="token variable">$http_host</span><span class="token variable">$request_uri?</span> permanent</span><span class="token punctuation">;</span> <span class="token comment"># 强制将 http 重定向到 https</span>
+</span><span class="code-line">  <span class="token comment"># 在错误页面和“服务器”响应头字段中启用或禁用发射nginx版本。 防止黑客利用版本漏洞攻击</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server_tokens</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="代理转发连接替换"><a aria-hidden="true" tabindex="-1" href="#代理转发连接替换"><span class="icon icon-link"></span></a>代理转发连接替换</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ^~/api/upload</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">rewrite</span> ^/(.*)$ /wfs/v1/upload break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_pass</span> http://wfs-api</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>将地址 <code>/api/upload</code> 替换为 <code>/wfs/v1/upload</code></p>
+</div></div></div><div class="wrap col-span-4"><div class="wrap-header h3wrap"><h3 id="爬虫-user-agent-过滤"><a aria-hidden="true" tabindex="-1" href="#爬虫-user-agent-过滤"><span class="icon icon-link"></span></a>爬虫 User-Agent 过滤</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-4-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">if</span> (<span class="token variable">$http_user_agent</span> ~* <span class="token string">"python|curl|java|wget|httpclient|okhttp"</span>)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">return</span> <span class="token number">503</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token comment"># 正常处理</span>
+</span><span class="code-line">  <span class="token comment"># ...</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="图片防盗链"><a aria-hidden="true" tabindex="-1" href="#图片防盗链"><span class="icon icon-link"></span></a>图片防盗链</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~* \.(gif|jpg|png|swf|flv)$</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">root</span> html</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">valid_referers</span> none blocked *.nginx.com</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">if</span> (<span class="token variable">$invalid_referer</span>)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">rewrite</span> ^/ www.nginx.cn</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># return 404;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="虚拟目录配置"><a aria-hidden="true" tabindex="-1" href="#虚拟目录配置"><span class="icon icon-link"></span></a>虚拟目录配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> /img/</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">alias</span> /var/www/image/</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment"># 访问 /img/ 目录里面的文件时，</span>
+</span><span class="code-line"><span class="token comment"># 会自动去 /var/www/image/ 目录找文件</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">location</span> /img/</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">root</span> /var/www/image</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment"># 访问 /img/ 目录下的文件时，</span>
+</span><span class="code-line"><span class="token comment"># 会去 /var/www/image/img/ 目录下找文件</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="屏蔽-git-等文件"><a aria-hidden="true" tabindex="-1" href="#屏蔽-git-等文件"><span class="icon icon-link"></span></a>屏蔽 .git 等文件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~ (.git|.gitattributes|.gitignore|.svn)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-4"><div class="wrap-header h3wrap"><h3 id="防盗图配置"><a aria-hidden="true" tabindex="-1" href="#防盗图配置"><span class="icon icon-link"></span></a>防盗图配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-4-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~ \/public\/(css|js|img)\/.*\.(js|css|gif|jpg|jpeg|png|bmp|swf)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">valid_referers</span> none blocked *.jslite.io</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">if</span> (<span class="token variable">$invalid_referer</span>)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">rewrite</span> ^/  http://wangchujiang.com/piratesp.png</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://jaywcjlove.github.io/nginx-tutorial">Nginx 安装维护入门学习笔记</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
