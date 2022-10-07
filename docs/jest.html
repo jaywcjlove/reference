@@ -37,7 +37,9 @@
 </script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="jest-备忘清单"><a aria-hidden="true" tabindex="-1" href="#jest-备忘清单"><span class="icon icon-link"></span></a>Jest 备忘清单</h1><div class="wrap-body">
 <p>Jest 是一款优雅、简洁的 JavaScript 测试框架。</p>
 </div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<!--rehype:body-class=cols-6-->
+</div></div><div class="h2wrap-body cols-6"><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 <p><a href="https://jestjs.io/">Jest</a> 是一款优雅、简洁的 JavaScript 测试框架。</p>
 <ul>
 <li><code>无需配置</code> 大多数 JS 项目中即装即用，无需配置</li>
@@ -46,8 +48,37 @@
 <li><code>快照</code> 轻松编写持续追踪大型对象的测试，并在测试旁或代码内显示实时快照。</li>
 <li><code>代码覆盖</code> 无需其他操作，您仅需添加 <code>--coverage</code> 参数来生成代码覆盖率报告。</li>
 </ul>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="测试结构"><a aria-hidden="true" tabindex="-1" href="#测试结构"><span class="icon icon-link"></span></a>测试结构</h3><div class="wrap-body">
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> --save-dev jest
+</span></code></pre>
+<p>Add to <code>package.json</code></p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token string-property property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token string-property property">"test"</span><span class="token operator">:</span> <span class="token string">"jest"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>运行你的测试</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token builtin class-name">test</span> -- <span class="token parameter variable">--watch</span>
+</span></code></pre>
+<p>查看: <a href="https://jestjs.io/docs/getting-started">Getting started</a></p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="编写测试"><a aria-hidden="true" tabindex="-1" href="#编写测试"><span class="icon icon-link"></span></a>编写测试</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'My work'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'works'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">toEqual</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="bdd-语法"><a aria-hidden="true" tabindex="-1" href="#bdd-语法"><span class="icon icon-link"></span></a>BDD 语法</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'My work'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'works'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span> <span class="token comment">// `it`是`test`的别名</span>
+</span><span class="code-line">    ···
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-3 row-span-2"><div class="wrap-header h3wrap"><h3 id="测试结构"><a aria-hidden="true" tabindex="-1" href="#测试结构"><span class="icon icon-link"></span></a>测试结构</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3 row-span-2-->
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'makePoniesPink'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token function">beforeAll</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
 </span><span class="code-line">    <span class="token comment">/* 在所有测试之前运行 */</span>
@@ -66,6 +97,58 @@
 </span><span class="code-line">    <span class="token function">expect</span><span class="token punctuation">(</span>actual<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">toEqual</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Pink Alice'</span><span class="token punctuation">,</span> <span class="token string">'Pink Bob'</span><span class="token punctuation">,</span> <span class="token string">'Pink Eve'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="聚焦测试"><a aria-hidden="true" tabindex="-1" href="#聚焦测试"><span class="icon icon-link"></span></a>聚焦测试</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">describe<span class="token punctuation">.</span><span class="token method function property-access">only</span><span class="token punctuation">(</span>···<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">it<span class="token punctuation">.</span><span class="token method function property-access">only</span><span class="token punctuation">(</span>···<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 别名: fit()</span>
+</span></code></pre>
+<p>查看: <a href="https://jestjs.io/docs/api#testonlyname-fn-timeout">test.only</a></p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="可选参数"><a aria-hidden="true" tabindex="-1" href="#可选参数"><span class="icon icon-link"></span></a>可选参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Description</th></tr></thead><tbody><tr><td><code>--coverage</code></td><td>查看测试覆盖率摘要</td></tr><tr><td><code>--detectOpenHandles</code></td><td>查看未关闭端口的摘要</td></tr><tr><td><code>--runInBand</code></td><td>一个接一个地运行所有测试</td></tr><tr><td><code>--bail,-b</code></td><td>失败跳出测试</td></tr></tbody></table>
+<p>更多参数查看 <a href="https://jestjs.io/docs/next/cli#--bailn">Jest CLI Options</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="跳过测试"><a aria-hidden="true" tabindex="-1" href="#跳过测试"><span class="icon icon-link"></span></a>跳过测试</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">describe<span class="token punctuation">.</span><span class="token method function property-access">skip</span><span class="token punctuation">(</span>···<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">it<span class="token punctuation">.</span><span class="token method function property-access">skip</span><span class="token punctuation">(</span>···<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 别名: xit()</span>
+</span></code></pre>
+<p>查看: <a href="https://jestjs.io/docs/next/api#testskipname-fn">test.skip</a></p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="基本测试用例"><a aria-hidden="true" tabindex="-1" href="#基本测试用例"><span class="icon icon-link"></span></a>基本测试用例</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">expect</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">not</span><span class="token punctuation">.</span><span class="token method function property-access">toBe</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token method function property-access">toEqual</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token method function property-access">toBeTruthy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Errors 测试</span>
+</span><span class="code-line"><span class="token function">expect</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">toThrow</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token method function property-access">toThrowErrorMatchingSnapshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="匹配器"><a aria-hidden="true" tabindex="-1" href="#匹配器"><span class="icon icon-link"></span></a>匹配器</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="基本匹配器"><a aria-hidden="true" tabindex="-1" href="#基本匹配器"><span class="icon icon-link"></span></a>基本匹配器</h3><div class="wrap-body">
@@ -517,7 +600,7 @@
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span></code></pre>
 <p><a href="https://jestjs.io/docs/en/api#describeeachtablename-fn-timeout">describe.each()</a> 文档、<a href="https://jestjs.io/docs/en/api#testeachtablename-fn-timeout">test.each()</a> 文档</p>
-</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="跳过测试"><a aria-hidden="true" tabindex="-1" href="#跳过测试"><span class="icon icon-link"></span></a>跳过测试</h2><div class="wrap-body">
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="跳过测试-1"><a aria-hidden="true" tabindex="-1" href="#跳过测试-1"><span class="icon icon-link"></span></a>跳过测试</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="不要运行这些测试"><a aria-hidden="true" tabindex="-1" href="#不要运行这些测试"><span class="icon icon-link"></span></a>不要运行这些测试</h3><div class="wrap-body">
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line">describe<span class="token punctuation">.</span><span class="token method function property-access">skip</span><span class="token punctuation">(</span><span class="token string">'makePoniesPink'</span><span class="token spread operator">...</span>
