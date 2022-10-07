@@ -5,8 +5,10 @@ Jest 是一款优雅、简洁的 JavaScript 测试框架。
 
 入门
 ----
+<!--rehype:body-class=cols-6-->
 
 ### 介绍
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 [Jest](https://jestjs.io/) 是一款优雅、简洁的 JavaScript 测试框架。
 
@@ -16,8 +18,55 @@ Jest 是一款优雅、简洁的 JavaScript 测试框架。
 - `快照` 轻松编写持续追踪大型对象的测试，并在测试旁或代码内显示实时快照。
 - `代码覆盖` 无需其他操作，您仅需添加 `--coverage` 参数来生成代码覆盖率报告。
 
-### 测试结构
+### 快速开始
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```bash
+npm install --save-dev jest
+```
+
+Add to `package.json`
+
+```js
+"scripts": {
+  "test": "jest"
+}
+```
+
+运行你的测试
+
+```bash
+npm test -- --watch
+```
+
+查看: [Getting started](https://jestjs.io/docs/getting-started)
+
+### 编写测试
 <!--rehype:wrap-class=col-span-2-->
+
+```js
+describe('My work', () => {
+  test('works', () => {
+    expect(2).toEqual(2)
+  })
+})
+```
+
+### BDD 语法
+<!--rehype:wrap-class=col-span-2-->
+
+```js {2}
+describe('My work', () => {
+  it('works', () => { // `it`是`test`的别名
+    ···
+  })
+})
+```
+
+
+
+### 测试结构
+<!--rehype:wrap-class=col-span-3 row-span-2-->
 
 ```js
 describe('makePoniesPink', () => {
@@ -38,6 +87,52 @@ describe('makePoniesPink', () => {
     expect(actual).toEqual(['Pink Alice', 'Pink Bob', 'Pink Eve'])
   })
 })
+```
+
+### 聚焦测试
+
+```js
+describe.only(···)
+
+it.only(···)
+// 别名: fit()
+```
+
+查看: [test.only](https://jestjs.io/docs/api#testonlyname-fn-timeout)
+
+### 可选参数
+<!--rehype:wrap-class=col-span-2-->
+
+| Flag                  | Description                              |
+| --------------------- | ---------------------------------------- |
+| `--coverage`          | 查看测试覆盖率摘要 |
+| `--detectOpenHandles` | 查看未关闭端口的摘要 |
+| `--runInBand`         | 一个接一个地运行所有测试 |
+| `--bail,-b`         | 失败跳出测试 |
+
+更多参数查看 [Jest CLI Options](https://jestjs.io/docs/next/cli#--bailn)
+
+### 跳过测试
+
+```js
+describe.skip(···)
+
+it.skip(···)
+// 别名: xit()
+```
+
+查看: [test.skip](https://jestjs.io/docs/next/api#testskipname-fn)
+
+### 基本测试用例
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect(value).not.toBe(value)
+  .toEqual(value)
+  .toBeTruthy()
+// Errors 测试
+expect(value).toThrow(error)
+  .toThrowErrorMatchingSnapshot()
 ```
 
 匹配器
