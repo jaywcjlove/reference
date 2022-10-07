@@ -23,11 +23,13 @@ Quick Reference
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198/var(\-\-bg\-opacity));-->
+[YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 工具包
 
 [Emmet](./docs/emmet.md)<!--rehype:style=background: rgb(122 203 23/var(\-\-bg\-opacity));-->
+[nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));-->
 [npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141/var(\-\-bg\-opacity));-->
@@ -38,7 +40,6 @@ Quick Reference
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 [Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8/var(\-\-bg\-opacity));-->
 [XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
-[YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## Linux 命令
