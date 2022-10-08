@@ -37,10 +37,12 @@
 </script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="nginx-备忘清单"><a aria-hidden="true" tabindex="-1" href="#nginx-备忘清单"><span class="icon icon-link"></span></a>NGINX 备忘清单</h1><div class="wrap-body">
 <p>这个 nginx 快速参考备忘单显示了它的常用命和配置使用清单。</p>
 </div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="服务管理"><a aria-hidden="true" tabindex="-1" href="#服务管理"><span class="icon icon-link"></span></a>服务管理</h3><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="服务管理"><a aria-hidden="true" tabindex="-1" href="#服务管理"><span class="icon icon-link"></span></a>服务管理</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> systemctl status nginx <span class="token comment"># nginx当前状态</span>
 </span><span class="code-line"><span class="token function">sudo</span> systemctl reload nginx <span class="token comment"># 重新加载 nginx</span>
 </span><span class="code-line"><span class="token function">sudo</span> systemctl restart nginx <span class="token comment"># 重启nginx</span>
+</span><span class="code-line">
 </span><span class="code-line"><span class="token function">sudo</span> nginx <span class="token parameter variable">-t</span>   <span class="token comment"># 检查语法</span>
 </span><span class="code-line">nginx           <span class="token comment"># 启动</span>
 </span><span class="code-line">nginx <span class="token parameter variable">-s</span> reload <span class="token comment"># 重启</span>
@@ -48,16 +50,16 @@
 </span><span class="code-line">nginx <span class="token parameter variable">-s</span> quit   <span class="token comment"># 平滑关闭nginx</span>
 </span><span class="code-line">nginx <span class="token parameter variable">-V</span>        <span class="token comment"># 查看nginx的安装状态，</span>
 </span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="docker-安装"><a aria-hidden="true" tabindex="-1" href="#docker-安装"><span class="icon icon-link"></span></a>Docker 安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">docker</span> run <span class="token parameter variable">--name</span> some-nginx <span class="token parameter variable">-v</span> /some/content:/usr/share/nginx/html:ro <span class="token parameter variable">-d</span> nginx
+</span></code></pre>
 </div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="简单代理"><a aria-hidden="true" tabindex="-1" href="#简单代理"><span class="icon icon-link"></span></a>简单代理</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 <pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_pass</span> http://127.0.0.1:3000</span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_redirect</span>      <span class="token boolean">off</span></span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span>    Host <span class="token variable">$host</span></span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token comment"># 客户端的 IP 地址</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span>    X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token comment"># HTTP 请求端真实的IP</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
 </div></div></div><div class="wrap col-span-2 row-span-4"><div class="wrap-header h3wrap"><h3 id="全局变量"><a aria-hidden="true" tabindex="-1" href="#全局变量"><span class="icon icon-link"></span></a>全局变量</h3><div class="wrap-body">
@@ -763,13 +765,25 @@
 </span><span class="code-line"><span class="token comment"># 访问 /img/ 目录下的文件时，</span>
 </span><span class="code-line"><span class="token comment"># 会去 /var/www/image/img/ 目录下找文件</span>
 </span></code></pre>
-</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="屏蔽-git-等文件"><a aria-hidden="true" tabindex="-1" href="#屏蔽-git-等文件"><span class="icon icon-link"></span></a>屏蔽 .git 等文件</h3><div class="wrap-body">
-<!--rehype:wrap-class=col-span-2-->
-<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~ (.git|.gitattributes|.gitignore|.svn)</span> <span class="token punctuation">{</span>
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="屏蔽文件目录"><a aria-hidden="true" tabindex="-1" href="#屏蔽文件目录"><span class="icon icon-link"></span></a>屏蔽文件目录</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>通用备份和归档文件</p>
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~* <span class="token string">"\.(old|orig|original|php#|php~|php_bak|save|swo|aspx?|tpl|sh|bash|bak?|cfg|cgi|dll|exe|git|hg|ini|jsp|log|mdb|out|sql|svn|swp|tar|rdf)$"</span></span> <span class="token punctuation">{</span>
 </span><span class="code-line">    <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
 <!--rehype:className=wrap-text -->
+<p>拒绝访问 <code>.git</code> 和 <code>.svn</code> 目录</p>
+<pre class="wrap-text "><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~ (.git|.svn)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>拒绝访问隐藏文件和目录</p>
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~ /\.(?!well-known\/)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
 </div></div></div><div class="wrap col-span-4"><div class="wrap-header h3wrap"><h3 id="防盗图配置"><a aria-hidden="true" tabindex="-1" href="#防盗图配置"><span class="icon icon-link"></span></a>防盗图配置</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-4-->
 <pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~ \/public\/(css|js|img)\/.*\.(js|css|gif|jpg|jpeg|png|bmp|swf)</span> <span class="token punctuation">{</span>
@@ -779,9 +793,48 @@
 </span><span class="code-line">  <span class="token punctuation">}</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="阻止常见攻击"><a aria-hidden="true" tabindex="-1" href="#阻止常见攻击"><span class="icon icon-link"></span></a>阻止常见攻击</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="base64编码的网址"><a aria-hidden="true" tabindex="-1" href="#base64编码的网址"><span class="icon icon-link"></span></a>base64编码的网址</h4><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~* <span class="token string">"(base64_encode)(.*)(\()"</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="javascript-eval-url"><a aria-hidden="true" tabindex="-1" href="#javascript-eval-url"><span class="icon icon-link"></span></a>javascript eval() url</h4><div class="wrap-body">
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">location</span> ~* <span class="token string">"(eval\()"</span></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token directive"><span class="token keyword">deny</span> all</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap col-span-4 row-span-2"><div class="wrap-header h3wrap"><h3 id="gzip-配置"><a aria-hidden="true" tabindex="-1" href="#gzip-配置"><span class="icon icon-link"></span></a>Gzip 配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-4 row-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">gzip</span>  <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">gzip_buffers</span> <span class="token number">16</span> <span class="token number">8k</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">gzip_comp_level</span> <span class="token number">6</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">gzip_http_version</span> 1.1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">gzip_min_length</span> <span class="token number">256</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">gzip_proxied</span> any</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">gzip_vary</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">gzip_types</span>
+</span></span><span class="code-line"><span class="token directive">    text/xml application/xml application/atom+xml application/rss+xml application/xhtml+xml image/svg+xml
+</span></span><span class="code-line"><span class="token directive">    text/javascript application/javascript application/x-javascript
+</span></span><span class="code-line"><span class="token directive">    text/x-json application/json application/x-web-app-manifest+json
+</span></span><span class="code-line"><span class="token directive">    text/css text/plain text/x-component
+</span></span><span class="code-line"><span class="token directive">    font/opentype application/x-font-ttf application/vnd.ms-fontobject
+</span></span><span class="code-line"><span class="token directive">    image/x-icon</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token directive"><span class="token keyword">gzip_disable</span>  <span class="token string">"msie6"</span></span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="使网站不可索引"><a aria-hidden="true" tabindex="-1" href="#使网站不可索引"><span class="icon icon-link"></span></a>使网站不可索引</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">add_header</span> X-Robots-Tag <span class="token string">"noindex"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token directive"><span class="token keyword">location</span> = /robots.txt</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">return</span> <span class="token number">200</span> <span class="token string">"User-agent: *<span class="token escape entity">\n</span>Disallow: /<span class="token escape entity">\n</span>"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://jaywcjlove.github.io/nginx-tutorial">Nginx 安装维护入门学习笔记</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://virtubox.github.io/advanced-nginx-cheatsheet/"></a> <em>(virtubox.github.io)</em></li>
 </ul>
 </div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
 </html>
