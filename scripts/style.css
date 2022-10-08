@@ -212,7 +212,7 @@ table.show-header thead {
 }
 
 tt, code {
-  font-family: ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,monospace;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
   font-size: 1em;
 }
 pre:only-child {
@@ -222,7 +222,7 @@ pre:only-child {
 pre {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,monospace;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
   word-wrap: normal;
   line-height: 1.5;
   overflow: hidden;
@@ -292,22 +292,34 @@ body.home .h1wrap p {
   grid-template-columns: repeat(2,minmax(0,1fr));
 }
 
+[data-color-mode*='light'] body .home-card a {
+  --text-opacity: 0.75;
+  color: rgb(15 19 24/var(--text-opacity));
+}
+[data-color-mode*='light'] body .home-card a:hover {
+  --text-opacity: 0.85;
+  color: rgb(241 245 249/var(--text-opacity)) !important;
+}
 .home-card a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 0rem 1rem;
+  height: 4rem;
   box-shadow: 0 0 #0000,0 0 #0000,0 1px 2px 0 rgba(0,0,0,0.05);
   color: var(--color-fg-default);
+  --text-opacity: 0.75;
+  color: rgb(241 245 249/var(--text-opacity));
   --bg-opacity: 0.5;
   background-color: rgb(62 69 72/var(--bg-opacity));
   transition: all .3s;
+  text-decoration: none;
 }
 .home-card a:hover {
   --bg-opacity: 1;
-  color: var(--color-bg-subtle);
+  --text-opacity: 0.75;
 }
 .home-card a svg {
   min-width: 1.6rem;
