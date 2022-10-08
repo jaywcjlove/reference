@@ -12,9 +12,9 @@ React 备忘清单
 React 是一个用于构建用户界面的 JavaScript 库。
 
 - [React 官方文档](https://reactjs.org/) _(reactjs.org)_
+- [Styled Components 备忘清单](./styled-components.md) _(jaywcjlove.github.io)_
 
 ```js
-import React from 'react'
 import {createRoot} from 'react-dom/client'
 import App from './App'
 ```
@@ -46,14 +46,15 @@ import ReactDOM from 'react-dom'
 export class Hello extends Component {
   ...
 }
+export default function World() {
+  /* ... */
+}
 ```
 
-使用 `export` 或者 `export default` 导出 `Hello` 组件
+使用 `export` 导出 **`Hello`**，`export default` 导出 **`World`** 组件
 
 ```jsx
-import { Hello } from './hello.js';
-
-const Example = <Hello />;
+import World, { Hello } from './hello.js';
 ```
 
 使用 `import` 导入 `Hello` 组件，在示例中使用。
