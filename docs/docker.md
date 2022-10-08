@@ -25,12 +25,13 @@ $ docker run -d -p 80:80 docker/getting-started
 在前台创建并运行容器
 
 ```shell
-$ docker run -it -p 8001:8080 --name my-nginx nginx
+$ docker run -it -p --rm 8001:8080 --name my-nginx nginx
 ```
 
 ----
 
 - `-it` - 交互式 bash 模式
+- `--rm` - 容器终止运行后自动删除容器文件
 - `-p 8001:8080` - 将 `8001` 端口映射到容器中的 `8080` 端口
 - `--name my-nginx` - 指定名称
 - `nginx` - 要使用的镜像

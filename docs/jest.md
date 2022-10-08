@@ -63,8 +63,6 @@ describe('My work', () => {
 })
 ```
 
-
-
 ### 测试结构
 <!--rehype:wrap-class=col-span-3 row-span-2-->
 
@@ -133,6 +131,97 @@ expect(value).not.toBe(value)
 // Errors 测试
 expect(value).toThrow(error)
   .toThrowErrorMatchingSnapshot()
+```
+
+### 快照
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect(value)
+  .toMatchSnapshot()
+  .toMatchInlineSnapshot()
+```
+
+### Errors
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect(value)
+  .toThrow(error)
+  .toThrowErrorMatchingSnapshot()
+```
+
+### Objects
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect(value)
+  .toBeInstanceOf(Class)
+  .toMatchObject(object)
+  .toHaveProperty(keyPath, value)
+```
+
+### Objects
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect(value)
+  .toContain(item)
+  .toContainEqual(item)
+  .toHaveLength(number)
+```
+
+### Numbers
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect(value)
+  .toBeCloseTo(number, numDigits)
+  .toBeGreaterThan(number)
+  .toBeGreaterThanOrEqual(number)
+  .toBeLessThan(number)
+  .toBeLessThanOrEqual(number)
+```
+
+### Booleans
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect(value)
+  .toBeFalsy()
+  .toBeNull()
+  .toBeTruthy()
+  .toBeUndefined()
+  .toBeDefined()
+```
+
+### Strings
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect(value)
+  .toMatch(regexpOrString)
+```
+
+### NaN
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+test('当值为 NaN 时通过', () => {
+  expect(NaN).toBeNaN();
+  expect(1).not.toBeNaN();
+});
+```
+
+### Others
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+expect.extend(matchers)
+expect.any(constructor)
+expect.addSnapshotSerializer(serializer)
+
+expect.assertions(1)
 ```
 
 匹配器
@@ -388,8 +477,6 @@ expect(fn).toThrowErrorMatchingSnapshot()
 ### 实例
 <!--rehype:wrap-class=row-span-2-->
 
-请参阅 Jest 文档中的 [更多示例](https://jestjs.io/docs/en/tutorial-async)。
-
 在异步测试中指定一些预期的断言是一个很好的做法，所以如果你的断言根本没有被调用，测试将会失败。
 
 ```js
@@ -409,6 +496,7 @@ beforeEach(expect.hasAssertions)
 ```
 
 这将验证每个测试用例至少存在一个断言。 它还可以与更具体的 `expect.assertions(3)` 声明配合使用。
+请参阅 Jest 文档中的 [更多示例](https://jestjs.io/docs/en/tutorial-async)
 
 ### async/await
 
@@ -432,8 +520,8 @@ test('async test', (done) => {
   
   setTimeout(() => {
     try {
-      const result = getAsyncOperationResult()
-      expect(result).toBe(true)
+      const res = getAsyncOperatResult()
+      expect(res).toBe(true)
       done()
     } catch (err) {
       done.fail(err)
@@ -469,18 +557,28 @@ test('call the callback', () => {
   const callback = jest.fn()
   fn(callback)
   expect(callback).toBeCalled()
-  expect(callback.mock.calls[0][1].baz).toBe('pizza') // 第一次调用的第二个参数
+  expect(callback.mock.calls[0][1].baz)
+    .toBe('pizza') // 第一次调用的第二个参数
+  
   // 匹配第一个和最后一个参数，但忽略第二个参数
-  expect(callback).toHaveBeenLastCalledWith('meal', expect.anything(), 'margarita')
+  expect(callback)
+    .toHaveBeenLastCalledWith(
+      'meal',
+      expect.anything(),
+      'margarita'
+    )
 })
 ```
+<!--rehype:className=wrap-text -->
 
 您还可以使用快照：
 
 ```js
 test('call the callback', () => {
   // mockName 在 Jest 22+ 中可用
-  const callback = jest.fn().mockName('Unicorn') 
+  const callback = jest.fn()
+    .mockName('Unicorn')
+
   fn(callback)
   expect(callback).toMatchSnapshot()
   // ->
@@ -506,6 +604,7 @@ const callback = jest.fn(() => true)
 ```js
 const callback
     = jest.fn().mockReturnValue(true)
+
 const callbackOnce
     = jest.fn().mockReturnValueOnce(true)
 ```
@@ -513,26 +612,29 @@ const callbackOnce
 或解析值：
 
 ```js
-const promise 
+const promise
     = jest.fn().mockResolvedValue(true)
-const promiseOnce 
+
+const promiseOnce
     = jest.fn().mockResolvedValueOnce(true)
 ```
 
 他们甚至可以拒绝值：
 
 ```js
-const failedPromise
-    = jest.fn().mockRejectedValue('Error')
-const failedPromiseOnce
-    = jest.fn().mockRejectedValueOnce('Error')
+const failedPromise =
+  jest.fn().mockRejectedValue('Error')
+
+const failedPromiseOnce =
+  jest.fn().mockRejectedValueOnce('Error')
 ```
 
 你甚至可以结合这些：
 
 ```js
-const callback
-    = jest.fn().mockReturnValueOnce(false).mockReturnValue(true)
+const callback = jest.fn()
+        .mockReturnValueOnce(false)
+        .mockReturnValue(true)
 // ->
 //  call 1: false
 //  call 2+: true
@@ -541,13 +643,20 @@ const callback
 ### 使用 `jest.mock` 方法模拟模块
 
 ```js
-jest.mock('lodash/memoize', () => (a) => a) // The original lodash/memoize should exist
-jest.mock('lodash/memoize', () => (a) => a, { virtual: true }) // The original lodash/memoize isn’t required
+// 原来的 lodash/memoize 应该存在
+jest.mock(
+  'lodash/memoize',
+  () => (a) => a
+)
+// 不需要原始的 lodash/memoize
+jest.mock(
+  'lodash/memoize',
+  () => (a) => a,
+  { virtual: true }
+)
 ```
 
-[jest.mock docs](https://jestjs.io/docs/en/jest-object#jestmockmodulename-factory-options)
-
-> 注意：当使用 `babel-jest` 时，对 `jest.mock` 的调用将自动提升到代码块的顶部。 如果您想明确避免这种行为，请使用 `jest.doMock`。
+注意：当使用 `babel-jest` 时，对 [`jest.mock`](https://jestjs.io/docs/en/jest-object#jestmockmodulename-factory-options) 的调用将自动提升到代码块的顶部。 如果您想明确避免这种行为，请使用 `jest.doMock`。
 
 ### 使用模拟文件模拟模块
 
@@ -563,22 +672,18 @@ module.exports = (a) => a
 jest.mock('lodash/memoize')
 ```
 
-注意：当使用 `babel-jest` 时，对 `jest.mock` 的调用将自动提升到代码块的顶部。 如果您想明确避免这种行为，请使用 `jest.doMock`。
+注意：当使用 `babel-jest` 时，对 `jest.mock` 的调用将自动提升到代码块的顶部。 如果您想明确避免这种行为，请使用 `jest.doMock`。[手动模拟文档](https://jestjs.io/docs/en/manual-mocks)
 
-[手动模拟文档](https://jestjs.io/docs/en/manual-mocks)
-
-### 模拟对象方法
+### 模拟 getters 和 setters
 
 ```js
-const spy = jest.spyOn(console, 'log').mockImplementation(() => {})
-expect(console.log.mock.calls).toEqual([['dope'], ['nope']])
-spy.mockRestore()
-```
-
-```js
-const spy = jest.spyOn(ajax, 'request').mockImplementation(() => Promise.resolve({ success: true }))
-expect(spy).toHaveBeenCalled()
-spy.mockRestore()
+const getTitle = jest.fn(() => 'pizza')
+const setTitle = jest.fn()
+const location = {}
+Object.defineProperty(location, 'title', {
+  get: getTitle,
+  set: setTitle,
+})
 ```
 
 ### 模拟 getter 和 setter (Jest 22.1.0+)
@@ -603,8 +708,9 @@ const setTitle = jest
 jest.useFakeTimers()
 test('kill the time', () => {
   const callback = jest.fn()
-  // 运行一些使用 setTimeout 或 setInterval 的代码
-  const actual = someFunctionThatUseTimers(callback)
+  // 运行使用 setTimeout或setInterval 的代码
+  const actual 
+    = someFunctionThatUseTimers(callback)
   // 快进直到所有定时器都执行完毕
   jest.runAllTimers()
   // 同步检查结果
@@ -619,8 +725,9 @@ test('kill the time', () => {
 jest.useFakeTimers()
 test('kill the time', () => {
   const callback = jest.fn()
-  // 运行一些使用 setTimeout 或 setInterval 的代码
-  const actual = someFunctionThatUseTimers(callback)
+  // 运行使用 setTimeout或setInterval 的代码
+  const actual 
+    = someFunctionThatUseTimers(callback)
   // 快进 250 毫秒
   jest.advanceTimersByTime(250)
   // 同步检查结果
@@ -628,20 +735,29 @@ test('kill the time', () => {
 })
 ```
 
-对于特殊情况，请使用 [jest.runOnlyPendingTimers()](https://jestjs.io/docs/en/timer-mocks#run-pending-timers)。
+> 对于特殊情况，请使用 [jest.runOnlyPendingTimers()](https://jestjs.io/docs/en/timer-mocks#run-pending-timers)。
 
 **注意：** 您应该在测试用例中调用 `jest.useFakeTimers()` 以使用其他假计时器方法。
 
-### 模拟 getters 和 setters
+### 模拟对象方法
 
 ```js
-const getTitle = jest.fn(() => 'pizza')
-const setTitle = jest.fn()
-const location = {}
-Object.defineProperty(location, 'title', {
-  get: getTitle,
-  set: setTitle,
-})
+const spy = jest.spyOn(console, 'log')
+  .mockImplementation(() => {})
+
+expect(console.log.mock.calls)
+  .toEqual([['dope'], ['nope']])
+spy.mockRestore()
+```
+
+```js
+const spy = jest.spyOn(ajax, 'request')
+  .mockImplementation(
+    () => Promise.resolve({success: true})
+  )
+
+expect(spy).toHaveBeenCalled()
+spy.mockRestore()
 ```
 
 ### 清除和恢复模拟
@@ -653,8 +769,10 @@ Object.defineProperty(location, 'title', {
 // 清除模拟使用日期
 // （fn.mock.calls、fn.mock.instances）
 fn.mockClear()
+
 // 清除并删除任何模拟的返回值或实现
 fn.mockReset()
+
 // 重置并恢复初始实现
 fn.mockRestore()
 ```

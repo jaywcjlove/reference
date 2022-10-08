@@ -101,7 +101,7 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 鼓励使用开源 [(OSI-approved)](https://opensource.org/licenses/alphabetical) 许可证，除非你有特别的原因不用它。 如果你开发的包是你工作的一部分，最好和公司讨论后再做决定。
 
-**license字段必须是以下之一:**
+#### **license字段必须是以下之一**
 
 - 如果你使用标准的许可证，需要一个有效地 [SPDX 许可证标识](https://spdx.org/licenses/)。
 - 如果你用多种标准许可证，需要有效的 [SPDX 许可证表达式2.0语法表达式](https://www.npmjs.com/package/spdx)。
