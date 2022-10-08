@@ -20,7 +20,7 @@ Quick Reference
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173/var(\-\-bg\-opacity));-->
-[Styled Components](./docs/styled-components.md)<!--rehype:style=background: rgb(34 143 173/var(\-\-bg\-opacity));-->
+[Styled Components](./docs/styled-components.md)<!--rehype:style=background: rgb(221 60 184/var(\-\-bg\-opacity));-->
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198/var(\-\-bg\-opacity));-->
