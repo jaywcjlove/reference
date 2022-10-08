@@ -7,17 +7,26 @@ NGINX 备忘清单
 ----
 
 ### 服务管理
+<!--rehype:wrap-class=row-span-2-->
 
 ```bash
 sudo systemctl status nginx # nginx当前状态
 sudo systemctl reload nginx # 重新加载 nginx
 sudo systemctl restart nginx # 重启nginx
+
 sudo nginx -t   # 检查语法
 nginx           # 启动
 nginx -s reload # 重启
 nginx -s stop   # 关闭进程
 nginx -s quit   # 平滑关闭nginx
 nginx -V        # 查看nginx的安装状态，
+```
+
+### Docker 安装
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx
 ```
 
 ### 简单代理
@@ -28,10 +37,6 @@ location / {
   proxy_pass http://127.0.0.1:3000;
   proxy_redirect      off;
   proxy_set_header    Host $host;
-  # 客户端的 IP 地址
-  proxy_set_header    X-Real-IP $remote_addr;
-  # HTTP 请求端真实的IP
-  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 ```
 
@@ -766,15 +771,34 @@ location /img/ {
 # 会去 /var/www/image/img/ 目录下找文件
 ```
 
-### 屏蔽 .git 等文件
-<!--rehype:wrap-class=col-span-2-->
+### 屏蔽文件目录
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+通用备份和归档文件
 
 ```nginx
-location ~ (.git|.gitattributes|.gitignore|.svn) {
+location ~* "\.(old|orig|original|php#|php~|php_bak|save|swo|aspx?|tpl|sh|bash|bak?|cfg|cgi|dll|exe|git|hg|ini|jsp|log|mdb|out|sql|svn|swp|tar|rdf)$" {
     deny all;
 }
 ```
 <!--rehype:className=wrap-text -->
+
+拒绝访问 `.git` 和 `.svn` 目录
+
+```nginx
+location ~ (.git|.svn) {
+    deny all;
+}
+```
+<!--rehype:className=wrap-text -->
+
+拒绝访问隐藏文件和目录
+
+```nginx
+location ~ /\.(?!well-known\/) {
+    deny all;
+}
+```
 
 ### 防盗图配置
 <!--rehype:wrap-class=col-span-4-->
@@ -788,7 +812,59 @@ location ~ \/public\/(css|js|img)\/.*\.(js|css|gif|jpg|jpeg|png|bmp|swf) {
 }
 ```
 
+### 阻止常见攻击
+<!--rehype:wrap-class=col-span-2-->
+
+#### base64编码的网址
+
+```nginx
+location ~* "(base64_encode)(.*)(\()" {
+    deny all;
+}
+```
+
+#### javascript eval() url
+
+```nginx
+location ~* "(eval\()" {
+    deny all;
+}
+```
+
+### Gzip 配置
+<!--rehype:wrap-class=col-span-4 row-span-2-->
+
+```nginx
+gzip  on;
+gzip_buffers 16 8k;
+gzip_comp_level 6;
+gzip_http_version 1.1;
+gzip_min_length 256;
+gzip_proxied any;
+gzip_vary on;
+gzip_types
+    text/xml application/xml application/atom+xml application/rss+xml application/xhtml+xml image/svg+xml
+    text/javascript application/javascript application/x-javascript
+    text/x-json application/json application/x-web-app-manifest+json
+    text/css text/plain text/x-component
+    font/opentype application/x-font-ttf application/vnd.ms-fontobject
+    image/x-icon;
+gzip_disable  "msie6";
+```
+
+### 使网站不可索引
+<!--rehype:wrap-class=col-span-2-->
+
+```nginx
+add_header X-Robots-Tag "noindex";
+
+location = /robots.txt {
+  return 200 "User-agent: *\nDisallow: /\n";
+}
+```
+
 另见
 ---
 
 - [Nginx 安装维护入门学习笔记](https://jaywcjlove.github.io/nginx-tutorial) _(jaywcjlove.github.io)_
+- [](https://virtubox.github.io/advanced-nginx-cheatsheet/) _(virtubox.github.io)_
