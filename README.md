@@ -17,6 +17,7 @@ Quick Reference
 [Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));-->
+[Electron](./docs/electron.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));-->
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173/var(\-\-bg\-opacity));-->
