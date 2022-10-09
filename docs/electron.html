@@ -1,0 +1,1998 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Electron 备忘清单
+ &#x26;  electron cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="此快速参考备忘单提供了 Electron v21 API 说明和使用示例。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,electron">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/electron.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="electron-备忘清单"><a aria-hidden="true" tabindex="-1" href="#electron-备忘清单"><span class="icon icon-link"></span></a>Electron 备忘清单</h1><div class="wrap-body">
+<p>此快速参考备忘单提供了 Electron v21 API 说明和使用示例。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-4"><div class="wrap-header h3wrap"><h3 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-4-->
+<p><a href="https://www.electronjs.org/">Electron</a> 是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的框架</p>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="创建你的应用程序"><a aria-hidden="true" tabindex="-1" href="#创建你的应用程序"><span class="icon icon-link"></span></a>创建你的应用程序</h4><div class="wrap-body">
+<ul class="style-timeline">
+<li>安装
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">mkdir</span> my-app <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">cd</span> my-app
+</span><span class="code-line"><span class="token function">npm</span> init
+</span></code></pre>
+在项目根目录会生成 <code>package.json</code>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"my-app"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Hello World!"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"main.js"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Jane Doe"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"MIT"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</li>
+<li>安装依赖包
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> --save-dev electron
+</span></code></pre>
+</li>
+<li>添加开发模式打开您的应用命令
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token string-property property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token string-property property">"start"</span><span class="token operator">:</span> <span class="token string">"electron ."</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</li>
+<li>运行命令，启动应用程序
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> start
+</span></code></pre>
+入口都是 <code>main</code> 文件。这个文件控制了主进程，它运行在一个完整的Node.js环境中</li>
+<li>创建 <code>index.html</code> 页面
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token doctype"><span class="token punctuation">&#x3C;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>head</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token comment">&#x3C;!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP --></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Content-Security-Policy<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default-src 'self'; script-src 'self'<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>title</span><span class="token punctuation">></span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>title</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>head</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>html</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</li>
+<li>窗口中打开您的页面
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  app<span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token maybe-class-name">BrowserWindow</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> <span class="token function-variable function">createWindow</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> win <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">600</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  win<span class="token punctuation">.</span><span class="token method function property-access">loadFile</span><span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">createWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</li>
+</ul>
+<!--rehype:className=style-timeline-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="关闭所有窗口时退出应用"><a aria-hidden="true" tabindex="-1" href="#关闭所有窗口时退出应用"><span class="icon icon-link"></span></a>关闭所有窗口时退出应用</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">'window-all-closed'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token property-access">platform</span> <span class="token operator">!==</span> <span class="token string">'darwin'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    app<span class="token punctuation">.</span><span class="token method function property-access">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="创建无边框窗口"><a aria-hidden="true" tabindex="-1" href="#创建无边框窗口"><span class="icon icon-link"></span></a>创建无边框窗口</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> win <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">frame</span><span class="token operator">:</span> <span class="token boolean">false</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="自定义标题栏样式"><a aria-hidden="true" tabindex="-1" href="#自定义标题栏样式"><span class="icon icon-link"></span></a>自定义标题栏样式</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> win <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">titleBarStyle</span><span class="token operator">:</span> <span class="token string">'hidden'</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="控制红绿灯-macos"><a aria-hidden="true" tabindex="-1" href="#控制红绿灯-macos"><span class="icon icon-link"></span></a>控制红绿灯 (macOS)</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> win <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">titleBarStyle</span><span class="token operator">:</span> <span class="token string">'customButtonsOnHover'</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="通过预加载脚本从渲染器访问-nodejs"><a aria-hidden="true" tabindex="-1" href="#通过预加载脚本从渲染器访问-nodejs"><span class="icon icon-link"></span></a>通过预加载脚本从渲染器访问 Node.js</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>创建一个名为 preload.js 的新脚本如下</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'DOMContentLoaded'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> <span class="token function-variable function">replaceText</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">selector<span class="token punctuation">,</span> text</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>element<span class="token punctuation">)</span> element<span class="token punctuation">.</span><span class="token property-access">innerText</span> <span class="token operator">=</span> text
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> dependency <span class="token keyword">of</span> <span class="token punctuation">[</span><span class="token string">'chrome'</span><span class="token punctuation">,</span> <span class="token string">'node'</span><span class="token punctuation">,</span> <span class="token string">'electron'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">replaceText</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>dependency<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-version</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> process<span class="token punctuation">.</span><span class="token property-access">versions</span><span class="token punctuation">[</span>dependency<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>在创建窗口方法中传递 <code>preload</code> 参数</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> <span class="token function-variable function">createWindow</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> win <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token literal-property property">webPreferences</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token literal-property property">preload</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'preload.js'</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">  win<span class="token punctuation">.</span><span class="token method function property-access">loadFile</span><span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="将的-processversions-对象暴露给渲染器"><a aria-hidden="true" tabindex="-1" href="#将的-processversions-对象暴露给渲染器"><span class="icon icon-link"></span></a>将的 process.versions 对象暴露给渲染器</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">{</span> contextBridge <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">contextBridge<span class="token punctuation">.</span><span class="token method function property-access">exposeInMainWorld</span><span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token string">'versions'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token comment">// 能暴露的不仅仅是函数，我们还可以暴露变量</span>
+</span><span class="code-line">    <span class="token function-variable function">node</span><span class="token operator">:</span> 
+</span><span class="code-line">      <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> process<span class="token punctuation">.</span><span class="token property-access">versions</span><span class="token punctuation">.</span><span class="token property-access">node</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token function-variable function">chrome</span><span class="token operator">:</span> 
+</span><span class="code-line">      <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> process<span class="token punctuation">.</span><span class="token property-access">versions</span><span class="token punctuation">.</span><span class="token property-access">chrome</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token function-variable function">electron</span><span class="token operator">:</span> 
+</span><span class="code-line">      <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> process<span class="token punctuation">.</span><span class="token property-access">versions</span><span class="token punctuation">.</span><span class="token property-access">electron</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>通过 <code>preload.js</code> 脚本将 <code>versions</code> 这一全局变量暴露给渲染器</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="启用拼写检查器"><a aria-hidden="true" tabindex="-1" href="#启用拼写检查器"><span class="icon icon-link"></span></a>启用拼写检查器</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> myWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">webPreferences</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">spellcheck</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>设置拼写检查器以检查英语 和 法语</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">myWindow<span class="token punctuation">.</span><span class="token property-access">session</span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token method function property-access">setSpellCheckerLanguages</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token string">'en-US'</span><span class="token punctuation">,</span> <span class="token string">'fr'</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="app"><a aria-hidden="true" tabindex="-1" href="#app"><span class="icon icon-link"></span></a>app</h2><div class="wrap-body">
+<!--rehype:body-class=cols-6-->
+</div></div><div class="h2wrap-body cols-6"><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="事件绑定方法使用示例"><a aria-hidden="true" tabindex="-1" href="#事件绑定方法使用示例"><span class="icon icon-link"></span></a>事件绑定方法使用示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">'session-created'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">session</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>session<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 立即重启当前实例并向新的实例添加新的命令行参数的示例</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">relaunch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">args</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token property-access">argv</span><span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">concat</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'--relaunch'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-3 row-span-4"><div class="wrap-header h3wrap"><h3 id="方法"><a aria-hidden="true" tabindex="-1" href="#方法"><span class="icon icon-link"></span></a>方法</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3 row-span-4-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>quit</code></td><td align="left">尝试关闭所有窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appquit">#</a></td></tr><tr><td align="left"><code>exit</code></td><td align="left">使用 exitCode 立即退出 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appexitexitcode">#</a></td></tr><tr><td align="left"><code>relaunch</code></td><td align="left">当前实例退出，重启应用 <a href="https://www.electronjs.org/zh/docs/latest/api/app#apprelaunchoptions">#</a></td></tr><tr><td align="left"><code>isReady</code></td><td align="left">已完成初始化返回 boolean <a href="https://www.electronjs.org/zh/docs/latest/api/app#appisready">#</a></td></tr><tr><td align="left"><code>whenReady</code></td><td align="left">初始化完成 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appwhenready">#</a></td></tr><tr><td align="left"><code>focus</code></td><td align="left">获得焦点/激活的 app <a href="https://www.electronjs.org/zh/docs/latest/api/app#appfocusoptions">#</a></td></tr><tr><td align="left"><code>hide</code></td><td align="left">隐藏所有的应用窗口，不是最小化 <a href="https://www.electronjs.org/zh/docs/latest/api/app#apphide-macos">#</a></td></tr><tr><td align="left"><code>isHidden</code> <em>(mac)</em></td><td align="left">所有窗口是否都被隐藏 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appishidden">#</a></td></tr><tr><td align="left"><code>show</code> <em>(mac)</em></td><td align="left">显示隐藏后的应用程序窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appshow-macos">#</a></td></tr><tr><td align="left"><code>setAppLogsPath</code></td><td align="left">设置或创建一个您的应用程序日志目录 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetapplogspathpath">#</a></td></tr><tr><td align="left"><code>getAppPath</code></td><td align="left">获取当前应用程序目录 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetapppath">#</a></td></tr><tr><td align="left"><code>getPath(name)</code></td><td align="left">与 name 关联的目录或文件的路径 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetpathname">#</a></td></tr><tr><td align="left"><code>getFileIcon</code></td><td align="left">一个 NativeImage 类型的应用图标 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetfileiconpath-options">#</a></td></tr><tr><td align="left"><code>setPath(name)</code></td><td align="left">重写 name 的路径特定文件夹或文件 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetpathname-path">#</a></td></tr><tr><td align="left"><code>getVersion</code></td><td align="left">应用程序的版本号 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetversion">#</a></td></tr><tr><td align="left"><code>getName</code></td><td align="left">应用程序的名称 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetname">#</a></td></tr><tr><td align="left"><code>setName</code></td><td align="left">设置当前应用程序的名字 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetname">#</a></td></tr><tr><td align="left"><code>getLocale</code></td><td align="left">当前应用程序区域 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetlocale">#</a></td></tr><tr><td align="left"><code>getLocaleCountryCode</code></td><td align="left">获取双字母 <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166</a> 国家代码 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetlocalecountrycode">#</a></td></tr><tr><td align="left"><code>getSystemLocale</code></td><td align="left">当前系统语言环境 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetsystemlocale">#</a></td></tr><tr><td align="left"><code>addRecentDocument</code> <em>(win/mac)</em></td><td align="left">最近打开的文件列表添加新路径 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appaddrecentdocumentpath-macos-windows">#</a></td></tr><tr><td align="left"><code>clearRecentDocuments</code> <em>(win/mac)</em></td><td align="left">清空最近打开的文档列表<a href="https://www.electronjs.org/zh/docs/latest/api/app#appclearrecentdocuments">#</a></td></tr><tr><td align="left"><code>setAsDefaultProtocolClient</code></td><td align="left">设置协议(URI scheme)默认处理程序 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetasdefaultprotocolclientprotocol-path-args">#</a></td></tr><tr><td align="left"><code>removeAsDefaultProtocolClient</code></td><td align="left">移除默认处理器 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appremoveasdefaultprotocolclientprotocol-path-args-macos-windows">#</a></td></tr><tr><td align="left"><code>isDefaultProtocolClient</code></td><td align="left">可执行程序是否是协议 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appisdefaultprotocolclientprotocol-path-args">#</a></td></tr><tr><td align="left"><code>getApplicationNameForProtocol</code></td><td align="left">返回默认处理器的应用程序名称 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetapplicationnameforprotocolurl">#</a></td></tr><tr><td align="left"><code>getApplicationInfoForProtocol</code> <em>(win/mac)</em></td><td align="left">返回包含应用程序名称 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetapplicationinfoforprotocolurl-macos-windows">#</a></td></tr><tr><td align="left"><code>setUserTasks</code> <em>(win)</em></td><td align="left">添加 tasks 到Jump List的Tasks类别 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetusertaskstasks-windows">#</a></td></tr><tr><td align="left"><code>getJumpListSettings</code> <em>(win)</em></td><td align="left">获取跳转列表 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetjumplistsettings-windows">#</a></td></tr><tr><td align="left"><code>setJumpList</code> <em>(win)</em></td><td align="left">设置跳转列表 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetjumplistcategories-windows">#</a></td></tr><tr><td align="left"><code>requestSingleInstanceLock</code></td><td align="left">返回应用程序实例是否成功取了锁 <a href="https://www.electronjs.org/zh/docs/latest/api/app#apprequestsingleinstancelockadditionaldata">#</a></td></tr><tr><td align="left"><code>hasSingleInstanceLock</code></td><td align="left">返回应用实例当前是否持有单例锁 <a href="https://www.electronjs.org/zh/docs/latest/api/app#apphassingleinstancelock">#</a></td></tr><tr><td align="left"><code>releaseSingleInstanceLock</code></td><td align="left">释放所有创建的锁 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appreleasesingleinstancelock">#</a></td></tr><tr><td align="left"><code>setUserActivity</code> <em>(mac)</em></td><td align="left">创建 NSUserActivity 并将其设置为当前活动 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetuseractivitytype-userinfo-webpageurl-macos">#</a></td></tr><tr><td align="left"><code>getCurrentActivityType</code> <em>(mac)</em></td><td align="left">正在运行的 activity 的类型 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetcurrentactivitytype-macos">#</a></td></tr><tr><td align="left"><code>invalidateCurrentActivity</code> <em>(mac)</em></td><td align="left">使当前的Handoff用户活动无效 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appinvalidatecurrentactivity-macos">#</a></td></tr><tr><td align="left"><code>resignCurrentActivity</code> <em>(mac)</em></td><td align="left">将当前 Handoff 用户活动标记为非活动，但不使其失效 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appresigncurrentactivity-macos">#</a></td></tr><tr><td align="left"><code>updateCurrentActivity</code> <em>(mac)</em></td><td align="left">将项目从 用户信息 合并到其当前 用户信息 字典中 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appupdatecurrentactivitytype-userinfo-macos">#</a></td></tr><tr><td align="left"><code>setAppUserModelId</code> <em>(win)</em></td><td align="left">改变当前应用的 Application User Model ID 为 id <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetappusermodelidid-windows">#</a></td></tr><tr><td align="left"><code>setActivationPolicy</code> <em>(mac)</em></td><td align="left">为给定应用设置激活策略 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetactivationpolicypolicy-macos">#</a></td></tr><tr><td align="left"><code>importCertificate</code> <em>(linux)</em></td><td align="left">将 pkcs12 格式的证书导入到平台证书库 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appimportcertificateoptions-callback-linux">#</a></td></tr><tr><td align="left"><code>configureHostResolver</code></td><td align="left">配置主机解析器 (DNS 和 DNS-over-HTTPS) <a href="https://www.electronjs.org/zh/docs/latest/api/app#appconfigurehostresolveroptions">#</a></td></tr><tr><td align="left"><code>disableHardwareAcceleration</code></td><td align="left">禁用当前应用程序的硬件加速 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appdisablehardwareacceleration">#</a></td></tr><tr><td align="left"><code>disableDomainBlockingFor3DAPIs</code></td><td align="left">GPU 进程频繁崩溃，在每个域的基础上重新启动，禁用该行为 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appdisabledomainblockingfor3dapis">#</a></td></tr><tr><td align="left"><code>getAppMetrics</code></td><td align="left">返回 <a href="https://www.electronjs.org/zh/docs/latest/api/structures/process-metric">ProcessMetric[]</a> <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetappmetrics">#</a></td></tr><tr><td align="left"><code>getGPUFeatureStatus</code></td><td align="left">返回 <a href="https://www.electronjs.org/zh/docs/latest/api/structures/gpu-feature-status">GPUFeatureStatus</a> <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetgpufeaturestatus">#</a></td></tr><tr><td align="left"><code>getGPUInfo</code></td><td align="left">GPU 信息 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetgpuinfoinfotype">#</a></td></tr><tr><td align="left"><code>setBadgeCount</code> <em>(mac/linux)</em></td><td align="left">应用设置计数器角标 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetbadgecountcount-linux-macos">#</a></td></tr><tr><td align="left"><code>getBadgeCount</code> <em>(mac/linux)</em></td><td align="left">获取计数器(badge)显示的当前值 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetbadgecount-linux-macos">#</a></td></tr><tr><td align="left"><code>isUnityRunning</code> <em>(linux)</em></td><td align="left">前桌面环境是否为 Unity 启动器 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appisunityrunning">#</a></td></tr><tr><td align="left"><code>getLoginItemSettings</code> <em>(mac/win)</em></td><td align="left">为 openAtLogin 设置相同的参数已确保正确的设置 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appgetloginitemsettingsoptions-macos-windows">#</a></td></tr><tr><td align="left"><code>setLoginItemSettings</code> <em>(mac/win)</em></td><td align="left">传递指定应用程序名称的参数 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetloginitemsettingssettings-macos-windows">#</a></td></tr><tr><td align="left"><code>isAccessibilitySupportEnabled</code> <em>(mac/win)</em></td><td align="left">是否开启了辅助功能 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appisaccessibilitysupportenabled-macos-windows">#</a></td></tr><tr><td align="left"><code>setAccessibilitySupportEnabled</code> <em>(mac/win)</em></td><td align="left">启用或禁用访问权限树视图 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetaccessibilitysupportenabledenabled-macos-windows">#</a></td></tr><tr><td align="left"><code>showAboutPanel</code></td><td align="left">显示程序的"关于"面板选项 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appshowaboutpanel">#</a></td></tr><tr><td align="left"><code>setAboutPanelOptions</code></td><td align="left">设置 "关于" 面板选项 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetaboutpaneloptionsoptions">#</a></td></tr><tr><td align="left"><code>isEmojiPanelSupported</code></td><td align="left">当前操作系统是否支持本地 emoji 选择器 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appisemojipanelsupported">#</a></td></tr><tr><td align="left"><code>showEmojiPanel</code> <em>(mac/win)</em></td><td align="left">打开系统自身的emjio选取器 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appshowemojipanel">#</a></td></tr><tr><td align="left"><code>startAccessingSecurityScopedResource</code> <em>(mac)</em></td><td align="left">开始访问安全范围内的资源 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appstartaccessingsecurityscopedresourcebookmarkdata-macos">#</a></td></tr><tr><td align="left"><code>enableSandbox</code></td><td align="left">在应用程序上启用完全沙盒模式 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appenablesandbox">#</a></td></tr><tr><td align="left"><code>isInApplicationsFolder</code> <em>(mac)</em></td><td align="left">是否从系统应用程序文件夹运行 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appisinapplicationsfolder-macos">#</a></td></tr><tr><td align="left"><code>moveToApplicationsFolder</code> <em>(mac)</em></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/app#appmovetoapplicationsfolderoptions-macos">#</a></td></tr><tr><td align="left"><code>isSecureKeyboardEntryEnabled</code> <em>(mac)</em></td><td align="left">是否已启用安全键盘输入 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appissecurekeyboardentryenabled-macos">#</a></td></tr><tr><td align="left"><code>setSecureKeyboardEntryEnabled</code> <em>(mac)</em></td><td align="left">在应用中启用安全键盘输入 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appsetsecurekeyboardentryenabledenabled-macos">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="启动时激活主实例窗口的示例"><a aria-hidden="true" tabindex="-1" href="#启动时激活主实例窗口的示例"><span class="icon icon-link"></span></a>启动时激活主实例窗口的示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> myWindow <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> additionalData <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">myKey</span><span class="token operator">:</span> <span class="token string">'myValue'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> gotTheLock <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token method function property-access">requestSingleInstanceLock</span><span class="token punctuation">(</span>additionalData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>gotTheLock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  app<span class="token punctuation">.</span><span class="token method function property-access">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  app<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token string">'second-instance'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> commandLine<span class="token punctuation">,</span> workingDirectory<span class="token punctuation">,</span> additionalData</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token comment">// 输出从第二个实例中接收到的数据</span>
+</span><span class="code-line">      <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>additionalData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">      <span class="token comment">// 有人试图运行第二个实例，我们应该关注我们的窗口</span>
+</span><span class="code-line">      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>myWindow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>myWindow<span class="token punctuation">.</span><span class="token method function property-access">isMinimized</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> myWindow<span class="token punctuation">.</span><span class="token method function property-access">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">        myWindow<span class="token punctuation">.</span><span class="token method function property-access">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// 创建 myWindow, 加载应用的其余部分, etc...</span>
+</span><span class="code-line">  app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">    myWindow <span class="token operator">=</span> <span class="token function">createWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="事件"><a aria-hidden="true" tabindex="-1" href="#事件"><span class="icon icon-link"></span></a>事件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>will-finish-launching</code></td><td align="left">基础的启动的时候被触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-will-finish-launching">#</a></td></tr><tr><td align="left"><code>ready</code></td><td align="left">完成初始化时，触发一次 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-ready">#</a></td></tr><tr><td align="left"><code>window-all-closed</code></td><td align="left">在程序关闭窗口前发信号 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-window-all-closed">#</a></td></tr><tr><td align="left"><code>before-quit</code></td><td align="left">当所有窗口被关闭后触发，应用程序将退出 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-before-quit">#</a></td></tr><tr><td align="left"><code>will-quit</code></td><td align="left">所有窗口被关闭后触发，应用程序将退出 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-will-quit">#</a></td></tr><tr><td align="left"><code>quit</code></td><td align="left">在应用程序退出时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-quit">#</a></td></tr><tr><td align="left"><code>open-file</code> <em>(mac)</em></td><td align="left">在应用中打开一个文件时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-open-file-macos">#</a></td></tr><tr><td align="left"><code>open-url</code> <em>(mac)</em></td><td align="left">应用中打开一个 URL 时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-open-url-macos">#</a></td></tr><tr><td align="left"><code>activate</code> <em>(mac)</em></td><td align="left">当应用被激活时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-activate-macos">#</a></td></tr><tr><td align="left"><code>did-become-active</code> <em>(mac)</em></td><td align="left">不同设备的活动想要恢复时在切换期间触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-did-become-active-macos">#</a></td></tr><tr><td align="left"><code>continue-activity</code> <em>(mac)</em></td><td align="left">不同设备的活动通过 Handoff 想要恢复时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-continue-activity-macos">#</a></td></tr><tr><td align="left"><code>will-continue-activity</code> <em>(mac)</em></td><td align="left">恢复来自不同设备的活动之前在切换期间触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-will-continue-activity-macos">#</a></td></tr><tr><td align="left"><code>continue-activity-error</code> <em>(mac)</em></td><td align="left">不同设备的活动无法恢复时在切换期间触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-continue-activity-error-macos">#</a></td></tr><tr><td align="left"><code>activity-was-continued</code> <em>(mac)</em></td><td align="left">活动在另一个设备上成功恢复后切换期间触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-activity-was-continued-macos">#</a></td></tr><tr><td align="left"><code>update-activity-state</code> <em>(mac)</em></td><td align="left">当即将在另一台设备上恢复切换时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-update-activity-state-macos">#</a></td></tr><tr><td align="left"><code>new-window-for-tab</code> <em>(mac)</em></td><td align="left">用户点击原生的 macOS 新标签按钮时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-new-window-for-tab-macos">#</a></td></tr><tr><td align="left"><code>browser-window-blur</code></td><td align="left">当 browserWindow 变得模糊时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-browser-window-blur">#</a></td></tr><tr><td align="left"><code>browser-window-focus</code></td><td align="left">当 browserWindow 获得焦点时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-browser-window-focus">#</a></td></tr><tr><td align="left"><code>browser-window-created</code></td><td align="left">创建新的 browserWindow 时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-browser-window-created">#</a></td></tr><tr><td align="left"><code>web-contents-created</code></td><td align="left">创建新的 webContents 时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-web-contents-created">#</a></td></tr><tr><td align="left"><code>certificate-error</code></td><td align="left">当对 url 的 certificate 证书验证失败触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-certificate-error">#</a></td></tr><tr><td align="left"><code>select-client-certificate</code></td><td align="left">当一个客户证书被请求的时候发出 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-select-client-certificate">#</a></td></tr><tr><td align="left"><code>login</code></td><td align="left">当 webContents 要进行基本身份验证时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-login">#</a></td></tr><tr><td align="left"><code>gpu-info-update</code></td><td align="left">每当有 GPU 信息更新时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-gpu-info-update">#</a></td></tr><tr><td align="left"><del><code>gpu-process-crashed</code></del> <del>废弃</del></td><td align="left">当 gpu 进程崩溃或关闭(杀死)时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-gpu-process-crashed-%E5%B7%B2%E5%BA%9F%E5%BC%83">#</a></td></tr><tr><td align="left"><del><code>renderer-process-crashed</code></del> <del>废弃</del></td><td align="left">渲染器进程崩溃或关闭(杀死)时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-renderer-process-crashed-%E5%B7%B2%E5%BA%9F%E5%BC%83">#</a></td></tr><tr><td align="left"><code>render-process-gone</code></td><td align="left">渲染器进程意外消失时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-render-process-gone">#</a></td></tr><tr><td align="left"><code>child-process-gone</code></td><td align="left">子进程意外消失时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-child-process-gone">#</a></td></tr><tr><td align="left"><code>accessibility-support-changed</code></td><td align="left">当 Chrome 的辅助功能状态改变时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-accessibility-support-changed--macos---windows-">#</a></td></tr><tr><td align="left"><code>session-created</code></td><td align="left">创建了一个新的 session 后被触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-session-created">#</a></td></tr><tr><td align="left"><code>second-instance</code></td><td align="left">在你的应用程序的首个实例中触发 <a href="https://www.electronjs.org/zh/docs/latest/api/app#%E4%BA%8B%E4%BB%B6-second-instance">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="属性"><a aria-hidden="true" tabindex="-1" href="#属性"><span class="icon icon-link"></span></a>属性</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>accessibilitySupportEnabled</code> <em>(mac/win)</em></td><td align="left">是否开启了辅助功能 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appaccessibilitysupportenabled-macos-windows">#</a></td></tr><tr><td align="left"><code>applicationMenu</code></td><td align="left">传递 Menu 来给此属性赋值 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appapplicationmenu">#</a></td></tr><tr><td align="left"><code>badgeCount</code> <em>(mac/linux)</em></td><td align="left">返回应用角标计数的 Integer 属性 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appbadgecount-linux-macos">#</a></td></tr><tr><td align="left"><code>commandLine</code></td><td align="left">Chromium 使用的命令行参数 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appcommandline-%E5%8F%AA%E8%AF%BB">#</a></td></tr><tr><td align="left"><code>dock</code> <em>(mac/只读)</em></td><td align="left">用户dock中对应用图标进行操作 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appdock-macos-%E5%8F%AA%E8%AF%BB">#</a></td></tr><tr><td align="left"><code>isPackaged</code> <em>(只读)</em></td><td align="left">应用是否已经打包 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appispackaged-%E5%8F%AA%E8%AF%BB">#</a></td></tr><tr><td align="left"><code>name</code></td><td align="left">当前应用程序的名称 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appname">#</a></td></tr><tr><td align="left"><code>userAgentFallback</code></td><td align="left">全局回退的用户代理字符串 <a href="https://www.electronjs.org/zh/docs/latest/api/app#appuseragentfallback">#</a></td></tr><tr><td align="left"><del><code>runningUnderRosettaTranslation</code></del> <em>(mac)</em></td><td align="left">提示下载应用程序的 arm64 版本 <a href="https://www.electronjs.org/zh/docs/latest/api/app#apprunningunderrosettatranslation-macos-%E5%8F%AA%E8%AF%BB-%E5%BC%83%E7%94%A8">#</a></td></tr><tr><td align="left"><code>runningUnderARM64Translation</code> <em>(mac/win)</em></td><td align="left">前应用正在使用 ARM64 运行环境 <a href="https://www.electronjs.org/zh/docs/latest/api/app#apprunningunderarm64translation-%E5%8F%AA%E8%AF%BB-macos-windows">#</a></td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="browserwindow"><a aria-hidden="true" tabindex="-1" href="#browserwindow"><span class="icon icon-link"></span></a>BrowserWindow</h2><div class="wrap-body">
+<!--rehype:body-class=cols-6-->
+</div></div><div class="h2wrap-body cols-6"><div class="wrap col-span-3 row-span-2"><div class="wrap-header h3wrap"><h3 id="参数"><a aria-hidden="true" tabindex="-1" href="#参数"><span class="icon icon-link"></span></a>参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3 row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>width</code> <em>整数</em></td><td align="left">窗口的宽度(以像素为单位)。默认值 <em>(800)</em></td></tr><tr><td align="left"><code>height</code> <em>整数</em></td><td align="left">窗口的高度(以像素为单位)。默认值 <em>(600)</em></td></tr><tr><td align="left"><code>x</code> <em>整数</em> (<strong>可选</strong>)</td><td align="left">窗口相对于屏幕左侧偏移量。默认值窗口居中</td></tr><tr><td align="left"><code>y</code> <em>整数</em> (<strong>可选</strong>)</td><td align="left">窗口相对于屏幕顶端偏移量。默认值窗口居中</td></tr><tr><td align="left"><code>useContentSize</code> <em>boolean</em></td><td align="left"><em>(宽)</em> 和 <em>(高)</em> 设置为web页面的尺寸。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>center</code> <em>boolean</em></td><td align="left">窗口是否在屏幕居中。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>minHeight</code>  <em>整数</em></td><td align="left">窗口的最小高度。默认值 <em>(0)</em></td></tr><tr><td align="left"><code>maxWidth </code>  <em>整数</em></td><td align="left">窗口的最大宽度。默认值不限</td></tr><tr><td align="left"><code>maxHeight </code> <em>整数</em></td><td align="left">窗口的最大高度。默认值不限</td></tr><tr><td align="left"><code>resizable</code> <em>boolean</em></td><td align="left">窗口大小是否可调整。默认值 <em>(true)</em></td></tr><tr><td align="left"><code>movable</code> <em>boolean</em> <em>(win/mac)</em></td><td align="left">窗口是否可移动。默认值 <em>(true)</em></td></tr><tr><td align="left"><code>minimizable</code> <em>boolean</em> <em>(win/mac)</em></td><td align="left">窗口是否可最小化。默认值 <em>(true)</em></td></tr><tr><td align="left"><code>maximizable</code> <em>boolean</em> <em>(win/mac)</em></td><td align="left">窗口是否最大化。默认值 <em>(true)</em></td></tr><tr><td align="left"><code>closable</code> <em>boolean</em> <em>(win/mac)</em></td><td align="left">窗口是否可关闭。默认值 <em>(true)</em></td></tr><tr><td align="left"><code>focusable</code> <em>boolean</em></td><td align="left">窗口是否可以聚焦. 默认值 <em>(true)</em>。在 Windows 中设置 <em>(focusable: false)</em> 也意味着设置了 <em>(skipTaskbar: true)</em> 在 Linux 中设置 <em>(focusable: false)</em> 时窗口停止与 wm 交互, 并且窗口将始终置顶</td></tr><tr><td align="left"><code>alwaysOnTop</code> <em>boolean</em></td><td align="left">窗口是否永远在别的窗口的上面。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>fullscreen</code> <em>boolean</em></td><td align="left">窗口是否全屏。为 <em>(false)</em> 时 macOS 上按钮将被隐藏或禁用。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>fullscreenable</code> <em>boolean</em></td><td align="left">窗口是否可以进入全屏状态。macOS上，最大化/缩放按钮是否可用 默认值 <em>(true)</em></td></tr><tr><td align="left"><code>simpleFullscreen</code> <em>boolean</em> <em>(mac)</em></td><td align="left">在 macOS 上使用 pre-Lion 全屏。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>skipTaskbar</code> <em>boolean</em> <em>(win/mac)</em></td><td align="left">是否在任务栏中显示窗口。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>kiosk</code> <em>boolean</em></td><td align="left">窗口是否进入kiosk模式。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>title</code> <em>string</em></td><td align="left">默认窗口标题 默认为 <em>("Electron")</em> 。如果由 <em>(loadURL())</em> 加载的HTML文件中含有标签 <em>(&#x3C;title>)</em> ，此属性将被忽略</td></tr><tr><td align="left"><code>icon</code> <em>NativeImage/string</em></td><td align="left">窗口图标。在 Windows 上推荐使用 <em>(ICO)</em> 图标来获得最佳的视觉效果, 默认使用可执行文件的图标</td></tr><tr><td align="left"><code>show</code> <em>boolean</em></td><td align="left">窗口是否在创建时显示。默认值 <em>(true)</em></td></tr><tr><td align="left"><code>paintWhenInitiallyHidden</code> <em>boolean</em></td><td align="left">当 <em>(show)</em> 为 <em>(false)</em> 并且渲染器刚刚被创建时，它是否应激活。为了让 <em>(document.visibilityState)</em> 在 <em>(show: false)</em> 的情况下第一次加载时正确地工作，你应该把这个设置成 <em>(false)</em>。设置为 <em>(false)</em> 将会导致 <em>(ready-to-show)</em> 事件不触发。默认值 <em>(true)</em></td></tr><tr><td align="left"><code>frame</code> <em>boolean</em></td><td align="left">设置为 <em>(false)</em> 时可以创建一个无边框窗口，默认值 <em>(true)</em></td></tr><tr><td align="left"><code>parent</code> <em>BrowserWindow</em></td><td align="left">指定父窗口 默认值 <em>(null)</em></td></tr><tr><td align="left"><code>modal</code> <em>boolean</em></td><td align="left">当前是否为模态窗口。只有当窗口是子窗口时才起作用。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>acceptFirstMouse</code> <em>boolean</em> <em>(mac)</em></td><td align="left">点击 非活动窗口是否会穿透到 web contents。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>disableAutoHideCursor</code> <em>boolean</em></td><td align="left">是否在打字时隐藏光标。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>autoHideMenuBar</code> <em>boolean</em></td><td align="left">自动隐藏菜单栏，除非按了_(Alt)_键。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>enableLargerThanScreen</code> <em>boolean</em> <em>(mac)</em></td><td align="left">使窗口尺寸可大于屏幕的大小。其他操作系统默认允许大于屏幕的窗口。默认值 <em>(false)</em></td></tr><tr><td align="left"><code>backgroundColor</code> <em>string</em></td><td align="left">窗口背景色，格式为 Hex, RGB, RGBA, HSL, HSLA 或 CSS 命名颜色。如果 <em>(transparent)</em> 设置为 <em>(true)</em>，则支持 #AARRGGBB 格式的透明。默认值 <em>(#FFF)</em>（白色）</td></tr><tr><td align="left"><code>hasShadow</code> <em>boolean</em></td><td align="left">窗口是否有阴影. 默认值 <em>(true)</em></td></tr><tr><td align="left"><code>opacity</code> <em>number</em> <em>(win/mac)</em></td><td align="left">设置窗口的初始透明度，在 0.0（全透明）和 1.0（完全不透明）之间 。 目前仅在 Windows 和 macOS上实现。</td></tr><tr><td align="left"><code>darkTheme</code> <em>boolean</em></td><td align="left">强制窗口使用深色主题，只在部分GTK+3桌面环境下有效。 默认值 <em>(false)</em>.</td></tr><tr><td align="left"><code>transparent</code> <em>boolean</em></td><td align="left">使窗口 <a href="/zh/docs/latest/tutorial/window-customization#create-transparent-windows">透明</a>。 默认值 <em>(false)</em>. 在Windows上，仅在无边框窗口下起作用。</td></tr><tr><td align="left"><code>type</code> <em>string</em></td><td align="left">窗口的类型, 默认为普通窗口. 更多信息见下文</td></tr><tr><td align="left"><code>visualEffectState</code> <em>string</em> <em>(mac)</em></td><td align="left">在 macOS 上指定外观应如何响应窗口活动状态。 必须与 <em>(vibrancy)</em> 属性一起使用。 可能的值有</td></tr><tr><td align="left"><code>  visualEffectState.followWindow</code></td><td align="left">当窗口处于激活状态时，后台应自动显示为激活状态，当窗口处于非激活状态时，后台应自动显示为非激活状态。 默认为该值。</td></tr><tr><td align="left"><code>  visualEffectState.active</code></td><td align="left">后台应一直显示为激活状态。</td></tr><tr><td align="left"><code>  visualEffectState.inactive</code></td><td align="left">后台应一直显示为非激活状态。</td></tr><tr><td align="left"><code>titleBarStyle</code> <em>string</em> <em>(win/mac)</em></td><td align="left">窗口标题栏样式。默认值 <em>(default)</em></td></tr><tr><td align="left"><code>  titleBarStyle.default</code></td><td align="left">分别返回 <em>mac</em> 或者 <em>win</em> 的标准标题栏</td></tr><tr><td align="left"><code>  titleBarStyle.hidden</code></td><td align="left">在一个隐藏的标题栏和一个全尺寸大小的内容窗口中取得结果。 在 macOS 内, 窗口将一直拥有位于左上的标准窗口控制器 <em>(“traffic lights”)</em>。 在 Windows上，当与 <em>(titleBarOverlay: true)</em> 合并时，它将激活窗口控件叠加(详情请参阅 <em>(titleBarOverlay)</em>)，否则将不会显示窗口控件。</td></tr><tr><td align="left"><code>  titleBarStyle.hiddenInset</code> <em>(mac)</em></td><td align="left">隐藏标题栏，使用窗口边缘稍微小的红绿灯按钮替代。</td></tr><tr><td align="left"><code>  titleBarStyle.customButtonsOnHover</code> <em>(mac)</em></td><td align="left">隐藏的标题栏的全尺寸的内容窗口， 红绿灯按钮在鼠标悬停在窗口左上方时显示。**注意:**此选项目前是实验性的。</td></tr><tr><td align="left"><code>trafficLightPosition</code> <em>Point</em> <em>(mac)</em></td><td align="left">在无边框窗口中设置灯绿灯按钮位置。</td></tr><tr><td align="left"><code>roundedCorners</code> <em>boolean</em> <em>(mac)</em></td><td align="left">无边框窗口在 macOS 上，是否应该有圆角。 默认值为 <em>(true)</em>。 属性设置为 <em>(false)</em> ，将阻止窗口是可全屏的。</td></tr><tr><td align="left"><del><code>fullscreenWindowTitle</code></del> <em>boolean</em> <em>(mac)</em> <del><em>已弃用</em></del></td><td align="left"><em>titleBarStyle</em> 设置为 <em>(hiddenInset)</em> 时，在 macOS 全屏模式下标题栏显示标题。默认值为 <em>(false)</em>.</td></tr><tr><td align="left"><code>thickFrame</code> <em>boolean</em></td><td align="left">对 Windows 上的无框窗口使用 <em>(WS_THICKFRAME)</em> 样式，会增加标准窗口框架。 设置为 <em>(false)</em> 时将移除窗口的阴影和动画. 默认值为 <em>(true)</em>。</td></tr><tr><td align="left"><code>vibrancy</code> <em>string</em> <em>(mac)</em></td><td align="left">为窗口添加一种类型的动态效果，仅 macOS。 可以是 <em>(appearance-based)</em>，<em>(light)</em>，<em>(dark)</em>，<em>(titlebar)</em>，<em>(selection)</em>，<em>(menu)</em>，<em>(popover)</em>，<em>(sidebar)</em>，<em>(medium-light)</em>，<em>(ultra-dark)</em>，<em>(header)</em>，<em>(sheet)</em>，<em>(window)</em>，<em>(hud)</em>，<em>(fullscreen-ui)</em>，<em>(tooltip)</em>，<em>(content)</em>，<em>(under-window)</em> 或 <em>(under-page)</em>。 请注意 <em>(appearance-based)</em>，<em>(light)</em>，<em>(dark)</em>，<em>(medium-light)</em> 和 <em>(ultra-dark)</em> 已弃用，在 macOS Catalina (10.15) 中已经移除。</td></tr><tr><td align="left"><code>zoomToPageWidth</code> <em>boolean</em> <em>(mac)</em></td><td align="left">在 macOS 上控制，当按住 option 点击工具栏绿色红绿灯按钮或点击窗口 > 放大菜单项的行为。 如果为 <em>(true)</em>，窗口为将会缩放到适合宽度，若为 <em>(false)</em> 将会放大到屏幕宽度。 这也会影响，直接调用 <em>(maximize())</em> 的行为。 默认值为 <em>(false)</em>.</td></tr><tr><td align="left"><code>tabbingIdentifier</code> <em>string</em> <em>(mac)</em></td><td align="left">选项卡组名称，允许在原生选择卡中打开窗口，macOS 10.12+ 支持。 Windows 中，有相同选项卡标识的将会组合在一起。 这会添加一个原生新增选项卡按钮到你窗口的选项卡栏，同时 <em>(app)</em> 和窗口允许接收 <em>(new-window-for-tab)</em> 事件。</td></tr><tr><td align="left"><code>webPreferences</code> <em>Object</em></td><td align="left">网页功能设置。</td></tr><tr><td align="left"><code>   webPreferences.devTools</code> <em>boolean</em></td><td align="left">是否开启 DevTools. 如果设置为 <em>(false)</em>, 则无法使用 <em>(BrowserWindow.webContents.openDevTools ())</em> 打开 DevTools。 默认值为 <em>(true)</em>。</td></tr><tr><td align="left"><code>   webPreferences.nodeIntegration</code> <em>boolean</em></td><td align="left">是否启用Node integration. 默认值为 <em>(false)</em>.</td></tr><tr><td align="left"><code>   webPreferences.nodeIntegrationInWorker</code> <em>boolean</em></td><td align="left">是否在Web工作器中启用了Node集成. 默认值为 <em>(false)</em>. 更多内容参见 <a href="https://www.electronjs.org/docs/latest/tutorial/multithreading">多线程</a></td></tr><tr><td align="left"><code>   webPreferences.nodeIntegrationInSubFrames</code> <em>boolean</em> <strong><em>实验性</em></strong></td><td align="left">是否允许在子页面(iframe)或子窗口(child window)中集成Node.js； 预先加载的脚本会被注入到每一个iframe，你可以用 <em>(process.isMainFrame)</em> 来判断当前是否处于主框架（main frame）中。</td></tr><tr><td align="left"><code>   webPreferences.preload</code> <em>string</em></td><td align="left">在页面运行其他脚本之前预先加载指定的脚本 无论页面是否集成Node, 此脚本都可以访问所有Node API 脚本路径为文件的绝对路径。 当 node integration 关闭时, 预加载的脚本将从全局范围重新引入node的全局引用标志<a href="https://www.electronjs.org/docs/latest/api/context-bridge#exposing-node-global-symbols">参考示例</a></td></tr><tr><td align="left"><code>   webPreferences.sandbox</code> <em>boolean</em></td><td align="left">如果设置该参数, 沙箱的渲染器将与窗口关联, 使它与Chromium OS-level 的沙箱兼容, 并禁用 Node. js 引擎。 它与 <em>(nodeIntegration)</em> 的选项不同，且预加载脚本的 API 也有限制。<a href="https://www.electronjs.org/docs/latest/tutorial/sandbox">更多详情</a></td></tr><tr><td align="left"><code>   webPreferences.session</code></td><td align="left"><a href="https://www.electronjs.org/docs/latest/api/session#class-session">Session</a> 设置页面的 session 而不是直接忽略 Session 对象, 也可用 <em>(partition)</em> 选项来代替，它接受一个 partition 字符串. 同时设置了_(session)_ 和 _(partition)_时, <em>(session)</em> 的优先级更高. 默认使用默认的 session.</td></tr><tr><td align="left"><code>   webPreferences.partition</code></td><td align="left">string (optional) - 通过 session 的 partition 字符串来设置界面session. 如果 <em>(partition)</em> 以 <em>(persist:)<em>开头, 该页面将使用持续的 session，并在所有页面生效，且使用同一个</em>(partition)</em>. 如果没有 <em>(persist:)</em> 前缀, 页面将使用 in-memory session. 通过分配相同的 <em>(partition)</em>, 多个页可以共享同一会话。 默认使用默认的 session.</td></tr><tr><td align="left"><code>   webPreferences.zoomFactor</code> <em>number</em></td><td align="left">页面的默认缩放系数, <em>(3.0)</em> 表示 <em>(300%)</em>。 默认值为 <em>(1.0)</em>.</td></tr><tr><td align="left"><code>   webPreferences.javascript</code> <em>boolean</em></td><td align="left">是否启用 JavaScript 支持。 默认值为 <em>(true)</em>。</td></tr><tr><td align="left"><code>   webPreferences.webSecurity</code> <em>boolean</em></td><td align="left">当设置为 <em>(false)</em>, 它将禁用同源策略 (通常用来测试网站), 如果此选项不是由开发者设置的，还会把 _(allowRunningInsecureContent)_设置为 <em>(true)</em>. 默认值为 <em>(true)</em></td></tr><tr><td align="left"><code>   webPreferences.allowRunningInsecureContent</code> <em>boolean</em></td><td align="left">允许一个 https 页面运行来自http url的JavaScript, CSS 或 plugins。 默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>   webPreferences.images</code> <em>boolean</em></td><td align="left">允许加载图片。 默认值为 <em>(true)</em></td></tr><tr><td align="left"><code>   webPreferences.imageAnimationPolicy</code> <em>string</em></td><td align="left">指定如何运行图像动画 (比如： GIF等).  可以是 <em>(animate)</em>, <em>(animateOnce)</em> 或 <em>(noAnimation)</em>。默认值为 <em>(animate)</em></td></tr><tr><td align="left"><code>   webPreferences.textAreasAreResizable</code> <em>boolean</em></td><td align="left">允许调整 TextArea 元素大小。 默认值为 <em>(true)</em></td></tr><tr><td align="left"><code>   webPreferences.webgl</code> <em>boolean</em></td><td align="left">启用 WebGL 支持。 默认值为 <em>(true)</em></td></tr><tr><td align="left"><code>   webPreferences.plugins</code> <em>boolean</em></td><td align="left">是否应该启用插件。 默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>   webPreferences.experimentalFeatures</code> <em>boolean</em></td><td align="left">启用 Chromium 的实验功能。 默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>   webPreferences.scrollBounce</code> <em>boolean</em> <em>(mac)</em></td><td align="left">启用滚动回弹（橡皮筋）效果。 默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>   webPreferences.enableBlinkFeatures</code><em>string</em></td><td align="left">以 <em>(逗号)</em> 分隔的需要启用的特性列表，譬如 <em>(CSSVariables,KeyboardEventKey)</em> 在 <a href="https://cs.chromium.org/chromium/src/third_party/blink/renderer/platform/runtime_enabled_features.json5?l=70">RuntimeEnabledFeatures.json5</a> 文件中查看被支持的所有特性</td></tr><tr><td align="left"><code>   webPreferences.disableBlinkFeatures</code> <em>string</em></td><td align="left">以 <em>(,)</em> 分隔的禁用特性列表, 如 <em>(CSSVariables,KeyboardEventKey)</em> 在 <a href="https://cs.chromium.org/chromium/src/third_party/blink/renderer/platform/runtime_enabled_features.json5?l=70">RuntimeEnabledFeatures.json5</a> 文件中查看被支持的所有特性</td></tr><tr><td align="left"><code>defaultFontFamily</code> <em>Object</em></td><td align="left">为 font-family 设置默认字体</td></tr><tr><td align="left"><code>   defaultFontFamily.standard</code> <em>string</em></td><td align="left">默认值为 <em>(Times New Roman)</em></td></tr><tr><td align="left"><code>   defaultFontFamily.serif</code> <em>string</em></td><td align="left">默认值为 <em>(Times New Roman)</em></td></tr><tr><td align="left"><code>   defaultFontFamily.sansSerif</code> <em>string</em></td><td align="left">默认值为 <em>(Arial)</em></td></tr><tr><td align="left"><code>   defaultFontFamily.monospace</code> <em>string</em></td><td align="left">默认值为 <em>(Courier New)</em></td></tr><tr><td align="left"><code>   defaultFontFamily.cursive</code> <em>string</em></td><td align="left">默认值为 <em>(Script)</em></td></tr><tr><td align="left"><code>   defaultFontFamily.fantasy</code> <em>string</em></td><td align="left">默认值为 <em>(Impact)</em></td></tr><tr><td align="left"><code>defaultFontSize</code> <em>Integer</em></td><td align="left">默认值为 <em>(16)</em></td></tr><tr><td align="left"><code>defaultMonospaceFontSize</code> <em>Integer</em></td><td align="left">默认值为 <em>(13)</em></td></tr><tr><td align="left"><code>minimumFontSize</code> <em>Integer</em></td><td align="left">默认值为 <em>(0)</em></td></tr><tr><td align="left"><code>defaultEncoding</code> <em>string</em></td><td align="left">默认值为 <em>(ISO-8859-1)</em></td></tr><tr><td align="left"><code>backgroundThrottling</code> <em>boolean</em></td><td align="left">是否在页面成为背景时限制动画和计时器。 这也会影响到 <em><a href="https://www.electronjs.org/docs/latest/api/browser-window#page-visibility">Visibility API</a></em>。默认值为 <em>(true)</em></td></tr><tr><td align="left"><code>offscreen</code> <em>boolean</em></td><td align="left">是否绘制和渲染可视区域外的窗口。默认值为 <em>(false)</em>。更多详情, 请参见 <a href="https://www.electronjs.org/docs/latest/tutorial/offscreen-rendering">offscreen rendering tutorial</a></td></tr><tr><td align="left"><code>contextIsolation</code> <em>boolean</em></td><td align="left">是否在独立 JavaScript 环境中运行 Electron API和指定的_(preload)_ 脚本。默认为 <em>(true)</em>。 <em>(预加载)<em>脚本所运行的上下文环境只能访问其自身专用的 <em>(文档)</em> 和全局 <em>(窗口)</em>，其自身一系列内置的JavaScript (</em>(Array)</em>, <em>(Object)</em>, <em>(JSON)</em>, 等等) 也是如此，这些对于已加载的内容都是不可见的。 Electron API 将只在_(预加载)<em>脚本中可用，在已加载页面中不可用。 这个选项应被用于加载可能不被信任的远程内容时来确保加载的内容无法篡改</em>(预加载)_脚本和任何正在使用的Electron api。  该选项使用的是与<a href="https://developer.chrome.com/extensions/content_scripts#execution-environment">Chrome内容脚本</a>相同的技术。你可以在开发者工具Console选项卡内顶部组合框中选择 'Electron Isolated Context'条目来访问这个上下文</td></tr><tr><td align="left"><code>webviewTag</code> <em>boolean</em></td><td align="left">是否启用 <a href="https://www.electronjs.org/docs/latest/api/webview-tag"><em>(&#x3C;webview>)</em> tag</a>标签。默认值为 <em>(false)</em>。<strong>注意:</strong> 为 <em>(&#x3C; webview>)</em> 配置的 <em>(preload)</em> 脚本在执行时将启用节点集成, 因此应确保远程或不受信任的内容无法创建恶意的 <em>(preload)</em> 脚本 。 可以使用 <a href="https://www.electronjs.org/docs/latest/api/web-contents">webContents</a> 上的 <em>(will-attach-webview)</em> 事件对 <em>(preload)</em> 脚本进行剥离, 并验证或更改 <em>(&#x3C;webview>)</em> 的初始设置</td></tr><tr><td align="left"><code>additionalArguments</code> <em>string[]</em></td><td align="left">strin一个将被附加到当前应用程序的渲染器进程中_(process.argv)_的字符串列表。可用于将少量的数据传递到渲染器进程预加载脚本中。</td></tr><tr><td align="left"><code>safeDialogs</code> <em>boolean</em></td><td align="left">是否启用浏览器样式的持续对话框保护。 默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>safeDialogsMessage</code> <em>string</em></td><td align="left">当持续对话框保护被触发时显示的消息。 如果没有定义，那么将使用缺省的消息。注意：当前缺省消息是英文，并没有本地化</td></tr><tr><td align="left"><code>disableDialogs</code> <em>boolean</em></td><td align="left">是否完全禁用对话框。 覆盖 <em>(safeDialogs)</em>。 默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>navigateOnDragDrop</code> <em>boolean</em></td><td align="left">将文件或链接拖放到页面上时是否触发页面跳转。 默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>autoplayPolicy</code> <em>string</em></td><td align="left">窗口中内容要使用的自动播放策略，值可以是 <em>(no-user-gesture-required)</em>, <em>(user-gesture-required)</em>, <em>(document-user-activation-required)</em>。默认为 <em>(no-user-gesture-required)</em></td></tr><tr><td align="left"><code>disableHtmlFullscreenWindowResize</code> <em>boolean</em></td><td align="left">是否阻止窗口在进入 HTML 全屏时调整大小。默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>accessibleTitle</code> <em>string</em></td><td align="left">仅提供给如屏幕读取器等辅助工具的替代标题字符串。此字符串不直接对用户可见</td></tr><tr><td align="left"><code>spellcheck</code> <em>boolean</em></td><td align="left">是否启用内置拼写检查器。 默认值为 <em>(true)</em></td></tr><tr><td align="left"><code>enableWebSQL</code> <em>boolean</em></td><td align="left">是否启用 <a href="https://www.w3.org/TR/webdatabase/">WebSQL api</a>。 默认值为 <em>(true)</em></td></tr><tr><td align="left"><code>v8CacheOptions</code> <em>string</em></td><td align="left">强制 blink 使用 v8 代码缓存策略。 可接受的值为：</td></tr><tr><td align="left"><code>   v8CacheOptions.none</code></td><td align="left">禁用代码缓存</td></tr><tr><td align="left"><code>   v8CacheOptions.code</code></td><td align="left">基于启发式代码缓存</td></tr><tr><td align="left"><code>   v8CacheOptions.bypassHeatCheck</code></td><td align="left">绕过启发式代码缓存，但使用懒编译。</td></tr><tr><td align="left"><code>   v8CacheOptions.bypassHeatCheckAndEagerCompile</code></td><td align="left">与上面相同，除了编译是及时的。 默认策略是 <em>(code)</em></td></tr><tr><td align="left"><code>enablePreferredSizeMode</code> <em>boolean</em></td><td align="left">是否启用首选大小模式。 首选大小是包含文档布局所需的最小大小--无需滚动。 启用该属性将导致在首选大小发生变化时，在 <em>(WebContents)</em> 上触发 <em>(preferred-size-changed)</em> 事件。默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>titleBarOverlay</code> <em>Object/Boolean</em></td><td align="left">当在 macOS 使用无框窗口结合 <em>(win.setWindowButtonVisibility(true))</em> 或使用 <em>(titleBarStyle)</em> 以便标准窗口控制 (在 macOS为 "traffic lights") 可见，此属性将启用 Window Controls Overlay <a href="https://github.com/WICG/window-controls-overlay/blob/main/explainer.md#javascript-apis">JavaScript APIs</a> 和 <a href="https://github.com/WICG/window-controls-overlay/blob/main/explainer.md#css-environment-variables">CSS Environment Variables</a>。指定 <em>(true)</em> 将导致覆盖默认系统颜色。 默认值为 <em>(false)</em></td></tr><tr><td align="left"><code>color</code> <em>String</em> <em>(win)</em></td><td align="left">启用窗口控制时覆盖面的 CSS 颜色 默认是系统颜色</td></tr><tr><td align="left"><code>symbolColor</code> <em>String</em> <em>(win)</em></td><td align="left">启用时窗口控制中符号的 CSS 颜色 默认是系统颜色</td></tr><tr><td align="left"><code>height</code> <em>Integer</em> <em>(win/mac)</em></td><td align="left">标题栏和 Window Controls Overlay，以像素为单位。 默认值为系统高度</td></tr></tbody></table>
+<!--rehype:className=style-list-->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="实例事件"><a aria-hidden="true" tabindex="-1" href="#实例事件"><span class="icon icon-link"></span></a>实例事件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">BrowserWindow</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> child <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">modal</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">child<span class="token punctuation">.</span><span class="token method function property-access">loadURL</span><span class="token punctuation">(</span><span class="token string">'https://github.com'</span><span class="token punctuation">)</span>
+</span><span class="code-line">child<span class="token punctuation">.</span><span class="token method function property-access">once</span><span class="token punctuation">(</span><span class="token string">'ready-to-show'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  child<span class="token punctuation">.</span><span class="token method function property-access">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>page-title-updated</code></td><td align="left">文档更改标题时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-page-title-updated">#</a></td></tr><tr><td align="left"><code>close</code></td><td align="left">在窗口要关闭的时候触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-close">#</a></td></tr><tr><td align="left"><code>closed</code></td><td align="left">在窗口关闭时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-closed">#</a></td></tr><tr><td align="left"><code>session-end</code> <em>(win)</em></td><td align="left">因为强制关机/重启/会话注销而导致窗口会话结束时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-session-end-windows">#</a></td></tr><tr><td align="left"><code>unresponsive</code></td><td align="left">网页变得未响应时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-unresponsive">#</a></td></tr><tr><td align="left"><code>responsive</code></td><td align="left">未响应的页面变成响应时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-responsive">#</a></td></tr><tr><td align="left"><code>blur</code></td><td align="left">当窗口失去焦点时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-blur">#</a></td></tr><tr><td align="left"><code>focus</code></td><td align="left">当窗口获得焦点时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-focus">#</a></td></tr><tr><td align="left"><code>show</code></td><td align="left">当窗口显示时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-show">#</a></td></tr><tr><td align="left"><code>hide</code></td><td align="left">当窗口隐藏时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-hide">#</a></td></tr><tr><td align="left"><code>ready-to-show</code></td><td align="left">当页面已经渲染完成(还没有显示)窗口可以被显示时触发<a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-ready-to-show">#</a></td></tr><tr><td align="left"><code>maximize</code></td><td align="left">窗口最大化时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-maximize">#</a></td></tr><tr><td align="left"><code>unmaximize</code></td><td align="left">当窗口从最大化状态退出时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-unmaximize">#</a></td></tr><tr><td align="left"><code>minimize</code></td><td align="left">窗口最小化时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-minimize">#</a></td></tr><tr><td align="left"><code>restore</code></td><td align="left">当窗口从最小化状态恢复时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-restore">#</a></td></tr><tr><td align="left"><code>will-resize</code> <em>(mac/win)</em></td><td align="left">调整窗口大小前触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-will-resize-macos-windows">#</a></td></tr><tr><td align="left"><code>resize</code></td><td align="left">调整窗口大小后触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-resize">#</a></td></tr><tr><td align="left"><code>resized</code> <em>(mac/win)</em></td><td align="left">当窗口完成调整大小后触发一次 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6resized-macos-windows">#</a></td></tr><tr><td align="left"><code>will-move</code> <em>(mac/win)</em></td><td align="left">窗口移动前触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-will-move-macos-windows">#</a></td></tr><tr><td align="left"><code>move</code></td><td align="left">窗口移动到新位置时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-move">#</a></td></tr><tr><td align="left"><code>moved</code> <em>(mac/win)</em></td><td align="left">当窗口移动到新位置时触发一次 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-moved-macos-windows">#</a></td></tr><tr><td align="left"><code>enter-full-screen</code></td><td align="left">窗口进入全屏状态时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-enter-full-screen">#</a></td></tr><tr><td align="left"><code>leave-full-screen</code></td><td align="left">窗口离开全屏状态时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-leave-full-screen">#</a></td></tr><tr><td align="left"><code>enter-html-full-screen</code></td><td align="left">窗口进入由HTML API 触发的全屏状态时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-enter-html-full-screen">#</a></td></tr><tr><td align="left"><code>leave-html-full-screen</code></td><td align="left">窗口离开由HTML API触发的全屏状态时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-leave-html-full-screen">#</a></td></tr><tr><td align="left"><code>always-on-top-changed</code></td><td align="left">设置或取消设置窗口总是在其他窗口的顶部显示时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-always-on-top-changed">#</a></td></tr><tr><td align="left"><code>app-command</code></td><td align="left">请求一个应用程序命令时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-app-command-windows__linux">#</a></td></tr><tr><td align="left"><code>scroll-touch-begin</code> <em>(mac)</em></td><td align="left">滚轮事件阶段开始时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-scroll-touch-begin-macos">#</a></td></tr><tr><td align="left"><code>scroll-touch-end</code> <em>(mac)</em></td><td align="left">滚轮事件阶段结束时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-scroll-touch-end-macos">#</a></td></tr><tr><td align="left"><code>scroll-touch-edge</code> <em>(mac)</em></td><td align="left">滚轮事件阶段到达元素边缘时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-scroll-touch-edge-macos">#</a></td></tr><tr><td align="left"><code>swipe</code></td><td align="left">三指滑动时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-swipe-macos">#</a></td></tr><tr><td align="left"><code>rotate-gesture</code> <em>(mac)</em></td><td align="left">在触控板旋转手势上触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-rotate-gesture-macos">#</a></td></tr><tr><td align="left"><code>sheet-begin</code> <em>(mac)</em></td><td align="left">窗口打开sheet(工作表) 时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-sheet-begin-macos">#</a></td></tr><tr><td align="left"><code>sheet-end</code> <em>(mac)</em></td><td align="left">窗口关闭sheet(工作表) 时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-sheet-end-macos">#</a></td></tr><tr><td align="left"><code>new-window-for-tab</code> <em>(mac)</em></td><td align="left">当点击了系统的新标签按钮时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-new-window-for-tab-macos">#</a></td></tr><tr><td align="left"><code>system-context-menu</code> <em>(win)</em></td><td align="left">当系统上下文菜单在窗口上触发时触发 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#%E4%BA%8B%E4%BB%B6-system-context-menu-windows">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap col-span-3 row-span-3"><div class="wrap-header h3wrap"><h3 id="实例方法"><a aria-hidden="true" tabindex="-1" href="#实例方法"><span class="icon icon-link"></span></a>实例方法</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3 row-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>win.destroy()</code></td><td align="left">强制关闭窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#windestroy">#</a></td></tr><tr><td align="left"><code>win.close()</code></td><td align="left">尝试关闭窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winclose">#</a></td></tr><tr><td align="left"><code>win.focus()</code></td><td align="left">聚焦于窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winfocus">#</a></td></tr><tr><td align="left"><code>win.blur()</code></td><td align="left">取消窗口的聚焦 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winblur">#</a></td></tr><tr><td align="left"><code>win.isFocused()</code></td><td align="left">判断窗口是否聚焦 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisfocused">#</a></td></tr><tr><td align="left"><code>win.isDestroyed()</code></td><td align="left">判断窗口是否被销毁 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisdestroyed">#</a></td></tr><tr><td align="left"><code>win.show()</code></td><td align="left">显示并聚焦于窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winshow">#</a></td></tr><tr><td align="left"><code>win.showInactive()</code></td><td align="left">显示但不聚焦于窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winshowinactive">#</a></td></tr><tr><td align="left"><code>win.hide()</code></td><td align="left">隐藏窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winhide">#</a></td></tr><tr><td align="left"><code>win.isVisible()</code></td><td align="left">判断窗口是否可见 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisvisible">#</a></td></tr><tr><td align="left"><code>win.isModal()</code></td><td align="left">判断是否为模态窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winismodal">#</a></td></tr><tr><td align="left"><code>win.maximize()</code></td><td align="left">最大化窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winmaximize">#</a></td></tr><tr><td align="left"><code>win.unmaximize()</code></td><td align="left">取消窗口最大化 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winunmaximize">#</a></td></tr><tr><td align="left"><code>win.isMaximized()</code></td><td align="left">判断窗口是否最大化 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winismaximized">#</a></td></tr><tr><td align="left"><code>win.minimize()</code></td><td align="left">最小化窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winminimize">#</a></td></tr><tr><td align="left"><code>win.restore()</code></td><td align="left">窗口最小化状态恢复到以前的状态 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winrestore">#</a></td></tr><tr><td align="left"><code>win.isMinimized()</code></td><td align="left">判断窗口是否最小化 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisminimized">#</a></td></tr><tr><td align="left"><code>win.setFullScreen(flag)</code></td><td align="left">设置窗口是否应处于全屏模式 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetfullscreenflag">#</a></td></tr><tr><td align="left"><code>win.isFullScreen()</code></td><td align="left">窗口当前是否已全屏 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisfullscreen">#</a></td></tr><tr><td align="left"><code>win.setSimpleFullScreen(flag)</code> <em>(mac)</em></td><td align="left">进入或离开简单的全屏模式 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetsimplefullscreenflag-macos">#</a></td></tr><tr><td align="left"><code>win.isSimpleFullScreen()</code></td><td align="left">窗口是否为简单全屏模式(pre-Lion) <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winissimplefullscreen-macos">#</a></td></tr><tr><td align="left"><code>win.isNormal()</code></td><td align="left">窗口是否处于正常状态（未最大化，未最小化，不在全屏模式下） <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisnormal">#</a></td></tr><tr><td align="left"><code>win.setAspectRatio(aspectRatio[, extraSize])</code></td><td align="left">为内容视图保持的宽高比 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetaspectratioaspectratio-extrasize">#</a></td></tr><tr><td align="left"><code>win.setBackgroundColor(backgroundColor)</code></td><td align="left">颜色，格式为 Hex，RGB，RGBA，HSL，HSLA 或 CSS 命名颜色 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetbackgroundcolorbackgroundcolor">#</a></td></tr><tr><td align="left"><code>win.previewFile(path[, displayName])</code> <em>(mac)</em></td><td align="left">要用 QuickLook 预览的文件的绝对路径 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winpreviewfilepath-displayname-macos">#</a></td></tr><tr><td align="left"><code>win.closeFilePreview()</code> <em>(mac)</em></td><td align="left">关闭当前打开的 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winclosefilepreview-macos">#</a></td></tr><tr><td align="left"><code>win.setBounds(bounds[, animate])</code></td><td align="left">重置窗口，并且移动窗口到指定的位置 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetboundsbounds-animate">#</a></td></tr><tr><td align="left"><code>win.getBounds()</code></td><td align="left">表示窗口的 <code>bounds</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetbounds">#</a></td></tr><tr><td align="left"><code>win.getBackgroundColor()</code></td><td align="left">格式获取窗口的背景色，格式为 Hex (<code>#RRGGBB</code>) <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetbackgroundcolor">#</a></td></tr><tr><td align="left"><code>win.setContentBounds(bounds[, animate])</code></td><td align="left">调整窗口的工作区 (如网页) 的大小并将其移动到所提供的边界。 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetcontentboundsbounds-animate">#</a></td></tr><tr><td align="left"><code>win.getContentBounds()</code></td><td align="left">窗口客户端区域的 <code>bounds</code> <code>对象</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetcontentbounds">#</a></td></tr><tr><td align="left"><code>win.getNormalBounds()</code></td><td align="left">包含正常状态下的窗口大小 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetnormalbounds">#</a></td></tr><tr><td align="left"><code>win.setEnabled(enable)</code></td><td align="left">禁用或者启用窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetenabledenable">#</a></td></tr><tr><td align="left"><code>win.isEnabled()</code></td><td align="left">窗口是否启用 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisenabled">#</a></td></tr><tr><td align="left"><code>win.setSize(width, height[, animate])</code></td><td align="left">调整窗口的 <code>width</code> 和 <code>height</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetsizewidth-height-animate">#</a></td></tr><tr><td align="left"><code>win.getSize()</code></td><td align="left">包含窗口的宽度和高度 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetsize">#</a></td></tr><tr><td align="left"><code>win.setContentSize(width, height[, animate])</code></td><td align="left">将窗口的工作区 (如网页) 的大小调整为 <code>width</code> 和 <code>height</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetcontentsizewidth-height-animate">#</a></td></tr><tr><td align="left"><code>win.getContentSize()</code></td><td align="left">包含窗口的宽度和高度 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetcontentsize">#</a></td></tr><tr><td align="left"><code>win.setMinimumSize(width, height)</code></td><td align="left">设置窗口最小化的 <code>width</code> 和 <code>height</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetminimumsizewidth-height">#</a></td></tr><tr><td align="left"><code>win.getMinimumSize()</code></td><td align="left">包含窗口最小化的宽度和高度 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetminimumsize">#</a></td></tr><tr><td align="left"><code>win.setMaximumSize(width, height)</code></td><td align="left">设置窗口最大化的 <code>width</code> 和 <code>height</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetmaximumsizewidth-height">#</a></td></tr><tr><td align="left"><code>win.getMaximumSize()</code></td><td align="left">包含窗口最大化的宽度和高度 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetmaximumsize">#</a></td></tr><tr><td align="left"><code>win.setResizable(resizable)</code></td><td align="left">设置用户是否可以手动调整窗口大小 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetresizableresizable">#</a></td></tr><tr><td align="left"><code>win.isResizable()</code></td><td align="left">用户是否可以手动调整窗口大小 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisresizable">#</a></td></tr><tr><td align="left"><code>win.setMovable(movable)</code> <em>(mac/win)</em></td><td align="left">设置用户是否可以移动窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetmovablemovable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.isMovable()</code> <em>(mac/win)</em></td><td align="left">窗口是否可以被用户拖动，在 Linux 上总是返回 <code>true</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winismovable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.setMinimizable(minimizable)</code> <em>(mac/win)</em></td><td align="left">设置用户是否可以手动将窗口最小化 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetminimizableminimizable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.isMinimizable()</code> <em>(mac/win)</em></td><td align="left">用户是否可以手动最小化窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisminimizable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.setMaximizable(maximizable)</code> <em>(mac/win)</em></td><td align="left">设置用户是否可以手动最大化窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetmaximizablemaximizable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.isMaximizable()</code> <em>(mac/win)</em></td><td align="left">窗口是否可以最大化 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winismaximizable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.setFullScreenable(fullscreenable)</code></td><td align="left">设置最大化/缩放窗口按钮是切换全屏模式还是最大化窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetfullscreenablefullscreenable">#</a></td></tr><tr><td align="left"><code>win.isFullScreenable()</code></td><td align="left">最大化/缩放窗口按钮是切换全屏模式还是最大化窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisfullscreenable">#</a></td></tr><tr><td align="left"><code>win.setClosable(closable)</code> <em>(mac/win)</em></td><td align="left">设置用户是否可以手动关闭窗口。 在Linux上不起作用 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetclosableclosable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.isClosable()</code> <em>(mac/win)</em></td><td align="left">窗口是否被用户关闭了 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisclosable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.setAlwaysOnTop(flag[, level][, relativeLevel])</code></td><td align="left">设置窗口是否应始终显示在其他窗口的前面 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetalwaysontopflag-level-relativelevel">#</a></td></tr><tr><td align="left"><code>win.isAlwaysOnTop()</code></td><td align="left">当前窗口是否始终在其它窗口之前 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisalwaysontop">#</a></td></tr><tr><td align="left"><code>win.moveAbove(mediaSourceId)</code></td><td align="left">将窗口按z轴顺序移动到源窗口前面 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winmoveabovemediasourceid">#</a></td></tr><tr><td align="left"><code>win.moveTop()</code></td><td align="left">无论焦点如何, 将窗口移至顶端(z轴上的顺序) <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winmovetop">#</a></td></tr><tr><td align="left"><code>win.center()</code></td><td align="left">将窗口移动到屏幕中央 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wincenter">#</a></td></tr><tr><td align="left"><code>win.setPosition(x, y[, animate])</code></td><td align="left">将窗口移动到 <code>x</code> 和 <code>y</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetpositionx-y-animate">#</a></td></tr><tr><td align="left"><code>win.getPosition()</code></td><td align="left">返回一个包含当前窗口位置的数组 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetposition">#</a></td></tr><tr><td align="left"><code>win.setTitle(title)</code></td><td align="left">将原生窗口的标题更改为 <code>title</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsettitletitle">#</a></td></tr><tr><td align="left"><code>win.getTitle()</code></td><td align="left">网页的标题可以与原生窗口的标题不同 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingettitle">#</a></td></tr><tr><td align="left"><code>win.setSheetOffset(offsetY[, offsetX])</code> <em>(mac/win)</em></td><td align="left">改变macOS上sheet组件的附着点，默认情况下，sheet贴在窗口边框正下方 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetsheetoffsetoffsety-offsetx-macos">#</a></td></tr><tr><td align="left"><code>win.flashFrame(flag)</code></td><td align="left">启动或停止闪烁窗口, 以吸引用户的注意 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winflashframeflag">#</a></td></tr><tr><td align="left"><code>win.setSkipTaskbar(skip)</code> <em>(mac/win)</em></td><td align="left">使窗口不显示在任务栏中 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetskiptaskbarskip-macos-windows">#</a></td></tr><tr><td align="left"><code>win.setKiosk(flag)</code></td><td align="left">进入或离开 kiosk 模式 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetkioskflag">#</a></td></tr><tr><td align="left"><code>win.isKiosk()</code></td><td align="left">判断窗口是否处于kiosk模式 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winiskiosk">#</a></td></tr><tr><td align="left"><code>win.isTabletMode()</code> <em>(win)</em></td><td align="left">此 API 返回 窗口是否在平板电脑模式下，并且 调整大小 事件可以用于监听对平板模式的更改 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winistabletmode-windows">#</a></td></tr><tr><td align="left"><code>win.getMediaSourceId()</code></td><td align="left">DesktopCapturerSource 的 <code>id</code> 格式的窗口 <code>id</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetmediasourceid">#</a></td></tr><tr><td align="left"><code>win.getNativeWindowHandle()</code></td><td align="left">窗口的平台特定句柄 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetnativewindowhandle">#</a></td></tr><tr><td align="left"><code>win.hookWindowMessage(message, callback)</code> <em>(win)</em></td><td align="left">钩住窗口消息。 当消息到达 WndProc 时调用 callback <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winhookwindowmessagemessage-callback-windows">#</a></td></tr><tr><td align="left"><code>win.isWindowMessageHooked(message)</code> <em>(win)</em></td><td align="left">返回 boolean - true 或false，具体取决于是否钩挂了消息 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winiswindowmessagehookedmessage-windows">#</a></td></tr><tr><td align="left"><code>win.unhookWindowMessage(message)</code> <em>(win)</em></td><td align="left">取消窗口信息的钩子 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winunhookwindowmessagemessage-windows">#</a></td></tr><tr><td align="left"><code>win.unhookAllWindowMessages()</code> <em>(win)</em></td><td align="left">取消所有窗口信息的钩子 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winunhookallwindowmessages-windows">#</a></td></tr><tr><td align="left"><code>win.setRepresentedFilename(filename)</code> <em>(mac)</em></td><td align="left">设置窗口所代表的文件的路径名，并且将这个文件的图标放在窗口标题栏上 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetrepresentedfilenamefilename-macos">#</a></td></tr><tr><td align="left"><code>win.getRepresentedFilename()</code> <em>(mac)</em></td><td align="left">获取窗口当前文件路径 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetrepresentedfilename-macos">#</a></td></tr><tr><td align="left"><code>win.setDocumentEdited(edited)</code> <em>(mac)</em></td><td align="left">明确指出窗口文档是否可以编辑，如果设置为true则将标题栏的图标变成灰色 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetdocumenteditededited-macos">#</a></td></tr><tr><td align="left"><code>win.isDocumentEdited()</code> <em>(mac)</em></td><td align="left">判断当前窗口文档是否可编辑 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisdocumentedited-macos">#</a></td></tr><tr><td align="left"><code>win.focusOnWebView()</code></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winfocusonwebview">#</a></td></tr><tr><td align="left"><code>win.blurWebView()</code></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winblurwebview">#</a></td></tr><tr><td align="left"><code>win.capturePage([rect])</code></td><td align="left">在 rect 内捕获页面的快照 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wincapturepagerect">#</a></td></tr><tr><td align="left"><code>win.loadURL(url[, options])</code></td><td align="left">加载页面 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winloadurlurl-options">#</a></td></tr><tr><td align="left"><code>win.loadFile(filePath[, options])</code></td><td align="left">加载页面 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winloadfilefilepath-options">#</a></td></tr><tr><td align="left"><code>win.reload()</code></td><td align="left">与 <code>webContents.reload</code> 相同 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winreload">#</a></td></tr><tr><td align="left"><code>win.setMenu(menu)</code> <em>(win/linux)</em></td><td align="left">将 <code>menu</code> 设置为窗口的菜单栏 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetmenumenu-linux-windows">#</a></td></tr><tr><td align="left"><code>win.removeMenu()</code> <em>(win)</em></td><td align="left">删除窗口的菜单栏 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winremovemenu-linux-windows">#</a></td></tr><tr><td align="left"><code>win.setProgressBar(progress[, options])</code></td><td align="left">设置进度条的进度值 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetprogressbarprogress-options">#</a></td></tr><tr><td align="left"><code>win.setOverlayIcon(overlay, description)</code> <em>(win)</em></td><td align="left">设置进度条的进度值。 有效范围为 <code>[0, 1.0]</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetoverlayiconoverlay-description-windows">#</a></td></tr><tr><td align="left"><code>win.setHasShadow(hasShadow)</code></td><td align="left">设置窗口是否有阴影 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsethasshadowhasshadow">#</a></td></tr><tr><td align="left"><code>win.hasShadow()</code></td><td align="left">判断窗口是否有阴影 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winhasshadow">#</a></td></tr><tr><td align="left"><code>win.setOpacity(opacity)</code> <em>(win/mac)</em></td><td align="left">设置窗口的不透明度。 在Linux上不起作用。 超出界限的数值被限制在 <code>[0, 1]</code> 范围内 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetopacityopacity-windows-macos">#</a></td></tr><tr><td align="left"><code>win.getOpacity()</code></td><td align="left">介于 <code>0.0</code> (完全透明) 和 <code>1.0</code> (完全不透明) 之间。在Linux上，始终返回 <code>1</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetopacity">#</a></td></tr><tr><td align="left"><code>win.setShape(rects)</code> <em>(win/linux)</em></td><td align="left">对窗口形状的设置决定了窗口内系统允许绘制与用户交互的区域 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetshaperects-windows-linux-%E5%AE%9E%E9%AA%8C%E6%80%A7">#</a></td></tr><tr><td align="left"><code>win.setThumbarButtons(buttons)</code> <em>(win)</em></td><td align="left">将指定的一组按钮添加到菜单栏的缩图工具栏上 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetthumbarbuttonsbuttons-windows">#</a></td></tr><tr><td align="left"><code>win.setThumbnailClip(region)</code> <em>(win)</em></td><td align="left">将窗口的区域设置为在任务栏中悬停在窗口上方时显示的缩略图图像 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetthumbnailclipregion-windows">#</a></td></tr><tr><td align="left"><code>win.setThumbnailToolTip(toolTip)</code> <em>(win)</em></td><td align="left">设置在任务栏中悬停在窗口缩略图上时显示的工具提示 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetthumbnailtooltiptooltip-windows">#</a></td></tr><tr><td align="left"><code>win.setAppDetails(options)</code> <em>(win)</em></td><td align="left">设置窗口任务栏按钮的属性 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetappdetailsoptions-windows">#</a></td></tr><tr><td align="left"><code>win.showDefinitionForSelection()</code> <em>(mac)</em></td><td align="left">和 <code>webContents.showDefinitionForSelection()</code> 相同 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winshowdefinitionforselection-macos">#</a></td></tr><tr><td align="left"><code>win.setIcon(icon)</code> <em>(win/linux)</em></td><td align="left">设置窗口图标 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winseticonicon-windows-linux">#</a></td></tr><tr><td align="left"><code>win.setWindowButtonVisibility(visible)</code> <em>(mac)</em></td><td align="left">设置是否窗口交通灯需要显示 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetwindowbuttonvisibilityvisible-macos">#</a></td></tr><tr><td align="left"><code>win.setAutoHideMenuBar(hide)</code> <em>(win/linux)</em></td><td align="left">设置窗口菜单栏是否自动隐藏 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetautohidemenubarhide-windows-linux">#</a></td></tr><tr><td align="left"><code>win.isMenuBarAutoHide()</code> <em>(win/linux)</em></td><td align="left">判断窗口的菜单栏是否自动隐藏 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winismenubarautohide-windows-linux">#</a></td></tr><tr><td align="left"><code>win.setMenuBarVisibility(visible)</code> <em>(win/linux)</em></td><td align="left">设置菜单栏是否可见 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetmenubarvisibilityvisible-windows-linux">#</a></td></tr><tr><td align="left"><code>win.isMenuBarVisible()</code> <em>(win/linux)</em></td><td align="left">判断窗口的菜单栏是否可见 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winismenubarvisible-windows-linux">#</a></td></tr><tr><td align="left"><code>win.setVisibleOnAllWorkspaces(visible[, options])</code> <em>(mac/linux)</em></td><td align="left">设置窗口是否在所有工作空间上可见 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetvisibleonallworkspacesvisible-options-macos-linux">#</a></td></tr><tr><td align="left"><code>win.isVisibleOnAllWorkspaces()</code> <em>(mac/linux)</em></td><td align="left">判断窗口是否在所有工作空间上可见 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisvisibleonallworkspaces-macos-linux">#</a></td></tr><tr><td align="left"><code>win.setIgnoreMouseEvents(ignore[, options])</code></td><td align="left">忽略窗口内的所有鼠标事件 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetignoremouseeventsignore-options">#</a></td></tr><tr><td align="left"><code>win.setContentProtection(enable)</code> <em>(mac/linux)</em></td><td align="left">防止窗口内容被其他应用捕获 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetcontentprotectionenable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.setFocusable(focusable)</code> <em>(mac/linux)</em></td><td align="left">设置窗口是否可聚焦 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetfocusablefocusable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.isFocusable()</code> <em>(mac/linux)</em></td><td align="left">返回当前窗口是否可以作为焦点被选中 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winisfocusable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.setParentWindow(parent)</code></td><td align="left">设置 <code>parent</code> 为当前窗口的父窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetparentwindowparent">#</a></td></tr><tr><td align="left"><code>win.getParentWindow()</code></td><td align="left">返回 BrowserWindow/null - 如果没有父窗口则为 <code>null</code> <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetparentwindow">#</a></td></tr><tr><td align="left"><code>win.getChildWindows()</code></td><td align="left">返回 <code>BrowserWindow[]</code> - 首页的子窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetchildwindows">#</a></td></tr><tr><td align="left"><code>win.setAutoHideCursor(autoHide)</code> <em>(mac)</em></td><td align="left">设置输入时是否隐藏光标 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetautohidecursorautohide-macos">#</a></td></tr><tr><td align="left"><code>win.selectPreviousTab()</code> <em>(mac)</em></td><td align="left">当启用本地选项卡，并且窗口中有另一个标签时，选择上一个选项卡 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winselectprevioustab-macos">#</a></td></tr><tr><td align="left"><code>win.selectNextTab()</code> <em>(mac)</em></td><td align="left">当启用本地选项卡，并且窗口中有另一个标签时，选择下一个选项卡 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winselectnexttab-macos">#</a></td></tr><tr><td align="left"><code>win.mergeAllWindows()</code> <em>(mac)</em></td><td align="left">当启用本地选项卡并且存在多个打开窗口时，将所有窗口合并到一个带有多个选项卡的窗口中 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winmergeallwindows-macos">#</a></td></tr><tr><td align="left"><code>win.moveTabToNewWindow()</code> <em>(mac)</em></td><td align="left">如果启用了本机选项卡并且当前窗口中有多个选项卡，则将当前选项卡移动到新窗口中 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winmovetabtonewwindow-macos">#</a></td></tr><tr><td align="left"><code>win.toggleTabBar()</code> <em>(mac)</em></td><td align="left">如果启用了本机选项卡并且当前窗口中只有一个选项卡，则切换选项卡栏是否可见 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wintoggletabbar-macos">#</a></td></tr><tr><td align="left"><code>win.addTabbedWindow(browserWindow)</code> <em>(mac)</em></td><td align="left">在该窗口中添加一个窗口作为选项卡，位于窗口实例的选项卡之后 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winaddtabbedwindowbrowserwindow-macos">#</a></td></tr><tr><td align="left"><code>win.setVibrancy(type)</code> <em>(mac)</em></td><td align="left">在浏览器窗口中添加一个动态特效。 传递 null 或空字符串将会移除窗口上的动态效果 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetvibrancytype-macos">#</a></td></tr><tr><td align="left"><code>win.setTrafficLightPosition(position)</code> <em>(mac)</em></td><td align="left">在无框窗口中设置自定义控制按钮的位置 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsettrafficlightpositionposition-macos">#</a></td></tr><tr><td align="left"><code>win.getTrafficLightPosition()</code> <em>(mac)</em></td><td align="left">在无框窗口中自定义控制按钮的位置 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingettrafficlightposition-macos">#</a></td></tr><tr><td align="left"><code>win.setTouchBar(touchBar)</code> <em>(mac)</em></td><td align="left">设置窗口的触摸条布局 设置为 null 或undefined将清除触摸条 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsettouchbartouchbar-macos">#</a></td></tr><tr><td align="left"><code>win.setBrowserView(browserView)</code> <em>(实验)</em></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsetbrowserviewbrowserview-%E5%AE%9E%E9%AA%8C">#</a></td></tr><tr><td align="left"><code>win.getBrowserView()</code> <em>(实验功能)</em></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetbrowserview-%E5%AE%9E%E9%AA%8C%E5%8A%9F%E8%83%BD">#</a></td></tr><tr><td align="left"><code>win.addBrowserView(browserView)</code> <em>(实验功能)</em></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winaddbrowserviewbrowserview-%E5%AE%9E%E9%AA%8C%E5%8A%9F%E8%83%BD">#</a></td></tr><tr><td align="left"><code>win.removeBrowserView(browserView)</code> <em>(实验功能)</em></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winremovebrowserviewbrowserview-%E5%AE%9E%E9%AA%8C%E5%8A%9F%E8%83%BD">#</a></td></tr><tr><td align="left"><code>win.setTopBrowserView(browserView)</code> <em>(实验功能)</em></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsettopbrowserviewbrowserview-%E5%AE%9E%E9%AA%8C%E5%8A%9F%E8%83%BD">#</a></td></tr><tr><td align="left"><code>win.getBrowserViews()</code> <em>(实验功能)</em></td><td align="left"><a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetbrowserviews-%E5%AE%9E%E9%AA%8C%E5%8A%9F%E8%83%BD">#</a></td></tr><tr><td align="left"><code>win.setTitleBarOverlay(options)</code> <em>(win)</em></td><td align="left">在已开启 Window Controls Overlay 的窗口上，此方法将更新标题栏叠加层的样式 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsettitlebaroverlayoptions-windows">#</a></td></tr></tbody></table>
+<!--rehype:className=style-list-->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="静态方法"><a aria-hidden="true" tabindex="-1" href="#静态方法"><span class="icon icon-link"></span></a>静态方法</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>BrowserWindow.getAllWindows()</code></td><td align="left">所有打开的窗口的数组 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#browserwindowgetallwindows">#</a></td></tr><tr><td align="left"><code>BrowserWindow.getFocusedWindow()</code></td><td align="left">当前获得焦点的窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#browserwindowgetfocusedwindow">#</a></td></tr><tr><td align="left"><code>BrowserWindow.fromWebContents(webContents)</code></td><td align="left">拥有给定 webContents 窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#browserwindowfromwebcontentswebcontents">#</a></td></tr><tr><td align="left"><code>BrowserWindow.fromBrowserView(browserView)</code></td><td align="left">拥有给定 browserView 窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#browserwindowfrombrowserviewbrowserview">#</a></td></tr><tr><td align="left"><code>BrowserWindow.fromId(id)</code></td><td align="left">带有给定 id 的窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#browserwindowfromidid">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="实例属性"><a aria-hidden="true" tabindex="-1" href="#实例属性"><span class="icon icon-link"></span></a>实例属性</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">BrowserWindow</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 本例中 `win` 是我们的实例</span>
+</span><span class="code-line"><span class="token keyword">const</span> win <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span> <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">600</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">win<span class="token punctuation">.</span><span class="token method function property-access">loadURL</span><span class="token punctuation">(</span><span class="token string">'https://github.com'</span><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>win.webContents</code></td><td align="left">此窗口拥有的 WebContents 对象 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winwebcontents-%E5%8F%AA%E8%AF%BB">#</a></td></tr><tr><td align="left"><code>win.id</code></td><td align="left">代表了窗口的唯一ID <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winid-%E5%8F%AA%E8%AF%BB">#</a></td></tr><tr><td align="left"><code>win.autoHideMenuBar</code></td><td align="left">决定窗口菜单栏是否自动隐藏 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winautohidemenubar">#</a></td></tr><tr><td align="left"><code>win.simpleFullScreen</code></td><td align="left">决定窗口是否处于简单(pre-Lion) 全屏模式 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winsimplefullscreen">#</a></td></tr><tr><td align="left"><code>win.fullScreen</code></td><td align="left">决定窗口是否处于全屏模式 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winfullscreen">#</a></td></tr><tr><td align="left"><code>win.focusable</code></td><td align="left">确定窗口是否可作为焦点被选中的属性 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winfocusable-windows-macos">#</a></td></tr><tr><td align="left"><code>win.visibleOnAllWorkspaces</code></td><td align="left">决定窗口是否在所有工作区中可见 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winvisibleonallworkspaces-macos-linux">#</a></td></tr><tr><td align="left"><code>win.shadow</code></td><td align="left">决定窗口是否显示阴影 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winshadow">#</a></td></tr><tr><td align="left"><code>win.menuBarVisible</code></td><td align="left">决定菜单栏是否可见 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winmenubarvisible-windows-linux">#</a></td></tr><tr><td align="left"><code>win.kiosk</code></td><td align="left">决定窗口是否处于kiosk模式 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winkiosk">#</a></td></tr><tr><td align="left"><code>win.documentEdited</code></td><td align="left">指明窗口文档是否已被编辑 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#windocumentedited-macos">#</a></td></tr><tr><td align="left"><code>win.representedFilename</code></td><td align="left">确定窗口代表的文件的路径名 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winrepresentedfilename-macos">#</a></td></tr><tr><td align="left"><code>win.title</code></td><td align="left">用于确定原生窗口的标题 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#wintitle">#</a></td></tr><tr><td align="left"><code>win.minimizable</code></td><td align="left">决定窗口是否可被用户手动最小化 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winminimizable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.maximizable</code></td><td align="left">决定窗口是否可被用户手动最大化 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winmaximizable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.fullScreenable</code></td><td align="left">决定是切换全屏模式还是最大化窗口 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winfullscreenable">#</a></td></tr><tr><td align="left"><code>win.resizable</code></td><td align="left">决定窗口是否可被用户手动调整大小 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winresizable">#</a></td></tr><tr><td align="left"><code>win.closable</code></td><td align="left">决定窗口是否可被用户手动关闭 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winclosable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.movable</code></td><td align="left">决定窗口是否可被用户移动 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winmovable-macos-windows">#</a></td></tr><tr><td align="left"><code>win.excludedFromShownWindowsMenu</code></td><td align="left">决定窗口是否从 Windows 菜单排除 <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winexcludedfromshownwindowsmenu-macos">#</a></td></tr><tr><td align="left"><code>win.accessibleTitle</code></td><td align="left">定义一个仅为辅助工具提供的替代标题  <a href="https://www.electronjs.org/zh/docs/latest/api/browser-window#winaccessibletitle">#</a></td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://simulatedgreg.github.io/electron-cheatsheet/">Electron 备忘清单</a> <em>(simulatedgreg.github.io)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
