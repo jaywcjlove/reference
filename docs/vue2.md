@@ -700,6 +700,64 @@ Vue 2 API
 `keep-alive` | [#](https://v2.cn.vuejs.org/v2/api/#keep-alive)
 `slot` | [#](https://v2.cn.vuejs.org/v2/api/#slot)
 
+### v-on (事件)修饰符
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+`v-on:click.stop` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 调用 event.stopPropagation()。
+`v-on:click.prevent` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 调用 event.preventDefault()。
+`v-on:click.capture` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 添加事件侦听器时使用 capture 模式。
+`v-on:click.self` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 只当事件是从侦听器绑定的元素本身触发时才触发回调。
+`v-on:click.{keyCode\|keyAlias}` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 只当事件是从特定键触发时才触发回调。
+`v-on:click.native` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 监听组件根元素的原生事件。
+`v-on:click.once` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 只触发一次回调。
+`v-on:click.passive` _(2.3.0)_ [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 以 { passive: true } 模式添加侦听器
+<!--rehype:className=style-list-->
+
+
+### v-on (鼠标)修饰符
+
+:- | :-
+:- | :-
+`v-on:click.left` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 只当点击鼠标左键时触发
+`v-on:click.right` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 只当点击鼠标右键时触发
+`v-on:click.middle` [#](https://v2.cn.vuejs.org/v2/api/#v-on) | 只当点击鼠标中键时触发
+
+在 _(2.2.0)_ 中新增
+
+### 系统修饰键
+
+:- | :-
+:- | :-
+`v-on:keyup.ctrl` _(2.1.0)_ | [#](https://v2.cn.vuejs.org/v2/guide/events.html#系统修饰键)
+`v-on:keyup.alt` _(2.1.0)_ | [#](https://v2.cn.vuejs.org/v2/guide/events.html#系统修饰键)
+`v-on:keyup.shift` _(2.1.0)_ | [#](https://v2.cn.vuejs.org/v2/guide/events.html#系统修饰键)
+`v-on:keyup.meta` _(2.1.0)_ | [#](https://v2.cn.vuejs.org/v2/guide/events.html#系统修饰键)
+
+### Keyboard 按键修饰符
+
+:- | :-
+:- | :-
+`v-on:keyup.enter` | [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+`v-on:keyup.tab` | [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+`v-on:keyup.delete ` | 捕获“删除”和“退格”键 [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+`v-on:keyup.esc` | [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+`v-on:keyup.space` | [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+`v-on:keyup.up` | [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+`v-on:keyup.down` | [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+`v-on:keyup.left` | [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+`v-on:keyup.right` | [#](https://v2.cn.vuejs.org/v2/guide/events.html#按键修饰符)
+
+### v-bind 修饰符
+
+:- | :-
+:- | :-
+`v-bind.prop` [#](https://v2.cn.vuejs.org/v2/api/#v-bind) | 作为一个 DOM property 绑定而不是作为 attribute 绑定。([差别在哪里？](https://stackoverflow.com/questions/6003819/properties-and-attributes-in-html#answer-6004028))
+`v-bind.camel` _(2.1.0+)_ [#](https://v2.cn.vuejs.org/v2/api/#v-bind) | 将 kebab-case attribute 名转换为 camelCase。
+`v-bind.sync` _(2.3.0+)_ [#](https://v2.cn.vuejs.org/v2/api/#v-bind) | 语法糖，会扩展成一个更新父组件绑定值的 v-on 侦听器。
+<!--rehype:className=style-list-->
+
 另见
 ---
 
