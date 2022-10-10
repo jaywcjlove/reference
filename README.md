@@ -52,6 +52,7 @@ Quick Reference
 [find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [SSH](./docs/ssh.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
+[Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 其它
