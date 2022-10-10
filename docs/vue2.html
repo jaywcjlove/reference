@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Vue2 备忘清单
+ &#x26;  vue2 cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="渐进式 JavaScript 框架 Vue 2 备忘清单的快速参考列表，包含常用 API 和示例。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,vue2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/vue2.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="vue2-备忘清单"><a aria-hidden="true" tabindex="-1" href="#vue2-备忘清单"><span class="icon icon-link"></span></a>Vue2 备忘清单</h1><div class="wrap-body">
+<p>渐进式 JavaScript 框架 Vue 2 备忘清单的快速参考列表，包含常用 API 和示例。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>Vue 是一套用于构建用户界面的渐进式框架</p>
+<ul>
+<li><a href="https://v2.cn.vuejs.org/">Vue 2.x 官方文档</a></li>
+<li><a href="https://v3.router.vuejs.org/">Vue Router 3.x 官方文档</a></li>
+</ul>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="声明式渲染"><a aria-hidden="true" tabindex="-1" href="#声明式渲染"><span class="icon icon-link"></span></a>声明式渲染</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  {{ message }}
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'Hello Vue!'</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="基础例子"><a aria-hidden="true" tabindex="-1" href="#基础例子"><span class="icon icon-link"></span></a>基础例子</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>原始信息: "{{ message }}"<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    计算的反向信息: "{{ reversedMessage }}"
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#example'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'Hello'</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token comment">// 计算属性的 getter</span>
+</span><span class="code-line">    <span class="token function-variable function">reversedMessage</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token comment">// `this` 指向 vm 实例</span>
+</span><span class="code-line">      <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">.</span><span class="token method function property-access">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+</span><span class="code-line">          <span class="token punctuation">.</span><span class="token method function property-access">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>结果</p>
+<pre><code class="code-highlight"><span class="code-line">原始信息:  "Hello"
+</span><span class="code-line">计算的反向信息:  "olleH"
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="绑定元素属性"><a aria-hidden="true" tabindex="-1" href="#绑定元素属性"><span class="icon icon-link"></span></a>绑定元素属性</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> app2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app-2'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'页面加载于 '</span> <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token punctuation">.</span><span class="token method function property-access">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="条件"><a aria-hidden="true" tabindex="-1" href="#条件"><span class="icon icon-link"></span></a>条件</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>seen<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>现在你看到我了<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> app3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app-3'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">seen</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>控制切换一个元素是否显示</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="循环"><a aria-hidden="true" tabindex="-1" href="#循环"><span class="icon icon-link"></span></a>循环</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ol</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>li</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>todo in todos<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">      {{ todo.text }}
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>li</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ol</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> app4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app-4'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">todos</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">      <span class="token punctuation">{</span> <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'学习 JavaScript'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token punctuation">{</span> <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'学习 Vue'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token punctuation">{</span> <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'整个牛项目'</span> <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="点击事件处理"><a aria-hidden="true" tabindex="-1" href="#点击事件处理"><span class="icon icon-link"></span></a>点击事件处理</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app-5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>{{ message }}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name"><span class="token namespace">v-on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>reverseMessage<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    反转消息
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> app5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app-5'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'Hello Vue.js!'</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function-variable function">reverseMessage</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">message</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">.</span><span class="token method function property-access">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+</span><span class="code-line">            <span class="token punctuation">.</span><span class="token method function property-access">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="输入事件处理"><a aria-hidden="true" tabindex="-1" href="#输入事件处理"><span class="icon icon-link"></span></a>输入事件处理</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app-6<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>{{ message }}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>message<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p><code>v-model</code> 指令，它能轻松实现表单输入和应用状态之间的双向绑定</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> app6 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app-6'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'Hello Vue!'</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="模板语法"><a aria-hidden="true" tabindex="-1" href="#模板语法"><span class="icon icon-link"></span></a>模板语法</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="文本"><a aria-hidden="true" tabindex="-1" href="#文本"><span class="icon icon-link"></span></a>文本</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>Message: {{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span> <span class="token attr-name">v-once</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  这个将不会改变: {{ msg }}
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>使用 <code>v-once</code> 指令，执行一次性地插值，当数据改变时，插值处的内容不会更新</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="原始-html"><a aria-hidden="true" tabindex="-1" href="#原始-html"><span class="icon icon-link"></span></a>原始 HTML</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>解释为普通文本: {{ rawHtml }}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  使用 v-html 指令: 
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span> <span class="token attr-name">v-html</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rawHtml<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>使用 <code>v-html</code> 指令，输出真正的 <code>HTML</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="属性"><a aria-hidden="true" tabindex="-1" href="#属性"><span class="icon icon-link"></span></a>属性</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dynamicId<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>disabled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>isDisabled<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  Button
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>如果 <code>isDisabled</code> 的值是 null/undefined/false 则 <code>disabled</code> 不会被渲染出来</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="javascript-表达式"><a aria-hidden="true" tabindex="-1" href="#javascript-表达式"><span class="icon icon-link"></span></a>JavaScript 表达式</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>消息: {{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>{{ msg + '这是字符串' }}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>{{ isWorking ? '是':'否' }}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>{{ msg.getDetials() }}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>list-' + id<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="指令"><a aria-hidden="true" tabindex="-1" href="#指令"><span class="icon icon-link"></span></a>指令</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>seen<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  现在你看到我了
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p><code>v-if</code> 指令将根据表达式 <code>seen</code> 的值的真假来插入/移除 &#x3C;p> 元素</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="指令参数"><a aria-hidden="true" tabindex="-1" href="#指令参数"><span class="icon icon-link"></span></a>指令参数</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>a</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>url<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>a</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p><code>v-bind</code> 指令将该元素 <code>href</code> 属性与表达式 <code>url</code> 的值绑定</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>a</span> <span class="token attr-name"><span class="token namespace">v-on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>doSomething<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>a</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p><code>v-on</code> 指令，用于监听 DOM 事件，oSomething 是事件名</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="指令动态参数-v26"><a aria-hidden="true" tabindex="-1" href="#指令动态参数-v26"><span class="icon icon-link"></span></a>指令动态参数 <strong>v2.6</strong></h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>a</span> <span class="token attr-name"><span class="token namespace">v-on:</span>[eventName]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>doSomething<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>a</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>当 <code>eventName</code> 的值为 <code>focus</code> 时，<code>v-on:[eventName]</code> 将等价于 <code>v-on:focus</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="指令修饰符"><a aria-hidden="true" tabindex="-1" href="#指令修饰符"><span class="icon icon-link"></span></a>指令修饰符</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span> <span class="token attr-name"><span class="token namespace">v-on:</span>submit.prevent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onSubmit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  ...
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p><code>.prevent</code> 修饰符告诉 <code>v-on</code> 指令对于触发的事件调用 <code>event.preventDefault()</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="指令缩写"><a aria-hidden="true" tabindex="-1" href="#指令缩写"><span class="icon icon-link"></span></a>指令缩写</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token comment">&#x3C;!-- 完整语法 --></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>a</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>url<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>a</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token comment">&#x3C;!-- 缩写 --></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>a</span> <span class="token attr-name">:href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>url<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>a</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token comment">&#x3C;!-- 动态参数的缩写 (2.6.0+) --></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>a</span> <span class="token attr-name">:[key]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>url<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> ... <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>a</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="class-与-style-绑定"><a aria-hidden="true" tabindex="-1" href="#class-与-style-绑定"><span class="icon icon-link"></span></a>Class 与 Style 绑定</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="对象语法"><a aria-hidden="true" tabindex="-1" href="#对象语法"><span class="icon icon-link"></span></a>对象语法</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{ active: isActive }<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>传给 <code>v-bind:class</code> 一个对象，以动态地切换 <code>class</code></p>
+</div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="与普通的-class-属性共存"><a aria-hidden="true" tabindex="-1" href="#与普通的-class-属性共存"><span class="icon icon-link"></span></a>与普通的 class 属性共存</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span>
+</span></span><span class="code-line highlight-line"><span class="token tag">  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>static<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-bind:</span>class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">    active: isActive,
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">    'text-danger': hasError
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">  }<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag"><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>如下 data</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">isActive</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">hasError</span><span class="token operator">:</span> <span class="token boolean">false</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果渲染为</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>static active<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="绑定的数据对象不必内联定义在模板里"><a aria-hidden="true" tabindex="-1" href="#绑定的数据对象不必内联定义在模板里"><span class="icon icon-link"></span></a>绑定的数据对象不必内联定义在模板里</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>classObject<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>如下 data</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">classObject</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">active</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string-property property">'text-danger'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果渲染为</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>static active<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="三元表达式"><a aria-hidden="true" tabindex="-1" href="#三元表达式"><span class="icon icon-link"></span></a>三元表达式</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">  isActive ? activeClass : ''
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">]<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="数组"><a aria-hidden="true" tabindex="-1" href="#数组"><span class="icon icon-link"></span></a>数组</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">  { active: isActive }, errorClass
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">]<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="数组语法"><a aria-hidden="true" tabindex="-1" href="#数组语法"><span class="icon icon-link"></span></a>数组语法</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">  activeClass, errorClass
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">]<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>如下 data</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">activeClass</span><span class="token operator">:</span> <span class="token string">'active'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">errorClass</span><span class="token operator">:</span> <span class="token string">'text-danger'</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果渲染为</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>active text-danger<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="内联样式"><a aria-hidden="true" tabindex="-1" href="#内联样式"><span class="icon icon-link"></span></a>内联样式</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">    color: activeColor,
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">    fontSize: fontSize + 'px'
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>如下 data</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">activeColor</span><span class="token operator">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token literal-property property">fontSize</span><span class="token operator">:</span> <span class="token number">30</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果渲染为</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token color">red</span><span class="token punctuation">;</span> <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">30</span><span class="token unit">px</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="内联样式对象通常更好"><a aria-hidden="true" tabindex="-1" href="#内联样式对象通常更好"><span class="icon icon-link"></span></a>内联样式对象通常更好</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>styleObject<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>如下 data</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">styleObject</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token literal-property property">fontSize</span><span class="token operator">:</span> <span class="token string">'13px'</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>同样的，对象语法常常结合返回对象的计算属性使用</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="内联样式数组语法"><a aria-hidden="true" tabindex="-1" href="#内联样式数组语法"><span class="icon icon-link"></span></a>内联样式数组语法</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">  baseStyles, overridingStyles
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">]<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="内联样式多重值"><a aria-hidden="true" tabindex="-1" href="#内联样式多重值"><span class="icon icon-link"></span></a>内联样式多重值</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">:style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">  display: ['-webkit-box', 'flex']
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="条件渲染"><a aria-hidden="true" tabindex="-1" href="#条件渲染"><span class="icon icon-link"></span></a>条件渲染</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="v-if"><a aria-hidden="true" tabindex="-1" href="#v-if"><span class="icon icon-link"></span></a>v-if</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>awesome<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Vue is awesome!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span> <span class="token attr-name">v-else</span><span class="token punctuation">></span></span>Oh no 😢<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="v-else-if"><a aria-hidden="true" tabindex="-1" href="#v-else-if"><span class="icon icon-link"></span></a>v-else-if</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>type === 'A'<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">v-else-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>type === 'B'<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">v-else-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>type === 'C'<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">v-else</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  Not A/B/C
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p><code>@2.1.0</code> 新增，必须紧跟在带 <code>v-if</code> 或者 <code>v-else-if</code> 的元素之后</p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="v-else"><a aria-hidden="true" tabindex="-1" href="#v-else"><span class="icon icon-link"></span></a>v-else</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Math.random() > 0.5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  现在你看到我了
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">v-else</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  现在你看不见我了
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p><code>v-else</code> 元素必须紧跟在带 <code>v-if</code> 或者 <code>v-else-if</code> 的元素的后面</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="template-上使用-v-if-条件渲染分组"><a aria-hidden="true" tabindex="-1" href="#template-上使用-v-if-条件渲染分组"><span class="icon icon-link"></span></a>&#x3C;template> 上使用 v-if 条件渲染分组</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>template</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ok<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>Paragraph 1<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>template</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="用-key-管理可复用的元素"><a aria-hidden="true" tabindex="-1" href="#用-key-管理可复用的元素"><span class="icon icon-link"></span></a>用 key 管理可复用的元素</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>template</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loginType === 'username'<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>Username<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>输入用户名<span class="token punctuation">"</span></span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username-input<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>template</span> <span class="token attr-name">v-else</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>Email<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>输入邮箱<span class="token punctuation">"</span></span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email-input<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>template</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="v-show"><a aria-hidden="true" tabindex="-1" href="#v-show"><span class="icon icon-link"></span></a>v-show</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span> <span class="token attr-name">v-show</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ok<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  Hello!
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>带有 <code>v-show</code> 的元素始终会被渲染并保留在 DOM 中，只是简单地切换元素的 <code>CSS</code> 属性 <code>display</code></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf">Vue Essentials Cheat-Sheet.pdf</a> <em>(vuemastery.com)</em></li>
+<li><a href="https://v2.cn.vuejs.org/">Vue 2 官方文档</a> <em>(vuejs.org)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
