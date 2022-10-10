@@ -525,7 +525,7 @@ Vue 2 API
 `optionMergeStrategies` | 自定义合并策略的选项 [#](https://v2.cn.vuejs.org/v2/api/#optionMergeStrategies)
 `devtools` | 是否允许 [devtools](https://github.com/vuejs/vue-devtools) 检查 [#](https://v2.cn.vuejs.org/v2/api/#devtools)
 `errorHandler` | 未捕获错误的处理函数 _(开发模式生效)_ [#](https://v2.cn.vuejs.org/v2/api/#errorHandler)
-`warnHandler` | 运行时警告处理函数 [#](https://v2.cn.vuejs.org/v2/api/#warnHandler)
+`warnHandler` _(2.4.0)_ | 运行时警告处理函数 [#](https://v2.cn.vuejs.org/v2/api/#warnHandler)
 `ignoredElements` | 忽略 Vue 之外的 _(自定义元素)_ [#](https://v2.cn.vuejs.org/v2/api/#ignoredElements)
 `keyCodes` | `v-on` 自定义键位别名 [#](https://v2.cn.vuejs.org/v2/api/#keyCodes)
 `performance` _(2.2.0)_ | 性能追踪 [#](https://v2.cn.vuejs.org/v2/api/#performance)
@@ -546,7 +546,7 @@ Vue 2 API
 `Vue.use` | 安装 Vue.js 插件 [#](https://v2.cn.vuejs.org/v2/api/#Vue-use)
 `Vue.mixin` | 全局注册一个混入 [#](https://v2.cn.vuejs.org/v2/api/#Vue-mixin)
 `Vue.compile` | 将模板字符串编译成 render 函数 [#](https://v2.cn.vuejs.org/v2/api/#Vue-compile)
-`Vue.observable` | 让一个对象可响应 [#](https://v2.cn.vuejs.org/v2/api/#Vue-observable)
+`Vue.observable` _(2.6.0)_ | 让一个对象可响应 [#](https://v2.cn.vuejs.org/v2/api/#Vue-observable)
 `Vue.version` | Vue 安装版本号 [#](https://v2.cn.vuejs.org/v2/api/#Vue-version)
 
 ### 数据
@@ -564,10 +564,10 @@ Vue 2 API
 
 :- | :-
 :- | :-
-`el` | [#](https://v2.cn.vuejs.org/v2/api/#el)
-`template` | [#](https://v2.cn.vuejs.org/v2/api/#template)
-`render` | [#](https://v2.cn.vuejs.org/v2/api/#render)
-`renderError` | [#](https://v2.cn.vuejs.org/v2/api/#renderError)
+`el` | 实例的挂载目标 [#](https://v2.cn.vuejs.org/v2/api/#el)
+`template` | 字符串模板作为 Vue 实例的标识使用 [#](https://v2.cn.vuejs.org/v2/api/#template)
+`render` | 字符串模板的代替方案 [#](https://v2.cn.vuejs.org/v2/api/#render)
+`renderError` _(2.2.0)_ | `render`错误时提供另一种渲染 [#](https://v2.cn.vuejs.org/v2/api/#renderError)
 
 ### 生命周期钩子
 <!--rehype:wrap-class=row-span-2-->
@@ -584,7 +584,7 @@ Vue 2 API
 `deactivated` | keep-alive 缓存的组件失活时调用 [#](https://v2.cn.vuejs.org/v2/api/#deactivated)
 `beforeDestroy` | 实例销毁之前调用 [#](https://v2.cn.vuejs.org/v2/api/#beforeDestroy)
 `destroyed` | 实例销毁后调用 [#](https://v2.cn.vuejs.org/v2/api/#destroyed)
-`errorCaptured` | 来自后代组件的错误时被调用 [#](https://v2.cn.vuejs.org/v2/api/#errorCaptured)
+`errorCaptured` _(2.5.0)_ | 来自后代组件的错误时被调用 [#](https://v2.cn.vuejs.org/v2/api/#errorCaptured)
 
 ### 资源
 
@@ -601,26 +601,26 @@ Vue 2 API
 `parent` | 指定已创建的实例之父实例 [#](https://v2.cn.vuejs.org/v2/api/#parent)
 `mixins` | 接收一个混入对象的数组 [#](https://v2.cn.vuejs.org/v2/api/#mixins)
 `extends` | 声明扩展另一个组件 [#](https://v2.cn.vuejs.org/v2/api/#extends)
-`provide/inject` | 祖组件向所有子孙后代注入依赖 [#](https://v2.cn.vuejs.org/v2/api/#provide-inject)
+`provide/inject` _(2.2.0)_ | 祖组件向所有子孙后代注入依赖 [#](https://v2.cn.vuejs.org/v2/api/#provide-inject)
 
 ### 其它
 
 :- | :-
 :- | :-
-`name` | [#](https://v2.cn.vuejs.org/v2/api/#name)
-`delimiters` | [#](https://v2.cn.vuejs.org/v2/api/#delimiters)
-`functional` | [#](https://v2.cn.vuejs.org/v2/api/#functional)
-`model` | [#](https://v2.cn.vuejs.org/v2/api/#model)
-`inheritAttrs` | [#](https://v2.cn.vuejs.org/v2/api/#inheritAttrs)
-`comments` | [#](https://v2.cn.vuejs.org/v2/api/#comments)
+`name` | 允许组件模板递归地调用自身 [#](https://v2.cn.vuejs.org/v2/api/#name)
+`delimiters` | 改变纯文本插入分隔符 [#](https://v2.cn.vuejs.org/v2/api/#delimiters)
+`functional` | 使组件无状态和无实例 [#](https://v2.cn.vuejs.org/v2/api/#functional)
+`model` _(2.2.0)_ | 使用 v-model 时定制 prop 和 event [#](https://v2.cn.vuejs.org/v2/api/#model)
+`inheritAttrs` _(2.4.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#inheritAttrs)
+`comments` _(2.4.0)_ | 是否保留模板中的`HTML`注释 [#](https://v2.cn.vuejs.org/v2/api/#comments)
 
 ### 实例方法 / 数据
 
 :- | :-
 :- | :-
-`vm.$watch` | [#](https://v2.cn.vuejs.org/v2/api/#vm-watch)
-`vm.$set` | [#](https://v2.cn.vuejs.org/v2/api/#vm-set)
-`vm.$delete` | [#](https://v2.cn.vuejs.org/v2/api/#vm-delete)
+`vm.$watch` | 观察 Vue 实例上的一个表达式<br/>或者一个函数计算结果的变化 [#](https://v2.cn.vuejs.org/v2/api/#vm-watch)
+`vm.$set` | 全局 `Vue.set` 的别名 [#](https://v2.cn.vuejs.org/v2/api/#vm-set)
+`vm.$delete` | 全局 `Vue.delete` 的别名 [#](https://v2.cn.vuejs.org/v2/api/#vm-delete)
 
 ### 实例 property
 <!--rehype:wrap-class=row-span-3-->
@@ -628,18 +628,18 @@ Vue 2 API
 :- | :-
 :- | :-
 `vm.$data` | [#](https://v2.cn.vuejs.org/v2/api/#vm-data)
-`vm.$props` | [#](https://v2.cn.vuejs.org/v2/api/#vm-props)
+`vm.$props` _(2.2.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#vm-props)
 `vm.$el` | [#](https://v2.cn.vuejs.org/v2/api/#vm-el)
 `vm.$options` | [#](https://v2.cn.vuejs.org/v2/api/#vm-options)
 `vm.$parent` | [#](https://v2.cn.vuejs.org/v2/api/#vm-parent)
 `vm.$root` | [#](https://v2.cn.vuejs.org/v2/api/#vm-root)
 `vm.$children` | [#](https://v2.cn.vuejs.org/v2/api/#vm-children)
 `vm.$slots` | [#](https://v2.cn.vuejs.org/v2/api/#vm-slots)
-`vm.$scopedSlots` | [#](https://v2.cn.vuejs.org/v2/api/#vm-scopedSlots)
+`vm.$scopedSlots` _(2.1.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#vm-scopedSlots)
 `vm.$refs` | [#](https://v2.cn.vuejs.org/v2/api/#vm-refs)
 `vm.$isServer` | [#](https://v2.cn.vuejs.org/v2/api/#vm-isServer)
-`vm.$attrs` | [#](https://v2.cn.vuejs.org/v2/api/#vm-attrs)
-`vm.$listeners` | [#](https://v2.cn.vuejs.org/v2/api/#vm-listeners)
+`vm.$attrs` _(2.4.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#vm-attrs)
+`vm.$listeners` _(2.4.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#vm-listeners)
 
 ### 实例方法 / 事件
 
@@ -669,7 +669,7 @@ Vue 2 API
 `v-show` | [#](https://v2.cn.vuejs.org/v2/api/#v-show)
 `v-if` | [#](https://v2.cn.vuejs.org/v2/api/#v-if)
 `v-else` | [#](https://v2.cn.vuejs.org/v2/api/#v-else)
-`v-else-if` | [#](https://v2.cn.vuejs.org/v2/api/#v-else-if)
+`v-else-if` _(2.1.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#v-else-if)
 `v-for` | [#](https://v2.cn.vuejs.org/v2/api/#v-for)
 `v-on` | [#](https://v2.cn.vuejs.org/v2/api/#v-on)
 `v-bind` | [#](https://v2.cn.vuejs.org/v2/api/#v-bind)
@@ -686,9 +686,9 @@ Vue 2 API
 `key` | [#](https://v2.cn.vuejs.org/v2/api/#key)
 `ref` | [#](https://v2.cn.vuejs.org/v2/api/#ref)
 `is` | [#](https://v2.cn.vuejs.org/v2/api/#is)
-~~`slot`~~ | [#](https://v2.cn.vuejs.org/v2/api/#slot-废弃)
-~~`slot-scope`~~ | [#](https://v2.cn.vuejs.org/v2/api/#slot-scope-废弃)
-~~`scope`~~ | [#](https://v2.cn.vuejs.org/v2/api/#scope-移除)
+~~`slot`~~ | 推荐 2.6.0 新增的 `v-slot` [#](https://v2.cn.vuejs.org/v2/api/#slot-废弃)
+~~`slot-scope`~~ | 推荐 2.6.0 新增的 `v-slot` [#](https://v2.cn.vuejs.org/v2/api/#slot-scope-废弃)
+~~`scope`~~ | `2.5.0` 新增的 `slot-scope` 取代 [#](https://v2.cn.vuejs.org/v2/api/#scope-移除)
 
 ### 内置的组件
 
