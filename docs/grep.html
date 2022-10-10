@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Grep 备忘清单
+ &#x26;  grep cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="本备忘单旨在快速提醒使用命令行程序 grep 所涉及的主要概念，并假设您已经了解其用法。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,grep">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/grep.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="grep-备忘清单"><a aria-hidden="true" tabindex="-1" href="#grep-备忘清单"><span class="icon icon-link"></span></a>Grep 备忘清单</h1><div class="wrap-body">
+<p>本备忘单旨在快速提醒使用命令行程序 grep 所涉及的主要概念，并假设您已经了解其用法。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+<!--rehype:body-class=cols-5-->
+</div></div><div class="h2wrap-body cols-5"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="使用"><a aria-hidden="true" tabindex="-1" href="#使用"><span class="icon icon-link"></span></a>使用</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>搜索标准输出（即文本流）</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">grep</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> search_string
+</span></code></pre>
+<p>在文件中搜索确切的字符串：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">grep</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> search_string path/to/file
+</span></code></pre>
+<p>打印 myfile.txt 中包含字符串“mellon”的行</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">grep</span> <span class="token string">'mellon'</span> myfile.txt
+</span></code></pre>
+<p>文件名中接受通配符。</p>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="选项示例"><a aria-hidden="true" tabindex="-1" href="#选项示例"><span class="icon icon-link"></span></a>选项示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">示例</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>-i</code></td><td align="left">grep -i ^DA demo.txt</td><td align="left">忘记区分大小写</td></tr><tr><td align="left"><code>-w</code></td><td align="left">grep -w "of" demo.txt</td><td align="left">仅搜索完整的单词</td></tr><tr><td align="left"><code>-A</code></td><td align="left">grep -A 3 'Exception' error.log</td><td align="left">匹配字符串后显示 3 行</td></tr><tr><td align="left"><code>-B</code></td><td align="left">grep -B 4 'Exception' error.log</td><td align="left">在匹配字符串前显示 4 行</td></tr><tr><td align="left"><code>-C</code></td><td align="left">grep -C 5 'Exception' error.log</td><td align="left">在匹配字符串周围显示 5 行</td></tr><tr><td align="left"><code>-r</code></td><td align="left">grep -r 'github.io' /var/log/nginx/</td><td align="left">递归搜索 <em>(在子目录内)</em></td></tr><tr><td align="left"><code>-v</code></td><td align="left">grep -v 'warning' /var/log/syslog</td><td align="left">返回所有与模式不匹配的行</td></tr><tr><td align="left"><code>-e</code></td><td align="left">grep -e '^al' filename</td><td align="left">使用正则表达式 <em>(以'al'开头的行)</em></td></tr><tr><td align="left"><code>-E</code></td><td align="left">grep -E 'ja(s|cks)on' filename</td><td align="left">扩展正则表达式 <em>(包含 jason 或 jackson 的行)</em></td></tr><tr><td align="left"><code>-c</code></td><td align="left">grep -c 'error' /var/log/syslog</td><td align="left">计算匹配数</td></tr><tr><td align="left"><code>-l</code></td><td align="left">grep -l 'robot' /var/log/*</td><td align="left">打印匹配文件的名称</td></tr><tr><td align="left"><code>-o</code></td><td align="left">grep -o search_string filename</td><td align="left">只显示字符串的匹配部分</td></tr><tr><td align="left"><code>-n</code></td><td align="left">grep -n "go" demo.txt</td><td align="left">显示匹配的行号</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="grep-正则表达式"><a aria-hidden="true" tabindex="-1" href="#grep-正则表达式"><span class="icon icon-link"></span></a>Grep 正则表达式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="参考"><a aria-hidden="true" tabindex="-1" href="#参考"><span class="icon icon-link"></span></a>参考</h3><div class="wrap-body">
+<ul>
+<li><a href="./regex.html">Regex syntax</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="./regex.html#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%A4%BA%E4%BE%8B">Regex examples</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+<p>有关更复杂的要求，请参阅完整版的正则表达式备忘单。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="通配符wildcards"><a aria-hidden="true" tabindex="-1" href="#通配符wildcards"><span class="icon icon-link"></span></a>通配符(Wildcards)</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>.</code></td><td align="left">任何字符</td></tr><tr><td align="left"><code>?</code></td><td align="left">可选且只能出现一次</td></tr><tr><td align="left"><code>*</code></td><td align="left">可选的，可以多次出现</td></tr><tr><td align="left"><code>+</code></td><td align="left">必需并且可以多次出现</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="量词quantifiers"><a aria-hidden="true" tabindex="-1" href="#量词quantifiers"><span class="icon icon-link"></span></a>量词(Quantifiers)</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>{n}</code></td><td align="left">前一项恰好出现 n 次</td></tr><tr><td align="left"><code>{n,}</code></td><td align="left">上一个项目出现 n 次或更多</td></tr><tr><td align="left"><code>{,m}</code></td><td align="left">上一个项目最多出现 n 次</td></tr><tr><td align="left"><code>{n,m}</code></td><td align="left">上一项出现在 n 到 m 次之间</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="posix"><a aria-hidden="true" tabindex="-1" href="#posix"><span class="icon icon-link"></span></a>POSIX</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>[:alpha:]</code></td><td align="left">任何大小写字母</td></tr><tr><td align="left"><code>[:digit:]</code></td><td align="left">任何数字</td></tr><tr><td align="left"><code>[:alnum:]</code></td><td align="left">任何大小写字母或数字</td></tr><tr><td align="left"><code>[:space:]</code></td><td align="left">任何空格</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符串"><a aria-hidden="true" tabindex="-1" href="#字符串"><span class="icon icon-link"></span></a>字符串</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>[A-Z­a-z]</code></td><td align="left">任何大小写字母</td></tr><tr><td align="left"><code>[0-9]</code></td><td align="left">任何数字</td></tr><tr><td align="left"><code>[0-9­A-Z­a-z]</code></td><td align="left">任何大小写字母或数字</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="位置"><a aria-hidden="true" tabindex="-1" href="#位置"><span class="icon icon-link"></span></a>位置</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>^ </code></td><td align="left">行的开头</td></tr><tr><td align="left"><code>$ </code></td><td align="left">行结束</td></tr><tr><td align="left"><code>^$</code></td><td align="left">空行</td></tr><tr><td align="left"><code>\&#x3C;</code></td><td align="left">词的开头</td></tr><tr><td align="left"><code>\></code></td><td align="left">词尾</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="更多示例"><a aria-hidden="true" tabindex="-1" href="#更多示例"><span class="icon icon-link"></span></a>更多示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="搜索命令行历史记录"><a aria-hidden="true" tabindex="-1" href="#搜索命令行历史记录"><span class="icon icon-link"></span></a>搜索命令行历史记录</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">history</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token function">git</span>
+</span></code></pre>
+<p>输入过 <code>git</code> 命令的记录</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="搜索多个文件并查找匹配文本在哪些文件中"><a aria-hidden="true" tabindex="-1" href="#搜索多个文件并查找匹配文本在哪些文件中"><span class="icon icon-link"></span></a>搜索多个文件并查找匹配文本在哪些文件中</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">grep</span> <span class="token parameter variable">-l</span> <span class="token string">"text"</span> file1 file2 file3<span class="token punctuation">..</span>.
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多级目录中对文本进行递归搜索"><a aria-hidden="true" tabindex="-1" href="#多级目录中对文本进行递归搜索"><span class="icon icon-link"></span></a>多级目录中对文本进行递归搜索</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">grep</span> <span class="token string">"text"</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-n</span>
+</span></code></pre>
+<p><code>.</code> 表示当前目录。</p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="搜索结果中包括或者排除指定文件"><a aria-hidden="true" tabindex="-1" href="#搜索结果中包括或者排除指定文件"><span class="icon icon-link"></span></a>搜索结果中包括或者排除指定文件</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 目录中所有的 .php 和 .html 文件中</span>
+</span><span class="code-line"><span class="token comment"># 递归搜索字符 "main()"</span>
+</span><span class="code-line"><span class="token function">grep</span> <span class="token string">"main()"</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--include</span> *.<span class="token punctuation">{</span>php,html<span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 在搜索结果中排除所有 README 文件</span>
+</span><span class="code-line"><span class="token function">grep</span> <span class="token string">"main()"</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--exclude</span> <span class="token string">"README"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 在搜索结果中排除 filelist 文件列表里的文件</span>
+</span><span class="code-line"><span class="token function">grep</span> <span class="token string">"main()"</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-r</span> --exclude-from filelist
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="输出包含匹配字符串的行数--n-选项"><a aria-hidden="true" tabindex="-1" href="#输出包含匹配字符串的行数--n-选项"><span class="icon icon-link"></span></a>输出包含匹配字符串的行数 -n 选项</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">grep</span> <span class="token string">"text"</span> <span class="token parameter variable">-n</span> file_name
+</span><span class="code-line"><span class="token comment"># 或</span>
+</span><span class="code-line"><span class="token function">cat</span> file_name <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"text"</span> <span class="token parameter variable">-n</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">#多个文件</span>
+</span><span class="code-line"><span class="token function">grep</span> <span class="token string">"text"</span> <span class="token parameter variable">-n</span> file_1 file_2
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="忽略匹配样式中的字符大小写"><a aria-hidden="true" tabindex="-1" href="#忽略匹配样式中的字符大小写"><span class="icon icon-link"></span></a>忽略匹配样式中的字符大小写</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"hello world"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-i</span> <span class="token string">"HELLO"</span>
+</span><span class="code-line"><span class="token comment"># hello</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="统计文件或文本中包含匹配字符串的行数--c-选项"><a aria-hidden="true" tabindex="-1" href="#统计文件或文本中包含匹配字符串的行数--c-选项"><span class="icon icon-link"></span></a>统计文件或文本中包含匹配字符串的行数 -c 选项</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">grep -c "text" file_name
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://wangchujiang.com/linux-command/c/grep.html">grep 中文文档</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
