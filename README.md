@@ -49,6 +49,7 @@ Quick Reference
 [Chmod](./docs/chmod.md)<!--rehype:style=background: rgb(239 68 113/var(\-\-bg\-opacity));-->
 [Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68/var(\-\-bg\-opacity));-->
 [Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62/var(\-\-bg\-opacity));-->
+[Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [SSH](./docs/ssh.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
