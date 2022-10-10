@@ -553,12 +553,12 @@ Vue 2 API
 
 :- | :-
 :- | :-
-`data` | [#](https://v2.cn.vuejs.org/v2/api/#data)
-`props` | [#](https://v2.cn.vuejs.org/v2/api/#props)
-`propsData` | [#](https://v2.cn.vuejs.org/v2/api/#propsData)
-`computed` | [#](https://v2.cn.vuejs.org/v2/api/#computed)
-`methods` | [#](https://v2.cn.vuejs.org/v2/api/#methods)
-`watch` | [#](https://v2.cn.vuejs.org/v2/api/#watch)
+`data` | 实例的数据对象 [#](https://v2.cn.vuejs.org/v2/api/#data)
+`props` | 接收来自父组件的数据 [#](https://v2.cn.vuejs.org/v2/api/#props)
+`propsData` | 创建实例时传递 props [#](https://v2.cn.vuejs.org/v2/api/#propsData)
+`computed` | 计算属性将被混入到 Vue 实例中 [#](https://v2.cn.vuejs.org/v2/api/#computed)
+`methods` | 将被混入到 Vue 实例中 [#](https://v2.cn.vuejs.org/v2/api/#methods)
+`watch` | 对象键是观察的表达式，值是回调函数 [#](https://v2.cn.vuejs.org/v2/api/#watch)
 
 ### DOM
 
@@ -574,34 +574,34 @@ Vue 2 API
 
 :- | :-
 :- | :-
-`beforeCreate` | [#](https://v2.cn.vuejs.org/v2/api/#beforeCreate)
-`created` | [#](https://v2.cn.vuejs.org/v2/api/#created)
-`beforeMount` | [#](https://v2.cn.vuejs.org/v2/api/#beforeMount)
-`mounted` | [#](https://v2.cn.vuejs.org/v2/api/#mounted)
-`beforeUpdate` | [#](https://v2.cn.vuejs.org/v2/api/#beforeUpdate)
-`updated` | [#](https://v2.cn.vuejs.org/v2/api/#updated)
-`activated` | [#](https://v2.cn.vuejs.org/v2/api/#activated)
-`deactivated` | [#](https://v2.cn.vuejs.org/v2/api/#deactivated)
-`beforeDestroy` | [#](https://v2.cn.vuejs.org/v2/api/#beforeDestroy)
-`destroyed` | [#](https://v2.cn.vuejs.org/v2/api/#destroyed)
-`errorCaptured` | [#](https://v2.cn.vuejs.org/v2/api/#errorCaptured)
+`beforeCreate` | 实例初始化之后 [#](https://v2.cn.vuejs.org/v2/api/#beforeCreate)
+`created` | 实例创建完成后被立即同步调用 [#](https://v2.cn.vuejs.org/v2/api/#created)
+`beforeMount` | 在挂载开始之前被调用 [#](https://v2.cn.vuejs.org/v2/api/#beforeMount)
+`mounted` | 实例被挂载后调用 [#](https://v2.cn.vuejs.org/v2/api/#mounted)
+`beforeUpdate` | 数据改变后 DOM 更新之前调用 [#](https://v2.cn.vuejs.org/v2/api/#beforeUpdate)
+`updated` | 数据更改更新完毕之后被调用 [#](https://v2.cn.vuejs.org/v2/api/#updated)
+`activated` | keep-alive 缓存组件激活时调用 [#](https://v2.cn.vuejs.org/v2/api/#activated)
+`deactivated` | keep-alive 缓存的组件失活时调用 [#](https://v2.cn.vuejs.org/v2/api/#deactivated)
+`beforeDestroy` | 实例销毁之前调用 [#](https://v2.cn.vuejs.org/v2/api/#beforeDestroy)
+`destroyed` | 实例销毁后调用 [#](https://v2.cn.vuejs.org/v2/api/#destroyed)
+`errorCaptured` | 来自后代组件的错误时被调用 [#](https://v2.cn.vuejs.org/v2/api/#errorCaptured)
 
 ### 资源
 
 :- | :-
 :- | :-
-`directives` | [#](https://v2.cn.vuejs.org/v2/api/#directives)
-`filters` | [#](https://v2.cn.vuejs.org/v2/api/#filters)
-`components` | [#](https://v2.cn.vuejs.org/v2/api/#components)
+`directives` | 包含 Vue 实例可用指令的哈希表 [#](https://v2.cn.vuejs.org/v2/api/#directives)
+`filters` | 包含 Vue 实例可用过滤器的哈希表 [#](https://v2.cn.vuejs.org/v2/api/#filters)
+`components` | 包含 Vue 实例可用组件的哈希表 [#](https://v2.cn.vuejs.org/v2/api/#components)
 
 ### 组合
 
 :- | :-
 :- | :-
-`parent` | [#](https://v2.cn.vuejs.org/v2/api/#parent)
-`mixins` | [#](https://v2.cn.vuejs.org/v2/api/#mixins)
-`extends` | [#](https://v2.cn.vuejs.org/v2/api/#extends)
-`provide / inject` | [#](https://v2.cn.vuejs.org/v2/api/#provide-inject)
+`parent` | 指定已创建的实例之父实例 [#](https://v2.cn.vuejs.org/v2/api/#parent)
+`mixins` | 接收一个混入对象的数组 [#](https://v2.cn.vuejs.org/v2/api/#mixins)
+`extends` | 声明扩展另一个组件 [#](https://v2.cn.vuejs.org/v2/api/#extends)
+`provide/inject` | 祖组件向所有子孙后代注入依赖 [#](https://v2.cn.vuejs.org/v2/api/#provide-inject)
 
 ### 其它
 
@@ -645,19 +645,19 @@ Vue 2 API
 
 :- | :-
 :- | :-
-`vm.$on` | [#](https://v2.cn.vuejs.org/v2/api/#vm-on)
-`vm.$once` | [#](https://v2.cn.vuejs.org/v2/api/#vm-once)
-`vm.$off` | [#](https://v2.cn.vuejs.org/v2/api/#vm-off)
-`vm.$emit` | [#](https://v2.cn.vuejs.org/v2/api/#vm-emit)
+`vm.$on` | 监听当前实例上的自定义事件 [#](https://v2.cn.vuejs.org/v2/api/#vm-on)
+`vm.$once` | 监听一个自定义事件，只触发一次 [#](https://v2.cn.vuejs.org/v2/api/#vm-once)
+`vm.$off` | 移除自定义事件监听器 [#](https://v2.cn.vuejs.org/v2/api/#vm-off)
+`vm.$emit` | 触发当前实例上的事 [#](https://v2.cn.vuejs.org/v2/api/#vm-emit)
 
 ### 实例方法 / 生命周期
 
 :- | :-
 :- | :-
-`vm.$mount` | [#](https://v2.cn.vuejs.org/v2/api/#vm-mount)
-`vm.$forceUpdate` | [#](https://v2.cn.vuejs.org/v2/api/#vm-forceUpdate)
-`vm.$nextTick` | [#](https://v2.cn.vuejs.org/v2/api/#vm-nextTick)
-`vm.$destroy` | [#](https://v2.cn.vuejs.org/v2/api/#vm-destroy)
+`vm.$mount` | 手动地挂载一个未挂载的实例 [#](https://v2.cn.vuejs.org/v2/api/#vm-mount)
+`vm.$forceUpdate` | 迫使 Vue 实例重新渲染 [#](https://v2.cn.vuejs.org/v2/api/#vm-forceUpdate)
+`vm.$nextTick` | 回调延迟执行 [#](https://v2.cn.vuejs.org/v2/api/#vm-nextTick)
+`vm.$destroy` | 完全销毁一个实例 [#](https://v2.cn.vuejs.org/v2/api/#vm-destroy)
 
 ### 指令
 <!--rehype:wrap-class=row-span-2-->
