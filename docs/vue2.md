@@ -513,8 +513,196 @@ data: {
 
 带有 `v-show` 的元素始终会被渲染并保留在 DOM 中，只是简单地切换元素的 `CSS` 属性 `display`
 
+Vue 2 API
+---
+
+### 全局配置
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+`silent` | 取消所有的日志与警告 [#](https://v2.cn.vuejs.org/v2/api/#silent)
+`optionMergeStrategies` | 自定义合并策略的选项 [#](https://v2.cn.vuejs.org/v2/api/#optionMergeStrategies)
+`devtools` | 是否允许 [devtools](https://github.com/vuejs/vue-devtools) 检查 [#](https://v2.cn.vuejs.org/v2/api/#devtools)
+`errorHandler` | 未捕获错误的处理函数 _(开发模式生效)_ [#](https://v2.cn.vuejs.org/v2/api/#errorHandler)
+`warnHandler` | 运行时警告处理函数 [#](https://v2.cn.vuejs.org/v2/api/#warnHandler)
+`ignoredElements` | 忽略 Vue 之外的 _(自定义元素)_ [#](https://v2.cn.vuejs.org/v2/api/#ignoredElements)
+`keyCodes` | `v-on` 自定义键位别名 [#](https://v2.cn.vuejs.org/v2/api/#keyCodes)
+`performance` _(2.2.0)_ | 性能追踪 [#](https://v2.cn.vuejs.org/v2/api/#performance)
+`productionTip` _(2.2.0)_ | 是否生成生产提示 [#](https://v2.cn.vuejs.org/v2/api/#productionTip)
+
+### 全局 API
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+`Vue.extend` | Vue 构造器，创建一个“子类” [#](https://v2.cn.vuejs.org/v2/api/#Vue-extend)
+`Vue.nextTick` | 执行延迟回调 [#](https://v2.cn.vuejs.org/v2/api/#Vue-nextTick)
+`Vue.set` | 向响应式对象中添加一个属性 [#](https://v2.cn.vuejs.org/v2/api/#Vue-set)
+`Vue.delete` | 删除对象的 property [#](https://v2.cn.vuejs.org/v2/api/#Vue-delete)
+`Vue.directive` | 注册或获取全局指令 [#](https://v2.cn.vuejs.org/v2/api/#Vue-directive)
+`Vue.filter` | 注册或获取全局过滤器 [#](https://v2.cn.vuejs.org/v2/api/#Vue-filter)
+`Vue.component` | 注册或获取全局组件 [#](https://v2.cn.vuejs.org/v2/api/#Vue-component)
+`Vue.use` | 安装 Vue.js 插件 [#](https://v2.cn.vuejs.org/v2/api/#Vue-use)
+`Vue.mixin` | 全局注册一个混入 [#](https://v2.cn.vuejs.org/v2/api/#Vue-mixin)
+`Vue.compile` | 将模板字符串编译成 render 函数 [#](https://v2.cn.vuejs.org/v2/api/#Vue-compile)
+`Vue.observable` | 让一个对象可响应 [#](https://v2.cn.vuejs.org/v2/api/#Vue-observable)
+`Vue.version` | Vue 安装版本号 [#](https://v2.cn.vuejs.org/v2/api/#Vue-version)
+
+### 数据
+
+:- | :-
+:- | :-
+`data` | [#](https://v2.cn.vuejs.org/v2/api/#data)
+`props` | [#](https://v2.cn.vuejs.org/v2/api/#props)
+`propsData` | [#](https://v2.cn.vuejs.org/v2/api/#propsData)
+`computed` | [#](https://v2.cn.vuejs.org/v2/api/#computed)
+`methods` | [#](https://v2.cn.vuejs.org/v2/api/#methods)
+`watch` | [#](https://v2.cn.vuejs.org/v2/api/#watch)
+
+### DOM
+
+:- | :-
+:- | :-
+`el` | [#](https://v2.cn.vuejs.org/v2/api/#el)
+`template` | [#](https://v2.cn.vuejs.org/v2/api/#template)
+`render` | [#](https://v2.cn.vuejs.org/v2/api/#render)
+`renderError` | [#](https://v2.cn.vuejs.org/v2/api/#renderError)
+
+### 生命周期钩子
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+`beforeCreate` | [#](https://v2.cn.vuejs.org/v2/api/#beforeCreate)
+`created` | [#](https://v2.cn.vuejs.org/v2/api/#created)
+`beforeMount` | [#](https://v2.cn.vuejs.org/v2/api/#beforeMount)
+`mounted` | [#](https://v2.cn.vuejs.org/v2/api/#mounted)
+`beforeUpdate` | [#](https://v2.cn.vuejs.org/v2/api/#beforeUpdate)
+`updated` | [#](https://v2.cn.vuejs.org/v2/api/#updated)
+`activated` | [#](https://v2.cn.vuejs.org/v2/api/#activated)
+`deactivated` | [#](https://v2.cn.vuejs.org/v2/api/#deactivated)
+`beforeDestroy` | [#](https://v2.cn.vuejs.org/v2/api/#beforeDestroy)
+`destroyed` | [#](https://v2.cn.vuejs.org/v2/api/#destroyed)
+`errorCaptured` | [#](https://v2.cn.vuejs.org/v2/api/#errorCaptured)
+
+### 资源
+
+:- | :-
+:- | :-
+`directives` | [#](https://v2.cn.vuejs.org/v2/api/#directives)
+`filters` | [#](https://v2.cn.vuejs.org/v2/api/#filters)
+`components` | [#](https://v2.cn.vuejs.org/v2/api/#components)
+
+### 组合
+
+:- | :-
+:- | :-
+`parent` | [#](https://v2.cn.vuejs.org/v2/api/#parent)
+`mixins` | [#](https://v2.cn.vuejs.org/v2/api/#mixins)
+`extends` | [#](https://v2.cn.vuejs.org/v2/api/#extends)
+`provide / inject` | [#](https://v2.cn.vuejs.org/v2/api/#provide-inject)
+
+### 其它
+
+:- | :-
+:- | :-
+`name` | [#](https://v2.cn.vuejs.org/v2/api/#name)
+`delimiters` | [#](https://v2.cn.vuejs.org/v2/api/#delimiters)
+`functional` | [#](https://v2.cn.vuejs.org/v2/api/#functional)
+`model` | [#](https://v2.cn.vuejs.org/v2/api/#model)
+`inheritAttrs` | [#](https://v2.cn.vuejs.org/v2/api/#inheritAttrs)
+`comments` | [#](https://v2.cn.vuejs.org/v2/api/#comments)
+
+### 实例方法 / 数据
+
+:- | :-
+:- | :-
+`vm.$watch` | [#](https://v2.cn.vuejs.org/v2/api/#vm-watch)
+`vm.$set` | [#](https://v2.cn.vuejs.org/v2/api/#vm-set)
+`vm.$delete` | [#](https://v2.cn.vuejs.org/v2/api/#vm-delete)
+
+### 实例 property
+<!--rehype:wrap-class=row-span-3-->
+
+:- | :-
+:- | :-
+`vm.$data` | [#](https://v2.cn.vuejs.org/v2/api/#vm-data)
+`vm.$props` | [#](https://v2.cn.vuejs.org/v2/api/#vm-props)
+`vm.$el` | [#](https://v2.cn.vuejs.org/v2/api/#vm-el)
+`vm.$options` | [#](https://v2.cn.vuejs.org/v2/api/#vm-options)
+`vm.$parent` | [#](https://v2.cn.vuejs.org/v2/api/#vm-parent)
+`vm.$root` | [#](https://v2.cn.vuejs.org/v2/api/#vm-root)
+`vm.$children` | [#](https://v2.cn.vuejs.org/v2/api/#vm-children)
+`vm.$slots` | [#](https://v2.cn.vuejs.org/v2/api/#vm-slots)
+`vm.$scopedSlots` | [#](https://v2.cn.vuejs.org/v2/api/#vm-scopedSlots)
+`vm.$refs` | [#](https://v2.cn.vuejs.org/v2/api/#vm-refs)
+`vm.$isServer` | [#](https://v2.cn.vuejs.org/v2/api/#vm-isServer)
+`vm.$attrs` | [#](https://v2.cn.vuejs.org/v2/api/#vm-attrs)
+`vm.$listeners` | [#](https://v2.cn.vuejs.org/v2/api/#vm-listeners)
+
+### 实例方法 / 事件
+
+:- | :-
+:- | :-
+`vm.$on` | [#](https://v2.cn.vuejs.org/v2/api/#vm-on)
+`vm.$once` | [#](https://v2.cn.vuejs.org/v2/api/#vm-once)
+`vm.$off` | [#](https://v2.cn.vuejs.org/v2/api/#vm-off)
+`vm.$emit` | [#](https://v2.cn.vuejs.org/v2/api/#vm-emit)
+
+### 实例方法 / 生命周期
+
+:- | :-
+:- | :-
+`vm.$mount` | [#](https://v2.cn.vuejs.org/v2/api/#vm-mount)
+`vm.$forceUpdate` | [#](https://v2.cn.vuejs.org/v2/api/#vm-forceUpdate)
+`vm.$nextTick` | [#](https://v2.cn.vuejs.org/v2/api/#vm-nextTick)
+`vm.$destroy` | [#](https://v2.cn.vuejs.org/v2/api/#vm-destroy)
+
+### 指令
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+`v-text` | [#](https://v2.cn.vuejs.org/v2/api/#v-text)
+`v-html` | [#](https://v2.cn.vuejs.org/v2/api/#v-html)
+`v-show` | [#](https://v2.cn.vuejs.org/v2/api/#v-show)
+`v-if` | [#](https://v2.cn.vuejs.org/v2/api/#v-if)
+`v-else` | [#](https://v2.cn.vuejs.org/v2/api/#v-else)
+`v-else-if` | [#](https://v2.cn.vuejs.org/v2/api/#v-else-if)
+`v-for` | [#](https://v2.cn.vuejs.org/v2/api/#v-for)
+`v-on` | [#](https://v2.cn.vuejs.org/v2/api/#v-on)
+`v-bind` | [#](https://v2.cn.vuejs.org/v2/api/#v-bind)
+`v-model` | [#](https://v2.cn.vuejs.org/v2/api/#v-model)
+`v-slot` | [#](https://v2.cn.vuejs.org/v2/api/#v-slot)
+`v-pre` | [#](https://v2.cn.vuejs.org/v2/api/#v-pre)
+`v-cloak` | [#](https://v2.cn.vuejs.org/v2/api/#v-cloak)
+`v-once` | [#](https://v2.cn.vuejs.org/v2/api/#v-once)
+
+### 特殊 attribute
+
+:- | :-
+:- | :-
+`key` | [#](https://v2.cn.vuejs.org/v2/api/#key)
+`ref` | [#](https://v2.cn.vuejs.org/v2/api/#ref)
+`is` | [#](https://v2.cn.vuejs.org/v2/api/#is)
+~~`slot`~~ | [#](https://v2.cn.vuejs.org/v2/api/#slot-废弃)
+~~`slot-scope`~~ | [#](https://v2.cn.vuejs.org/v2/api/#slot-scope-废弃)
+~~`scope`~~ | [#](https://v2.cn.vuejs.org/v2/api/#scope-移除)
+
+### 内置的组件
+
+:- | :-
+:- | :-
+`component` | [#](https://v2.cn.vuejs.org/v2/api/#component)
+`transition` | [#](https://v2.cn.vuejs.org/v2/api/#transition)
+`transition-group` | [#](https://v2.cn.vuejs.org/v2/api/#transition-group)
+`keep-alive` | [#](https://v2.cn.vuejs.org/v2/api/#keep-alive)
+`slot` | [#](https://v2.cn.vuejs.org/v2/api/#slot)
+
 另见
 ---
 
 - [Vue Essentials Cheat-Sheet.pdf](https://www.vuemastery.com/pdf/Vue-Essentials-Cheat-Sheet.pdf) _(vuemastery.com)_
 - [Vue 2 官方文档](https://v2.cn.vuejs.org/) _(vuejs.org)_
+- [Vue 2 实例方法事件](https://marozed.com/vue-cheatsheet#Instance-Methods-Events) _(marozed.com)_
