@@ -25,6 +25,7 @@ Quick Reference
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198/var(\-\-bg\-opacity));-->
+[Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
 [YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
@@ -69,7 +70,7 @@ Quick Reference
 
 上面的列表没有看到你想要的？ 您是否正在寻找一些备忘清单或参考资料，或者您有一些片段备忘清单要分享，这是一个最好的机会！
 
-[`请求添加备忘单`](https://github.com/jaywcjlove/reference/issues/new?title=备忘清单+请求%3A+&labels=request&template=cheatsheet-request.md&assignee=jaywcjlove)<!--rehype:class=home-button&style=margin-top:2rem&target=__blank-->
+[`请求添加备忘单`](https://github.com/jaywcjlove/reference/issues/new?title=【备忘清单】+请求%3A+&labels=request&template=cheatsheet-request.md&assignee=jaywcjlove)<!--rehype:class=home-button&style=margin-top:2rem&target=__blank-->
 [`我有一张备忘单`](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)<!--rehype:class=home-button text-grey&target=__blank-->
 <!--rehype:style=margin-top:3rem-->
 
