@@ -13,6 +13,12 @@ Vue 是一套用于构建用户界面的渐进式框架
 - [Vue 2.x 官方文档](https://v2.cn.vuejs.org/)
 - [Vue Router 3.x 官方文档](https://v3.router.vuejs.org/)
 
+#### 快速创建 **Vue** 项目 ([Vue CLI](https://cli.vuejs.org/zh/guide/creating-a-project.html)) 
+
+```bash
+npx @vue/cli create hello-world
+```
+
 ### 声明式渲染
 
 ```html
@@ -922,19 +928,19 @@ Vue 2 API 参考
 
 :- | :-
 :- | :-
-`vm.$data` | [#](https://v2.cn.vuejs.org/v2/api/#vm-data)
-`vm.$props` _(2.2.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#vm-props)
-`vm.$el` | [#](https://v2.cn.vuejs.org/v2/api/#vm-el)
-`vm.$options` | [#](https://v2.cn.vuejs.org/v2/api/#vm-options)
-`vm.$parent` | [#](https://v2.cn.vuejs.org/v2/api/#vm-parent)
-`vm.$root` | [#](https://v2.cn.vuejs.org/v2/api/#vm-root)
-`vm.$children` | [#](https://v2.cn.vuejs.org/v2/api/#vm-children)
-`vm.$slots` | [#](https://v2.cn.vuejs.org/v2/api/#vm-slots)
-`vm.$scopedSlots` _(2.1.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#vm-scopedSlots)
-`vm.$refs` | [#](https://v2.cn.vuejs.org/v2/api/#vm-refs)
-`vm.$isServer` | [#](https://v2.cn.vuejs.org/v2/api/#vm-isServer)
-`vm.$attrs` _(2.4.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#vm-attrs)
-`vm.$listeners` _(2.4.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#vm-listeners)
+`vm.$data` | 观察的数据对象 [#](https://v2.cn.vuejs.org/v2/api/#vm-data)
+`vm.$props` _(2.2.0)_ | 组件接收的 props 对象 [#](https://v2.cn.vuejs.org/v2/api/#vm-props)
+`vm.$el` | 实例使用的根 DOM 元素 [#](https://v2.cn.vuejs.org/v2/api/#vm-el)
+`vm.$options` | 实例的初始化选项 [#](https://v2.cn.vuejs.org/v2/api/#vm-options)
+`vm.$parent` | 父实例 [#](https://v2.cn.vuejs.org/v2/api/#vm-parent)
+`vm.$root` | 当前组件树的根实例 [#](https://v2.cn.vuejs.org/v2/api/#vm-root)
+`vm.$children` | 当前实例的直接子组件 [#](https://v2.cn.vuejs.org/v2/api/#vm-children)
+`vm.$slots` | 访问被插槽分发的内容 [#](https://v2.cn.vuejs.org/v2/api/#vm-slots)
+`vm.$scopedSlots` _(2.1.0)_ | 访问作用域插槽 [#](https://v2.cn.vuejs.org/v2/api/#vm-scopedSlots)
+`vm.$refs` | DOM 元素和组件实例 [#](https://v2.cn.vuejs.org/v2/api/#vm-refs)
+`vm.$isServer` | 是否运行于服务器 [#](https://v2.cn.vuejs.org/v2/api/#vm-isServer)
+`vm.$attrs` _(2.4.0)_ | 包含父作用域中不作为 prop 被识别的属性绑定 ( [#](https://v2.cn.vuejs.org/v2/api/#vm-attrs)
+`vm.$listeners` _(2.4.0)_ | 包含了父作用域中的 (不含 .native 修饰器的) `v-on` 事件监听器 [#](https://v2.cn.vuejs.org/v2/api/#vm-listeners)
 
 ### 实例方法 / 事件
 
@@ -959,28 +965,28 @@ Vue 2 API 参考
 
 :- | :-
 :- | :-
-`v-text` | [#](https://v2.cn.vuejs.org/v2/api/#v-text)
-`v-html` | [#](https://v2.cn.vuejs.org/v2/api/#v-html)
-`v-show` | [#](https://v2.cn.vuejs.org/v2/api/#v-show)
-`v-if` | [#](https://v2.cn.vuejs.org/v2/api/#v-if)
+`v-text` | 更新元素的 `textContent` [#](https://v2.cn.vuejs.org/v2/api/#v-text)
+`v-html` | 更新元素的 `innerHTML` [#](https://v2.cn.vuejs.org/v2/api/#v-html)
+`v-show` | 切换元素的 `display` css 属性 [#](https://v2.cn.vuejs.org/v2/api/#v-show)
+`v-if` | 有条件地渲染元素 [#](https://v2.cn.vuejs.org/v2/api/#v-if)
 `v-else` | [#](https://v2.cn.vuejs.org/v2/api/#v-else)
 `v-else-if` _(2.1.0)_ | [#](https://v2.cn.vuejs.org/v2/api/#v-else-if)
-`v-for` | [#](https://v2.cn.vuejs.org/v2/api/#v-for)
-`v-on` | [#](https://v2.cn.vuejs.org/v2/api/#v-on)
-`v-bind` | [#](https://v2.cn.vuejs.org/v2/api/#v-bind)
-`v-model` | [#](https://v2.cn.vuejs.org/v2/api/#v-model)
-`v-slot` | [#](https://v2.cn.vuejs.org/v2/api/#v-slot)
-`v-pre` | [#](https://v2.cn.vuejs.org/v2/api/#v-pre)
-`v-cloak` | [#](https://v2.cn.vuejs.org/v2/api/#v-cloak)
-`v-once` | [#](https://v2.cn.vuejs.org/v2/api/#v-once)
+`v-for` | 多次渲染元素或模板块 [#](https://v2.cn.vuejs.org/v2/api/#v-for)
+`v-on` | 绑定事件监听器 [#](https://v2.cn.vuejs.org/v2/api/#v-on)
+`v-bind` | 动态地绑定一个或多个属性  [#](https://v2.cn.vuejs.org/v2/api/#v-bind)
+`v-model` | 创建双向绑定 [#](https://v2.cn.vuejs.org/v2/api/#v-model)
+`v-slot` | 提供插槽或接收 prop 的插槽 [#](https://v2.cn.vuejs.org/v2/api/#v-slot)
+`v-pre` | 跳过元素和它的子元素编译过程 [#](https://v2.cn.vuejs.org/v2/api/#v-pre)
+`v-cloak` | 保持在元素上直到实例结束编译 [#](https://v2.cn.vuejs.org/v2/api/#v-cloak)
+`v-once` | 只渲染元素和组件一次 [#](https://v2.cn.vuejs.org/v2/api/#v-once)
 
 ### 特殊 attribute
 
 :- | :-
 :- | :-
-`key` | [#](https://v2.cn.vuejs.org/v2/api/#key)
-`ref` | [#](https://v2.cn.vuejs.org/v2/api/#ref)
-`is` | [#](https://v2.cn.vuejs.org/v2/api/#is)
+`key` | 用在 Vue 的虚拟 DOM 算法 [#](https://v2.cn.vuejs.org/v2/api/#key)
+`ref` | 元素或子组件注册引用信息 [#](https://v2.cn.vuejs.org/v2/api/#ref)
+`is` | 限制是否更新 [#](https://v2.cn.vuejs.org/v2/api/#is)
 ~~`slot`~~ | 推荐 2.6.0 新增的 `v-slot` [#](https://v2.cn.vuejs.org/v2/api/#slot-废弃)
 ~~`slot-scope`~~ | 推荐 2.6.0 新增的 `v-slot` [#](https://v2.cn.vuejs.org/v2/api/#slot-scope-废弃)
 ~~`scope`~~ | `2.5.0` 新增的 `slot-scope` 取代 [#](https://v2.cn.vuejs.org/v2/api/#scope-移除)
@@ -989,11 +995,11 @@ Vue 2 API 参考
 
 :- | :-
 :- | :-
-`component` | [#](https://v2.cn.vuejs.org/v2/api/#component)
-`transition` | [#](https://v2.cn.vuejs.org/v2/api/#transition)
-`transition-group` | [#](https://v2.cn.vuejs.org/v2/api/#transition-group)
-`keep-alive` | [#](https://v2.cn.vuejs.org/v2/api/#keep-alive)
-`slot` | [#](https://v2.cn.vuejs.org/v2/api/#slot)
+`<component>` | 渲染一个`元组件`为动态组件 [#](https://v2.cn.vuejs.org/v2/api/#component)
+`<transition>` | 单个元素/组件的过渡效果 [#](https://v2.cn.vuejs.org/v2/api/#transition)
+`<transition-group>` | 多个元素/组件的过渡效果 [#](https://v2.cn.vuejs.org/v2/api/#transition-group)
+`<keep-alive>` | 不活动的实例缓存不销毁 [#](https://v2.cn.vuejs.org/v2/api/#keep-alive)
+`<slot>` | 组件模板中的内容分发插槽 [#](https://v2.cn.vuejs.org/v2/api/#slot)
 
 ### v-on (事件)修饰符
 <!--rehype:wrap-class=row-span-2-->
