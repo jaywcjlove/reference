@@ -1188,6 +1188,55 @@ vm.selected.number // => 123
 组件基础
 ---
 
+### 单文件组件
+<!--rehype:wrap-class=row-span-3-->
+
+- 将 `HTML`/`CSS`/`JS` 三部分存放到一个 `Hello.vue` 文件中
+  ```html
+  <template>
+    <p>{{ title }} World!</p>
+  </template>
+  <script>
+    export default {
+      name: 'Hello',
+      props: {
+        title: {
+          type: String,
+          default: 'Hello'
+        }
+      },
+      data: function() {
+        return {
+          greeting: "Hello"
+        };
+      }
+    };
+  </script>
+  <style scoped>
+    p {
+      font-size: 2em;
+      text-align: center;
+    }
+  </style>
+  ```
+- 使用 `Hello.vue` 组件
+  ```html
+  <script>
+    import Vue from "vue";
+    import Hello from "./Hello";
+
+    export default {
+      components: { Hello }
+    }
+  </script>
+  <template>
+    <div>
+      <Hello :title="'aaaa'"></Hello>
+    </div>
+  </template>
+  ```
+<!--rehype:className=style-timeline-->
+
 ### 基本示例
 <!--rehype:wrap-class=row-span-2-->
 
@@ -1232,34 +1281,6 @@ new Vue({
 </div>
 ```
 
-### `data` 必须是一个函数
-
-```js
-data: function () {
-  return {
-    count: 0
-  }
-}
-```
-
-组件的 `data` 选项必须是一个函数
-
-### 向子组件传递数据
-
-```js
-Vue.component('blog-post', {
-  props: ['title'],
-  template: '<h3>{{ title }}</h3>'
-})
-```
-
-当值传递给一个 `prop` `attribute` 的时候，变成了组件实例的一个 `property`
-
-```html
-<blog-post title="写博客"></blog-post>
-<blog-post title="如此有趣"></blog-post>
-```
-
 ### 单个根元素
 
 ```js {4}
@@ -1285,6 +1306,34 @@ Vue.component('blog-post', {
 </blog-post>
 ```
 
+### 向子组件传递数据
+
+```js
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+```
+
+当值传递给一个 `prop` `attribute` 的时候，变成了组件实例的一个 `property`
+
+```html
+<blog-post title="写博客"></blog-post>
+<blog-post title="如此有趣"></blog-post>
+```
+
+### `data` 必须是一个函数
+
+```js
+data: function () {
+  return {
+    count: 0
+  }
+}
+```
+
+组件的 `data` 选项必须是一个函数
+
 ### 监听子组件事件
 <!--rehype:wrap-class=row-span-2-->
 
@@ -1296,8 +1345,7 @@ Vue.component('blog-post', {
       <h3>{{ post.title }}</h3>
       <button
         v-on:click="$emit('enlarge-txt')"
-      >
-        Enlarge text
+      >放大文字
       </button>
       <div v-html="post.content"></div>
     </div>
@@ -1355,6 +1403,8 @@ methods: {
 ### 在组件上使用 v-model
 <!--rehype:wrap-class=col-span-2-->
 
+自定义事件也可以用于创建支持 `v-model` 的自定义输入组件。
+
 ```html
 <input v-model="searchText">
 ```
@@ -1362,7 +1412,19 @@ methods: {
 等价于
 
 ```html
-<input v-bind:value="searchText" v-on:input="searchText = $event.target.value">
+<input
+  v-bind:value="searchText"
+  v-on:input="searchText = $event.target.value"
+>
+```
+
+当用在组件上时，v-model 则会这样：
+
+```html
+<custom-input
+  v-bind:value="searchText"
+  v-on:input="searchText = $event"
+></custom-input>
 ```
 
 为了让它正常工作，这个组件内的 \<input> 必须：
