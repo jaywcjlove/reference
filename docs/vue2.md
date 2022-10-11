@@ -513,7 +513,141 @@ data: {
 
 带有 `v-show` 的元素始终会被渲染并保留在 DOM 中，只是简单地切换元素的 `CSS` 属性 `display`
 
-Vue 2 API
+列表渲染
+---
+
+### v-for
+
+```html {3}
+<ul id="example-1">
+  <li
+    v-for="item in items"
+    :key="item.message">
+    {{ item.message }}
+  </li>
+</ul>
+```
+
+
+```js
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+```
+
+### v-for 可选的第二个参数(索引)
+
+```html {2}
+<li v-for="(item, index) in items">
+  {{ index }}
+  {{ item.message }}
+</li>
+```
+
+如下 `data`
+
+```js
+data: {
+  items: [
+    { message: 'Foo' },
+    { message: 'Bar' }
+  ]
+}
+```
+
+也可以用 `of` 替代 `in` 作为分隔符
+
+```html
+<div v-for="item of items"></div>
+```
+
+### v-for 使用对象
+<!--rehype:wrap-class=row-span-2-->
+
+```html
+<li v-for="value in object">
+  {{ value }}
+</li>
+```
+
+如下 data
+
+```js
+data: {
+  object: {
+    title: 'How to do lists in Vue',
+    author: 'Jane Doe',
+    publishedAt: '2016-04-10'
+  }
+}
+```
+
+渲染结果
+
+```
+How to do lists in Vue
+Jane Doe
+2016-04-10
+```
+
+提供第二个的参数为 property 名称 (也就是键名)
+
+```html
+<div v-for="(value, name) in object">
+  {{ name }}: {{ value }}
+</div>
+```
+
+还可以用第三个参数作为索引
+
+```html
+<div v-for="(value,name,index) in object">
+  {{ index }}. {{ name }}: {{ value }}
+</div>
+```
+
+### v-for/v-if
+
+```html {2,3}
+<li
+  v-for="todo in todos"
+  v-if="!todo.isComplete"
+>
+  {{ todo }}
+</li>
+```
+
+只渲染未完成的 todo，下面加上 `v-else` 示例
+
+```html
+<ul v-if="todos.length">
+  <li v-for="todo in todos">
+    {{ todo }}
+  </li>
+</ul>
+<p v-else>No todos left!</p>
+```
+
+### 组件上使用 v-for
+
+```html
+<my-component
+  v-for="(item, index) in items"
+  v-bind:item="item"
+  v-bind:index="index"
+  v-bind:key="item.id"
+></my-component>
+```
+
+`2.2.0+` 的版本里，当在组件上使用 `v-for` 时，`key` 现在是必须的
+
+Vue 2 API 参考
 ---
 
 ### 全局配置
