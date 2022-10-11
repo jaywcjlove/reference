@@ -191,6 +191,8 @@ const school = <div>学校</div>;
   ```jsx showLineNumbers
 ```
 
+标记语言后面添加 `showLineNumbers` 标识
+
 ### 内置类样式
 
 :- | -
@@ -199,6 +201,7 @@ const school = <div>学校</div>;
 `wrap-text` | 超出换行
 `show-header` | 展示表头
 `style-none` | 隐藏 `<ul>` 列表样式
+`style-list` | `<table>` 单元格行展示
 <!--rehype:className=shortcuts-->
 
 ### 颜色标签
@@ -247,6 +250,7 @@ H2 部分
 `cols-3` | `3` 栏卡片布局
 `cols-4` | `4` 栏卡片布局
 `cols-5` | `5` 栏卡片布局
+`cols-{1~6}` | `1~6` 栏卡片布局
 <!--rehype:className=show-header -->
 
 ### 占位布局 style 写法
@@ -285,9 +289,11 @@ H2 部分
 `col-span-2` | `2` 列占位
 `col-span-3` | `3` 列占位
 `col-span-4` | `4` 列占位
+`col-span-5` | `5` 列占位
 `row-span-2` | `2` 行占位
 `row-span-3` | `3` 行占位
 `row-span-4` | `4` 行占位
+`row-span-5` | `5` 行占位
 <!--rehype:className=show-header -->
 
 ### 卡片合并行布局 1

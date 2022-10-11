@@ -1471,8 +1471,8 @@ Vue.component('alert-box', {
 
 如果我们从以下来源使用模板的话，这条限制是不存在的
 
-- 字符串 (例如：template: '...')
-- 单文件组件 (.vue)
+- 字符串 (例如：`template: '...'`)
+- 单文件组件 (`.vue`)
 - `<script type="text/x-template">`
 <!--rehype:className=style-round-->
 
