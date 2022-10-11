@@ -12,6 +12,7 @@ Vue 是一套用于构建用户界面的渐进式框架
 
 - [Vue 2.x 官方文档](https://v2.cn.vuejs.org/)
 - [Vue Router 3.x 官方文档](https://v3.router.vuejs.org/)
+<!--rehype:className=style-round-->
 
 #### 快速创建 **Vue** 项目 ([Vue CLI](https://cli.vuejs.org/zh/guide/creating-a-project.html)) 
 
@@ -26,6 +27,8 @@ npx @vue/cli create hello-world
   {{ message }}
 </div>
 ```
+
+---
 
 ```js
 var app = new Vue({
@@ -47,6 +50,8 @@ var app = new Vue({
   </p>
 </div>
 ```
+
+---
 
 ```js
 var vm = new Vue({
@@ -82,6 +87,8 @@ var vm = new Vue({
 </div>
 ```
 
+---
+
 ```js
 var app2 = new Vue({
   el: '#app-2',
@@ -99,6 +106,8 @@ var app2 = new Vue({
   <p v-if="seen">现在你看到我了</p>
 </div>
 ```
+
+---
 
 ```js
 var app3 = new Vue({
@@ -123,6 +132,8 @@ var app3 = new Vue({
 </div>
 ```
 
+---
+
 ```js
 var app4 = new Vue({
   el: '#app-4',
@@ -146,6 +157,8 @@ var app4 = new Vue({
   </button>
 </div>
 ```
+
+---
 
 ```js
 var app5 = new Vue({
@@ -706,8 +719,11 @@ var example2 = new Vue({
     }
   }
 })
+```
 
-// 也可以用 JavaScript 直接调用方法
+也可以用 JavaScript 直接调用方法
+
+```js
 example2.greet() // => 'Hello Vue.js!'
 ```
 
@@ -784,7 +800,9 @@ methods: {
 <!-- 滚动事件的默认行为(即滚动行为)会立即触发 -->
 <!-- 而不会等待 `onScroll` 完成  -->
 <!-- 包含 event.preventDefault() 的情况 -->
-<p v-on:scroll.passive="onScroll">...</p>
+<p v-on:scroll.passive="onScroll">
+  ...
+</p>
 ```
 
 这个 `.passive` [修饰符](#v-on-事件修饰符)尤其能够提升移动端的性能。
@@ -802,7 +820,6 @@ methods: {
 <div v-on:click.ctrl="doSomething">
 ```
 
-
 ### .exact 修饰符
 
 ```html
@@ -813,6 +830,651 @@ methods: {
 <!-- 没有任何系统修饰符被按下的时候才触发 -->
 <button v-on:click.exact="onClick">
 ```
+
+计算属性和侦听器
+---
+
+### 基础例子
+
+```html
+<div id="example">
+  <p>Original message: "{{ message }}"</p>
+  <p>
+    计算的反向消息： "{{ reversedMessage }}"
+  </p>
+</div>
+```
+
+```js
+var vm = new Vue({
+  el: '#example',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('')
+                  .reverse().join('')
+    }
+  }
+})
+```
+
+### 计算属性缓存 vs 方法
+
+```html
+<p>
+  计算的反向消息："{{ reversedMessage() }}"
+</p>
+```
+
+在组件中，我们可以将同一函数定义为一个方法而不是一个计算属性
+
+```js
+methods: {
+  reversedMessage: function () {
+    return this.message.split('')
+                .reverse().join('')
+  }
+}
+```
+
+两种方式的最终结果确实是完全相同的。然而，不同的是**计算属性是基于它们的响应式依赖进行缓存的**。
+
+### 计算属性 vs 侦听属性
+<!--rehype:wrap-class=row-span-2-->
+
+```html
+<div id="demo">{{ fullName }}</div>
+```
+
+```js
+var vm = new Vue({
+  el: '#demo',
+  data: {
+    firstName: 'Foo',
+    lastName: 'Bar',
+    fullName: 'Foo Bar'
+  },
+  watch: {
+    firstName: function (val) {
+      this.fullName = 
+          val + ' ' + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName =
+          this.firstName + ' ' + val
+    }
+  }
+})
+```
+
+上面代码是命令式且重复的。将它与计算属性的版本进行比较：
+
+```js
+var vm = new Vue({
+  el: '#demo',
+  data: {
+    firstName: 'Foo',
+    lastName: 'Bar'
+  },
+  computed: {
+    fullName: function () {
+      return this.firstName 
+        + ' ' + this.lastName
+    }
+  }
+})
+```
+
+### 计算属性的 setter
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+computed: {
+  fullName: {
+    get: function () {         // getter
+      return this.firstName + ' ' + this.lastName
+    },
+    set: function (newValue) { // setter
+      var names = newValue.split(' ')
+      this.firstName = names[0]
+      this.lastName = names[names.length - 1]
+    }
+  }
+}
+```
+
+表单输入绑定
+---
+
+### 文本
+
+```html
+<input v-model="msg" placeholder="编辑我">
+<p>msg is: {{ msg }}</p>
+```
+
+### 多行文本
+
+```html {3}
+<span>Multiline message is:</span>
+<textarea
+  v-model="message"
+  placeholder="添加多行"></textarea>
+<p>{{ message }}</p>
+```
+
+### 复选框
+
+```html {4}
+<input
+  type="checkbox"
+  id="checkbox"
+  v-model="checked"
+>
+<label for="checkbox">{{ checked}}</label>
+```
+
+### 多个复选框
+<!--rehype:wrap-class=col-span-2-->
+
+```html
+<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+<label for="jack">Jack</label>
+<input type="checkbox" id="john" value="John" v-model="checkedNames">
+<label for="john">John</label>
+<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+<label for="mike">Mike</label>
+<br>
+<span>Checked names: {{ checkedNames }}</span>
+```
+
+如下 data 
+
+```js
+new Vue({
+  el: '...',
+  data: {
+    checkedNames: []
+  }
+})
+```
+
+### 单选按钮 
+
+```html
+<div id="example-4">
+  <input type="radio" id="one" value="One"
+    v-model="picked">
+  <label for="one">One</label>
+  <br>
+  <input type="radio" id="two" value="Two"
+    v-model="picked">
+  <label for="two">Two</label>
+  <div>Picked: {{ picked }}</div>
+</div>
+```
+
+---
+
+```js
+new Vue({
+  el: '#example-4',
+  data: {
+    picked: ''
+  }
+})
+```
+
+### 选择框
+
+```html
+<select v-model="selected">
+  <option disabled value="">请选择</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+<span>Selected: {{ selected }}</span>
+```
+
+---
+
+```js
+new Vue({
+  el: '...',
+  data: {
+    selected: ''
+  }
+})
+```
+
+### 选择框(数组)
+
+```html
+<select v-model="selected" multiple>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+<div>Selected: {{ selected }}</div>
+```
+
+---
+
+```js
+new Vue({
+  el: '...',
+  data: {
+    selected: []
+  }
+})
+```
+
+### v-for 渲染的动态选项
+<!--rehype:wrap-class=row-span-2-->
+
+```html {3-4}
+<select v-model="selected">
+  <option
+    v-for="option in options"
+    v-bind:value="option.value"
+  >
+    {{ option.text }}
+  </option>
+</select>
+<span>Selected: {{ selected }}</span>
+```
+
+---
+
+```js {6-8}
+new Vue({
+  el: '...',
+  data: {
+    selected: 'A',
+    options: [
+      { text: 'One', value: 'A' },
+      { text: 'Two', value: 'B' },
+      { text: 'Three', value: 'C' }
+    ]
+  }
+})
+```
+
+### 值绑定
+
+```html
+<!-- 当选中时，pc 为字符串 "a" -->
+<input type="radio" v-model="pc" value="a">
+
+<!-- toggle 为 true 或 false -->
+<input type="checkbox" v-model="toggle">
+<!-- 选中第一个选项时selected为字符串 abc -->
+<select v-model="selected">
+  <option value="abc">ABC</option>
+</select>
+```
+
+### 单选按钮
+
+```html
+<input
+  type="radio"
+  v-model="pick"
+  v-bind:value="a">
+```
+
+当选中时
+
+```js
+vm.pick === vm.a
+```
+
+### 复选框
+
+```html {3}
+<input
+  type="checkbox"
+  v-model="toggle"
+  true-value="yes"
+  false-value="no"
+>
+```
+
+---
+
+```js
+// 当选中时
+vm.toggle === 'yes'
+// 当没有选中时
+vm.toggle === 'no'
+```
+
+### 选择框的选项
+
+```html
+<select v-model="selected">
+  <!-- 内联对象字面量 -->
+  <option v-bind:value="{ number: 123 }">
+    123
+  </option>
+</select>
+```
+
+当选中时
+
+```js
+typeof vm.selected // => 'object'
+vm.selected.number // => 123
+```
+
+### 修饰符
+
+```html
+<!-- lazy:在“change”时而非“input”时更新 -->
+<input v-model.lazy="msg">
+
+<!-- number:自动将用户的输入值转为数值类型 -->
+<input v-model.number="age" type="number">
+
+<!-- trim:自动过滤用户输入的首尾空白字符 -->
+<input v-model.trim="msg">
+```
+
+组件基础
+---
+
+### 基本示例
+<!--rehype:wrap-class=row-span-2-->
+
+```js
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: `
+    <button v-on:click="count++">
+      你点击了我 {{ count }} 次
+    </button>
+  `
+})
+```
+
+组件是可复用的 `Vue` 实例
+
+```html
+<div id="components-demo">
+  <button-counter></button-counter>
+</div>
+```
+
+---
+
+```js
+new Vue({
+  el: '#components-demo'
+})
+```
+
+组件的复用
+
+```html
+<div id="components-demo">
+  <button-counter></button-counter>
+  <button-counter></button-counter>
+  <button-counter></button-counter>
+</div>
+```
+
+### `data` 必须是一个函数
+
+```js
+data: function () {
+  return {
+    count: 0
+  }
+}
+```
+
+组件的 `data` 选项必须是一个函数
+
+### 向子组件传递数据
+
+```js
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+```
+
+当值传递给一个 `prop` `attribute` 的时候，变成了组件实例的一个 `property`
+
+```html
+<blog-post title="写博客"></blog-post>
+<blog-post title="如此有趣"></blog-post>
+```
+
+### 单个根元素
+
+```js {4}
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <div v-html="post.content"></div>
+    </div>
+  `
+})
+```
+
+---
+
+```html
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:post="post"
+>
+</blog-post>
+```
+
+### 监听子组件事件
+<!--rehype:wrap-class=row-span-2-->
+
+```js {7}
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <button
+        v-on:click="$emit('enlarge-txt')"
+      >
+        Enlarge text
+      </button>
+      <div v-html="post.content"></div>
+    </div>
+  `
+})
+```
+
+---
+
+```html {3}
+<blog-post
+  ...
+  v-on:enlarge-text="postFontSize += 0.1"
+></blog-post>
+```
+
+可以使用 `$emit` 的第二个参数来提供这个值
+
+```html {2}
+<button
+  v-on:click="$emit('enlarge-text', 0.1)"
+>
+  Enlarge text
+</button>
+```
+
+通过 `$event` 访问到被抛出的这个值
+
+```html {3}
+<blog-post
+  ...
+  v-on:enlarge-text="postFontSize += $event"
+></blog-post>
+```
+
+如果这个事件处理函数是一个方法
+
+```html {3}
+<blog-post
+  ...
+  v-on:enlarge-text="onEnlargeText"
+></blog-post>
+```
+
+那么这个值将会作为第一个参数传入这个方法
+
+```js
+methods: {
+  onEnlargeText: function(enlargeAmount) {
+    this.postFontSize += enlargeAmount
+  }
+}
+```
+
+### 在组件上使用 v-model
+<!--rehype:wrap-class=col-span-2-->
+
+```html
+<input v-model="searchText">
+```
+
+等价于
+
+```html
+<input v-bind:value="searchText" v-on:input="searchText = $event.target.value">
+```
+
+为了让它正常工作，这个组件内的 \<input> 必须：
+
+- 将其 `value` attribute 绑定到一个名叫 `value` 的 `prop` 上
+- 在其 `input` 事件被触发时，将新的值通过自定义的 `input` 事件抛出
+
+---
+
+```js
+Vue.component('custom-input', {
+  props: ['value'],
+  template: `
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+})
+```
+
+现在 `v-model` 就应该可以在这个组件上完美地工作起来了
+
+```html {2}
+<custom-input
+  v-model="searchText"
+>
+</custom-input>
+```
+
+### 通过插槽分发内容
+
+```html
+<alert-box>
+  发生了不好的事情。
+</alert-box>
+```
+
+---
+
+```js {5}
+Vue.component('alert-box', {
+  template: `
+    <div class="demo-alert-box">
+      <strong>Error!</strong>
+      <slot></slot>
+    </div>
+  `
+})
+```
+
+### 动态组件示例
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```html
+<div id="dynamic-component-demo" class="demo">
+  <button
+    v-for="tab in tabs"
+    v-bind:key="tab"
+    v-bind:class="['tab-button', { active: currentTab === tab }]"
+    v-on:click="currentTab = tab"
+  >
+    {{ tab }}
+  </button>
+  <component v-bind:is="currentTabComponent" class="tab"></component>
+</div>
+
+<script>
+  Vue.component("tab-home", {
+    template: "<div>Home component</div>"
+  });
+  Vue.component("tab-posts", {
+    template: "<div>Posts component</div>"
+  });
+  Vue.component("tab-archive", {
+    template: "<div>Archive component</div>"
+  });
+  new Vue({
+    el: "#dynamic-component-demo",
+    data: {
+      currentTab: "Home",
+      tabs: ["Home", "Posts", "Archive"]
+    },
+    computed: {
+      currentTabComponent: function() {
+        return "tab-" + this.currentTab.toLowerCase();
+      }
+    }
+  });
+</script>
+```
+
+### 解析 DOM 模板时的注意事项
+
+有些 HTML 元素，诸如 `<ul>`、`<ol>`、`<table>` 和 `<select>`，对于哪些元素可以出现在其内部是有严格限制的。有些元素，诸如 `<li>`、`<tr>` 和 `<option>`，只能出现在其它某些特定的元素内部
+
+```html
+<table>
+  <blog-post-row></blog-post-row>
+</table>
+```
+
+`<blog-post-row>` 会被作为无效的内容提升到外部
+
+---
+
+如果我们从以下来源使用模板的话，这条限制是不存在的
+
+- 字符串 (例如：template: '...')
+- 单文件组件 (.vue)
+- `<script type="text/x-template">`
+<!--rehype:className=style-round-->
 
 Vue 2 API 参考
 ---
