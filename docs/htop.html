@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>htop 备忘清单
+ &#x26;  htop cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="htop 是一个交互式流程查看器，此 htop 备忘清单包含 htop 命令为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,htop">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/htop.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="htop-备忘清单"><a aria-hidden="true" tabindex="-1" href="#htop-备忘清单"><span class="icon icon-link"></span></a>htop 备忘清单</h1><div class="wrap-body">
+<p>htop 是一个交互式流程查看器，此 htop 备忘清单包含 htop 命令</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="htop-用法"><a aria-hidden="true" tabindex="-1" href="#htop-用法"><span class="icon icon-link"></span></a>htop 用法</h3><div class="wrap-body">
+<p>htop 是一个互动的进程查看器，动态观察系统进程状况</p>
+<ul>
+<li><a href="https://htop.sourceforge.net/">命令 htop 的官网</a></li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">htop</span> <span class="token punctuation">[</span>-dChustv<span class="token punctuation">]</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h4><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">htop</span>        <span class="token comment"># Debian</span>
+</span><span class="code-line">$ dnf <span class="token function">install</span> <span class="token function">htop</span>        <span class="token comment"># Fedora</span>
+</span><span class="code-line">$ emerge sys-process/htop <span class="token comment"># Gentoo</span>
+</span><span class="code-line">$ pacman <span class="token parameter variable">-S</span> <span class="token function">htop</span>          <span class="token comment"># Arch Linux</span>
+</span><span class="code-line">$ Compile <span class="token function">htop</span>            <span class="token comment"># GoboLinux</span>
+</span></code></pre>
+<p>htop 的软件包在大多数发行版中都<a href="https://htop.dev/downloads.html">可用下载</a></p>
+</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="选项示例"><a aria-hidden="true" tabindex="-1" href="#选项示例"><span class="icon icon-link"></span></a>选项示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>长选项的强制参数对于短选项也是强制的</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>-d --delay=DELAY</code></td><td align="left">更新之间的延迟，以十分之一秒为单位</td></tr><tr><td align="left"><code>-C --no-color --no-colour</code></td><td align="left">以单色模式启动 <code>htop</code></td></tr><tr><td align="left"><code>-h --help</code></td><td align="left">显示帮助消息并退出</td></tr><tr><td align="left"><code>-p --pid=PID,PID...</code></td><td align="left">仅显示给定的PID</td></tr><tr><td align="left"><code>-s --sort-key COLUMN</code></td><td align="left">按此列排序(对列列表使用<code>--sort-key</code>帮助)</td></tr><tr><td align="left"><code>-u --user=USERNAME</code></td><td align="left">仅显示给定用户的进程</td></tr><tr><td align="left"><code>-v --version</code></td><td align="left">输出版本信息并退出</td></tr><tr><td align="left"><code>-t --tree</code></td><td align="left">在树状视图中显示流程</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="状态"><a aria-hidden="true" tabindex="-1" href="#状态"><span class="icon icon-link"></span></a>状态</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>R</code></td><td align="left">运行中</td></tr><tr><td align="left"><code>S</code></td><td align="left">休眠</td></tr><tr><td align="left"><code>T</code></td><td align="left">追踪/停止</td></tr><tr><td align="left"><code>Z</code></td><td align="left">僵尸</td></tr><tr><td align="left"><code>D</code></td><td align="left">磁盘睡眠</td></tr></tbody></table>
+<!--rehype:className=shortcuts--> 
+</div></div></div><div class="wrap col-span-2 row-span-3"><div class="wrap-header h3wrap"><h3 id="交互式命令"><a aria-hidden="true" tabindex="-1" href="#交互式命令"><span class="icon icon-link"></span></a>交互式命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>F1</code>, <code>h</code>, <code>?</code></td><td align="left">转到帮助屏幕</td></tr><tr><td align="left"><code>F10</code>, <code>q</code></td><td align="left">退出</td></tr><tr><td align="left"><code>Space</code></td><td align="left">标记或取消标记进程</td></tr><tr><td align="left"><code>U</code></td><td align="left">取消标记所有进程(删除所有使用 Space 键添加的标记)</td></tr><tr><td align="left"><code>s</code></td><td align="left">跟踪进程系统调用：如果安装了 <code>strace(1)</code>，按下此键会将其附加到当前选定的进程，呈现进程发出的系统调用的实时更新</td></tr><tr><td align="left"><code>l</code></td><td align="left">显示进程打开的文件：如果安装了 <code>lsof(1)</code>，按下该键将显示进程打开的文件描述符列表</td></tr><tr><td align="left"><code>F2</code>, <code>S</code></td><td align="left">转到设置屏幕，您可以在其中配置屏幕顶部显示的仪表，设置各种显示选项，在配色方案中进行选择，并选择显示的列，以何种顺序显示</td></tr><tr><td align="left"><code>F3</code>, <code>/</code></td><td align="left">逐步搜索所有显示进程的命令行。当前选定(突出显示)的命令将在您键入时更新。在搜索模式下，按 <code>F3</code> 将循环匹配出现的事件</td></tr><tr><td align="left"><code>F4</code>, <code>\</code></td><td align="left">增量进程过滤：输入部分进程命令行，仅显示名称匹配的进程。要取消过滤，请再次输入过滤选项并按 <code>Esc</code></td></tr><tr><td align="left"><code>F5</code>, <code>t</code></td><td align="left">树视图：按父级组织进程，并将它们之间的关系布局为树。切换键将在树和您之前选择的排序视图之间切换。选择排序视图将退出树视图</td></tr><tr><td align="left"><code>F6</code></td><td align="left">在排序视图上，选择一个字段进行排序，也可以通过 &#x3C; 和 > 访问。当前排序字段由标题中的突出显示。在树视图中，展开或折叠当前子树。树节点中的“+”指示符表示它已折叠</td></tr><tr><td align="left"><code>F7</code>, <code>]</code></td><td align="left">增加所选进程的优先级(从“nice”值中减去)。这只能由超级用户完成</td></tr><tr><td align="left"><code>F8</code>, <code>[</code></td><td align="left">降低选定进程的优先级(添加到“nice”值)</td></tr><tr><td align="left"><code>F9</code>, <code>k</code></td><td align="left">“杀死”进程：向一个或一组进程发送一个在菜单中选择的信号。如果进程被标记，则将信号发送到所有标记的进程。如果没有标记，则发送到当前选定的进程</td></tr><tr><td align="left"><code>+</code>, <code>-</code></td><td align="left">在树视图模式下，展开或折叠子树。</td></tr><tr><td align="left"><code>a</code></td><td align="left">(在多 CPU 机器上)设置 CPU 亲和性：标记允许进程使用的 CPU</td></tr><tr><td align="left"><code>u</code></td><td align="left">仅显示指定用户拥有的进程</td></tr><tr><td align="left"><code>F</code></td><td align="left">“跟随”进程：如果排序顺序导致当前选定的进程在列表中移动，则使选择栏跟随它。这对于监控进程很有用：这样，您可以使进程始终在屏幕上可见。使用移动键时，“跟随”失效。</td></tr><tr><td align="left"><code>p</code></td><td align="left">在适用的情况下显示运行程序的完整路径(这是一个切换键)</td></tr><tr><td align="left"><code>Ctrl-L</code></td><td align="left">刷新：重绘屏幕并重新计算数值</td></tr><tr><td align="left"><code>Numbers</code></td><td align="left">PID搜索：输入进程ID，选择突出显示将移至它</td></tr></tbody></table>
+<!--rehype:className=shortcuts--> 
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="排序线程"><a aria-hidden="true" tabindex="-1" href="#排序线程"><span class="icon icon-link"></span></a>排序/线程</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>M</code></td><td align="left">按<code>内存</code>使用情况排序 <em>(最高兼容性键)</em></td></tr><tr><td align="left"><code>P</code></td><td align="left">按<code>CPU</code>使用情况排序 <em>(最高兼容性键)</em></td></tr><tr><td align="left"><code>T</code></td><td align="left">按<code>时间</code>排序 <em>(最高兼容性键)</em></td></tr><tr><td align="left"><code>I</code></td><td align="left"><code>反转</code>排序顺序</td></tr><tr><td align="left"><code>K</code></td><td align="left">隐藏<code>内核</code>线程</td></tr><tr><td align="left"><code>H</code></td><td align="left">隐藏<code>用户</code>线程</td></tr></tbody></table>
+<!--rehype:className=shortcuts--> 
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="滚动"><a aria-hidden="true" tabindex="-1" href="#滚动"><span class="icon icon-link"></span></a>滚动</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>Up</code>, <code>Alt-k</code></td><td align="left">在流程列表中选择(突出)<code>上</code>一个流程</td></tr><tr><td align="left"><code>Down</code>, <code>Alt-j</code></td><td align="left">在流程列表中选择(突出)<code>下</code>一个流程</td></tr><tr><td align="left"><code>Left</code>, <code>Alt-h</code></td><td align="left">向<code>左</code>滚动流程列表</td></tr><tr><td align="left"><code>Right</code>, <code>Alt-l</code></td><td align="left">向<code>右</code>滚动进程列表</td></tr><tr><td align="left"><code>PgUp</code>, <code>PgDn</code></td><td align="left">将流程列表<code>向上</code>或<code>向下</code>滚动一个窗口</td></tr><tr><td align="left"><code>Home</code></td><td align="left">滚动到流程列表的<code>顶部</code> <br> <em>选择第一个流程</em></td></tr><tr><td align="left"><code>End</code></td><td align="left">滚动到流程列表的<code>底部</code> <br> <em>选择最后一个流程</em></td></tr><tr><td align="left"><code>Ctrl-A</code>, <code>^</code></td><td align="left">向<code>左</code>滚动到流程条目<code>开头</code> <em>(即行开头)</em></td></tr><tr><td align="left"><code>Ctrl-E</code>, <code>$</code></td><td align="left">向<code>右</code>滚动到流程条目<code>末尾</code> <em>(即行尾)</em></td></tr></tbody></table>
+<!--rehype:className=shortcuts--> 
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
