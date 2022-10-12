@@ -1147,6 +1147,297 @@
 <li><code>&#x3C;script type="text/x-template"></code></li>
 </ul>
 <!--rehype:className=style-round-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="过渡--动画"><a aria-hidden="true" tabindex="-1" href="#过渡--动画"><span class="icon icon-link"></span></a>过渡 &#x26; 动画</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="单元素组件的过渡"><a aria-hidden="true" tabindex="-1" href="#单元素组件的过渡"><span class="icon icon-link"></span></a>单元素/组件的过渡</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name"><span class="token namespace">v-on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show = !show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    切换
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fade<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>切换内容<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">        <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector"><span class="token class">.fade-enter-active</span><span class="token punctuation">,</span> <span class="token class">.fade-leave-active</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transition</span><span class="token punctuation">:</span> opacity <span class="token number">.5</span><span class="token unit">s</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token comment">/* .fade-leave-active 低于 2.1.8 版本 */</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector"><span class="token class">.fade-enter</span><span class="token punctuation">,</span> <span class="token class">.fade-leave-to</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>style</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="css-过渡"><a aria-hidden="true" tabindex="-1" href="#css-过渡"><span class="icon icon-link"></span></a>CSS 过渡</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show = !show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    切换渲染
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>slide-fade<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>切换内容<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">        <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token comment">/* 可以设置不同的进入和离开动画 */</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token comment">/* 设置持续时间和动画函数 */</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector"><span class="token class">.slide-fade-enter-active</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transition</span><span class="token punctuation">:</span> all <span class="token number">.3</span><span class="token unit">s</span> ease<span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector"><span class="token class">.slide-fade-leave-active</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transition</span><span class="token punctuation">:</span> all <span class="token number">.8</span><span class="token unit">s</span> <span class="token function">cubic-bezier</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.8</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token comment">/* .slide-fade-leave-active 用于 2.1.8 以下版本 */</span> 
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector"><span class="token class">.slide-fade-enter</span><span class="token punctuation">,</span> <span class="token class">.slide-fade-leave-to</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token unit">px</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>style</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="css-动画"><a aria-hidden="true" tabindex="-1" href="#css-动画"><span class="icon icon-link"></span></a>CSS 动画</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show = !show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>切换展示<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bounce<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>切换内容<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">        <span class="token literal-property property">show</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"><span class="token selector"><span class="token class">.bounce-enter-active</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token property">animation</span><span class="token punctuation">:</span> bounce-in <span class="token number">.5</span><span class="token unit">s</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"><span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"><span class="token selector"><span class="token class">.bounce-leave-active</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token property">animation</span><span class="token punctuation">:</span> bounce-in <span class="token number">.5</span><span class="token unit">s</span> reverse<span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"><span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"><span class="token atrule"><span class="token rule">@keyframes</span> bounce-in</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector">50%</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"><span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>style</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="过渡的类名"><a aria-hidden="true" tabindex="-1" href="#过渡的类名"><span class="icon icon-link"></span></a>过渡的类名</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>v-enter</code></td><td align="left">定义进入过渡的开始状态 <a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>v-enter-active</code></td><td align="left">定义进入过渡生效时的状态 <a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>v-enter-to</code> <em>(2.1.8)</em></td><td align="left">定义进入过渡的结束状态 <a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>v-leave</code></td><td align="left">定义离开过渡的开始状态 <a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>v-leave-active</code></td><td align="left">定义离开过渡生效时的状态 <a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>v-leave-to</code> <em>(2.1.8)</em></td><td align="left">定义离开过渡的结束状态 <a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr></tbody></table>
+<p>如果你使用了 <code>&#x3C;transition name="my-tran"></code>，那么 <code>v-enter</code> 会替换为 <code>my-tran-enter</code>。</p>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="自定义过渡的类名"><a aria-hidden="true" tabindex="-1" href="#自定义过渡的类名"><span class="icon icon-link"></span></a>自定义过渡的类名</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>enter-class</code></td><td align="left"><a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>enter-active-class</code></td><td align="left"><a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>enter-to-class</code> <em>(2.1.8+)</em></td><td align="left"><a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>leave-class</code></td><td align="left"><a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>leave-active-class</code></td><td align="left"><a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr><tr><td align="left"><code>leave-to-class</code> <em>(2.1.8+)</em></td><td align="left"><a href="https://v2.cn.vuejs.org/v2/guide/transitions.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%B8%A1%E7%9A%84%E7%B1%BB%E5%90%8D">#</a></td></tr></tbody></table>
+<hr>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-classes-transition<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">enter-active-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animated tada<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">leave-active-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animated bounceOutRight<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag"><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>hello<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="显性的过渡持续时间"><a aria-hidden="true" tabindex="-1" href="#显性的过渡持续时间"><span class="icon icon-link"></span></a>显性的过渡持续时间</h3><div class="wrap-body">
+<p><code>&#x3C;transition></code> 组件上的 <code>duration</code> prop 定制一个显性的过渡持续时间 (以毫秒计)：</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span> <span class="token attr-name">:duration</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1000<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  ...
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>你也可以定制进入和移出的持续时间：</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span> <span class="token attr-name">:duration</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">  enter: 500,
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">  leave: 800
+</span></span></span><span class="code-line"><span class="token tag"><span class="token attr-value">}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  ...
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="初始渲染的过渡"><a aria-hidden="true" tabindex="-1" href="#初始渲染的过渡"><span class="icon icon-link"></span></a>初始渲染的过渡</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>可以通过 <code>appear</code> attribute 设置节点在初始渲染的过渡</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span> <span class="token attr-name">appear</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token comment">&#x3C;!-- ... --></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>这里默认和进入/离开过渡一样，同样也可以自定义 CSS 类名</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">appear</span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">appear-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-appear-class<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">appear-to-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-appear-to-class<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">appear-active-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-appear-active-class<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag"><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token comment">&#x3C;!-- ... --></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>自定义 JavaScript 钩子：</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">appear</span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>before-appear</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>customBeforeAppearHook<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>appear</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>customAppearHook<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>after-appear</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>customAfterAppearHook<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>appear-cancelled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>customAppearCancelledHook<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag"><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token comment">&#x3C;!-- ... --></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>无论是 <code>appear</code> attribute 还是 <code>v-on:appear</code> 钩子都会生成初始渲染过渡</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="javascript-钩子"><a aria-hidden="true" tabindex="-1" href="#javascript-钩子"><span class="icon icon-link"></span></a>JavaScript 钩子</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition</span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>before-enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beforeEnter<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>enter<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>after-enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>afterEnter<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>enter-cancelled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>enterCancelled<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>before-leave</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beforeLeave<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>leave</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>leave<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>after-leave</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>afterLeave<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name"><span class="token namespace">v-on:</span>leave-cancelled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>leaveCancelled<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag"><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token comment">&#x3C;!-- ... --></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>钩子函数可以结合 CSS <code>transitions</code>/<code>animations</code> 使用，也可以单独使用</p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="列表的进入离开过渡"><a aria-hidden="true" tabindex="-1" href="#列表的进入离开过渡"><span class="icon icon-link"></span></a>列表的进入/离开过渡</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name"><span class="token namespace">v-on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>add<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>添加<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name"><span class="token namespace">v-on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>remove<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>删除<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>transition-group</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span> <span class="token attr-name">tag</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item in items<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">v-bind:</span>key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>list-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">      {{ item }}
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>transition-group</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>template</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">        <span class="token literal-property property">items</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">        <span class="token literal-property property">nextNum</span><span class="token operator">:</span> <span class="token number">10</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token function-variable function">randomIndex</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">        <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">floor</span><span class="token punctuation">(</span><span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">items</span><span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">)</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">items</span><span class="token punctuation">.</span><span class="token method function property-access">splice</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">randomIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">nextNum</span><span class="token operator">++</span><span class="token punctuation">)</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token function-variable function">remove</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">items</span><span class="token punctuation">.</span><span class="token method function property-access">splice</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">randomIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector"><span class="token class">.list-item</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">margin-right</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token unit">px</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector"><span class="token class">.list-enter-active</span><span class="token punctuation">,</span> <span class="token class">.list-leave-active</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transition</span><span class="token punctuation">:</span> all <span class="token number">1</span><span class="token unit">s</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token comment">/* .list-leave-active 适用于 2.1.8 以下版本 */</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token selector"><span class="token class">.list-enter</span><span class="token punctuation">,</span> <span class="token class">.list-leave-to</span></span> <span class="token punctuation">{</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token unit">px</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css">  <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token style"><span class="token language-css"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>style</span><span class="token punctuation">></span></span>
+</span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="vue-2-api-参考"><a aria-hidden="true" tabindex="-1" href="#vue-2-api-参考"><span class="icon icon-link"></span></a>Vue 2 API 参考</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="全局配置"><a aria-hidden="true" tabindex="-1" href="#全局配置"><span class="icon icon-link"></span></a>全局配置</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
