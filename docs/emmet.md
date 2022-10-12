@@ -1,7 +1,7 @@
-Emmet
+Emmet 备忘清单
 ====
 
-[Emmet](https://emmet.io/) 是一个用于提升 HTML 和 CSS 代码编写的 Web 开发人员工具包，它允许您使用著名的 CSS 选择器以光速编写大型 HTML 代码块。
+[Emmet](https://emmet.io/) 是一个用于提升 [HTML](./html.md) 和 CSS 代码编写的 Web 开发人员工具包，它允许您使用著名的 CSS 选择器以光速编写大型 HTML 代码块。
 
 
 Emmet 语法
