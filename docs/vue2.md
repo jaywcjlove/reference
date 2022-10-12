@@ -1538,6 +1538,289 @@ Vue.component('alert-box', {
 - `<script type="text/x-template">`
 <!--rehype:className=style-round-->
 
+过渡 & 动画
+---
+
+### 单元素/组件的过渡
+<!--rehype:wrap-class=row-span-2-->
+
+```html
+<template>
+  <button v-on:click="show = !show">
+    切换
+  </button>
+  <transition name="fade">
+    <p v-if="show">切换内容</p>
+  </transition>
+</template>
+
+<script>
+  export default {
+    data: function() {
+      return {
+        show: true
+      };
+    }
+  };
+</script>
+
+<style scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  /* .fade-leave-active 低于 2.1.8 版本 */
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+</style>
+```
+
+### CSS 过渡
+<!--rehype:wrap-class=row-span-2-->
+
+```html
+<template>
+  <button @click="show = !show">
+    切换渲染
+  </button>
+  <transition name="slide-fade">
+    <p v-if="show">切换内容</p>
+  </transition>
+</template>
+<script>
+  export default {
+    data: function() {
+      return {
+        show: true
+      };
+    }
+  };
+</script>
+<style scoped>
+  /* 可以设置不同的进入和离开动画 */
+  /* 设置持续时间和动画函数 */
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  /* .slide-fade-leave-active 用于 2.1.8 以下版本 */ 
+  .slide-fade-enter, .slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+</style>
+```
+
+### CSS 动画
+<!--rehype:wrap-class=row-span-2-->
+
+```html
+<template>
+  <button @click="show = !show">切换展示</button>
+  <transition name="bounce">
+    <p v-if="show">切换内容</p>
+  </transition>
+</template>
+<script>
+  export default {
+    data: function() {
+      return {
+        show: true
+      };
+    }
+  };
+</script>
+<style scoped>
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
+```
+
+### 过渡的类名
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+`v-enter` | 定义进入过渡的开始状态 [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#过渡的类名)
+`v-enter-active` | 定义进入过渡生效时的状态 [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#过渡的类名)
+`v-enter-to` _(2.1.8)_ | 定义进入过渡的结束状态 [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#过渡的类名)
+`v-leave` | 定义离开过渡的开始状态 [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#过渡的类名)
+`v-leave-active` | 定义离开过渡生效时的状态 [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#过渡的类名)
+`v-leave-to` _(2.1.8)_| 定义离开过渡的结束状态 [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#过渡的类名)
+
+如果你使用了 `<transition name="my-tran">`，那么 `v-enter` 会替换为 `my-tran-enter`。
+
+#### 自定义过渡的类名
+
+:- | :-
+:- | :-
+`enter-class` | [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#自定义过渡的类名)
+`enter-active-class` | [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#自定义过渡的类名)
+`enter-to-class` _(2.1.8+)_ | [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#自定义过渡的类名)
+`leave-class` | [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#自定义过渡的类名)
+`leave-active-class` | [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#自定义过渡的类名)
+`leave-to-class` _(2.1.8+)_ | [#](https://v2.cn.vuejs.org/v2/guide/transitions.html#自定义过渡的类名)
+
+----
+
+```html
+<transition
+  name="custom-classes-transition"
+  enter-active-class="animated tada"
+  leave-active-class="animated bounceOutRight"
+>
+  <p v-if="show">hello</p>
+</transition>
+```
+
+### 显性的过渡持续时间
+
+`<transition>` 组件上的 `duration` prop 定制一个显性的过渡持续时间 (以毫秒计)：
+
+```html
+<transition :duration="1000">
+  ...
+</transition>
+```
+
+你也可以定制进入和移出的持续时间：
+
+```html
+<transition :duration="{
+  enter: 500,
+  leave: 800
+}">
+  ...
+</transition>
+```
+
+### 初始渲染的过渡
+<!--rehype:wrap-class=row-span-2-->
+
+可以通过 `appear` attribute 设置节点在初始渲染的过渡
+
+```html
+<transition appear>
+  <!-- ... -->
+</transition>
+```
+
+这里默认和进入/离开过渡一样，同样也可以自定义 CSS 类名
+
+```html
+<transition
+  appear
+  appear-class="custom-appear-class"
+  appear-to-class="custom-appear-to-class"
+  appear-active-class="custom-appear-active-class"
+>
+  <!-- ... -->
+</transition>
+```
+
+自定义 JavaScript 钩子：
+
+```html
+<transition
+  appear
+  v-on:before-appear="customBeforeAppearHook"
+  v-on:appear="customAppearHook"
+  v-on:after-appear="customAfterAppearHook"
+  v-on:appear-cancelled="customAppearCancelledHook"
+>
+  <!-- ... -->
+</transition>
+```
+
+无论是 `appear` attribute 还是 `v-on:appear` 钩子都会生成初始渲染过渡
+
+### JavaScript 钩子
+
+```html
+<transition
+  v-on:before-enter="beforeEnter"
+  v-on:enter="enter"
+  v-on:after-enter="afterEnter"
+  v-on:enter-cancelled="enterCancelled"
+
+  v-on:before-leave="beforeLeave"
+  v-on:leave="leave"
+  v-on:after-leave="afterLeave"
+  v-on:leave-cancelled="leaveCancelled"
+>
+  <!-- ... -->
+</transition>
+```
+
+钩子函数可以结合 CSS `transitions`/`animations` 使用，也可以单独使用
+
+### 列表的进入/离开过渡
+<!--rehype:wrap-class=col-span-2-->
+
+```html
+<template>
+  <button v-on:click="add">添加</button>
+  <button v-on:click="remove">删除</button>
+  <transition-group name="list" tag="p">
+    <span v-for="item in items" v-bind:key="item" class="list-item">
+      {{ item }}
+    </span>
+  </transition-group>
+</template>
+<script>
+  export default {
+    data: function() {
+      return {
+        items: [1,2,3,4,5,6,7,8,9],
+        nextNum: 10
+      };
+    },
+    methods: {
+      randomIndex: function () {
+        return Math.floor(Math.random() * this.items.length)
+      },
+      add: function () {
+        this.items.splice(this.randomIndex(), 0, this.nextNum++)
+      },
+      remove: function () {
+        this.items.splice(this.randomIndex(), 1)
+      },
+    }
+  };
+</script>
+<style scoped>
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
+  /* .list-leave-active 适用于 2.1.8 以下版本 */
+  .list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+</style>
+```
+
 Vue 2 API 参考
 ---
 
