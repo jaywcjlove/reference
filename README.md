@@ -53,6 +53,7 @@ Quick Reference
 [Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62/var(\-\-bg\-opacity));-->
 [Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [SSH](./docs/ssh.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
