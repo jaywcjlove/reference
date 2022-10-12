@@ -232,17 +232,17 @@ docker network create -d overlay \
 `docker login             ` | 向 docker hub 进行身份验证
 `docker push user/image   ` | 将镜像上传到 docker hub。
 
-### 注册表命令
+### 镜像仓库命令
 <!--rehype:wrap-class=row-span-3-->
 
-登录到注册表
+登录到镜像仓库
 
 ```shell
 $ docker login
 $ docker login localhost:8080
 ```
 
-从注册表注销
+从镜像仓库注销
 
 ```shell
 $ docker logout
