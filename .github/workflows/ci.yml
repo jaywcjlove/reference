@@ -45,8 +45,8 @@ jobs:
           name: ${{ steps.create_tag.outputs.version }}
           tag: ${{ steps.create_tag.outputs.version }}
           body: |
-
-            ${{ steps.changelog.outputs.compareurl }}
+            Documentation ${{ needs.build.outputs.create_tag_version }}: https://raw.githack.com/jaywcjlove/reference/${{ needs.build.outputs.gh-pages-short-hash }}/index.html  
+            Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
             
             ${{ steps.changelog.outputs.changelog }}
 
