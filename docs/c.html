@@ -1,0 +1,1054 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>C 备忘清单
+ &#x26;  c cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="提供基本语法和方法的 C 快速参考备忘单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/c.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="c-备忘清单"><a aria-hidden="true" tabindex="-1" href="#c-备忘清单"><span class="icon icon-link"></span></a>C 备忘清单</h1><div class="wrap-body">
+<p>提供基本语法和方法的 C 快速参考备忘单。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="helloc"><a aria-hidden="true" tabindex="-1" href="#helloc"><span class="icon icon-link"></span></a>hello.c</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>使用 <code>gcc</code> 编译 <code>hello.c</code> 文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ gcc <span class="token parameter variable">-o</span> hello hello.c
+</span></code></pre>
+<p>运行编译后的二进制文件(<code>hello</code>)</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ./hello
+</span><span class="code-line"><span class="token comment"># 输出 => Hello World</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myNum <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> myNum2<span class="token punctuation">;</span> <span class="token comment">// 不赋值，然后再赋值</span>
+</span><span class="code-line">myNum2 <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> myNum3 <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span>  <span class="token comment">// myNum3 值为 15</span>
+</span><span class="code-line">myNum3 <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>      <span class="token comment">// 现在 myNum3 值为 10</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">float</span> myFloatNum <span class="token operator">=</span> <span class="token number">5.99</span><span class="token punctuation">;</span> <span class="token comment">// 浮点数</span>
+</span><span class="code-line"><span class="token keyword">char</span> myLetter <span class="token operator">=</span> <span class="token char">'D'</span><span class="token punctuation">;</span>     <span class="token comment">// 字符串</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> sum <span class="token operator">=</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>  <span class="token comment">// 添加变量相加</span>
+</span><span class="code-line"><span class="token comment">// 声明多个变量</span>
+</span><span class="code-line"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="常量-constants"><a aria-hidden="true" tabindex="-1" href="#常量-constants"><span class="icon icon-link"></span></a>常量 Constants</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token keyword">int</span> minutesPerHour <span class="token operator">=</span> <span class="token number">60</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> <span class="token keyword">float</span> PI <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>最佳实践</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token keyword">int</span> BIRTHYEAR <span class="token operator">=</span> <span class="token number">1980</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 这是一个注释</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 这是一个注释</span>
+</span><span class="code-line"><span class="token comment">/* 多行注释，上面的代码将打印出 Hello World!
+</span></span><span class="code-line"><span class="token comment">到屏幕上，真是太棒了 */</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="打印文本"><a aria-hidden="true" tabindex="-1" href="#打印文本"><span class="icon icon-link"></span></a>打印文本</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"I am learning C."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> testInteger <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Number = %d"</span><span class="token punctuation">,</span> testInteger<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">float</span> f <span class="token operator">=</span> <span class="token number">5.99</span><span class="token punctuation">;</span> <span class="token comment">// 浮点数</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Value = %f"</span><span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">short</span> a <span class="token operator">=</span> <span class="token number">0</span>b1010110<span class="token punctuation">;</span>  <span class="token comment">// 2 进制数字</span>
+</span><span class="code-line"><span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">02713</span><span class="token punctuation">;</span>        <span class="token comment">// 8 进制数字</span>
+</span><span class="code-line"><span class="token keyword">long</span> c <span class="token operator">=</span> <span class="token number">0X1DAB83</span><span class="token punctuation">;</span>    <span class="token comment">// 16 进制数字</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 以 8 进制形似输出</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a=%ho, b=%o, c=%lo\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出 => a=126, b=2713, c=7325603</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 以 10 进制形式输出</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a=%hd, b=%d, c=%ld\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出 => a=86, b=1483, c=1944451</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 以 16 进制形式输出（字母小写）</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a=%hx, b=%x, c=%lx\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出 => a=56, b=5cb, c=1dab83</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 以 16 进制形式输出（字母大写）</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a=%hX, b=%X, c=%lX\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出 => a=56, b=5CB, c=1DAB83</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="控制空格数"><a aria-hidden="true" tabindex="-1" href="#控制空格数"><span class="icon icon-link"></span></a>控制空格数</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> a1<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span> a2<span class="token operator">=</span><span class="token number">345</span><span class="token punctuation">,</span> a3<span class="token operator">=</span><span class="token number">700</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> b1<span class="token operator">=</span><span class="token number">56720</span><span class="token punctuation">,</span> b2<span class="token operator">=</span><span class="token number">9999</span><span class="token punctuation">,</span> b3<span class="token operator">=</span><span class="token number">20098</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> c1<span class="token operator">=</span><span class="token number">233</span><span class="token punctuation">,</span> c2<span class="token operator">=</span><span class="token number">205</span><span class="token punctuation">,</span> c3<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> d1<span class="token operator">=</span><span class="token number">34</span><span class="token punctuation">,</span> d2<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> d3<span class="token operator">=</span><span class="token number">23</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%-9d %-9d %-9d\n"</span><span class="token punctuation">,</span> a1<span class="token punctuation">,</span> a2<span class="token punctuation">,</span> a3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%-9d %-9d %-9d\n"</span><span class="token punctuation">,</span> b1<span class="token punctuation">,</span> b2<span class="token punctuation">,</span> b3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%-9d %-9d %-9d\n"</span><span class="token punctuation">,</span> c1<span class="token punctuation">,</span> c2<span class="token punctuation">,</span> c3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%-9d %-9d %-9d\n"</span><span class="token punctuation">,</span> d1<span class="token punctuation">,</span> d2<span class="token punctuation">,</span> d3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token number">20</span>        <span class="token number">345</span>       <span class="token number">700</span>  
+</span><span class="code-line"><span class="token number">56720</span>     <span class="token number">9999</span>      <span class="token number">20098</span>
+</span><span class="code-line"><span class="token number">233</span>       <span class="token number">205</span>       <span class="token number">1</span>    
+</span><span class="code-line"><span class="token number">34</span>        <span class="token number">0</span>         <span class="token number">23</span>   
+</span></code></pre>
+<p><code>%-9d</code> 中，<code>d</code> 表示以 <code>10</code> 进制输出，<code>9</code> 表示最少占 <code>9</code> 个字符的宽度，宽度不足以空格补齐，<code>-</code> 表示左对齐</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符串-strings"><a aria-hidden="true" tabindex="-1" href="#字符串-strings"><span class="icon icon-link"></span></a>字符串 Strings</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">char</span> greetings<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> greetings<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>访问字符串</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">char</span> greetings<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> greetings<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>修改字符串</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">char</span> greetings<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+</span><span class="code-line">greetings<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'J'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> greetings<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出 "Jello World!"</span>
+</span></code></pre>
+<p>另一种创建字符串的方法</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">char</span> greetings<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token char">'H'</span><span class="token punctuation">,</span><span class="token char">'e'</span><span class="token punctuation">,</span><span class="token char">'l'</span><span class="token punctuation">,</span><span class="token char">'l'</span><span class="token punctuation">,</span><span class="token char">'\0'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> greetings<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出 "Hell!"</span>
+</span></code></pre>
+<p><code>C</code> <strong>没有</strong> String 类型，使用 <code>char</code> 类型并创建一个字符 <code>array</code></p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="条件判断"><a aria-hidden="true" tabindex="-1" href="#条件判断"><span class="icon icon-link"></span></a>条件判断</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> time <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>time <span class="token operator">&#x3C;</span> <span class="token number">18</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"再会！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"晚上好！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 输出 -> "晚上好！"</span>
+</span><span class="code-line"><span class="token keyword">int</span> time <span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>time <span class="token operator">&#x3C;</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"早上好！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>time <span class="token operator">&#x3C;</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"再会！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"晚上好！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 输出 -> "晚上好！"</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="三元运算符"><a aria-hidden="true" tabindex="-1" href="#三元运算符"><span class="icon icon-link"></span></a>三元运算符</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> time <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">(</span>time <span class="token operator">&#x3C;</span> <span class="token number">18</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"再会！"</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"晚上好！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="switch"><a aria-hidden="true" tabindex="-1" href="#switch"><span class="icon icon-link"></span></a>Switch</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> day <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">switch</span> <span class="token punctuation">(</span>day<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"周三"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"周四"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">default</span><span class="token operator">:</span>
+</span><span class="code-line">    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"期待周末"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 输出 -> "周四" (day 4)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="while-循环"><a aria-hidden="true" tabindex="-1" href="#while-循环"><span class="icon icon-link"></span></a>While 循环</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&#x3C;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  i<span class="token operator">++</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p><strong>注意</strong>：不要忘记增加条件中使用的变量，否则循环永远不会结束，成为“死循环”！</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="dowhile-循环"><a aria-hidden="true" tabindex="-1" href="#dowhile-循环"><span class="icon icon-link"></span></a>Do/While 循环</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">do</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  i<span class="token operator">++</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&#x3C;</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="for-循环"><a aria-hidden="true" tabindex="-1" href="#for-循环"><span class="icon icon-link"></span></a>For 循环</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> i<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="跳出循环-breakcontinue"><a aria-hidden="true" tabindex="-1" href="#跳出循环-breakcontinue"><span class="icon icon-link"></span></a>跳出循环 Break/Continue</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> i<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>在 <code>i</code> 等于 <code>4</code> 时跳出循环</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> i<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>示例跳过 <code>4</code> 的值</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="while-break-示例"><a aria-hidden="true" tabindex="-1" href="#while-break-示例"><span class="icon icon-link"></span></a>While Break 示例</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&#x3C;</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  i<span class="token operator">++</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="while-continue-示例"><a aria-hidden="true" tabindex="-1" href="#while-continue-示例"><span class="icon icon-link"></span></a>While continue 示例</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&#x3C;</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  i<span class="token operator">++</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="数组-arrays"><a aria-hidden="true" tabindex="-1" href="#数组-arrays"><span class="icon icon-link"></span></a>数组 Arrays</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myNumbers<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> myNumbers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出 25</span>
+</span></code></pre>
+<p>更改数组元素</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myNumbers<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">myNumbers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">33</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> myNumbers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>循环遍历数组</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myNumbers<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> i<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> myNumbers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>设置数组大小</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 声明一个由四个整数组成的数组：</span>
+</span><span class="code-line"><span class="token keyword">int</span> myNumbers<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 添加元素</span>
+</span><span class="code-line">myNumbers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
+</span><span class="code-line">myNumbers<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
+</span><span class="code-line">myNumbers<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">75</span><span class="token punctuation">;</span>
+</span><span class="code-line">myNumbers<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="枚举-enum"><a aria-hidden="true" tabindex="-1" href="#枚举-enum"><span class="icon icon-link"></span></a>枚举 Enum</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">week</span> <span class="token punctuation">{</span> Mon <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Tues<span class="token punctuation">,</span> Wed<span class="token punctuation">,</span> Thurs<span class="token punctuation">,</span> Fri<span class="token punctuation">,</span> Sat<span class="token punctuation">,</span> Sun <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>定义枚举变量</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">week</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">week</span> <span class="token punctuation">{</span> Mon <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Tues<span class="token punctuation">,</span> Wed<span class="token punctuation">,</span> Thurs<span class="token punctuation">,</span> Fri<span class="token punctuation">,</span> Sat<span class="token punctuation">,</span> Sun <span class="token punctuation">}</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">;</span>
+</span></code></pre>
+<p>有了枚举变量，就可以把列表中的值赋给它</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">week</span> <span class="token punctuation">{</span> Mon <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Tues<span class="token punctuation">,</span> Wed<span class="token punctuation">,</span> Thurs<span class="token punctuation">,</span> Fri<span class="token punctuation">,</span> Sat<span class="token punctuation">,</span> Sun <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">week</span> a <span class="token operator">=</span> Mon<span class="token punctuation">,</span> b <span class="token operator">=</span> Wed<span class="token punctuation">,</span> c <span class="token operator">=</span> Sat<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 或者</span>
+</span><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">week</span><span class="token punctuation">{</span> Mon <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Tues<span class="token punctuation">,</span> Wed<span class="token punctuation">,</span> Thurs<span class="token punctuation">,</span> Fri<span class="token punctuation">,</span> Sat<span class="token punctuation">,</span> Sun <span class="token punctuation">}</span> a <span class="token operator">=</span> Mon<span class="token punctuation">,</span> b <span class="token operator">=</span> Wed<span class="token punctuation">,</span> c <span class="token operator">=</span> Sat<span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="枚举示例应用"><a aria-hidden="true" tabindex="-1" href="#枚举示例应用"><span class="icon icon-link"></span></a>枚举示例应用</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">week</span> <span class="token punctuation">{</span>Mon <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Tues<span class="token punctuation">,</span> Wed<span class="token punctuation">,</span> Thurs<span class="token punctuation">}</span> day<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&#x26;</span>day<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">switch</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">case</span> Mon<span class="token operator">:</span>   <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Monday"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">case</span> Tues<span class="token operator">:</span>  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Tuesday"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">case</span> Wed<span class="token operator">:</span>   <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Wednesday"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">case</span> Thurs<span class="token operator">:</span> <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Thursday"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">default</span><span class="token operator">:</span>    <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Error!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="用户输入"><a aria-hidden="true" tabindex="-1" href="#用户输入"><span class="icon icon-link"></span></a>用户输入</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 创建一个整数变量来存储我们从用户那里得到的数字</span>
+</span><span class="code-line"><span class="token keyword">int</span> myNum<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 要求用户输入一个数字</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入一个数字: \n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 获取并保存用户输入的号码</span>
+</span><span class="code-line"><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&#x26;</span>myNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 输出用户输入的数字</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"您输入的数字: %d"</span><span class="token punctuation">,</span> myNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="用户输入字符串"><a aria-hidden="true" tabindex="-1" href="#用户输入字符串"><span class="icon icon-link"></span></a>用户输入字符串</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 创建一个字符串</span>
+</span><span class="code-line"><span class="token keyword">char</span> firstName<span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 要求用户输入一些文本</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"输入您的名字: \n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 获取并保存文本</span>
+</span><span class="code-line"><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> firstName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出文本</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello %s."</span><span class="token punctuation">,</span> firstName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="内存地址"><a aria-hidden="true" tabindex="-1" href="#内存地址"><span class="icon icon-link"></span></a>内存地址</h3><div class="wrap-body">
+<p>创建变量时，会为该变量分配一个内存地址</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myAge <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> <span class="token operator">&#x26;</span>myAge<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 输出：0x7ffe5367e044</span>
+</span></code></pre>
+<p>要访问它，请使用引用运算符 (<code>&#x26;</code>)</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="创建指针"><a aria-hidden="true" tabindex="-1" href="#创建指针"><span class="icon icon-link"></span></a>创建指针</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myAge <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">;</span>      <span class="token comment">// 一个 int 变量</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> myAge<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出 myAge(43)的值</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 输出 myAge 的内存地址（0x7ffe5367e044）</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> <span class="token operator">&#x26;</span>myAge<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="指针变量"><a aria-hidden="true" tabindex="-1" href="#指针变量"><span class="icon icon-link"></span></a>指针变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myAge <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">;</span>            <span class="token comment">// 一个 int 变量</span>
+</span><span class="code-line"><span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token operator">&#x26;</span>myAge<span class="token punctuation">;</span>         <span class="token comment">// 名为 ptr 的指针变量，用于存储 myAge 的地址</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> myAge<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 输出 myAge (43) 的值</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> \<span class="token operator">&#x26;</span>myAge<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 输出 myAge 的内存地址（0x7ffe5367e044）</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// 用指针（0x7ffe5367e044）输出myAge的内存地址</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="取消引用"><a aria-hidden="true" tabindex="-1" href="#取消引用"><span class="icon icon-link"></span></a>取消引用</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myAge <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">;</span>     <span class="token comment">// 变量声明</span>
+</span><span class="code-line"><span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token operator">&#x26;</span>myAge<span class="token punctuation">;</span>  <span class="token comment">// 指针声明</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 参考：用指针输出 myAge 的</span>
+</span><span class="code-line"><span class="token comment">// 内存地址（0x7ffe5367e044）</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 取消引用：用指针输出 myAge 的值 (43)</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="运算符"><a aria-hidden="true" tabindex="-1" href="#运算符"><span class="icon icon-link"></span></a>运算符</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="算术运算符"><a aria-hidden="true" tabindex="-1" href="#算术运算符"><span class="icon icon-link"></span></a>算术运算符</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myNum <span class="token operator">=</span> <span class="token number">100</span> <span class="token operator">+</span> <span class="token number">50</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> sum1 <span class="token operator">=</span> <span class="token number">100</span> <span class="token operator">+</span> <span class="token number">50</span><span class="token punctuation">;</span>    <span class="token comment">// 150 (100 + 50)</span>
+</span><span class="code-line"><span class="token keyword">int</span> sum2 <span class="token operator">=</span> sum1 <span class="token operator">+</span> <span class="token number">250</span><span class="token punctuation">;</span>  <span class="token comment">// 400 (150 + 250)</span>
+</span><span class="code-line"><span class="token keyword">int</span> sum3 <span class="token operator">=</span> sum2 <span class="token operator">+</span> sum2<span class="token punctuation">;</span> <span class="token comment">// 800 (400 + 400)</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Operator</th><th>Name</th><th>Description</th><th>Example</th></tr></thead><tbody><tr><td><code>+</code></td><td>加</td><td>将两个值相加</td><td><code>x + y</code></td></tr><tr><td><code>-</code></td><td>减</td><td>从另一个值中减去一个值</td><td><code>x - y</code></td></tr><tr><td><code>*</code></td><td>乘</td><td>将两个值相乘</td><td><code>x * y</code></td></tr><tr><td><code>/</code></td><td>除</td><td>将一个值除以另一个</td><td><code>x / y</code></td></tr><tr><td><code>%</code></td><td>取模</td><td>返回除法余数</td><td><code>x % y</code></td></tr><tr><td><code>++</code></td><td>增量</td><td>将变量的值增加 1</td><td><code>++</code></td></tr><tr><td><code>--</code></td><td>乘量</td><td>将变量的值减 1</td><td><code>--x</code></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="赋值运算符"><a aria-hidden="true" tabindex="-1" href="#赋值运算符"><span class="icon icon-link"></span></a>赋值运算符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>符号</th><th>示例</th><th>如同</th></tr></thead><tbody><tr><td><code>=</code></td><td>x <code>=</code> 5</td><td>x <code>=</code> 5</td></tr><tr><td><code>+=</code></td><td>x <code>+=</code> 3</td><td>x <code>=</code> x <code>+</code> 3</td></tr><tr><td><code>-=</code></td><td>x <code>-=</code> 3</td><td>x <code>=</code> x <code>-</code> 3</td></tr><tr><td><code>*=</code></td><td>x <code>*=</code> 3</td><td>x <code>=</code> x <code>*</code> 3</td></tr><tr><td><code>/=</code></td><td>x <code>/=</code> 3</td><td>x <code>=</code> x <code>/</code> 3</td></tr><tr><td><code>%=</code></td><td>x <code>%=</code> 3</td><td>x <code>=</code> x <code>%</code> 3</td></tr><tr><td><code>&#x26;=</code></td><td>x <code>&#x26;=</code> 3</td><td>x <code>=</code> x <code>&#x26;</code> 3</td></tr><tr><td><code>|=</code></td><td>x <code>|=</code> 3</td><td>x <code>=</code> x <code>|</code> 3</td></tr><tr><td><code>^=</code></td><td>x <code>^=</code> 3</td><td>x <code>=</code> x <code>^</code> 3</td></tr><tr><td><code>>>=</code></td><td>x <code>>>=</code> 3</td><td>x <code>=</code> x <code>>></code> 3</td></tr><tr><td><code>&#x3C;&#x3C;=</code></td><td>x <code>&#x3C;&#x3C;=</code> 3</td><td>x <code>=</code> x <code>&#x3C;&#x3C;</code> 3</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="比较运算符"><a aria-hidden="true" tabindex="-1" href="#比较运算符"><span class="icon icon-link"></span></a>比较运算符</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> x <span class="token operator">></span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 返回 1（真），因为 5 大于 3</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>符号</th><th>名称</th><th>示例</th></tr></thead><tbody><tr><td><code>==</code></td><td>等于</td><td>x <code>==</code> y</td></tr><tr><td><code>!=</code></td><td>不等于</td><td>x <code>!=</code> y</td></tr><tr><td><code>></code></td><td>大于</td><td>x <code>></code> y</td></tr><tr><td><code>&#x3C;</code></td><td>小于</td><td>x <code>&#x3C;</code> y</td></tr><tr><td><code>>=</code></td><td>大于或等于</td><td>x <code>>=</code> y</td></tr><tr><td><code>&#x3C;=</code></td><td>小于或等于</td><td>x <code>&#x3C;=</code> y</td></tr></tbody></table>
+<p>比较运算符用于比较两个值</p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="逻辑运算符"><a aria-hidden="true" tabindex="-1" href="#逻辑运算符"><span class="icon icon-link"></span></a>逻辑运算符</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>符号</th><th>名称</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>&#x26;&#x26;</code></td><td><code>与</code>逻辑</td><td>如果两个语句都为真，则返回真</td><td><code>x &#x3C; 5 &#x26;&#x26;  x &#x3C; 10</code></td></tr><tr><td><code>||</code></td><td><code>或</code>逻辑</td><td>如果其中一个语句为真，则返回真</td><td><code>x &#x3C; 5 || x &#x3C; 4</code></td></tr><tr><td><code>!</code></td><td><code>非</code>逻辑</td><td>反转结果，如果结果为真则返回假</td><td><code>!(x &#x3C; 5 &#x26;&#x26; x &#x3C; 10)</code></td></tr></tbody></table>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="运算符示例"><a aria-hidden="true" tabindex="-1" href="#运算符示例"><span class="icon icon-link"></span></a>运算符示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">unsigned</span> <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">60</span><span class="token punctuation">;</span> <span class="token comment">/* 60 = 0011 1100 */</span>  
+</span><span class="code-line"><span class="token keyword">unsigned</span> <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">;</span> <span class="token comment">/* 13 = 0000 1101 */</span>
+</span><span class="code-line"><span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>           
+</span><span class="code-line">
+</span><span class="code-line">c <span class="token operator">=</span> a <span class="token operator">&#x26;</span> b<span class="token punctuation">;</span>      <span class="token comment">/* 12 = 0000 1100 */</span> 
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Line 1 - c 的值是 %d\n"</span><span class="token punctuation">,</span> c <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">c <span class="token operator">=</span> a <span class="token operator">|</span> b<span class="token punctuation">;</span>      <span class="token comment">/* 61 = 0011 1101 */</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Line 2 - c 的值是 %d\n"</span><span class="token punctuation">,</span> c <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">c <span class="token operator">=</span> a <span class="token operator">^</span> b<span class="token punctuation">;</span>      <span class="token comment">/* 49 = 0011 0001 */</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Line 3 - c 的值是 %d\n"</span><span class="token punctuation">,</span> c <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">c <span class="token operator">=</span> <span class="token operator">~</span>a<span class="token punctuation">;</span>         <span class="token comment">/*-61 = 1100 0011 */</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Line 4 - c 的值是 %d\n"</span><span class="token punctuation">,</span> c <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">c <span class="token operator">=</span> a <span class="token operator">&#x3C;&#x3C;</span> <span class="token number">2</span><span class="token punctuation">;</span>     <span class="token comment">/* 240 = 1111 0000 */</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Line 5 - c 的值是 %d\n"</span><span class="token punctuation">,</span> c <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">c <span class="token operator">=</span> a <span class="token operator">>></span> <span class="token number">2</span><span class="token punctuation">;</span>     <span class="token comment">/* 15 = 0000 1111 */</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Line 6 - c 的值是 %d\n"</span><span class="token punctuation">,</span> c <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="位运算符"><a aria-hidden="true" tabindex="-1" href="#位运算符"><span class="icon icon-link"></span></a>位运算符</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">运算符</th><th align="left">描述</th><th align="left">实例</th></tr></thead><tbody><tr><td align="left"><code>&#x26;</code></td><td align="left">按位与操作，按二进制位进行"与"运算</td><td align="left"><code>(A &#x26; B)</code> 将得到 <code>12</code> 即为 0000 1100</td></tr><tr><td align="left"><code>|</code></td><td align="left">按位或运算符，按二进制位进行"或"运算</td><td align="left"><code>(A | B)</code> 将得到 <code>61</code> 即为 0011 1101</td></tr><tr><td align="left"><code>^</code></td><td align="left">异或运算符，按二进制位进行"异或"运算</td><td align="left"><code>(A ^ B)</code> 将得到 <code>49</code> 即为 0011 0001</td></tr><tr><td align="left"><code>~</code></td><td align="left">取反运算符，按二进制位进行"取反"运算</td><td align="left"><code>(~A)</code> 将得到 <code>-61</code> 即为 1100 0011</td></tr><tr><td align="left"><code>&#x3C;&#x3C;</code></td><td align="left">二进制左移运算符</td><td align="left"><code>A &#x3C;&#x3C; 2</code> 将得到 <code>240</code> 即为 1111 0000</td></tr><tr><td align="left"><code>>></code></td><td align="left">二进制右移运算符</td><td align="left"><code>A >> 2</code> 将得到 <code>15</code> 即为 0000 1111</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="数据类型-data-types"><a aria-hidden="true" tabindex="-1" href="#数据类型-data-types"><span class="icon icon-link"></span></a>数据类型 Data Types</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="基本数据类型"><a aria-hidden="true" tabindex="-1" href="#基本数据类型"><span class="icon icon-link"></span></a>基本数据类型</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>数据类型</th><th>大小 Size</th><th>范围 Range</th><th>描述 Description</th></tr></thead><tbody><tr><td><code>char</code></td><td>1 字节</td><td><code>−128</code> ~ <code>127</code></td><td>单个字符/字母/数字/ASCII</td></tr><tr><td><code>signed char</code></td><td>1 字节</td><td><code>−128</code> ~ <code>127</code></td><td>-</td></tr><tr><td><code>unsigned char</code></td><td>1 字节</td><td><code>0</code> ~ <code>255</code></td><td>-</td></tr><tr><td><code>int</code></td><td><code>2</code> 到 <code>4</code> 字节</td><td><code>−32,768</code> ~ <code>32,767</code></td><td>存储整数</td></tr><tr><td><code>signed int</code></td><td>2 字节</td><td><code>−32,768</code> ~ <code>32,767</code></td><td></td></tr><tr><td><code>unsigned int</code></td><td>2 字节</td><td><code>0</code> ~ <code>65,535</code></td><td></td></tr><tr><td><code>short int</code></td><td>2 字节</td><td><code>−32,768</code> ~ <code>32,767</code></td><td></td></tr><tr><td><code>signed short int</code></td><td>2 字节</td><td><code>−32,768</code> ~ <code>32,767</code></td><td></td></tr><tr><td><code>unsigned short int</code></td><td>2 字节</td><td><code>0</code> ~ <code>65,535</code></td><td></td></tr><tr><td><code>long int</code></td><td>4 字节</td><td><code>-2,147,483,648</code> ~ <code>2,147,483,647</code></td><td></td></tr><tr><td><code>signed long int</code></td><td>4 字节</td><td><code>-2,147,483,648</code> ~ <code>2,147,483,647</code></td><td></td></tr><tr><td><code>unsigned long int</code></td><td>4 字节</td><td><code>0</code> ~ <code>4,294,967,295</code></td><td></td></tr><tr><td><code>float</code></td><td>4 字节</td><td></td><td></td></tr><tr><td><code>double</code></td><td>8 字节</td><td></td><td></td></tr><tr><td><code>long double</code></td><td>10 字节</td><td></td><td></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="数据类型"><a aria-hidden="true" tabindex="-1" href="#数据类型"><span class="icon icon-link"></span></a>数据类型</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 创建变量</span>
+</span><span class="code-line"><span class="token keyword">int</span> myNum <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>             <span class="token comment">// 整数</span>
+</span><span class="code-line"><span class="token keyword">float</span> myFloatNum <span class="token operator">=</span> <span class="token number">5.99</span><span class="token punctuation">;</span>   <span class="token comment">// 浮点数</span>
+</span><span class="code-line"><span class="token keyword">char</span> myLetter <span class="token operator">=</span> <span class="token char">'D'</span><span class="token punctuation">;</span>       <span class="token comment">// 字符串</span>
+</span><span class="code-line"><span class="token comment">// 高精度浮点数据或数字</span>
+</span><span class="code-line"><span class="token keyword">double</span> myDouble <span class="token operator">=</span> <span class="token number">3.2325467</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 打印输出变量</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> myNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f\n"</span><span class="token punctuation">,</span> myFloatNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c\n"</span><span class="token punctuation">,</span> myLetter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lf\n"</span><span class="token punctuation">,</span> myDouble<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">数据类型</th><th align="left">说  明</th></tr></thead><tbody><tr><td align="left"><code>char</code></td><td align="left">字符型</td></tr><tr><td align="left"><code>short</code></td><td align="left">短整型</td></tr><tr><td align="left"><code>int</code></td><td align="left">整型</td></tr><tr><td align="left"><code>long</code></td><td align="left">长整型</td></tr><tr><td align="left"><code>float</code></td><td align="left">单精度浮点型</td></tr><tr><td align="left"><code>double</code></td><td align="left">双精度浮点型</td></tr><tr><td align="left"><code>void</code></td><td align="left">无类型</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="基本格式说明符"><a aria-hidden="true" tabindex="-1" href="#基本格式说明符"><span class="icon icon-link"></span></a>基本格式说明符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>格式说明符</th><th>数据类型</th></tr></thead><tbody><tr><td><code>%d</code> 或 <code>%i</code></td><td><code>int</code> 整数</td></tr><tr><td><code>%f</code></td><td><code>float</code> 单精度的十进制类型</td></tr><tr><td><code>%lf</code></td><td><code>double</code> 高精度浮点数据或数字</td></tr><tr><td><code>%c</code></td><td><code>char</code> 字符</td></tr><tr><td><code>%s</code></td><td>用于 <code>strings</code> 字符串</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="基本格式说明符-1"><a aria-hidden="true" tabindex="-1" href="#基本格式说明符-1"><span class="icon icon-link"></span></a>基本格式说明符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>short</th><th>int</th><th>long</th></tr></thead><tbody><tr><td>8 进制</td><td><code>%ho</code></td><td><code>%o</code></td><td><code>%lo</code></td></tr><tr><td>10 进制</td><td><code>%hd</code></td><td><code>%d</code></td><td><code>%ld</code></td></tr><tr><td>16 进制</td><td><code>%hx</code> / <code>%hX</code></td><td><code>%x</code> / <code>%X</code></td><td><code>%lx</code> / <code>%lX</code></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="数据格式示例"><a aria-hidden="true" tabindex="-1" href="#数据格式示例"><span class="icon icon-link"></span></a>数据格式示例</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> myNum <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">float</span> myFloatNum <span class="token operator">=</span> <span class="token number">5.99</span><span class="token punctuation">;</span> <span class="token comment">// 浮点数</span>
+</span><span class="code-line"><span class="token keyword">char</span> myLetter <span class="token operator">=</span> <span class="token char">'D'</span><span class="token punctuation">;</span>     <span class="token comment">// 字符串</span>
+</span><span class="code-line"><span class="token comment">// 打印输出变量</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> myNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f\n"</span><span class="token punctuation">,</span> myFloatNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c\n"</span><span class="token punctuation">,</span> myLetter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="预处理器"><a aria-hidden="true" tabindex="-1" href="#预处理器"><span class="icon icon-link"></span></a>预处理器</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="预处理器指令"><a aria-hidden="true" tabindex="-1" href="#预处理器指令"><span class="icon icon-link"></span></a>预处理器指令</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>指令</th><th>描述</th></tr></thead><tbody><tr><td><code>#define</code></td><td>定义宏</td></tr><tr><td><code>#include</code></td><td>包含一个源代码文件</td></tr><tr><td><code>#undef</code></td><td>取消已定义的宏</td></tr><tr><td><code>#ifdef</code></td><td>如果宏已经定义，则返回真</td></tr><tr><td><code>#ifndef</code></td><td>如果宏没有定义，则返回真</td></tr><tr><td><code>#if</code></td><td>如果给定条件为真，则编译下面代码</td></tr><tr><td><code>#else</code></td><td><code>#if</code> 的替代方案</td></tr><tr><td><code>#elif</code></td><td>如果 <code>#if</code> 条件为假，当前条件为<code>真</code></td></tr><tr><td><code>#endif</code></td><td>结束一个 <code>#if……#else</code> 条件编译块</td></tr><tr><td><code>#error</code></td><td>当遇到标准错误时，输出错误消息</td></tr><tr><td><code>#pragma</code></td><td>使用标准化方法，向编译器发布特殊的命令到编译器中</td></tr></tbody></table>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 所有的 MAX_ARRAY_LENGTH 替换为 20</span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAX_ARRAY_LENGTH</span> <span class="token expression"><span class="token number">20</span></span></span>
+</span><span class="code-line"><span class="token comment">// 系统库中获取 stdio.h</span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token comment">// 本地目录中获取 myheader.h</span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"myheader.h"</span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">undef</span>  <span class="token expression">FILE_SIZE</span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">FILE_SIZE</span> <span class="token expression"><span class="token number">42</span> </span><span class="token comment">// 取消已定义并定义为 42</span></span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="预定义宏"><a aria-hidden="true" tabindex="-1" href="#预定义宏"><span class="icon icon-link"></span></a>预定义宏</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list"><thead><tr><th>宏</th><th>描述</th></tr></thead><tbody><tr><td><code>__DATE__</code></td><td>当前日期，一个以 "MMM DD YYYY" 格式表示的字符常量</td></tr><tr><td><code>__TIME__</code></td><td>当前时间，一个以 "HH:MM:SS" 格式表示的字符常量</td></tr><tr><td><code>__FILE__</code></td><td>这会包含当前文件名，一个字符串常量</td></tr><tr><td><code>__LINE__</code></td><td>这会包含当前行号，一个十进制常量</td></tr><tr><td><code>__STDC__</code></td><td>当编译器以 <code>ANSI</code> 标准编译时，则定义为 <code>1</code></td></tr></tbody></table>
+<!--rehype:className=style-list-->
+<p><code>ANSI C</code> 定义了许多宏，您可以使用这些宏，但是不能直接修改这些预定义的宏</p>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="预定义宏示例"><a aria-hidden="true" tabindex="-1" href="#预定义宏示例"><span class="icon icon-link"></span></a>预定义宏示例</h4><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"File :%s\n"</span><span class="token punctuation">,</span> <span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Date :%s\n"</span><span class="token punctuation">,</span> <span class="token constant">__DATE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Time :%s\n"</span><span class="token punctuation">,</span> <span class="token constant">__TIME__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Line :%d\n"</span><span class="token punctuation">,</span> <span class="token constant">__LINE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ANSI :%d\n"</span><span class="token punctuation">,</span> __STDC__<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="宏延续运算符"><a aria-hidden="true" tabindex="-1" href="#宏延续运算符"><span class="icon icon-link"></span></a>宏延续运算符（\）</h3><div class="wrap-body">
+<p>一个宏通常写在一个单行上。</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span>  <span class="token macro-name function">message_for</span><span class="token expression"><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>  </span><span class="token punctuation">\</span>
+</span></span><span class="code-line"><span class="token macro property">    <span class="token expression"><span class="token function">printf</span><span class="token punctuation">(</span>#a </span><span class="token string">" 和 "</span> <span class="token expression"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">b</span> </span></span><span class="token string">": 我们爱你！\n"</span><span class="token expression"><span class="token punctuation">)</span></span></span>
+</span></code></pre>
+<p>如果宏太长，一个单行容纳不下，则使用宏延续运算符 <code>\</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="字符串常量化运算符"><a aria-hidden="true" tabindex="-1" href="#字符串常量化运算符"><span class="icon icon-link"></span></a>字符串常量化运算符（#）</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span>  <span class="token macro-name function">message_for</span><span class="token expression"><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>  </span><span class="token punctuation">\</span>
+</span></span><span class="code-line"><span class="token macro property">  <span class="token expression"><span class="token function">printf</span><span class="token punctuation">(</span>#a </span><span class="token string">" 和 "</span> <span class="token expression"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">b</span> </span></span><span class="token string">": 我们爱你！\n"</span><span class="token expression"><span class="token punctuation">)</span></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">message_for</span><span class="token punctuation">(</span>Carole<span class="token punctuation">,</span> Debra<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre><code class="code-highlight"><span class="code-line">Carole 和 Debra: 我们爱你！
+</span></code></pre>
+<p>需要把一个宏的参数转换为字符串常量时，使用字符串常量化运算符 <code>#</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="标记粘贴运算符"><a aria-hidden="true" tabindex="-1" href="#标记粘贴运算符"><span class="icon icon-link"></span></a>标记粘贴运算符（##）</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">tokenpaster</span><span class="token expression"><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token function">printf</span> <span class="token punctuation">(</span></span><span class="token string">"token"</span> <span class="token expression"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">n</span> </span></span><span class="token string">" = %d"</span><span class="token expression"><span class="token punctuation">,</span> token</span><span class="token punctuation">##</span><span class="token expression">n<span class="token punctuation">)</span></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">int</span> token34 <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">tokenpaster</span><span class="token punctuation">(</span><span class="token number">34</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="defined-运算符"><a aria-hidden="true" tabindex="-1" href="#defined-运算符"><span class="icon icon-link"></span></a>defined() 运算符</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">if</span> <span class="token expression"><span class="token operator">!</span><span class="token function">defined</span> <span class="token punctuation">(</span>MESSAGE<span class="token punctuation">)</span></span></span>
+</span><span class="code-line">   <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MESSAGE</span> <span class="token string">"You wish!"</span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Here is the message: %s\n"</span><span class="token punctuation">,</span> MESSAGE<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="参数化的宏"><a aria-hidden="true" tabindex="-1" href="#参数化的宏"><span class="icon icon-link"></span></a>参数化的宏</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">   <span class="token keyword">return</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>宏重写上面的代码，如下：</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">square</span><span class="token expression"><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span>
+</span></code></pre>
+<p>宏名称和左圆括号之间不允许有空格</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">MAX</span><span class="token expression"><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Max between 20 and 10 is %d\n"</span><span class="token punctuation">,</span> <span class="token function">MAX</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+</span><span class="code-line">   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://jaywcjlove.github.io/c-tutorial">C 教程</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
