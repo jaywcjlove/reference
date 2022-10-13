@@ -1296,6 +1296,35 @@ void main (){
 // 文件大小: 18 bytes
 ```
 
+杂项
+---
+
+### Docker 运行环境
+<!--rehype:wrap-class=col-span-2-->
+
+- 安装 [`Docker`](./docker.md)
+- 创建 [`Dockerfile`](./dockerfile.md) 文件
+    ```dockerfile
+    FROM alpine:3.14
+    RUN apk add --no-cache gcc musl-dev
+    RUN apk add --no-cache g++
+    ```
+- 生成本地 myalpine 镜像
+    ```bash
+    docker build -t myalpine .
+    ```
+- 运行映像，把当前路径 `($PWD)` 映射至容器的 `/test` 目录，用 `gcc` 编译程序，`exit`返回
+    ```bash
+    docker run -it -v $PWD:/test myalpine
+    root@b1a38bd7107a:/# cd test
+    root@b1a38bd7107a:/test# gcc -o hello hello.c
+    Hello World
+    root@b1a38bd7107a:/test# exit
+    exit
+    ```
+<!--rehype:className=style-timeline-->
+
+
 另见
 ---
 
