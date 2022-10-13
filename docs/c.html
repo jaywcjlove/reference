@@ -1046,6 +1046,482 @@
 </span><span class="code-line">   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="函数声明和定义"><a aria-hidden="true" tabindex="-1" href="#函数声明和定义"><span class="icon icon-link"></span></a>函数声明和定义</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>函数由两部分组成</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">void</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 声明 declaration</span>
+</span><span class="code-line">  <span class="token comment">// 函数体（要执行的代码）(definition)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<hr>
+<ul>
+<li><code>Declaration</code> 声明函数名称、返回类型和参数 <em>(如果有)</em></li>
+<li><code>Definition</code> 函数体 <em>(要执行的代码)</em></li>
+</ul>
+<hr>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 函数声明</span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 主要方法</span>
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// --> 调用函数</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">// 函数定义</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"晚上好！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="调用函数"><a aria-hidden="true" tabindex="-1" href="#调用函数"><span class="icon icon-link"></span></a>调用函数</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 创建函数</span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"晚上好！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 调用函数</span>
+</span><span class="code-line">  <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 可以被多次调用</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 输出 -> "晚上好！"</span>
+</span><span class="code-line"><span class="token comment">// 输出 -> "晚上好！"</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数参数"><a aria-hidden="true" tabindex="-1" href="#函数参数"><span class="icon icon-link"></span></a>函数参数</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">void</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello %s\n"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token string">"Liam"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token string">"Jenny"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// Hello Liam</span>
+</span><span class="code-line"><span class="token comment">// Hello Jenny</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多个参数"><a aria-hidden="true" tabindex="-1" href="#多个参数"><span class="icon icon-link"></span></a>多个参数</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">void</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"你好 %s 你 %d 岁了。\n"</span><span class="token punctuation">,</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token string">"Liam"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token string">"Jenny"</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 你好 Liam 你 3 岁了。</span>
+</span><span class="code-line"><span class="token comment">// 你好 Jenny 你 14 岁了。</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="返回值"><a aria-hidden="true" tabindex="-1" href="#返回值"><span class="icon icon-link"></span></a>返回值</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">5</span> <span class="token operator">+</span> x<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"结果: %d"</span><span class="token punctuation">,</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 输出 8 (5 + 3)</span>
+</span></code></pre>
+<p>两个参数</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"结果: %d"</span><span class="token punctuation">,</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 将结果存储在变量中</span>
+</span><span class="code-line">  <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"结果 = %d"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 结果: 8 (5 + 3)</span>
+</span><span class="code-line"><span class="token comment">// 结果 = 8 (5 + 3)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="递归示例"><a aria-hidden="true" tabindex="-1" href="#递归示例"><span class="icon icon-link"></span></a>递归示例</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">int</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">return</span> k <span class="token operator">+</span> <span class="token function">sum</span><span class="token punctuation">(</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="数学函数"><a aria-hidden="true" tabindex="-1" href="#数学函数"><span class="icon icon-link"></span></a>数学函数</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;math.h></span></span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f"</span><span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 平方根</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f"</span><span class="token punctuation">,</span> <span class="token function">ceil</span><span class="token punctuation">(</span><span class="token number">1.4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 四舍五入 (入)</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f"</span><span class="token punctuation">,</span> <span class="token function">floor</span><span class="token punctuation">(</span><span class="token number">1.4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 四舍五入 (舍)</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f"</span><span class="token punctuation">,</span> <span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// x(4)的y(3)次方</span>
+</span></code></pre>
+<hr>
+<ul class="cols-2">
+<li><code>abs(x)</code> 绝对值</li>
+<li><code>acos(x)</code> 反余弦值</li>
+<li><code>asin(x)</code> 反正弦值</li>
+<li><code>atan(x)</code> 反正切</li>
+<li><code>cbrt(x)</code> 立方根</li>
+<li><code>cos(x)</code> 余弦</li>
+<li><code>exp(x)</code> Ex 的值</li>
+<li><code>sin(x)</code> x 的正弦值</li>
+<li><code>tan(x)</code> 角度的正切</li>
+</ul>
+<!--rehype:className=cols-2-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="structures-结构"><a aria-hidden="true" tabindex="-1" href="#structures-结构"><span class="icon icon-link"></span></a>Structures 结构</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="创建结构"><a aria-hidden="true" tabindex="-1" href="#创建结构"><span class="icon icon-link"></span></a>创建结构</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">MyStructure</span> <span class="token punctuation">{</span>  <span class="token comment">// 结构声明</span>
+</span><span class="code-line">  <span class="token keyword">int</span> myNum<span class="token punctuation">;</span>     <span class="token comment">// 成员（int 变量）</span>
+</span><span class="code-line">  <span class="token keyword">char</span> myLetter<span class="token punctuation">;</span> <span class="token comment">// 成员（char 变量）</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 用分号结束结构</span>
+</span></code></pre>
+<p>创建一个名为 <code>s1</code> 的结构变量</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">myStructure</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">int</span> myNum<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> myLetter<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line highlight-line">  <span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s1<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="结构中的字符串"><a aria-hidden="true" tabindex="-1" href="#结构中的字符串"><span class="icon icon-link"></span></a>结构中的字符串</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">myStructure</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">int</span> myNum<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> myLetter<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> myString<span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// String</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s1<span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">  <span class="token function">strcpy</span><span class="token punctuation">(</span>s1<span class="token punctuation">.</span>myString<span class="token punctuation">,</span> <span class="token string">"Some text"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 打印值</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"我字符串: %s"</span><span class="token punctuation">,</span> s1<span class="token punctuation">.</span>myString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>使用 <code>strcpy</code> 函数为字符串赋值</p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="访问结构成员"><a aria-hidden="true" tabindex="-1" href="#访问结构成员"><span class="icon icon-link"></span></a>访问结构成员</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 创建一个名为 myStructure 的结构</span>
+</span><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">myStructure</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">int</span> myNum<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> myLetter<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 创建一个名为 s1 的 myStructure 结构变量</span>
+</span><span class="code-line">  <span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s1<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 为 s1 的成员赋值</span>
+</span><span class="code-line highlight-line">  s1<span class="token punctuation">.</span>myNum <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">  s1<span class="token punctuation">.</span>myLetter <span class="token operator">=</span> <span class="token char">'B'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// 创建一个名为 s2 的 myStructure 结构变量</span>
+</span><span class="code-line">  <span class="token comment">// 并为其赋值</span>
+</span><span class="code-line highlight-line">  <span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token char">'B'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 打印值</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"My number: %d\n"</span><span class="token punctuation">,</span> s1<span class="token punctuation">.</span>myNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"My letter: %c\n"</span><span class="token punctuation">,</span> s1<span class="token punctuation">.</span>myLetter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>创建不同的结构变量</p>
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s1<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s2<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 为不同的结构变量赋值</span>
+</span><span class="code-line">s1<span class="token punctuation">.</span>myNum <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">;</span>
+</span><span class="code-line">s1<span class="token punctuation">.</span>myLetter <span class="token operator">=</span> <span class="token char">'B'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">s2<span class="token punctuation">.</span>myNum <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+</span><span class="code-line">s2<span class="token punctuation">.</span>myLetter <span class="token operator">=</span> <span class="token char">'C'</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="复制结构"><a aria-hidden="true" tabindex="-1" href="#复制结构"><span class="icon icon-link"></span></a>复制结构</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token number">13</span><span class="token punctuation">,</span> <span class="token char">'B'</span><span class="token punctuation">,</span> <span class="token string">"Some text"</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s2<span class="token punctuation">;</span>
+</span><span class="code-line highlight-line">s2 <span class="token operator">=</span> s1<span class="token punctuation">;</span>
+</span></code></pre>
+<p>示例中，将 <code>s1</code> 的值复制到 <code>s2</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="修改值"><a aria-hidden="true" tabindex="-1" href="#修改值"><span class="icon icon-link"></span></a>修改值</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token comment">// 创建一个结构变量并为其赋值</span>
+</span><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">myStructure</span> s1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token number">13</span><span class="token punctuation">,</span> <span class="token char">'B'</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 修改值</span>
+</span><span class="code-line">s1<span class="token punctuation">.</span>myNum <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
+</span><span class="code-line">s1<span class="token punctuation">.</span>myLetter <span class="token operator">=</span> <span class="token char">'C'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 打印值</span>
+</span><span class="code-line"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %c %s"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    s1<span class="token punctuation">.</span>myNum<span class="token punctuation">,</span>
+</span><span class="code-line">    s1<span class="token punctuation">.</span>myLetter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="文件处理"><a aria-hidden="true" tabindex="-1" href="#文件处理"><span class="icon icon-link"></span></a>文件处理</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="文件处理函数"><a aria-hidden="true" tabindex="-1" href="#文件处理函数"><span class="icon icon-link"></span></a>文件处理函数</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>函数</th><th>描述 Description</th></tr></thead><tbody><tr><td><code>fopen()</code></td><td><code>打开</code>新文件或现有文件</td></tr><tr><td><code>fprintf()</code></td><td>将数据<code>写入</code>文件</td></tr><tr><td><code>fscanf()</code></td><td>从文件中<code>读取</code>数据</td></tr><tr><td><code>fputc()</code></td><td>将一个字符<code>写入</code>文件</td></tr><tr><td><code>fgetc()</code></td><td>从文件中<code>读取</code>一个字符</td></tr><tr><td><code>fclose()</code></td><td><code>关闭</code>文件</td></tr><tr><td><code>fseek()</code></td><td>将文件指针设置到<code>给定位置</code></td></tr><tr><td><code>fputw()</code></td><td>将整数<code>写入</code>文件</td></tr><tr><td><code>fgetw()</code></td><td>从文件中<code>读取</code>一个整数</td></tr><tr><td><code>ftell()</code></td><td>返回当前<code>位置</code></td></tr><tr><td><code>rewind()</code></td><td>将文件指针设置为文件的开头</td></tr></tbody></table>
+<p>C 库中有许多函数可以<code>打开</code>/<code>读取</code>/<code>写入</code>/<code>搜索</code>和<code>关闭</code>文件</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="打开模式参数"><a aria-hidden="true" tabindex="-1" href="#打开模式参数"><span class="icon icon-link"></span></a>打开模式参数</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模式 Mode</th><th>描述 Description</th></tr></thead><tbody><tr><td><code>r</code></td><td>以<code>读取</code>模式打开一个文本文件，允许读取文件</td></tr><tr><td><code>w</code></td><td>以<code>写</code>模式打开一个文本文件，允许写入文件</td></tr><tr><td><code>a</code></td><td>以<code>追加</code>模式打开一个文本文件<br>如果文件不存在，则会创建一个新文件</td></tr><tr><td><code>r+</code></td><td>以<code>读写</code>模式打开一个文本文件，允许读写文件</td></tr><tr><td><code>w+</code></td><td>以<code>读写</code>模式打开一个文本文件，允许读写文件</td></tr><tr><td><code>a+</code></td><td>以<code>读写</code>模式打开一个文本文件，允许读写文件</td></tr><tr><td><code>rb</code></td><td>以<code>读取</code>模式打开二进制文件</td></tr><tr><td><code>wb</code></td><td>以<code>写入</code>模式打开二进制文件</td></tr><tr><td><code>ab</code></td><td>以<code>追加</code>模式打开二进制文件</td></tr><tr><td><code>rb+</code></td><td>以<code>读写</code>模式打开二进制文件</td></tr><tr><td><code>wb+</code></td><td>以<code>读写</code>模式打开二进制文件</td></tr><tr><td><code>ab+</code></td><td>以<code>读写</code>模式打开二进制文件</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="打开文件fopen"><a aria-hidden="true" tabindex="-1" href="#打开文件fopen"><span class="icon icon-link"></span></a>打开文件：fopen()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> ch<span class="token punctuation">;</span>
+</span><span class="code-line">  fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"file_handle.c"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    ch <span class="token operator">=</span> <span class="token function">fgetc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>ch <span class="token operator">==</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>对文件执行所有操作后，必须关闭 <code>fclose()</code> 该文件</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="写入文件fprintf"><a aria-hidden="true" tabindex="-1" href="#写入文件fprintf"><span class="icon icon-link"></span></a>写入文件：fprintf()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span>  </span>
+</span><span class="code-line"><span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打开文件</span>
+</span><span class="code-line">  <span class="token function">fprintf</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token string">"Hello file by fprintf...\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将数据写入文件</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭文件  </span>
+</span><span class="code-line"><span class="token punctuation">}</span>  
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="读取文件fscanf"><a aria-hidden="true" tabindex="-1" href="#读取文件fscanf"><span class="icon icon-link"></span></a>读取文件：fscanf()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span>  </span>
+</span><span class="code-line"><span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> buff<span class="token punctuation">[</span><span class="token number">255</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 创建 char 数组来存储文件数据</span>
+</span><span class="code-line">  fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">fscanf</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token string">"%s"</span><span class="token punctuation">,</span> buff<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token constant">EOF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s "</span><span class="token punctuation">,</span> buff<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="写入文件fputc"><a aria-hidden="true" tabindex="-1" href="#写入文件fputc"><span class="icon icon-link"></span></a>写入文件：fputc()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"file1.txt"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打开文件</span>
+</span><span class="code-line">  <span class="token function">fputc</span><span class="token punctuation">(</span><span class="token char">'a'</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将单个字符写入文件</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 关闭文件</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="读取文件fgetc"><a aria-hidden="true" tabindex="-1" href="#读取文件fgetc"><span class="icon icon-link"></span></a>读取文件：fgetc()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;conio.h></span></span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> c<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">clrscr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"myfile.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token operator">=</span><span class="token function">fgetc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token constant">EOF</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">getch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="写入文件fputs"><a aria-hidden="true" tabindex="-1" href="#写入文件fputs"><span class="icon icon-link"></span></a>写入文件：fputs()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;conio.h></span></span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">clrscr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"myfile2.txt"</span><span class="token punctuation">,</span><span class="token string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">fputs</span><span class="token punctuation">(</span><span class="token string">"hello c programming"</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">getch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="读取文件fgets"><a aria-hidden="true" tabindex="-1" href="#读取文件fgets"><span class="icon icon-link"></span></a>读取文件：fgets()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;conio.h></span></span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> text<span class="token punctuation">[</span><span class="token number">300</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">clrscr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"myfile2.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> <span class="token function">fgets</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">getch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="fseek"><a aria-hidden="true" tabindex="-1" href="#fseek"><span class="icon icon-link"></span></a>fseek()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"myfile.txt"</span><span class="token punctuation">,</span><span class="token string">"w+"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">fputs</span><span class="token punctuation">(</span><span class="token string">"This is Book"</span><span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token function">fseek</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token constant">SEEK_SET</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">fputs</span><span class="token punctuation">(</span><span class="token string">"Kenny Wong"</span><span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>将文件指针设置到给定位置</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="rewind"><a aria-hidden="true" tabindex="-1" href="#rewind"><span class="icon icon-link"></span></a>rewind()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&#x3C;conio.h></span></span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">char</span> c<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">clrscr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  fp<span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token operator">=</span><span class="token function">fgetc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">rewind</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将文件指针移动到文件的开头</span>
+</span><span class="code-line">  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token operator">=</span><span class="token function">fgetc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">getch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 输出</span>
+</span><span class="code-line"><span class="token comment">// Hello World!Hello World!</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ftell"><a aria-hidden="true" tabindex="-1" href="#ftell"><span class="icon icon-link"></span></a>ftell()</h3><div class="wrap-body">
+<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;stdio.h></span></span>
+</span><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;conio.h></span></span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">   FILE <span class="token operator">*</span>fp<span class="token punctuation">;</span>
+</span><span class="code-line">   <span class="token keyword">int</span> length<span class="token punctuation">;</span>
+</span><span class="code-line">   <span class="token function">clrscr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">   fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">   <span class="token function">fseek</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">SEEK_END</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">   length <span class="token operator">=</span> <span class="token function">ftell</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">   <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"文件大小: %d bytes"</span><span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">   <span class="token function">getch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 输出</span>
+</span><span class="code-line"><span class="token comment">// 文件大小: 18 bytes</span>
+</span></code></pre>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://jaywcjlove.github.io/c-tutorial">C 教程</a> <em>(jaywcjlove.github.io)</em></li>
