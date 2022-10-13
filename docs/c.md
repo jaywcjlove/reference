@@ -1063,7 +1063,7 @@ s2 = s1;
 
 ### 修改值
 
-```c
+```c {6,7}
 // 创建一个结构变量并为其赋值
 struct myStructure s1 = {
   13, 'B'
@@ -1117,12 +1117,14 @@ C 库中有许多函数可以`打开`/`读取`/`写入`/`搜索`和`关闭`文�
 
 ### 打开文件：fopen()
 
-```c
+```c {6}
 #include<stdio.h>
+
 void main( ) {
   FILE *fp;
   char ch;
   fp = fopen("file_handle.c", "r");
+
   while (1) {
     ch = fgetc(fp);
     if (ch == EOF)
@@ -1137,24 +1139,25 @@ void main( ) {
 
 ### 写入文件：fprintf()
 
-```c
-#include <stdio.h>  
+```c {7}
+#include <stdio.h>
+
 main() {
   FILE *fp;
   fp = fopen("file.txt", "w"); // 打开文件
-  fprintf(fp, "Hello file by fprintf...\n"); // 将数据写入文件
+  // 将数据写入文件
+  fprintf(fp, "fprintf 的 Hello 文件..\n");
   fclose(fp); // 关闭文件  
 }  
 ```
 
 ### 读取文件：fscanf()
 
-
-```c
+```c {6}
 #include <stdio.h>  
 main(){
   FILE *fp;
-  char buff[255]; // 创建 char 数组来存储文件数据
+  char buff[255]; // 创建char数组存储文件数据
   fp = fopen("file.txt", "r");
   while(fscanf(fp, "%s", buff)!=EOF) {
     printf("%s ", buff);
@@ -1165,8 +1168,9 @@ main(){
 
 ### 写入文件：fputc()
 
-```c
+```c {6}
 #include <stdio.h>
+
 main(){
   FILE *fp;
   fp = fopen("file1.txt", "w"); // 打开文件
@@ -1177,7 +1181,7 @@ main(){
 
 ### 读取文件：fgetc()
 
-```c
+```c {8}
 #include<stdio.h>
 #include<conio.h>
 void main() {
@@ -1195,9 +1199,10 @@ void main() {
 
 ### 写入文件：fputs()
 
-```c
+```c {8}
 #include<stdio.h>
 #include<conio.h>
+
 void main(){
   FILE *fp;
   clrscr();
@@ -1210,10 +1215,10 @@ void main(){
 
 ### 读取文件：fgets()
 
-
-```c
+```c {10}
 #include<stdio.h>
 #include<conio.h>
+
 void main() {
   FILE *fp;
   char text[300];
@@ -1228,13 +1233,14 @@ void main() {
 
 ### fseek()
 
-```c
+```c {8}
 #include <stdio.h>
 void main(){
   FILE *fp;
   fp = fopen("myfile.txt","w+");
   fputs("This is Book", fp);
 
+  // 将文件指针设置到给定位置
   fseek(fp, 7, SEEK_SET);
   fputs("Kenny Wong", fp);
   fclose(fp);
@@ -1245,7 +1251,7 @@ void main(){
 
 ### rewind()
 
-```c
+```c {11}
 #include<stdio.h>
 #include<conio.h>
 void main(){
@@ -1269,9 +1275,10 @@ void main(){
 
 ### ftell()
 
-```c
+```c {11}
 #include <stdio.h>
 #include <conio.h>
+
 void main (){
    FILE *fp;
    int length;
@@ -1279,7 +1286,7 @@ void main (){
    fp = fopen("file.txt", "r");
    fseek(fp, 0, SEEK_END);
 
-   length = ftell(fp);
+   length = ftell(fp); // 返回当前位置
 
    fclose(fp);
    printf("文件大小: %d bytes", length);
