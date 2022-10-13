@@ -1531,6 +1531,32 @@
 </span><span class="code-line"><span class="token comment">// 输出</span>
 </span><span class="code-line"><span class="token comment">// 文件大小: 18 bytes</span>
 </span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="杂项"><a aria-hidden="true" tabindex="-1" href="#杂项"><span class="icon icon-link"></span></a>杂项</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="docker-运行环境"><a aria-hidden="true" tabindex="-1" href="#docker-运行环境"><span class="icon icon-link"></span></a>Docker 运行环境</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<ul class="style-timeline">
+<li>安装 <a href="./docker.html"><code>Docker</code></a></li>
+<li>创建 <a href="./dockerfile.html"><code>Dockerfile</code></a> 文件
+<pre class="language-dockerfile"><code class="language-dockerfile code-highlight"><span class="code-line"><span class="token instruction"><span class="token keyword">FROM</span> alpine:3.14</span>
+</span><span class="code-line"><span class="token instruction"><span class="token keyword">RUN</span> apk add --no-cache gcc musl-dev</span>
+</span><span class="code-line"><span class="token instruction"><span class="token keyword">RUN</span> apk add --no-cache g++</span>
+</span></code></pre>
+</li>
+<li>生成本地 myalpine 镜像
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> myalpine <span class="token builtin class-name">.</span>
+</span></code></pre>
+</li>
+<li>运行映像，把当前路径 <code>($PWD)</code> 映射至容器的 <code>/test</code> 目录，用 <code>gcc</code> 编译程序，<code>exit</code>返回
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-v</span> <span class="token environment constant">$PWD</span>:/test myalpine
+</span><span class="code-line">root@b1a38bd7107a:/<span class="token comment"># cd test</span>
+</span><span class="code-line">root@b1a38bd7107a:/test<span class="token comment"># gcc -o hello hello.c</span>
+</span><span class="code-line">Hello World
+</span><span class="code-line">root@b1a38bd7107a:/test<span class="token comment"># exit</span>
+</span><span class="code-line"><span class="token builtin class-name">exit</span>
+</span></code></pre>
+</li>
+</ul>
+<!--rehype:className=style-timeline-->
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://jaywcjlove.github.io/c-tutorial">C 教程</a> <em>(jaywcjlove.github.io)</em></li>
