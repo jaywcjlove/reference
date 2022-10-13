@@ -800,6 +800,495 @@ int main(void) {
 }
 ```
 
+函数
+----
+
+### 函数声明和定义
+<!--rehype:wrap-class=row-span-2-->
+
+```c
+int main() {
+  printf("Hello World!");
+  return 0;
+}
+```
+
+函数由两部分组成
+
+```c
+void myFunction() { // 声明 declaration
+  // 函数体（要执行的代码）(definition)
+}
+```
+
+---
+
+- `Declaration` 声明函数名称、返回类型和参数 _(如果有)_
+- `Definition` 函数体 _(要执行的代码)_
+
+---
+
+```c
+// 函数声明
+void myFunction();
+// 主要方法
+int main() {
+  myFunction(); // --> 调用函数
+  return 0;
+}
+void myFunction() {// 函数定义
+  printf("晚上好！");
+}
+```
+
+### 调用函数
+
+```c
+// 创建函数
+void myFunction() {
+  printf("晚上好！");
+}
+int main() {
+  myFunction();  // 调用函数
+  myFunction();  // 可以被多次调用
+  return 0;
+}
+// 输出 -> "晚上好！"
+// 输出 -> "晚上好！"
+```
+
+### 函数参数
+
+```c
+void myFunction(char name[]) {
+  printf("Hello %s\n", name);
+}
+int main() {
+  myFunction("Liam");
+  myFunction("Jenny");
+  return 0;
+}
+// Hello Liam
+// Hello Jenny
+```
+
+### 多个参数
+
+```c
+void myFunction(char name[], int age) {
+  printf("你好 %s 你 %d 岁了。\n",name,age);
+}
+int main() {
+  myFunction("Liam", 3);
+  myFunction("Jenny", 14);
+  return 0;
+}
+// 你好 Liam 你 3 岁了。
+// 你好 Jenny 你 14 岁了。
+```
+
+### 返回值
+<!--rehype:wrap-class=row-span-2-->
+
+```c
+int myFunction(int x) {
+  return 5 + x;
+}
+
+int main() {
+  printf("结果: %d", myFunction(3));
+  return 0;
+}
+// 输出 8 (5 + 3)
+```
+
+两个参数
+
+```c
+int myFunction(int x, int y) {
+  return x + y;
+}
+
+int main() {
+  printf("结果: %d", myFunction(5, 3));
+  // 将结果存储在变量中
+  int result = myFunction(5, 3);
+  printf("结果 = %d", result);
+  return 0;
+}
+// 结果: 8 (5 + 3)
+// 结果 = 8 (5 + 3)
+```
+
+### 递归示例
+
+```c
+int sum(int k);
+int main() {
+  int result = sum(10);
+  printf("%d", result);
+  return 0;
+}
+
+int sum(int k) {
+  if (k > 0) {
+    return k + sum(k - 1);
+  } else {
+    return 0;
+  }
+}
+```
+
+### 数学函数
+
+```c
+#include <math.h>
+printf("%f", sqrt(16));   // 平方根
+printf("%f", ceil(1.4));  // 四舍五入 (入)
+printf("%f", floor(1.4)); // 四舍五入 (舍)
+printf("%f", pow(4, 3));  // x(4)的y(3)次方
+```
+
+---
+
+- `abs(x)` 绝对值
+- `acos(x)` 反余弦值
+- `asin(x)` 反正弦值
+- `atan(x)` 反正切
+- `cbrt(x)` 立方根
+- `cos(x)` 余弦
+- `exp(x)` Ex 的值
+- `sin(x)` x 的正弦值
+- `tan(x)` 角度的正切
+<!--rehype:className=cols-2-->
+
+Structures 结构
+---
+
+### 创建结构
+
+```c
+struct MyStructure {  // 结构声明
+  int myNum;     // 成员（int 变量）
+  char myLetter; // 成员（char 变量）
+}; // 用分号结束结构
+```
+
+创建一个名为 `s1` 的结构变量
+
+```c {7}
+struct myStructure {
+  int myNum;
+  char myLetter;
+};
+
+int main() {
+  struct myStructure s1;
+  return 0;
+}
+```
+
+### 结构中的字符串
+
+```c {9}
+struct myStructure {
+  int myNum;
+  char myLetter;
+  char myString[30]; // String
+};
+
+int main() {
+  struct myStructure s1;
+  strcpy(s1.myString, "Some text");
+  // 打印值
+  printf("我字符串: %s", s1.myString);
+  return 0;
+}
+```
+
+使用 `strcpy` 函数为字符串赋值
+
+### 访问结构成员
+<!--rehype:wrap-class=row-span-2-->
+
+```c {11,12,16}
+// 创建一个名为 myStructure 的结构
+struct myStructure {
+  int myNum;
+  char myLetter;
+};
+
+int main() {
+  // 创建一个名为 s1 的 myStructure 结构变量
+  struct myStructure s1;
+  // 为 s1 的成员赋值
+  s1.myNum = 13;
+  s1.myLetter = 'B';
+
+  // 创建一个名为 s2 的 myStructure 结构变量
+  // 并为其赋值
+  struct myStructure s2 = {13, 'B'};
+  // 打印值
+  printf("My number: %d\n", s1.myNum);
+  printf("My letter: %c\n", s1.myLetter);
+  return 0;
+}
+```
+
+创建不同的结构变量
+
+```c
+struct myStructure s1;
+struct myStructure s2;
+// 为不同的结构变量赋值
+s1.myNum = 13;
+s1.myLetter = 'B';
+
+s2.myNum = 20;
+s2.myLetter = 'C';
+```
+
+### 复制结构
+
+```c {6}
+struct myStructure s1 = {
+  13, 'B', "Some text"
+};
+
+struct myStructure s2;
+s2 = s1;
+```
+
+示例中，将 `s1` 的值复制到 `s2`
+
+### 修改值
+
+```c
+// 创建一个结构变量并为其赋值
+struct myStructure s1 = {
+  13, 'B'
+};
+// 修改值
+s1.myNum = 30;
+s1.myLetter = 'C';
+// 打印值
+printf("%d %c %s",
+    s1.myNum,
+    s1.myLetter);
+```
+
+文件处理
+---
+
+### 文件处理函数
+
+函数 | 描述 Description
+---- | ----
+`fopen()` | `打开`新文件或现有文件
+`fprintf()` | 将数据`写入`文件
+`fscanf()` | 从文件中`读取`数据
+`fputc()` | 将一个字符`写入`文件
+`fgetc()` | 从文件中`读取`一个字符
+`fclose()` | `关闭`文件
+`fseek()` | 将文件指针设置到`给定位置`
+`fputw()` | 将整数`写入`文件
+`fgetw()` | 从文件中`读取`一个整数
+`ftell()` | 返回当前`位置`
+`rewind()` | 将文件指针设置为文件的开头
+
+C 库中有许多函数可以`打开`/`读取`/`写入`/`搜索`和`关闭`文件
+
+### 打开模式参数
+
+模式 Mode  | 描述 Description
+---- | ----
+`r`  | 以`读取`模式打开一个文本文件，允许读取文件
+`w`  | 以`写`模式打开一个文本文件，允许写入文件
+`a`  | 以`追加`模式打开一个文本文件<br />如果文件不存在，则会创建一个新文件
+`r+`  | 以`读写`模式打开一个文本文件，允许读写文件
+`w+`  | 以`读写`模式打开一个文本文件，允许读写文件
+`a+`  | 以`读写`模式打开一个文本文件，允许读写文件
+`rb`  | 以`读取`模式打开二进制文件
+`wb`  | 以`写入`模式打开二进制文件
+`ab`  | 以`追加`模式打开二进制文件
+`rb+`  | 以`读写`模式打开二进制文件
+`wb+`  | 以`读写`模式打开二进制文件
+`ab+`  | 以`读写`模式打开二进制文件
+
+### 打开文件：fopen()
+
+```c
+#include<stdio.h>
+void main( ) {
+  FILE *fp;
+  char ch;
+  fp = fopen("file_handle.c", "r");
+  while (1) {
+    ch = fgetc(fp);
+    if (ch == EOF)
+    break;
+    printf("%c", ch);
+  }
+  fclose(fp);
+}
+```
+
+对文件执行所有操作后，必须关闭 `fclose()` 该文件
+
+### 写入文件：fprintf()
+
+```c
+#include <stdio.h>  
+main() {
+  FILE *fp;
+  fp = fopen("file.txt", "w"); // 打开文件
+  fprintf(fp, "Hello file by fprintf...\n"); // 将数据写入文件
+  fclose(fp); // 关闭文件  
+}  
+```
+
+### 读取文件：fscanf()
+
+
+```c
+#include <stdio.h>  
+main(){
+  FILE *fp;
+  char buff[255]; // 创建 char 数组来存储文件数据
+  fp = fopen("file.txt", "r");
+  while(fscanf(fp, "%s", buff)!=EOF) {
+    printf("%s ", buff);
+  }
+  fclose(fp);
+}
+```
+
+### 写入文件：fputc()
+
+```c
+#include <stdio.h>
+main(){
+  FILE *fp;
+  fp = fopen("file1.txt", "w"); // 打开文件
+  fputc('a',fp); // 将单个字符写入文件
+  fclose(fp);    // 关闭文件
+}
+```
+
+### 读取文件：fgetc()
+
+```c
+#include<stdio.h>
+#include<conio.h>
+void main() {
+  FILE *fp;
+  char c;
+  clrscr();
+  fp=fopen("myfile.txt", "r");
+  while((c=fgetc(fp))!=EOF){
+    printf("%c", c);
+  }
+  fclose(fp);
+  getch();
+}
+```
+
+### 写入文件：fputs()
+
+```c
+#include<stdio.h>
+#include<conio.h>
+void main(){
+  FILE *fp;
+  clrscr();
+  fp = fopen("myfile2.txt","w");
+  fputs("hello c programming",fp);
+  fclose(fp);
+  getch();
+}
+```
+
+### 读取文件：fgets()
+
+
+```c
+#include<stdio.h>
+#include<conio.h>
+void main() {
+  FILE *fp;
+  char text[300];
+  clrscr();
+
+  fp=fopen("myfile2.txt", "r");
+  printf("%s", fgets(text, 200, fp));
+  fclose(fp);
+  getch();
+}
+```
+
+### fseek()
+
+```c
+#include <stdio.h>
+void main(){
+  FILE *fp;
+  fp = fopen("myfile.txt","w+");
+  fputs("This is Book", fp);
+
+  fseek(fp, 7, SEEK_SET);
+  fputs("Kenny Wong", fp);
+  fclose(fp);
+}
+```
+
+将文件指针设置到给定位置
+
+### rewind()
+
+```c
+#include<stdio.h>
+#include<conio.h>
+void main(){
+  FILE *fp;
+  char c;
+  clrscr();
+  fp=fopen("file.txt", "r");
+  while((c=fgetc(fp)) != EOF){
+    printf("%c", c);
+  }
+  rewind(fp); // 将文件指针移动到文件的开头
+  while((c=fgetc(fp)) != EOF){
+    printf("%c", c);
+  }
+  fclose(fp);
+  getch();
+}
+// 输出
+// Hello World!Hello World!
+```
+
+### ftell()
+
+```c
+#include <stdio.h>
+#include <conio.h>
+void main (){
+   FILE *fp;
+   int length;
+   clrscr();
+   fp = fopen("file.txt", "r");
+   fseek(fp, 0, SEEK_END);
+
+   length = ftell(fp);
+
+   fclose(fp);
+   printf("文件大小: %d bytes", length);
+   getch();
+}
+// 输出
+// 文件大小: 18 bytes
+```
+
 另见
 ---
 
