@@ -1,7 +1,7 @@
 Jest 备忘清单
 ===
 
-Jest 是一款优雅、简洁的 JavaScript 测试框架。
+Jest 是一款优雅、简洁的 JavaScript 测试框架，这里介绍了它的入门和 一些 API 的索引。
 
 入门
 ----

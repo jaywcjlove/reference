@@ -32,6 +32,7 @@ Quick Reference
 [HTML](./docs/html.md)<!--rehype:style=background: rgb(228 77 39/var(\-\-bg\-opacity));-->
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31/var(\-\-bg\-opacity));-->
 [Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
+[Lerna](./docs/lerna.md)<!--rehype:style=background: rgb(192 132 252/var(\-\-bg\-opacity));-->
 [npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173/var(\-\-bg\-opacity));-->
