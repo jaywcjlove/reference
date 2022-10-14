@@ -475,8 +475,19 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 这些是只在你的包开发期间需要，但是生产环境不会被安装的包。
 
+### `overrides`
+
+```json
+{
+  "overrides": {
+    "foo": "1.0.0"
+  }
+}
+```
+
+对依赖项的依赖项进行特定更改，例如用已知的安全问题替换依赖项的版本
+
 ### `peerDependencies`
-<!--rehype:wrap-class=col-span-2-->
 
 ```json
 {
@@ -529,6 +540,8 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
   }
 }
 ```
+
+它允许对等依赖项标记为可选
 
 系统
 ----
