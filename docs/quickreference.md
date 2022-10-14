@@ -578,6 +578,17 @@ H2 部分
 
 `<!--rehype:className=style-list-->`
 
+### 列表箭头样式展示表格
+
+:- | :-
+:- | :-
+`visualEffectState.inactive` | 后台应一直显示为非激活状态。
+`titleBarStyle` _string_ _(win/mac)_ | 窗口标题栏样式。默认值 _(default)_
+`titleBarStyle.default` | 分别返回 _mac_ 或者 _win_ 的标准标题栏
+<!--rehype:className=style-list-arrow-->
+
+`<!--rehype:className=style-list-arrow-->`
+
 列表
 ---
 
