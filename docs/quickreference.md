@@ -655,6 +655,15 @@ H2 部分
 
 `<!--rehype:className=style-round-->`
 
+### 箭头标记
+
+- Item 1
+- Item 2
+- Item 3
+<!--rehype:className=style-arrow-->
+
+`<!--rehype:className=style-arrow-->`
+
 H2 部分 - 5列效果展示
 ---
 <!--rehype:body-class=cols-5-->
