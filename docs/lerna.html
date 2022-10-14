@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Lerna 备忘清单
+ &#x26;  lerna cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="本备忘单旨在快速理解 Lerna 所涉及的主要概念，显示了它的常用命令使用清单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,lerna">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20opacity%3D%22.4%22%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23777%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23999%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path opacity=".4" d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="currentColor"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="currentColor"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="currentColor"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/lerna.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="lerna-备忘清单"><a aria-hidden="true" tabindex="-1" href="#lerna-备忘清单"><span class="icon icon-link"></span></a>Lerna 备忘清单</h1><div class="wrap-body">
+<p>本备忘单旨在快速理解 <a href="https://github.com/lerna/lerna">Lerna</a> 所涉及的主要概念，显示了它的常用命令使用清单。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>现代构建系统，用于管理和发布来自同一存储库的多个 JavaScript/TypeScript 包。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ npx lerna@latest init
+</span></code></pre>
+<p>下面是示例目录结构</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">├── README.md
+</span><span class="code-line">├── remixapp   <span class="token comment"># web 应用 (remixapp)</span>
+</span><span class="code-line">│   ├── src
+</span><span class="code-line">│   └── package.json
+</span><span class="code-line">│
+</span><span class="code-line">├── packages
+</span><span class="code-line">│   ├── footer <span class="token comment"># 组件(@remixapp/footer)</span>
+</span><span class="code-line">│   │   ├── src
+</span><span class="code-line">│   │   └── package.json
+</span><span class="code-line">│   │
+</span><span class="code-line">│   └── header <span class="token comment"># 组件(@remixapp/header)</span>
+</span><span class="code-line">│       ├── src
+</span><span class="code-line">│       └── package.json
+</span><span class="code-line">│
+</span><span class="code-line highlight-line">├── lerna.json
+</span><span class="code-line">└── package.json
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="引导程序-bootstrap"><a aria-hidden="true" tabindex="-1" href="#引导程序-bootstrap"><span class="icon icon-link"></span></a>引导程序 (Bootstrap)</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>它在 <code>package.json</code> 中依赖于它们，如下所示：</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// ....</span>
+</span><span class="code-line highlight-line">  <span class="token property">"@remixapp/header"</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"@remixapp/footer"</span><span class="token operator">:</span> <span class="token string">"*"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p><code>remixapp</code> 应用程序导入<code>页眉</code>和<code>页脚</code>库，如下所示：</p>
+<pre class="language-jsx"><code class="language-jsx code-highlight"><span class="code-line"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Header</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"header"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Footer</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"footer"</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">Home</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword control-flow">return</span> <span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">Header</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Content!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">Footer</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+</span></span><span class="code-line"><span class="token plain-text">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="useworkspaces"><a aria-hidden="true" tabindex="-1" href="#useworkspaces"><span class="icon icon-link"></span></a>useWorkspaces</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"node_modules/lerna/schemas/lerna-schema.json"</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"useWorkspaces"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"0.0.0"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>在 <code>lerna.json</code> 中配置 <code>useWorkspaces</code> 告诉 <code>Lerna</code> 将包链接过程委托给你的包管理器 (此功能由 npm、yarn 和 pnpm 支持)。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="任务运行"><a aria-hidden="true" tabindex="-1" href="#任务运行"><span class="icon icon-link"></span></a>任务运行</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">npx lerna run <span class="token builtin class-name">test</span> <span class="token parameter variable">--scope</span><span class="token operator">=</span>header <span class="token comment"># 单个</span>
+</span></code></pre>
+<p>多个任务运行</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">npx lerna run <span class="token builtin class-name">test</span> <span class="token parameter variable">--scope</span><span class="token operator">=</span>header,footer
+</span></code></pre>
+<p>忽略 <code>header</code>,<code>footer</code> 其它包中运行任务运行</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">npx lerna run build <span class="token parameter variable">--ignore</span><span class="token operator">=</span>header,footer
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="命令索引"><a aria-hidden="true" tabindex="-1" href="#命令索引"><span class="icon icon-link"></span></a>命令索引</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="runexec-运行命令"><a aria-hidden="true" tabindex="-1" href="#runexec-运行命令"><span class="icon icon-link"></span></a>run/exec 运行命令</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 在所有包含它的包中运行 npm run my-script</span>
+</span><span class="code-line">$ lerna run <span class="token operator">&#x3C;</span>script<span class="token operator">></span> -- <span class="token punctuation">[</span><span class="token punctuation">..</span>args<span class="token punctuation">]</span>
+</span><span class="code-line">$ lerna run <span class="token builtin class-name">test</span>
+</span><span class="code-line">$ lerna run build
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 观看所有包并在更改时转换，流式前缀输出</span>
+</span><span class="code-line">$ lerna run <span class="token parameter variable">--parallel</span> <span class="token function">watch</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 在所有包中运行命令</span>
+</span><span class="code-line">$ lerna <span class="token builtin class-name">exec</span> -- <span class="token operator">&#x3C;</span>command<span class="token operator">></span> <span class="token punctuation">[</span><span class="token punctuation">..</span>args<span class="token punctuation">]</span>
+</span><span class="code-line">$ lerna <span class="token builtin class-name">exec</span> -- <span class="token function">rm</span> <span class="token parameter variable">-rf</span> ./node_modules
+</span><span class="code-line">$ lerna <span class="token builtin class-name">exec</span> -- protractor conf.js
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--npm-client &#x3C;client></code> <a href="https://github.com/lerna/lerna/tree/main/commands/run#--npm-client-client">#</a></td><td align="left">必须是知道如何运行 npm 生命周期脚本的可执行文件，默认值是 <code>npm</code></td></tr><tr><td align="left"><code>--stream</code> <a href="https://github.com/lerna/lerna/tree/main/commands/run#--stream">#</a></td><td align="left">立即从子进程流式输出，以原始包名称为前缀</td></tr><tr><td align="left"><code>--parallel</code> <a href="https://github.com/lerna/lerna/tree/main/commands/run#--parallel">#</a></td><td align="left">类似于 <code>--stream</code> 但完全忽略并发和拓扑排序，立即在所有匹配的包中运行给定的命令或脚本，并带有前缀流输出</td></tr><tr><td align="left"><code>--no-bail</code> <a href="https://github.com/lerna/lerna/tree/main/commands/run#--no-bail">#</a></td><td align="left">默认情况下，如果任何脚本运行返回非零退出代码，<code>lerna run</code> 将退出并出现错误。传递 <code>--no-bail</code> 以禁用此行为</td></tr><tr><td align="left"><code>--no-prefix</code> <a href="https://github.com/lerna/lerna/tree/main/commands/run#--no-prefix">#</a></td><td align="left">当输出为流式传输（<code>--stream</code> 或 <code>--parallel</code>）时禁用包名称前缀。当将结果传送到其他进程（例如编辑器插件）时，此选项很有用</td></tr><tr><td align="left"><code>--profile</code> <a href="https://github.com/lerna/lerna/tree/main/commands/run#--profile">#</a></td><td align="left">分析脚本执行并生成性能配置文件</td></tr><tr><td align="left"><code>--profile-location &#x3C;location></code> <a href="https://github.com/lerna/lerna/tree/main/commands/run#--profile-location-location">#</a></td><td align="left">您可以为性能配置文件输出提供自定义位置。提供的路径将相对于当前工作目录进行解析。</td></tr><tr><td align="left"><code>useNx=false</code> <a href="https://github.com/lerna/lerna/tree/main/commands/run#usenxfalse">#</a></td><td align="left">通过将 <code>useNx</code> 设置为 <code>false</code>，您可以使用 <code>lerna</code> 中的遗留任务运行实现 (<code>p-map</code> 和 <code>p-queue</code>)，而不是使用由 <a href="https://nx.dev">Nx</a> 提供支持的默认现代任务运行器实现。</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="publish-发布包"><a aria-hidden="true" tabindex="-1" href="#publish-发布包"><span class="icon icon-link"></span></a>publish 发布包</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 发布自上次发布以来已更改的软件包</span>
+</span><span class="code-line">$ lerna publish              
+</span><span class="code-line"><span class="token comment"># 显式发布在当前提交中标记的包</span>
+</span><span class="code-line">$ lerna publish from-git     
+</span><span class="code-line"><span class="token comment"># 显式发布注册表中不存在最新版本的软件包</span>
+</span><span class="code-line">$ lerna publish from-package
+</span><span class="code-line"><span class="token comment"># 使用下一个语义预发布版本，例如</span>
+</span><span class="code-line">$ lerna publish <span class="token parameter variable">--canary</span>
+</span><span class="code-line"><span class="token comment"># 1.0.0 => 1.0.1-alpha.0+${SHA}</span>
+</span><span class="code-line"><span class="token comment"># 自上次提交以来更改的包</span>
+</span><span class="code-line"><span class="token comment"># 随后的金丝雀发布将产生1.0.1-alpha.1+${SHA}等</span>
+</span><span class="code-line">
+</span><span class="code-line">$ lerna publish <span class="token parameter variable">--canary</span> <span class="token parameter variable">--preid</span> beta
+</span><span class="code-line"><span class="token comment"># 1.0.0 => 1.0.1-beta.0+${SHA}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 以下是等价的：</span>
+</span><span class="code-line">$ lerna publish <span class="token parameter variable">--canary</span> minor
+</span><span class="code-line">$ lerna publish <span class="token parameter variable">--canary</span> preminor
+</span><span class="code-line"><span class="token comment"># 1.0.0 => 1.1.0-alpha.0+${SHA}</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--canary</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--canary">#</a></td><td align="left">使用此标志运行时，以更精细的方式（每次提交）发布包</td></tr><tr><td align="left"><code>--contents &#x3C;dir></code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--contents-dir">#</a></td><td align="left">要发布的子目录。 必须适用于所有包，并且必须包含 <code>package.json</code> 文件</td></tr><tr><td align="left"><code>--dist-tag &#x3C;tag></code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--dist-tag-tag">#</a></td><td align="left">使用此标志运行时，将使用给定的 <code>npm dist-tag</code>（默认为 <code>latest</code>）发布到 <code>npm</code></td></tr><tr><td align="left"><code>--git-head &#x3C;sha></code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--git-head-sha">#</a></td><td align="left">打包 <code>tarball</code> 时将显式 <code>SHA</code> 设置为清单上的 <code>gitHead</code>，仅允许使用 <code>from-package</code> 位置</td></tr><tr><td align="left"><code>--graph-type &#x3C;all|dependencies></code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--graph-type-alldependencies">#</a></td><td align="left">设置在构建包图时使用哪种依赖项。默认值是依赖项，即仅包含包的 <code>package.json</code> 的依赖项部分中列出的包</td></tr><tr><td align="left"><code>--ignore-scripts</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--ignore-scripts">#</a></td><td align="left">传递时，此标志将在 <code>lerna</code> 发布期间禁用运行<a href="https://github.com/lerna/lerna/tree/main/commands/publish#lifecycle-scripts">生命周期脚本</a></td></tr><tr><td align="left"><code>--ignore-prepublish</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--ignore-prepublish">#</a></td><td align="left">传递时，此标志将禁用在 <code>lerna</code> 发布期间运行<a href="https://docs.npmjs.com/cli/v8/using-npm/scripts#prepare-and-prepublish">已弃用</a>的<a href="https://github.com/lerna/lerna/tree/main/commands/publish#lifecycle-scripts">预发布脚本</a></td></tr><tr><td align="left"><code>--legacy-auth</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--legacy-auth">#</a></td><td align="left">发布需要身份验证的包时，您正在使用仅使用旧版 <code>Base64</code> <code>用户名:密码</code> 的内部托管 NPM 注册表。这与 NPM 发布 <code>_auth</code> 标志相同</td></tr><tr><td align="left"><code>--no-git-reset</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--no-git-reset">#</a></td><td align="left">默认情况下，<code>lerna publish</code> 确保对工作树的任何更改都已重置</td></tr><tr><td align="left"><code>--no-granular-pathspec</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--no-granular-pathspec">#</a></td><td align="left">默认情况下，<code>lerna publish</code> 将尝试（如果启用）<code>git checkout</code> 仅在发布过程中临时修改的叶包清单</td></tr><tr><td align="left"><code>--verify-access</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--verify-access">#</a></td><td align="left">从历史上看，<code>lerna</code> 试图通过使用给定令牌执行一些抢占式 <code>npm API</code> 请求来快速解决授权/身份验证问题</td></tr><tr><td align="left"><code>--otp</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--otp">#</a></td><td align="left">发布需要双重身份验证的包时，您可以使用 <code>--otp</code> 指定一次性密码</td></tr><tr><td align="left"><code>--preid</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--preid">#</a></td><td align="left">与同名的 <code>lerna</code> 版本选项不同，该选项只适用于 <code>--canary</code> 版本计算</td></tr><tr><td align="left"><code>--pre-dist-tag &#x3C;tag></code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--pre-dist-tag-tag">#</a></td><td align="left">与 <code>--dist-tag</code> 的工作方式相同，但仅适用于使用预发布版本发布的软件包</td></tr><tr><td align="left"><code>--registry &#x3C;url></code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--registry-url">#</a></td><td align="left">使用此标志运行时，转发的 <code>npm</code> 命令将为您的包使用指定的注册表</td></tr><tr><td align="left"><code>--tag-version-prefix</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--tag-version-prefix">#</a></td><td align="left">此选项允许提供自定义前缀而不是默认前缀：<code>v</code></td></tr><tr><td align="left"><code>--temp-tag</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--temp-tag">#</a></td><td align="left">传递时，此标志将更改默认发布过程，首先将所有更改的包发布到临时 <code>dist-tag(lerna-temp)</code>，然后将新版本移动到 <code>--dist-tag</code> 配置的 <code>dist-tag</code> (默认<code>latest</code>)</td></tr><tr><td align="left"><code>--yes</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--yes">#</a></td><td align="left">使用此标志运行时，<code>lerna publish</code> 将跳过所有确认提示</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="不推荐使用的选项"><a aria-hidden="true" tabindex="-1" href="#不推荐使用的选项"><span class="icon icon-link"></span></a>不推荐使用的选项</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--no-verify-access</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--no-verify-access">#</a></td><td align="left">旧的抢先访问验证现在默认关闭，因此不需要 <code>--no-verify-access</code></td></tr><tr><td align="left"><code>--skip-npm</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--skip-npm">#</a></td><td align="left">直接调用 <a href="#version-%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7">lerna version</a></td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="每个包中的配置"><a aria-hidden="true" tabindex="-1" href="#每个包中的配置"><span class="icon icon-link"></span></a>每个包中的配置</h4><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token property">"publishConfig"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"access"</span><span class="token operator">:</span> <span class="token string">"public"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"registry"</span><span class="token operator">:</span> <span class="token string">"http://my-registry.com"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"tag"</span><span class="token operator">:</span> <span class="token string">"flippin-sweet"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"directory"</span><span class="token operator">:</span> <span class="token string">"dist"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>access</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#publishconfigaccess">#</a></td><td align="left">要发布具有范围的包(例如，<code>@mycompany/rocks</code>)</td></tr><tr><td align="left"><code>registry</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#publishconfigregistry">#</a></td><td align="left">通过设置注册表来自定义每个包的注册表</td></tr><tr><td align="left"><code>tag</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#publishconfigtag">#</a></td><td align="left">您可以通过设置标签来自定义每个包的 <code>dist-tag</code></td></tr><tr><td align="left"><code>directory</code> <a href="https://github.com/lerna/lerna/tree/main/commands/publish#publishconfigtag">#</a></td><td align="left">这个 <em>非标准</em> 字段允许您像 <code>--contents</code> 一样自定义发布的子目录，但基于每个包</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="version-修改版本号"><a aria-hidden="true" tabindex="-1" href="#version-修改版本号"><span class="icon icon-link"></span></a>version 修改版本号</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lerna version <span class="token number">1.0</span>.1 <span class="token comment"># 明确的</span>
+</span><span class="code-line">$ lerna version patch <span class="token comment"># semver 关键字</span>
+</span><span class="code-line">$ lerna version       <span class="token comment"># 从提示中选择</span>
+</span><span class="code-line">
+</span><span class="code-line">$ lerna version <span class="token punctuation">[</span>major <span class="token operator">|</span> minor <span class="token operator">|</span> <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 使用下一个语义版本值</span>
+</span><span class="code-line"><span class="token comment"># 这会跳过“为...选择新版本”提示</span>
+</span><span class="code-line"><span class="token comment"># 强制所有包版本化</span>
+</span><span class="code-line">$ lerna version --force-publish
+</span><span class="code-line">$ lerna version <span class="token parameter variable">-m</span> <span class="token string">"chore(doc): publish %s"</span>
+</span><span class="code-line"><span class="token comment"># 提交消息 = "chore(doc): publish v1.0.0"</span>
+</span><span class="code-line">$ lerna version <span class="token parameter variable">-m</span> <span class="token string">"chore(doc): publish %v"</span>
+</span><span class="code-line"><span class="token comment"># 提交消息 = "chore(doc): publish 1.0.0"</span>
+</span></code></pre>
+<hr>
+<ul class="cols-2">
+<li><code>major</code> 重大的</li>
+<li><code>minor</code> 次要的</li>
+<li><code>patch</code> 修补</li>
+<li><code>premajor</code> 主要的</li>
+<li><code>preminor</code> 初级</li>
+<li><code>prepatch</code> 预补丁</li>
+<li><code>prerelease</code> 预发行</li>
+</ul>
+<!--rehype:className=cols-2-->
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--allow-branch &#x3C;glob></code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--allow-branch-glob">#</a></td><td align="left">与启用 <code>lerna version</code> 的 <code>git</code> 分支匹配的 <code>glob</code> 白名单</td></tr><tr><td align="left"><code>--amend</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--amend">#</a></td><td align="left">使用此标志运行时，<code>lerna version</code> 将在当前提交上执行所有更改，而不是添加新的</td></tr><tr><td align="left"><code>--changelog-preset</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--changelog-preset">#</a></td><td align="left">默认情况下，更改日志预设设置为 <a href="https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular#angular-convention">angular</a></td></tr><tr><td align="left"><code>--conventional-commits</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--conventional-commits">#</a></td><td align="left">使用常规提交规范来确定<a href="https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-recommended-bump">版本 bump</a> 并生成 CHANGELOG.md 文件</td></tr><tr><td align="left"><code>--conventional-graduate</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--conventional-graduate">#</a></td><td align="left">将使用 <code>*</code> 对指定的包(逗号分隔)或所有包进行分级</td></tr><tr><td align="left"><code>--conventional-prerelease</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--conventional-prerelease">#</a></td><td align="left">预发布版本发布指定的包</td></tr><tr><td align="left"><code>--create-release &#x3C;type></code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--create-release-type">#</a></td><td align="left">根据更改的包创建正式的 <code>GitHub</code> 或 <code>GitLab</code> 版本</td></tr><tr><td align="left"><code>--exact</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--exact">#</a></td><td align="left">在更新的包中精确指定更新的依赖项（没有标点符号），而不是与 <a href="./semver.html">semver</a> 兼容（使用<code>^</code>）</td></tr><tr><td align="left"><code>--force-publish</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--force-publish">#</a></td><td align="left">强制发布指定的包</td></tr><tr><td align="left"><code>--git-remote &#x3C;name></code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--git-remote-name">#</a></td><td align="left">把 <code>git</code> 更改推送到指定的远程位置，而不是<code>origin</code></td></tr><tr><td align="left"><code>--ignore-changes</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--ignore-changes">#</a></td><td align="left">检测更改的包时忽略与 <code>glob</code> 匹配的文件中的更改</td></tr><tr><td align="left"><code>--ignore-scripts</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--ignore-scripts">#</a></td><td align="left">禁用在 <code>lerna version</code> 期间运行的生命周期脚本</td></tr><tr><td align="left"><code>--include-merged-tags</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--include-merged-tags">#</a></td><td align="left">在检测到更改的包时包括来自合并分支的标签</td></tr><tr><td align="left"><code>--message &#x3C;msg></code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--message-msg">#</a></td><td align="left">此选项别名为 <code>-m</code> 以与 <code>git commit</code> 进行奇偶校验</td></tr><tr><td align="left"><code>--no-changelog</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--no-changelog">#</a></td><td align="left">使用常规提交时，不要生成任何 CHANGELOG.md 文件</td></tr><tr><td align="left"><code>--no-commit-hooks</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--no-commit-hooks">#</a></td><td align="left">允许 <code>git commit hooks</code> 在提交版本更改时运行。通过 <code>--no-commit-hooks</code> 禁用此行为</td></tr><tr><td align="left"><code>--no-git-tag-version</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--no-git-tag-version">#</a></td><td align="left">将提交对 <code>package.json</code> 文件的更改并标记发布。通过 <code>--no-git-tag-version</code> 禁用该行为</td></tr><tr><td align="left"><code>--no-granular-pathspec</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--no-granular-pathspec">#</a></td><td align="left">仅添加在版本控制过程中更改的叶包清单(可能还有变更日志)。这产生了 <code>git add --packages/*/package.json</code> 的等价物，但针对更改的内容量身定制</td></tr><tr><td align="left"><code>--no-private</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--no-private">#</a></td><td align="left">在选择版本、提交和标记版本时包含私有包。通过 <code>--no-private</code> 禁用此行为</td></tr><tr><td align="left"><code>--no-push</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--no-push">#</a></td><td align="left">将已提交和标记的更改推送到配置的 <code>git remote</code>。通过 <code>--no-push</code> 禁用此行为</td></tr><tr><td align="left"><code>--preid</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--preid">#</a></td><td align="left">使用此标志运行时，lerna 版本将使用指定的<a href="https://semver.org/#spec-item-9">预发布标识符</a>增加 <code>premajor</code>、<code>preminor</code>、<code>prepatch</code> 或 <code>prerelease</code> <a href="./semver.html">semver</a> bumps</td></tr><tr><td align="left"><code>--sign-git-commit</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--sign-git-commit">#</a></td><td align="left">此选项类似于同名的 npm 版本选项</td></tr><tr><td align="left"><code>--sign-git-tag</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--sign-git-tag">#</a></td><td align="left">此选项类似于同名的 <code>npm</code> 版本选项</td></tr><tr><td align="left"><code>--force-git-tag</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--force-git-tag">#</a></td><td align="left">此选项替换任何现有标记而不是失败</td></tr><tr><td align="left"><code>--tag-version-prefix</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--tag-version-prefix">#</a></td><td align="left">此选项允许提供自定义前缀而不是默认前缀：<code>v</code></td></tr><tr><td align="left"><code>--yes</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--yes">#</a></td><td align="left">使用此标志运行时，<code>lerna</code> 版本将跳过所有确认提示</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="不推荐使用的选项-1"><a aria-hidden="true" tabindex="-1" href="#不推荐使用的选项-1"><span class="icon icon-link"></span></a>不推荐使用的选项</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--cd-version</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--cd-version">#</a></td><td align="left">将 <code>semver</code> 关键字传递给 <a href="https://github.com/lerna/lerna/tree/main/commands/version#semver-bump">bump</a> 位置</td></tr><tr><td align="left"><code>--repo-version</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--repo-version">#</a></td><td align="left">将明确的版本号传递给 <a href="https://github.com/lerna/lerna/tree/main/commands/version#semver-bump">bump</a> 位置</td></tr><tr><td align="left"><code>--skip-git</code> <a href="https://github.com/lerna/lerna/tree/main/commands/version#--skip-git">#</a></td><td align="left">请改用 <code>--no-git-tag-version</code> 和 <code>--no-push</code></td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="bootstrap"><a aria-hidden="true" tabindex="-1" href="#bootstrap"><span class="icon icon-link"></span></a>bootstrap</h3><div class="wrap-body">
+<p>将本地包<code>链接</code>在一起，并<code>安装</code>其余的包依赖项</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lerna bootstrap -- <span class="token parameter variable">--production</span> <span class="token punctuation">\</span>
+</span><span class="code-line">                     --no-optional
+</span><span class="code-line">$ lerna bootstrap <span class="token parameter variable">--hoist</span>
+</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--hoist [glob]</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--strict">#</a></td><td align="left">在 <code>repo</code> 根目录安装与 <code>glob</code> 匹配的外部依赖项，以便它们可用于所有包</td></tr><tr><td align="left"><code>--strict</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--nohoist-glob">#</a></td><td align="left">与提升 <em>(hoist)</em> 一起使用时，会在发出版本警告后抛出错误并停止引导</td></tr><tr><td align="left"><code>--nohoist [glob]</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--nohoist-glob">#</a></td><td align="left">不要在 <code>repo</code> 根目录安装与 <code>glob</code> 匹配的外部依赖项。这可用于选择不提升某些依赖项</td></tr><tr><td align="left"><code>--ignore</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--ignore">#</a></td><td align="left">当与 <code>bootstrap</code> 命令一起使用时，还可以在 <code>lerna</code> 中设置 <code>--ignore</code> 标志</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="选项"><a aria-hidden="true" tabindex="-1" href="#选项"><span class="icon icon-link"></span></a>选项</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--ignore-prepublish</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--ignore-prepublish">#</a></td><td align="left">跳过默认在引导程序包中运行的预发布生命周期脚本</td></tr><tr><td align="left"><code>--ignore-scripts</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--ignore-scripts">#</a></td><td align="left">跳过通常在引导程序包中运行（准备等）的任何生命周期脚本</td></tr><tr><td align="left"><code>--registry &#x3C;url></code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--registry-url">#</a></td><td align="left">指定 npm 包的仓库地址</td></tr><tr><td align="left"><code>--npm-client &#x3C;client></code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--npm-client-client">#</a></td><td align="left">必须是知道如何安装 <code>npm</code> 包依赖项的可执行文件</td></tr><tr><td align="left"><code>--use-workspaces</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--use-workspaces">#</a></td><td align="left">启用与 <code>Yarn Workspaces</code> 的集成(从 <code>yarn@0.27+</code> 开始可用)</td></tr><tr><td align="left"><code>--no-ci</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--no-ci">#</a></td><td align="left">在 <code>CI</code> 环境中调用 <code>npm ci</code> 而不是 <code>npm install</code></td></tr><tr><td align="left"><code>--force-local</code> <a href="https://github.com/lerna/lerna/tree/main/commands/bootstrap#--force-local">#</a></td><td align="left">此标志会导致引导命令始终对本地依赖项进行符号链接，而不管匹配的版本范围如何</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="info-本地环境信息"><a aria-hidden="true" tabindex="-1" href="#info-本地环境信息"><span class="icon icon-link"></span></a>info 本地环境信息</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lerna info
+</span><span class="code-line">
+</span><span class="code-line">lerna notice cli v6.0.0
+</span><span class="code-line"> Environment info:
+</span><span class="code-line">
+</span><span class="code-line">  System<span class="token punctuation">(</span>系统<span class="token punctuation">)</span>:
+</span><span class="code-line">    OS: macOS <span class="token number">12.2</span>
+</span><span class="code-line">    CPU: <span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span> x64 Apple M1
+</span><span class="code-line">  Binaries<span class="token punctuation">(</span>二进制文件<span class="token punctuation">)</span>:
+</span><span class="code-line">    Node: <span class="token number">16.17</span>.0 - /usr/local/bin/node
+</span><span class="code-line">    Yarn: <span class="token number">1.22</span>.10 - /usr/local/bin/yarn
+</span><span class="code-line">    npm: <span class="token number">8.5</span>.0 - /usr/local/bin/npm
+</span><span class="code-line">  Utilities<span class="token punctuation">(</span>实用程序<span class="token punctuation">)</span>:
+</span><span class="code-line">    Git: <span class="token number">2.33</span>.0 - /opt/homebrew/bin/git
+</span><span class="code-line">  npmPackages:
+</span><span class="code-line">    lerna: ^6.0.0 <span class="token operator">=</span><span class="token operator">></span> <span class="token number">6.0</span>.0
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="过滤选项"><a aria-hidden="true" tabindex="-1" href="#过滤选项"><span class="icon icon-link"></span></a>过滤选项</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lerna <span class="token builtin class-name">exec</span> <span class="token parameter variable">--scope</span> my-component -- <span class="token function">ls</span> <span class="token parameter variable">-la</span>
+</span><span class="code-line">$ lerna run <span class="token parameter variable">--scope</span> toolbar-* <span class="token builtin class-name">test</span>
+</span><span class="code-line">$ lerna run <span class="token parameter variable">--scope</span> package-1 <span class="token parameter variable">--scope</span> *-2 lint
+</span><span class="code-line">
+</span><span class="code-line">$ lerna <span class="token builtin class-name">exec</span> <span class="token parameter variable">--ignore</span> package-<span class="token punctuation">{</span><span class="token number">1,2</span>,5<span class="token punctuation">}</span>  -- <span class="token function">ls</span> <span class="token parameter variable">-la</span>
+</span><span class="code-line">$ lerna run <span class="token parameter variable">--ignore</span> package-1  <span class="token builtin class-name">test</span>
+</span><span class="code-line">$ lerna run <span class="token parameter variable">--ignore</span> package-@<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">|</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token parameter variable">--ignore</span> package-3 lint
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出自最新标签以来已更改的包的内容</span>
+</span><span class="code-line">$ lerna <span class="token builtin class-name">exec</span> <span class="token parameter variable">--since</span> -- <span class="token function">ls</span> <span class="token parameter variable">-la</span>
+</span><span class="code-line"><span class="token comment"># 对自 main 以来发生更改的所有包运行测试</span>
+</span><span class="code-line">$ lerna run <span class="token builtin class-name">test</span> <span class="token parameter variable">--since</span> main
+</span><span class="code-line"><span class="token comment"># 列出自 some-branch 以来发生变化的所有包</span>
+</span><span class="code-line">$ lerna <span class="token function">ls</span> <span class="token parameter variable">--since</span> some-branch
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># my-component 及其所有依赖项将被引导</span>
+</span><span class="code-line">$ lerna bootstrap <span class="token parameter variable">--scope</span> my-component --include-dependencies
+</span><span class="code-line">
+</span><span class="code-line">$ lerna bootstrap <span class="token parameter variable">--scope</span> <span class="token string">"package-*"</span> <span class="token parameter variable">--ignore</span> <span class="token string">"package-util-*"</span> --include-dependencies
+</span><span class="code-line"><span class="token comment"># 所有匹配 “package-util-*” 的包都将被忽略，除非它们是</span>
+</span><span class="code-line"><span class="token comment"># 依赖于名称与 “package-*” 匹配的包</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="选项-1"><a aria-hidden="true" tabindex="-1" href="#选项-1"><span class="icon icon-link"></span></a>选项</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--scope &#x3C;glob></code></td><td align="left">仅包括名称与给定 <code>glob</code> 匹配的包</td></tr><tr><td align="left"><code>--ignore &#x3C;glob></code></td><td align="left">排除名称与给定 <code>glob</code> 匹配的包</td></tr><tr><td align="left"><code>--no-private</code></td><td align="left">排除私有包</td></tr><tr><td align="left"><code>--since [ref]</code></td><td align="left">仅包括自指定 <code>ref</code> 以来已更改的包</td></tr><tr><td align="left"><code>--exclude-dependents</code></td><td align="left">使用 <code>--since</code> 运行命令时排除所有传递依赖项，覆盖默认的“changed”算法</td></tr><tr><td align="left"><code>--include-dependents</code></td><td align="left">无论 <code>--scope</code>、<code>--ignore</code> 或 <code>--since</code> 是什么，在运行命令时都包括所有传递依赖项</td></tr><tr><td align="left"><code>--include-dependencies</code></td><td align="left">无论 <code>--scope</code>、<code>--ignore</code> 或 <code>--since</code> 是什么，在运行命令时都包括所有传递依赖项</td></tr><tr><td align="left"><code>--include-merged-tags</code></td><td align="left">使用 <code>--since</code> 运行命令时包括来自合并分支的标签</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="list"><a aria-hidden="true" tabindex="-1" href="#list"><span class="icon icon-link"></span></a>list</h3><div class="wrap-body">
+<p>列出本地程序包，也尊重所有可用的<a href="#%E8%BF%87%E6%BB%A4%E9%80%89%E9%A1%B9">过滤选项</a></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 与 lerna list 相同，它本身类似于 ls 命令</span>
+</span><span class="code-line">lerna <span class="token function">ls</span>
+</span><span class="code-line"><span class="token comment"># 相当于 lerna ls -l，显示长输出</span>
+</span><span class="code-line">lerna ll
+</span><span class="code-line"><span class="token comment"># 相当于 lerna ls -la，显示所有包(包括私有包）</span>
+</span><span class="code-line">lerna la
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="选项-2"><a aria-hidden="true" tabindex="-1" href="#选项-2"><span class="icon icon-link"></span></a>选项</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--json</code></td><td align="left">显示为 JSON <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--json">#</a></td></tr><tr><td align="left"><code>--ndjson</code></td><td align="left">换行符分隔 <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--ndjson">#</a></td></tr><tr><td align="left"><code>-a,--all</code></td><td align="left">所有包 <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--all">#</a></td></tr><tr><td align="left"><code>-l,--long</code></td><td align="left">显示扩展信息 <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--long">#</a></td></tr><tr><td align="left"><code>-p,--parseable</code></td><td align="left">显示可解析的输出 <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--parseable">#</a></td></tr><tr><td align="left"><code>--toposort</code></td><td align="left">按拓扑排序 <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--toposort">#</a></td></tr><tr><td align="left"><code>--graph</code></td><td align="left">JSON 格式邻接依赖关系图 <a href="https://github.com/lerna/lerna/tree/main/commands/publish#--graph">#</a></td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="changed"><a aria-hidden="true" tabindex="-1" href="#changed"><span class="icon icon-link"></span></a>changed</h3><div class="wrap-body">
+<p>列出自上次标记版本以来已更改的本地软件包</p>
+<ul class="style-round">
+<li><code>lerna changed</code> 支持 <code>lerna ls</code> 支持的所有<a href="#%E9%80%89%E9%A1%B9-1">选项</a></li>
+<li>与 <code>lerna ls</code> 不同的是不支持过滤器选项</li>
+</ul>
+<!--rehype:className=style-round-->
+<p><code>lerna changed</code> 支持 <code>lerna version</code> 的以下选项</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--conventional-graduate</code></td><td align="left"><a href="https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--conventional-graduate">#</a></td></tr><tr><td align="left"><code>--force-publish</code></td><td align="left"><a href="https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--force-publish">#</a></td></tr><tr><td align="left"><code>--ignore-changes</code></td><td align="left"><a href="https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--ignore-changes">#</a></td></tr><tr><td align="left"><code>--include-merged-tags</code></td><td align="left"><a href="https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--include-merged-tags">#</a></td></tr></tbody></table>
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</html>
