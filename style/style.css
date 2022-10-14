@@ -208,12 +208,24 @@ table.show-header thead {
   display: table-header-group;
 }
 
-table.style-list td + td {
+table.style-list td + td, table.style-list-arrow td + td {
   padding-top: 0 !important;
 }
-table.style-list td {
+
+table.style-list td, table.style-list-arrow td {
   display: block;
   text-align: left !important;
+}
+
+table.style-list-arrow td:first-child::before  {
+  content: '';
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-right: 8px solid transparent;
+  border-top: 5px solid transparent;
+  border-left: 8px solid #228e6c;
+  border-bottom: 5px solid transparent;
 }
 
 tt, code {
@@ -649,6 +661,7 @@ body:not(.home) .h3wrap > h3:hover a::after {
   width: 0.5rem;
   border-color: #228e6c;
   background: transparent;
+  border-style: solid;
   top: 14px;
 }
 
