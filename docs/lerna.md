@@ -414,3 +414,155 @@ lerna la
 `--force-publish` | [#](https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--force-publish) 
 `--ignore-changes` | [#](https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--ignore-changes) 
 `--include-merged-tags` | [#](https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--include-merged-tags)
+
+### init
+
+创建新的 Lerna 仓库或将现有仓库升级到当前版本 Lerna
+
+- 如果 `lerna` 不存在，请将其添加到 `package.json` 中的 `devDependency`
+- 创建一个 `lerna.json` 配置文件来存储版本号
+- 如果不存在 `.gitignore`，则生成一个忽略文件
+<!--rehype:className=style-timeline-->
+
+----
+
+```shell
+$ lerna init --independent
+```
+
+----
+
+:- | :-
+:- | :-
+`--independent` | 使用独立版本控制模式 [#](https://github.com/lerna/lerna/tree/main/commands/init#--independent)
+`--exact` | 添加或更新 `lerna` 的本地版本时将使用插入符范围 [#](https://github.com/lerna/lerna/tree/main/commands/init#--exact)
+
+它将配置 `lerna.json` 以强制所有后续执行完全匹配
+
+```js
+{
+  "command": {
+    "init": {
+      "exact": true
+    }
+  },
+  "version": "0.0.0"
+}
+```
+
+### import
+
+将一个包导入到带有提交历史的 `monorepo`
+
+```bash
+# 开始使用 Lerna
+$ git init lerna-repo && cd lerna-repo
+$ npx lerna init
+$ npm install
+# 添加提交
+$ git add .
+# 如果没有提交，导入命令将失败
+$ git commit -m "Initial lerna commit"
+# 导入其他存储库
+$ npx lerna import <外部存储库的路径>
+$ npx lerna import ~/Product --flatten
+```
+
+选项
+
+:- | :-
+:- | :-
+`--flatten` | 当导入具有冲突的合并提交的存储库时，导入命令将无法尝试应用所有提交
+`--dest` | 导入仓库时，可以通过 `lerna.json` 中列出的目录来指定目标目录
+`--preserve-commit` | 每个 git 提交都有一个作者和一个提交者
+<!--rehype:className=style-list-arrow-->
+
+### add
+<!--rehype:wrap-class=row-span-2-->
+
+将依赖项添加到匹配的包
+
+```shell
+$ lerna add <package>[@version] \
+        [--dev] [--exact] [--peer]
+```
+
+选项
+
+:- | :-
+:- | :-
+`--dev` | 将新包添加到 `devDependencies`
+`--exact` | 添加具有精确版本（例如 `1.0.1`）而不是默认 `^` semver 范围（例如 `^1.0.1`）的新包
+`--peer` | 将新包添加到 `peerDependencies`
+`--registry <url>` | 使用自定义注册表安装目标包
+`--no-bootstrap` | 跳过链式 `lerna bootstrap`
+<!--rehype:className=style-list-arrow-->
+
+实例
+
+```bash
+# 将 mod-1 包添加到“prefix-”前缀文件夹中的包中
+$ lerna add mod-1 packages/prefix-*
+# 将 mod-1 安装到mod-2
+$ lerna add mod-1 --scope=mod-2
+# 在 devDependencies 中安装 mod-1 到 mod-2
+$ lerna add mod-1 --scope=mod-2 --dev
+# 在 peerDependencies 中安装 mod-1 到 mod-2
+$ lerna add mod-1 --scope=mod-2 --peer
+# 在除 mod-1 之外的所有模块中安装 mod-1
+$ lerna add mod-1
+# 在所有模块中安装 babel-core
+$ lerna add babel-core
+```
+
+### diff
+
+比较自上次发布以来的所有包或单个包
+
+```bash
+$ lerna diff [package]
+$ lerna diff
+$ lerna diff package-name # 区分一个特定的包
+```
+
+类似于 `lerna changed`，此命令运行 `git diff`
+
+
+### clean
+
+从所有包中删除 `node_modules` 目录
+
+```bash
+$ lerna clean
+```
+
+接受所有[过滤选项](#过滤选项)。`lerna clean` 不会从根 `node_modules` 目录中删除模块，即使您启用了 `--hoist` 选项
+
+### add-caching
+
+运行设置基本缓存选项的向导
+
+```bash
+$ lerna add-caching
+```
+
+### link
+
+将所有相互依赖的包符号链接在一起
+
+```bash
+$ lerna link
+```
+
+`--force-local` 设置会导致链接命令始终对本地依赖项进行符号链接
+
+### repair
+
+更新配置文件以匹配当前安装的 lerna 版本
+
+```bash
+$ npm i lerna@latest
+$ lerna repair
+```
+
+`lerna repair` 在升级后最有用，可确保应用新版本 lerna 的任何配置文件更改
