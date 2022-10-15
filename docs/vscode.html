@@ -646,5 +646,22 @@
 
 <table class="shortcuts"><thead><tr><th>-</th><th>-</th></tr></thead><tbody><tr><td><code>F9</code></td><td>切换断点</td></tr><tr><td><code>F5</code></td><td>开始/继续</td></tr><tr><td><code>Shift</code> <code>F5</code></td><td>停止</td></tr><tr><td><code>Shift</code> <code>F11</code> <em>/</em> <code>F11</code></td><td>进/出</td></tr><tr><td><code>F10</code></td><td>跨过去</td></tr><tr><td><code>Ctrl</code> <code>K</code> <code>Ctrl</code> <code>I</code></td><td>显示悬停</td></tr><tr><td><code>Ctrl</code> <code>`</code></td><td>显示综合终端</td></tr><tr><td><code>Ctrl</code> <code>Shift</code> <code>`</code></td><td>创建一个新终端</td></tr><tr><td><code>Ctrl</code> <code>C</code></td><td>复制选择</td></tr><tr><td><code>Ctrl</code> <code>V</code></td><td>粘贴到活动终端</td></tr><tr><td><code>Ctrl</code> <code>↑</code> <em>/</em> <code>↓</code></td><td>向上/向下滚动</td></tr><tr><td><code>Shift</code> <code>PgUp</code> <em>/</em> <code>PgDn</code></td><td>向上/向下滚动页面</td></tr><tr><td><code>Ctrl</code> <code>Home</code> <em>/</em> <code>End</code></td><td>滚动到顶部/底部</td></tr></tbody></table>
 <!--rehype:className=shortcuts-->
-</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+    const box = elm?.parentElement?.parentElement;
+    console.log('elm:2', box, document.querySelectorAll('.h2wrap-body .wrap'))
+  }
+}
+anchorPoint();
+</script></body>
 </html>
