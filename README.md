@@ -18,7 +18,7 @@ Quick Reference
 [C](./docs/c.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));-->
-[Golang](./docs/golang.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
+[Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
