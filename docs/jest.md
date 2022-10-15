@@ -10,7 +10,7 @@ Jest 是一款优雅、简洁的 JavaScript 测试框架，这里介绍了它的
 ### 介绍
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-[Jest](https://jestjs.io/) 是一款优雅、简洁的 JavaScript 测试框架。
+[Jest v29](https://jestjs.io/) 是一款优雅、简洁的 JavaScript 测试框架。
 
 - `无需配置` 大多数 JS 项目中即装即用，无需配置
 - `优秀接口` 从 `it` 到 `expect` - Jest 将工具包整合在一处。文档齐全、不断维护，非常不错。

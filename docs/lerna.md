@@ -1,7 +1,7 @@
 Lerna 备忘清单
 ===
 
-本备忘单旨在快速理解 [Lerna](https://github.com/lerna/lerna) 所涉及的主要概念，显示了它的常用命令使用清单。
+本备忘单旨在快速理解 [Lerna v6](https://github.com/lerna/lerna) 所涉及的主要概念，显示了它的常用命令使用清单。
 
 入门
 ----
@@ -364,14 +364,14 @@ $ lerna bootstrap --scope "package-*" --ignore "package-util-*" --include-depend
 
 :- | :-
 :- | :-
-`--scope <glob>` | 仅包括名称与给定 `glob` 匹配的包
-`--ignore <glob>` | 排除名称与给定 `glob` 匹配的包
-`--no-private` | 排除私有包
-`--since [ref]` | 仅包括自指定 `ref` 以来已更改的包
-`--exclude-dependents` | 使用 `--since` 运行命令时排除所有传递依赖项，覆盖默认的“changed”算法
-`--include-dependents` | 无论 `--scope`、`--ignore` 或 `--since` 是什么，在运行命令时都包括所有传递依赖项
-`--include-dependencies` | 无论 `--scope`、`--ignore` 或 `--since` 是什么，在运行命令时都包括所有传递依赖项
-`--include-merged-tags` | 使用 `--since` 运行命令时包括来自合并分支的标签
+`--scope <glob>` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--scope-glob) | 仅包括名称与给定 `glob` 匹配的包
+`--ignore <glob>` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--ignore-glob) | 排除名称与给定 `glob` 匹配的包
+`--no-private` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--no-private) | 排除私有包
+`--since [ref]` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--since-ref) | 仅包括自指定 `ref` 以来已更改的包
+`--exclude-dependents` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--exclude-dependents) | 使用 `--since` 运行命令时排除所有传递依赖项，覆盖默认的“changed”算法
+`--include-dependents` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--include-dependents) | 无论 `--scope`、`--ignore` 或 `--since` 是什么，在运行命令时都包括所有传递依赖项
+`--include-dependencies` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--include-dependencies) | 无论 `--scope`、`--ignore` 或 `--since` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--since-ref) 是什么，在运行命令时都包括所有传递依赖项
+`--include-merged-tags` [#](https://github.com/lerna/lerna/tree/main/core/filter-options#--include-merged-tags) | 使用 `--since` 运行命令时包括来自合并分支的标签
 
 ### list
 
@@ -434,8 +434,8 @@ $ lerna init --independent
 
 :- | :-
 :- | :-
-`--independent` | 使用独立版本控制模式 [#](https://github.com/lerna/lerna/tree/main/commands/init#--independent)
-`--exact` | 添加或更新 `lerna` 的本地版本时将使用插入符范围 [#](https://github.com/lerna/lerna/tree/main/commands/init#--exact)
+`--independent` [#](https://github.com/lerna/lerna/tree/main/commands/init#--independent) | 使用独立版本控制模式 [#](https://github.com/lerna/lerna/tree/main/commands/init#--independent)
+`--exact` [#](https://github.com/lerna/lerna/tree/main/commands/init#--exact) | 添加或更新 `lerna` 的本地版本时将使用插入符范围 [#](https://github.com/lerna/lerna/tree/main/commands/init#--exact)
 
 它将配置 `lerna.json` 以强制所有后续执行完全匹配
 
@@ -472,9 +472,9 @@ $ npx lerna import ~/Product --flatten
 
 :- | :-
 :- | :-
-`--flatten` | 当导入具有冲突的合并提交的存储库时，导入命令将无法尝试应用所有提交
-`--dest` | 导入仓库时，可以通过 `lerna.json` 中列出的目录来指定目标目录
-`--preserve-commit` | 每个 git 提交都有一个作者和一个提交者
+`--flatten` [#](https://github.com/lerna/lerna/tree/main/commands/import#--flatten) | 当导入具有冲突的合并提交的存储库时，导入命令将无法尝试应用所有提交
+`--dest` [#](https://github.com/lerna/lerna/tree/main/commands/import#--dest) | 导入仓库时，可以通过 `lerna.json` 中列出的目录来指定目标目录
+`--preserve-commit` [#](https://github.com/lerna/lerna/tree/main/commands/import#--preserve-commit) | 每个 git 提交都有一个作者和一个提交者
 <!--rehype:className=style-list-arrow-->
 
 ### add
@@ -491,11 +491,11 @@ $ lerna add <package>[@version] \
 
 :- | :-
 :- | :-
-`--dev` | 将新包添加到 `devDependencies`
-`--exact` | 添加具有精确版本（例如 `1.0.1`）而不是默认 `^` semver 范围（例如 `^1.0.1`）的新包
-`--peer` | 将新包添加到 `peerDependencies`
-`--registry <url>` | 使用自定义注册表安装目标包
-`--no-bootstrap` | 跳过链式 `lerna bootstrap`
+`--dev` [#](https://github.com/lerna/lerna/tree/main/commands/add#--dev) | 将新包添加到 `devDependencies`
+`--exact` [#](https://github.com/lerna/lerna/tree/main/commands/add#--exact) | 添加具有精确版本（例如 `1.0.1`）而不是默认 `^` semver 范围（例如 `^1.0.1`）的新包
+`--peer` [#](https://github.com/lerna/lerna/tree/main/commands/add#--peer) | 将新包添加到 `peerDependencies`
+`--registry <url>` [#](https://github.com/lerna/lerna/tree/main/commands/add#--registry-url) | 使用自定义注册表安装目标包
+`--no-bootstrap` [#](https://github.com/lerna/lerna/tree/main/commands/add#--no-bootstrap) | 跳过链式 `lerna bootstrap`
 <!--rehype:className=style-list-arrow-->
 
 实例
@@ -554,7 +554,7 @@ $ lerna add-caching
 $ lerna link
 ```
 
-`--force-local` 设置会导致链接命令始终对本地依赖项进行符号链接
+[`--force-local`](https://github.com/lerna/lerna/tree/main/commands/link#--force-local) 设置会导致链接命令始终对本地依赖项进行符号链接
 
 ### repair
 
@@ -565,4 +565,4 @@ $ npm i lerna@latest
 $ lerna repair
 ```
 
-`lerna repair` 在升级后最有用，可确保应用新版本 lerna 的任何配置文件更改
+[`lerna repair`](https://github.com/lerna/lerna/tree/main/core/lerna/commands/repair#usage) 在升级后最有用，可确保应用新版本 lerna 的任何配置文件更改
