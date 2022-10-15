@@ -729,5 +729,162 @@
 
 
 <table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--conventional-graduate</code></td><td align="left"><a href="https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--conventional-graduate">#</a></td></tr><tr><td align="left"><code>--force-publish</code></td><td align="left"><a href="https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--force-publish">#</a></td></tr><tr><td align="left"><code>--ignore-changes</code></td><td align="left"><a href="https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--ignore-changes">#</a></td></tr><tr><td align="left"><code>--include-merged-tags</code></td><td align="left"><a href="https://github.com/lerna/lerna/tree/main/commands/publishhttps://github.com/lerna/lerna/tree/main/commands/version#--include-merged-tags">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="init"><a aria-hidden="true" tabindex="-1" href="#init"><span class="icon icon-link"></span></a>init</h3><div class="wrap-body">
+<p>创建新的 Lerna 仓库或将现有仓库升级到当前版本 Lerna</p>
+<ul class="style-timeline">
+<li>如果 <code>lerna</code> 不存在，请将其添加到 <code>package.json</code> 中的 <code>devDependency</code></li>
+<li>创建一个 <code>lerna.json</code> 配置文件来存储版本号</li>
+<li>如果不存在 <code>.gitignore</code>，则生成一个忽略文件</li>
+</ul>
+<!--rehype:className=style-timeline-->
+<hr>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ lerna init <span class="token parameter variable">--independent</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--independent</code></td><td align="left">使用独立版本控制模式 <a href="https://github.com/lerna/lerna/tree/main/commands/init#--independent">#</a></td></tr><tr><td align="left"><code>--exact</code></td><td align="left">添加或更新 <code>lerna</code> 的本地版本时将使用插入符范围 <a href="https://github.com/lerna/lerna/tree/main/commands/init#--exact">#</a></td></tr></tbody></table>
+<p>它将配置 <code>lerna.json</code> 以强制所有后续执行完全匹配</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token string-property property">"command"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token string-property property">"init"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token string-property property">"exact"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string-property property">"version"</span><span class="token operator">:</span> <span class="token string">"0.0.0"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="import"><a aria-hidden="true" tabindex="-1" href="#import"><span class="icon icon-link"></span></a>import</h3><div class="wrap-body">
+<p>将一个包导入到带有提交历史的 <code>monorepo</code></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 开始使用 Lerna</span>
+</span><span class="code-line">$ <span class="token function">git</span> init lerna-repo <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">cd</span> lerna-repo
+</span><span class="code-line">$ npx lerna init
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span>
+</span><span class="code-line"><span class="token comment"># 添加提交</span>
+</span><span class="code-line">$ <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+</span><span class="code-line"><span class="token comment"># 如果没有提交，导入命令将失败</span>
+</span><span class="code-line">$ <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"Initial lerna commit"</span>
+</span><span class="code-line"><span class="token comment"># 导入其他存储库</span>
+</span><span class="code-line">$ npx lerna <span class="token function">import</span> <span class="token operator">&#x3C;</span>外部存储库的路径<span class="token operator">></span>
+</span><span class="code-line">$ npx lerna <span class="token function">import</span> ~/Product <span class="token parameter variable">--flatten</span>
+</span></code></pre>
+<p>选项</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--flatten</code></td><td align="left">当导入具有冲突的合并提交的存储库时，导入命令将无法尝试应用所有提交</td></tr><tr><td align="left"><code>--dest</code></td><td align="left">导入仓库时，可以通过 <code>lerna.json</code> 中列出的目录来指定目标目录</td></tr><tr><td align="left"><code>--preserve-commit</code></td><td align="left">每个 git 提交都有一个作者和一个提交者</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="add"><a aria-hidden="true" tabindex="-1" href="#add"><span class="icon icon-link"></span></a>add</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>将依赖项添加到匹配的包</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ lerna <span class="token function">add</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span><span class="token punctuation">[</span>@version<span class="token punctuation">]</span> <span class="token punctuation">\</span>
+</span><span class="code-line">        <span class="token punctuation">[</span>--dev<span class="token punctuation">]</span> <span class="token punctuation">[</span>--exact<span class="token punctuation">]</span> <span class="token punctuation">[</span>--peer<span class="token punctuation">]</span>
+</span></code></pre>
+<p>选项</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--dev</code></td><td align="left">将新包添加到 <code>devDependencies</code></td></tr><tr><td align="left"><code>--exact</code></td><td align="left">添加具有精确版本（例如 <code>1.0.1</code>）而不是默认 <code>^</code> semver 范围（例如 <code>^1.0.1</code>）的新包</td></tr><tr><td align="left"><code>--peer</code></td><td align="left">将新包添加到 <code>peerDependencies</code></td></tr><tr><td align="left"><code>--registry &#x3C;url></code></td><td align="left">使用自定义注册表安装目标包</td></tr><tr><td align="left"><code>--no-bootstrap</code></td><td align="left">跳过链式 <code>lerna bootstrap</code></td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+<p>实例</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 将 mod-1 包添加到“prefix-”前缀文件夹中的包中</span>
+</span><span class="code-line">$ lerna <span class="token function">add</span> mod-1 packages/prefix-*
+</span><span class="code-line"><span class="token comment"># 将 mod-1 安装到mod-2</span>
+</span><span class="code-line">$ lerna <span class="token function">add</span> mod-1 <span class="token parameter variable">--scope</span><span class="token operator">=</span>mod-2
+</span><span class="code-line"><span class="token comment"># 在 devDependencies 中安装 mod-1 到 mod-2</span>
+</span><span class="code-line">$ lerna <span class="token function">add</span> mod-1 <span class="token parameter variable">--scope</span><span class="token operator">=</span>mod-2 <span class="token parameter variable">--dev</span>
+</span><span class="code-line"><span class="token comment"># 在 peerDependencies 中安装 mod-1 到 mod-2</span>
+</span><span class="code-line">$ lerna <span class="token function">add</span> mod-1 <span class="token parameter variable">--scope</span><span class="token operator">=</span>mod-2 <span class="token parameter variable">--peer</span>
+</span><span class="code-line"><span class="token comment"># 在除 mod-1 之外的所有模块中安装 mod-1</span>
+</span><span class="code-line">$ lerna <span class="token function">add</span> mod-1
+</span><span class="code-line"><span class="token comment"># 在所有模块中安装 babel-core</span>
+</span><span class="code-line">$ lerna <span class="token function">add</span> babel-core
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="diff"><a aria-hidden="true" tabindex="-1" href="#diff"><span class="icon icon-link"></span></a>diff</h3><div class="wrap-body">
+<p>比较自上次发布以来的所有包或单个包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lerna <span class="token function">diff</span> <span class="token punctuation">[</span>package<span class="token punctuation">]</span>
+</span><span class="code-line">$ lerna <span class="token function">diff</span>
+</span><span class="code-line">$ lerna <span class="token function">diff</span> package-name <span class="token comment"># 区分一个特定的包</span>
+</span></code></pre>
+<p>类似于 <code>lerna changed</code>，此命令运行 <code>git diff</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="clean"><a aria-hidden="true" tabindex="-1" href="#clean"><span class="icon icon-link"></span></a>clean</h3><div class="wrap-body">
+<p>从所有包中删除 <code>node_modules</code> 目录</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lerna clean
+</span></code></pre>
+<p>接受所有<a href="#%E8%BF%87%E6%BB%A4%E9%80%89%E9%A1%B9">过滤选项</a>。<code>lerna clean</code> 不会从根 <code>node_modules</code> 目录中删除模块，即使您启用了 <code>--hoist</code> 选项</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="add-caching"><a aria-hidden="true" tabindex="-1" href="#add-caching"><span class="icon icon-link"></span></a>add-caching</h3><div class="wrap-body">
+<p>运行设置基本缓存选项的向导</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lerna add-caching
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="link"><a aria-hidden="true" tabindex="-1" href="#link"><span class="icon icon-link"></span></a>link</h3><div class="wrap-body">
+<p>将所有相互依赖的包符号链接在一起</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lerna <span class="token function">link</span>
+</span></code></pre>
+<p><code>--force-local</code> 设置会导致链接命令始终对本地依赖项进行符号链接</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="repair"><a aria-hidden="true" tabindex="-1" href="#repair"><span class="icon icon-link"></span></a>repair</h3><div class="wrap-body">
+<p>更新配置文件以匹配当前安装的 lerna 版本</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">npm</span> i lerna@latest
+</span><span class="code-line">$ lerna repair
+</span></code></pre>
+<p><code>lerna repair</code> 在升级后最有用，可确保应用新版本 lerna 的任何配置文件更改</p>
 </div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer></body>
 </html>
