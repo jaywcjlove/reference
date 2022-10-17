@@ -44,7 +44,7 @@ Quick Reference
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
-## 工具包
+## 工具
 
 [nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));-->
 [Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141/var(\-\-bg\-opacity));-->
@@ -52,6 +52,7 @@ Quick Reference
 [Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 [Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8/var(\-\-bg\-opacity));-->
+[WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 [XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
