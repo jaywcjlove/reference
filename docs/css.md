@@ -251,12 +251,12 @@ p:first-child {
 
 选择器 | 说明
 :- | :-
-`div.classname` | 具有特定类名的 Div
-`div#idname`    | 具有特定 ID 的 Div
-`div p`         | div中的段落
-`div > p`       | 所有 p 个标签<br>_div 深处的一层_
-`div + p`       | div 之后的 P 标签
-`div ~ p`       | div 前面的 P 标签
+`div.classname` | 具有特定类名的 div
+`div#idname`    | 具有特定 ID 的 div
+`div p`         | div 中的段落
+`div > p`       | div 子节点中的所有 `P` 标签
+`div + p`       | div 之后的 `P` 标签
+`div ~ p`       | div 前面的 `P` 标签
 
 另见: [相邻兄弟](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Adjacent_sibling_combinator) / [通用兄弟](https://developer.mozilla.org/zh-CN/docs/Web/CSS/General_sibling_combinator) / [子](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator) 选择器
 
