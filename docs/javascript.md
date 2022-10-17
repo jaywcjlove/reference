@@ -386,18 +386,18 @@ sum(3, 6); // 9
 ### 匿名函数
 
 ```javascript
-// Named function
+// 命名函数
 function rocketToMars() {
   return 'BOOM!';
 }
-// Anonymous function
+// 匿名函数
 const rocketToMars = function() {
   return 'BOOM!';
 }
 ```
 
 ### 箭头函数 (ES6)
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 #### 有两个参数
 
@@ -590,6 +590,48 @@ for (let j = 0; j < 3; j++) {
 JavaScript Arrays
 ----
 
+### 方法
+<!--rehype:wrap-class=row-span-6-->
+
+:- | :-
+:- | :-
+`Array.from()` | 类似数组对象创建一个新的 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+`Array.isArray()` | 值是否是一个 Array [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
+`Array.of()` | 创建一个新数组示例 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/of)
+`.at()` | 返回值索引对应的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/at)
+`.concat()` | 合并两个或多个数组 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+`.copyWithin()` | 浅复制替换某个位置 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin)
+`.entries()` | 新的 Array Iterator 对象 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
+`.every()` | 是否能通过回调函数的测试 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
+`.fill()` | 固定值填充一个数组中 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/fill)
+`.filter()` | 返回过滤后的数组 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+`.find()` | 第一个元素的值 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+`.findIndex()` | 第一个元素的索引 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+`.findLast()` | 最后一个元素的值 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast)
+`.findLastIndex()` | 最后一个元素的索引 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex)
+`.flat()` | 扁平化嵌套数组 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+`.flatMap()` | 与 flat 相同 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)
+`.forEach()` | 升序循环执行 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+`.includes()` | 是否包含一个指定的值 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+`.indexOf()` | 找到给定元素的第一个索引 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
+`.join()` | 数组链接成一个字符串 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+`.keys()` | 每个索引键 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/keys)
+`.lastIndexOf()` | 给定元素的最后一个索引 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
+`.map()` | 循环返回一个新数组 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+`.pop()` | `删除`最后一个元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)
+`.push()` | 元素`添加`到数组的末尾 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
+`.reduce()` | 循环函数传递当前和上一个值 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
+`.reduceRight()` | 类似 `reduce` 从右往左循环 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/ReduceRight)
+`.reverse()` | 数组元素的位置颠倒 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)
+`.shift()` | `删除`第一个元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/shift)
+`.slice()` | `提取`元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+`.some()` | 至少有一个通过测试函数 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+`.sort()` | 元素进行排序 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+`.splice()` | `删除`或`替换`或`添加`元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+`.toLocaleString()` | 字符串表示数组中的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toLocaleString)
+`.toString()` | 返回字符串 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/toString)
+`.unshift()` | 元素`添加`到数组的`开头` [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift)
+`.values()` | 返回新的 ArrayIterator 对象 [#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/values)
 
 ### 数组
 
@@ -652,23 +694,23 @@ console.log(fruits); // ["apple", "dew"]
 ### 方法 .shift()
 
 ```javascript
-let cats = ['Bob', 'Willy', 'Mini'];
-cats.shift(); // ['Willy', 'Mini']
+const array1 = [1, 2, 3];
+const firstElement = array1.shift();
+console.log(array1); // 输出: Array [2, 3]
+console.log(firstElement); // 输出: 1
 ```
 
 **从头删除**一个项目并返回已删除的项目。
 
-### 方法 .unshift()
+### 方法 .some()
 
-```javascript
-let cats = ['Bob'];
-// => ['Willy', 'Bob']
-cats.unshift('Willy');
-// => ['Puff', 'George', 'Willy', 'Bob']
-cats.unshift('Puff', 'George');
+```js
+const array = [1, 2, 3, 4, 5];
+// 检查元素是否为偶数
+const even = (element) => element % 2 === 0;
+console.log(array.some(even));
+// 预期输出: true
 ```
-
-将项目**添加到开头**并返回新的数组长度。
 
 ### 方法 .concat()
 
@@ -684,6 +726,45 @@ numbers.concat(newFirstNumber)
 ```
 
 如果你想避免改变你的原始数组，你可以使用 concat。
+
+
+### 方法 .splice()
+
+```javascript
+const months = ['Jan', 'March'];
+months.splice(1, 0, 'Feb');
+// 在索引 1 处插入
+console.log(months);
+// 预期输出: Array ["Jan", "Feb", "March"]
+
+months.splice(2, 1, 'May');
+// 替换索引 2 处的 1 个元素
+console.log(months);
+// 预期输出: Array ["Jan", "Feb", "May"]
+```
+
+### 方法 .unshift()
+
+```javascript
+let cats = ['Bob'];
+// => ['Willy', 'Bob']
+cats.unshift('Willy');
+// => ['Puff', 'George', 'Willy', 'Bob']
+cats.unshift('Puff', 'George');
+```
+
+将项目**添加到开头**并返回新的数组长度。
+
+### 方法 .filter()
+
+```javascript
+const words = ['js', 'java', 'golang'];
+const result = words.filter(word => {
+  return  word.length > 3
+});
+console.log(result);
+// 预期输出: Array ["java", "golang"]
+```
 
 JavaScript 循环
 ----
@@ -998,19 +1079,16 @@ console.log(age);  // '22'
 ```javascript
 const person = {
   firstName: "Matilda",
-  age: 27,
   hobby: "knitting",
   goal: "learning JavaScript"
 };
-delete person.hobby; // or delete person[hobby];
+delete person.hobby; // 或 delete person['hobby'];
 console.log(person);
 /*
 {
   firstName: "Matilda"
-  age: 27
   goal: "learning JavaScript"
-}
-*/
+} */
 ```
 
 ### 对象作为参数
