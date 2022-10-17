@@ -1530,7 +1530,8 @@ enum ShirtSize: String {
 另见
 ----
 
-- [Swift 文档(官方)](https://www.swift.org/documentation/)
-- [快速编程语言(官方)](https://docs.swift.org/swift-book/)
-- [Learn Swift](https://www.codecademy.com/resources/cheatsheets/language/swift)
-- [Swift 开发人员的一站式快速参考](https://swiftly.dev/)
+- [Swift 文档(官方)](https://www.swift.org/documentation/) _(swift.or)_
+- [快速编程语言(官方)](https://docs.swift.org/swift-book/) _(swift.or)_
+- [Learn Swift](https://www.codecademy.com/resources/cheatsheets/language/swift) _(codecademy.com)_
+- [Swift 开发人员的一站式快速参考](https://swiftly.dev/) _(swiftly.dev)_
+- [Swift 入门教程、读书笔记](https://jaywcjlove.github.io/swift-tutorial) _(jaywcjlove.github.io)_
