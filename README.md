@@ -72,6 +72,7 @@ Quick Reference
 ## 其它
 
 [Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Emoji](./docs/emoji.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->

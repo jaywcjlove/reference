@@ -215,6 +215,20 @@ const school = <div>学校</div>;
 <!--rehype:className=shortcuts-->
 
 
+### 隐藏卡片标题
+<!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
+
+```
+隐藏卡片标题，在 H3 标题下面添加注释样式
+```
+
+```markdown
+### 隐藏卡片标题
+<!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
+```
+<!--rehype:className=wrap-text -->
+
+
 布局
 ---
 
@@ -272,7 +286,6 @@ H2 部分
 <!--rehype:className=wrap-text -->
 
 放在 `## H2 部分` 下面的注释配置，与 `<!--rehype:body-class=cols-2-->` 相同，设置 2 栏布局。
-
 
 ### H3 部分
 
