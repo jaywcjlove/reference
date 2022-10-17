@@ -170,104 +170,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(255, 204, 204);">
-    </td><td style="background-color: rgb(250, 209, 209);">
-    </td><td style="background-color: rgb(245, 214, 214);">
-    </td><td style="background-color: rgb(240, 219, 219);">
-    </td><td style="background-color: rgb(235, 224, 224);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(255, 153, 153);">
-    </td><td style="background-color: rgb(245, 163, 163);">
-    </td><td style="background-color: rgb(235, 173, 173);">
-    </td><td style="background-color: rgb(224, 184, 184);">
-    </td><td style="background-color: rgb(214, 194, 194);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(255, 102, 102);">
-    </td><td style="background-color: rgb(240, 117, 117);">
-    </td><td style="background-color: rgb(224, 133, 133);">
-    </td><td style="background-color: rgb(209, 148, 148);">
-    </td><td style="background-color: rgb(194, 163, 163);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(255, 51, 51);">
-    </td><td style="background-color: rgb(235, 71, 71);">
-    </td><td style="background-color: rgb(214, 92, 92);">
-    </td><td style="background-color: rgb(194, 112, 112);">
-    </td><td style="background-color: rgb(173, 133, 133);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(255, 0, 0);">
-    </td><td style="background-color: rgb(230, 26, 26);">
-    </td><td style="background-color: rgb(204, 51, 51);">
-    </td><td style="background-color: rgb(179, 77, 77);">
-    </td><td style="background-color: rgb(153, 102, 102);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(204, 0, 0);">
-    </td><td style="background-color: rgb(184, 20, 20);">
-    </td><td style="background-color: rgb(163, 41, 41);">
-    </td><td style="background-color: rgb(143, 61, 61);">
-    </td><td style="background-color: rgb(122, 82, 82);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(153, 0, 0);">
-    </td><td style="background-color: rgb(138, 15, 15);">
-    </td><td style="background-color: rgb(122, 31, 31);">
-    </td><td style="background-color: rgb(107, 46, 46);">
-    </td><td style="background-color: rgb(92, 61, 61);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(102, 0, 0);">
-    </td><td style="background-color: rgb(92, 10, 10);">
-    </td><td style="background-color: rgb(82, 20, 20);">
-    </td><td style="background-color: rgb(71, 31, 31);">
-    </td><td style="background-color: rgb(61, 41, 41);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(51, 0, 0);">
-    </td><td style="background-color: rgb(46, 5, 5);">
-    </td><td style="background-color: rgb(41, 10, 10);">
-    </td><td style="background-color: rgb(36, 15, 15);">
-    </td><td style="background-color: rgb(31, 20, 20);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(255, 204, 204);"></td>
+    <td style="background-color: rgb(250, 209, 209);"></td>
+    <td style="background-color: rgb(245, 214, 214);"></td>
+    <td style="background-color: rgb(240, 219, 219);"></td>
+    <td style="background-color: rgb(235, 224, 224);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(255, 153, 153);"></td>
+    <td style="background-color: rgb(245, 163, 163);"></td>
+    <td style="background-color: rgb(235, 173, 173);"></td>
+    <td style="background-color: rgb(224, 184, 184);"></td>
+    <td style="background-color: rgb(214, 194, 194);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(255, 102, 102);"></td>
+    <td style="background-color: rgb(240, 117, 117);"></td>
+    <td style="background-color: rgb(224, 133, 133);"></td>
+    <td style="background-color: rgb(209, 148, 148);"></td>
+    <td style="background-color: rgb(194, 163, 163);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(255, 51, 51);"></td>
+    <td style="background-color: rgb(235, 71, 71);"></td>
+    <td style="background-color: rgb(214, 92, 92);"></td>
+    <td style="background-color: rgb(194, 112, 112);"></td>
+    <td style="background-color: rgb(173, 133, 133);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(255, 0, 0);"></td>
+    <td style="background-color: rgb(230, 26, 26);"></td>
+    <td style="background-color: rgb(204, 51, 51);"></td>
+    <td style="background-color: rgb(179, 77, 77);"></td>
+    <td style="background-color: rgb(153, 102, 102);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(204, 0, 0);"></td>
+    <td style="background-color: rgb(184, 20, 20);"></td>
+    <td style="background-color: rgb(163, 41, 41);"></td>
+    <td style="background-color: rgb(143, 61, 61);"></td>
+    <td style="background-color: rgb(122, 82, 82);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(153, 0, 0);"></td>
+    <td style="background-color: rgb(138, 15, 15);"></td>
+    <td style="background-color: rgb(122, 31, 31);"></td>
+    <td style="background-color: rgb(107, 46, 46);"></td>
+    <td style="background-color: rgb(92, 61, 61);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(102, 0, 0);"></td>
+    <td style="background-color: rgb(92, 10, 10);"></td>
+    <td style="background-color: rgb(82, 20, 20);"></td>
+    <td style="background-color: rgb(71, 31, 31);"></td>
+    <td style="background-color: rgb(61, 41, 41);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(51, 0, 0);"></td>
+    <td style="background-color: rgb(46, 5, 5);"></td>
+    <td style="background-color: rgb(41, 10, 10);"></td>
+    <td style="background-color: rgb(36, 15, 15);"></td>
+    <td style="background-color: rgb(31, 20, 20);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 ### 30° Reds-Yellows (=Oranges)
@@ -275,104 +289,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(255, 230, 204);">
-    </td><td style="background-color: rgb(250, 230, 209);">
-    </td><td style="background-color: rgb(245, 230, 214);">
-    </td><td style="background-color: rgb(240, 230, 219);">
-    </td><td style="background-color: rgb(235, 230, 224);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(255, 204, 153);">
-    </td><td style="background-color: rgb(245, 204, 163);">
-    </td><td style="background-color: rgb(235, 204, 173);">
-    </td><td style="background-color: rgb(224, 204, 184);">
-    </td><td style="background-color: rgb(214, 204, 194);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(255, 179, 102);">
-    </td><td style="background-color: rgb(240, 179, 117);">
-    </td><td style="background-color: rgb(224, 179, 133);">
-    </td><td style="background-color: rgb(209, 179, 148);">
-    </td><td style="background-color: rgb(194, 179, 163);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(255, 153, 51);">
-    </td><td style="background-color: rgb(235, 153, 71);">
-    </td><td style="background-color: rgb(214, 153, 92);">
-    </td><td style="background-color: rgb(194, 153, 112);">
-    </td><td style="background-color: rgb(173, 153, 133);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(255, 128, 0);">
-    </td><td style="background-color: rgb(230, 128, 26);">
-    </td><td style="background-color: rgb(204, 128, 51);">
-    </td><td style="background-color: rgb(179, 128, 77);">
-    </td><td style="background-color: rgb(153, 128, 102);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(204, 102, 0);">
-    </td><td style="background-color: rgb(184, 102, 20);">
-    </td><td style="background-color: rgb(163, 102, 41);">
-    </td><td style="background-color: rgb(143, 102, 61);">
-    </td><td style="background-color: rgb(122, 102, 82);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(153, 77, 0);">
-    </td><td style="background-color: rgb(138, 77, 15);">
-    </td><td style="background-color: rgb(122, 77, 31);">
-    </td><td style="background-color: rgb(107, 77, 46);">
-    </td><td style="background-color: rgb(92, 77, 61);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(102, 51, 0);">
-    </td><td style="background-color: rgb(92, 51, 10);">
-    </td><td style="background-color: rgb(82, 51, 20);">
-    </td><td style="background-color: rgb(71, 51, 31);">
-    </td><td style="background-color: rgb(61, 51, 41);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(51, 26, 0);">
-    </td><td style="background-color: rgb(46, 26, 5);">
-    </td><td style="background-color: rgb(41, 26, 10);">
-    </td><td style="background-color: rgb(36, 26, 15);">
-    </td><td style="background-color: rgb(31, 26, 20);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(255, 230, 204);"></td>
+    <td style="background-color: rgb(250, 230, 209);"></td>
+    <td style="background-color: rgb(245, 230, 214);"></td>
+    <td style="background-color: rgb(240, 230, 219);"></td>
+    <td style="background-color: rgb(235, 230, 224);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(255, 204, 153);"></td>
+    <td style="background-color: rgb(245, 204, 163);"></td>
+    <td style="background-color: rgb(235, 204, 173);"></td>
+    <td style="background-color: rgb(224, 204, 184);"></td>
+    <td style="background-color: rgb(214, 204, 194);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(255, 179, 102);"></td>
+    <td style="background-color: rgb(240, 179, 117);"></td>
+    <td style="background-color: rgb(224, 179, 133);"></td>
+    <td style="background-color: rgb(209, 179, 148);"></td>
+    <td style="background-color: rgb(194, 179, 163);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(255, 153, 51);"></td>
+    <td style="background-color: rgb(235, 153, 71);"></td>
+    <td style="background-color: rgb(214, 153, 92);"></td>
+    <td style="background-color: rgb(194, 153, 112);"></td>
+    <td style="background-color: rgb(173, 153, 133);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(255, 128, 0);"></td>
+    <td style="background-color: rgb(230, 128, 26);"></td>
+    <td style="background-color: rgb(204, 128, 51);"></td>
+    <td style="background-color: rgb(179, 128, 77);"></td>
+    <td style="background-color: rgb(153, 128, 102);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(204, 102, 0);"></td>
+    <td style="background-color: rgb(184, 102, 20);"></td>
+    <td style="background-color: rgb(163, 102, 41);"></td>
+    <td style="background-color: rgb(143, 102, 61);"></td>
+    <td style="background-color: rgb(122, 102, 82);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(153, 77, 0);"></td>
+    <td style="background-color: rgb(138, 77, 15);"></td>
+    <td style="background-color: rgb(122, 77, 31);"></td>
+    <td style="background-color: rgb(107, 77, 46);"></td>
+    <td style="background-color: rgb(92, 77, 61);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(102, 51, 0);"></td>
+    <td style="background-color: rgb(92, 51, 10);"></td>
+    <td style="background-color: rgb(82, 51, 20);"></td>
+    <td style="background-color: rgb(71, 51, 31);"></td>
+    <td style="background-color: rgb(61, 51, 41);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(51, 26, 0);"></td>
+    <td style="background-color: rgb(46, 26, 5);"></td>
+    <td style="background-color: rgb(41, 26, 10);"></td>
+    <td style="background-color: rgb(36, 26, 15);"></td>
+    <td style="background-color: rgb(31, 26, 20);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 ### 60° Yellows
@@ -380,104 +408,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(255, 255, 204);">
-    </td><td style="background-color: rgb(250, 250, 209);">
-    </td><td style="background-color: rgb(245, 245, 214);">
-    </td><td style="background-color: rgb(240, 240, 219);">
-    </td><td style="background-color: rgb(235, 235, 224);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(255, 255, 153);">
-    </td><td style="background-color: rgb(245, 245, 163);">
-    </td><td style="background-color: rgb(235, 235, 173);">
-    </td><td style="background-color: rgb(224, 224, 184);">
-    </td><td style="background-color: rgb(214, 214, 194);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(255, 255, 102);">
-    </td><td style="background-color: rgb(240, 240, 117);">
-    </td><td style="background-color: rgb(224, 224, 133);">
-    </td><td style="background-color: rgb(209, 209, 148);">
-    </td><td style="background-color: rgb(194, 194, 163);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(255, 255, 51);">
-    </td><td style="background-color: rgb(235, 235, 71);">
-    </td><td style="background-color: rgb(214, 214, 92);">
-    </td><td style="background-color: rgb(194, 194, 112);">
-    </td><td style="background-color: rgb(173, 173, 133);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(255, 255, 0);">
-    </td><td style="background-color: rgb(230, 230, 26);">
-    </td><td style="background-color: rgb(204, 204, 51);">
-    </td><td style="background-color: rgb(179, 179, 77);">
-    </td><td style="background-color: rgb(153, 153, 102);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(204, 204, 0);">
-    </td><td style="background-color: rgb(184, 184, 20);">
-    </td><td style="background-color: rgb(163, 163, 41);">
-    </td><td style="background-color: rgb(143, 143, 61);">
-    </td><td style="background-color: rgb(122, 122, 82);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(153, 153, 0);">
-    </td><td style="background-color: rgb(138, 138, 15);">
-    </td><td style="background-color: rgb(122, 122, 31);">
-    </td><td style="background-color: rgb(107, 107, 46);">
-    </td><td style="background-color: rgb(92, 92, 61);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(102, 102, 0);">
-    </td><td style="background-color: rgb(92, 92, 10);">
-    </td><td style="background-color: rgb(82, 82, 20);">
-    </td><td style="background-color: rgb(71, 71, 31);">
-    </td><td style="background-color: rgb(61, 61, 41);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(51, 51, 0);">
-    </td><td style="background-color: rgb(46, 46, 5);">
-    </td><td style="background-color: rgb(41, 41, 10);">
-    </td><td style="background-color: rgb(36, 36, 15);">
-    </td><td style="background-color: rgb(31, 31, 20);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(255, 255, 204);"></td>
+    <td style="background-color: rgb(250, 250, 209);"></td>
+    <td style="background-color: rgb(245, 245, 214);"></td>
+    <td style="background-color: rgb(240, 240, 219);"></td>
+    <td style="background-color: rgb(235, 235, 224);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(255, 255, 153);"></td>
+    <td style="background-color: rgb(245, 245, 163);"></td>
+    <td style="background-color: rgb(235, 235, 173);"></td>
+    <td style="background-color: rgb(224, 224, 184);"></td>
+    <td style="background-color: rgb(214, 214, 194);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(255, 255, 102);"></td>
+    <td style="background-color: rgb(240, 240, 117);"></td>
+    <td style="background-color: rgb(224, 224, 133);"></td>
+    <td style="background-color: rgb(209, 209, 148);"></td>
+    <td style="background-color: rgb(194, 194, 163);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(255, 255, 51);"></td>
+    <td style="background-color: rgb(235, 235, 71);"></td>
+    <td style="background-color: rgb(214, 214, 92);"></td>
+    <td style="background-color: rgb(194, 194, 112);"></td>
+    <td style="background-color: rgb(173, 173, 133);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(255, 255, 0);"></td>
+    <td style="background-color: rgb(230, 230, 26);"></td>
+    <td style="background-color: rgb(204, 204, 51);"></td>
+    <td style="background-color: rgb(179, 179, 77);"></td>
+    <td style="background-color: rgb(153, 153, 102);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(204, 204, 0);"></td>
+    <td style="background-color: rgb(184, 184, 20);"></td>
+    <td style="background-color: rgb(163, 163, 41);"></td>
+    <td style="background-color: rgb(143, 143, 61);"></td>
+    <td style="background-color: rgb(122, 122, 82);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(153, 153, 0);"></td>
+    <td style="background-color: rgb(138, 138, 15);"></td>
+    <td style="background-color: rgb(122, 122, 31);"></td>
+    <td style="background-color: rgb(107, 107, 46);"></td>
+    <td style="background-color: rgb(92, 92, 61);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(102, 102, 0);"></td>
+    <td style="background-color: rgb(92, 92, 10);"></td>
+    <td style="background-color: rgb(82, 82, 20);"></td>
+    <td style="background-color: rgb(71, 71, 31);"></td>
+    <td style="background-color: rgb(61, 61, 41);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(51, 51, 0);"></td>
+    <td style="background-color: rgb(46, 46, 5);"></td>
+    <td style="background-color: rgb(41, 41, 10);"></td>
+    <td style="background-color: rgb(36, 36, 15);"></td>
+    <td style="background-color: rgb(31, 31, 20);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 ### 90° Yellow-Greens
@@ -485,104 +527,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(230, 255, 204);">
-    </td><td style="background-color: rgb(230, 250, 209);">
-    </td><td style="background-color: rgb(230, 245, 214);">
-    </td><td style="background-color: rgb(230, 240, 219);">
-    </td><td style="background-color: rgb(230, 235, 224);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(204, 255, 153);">
-    </td><td style="background-color: rgb(204, 245, 163);">
-    </td><td style="background-color: rgb(204, 235, 173);">
-    </td><td style="background-color: rgb(204, 224, 184);">
-    </td><td style="background-color: rgb(204, 214, 194);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(179, 255, 102);">
-    </td><td style="background-color: rgb(179, 240, 117);">
-    </td><td style="background-color: rgb(179, 224, 133);">
-    </td><td style="background-color: rgb(179, 209, 148);">
-    </td><td style="background-color: rgb(179, 194, 163);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(153, 255, 51);">
-    </td><td style="background-color: rgb(153, 235, 71);">
-    </td><td style="background-color: rgb(153, 214, 92);">
-    </td><td style="background-color: rgb(153, 194, 112);">
-    </td><td style="background-color: rgb(153, 173, 133);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(128, 255, 0);">
-    </td><td style="background-color: rgb(128, 230, 26);">
-    </td><td style="background-color: rgb(128, 204, 51);">
-    </td><td style="background-color: rgb(128, 179, 77);">
-    </td><td style="background-color: rgb(128, 153, 102);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(102, 204, 0);">
-    </td><td style="background-color: rgb(102, 184, 20);">
-    </td><td style="background-color: rgb(102, 163, 41);">
-    </td><td style="background-color: rgb(102, 143, 61);">
-    </td><td style="background-color: rgb(102, 122, 82);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(77, 153, 0);">
-    </td><td style="background-color: rgb(77, 138, 15);">
-    </td><td style="background-color: rgb(77, 122, 31);">
-    </td><td style="background-color: rgb(77, 107, 46);">
-    </td><td style="background-color: rgb(77, 92, 61);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(51, 102, 0);">
-    </td><td style="background-color: rgb(51, 92, 10);">
-    </td><td style="background-color: rgb(51, 82, 20);">
-    </td><td style="background-color: rgb(51, 71, 31);">
-    </td><td style="background-color: rgb(51, 61, 41);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(26, 51, 0);">
-    </td><td style="background-color: rgb(26, 46, 5);">
-    </td><td style="background-color: rgb(26, 41, 10);">
-    </td><td style="background-color: rgb(26, 36, 15);">
-    </td><td style="background-color: rgb(26, 31, 20);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(230, 255, 204);"></td>
+    <td style="background-color: rgb(230, 250, 209);"></td>
+    <td style="background-color: rgb(230, 245, 214);"></td>
+    <td style="background-color: rgb(230, 240, 219);"></td>
+    <td style="background-color: rgb(230, 235, 224);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(204, 255, 153);"></td>
+    <td style="background-color: rgb(204, 245, 163);"></td>
+    <td style="background-color: rgb(204, 235, 173);"></td>
+    <td style="background-color: rgb(204, 224, 184);"></td>
+    <td style="background-color: rgb(204, 214, 194);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(179, 255, 102);"></td>
+    <td style="background-color: rgb(179, 240, 117);"></td>
+    <td style="background-color: rgb(179, 224, 133);"></td>
+    <td style="background-color: rgb(179, 209, 148);"></td>
+    <td style="background-color: rgb(179, 194, 163);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(153, 255, 51);"></td>
+    <td style="background-color: rgb(153, 235, 71);"></td>
+    <td style="background-color: rgb(153, 214, 92);"></td>
+    <td style="background-color: rgb(153, 194, 112);"></td>
+    <td style="background-color: rgb(153, 173, 133);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(128, 255, 0);"></td>
+    <td style="background-color: rgb(128, 230, 26);"></td>
+    <td style="background-color: rgb(128, 204, 51);"></td>
+    <td style="background-color: rgb(128, 179, 77);"></td>
+    <td style="background-color: rgb(128, 153, 102);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(102, 204, 0);"></td>
+    <td style="background-color: rgb(102, 184, 20);"></td>
+    <td style="background-color: rgb(102, 163, 41);"></td>
+    <td style="background-color: rgb(102, 143, 61);"></td>
+    <td style="background-color: rgb(102, 122, 82);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(77, 153, 0);"></td>
+    <td style="background-color: rgb(77, 138, 15);"></td>
+    <td style="background-color: rgb(77, 122, 31);"></td>
+    <td style="background-color: rgb(77, 107, 46);"></td>
+    <td style="background-color: rgb(77, 92, 61);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(51, 102, 0);"></td>
+    <td style="background-color: rgb(51, 92, 10);"></td>
+    <td style="background-color: rgb(51, 82, 20);"></td>
+    <td style="background-color: rgb(51, 71, 31);"></td>
+    <td style="background-color: rgb(51, 61, 41);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(26, 51, 0);"></td>
+    <td style="background-color: rgb(26, 46, 5);"></td>
+    <td style="background-color: rgb(26, 41, 10);"></td>
+    <td style="background-color: rgb(26, 36, 15);"></td>
+    <td style="background-color: rgb(26, 31, 20);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 ### 120° Greens
@@ -590,104 +646,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(204, 255, 204);">
-    </td><td style="background-color: rgb(209, 250, 209);">
-    </td><td style="background-color: rgb(214, 245, 214);">
-    </td><td style="background-color: rgb(219, 240, 219);">
-    </td><td style="background-color: rgb(224, 235, 224);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(153, 255, 153);">
-    </td><td style="background-color: rgb(163, 245, 163);">
-    </td><td style="background-color: rgb(173, 235, 173);">
-    </td><td style="background-color: rgb(184, 224, 184);">
-    </td><td style="background-color: rgb(194, 214, 194);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(102, 255, 102);">
-    </td><td style="background-color: rgb(117, 240, 117);">
-    </td><td style="background-color: rgb(133, 224, 133);">
-    </td><td style="background-color: rgb(148, 209, 148);">
-    </td><td style="background-color: rgb(163, 194, 163);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(51, 255, 51);">
-    </td><td style="background-color: rgb(71, 235, 71);">
-    </td><td style="background-color: rgb(92, 214, 92);">
-    </td><td style="background-color: rgb(112, 194, 112);">
-    </td><td style="background-color: rgb(133, 173, 133);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(0, 255, 0);">
-    </td><td style="background-color: rgb(26, 230, 26);">
-    </td><td style="background-color: rgb(51, 204, 51);">
-    </td><td style="background-color: rgb(77, 179, 77);">
-    </td><td style="background-color: rgb(102, 153, 102);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(0, 204, 0);">
-    </td><td style="background-color: rgb(20, 184, 20);">
-    </td><td style="background-color: rgb(41, 163, 41);">
-    </td><td style="background-color: rgb(61, 143, 61);">
-    </td><td style="background-color: rgb(82, 122, 82);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(0, 153, 0);">
-    </td><td style="background-color: rgb(15, 138, 15);">
-    </td><td style="background-color: rgb(31, 122, 31);">
-    </td><td style="background-color: rgb(46, 107, 46);">
-    </td><td style="background-color: rgb(61, 92, 61);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(0, 102, 0);">
-    </td><td style="background-color: rgb(10, 92, 10);">
-    </td><td style="background-color: rgb(20, 82, 20);">
-    </td><td style="background-color: rgb(31, 71, 31);">
-    </td><td style="background-color: rgb(41, 61, 41);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(0, 51, 0);">
-    </td><td style="background-color: rgb(5, 46, 5);">
-    </td><td style="background-color: rgb(10, 41, 10);">
-    </td><td style="background-color: rgb(15, 36, 15);">
-    </td><td style="background-color: rgb(20, 31, 20);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(204, 255, 204);"></td>
+    <td style="background-color: rgb(209, 250, 209);"></td>
+    <td style="background-color: rgb(214, 245, 214);"></td>
+    <td style="background-color: rgb(219, 240, 219);"></td>
+    <td style="background-color: rgb(224, 235, 224);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(153, 255, 153);"></td>
+    <td style="background-color: rgb(163, 245, 163);"></td>
+    <td style="background-color: rgb(173, 235, 173);"></td>
+    <td style="background-color: rgb(184, 224, 184);"></td>
+    <td style="background-color: rgb(194, 214, 194);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(102, 255, 102);"></td>
+    <td style="background-color: rgb(117, 240, 117);"></td>
+    <td style="background-color: rgb(133, 224, 133);"></td>
+    <td style="background-color: rgb(148, 209, 148);"></td>
+    <td style="background-color: rgb(163, 194, 163);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(51, 255, 51);"></td>
+    <td style="background-color: rgb(71, 235, 71);"></td>
+    <td style="background-color: rgb(92, 214, 92);"></td>
+    <td style="background-color: rgb(112, 194, 112);"></td>
+    <td style="background-color: rgb(133, 173, 133);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(0, 255, 0);"></td>
+    <td style="background-color: rgb(26, 230, 26);"></td>
+    <td style="background-color: rgb(51, 204, 51);"></td>
+    <td style="background-color: rgb(77, 179, 77);"></td>
+    <td style="background-color: rgb(102, 153, 102);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(0, 204, 0);"></td>
+    <td style="background-color: rgb(20, 184, 20);"></td>
+    <td style="background-color: rgb(41, 163, 41);"></td>
+    <td style="background-color: rgb(61, 143, 61);"></td>
+    <td style="background-color: rgb(82, 122, 82);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(0, 153, 0);"></td>
+    <td style="background-color: rgb(15, 138, 15);"></td>
+    <td style="background-color: rgb(31, 122, 31);"></td>
+    <td style="background-color: rgb(46, 107, 46);"></td>
+    <td style="background-color: rgb(61, 92, 61);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(0, 102, 0);"></td>
+    <td style="background-color: rgb(10, 92, 10);"></td>
+    <td style="background-color: rgb(20, 82, 20);"></td>
+    <td style="background-color: rgb(31, 71, 31);"></td>
+    <td style="background-color: rgb(41, 61, 41);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(0, 51, 0);"></td>
+    <td style="background-color: rgb(5, 46, 5);"></td>
+    <td style="background-color: rgb(10, 41, 10);"></td>
+    <td style="background-color: rgb(15, 36, 15);"></td>
+    <td style="background-color: rgb(20, 31, 20);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 
@@ -696,104 +766,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(204, 255, 230);">
-    </td><td style="background-color: rgb(209, 250, 230);">
-    </td><td style="background-color: rgb(214, 245, 230);">
-    </td><td style="background-color: rgb(219, 240, 230);">
-    </td><td style="background-color: rgb(224, 235, 230);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(153, 255, 204);">
-    </td><td style="background-color: rgb(163, 245, 204);">
-    </td><td style="background-color: rgb(173, 235, 204);">
-    </td><td style="background-color: rgb(184, 224, 204);">
-    </td><td style="background-color: rgb(194, 214, 204);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(102, 255, 179);">
-    </td><td style="background-color: rgb(117, 240, 179);">
-    </td><td style="background-color: rgb(133, 224, 179);">
-    </td><td style="background-color: rgb(148, 209, 179);">
-    </td><td style="background-color: rgb(163, 194, 179);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(51, 255, 153);">
-    </td><td style="background-color: rgb(71, 235, 153);">
-    </td><td style="background-color: rgb(92, 214, 153);">
-    </td><td style="background-color: rgb(112, 194, 153);">
-    </td><td style="background-color: rgb(133, 173, 153);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(0, 255, 128);">
-    </td><td style="background-color: rgb(26, 230, 128);">
-    </td><td style="background-color: rgb(51, 204, 128);">
-    </td><td style="background-color: rgb(77, 179, 128);">
-    </td><td style="background-color: rgb(102, 153, 128);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(0, 204, 102);">
-    </td><td style="background-color: rgb(20, 184, 102);">
-    </td><td style="background-color: rgb(41, 163, 102);">
-    </td><td style="background-color: rgb(61, 143, 102);">
-    </td><td style="background-color: rgb(82, 122, 102);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(0, 153, 77);">
-    </td><td style="background-color: rgb(15, 138, 77);">
-    </td><td style="background-color: rgb(31, 122, 77);">
-    </td><td style="background-color: rgb(46, 107, 77);">
-    </td><td style="background-color: rgb(61, 92, 77);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(0, 102, 51);">
-    </td><td style="background-color: rgb(10, 92, 51);">
-    </td><td style="background-color: rgb(20, 82, 51);">
-    </td><td style="background-color: rgb(31, 71, 51);">
-    </td><td style="background-color: rgb(41, 61, 51);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(0, 51, 26);">
-    </td><td style="background-color: rgb(5, 46, 26);">
-    </td><td style="background-color: rgb(10, 41, 26);">
-    </td><td style="background-color: rgb(15, 36, 26);">
-    </td><td style="background-color: rgb(20, 31, 26);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(204, 255, 230);"></td>
+    <td style="background-color: rgb(209, 250, 230);"></td>
+    <td style="background-color: rgb(214, 245, 230);"></td>
+    <td style="background-color: rgb(219, 240, 230);"></td>
+    <td style="background-color: rgb(224, 235, 230);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(153, 255, 204);"></td>
+    <td style="background-color: rgb(163, 245, 204);"></td>
+    <td style="background-color: rgb(173, 235, 204);"></td>
+    <td style="background-color: rgb(184, 224, 204);"></td>
+    <td style="background-color: rgb(194, 214, 204);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(102, 255, 179);"></td>
+    <td style="background-color: rgb(117, 240, 179);"></td>
+    <td style="background-color: rgb(133, 224, 179);"></td>
+    <td style="background-color: rgb(148, 209, 179);"></td>
+    <td style="background-color: rgb(163, 194, 179);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(51, 255, 153);"></td>
+    <td style="background-color: rgb(71, 235, 153);"></td>
+    <td style="background-color: rgb(92, 214, 153);"></td>
+    <td style="background-color: rgb(112, 194, 153);"></td>
+    <td style="background-color: rgb(133, 173, 153);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(0, 255, 128);"></td>
+    <td style="background-color: rgb(26, 230, 128);"></td>
+    <td style="background-color: rgb(51, 204, 128);"></td>
+    <td style="background-color: rgb(77, 179, 128);"></td>
+    <td style="background-color: rgb(102, 153, 128);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(0, 204, 102);"></td>
+    <td style="background-color: rgb(20, 184, 102);"></td>
+    <td style="background-color: rgb(41, 163, 102);"></td>
+    <td style="background-color: rgb(61, 143, 102);"></td>
+    <td style="background-color: rgb(82, 122, 102);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(0, 153, 77);"></td>
+    <td style="background-color: rgb(15, 138, 77);"></td>
+    <td style="background-color: rgb(31, 122, 77);"></td>
+    <td style="background-color: rgb(46, 107, 77);"></td>
+    <td style="background-color: rgb(61, 92, 77);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(0, 102, 51);"></td>
+    <td style="background-color: rgb(10, 92, 51);"></td>
+    <td style="background-color: rgb(20, 82, 51);"></td>
+    <td style="background-color: rgb(31, 71, 51);"></td>
+    <td style="background-color: rgb(41, 61, 51);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(0, 51, 26);"></td>
+    <td style="background-color: rgb(5, 46, 26);"></td>
+    <td style="background-color: rgb(10, 41, 26);"></td>
+    <td style="background-color: rgb(15, 36, 26);"></td>
+    <td style="background-color: rgb(20, 31, 26);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 
@@ -802,104 +886,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(204, 255, 255);">
-    </td><td style="background-color: rgb(209, 250, 250);">
-    </td><td style="background-color: rgb(214, 245, 245);">
-    </td><td style="background-color: rgb(219, 240, 240);">
-    </td><td style="background-color: rgb(224, 235, 235);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(153, 255, 255);">
-    </td><td style="background-color: rgb(163, 245, 245);">
-    </td><td style="background-color: rgb(173, 235, 235);">
-    </td><td style="background-color: rgb(184, 224, 224);">
-    </td><td style="background-color: rgb(194, 214, 214);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(102, 255, 255);">
-    </td><td style="background-color: rgb(117, 240, 240);">
-    </td><td style="background-color: rgb(133, 224, 224);">
-    </td><td style="background-color: rgb(148, 209, 209);">
-    </td><td style="background-color: rgb(163, 194, 194);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(51, 255, 255);">
-    </td><td style="background-color: rgb(71, 235, 235);">
-    </td><td style="background-color: rgb(92, 214, 214);">
-    </td><td style="background-color: rgb(112, 194, 194);">
-    </td><td style="background-color: rgb(133, 173, 173);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(0, 255, 255);">
-    </td><td style="background-color: rgb(26, 230, 230);">
-    </td><td style="background-color: rgb(51, 204, 204);">
-    </td><td style="background-color: rgb(77, 179, 179);">
-    </td><td style="background-color: rgb(102, 153, 153);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(0, 204, 204);">
-    </td><td style="background-color: rgb(20, 184, 184);">
-    </td><td style="background-color: rgb(41, 163, 163);">
-    </td><td style="background-color: rgb(61, 143, 143);">
-    </td><td style="background-color: rgb(82, 122, 122);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(0, 153, 153);">
-    </td><td style="background-color: rgb(15, 138, 138);">
-    </td><td style="background-color: rgb(31, 122, 122);">
-    </td><td style="background-color: rgb(46, 107, 107);">
-    </td><td style="background-color: rgb(61, 92, 92);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(0, 102, 102);">
-    </td><td style="background-color: rgb(10, 92, 92);">
-    </td><td style="background-color: rgb(20, 82, 82);">
-    </td><td style="background-color: rgb(31, 71, 71);">
-    </td><td style="background-color: rgb(41, 61, 61);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(0, 51, 51);">
-    </td><td style="background-color: rgb(5, 46, 46);">
-    </td><td style="background-color: rgb(10, 41, 41);">
-    </td><td style="background-color: rgb(15, 36, 36);">
-    </td><td style="background-color: rgb(20, 31, 31);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(204, 255, 255);"></td>
+    <td style="background-color: rgb(209, 250, 250);"></td>
+    <td style="background-color: rgb(214, 245, 245);"></td>
+    <td style="background-color: rgb(219, 240, 240);"></td>
+    <td style="background-color: rgb(224, 235, 235);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(153, 255, 255);"></td>
+    <td style="background-color: rgb(163, 245, 245);"></td>
+    <td style="background-color: rgb(173, 235, 235);"></td>
+    <td style="background-color: rgb(184, 224, 224);"></td>
+    <td style="background-color: rgb(194, 214, 214);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(102, 255, 255);"></td>
+    <td style="background-color: rgb(117, 240, 240);"></td>
+    <td style="background-color: rgb(133, 224, 224);"></td>
+    <td style="background-color: rgb(148, 209, 209);"></td>
+    <td style="background-color: rgb(163, 194, 194);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(51, 255, 255);"></td>
+    <td style="background-color: rgb(71, 235, 235);"></td>
+    <td style="background-color: rgb(92, 214, 214);"></td>
+    <td style="background-color: rgb(112, 194, 194);"></td>
+    <td style="background-color: rgb(133, 173, 173);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(0, 255, 255);"></td>
+    <td style="background-color: rgb(26, 230, 230);"></td>
+    <td style="background-color: rgb(51, 204, 204);"></td>
+    <td style="background-color: rgb(77, 179, 179);"></td>
+    <td style="background-color: rgb(102, 153, 153);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(0, 204, 204);"></td>
+    <td style="background-color: rgb(20, 184, 184);"></td>
+    <td style="background-color: rgb(41, 163, 163);"></td>
+    <td style="background-color: rgb(61, 143, 143);"></td>
+    <td style="background-color: rgb(82, 122, 122);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(0, 153, 153);"></td>
+    <td style="background-color: rgb(15, 138, 138);"></td>
+    <td style="background-color: rgb(31, 122, 122);"></td>
+    <td style="background-color: rgb(46, 107, 107);"></td>
+    <td style="background-color: rgb(61, 92, 92);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(0, 102, 102);"></td>
+    <td style="background-color: rgb(10, 92, 92);"></td>
+    <td style="background-color: rgb(20, 82, 82);"></td>
+    <td style="background-color: rgb(31, 71, 71);"></td>
+    <td style="background-color: rgb(41, 61, 61);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(0, 51, 51);"></td>
+    <td style="background-color: rgb(5, 46, 46);"></td>
+    <td style="background-color: rgb(10, 41, 41);"></td>
+    <td style="background-color: rgb(15, 36, 36);"></td>
+    <td style="background-color: rgb(20, 31, 31);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 
@@ -908,104 +1006,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(204, 230, 255);">
-    </td><td style="background-color: rgb(209, 230, 250);">
-    </td><td style="background-color: rgb(214, 230, 245);">
-    </td><td style="background-color: rgb(219, 230, 240);">
-    </td><td style="background-color: rgb(224, 230, 235);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(153, 204, 255);">
-    </td><td style="background-color: rgb(163, 204, 245);">
-    </td><td style="background-color: rgb(173, 204, 235);">
-    </td><td style="background-color: rgb(184, 204, 224);">
-    </td><td style="background-color: rgb(194, 204, 214);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(102, 179, 255);">
-    </td><td style="background-color: rgb(117, 179, 240);">
-    </td><td style="background-color: rgb(133, 179, 224);">
-    </td><td style="background-color: rgb(148, 179, 209);">
-    </td><td style="background-color: rgb(163, 179, 194);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(51, 153, 255);">
-    </td><td style="background-color: rgb(71, 153, 235);">
-    </td><td style="background-color: rgb(92, 153, 214);">
-    </td><td style="background-color: rgb(112, 153, 194);">
-    </td><td style="background-color: rgb(133, 153, 173);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(0, 128, 255);">
-    </td><td style="background-color: rgb(26, 128, 230);">
-    </td><td style="background-color: rgb(51, 128, 204);">
-    </td><td style="background-color: rgb(77, 128, 179);">
-    </td><td style="background-color: rgb(102, 128, 153);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(0, 102, 204);">
-    </td><td style="background-color: rgb(20, 102, 184);">
-    </td><td style="background-color: rgb(41, 102, 163);">
-    </td><td style="background-color: rgb(61, 102, 143);">
-    </td><td style="background-color: rgb(82, 102, 122);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(0, 77, 153);">
-    </td><td style="background-color: rgb(15, 77, 138);">
-    </td><td style="background-color: rgb(31, 77, 122);">
-    </td><td style="background-color: rgb(46, 77, 107);">
-    </td><td style="background-color: rgb(61, 77, 92);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(0, 51, 102);">
-    </td><td style="background-color: rgb(10, 51, 92);">
-    </td><td style="background-color: rgb(20, 51, 82);">
-    </td><td style="background-color: rgb(31, 51, 71);">
-    </td><td style="background-color: rgb(41, 51, 61);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(0, 26, 51);">
-    </td><td style="background-color: rgb(5, 26, 46);">
-    </td><td style="background-color: rgb(10, 26, 41);">
-    </td><td style="background-color: rgb(15, 26, 36);">
-    </td><td style="background-color: rgb(20, 26, 31);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(204, 230, 255);"></td>
+    <td style="background-color: rgb(209, 230, 250);"></td>
+    <td style="background-color: rgb(214, 230, 245);"></td>
+    <td style="background-color: rgb(219, 230, 240);"></td>
+    <td style="background-color: rgb(224, 230, 235);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(153, 204, 255);"></td>
+    <td style="background-color: rgb(163, 204, 245);"></td>
+    <td style="background-color: rgb(173, 204, 235);"></td>
+    <td style="background-color: rgb(184, 204, 224);"></td>
+    <td style="background-color: rgb(194, 204, 214);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(102, 179, 255);"></td>
+    <td style="background-color: rgb(117, 179, 240);"></td>
+    <td style="background-color: rgb(133, 179, 224);"></td>
+    <td style="background-color: rgb(148, 179, 209);"></td>
+    <td style="background-color: rgb(163, 179, 194);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(51, 153, 255);"></td>
+    <td style="background-color: rgb(71, 153, 235);"></td>
+    <td style="background-color: rgb(92, 153, 214);"></td>
+    <td style="background-color: rgb(112, 153, 194);"></td>
+    <td style="background-color: rgb(133, 153, 173);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(0, 128, 255);"></td>
+    <td style="background-color: rgb(26, 128, 230);"></td>
+    <td style="background-color: rgb(51, 128, 204);"></td>
+    <td style="background-color: rgb(77, 128, 179);"></td>
+    <td style="background-color: rgb(102, 128, 153);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(0, 102, 204);"></td>
+    <td style="background-color: rgb(20, 102, 184);"></td>
+    <td style="background-color: rgb(41, 102, 163);"></td>
+    <td style="background-color: rgb(61, 102, 143);"></td>
+    <td style="background-color: rgb(82, 102, 122);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(0, 77, 153);"></td>
+    <td style="background-color: rgb(15, 77, 138);"></td>
+    <td style="background-color: rgb(31, 77, 122);"></td>
+    <td style="background-color: rgb(46, 77, 107);"></td>
+    <td style="background-color: rgb(61, 77, 92);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(0, 51, 102);"></td>
+    <td style="background-color: rgb(10, 51, 92);"></td>
+    <td style="background-color: rgb(20, 51, 82);"></td>
+    <td style="background-color: rgb(31, 51, 71);"></td>
+    <td style="background-color: rgb(41, 51, 61);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(0, 26, 51);"></td>
+    <td style="background-color: rgb(5, 26, 46);"></td>
+    <td style="background-color: rgb(10, 26, 41);"></td>
+    <td style="background-color: rgb(15, 26, 36);"></td>
+    <td style="background-color: rgb(20, 26, 31);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 
@@ -1014,104 +1126,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(204, 204, 255);">
-    </td><td style="background-color: rgb(209, 209, 250);">
-    </td><td style="background-color: rgb(214, 214, 245);">
-    </td><td style="background-color: rgb(219, 219, 240);">
-    </td><td style="background-color: rgb(224, 224, 235);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(153, 153, 255);">
-    </td><td style="background-color: rgb(163, 163, 245);">
-    </td><td style="background-color: rgb(173, 173, 235);">
-    </td><td style="background-color: rgb(184, 184, 224);">
-    </td><td style="background-color: rgb(194, 194, 214);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(102, 102, 255);">
-    </td><td style="background-color: rgb(117, 117, 240);">
-    </td><td style="background-color: rgb(133, 133, 224);">
-    </td><td style="background-color: rgb(148, 148, 209);">
-    </td><td style="background-color: rgb(163, 163, 194);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(51, 51, 255);">
-    </td><td style="background-color: rgb(71, 71, 235);">
-    </td><td style="background-color: rgb(92, 92, 214);">
-    </td><td style="background-color: rgb(112, 112, 194);">
-    </td><td style="background-color: rgb(133, 133, 173);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(0, 0, 255);">
-    </td><td style="background-color: rgb(26, 26, 230);">
-    </td><td style="background-color: rgb(51, 51, 204);">
-    </td><td style="background-color: rgb(77, 77, 179);">
-    </td><td style="background-color: rgb(102, 102, 153);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(0, 0, 204);">
-    </td><td style="background-color: rgb(20, 20, 184);">
-    </td><td style="background-color: rgb(41, 41, 163);">
-    </td><td style="background-color: rgb(61, 61, 143);">
-    </td><td style="background-color: rgb(82, 82, 122);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(0, 0, 153);">
-    </td><td style="background-color: rgb(15, 15, 138);">
-    </td><td style="background-color: rgb(31, 31, 122);">
-    </td><td style="background-color: rgb(46, 46, 107);">
-    </td><td style="background-color: rgb(61, 61, 92);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(0, 0, 102);">
-    </td><td style="background-color: rgb(10, 10, 92);">
-    </td><td style="background-color: rgb(20, 20, 82);">
-    </td><td style="background-color: rgb(31, 31, 71);">
-    </td><td style="background-color: rgb(41, 41, 61);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(0, 0, 51);">
-    </td><td style="background-color: rgb(5, 5, 46);">
-    </td><td style="background-color: rgb(10, 10, 41);">
-    </td><td style="background-color: rgb(15, 15, 36);">
-    </td><td style="background-color: rgb(20, 20, 31);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(204, 204, 255);"></td>
+    <td style="background-color: rgb(209, 209, 250);"></td>
+    <td style="background-color: rgb(214, 214, 245);"></td>
+    <td style="background-color: rgb(219, 219, 240);"></td>
+    <td style="background-color: rgb(224, 224, 235);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(153, 153, 255);"></td>
+    <td style="background-color: rgb(163, 163, 245);"></td>
+    <td style="background-color: rgb(173, 173, 235);"></td>
+    <td style="background-color: rgb(184, 184, 224);"></td>
+    <td style="background-color: rgb(194, 194, 214);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(102, 102, 255);"></td>
+    <td style="background-color: rgb(117, 117, 240);"></td>
+    <td style="background-color: rgb(133, 133, 224);"></td>
+    <td style="background-color: rgb(148, 148, 209);"></td>
+    <td style="background-color: rgb(163, 163, 194);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(51, 51, 255);"></td>
+    <td style="background-color: rgb(71, 71, 235);"></td>
+    <td style="background-color: rgb(92, 92, 214);"></td>
+    <td style="background-color: rgb(112, 112, 194);"></td>
+    <td style="background-color: rgb(133, 133, 173);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(0, 0, 255);"></td>
+    <td style="background-color: rgb(26, 26, 230);"></td>
+    <td style="background-color: rgb(51, 51, 204);"></td>
+    <td style="background-color: rgb(77, 77, 179);"></td>
+    <td style="background-color: rgb(102, 102, 153);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(0, 0, 204);"></td>
+    <td style="background-color: rgb(20, 20, 184);"></td>
+    <td style="background-color: rgb(41, 41, 163);"></td>
+    <td style="background-color: rgb(61, 61, 143);"></td>
+    <td style="background-color: rgb(82, 82, 122);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(0, 0, 153);"></td>
+    <td style="background-color: rgb(15, 15, 138);"></td>
+    <td style="background-color: rgb(31, 31, 122);"></td>
+    <td style="background-color: rgb(46, 46, 107);"></td>
+    <td style="background-color: rgb(61, 61, 92);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(0, 0, 102);"></td>
+    <td style="background-color: rgb(10, 10, 92);"></td>
+    <td style="background-color: rgb(20, 20, 82);"></td>
+    <td style="background-color: rgb(31, 31, 71);"></td>
+    <td style="background-color: rgb(41, 41, 61);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(0, 0, 51);"></td>
+    <td style="background-color: rgb(5, 5, 46);"></td>
+    <td style="background-color: rgb(10, 10, 41);"></td>
+    <td style="background-color: rgb(15, 15, 36);"></td>
+    <td style="background-color: rgb(20, 20, 31);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 
@@ -1120,104 +1246,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(230, 204, 255);">
-    </td><td style="background-color: rgb(230, 209, 250);">
-    </td><td style="background-color: rgb(230, 214, 245);">
-    </td><td style="background-color: rgb(230, 219, 240);">
-    </td><td style="background-color: rgb(230, 224, 235);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(204, 153, 255);">
-    </td><td style="background-color: rgb(204, 163, 245);">
-    </td><td style="background-color: rgb(204, 173, 235);">
-    </td><td style="background-color: rgb(204, 184, 224);">
-    </td><td style="background-color: rgb(204, 194, 214);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(179, 102, 255);">
-    </td><td style="background-color: rgb(179, 117, 240);">
-    </td><td style="background-color: rgb(179, 133, 224);">
-    </td><td style="background-color: rgb(179, 148, 209);">
-    </td><td style="background-color: rgb(179, 163, 194);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(153, 51, 255);">
-    </td><td style="background-color: rgb(153, 71, 235);">
-    </td><td style="background-color: rgb(153, 92, 214);">
-    </td><td style="background-color: rgb(153, 112, 194);">
-    </td><td style="background-color: rgb(153, 133, 173);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(128, 0, 255);">
-    </td><td style="background-color: rgb(128, 26, 230);">
-    </td><td style="background-color: rgb(128, 51, 204);">
-    </td><td style="background-color: rgb(128, 77, 179);">
-    </td><td style="background-color: rgb(128, 102, 153);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(102, 0, 204);">
-    </td><td style="background-color: rgb(102, 20, 184);">
-    </td><td style="background-color: rgb(102, 41, 163);">
-    </td><td style="background-color: rgb(102, 61, 143);">
-    </td><td style="background-color: rgb(102, 82, 122);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(77, 0, 153);">
-    </td><td style="background-color: rgb(77, 15, 138);">
-    </td><td style="background-color: rgb(77, 31, 122);">
-    </td><td style="background-color: rgb(77, 46, 107);">
-    </td><td style="background-color: rgb(77, 61, 92);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(51, 0, 102);">
-    </td><td style="background-color: rgb(51, 10, 92);">
-    </td><td style="background-color: rgb(51, 20, 82);">
-    </td><td style="background-color: rgb(51, 31, 71);">
-    </td><td style="background-color: rgb(51, 41, 61);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(26, 0, 51);">
-    </td><td style="background-color: rgb(26, 5, 46);">
-    </td><td style="background-color: rgb(26, 10, 41);">
-    </td><td style="background-color: rgb(26, 15, 36);">
-    </td><td style="background-color: rgb(26, 20, 31);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(230, 204, 255);"></td>
+    <td style="background-color: rgb(230, 209, 250);"></td>
+    <td style="background-color: rgb(230, 214, 245);"></td>
+    <td style="background-color: rgb(230, 219, 240);"></td>
+    <td style="background-color: rgb(230, 224, 235);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(204, 153, 255);"></td>
+    <td style="background-color: rgb(204, 163, 245);"></td>
+    <td style="background-color: rgb(204, 173, 235);"></td>
+    <td style="background-color: rgb(204, 184, 224);"></td>
+    <td style="background-color: rgb(204, 194, 214);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(179, 102, 255);"></td>
+    <td style="background-color: rgb(179, 117, 240);"></td>
+    <td style="background-color: rgb(179, 133, 224);"></td>
+    <td style="background-color: rgb(179, 148, 209);"></td>
+    <td style="background-color: rgb(179, 163, 194);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(153, 51, 255);"></td>
+    <td style="background-color: rgb(153, 71, 235);"></td>
+    <td style="background-color: rgb(153, 92, 214);"></td>
+    <td style="background-color: rgb(153, 112, 194);"></td>
+    <td style="background-color: rgb(153, 133, 173);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(128, 0, 255);"></td>
+    <td style="background-color: rgb(128, 26, 230);"></td>
+    <td style="background-color: rgb(128, 51, 204);"></td>
+    <td style="background-color: rgb(128, 77, 179);"></td>
+    <td style="background-color: rgb(128, 102, 153);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(102, 0, 204);"></td>
+    <td style="background-color: rgb(102, 20, 184);"></td>
+    <td style="background-color: rgb(102, 41, 163);"></td>
+    <td style="background-color: rgb(102, 61, 143);"></td>
+    <td style="background-color: rgb(102, 82, 122);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(77, 0, 153);"></td>
+    <td style="background-color: rgb(77, 15, 138);"></td>
+    <td style="background-color: rgb(77, 31, 122);"></td>
+    <td style="background-color: rgb(77, 46, 107);"></td>
+    <td style="background-color: rgb(77, 61, 92);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(51, 0, 102);"></td>
+    <td style="background-color: rgb(51, 10, 92);"></td>
+    <td style="background-color: rgb(51, 20, 82);"></td>
+    <td style="background-color: rgb(51, 31, 71);"></td>
+    <td style="background-color: rgb(51, 41, 61);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(26, 0, 51);"></td>
+    <td style="background-color: rgb(26, 5, 46);"></td>
+    <td style="background-color: rgb(26, 10, 41);"></td>
+    <td style="background-color: rgb(26, 15, 36);"></td>
+    <td style="background-color: rgb(26, 20, 31);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 
@@ -1226,104 +1366,118 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(255, 204, 255);">
-    </td><td style="background-color: rgb(250, 209, 250);">
-    </td><td style="background-color: rgb(245, 214, 245);">
-    </td><td style="background-color: rgb(240, 219, 240);">
-    </td><td style="background-color: rgb(235, 224, 235);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(255, 153, 255);">
-    </td><td style="background-color: rgb(245, 163, 245);">
-    </td><td style="background-color: rgb(235, 173, 235);">
-    </td><td style="background-color: rgb(224, 184, 224);">
-    </td><td style="background-color: rgb(214, 194, 214);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(255, 102, 255);">
-    </td><td style="background-color: rgb(240, 117, 240);">
-    </td><td style="background-color: rgb(224, 133, 224);">
-    </td><td style="background-color: rgb(209, 148, 209);">
-    </td><td style="background-color: rgb(194, 163, 194);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(255, 51, 255);">
-    </td><td style="background-color: rgb(235, 71, 235);">
-    </td><td style="background-color: rgb(214, 92, 214);">
-    </td><td style="background-color: rgb(194, 112, 194);">
-    </td><td style="background-color: rgb(173, 133, 173);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(255, 0, 255);">
-    </td><td style="background-color: rgb(230, 26, 230);">
-    </td><td style="background-color: rgb(204, 51, 204);">
-    </td><td style="background-color: rgb(179, 77, 179);">
-    </td><td style="background-color: rgb(153, 102, 153);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(204, 0, 204);">
-    </td><td style="background-color: rgb(184, 20, 184);">
-    </td><td style="background-color: rgb(163, 41, 163);">
-    </td><td style="background-color: rgb(143, 61, 143);">
-    </td><td style="background-color: rgb(122, 82, 122);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(153, 0, 153);">
-    </td><td style="background-color: rgb(138, 15, 138);">
-    </td><td style="background-color: rgb(122, 31, 122);">
-    </td><td style="background-color: rgb(107, 46, 107);">
-    </td><td style="background-color: rgb(92, 61, 92);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(102, 0, 102);">
-    </td><td style="background-color: rgb(92, 10, 92);">
-    </td><td style="background-color: rgb(82, 20, 82);">
-    </td><td style="background-color: rgb(71, 31, 71);">
-    </td><td style="background-color: rgb(61, 41, 61);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(51, 0, 51);">
-    </td><td style="background-color: rgb(46, 5, 46);">
-    </td><td style="background-color: rgb(41, 10, 41);">
-    </td><td style="background-color: rgb(36, 15, 36);">
-    </td><td style="background-color: rgb(31, 20, 31);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(255, 204, 255);"></td>
+    <td style="background-color: rgb(250, 209, 250);"></td>
+    <td style="background-color: rgb(245, 214, 245);"></td>
+    <td style="background-color: rgb(240, 219, 240);"></td>
+    <td style="background-color: rgb(235, 224, 235);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(255, 153, 255);"></td>
+    <td style="background-color: rgb(245, 163, 245);"></td>
+    <td style="background-color: rgb(235, 173, 235);"></td>
+    <td style="background-color: rgb(224, 184, 224);"></td>
+    <td style="background-color: rgb(214, 194, 214);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(255, 102, 255);"></td>
+    <td style="background-color: rgb(240, 117, 240);"></td>
+    <td style="background-color: rgb(224, 133, 224);"></td>
+    <td style="background-color: rgb(209, 148, 209);"></td>
+    <td style="background-color: rgb(194, 163, 194);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(255, 51, 255);"></td>
+    <td style="background-color: rgb(235, 71, 235);"></td>
+    <td style="background-color: rgb(214, 92, 214);"></td>
+    <td style="background-color: rgb(194, 112, 194);"></td>
+    <td style="background-color: rgb(173, 133, 173);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(255, 0, 255);"></td>
+    <td style="background-color: rgb(230, 26, 230);"></td>
+    <td style="background-color: rgb(204, 51, 204);"></td>
+    <td style="background-color: rgb(179, 77, 179);"></td>
+    <td style="background-color: rgb(153, 102, 153);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(204, 0, 204);"></td>
+    <td style="background-color: rgb(184, 20, 184);"></td>
+    <td style="background-color: rgb(163, 41, 163);"></td>
+    <td style="background-color: rgb(143, 61, 143);"></td>
+    <td style="background-color: rgb(122, 82, 122);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(153, 0, 153);"></td>
+    <td style="background-color: rgb(138, 15, 138);"></td>
+    <td style="background-color: rgb(122, 31, 122);"></td>
+    <td style="background-color: rgb(107, 46, 107);"></td>
+    <td style="background-color: rgb(92, 61, 92);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(102, 0, 102);"></td>
+    <td style="background-color: rgb(92, 10, 92);"></td>
+    <td style="background-color: rgb(82, 20, 82);"></td>
+    <td style="background-color: rgb(71, 31, 71);"></td>
+    <td style="background-color: rgb(61, 41, 61);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(51, 0, 51);"></td>
+    <td style="background-color: rgb(46, 5, 46);"></td>
+    <td style="background-color: rgb(41, 10, 41);"></td>
+    <td style="background-color: rgb(36, 15, 36);"></td>
+    <td style="background-color: rgb(31, 20, 31);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
 
 
@@ -1332,107 +1486,119 @@ HSL 颜色示例
 
 <table style="font-size:12px;border-radius: 0.5rem;overflow: hidden;">
   <thead>
+    <tr>
+      <th></th>
+      <th>100%</th>
+      <th>80%</th>
+      <th>60%</th>
+      <th>40%</th>
+      <th>20%</th>
+      <th>0%</th>
+    </tr>
+  </thead>
+  <tbody>
   <tr>
-    <th>
-    </th><th>100%
-    </th><th>80%
-    </th><th>60%
-    </th><th>40%
-    </th><th>20%
-    </th><th>0%
-  </th></tr></thead><tbody>
+    <th>100%</th>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+    <td style="background-color: rgb(255, 255, 255);"></td>
+  </tr>
   <tr>
-    <th>100%
-    </th><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-    </td><td style="background-color: rgb(255, 255, 255);">
-  </td></tr><tr>
-    <th>90%
-    </th><td style="background-color: rgb(255, 204, 230);">
-    </td><td style="background-color: rgb(250, 209, 230);">
-    </td><td style="background-color: rgb(245, 214, 230);">
-    </td><td style="background-color: rgb(240, 219, 230);">
-    </td><td style="background-color: rgb(235, 224, 230);">
-    </td><td style="background-color: rgb(230, 230, 230);">
-  </td></tr><tr>
-    <th>80%
-    </th><td style="background-color: rgb(255, 153, 204);">
-    </td><td style="background-color: rgb(245, 163, 204);">
-    </td><td style="background-color: rgb(235, 173, 204);">
-    </td><td style="background-color: rgb(224, 184, 204);">
-    </td><td style="background-color: rgb(214, 194, 204);">
-    </td><td style="background-color: rgb(204, 204, 204);">
-  </td></tr><tr>
-    <th>70%
-    </th><td style="background-color: rgb(255, 102, 179);">
-    </td><td style="background-color: rgb(240, 117, 179);">
-    </td><td style="background-color: rgb(224, 133, 179);">
-    </td><td style="background-color: rgb(209, 148, 179);">
-    </td><td style="background-color: rgb(194, 163, 179);">
-    </td><td style="background-color: rgb(179, 179, 179);">
-  </td></tr><tr>
-    <th>60%
-    </th><td style="background-color: rgb(255, 51, 153);">
-    </td><td style="background-color: rgb(235, 71, 153);">
-    </td><td style="background-color: rgb(214, 92, 153);">
-    </td><td style="background-color: rgb(194, 112, 153);">
-    </td><td style="background-color: rgb(173, 133, 153);">
-    </td><td style="background-color: rgb(153, 153, 153);">
-  </td></tr><tr>
-    <th>50%
-    </th><td style="background-color: rgb(255, 0, 128);">
-    </td><td style="background-color: rgb(230, 26, 128);">
-    </td><td style="background-color: rgb(204, 51, 128);">
-    </td><td style="background-color: rgb(179, 77, 128);">
-    </td><td style="background-color: rgb(153, 102, 128);">
-    </td><td style="background-color: rgb(128, 128, 128);">
-  </td></tr><tr>
-    <th>40%
-    </th><td style="background-color: rgb(204, 0, 102);">
-    </td><td style="background-color: rgb(184, 20, 102);">
-    </td><td style="background-color: rgb(163, 41, 102);">
-    </td><td style="background-color: rgb(143, 61, 102);">
-    </td><td style="background-color: rgb(122, 82, 102);">
-    </td><td style="background-color: rgb(102, 102, 102);">
-  </td></tr><tr>
-    <th>30%
-    </th><td style="background-color: rgb(153, 0, 77);">
-    </td><td style="background-color: rgb(138, 15, 77);">
-    </td><td style="background-color: rgb(122, 31, 77);">
-    </td><td style="background-color: rgb(107, 46, 77);">
-    </td><td style="background-color: rgb(92, 61, 77);">
-    </td><td style="background-color: rgb(77, 77, 77);">
-  </td></tr><tr>
-    <th>20%
-    </th><td style="background-color: rgb(102, 0, 51);">
-    </td><td style="background-color: rgb(92, 10, 51);">
-    </td><td style="background-color: rgb(82, 20, 51);">
-    </td><td style="background-color: rgb(71, 31, 51);">
-    </td><td style="background-color: rgb(61, 41, 51);">
-    </td><td style="background-color: rgb(51, 51, 51);">
-  </td></tr><tr>
-    <th>10%
-    </th><td style="background-color: rgb(51, 0, 26);">
-    </td><td style="background-color: rgb(46, 5, 26);">
-    </td><td style="background-color: rgb(41, 10, 26);">
-    </td><td style="background-color: rgb(36, 15, 26);">
-    </td><td style="background-color: rgb(31, 20, 26);">
-    </td><td style="background-color: rgb(26, 26, 26);">
-  </td></tr><tr>
-    <th>0%
-    </th><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-    </td><td style="background-color: rgb(0, 0, 0);">
-</td></tr></tbody></table>
+    <th>90%</th>
+    <td style="background-color: rgb(255, 204, 230);"></td>
+    <td style="background-color: rgb(250, 209, 230);"></td>
+    <td style="background-color: rgb(245, 214, 230);"></td>
+    <td style="background-color: rgb(240, 219, 230);"></td>
+    <td style="background-color: rgb(235, 224, 230);"></td>
+    <td style="background-color: rgb(230, 230, 230);"></td>
+  </tr>
+  <tr>
+    <th>80%</th>
+    <td style="background-color: rgb(255, 153, 204);"></td>
+    <td style="background-color: rgb(245, 163, 204);"></td>
+    <td style="background-color: rgb(235, 173, 204);"></td>
+    <td style="background-color: rgb(224, 184, 204);"></td>
+    <td style="background-color: rgb(214, 194, 204);"></td>
+    <td style="background-color: rgb(204, 204, 204);"></td>
+  </tr>
+  <tr>
+    <th>70%</th>
+    <td style="background-color: rgb(255, 102, 179);"></td>
+    <td style="background-color: rgb(240, 117, 179);"></td>
+    <td style="background-color: rgb(224, 133, 179);"></td>
+    <td style="background-color: rgb(209, 148, 179);"></td>
+    <td style="background-color: rgb(194, 163, 179);"></td>
+    <td style="background-color: rgb(179, 179, 179);"></td>
+  </tr>
+  <tr>
+    <th>60%</th>
+    <td style="background-color: rgb(255, 51, 153);"></td>
+    <td style="background-color: rgb(235, 71, 153);"></td>
+    <td style="background-color: rgb(214, 92, 153);"></td>
+    <td style="background-color: rgb(194, 112, 153);"></td>
+    <td style="background-color: rgb(173, 133, 153);"></td>
+    <td style="background-color: rgb(153, 153, 153);"></td>
+  </tr>
+  <tr>
+    <th>50%</th>
+    <td style="background-color: rgb(255, 0, 128);"></td>
+    <td style="background-color: rgb(230, 26, 128);"></td>
+    <td style="background-color: rgb(204, 51, 128);"></td>
+    <td style="background-color: rgb(179, 77, 128);"></td>
+    <td style="background-color: rgb(153, 102, 128);"></td>
+    <td style="background-color: rgb(128, 128, 128);"></td>
+  </tr>
+  <tr>
+    <th>40%</th>
+    <td style="background-color: rgb(204, 0, 102);"></td>
+    <td style="background-color: rgb(184, 20, 102);"></td>
+    <td style="background-color: rgb(163, 41, 102);"></td>
+    <td style="background-color: rgb(143, 61, 102);"></td>
+    <td style="background-color: rgb(122, 82, 102);"></td>
+    <td style="background-color: rgb(102, 102, 102);"></td>
+  </tr>
+  <tr>
+    <th>30%</th>
+    <td style="background-color: rgb(153, 0, 77);"></td>
+    <td style="background-color: rgb(138, 15, 77);"></td>
+    <td style="background-color: rgb(122, 31, 77);"></td>
+    <td style="background-color: rgb(107, 46, 77);"></td>
+    <td style="background-color: rgb(92, 61, 77);"></td>
+    <td style="background-color: rgb(77, 77, 77);"></td>
+  </tr>
+  <tr>
+    <th>20%</th>
+    <td style="background-color: rgb(102, 0, 51);"></td>
+    <td style="background-color: rgb(92, 10, 51);"></td>
+    <td style="background-color: rgb(82, 20, 51);"></td>
+    <td style="background-color: rgb(71, 31, 51);"></td>
+    <td style="background-color: rgb(61, 41, 51);"></td>
+    <td style="background-color: rgb(51, 51, 51);"></td>
+  </tr>
+  <tr>
+    <th>10%</th>
+    <td style="background-color: rgb(51, 0, 26);"></td>
+    <td style="background-color: rgb(46, 5, 26);"></td>
+    <td style="background-color: rgb(41, 10, 26);"></td>
+    <td style="background-color: rgb(36, 15, 26);"></td>
+    <td style="background-color: rgb(31, 20, 26);"></td>
+    <td style="background-color: rgb(26, 26, 26);"></td>
+  </tr>
+  <tr>
+    <th>0%</th>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+    <td style="background-color: rgb(0, 0, 0);"></td>
+  </tr>
+  </tbody>
+</table>
 <!--rehype:className=show-header-->
-
-
 
 
 另见
