@@ -423,7 +423,7 @@ $ git config --global alias.ci commit
 $ git config --global alias.st status
 ```
 
-也可以看看：[More Aliases](https://gist.github.com/johnpolacek/69604a1f6861129ef088)
+也可以看看：[更多别名](https://gist.github.com/johnpolacek/69604a1f6861129ef088)
 
 ### 设置大小写敏感
 

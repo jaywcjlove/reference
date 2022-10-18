@@ -1,9 +1,7 @@
 CSS 备忘清单
 ===
 
-
 这是一份关于 CSS 优点的快速参考备忘单，列出了选择器语法、属性、单位和其他有用的信息
-
 
 入门
 ------------
@@ -405,6 +403,8 @@ color: orange;
 color: tan;
 color: rebeccapurple;
 ```
+
+更多标准[颜色名称](./colors-named.md)
 
 ### 十六进制颜色
 
