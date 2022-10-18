@@ -174,3 +174,55 @@ curl -s -w \
 curl -o /dev/null --silent -Iw "%{http_code}" https://example.com/my.remote.tarball.gz
 ```
 <!--rehype:className=wrap-text -->
+
+### 正在下载文件
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+curl https://example.com | \
+grep --only-matching 'src="[^"]*.[png]"' | \
+cut -d\" -f2 | \
+while read i; do curl https://example.com/"${i}" \
+-o "${i##*/}"; done
+```
+
+从站点下载所有 PNG 文件（使用GNU grep）
+
+### 下载文件，保存文件而不更改其名称
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+curl --remote-name "https://example.com/linux-distro.iso"
+```
+
+重命名文件
+
+```bash
+curl --remote-name "http://example.com/index.html" --output foo.html
+```
+
+### 继续部分下载
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+curl --remote-name --continue-at - "https://example.com/linux-distro.iso"
+```
+<!--rehype:className=wrap-text -->
+
+### 从多个域下载文件
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+curl "https://www.{example,w3,iana}.org/index.html" --output "file_#1.html"
+```
+<!--rehype:className=wrap-text -->
+
+### 下载一系列文件
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+curl "https://{foo,bar}.com/file_[1-4].webp" --output "#1_#2.webp"
+```
+<!--rehype:className=wrap-text -->
+
+下载一系列文件（输出`foo_file1.webp`、`foo_file2.webp…bar_file1_webp`等）
