@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Koajs 备忘清单
+ &#x26;  koajs cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="基于 Node.js 平台的下一代 web 开发框架，包含 Koa 的 API 参考列表和一些示例。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,koajs">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/koajs.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="koajs-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1em" height="1em" viewBox="0 0 230 230"><path d="M176.09375,0 C205.86535,-5.46895416e-15 230,24.1346502 230,53.90625 L230,176.09375 C230,205.86535 205.86535,230 176.09375,230 L53.90625,230 C24.1346502,230 3.64596944e-15,205.86535 0,176.09375 L0,53.90625 C-3.64596944e-15,24.1346502 24.1346502,5.46895416e-15 53.90625,0 L176.09375,0 Z M46.6655391,74 L39,74 L39,156 L46.6655391,156 L46.6655391,129.650518 L49.6224434,126.261287 L69.8814961,156 L77.547334,156 L54.002666,121.450727 L71.8528652,101.333433 L70.7576602,101.333433 L46.6655391,128.447878 L46.6655391,74 Z M166.63517,101.605824 C155.279402,101.605824 148.80559,105.323536 147.426199,105.960807 L147.850535,106.70429 C150.50383,105.217325 158.675584,102.455817 165.255779,102.455817 C175.471142,102.455817 176.406034,109.037681 176.428332,111.278315 L176.428388,111.441925 C176.424978,111.802842 176.39908,112.014881 176.39908,112.014881 L176.39908,129.646341 C175.125475,129.54013 169.7131,129.327706 164.937229,129.752553 C146.046211,131.027095 143.499299,136.337984 144.560438,143.454176 C145.19724,147.702947 147.319816,155.562622 159.737021,155.562622 C170.24352,155.562622 174.276504,149.933396 176.39908,146.10977 L176.39908,147.596736 C176.39908,147.596736 176.396486,147.62746 176.394995,147.684985 L176.394581,147.834611 C176.41733,149.115868 177.139684,155.137775 188.709902,155.137775 L192,155.137476 L192,154.287782 L188.70601,154.287921 C188.703429,154.288003 188.699579,154.288109 188.694503,154.288209 L188.616885,154.288028 C187.942429,154.274794 183.828246,153.934323 183.828246,147.596437 L183.828246,112.015179 C183.828246,108.403679 182.023922,101.605824 166.63517,101.605824 Z M111.11141,101.498121 C96.1873359,101.498121 84.7236914,111.37582 84.7236914,129.113791 C84.7236914,148.44464 96.5115645,155.45462 110.246303,155.45462 C125.170377,155.45462 136.634021,145.576921 136.634021,127.839249 C136.634021,108.508101 124.846148,101.498121 111.11141,101.498121 Z M164.943803,130.353127 C170.178674,129.705713 175.099477,130.137422 176.356049,130.245125 L176.356049,143.304406 C176.041682,147.621499 169.550537,154.852853 161.593939,154.852853 C154.26518,154.852853 152.694838,148.700921 152.275881,143.412408 C151.647744,135.533639 153.846521,131.648255 164.943803,130.353127 Z M111.117088,102.20789 C121.305932,102.20789 129.523107,109.148952 129.523107,127.835669 C129.523107,144.920854 120.97752,154.744851 110.240625,154.744851 C100.051482,154.744851 91.8346055,147.804087 91.8346055,129.117072 C91.8346055,112.031887 100.380193,102.20789 111.117088,102.20789 Z"></path></svg><a aria-hidden="true" tabindex="-1" href="#koajs-备忘清单"><span class="icon icon-link"></span></a>Koajs 备忘清单</h1><div class="wrap-body">
+<p>基于 Node.js 平台的下一代 web 开发框架，包含 <a href="https://koajs.com/">Koa</a> 的 API 参考列表和一些示例。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="hello-world"><a aria-hidden="true" tabindex="-1" href="#hello-world"><span class="icon icon-link"></span></a>Hello World</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p><a href="https://koajs.com/">Koa</a> 需要 <a href="https://nodejs.org">node v7.6.0</a> 或更高版本来支持ES2015、异步方法，你可以安装自己支持的 <code>node</code> 版本</p>
+<ul class="style-timeline">
+<li>安装依赖
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">mkdir</span> myapp <span class="token comment"># 创建目录</span>
+</span><span class="code-line">$ <span class="token builtin class-name">cd</span> myapp    <span class="token comment"># 进入目录</span>
+</span><span class="code-line">$ nvm <span class="token function">install</span> <span class="token number">7</span>
+</span><span class="code-line">$ <span class="token function">npm</span> init <span class="token parameter variable">-y</span> <span class="token comment"># 初始化一个配置</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> koa <span class="token comment"># 安装依赖</span>
+</span></code></pre>
+</li>
+<li>入口文件 <code>index.js</code> 添加代码：
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token maybe-class-name">Koa</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'koa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Koa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token parameter">ctx</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  ctx<span class="token punctuation">.</span><span class="token property-access">body</span> <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</li>
+<li>使用以下命令运行应用程序
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">node</span> index.js
+</span></code></pre>
+</li>
+</ul>
+<!--rehype:className=style-timeline-->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="级联"><a aria-hidden="true" tabindex="-1" href="#级联"><span class="icon icon-link"></span></a>级联</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token maybe-class-name">Koa</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'koa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Koa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// X-Response-Time x 响应时间</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> start <span class="token operator">=</span> <span class="token known-class-name class-name">Date</span><span class="token punctuation">.</span><span class="token method function property-access">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword control-flow">await</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> ms <span class="token operator">=</span> <span class="token known-class-name class-name">Date</span><span class="token punctuation">.</span><span class="token method function property-access">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start<span class="token punctuation">;</span>
+</span><span class="code-line">  ctx<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'X-Response-Time'</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>ms<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">ms</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 记录器 logger</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> start <span class="token operator">=</span> <span class="token known-class-name class-name">Date</span><span class="token punctuation">.</span><span class="token method function property-access">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword control-flow">await</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">const</span> ms <span class="token operator">=</span> <span class="token known-class-name class-name">Date</span><span class="token punctuation">.</span><span class="token method function property-access">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>ctx<span class="token punctuation">.</span><span class="token property-access">method</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>ctx<span class="token punctuation">.</span><span class="token property-access">url</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> - </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>ms<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+</span><span class="code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 响应 response</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token parameter">ctx</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  ctx<span class="token punctuation">.</span><span class="token property-access">body</span> <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="配置"><a aria-hidden="true" tabindex="-1" href="#配置"><span class="icon icon-link"></span></a>配置</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>app.env</code></td><td align="left">默认为 <code>NODE_ENV</code> 或 <code>development</code></td></tr><tr><td align="left"><code>app.keys</code></td><td align="left">签名 <code>cookie</code> 密钥数组</td></tr><tr><td align="left"><code>app.proxy</code></td><td align="left">何时信任真正的代理头字段</td></tr><tr><td align="left"><code>app.subdomainOffset</code></td><td align="left">要忽略的 <code>.subdomains</code> 的偏移量，默认为 <code>2</code></td></tr><tr><td align="left"><code>app.proxyIpHeader</code></td><td align="left">代理 <code>ip</code> 头，默认为 <code>X-Forwarded-For</code></td></tr><tr><td align="left"><code>app.maxIpsCount</code></td><td align="left">从代理 <code>ip</code> 头读取的最大 <code>ips</code> 数，默认为 <code>0</code>（表示无穷大）</td></tr></tbody></table>
+<!--rehype:className=style-list style-list-arrow-->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="appcallback"><a aria-hidden="true" tabindex="-1" href="#appcallback"><span class="icon icon-link"></span></a>app.callback()</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>app.listen(...)</code> <a href="https://koajs.com/#app-listen-">#</a></td><td align="left">为一个绑定 <code>3000</code> 端口的简单 <code>Koa</code> 应用</td></tr><tr><td align="left"><code>app.callback()</code> <a href="https://koajs.com/#app-callback-">#</a></td><td align="left">返回一个适合 <code>http.createServer()</code> 方法的回调函数用来处理请求</td></tr><tr><td align="left"><code>app.use(function)</code> <a href="https://koajs.com/#app-use-function-">#</a></td><td align="left">添加指定的中间件，详情请看 <a href="https://github.com/koajs/koa/wiki#middleware">Middleware</a></td></tr><tr><td align="left"><code>app.keys</code> <a href="https://koajs.com/#app-keys-">#</a></td><td align="left">设置签名 <code>cookie</code> 密钥</td></tr><tr><td align="left"><code>app.context</code> <a href="https://koajs.com/#app-context">#</a></td><td align="left">从中创建 <code>ctx</code> 的原型</td></tr></tbody></table>
+<!--rehype:className=style-list style-list-arrow-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="错误处理"><a aria-hidden="true" tabindex="-1" href="#错误处理"><span class="icon icon-link"></span></a>错误处理</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> ctx</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  log<span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span><span class="token string">'server error'</span><span class="token punctuation">,</span> err<span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>默认情况下 <code>Koa</code> 会将所有错误信息输出到 <code>stderr</code>， 除非 <code>app.silent</code> 是 <code>true</code>。当 <code>err.status</code> 是 <code>404</code> 或者 <code>err.expose</code> 时，默认错误处理程序也不会输出错误</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="context-示例"><a aria-hidden="true" tabindex="-1" href="#context-示例"><span class="icon icon-link"></span></a>Context 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token parameter">ctx</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  ctx<span class="token punctuation">;</span> <span class="token comment">// 这是上下文 Context</span>
+</span><span class="code-line">  ctx<span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">;</span>  <span class="token comment">// 这是 koa Request</span>
+</span><span class="code-line">  ctx<span class="token punctuation">.</span><span class="token property-access">response</span><span class="token punctuation">;</span> <span class="token comment">// 这是 koa Response</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="applisten"><a aria-hidden="true" tabindex="-1" href="#applisten"><span class="icon icon-link"></span></a>app.listen(...)</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token maybe-class-name">Koa</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'koa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Koa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p><code>app.listen(...)</code> 实际上是以下代码的语法糖:</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> <span class="token maybe-class-name">Koa</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'koa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Koa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">http<span class="token punctuation">.</span><span class="token method function property-access">createServer</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token method function property-access">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>这意味着您可以同时支持 <code>HTTPS</code> 和 <code>HTTPS</code>，或者在 <code>多个端口</code> 监听同一个应用</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> https <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'https'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> <span class="token maybe-class-name">Koa</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'koa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Koa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">http<span class="token punctuation">.</span><span class="token method function property-access">createServer</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token method function property-access">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">https<span class="token punctuation">.</span><span class="token method function property-access">createServer</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token method function property-access">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">3001</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ctxthrow-示例"><a aria-hidden="true" tabindex="-1" href="#ctxthrow-示例"><span class="icon icon-link"></span></a>ctx.throw 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">ctx<span class="token punctuation">.</span><span class="token keyword control-flow">throw</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token keyword control-flow">throw</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">'name required'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token keyword control-flow">throw</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">'name required'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> user <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p><code>this.throw('name required', 400)</code> 等价于</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> err <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'name required'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">err<span class="token punctuation">.</span><span class="token property-access">status</span> <span class="token operator">=</span> <span class="token number">400</span><span class="token punctuation">;</span>
+</span><span class="code-line">err<span class="token punctuation">.</span><span class="token property-access">expose</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword control-flow">throw</span> err<span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ctxassert-示例"><a aria-hidden="true" tabindex="-1" href="#ctxassert-示例"><span class="icon icon-link"></span></a>ctx.assert 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">assert</span><span class="token punctuation">(</span>
+</span><span class="code-line">  ctx<span class="token punctuation">.</span><span class="token property-access">state</span><span class="token punctuation">.</span><span class="token property-access">user</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token number">401</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string">'User not found. Please login!'</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="context上下文-api"><a aria-hidden="true" tabindex="-1" href="#context上下文-api"><span class="icon icon-link"></span></a>Context(上下文) API</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>ctx.req</code></td><td align="left">Node 的 request 对象</td></tr><tr><td align="left"><code>ctx.res</code></td><td align="left">Node 的 response 对象</td></tr><tr><td align="left"><code>ctx.request</code></td><td align="left">Koa 的 Request 对象</td></tr><tr><td align="left"><code>ctx.response</code></td><td align="left">Koa 的 Response 对象</td></tr><tr><td align="left"><code>ctx.state</code></td><td align="left">推荐的命名空间，用于通过中间件传递信息到前端视图</td></tr><tr><td align="left"><code>ctx.app</code></td><td align="left">应用实例引用</td></tr><tr><td align="left"><code>ctx.app.emit</code></td><td align="left">发出由第一个参数定义的类型的事件</td></tr><tr><td align="left"><code>ctx.cookies.get(name, [options])</code></td><td align="left">获得 <code>cookie</code> 中名为 <code>name</code> 的值</td></tr><tr><td align="left"><code>ctx.cookies.set(name, value, [options])</code></td><td align="left">设置 <code>cookie</code> 中名为 <code>name</code> 的值</td></tr><tr><td align="left"><code>ctx.throw([status], [msg], [properties])</code></td><td align="left">抛出包含 <code>.status</code> 属性的错误，默认为 <code>500</code></td></tr><tr><td align="left"><code>ctx.assert(value, [status], [msg], [properties])</code></td><td align="left">当 <code>!value</code> 时， <code>Helper</code> 方法抛出一个类似 <code>.throw()</code> 的错误</td></tr><tr><td align="left"><code>ctx.respond</code></td><td align="left">避免使用 <code>Koa</code> 的内置响应处理功能，您可以直接赋值 <code>this.repond = false</code></td></tr></tbody></table>
+<!--rehype:className=style-list style-list-arrow-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ctxcookiesset-参数"><a aria-hidden="true" tabindex="-1" href="#ctxcookiesset-参数"><span class="icon icon-link"></span></a>ctx.cookies.set 参数</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>maxAge</code></td><td align="left">表示从Date开始的毫秒数 <code>now()</code> 到期。</td></tr><tr><td align="left"><code>expires</code></td><td align="left">一个 <code>Date</code> 对象，指示 <code>cookie</code> 的到期日期（默认情况下在会话结束时到期）</td></tr><tr><td align="left"><code>path</code></td><td align="left">表示 <code>cookie</code> 路径的字符串（默认为<code>/</code>）</td></tr><tr><td align="left"><code>domain</code></td><td align="left">表示 <code>cookie</code> 的域的字符串（无默认值）</td></tr><tr><td align="left"><code>secure</code></td><td align="left">一个布尔值，指示 <code>cookie</code> 是否只通过HTTPS发送（HTTP默认为false，HTTPS默认为true）。阅读有关此选项的更多信息</td></tr><tr><td align="left"><code>httpOnly</code></td><td align="left">一个布尔值，指示cookie是否只通过HTTP（S）发送，而不可用于客户端 JavaScript（默认为true）</td></tr><tr><td align="left"><code>sameSite</code></td><td align="left">一个布尔值或字符串，指示cookie是否为“同一站点”cookie（默认为false）。这可以设置为“strict”、“lax”、“none”或true（映射为“strect”）</td></tr><tr><td align="left"><code>signed</code></td><td align="left">一个布尔值，指示是否对cookie进行签名（默认为false）。如果这是真的，还将发送另一个附加了.sig后缀的同名cookie，其中一个27字节的url安全base64 SHA1值表示cookie name=cookie值相对于第一个Keygrip键的哈希值。此签名密钥用于在下次收到cookie时检测篡改</td></tr><tr><td align="left"><code>overwrite</code></td><td align="left">一个布尔值，指示是否覆盖以前设置的同名 <code>cookie</code>（默认为false）。如果为true，则在设置此Cookie时，将从set-Cookie标头中筛选出在同一请求期间设置的具有相同名称的所有Cookie（无论路径或域如何）</td></tr></tbody></table>
+<!--rehype:className=style-list style-list-arrow-->
+</div></div></div><div class="wrap row-span-5"><div class="wrap-header h3wrap"><h3 id="请求request"><a aria-hidden="true" tabindex="-1" href="#请求request"><span class="icon icon-link"></span></a>请求(Request)</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-5-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>request.header</code></td><td align="left">请求头对象</td></tr><tr><td align="left"><code>request.header=</code></td><td align="left">设置请求头对象</td></tr><tr><td align="left"><code>request.headers</code></td><td align="left">请求头对象。等价于 request.header.</td></tr><tr><td align="left"><code>request.headers=</code></td><td align="left">设置请求头对象。 等价于request.header=.</td></tr><tr><td align="left"><code>request.method</code></td><td align="left">请求方法</td></tr><tr><td align="left"><code>request.method=</code></td><td align="left">设置请求方法, 在实现中间件时非常有用，比如 methodOverride()</td></tr><tr><td align="left"><code>request.length</code></td><td align="left">以数字的形式返回 request 的内容长度(Content-Length)，或者返回 undefined。</td></tr><tr><td align="left"><code>request.url</code></td><td align="left">获得请求url地址.</td></tr><tr><td align="left"><code>request.url=</code></td><td align="left">设置请求地址，用于重写url地址时</td></tr><tr><td align="left"><code>request.originalUrl</code></td><td align="left">获取请求原始地址</td></tr><tr><td align="left"><code>request.origin</code></td><td align="left">获取URL原始地址, 包含 protocol 和 host</td></tr><tr><td align="left"><code>request.href</code></td><td align="left">获取完整的请求URL, 包含 protocol, host 和 url</td></tr><tr><td align="left"><code>request.path</code></td><td align="left">获取请求路径名</td></tr><tr><td align="left"><code>request.path=</code></td><td align="left">设置请求路径名并保留当前查询字符串</td></tr><tr><td align="left"><code>request.querystring</code></td><td align="left">获取查询参数字符串(url中?后面的部分)，不包含?</td></tr><tr><td align="left"><code>request.querystring=</code></td><td align="left">设置原始查询字符串</td></tr><tr><td align="left"><code>request.search</code></td><td align="left">获取查询参数字符串，包含?</td></tr><tr><td align="left"><code>request.search=</code></td><td align="left">设置原始查询字符串</td></tr><tr><td align="left"><code>request.host</code></td><td align="left">获取 host (hostname:port)。 当 app.proxy 设置为 true 时，支持 X-Forwarded-Host</td></tr><tr><td align="left"><code>request.hostname</code></td><td align="left">获取 hostname。当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。</td></tr><tr><td align="left"><code>request.URL</code></td><td align="left">获取 WHATWG 解析的对象.</td></tr><tr><td align="left"><code>request.type</code></td><td align="left">获取请求 Content-Type，不包含像 "charset" 这样的参数。</td></tr><tr><td align="left"><code>request.charset</code></td><td align="left">获取请求 charset，没有则返回 <code>undefined</code></td></tr><tr><td align="left"><code>request.query</code></td><td align="left">将查询参数字符串进行解析并以对象的形式返回，如果没有查询参数字字符串则返回一个空对象</td></tr><tr><td align="left"><code>request.query=</code></td><td align="left">根据给定的对象设置查询参数字符串</td></tr><tr><td align="left"><code>request.fresh</code></td><td align="left">检查请求缓存是否 "fresh"(内容没有发生变化)</td></tr><tr><td align="left"><code>request.stale</code></td><td align="left">与 req.fresh 相反</td></tr><tr><td align="left"><code>request.protocol</code></td><td align="left">返回请求协议，"https" 或者 "http"</td></tr><tr><td align="left"><code>request.secure</code></td><td align="left">简化版 this.protocol == "https"，用来检查请求是否通过 TLS 发送</td></tr><tr><td align="left"><code>request.ip</code></td><td align="left">请求远程地址，当 app.proxy 设置为 true 时，支持 X-Forwarded-Host</td></tr><tr><td align="left"><code>request.ips</code></td><td align="left">当 X-Forwarded-For 存在并且 app.proxy 有效，将会返回一个有序（从 upstream 到 downstream）ip 数组</td></tr><tr><td align="left"><code>request.subdomains</code></td><td align="left">以数组形式返回子域名</td></tr><tr><td align="left"><code>request.is(types...)</code></td><td align="left">检查请求所包含的 "Content-Type" 是否为给定的 type 值</td></tr><tr><td align="left"><code>request.accepts(types)</code></td><td align="left">检查给定的类型 types(s) 是否可被接受，当为 true 时返回最佳匹配，否则返回 false</td></tr><tr><td align="left"><code>request.acceptsEncodings(encodings)</code></td><td align="left">检查 <code>encodings</code> 是否可以被接受，当为 <code>true</code> 时返回最佳匹配，否则返回 <code>false</code></td></tr><tr><td align="left"><code>request.acceptsCharsets(charsets)</code></td><td align="left">检查 <code>charsets</code> 是否可以被接受，如果为 <code>true</code> 则返回最佳匹配，否则返回 <code>false</code></td></tr><tr><td align="left"><code>request.acceptsLanguages(langs)</code></td><td align="left">检查 <code>langs</code> 是否可以被接受，如果为 <code>true</code> 则返回最佳匹配，否则返回 <code>false</code></td></tr><tr><td align="left"><code>request.idempotent</code></td><td align="left">检查请求是否为幂等(idempotent)</td></tr><tr><td align="left"><code>request.socket</code></td><td align="left">返回请求的socket</td></tr><tr><td align="left"><code>request.get(field)</code></td><td align="left">返回请求头</td></tr></tbody></table>
+<!--rehype:className=style-list style-list-arrow-->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="响应response"><a aria-hidden="true" tabindex="-1" href="#响应response"><span class="icon icon-link"></span></a>响应(Response)</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>response.header</code></td><td align="left">Response header 对象</td></tr><tr><td align="left"><code>response.headers</code></td><td align="left">Response header 对象。等价于 response.header.</td></tr><tr><td align="left"><code>response.socket</code></td><td align="left">Request socket.</td></tr><tr><td align="left"><code>response.status</code></td><td align="left">获取响应状态。 默认情况下，response.status设置为404，而不像node's res.statusCode默认为200。</td></tr><tr><td align="left"><code>response.status=</code></td><td align="left">通过数字设置响应状态</td></tr><tr><td align="left"><code>response.message</code></td><td align="left">获取响应状态消息。默认情况下, response.message关联response.status。</td></tr><tr><td align="left"><code>response.message=</code></td><td align="left">将响应状态消息设置为给定值。</td></tr><tr><td align="left"><code>response.length=</code></td><td align="left">将响应Content-Length设置为给定值。</td></tr><tr><td align="left"><code>response.length</code></td><td align="left">如果 Content-Length 作为数值存在，或者可以通过 ctx.body 来进行计算，则返回相应数值，否则返回 undefined。</td></tr><tr><td align="left"><code>response.body</code></td><td align="left">获取响应体。</td></tr><tr><td align="left"><code>response.body=</code></td><td align="left">设置响应体为如 <code>string</code>,<code>Buffer</code>,<code>Stream</code>,<code>Object|Array</code>,<code>null</code></td></tr><tr><td align="left"><code>response.get(field)</code></td><td align="left">获取 response header 中字段值，field 不区分大小写</td></tr><tr><td align="left"><code>response.set(field, value)</code></td><td align="left">设置 response header 字段 field 的值为 value</td></tr><tr><td align="left"><code>response.append(field, value)</code></td><td align="left">添加额外的字段field 的值为 val</td></tr><tr><td align="left"><code>response.set(fields)</code></td><td align="left">使用对象同时设置 response header 中多个字段的值</td></tr><tr><td align="left"><code>response.remove(field)</code></td><td align="left">移除 response header 中字段 filed</td></tr><tr><td align="left"><code>response.type</code></td><td align="left">获取 response Content-Type，不包含像"charset"这样的参数</td></tr><tr><td align="left"><code>response.type=</code></td><td align="left">通过 mime 类型的字符串或者文件扩展名设置 response Content-Type</td></tr><tr><td align="left"><code>response.is(types...)</code></td><td align="left">跟 <code>ctx.request.is()</code> 非常类似。用来检查响应类型是否是所提供的类型之一</td></tr><tr><td align="left"><code>response.redirect(url, [alt])</code></td><td align="left">执行 [302] 重定向到对应 url</td></tr><tr><td align="left"><code>response.attachment([filename])</code></td><td align="left">设置 "attachment" 的 Content-Disposition，用于给客户端发送信号来提示下载</td></tr><tr><td align="left"><code>response.headerSent</code></td><td align="left">检查 response header 是否已经发送，用于在发生错误时检查客户端是否被通知。</td></tr><tr><td align="left"><code>response.lastModified</code></td><td align="left">如果存在 Last-Modified，则以 Date 的形式返回。</td></tr><tr><td align="left"><code>response.lastModified=</code></td><td align="left">以 UTC 格式设置 Last-Modified。您可以使用 Date 或 date 字符串来进行设置。</td></tr><tr><td align="left"><code>response.etag=</code></td><td align="left">设置 包含 "s 的 ETag</td></tr><tr><td align="left"><code>response.vary(field)</code></td><td align="left">不同于field.</td></tr><tr><td align="left"><code>response.flushHeaders()</code></td><td align="left">刷新任何设置的响应头，并开始响应体</td></tr></tbody></table>
+<!--rehype:className=style-list style-list-arrow-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="请求request别名"><a aria-hidden="true" tabindex="-1" href="#请求request别名"><span class="icon icon-link"></span></a>请求(Request)别名</h3><div class="wrap-body">
+<p>以下访问器和别名与 <a href="#%E8%AF%B7%E6%B1%82request">Request</a> 等价：</p>
+<ul>
+<li><code>ctx.header</code></li>
+<li><code>ctx.headers</code></li>
+<li><code>ctx.method</code></li>
+<li><code>ctx.method=</code></li>
+<li><code>ctx.url</code></li>
+<li><code>ctx.url=</code></li>
+<li><code>ctx.originalUrl</code></li>
+<li><code>ctx.origin</code></li>
+<li><code>ctx.href</code></li>
+<li><code>ctx.path</code></li>
+<li><code>ctx.path=</code></li>
+<li><code>ctx.query</code></li>
+<li><code>ctx.query=</code></li>
+<li><code>ctx.querystring</code></li>
+<li><code>ctx.querystring=</code></li>
+<li><code>ctx.host</code></li>
+<li><code>ctx.hostname</code></li>
+<li><code>ctx.fresh</code></li>
+<li><code>ctx.stale</code></li>
+<li><code>ctx.socket</code></li>
+<li><code>ctx.protocol</code></li>
+<li><code>ctx.secure</code></li>
+<li><code>ctx.ip</code></li>
+<li><code>ctx.ips</code></li>
+<li><code>ctx.subdomains</code></li>
+<li><code>ctx.is()</code></li>
+<li><code>ctx.accepts()</code></li>
+<li><code>ctx.acceptsEncodings()</code></li>
+<li><code>ctx.acceptsCharsets()</code></li>
+<li><code>ctx.acceptsLanguages()</code></li>
+<li><code>ctx.get()</code></li>
+</ul>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="响应response别名"><a aria-hidden="true" tabindex="-1" href="#响应response别名"><span class="icon icon-link"></span></a>响应(Response)别名</h3><div class="wrap-body">
+<p>以下访问器和别名与 <a href="#%E5%93%8D%E5%BA%94response">Response</a> 等价：</p>
+<ul>
+<li><code>ctx.body</code></li>
+<li><code>ctx.body=</code></li>
+<li><code>ctx.status</code></li>
+<li><code>ctx.status=</code></li>
+<li><code>ctx.message</code></li>
+<li><code>ctx.message=</code></li>
+<li><code>ctx.length=</code></li>
+<li><code>ctx.length</code></li>
+<li><code>ctx.type=</code></li>
+<li><code>ctx.type</code></li>
+<li><code>ctx.headerSent</code></li>
+<li><code>ctx.redirect()</code></li>
+<li><code>ctx.attachment()</code></li>
+<li><code>ctx.set()</code></li>
+<li><code>ctx.append()</code></li>
+<li><code>ctx.remove()</code></li>
+<li><code>ctx.lastModified=</code></li>
+<li><code>ctx.etag=</code></li>
+</ul>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="requestfresh-示例"><a aria-hidden="true" tabindex="-1" href="#requestfresh-示例"><span class="icon icon-link"></span></a>request.fresh 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// freshness 检查需要状态 20x 或 304</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token property-access">status</span> <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'ETag'</span><span class="token punctuation">,</span> <span class="token string">'123'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 缓存正常</span>
+</span><span class="code-line"><span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>ctx<span class="token punctuation">.</span><span class="token property-access">fresh</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  ctx<span class="token punctuation">.</span><span class="token property-access">status</span> <span class="token operator">=</span> <span class="token number">304</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 缓存已过时</span>
+</span><span class="code-line"><span class="token comment">// 获取新数据</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token property-access">body</span> <span class="token operator">=</span> <span class="token keyword control-flow">await</span> db<span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span><span class="token string">'something'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ctxis-示例"><a aria-hidden="true" tabindex="-1" href="#ctxis-示例"><span class="icon icon-link"></span></a>ctx.is 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// Content-Type: text/html; charset=utf-8</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">is</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 'html'</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">is</span><span class="token punctuation">(</span><span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 'text/html'</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">is</span><span class="token punctuation">(</span><span class="token string">'text/*'</span><span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => 'text/html'</span>
+</span><span class="code-line"><span class="token comment">// 当 Content-Type 为 application/json 时</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">is</span><span class="token punctuation">(</span><span class="token string">'json'</span><span class="token punctuation">,</span> <span class="token string">'urlencoded'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 'json'</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">is</span><span class="token punctuation">(</span><span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => 'application/json'</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">is</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">,</span> <span class="token string">'application/*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => 'application/json'</span>
+</span><span class="code-line">
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">is</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => false</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="ctxaccepts-示例"><a aria-hidden="true" tabindex="-1" href="#ctxaccepts-示例"><span class="icon icon-link"></span></a>ctx.accepts 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// 接受: text/*, application/json</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">accepts</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => "html"</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">accepts</span><span class="token punctuation">(</span><span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => "text/html"</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">accepts</span><span class="token punctuation">(</span><span class="token string">'json'</span><span class="token punctuation">,</span> <span class="token string">'text'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => "json"</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">accepts</span><span class="token punctuation">(</span><span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => "application/json"</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="requestacceptscharsets-示例"><a aria-hidden="true" tabindex="-1" href="#requestacceptscharsets-示例"><span class="icon icon-link"></span></a>request.acceptsCharsets 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5</span>
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">acceptsCharsets</span><span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">,</span> <span class="token string">'utf-7'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => "utf-8"</span>
+</span><span class="code-line">
+</span><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">acceptsCharsets</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'utf-7'</span><span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => "utf-8"</span>
+</span></code></pre>
+<p>检查 <code>charsets</code> 是否可以被接受，如果为 <code>true</code> 则返回最佳匹配， 否则返回 <code>false</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="responseset-示例"><a aria-hidden="true" tabindex="-1" href="#responseset-示例"><span class="icon icon-link"></span></a>response.set 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">ctx<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token string-property property">'Etag'</span><span class="token operator">:</span> <span class="token string">'1234'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string-property property">'Last-Modified'</span><span class="token operator">:</span> date
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>使用对象同时设置 response header 中多个字段的值</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="responsetype-示例"><a aria-hidden="true" tabindex="-1" href="#responsetype-示例"><span class="icon icon-link"></span></a>response.type 示例</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> ct <span class="token operator">=</span> ctx<span class="token punctuation">.</span><span class="token property-access">type</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => "image/png"</span>
+</span></code></pre>
+<p>获取 response Content-Type，不包含像"charset"这样的参数</p>
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+    const box = elm?.parentElement?.parentElement;
+    console.log('elm:2', box, document.querySelectorAll('.h2wrap-body .wrap'))
+  }
+}
+anchorPoint();
+</script></body>
+</html>
