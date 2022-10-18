@@ -228,6 +228,38 @@
 <pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">--silent</span> <span class="token parameter variable">-Iw</span> <span class="token string">"%{http_code}"</span> https://example.com/my.remote.tarball.gz
 </span></code></pre>
 <!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="正在下载文件"><a aria-hidden="true" tabindex="-1" href="#正在下载文件"><span class="icon icon-link"></span></a>正在下载文件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> https://example.com <span class="token operator">|</span> <span class="token punctuation">\</span>
+</span><span class="code-line"><span class="token function">grep</span> --only-matching <span class="token string">'src="[^"]*.[png]"'</span> <span class="token operator">|</span> <span class="token punctuation">\</span>
+</span><span class="code-line"><span class="token function">cut</span> -d<span class="token punctuation">\</span>" <span class="token parameter variable">-f2</span> <span class="token operator">|</span> <span class="token punctuation">\</span>
+</span><span class="code-line"><span class="token keyword">while</span> <span class="token builtin class-name">read</span> i<span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token function">curl</span> https://example.com/<span class="token string">"<span class="token variable">${i}</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line"><span class="token parameter variable">-o</span> <span class="token string">"<span class="token variable">${i<span class="token operator">##</span>*<span class="token operator">/</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">done</span>
+</span></code></pre>
+<p>从站点下载所有 PNG 文件（使用GNU grep）</p>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="下载文件保存文件而不更改其名称"><a aria-hidden="true" tabindex="-1" href="#下载文件保存文件而不更改其名称"><span class="icon icon-link"></span></a>下载文件，保存文件而不更改其名称</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> --remote-name <span class="token string">"https://example.com/linux-distro.iso"</span>
+</span></code></pre>
+<p>重命名文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> --remote-name <span class="token string">"http://example.com/index.html"</span> <span class="token parameter variable">--output</span> foo.html
+</span></code></pre>
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="继续部分下载"><a aria-hidden="true" tabindex="-1" href="#继续部分下载"><span class="icon icon-link"></span></a>继续部分下载</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> --remote-name --continue-at - <span class="token string">"https://example.com/linux-distro.iso"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="从多个域下载文件"><a aria-hidden="true" tabindex="-1" href="#从多个域下载文件"><span class="icon icon-link"></span></a>从多个域下载文件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token string">"https://www.{example,w3,iana}.org/index.html"</span> <span class="token parameter variable">--output</span> <span class="token string">"file_#1.html"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="下载一系列文件"><a aria-hidden="true" tabindex="-1" href="#下载一系列文件"><span class="icon icon-link"></span></a>下载一系列文件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token string">"https://{foo,bar}.com/file_[1-4].webp"</span> <span class="token parameter variable">--output</span> <span class="token string">"#1_#2.webp"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>下载一系列文件（输出<code>foo_file1.webp</code>、<code>foo_file2.webp…bar_file1_webp</code>等）</p>
 </div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
 if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
   window.onhashchange = function () {
