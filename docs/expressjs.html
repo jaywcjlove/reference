@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Express 备忘清单
+ &#x26;  expressjs cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这是用于 Node.js 的快速、不拘一格、极简主义的 Web 框架，包含 Express.js 的 API 参考列表和一些示例。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,expressjs">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/expressjs.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="express-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#express-备忘清单"><span class="icon icon-link"></span></a>Express 备忘清单</h1><div class="wrap-body">
+<p>这是用于 Node.js 的快速、不拘一格、极简主义的 Web 框架，包含 <a href="http://expressjs.com/">Express.js</a> 的 API 参考列表和一些示例。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="hello-world"><a aria-hidden="true" tabindex="-1" href="#hello-world"><span class="icon icon-link"></span></a>Hello World</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<ul class="style-timeline">
+<li>安装依赖
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">mkdir</span> myapp <span class="token comment"># 创建目录</span>
+</span><span class="code-line">$ <span class="token builtin class-name">cd</span> myapp    <span class="token comment"># 进入目录</span>
+</span><span class="code-line">$ <span class="token function">npm</span> init <span class="token parameter variable">-y</span> <span class="token comment"># 初始化一个配置</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> express <span class="token comment"># 安装依赖</span>
+</span></code></pre>
+</li>
+<li>入口文件 <code>index.js</code> 添加代码：
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">监听端口</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">示例应用</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</li>
+<li>使用以下命令运行应用程序
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">node</span> index.js
+</span></code></pre>
+</li>
+</ul>
+<!--rehype:className=style-timeline-->
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="express--h"><a aria-hidden="true" tabindex="-1" href="#express--h"><span class="icon icon-link"></span></a>express -h</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">Usage: express <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>dir<span class="token punctuation">]</span>
+</span><span class="code-line">Options:
+</span><span class="code-line">  -h, <span class="token parameter variable">--help</span>          输出使用信息
+</span><span class="code-line">      <span class="token parameter variable">--version</span>       输出版本号
+</span><span class="code-line">  -e, <span class="token parameter variable">--ejs</span>           添加 ejs 引擎支持
+</span><span class="code-line">      <span class="token parameter variable">--hbs</span>           添加 hbs 引擎支持
+</span><span class="code-line">      <span class="token parameter variable">--pug</span>           添加 pug 引擎支持
+</span><span class="code-line">  -H, <span class="token parameter variable">--hogan</span>         添加 hogan.js 引擎支持
+</span><span class="code-line">      --no-view       无视图引擎生成
+</span><span class="code-line">  -v, <span class="token parameter variable">--view</span> <span class="token operator">&#x3C;</span>engine<span class="token operator">></span> 添加视图 <span class="token operator">&#x3C;</span>engine<span class="token operator">></span> 支持 <span class="token punctuation">(</span>ejs<span class="token operator">|</span>hbs<span class="token operator">|</span>hjs<span class="token operator">|</span>jade<span class="token operator">|</span>pug<span class="token operator">|</span>twig<span class="token operator">|</span>vash<span class="token punctuation">)</span> <span class="token punctuation">(</span>默认jade<span class="token punctuation">)</span> 
+</span><span class="code-line">  -c, <span class="token parameter variable">--css</span> <span class="token operator">&#x3C;</span>engine<span class="token operator">></span>  添加样式表 <span class="token operator">&#x3C;</span>engine<span class="token operator">></span> 支持 <span class="token punctuation">(</span>less<span class="token operator">|</span>stylus<span class="token operator">|</span>compass<span class="token operator">|</span>sass<span class="token punctuation">)</span> <span class="token punctuation">(</span>默认css<span class="token punctuation">)</span>
+</span><span class="code-line">      <span class="token parameter variable">--git</span>           添加 .gitignore
+</span><span class="code-line">  -f, <span class="token parameter variable">--force</span>         强制非空目录
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>创建一个 <code>myapp</code> 的项目</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ express <span class="token parameter variable">--view</span><span class="token operator">=</span>pug myapp
+</span><span class="code-line"><span class="token comment"># 运行应用程序</span>
+</span><span class="code-line">$ <span class="token assign-left variable">DEBUG</span><span class="token operator">=</span>myapp:* <span class="token function">npm</span> start
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="express"><a aria-hidden="true" tabindex="-1" href="#express"><span class="icon icon-link"></span></a>express()</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>express.json()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#express.json">#</a></td></tr><tr><td align="left"><code>express.raw()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#express.raw">#</a></td></tr><tr><td align="left"><code>express.Router()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#express.router">#</a></td></tr><tr><td align="left"><code>express.static()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#express.static">#</a></td></tr><tr><td align="left"><code>express.text()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#express.text">#</a></td></tr><tr><td align="left"><code>express.urlencoded()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#express.urlencoded">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="router"><a aria-hidden="true" tabindex="-1" href="#router"><span class="icon icon-link"></span></a>Router</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>router.all()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#router.all">#</a></td></tr><tr><td align="left"><code>router.METHOD()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#router.METHOD">#</a></td></tr><tr><td align="left"><code>router.param()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#router.param">#</a></td></tr><tr><td align="left"><code>router.route()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#router.route">#</a></td></tr><tr><td align="left"><code>router.use()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#router.use">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="application"><a aria-hidden="true" tabindex="-1" href="#application"><span class="icon icon-link"></span></a>Application</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">dir</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token property-access">locals</span><span class="token punctuation">.</span><span class="token property-access">title</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// => 'My App'</span>
+</span><span class="code-line"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">dir</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token property-access">locals</span><span class="token punctuation">.</span><span class="token property-access">email</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// => 'me@myapp.com'</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="属性"><a aria-hidden="true" tabindex="-1" href="#属性"><span class="icon icon-link"></span></a><strong>属性</strong></h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>app.locals</code></td><td align="left">应用程序中的局部变量 <a href="http://expressjs.com/en/4x/api.html#app.locals">#</a></td></tr><tr><td align="left"><code>app.mountpath</code></td><td align="left">安装子应用程序的路径模式 <a href="http://expressjs.com/en/4x/api.html#app.mountpath">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="events"><a aria-hidden="true" tabindex="-1" href="#events"><span class="icon icon-link"></span></a><strong>Events</strong></h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>mount</code></td><td align="left">子应用挂载到父应用上，子应用上触发事件 <a href="http://expressjs.com/en/4x/api.html#app.onmount">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="方法"><a aria-hidden="true" tabindex="-1" href="#方法"><span class="icon icon-link"></span></a><strong>方法</strong></h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>app.all()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.all">#</a></td></tr><tr><td align="left"><code>app.delete()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.delete.method">#</a></td></tr><tr><td align="left"><code>app.disable()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.disable">#</a></td></tr><tr><td align="left"><code>app.disabled()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.disabled">#</a></td></tr><tr><td align="left"><code>app.enable()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.enable">#</a></td></tr><tr><td align="left"><code>app.enabled()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.enabled">#</a></td></tr><tr><td align="left"><code>app.engine()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.engine">#</a></td></tr><tr><td align="left"><code>app.get(name)</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.get">#</a></td></tr><tr><td align="left"><code>app.get(path, callback)</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.get.method">#</a></td></tr><tr><td align="left"><code>app.listen()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.listen">#</a></td></tr><tr><td align="left"><code>app.METHOD()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.METHOD">#</a></td></tr><tr><td align="left"><code>app.param()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.param">#</a></td></tr><tr><td align="left"><code>app.path()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.path">#</a></td></tr><tr><td align="left"><code>app.post()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.post.method">#</a></td></tr><tr><td align="left"><code>app.put()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.put.method">#</a></td></tr><tr><td align="left"><code>app.render()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.render">#</a></td></tr><tr><td align="left"><code>app.route()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.route">#</a></td></tr><tr><td align="left"><code>app.set()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.set">#</a></td></tr><tr><td align="left"><code>app.use()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#app.use">#</a></td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="request"><a aria-hidden="true" tabindex="-1" href="#request"><span class="icon icon-link"></span></a>Request</h3><div class="wrap-body">
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="属性-1"><a aria-hidden="true" tabindex="-1" href="#属性-1"><span class="icon icon-link"></span></a>属性</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>req.app</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.app">#</a></td></tr><tr><td align="left"><code>req.baseUrl</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.baseUrl">#</a></td></tr><tr><td align="left"><code>req.body</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.body">#</a></td></tr><tr><td align="left"><code>req.cookies</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.cookies">#</a></td></tr><tr><td align="left"><code>req.fresh</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.fresh">#</a></td></tr><tr><td align="left"><code>req.hostname</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.hostname">#</a></td></tr><tr><td align="left"><code>req.ip</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.ip">#</a></td></tr><tr><td align="left"><code>req.ips</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.ips">#</a></td></tr><tr><td align="left"><code>req.method</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.method">#</a></td></tr><tr><td align="left"><code>req.originalUrl</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.originalUrl">#</a></td></tr><tr><td align="left"><code>req.params</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.params">#</a></td></tr><tr><td align="left"><code>req.path</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.path">#</a></td></tr><tr><td align="left"><code>req.protocol</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.protocol">#</a></td></tr><tr><td align="left"><code>req.query</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.query">#</a></td></tr><tr><td align="left"><code>req.route</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.route">#</a></td></tr><tr><td align="left"><code>req.secure</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.secure">#</a></td></tr><tr><td align="left"><code>req.signedCookies</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.signedCookies">#</a></td></tr><tr><td align="left"><code>req.stale</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.stale">#</a></td></tr><tr><td align="left"><code>req.subdomains</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.subdomains">#</a></td></tr><tr><td align="left"><code>req.xhr</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.xhr">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="方法-1"><a aria-hidden="true" tabindex="-1" href="#方法-1"><span class="icon icon-link"></span></a>方法</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>req.accepts()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.accepts">#</a></td></tr><tr><td align="left"><code>req.acceptsCharsets()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.acceptsCharsets">#</a></td></tr><tr><td align="left"><code>req.acceptsEncodings()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.acceptsEncodings">#</a></td></tr><tr><td align="left"><code>req.acceptsLanguages()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.acceptsLanguages">#</a></td></tr><tr><td align="left"><code>req.get()</code></td><td align="left">获取HTTP 请求头字段 <a href="http://expressjs.com/en/4x/api.html#req.get">#</a></td></tr><tr><td align="left"><code>req.is()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.is">#</a></td></tr><tr><td align="left"><code>req.param()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.param">#</a></td></tr><tr><td align="left"><code>req.range()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#req.range">#</a></td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="response"><a aria-hidden="true" tabindex="-1" href="#response"><span class="icon icon-link"></span></a>Response</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">dir</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span><span class="token property-access">headersSent</span><span class="token punctuation">)</span> <span class="token comment">// false</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'OK'</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">dir</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span><span class="token property-access">headersSent</span><span class="token punctuation">)</span> <span class="token comment">// true</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="属性-2"><a aria-hidden="true" tabindex="-1" href="#属性-2"><span class="icon icon-link"></span></a>属性</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>res.app </code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.app">#</a></td></tr><tr><td align="left"><code>res.headersSent</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.headersSent">#</a></td></tr><tr><td align="left"><code>res.locals</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.locals">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h4wrap"><h4 id="方法-2"><a aria-hidden="true" tabindex="-1" href="#方法-2"><span class="icon icon-link"></span></a>方法</h4><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>res.append()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.append">#</a></td></tr><tr><td align="left"><code>res.attachment()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.attachment">#</a></td></tr><tr><td align="left"><code>res.cookie()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.cookie">#</a></td></tr><tr><td align="left"><code>res.clearCookie()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.clearCookie">#</a></td></tr><tr><td align="left"><code>res.download()</code></td><td align="left">提示要下载的文件 <a href="http://expressjs.com/en/4x/api.html#res.download">#</a></td></tr><tr><td align="left"><code>res.end()</code></td><td align="left">结束响应过程 <a href="http://expressjs.com/en/4x/api.html#res.end">#</a></td></tr><tr><td align="left"><code>res.format()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.format">#</a></td></tr><tr><td align="left"><code>res.get()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.get">#</a></td></tr><tr><td align="left"><code>res.json()</code></td><td align="left">发送 JSON 响应 <a href="http://expressjs.com/en/4x/api.html#res.json">#</a></td></tr><tr><td align="left"><code>res.jsonp()</code></td><td align="left">发送带有 JSONP 支持的响应 <a href="http://expressjs.com/en/4x/api.html#res.jsonp">#</a></td></tr><tr><td align="left"><code>res.links()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.links">#</a></td></tr><tr><td align="left"><code>res.location()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.location">#</a></td></tr><tr><td align="left"><code>res.redirect()</code></td><td align="left">重定向请求 <a href="http://expressjs.com/en/4x/api.html#res.redirect">#</a></td></tr><tr><td align="left"><code>res.render()</code></td><td align="left">渲染视图模板 <a href="http://expressjs.com/en/4x/api.html#res.render">#</a></td></tr><tr><td align="left"><code>res.send()</code></td><td align="left">发送各种类型的响应 <a href="http://expressjs.com/en/4x/api.html#res.send">#</a></td></tr><tr><td align="left"><code>res.sendFile()</code></td><td align="left">将文件作为八位字节流发送 <a href="http://expressjs.com/en/4x/api.html#res.sendFile">#</a></td></tr><tr><td align="left"><code>res.sendStatus()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.sendStatus">#</a></td></tr><tr><td align="left"><code>res.set()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.set">#</a></td></tr><tr><td align="left"><code>res.status()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.status">#</a></td></tr><tr><td align="left"><code>res.type()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.type">#</a></td></tr><tr><td align="left"><code>res.vary()</code></td><td align="left"><a href="http://expressjs.com/en/4x/api.html#res.vary">#</a></td></tr></tbody></table>
+</div></div></div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="router-1"><a aria-hidden="true" tabindex="-1" href="#router-1"><span class="icon icon-link"></span></a>Router</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>为传递给此路由器的任何请求调用</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">router<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// .. 这里有一些逻辑 .. 像任何其他中间件一样</span>
+</span><span class="code-line">  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>将处理任何以 <code>/events</code> 结尾的请求</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// 取决于路由器在哪里 "use()"</span>
+</span><span class="code-line">router<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/events'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// ..</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="response-1"><a aria-hidden="true" tabindex="-1" href="#response-1"><span class="icon icon-link"></span></a>Response</h3><div class="wrap-body">
+<p><code>res</code> 对象表示 <code>Express</code> 应用程序在收到 HTTP 请求时发送的 HTTP 响应</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'user '</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token property-access">params</span><span class="token punctuation">.</span><span class="token property-access">id</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="request-1"><a aria-hidden="true" tabindex="-1" href="#request-1"><span class="icon icon-link"></span></a>Request</h3><div class="wrap-body">
+<p><code>req</code> 对象表示 <code>HTTP</code> 请求，并具有请求查询字符串、参数、正文、HTTP 标头等的属性</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'user '</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token property-access">params</span><span class="token punctuation">.</span><span class="token property-access">id</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="resend"><a aria-hidden="true" tabindex="-1" href="#resend"><span class="icon icon-link"></span></a>res.end()</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">res<span class="token punctuation">.</span><span class="token method function property-access">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">res<span class="token punctuation">.</span><span class="token method function property-access">status</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>结束响应过程。这个方法其实来自 Node 核心，具体是 <code>http.ServerResponse</code> 的 <code>response.end()</code> 方法</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="resjsonbody"><a aria-hidden="true" tabindex="-1" href="#resjsonbody"><span class="icon icon-link"></span></a>res.json([body])</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">res<span class="token punctuation">.</span><span class="token method function property-access">json</span><span class="token punctuation">(</span><span class="token keyword null nil">null</span><span class="token punctuation">)</span>
+</span><span class="code-line">res<span class="token punctuation">.</span><span class="token method function property-access">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> <span class="token string">'tobi'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">res<span class="token punctuation">.</span><span class="token method function property-access">status</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">error</span><span class="token operator">:</span> <span class="token string">'message'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="appall"><a aria-hidden="true" tabindex="-1" href="#appall"><span class="icon icon-link"></span></a>app.all</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">all</span><span class="token punctuation">(</span><span class="token string">'/secret'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'访问秘密部分...'</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 将控制权传递给下一个处理程序</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="appdelete"><a aria-hidden="true" tabindex="-1" href="#appdelete"><span class="icon icon-link"></span></a>app.delete</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">delete</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'DELETE request to homepage'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="appdisablename"><a aria-hidden="true" tabindex="-1" href="#appdisablename"><span class="icon icon-link"></span></a>app.disable(name)</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">disable</span><span class="token punctuation">(</span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// => false</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="appdisabledname"><a aria-hidden="true" tabindex="-1" href="#appdisabledname"><span class="icon icon-link"></span></a>app.disabled(name)</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">disabled</span><span class="token punctuation">(</span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// => true</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">enable</span><span class="token punctuation">(</span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">disabled</span><span class="token punctuation">(</span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// => false</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="appengineext-callback"><a aria-hidden="true" tabindex="-1" href="#appengineext-callback"><span class="icon icon-link"></span></a>app.engine(ext, callback)</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> engines <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'consolidate'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">engine</span><span class="token punctuation">(</span><span class="token string">'haml'</span><span class="token punctuation">,</span> engines<span class="token punctuation">.</span><span class="token property-access">haml</span><span class="token punctuation">)</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">engine</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">,</span> engines<span class="token punctuation">.</span><span class="token property-access">hogan</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="applistenport-host-backlog-callback"><a aria-hidden="true" tabindex="-1" href="#applistenport-host-backlog-callback"><span class="icon icon-link"></span></a>app.listen([port[, host[, backlog]]][, callback])</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="路由"><a aria-hidden="true" tabindex="-1" href="#路由"><span class="icon icon-link"></span></a>路由</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 向主页发出 GET 请求时响应“hello world”</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token comment">// GET 方法路由</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'GET request to the homepage'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// POST 方法路由</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">post</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'POST request to the homepage'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="中间件"><a aria-hidden="true" tabindex="-1" href="#中间件"><span class="icon icon-link"></span></a>中间件</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function">logOriginalUrl</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'ReqURL:'</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span><span class="token property-access">originalUrl</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">function</span> <span class="token function">logMethod</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Request Type:'</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span><span class="token property-access">method</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> log <span class="token operator">=</span> <span class="token punctuation">[</span>logOriginalUrl<span class="token punctuation">,</span> logMethod<span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">,</span> log<span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span><span class="token arrow operator">=></span><span class="token punctuation">{</span>
+</span><span class="code-line">    res<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'User Info'</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="使用模版"><a aria-hidden="true" tabindex="-1" href="#使用模版"><span class="icon icon-link"></span></a>使用模版</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'view engine'</span><span class="token punctuation">,</span> <span class="token string">'pug'</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>在 <code>views</code> 目录下创建一个名为 <code>index.pug</code> 的 <code>Pug</code> 模板文件，内容如下</p>
+<pre class="language-pug"><code class="language-pug code-highlight"><span class="code-line"><span class="token tag">html</span>
+</span><span class="code-line">  <span class="token tag">head</span>
+</span><span class="code-line">    <span class="token tag">title</span><span class="token punctuation">=</span><span class="token code"> title</span>
+</span><span class="code-line">  <span class="token tag">body</span>
+</span><span class="code-line">    <span class="token tag">h1</span><span class="token punctuation">=</span><span class="token code"> message</span>
+</span></code></pre>
+<p>创建一个路由来渲染 <code>index.pug</code> 文件。如果未设置视图引擎属性，则必须指定视图文件的扩展名</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  res<span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Hey'</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'Hello there!'</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+    const box = elm?.parentElement?.parentElement;
+    console.log('elm:2', box, document.querySelectorAll('.h2wrap-body .wrap'))
+  }
+}
+anchorPoint();
+</script></body>
+</html>
