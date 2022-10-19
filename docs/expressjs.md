@@ -9,11 +9,14 @@ Express 备忘清单
 ### Hello World
 <!--rehype:wrap-class=row-span-2-->
 
-- 安装依赖
+- 创建项目，添加 `package.json` 配置
   ```bash
   $ mkdir myapp # 创建目录
   $ cd myapp    # 进入目录
   $ npm init -y # 初始化一个配置
+  ```
+- 安装依赖
+  ```bash
   $ npm install express # 安装依赖
   ```
 - 入口文件 `index.js` 添加代码：
@@ -21,11 +24,9 @@ Express 备忘清单
   const express = require('express')
   const app = express()
   const port = 3000
-
   app.get('/', (req, res) => {
     res.send('Hello World!')
   })
-  
   app.listen(port, () => {
     console.log(`监听端口${port}示例应用`)
   })
