@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Github Actions 备忘清单
+ &#x26;  github-actions cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="本备忘单总结了 Github Actions 常用的配置说明，以供快速参考。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,github-actions">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/github-actions.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="github-actions-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1em" height="1em" viewBox="0 0 107 107">
+<g fill="none" fill-rule="evenodd" transform="translate(2.982 2.982)">
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.393" d="M19.7678571,0 C30.6853432,0 39.5357143,8.85037111 39.5357143,19.7678571 C39.5357143,30.6853432 30.6853432,39.5357143 19.7678571,39.5357143 C8.85037111,39.5357143 0,30.6853432 0,19.7678571 C0,8.85037111 8.85037111,0 19.7678571,0 L19.7678571,0 Z M48.3214286,39.5357143 C55.5997526,39.5357143 61.5,45.4359617 61.5,52.7142857 C61.5,59.9926097 55.5997526,65.8928571 48.3214286,65.8928571 C41.0431045,65.8928571 35.1428571,59.9926097 35.1428571,52.7142857 C35.1428571,45.4359617 41.0431045,39.5357143 48.3214286,39.5357143 Z M48.3214286,74.6785714 C55.5997526,74.6785714 61.5,80.5788188 61.5,87.8571429 C61.5,95.1354669 55.5997526,101.035714 48.3214286,101.035714 C41.0431045,101.035714 35.1428571,95.1354669 35.1428571,87.8571429 C35.1428571,80.5788188 41.0431045,74.6785714 48.3214286,74.6785714 Z"></path>
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.393" d="M87.8571429,74.6785714 C95.1354669,74.6785714 101.035714,80.5788188 101.035714,87.8571429 C101.035714,95.1354669 95.1354669,101.035714 87.8571429,101.035714 C80.5788188,101.035714 74.6785714,95.1354669 74.6785714,87.8571429 C74.6785714,80.5788188 80.5788188,74.6785714 87.8571429,74.6785714 Z"></path>
+<polyline stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.393" points="52.793 49.655 46.05 56.387 42.778 53.125"></polyline>
+<g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.393" transform="translate(74.679 39.536)">
+<path d="M13.1785714,0 C20.4568955,0 26.3571429,5.9002474 26.3571429,13.1785714 C26.3571429,20.4568955 20.4568955,26.3571429 13.1785714,26.3571429 C5.9002474,26.3571429 0,20.4568955 0,13.1785714 C0,5.9002474 5.9002474,0 13.1785714,0 Z"></path>
+<polyline points="17.651 10.119 10.907 16.851 7.635 13.589"></polyline></g>
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.393" d="M16.5456964,10.9074643 L27.7760357,17.9799643 C28.4178266,18.3833884 28.8062276,19.0892404 28.8035611,19.8472901 C28.8008672,20.6053399 28.4074847,21.3084277 27.7628571,21.7073036 L16.5325179,28.6699821 C15.8550724,29.0900649 15.0032059,29.1101448 14.3067197,28.7224479 C13.6102335,28.3347509 13.1785714,27.6001388 13.1785714,26.8030179 L13.1785714,12.7656429 C13.1785714,11.9658375 13.6135044,11.2293022 14.3137561,10.8428619 C15.0140079,10.4564216 15.8689689,10.481168 16.5456964,10.9074643 L16.5456964,10.9074643 Z M17.5714286,39.5357143 L17.5714286,72.4821429 C17.5714286,80.9735357 24.5494821,87.8571429 32.9464286,87.8571429 L35.1428571,87.8571429"></path>
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.393" d="M17.5714286,39.6125893 C17.5714286,46.8484564 23.4372579,52.7142857 30.673125,52.7142857 L35.0308393,52.7142857 M61.6208036,52.7142857 L74.6785714,52.7142857"></path>
+<path fill="currentColor" fill-rule="nonzero" d="M43.9285714,85.660714 C44.7136722,85.6611066 45.4389259,86.0803154 45.8311365,86.7604287 C46.223347,87.4405421 46.2229284,88.2782346 45.8300382,88.9579556 C45.4371481,89.6376766 44.7114757,90.0561603 43.926375,90.0557681 C42.7127145,90.0551613 41.72934,89.0708033 41.7299463,87.8571429 C41.7305531,86.6434824 42.7149109,85.6601078 43.9285714,85.660714 M52.7142857,85.660714 C53.4993864,85.6611066 54.2246401,86.0803154 54.6168507,86.7604287 C55.0090613,87.4405421 55.0086427,88.2782346 54.6157525,88.9579556 C54.2228624,89.6376766 53.49719,90.0561603 52.7120893,90.0557681 C51.4984288,90.0551613 50.5150543,89.0708033 50.5156606,87.8571429 C50.5162674,86.6434824 51.5006252,85.6601078 52.7142857,85.660714"></path>
+<line x1="72.493" x2="70.268" y1="87.873" y2="87.945" stroke="currentColor" stroke-linecap="round" stroke-width="4.393"></line>
+</g>
+</svg><a aria-hidden="true" tabindex="-1" href="#github-actions-备忘清单"><span class="icon icon-link"></span></a>Github Actions 备忘清单</h1><div class="wrap-body">
+<p>本备忘单总结了 <a href="https://github.com/actions">Github Actions</a> 常用的配置说明，以供快速参考。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>GitHub <a href="https://github.com/actions">Actions</a> 的仓库中自动化、自定义和执行软件开发工作流程，有四个基本的概念，如下：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>workflow</code> <em>(工作流程)</em></td><td align="left">持续集成一次运行的过程，就是一个 <code>workflow</code></td></tr><tr><td align="left"><code>job</code> <em>(任务)</em></td><td align="left">一个 <code>workflow</code> 由一个或多个 <code>jobs</code> 构成，含义是一次持续集成的运行，可以完成多个任务</td></tr><tr><td align="left"><code>step</code> <em>(步骤)</em></td><td align="left">每个 <code>job</code> 由多个 <code>step</code> 构成，一步步完成</td></tr><tr><td align="left"><code>action</code> <em>(动作)</em></td><td align="left">每个 <code>step</code> 可以依次执行一个或多个命令(<code>action</code>)</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+<hr>
+<ul class="style-round">
+<li>采用 <a href="./yaml.html">YAML</a> 格式定义配置文件</li>
+<li>存放在代码仓库的 <code>.github/workflows</code> 目录中</li>
+<li>后缀名统一为 <code>.yml</code>，比如 <code>ci.yml</code></li>
+<li>一个库可以有多个 <code>workflow</code> 文件</li>
+<li>根据配置事件自动运行配置文件</li>
+</ul>
+<!--rehype:className=style-round-->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="配置文件"><a aria-hidden="true" tabindex="-1" href="#配置文件"><span class="icon icon-link"></span></a>配置文件</h3><div class="wrap-body">
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">name</span><span class="token punctuation">:</span> GitHub Actions Demo
+</span><span class="code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">      <span class="token punctuation">-</span> main
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 任务</span>
+</span><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line">    <span class="token comment"># 步骤 根据步骤执行任务</span>
+</span><span class="code-line">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v3
+</span><span class="code-line">        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">          <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token number">16</span>
+</span><span class="code-line">
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm install
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm run build
+</span></code></pre>
+<p>存放到 <code>.github/workflows</code> 目录中，命名为 <code>ci.yml</code>，当 <code>push</code> 代码到仓库 <code>main</code> 分支中，该配置自动运行配置。</p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="指定触发"><a aria-hidden="true" tabindex="-1" href="#指定触发"><span class="icon icon-link"></span></a>指定触发</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p><code>push</code> 事件触发 <code>workflow</code></p>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span> push
+</span></code></pre>
+<p><code>push</code> 事件或 <code>pull_request</code> 事件都可以触发 <code>workflow</code></p>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>push<span class="token punctuation">,</span> pull_request<span class="token punctuation">]</span>
+</span></code></pre>
+<p>只有在 <code>main</code> 分支 <code>push</code> 事件触发 <code>workflow</code></p>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> main
+</span></code></pre>
+<p><code>push</code> 事件触发 <code>workflow</code>，<code>docs</code> 目录下的更改 <code>push</code> 事件不触发 <code>workflow</code></p>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">paths-ignore</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">      <span class="token punctuation">-</span> <span class="token string">'docs/**'</span>
+</span></code></pre>
+<p>push 事件触发 workflow，包括 sub-project 目录或其子目录中的文件触发 workflow，除非该文件在 sub-project/docs 目录中，不触发 workflow</p>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">'sub-project/**'</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">'!sub-project/docs/**'</span>
+</span></code></pre>
+<p>版本发布为 <code>published</code> 时运行工作流程。</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">release</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">types</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>published<span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多项任务"><a aria-hidden="true" tabindex="-1" href="#多项任务"><span class="icon icon-link"></span></a>多项任务</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">my_first_job</span><span class="token punctuation">:</span>  <span class="token comment"># 第一个任务</span>
+</span><span class="code-line">    <span class="token key atrule">name</span><span class="token punctuation">:</span> My first job
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token key atrule">my_second_job</span><span class="token punctuation">:</span> <span class="token comment"># 第二个任务</span>
+</span><span class="code-line">    <span class="token key atrule">name</span><span class="token punctuation">:</span> My second job
+</span></code></pre>
+<p>通过 jobs <code>(jobs.&#x3C;job_id>.name)</code>字段，配置一项或多项需要执行的任务</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多项任务依赖关系"><a aria-hidden="true" tabindex="-1" href="#多项任务依赖关系"><span class="icon icon-link"></span></a>多项任务依赖关系</h3><div class="wrap-body">
+<p>通过 needs <code>(jobs.&#x3C;job_id>.needs)</code>字段，指定当前任务的依赖关系</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">job1</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">job2</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> job1
+</span><span class="code-line">  <span class="token key atrule">job3</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>job1<span class="token punctuation">,</span> job2<span class="token punctuation">]</span>
+</span></code></pre>
+<p>上面配置中，<code>job1</code> 必须先于 <code>job2</code> 完成，而 <code>job3</code> 等待 <code>job1</code> 和 <code>job2</code> 的完成才能运行。因此，这个 <code>workflow</code> 的运行顺序依次为：<code>job1</code>、<code>job2</code>、<code>job3</code></p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="多项任务传递参数"><a aria-hidden="true" tabindex="-1" href="#多项任务传递参数"><span class="icon icon-link"></span></a>多项任务传递参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">  <span class="token key atrule">job1</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line">    <span class="token comment"># 将步骤输出映射到作业输出</span>
+</span><span class="code-line highlight-line">    <span class="token key atrule">outputs</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">output1</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> steps.step1.outputs.test <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">      <span class="token key atrule">output2</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> steps.step2.outputs.test <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">      <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> step1
+</span><span class="code-line">        <span class="token key atrule">run</span><span class="token punctuation">:</span> echo "<span class="token punctuation">:</span><span class="token punctuation">:</span>set<span class="token punctuation">-</span>output name=test<span class="token punctuation">:</span><span class="token punctuation">:</span>hello"
+</span><span class="code-line highlight-line">      <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> step2
+</span><span class="code-line">        <span class="token key atrule">run</span><span class="token punctuation">:</span> echo "<span class="token punctuation">:</span><span class="token punctuation">:</span>set<span class="token punctuation">-</span>output name=test<span class="token punctuation">:</span><span class="token punctuation">:</span>world"
+</span><span class="code-line">  <span class="token key atrule">job2</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line highlight-line">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> job1
+</span><span class="code-line">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo $<span class="token punctuation">{</span><span class="token punctuation">{</span>needs.job1.outputs.output1<span class="token punctuation">}</span><span class="token punctuation">}</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span>needs.job1.outputs.output2<span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="指定每项任务的虚拟机环境"><a aria-hidden="true" tabindex="-1" href="#指定每项任务的虚拟机环境"><span class="icon icon-link"></span></a>指定每项任务的虚拟机环境</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span></code></pre>
+<p>指定运行所需要的虚拟机环境，⚠️ 它是必填字段</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">build</span><span class="token punctuation">:</span> <span class="token comment"># 任务名称</span>
+</span><span class="code-line highlight-line">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest <span class="token comment"># 虚拟机环境配置</span>
+</span></code></pre>
+<hr>
+<ul class="style-arrow">
+<li><code>Windows Server 2022</code> <em>(windows-latest)</em> 或 <em>(windows-2022)</em></li>
+<li><code>Ubuntu 20.04</code> <em>(ubuntu-latest)</em> 或 <em>(ubuntu-20.04)</em></li>
+<li><code>macOS Monterey 12</code> <em>(macos-12)</em></li>
+<li><code>macOS Big Sur 11</code> <em>(macos-latest)</em>,<em>(macos-11)</em></li>
+</ul>
+<!--rehype:className=style-arrow-->
+<p>另见: <a href="https://docs.github.com/cn/actions/using-workflows/workflow-syntax-for-github-actions#%E9%80%89%E6%8B%A9-github-%E6%89%98%E7%AE%A1%E7%9A%84%E8%BF%90%E8%A1%8C%E5%99%A8">选择 GitHub 托管的运行器</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="指定每项任务的步骤"><a aria-hidden="true" tabindex="-1" href="#指定每项任务的步骤"><span class="icon icon-link"></span></a>指定每项任务的步骤</h3><div class="wrap-body">
+<p>每个步骤都可以指定以下三个字段</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">jobs.<span class="token operator">&#x3C;</span>job_id<span class="token operator">></span>.steps.name <span class="token comment"># 步骤名称</span>
+</span><span class="code-line"><span class="token comment"># 该步骤运行的命令或者 action</span>
+</span><span class="code-line">jobs.<span class="token operator">&#x3C;</span>job_id<span class="token operator">></span>.steps.run
+</span><span class="code-line"><span class="token comment"># 该步骤所需的环境变量</span>
+</span><span class="code-line">jobs.<span class="token operator">&#x3C;</span>job_id<span class="token operator">></span>.steps.env
+</span></code></pre>
+<p><code>steps</code> 字段指定每个 <code>Job</code> 的运行步骤，可以包含一个或多个步骤(<code>steps</code>)</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line highlight-line">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v3
+</span><span class="code-line">        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">          <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token number">16</span>
+</span><span class="code-line">
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm install
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm run build
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="环境变量"><a aria-hidden="true" tabindex="-1" href="#环境变量"><span class="icon icon-link"></span></a>环境变量</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">jobs.<span class="token operator">&#x3C;</span>job_id<span class="token operator">></span>.environment
+</span></code></pre>
+<p>使用单一环境名称的示例</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">environment</span><span class="token punctuation">:</span> staging_environment
+</span></code></pre>
+<p>使用环境名称和 URL 的示例</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">environment</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">name</span><span class="token punctuation">:</span> production_environment
+</span><span class="code-line">  <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="自定义环境变量"><a aria-hidden="true" tabindex="-1" href="#自定义环境变量"><span class="icon icon-link"></span></a>自定义环境变量</h4><div class="wrap-body">
+<p><code>GitHub</code> 会保留 <code>GITHUB_</code> 环境变量前缀供 <code>GitHub</code> 内部使用。设置有 <code>GITHUB_</code> 前缀的环境变量或密码将导致错误。</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 测试 nodejs 获取环境变量
+</span><span class="code-line">  <span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">API_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.API_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+<p>在 <code>https://github.com/&#x3C;用户名>/&#x3C;项目名称>/settings/secrets</code> 中添加 <code>secrets</code> <code>API_TOKEN</code>，在工作流中设置环境变量 <a href="https://github.com/jaywcjlove/github-actions/blob/799b232fca3d9df0272eaa12610f9ebfca51b288/.github/workflows/ci.yml#L46"><code>API_TOKEN</code></a></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="表达式"><a aria-hidden="true" tabindex="-1" href="#表达式"><span class="icon icon-link"></span></a>表达式</h3><div class="wrap-body">
+<p>在 <code>if</code> 条件下使用表达式时，可以省略表达式语法 (<code>${{ }}</code>)，因为 GitHub 会自动将 <code>if</code> 条件作为表达式求值</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/hello<span class="token punctuation">-</span>world<span class="token punctuation">-</span>action@v1.1
+</span><span class="code-line highlight-line">    <span class="token key atrule">if</span><span class="token punctuation">:</span> github.repository == 'uiw/uiw<span class="token punctuation">-</span>repo'
+</span><span class="code-line">    <span class="token comment"># if: ${{ &#x3C;expression> }}</span>
+</span></code></pre>
+<p>设置环境变量的示例</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">MY_ENV_VAR</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> &#x3C;expression<span class="token punctuation">></span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="操作符"><a aria-hidden="true" tabindex="-1" href="#操作符"><span class="icon icon-link"></span></a>操作符</h4><div class="wrap-body">
+<ul class="cols-2 style-none">
+<li><code>( )</code> <em>(逻辑分组)</em></li>
+<li><code>[ ]</code> <em>(指数)</em></li>
+<li><code>.</code> <em>(属性取消引用)</em></li>
+<li><code>!</code> <em>(不是)</em></li>
+<li><code>&#x3C;</code> <em>(少于)</em></li>
+<li><code>&#x3C;=</code> <em>(小于或等于)</em></li>
+<li><code>></code> <em>(比...更棒)</em></li>
+<li><code>>=</code> <em>(大于或等于)</em></li>
+<li><code>==</code> <em>(平等的)</em></li>
+<li><code>!=</code> <em>(不相等)</em></li>
+<li><code>&#x26;&#x26;</code> <em>(和)</em></li>
+<li><code>||</code> <em>(或者)</em></li>
+</ul>
+<!--rehype:className=cols-2 style-none-->
+</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="github-上下文"><a aria-hidden="true" tabindex="-1" href="#github-上下文"><span class="icon icon-link"></span></a>Github 上下文</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th>属性名称</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td><code>github</code> <em>(object)</em></td><td>工作流程中任何作业或步骤期间可用的顶层上下文。</td><td></td></tr><tr><td><code>github.event</code> <em>(object)</em></td><td>完整事件 web 挂钩有效负载。 更多信息请参阅“触发工作流程的事件”。</td><td></td></tr><tr><td><code>github.event_path</code> <em>(string)</em></td><td>运行器上完整事件 web 挂钩有效负载的路径。</td><td></td></tr><tr><td><code>github.workflow</code> <em>(string)</em></td><td>工作流程的名称。 如果工作流程文件未指定 name，此属性的值将是仓库中工作流程文件的完整路径。</td><td></td></tr><tr><td><code>github.job</code> <em>(string)</em></td><td>当前作业的 job_id。</td><td></td></tr><tr><td><code>github.run_id</code> <em>(string)</em></td><td>仓库中每个运行的唯一编号。 如果您重新执行工作流程运行，此编号不变。</td><td></td></tr><tr><td><code>github.run_number</code> <em>(string)</em></td><td>仓库中特定工作流程每个运行的唯一编号。 此编号从 1（对应于工作流程的第一个运行）开始，然后随着每个新的运行而递增。 如果您重新执行工作流程运行，此编号不变。</td><td></td></tr><tr><td><code>github.actor</code> <em>(string)</em></td><td>发起工作流程运行的用户的登录名。</td><td></td></tr><tr><td><code>github.repository</code> <em>(string)</em></td><td>所有者和仓库名称。 例如 Codertocat/Hello-World。</td><td></td></tr><tr><td><code>github.repository_owner</code> <em>(string)</em></td><td>仓库所有者的名称。 例如 Codertocat。</td><td></td></tr><tr><td><code>github.event_name</code> <em>(string)</em></td><td>触发工作流程运行的事件的名称。</td><td></td></tr><tr><td><code>github.sha</code> <em>(string)</em></td><td>触发工作流程的提交 SHA。</td><td></td></tr><tr><td><code>github.ref</code> <em>(string)</em></td><td>触发工作流程的分支或标记参考。</td><td></td></tr><tr><td><code>github.head_ref</code> <em>(string)</em></td><td>工作流程运行中拉取请求的 head_ref 或来源分支。 此属性仅在触发工作流程运行的事件为 pull_request 时才可用。</td><td></td></tr><tr><td><code>github.base_ref</code> <em>(string)</em></td><td>工作流程运行中拉取请求的 base_ref 或目标分支。 此属性仅在触发工作流程运行的事件为 pull_request 时才可用。</td><td></td></tr><tr><td><code>github.token</code> <em>(string)</em></td><td>代表仓库上安装的 GitHub 应用程序进行身份验证的令牌。 这在功能上等同于 GITHUB_TOKEN 密码。 更多信息请参阅“使用 GITHUB_TOKEN 验证身份”。</td><td></td></tr><tr><td><code>github.workspace</code> <em>(string)</em></td><td>使用 checkout 操作时步骤的默认工作目录和仓库的默认位置。</td><td></td></tr><tr><td><code>github.action</code> <em>(string)</em></td><td>正在运行的操作的名称。 在当前步骤运行脚本时，GitHub 删除特殊字符或使用名称 run。 如果在同一作业中多次使用相同的操作，则名称将包括带有序列号的后缀。 例如，运行的第一个脚本名称为 run1，则第二个脚本将命名为 run2。 同样，actions/checkout 第二次调用时将变成 actionscheckout2。</td><td></td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+<p><a href="https://help.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions">Github 上下文</a>是访问有关工作流运行、运行器环境、作业和步骤的信息的一种方式</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="默认环境变量"><a aria-hidden="true" tabindex="-1" href="#默认环境变量"><span class="icon icon-link"></span></a>默认环境变量</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th>环境变量</th><th>描述</th></tr></thead><tbody><tr><td><code>CI</code></td><td>始终设置为 <code>true</code></td></tr><tr><td><code>HOME</code></td><td>用于存储用户数据的 GitHub 主目录路径。 例如 <code>/github/home</code></td></tr><tr><td><code>GITHUB_WORKFLOW</code></td><td>工作流程的名称。</td></tr><tr><td><code>GITHUB_RUN_ID</code></td><td>仓库中每个运行的唯一编号。 如果您重新执行工作流程运行，此编号不变。</td></tr><tr><td><code>GITHUB_RUN_NUMBER</code></td><td>仓库中特定工作流程每个运行的唯一编号。 此编号从 1（对应于工作流程的第一个运行）开始，然后随着每个新的运行而递增。 如果您重新执行工作流程运行，此编号不变。</td></tr><tr><td><code>GITHUB_ACTION</code></td><td>操作唯一的标识符 (id)。</td></tr><tr><td><code>GITHUB_ACTIONS</code></td><td>当 GitHub 操作 运行工作流程时，始终设置为 true。 您可以使用此变量来区分测试是在本地运行还是通过 GitHub 操作 运行。</td></tr><tr><td><code>GITHUB_ACTION_PATH</code></td><td>GitHub 操作所在的路径</td></tr><tr><td><code>GITHUB_ACTOR</code></td><td>发起工作流程的个人或应用程序的名称。 例如 octocat</td></tr><tr><td><code>GITHUB_API_URL</code></td><td>返回 <code>API URL</code>。例如：<code>https://api.github.com</code></td></tr><tr><td><code>GITHUB_REPOSITORY</code></td><td>所有者和仓库名称。 例如 octocat/Hello-World</td></tr><tr><td><code>GITHUB_EVENT_NAME</code></td><td>触发工作流程的 web 挂钩事件的名称</td></tr><tr><td><code>GITHUB_EVENT_PATH</code></td><td>具有完整 web 挂钩事件有效负载的文件路径。 例如 /github/workflow/event.json</td></tr><tr><td><code>GITHUB_WORKSPACE</code></td><td>GitHub 工作空间目录路径。 如果您的工作流程使用 <a href="https://github.com/actions/checkout">actions/checkout</a> 操作，工作空间目录将包含存储仓库副本的子目录。 如果不使用 <a href="https://github.com/actions/checkout">actions/checkout</a> 操作，该目录将为空。 例如 /home</td></tr><tr><td><code>GITHUB_SHA</code></td><td>触发工作流程的提交 SHA。 例如 ffac537e6cbbf9</td></tr><tr><td><code>GITHUB_REF</code></td><td>触发工作流程的分支或标记参考。 例如 refs/heads/feature-branch-1。 如果分支或标记都不适用于事件类型，则变量不会存在</td></tr><tr><td><code>GITHUB_HEAD_REF</code></td><td>仅为复刻的仓库设置。头部仓库的分支</td></tr><tr><td><code>GITHUB_BASE_REF</code></td><td>仅为复刻的仓库设置。基础仓库的分支</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+<p>另见: <a href="https://docs.github.com/cn/actions/learn-github-actions/environment-variables#default-environment-variables">默认环境变量</a></p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="直接常量"><a aria-hidden="true" tabindex="-1" href="#直接常量"><span class="icon icon-link"></span></a>直接常量</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>作为表达式的一部分，可以使用 <code>boolean</code>, <code>null</code>, <code>number</code> 或 <code>string</code>数据类型</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">myNull</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token null important">null</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token key atrule">myBoolean</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token boolean important">false</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token key atrule">myIntegerNumber</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token number">711</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token key atrule">myFloatNumber</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token number">-9.2</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token key atrule">myHexNumber</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token number">0xff</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token key atrule">myExponentialNumber</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token number">-2.99e-2</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token key atrule">myString</span><span class="token punctuation">:</span> Mona the Octocat
+</span><span class="code-line">  <span class="token key atrule">myStringInBraces</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> 'It''s open source<span class="token tag">!'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="函数-contains"><a aria-hidden="true" tabindex="-1" href="#函数-contains"><span class="icon icon-link"></span></a>函数 contains</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>使用字符串的示例</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">,</span> <span class="token string">'llo'</span><span class="token punctuation">)</span> <span class="token comment">// 返回 true</span>
+</span></code></pre>
+<p>使用对象过滤器的示例返回 true</p>
+<pre class="wrap-text "><code class="language-js code-highlight"><span class="code-line"><span class="token function">contains</span><span class="token punctuation">(</span>github<span class="token punctuation">.</span><span class="token property-access">event</span><span class="token punctuation">.</span><span class="token property-access">issue</span><span class="token punctuation">.</span><span class="token property-access">labels</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">.</span><span class="token property-access">name</span><span class="token punctuation">,</span> <span class="token string">'bug'</span><span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>另见: <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#contains">函数 contains</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数-startswith"><a aria-hidden="true" tabindex="-1" href="#函数-startswith"><span class="icon icon-link"></span></a>函数 startsWith</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">,</span> <span class="token string">'He'</span><span class="token punctuation">)</span> <span class="token comment">// 返回 true</span>
+</span></code></pre>
+<p>另见: <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#startswith">函数 startsWith</a>，此函数不区分大小写</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数-format"><a aria-hidden="true" tabindex="-1" href="#函数-format"><span class="icon icon-link"></span></a>函数 format</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'{{Hello {0} {1} {2}!}}'</span><span class="token punctuation">,</span> <span class="token string">'Mona'</span><span class="token punctuation">,</span> <span class="token string">'the'</span><span class="token punctuation">,</span> <span class="token string">'Octocat'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 返回 '{Hello Mona the Octocat!}'.</span>
+</span></code></pre>
+<p>另见: <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#format">函数 format</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数-join"><a aria-hidden="true" tabindex="-1" href="#函数-join"><span class="icon icon-link"></span></a>函数 join</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">join</span><span class="token punctuation">(</span>github<span class="token punctuation">.</span><span class="token property-access">event</span><span class="token punctuation">.</span><span class="token property-access">issue</span><span class="token punctuation">.</span><span class="token property-access">labels</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">.</span><span class="token property-access">name</span><span class="token punctuation">,</span> <span class="token string">', '</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 也许返回 'bug, help wanted'.</span>
+</span></code></pre>
+<p>另见: <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#join">函数 join</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数-tojson"><a aria-hidden="true" tabindex="-1" href="#函数-tojson"><span class="icon icon-link"></span></a>函数 toJSON</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token function">toJSON</span><span class="token punctuation">(</span>job<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 也许返回 { "status": "Success" }.</span>
+</span></code></pre>
+<p>另见: <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#tojson">函数 toJSON</a></p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>fromJSON</code></td><td align="left">返回 JSON 对象或 JSON 数据类型的值 <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#fromjson">#</a></td></tr><tr><td align="left"><code>hashFiles</code></td><td align="left">返回与路径模式匹配的文件集的单个哈希 <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#hashfiles">#</a></td></tr><tr><td align="left"><code>success</code></td><td align="left">当前面的步骤都没失败或被取消时返回 true <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#success">#</a></td></tr><tr><td align="left"><code>always</code></td><td align="left">使步骤始终执行，返回 <code>true</code> 即使取消也是如此 <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#always">#</a></td></tr><tr><td align="left"><code>cancelled</code></td><td align="left">如果工作流被取消，则返回 true <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#cancelled">#</a></td></tr><tr><td align="left"><code>failure</code></td><td align="left">当作业的任何先前步骤失败时返回 true <a href="https://docs.github.com/cn/actions/learn-github-actions/expressions#failure">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数-success"><a aria-hidden="true" tabindex="-1" href="#函数-success"><span class="icon icon-link"></span></a>函数 success()</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">...</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> The job has succeeded
+</span><span class="code-line">    <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> success() <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数-failure"><a aria-hidden="true" tabindex="-1" href="#函数-failure"><span class="icon icon-link"></span></a>函数 failure()</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">...</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> The job has failed
+</span><span class="code-line">    <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> failure() <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="常用实例"><a aria-hidden="true" tabindex="-1" href="#常用实例"><span class="icon icon-link"></span></a>常用实例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="获取版本信息"><a aria-hidden="true" tabindex="-1" href="#获取版本信息"><span class="icon icon-link"></span></a>获取版本信息</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text "><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Test
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">    # Strip git ref prefix from version
+</span></span><span class="code-line"><span class="token scalar string">    echo "${{ github.ref }}"
+</span></span><span class="code-line"><span class="token scalar string">    # VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment"># # Strip "v" prefix from tag name</span>
+</span><span class="code-line">    <span class="token comment"># [[ "${{ github.ref }}" == "refs/tags/"* ]] &#x26;&#x26; VERSION=$(echo $VERSION | sed -e 's/^v//')</span>
+</span><span class="code-line">    echo "$VERSION"
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="提交到-gh-pages-分支"><a aria-hidden="true" tabindex="-1" href="#提交到-gh-pages-分支"><span class="icon icon-link"></span></a>提交到 gh-pages 分支</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> peaceiris/actions<span class="token punctuation">-</span>gh<span class="token punctuation">-</span>pages@v3
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">github_token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span>secrets.GITHUB_TOKEN<span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token key atrule">publish_dir</span><span class="token punctuation">:</span> ./build
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="修改-packagejson"><a aria-hidden="true" tabindex="-1" href="#修改-packagejson"><span class="icon icon-link"></span></a>修改 package.json</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Modify Version
+</span><span class="code-line">  <span class="token key atrule">shell</span><span class="token punctuation">:</span> bash
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">    node -e 'var pkg = require("./package.json"); pkg.version= (new Date().getFullYear().toString().substr(2)) + "." + (new Date().getMonth() + 1) + "." + (new Date().getDate()); require("fs").writeFileSync("./package.json", JSON.stringify(pkg, null, 2))'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>使用 <a href="https://github.com/jaywcjlove/github-action-package">github-action-package</a> 修改 <code>name</code> 字段</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> package.json info
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> jaywcjlove/github<span class="token punctuation">-</span>action<span class="token punctuation">-</span>package@main
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">rename</span><span class="token punctuation">:</span> <span class="token string">'@wcj/github-package-test'</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="克隆带有-submodule-的仓库"><a aria-hidden="true" tabindex="-1" href="#克隆带有-submodule-的仓库"><span class="icon icon-link"></span></a>克隆带有 Submodule 的仓库</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">path</span><span class="token punctuation">:</span> main
+</span><span class="code-line">    <span class="token key atrule">submodules</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</span></code></pre>
+<p><code>submodules</code>：<code>true</code> 检出子模块或 <code>recursive</code> 递归检出子模块</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Clone sub repository
+</span><span class="code-line">  <span class="token key atrule">shell</span><span class="token punctuation">:</span> bash
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">    auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+</span></span><span class="code-line"><span class="token scalar string">    # git submodule sync --recursive
+</span></span><span class="code-line"><span class="token scalar string">    # git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --remote --force --recursive --checkout ant.design</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="步骤依赖作业"><a aria-hidden="true" tabindex="-1" href="#步骤依赖作业"><span class="icon icon-link"></span></a>步骤依赖作业</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>使用 <code>jobs.&#x3C;job_id>.needs</code> 识别在此作业运行之前必须成功完成的任何作业。它可以是一个字符串，也可以是字符串数组。 如果某个作业失败，则所有需要它的作业都会被跳过，除非这些作业使用让该作业继续的条件表达式。</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">job1</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">job2</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> job1
+</span><span class="code-line">  <span class="token key atrule">job3</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>job1<span class="token punctuation">,</span> job2<span class="token punctuation">]</span>
+</span></code></pre>
+<p>在此示例中，<code>job1</code> 必须在 <code>job2</code> 开始之前成功完成，而 <code>job3</code> 要等待 <code>job1</code> 和 <code>job2</code> 完成。此示例中的作业按顺序运行：</p>
+<pre><code class="code-highlight"><span class="code-line">❶ job1
+</span><span class="code-line">❷ job2
+</span><span class="code-line">❸ job3
+</span></code></pre>
+<p>配置如下</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">job1</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">job2</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> job1
+</span><span class="code-line">  <span class="token key atrule">job3</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> always() <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token key atrule">needs</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>job1<span class="token punctuation">,</span> job2<span class="token punctuation">]</span>
+</span></code></pre>
+<p>在此示例中，<code>job3</code> 使用 <code>always()</code> 条件表达式，因此它始终在 <code>job1</code> 和 <code>job2</code> 完成后运行，不管它们是否成功。</p>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="同步-gitee"><a aria-hidden="true" tabindex="-1" href="#同步-gitee"><span class="icon icon-link"></span></a>同步 Gitee</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text "><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Sync to Gitee
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">    mirror() {
+</span></span><span class="code-line"><span class="token scalar string">      git clone "https://github.com/$1/$2"
+</span></span><span class="code-line"><span class="token scalar string">      cd "$2"
+</span></span><span class="code-line"><span class="token scalar string">      git remote add gitee "https://jaywcjlove:${{ secrets.GITEE_TOKEN }}@gitee.com/uiw/$2"
+</span></span><span class="code-line"><span class="token scalar string">      git remote set-head origin -d
+</span></span><span class="code-line"><span class="token scalar string">      git push gitee --prune +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+</span></span><span class="code-line"><span class="token scalar string">      cd ..
+</span></span><span class="code-line"><span class="token scalar string">    }
+</span></span><span class="code-line"><span class="token scalar string">    mirror uiwjs uiw</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="提交-npm-包"><a aria-hidden="true" tabindex="-1" href="#提交-npm-包"><span class="icon icon-link"></span></a>提交 NPM 包</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm publish <span class="token punctuation">-</span><span class="token punctuation">-</span>access public
+</span><span class="code-line">  <span class="token key atrule">env</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">NODE_AUTH_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span>secrets.NPM_TOKEN<span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+<p>获取 <code>NPM_TOKEN</code>，可以通过 <a href="https://www.npmjs.com/settings/wcjiang/tokens">npm</a> 账号创建 <code>token</code></p>
+<pre class="wrap-text "><code class="language-shell code-highlight"><span class="code-line"><span class="token function">npm</span> token list <span class="token punctuation">[</span>--json<span class="token operator">|</span>--parseable<span class="token punctuation">]</span> <span class="token comment"># 查看</span>
+</span><span class="code-line"><span class="token function">npm</span> token create <span class="token punctuation">[</span>--read-only<span class="token punctuation">]</span> <span class="token punctuation">[</span>--cidr<span class="token operator">=</span><span class="token number">1.1</span>.1.1/24,2.2.2.2/16<span class="token punctuation">]</span> <span class="token comment"># 创建</span>
+</span><span class="code-line"><span class="token function">npm</span> token revoke <span class="token operator">&#x3C;</span>id<span class="token operator">|</span>token<span class="token operator">></span> <span class="token comment"># 撤销</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>可以使用 <a href="https://github.com/JS-DevTools/npm-publish">JS-DevTools/npm-publish</a> 提交</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span>  📦 @province<span class="token punctuation">-</span>city<span class="token punctuation">-</span>china/data
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> JS<span class="token punctuation">-</span>DevTools/npm<span class="token punctuation">-</span>publish@v1
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.NPM_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token key atrule">package</span><span class="token punctuation">:</span> packages/data/package.json
+</span></code></pre>
+<p>它有个好处，检测 <code>package.json</code> 中版本号是否发生变更，来决定是否提交版本，不会引发流程错误。</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="步骤作业文件共享"><a aria-hidden="true" tabindex="-1" href="#步骤作业文件共享"><span class="icon icon-link"></span></a>步骤作业文件共享</h3><div class="wrap-body">
+<p>Artifacts 是 GitHub Actions 为您提供持久文件并在运行完成后使用它们或在作业（文档）之间共享的一种方式。</p>
+<p>要创建工件并使用它，您将需要不同的操作：上传和下载。
+要上传文件或目录，您只需像这样使用它：</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> mkdir <span class="token punctuation">-</span>p path/to/artifact
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo hello <span class="token punctuation">></span> path/to/artifact/a.txt
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/upload<span class="token punctuation">-</span>artifact@v2
+</span><span class="code-line">    <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>artifact
+</span><span class="code-line">      <span class="token key atrule">path</span><span class="token punctuation">:</span> path/to/artifact/a.txt
+</span></code></pre>
+<p>然后下载 <code>artifact</code> 以使用它：</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/download<span class="token punctuation">-</span>artifact@v2
+</span><span class="code-line">    <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>artifact
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="nodejs"><a aria-hidden="true" tabindex="-1" href="#nodejs"><span class="icon icon-link"></span></a>Node.js</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Node
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v2
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token number">14</span>
+</span></code></pre>
+<p>使用<a href="https://docs.github.com/cn/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategy">矩阵策略</a> 在 nodejs 不同版本中运行</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">strategy</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">matrix</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>10.x<span class="token punctuation">,</span> 12.x<span class="token punctuation">,</span> 14.x<span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 使用 Node $<span class="token punctuation">{</span><span class="token punctuation">{</span> matrix.node<span class="token punctuation">-</span>version <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v1
+</span><span class="code-line">    <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">node-version</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> matrix.node<span class="token punctuation">-</span>version <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm ci
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm run build <span class="token punctuation">-</span><span class="token punctuation">-</span>if<span class="token punctuation">-</span>present
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm test
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="提交-docker-镜像"><a aria-hidden="true" tabindex="-1" href="#提交-docker-镜像"><span class="icon icon-link"></span></a>提交 docker 镜像</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token comment"># https://www.basefactor.com/github-actions-docker</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Docker login
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> docker login <span class="token punctuation">-</span>u $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.DOCKER_USER <span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">-</span>p $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.DOCKER_PASSWORD <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build ant.design image
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">    cd ./ant\.design
+</span></span><span class="code-line"><span class="token scalar string">    docker build -t ant.design .</span>
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Tags &#x26; Push docs
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">    # Strip git ref prefix from version
+</span></span><span class="code-line"><span class="token scalar string">    VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment"># Strip "v" prefix from tag name</span>
+</span><span class="code-line">    <span class="token punctuation">[</span><span class="token punctuation">[</span> "$<span class="token punctuation">{</span><span class="token punctuation">{</span> github.ref <span class="token punctuation">}</span><span class="token punctuation">}</span>" == "refs/tags/"* <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token important">&#x26;&#x26;</span> VERSION=$(echo $VERSION <span class="token punctuation">|</span> sed <span class="token punctuation">-</span>e 's/^v//')
+</span><span class="code-line">
+</span><span class="code-line">    docker tag ant.design $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.DOCKER_USER <span class="token punctuation">}</span><span class="token punctuation">}</span>/ant.design<span class="token punctuation">:</span>$VERSION
+</span><span class="code-line">    docker tag ant.design $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.DOCKER_USER <span class="token punctuation">}</span><span class="token punctuation">}</span>/ant.design<span class="token punctuation">:</span>latest
+</span><span class="code-line">    docker push $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.DOCKER_USER <span class="token punctuation">}</span><span class="token punctuation">}</span>/ant.design<span class="token punctuation">:</span>$VERSION
+</span><span class="code-line">    docker push $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.DOCKER_USER <span class="token punctuation">}</span><span class="token punctuation">}</span>/ant.design<span class="token punctuation">:</span>latest
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="创建一个-tag"><a aria-hidden="true" tabindex="-1" href="#创建一个-tag"><span class="icon icon-link"></span></a>创建一个 tag</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Create Tag
+</span><span class="code-line">  <span class="token key atrule">id</span><span class="token punctuation">:</span> create_tag
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> jaywcjlove/create<span class="token punctuation">-</span>tag<span class="token punctuation">-</span>action@main
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">package-path</span><span class="token punctuation">:</span> ./package.json
+</span></code></pre>
+<p>根据 <code>package-path</code> 指定的 <code>package.json</code> 检测 <code>version</code> 是否发生变化来创建 <code>tag</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="生成-git-提交日志"><a aria-hidden="true" tabindex="-1" href="#生成-git-提交日志"><span class="icon icon-link"></span></a>生成 git 提交日志</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Generate Changelog
+</span><span class="code-line">  <span class="token key atrule">id</span><span class="token punctuation">:</span> changelog
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> jaywcjlove/changelog<span class="token punctuation">-</span>generator@main
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">filter-author</span><span class="token punctuation">:</span> (小弟调调™)
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Get the changelog
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> echo "$<span class="token punctuation">{</span><span class="token punctuation">{</span> steps.changelog.outputs.changelog <span class="token punctuation">}</span><span class="token punctuation">}</span>"
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="提交到-github-docker-镜像仓库"><a aria-hidden="true" tabindex="-1" href="#提交到-github-docker-镜像仓库"><span class="icon icon-link"></span></a>提交到 GitHub docker 镜像仓库</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'登录到 GitHub 注册表'</span>
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> echo $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.token <span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">|</span> docker login ghcr.io <span class="token punctuation">-</span>u $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.actor <span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>password<span class="token punctuation">-</span>stdin
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'编译 docker image'</span>
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> docker build <span class="token punctuation">-</span>t ghcr.io/jaywcjlove/reference<span class="token punctuation">:</span>latest .
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'推送到 GitHub 注册表中'</span>
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> docker push ghcr.io/jaywcjlove/reference<span class="token punctuation">:</span>latest
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'标记 docker 镜像并发布到 GitHub 注册表'</span>
+</span><span class="code-line">  <span class="token key atrule">if</span><span class="token punctuation">:</span> steps.create_tag.outputs.successful
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">    echo "version: v${{ steps.changelog.outputs.version }}"
+</span></span><span class="code-line"><span class="token scalar string">    docker tag ghcr.io/jaywcjlove/reference:latest ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+</span></span><span class="code-line"><span class="token scalar string">    docker push ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="提交-commit-到-master-分支"><a aria-hidden="true" tabindex="-1" href="#提交-commit-到-master-分支"><span class="icon icon-link"></span></a>提交 commit 到 master 分支</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 生成一个文件，并将它提交到 master 分支
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">    # Strip git ref prefix from version
+</span></span><span class="code-line"><span class="token scalar string">    VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+</span></span><span class="code-line"><span class="token scalar string">    COMMIT=released-${VERSION}
+</span></span><span class="code-line"><span class="token scalar string">    # Strip "v" prefix from tag name
+</span></span><span class="code-line"><span class="token scalar string">    [[ "${{ github.ref }}" == "refs/tags/"* ]] &#x26;&#x26; VERSION=$(echo $VERSION | sed -e 's/^v//')
+</span></span><span class="code-line"><span class="token scalar string">    echo "输出版本号：$VERSION"
+</span></span><span class="code-line"><span class="token scalar string">    # 将版本输出到当前 VERSION 文件中
+</span></span><span class="code-line"><span class="token scalar string">    echo "$VERSION" > VERSION
+</span></span><span class="code-line"><span class="token scalar string">    echo "1. 输出Commit：$commit"
+</span></span><span class="code-line"><span class="token scalar string">    echo "2. Released $VERSION"
+</span></span><span class="code-line"><span class="token scalar string">    git fetch
+</span></span><span class="code-line"><span class="token scalar string">    git config --local user.email "action@github.com"
+</span></span><span class="code-line"><span class="token scalar string">    git config --local user.name "GitHub Action"
+</span></span><span class="code-line"><span class="token scalar string">    git add .
+</span></span><span class="code-line"><span class="token scalar string">    git commit -am $COMMIT
+</span></span><span class="code-line"><span class="token scalar string">    git branch -av
+</span></span><span class="code-line"><span class="token scalar string">    git pull origin master</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 将上面的提交 push 到 master 分支
+</span><span class="code-line">  <span class="token key atrule">uses</span><span class="token punctuation">:</span> ad<span class="token punctuation">-</span>m/github<span class="token punctuation">-</span>push<span class="token punctuation">-</span>action@master
+</span><span class="code-line">  <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">github_token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="作业之间共享数据"><a aria-hidden="true" tabindex="-1" href="#作业之间共享数据"><span class="icon icon-link"></span></a>作业之间共享数据</h3><div class="wrap-body">
+<p>创建一个文件，然后将其作为构件上传</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">example-job</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">name</span><span class="token punctuation">:</span> Save output
+</span><span class="code-line">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">shell</span><span class="token punctuation">:</span> bash
+</span><span class="code-line">        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">          expr 1 + 1 > output.log</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Upload output file
+</span><span class="code-line">        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/upload<span class="token punctuation">-</span>artifact@v3
+</span><span class="code-line">        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">          <span class="token key atrule">name</span><span class="token punctuation">:</span> output<span class="token punctuation">-</span>log<span class="token punctuation">-</span>file
+</span><span class="code-line">          <span class="token key atrule">path</span><span class="token punctuation">:</span> output.log
+</span></code></pre>
+<p>可以下载名为 <code>output-log-file</code> 的工件</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">example-job</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Download a single artifact
+</span><span class="code-line">        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/download<span class="token punctuation">-</span>artifact@v3
+</span><span class="code-line">        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">          <span class="token key atrule">name</span><span class="token punctuation">:</span> output<span class="token punctuation">-</span>log<span class="token punctuation">-</span>file
+</span></code></pre>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://jaywcjlove.github.io/github-actions">Github Actions 学习笔记</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://docs.github.com/cn/actions/learn-github-actions">了解 GitHub Actions</a> <em>(docs.github.com)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+    const box = elm?.parentElement?.parentElement;
+    console.log('elm:2', box, document.querySelectorAll('.h2wrap-body .wrap'))
+  }
+}
+anchorPoint();
+</script></body>
+</html>
