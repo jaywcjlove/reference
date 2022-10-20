@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Stylus 备忘清单
+ &#x26;  stylus cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="本备忘单旨在快速理解 stylus 所涉及的主要概念，显示了它的常用方法使用清单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,stylus">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/stylus.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="stylus-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em" viewBox="0 0 64 64">
+  <path d="M9.864 42.916c1.66-1.986 1.855-4.036.57-7.844-.814-2.4-2.165-4.264-1.172-5.76 1.058-1.595 3.304-.05 1.432 2.083l.374.26c2.246.26 3.353-2.816 1.676-3.694-4.427-2.3-8.3 2.132-6.6 7.275.732 2.18 1.758 4.492.928 6.33-.716 1.58-2.1 2.506-3.027 2.54-1.937.098-.65-4.345 1.58-5.452.195-.098.472-.228.212-.553-2.75-.3-4.362.96-5.3 2.734-2.702 5.16 5.126 7.063 9.3 2.083zM58.2 27.748c.635 1.562 1.595 3.108 1.025 4.476-.472 1.172-1.1 1.66-1.774 1.774-.96.163-.7-2.848.944-3.743.146-.08.358-.472.163-.7-2.083-.114-3.255.88-3.9 2.197-1.84 3.857 4.166 4.915 7.112 1.123 1.172-1.514 1.22-3 .098-5.73-.716-1.725-1.806-3-1.123-4.15.732-1.204 2.5-.163 1.172 1.448l.293.163c1.7.098 2.4-2.18 1.107-2.75-3.434-1.465-6.64 2.23-5.126 5.9zM36.456 23.63c-1.188-.944-4.524.635-5.468 2.978-1.188 2.978-2.946 7.324-4.67 9.228-1.823 2.002-2.002.456-1.823-.7.423-2.718 3.076-9.016 4.524-10.8-.537-.797-4.052-.684-6.494 3.108-.9 1.432-2.995 6.2-5.306 9.96-.505.814-1.14.244-.65-1.66.553-2.197 2.18-8.235 4.28-12.987 5.5-1.1 11.343-1.855 15.82-1.872.602-.163 1-.7 0-.732-3.857-.13-9.65.325-15.07 1 1.04-2.063 2.163-3.733 3.3-4.433-1.237-.78-3.743-.472-5.175 1.644-.635.944-1.27 2.083-1.872 3.32-3.97.618-7.372 1.318-9.098 1.97-1.8.684-1.595 2.848-.505 2.44 2.262-.846 5.322-1.725 8.723-2.506-2.165 4.882-3.857 10.644-4.264 12.987-1 5.696 2.523 5.664 4.248 3.418 1.872-2.457 5.777-11.1 6.38-12 .18-.3.423-.146.293.13-4.362 8.707-3.987 12.076-.456 11.327 1.595-.342 4.345-3.076 5.06-4.492.146-.342.456-.3.4-.163-2.767 7.177-6.282 12.987-8.642 14.8-2.148 1.644-3.743-1.92 3.857-7.03 1.123-.765.602-1.806-.667-1.448-3.922.618-15.152 4.183-20.083 7.6-.374.26-.716.472-.7 1 .016.3.553.195.814.033 6.38-3.825 11.604-5.322 17.593-6.575.08.033.18.05.26.016.277-.065.26.08.08.195-.407.228-.814.44-.9.472-4.036 1.58-6.477 5.06-5.615 6.835.732 1.53 4.687.976 6.56-.033 4.6-2.5 7.926-7.372 10.204-14.1 1.986-5.973 4.492-12.743 5.078-12.938zM63.13 37.415c-7.47-.976-23.582.325-30.694 2.213-2.116.553-1.53 1.676-.456 1.465.016 0 .472-.114.488-.114 5.843-1.14 20.018-2.132 28.285-.553.993.18 3.97-2.8 2.376-3zm-24.6-.88c2.083-1.042 5.175-7.486 7.2-11.018.146-.26.407-.05.26.13-5.143 8.853-2.962 9.88-.928 9.748 2.718-.163 5.224-4.07 5.777-4.947.228-.342.358-.065.228.18-.13.407-.602 1.123-1.042 2.1-.618 1.383.033 1.92.57 2.165.846.407 3.157.146 3.515-1.27-2.3-.05 3.222-10.953 3.792-11.62-1.546-.895-3.938.08-5.03 2.23-2.327 4.606-4.28 8.316-5.5 8.38-2.376.13 2.734-10.27 3.564-10.595-.505-.732-3.743-.423-5.55 2.376-.65 1-4.622 8.04-5.598 9.195-1.725 2.05-1.855.293-1.367-1.758.163-.7.44-1.595.797-2.588 1.14-2.57 2.36-3.385 3.108-4.215 5.03-5.582 7.9-10.107 6.77-11.88-1-1.58-4.378-.88-6.542 2.376-3.987 5.973-7.665 14.16-8.137 17.902-.456 3.743 2.262 4.02 4.1 3.108zm2.116-10.953c.18-.407.293-.52.602-1.204 1.8-3.938 4.036-8.088 5.582-10.025.96-1 2.3.358-.13 4.1a37.625 37.625 0 0 1-4.834 6.038c-.456.52-.863.944-1.042 1.188-.13.163-.277.13-.18-.098z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#stylus-备忘清单"><span class="icon icon-link"></span></a>Stylus 备忘清单</h1><div class="wrap-body">
+<p>本备忘单旨在快速理解 <a href="https://github.com/stylus/stylus">stylus</a> 所涉及的主要概念，显示了它的常用方法使用清单。</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>为 Node.js 构建的富有表现力、健壮、功能丰富的 <a href="./css.html">CSS</a> 语言</p>
+<ul>
+<li><a href="./css.html">CSS 备忘清单</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://stylus-lang.com/try.html">在线编译预览</a> <em>(stylus-lang.com)</em></li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># npm</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> stylus <span class="token parameter variable">-g</span>
+</span><span class="code-line"><span class="token comment"># pnpm</span>
+</span><span class="code-line">$ <span class="token function">pnpm</span> <span class="token function">add</span> <span class="token parameter variable">-g</span> stylus
+</span></code></pre>
+<p>在 Node.js 环境中使用 <code>stylus</code></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ stylus one.styl two.styl
+</span><span class="code-line"><span class="token comment"># stylus 从标准输入读取并输出到标准输出</span>
+</span><span class="code-line">$ stylus <span class="token parameter variable">--compress</span> <span class="token operator">&#x3C;</span> some.styl <span class="token operator">></span> some.css
+</span><span class="code-line"><span class="token comment"># 将 css 目录中的文件编译输出到 `public/css`</span>
+</span><span class="code-line">$ stylus css <span class="token parameter variable">--out</span> public/css
+</span></code></pre>
+<p>转换 CSS，输出 <code>*.styl</code> 文件</p>
+<pre><code class="code-highlight"><span class="code-line">$ stylus --css &#x3C; test.css > test.styl
+</span><span class="code-line">$ stylus --css test.css /tmp/out.styl
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="支持-css-嵌套语法"><a aria-hidden="true" tabindex="-1" href="#支持-css-嵌套语法"><span class="icon icon-link"></span></a>支持 CSS 嵌套语法</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">.box <span class="token punctuation">{</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token color">blue</span><span class="token punctuation">;</span></span>
+</span><span class="code-line">  <span class="token selector">.button <span class="token punctuation">{</span></span>
+</span><span class="code-line">    <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token color">red</span><span class="token punctuation">;</span></span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>Stylus 是一个 CSS 预处理器。另见: <a href="http://stylus-lang.com/">stylus-lang.com</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="支持类-python-缩进语法"><a aria-hidden="true" tabindex="-1" href="#支持类-python-缩进语法"><span class="icon icon-link"></span></a>支持类 python 缩进语法</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">.box</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token color">blue</span></span>
+</span><span class="code-line">  <span class="token selector">.button</span>
+</span><span class="code-line">    <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token color">red</span></span>
+</span></code></pre>
+<p>也有效！冒号也是可选的。这通常用于 Stylus 文档的语法</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="混合-mixins"><a aria-hidden="true" tabindex="-1" href="#混合-mixins"><span class="icon icon-link"></span></a>混合 Mixins</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">caps-type</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">letter-spacing</span><span class="token punctuation">:</span> <span class="token number">0.05</span><span class="token unit">em</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">h5</span>
+</span><span class="code-line highlight-line">  <span class="token func"><span class="token function">caps-type</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+</span></code></pre>
+<p>编译 css 为：</p>
+<pre class="language-css"><code class="language-css code-highlight"><span class="code-line"><span class="token selector">h5</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">letter-spacing</span><span class="token punctuation">:</span> <span class="token number">0.05</span><span class="token unit">em</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>另见：下面<a href="#%E6%B7%B7%E5%90%88-Mixins">Mixins</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="变量-variables"><a aria-hidden="true" tabindex="-1" href="#变量-variables"><span class="icon icon-link"></span></a>变量 Variables</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token variable-declaration"><span class="token variable">royal-blue</span> <span class="token operator">=</span> <span class="token hexcode">#36a</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">div</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> royal-<span class="token color">blue</span></span>
+</span></code></pre>
+<p>标识符（变量名、函数等）也可以包括 <code>$</code> 字符</p>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token variable-declaration"><span class="token variable">$font-size</span> <span class="token operator">=</span> <span class="token number">14</span><span class="token unit">px</span></span>
+</span><span class="code-line"><span class="token selector">body <span class="token punctuation">{</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">font</span><span class="token punctuation">:</span> $font-size sans-serif<span class="token punctuation">;</span></span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>另见：<a href="https://stylus-lang.com/docs/variables.html">变量 Variables</a></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="混合-mixins-1"><a aria-hidden="true" tabindex="-1" href="#混合-mixins-1"><span class="icon icon-link"></span></a>混合 Mixins</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="没有参数"><a aria-hidden="true" tabindex="-1" href="#没有参数"><span class="icon icon-link"></span></a>没有参数</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line"><span class="token func"><span class="token function">red-border</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">border</span><span class="token punctuation">:</span> solid <span class="token number">2</span><span class="token unit">px</span> <span class="token color">red</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">div</span>
+</span><span class="code-line highlight-line">  <span class="token func"><span class="token function">red-border</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/mixins.html">Mixins</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="有参数"><a aria-hidden="true" tabindex="-1" href="#有参数"><span class="icon icon-link"></span></a>有参数</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line"><span class="token func"><span class="token function">border-radius</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">-webkit-border-radius</span><span class="token punctuation">:</span> n</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">border-radius</span><span class="token punctuation">:</span> n</span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">div</span>
+</span><span class="code-line highlight-line">  <span class="token property-declaration"><span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token unit">px</span></span>
+</span><span class="code-line highlight-line">  <span class="token func"><span class="token function">border-radius</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token unit">px</span><span class="token punctuation">)</span></span>
+</span></code></pre>
+<p>Mixins can be applied in two different ways.</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="参数默认值"><a aria-hidden="true" tabindex="-1" href="#参数默认值"><span class="icon icon-link"></span></a>参数默认值</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line"><span class="token func"><span class="token function">border-radius</span><span class="token punctuation">(</span>n <span class="token operator">=</span> <span class="token number">2</span><span class="token unit">px</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">-webkit-border-radius</span><span class="token punctuation">:</span> n</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="块混合"><a aria-hidden="true" tabindex="-1" href="#块混合"><span class="icon icon-link"></span></a>块混合</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">mobile</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token atrule-declaration"><span class="token atrule">@media</span> <span class="token punctuation">(</span>max-width<span class="token punctuation">:</span> <span class="token number">480</span><span class="token unit">px</span><span class="token punctuation">)</span></span>
+</span><span class="code-line highlight-line">    <span class="token interpolation variable"><span class="token delimiter punctuation">{</span>block<span class="token delimiter punctuation">}</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line">+<span class="token func"><span class="token function">mobile</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token unit">px</span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/mixins.html#block-mixins">块混合</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="rest-参数"><a aria-hidden="true" tabindex="-1" href="#rest-参数"><span class="icon icon-link"></span></a>Rest 参数</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line"><span class="token func"><span class="token function">shadow</span><span class="token punctuation">(</span>offset-x<span class="token punctuation">,</span> args<span class="token operator">...</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">box-shadow</span><span class="token punctuation">:</span> offset-x args</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">margin-top</span><span class="token punctuation">:</span> offset-x</span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">#login</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">shadow</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token unit">px</span> <span class="token number">2</span><span class="token unit">px</span> <span class="token number">5</span><span class="token unit">px</span> <span class="token hexcode">#eee</span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/vargs.html">Rest 参数</a></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="函数-functions"><a aria-hidden="true" tabindex="-1" href="#函数-functions"><span class="icon icon-link"></span></a>函数 Functions</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="函数-functions-1"><a aria-hidden="true" tabindex="-1" href="#函数-functions-1"><span class="icon icon-link"></span></a>函数 Functions</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line"><span class="token func"><span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">a</span> <span class="token operator">+</span> b</span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">body</span>
+</span><span class="code-line highlight-line">  <span class="token property-declaration"><span class="token property">padding</span><span class="token punctuation">:</span> <span class="token func"><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token unit">px</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span></span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/functions.html">Functions</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="参数默认值-1"><a aria-hidden="true" tabindex="-1" href="#参数默认值-1"><span class="icon icon-link"></span></a>参数默认值</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line"><span class="token func"><span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">a</span> <span class="token operator">+</span> b</span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/functions.html#argument-defaults">参数默认值</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="命名参数"><a aria-hidden="true" tabindex="-1" href="#命名参数"><span class="icon icon-link"></span></a>命名参数</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">shadow</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">x</span> y <span class="token punctuation">(</span>y <span class="token operator">*</span> <span class="token number">1.5</span><span class="token punctuation">)</span> <span class="token hexcode">#000</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">.button</span>
+</span><span class="code-line highlight-line">  <span class="token property-declaration"><span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token func"><span class="token function">shadow</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">)</span></span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/functions.html#named-parameters">命名参数</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="多个返回值"><a aria-hidden="true" tabindex="-1" href="#多个返回值"><span class="icon icon-link"></span></a>多个返回值</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">sizes</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+</span><span class="code-line highlight-line">  <span class="token property-declaration"><span class="token property">8px</span> <span class="token number">16</span><span class="token unit">px</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">sizes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>  <span class="token comment">// → 8px</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">sizes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment">// → 16px</span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/functions.html#multiple-return-values">多个返回值</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="arguments"><a aria-hidden="true" tabindex="-1" href="#arguments"><span class="icon icon-link"></span></a>arguments</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token variable-declaration"><span class="token variable">n</span> <span class="token operator">=</span> <span class="token number">0</span></span>
+</span><span class="code-line">  <span class="token statement"><span class="token keyword">for</span> num <span class="token operator">in</span> arguments</span>
+</span><span class="code-line">    <span class="token variable-declaration"><span class="token variable">n</span> <span class="token operator">=</span> n <span class="token operator">+</span> num</span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">// => 15</span></span>
+</span></code></pre>
+<p>参数 local 可用于所有函数体，并包含所有传递的参数</p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="hash-示例"><a aria-hidden="true" tabindex="-1" href="#hash-示例"><span class="icon icon-link"></span></a>hash 示例</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">get</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> key<span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token statement"><span class="token keyword">return</span> pair<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">if</span> pair<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> key <span class="token keyword">for</span> pair <span class="token operator">in</span> hash</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token variable-declaration"><span class="token variable">hash</span> <span class="token operator">=</span> <span class="token punctuation">(</span>one <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>two <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>three <span class="token number">3</span><span class="token punctuation">)</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token func"><span class="token function">get</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> two<span class="token punctuation">)</span></span>
+</span><span class="code-line"><span class="token comment">// => 2</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="值-values"><a aria-hidden="true" tabindex="-1" href="#值-values"><span class="icon icon-link"></span></a>值 Values</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="条件赋值"><a aria-hidden="true" tabindex="-1" href="#条件赋值"><span class="icon icon-link"></span></a>条件赋值</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token variable-declaration"><span class="token variable">royal-blue</span> <span class="token operator">=</span> <span class="token hexcode">#36a</span></span>
+</span><span class="code-line highlight-line"><span class="token variable-declaration"><span class="token variable">royal-blue</span> <span class="token operator">?=</span> <span class="token hexcode">#89f</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">div</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> royal-<span class="token color">blue</span>  <span class="token comment">// #36a</span></span>
+</span></code></pre>
+<p><code>?=</code> 只会在之前未设置的情况下设置变量</p>
+<p>另见: <a href="https://stylus-lang.com/docs/operators.html#conditional-assignment--">条件赋值</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="属性查找"><a aria-hidden="true" tabindex="-1" href="#属性查找"><span class="icon icon-link"></span></a>属性查找</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">.logo</span>
+</span><span class="code-line highlight-line">  <span class="token property-declaration"><span class="token property">width</span><span class="token punctuation">:</span> w <span class="token operator">=</span> <span class="token number">150</span></span>
+</span><span class="code-line highlight-line">  <span class="token property-declaration"><span class="token property">margin-left</span><span class="token punctuation">:</span> <span class="token func"><span class="token function">-</span><span class="token punctuation">(</span>w <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span></span></span>
+</span><span class="code-line">  <span class="token comment">// or</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">80</span><span class="token unit">px</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token func"><span class="token function">-</span><span class="token punctuation">(</span>@height <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span></span></span>
+</span></code></pre>
+<p>另见: <a href="https://stylus-lang.com/docs/variables.html#property-lookup">属性查找</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="插值"><a aria-hidden="true" tabindex="-1" href="#插值"><span class="icon icon-link"></span></a>插值</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token property-declaration"><span class="token property">-<span class="token interpolation variable"><span class="token delimiter punctuation">{</span>prefix<span class="token delimiter punctuation">}</span></span>-border-radius</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token unit">px</span></span>
+</span></code></pre>
+<p>另见: <a href="https://stylus-lang.com/docs/interpolation.html">Interpolation</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="color-operators"><a aria-hidden="true" tabindex="-1" href="#color-operators"><span class="icon icon-link"></span></a>Color operators</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line">#888 + 50%    <span class="token comment">// → #c3c3c3 (lighten)</span>
+</span><span class="code-line">#888 - 50%    <span class="token comment">// → #444 (darken)</span>
+</span><span class="code-line">#f00 + 50deg  <span class="token comment">// → #ffd500 (hue)</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="casting"><a aria-hidden="true" tabindex="-1" href="#casting"><span class="icon icon-link"></span></a>Casting</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token variable-declaration"><span class="token variable">n</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token unit">px</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line"><span class="token property-declaration"><span class="token property">foo</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span>em</span>
+</span><span class="code-line highlight-line"><span class="token property-declaration"><span class="token property">foo</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>n <span class="token operator">*</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">%</span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="lookup"><a aria-hidden="true" tabindex="-1" href="#lookup"><span class="icon icon-link"></span></a>Lookup</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token variable-declaration"><span class="token variable">light-blue</span> <span class="token operator">=</span> <span class="token hexcode">#3bd</span></span>
+</span><span class="code-line"><span class="token variable-declaration"><span class="token variable">name</span> <span class="token operator">=</span> <span class="token string">'blue'</span></span>
+</span><span class="code-line highlight-line"><span class="token func"><span class="token function">lookup</span><span class="token punctuation">(</span><span class="token string">'light-'</span> <span class="token operator">+</span> name<span class="token punctuation">)</span></span>
+</span></code></pre>
+<p>另见: <a href="https://stylus-lang.com/docs/bifs.html#lookupname">lookup</a></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="高级功能"><a aria-hidden="true" tabindex="-1" href="#高级功能"><span class="icon icon-link"></span></a>高级功能</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="有条件的"><a aria-hidden="true" tabindex="-1" href="#有条件的"><span class="icon icon-link"></span></a>有条件的</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token statement"><span class="token keyword">if</span> color <span class="token operator">==</span> <span class="token color">blue</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">display</span><span class="token punctuation">:</span> block</span>
+</span><span class="code-line"><span class="token statement"><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token boolean">true</span> <span class="token operator">and</span> <span class="token boolean">true</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">display</span><span class="token punctuation">:</span> inline</span>
+</span><span class="code-line"><span class="token statement"><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token string">'hey'</span> <span class="token operator">is not</span> <span class="token string">'bye'</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">display</span><span class="token punctuation">:</span> flex</span>
+</span><span class="code-line"><span class="token selector">else</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">display</span><span class="token punctuation">:</span> none</span>
+</span></code></pre>
+<p>别名:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>==</code></td><td align="left"><code>is</code></td></tr><tr><td align="left"><code>!=</code></td><td align="left"><code>is not</code></td></tr><tr><td align="left"><code>!=</code></td><td align="left"><code>isnt</code></td></tr></tbody></table>
+<p>另见: <a href="https://stylus-lang.com/docs/functions.html#conditionals">Conditionals</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="对于循环"><a aria-hidden="true" tabindex="-1" href="#对于循环"><span class="icon icon-link"></span></a>对于循环</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token variable-declaration"><span class="token variable">font-size-1</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token unit">px</span></span>
+</span><span class="code-line"><span class="token variable-declaration"><span class="token variable">font-size-2</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token unit">px</span></span>
+</span><span class="code-line"><span class="token variable-declaration"><span class="token variable">font-size-3</span> <span class="token operator">=</span> <span class="token number">30</span><span class="token unit">px</span></span>
+</span><span class="code-line"><span class="token statement"><span class="token keyword">for</span> i <span class="token operator">in</span> <span class="token number">1</span><span class="token operator">..</span><span class="token number">3</span></span>
+</span><span class="code-line highlight-line">  <span class="token selector">.text-<span class="token interpolation variable"><span class="token delimiter punctuation">{</span>i<span class="token delimiter punctuation">}</span></span></span>
+</span><span class="code-line">    <span class="token property-declaration"><span class="token property">font-size</span><span class="token punctuation">:</span> lookup<span class="token punctuation">(</span><span class="token string">'font-size-'</span> <span class="token operator">+</span> i<span class="token punctuation">)</span></span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="定义检查"><a aria-hidden="true" tabindex="-1" href="#定义检查"><span class="icon icon-link"></span></a>定义检查</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line highlight-line"><span class="token statement"><span class="token keyword">if</span> ohnoes <span class="token operator">is defined</span></span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">color</span><span class="token punctuation">:</span> <span class="token color">blue</span></span>
+</span></code></pre>
+<p>另见: <a href="https://stylus-lang.com/docs/operators.html#variable-definition-is-defined">is defined</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="false-值"><a aria-hidden="true" tabindex="-1" href="#false-值"><span class="icon icon-link"></span></a>False 值</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line">0
+</span><span class="code-line">null
+</span><span class="code-line">false
+</span><span class="code-line"><span class="token string">''</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="类型检查"><a aria-hidden="true" tabindex="-1" href="#类型检查"><span class="icon icon-link"></span></a>类型检查</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token statement"><span class="token keyword">if</span> val <span class="token operator">is a</span> <span class="token string">'string'</span></span>
+</span><span class="code-line"><span class="token statement"><span class="token keyword">if</span> val <span class="token operator">is a</span> <span class="token string">'ident'</span></span>
+</span><span class="code-line"><span class="token statement"><span class="token keyword">if</span> <span class="token hexcode">#fff</span> <span class="token operator">is a</span> <span class="token string">'rgba'</span>    <span class="token comment">// → true</span></span>
+</span></code></pre>
+<p>另见: <a href="https://stylus-lang.com/docs/operators.html#instance-check-is-a">Instance check</a></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="内置函数"><a aria-hidden="true" tabindex="-1" href="#内置函数"><span class="icon icon-link"></span></a>内置函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap row-span-4"><div class="wrap-header h3wrap"><h3 id="颜色函数"><a aria-hidden="true" tabindex="-1" href="#颜色函数"><span class="icon icon-link"></span></a>颜色函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-4-->
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">alpha</span><span class="token punctuation">(</span><span class="token hexcode">#fff</span><span class="token punctuation">)</span>   <span class="token comment">//→ 1</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">alpha</span><span class="token punctuation">(</span><span class="token func"><span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   </span><span class="token comment">//→ 0.2</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">dark</span><span class="token punctuation">(</span><span class="token color">black</span><span class="token punctuation">)</span>  <span class="token comment">//→ true</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">light</span><span class="token punctuation">(</span><span class="token color">black</span><span class="token punctuation">)</span> <span class="token comment">//→ false</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">hue</span><span class="token punctuation">(</span><span class="token hexcode">#0a0</span><span class="token punctuation">)</span>         <span class="token comment">//→ 50deg</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">saturation</span><span class="token punctuation">(</span><span class="token hexcode">#f00</span><span class="token punctuation">)</span>  <span class="token comment">//→ 100%</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">lightness</span><span class="token punctuation">(</span><span class="token hexcode">#f00</span><span class="token punctuation">)</span>   <span class="token comment">//→ 50%</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">luminosity</span><span class="token punctuation">(</span><span class="token hexcode">#f00</span><span class="token punctuation">)</span>  <span class="token comment">//→ 0.2126</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">hue</span><span class="token punctuation">(</span><span class="token hexcode">#0a0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token unit">deg</span><span class="token punctuation">)</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">saturation</span><span class="token punctuation">(</span><span class="token hexcode">#f00</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token unit">%</span><span class="token punctuation">)</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">lightness</span><span class="token punctuation">(</span><span class="token hexcode">#f00</span><span class="token punctuation">)</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">lighten</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">10</span><span class="token unit">%</span><span class="token punctuation">)</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">darken</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">10</span><span class="token unit">%</span><span class="token punctuation">)</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">saturate</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">10</span><span class="token unit">%</span><span class="token punctuation">)</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">desaturate</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">10</span><span class="token unit">%</span><span class="token punctuation">)</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">invert</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">tint</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">50</span><span class="token unit">%</span><span class="token punctuation">)</span>  <span class="token comment">// mix with white</span></span>
+</span><span class="code-line"><span class="token func"><span class="token function">shade</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">50</span><span class="token unit">%</span><span class="token punctuation">)</span> <span class="token comment">// mix with black</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">unquote</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/bifs.html">Built-in functions</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="图片尺寸"><a aria-hidden="true" tabindex="-1" href="#图片尺寸"><span class="icon icon-link"></span></a>图片尺寸</h3><div class="wrap-body">
+<p>返回给定图像的宽度和高度</p>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token property-declaration"><span class="token property">width</span><span class="token punctuation">:</span>  image-size<span class="token punctuation">(</span><span class="token string">'tux.png'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
+</span><span class="code-line"><span class="token property-declaration"><span class="token property">height</span><span class="token punctuation">:</span> image-size<span class="token punctuation">(</span><span class="token string">'tux.png'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/bifs.html#image-sizepath">image-size</a></p>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="缓存-caching"><a aria-hidden="true" tabindex="-1" href="#缓存-caching"><span class="icon icon-link"></span></a>缓存 Caching</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">size</span><span class="token punctuation">(</span>$width<span class="token punctuation">)</span></span>
+</span><span class="code-line">  +<span class="token func"><span class="token function">cache</span><span class="token punctuation">(</span><span class="token string">'w'</span> <span class="token operator">+</span> $width<span class="token punctuation">)</span></span>
+</span><span class="code-line">    <span class="token property-declaration"><span class="token property">width</span><span class="token punctuation">:</span> $width</span>
+</span><span class="code-line"><span class="token selector">.a <span class="token punctuation">{</span></span> <span class="token property-declaration"><span class="token property">size</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token unit">px</span> <span class="token punctuation">}</span></span>
+</span><span class="code-line"><span class="token selector">.b <span class="token punctuation">{</span></span> <span class="token property-declaration"><span class="token property">size</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token unit">px</span> <span class="token punctuation">}</span></span>
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token comment">// 输出: .a, b { width: 10px }</span>
+</span></code></pre>
+<p>在第一次调用时将其内容应用于给定的选择器，但会在第二次调用时使用相同的参数 <code>@extend</code> 第一次调用的选择器。另见: <a href="http://stylus-lang.com/docs/bifs.html#cachekeys">cache</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="embed-url"><a aria-hidden="true" tabindex="-1" href="#embed-url"><span class="icon icon-link"></span></a>Embed URL</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="code-highlight"><span class="code-line">background: embedurl('logo.png')
+</span><span class="code-line">// → background: url("data:image/png;base64,…")
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>另见: <a href="http://stylus-lang.com/docs/bifs.html#embedurlpath-encoding">embedurl</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="添加属性"><a aria-hidden="true" tabindex="-1" href="#添加属性"><span class="icon icon-link"></span></a>添加属性</h3><div class="wrap-body">
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">gradient</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span></span>
+</span><span class="code-line">  <span class="token func"><span class="token function">add-property</span><span class="token punctuation">(</span><span class="token string">'background-image'</span><span class="token punctuation">,</span> <span class="token func"><span class="token function">linear-gradient</span><span class="token punctuation">(</span>top<span class="token punctuation">,</span> color<span class="token punctuation">,</span> <span class="token func"><span class="token function">darken</span><span class="token punctuation">(</span>color<span class="token punctuation">,</span> <span class="token number">20</span><span class="token unit">%</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span></span></span>
+</span><span class="code-line">  color
+</span></code></pre>
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token selector">body</span>
+</span><span class="code-line">  <span class="token property-declaration"><span class="token property">background</span><span class="token punctuation">:</span> <span class="token func"><span class="token function">gradient</span><span class="token punctuation">(</span><span class="token color">red</span><span class="token punctuation">)</span></span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/bifs.html#add-propertyname-expr">add-property</a></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="sprintf"><a aria-hidden="true" tabindex="-1" href="#sprintf"><span class="icon icon-link"></span></a>sprintf</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-stylus code-highlight"><span class="code-line"><span class="token string">'-webkit-gradient(%s, %s, %s)'</span> % <span class="token punctuation">(</span>linear <span class="token punctuation">(</span>0 0<span class="token punctuation">)</span> <span class="token punctuation">(</span>0 100%<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// → -webkit-gradient(linear, 0 0, 0 100%)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<hr>
+<pre class="language-stylus"><code class="language-stylus code-highlight"><span class="code-line"><span class="token func"><span class="token function">s</span><span class="token punctuation">(</span><span class="token string">"rgba(0, 0, 0, %s)"</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span></span>
+</span></code></pre>
+<p>另见: <a href="http://stylus-lang.com/docs/bifs.html#sfmt-">s</a></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="./css.html">CSS 备忘清单</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://stylus-lang.com/try.html">在线编译预览</a> <em>(stylus-lang.com)</em></li>
+<li><a href="./lessjs.html">Less.js 备忘清单</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+    const box = elm?.parentElement?.parentElement;
+    console.log('elm:2', box, document.querySelectorAll('.h2wrap-body .wrap'))
+  }
+}
+anchorPoint();
+</script></body>
+</html>
