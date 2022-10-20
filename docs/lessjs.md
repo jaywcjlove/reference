@@ -1,7 +1,7 @@
 Less 备忘清单
 ===
 
-本备忘单旨在快速理解 [Less](https://github.com/lerna/lerna) 所涉及的主要概念，显示了它的常用方法使用清单。
+本备忘单旨在快速理解 [Less](https://github.com/less/less.js) 所涉及的主要概念，显示了它的常用方法使用清单。
 
 入门
 ---
@@ -715,4 +715,5 @@ each(range(4), {
 
 - [Less.js 官网](http://lesscss.org) _(lesscss.org)_
 - [CSS 备忘清单](./css.md) _(jaywcjlove.github.io)_
+- [Stylus 备忘清单](./stylus.md) _(jaywcjlove.github.io)_
 - [在线编译预览](http://lesscss.org/less-preview/#eyJjb2RlIjoiI2xpYigpIHtcbiAgICAuY29sb3JzKCkge1xuICAgICAgQHByaW1hcnk6IGJsdWU7XG4gICAgICBAc2Vjb25kYXJ5OiBncmVlbjtcbiAgICB9XG4gICAgLnJ1bGVzKEBzaXplKSB7XG4gICAgICBib3JkZXI6IEBzaXplIHNvbGlkIHdoaXRlO1xuICAgIH1cbiAgfVxuICBcbiAgLmJveCB3aGVuICgjbGliLmNvbG9yc1tAcHJpbWFyeV0gPSBibHVlKSB7XG4gICAgd2lkdGg6IDEwMHB4O1xuICAgIGhlaWdodDogKCR3aWR0aCAvIDIpO1xuICB9XG4gIFxuICAuYmFyOmV4dGVuZCguYm94KSB7XG4gICAgQG1lZGlhIChtaW4td2lkdGg6IDYwMHB4KSB7XG4gICAgICB3aWR0aDogMjAwcHg7XG4gICAgICAjbGliLnJ1bGVzKDFweCk7XG4gICAgfVxuICB9IiwiYWN0aXZlVmVyc2lvbiI6IjQueCJ9) _(lesscss.org)_

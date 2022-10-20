@@ -34,6 +34,7 @@ Quick Reference
 [Electron](./docs/electron.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));-->
 [Emmet](./docs/emmet.md)<!--rehype:style=background: rgb(122 203 23/var(\-\-bg\-opacity));-->
 [Styled Components](./docs/styled-components.md)<!--rehype:style=background: rgb(221 60 184/var(\-\-bg\-opacity));-->
+[Stylus](./docs/stylus.md)<!--rehype:style=background: rgb(109 161 63/var(\-\-bg\-opacity));-->
 [HTML](./docs/html.md)<!--rehype:style=background: rgb(228 77 39/var(\-\-bg\-opacity));-->
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31/var(\-\-bg\-opacity));-->
 [Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
