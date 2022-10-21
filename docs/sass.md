@@ -10,7 +10,7 @@ Sass 基础
 <!--rehype:wrap-class=row-span-2-->
 
 - [Sass 官方文档](https://sass-lang.com/documentation) _(sass-lang.com)_
-- [Sass 中文文档](https://www.sass.hk/docs/) _(sass.h)_
+- [Sass 中文文档](https://www.sass.hk/docs/) _(sass.hk)_
 
 Sass 是一种 CSS 的预编译语言
 
@@ -612,3 +612,9 @@ length($list)
 $map: (key1: value1, key2: value2, key3: value3);
 map-get($map, key1)
 ```
+
+另见
+----
+
+- [Sass 官方文档](https://sass-lang.com/documentation) _(sass-lang.com)_
+- [Sass 中文文档](https://www.sass.hk/docs/) _(sass.hk)_
