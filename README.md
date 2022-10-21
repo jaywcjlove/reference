@@ -113,7 +113,7 @@ Quick Reference
   <img src="https://jaywcjlove.github.io/reference/CONTRIBUTORS.svg" />
 </a>
 
-上图贡献者列表，由 [action-contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
+上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
 
 ## License
 
