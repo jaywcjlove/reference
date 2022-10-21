@@ -105,6 +105,16 @@ Quick Reference
 <!--rehype:style=margin-top:3rem-->
 
 <!--rehype:ignore:start-->
+## 贡献
+
+请参阅[贡献指南](./CONTRIBUTING.md)了解如何开始。一如既往，感谢我们出色的贡献者！
+
+<a href="https://github.com/jaywcjlove/reference/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/reference/CONTRIBUTORS.svg" />
+</a>
+
+上图贡献者列表，由 [action-contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
+
 ## License
 
 MIT © [Kenny Wong](https://github.com/jaywcjlove)

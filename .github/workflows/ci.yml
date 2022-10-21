@@ -16,6 +16,13 @@ jobs:
       - run: npm install
       - run: npm run build
 
+      - name: Generate Contributors Images
+        uses: jaywcjlove/github-action-contributors@main
+        with:
+          filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
+          output: dist/CONTRIBUTORS.svg
+          avatarSize: 42
+
       - name: Create Tag
         id: create_tag
         uses: jaywcjlove/create-tag-action@main
