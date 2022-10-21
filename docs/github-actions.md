@@ -767,6 +767,54 @@ jobs:
           name: output-log-file
 ```
 
+### 指定运行命令的工作目录
+
+```yml {3}
+- name: Clean temp directory
+  run: rm -rf *
+  working-directory: ./temp
+```
+
+使用 `working-directory` 关键字，您可以指定运行命令的工作目录(`./temp`)
+
+#### defaults.run
+
+```yml {4,5,7}
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: scripts
+```
+
+作业中的所有 `run` 步骤提供默认的 `shell` 和 `working-directory`
+
+### jobs.<job_id>.steps[*].shell
+
+使用 `bash` 运行脚本
+
+```yml {4}
+steps:
+  - name: Display the path
+    run: echo $PATH
+    shell: bash
+```
+
+运行 `python` 脚本
+
+```yml {6}
+steps:
+  - name: Display the path
+    run: |
+      import os
+      print(os.environ['PATH'])
+    shell: python
+```
+
+您可以使用 `shell` 关键字覆盖运行器操作系统中的默认 `shell` 设置
+
 另见
 ---
 
