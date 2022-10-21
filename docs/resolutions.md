@@ -216,7 +216,7 @@ Resolutions 备忘清单
 <!--rehype:className=show-header-->
 
 ### 常见的显示分辨率（N/A = 不适用）
-<!--rehype:wrap-class=col-span-3-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 标准 | 纵横比 | 可视窗口 | 百万像素 | Steam(%) | Stat Counter(%)
 :- |:- |:- |:- |:- |:- |
@@ -243,6 +243,33 @@ N/A | 16:9 | 1536 x 864 <sub>px</sub> | 1.327 | N/A | 8.5
 `4K UHD`| 16:9 | 3840 x 2160 <sub>px</sub> | 8.294 | 2.12 | N/A 
 `Other` | - | - | - | 2.00 | 15.09
 <!--rehype:className=show-header-->
+
+### 屏幕分辨率
+
+解析度 | 像素
+:- |:- 
+`540p / qHD` | 960×540<sub>px</sub>
+`720p / HD` | 1280×720<sub>px</sub>
+`1080p / Full HD / FHD` | 19201080<sub>px</sub>
+`2K` | 2048×1080<sub>px</sub>
+`1440p / QHD / QuadHD / WQHD` | 2560×1440<sub>px</sub>
+`2160p / UHD` | 3840×2160<sub>px</sub>
+`4K` | 4096×2160<sub>px</sub>
+`5K` | 5120×2880<sub>px</sub>
+`8K / 8K UHD` | 7680×4320<sub>px</sub>
+
+### 显示分辨率和用例
+
+解析度名称 | 设备
+:- |:-
+`8K` _(8K UHD)_ | `TVs`
+`“Cinema” 4K` _(4K)_ | 投影仪
+`UHD` _(4K, Ultra HD, Ultra-High Definition)_ | `TVs`, 监视器, 智能手机
+`2K` _(none)_ | 投影仪
+`WUXGA` _(Widescreen Ultra Extended Graphics Array)_ | 监视器, 投影仪
+`1080p` _(Full HD, FHD, HD, High Definition)_ | `TVs`, 监视器, 智能手机
+`720p` _(HD, High Definition)_ `TVs`, 智能手机
+<!--rehype:className=style-list-arrow-->
 
 另见
 ---
