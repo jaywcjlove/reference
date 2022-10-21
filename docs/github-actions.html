@@ -804,6 +804,38 @@
 </span><span class="code-line">        <span class="token key atrule">with</span><span class="token punctuation">:</span>
 </span><span class="code-line highlight-line">          <span class="token key atrule">name</span><span class="token punctuation">:</span> output<span class="token punctuation">-</span>log<span class="token punctuation">-</span>file
 </span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="指定运行命令的工作目录"><a aria-hidden="true" tabindex="-1" href="#指定运行命令的工作目录"><span class="icon icon-link"></span></a>指定运行命令的工作目录</h3><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Clean temp directory
+</span><span class="code-line">  <span class="token key atrule">run</span><span class="token punctuation">:</span> rm <span class="token punctuation">-</span>rf *
+</span><span class="code-line highlight-line">  <span class="token key atrule">working-directory</span><span class="token punctuation">:</span> ./temp
+</span></code></pre>
+<p>使用 <code>working-directory</code> 关键字，您可以指定运行命令的工作目录(<code>./temp</code>)</p>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="defaultsrun"><a aria-hidden="true" tabindex="-1" href="#defaultsrun"><span class="icon icon-link"></span></a>defaults.run</h4><div class="wrap-body">
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">job1</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+</span><span class="code-line highlight-line">    <span class="token key atrule">defaults</span><span class="token punctuation">:</span>
+</span><span class="code-line highlight-line">      <span class="token key atrule">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">shell</span><span class="token punctuation">:</span> bash
+</span><span class="code-line highlight-line">        <span class="token key atrule">working-directory</span><span class="token punctuation">:</span> scripts
+</span></code></pre>
+<p>作业中的所有 <code>run</code> 步骤提供默认的 <code>shell</code> 和 <code>working-directory</code></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="jobsjob_idstepsshell"><a aria-hidden="true" tabindex="-1" href="#jobsjob_idstepsshell"><span class="icon icon-link"></span></a>jobs.&#x3C;job_id>.steps[*].shell</h3><div class="wrap-body">
+<p>使用 <code>bash</code> 运行脚本</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Display the path
+</span><span class="code-line">    <span class="token key atrule">run</span><span class="token punctuation">:</span> echo $PATH
+</span><span class="code-line highlight-line">    <span class="token key atrule">shell</span><span class="token punctuation">:</span> bash
+</span></code></pre>
+<p>运行 <code>python</code> 脚本</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Display the path
+</span><span class="code-line">    <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+</span></span><span class="code-line"><span class="token scalar string">      import os
+</span></span><span class="code-line"><span class="token scalar string">      print(os.environ['PATH'])</span>
+</span><span class="code-line highlight-line">    <span class="token key atrule">shell</span><span class="token punctuation">:</span> python
+</span></code></pre>
+<p>您可以使用 <code>shell</code> 关键字覆盖运行器操作系统中的默认 <code>shell</code> 设置</p>
 </div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://jaywcjlove.github.io/github-actions">Github Actions 学习笔记</a> <em>(jaywcjlove.github.io)</em></li>
