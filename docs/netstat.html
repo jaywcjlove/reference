@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Netstat 备忘清单
+ &#x26;  netstat cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="此快速参考备忘单提供了各种使用 netstat 命令的方法为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,netstat">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/netstat.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap max-container"><header class="wrap-header h1wrap"><h1 id="netstat-备忘清单"><svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M26.58 32h-18a1 1 0 1 0 0 2h18a1 1 0 0 0 0-2Z"></path>
+  <path d="M31.73 15.4h-6.17a18.87 18.87 0 0 1-1.62 2.52 2.33 2.33 0 0 1 .33 1.19 22 22 0 0 0 5 .45 11.88 11.88 0 0 1-.61 1.53h-.56a17.41 17.41 0 0 1-4.32-.56 2.29 2.29 0 0 1-3 .62 18.43 18.43 0 0 1-7 3.5 2.34 2.34 0 0 1-1.57 1.79l-.29.06a11.93 11.93 0 0 1-3.39-2.8h.66a2.33 2.33 0 0 1 4.37-.58A16.94 16.94 0 0 0 19.78 20a2.32 2.32 0 0 1-.18-1.17c-.42-.24-.84-.49-1.25-.76a17.53 17.53 0 0 1-5.35-5.6 2.31 2.31 0 0 1-2.28-.63 27.31 27.31 0 0 0-5 4.74v-.57a12 12 0 0 1 .14-1.73 18.75 18.75 0 0 1 4.2-3.8 2.28 2.28 0 0 1 1.1-2.25c-.12-.43-.24-.86-.33-1.3 0-.14 0-.29-.11-.64a12 12 0 0 1 1.37-.87c.1.59.14.9.21 1.21s.2.85.32 1.27h.25a2.33 2.33 0 0 1 1.13.63 18.59 18.59 0 0 1 6.39-1L23 3A14 14 0 0 0 3.75 16c0 .45 0 .89.07 1.33A14 14 0 0 0 31.76 16c0-.2-.02-.4-.03-.6Z"></path>
+  <path d="M14.26 11.64a16 16 0 0 0 4.93 5.23c.34.23.69.43 1 .63a2.28 2.28 0 0 1 2.58-.57 17.29 17.29 0 0 0 1-1.54h-1.6A3.68 3.68 0 0 1 19 9.89l.56-.89a17.08 17.08 0 0 0-4.84.88 2.25 2.25 0 0 1-.47 1.77Z"></path>
+  <path d="M26.85 1.14 21.13 11a1.28 1.28 0 0 0 1.1 2h11.45a1.28 1.28 0 0 0 1.1-2l-5.72-9.86a1.28 1.28 0 0 0-2.21 0Z"></path>
+  <path fill="none" d="M0 0h36v36H0z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#netstat-备忘清单"><span class="icon icon-link"></span></a>Netstat 备忘清单</h1><div class="wrap-body">
+<p>此快速参考备忘单提供了各种使用 netstat 命令的方法</p>
+</div></header><div class="h1wrap-body"><div class="wrap"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap"><div class="wrap-header h3wrap"><h3 id="入门实例"><a aria-hidden="true" tabindex="-1" href="#入门实例"><span class="icon icon-link"></span></a>入门实例</h3><div class="wrap-body">
+<p>端口 80 上的所有连接</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-anp</span> <span class="token operator">|</span> <span class="token function">grep</span> :80
+</span></code></pre>
+<p>网络统计帮助</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-h</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="监听"><a aria-hidden="true" tabindex="-1" href="#监听"><span class="icon icon-link"></span></a>监听</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>netstat -ltunp</code></td><td align="left">所有监听端口</td></tr><tr><td align="left"><code>netstat -ltn</code></td><td align="left">监听 TCP 端口</td></tr><tr><td align="left"><code>netstat -lun</code></td><td align="left">监听 UDP 端口</td></tr><tr><td align="left"><code>netstat -lx</code></td><td align="left">监听 Unix 端口</td></tr><tr><td align="left"><code>netstat -lt</code></td><td align="left">仅列出侦听 TCP 端口</td></tr><tr><td align="left"><code>netstat -lu</code></td><td align="left">仅列出侦听 UDP 端口</td></tr><tr><td align="left"><code>netstat -l</code></td><td align="left">列出所有监听条件</td></tr></tbody></table>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="连接"><a aria-hidden="true" tabindex="-1" href="#连接"><span class="icon icon-link"></span></a>连接</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>netstat -a</code></td><td align="left">所有连接</td></tr><tr><td align="left"><code>netstat -at</code></td><td align="left">所有 TCP 连接</td></tr><tr><td align="left"><code>netstat -au</code></td><td align="left">所有 UDP 连接</td></tr><tr><td align="left"><code>netstat -ant</code></td><td align="left">显示没有反向 DNS 查找的 IP 地址</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>netstat</code></td><td align="left">活动连接</td></tr><tr><td align="left"><code>netstat -a</code></td><td align="left">所有连接</td></tr><tr><td align="left"><code>netstat -at</code></td><td align="left">所有 TCP 连接</td></tr><tr><td align="left"><code>netstat -au</code></td><td align="left">所有 UDP 连接</td></tr><tr><td align="left"><code>netstat -ant</code></td><td align="left">显示没有反向 DNS 查找的 IP 地址</td></tr><tr><td align="left"><code>netstat -tnl</code></td><td align="left">监听 TCP 端口</td></tr><tr><td align="left"><code>netstat -unl</code></td><td align="left">监听 UDP 端口</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="网络"><a aria-hidden="true" tabindex="-1" href="#网络"><span class="icon icon-link"></span></a>网络</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>netstat -i</code></td><td align="left">显示网络接口</td></tr><tr><td align="left"><code>netstat -ie</code></td><td align="left">显示网络接口扩展信息</td></tr><tr><td align="left"><code>netstat -n</code></td><td align="left">仅显示 IP 地址</td></tr><tr><td align="left"><code>netstat -F</code></td><td align="left">尽可能显示 IP 地址的域名</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="路由"><a aria-hidden="true" tabindex="-1" href="#路由"><span class="icon icon-link"></span></a>路由</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>netstat -r</code></td><td align="left">显示路由表</td></tr><tr><td align="left"><code>netstat -rn</code></td><td align="left">显示路由表，不解析主机</td></tr></tbody></table>
+</div></div></div><div class="wrap row-span-3"><div class="wrap-header h3wrap"><h3 id="统计数据"><a aria-hidden="true" tabindex="-1" href="#统计数据"><span class="icon icon-link"></span></a>统计数据</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>netstat -s</code></td><td align="left">显示统计信息</td></tr><tr><td align="left"><code>netstat -st</code></td><td align="left">显示 TCP 统计信息</td></tr><tr><td align="left"><code>netstat -su</code></td><td align="left">显示 UDP 统计信息</td></tr><tr><td align="left"><code>netstat -ltpe</code></td><td align="left">使用进程信息和扩展信息显示 TCP 的侦听连接</td></tr><tr><td align="left"><code>netstat -tp</code></td><td align="left">显示带有 PID 编号的服务名称</td></tr><tr><td align="left"><code>sudo netstat -nlpt</code></td><td align="left">列出进程名称/PID 和用户 ID</td></tr><tr><td align="left"><code>netstat -nlptue</code></td><td align="left">所有带有 PID 和扩展信息的侦听端口</td></tr><tr><td align="left"><code>netstat -M</code></td><td align="left">显示伪装的连接</td></tr></tbody></table>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="显示没有域名的-tcp-连接"><a aria-hidden="true" tabindex="-1" href="#显示没有域名的-tcp-连接"><span class="icon icon-link"></span></a>显示没有域名的 TCP 连接</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">--tcp</span> <span class="token parameter variable">--numeric</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="显示活动已建立的连接"><a aria-hidden="true" tabindex="-1" href="#显示活动已建立的连接"><span class="icon icon-link"></span></a>显示活动/已建立的连接</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-atnp</span> <span class="token operator">|</span> <span class="token function">grep</span> ESTA
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="获取活动连接的连续列表"><a aria-hidden="true" tabindex="-1" href="#获取活动连接的连续列表"><span class="icon icon-link"></span></a>获取活动连接的连续列表</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">watch</span> <span class="token parameter variable">-d</span> <span class="token parameter variable">-n0</span> <span class="token string">"netstat -atnp | grep ESTA"</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="显示到特定端口的所有打开连接"><a aria-hidden="true" tabindex="-1" href="#显示到特定端口的所有打开连接"><span class="icon icon-link"></span></a>显示到特定端口的所有打开连接</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-anp</span> <span class="token operator">|</span> <span class="token function">grep</span><span class="token string">":"</span>
+</span></code></pre>
+<p>插入<code>端口</code>号（上图）代替冒号 <code>:</code></p>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="检查服务是否正在运行"><a aria-hidden="true" tabindex="-1" href="#检查服务是否正在运行"><span class="icon icon-link"></span></a>检查服务是否正在运行</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">netstat</span> <span class="token parameter variable">-aple</span> <span class="token operator">|</span> <span class="token function">grep</span> ntp
+</span></code></pre>
+<p>你可以用<code>http</code>、<code>smtp</code>代替<code>ntp</code></p>
+</div></div></div></div></div><div class="wrap"><div class="wrap-header h2wrap"><h2 id="netstat--安全命令"><a aria-hidden="true" tabindex="-1" href="#netstat--安全命令"><span class="icon icon-link"></span></a>Netstat – 安全命令</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="显示具有大量连接的-ip"><a aria-hidden="true" tabindex="-1" href="#显示具有大量连接的-ip"><span class="icon icon-link"></span></a>显示具有大量连接的 IP</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-tn</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> :80 <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $5}'</span> <span class="token operator">|</span> <span class="token function">cut</span> -d: <span class="token parameter variable">-f1</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">-c</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-nr</span> <span class="token operator">|</span> <span class="token function">head</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap col-span-3"><div class="wrap-header h3wrap"><h3 id="连接到端口-80-的-ip-地址"><a aria-hidden="true" tabindex="-1" href="#连接到端口-80-的-ip-地址"><span class="icon icon-link"></span></a>连接到端口 80 的 IP 地址</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-tn</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">':80 '</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $5}'</span> <span class="token operator">|</span><span class="token function">sed</span> <span class="token parameter variable">-e</span> <span class="token string">'s/::ffff://'</span> <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-f1</span> -d: <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">-c</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-rn</span> <span class="token operator">|</span> <span class="token function">head</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="显示端口-80-上的活动连接数"><a aria-hidden="true" tabindex="-1" href="#显示端口-80-上的活动连接数"><span class="icon icon-link"></span></a>显示端口 80 上的活动连接数</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-an</span> <span class="token operator">|</span><span class="token function">grep</span> :80 <span class="token operator">|</span><span class="token function">wc</span> <span class="token parameter variable">-l</span>
+</span></code></pre>
+</div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="仅显示外部-ip-地址"><a aria-hidden="true" tabindex="-1" href="#仅显示外部-ip-地址"><span class="icon icon-link"></span></a>仅显示外部 IP 地址</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-antu</span> <span class="token operator">|</span> <span class="token function">grep</span> :80 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> LISTEN <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $5}'</span>
+</span></code></pre>
+</div></div></div><div class="wrap row-span-2"><div class="wrap-header h3wrap"><h3 id="显示活动-sync_rec"><a aria-hidden="true" tabindex="-1" href="#显示活动-sync_rec"><span class="icon icon-link"></span></a>显示活动 SYNC_REC</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>以下命令将输出服务器上正在发生和正在发生的活动 <code>SYNC_REC</code> 数量。数量应该很低(小于 <code>5</code>)。如果该数字为两位数，则您可能正在遭受 <code>DoS</code> 攻击或被邮件轰炸。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-n</span> -p<span class="token operator">|</span><span class="token function">grep</span> SYN_REC <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><div class="wrap"><div class="wrap-header h4wrap"><h4 id="列出发送-syn_rec-连接的唯一-ip-地址"><a aria-hidden="true" tabindex="-1" href="#列出发送-syn_rec-连接的唯一-ip-地址"><span class="icon icon-link"></span></a>列出发送 SYN_REC 连接的唯一 IP 地址</h4><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-n</span> <span class="token parameter variable">-p</span> <span class="token operator">|</span> <span class="token function">grep</span> SYN_REC <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $5}'</span> <span class="token operator">|</span> <span class="token function">awk</span> -F: <span class="token string">'{print $1}'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>与上面的命令一样，该命令也列出了发送 <code>SYN_REC</code> 连接状态的节点的所有唯一 <code>IP</code> 地址</p>
+</div></div></div></div></div><div class="wrap col-span-2"><div class="wrap-header h3wrap"><h3 id="每个远程-ip-的连接数"><a aria-hidden="true" tabindex="-1" href="#每个远程-ip-的连接数"><span class="icon icon-link"></span></a>每个远程 IP 的连接数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-antu</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $5}'</span> <span class="token operator">|</span> <span class="token function">awk</span> -F: <span class="token string">'{print $1}'</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">-c</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-n</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>或者</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-antu</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'$5 ~ /[0-9]:/{split($5, a, ":"); ips[a[1]]++} END {for (ip in ips) print ips[ip], ip | "sort -k1 -nr"}'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="检查开放端口ipv4-和-ipv6"><a aria-hidden="true" tabindex="-1" href="#检查开放端口ipv4-和-ipv6"><span class="icon icon-link"></span></a>检查开放端口（ipv4 和 ipv6）</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-plntu</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="检查开放端口ipv4-和-ipv6-1"><a aria-hidden="true" tabindex="-1" href="#检查开放端口ipv4-和-ipv6-1"><span class="icon icon-link"></span></a>检查开放端口（ipv4 和 ipv6）</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-plnt</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="每个-ip-的打开连接数"><a aria-hidden="true" tabindex="-1" href="#每个-ip-的打开连接数"><span class="icon icon-link"></span></a>每个 IP 的打开连接数</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-an</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token number">80</span> <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span>
+</span></code></pre>
+</div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="活跃的互联网连接"><a aria-hidden="true" tabindex="-1" href="#活跃的互联网连接"><span class="icon icon-link"></span></a>活跃的互联网连接</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">netstat</span> <span class="token parameter variable">-pnut</span> <span class="token parameter variable">-w</span> <span class="token operator">|</span> <span class="token function">column</span> <span class="token parameter variable">-t</span> <span class="token parameter variable">-s</span> <span class="token string">$'<span class="token entity" title="\t">\t</span>'</span>
+</span></code></pre>
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+    const box = elm?.parentElement?.parentElement;
+    console.log('elm:2', box, document.querySelectorAll('.h2wrap-body .wrap'))
+  }
+}
+anchorPoint();
+</script></body>
+</html>
