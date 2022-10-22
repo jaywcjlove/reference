@@ -274,6 +274,10 @@ $ find /path -type f -exec chmod 644 {} \;
 
 * [使用 chmod 修改文件权限](https://www.linode.com/docs/guides/modify-file-permissions-with-chmod/) _(linode.com)_
 
+<!--rehype:ignore:start-->
+### 以下是 Chmod 生成器 JS 代码（用于网站请忽略）
+<!--rehype:ignore:end-->
+<!-- Chmod 生成器 JS 代码 -->
 <script type="text/javascript">
   const reg_num = /^[0-7]{3}$/; // 一些正则表达式来检查 num 输入
   const reg_let = /^([r\-]{1}[w\-]{1}[x\-]{1}){3}$/; // 一些正则表达式来检查文本输入
