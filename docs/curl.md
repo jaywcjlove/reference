@@ -110,7 +110,7 @@ apk add --update curl  # alpine linux 中安装
 `curl --connect-timeout 10 -I -k https://www.baidu.com` | `curl` 默认没有超时
 `curl --verbose --header "Host: www.mytest.com:8182" www.baidu.com` | `curl` 得到额外的标题
 `curl -k -v https://www.google.com` | `curl` 获取带有标题的响应
-
+<!--rehype:class=auto-wrap-->
 
 ### 多文件上传
 <!--rehype:wrap-class=col-span-2-->
@@ -136,6 +136,7 @@ $ curl -XGET http://${elasticsearch_ip}:9200/_cluster/nodes | python -m json.too
 :- | :-
 `curl -d "name=username&password=123456" <URL>` | `curl` 发请求
 `curl <URL> -H "content-type: application/json" -d "{ \"woof\": \"bark\"}"` | `curl` 发送 json
+<!--rehype:class=auto-wrap-->
 
 ### CURL 脚本安装 rvm
 <!--rehype:wrap-class=col-span-2-->
@@ -156,6 +157,7 @@ curl -sSL https://get.rvm.io | bash
 `curl -T cryptopp552.zip -u test:test ftp://10.32.99.187/` | curl `ftp` 上传
 `curl -u test:test ftp://10.32.99.187/cryptopp552.zip -o cryptopp552.zip` | curl `ftp` 下载
 `curl -v -u admin:admin123 --upload-file package1.zip http://mysever:8081/dir/package1.zip` | 使用凭证 `curl` 上传
+<!--rehype:class=auto-wrap-->
 
 ### 检查网站响应时间
 <!--rehype:wrap-class=col-span-4-->

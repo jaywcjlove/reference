@@ -21,6 +21,7 @@ npm 备忘清单
 | `npm install <package_name>@<tag>` | 使用 dist-tags 安装包                   |
 | `npm install -g <package_name>`    | 全局安装包                   |
 | `npm uninstall <package_name>`     | 卸载包                   |
+<!--rehype:class=auto-wrap-->
 
 `--save` 是 npm@5 的默认值。 以前，使用不带 `--save` 的 `npm install` 不会更新 package.json。
 
@@ -40,6 +41,7 @@ npm 备忘清单
 | `npm i /path/to/repo`                | 绝对路径            |
 | `npm i ./archive.tgz`                | 压缩包             |
 | `npm i https://site.com/archive.tgz` | 通过 HTTP 压缩包    |
+<!--rehype:class=auto-wrap-->
 
 ### 清单
 
@@ -49,6 +51,7 @@ npm 备忘清单
 | `npm list -g --depth 0` | 列出所有全局安装包的安装版本 | 
 | `npm view`              | 列出此软件中所有依赖项的最新版本 | 
 | `npm outdated`          | 仅列出此软件中已过时的依赖项  |
+<!--rehype:class=auto-wrap-->
 
 ### 更新
 

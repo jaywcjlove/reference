@@ -110,6 +110,7 @@ RUN true | false  # 将脱离管道
 `CMD ["executable","param1","param2"]` | (exec 形式，这是首选形式)
 `CMD ["param1","param2"]` | (作为 ENTRYPOINT 的默认参数)
 `CMD command param1 param2` | (shell形式)
+<!--rehype:class=auto-wrap-->
 
 ```dockerfile
 EXPOSE 5900
@@ -185,6 +186,7 @@ temp?
 `*/temp*` | 在根的任何直接子目录中<br />排除名称以 `temp` 开头的文件和目录
 `*/*/temp*` | 从根以下两级的任何子目录中<br />排除以 `temp` 开头的文件和目录
 `temp?` | 排除根目录中名称为<br /> `temp` 的单字符扩展名的文件和目录
+<!--rehype:class=auto-wrap-->
 
 如果此文件存在，排除与其中的模式匹配的文件和目录，有利于避免 `ADD` 或 `COPY` 将敏感文件添加到镜像中。匹配是使用 Go 的 [filepath.Match](https://golang.org/pkg/path/filepath#Match) 规则完成的。
 
@@ -203,6 +205,7 @@ temp?
 `CMD command param1 param2` | 设置默认命令
 `ENV <key>=<value> ...` | 设置环境变量
 `EXPOSE <port> [<port>/<protocol>...]` | 运行时侦听指定的网络端口
+<!--rehype:class=auto-wrap-->
 
 ### 服务静态网站的最小 Docker 镜像
 <!--rehype:wrap-class=col-span-2-->

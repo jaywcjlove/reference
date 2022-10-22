@@ -95,7 +95,7 @@ Min  Hour Day  Mon  Weekday
 `L`       | 仅允许用于 `月份中的某天` 或 `星期几` 字段，`星期几` 中的 `2L` 表示每个月的最后一个星期二
 `井号 (#)` | 仅允许用于 `星期几` 字段，后面必须在 1 到 5 的范围内。例如，`4#1` 表示给定月份的“第一个星期四”。
 `问号(?)`  | 可以代替“*”并允许用于月份和星期几。使用仅限于 cron 表达式中的 `月份中的某天` 或 `星期几`。
-<!--rehype:className=show-header -->
+<!--rehype:className=show-header auto-wrap-->
 
 
 ## Also see
