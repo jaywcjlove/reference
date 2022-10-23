@@ -228,6 +228,16 @@ const school = <div>学校</div>;
 ```
 <!--rehype:className=wrap-text -->
 
+### HTML 代码预览
+
+```
+  ```html preview
+  这里是你的 HTML 代码
+  \```
+```
+
+上面的 `markdown` 代码在 `meta` 位置添加 `preview` 标识，HTML 代码将被执行预览
+
 
 布局
 ---

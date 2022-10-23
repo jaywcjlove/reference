@@ -31,9 +31,11 @@ $ chmod -R 755 my_directory
 
 ### Chmod 生成器
 
-<div style="display: flex; justify-content: space-evenly; align-items: center;padding: 1rem 1rem;">
+```html preview
+<div>
 权限：<input type="text" id="num" placeholder="777" maxlength="3" style="padding: 0.3rem 0.3rem;" /> <input type="text" id="let" placeholder="rwxrwxrwx" maxlength="9" style="padding: 0.3rem 0.3rem;" />
 </div>
+```
 
 ---
 
@@ -275,8 +277,10 @@ $ find /path -type f -exec chmod 644 {} \;
 * [使用 chmod 修改文件权限](https://www.linode.com/docs/guides/modify-file-permissions-with-chmod/) _(linode.com)_
 
 <!--rehype:ignore:start-->
-### 以下是 Chmod 生成器 JS 代码（用于网站请忽略）
+### 以下是 Chmod 生成器 JS 代码（代码用于网站请忽略不要删除）
 <!--rehype:ignore:end-->
+
+```html preview
 <!-- Chmod 生成器 JS 代码 -->
 <script type="text/javascript">
   const reg_num = /^[0-7]{3}$/; // 一些正则表达式来检查 num 输入
@@ -499,3 +503,4 @@ $ find /path -type f -exec chmod 644 {} \;
     return perm_num;
   }
 </script>
+```
