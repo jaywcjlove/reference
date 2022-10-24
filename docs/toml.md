@@ -12,6 +12,7 @@ TOML 备忘清单
 
 - [Document](https://toml.io/en/latest) _(toml.io)_
 - [Learn X in Y minutes](https://learnxinyminutes.com/docs/toml/) _(learnxinyminutes.com)_
+- [Better TOML VSCode 插件](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml) _(visualstudio.com)_
 
 ### 示例
 
@@ -254,3 +255,10 @@ name = { first = "Tom", last = "Preston-Werner" }
 point = { x = 1, y = 2 }
 animal = { type.name = "pug" }
 ```
+
+另见
+---
+
+- [Document](https://toml.io/en/latest) _(toml.io)_
+- [Learn X in Y minutes](https://learnxinyminutes.com/docs/toml/) _(learnxinyminutes.com)_
+- [Better TOML VSCode 插件](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml) _(visualstudio.com)_
