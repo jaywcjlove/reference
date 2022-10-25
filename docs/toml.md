@@ -262,3 +262,7 @@ animal = { type.name = "pug" }
 - [Document](https://toml.io/en/latest) _(toml.io)_
 - [Learn X in Y minutes](https://learnxinyminutes.com/docs/toml/) _(learnxinyminutes.com)_
 - [Better TOML VSCode 插件](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml) _(visualstudio.com)_
+
+
+- [INI 格式配置文件备忘清单](./ini.md) _(jaywcjlove.github.io)_
+- [YAML 格式配置文件备忘清单](./yaml.md) _(jaywcjlove.github.io)_
