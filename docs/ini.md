@@ -145,6 +145,38 @@ foo = bar
 `\:` | 冒号
 `\x????` | 十六进制代码点的 Unicode 字符对应于 ????
 
+### 数组
+
+```ini
+[section]
+domain = jaywcjlove.github.io
+array[]=first value
+array[]=second value
+```
+
+与下面👇 `JSON` 大致相同
+
+```js
+{
+  "section": {
+    "domain": "jaywcjlove.github.io",
+    "array": [
+      "first value", "second value"
+    ]
+  }
+}
+```
+
+### 解释器
+
+- [@go-ini/ini](https://github.com/go-ini/ini) _(golang)_
+- [@npm/ini](https://www.npmjs.com/package/ini) _(nodejs)_
+- [@zonyitoo/rust-ini](https://github.com/zonyitoo/rust-inii) _(rust)_
+- [@rxi/ini](https://www.npmjs.com/package/ini) _(c)_
+- [@pulzed/mINI](https://github.com/pulzed/mINI) _(c++)_
+- [@rickyah/ini-parser](https://github.com/rickyah/ini-parser) _(c#)_
+- [@Enichan/Ini](https://github.com/Enichan/Ini) _(c#)_
+
 另见
 ---
 
