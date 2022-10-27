@@ -54,7 +54,6 @@ Semver 备忘清单
 <!--rehype:className=shortcuts-->
 
 ### 连字符范围
-<!--rehype:wrap-class=row-span-3-->
 
 | 范围               | 描述           |
 | ---                | ---                   |
@@ -80,6 +79,43 @@ Semver 备忘清单
 
 如果左边是部分的（例如，`1.2`），则假定缺少的部分为`0`（例如，` 1.2.0`）。
 
+### 有效的语义版本
+<!--rehype:wrap-class=row-span-4-->
+
+```js
+0.0.4
+1.2.3
+10.20.30
+1.1.2-prerelease+meta
+1.1.2+meta
+1.1.2+meta-valid
+1.0.0-alpha
+1.0.0-beta
+1.0.0-alpha.beta
+1.0.0-alpha.beta.1
+1.0.0-alpha.1
+1.0.0-alpha0.valid
+1.0.0-alpha.0valid
+1.0.0-alpha-a.b-c-somethinglong+build.1-aef.1-its-okay
+1.0.0-rc.1+build.1
+2.0.0-rc.1+build.123
+1.2.3-beta
+10.2.3-DEV-SNAPSHOT
+1.2.3-SNAPSHOT-123
+1.0.0
+2.0.0
+1.1.7
+2.0.0+build.1848
+2.0.1-alpha.1227
+1.0.0-alpha+beta
+1.2.3----RC-SNAPSHOT.12.9.1--.12+788
+1.2.3----R-S.12.9.1--.12+meta
+1.2.3----RC-SNAPSHOT.12.9.1--.12
+1.0.0+0.build.1-rc.10000aaa-kk-0.1
+99999999999999999999999.999999999999999999.99999999999999999
+1.0.0-0A.is.legal
+```
+
 ### 组合范围
 
 | 范围                | 描述                  |
@@ -88,13 +124,8 @@ Semver 备忘清单
 | `0.14.x \|\| 15.x.x` | 或 (双竖线分隔)   |
 <!--rehype:className=shortcuts show-header-->
 
-### 预发布
-
-```
-1.2.3-prerelease+build
-```
-
 ### 解释
+<!--rehype:wrap-class=row-span-2-->
 
 | 范围              | 描述           |
 | ---                | ---          |
@@ -103,6 +134,13 @@ Semver 备忘清单
 | `0.x.x` | 用于“初始开发”     |
 | `1.x.x` | 表示定义了公共 API     |
 <!--rehype:className=shortcuts-->
+
+### 预发布
+
+```
+1.2.3-prerelease+build
+1.1.2-prerelease+meta
+```
 
 
 另见
