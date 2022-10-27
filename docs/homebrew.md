@@ -38,6 +38,7 @@ export HOMEBREW_INSTALL_FROM_API=1
 命令 | 说明
 :--- :--- 
 `brew install git`         | `安装`一个包
+`brew reinstall git`       | 重新`安装`一个包
 `brew uninstall git`       | `删除`/`卸载`软件包
 `brew upgrade git`         | 升级包
 :--- :---
@@ -46,9 +47,6 @@ export HOMEBREW_INSTALL_FROM_API=1
 `brew switch git 2.5.0`    | 更改版本
 :--- :---
 `brew list --versions git` | 看看你有什么版本
-:--- :---
-`brew help` | 打印帮助信息
-`brew help <sub-command>` | 打印子命令的帮助信息
 
 ### 更多包命令
 
@@ -118,6 +116,13 @@ $ brew search <text>
 # 显示有关软件包的信息
 $ brew info <formula>
 ```
+
+### 帮助命令
+
+命令 | 说明
+:--- :--- 
+`brew help` | 打印帮助信息
+`brew help <sub-command>` | 打印子命令的帮助信息
 
 另见
 ---
