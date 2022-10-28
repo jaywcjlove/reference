@@ -1,4 +1,3 @@
-
 export function getChilds(data = [], level, result = []) {
   for (let i = 1; i <= data.length; i++) {
     const titleNum = Number(data[i]?.tagName?.replace(/^h/, ''));

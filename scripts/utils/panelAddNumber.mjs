@@ -1,4 +1,3 @@
-
 /** 标记 Number */
 export function panelAddNumber(arr = [], result = []) {
   let n = 0;
@@ -10,9 +9,9 @@ export function panelAddNumber(arr = [], result = []) {
       level = titleNum;
     }
     if (toc) {
-      result.push({ ...toc, number: level })
+      result.push({ ...toc, number: level });
     }
     n++;
   }
-  return result
+  return result;
 }

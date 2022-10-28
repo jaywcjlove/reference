@@ -2,8 +2,6 @@ import markdown from '@wcj/markdown-to-html';
 import rehypeDocument from 'rehype-document';
 import remarkGemoji from 'remark-gemoji';
 import rehypeRaw from 'rehype-raw';
-import rehypeAttrs from 'rehype-attr';
-import rehypeKatex from 'rehype-katex';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import { htmlTagAddAttri } from './nodes/htmlTagAddAttri.mjs';
@@ -23,8 +21,11 @@ export function create(str = '', options = {}) {
   let title = str.match(/[^===]+(?=[===])/g) || [];
   let description = str.match(/\n==={1,}\n+([\s\S]*?)\n/g) || [];
   title = title[0] || '';
-  description = (description[0] || '').replace(/^\n[=\n]+/, '').replace(/\[([\s\S]*?)?\]\(([\s\S]*?)?\)/g, '$1').replace(/\n/, '');
-  const subTitle = options.filename && !options.isHome ? `${options.filename} cheatsheet & `: ''
+  description = (description[0] || '')
+    .replace(/^\n[=\n]+/, '')
+    .replace(/\[([\s\S]*?)?\]\(([\s\S]*?)?\)/g, '$1')
+    .replace(/\n/, '');
+  const subTitle = options.filename && !options.isHome ? `${options.filename} cheatsheet & ` : '';
   const mdOptions = {
     showLineNumbers: false,
     hastNode: false,
@@ -32,28 +33,29 @@ export function create(str = '', options = {}) {
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings,
-        [rehypeDocument, {
+      [
+        rehypeDocument,
+        {
           title: `${title ? `${title} & ` : ''} ${subTitle} Quick Reference`,
-          css: [ ...options.css ],
-          link: [
-            {rel: 'icon', href: favicon, type: 'image/svg+xml'}
-          ],
+          css: [...options.css],
+          link: [{ rel: 'icon', href: favicon, type: 'image/svg+xml' }],
           meta: [
             { description: `${description}为开发人员分享快速参考备忘单。` },
-            { keywords: `Quick,Reference,cheatsheet,${!options.isHome && options.filename || ''}` }
-          ]
-        }]
+            { keywords: `Quick,Reference,cheatsheet,${(!options.isHome && options.filename) || ''}` },
+          ],
+        },
+      ],
     ],
     filterPlugins: (type, plugins = []) => {
       if (type === 'rehype') {
-        const dt = plugins.filter(plug => {
+        const dt = plugins.filter((plug) => {
           return /(rehypeRaw)/.test(plug.name) ? false : true;
         });
         // 放在 rehypeDocument 前面
-        dt.unshift(rehypeRaw)
+        dt.unshift(rehypeRaw);
         return dt;
       }
-      return plugins
+      return plugins;
     },
     rewrite: (node, index, parent) => {
       rehypePreviewHTML(node, parent);
@@ -64,10 +66,10 @@ export function create(str = '', options = {}) {
       rehypeUrls(node);
       if (node.children) {
         if (node.type === 'element' && node.tagName === 'body') {
-          const tocsData = getTocsTree([ ...node.children ]);
+          const tocsData = getTocsTree([...node.children]);
           if (!options.isHome) {
             const tocsMenus = getTocsTitleNode([...tocsData]);
-            node.children = addTocsInWarp([...tocsData], getTocsTitleNodeWarpper(tocsMenus))
+            node.children = addTocsInWarp([...tocsData], getTocsTitleNodeWarpper(tocsMenus));
           } else {
             node.children = tocsData;
           }
@@ -76,9 +78,8 @@ export function create(str = '', options = {}) {
           node.children.push(anchorPoint());
         }
       }
-    }
-  }
-  
+    },
+  };
 
   return markdown(str, mdOptions);
 }

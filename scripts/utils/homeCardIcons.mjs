@@ -15,16 +15,16 @@ export function homeCardIcons(node, parent, isHome) {
           type: 'element',
           tagName: 'span',
           children: child.children,
-        }
+        };
         if (iconExist) {
           const svgNode = getSVGNode(iconPath);
-          child.children = [ ...svgNode, labelNode ];
+          child.children = [...svgNode, labelNode];
         } else {
           const svgNode = getSVGNode(iconDefaultPath);
-          child.children = [ ...svgNode, labelNode ];
+          child.children = [...svgNode, labelNode];
         }
       }
-      return child
-    })
+      return child;
+    });
   }
 }

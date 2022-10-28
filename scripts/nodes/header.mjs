@@ -3,25 +3,25 @@ import { github, editor } from './logo.mjs';
 import { getSVGNode } from '../utils/getSVGNode.mjs';
 import { darkMode } from '../utils/darkMode.mjs';
 
-const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets/quickreference.svg')
+const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets/quickreference.svg');
 export function header({ homePath, githubURL = '' }) {
-  const svgNode = getSVGNode(ICONS_PATH)
+  const svgNode = getSVGNode(ICONS_PATH);
   const data = [
     {
       menu: true,
       href: githubURL,
       target: '__blank',
       label: '编辑',
-      children: [editor]
+      children: [editor],
     },
     ...darkMode(),
     {
       menu: true,
       href: 'https://github.com/jaywcjlove/reference',
       target: '__blank',
-      children: [github]
-    }
-  ]
+      children: [github],
+    },
+  ];
   return {
     type: 'element',
     tagName: 'nav',
@@ -51,10 +51,8 @@ export function header({ homePath, githubURL = '' }) {
                 properties: {
                   class: ['title'],
                 },
-                children: [
-                  { type: 'text', value: 'Quick Reference' }
-                ]
-              }
+                children: [{ type: 'text', value: 'Quick Reference' }],
+              },
             ],
           },
           {
@@ -75,29 +73,28 @@ export function header({ homePath, githubURL = '' }) {
                     type: 'element',
                     tagName: 'span',
                     properties: {},
-                    children: label ? [
-                      { type: 'text', value: label }
-                    ] : []
-                  }
-                ]
-              }
+                    children: label ? [{ type: 'text', value: label }] : [],
+                  },
+                ],
+              };
               if (label) {
-                childs.children = [...children, {
-                  type: 'element',
-                  tagName: 'span',
-                  properties: {},
-                  children: [
-                    { type: 'text', value: label }
-                  ]
-                }];
+                childs.children = [
+                  ...children,
+                  {
+                    type: 'element',
+                    tagName: 'span',
+                    properties: {},
+                    children: [{ type: 'text', value: label }],
+                  },
+                ];
               } else {
                 childs.children = children;
               }
-              return childs
+              return childs;
             }),
           },
         ],
-      }
+      },
     ],
   };
 }

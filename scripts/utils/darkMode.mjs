@@ -21,27 +21,27 @@ const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets');
 export function darkMode() {
   const iconSunPath = path.resolve(ICONS_PATH, `sun.svg`);
   const iconMoonPath = path.resolve(ICONS_PATH, `moon.svg`);
-  const sunNode = getSVGNode(iconSunPath)
-  const moonNode = getSVGNode(iconMoonPath)
+  const sunNode = getSVGNode(iconSunPath);
+  const moonNode = getSVGNode(iconMoonPath);
   return [
     {
       type: 'element',
       tagName: 'button',
       properties: {
         id: 'darkMode',
-        type: 'button'
+        type: 'button',
       },
-      children: [
-        ...sunNode,
-        ...moonNode
-      ]
-    }, {
+      children: [...sunNode, ...moonNode],
+    },
+    {
       type: 'element',
       tagName: 'script',
-      children: [{
-        type: 'text',
-        value: scripts,
-      }]
-    }
+      children: [
+        {
+          type: 'text',
+          value: scripts,
+        },
+      ],
+    },
   ];
 }

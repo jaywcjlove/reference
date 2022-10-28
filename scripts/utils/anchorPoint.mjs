@@ -1,4 +1,3 @@
-
 const scripts = `
 if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
   window.onhashchange = function () {
@@ -43,9 +42,11 @@ export function anchorPoint() {
   return {
     type: 'element',
     tagName: 'script',
-    children: [{
-      type: 'text',
-      value: scripts,
-    }]
-  }
+    children: [
+      {
+        type: 'text',
+        value: scripts,
+      },
+    ],
+  };
 }

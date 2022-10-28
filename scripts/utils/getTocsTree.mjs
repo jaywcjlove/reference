@@ -1,4 +1,5 @@
 import path from 'path';
+import { getCodeString } from 'rehype-rewrite';
 import { panelAddNumber } from './panelAddNumber.mjs';
 import { getChilds, getHeader } from './childs.mjs';
 import { ICONS_PATH, getSVGNode } from './getSVGNode.mjs';
@@ -8,14 +9,15 @@ export const titleNum = (tagName = '') => Number(tagName.replace(/^h/, ''));
 export function getTocsTitleNode(arr = [], result = []) {
   arr.forEach(({ tagName, type, properties, children }) => {
     if (/^h[23456]/.test(tagName)) {
-      const num = titleNum(tagName)
-      const props = { 'aria-hidden': "true", class: `leve${num} tocs-link`, href: '#' + (properties.id || '') }
-      result.push({ tagName: 'a', type, properties: props, children: (children || []).filter(m => m.type === 'text') })
+      const num = titleNum(tagName);
+      const props = { 'aria-hidden': 'true', class: `leve${num} tocs-link`, href: '#' + (properties.id || '') };
+      const title = getCodeString(children || []);
+      result.push({ tagName: 'a', type, properties: props, children: [{ type: 'text', value: title || ' ' }] });
     } else if (children?.length > 0) {
-      result = result.concat(getTocsTitleNode(children))
+      result = result.concat(getTocsTitleNode(children));
     }
   });
-  return result
+  return result;
 }
 
 export function addTocsInWarp(tocsData = [], menuData, isDone = false) {
@@ -24,14 +26,14 @@ export function addTocsInWarp(tocsData = [], menuData, isDone = false) {
       isDone = true;
     }
     if (!isDone && item.children) {
-      item.children = addTocsInWarp([...item.children], menuData, isDone)
+      item.children = addTocsInWarp([...item.children], menuData, isDone);
     }
-    return item
+    return item;
   });
   if (isDone) {
     childs.splice(1, 0, menuData);
   }
-  return childs
+  return childs;
 }
 
 export const getTocsTitleNodeWarpper = (children = []) => {
@@ -50,10 +52,7 @@ export const getTocsTitleNodeWarpper = (children = []) => {
         properties: {
           class: 'menu-btn',
         },
-        children: [
-          // { type: 'text', value: 'menu' }
-          ...svgNode
-        ]
+        children: [...svgNode],
       },
       {
         type: 'element',
@@ -61,16 +60,16 @@ export const getTocsTitleNodeWarpper = (children = []) => {
         properties: {
           class: 'menu-modal',
         },
-        children: children
-      }
-    ]
-  }
-}
+        children: children,
+      },
+    ],
+  };
+};
 
 /** Markdown 文档转成树形结构 */
 export function getTocsTree(arr = [], result = []) {
   const data = panelAddNumber(arr);
-  
+
   let n = 0;
   let level = -1;
 
@@ -87,7 +86,7 @@ export function getTocsTree(arr = [], result = []) {
 
       if (level === 1) wrapCls.push('max-container');
       const wrapStyle = toc.properties['wrap-style'];
-      delete toc.properties['wrap-style']
+      delete toc.properties['wrap-style'];
       const wrapClass = toc.properties['wrap-class'];
       if (wrapClass) wrapCls.push(wrapClass);
       delete toc.properties['wrap-class'];
@@ -106,26 +105,24 @@ export function getTocsTree(arr = [], result = []) {
                 type: 'element',
                 tagName: 'div',
                 properties: { class: 'wrap-body' },
-                children: [
-                  ...header
-                ],
-              }
+                children: [...header],
+              },
             ],
-          }
+          },
         ],
-      }
+      };
       const childs = getChilds([...data.slice(n + 1)], level);
       const resultChilds = getTocsTree(childs);
       if (resultChilds.length > 0) {
         const bodyStyle = toc.properties['body-style'];
-        delete toc.properties['body-style']
+        delete toc.properties['body-style'];
         const bodyClass = toc.properties['body-class'];
-        delete toc.properties['body-class']
+        delete toc.properties['body-class'];
         panle.children = panle.children.concat({
           type: 'element',
           tagName: 'div',
           properties: { class: [`h${level}wrap-body`, bodyClass], style: bodyStyle },
-          children: [...resultChilds]
+          children: [...resultChilds],
         });
       }
       result.push(panle);

@@ -9,10 +9,10 @@ export function rehypeTitle(node, iconName) {
     const iconExist = fs.existsSync(iconPath);
     if (iconExist) {
       const svgNode = getSVGNode(iconPath);
-      node.children = [ ...svgNode, ...node.children ];
+      node.children = [...svgNode, ...node.children];
     } else {
       const svgNode = getSVGNode(iconDefaultPath);
-      node.children = [ ...svgNode, ...node.children ];
+      node.children = [...svgNode, ...node.children];
     }
   }
 }
