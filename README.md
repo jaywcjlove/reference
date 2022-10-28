@@ -24,6 +24,7 @@ Quick Reference
 [INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
+[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));-->
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
