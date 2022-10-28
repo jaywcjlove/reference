@@ -1,8 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import { getSVGNode } from './getSVGNode.mjs';
-
-export const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets')
+import { getSVGNode, ICONS_PATH } from './getSVGNode.mjs';
 
 export function homeCardIcons(node, parent, isHome) {
   if (isHome && node && node.type === 'element' && node.properties?.class?.includes('home-card')) {

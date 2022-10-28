@@ -1,6 +1,9 @@
 import markdown from '@wcj/markdown-to-html';
 import rehypeDocument from 'rehype-document';
 import remarkGemoji from 'remark-gemoji';
+import rehypeRaw from 'rehype-raw';
+import rehypeAttrs from 'rehype-attr';
+import rehypeKatex from 'rehype-katex';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import { htmlTagAddAttri } from './nodes/htmlTagAddAttri.mjs';
@@ -9,7 +12,7 @@ import { header } from './nodes/header.mjs';
 import { rehypeUrls } from './utils/rehypeUrls.mjs';
 import { tooltips } from './utils/tooltips.mjs';
 import { homeCardIcons } from './utils/homeCardIcons.mjs';
-import { getTocsTree } from './utils/getTocsTree.mjs';
+import { getTocsTree, getTocsTitleNode, getTocsTitleNodeWarpper, addTocsInWarp } from './utils/getTocsTree.mjs';
 import { rehypeTitle } from './utils/rehypeTitle.mjs';
 import { anchorPoint } from './utils/anchorPoint.mjs';
 import { rehypePreviewHTML } from './utils/rehypePreviewHTML.mjs';
@@ -29,18 +32,29 @@ export function create(str = '', options = {}) {
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings,
-      [rehypeDocument, {
-        title: `${title ? `${title} & ` : ''} ${subTitle} Quick Reference`,
-        css: [ ...options.css ],
-        link: [
-          {rel: 'icon', href: favicon, type: 'image/svg+xml'}
-        ],
-        meta: [
-          { description: `${description}为开发人员分享快速参考备忘单。` },
-          { keywords: `Quick,Reference,cheatsheet,${!options.isHome && options.filename || ''}` }
-        ]
-      }],
+        [rehypeDocument, {
+          title: `${title ? `${title} & ` : ''} ${subTitle} Quick Reference`,
+          css: [ ...options.css ],
+          link: [
+            {rel: 'icon', href: favicon, type: 'image/svg+xml'}
+          ],
+          meta: [
+            { description: `${description}为开发人员分享快速参考备忘单。` },
+            { keywords: `Quick,Reference,cheatsheet,${!options.isHome && options.filename || ''}` }
+          ]
+        }]
     ],
+    filterPlugins: (type, plugins = []) => {
+      if (type === 'rehype') {
+        const dt = plugins.filter(plug => {
+          return /(rehypeRaw)/.test(plug.name) ? false : true;
+        });
+        // 放在 rehypeDocument 前面
+        dt.unshift(rehypeRaw)
+        return dt;
+      }
+      return plugins
+    },
     rewrite: (node, index, parent) => {
       rehypePreviewHTML(node, parent);
       rehypeTitle(node, options.filename);
@@ -48,11 +62,19 @@ export function create(str = '', options = {}) {
       tooltips(node, index, parent);
       htmlTagAddAttri(node, options);
       rehypeUrls(node);
-      if (node.type === 'element' && node.tagName === 'body') {
-        node.children = getTocsTree([ ...node.children ]);
-        node.children.unshift(header(options));
-        node.children.push(footer());
-        node.children.push(anchorPoint());
+      if (node.children) {
+        if (node.type === 'element' && node.tagName === 'body') {
+          const tocsData = getTocsTree([ ...node.children ]);
+          if (!options.isHome) {
+            const tocsMenus = getTocsTitleNode([...tocsData]);
+            node.children = addTocsInWarp([...tocsData], getTocsTitleNodeWarpper(tocsMenus))
+          } else {
+            node.children = tocsData;
+          }
+          node.children.unshift(header(options));
+          node.children.push(footer());
+          node.children.push(anchorPoint());
+        }
       }
     }
   }

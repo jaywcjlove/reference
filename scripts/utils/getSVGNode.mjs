@@ -1,7 +1,10 @@
 import fs from 'fs-extra';
+import path from 'path';
 import rehypeParse from 'rehype-parse';
 import {unified} from 'unified';
 import { VFile } from 'vfile';
+
+export const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets')
 
 export function getSVGNode(iconPath, space = 'svg') {
   const svgStr = fs.readFileSync(iconPath);

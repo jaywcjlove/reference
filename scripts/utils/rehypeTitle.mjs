@@ -1,7 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import { getSVGNode } from './getSVGNode.mjs';
-import { ICONS_PATH } from './homeCardIcons.mjs';
+import { getSVGNode, ICONS_PATH } from './getSVGNode.mjs';
 
 export function rehypeTitle(node, iconName) {
   if (node.type === 'element' && node.tagName === 'h1' && iconName !== 'index') {

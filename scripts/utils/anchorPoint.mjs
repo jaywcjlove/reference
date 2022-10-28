@@ -3,6 +3,7 @@ const scripts = `
 if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
   window.onhashchange = function () {
     anchorPoint()
+    updateAnchor()
   };
 }
 function anchorPoint() {
@@ -16,6 +17,26 @@ function anchorPoint() {
   }
 }
 anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(\`a.tocs-link[href='\${decodeURIComponent(window.location.hash)}']\`);
+  console.log('anchor', anchor)
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
 `;
 
 export function anchorPoint() {
