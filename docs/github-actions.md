@@ -340,7 +340,7 @@ env:
   myHexNumber: ${{ 0xff }}
   myExponentialNumber: ${{ -2.99e-2 }}
   myString: Mona the Octocat
-  myStringInBraces: ${{ 'It''s open source!' }}
+  myStringInBraces: ${{ 'It''s source!' }}
 ```
 
 ### 函数 contains
@@ -375,6 +375,7 @@ startsWith('Hello world', 'He') // 返回 true
 format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat')
 // 返回 '{Hello Mona the Octocat!}'.
 ```
+<!--rehype:className=wrap-text -->
 
 另见: [函数 format](https://docs.github.com/cn/actions/learn-github-actions/expressions#format)
 
@@ -814,6 +815,24 @@ steps:
 ```
 
 您可以使用 `shell` 关键字覆盖运行器操作系统中的默认 `shell` 设置
+
+### 一些 actions 推荐
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+[`create-tag-action`](https://github.com/jaywcjlove/create-tag-action) | 根据 package.json 创建 `Tag` / `Release`
+[`changelog-generator`](https://github.com/jaywcjlove/changelog-generator) | 生成 `changelog` 日志
+[`github-action-modify-file-content`](https://github.com/jaywcjlove/github-action-modify-file-content) | 修改仓库文件内容
+[`github-action-contributors`](https://github.com/jaywcjlove/github-action-contributors) | 生成贡献(contributors.svg)图片
+[`generated-badges`](https://github.com/jaywcjlove/generated-badges) | 生成徽章(Badges)图片
+[`coverage-badges-cli`](https://github.com/jaywcjlove/coverage-badges-cli) | 生成覆盖率徽章(Badges)图片
+[`action-ejs`](https://github.com/jaywcjlove/action-ejs) | 基于 ejs 生成 HTML
+[`github-action-package`](https://github.com/jaywcjlove/github-action-package) | 修改 JSON 文件内容
+[`markdown-to-html-cli`](https://github.com/jaywcjlove/markdown-to-html-cli) | Markdown 转换成 HTML
+[`ncipollo/release-action`](https://github.com/ncipollo/release-action) | 创建 `Release`
+[`peaceiris/actions-gh-pages`](https://github.com/peaceiris/actions-gh-pages) | 将文件或文件夹内容提交到 `gh-pages` 分支
+<!--rehype:className=style-list-->
 
 另见
 ---
