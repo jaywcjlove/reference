@@ -8,11 +8,11 @@ HTTP 状态码
 
 ### Means 
 
-- [1xx: Informational](#1xx-information) _这意味着已收到请求并且该过程正在继续_<!--rehype:tooltips-->
-- [2xx: Success](#2xx-successful) _这意味着该操作已成功接收、理解和接受_<!--rehype:tooltips-->
-- [3xx: Redirection](#3xx-redirection) _这意味着必须采取进一步行动才能完成请求_<!--rehype:tooltips-->
-- [4xx: Client Error](#4xx-client-error) _这意味着请求包含不正确的语法或无法完成_<!--rehype:tooltips-->
-- [5xx: Server Error](#5xx-server-error) _这意味着服务器未能满足明显有效的请求_<!--rehype:tooltips-->
+- [1xx: Informational](#1xx-信息) _这意味着已收到请求并且该过程正在继续_<!--rehype:tooltips-->
+- [2xx: Success](#2xx-成功的) _这意味着该操作已成功接收、理解和接受_<!--rehype:tooltips-->
+- [3xx: Redirection](#3xx-重定向) _这意味着必须采取进一步行动才能完成请求_<!--rehype:tooltips-->
+- [4xx: Client Error](#4xx-客户端错误) _这意味着请求包含不正确的语法或无法完成_<!--rehype:tooltips-->
+- [5xx: Server Error](#5xx-服务器错误) _这意味着服务器未能满足明显有效的请求_<!--rehype:tooltips-->
 
 ### 2xx. 成功的
 <!--rehype:wrap-class=row-span-2-->
