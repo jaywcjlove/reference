@@ -58,8 +58,8 @@ HTTP 状态码
 ### 3xx. 重定向
 
 * [300: Multiple Choices](https://tools.ietf.org/html/rfc7231#section-6.4.1) _一个链接列表。 用户可以选择一个链接并转到该位置。 最多五个地址_<!--rehype:tooltips-->
-* [301: Moved Permanently](https://tools.ietf.org/html/rfc7231#section-6.4.2) _请求的页面已移至新的 url _<!--rehype:tooltips-->
-* [302: Found](https://tools.ietf.org/html/rfc7231#section-6.4.3) _请求的页面已临时移动到新的 url _<!--rehype:tooltips-->
+* [301: Moved Permanently](https://tools.ietf.org/html/rfc7231#section-6.4.2) _请求的页面已移至新的 url_<!--rehype:tooltips-->
+* [302: Found](https://tools.ietf.org/html/rfc7231#section-6.4.3) _请求的页面已临时移动到新的 url_<!--rehype:tooltips-->
 * [303: See Other](https://tools.ietf.org/html/rfc7231#section-6.4.4) _请求的页面可以在不同的 url 下找到_<!--rehype:tooltips-->
 * [304: Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1) _这是对 If-Modified-Since 或 If-None-Match 标头的响应代码，其中 URL 自指定日期以来未修改_<!--rehype:tooltips-->
 * [305: Use Proxy](https://tools.ietf.org/html/rfc7231#section-6.4.5) _请求的 URL 必须通过 Location 标头中提到的代理访问_<!--rehype:tooltips-->
