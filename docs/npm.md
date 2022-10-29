@@ -108,7 +108,7 @@ npm access restricted <package-name>
 公开私有包
 
 ```bash
-npm access restricted <package-name>
+npm access public <package-name>
 ```
 
 授予私有包访问权限
