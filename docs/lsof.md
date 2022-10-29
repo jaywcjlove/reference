@@ -80,6 +80,7 @@ $ kill -9 $(lsof -t -i :8080)
 
 
 ### 参数
+<!--rehype:wrap-class=row-span-2-->
 
 ```bash
 -a        # 列出打开文件存在的进程；
@@ -95,6 +96,28 @@ $ kill -9 $(lsof -t -i :8080)
 -h        # 显示帮助信息；
 -v        # 显示版本信息
 ```
+
+### 列出指定进程号所打开的文件
+
+```bash
+lsof -p $pid
+```
+
+### 获取端口对应的进程 ID=>pid
+
+```bash
+lsof -i:9981 -P -t -sTCP:LISTEN
+```
+
+### 列出打开文件的进程:
+
+```bash
+lsof $filename
+```
+
+
+示例
+---
 
 ### 示例
 <!--rehype:wrap-class=col-span-2-->
@@ -117,7 +140,7 @@ migration     2 root  txt   unknown                                 /proc/2/exe
 ```
 
 ### 文件描述符列表(FD)
-<!--rehype:wrap-class=row-span-4-->
+<!--rehype:wrap-class=row-span-3-->
 
 :- | :-
 :- | :-
@@ -195,21 +218,3 @@ migration     2 root  txt   unknown                                 /proc/2/exe
 `NODE` | 索引节点（文件在磁盘上的标识）
 `NAME` | 打开文件的确切名称
 `REG` | 常规文件
-
-### 列出指定进程号所打开的文件
-
-```bash
-lsof -p $pid
-```
-
-### 获取端口对应的进程 ID=>pid
-
-```bash
-lsof -i:9981 -P -t -sTCP:LISTEN
-```
-
-### 列出打开文件的进程:
-
-```bash
-lsof $filename
-```
