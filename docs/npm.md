@@ -170,7 +170,7 @@ npm publish --access public
 ```ini
 # last modified: 01 Jan 2016
 ; Set a new registry for a scoped package
-@myscope:registry=https://mycustomregistry.example.org
+@myscope:registry=https://registry.npmmirror.com
 ```
 
 注释使用 `#`, `;` 放置到一行的开头。`.npmrc` 文件由指定此注释语法的 [`npm/ini`](https://github.com/npm/ini) 解析
@@ -193,19 +193,21 @@ npm publish --access public
 `.npmignore` 文件就像 [`.gitignore`](./git.md#忽略文件) 一样工作。它不能覆盖 `package.json#files` 字段。
 
 ### 中国镜像站安装
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```bash
+# 临时使用
 $ npm install -g <package-name> --registry=https://registry.npmmirror.com
 ```
 
-将配置放置在 `.npmrc` 配置文件中。
+将配置放置在 `.npmrc` 全局配置文件中，或者在项目的根目录中。
 
 ```ini
+; registry=https://registry.npmjs.org/
 registry=https://registry.npmmirror.com
 ```
 
-或者配置到 `package.json#publishConfig` 字段上
+或者配置到 [`package.json#publishConfig`](./package.json.md#publishconfig) 字段上
 
 ```json
 "publishConfig":{
@@ -213,4 +215,37 @@ registry=https://registry.npmmirror.com
 }
 ```
 
+替换 npm 仓库地址为 npmmirror(淘宝) 镜像地址
+
+```bash
+npm config set registry https://registry.npmmirror.com
+```
+
 请参阅：[npmmirror 中国镜像站](https://npmmirror.com/)
+
+#### electronjs 镜像和缓存
+
+```ini
+ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-binaries/
+; ELECTRON_CUSTOM_DIR="{{ version }}"
+```
+<!--rehype:className=wrap-text -->
+
+### 身份验证相关配置
+
+```ini
+//registry.npmjs.org/:_authToken=MYTOKEN
+; 将适用于 @myorg 和 @another
+//somewhere.com/:_authToken=MYTOKEN
+; 将适用于 @myorg
+//somewhere.com/myorg/:_authToken=MYTOKEN1
+; 将适用于 @another
+//somewhere.com/another/:_authToken=MYTOKEN2
+```
+
+另见
+----
+
+- [npm 仓库、网站和命令行界面的文档](https://docs.npmjs.com/) _(npmjs.com)_
+- [npmmirror 中国镜像站](https://npmmirror.com/) _(npmmirror.com)_
