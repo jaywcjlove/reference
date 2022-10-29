@@ -53,12 +53,12 @@ export function create(str = '', options = {}) {
         });
         // 放在 rehypeDocument 前面
         dt.unshift(rehypeRaw);
+        dt.unshift(rehypePreviewHTML);
         return dt;
       }
       return plugins;
     },
     rewrite: (node, index, parent) => {
-      rehypePreviewHTML(node, parent);
       rehypeTitle(node, options.filename);
       homeCardIcons(node, parent, options.isHome);
       tooltips(node, index, parent);
