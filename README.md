@@ -82,6 +82,7 @@ Quick Reference
 [htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Home Brew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));-->
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Lsof](./docs/lsof.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Netcat](./docs/netcat.md)<!--rehype:style=background: rgb(4 92 135/var(\-\-bg\-opacity));-->
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [SSH](./docs/ssh.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
