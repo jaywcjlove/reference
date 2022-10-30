@@ -223,4 +223,4 @@ migration     2 root  txt   unknown                                 /proc/2/exe
 另见
 ---
 
-- [lsof 命令帮助文档](https://jaywcjlove.github.io/linux-command/c/lsof.html)
+- [lsof 命令帮助文档](https://jaywcjlove.github.io/linux-command/c/lsof.html) _(jaywcjlove.github.io)_
