@@ -282,6 +282,19 @@ p:first-child {
 `a:hover   ` | 鼠标悬停链接 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:hover)
 `a:visited ` | 访问链接 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:visited)
 
+---
+
+```css
+/* 未访问链接 */
+a:link { color: blue; }        
+/* 已访问链接 */
+a:visited { color: purple; }   
+/* 用户鼠标悬停 */
+a:hover { background: yellow; }
+/* 激活链接 */
+a:active { color: red; }       
+```
+
 ### 伪类
 
 选择器 | 说明
