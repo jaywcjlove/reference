@@ -23,7 +23,7 @@ $ awk -F: '{print $1, $NF}' /etc/passwd
 |   | `$NF`         | 最后一个字段   |
 |   | `/etc/passwd` | 输入数据文件   |
 
-### Awk program 
+### Awk 程序 
 
 ```bash
 BEGIN          {<初始化>} 
