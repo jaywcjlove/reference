@@ -151,7 +151,7 @@
 </span></span><span class="code-line"><span class="token string">   fruits["mango"] = "yellow";
 </span></span><span class="code-line"><span class="token string">   fruits["orange"] = "orange"
 </span></span><span class="code-line"><span class="token string">   for(fruit in fruits) {
-</span></span><span class="code-line"><span class="token string">     print "The color of " fruit " is " fruits[fruit]
+</span></span><span class="code-line"><span class="token string">     print fruit " 的颜色是 " fruits[fruit]
 </span></span><span class="code-line"><span class="token string">   }
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
@@ -588,19 +588,19 @@
 <table><thead><tr><th align="left">函数</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>index(s,t)</code></td><td align="left">字符串 <code>s</code> 中出现字符串 <code>t</code> 的位置，如果未找到则为 <code>0</code></td></tr><tr><td align="left"><code>length(s)</code></td><td align="left">字符串 <code>s</code> 的长度(如果没有 <code>arg</code>，则为 <code>$0</code>)</td></tr><tr><td align="left"><code>rand</code></td><td align="left"><code>0</code> 到 <code>1</code> 之间的随机数</td></tr><tr><td align="left"><code>substr(s,index,len)</code></td><td align="left">返回从索引开始的 <code>s</code> 的 <code>len-char</code> 子字符串(从 <code>1</code> 开始计数)</td></tr><tr><td align="left"><code>srand</code></td><td align="left">为 <code>rand</code> 设置种子并返回之前的种子</td></tr><tr><td align="left"><code>int(x)</code></td><td align="left">将 <code>x</code> 截断为整数值</td></tr><tr><td align="left"><code>split(s,a,fs)</code></td><td align="left">将字符串 <code>s</code> 拆分为数组 <code>a</code> 由 <code>fs</code> 拆分，返回 <code>a</code> 的长度</td></tr><tr><td align="left"><code>match(s,r)</code></td><td align="left">字符串 <code>s</code> 中出现正则表达式 <code>r</code> 的位置，如果未找到，则为 <code>0</code></td></tr><tr><td align="left"><code>sub(r,t,s)</code></td><td align="left">将 <code>t</code> 替换为字符串 <code>s</code> 中第一次出现的正则表达式 <code>r</code>(如果未给出 <code>s</code>，则替换为 <code>$0</code>)</td></tr><tr><td align="left"><code>gsub(r,t,s)</code></td><td align="left">用 <code>t</code> 替换字符串 <code>s</code> 中所有出现的正则表达式 <code>r</code></td></tr><tr><td align="left"><code>system(cmd)</code></td><td align="left">执行cmd并返回退出状态</td></tr><tr><td align="left"><code>tolower(s)</code></td><td align="left">字符串 <code>s</code> 转小写</td></tr><tr><td align="left"><code>toupper(s)</code></td><td align="left">字符串 <code>s</code> 转大写</td></tr><tr><td align="left"><code>getline</code></td><td align="left">将 <code>$0</code> 设置为当前输入文件中的下一个输入记录</td></tr></tbody></table>
 </div></div></div><div class="wrap"><div class="wrap-header h3wrap"><h3 id="用户定义函数"><a aria-hidden="true" tabindex="-1" href="#用户定义函数"><span class="icon icon-link"></span></a>用户定义函数</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'
-</span></span><span class="code-line"><span class="token string">    # Returns minimum number
+</span></span><span class="code-line"><span class="token string">    # 返回最小数量
 </span></span><span class="code-line"><span class="token string">    function find_min(num1, num2){
 </span></span><span class="code-line"><span class="token string">       if (num1 &#x3C; num2)
 </span></span><span class="code-line"><span class="token string">       return num1
 </span></span><span class="code-line"><span class="token string">       return num2
 </span></span><span class="code-line"><span class="token string">    }
-</span></span><span class="code-line"><span class="token string">    # Returns maximum number
+</span></span><span class="code-line"><span class="token string">    # 返回最大数量
 </span></span><span class="code-line"><span class="token string">    function find_max(num1, num2){
 </span></span><span class="code-line"><span class="token string">       if (num1 > num2)
 </span></span><span class="code-line"><span class="token string">       return num1
 </span></span><span class="code-line"><span class="token string">       return num2
 </span></span><span class="code-line"><span class="token string">    }
-</span></span><span class="code-line"><span class="token string">    # Main function
+</span></span><span class="code-line"><span class="token string">    # 主功能
 </span></span><span class="code-line"><span class="token string">    function main(num1, num2){
 </span></span><span class="code-line"><span class="token string">       result = find_min(num1, num2)
 </span></span><span class="code-line"><span class="token string">       print "Minimum =", result
@@ -608,7 +608,7 @@
 </span></span><span class="code-line"><span class="token string">       result = find_max(num1, num2)
 </span></span><span class="code-line"><span class="token string">       print "Maximum =", result
 </span></span><span class="code-line"><span class="token string">    }
-</span></span><span class="code-line"><span class="token string">    # Script execution starts here
+</span></span><span class="code-line"><span class="token string">    # 脚本执行从这里开始
 </span></span><span class="code-line"><span class="token string">    BEGIN {
 </span></span><span class="code-line"><span class="token string">       main(10, 60)
 </span></span><span class="code-line"><span class="token string">    }
