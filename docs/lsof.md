@@ -184,7 +184,7 @@ migration     2 root  txt   unknown                                 /proc/2/exe
 `空格` | 表示该文件的状态模式为 unknow，且没有锁定
 `-` | 表示该文件的状态模式为 unknow，且被锁定
 
-一般在[标准输出/输入/错误](#文件描述符列表)后还跟着文件状态模式
+一般在[标准输出/输入/错误](#文件描述符列表fd)后还跟着文件状态模式
 
 ### 文件状态模锁 (FD)
 
@@ -218,3 +218,9 @@ migration     2 root  txt   unknown                                 /proc/2/exe
 `NODE` | 索引节点（文件在磁盘上的标识）
 `NAME` | 打开文件的确切名称
 `REG` | 常规文件
+
+
+另见
+---
+
+- [lsof 命令帮助文档](https://jaywcjlove.github.io/linux-command/c/lsof.html)
