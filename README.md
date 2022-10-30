@@ -98,6 +98,7 @@ Quick Reference
 [HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [ISO 639-1 Language Code](./docs/iso-639-1.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Emoji](./docs/emoji.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[MIME types](./docs/mime.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Resolutions](./docs/resolutions.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
