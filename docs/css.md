@@ -262,14 +262,14 @@ p:first-child {
 
 选择器 | 说明
 :- | :-
-`a[target]`          | 带有 <yel>target</yel> 属性
-`a[target="_blank"]` | 在新标签中打开
-`a[href^="/index"]`  | 以 <yel>/index</yel> 开头
-`[class\|="chair"]`   | 以<yel>chair</yel>开头
-`[class*="chair"]`   | 包含<yel>chair</yel>
-`[title~="chair"]`   | 包含单词 <yel>chair</yel>
-`a[href$=".doc"]`    | 以 <yel>.doc</yel> 结尾
-`[type="button"]`    | 指定类型
+`a[target]`          | 带有 <yel>target</yel> 属性 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#attr)
+`a[target="_blank"]` | 在新标签中打开 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#attrvalue)
+`a[href^="/index"]`  | 以 <yel>/index</yel> 开头 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#attrvalue_4)
+`[class\|="chair"]`   | 以<yel>chair</yel>开头 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#attrvalue_3)
+`[class*="chair"]`   | 包含<yel>chair</yel> [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#attrvalue_6)
+`[title~="chair"]`   | 包含单词 <yel>chair</yel> [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#attrvalue_2)
+`a[href$=".doc"]`    | 以 <yel>.doc</yel> 结尾 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#attrvalue_5)
+`[type="button"]`    | 指定类型 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#attrvalue)
 
 另见: [属性选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors)
 
@@ -297,6 +297,10 @@ p:first-child {
 `div:empty`       | 没有子元素的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:empty)
 `p:lang(en)`      | 带有 en 语言属性的 P [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:lang)
 `:not(span)`      | 不是跨度的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not)
+`:host`           | shadowDOM 中选择自定义元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:root)
+`::backdrop`      | 处于全屏模式的元素样式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::backdrop)
+`::marker`        | `li` 项目符号或者数字 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::marker)
+`::file-selector-button`      | type="file" `input` 按钮 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::file-selector-button)
 
 ### 输入伪类
 
@@ -305,6 +309,8 @@ p:first-child {
 `input:checked`       | 检查 `input` [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:checked)
 `input:disabled`      | 禁用 `input` [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:disabled)
 `input:enabled`       | 启用的 `input` [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:enabled)
+`input:default`       | 有默认值的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:default)
+`input:blank`         | 空的输入框 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:blank)
 `input:focus`         | `input` 有焦点 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:focus)
 `input:in-range`      | 范围内的值 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:in-range)
 `input:out-of-range`  | `input` 值超出范围 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:out-of-range)
@@ -331,6 +337,11 @@ p:first-child {
 `p:nth-last-of-type(2)` | ...从后面 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-last-of-type)
 `p:only-of-type`        | 其父级的唯一性 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:only-of-type)
 `p:only-child`          | 其父母的唯一孩子 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:only-child)
+`:is(header, div) p`    | 可以选择的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is)
+`:where(header, div) p` | 与 `:is` 相同 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:where)
+`a:has(> img)`          | 包含 `img` 元素的 `a` 元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:has)
+`::first-letter`        | 第一行的第一个字母 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-letter)
+`::first-line`          | 第一行应用样式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-line)
 
 CSS 字体
 ------
