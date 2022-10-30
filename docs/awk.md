@@ -4,9 +4,11 @@ Awk 备忘清单
 这是 [GNU awk](https://www.gnu.org/software/gawk/manual/gawk.html) 的单页快速参考备忘单，其中涵盖了常用的 `awk` 表达式和命令。
 
 入门
----------------
+------
 
 ### 试试
+
+该程序可用于选择文件中的特定记录并对其执行操作
 
 ```shell
 $ awk -F: '{print $1, $NF}' /etc/passwd
