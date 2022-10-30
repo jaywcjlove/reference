@@ -73,13 +73,14 @@ Quick Reference
 
 ## Linux 命令
 
+[Awk](./docs/awk.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Curl](./docs/curl.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Chmod](./docs/chmod.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68/var(\-\-bg\-opacity));-->
 [Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62/var(\-\-bg\-opacity));-->
 [Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
-[find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
-[htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Home Brew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));-->
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Lsof](./docs/lsof.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
