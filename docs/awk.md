@@ -113,7 +113,7 @@ awk 'BEGIN {
    fruits["mango"] = "yellow";
    fruits["orange"] = "orange"
    for(fruit in fruits) {
-     print "The color of " fruit " is " fruits[fruit]
+     print fruit " 的颜色是 " fruits[fruit]
    }
 }'
 ```
@@ -367,19 +367,19 @@ Awk 函数
 
 ```shell
 awk '
-    # Returns minimum number
+    # 返回最小数量
     function find_min(num1, num2){
        if (num1 < num2)
        return num1
        return num2
     }
-    # Returns maximum number
+    # 返回最大数量
     function find_max(num1, num2){
        if (num1 > num2)
        return num1
        return num2
     }
-    # Main function
+    # 主功能
     function main(num1, num2){
        result = find_min(num1, num2)
        print "Minimum =", result
@@ -387,7 +387,7 @@ awk '
        result = find_max(num1, num2)
        print "Maximum =", result
     }
-    # Script execution starts here
+    # 脚本执行从这里开始
     BEGIN {
        main(10, 60)
     }
