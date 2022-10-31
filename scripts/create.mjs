@@ -48,13 +48,20 @@ export function create(str = '', options = {}) {
     ],
     filterPlugins: (type, plugins = []) => {
       if (type === 'rehype') {
+        let rehypePrism = null;
         const dt = plugins.filter((plug) => {
-          return /(rehypeRaw)/.test(plug.name) ? false : true;
+          if (Array.isArray(plug) && /(rehypePrism)/.test(plug[0].name)) {
+            rehypePrism = plug;
+          }
+          return /(rehypeRaw|rehypePrism)/.test(plug.name) ? false : true;
         });
         // 放在 rehypeDocument 前面
         dt.unshift(rehypeRaw);
+        if (rehypePrism) {
+          dt.unshift(rehypePrism);
+        }
         dt.unshift(rehypePreviewHTML);
-        return dt;
+        return plugins;
       }
       return plugins;
     },
