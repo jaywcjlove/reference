@@ -23,6 +23,7 @@ Quick Reference
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193/var(\-\-bg\-opacity));-->
 [INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
+[Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
@@ -51,7 +52,7 @@ Quick Reference
 [RegEx](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155/var(\-\-bg\-opacity));-->
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198/var(\-\-bg\-opacity));-->
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
-[Vue 3 (欢迎参与建设)](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
+[Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## Nodejs
