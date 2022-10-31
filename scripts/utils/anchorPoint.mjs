@@ -11,8 +11,6 @@ function anchorPoint() {
   Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
   if (elm?.tagName === 'H3') {
     elm?.parentElement?.parentElement?.classList.add('active');
-    const box = elm?.parentElement?.parentElement;
-    console.log('elm:2', box, document.querySelectorAll('.h2wrap-body .wrap'))
   }
 }
 anchorPoint();
@@ -23,7 +21,6 @@ function updateAnchor(element) {
     tocanchor.classList.remove('is-active-link');
   });
   const anchor = element || document.querySelector(\`a.tocs-link[href='\${decodeURIComponent(window.location.hash)}']\`);
-  console.log('anchor', anchor)
   if (anchor) {
     anchor.classList.add('is-active-link');
   }

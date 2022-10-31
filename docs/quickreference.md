@@ -232,8 +232,14 @@ const school = <div>学校</div>;
 
 ```
   ```html preview
-  这里是你的 HTML 代码
+  <b>这里是你的 HTML 代码</b>
   \```
+```
+
+---
+
+```html preview
+<b>这里是你的 HTML 代码</b>
 ```
 
 上面的 `markdown` 代码在 `meta` 位置添加 `preview` 标识，HTML 代码将被执行预览

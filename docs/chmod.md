@@ -277,7 +277,8 @@ $ find /path -type f -exec chmod 644 {} \;
 * [使用 chmod 修改文件权限](https://www.linode.com/docs/guides/modify-file-permissions-with-chmod/) _(linode.com)_
 
 <!--rehype:ignore:start-->
-### 以下是 Chmod 生成器 JS 代码（代码用于网站请忽略不要删除）
+以下是 Chmod 生成器 JS 代码（代码用于网站请忽略不要删除）
+---
 <!--rehype:ignore:end-->
 
 ```html preview

@@ -81,8 +81,11 @@ export function getTocsTree(arr = [], result = []) {
     }
     if (toc.number === level && titleNum(toc.tagName) === level) {
       const header = getHeader(data.slice(n), level);
+      const childs = getChilds([...data.slice(n + 1)], level);
+      const resultChilds = getTocsTree(childs);
       const wrapCls = ['wrap'];
       const headerCls = ['wrap-header', `h${level}wrap`];
+      wrapCls.push(`h${level}body-${resultChilds.length === 0 ? 'not-' : ''}exist`);
 
       if (level === 1) wrapCls.push('max-container');
       const wrapStyle = toc.properties['wrap-style'];
@@ -111,8 +114,6 @@ export function getTocsTree(arr = [], result = []) {
           },
         ],
       };
-      const childs = getChilds([...data.slice(n + 1)], level);
-      const resultChilds = getTocsTree(childs);
       if (resultChilds.length > 0) {
         const bodyStyle = toc.properties['body-style'];
         delete toc.properties['body-style'];
