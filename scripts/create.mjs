@@ -61,7 +61,7 @@ export function create(str = '', options = {}) {
           dt.unshift(rehypePrism);
         }
         dt.unshift(rehypePreviewHTML);
-        return plugins;
+        return dt;
       }
       return plugins;
     },
