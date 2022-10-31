@@ -93,7 +93,7 @@ export function getTocsTree(arr = [], result = []) {
       const wrapClass = toc.properties['wrap-class'];
       if (wrapClass) wrapCls.push(wrapClass);
       delete toc.properties['wrap-class'];
-      const panle = {
+      let panle = {
         type: 'element',
         tagName: 'div',
         properties: { class: wrapCls, style: wrapStyle },
@@ -114,19 +114,30 @@ export function getTocsTree(arr = [], result = []) {
           },
         ],
       };
+      if (titleNum(toc.tagName) > 3) {
+        panle = [toc, ...header];
+      }
       if (resultChilds.length > 0) {
         const bodyStyle = toc.properties['body-style'];
         delete toc.properties['body-style'];
         const bodyClass = toc.properties['body-class'];
         delete toc.properties['body-class'];
-        panle.children = panle.children.concat({
-          type: 'element',
-          tagName: 'div',
-          properties: { class: [`h${level}wrap-body`, bodyClass], style: bodyStyle },
-          children: [...resultChilds],
-        });
+        if (Array.isArray(panle)) {
+          panle = panle.concat(resultChilds);
+        } else if (panle.children) {
+          panle.children = panle.children.concat({
+            type: 'element',
+            tagName: 'div',
+            properties: { class: [`h${level}wrap-body`, bodyClass], style: bodyStyle },
+            children: [...resultChilds],
+          });
+        }
       }
-      result.push(panle);
+      if (Array.isArray(panle)) {
+        result = result.concat(panle);
+      } else {
+        result.push(panle);
+      }
     }
 
     n++;

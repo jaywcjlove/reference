@@ -74,7 +74,7 @@ awk -F: '{print $1 "=" $6}' /etc/passwd
 
 查看: [Awk 变量](#awk-变量)
 
-### awk 程序示例
+### Awk 程序示例
 <!--rehype:wrap-class=row-span-2 col-span-2-->
 
 ```shell
@@ -153,6 +153,7 @@ Awk 变量
 `FILENAME`     | 文件名
 
 ### 表达式
+<!--rehype:wrap-class=row-span-2-->
 
 :- | :-
 :- | :-
@@ -173,6 +174,7 @@ Awk 变量
 `ORS=NR%5?",":"\n"`  | 连接记录
 
 ### 示例
+<!--rehype:wrap-class=row-span-2-->
 
 打印总和和平均值
 
@@ -213,6 +215,16 @@ awk 'BEGIN {
         print RLENGTH }'
 ```
 
+### 仅限 GNU awk
+
+:- | :-
+:- | :-
+`ENVIRON`     | 环境变量
+`IGNORECASE`  | 忽略大小写
+`CONVFMT`     | 转换格式
+`ERRNO`       | 系统错误
+`FIELDWIDTHS` | 固定宽度字段
+
 ### 环境变量
 
 :- | :-
@@ -225,16 +237,6 @@ awk 'BEGIN {
 `RLENGTH` | 比赛时长
 `SUBSEP`  | 多维数组分隔符 _(default "\034")_
 `ARGIND`  | 参数索引
-
-### 仅限 GNU awk
-
-:- | :-
-:- | :-
-`ENVIRON`     | 环境变量
-`IGNORECASE`  | 忽略大小写
-`CONVFMT`     | 转换格式
-`ERRNO`       | 系统错误
-`FIELDWIDTHS` | 固定宽度字段
 
 ### 定义变量
 

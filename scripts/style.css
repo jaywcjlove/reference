@@ -630,6 +630,8 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
 
 .wrap.h3body-exist > .h3wrap-body {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrap-header.h3wrap {
@@ -658,7 +660,7 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
 }
 
 .wrap-header.h3wrap > .wrap-body p,
-.wrap-header.h4wrap > .wrap-body p {
+.h3wrap-body p {
   margin: 0px;
   width: 100%;
   padding-left: 1rem;
@@ -681,7 +683,8 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.wrap-header.h3wrap > .wrap-body p:not(:first-child):last-child {
+.wrap-header.h3wrap > .wrap-body p:not(:first-child):last-child,
+.h3wrap-body p:not(:first-child):last-child {
   margin-top: auto;
   border-radius: 0 0 0.5rem 0.5rem;
 }
@@ -694,7 +697,9 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
   flex-direction: column;
 }
 
-.h4wrap > h4 {
+.h3wrap-body > h4,
+.h3wrap-body > h5,
+.h3wrap-body > h6 {
   border-color: transparent;
   background-color: var(--color-neutral-muted);
   color: var(--color-fg-default);
@@ -708,21 +713,17 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
   text-align: center;
 }
 
-.h4wrap > .wrap-body ul,
-.h4wrap > .wrap-body ol,
-.h4wrap > .wrap-body dl,
-.h3wrap > .wrap-body ul,
-.h3wrap > .wrap-body ol,
-.h3wrap > .wrap-body dl {
+.h3wrap .wrap-body > ul,
+.h3wrap .wrap-body > ol,
+.h3wrap .wrap-body > dl,
+.h3wrap-body > ul,
+.h3wrap-body > ol,
+.h3wrap-body > dl {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   display: grid;
   list-style-position: outside;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-.h4wrap > .wrap-body ul + hr {
-  margin-bottom: 0;
 }
 
 .h3wrap > .wrap-body ul:not(:last-child),
@@ -850,7 +851,7 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
   box-shadow: 0 0 #0000, 0 0 #0000, 0 6px 8px rgba(102, 119, 136, 0.03), 0 1px 2px rgba(102, 119, 136, 0.3);
 }
 
-.h2wrap-body > .wrap .wrap-body > *:last-child {
+.h3wrap-body > *:last-child {
   border-radius: 0 0 0.5rem 0.5rem;
 }
 
