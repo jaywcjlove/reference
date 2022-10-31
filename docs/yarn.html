@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Yarn 备忘清单
+ &#x26;  yarn cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这是一份 &#x60;Yarn&#x60; 软件包管理器备忘单，其中列出了 &#x60;Yarn&#x60; 常用命令使用清单为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,yarn">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/yarn.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="yarn-备忘清单"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M12 0C5.375 0 0 5.375 0 12s5.375 12 12 12 12-5.375 12-12S18.625 0 12 0zm.768 4.105c.183 0 .363.053.525.157.125.083.287.185.755 1.154.31-.088.468-.042.551-.019.204.056.366.19.463.375.477.917.542 2.553.334 3.605-.241 1.232-.755 2.029-1.131 2.576.324.329.778.899 1.117 1.825.278.774.31 1.478.273 2.015a5.51 5.51 0 0 0 .602-.329c.593-.366 1.487-.917 2.553-.931.714-.009 1.269.445 1.353 1.103a1.23 1.23 0 0 1-.945 1.362c-.649.158-.95.278-1.821.843-1.232.797-2.539 1.242-3.012 1.39a1.686 1.686 0 0 1-.704.343c-.737.181-3.266.315-3.466.315h-.046c-.783 0-1.214-.241-1.45-.491-.658.329-1.51.19-2.122-.134a1.078 1.078 0 0 1-.58-1.153 1.243 1.243 0 0 1-.153-.195c-.162-.25-.528-.936-.454-1.946.056-.723.556-1.367.88-1.71a5.522 5.522 0 0 1 .408-2.256c.306-.727.885-1.348 1.32-1.737-.32-.537-.644-1.367-.329-2.21.227-.602.412-.936.82-1.08h-.005c.199-.074.389-.153.486-.259a3.418 3.418 0 0 1 2.298-1.103c.037-.093.079-.185.125-.283.31-.658.639-1.029 1.024-1.168a.94.94 0 0 1 .328-.06zm.006.7c-.507.016-1.001 1.519-1.001 1.519s-1.27-.204-2.266.871c-.199.218-.468.334-.746.44-.079.028-.176.023-.417.672-.371.991.625 2.094.625 2.094s-1.186.839-1.626 1.881c-.486 1.144-.338 2.261-.338 2.261s-.843.732-.899 1.487c-.051.663.139 1.2.343 1.515.227.343.51.176.51.176s-.561.653-.037.931c.477.25 1.283.394 1.71-.037.31-.31.371-1.001.486-1.283.028-.065.12.111.209.199.097.093.264.195.264.195s-.755.324-.445 1.066c.102.246.468.403 1.066.398.222-.005 2.664-.139 3.313-.296.375-.088.505-.283.505-.283s1.566-.431 2.998-1.357c.917-.598 1.293-.76 2.034-.936.612-.148.57-1.098-.241-1.084-.839.009-1.575.44-2.196.825-1.163.718-1.742.672-1.742.672l-.018-.032c-.079-.13.371-1.293-.134-2.678-.547-1.515-1.413-1.881-1.344-1.997.297-.5 1.038-1.297 1.334-2.78.176-.899.13-2.377-.269-3.151-.074-.144-.732.241-.732.241s-.616-1.371-.788-1.483a.271.271 0 0 0-.157-.046z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#yarn-备忘清单"><span class="icon icon-link"></span></a>Yarn 备忘清单</h1><div class="wrap-body">
+<p>这是一份 <a href="https://yarnpkg.com/"><code>Yarn</code></a> 软件包管理器备忘单，其中列出了 <code>Yarn</code> 常用命令使用清单</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#与-npm-相同的命令">与 npm 相同的命令</a><a aria-hidden="true" class="leve3 tocs-link" href="#yarn-install">yarn install</a><a aria-hidden="true" class="leve3 tocs-link" href="#yarn-add">yarn add</a><a aria-hidden="true" class="leve3 tocs-link" href="#workspaces">Workspaces</a><a aria-hidden="true" class="leve3 tocs-link" href="#选择性版本解析">选择性版本解析</a><a aria-hidden="true" class="leve3 tocs-link" href="#create">Create</a><a aria-hidden="true" class="leve2 tocs-link" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" href="#安装包">安装包</a><a aria-hidden="true" class="leve3 tocs-link" href="#移除包">移除包</a><a aria-hidden="true" class="leve3 tocs-link" href="#查看包">查看包</a><a aria-hidden="true" class="leve3 tocs-link" href="#清除">清除</a><a aria-hidden="true" class="leve3 tocs-link" href="#信息">信息</a><a aria-hidden="true" class="leve3 tocs-link" href="#清理缓存">清理缓存</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="与-npm-相同的命令"><a aria-hidden="true" tabindex="-1" href="#与-npm-相同的命令"><span class="icon icon-link"></span></a>与 npm 相同的命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header left-align"><thead><tr><th>npm</th><th>yarn</th></tr></thead><tbody><tr><td><code>npm init</code></td><td><code>yarn init</code></td></tr><tr><td><code>npm install</code></td><td><code>yarn</code></td></tr><tr><td><code>npm install gulp --save</code></td><td><code>yarn add gulp</code></td></tr><tr><td><code>npm install gulp --save-dev --save-exact</code></td><td><code>yarn add gulp --dev --exact</code></td></tr><tr><td><code>npm install -g gulp</code></td><td><code>yarn global add gulp</code></td></tr><tr><td><code>npm update</code></td><td><code>yarn upgrade</code></td></tr><tr><td><code>npm cache clean</code></td><td><code>yarn cache clean</code></td></tr><tr><td><code>./node_modules/.bin/gulp</code></td><td><code>yarn run gulp</code></td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+<p>npm <em>(<a href="./npm.html">备忘清单</a>)</em> 和 Yarn 有很多相似之处</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="yarn-install"><a aria-hidden="true" tabindex="-1" href="#yarn-install"><span class="icon icon-link"></span></a>yarn install</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">--no-lockfile <span class="token comment"># 不要读取或生成 yarn.lock 锁定文件</span>
+</span><span class="code-line">--pure-lockfile
+</span><span class="code-line">--frozen-lockfile
+</span><span class="code-line"><span class="token parameter variable">--silent</span>
+</span><span class="code-line"><span class="token parameter variable">--offline</span>
+</span><span class="code-line">--update-checksums
+</span><span class="code-line">--check-files
+</span><span class="code-line"><span class="token parameter variable">--flat</span>
+</span><span class="code-line"><span class="token parameter variable">--force</span>
+</span><span class="code-line">--ignore-scripts
+</span><span class="code-line">--modules-folder <span class="token operator">&#x3C;</span>path<span class="token operator">></span>
+</span><span class="code-line">--production<span class="token punctuation">[</span><span class="token operator">=</span>true<span class="token operator">|</span>false<span class="token punctuation">]</span>
+</span></code></pre>
+<p>这些选项可用于 <code>yarn install</code></p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="yarn-add"><a aria-hidden="true" tabindex="-1" href="#yarn-add"><span class="icon icon-link"></span></a>yarn add</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>在 <a href="./package.json.html#devdependencies">devDependencies</a> 中安装一个或多个包</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">--dev, <span class="token parameter variable">-D</span>
+</span></code></pre>
+<p>在 <a href="./package.json.html#peerdependencies">peerDependencies</a> 中安装一个或多个包</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">--peer, <span class="token parameter variable">-P</span>
+</span></code></pre>
+<p>在 <a href="./package.json.html#optionaldependencies">optionalDependencies</a> 中安装一个或多个包</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">--optional, <span class="token parameter variable">-O</span>
+</span></code></pre>
+<p>更改包版本</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">--exact, <span class="token parameter variable">-E</span> <span class="token comment"># 将包安装为精确版本</span>
+</span><span class="code-line">--tilde, <span class="token parameter variable">-T</span> <span class="token comment"># 安装有相同次要版本的包的最新版本</span>
+</span></code></pre>
+<p>这些选项可用于 <code>yarn add</code>.</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="workspaces"><a aria-hidden="true" tabindex="-1" href="#workspaces"><span class="icon icon-link"></span></a>Workspaces</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>在 <code>package.json</code> 中 <a href="./package.json.html#workspaces">workspaces</a> 配置:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token property">"workspaces"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">  <span class="token string">"packages/*"</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+<hr>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">jest/
+</span><span class="code-line">├─ package.json
+</span><span class="code-line">└─ packages/
+</span><span class="code-line">   ├─ jest-matcher-utils/
+</span><span class="code-line">   │  └─ package.json
+</span><span class="code-line">   └─ jest-diff/
+</span><span class="code-line">      └─ package.json
+</span></code></pre>
+<p>(1.0 新增)允许 monoreso 相互共享包。另见：<a href="https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/">介绍工作空间</a></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="选择性版本解析"><a aria-hidden="true" tabindex="-1" href="#选择性版本解析"><span class="icon icon-link"></span></a>选择性版本解析</h3><div class="wrap-body">
+<p>在 <code>package.json</code> 中 <a href="./package.json.html#resolutions"><code>resolutions</code></a> 配置:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token property">"resolutions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"**/sass-brunch/node-sass"</span><span class="token operator">:</span> <span class="token string">"4.5.2"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>另见：<a href="https://github.com/yarnpkg/yarn/pull/4105">选择性版本解析</a>。(1.0 新增)允许您指定子依赖项的版本</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="create"><a aria-hidden="true" tabindex="-1" href="#create"><span class="icon icon-link"></span></a>Create</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">yarn</span> create react-app hello
+</span></code></pre>
+<p>安装 <code>create react app</code> 并运行它 See: <a href="https://github.com/yarnpkg/rfcs/blob/master/implemented/0000-yarn-create.md">yarn create</a></p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装包"><a aria-hidden="true" tabindex="-1" href="#安装包"><span class="icon icon-link"></span></a>安装包</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 将包添加到“dependencies”</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> <span class="token function">add</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 将包添加到“devDependencies”</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 将软件包添加为确切版本</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> <span class="token function">add</span> <span class="token parameter variable">-E</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 在您的操作系统上全局安装软件包</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> global <span class="token function">add</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="移除包"><a aria-hidden="true" tabindex="-1" href="#移除包"><span class="icon icon-link"></span></a>移除包</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">yarn</span> remove <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span></code></pre>
+<p>从所有类型的依赖项中删除包</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="查看包"><a aria-hidden="true" tabindex="-1" href="#查看包"><span class="icon icon-link"></span></a>查看包</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出已安装的软件包</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> list
+</span><span class="code-line"><span class="token comment"># 列出顶级安装包</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> list <span class="token parameter variable">--depth</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line"><span class="token comment"># 列出已安装的顶级全局包</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> global list <span class="token parameter variable">--depth</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line"><span class="token comment"># 列出带有过滤字符串和深度级别的包</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> list <span class="token parameter variable">--pattern</span> <span class="token string">"gulp|grunt"</span> <span class="token parameter variable">--depth</span><span class="token operator">=</span><span class="token number">1</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="清除"><a aria-hidden="true" tabindex="-1" href="#清除"><span class="icon icon-link"></span></a>清除</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 从包依赖项中清理并删除不必要的文件</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> autoclean
+</span><span class="code-line"><span class="token comment"># 检查过时的包依赖项</span>
+</span><span class="code-line">$ <span class="token function">yarn</span> outdated
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="信息"><a aria-hidden="true" tabindex="-1" href="#信息"><span class="icon icon-link"></span></a>信息</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">yarn</span> why <span class="token operator">&#x3C;</span>query<span class="token operator">></span>
+</span><span class="code-line">$ <span class="token function">yarn</span> why jest
+</span></code></pre>
+<p>显示有关安装软件包的原因的信息</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="清理缓存"><a aria-hidden="true" tabindex="-1" href="#清理缓存"><span class="icon icon-link"></span></a>清理缓存</h3><div class="wrap-body">
+<p>运行此命令将清除全局缓存。 下次运行 <code>yarn</code> 或 <code>yarn install</code> 时，它将再次填充</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">yarn</span> cache clean
+</span></code></pre>
+<p>此外，您可以指定一个或多个要清理的包</p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="./npm.html">npm 备忘清单</a></li>
+<li><a href="https://yarnpkg.com/">Yarn 官方文档网站</a></li>
+<li><a href="https://www.yarnpkg.cn/">Yarn 2 中文文档网站</a></li>
+<li><a href="https://yarn.bootcss.com/">Yarn 1 中文文档网站</a> <em>(bootcss.com)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
