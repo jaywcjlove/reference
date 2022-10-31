@@ -16,5 +16,5 @@ assignees: jaywcjlove
 提供参考资料地址
 ----
 
-- [参考地址 1](https://xxx.com)
-- [官网地址](https://xxx.com)
+- [提供 参考地址 1](https://jaywcjlove.github.io/reference)
+- [提供 官网地址](https://jaywcjlove.github.io/reference)
