@@ -232,14 +232,14 @@
 </span><span class="code-line">  <span class="token key atrule">name</span><span class="token punctuation">:</span> production_environment
 </span><span class="code-line">  <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com
 </span></code></pre>
-</div></div><div class="h3wrap-body"><div class="wrap h4body-not-exist"><div class="wrap-header h4wrap"><h4 id="自定义环境变量"><a aria-hidden="true" tabindex="-1" href="#自定义环境变量"><span class="icon icon-link"></span></a>自定义环境变量</h4><div class="wrap-body">
+</div></div><div class="h3wrap-body"><h4 id="自定义环境变量"><a aria-hidden="true" tabindex="-1" href="#自定义环境变量"><span class="icon icon-link"></span></a>自定义环境变量</h4>
 <p><code>GitHub</code> 会保留 <code>GITHUB_</code> 环境变量前缀供 <code>GitHub</code> 内部使用。设置有 <code>GITHUB_</code> 前缀的环境变量或密码将导致错误。</p>
 <pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 测试 nodejs 获取环境变量
 </span><span class="code-line">  <span class="token key atrule">env</span><span class="token punctuation">:</span>
 </span><span class="code-line">    <span class="token key atrule">API_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.API_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
 </span></code></pre>
 <p>在 <code>https://github.com/&#x3C;用户名>/&#x3C;项目名称>/settings/secrets</code> 中添加 <code>secrets</code> <code>API_TOKEN</code>，在工作流中设置环境变量 <a href="https://github.com/jaywcjlove/github-actions/blob/799b232fca3d9df0272eaa12610f9ebfca51b288/.github/workflows/ci.yml#L46"><code>API_TOKEN</code></a></p>
-</div></div></div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="表达式"><a aria-hidden="true" tabindex="-1" href="#表达式"><span class="icon icon-link"></span></a>表达式</h3><div class="wrap-body">
+</div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="表达式"><a aria-hidden="true" tabindex="-1" href="#表达式"><span class="icon icon-link"></span></a>表达式</h3><div class="wrap-body">
 <p>在 <code>if</code> 条件下使用表达式时，可以省略表达式语法 (<code>${{ }}</code>)，因为 GitHub 会自动将 <code>if</code> 条件作为表达式求值</p>
 <pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
 </span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/hello<span class="token punctuation">-</span>world<span class="token punctuation">-</span>action@v1.1
@@ -250,7 +250,7 @@
 <pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">env</span><span class="token punctuation">:</span>
 </span><span class="code-line">  <span class="token key atrule">MY_ENV_VAR</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> &#x3C;expression<span class="token punctuation">></span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
 </span></code></pre>
-</div></div><div class="h3wrap-body"><div class="wrap h4body-not-exist"><div class="wrap-header h4wrap"><h4 id="操作符"><a aria-hidden="true" tabindex="-1" href="#操作符"><span class="icon icon-link"></span></a>操作符</h4><div class="wrap-body">
+</div></div><div class="h3wrap-body"><h4 id="操作符"><a aria-hidden="true" tabindex="-1" href="#操作符"><span class="icon icon-link"></span></a>操作符</h4>
 <ul class="cols-2 style-none">
 <li><code>( )</code> <em>(逻辑分组)</em></li>
 <li><code>[ ]</code> <em>(指数)</em></li>
@@ -266,7 +266,7 @@
 <li><code>||</code> <em>(或者)</em></li>
 </ul>
 <!--rehype:className=cols-2 style-none-->
-</div></div></div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="github-上下文"><a aria-hidden="true" tabindex="-1" href="#github-上下文"><span class="icon icon-link"></span></a>Github 上下文</h3><div class="wrap-body">
+</div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="github-上下文"><a aria-hidden="true" tabindex="-1" href="#github-上下文"><span class="icon icon-link"></span></a>Github 上下文</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 
 
@@ -813,7 +813,7 @@
 </span><span class="code-line highlight-line">  <span class="token key atrule">working-directory</span><span class="token punctuation">:</span> ./temp
 </span></code></pre>
 <p>使用 <code>working-directory</code> 关键字，您可以指定运行命令的工作目录(<code>./temp</code>)</p>
-</div></div><div class="h3wrap-body"><div class="wrap h4body-not-exist"><div class="wrap-header h4wrap"><h4 id="defaultsrun"><a aria-hidden="true" tabindex="-1" href="#defaultsrun"><span class="icon icon-link"></span></a>defaults.run</h4><div class="wrap-body">
+</div></div><div class="h3wrap-body"><h4 id="defaultsrun"><a aria-hidden="true" tabindex="-1" href="#defaultsrun"><span class="icon icon-link"></span></a>defaults.run</h4>
 <pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
 </span><span class="code-line">  <span class="token key atrule">job1</span><span class="token punctuation">:</span>
 </span><span class="code-line">    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
@@ -823,7 +823,7 @@
 </span><span class="code-line highlight-line">        <span class="token key atrule">working-directory</span><span class="token punctuation">:</span> scripts
 </span></code></pre>
 <p>作业中的所有 <code>run</code> 步骤提供默认的 <code>shell</code> 和 <code>working-directory</code></p>
-</div></div></div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="jobsjob_idstepsshell"><a aria-hidden="true" tabindex="-1" href="#jobsjob_idstepsshell"><span class="icon icon-link"></span></a>jobs.&#x3C;job_id>.steps[*].shell</h3><div class="wrap-body">
+</div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="jobsjob_idstepsshell"><a aria-hidden="true" tabindex="-1" href="#jobsjob_idstepsshell"><span class="icon icon-link"></span></a>jobs.&#x3C;job_id>.steps[*].shell</h3><div class="wrap-body">
 <p>使用 <code>bash</code> 运行脚本</p>
 <pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span>
 </span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Display the path
