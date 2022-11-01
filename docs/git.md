@@ -850,10 +850,38 @@ git reset <file-name>
 ### 配置 http 和 socks 代理
 
 ```bash
+# 查看代理
+$ git config --global http.proxy
+$ git config --global https.proxy
+$ git config --global socks.proxy
+
+# 设置代理
 # 适用于 privoxy 将 socks 协议转为 http 协议的 http 端口
-git config --global https.proxy 'http://127.0.0.1:8001'
-git config --global http.proxy 'http://127.0.0.1:8001'
-git config --global socks.proxy "127.0.0.1:1080"
+$ git config --global http.proxy http://127.0.0.1:1080
+$ git config --global https.proxy http://127.0.0.1:1080
+$ git config --global socks.proxy 127.0.0.1:1080
+
+# 取消代理
+$ git config --global --unset http.proxy
+$ git config --global --unset https.proxy
+$ git config --global --unset socks.proxy
+
+# 只对 github.com 设置代理
+$ git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+$ git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
+
+# 取消 github.com 代理
+$ git config --global --unset http.https://github.com.proxy
+$ git config --global --unset https.https://github.com.proxy
+```
+
+### 配置 SSH 协议代理
+
+```shell
+# 对于使用 git@ 协议的，可以配置 socks5 代理
+# macOS 系统编辑 ~/.ssh/config 文件，添加这几行，设置 github 代理
+Host github.com
+  ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
 ```
 <!--rehype:className=wrap-text-->
 
