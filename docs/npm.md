@@ -9,49 +9,72 @@ npm 备忘清单
 
 ### 包管理
 
-| 命令                                | 描述                                     |
-| ---                                | ---                                      |
-| `npm i`                            | `npm install`的别名                      |
-| `npm install`                      | 安装 package.json 中的所有内容              |
-| `npm install --production`         | 安装 package.json 中的所有内容，除了 devDependecies   |
-| `npm install lodash`               | 安装一个包                  |
-| `npm install --save-dev lodash`    | 安装为 devDependency       |
-| `npm install --save-exact lodash`  | 准确安装                    |
-| `npm install @scope/package-name`  | 安装一个作用域的公共包                    |
-| `npm install <package_name>@<tag>` | 使用 dist-tags 安装包                   |
-| `npm install -g <package_name>`    | 全局安装包                   |
-| `npm uninstall <package_name>`     | 卸载包                   |
+命令 | 描述
+:- |:-
+`npm init -y`                      | 创建 `package.json` 文件
+`npm install` 或 `npm i`           | 安装 `package.json` 中的所有内容
+`npm install --production`         | 安装 `package.json` 中的所有内容 <br /> _(除了 `devDependecies`)_
+`npm install lodash`               | 安装一个包
+`npm install --save-dev lodash`    | 安装为 `devDependency`
+`npm install --save-exact lodash`  | 准确安装
+`npm install @scope/package-name`  | 安装一个作用域的公共包
+`npm install <package_name>@<tag>` | 使用 `dist-tags` 安装包
+`npm install -g <package_name>`    | 全局安装包
+`npm uninstall <package_name>`     | 卸载包
 <!--rehype:class=auto-wrap-->
 
-`--save` 是 npm@5 的默认值。 以前，使用不带 `--save` 的 `npm install` 不会更新 package.json。
+### 安装
+<!--rehype:wrap-class=row-span-3-->
 
-### 安装名称
-
-| 命令                                  | 描述             |
-| ---                                  | ---               |
-| `npm i sax`                          | NPM 包             |
-| `npm i sax@latest`                   | 指定标签“最新”       |
-| `npm i sax@3.0.0`                    | 指定版本 `3.0.0`     |
-| `npm i sax@">=1 <2.0"`               | 指定版本范围         |
-| `npm i @org/sax`                     | 范围内的 NPM 包     |
-| `npm i user/repo`                    | GitHub             |
-| `npm i user/repo#master`             | GitHub             |
-| `npm i github:user/repo`             | GitHub             |
-| `npm i gitlab:user/repo`             | GitLab             |
-| `npm i /path/to/repo`                | 绝对路径            |
-| `npm i ./archive.tgz`                | 压缩包             |
-| `npm i https://site.com/archive.tgz` | 通过 HTTP 压缩包    |
+命令 | 描述
+:- |:-
+`npm i sax`                          | `NPM` 包 
+`npm i sax@latest`                   | 指定标签 `最新`
+`npm i sax@3.0.0`                    | 指定版本 `3.0.0`
+`npm i sax@">=1 <2.0"`               | 指定版本范围 
+`npm i @org/sax`                     | 范围内的 `NPM` 包 
+`npm i user/repo`                    | GitHub 
+`npm i user/repo#master`             | GitHub 
+`npm i github:user/repo`             | GitHub 
+`npm i gitlab:user/repo`             | GitLab 
+`npm i /path/to/repo`                | 绝对路径 
+`npm i ./archive.tgz`                | 压缩包 
+`npm i https://site.com/archive.tgz` | 通过 `HTTP` 压缩包 
 <!--rehype:class=auto-wrap-->
+
+安装依赖的可用参数
+
+- `-P`, `--save-prod` 包将出现在您的依赖项中，这是默认值(npm v8)，除非存在 `-D` 或 `-O`
+- `-D`, `--save-dev` 包会出现在你的 `devDependencies` 中
+- `-O`, `--save-optional` 包将出现在您的 `optionalDependencies` 中
+- `--no-save` 防止保存到依赖项
+- `-E`, `--save-exact` 依赖项将使用精确的版本进行配置，而不是使用 `npm` 的默认 [`semver`](./semver.md) 范围运算符
+- `-B`, `--save-bundle` 依赖项也将添加到您的 [`bundleDependencies`](./package.json.md#bundleddependencies) 列表中
+<!--rehype:className=style-arrow-->
+
+命令 `npm i` 是 `npm install` 的别名
 
 ### 清单
 
-| 命令                     | 描述               |
-| ---                     | --- |
-| `npm list`              | 列出此软件中所有依赖项的已安装版本 | 
-| `npm list -g --depth 0` | 列出所有全局安装包的安装版本 | 
-| `npm view`              | 列出此软件中所有依赖项的最新版本 | 
-| `npm outdated`          | 仅列出此软件中已过时的依赖项  |
+命令 | 描述
+:- |:-
+`npm list`              | 列出此软件中所有依赖项的已安装版本
+`npm list -g --depth 0` | 列出所有全局安装包的安装版本
+`npm view`              | 列出此软件中所有依赖项的最新版本
+`npm outdated`          | 仅列出此软件中已过时的依赖项
 <!--rehype:class=auto-wrap-->
+
+### 缓存 cache
+
+```bash
+npm cache add <package-spec>    # 将指定的包添加到本地缓存
+npm cache clean [<key>]         # 删除缓存文件夹中的所有数据
+npm cache ls [<name>@<version>]
+npm cache verify # 验证缓存文件夹的内容，垃圾收集任何不需要的数据，
+                 # 并验证缓存索引和所有缓存数据的完整性
+```
+
+用于添加、列出或清理 npm 缓存文件夹
 
 ### 更新
 
@@ -61,7 +84,7 @@ npm 备忘清单
 | `npm update`            | 更新生产包 |
 | `npm update --dev`      | 更新开发包 |
 | `npm update -g`         | 更新全局包 |
-| `npm update lodash`     | 更新 lodash 包 |
+| `npm update lodash`     | 更新 `lodash` 包 |
 
 
 ### 杂项功能
