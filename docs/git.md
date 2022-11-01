@@ -11,23 +11,29 @@ Git 备忘清单
 创建一个新的本地存储库
 
 ```shell
-$ git init [project name]
+$ git init [项目名称]
 ```
 
-克隆存储库
+克隆存储库(代码仓库)
 
 ```shell
-$ git clone git_url
+$ git clone <git_url>
 ```
 
 将存储库克隆到指定目录
 
 ```shell
-$ git clone git_url 指定目录
+$ git clone <git_url> 指定目录
+```
+
+将存储库克隆到指定目录，并指定分支
+
+```shell
+$ git clone <git_url> -b <分支名称> 指定目录
 ```
 
 ### 做出改变
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 在工作目录中**显示**修改后的文件，为您的下一次提交暂存
 
@@ -89,8 +95,8 @@ $ git diff --staged
 $ git rebase [branch]
 ```
 
-
 ### 配置
+<!--rehype:wrap-class=row-span-2-->
 
 设置将附加到您的提交和标签的名称
 
@@ -116,7 +122,20 @@ $ git config --global color.ui auto
 $ git config --global --edit
 ```
 
+显示本地 `repo` 配置设置
+
+```shell
+$ git config --list
+```
+
+删除全局设置
+
+```bash
+$ git config --global --unset <entry-name>
+```
+
 ### 使用分支
+<!--rehype:wrap-class=row-span-3-->
 
 列出所有本地分支
 
@@ -130,25 +149,25 @@ $ git branch
 $ git branch -av
 ```
 
-切换到 my_branch，并更新工作目录
+切换到 `my_branch`，并更新工作目录
 
 ```shell
 $ git checkout my_branch
 ```
 
-创建一个名为 new_branch 的新分支
+创建一个名为 `new_branch` 的新分支
 
 ```shell
 $ git checkout -b new_branch
 ```
 
-删除名为 my_branch 的分支
+删除名为 `my_branch` 的分支
 
 ```shell
 $ git branch -d my_branch
 ```
 
-将分支 A 合并到分支 B
+将分支 `A` 合并到分支 `B`
 
 ```shell
 $ git checkout branchB
@@ -161,7 +180,31 @@ $ git merge branchA
 $ git tag my_tag
 ```
 
+从远程分支中创建并切换到本地分支
+
+```shell
+$ git checkout -b <branch-name> origin/<branch-name>
+```
+
+### 临时提交
+
+```shell
+# 保存已修改和分阶段的更改
+$ git stash
+# 列出隐藏文件更改的堆栈顺序
+$ git stash list
+# 从存储堆栈顶部编写工作
+$ git stash pop
+# 丢弃存储堆栈顶部的更改
+$ git stash drop
+# 回到某个 stash 的状态
+$ git stash apply <stash@{n}>
+# 删除所有的 stash
+$ git stash clear
+```
+
 ### 观察你的存储库
+<!--rehype:wrap-class=row-span-2-->
 
 显示当前活动分支的提交历史
 
@@ -193,7 +236,21 @@ $ git diff branchB...branchA
 $ git show [SHA]
 ```
 
+### 重构文件名
+
+```bash
+# 从工作目录中删除文件并暂存删除
+git rm <filename>
+
+# 从版本控制中删除文件但在本地保留文件
+git rm --cached <filename>
+
+# 更改文件名并准备提交
+git mv <filename-orig> <filename-renamed>
+```
+
 ### 同步
+<!--rehype:wrap-class=row-span-2-->
 
 从该 Git 远程获取所有分支
 
@@ -230,6 +287,7 @@ $ git cherry-pick [commit_id]
 ```
 
 ### 远程
+<!--rehype:wrap-class=row-span-2-->
 
 添加一个 git URL 作为别名
 
@@ -259,32 +317,6 @@ $ git remote rm [remote repo name]
 
 ```shell
 $ git remote set-url origin [git_url]
-```
-
-### 临时提交
-
-保存已修改和分阶段的更改
-
-```shell
-$ git stash
-```
-
-列出隐藏文件更改的堆栈顺序
-
-```shell
-$ git stash list
-```
-
-从存储堆栈顶部编写工作
-
-```shell
-$ git stash pop
-```
-
-丢弃存储堆栈顶部的更改
-
-```shell
-$ git stash drop
 ```
 
 ### 跟踪路径更改
@@ -322,6 +354,18 @@ node_modules
 ```
 
 `.gitignore` 文件指定了 Git 应该忽略的未跟踪的文件
+
+### git 配置 ssh 代理
+
+```bash
+$ cat ~/.ssh/config
+Host gitlab.com
+# 直接使用 shadowsocks 提供的 socks5 代理端口
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p 
+
+Host github.com
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p    
+```
 
 Git 技巧
 ------
@@ -380,7 +424,7 @@ $ git branch -vv
 $ git checkout -
 ```
 
-只获取远程分支
+只获取所有远程分支
 
 ```shell
 $ git branch -r
@@ -515,12 +559,6 @@ $ git branch --merged master | grep -v '^\*\|  master' | xargs -n 1 git branch -
 ```
 <!--rehype:className=wrap-text-->
 
-### 中文乱码的解决方案
-
-```shell
-$ git config --global core.quotepath false
-```
-
 ### 把 A 分支的某一个 commit，放到 B 分支上
 
 ```shell
@@ -529,3 +567,286 @@ $ git checkout <B>
 # 将 A 分支 <hash-id> 的内容 pick 到 B 分支
 $ git cherry-pick <hash-id>
 ```
+
+### 回到远程仓库的状态
+
+```bash
+$ git fetch --all && git reset --hard origin/master
+```
+<!--rehype:className=wrap-text-->
+
+抛弃本地所有的修改，回到远程仓库的状态
+
+### 重设第一个 commit
+
+```bash
+$ git update-ref -d HEAD
+```
+
+把所有的改动都重新放回工作区，并**清空所有的 commit**，这样就可以重新提交第一个 `commit` 了
+
+### 查看冲突文件列表
+
+```bash
+$ git diff --name-only --diff-filter=U
+```
+
+### 展示工作区的冲突文件列表
+<!--rehype:wrap-class=row-span-2-->
+
+输出工作区和暂存区的 different (不同)。
+
+```bash
+$ git diff
+```
+
+还可以展示本地仓库中任意两个 commit 之间的文件变动：
+
+```bash
+$ git diff <commit-id> <commit-id>
+```
+
+### 展示暂存区和最近版本的不同
+
+```bash
+git diff --cached
+```
+
+### 中文乱码的解决方案
+
+```shell
+$ git config --global core.quotepath false
+```
+
+### 展示暂存区、工作区和最近版本的不同
+
+```bash
+$ git diff HEAD
+```
+
+输出工作区、暂存区 和本地最近的版本(commit)的different(不同)。
+
+### 删除已经合并到 master 的分支
+
+```bash
+$ git branch --merged master | grep -v '^\*\|  master' | xargs -n 1 git branch -d
+```
+<!--rehype:className=wrap-text-->
+
+### 关联远程分支
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+$ git branch -u origin/mybranch
+```
+
+或者在 `push` 时加上 `-u` 参数
+
+```bash
+git push origin/mybranch -u
+```
+
+关联之后，`git branch -vv` 就可以展示关联的远程分支名了, 同时推送到远程仓库直接：`git push`，不需要指定远程仓库
+
+### 查看远程分支和本地分支的对应关系
+
+```bash
+$ git remote show origin
+```
+
+### 展示当前分支的最近的 tag
+
+```bash
+$ git describe --tags --abbrev=0
+```
+
+### 查看某段代码是谁写的
+
+```bash
+$ git blame <file-name>
+```
+
+`blame` 的意思为`责怪`，你懂的。
+
+### 修改作者名
+
+```bash
+$ git commit --amend --author='Author Name <email@address.com>'
+```
+
+### 修改远程仓库的 url
+
+```bash
+$ git remote set-url origin <URL>
+```
+
+### 增加远程仓库
+
+```bash
+$ git remote add origin <remote-url>
+```
+<!--rehype:className=wrap-text-->
+
+### 列出所有远程仓库
+
+```bash
+$ git remote -v
+```
+
+### 查看两个星期内的改动
+
+```bash
+$ git whatchanged --since='2 weeks ago'
+```
+
+### 从 stash 中拿出某个文件的修改
+
+```bash
+$ git checkout <stash@{n}> -- <file-path>
+```
+<!--rehype:className=wrap-text-->
+
+### 展示所有 tracked 的文件
+
+```bash
+$ git ls-files -t
+```
+
+### 展示所有 untracked 的文件
+
+```bash
+$ git ls-files --others
+```
+
+### 展示所有忽略的文件
+
+```bash
+$ git ls-files --others -i --exclude-standard
+```
+<!--rehype:className=wrap-text-->
+
+### 把某一个分支导出成一个文件
+
+```bash
+$ git bundle create <file> <branch-name>
+```
+
+### 从包中导入分支
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+$ git clone repo.bundle <repo-dir> -b <branch-name>
+```
+<!--rehype:className=wrap-text-->
+
+新建一个分支，分支内容就是上面 `git bundle create` 命令导出的内容
+
+### 执行 rebase 之前自动 stash
+
+```bash
+$ git rebase --autostash
+```
+
+### 从远程仓库根据 ID，拉下某一状态，到本地分支
+
+```bash
+$ git fetch origin pull/<id>/head:<branch-name>
+```
+
+### 详细展示一行中的修改
+
+```bash
+$ git diff --word-diff
+```
+
+### 清除 gitignore 文件中记录的文件
+
+```bash
+$ git clean -X -f
+```
+
+### 展示忽略的文件
+
+```bash
+$ git status --ignored
+```
+
+### commit 历史中显示 Branch1 有的但是 Branch2 没有 commit
+
+```bash
+$ git log Branch1 ^Branch2
+```
+
+### 在 commit log 中显示 GPG 签名
+
+```bash
+$ git log --show-signature
+```
+
+### 新建并切换到新分支上，同时这个分支没有任何 commit
+
+```bash
+$ git checkout --orphan <branch-name>
+```
+
+相当于保存修改，但是重写 commit 历史
+
+### 展示任意分支某一文件的内容
+
+```bash
+$ git show <branch-name>:<file-name>
+```
+
+### clone 最新一次提交
+
+```bash
+$ git clone --depth=1 https://github.com/user/repo.git
+```
+
+只会 `clone` 最近一次提交，将减少 `clone` 时间
+
+### 忽略某个文件的改动
+<!--rehype:wrap-class=row-span-2-->
+
+关闭 track 指定文件的改动，也就是 Git 将不会在记录这个文件的改动
+
+```bash
+git update-index --assume-unchanged path/to/file
+```
+<!--rehype:className=wrap-text-->
+
+恢复 track 指定文件的改动
+
+```bash
+git update-index --no-assume-unchanged path/to/file
+```
+<!--rehype:className=wrap-text-->
+
+### 以最后提交的顺序列出所有 Git 分支
+
+```bash
+git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads
+```
+
+最新的放在最上面
+
+### 在 commit log 中查找相关内容
+
+```bash
+git log --all --grep='<given-text>'
+```
+
+通过 grep 查找，given-text: 所需要查找的字段
+
+### 把暂存区的指定 file 放到工作区中
+
+```bash
+git reset <file-name>
+```
+
+不添加参数，默认是 `-mixed`
+
+另见
+---
+
+- [最常用的 git 提示和技巧](https://github.com/git-tips/tips)
