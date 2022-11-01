@@ -61,6 +61,21 @@ Contributing 贡献
 - SVG 图标尺寸 `<svg height="1em" width="1em"`
 - SVG 图标颜色使用继承颜色值 `<svg fill="currentColor"`
 
+#### 提示配置
+
+```markdown
+[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
+```
+
+添加 `contributing` 类名，会在卡片下方添加 _`👆待完善需要您的参与`_
+
+
+```markdown
+[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=tag&data-lang=Python-->
+```
+
+添加 `class=tag&data-lang=Python` 类名和参数，会在卡片右上角标记 _`Python`_
+
 ## 本地开发
 
 ```bash
