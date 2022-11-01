@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Django 备忘清单
+ &#x26;  djiango cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="Django 是 Python 的一款 Web 框架为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,djiango">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/djiango.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="django-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1em" height="1em" viewBox="0 0 230 230">
+  <path fill="currentColor" d="M200,0 C216.568542,-3.04359188e-15 230,13.4314575 230,30 L230,200 C230,216.568542 216.568542,230 200,230 L30,230 C13.4314575,230 9.13448861e-15,216.568542 0,200 L0,30 C-2.02906125e-15,13.4314575 13.4314575,1.01490192e-14 30,0 L200,0 Z M167.109375,83.5546875 L141.953125,83.5546875 L141.953125,132.96875 C141.953125,154.980469 140.605469,163.066406 137.011719,170.253906 C133.867188,176.992188 128.476562,181.933594 117.246094,186.875 L140.605469,198.105469 C151.835938,192.265625 157.226562,187.324219 161.269531,179.238281 C165.761719,171.152344 167.109375,161.71875 167.109375,141.503906 L167.109375,83.5546875 Z M127.128906,45.3710938 L101.972656,45.3710938 L101.972656,83.1054688 C97.9296875,82.2070312 94.7851562,82.2070312 90.7421875,82.2070312 C64.2382812,82.2070312 47.6171875,98.3789062 47.6171875,123.984375 C47.6171875,150.488281 63.3398438,164.414062 94.3359375,164.414062 C104.667969,164.414062 114.101562,163.066406 127.128906,160.820312 L127.128906,45.3710938 Z M93.4375,101.972656 C96.5820312,101.972656 98.828125,102.421875 101.972656,103.320312 L101.972656,143.300781 C97.9296875,144.199219 95.6835938,144.199219 92.9882812,144.199219 C79.9609375,144.199219 73.2226562,137.011719 73.2226562,123.535156 C73.2226562,110.058594 80.4101562,101.972656 93.4375,101.972656 Z M167.109375,45.3710938 L141.953125,45.3710938 L141.953125,70.9765625 L167.109375,70.9765625 L167.109375,45.3710938 Z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#django-备忘清单"><span class="icon icon-link"></span></a>Django 备忘清单</h1><div class="wrap-body">
+<p>Django 是 Python 的一款 Web 框架</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#准备环境">准备环境</a><a aria-hidden="true" class="leve3 tocs-link" href="#入门-1">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#创建项目">创建项目</a><a aria-hidden="true" class="leve3 tocs-link" href="#检查-django-版本">检查 Django 版本</a><a aria-hidden="true" class="leve3 tocs-link" href="#创建应用">创建应用</a><a aria-hidden="true" class="leve3 tocs-link" href="#应用目录介绍">应用目录介绍</a><a aria-hidden="true" class="leve3 tocs-link" href="#视图">视图</a><a aria-hidden="true" class="leve3 tocs-link" href="#urls">URLs</a><a aria-hidden="true" class="leve3 tocs-link" href="#模板">模板</a><a aria-hidden="true" class="leve4 tocs-link" href="#更改设置">更改设置</a><a aria-hidden="true" class="leve3 tocs-link" href="#创建表模型">创建表（模型）</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-1"><div class="wrap-header h3wrap"><h3 id="准备环境"><a aria-hidden="true" tabindex="-1" href="#准备环境"><span class="icon icon-link"></span></a>准备环境</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-1-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ python <span class="token parameter variable">--version</span>
+</span><span class="code-line"><span class="token comment"># Python 3.9.2</span>
+</span><span class="code-line">$ pip <span class="token parameter variable">--version</span>
+</span><span class="code-line"><span class="token comment"># pip 20.2.3 from c:\python39\lib\site-packages\pip (python 3.9)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>如果你没有安装 PIP，你可以从这个页面下载并安装它：<a href="https://pypi.org/project/pip/">https://pypi.org/project/pip/</a></p>
+</div></div></div><div class="wrap h3body-not-exist row-span-4"><div class="wrap-header h3wrap"><h3 id="入门-1"><a aria-hidden="true" tabindex="-1" href="#入门-1"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-4-->
+<ul class="style-timeline">
+<li>创建虚拟环境
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py <span class="token parameter variable">-m</span> venv myproject <span class="token comment"># Windows</span>
+</span><span class="code-line">$ python <span class="token parameter variable">-m</span> venv myproject <span class="token comment"># Unix/MacOS</span>
+</span></code></pre>
+</li>
+<li>其中包含子文件夹和文件，如下所示
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myproject
+</span><span class="code-line"> ├┈Include
+</span><span class="code-line"> ├┈Lib
+</span><span class="code-line"> ├┈Scripts
+</span><span class="code-line"> ╰┈pyvenv.cfg
+</span></code></pre>
+</li>
+<li>以下命令来激活环境
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># Windows:</span>
+</span><span class="code-line">myproject<span class="token punctuation">\</span>Scripts<span class="token punctuation">\</span>activate.bat
+</span><span class="code-line"><span class="token comment"># Unix/MacOS:</span>
+</span><span class="code-line"><span class="token builtin class-name">source</span> myproject/bin/activate
+</span></code></pre>
+</li>
+<li>提示符中看到以下结果：
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># Windows:</span>
+</span><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Your Name<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># Unix/MacOS:</span>
+</span><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> <span class="token punctuation">..</span>. $
+</span></code></pre>
+</li>
+<li>安装 Django
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># Windows:</span>
+</span><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Name<span class="token operator">></span>py <span class="token parameter variable">-m</span> pip <span class="token function">install</span> Django
+</span><span class="code-line"><span class="token comment"># Unix/MacOS:</span>
+</span><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> <span class="token punctuation">..</span>. $ python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> Django
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</li>
+</ul>
+<!--rehype:className=style-timeline-->
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="创建项目"><a aria-hidden="true" tabindex="-1" href="#创建项目"><span class="icon icon-link"></span></a>创建项目</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ django-admin startproject myworld
+</span></code></pre>
+<p>创建了一个 <code>myworld</code> 文件夹，内容如下：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line">  ├┈ manage.py
+</span><span class="code-line">  ╰┈ myworld/
+</span><span class="code-line">     ├┈ __init__.py
+</span><span class="code-line">     ├┈ asgi.py
+</span><span class="code-line">     ├┈ settings.py
+</span><span class="code-line">     ├┈ urls.py
+</span><span class="code-line">     ╰┈ wsgi.py
+</span></code></pre>
+<p>运行 Django 项目</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py runserver     <span class="token comment"># Windows</span>
+</span><span class="code-line">$ python manage.py runserver <span class="token comment"># Unix/MacOS</span>
+</span></code></pre>
+<p>打开一个新的浏览器窗口并在地址栏中输入 127.0.0.1:8000</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="检查-django-版本"><a aria-hidden="true" tabindex="-1" href="#检查-django-版本"><span class="icon icon-link"></span></a>检查 Django 版本</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Your Name<span class="token operator">></span>django-admin <span class="token parameter variable">--version</span>
+</span><span class="code-line"><span class="token comment"># 4.0.3</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="创建应用"><a aria-hidden="true" tabindex="-1" href="#创建应用"><span class="icon icon-link"></span></a>创建应用</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py startapp members
+</span></code></pre>
+<p>项目中创建了一个名为 <code>members</code> 的文件夹，内容如下：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line">  ├┈ manage.py
+</span><span class="code-line">  ├┈ myworld/
+</span><span class="code-line">  ╰┈ members/
+</span><span class="code-line">     ├┈ migrations/
+</span><span class="code-line">     ┆  ╰┈ __init__.py
+</span><span class="code-line">     ├┈ __init__.py
+</span><span class="code-line">     ├┈ admin.py
+</span><span class="code-line">     ├┈ apps.py
+</span><span class="code-line">     ├┈ models.py
+</span><span class="code-line">     ├┈ tests.py
+</span><span class="code-line">     ╰┈ views.py
+</span></code></pre>
+<p>首先，看一下名为 <code>views.py</code> 的文件。这是我们收集发送回正确响应所需的信息的地方。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="应用目录介绍"><a aria-hidden="true" tabindex="-1" href="#应用目录介绍"><span class="icon icon-link"></span></a>应用目录介绍</h3><div class="wrap-body">
+<ul>
+<li><code>Django</code> 接收 URL，检查 <code>urls.py</code> 文件，并调用与 URL 匹配的视图。</li>
+<li>位于 <code>views.py</code> 中的视图检查相关模型。</li>
+<li>模型是从 <code>models.py</code> 文件中导入的。</li>
+<li>然后视图将数据发送到模板文件夹中的指定模板。</li>
+<li>模板包含 <code>HTML</code> 和 <code>Django</code> 标记，并使用数据将完成的 <code>HTML</code> 内容返回给浏览器</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="视图"><a aria-hidden="true" tabindex="-1" href="#视图"><span class="icon icon-link"></span></a>视图</h3><div class="wrap-body">
+<p>Django 视图是接受 <code>http</code> 请求并返回 <code>http</code> 响应的 <code>Python</code> 函数，就像 <code>HTML</code> 文档一样。</p>
+<p>使用 <code>Django</code> 的网页充满了不同任务和任务的视图。</p>
+<p>视图通常放在一个名为 <code>views.py</code> 的文件中，该文件位于应用程序的文件夹中。</p>
+<p>您的 <code>members</code> 文件夹中有一个 <code>views.py</code>，如下所示：</p>
+<pre class="language-py"><code class="language-PY code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Create your views here.</span>
+</span></code></pre>
+<p>找到它并打开它，并将内容替换为：</p>
+<pre class="language-py"><code class="language-PY code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render
+</span><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>这是一个关于如何将响应发送回浏览器的简单示例。</p>
+<p>但是我们如何执行视图呢？ 好吧，我们必须通过 URL 调用视图。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="urls"><a aria-hidden="true" tabindex="-1" href="#urls"><span class="icon icon-link"></span></a>URLs</h3><div class="wrap-body">
+<p>在与 <code>views.py</code> 文件相同的文件夹中创建一个名为 <code>urls.py</code> 的文件，并在其中输入以下代码：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path
+</span><span class="code-line"><span class="token keyword">from</span> <span class="token punctuation">.</span> <span class="token keyword">import</span> views
+</span><span class="code-line">urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    path<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>index<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+<p>刚刚创建的 <code>urls.py</code> 文件是特定于成员应用程序的。我们还必须在根目录 <code>myworld</code> 中进行一些路由。</p>
+<p>在 <code>myworld</code> 文件夹中有一个名为 <code>urls.py</code> 的文件，打开该文件并在 <code>import</code> 语句中添加 <code>include</code> 模块，并在列表中添加一个 <code>path()</code> 函数。文件将如下所示：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+</span><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> include<span class="token punctuation">,</span> path
+</span><span class="code-line">
+</span><span class="code-line">urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">  path<span class="token punctuation">(</span><span class="token string">'members/'</span><span class="token punctuation">,</span> include<span class="token punctuation">(</span><span class="token string">'members.urls'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">  path<span class="token punctuation">(</span><span class="token string">'admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+<p>如果服务器未运行，请导航到 <code>/myworld</code> 文件夹并在命令提示符下执行此命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py runserver
+</span></code></pre>
+<p>在浏览器窗口的地址栏中输入 <code>127.0.0.1:8000/members/</code></p>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="模板"><a aria-hidden="true" tabindex="-1" href="#模板"><span class="icon icon-link"></span></a>模板</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>在 <code>members</code> 文件夹中创建一个 <code>templates</code> 文件夹，并创建一个名为 <code>myfirst.html</code> 的 <code>HTML</code> 文件。文件结构应该是这样的：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line"> ├┈ manage.py
+</span><span class="code-line"> ├┈ myworld/
+</span><span class="code-line"> ╰┈ members/
+</span><span class="code-line">    ╰┈ templates/
+</span><span class="code-line">       ╰┈ myfirst.html
+</span></code></pre>
+<p>打开 <code>HTML</code> 文件并插入以下内容：</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token doctype"><span class="token punctuation">&#x3C;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>欢迎来到我的第一个 Django 项目！<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>html</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>修改视图 <code>members/views.py</code></p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
+</span><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>template <span class="token keyword">import</span> loader
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">  template <span class="token operator">=</span> loader<span class="token punctuation">.</span>get_template<span class="token punctuation">(</span><span class="token string">'myfirst.html'</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span>template<span class="token punctuation">.</span>render<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><h4 id="更改设置"><a aria-hidden="true" tabindex="-1" href="#更改设置"><span class="icon icon-link"></span></a>更改设置</h4>
+<p>为了能够处理比“Hello World！”更复杂的东西，我们必须告诉 <code>Django</code> 一个新的应用程序已创建</p>
+<p>这是在 <code>myworld</code> 文件夹的 <code>myworld/settings.py</code> 文件中完成的。查找 <code>INSTALLED_APPS[]</code> 列表并添加成员应用程序，如下所示：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line">INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.admin'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.auth'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.contenttypes'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.sessions'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.messages'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.staticfiles'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'members.apps.MembersConfig'</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+<p>然后运行这个命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py migrate
+</span></code></pre>
+<p>通过导航到 <code>/myworld</code> 文件夹启动服务器并执行以下命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py runserver
+</span></code></pre>
+<p>在浏览器窗口的地址栏中输入 127.0.0.1:8000/members/</p>
+</div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="创建表模型"><a aria-hidden="true" tabindex="-1" href="#创建表模型"><span class="icon icon-link"></span></a>创建表（模型）</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>在 <code>/members/</code> 文件夹中，打开 <code>models.py</code> 文件。要在我们的数据库中添加成员表，首先创建一个成员类，并描述其中的表字段：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Members</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">  firstname <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">255</span><span class="token punctuation">)</span>
+</span><span class="code-line">  lastname <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">255</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>然后导航到 <code>/myworld/</code> 文件夹并运行以下命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py makemigrations members
+</span><span class="code-line"><span class="token comment"># Migrations for 'members':</span>
+</span><span class="code-line"><span class="token comment">#   members\migrations\0001_initial.py</span>
+</span><span class="code-line"><span class="token comment">#     - Create model Members</span>
+</span></code></pre>
+<p>创建一个包含任何新更改的文件并将该文件存储在 <code>/migrations/</code> 文件夹中。下次运行 <code>py manage.py migrate</code> 时，Django 将根据迁移文件夹中新文件的内容创建并执行一条 SQL 语句。运行迁移命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py migrate
+</span></code></pre>
+<p>从模型创建的 SQL 语句是：</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token string">"members_members"</span> <span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token string">"id"</span> <span class="token keyword">INT</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> AUTOINCREMENT<span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string">"firstname"</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string">"lastname"</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://www.djangoproject.com/">Django 官网</a> <em>(djangoproject.com)</em></li>
+<li><a href="https://www.runoob.com/django/django-tutorial.html">Django 教程</a> <em>(runoob.com)</em></li>
+<li><a href="http://c.biancheng.net/django/">Django 框架教程</a> <em>(biancheng.net)</em></li>
+<li><a href="https://www.w3cschool.cn/django4/">Django 4 中文教程</a> <em>(w3cschool.cn)</em></li>
+<li><a href="https://www.w3schools.com/django/index.php">Django Tutorial</a> <em>(w3schools.com)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
