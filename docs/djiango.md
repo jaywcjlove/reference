@@ -1,7 +1,7 @@
 Django 备忘清单
 ===
 
-Django 是 Python 的一款 Web 框架
+Django 是 Python 的一款 Web 框架，本备忘单旨在快速理解 [Django](https://www.djangoproject.com/) 所涉及的主要概念，提供了最常用的 API 示例参考
 
 入门
 ----
@@ -299,6 +299,333 @@ CREATE TABLE "members_members" (
   "lastname" varchar(255) NOT NULL
 );
 ```
+
+Django 模板
+---
+
+### 模板变量
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```django
+<!-- template.html -->
+<h1>你好 {{ firstname }}，你好吗？</h1>
+```
+
+在视图 (`views.py`) 中创建变量，上面示例中的变量 `firstname` 通过视图发送到模板：
+
+```py
+from django.http import HttpResponse
+from django.template import loader
+
+def testing(request):
+  template = loader.get_template('template.html')
+  context = {
+    'firstname': '狂徒张三',
+  }
+  return HttpResponse(template.render(context, request))
+```
+
+### 模板中创建变量
+
+```django
+{% with firstname="Tobias" %}
+<h1>你好 {{ firstname }}，你好吗？</h1>
+```
+
+### 数组循环
+
+```django
+<ul>
+  {% for x in mymembers %}
+    <li>{{ x.firstname }}</li>
+  {% endfor %}
+</ul>
+```
+
+### 模板标签参考
+<!--rehype:wrap-class=row-span-5-->
+
+标签 | 描述
+:- | :-
+`autoescape` | 指定自动转义模式是打开还是关闭
+`block` | 指定块部分
+`comment` | 指定注释部分
+`csrf_token` | 保护表单免受跨站点请求伪造
+`cycle` | 指定要在循环的每个循环中使用的内容
+`debug` | 指定调试信息
+`extends` | 指定父模板
+`filter` | 在返回之前过滤内容
+`firstof` | 返回第一个非空变量
+`for` | 指定一个 for 循环
+`if` | 指定一个 if 语句
+`ifchanged` | 仅当自上次迭代以来值已更改时才输出块<br> _(用于 for 循环)_
+`include` | 指定包含的内容/模板
+`load` | 从另一个库加载模板标签
+`lorem` | 输出随机文本
+`now` | 输出当前日期/时间
+`regroup` | 按组对对象进行排序
+`resetcycle` | 循环使用，重置循环
+`spaceless` | 删除 HTML 标签之间的空格
+`templatetag` | 输出指定的模板标签
+`url` | 返回 URL 的绝对 URL 部分
+`verbatim` | 指定不应由模板引擎呈现的内容
+`widthratio` | 给定值和最大值之间的比率计算宽度值
+`with` | 指定要在块中使用的变量
+<!--rehype:className=show-header-->
+
+### If 语句
+
+```django
+{% if greeting == 1 %}
+  <h1>Hello</h1>
+{% elif greeting == 2 %}
+  <h1>Welcome</h1>
+{% else %}
+  <h1>Goodbye</h1>
+{% endif %} 
+```
+
+### For 循环
+<!--rehype:wrap-class=row-span-2-->
+
+```django
+{% for x in cars %}
+  <h1>{{ x.brand }}</h1>
+  <p>{{ x.model }}</p>
+  <p>{{ x.year }}</p>
+{% endfor %} 
+```
+
+数据 cars 空的展示内容：
+
+```django
+<ul>
+  {% for x in cars %}
+    <h1>{{ x.brand }}</h1>
+    <p>{{ x.model }}</p>
+    <p>{{ x.year }}</p>
+  {% empty %}
+    <li>No members</li>
+  {% endfor %}
+</ul> 
+```
+
+### 循环变量
+<!--rehype:wrap-class=row-span-2-->
+
+- `forloop.counter` 当前循环，从 1 开始
+- `forloop.counter0` 当前循环，从 0 开始
+- `forloop.first` 循环是否在其第一次循环中
+- `forloop.last` 循环是否在其最后一次循环中
+- `forloop.parentloop` 
+- `forloop.revcounter` 如果从末尾开始并向后计数，则以 1 结束
+- `forloop.revcounter0` 如果从末尾开始并向后计数，则以 0 结束
+
+### 过滤值
+
+```django
+<h1>你好 {{ firstname|upper }}，你好吗？</h1>
+```
+
+返回带有大写字母的变量名
+
+### 注释
+<!--rehype:wrap-class=row-span-2-->
+
+```django
+<h1>欢迎大家{# 较小的注释 #}</h1>
+{% comment %}
+  <h1>欢迎女士们先生们</h1>
+{% endcomment %}
+```
+
+#### 注释描述
+
+```django
+<h1>欢迎大家{# 较小的注释 #}</h1>
+{% comment "这是最初的欢迎信息" %}
+    <h1>欢迎女士们先生们</h1>
+{% endcomment %}
+```
+
+注释允许您拥有应该被忽略的代码部分
+
+### 双过滤值
+
+```django
+<h1>你好 {{ firstname|first|upper }}，你好吗？</h1>
+```
+
+返回变量 `firstname` 的第一个字符，小写
+
+### 过滤器标签
+
+```django
+{% filter upper %}
+  <h1>Hello everyone, how are you?</h1>
+{% endfilter %}
+```
+
+返回内容大写
+
+### cycle
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+
+如果你想为每次循环使用新的背景颜色，你可以使用 `cycle` 标签来做到这一点
+
+```django
+<ul>
+  {% for x in members %}
+    <li style='background-color:{% cycle 'lightblue' 'pink' 'yellow' 'coral' 'grey' %}'>
+      {{ x.firstname }}
+    </li>
+  {% endfor %}
+</ul> 
+```
+
+将参数值保存在变量中，以便以后使用：
+
+```django
+<ul>
+  {% for x in members %}
+    {% cycle 'lightblue' 'pink' 'yellow' 'coral' 'grey' as bgcolor silent %}
+    <li style='background-color:{{ bgcolor }}'>
+      {{ x.firstname }}
+    </li>
+  {% endfor %}
+</ul> 
+```
+
+你注意到 `silent` 关键字了吗？ 确保添加这个，否则参数值将在输出中显示两次
+
+```django
+<ul>
+  {% for x in members %}
+    {% cycle 'lightblue' 'pink' 'yellow' 'coral' 'grey' as bgcolor silent %}
+    {% if forloop.counter == 3 %}
+      {% resetcycle %}
+    {% endif %}
+    <li style='background-color:{{ bgcolor }}'>
+      {{ x.firstname }}
+    </li>
+  {% endfor %}
+</ul> 
+```
+
+您可以使用 `{% resetcycle %}` 标签强制循环重新开始
+
+### 每一行添加行号
+
+```django
+{% filter upper|linenumbers %}Hello!
+my name is
+Emil.
+What is your name?{% endfilter %}
+```
+
+返回内容`大写`并在每一行添加`行号`
+
+### 导入模板
+
+`footer.html`:
+
+```django
+<p>您已到达本页底部，感谢您抽出宝贵时间</p>
+```
+
+`template.html`:
+
+```django
+<h1>Hello</h1>
+<p>此页面包含模板中的页脚</p>
+{% include 'footer.html' %} 
+```
+
+### 导入模板传入变量
+
+`mymenu.html`: 
+
+```django
+<div>HOME | {{ me }} | ABOUT | FORUM | {{ sponsor }}</div>
+```
+<!--rehype:className=wrap-text -->
+
+`template.html`:
+
+```django
+{% include mymenu.html with me="张三" sponsor="Reference" %}
+
+<h1>Welcome</h1>
+
+<p>This is my webpage</p>
+```
+<!--rehype:className=wrap-text -->
+
+### 过滤器参考
+<!--rehype:wrap-class=col-span-2-->
+
+Keyword | Description
+:- | :-
+`add` | 添加指定的值
+`addslashes` | 在任何引号字符之前添加一个斜杠，以转义字符串
+`capfirst` | 返回大写的第一个字母
+`center` | 使值在指定宽度的中间居中
+`cut` | 删除任何指定的字符或短语
+`date` | 以指定格式返回日期
+`default` | 如果值为 `False`，则返回指定值
+`default_if_none` | 如果值为 `None`，则返回指定的值
+`dictsort` | 按给定值对字典进行排序
+`dictsortreversed` | 按给定值对字典进行反向排序
+`divisibleby` | 如果该值可以除以指定的数字，则返回 `True`，否则返回 `False`
+`escape` | 从字符串中转义 `HTML` 代码
+`escapejs` | 从字符串中转义 `JavaScript` 代码
+`filesizeformat` | 将数字返回为文件大小格式
+`first` | 返回对象的第一项（对于字符串，返回第一个字符）
+`floatformat` | 将浮点数四舍五入到指定的小数位数，默认为一位小数
+`force_escape` | 从字符串中转义 `HTML` 代码
+`get_digit` | 返回数字的特定数字
+`iriencode` | 将 `IRI` 转换为 `URL` 友好字符串
+`join` | 将列表中的项目返回为字符串
+`json_script` | 将一个对象返回为由 `<script></script>` 标签包围的 `JSON` 对象
+`last` | 返回对象的最后一项（对于字符串，返回最后一个字符）
+`length` | 返回对象中的项目数，或字符串中的字符数
+`length_is` | 如果长度与指定的数字相同，则返回 `True`
+`linebreaks` | 返回带有 `<br>` 而不是换行符和 `<p>` 而不是多个换行符的文本
+`linebreaksbr` | 返回带有 `<br>` 的文本，而不是换行符
+`linenumbers` | 返回每行带有行号的文本
+`ljust` | 根据指定的宽度左对齐值
+`lower` | 以小写字母返回文本
+`make_list` | 将值转换为列表对象
+`phone2numeric` | 将带字母的电话号码转换为数字电话号码
+`pluralize` | 如果指定的数值不是 `1`，则在值的末尾添加一个 `s`
+`pprint` |  
+`random` | 返回对象的随机项
+`rjust` | 根据指定的宽度右对齐值
+`safe` | 标记此文本是安全的，不应进行 `HTML` 转义
+`safeseq` | 将对象的每个项目标记为安全且项目不应进行 `HTML` 转义
+`slice` | 返回文本或对象的指定切片
+`slugify` | 将文本转换为一个长字母数字小写单词
+`stringformat` | 将值转换为指定格式
+`striptags` | 从文本中删除 `HTML` 标记
+`time` | 以指定格式返回时间
+`timesince` | 返回两个日期时间之间的差
+`timeuntil` | 返回两个日期时间之间的差
+`title` | 文本中每个单词的第一个字符大写，所有其他字符都转换为小写
+`truncatechars` | 将字符串缩短为指定数量的字符
+`truncatechars_html` | 将字符串缩短为指定数量的字符，而不考虑任何 `HTML` 标记的长度
+`truncatewords` | 将字符串缩短为指定数量的单词
+`truncatewords_html` | 将字符串缩短为指定数量的单词，而不考虑任何 `HTML` 标记
+`unordered_list` | 将对象的项目返回为无序列的 `HTML` 列表
+`upper` | 以大写字母返回文本
+`urlencode` | `URL` 对字符串进行编码
+`urlize` | 将字符串中的任何 `URL` 作为 `HTML` 链接返回
+`urlizetrunc` | 将字符串中的任何 `URL` 作为 `HTML` 链接返回，但会将链接缩短为指定的字符数
+`wordcount` | 返回文本中的单词数
+`wordwrap` | 以指定的字符数换行
+`yesno` | 将布尔值转换为指定值
+`i18n` |  
+`l10n` |  
+`tz` |  
 
 另见
 ----
