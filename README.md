@@ -19,34 +19,34 @@ Quick Reference
 [Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [C](./docs/c.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
-[Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));-->
-[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
+[Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));&class=tag&data-lang=Docker-->
+[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193/var(\-\-bg\-opacity));-->
 [INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
-[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
+[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
-[SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));-->
+[SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 前端
 
-[CSS 3](./docs/css.md)<!--rehype:style=background: rgb(35 115 205/var(\-\-bg\-opacity));-->
+[CSS 3](./docs/css.md)<!--rehype:style=background: rgb(35 115 205/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
 [Electron](./docs/electron.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));-->
 [Emmet](./docs/emmet.md)<!--rehype:style=background: rgb(122 203 23/var(\-\-bg\-opacity));-->
-[ES 6](./docs/es6.md)<!--rehype:style=background: rgb(122 203 23/var(\-\-bg\-opacity));-->
+[ES 6](./docs/es6.md)<!--rehype:style=background: rgb(122 203 23/var(\-\-bg\-opacity));&class=tag&data-lang=JS-->
 [Styled Components](./docs/styled-components.md)<!--rehype:style=background: rgb(221 60 184/var(\-\-bg\-opacity));-->
-[Stylus](./docs/stylus.md)<!--rehype:style=background: rgb(109 161 63/var(\-\-bg\-opacity));-->
-[Sass](./docs/sass.md)<!--rehype:style=background: rgb(207 100 154/var(\-\-bg\-opacity));-->
+[Stylus](./docs/stylus.md)<!--rehype:style=background: rgb(109 161 63/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
+[Sass](./docs/sass.md)<!--rehype:style=background: rgb(207 100 154/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
 [HTML](./docs/html.md)<!--rehype:style=background: rgb(228 77 39/var(\-\-bg\-opacity));-->
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31/var(\-\-bg\-opacity));-->
 [Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
 [Lerna](./docs/lerna.md)<!--rehype:style=background: rgb(192 132 252/var(\-\-bg\-opacity));-->
-[Less.js](./docs/lessjs.md)<!--rehype:style=background: rgb(29 54 93/var(\-\-bg\-opacity));-->
+[Less.js](./docs/lessjs.md)<!--rehype:style=background: rgb(29 54 93/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
 [npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173/var(\-\-bg\-opacity));-->
@@ -98,9 +98,9 @@ Quick Reference
 
 [Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Github Actions](./docs/github-actions.md)<!--rehype:style=background: rgb(121 184 255/var(\-\-bg\-opacity));-->
-[Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
-[HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=HTML-->
 [ISO 639-1 Language Code](./docs/iso-639-1.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Emoji](./docs/emoji.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [MIME types](./docs/mime.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
