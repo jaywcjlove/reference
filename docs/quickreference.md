@@ -109,7 +109,7 @@ function () {}
 <!--rehype:className=wrap-text -->
 ```
 
-如果代码块内容太长，使用强制换行类解决
+如果代码块内容太长，使用强制换行类(`wrap-text`)解决
 
 
 ### 展示表格表头
@@ -222,7 +222,7 @@ const school = <div>学校</div>;
 隐藏卡片标题，在 H3 标题下面添加注释样式
 ```
 
-```markdown
+```markdown {2}
 ### 隐藏卡片标题
 <!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
 ```
@@ -262,7 +262,7 @@ H2 部分
 
 上面实例 `H2 部分` 标题下面有三个`卡片`，默认 `3` 栏布局。
 
-```markdown
+```markdown {3}
 H2 部分
 ---
 <!--rehype:body-class=cols-2-->
@@ -285,7 +285,7 @@ H2 部分
 
 ### 占位布局 style 写法
 
-```markdown
+```markdown {2}
 ### H3 部分
 <!--rehype:wrap-style=grid-row: span 2/span 2;-->
 ```
@@ -295,7 +295,7 @@ H2 部分
 
 ### 卡片栏布局 style 写法
 
-```markdown
+```markdown {2}
 ## H2 部分
 <!--rehype:body-style=grid-template-columns: repeat(2,minmax(0,1fr));-->
 ```
@@ -305,7 +305,7 @@ H2 部分
 
 ### H3 部分
 
-```markdown
+```markdown {2,4}
 ### 卡片 1 (H3 部分)
 <!--rehype:wrap-class=row-span-2-->
 ### 卡片 2 (H3 部分)
@@ -628,6 +628,17 @@ H2 部分
 <!--rehype:className=auto-wrap-->
 
 `<!--rehype:className=auto-wrap-->`
+
+### 表格末尾列左对齐
+<!--rehype:wrap-class=col-span-2-->
+
+| Prefix | What |
+| ---- | ---- |
+`//`  | Anywhere
+`./`  | Relative
+<!--rehype:className=show-header left-align-->
+
+默认表格末尾列`右对齐`，添加 `<!--rehype:className=left-align-->` 类让其`左对齐`
 
 列表
 ---
