@@ -6,19 +6,19 @@ Yarn 备忘清单
 入门
 ---
 
-### 与 npm 相同的命令
+### Yarn 与 npm 命令比较
 <!--rehype:wrap-class=col-span-2-->
 
-| npm | yarn |
-| --- | ---- |
-| `npm init` | `yarn init` |
-| `npm install` | `yarn` |
-| `npm install gulp --save` | `yarn add gulp` |
-| `npm install gulp --save-dev --save-exact` | `yarn add gulp --dev --exact` |
-| `npm install -g gulp` | `yarn global add gulp` |
-| `npm update` | `yarn upgrade` |
-| `npm cache clean` | `yarn cache clean` |
-| `./node_modules/.bin/gulp` | `yarn run gulp` |
+npm(v5) | yarn | 说明
+:- | :- | :-
+`npm install`     | `yarn add`, `yarn`| 安装依赖
+`npm init`        | `yarn init` | 创建 `package.json` 文件
+`npm install gulp --save` | `yarn add gulp` | 安装 `gulp` 包
+`npm install gulp --save-dev --save-exact` | `yarn add gulp --dev --exact`
+`npm install -g gulp` | `yarn global add gulp`
+`npm update` | `yarn upgrade`
+`npm cache clean` | `yarn cache clean` | 清理缓存目录
+`./node_modules/.bin/gulp` | `yarn run gulp`
 <!--rehype:className=show-header left-align-->
 
 npm _([备忘清单](./npm.md))_ 和 Yarn 有很多相似之处
