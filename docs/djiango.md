@@ -562,9 +562,9 @@ What is your name?{% endfilter %}
 <!--rehype:className=wrap-text -->
 
 ### 过滤器参考
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
-Keyword | Description
+Keyword | 描述
 :- | :-
 `add` | 添加指定的值
 `addslashes` | 在任何引号字符之前添加一个斜杠，以转义字符串
@@ -626,6 +626,144 @@ Keyword | Description
 `i18n` |  
 `l10n` |  
 `tz` |  
+
+### 字段查询参考
+
+Keyword | 描述
+:- | :-
+`contains` | 包含短语
+`icontains` | 与包含相同，但不区分大小写
+`date` | 匹配日期
+`day` | 匹配日期(日期，1-31)(日期)
+`endswith` | 以。。结束
+`iendswith` | 与 endwidth 相同，但不区分大小写
+`exact` | 完全匹配
+`iexact` | 与精确相同，但不区分大小写
+`in` | 匹配其中一个值
+`isnull` | 匹配 NULL 值
+`gt` | 比...更棒
+`gte` | 大于或等于
+`hour` | 匹配一个小时(对于日期时间)
+`lt` | 少于
+`lte` | 小于或等于
+`minute` | 匹配一分钟(对于日期时间)
+`month` | 匹配一个月(日期)
+`quarter` | 匹配一年中的一个季度 (1-4)(用于日期)
+`range` | 之间的匹配
+`regex` | 匹配正则表达式
+`iregex` | 与正则表达式相同，但不区分大小写
+`second` | 匹配一秒(对于日期时间)
+`startswith` | 以 ... 开始
+`istartswith` | 与 `startswith` 相同，但不区分大小写
+`time` | 匹配时间(用于日期时间)
+`week` | 匹配周数 (`1-53`)(用于日期)
+`week_day` | 匹配一周中的某一天 (1-7) 1 是星期日
+`iso_week_day` | 匹配 ISO 8601 星期几 (1-7) 1 是星期一
+`year` | 匹配一年(日期)
+`iso_year` | 匹配 ISO 8601 年份(日期)
+
+添加静态文件
+---
+
+### 添加 CSS 文件
+
+```bash {7}
+myworld
+  ├┈ manage.py
+  ├┈ myworld/
+  ╰┈ members/
+     ├┈ templates/
+     ├┈ static/
+        ╰┈ myfirst.css
+```
+
+打开 `CSS` 文件 (`members/static/myfirst.css`) 并插入以下内容：
+
+```css
+body {
+  background-color: lightblue;
+  font-family: verdana;
+}
+```
+
+修改模板 (`members/templates/template.html`) 引入 css 文件
+
+```django {1,4}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
+<body>
+```
+<!--rehype:className=wrap-text -->
+
+### 添加 JS 文件
+
+```bash {7}
+myworld
+  ├┈ manage.py
+  ├┈ myworld/
+  ╰┈ members/
+     ├┈ templates/
+     ├┈ static/
+        ╰┈ myfirst.js
+```
+
+打开 `JS` 文件 (`members/static/myfirst.js`) 并插入以下内容：
+
+```js
+function myFunction() {
+  alert("Hello from a static file!");
+}
+```
+
+修改模板 (`members/templates/template.html`) 引入 `JS` 文件
+
+```django {1,4,6}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<script src="{% static 'myfirst.js' %}"></script>
+<body>
+<button onclick="myFunction()">Click me!</button>
+```
+<!--rehype:className=wrap-text -->
+
+### 添加图片文件
+
+```bash {7}
+myworld
+  ├┈ manage.py
+  ├┈ myworld/
+  ╰┈ members/
+     ├┈ templates/
+     ├┈ static/
+        ╰┈ pineapple.jpg
+```
+
+打开 `JS` 文件 (`members/static/pineapple.jpg`) 并插入以下内容：
+
+```js
+function myFunction() {
+  alert("Hello from a static file!");
+}
+```
+
+修改模板 (`members/templates/template.html`) 引入 `jpg` 文件
+
+```django {1,5}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<body>
+<img src="{% static 'pineapple.jpg' %}">
+</body>
+</html>
+```
+<!--rehype:className=wrap-text -->
+
+
+
 
 另见
 ----
