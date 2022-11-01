@@ -365,7 +365,7 @@ body.home .max-container a.home-button:visited:hover {
   gap: 2rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.home-card a.contributing {
+.home-card :is(a.contributing, a.tag) {
   position: relative;
 }
 .home-card a.contributing::after {
@@ -379,6 +379,21 @@ body.home .max-container a.home-button:visited:hover {
 }
 .home-card a.contributing:hover:after {
   color: var(--color-fg-muted);
+}
+.home-card a.tag::before {
+  content: attr(data-lang);
+  display: block;
+  position: absolute;
+  font-size: 10px;
+  right: 6px;
+  top: 6px;
+  background: rgba(255 255 255 / 0.3);
+  border-radius: 3px;
+  padding: 1px 3px 2px 3px;
+  transition: all 0.3s;
+}
+.home-card a.tag:hover:before {
+  background: rgba(255 255 255 / 0.2);
 }
 
 [data-color-mode*='light'] body .home-card a {
