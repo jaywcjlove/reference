@@ -341,7 +341,7 @@ $ git log --stat -M
 
 ### 忽略文件
 
-```gitignore
+```gitignore showLineNumbers
 /logs/*
 # “！” 意思是不要忽视
 !logs/.gitkeep
@@ -366,6 +366,7 @@ ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
 Host github.com
 ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p    
 ```
+<!--rehype:className=wrap-text-->
 
 Git 技巧
 ------
