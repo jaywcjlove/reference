@@ -847,6 +847,16 @@ git reset <file-name>
 
 不添加参数，默认是 `-mixed`
 
+### 配置 http 和 socks 代理
+
+```bash
+# 适用于 privoxy 将 socks 协议转为 http 协议的 http 端口
+git config --global https.proxy 'http://127.0.0.1:8001'
+git config --global http.proxy 'http://127.0.0.1:8001'
+git config --global socks.proxy "127.0.0.1:1080"
+```
+<!--rehype:className=wrap-text-->
+
 另见
 ---
 
