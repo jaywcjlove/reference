@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>FFmpeg 备忘清单
+ &#x26;  ffmpeg cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="本备忘清单是 FFmpeg 中常见视频处理操作的备忘清单为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,ffmpeg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/ffmpeg.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="ffmpeg-备忘清单"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="M21.72 17.91V6.5l-.53-.49L9.05 18.52l-1.29-.06L24 1.53l-.33-.95-11.93 1-5.75 6.6v-.23l4.7-5.39-1.38-.77-9.11.77v2.85l1.91.46v.01l.19-.01-.56.66v10.6c.609-.126 1.22-.241 1.83-.36L14.12 5.22l.83-.04L0 21.44l9.67.82 1.35-.77 6.82-6.74v2.15l-5.72 5.57 11.26.95.35-.94v-3.16l-3.29-.18a64.66 64.66 0 0 0 1.28-1.23z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#ffmpeg-备忘清单"><span class="icon icon-link"></span></a>FFmpeg 备忘清单</h1><div class="wrap-body">
+<p>本备忘清单是 <a href="https://ffmpeg.org/">FFmpeg</a> 中常见视频处理操作的备忘清单</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#参数参考">参数参考</a><a aria-hidden="true" class="leve3 tocs-link" href="#常用开关">常用开关</a><a aria-hidden="true" class="leve3 tocs-link" href="#音频">音频</a><a aria-hidden="true" class="leve3 tocs-link" href="#比特率">比特率</a><a aria-hidden="true" class="leve4 tocs-link" href="#视频">视频</a><a aria-hidden="true" class="leve2 tocs-link" href="#视频编辑">视频编辑</a><a aria-hidden="true" class="leve3 tocs-link" href="#裁剪">裁剪</a><a aria-hidden="true" class="leve3 tocs-link" href="#缩放">缩放</a><a aria-hidden="true" class="leve3 tocs-link" href="#剪切视频部分">剪切视频部分</a><a aria-hidden="true" class="leve3 tocs-link" href="#h265-2-pass-编码">H265 2-pass 编码</a><a aria-hidden="true" class="leve3 tocs-link" href="#视频比特率设置">视频比特率设置</a><a aria-hidden="true" class="leve3 tocs-link" href="#固定旋转">固定旋转</a><a aria-hidden="true" class="leve3 tocs-link" href="#视频帧速率">视频帧速率</a><a aria-hidden="true" class="leve2 tocs-link" href="#重新包装">重新包装</a><a aria-hidden="true" class="leve3 tocs-link" href="#提取音频流">提取音频流</a><a aria-hidden="true" class="leve3 tocs-link" href="#创建缩略图">创建缩略图</a><a aria-hidden="true" class="leve3 tocs-link" href="#处理-id3-标签">处理 id3 标签</a><a aria-hidden="true" class="leve3 tocs-link" href="#重新采样转换音频">重新采样/转换音频</a><a aria-hidden="true" class="leve3 tocs-link" href="#切换容器">切换容器</a><a aria-hidden="true" class="leve3 tocs-link" href="#图片中的视频">图片中的视频</a><a aria-hidden="true" class="leve3 tocs-link" href="#将视频拆分为图像">将视频拆分为图像</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="参数参考"><a aria-hidden="true" tabindex="-1" href="#参数参考"><span class="icon icon-link"></span></a>参数参考</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常用开关"><a aria-hidden="true" tabindex="-1" href="#常用开关"><span class="icon icon-link"></span></a>常用开关</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token parameter variable">-codecs</span>   <span class="token comment"># 列出编解码器</span>
+</span><span class="code-line"><span class="token parameter variable">-c:v</span>      <span class="token comment"># 视频编解码器(-vcodec)-'copy'复制流</span>
+</span><span class="code-line"><span class="token parameter variable">-c:a</span>      <span class="token comment"># 音频编解码器(-acodec)</span>
+</span><span class="code-line"><span class="token parameter variable">-fs</span> SIZE  <span class="token comment"># 限制文件大小（字节）</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="音频"><a aria-hidden="true" tabindex="-1" href="#音频"><span class="icon icon-link"></span></a>音频</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token parameter variable">-aq</span> QUALITY  <span class="token comment"># 音频质量（特定于编解码器）</span>
+</span><span class="code-line"><span class="token parameter variable">-ar</span> <span class="token number">44100</span>    <span class="token comment"># 音频采样率 (Hz)</span>
+</span><span class="code-line"><span class="token parameter variable">-ac</span> <span class="token number">1</span>        <span class="token comment"># 音频通道（1=单声道，2=立体声）</span>
+</span><span class="code-line"><span class="token parameter variable">-an</span>          <span class="token comment"># 没有音频</span>
+</span><span class="code-line"><span class="token parameter variable">-vol</span> N       <span class="token comment"># 音量（256=正常）</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="比特率"><a aria-hidden="true" tabindex="-1" href="#比特率"><span class="icon icon-link"></span></a>比特率</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token parameter variable">-b:v</span> 1M      <span class="token comment"># 视频比特率（1M = 1Mbit/s）</span>
+</span><span class="code-line"><span class="token parameter variable">-b:a</span> 1M      <span class="token comment"># 音频比特率</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><h4 id="视频"><a aria-hidden="true" tabindex="-1" href="#视频"><span class="icon icon-link"></span></a>视频</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token parameter variable">-aspect</span> RATIO    <span class="token comment"># 纵横比（4:3、16:9 或 1.25）</span>
+</span><span class="code-line"><span class="token parameter variable">-r</span> RATE          <span class="token comment"># 每秒帧率</span>
+</span><span class="code-line"><span class="token parameter variable">-s</span> WIDTHxHEIGHT  <span class="token comment"># 帧大小</span>
+</span><span class="code-line"><span class="token parameter variable">-vn</span>              <span class="token comment"># 没有视频</span>
+</span></code></pre>
+</div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="视频编辑"><a aria-hidden="true" tabindex="-1" href="#视频编辑"><span class="icon icon-link"></span></a>视频编辑</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="裁剪"><a aria-hidden="true" tabindex="-1" href="#裁剪"><span class="icon icon-link"></span></a>裁剪</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span>input<span class="token operator">></span> <span class="token parameter variable">-filter:v</span> <span class="token string">"crop=640:480:100:25"</span> <span class="token operator">&#x3C;</span>output<span class="token operator">></span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>通过从输入视频中复制偏移 <code>x=100px</code> <code>y=25px</code> 的相应窗口来创建 <code>640x480</code> 大小的输出视频</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="缩放"><a aria-hidden="true" tabindex="-1" href="#缩放"><span class="icon icon-link"></span></a>缩放</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span>输入<span class="token operator">></span> <span class="token parameter variable">-vf</span> <span class="token assign-left variable">scale</span><span class="token operator">=</span><span class="token number">640</span>:480 <span class="token operator">&#x3C;</span>输出<span class="token operator">></span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="剪切视频部分"><a aria-hidden="true" tabindex="-1" href="#剪切视频部分"><span class="icon icon-link"></span></a>剪切视频部分</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span>input<span class="token operator">></span> <span class="token parameter variable">-ss</span> 00:01:45 <span class="token parameter variable">-t</span> 00:02:35 <span class="token parameter variable">-vcodec</span> copy <span class="token parameter variable">-acodec</span> copy <span class="token operator">&#x3C;</span>output<span class="token operator">></span>
+</span><span class="code-line">$ ffmpeg <span class="token parameter variable">-ss</span> 00:00:30 <span class="token parameter variable">-i</span> orginalfile.mpg <span class="token parameter variable">-t</span> 00:00:05 <span class="token parameter variable">-vcodec</span> copy <span class="token parameter variable">-acodec</span> copy newfile.mpg
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="h265-2-pass-编码"><a aria-hidden="true" tabindex="-1" href="#h265-2-pass-编码"><span class="icon icon-link"></span></a>H265 2-pass 编码</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-y</span> <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span>input<span class="token operator">></span> <span class="token parameter variable">-c:v</span> libx265 <span class="token parameter variable">-b:v</span> 2600k <span class="token punctuation">\</span>
+</span><span class="code-line">  -x265-params <span class="token assign-left variable">pass</span><span class="token operator">=</span><span class="token number">1</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-an</span> <span class="token parameter variable">-f</span> mp4 /dev/null <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">\</span>
+</span><span class="code-line">    ffmpeg <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span>input<span class="token operator">></span> <span class="token punctuation">\</span>
+</span><span class="code-line">        <span class="token parameter variable">-c:v</span> libx265 <span class="token parameter variable">-b:v</span> 2600k <span class="token punctuation">\</span>
+</span><span class="code-line">        -x265-params <span class="token assign-left variable">pass</span><span class="token operator">=</span><span class="token number">2</span> <span class="token punctuation">\</span>
+</span><span class="code-line">        <span class="token parameter variable">-c:a</span> aac <span class="token parameter variable">-b:a</span> 128k output.mp4
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>对于 <code>H265 2-pass</code> 编码，您需要组合 <code>2</code> 个 <code>ffmpeg</code> 调用</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="视频比特率设置"><a aria-hidden="true" tabindex="-1" href="#视频比特率设置"><span class="icon icon-link"></span></a>视频比特率设置</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> input.avi <span class="token parameter variable">-b:v</span> 64k <span class="token parameter variable">-bufsize</span> 64k output.avi
+</span></code></pre>
+<p>将输出文件的视频比特率设置为 64 kbit/s</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="固定旋转"><a aria-hidden="true" tabindex="-1" href="#固定旋转"><span class="icon icon-link"></span></a>固定旋转</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span>input<span class="token operator">></span> <span class="token parameter variable">-c</span> copy -metadata:s:v:0 <span class="token assign-left variable">rotate</span><span class="token operator">=</span><span class="token number">90</span> <span class="token operator">&#x3C;</span>output<span class="token operator">></span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>不要为旋转重新编码，而是简单地为旋转角度添加一个视频元数据字段</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="视频帧速率"><a aria-hidden="true" tabindex="-1" href="#视频帧速率"><span class="icon icon-link"></span></a>视频帧速率</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> input.avi <span class="token parameter variable">-r</span> <span class="token number">24</span> output.avi
+</span></code></pre>
+<p>将输出文件的帧速率强制为 24 fps</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-r</span> <span class="token number">1</span> <span class="token parameter variable">-i</span> input.m2v <span class="token parameter variable">-r</span> <span class="token number">24</span> output.avi
+</span></code></pre>
+<p>将输入文件的帧速率（仅对原始格式有效）强制为 1 fps，将输出文件的帧速率强制为 24 fps</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="重新包装"><a aria-hidden="true" tabindex="-1" href="#重新包装"><span class="icon icon-link"></span></a>重新包装</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="提取音频流"><a aria-hidden="true" tabindex="-1" href="#提取音频流"><span class="icon icon-link"></span></a>提取音频流</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> file.mp4 <span class="token parameter variable">-vn</span> <span class="token parameter variable">-acodec</span> copy output.aac 
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>将<code>-vn</code>（无视频）与 <code>-acodec copy</code> 结合起来。请注意，输出文件扩展名必须与输入文件中的音频编解码器匹配，<code>-acodec copy</code> 才能工作。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="创建缩略图"><a aria-hidden="true" tabindex="-1" href="#创建缩略图"><span class="icon icon-link"></span></a>创建缩略图</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>在 10 秒时创建一个缩略图</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-ss</span> <span class="token number">10</span> <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span>input file<span class="token operator">></span> <span class="token parameter variable">-vframes</span> <span class="token number">1</span> <span class="token parameter variable">-vcodec</span> png <span class="token parameter variable">-an</span> thumb.png
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>例如，要每 <code>n</code> 秒创建一次缩略图，请使用 <code>-vf fps=1/n</code></p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> <span class="token operator">&#x3C;</span>input file<span class="token operator">></span> <span class="token parameter variable">-vf</span> <span class="token assign-left variable">fps</span><span class="token operator">=</span><span class="token number">1</span>/60 thumbnails/thumb%03d.png
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="处理-id3-标签"><a aria-hidden="true" tabindex="-1" href="#处理-id3-标签"><span class="icon icon-link"></span></a>处理 id3 标签</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>提取</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> file.mp3 <span class="token parameter variable">-f</span> ffmetadata metadata.txt
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>设置</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> file.mp3 <span class="token parameter variable">-acodec</span> copy <span class="token parameter variable">-metadata</span> <span class="token assign-left variable">title</span><span class="token operator">=</span><span class="token string">"&#x3C;title>"</span> <span class="token parameter variable">-metadata</span> <span class="token assign-left variable">artist</span><span class="token operator">=</span><span class="token string">"&#x3C;artist>"</span> <span class="token parameter variable">-metadata</span> <span class="token assign-left variable">album</span><span class="token operator">=</span><span class="token string">"&#x3C;album>"</span> out.mp3
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>更多<a href="https://gist.github.com/eyecatchup/0757b3d8b989fe433979db2ea7d95a01">请查看</a></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="重新采样转换音频"><a aria-hidden="true" tabindex="-1" href="#重新采样转换音频"><span class="icon icon-link"></span></a>重新采样/转换音频</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> file.aac <span class="token parameter variable">-acodec</span> mp3 <span class="token parameter variable">-ar</span> <span class="token number">44100</span> <span class="token parameter variable">-ab</span> <span class="token number">128000</span> output.mp3
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="切换容器"><a aria-hidden="true" tabindex="-1" href="#切换容器"><span class="icon icon-link"></span></a>切换容器</h3><div class="wrap-body">
+<p>将容器从 <code>MKV</code> 更改为 <code>MP4</code></p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> file.mkv <span class="token parameter variable">-acodec</span> copy <span class="token parameter variable">-vcodec</span> copy file.mp4
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="图片中的视频"><a aria-hidden="true" tabindex="-1" href="#图片中的视频"><span class="icon icon-link"></span></a>图片中的视频</h3><div class="wrap-body">
+<p>如果您有多个编号的图像 image1.jpg、image2.jpg... 像这样从它们创建一个视频</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-f</span> image2 <span class="token parameter variable">-i</span> image%d.jpg video.mp4
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将视频拆分为图像"><a aria-hidden="true" tabindex="-1" href="#将视频拆分为图像"><span class="icon icon-link"></span></a>将视频拆分为图像</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> video.mp4 image%d.jpg
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://ffmpeg.org/">FFmpeg 官网地址</a> <em>(ffmpeg.org)</em></li>
+<li><a href="https://lzone.de/cheat-sheet/ffmpeg">FFmpeg Cheat Sheet</a> <em>(lzone.de)</em></li>
+<li><a href="https://devhints.io/ffmpeg">FFmpeg Cheat Sheet</a> <em>(devhints.io)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
