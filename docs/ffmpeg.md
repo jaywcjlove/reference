@@ -46,6 +46,7 @@ FFmpeg 备忘清单
 <!--rehype:body-class=cols-2-->
 
 ### 裁剪
+<!--rehype:wrap-class=row-span-2-->
 
 ```bash
 $ ffmpeg -i <input> -filter:v "crop=640:480:100:25" <output>
@@ -54,6 +55,19 @@ $ ffmpeg -i <input> -filter:v "crop=640:480:100:25" <output>
 
 通过从输入视频中复制偏移 `x=100px` `y=25px` 的相应窗口来创建 `640x480` 大小的输出视频
 
+```bash
+# 裁剪到宽度 360，高度 640
+$ ffmpeg -i input.mov -filter:v 'crop=360:640:0:0' -codec:a copy output.mov
+```
+<!--rehype:className=wrap-text -->
+
+裁剪到宽度 360，高度 640，从坐标 (10, 20) 开始
+
+```bash
+$ ffmpeg -i input.mov -filter:v 'crop=360:640:10:20' -codec:a copy output.mov
+```
+<!--rehype:className=wrap-text -->
+
 ### 缩放
 
 ```bash
@@ -61,12 +75,28 @@ $ ffmpeg -i <输入> -vf scale=640:480 <输出>
 ```
 <!--rehype:className=wrap-text -->
 
+### 视频帧速率
+
+```bash
+$ ffmpeg -i input.avi -r 24 output.avi
+```
+
+将输出文件的帧速率强制为 24 fps
+
+```bash
+$ ffmpeg -r 1 -i input.m2v -r 24 output.avi
+```
+
+将输入文件的帧速率（仅对原始格式有效）强制为 1 fps，将输出文件的帧速率强制为 24 fps
+
 ### 剪切视频部分
 <!--rehype:wrap-class=col-span-2-->
 
 ```bash
 $ ffmpeg -i <input> -ss 00:01:45 -t 00:02:35 -vcodec copy -acodec copy <output>
 $ ffmpeg -ss 00:00:30 -i orginalfile.mpg -t 00:00:05 -vcodec copy -acodec copy newfile.mpg
+# 从 4.5 秒开始的 5 秒长的视频
+$ ffmpeg -i in.mp4 -ss 4.5 -t 5 out.mp4
 ```
 <!--rehype:className=wrap-text -->
 
@@ -103,19 +133,21 @@ $ ffmpeg -i <input> -c copy -metadata:s:v:0 rotate=90 <output>
 
 不要为旋转重新编码，而是简单地为旋转角度添加一个视频元数据字段
 
-### 视频帧速率
+### 放慢视频速度
 
 ```bash
-$ ffmpeg -i input.avi -r 24 output.avi
+$ ffmpeg -i in.mp4 -filter:v "setpts=4.0*PTS" out.mp4
 ```
 
-将输出文件的帧速率强制为 24 fps
+使用过滤器减慢视频。 此示例将视频减慢四倍
+
+### 缩放到特定宽度
 
 ```bash
-$ ffmpeg -r 1 -i input.m2v -r 24 output.avi
+$ ffmpeg -i in.mp4 -filter:v scale="538:trunc(ow/a/2)*2" -c:a copy out.mp4
 ```
 
-将输入文件的帧速率（仅对原始格式有效）强制为 1 fps，将输出文件的帧速率强制为 24 fps
+给定所需的视频宽度，例如 538 像素，您可以使用以下方法将视频调整为该宽度，同时保持宽高比
 
 重新包装
 ---
@@ -172,7 +204,8 @@ $ ffmpeg -i file.aac -acodec mp3 -ar 44100 -ab 128000 output.mp3
 ```
 <!--rehype:className=wrap-text -->
 
-### 切换容器
+### 切换容器(转换类型)
+<!--rehype:wrap-class=row-span-2-->
 
 将容器从 `MKV` 更改为 `MP4`
 
@@ -180,6 +213,30 @@ $ ffmpeg -i file.aac -acodec mp3 -ar 44100 -ab 128000 output.mp3
 $ ffmpeg -i file.mkv -acodec copy -vcodec copy file.mp4
 ```
 <!--rehype:className=wrap-text -->
+
+要将视频从 `.mov` 更改为 `.mp4`
+
+```bash
+$ ffmpeg -i in.mov out.mp4
+```
+
+### 音视频同步
+<!--rehype:wrap-class=row-span-2-->
+
+将音频延迟 3 秒
+
+```bash
+$ ffmpeg -i input.mov -itsoffset 3 -i input.mov -map 0:v -map 1:a -codec:a copy -codec:v copy output.mov
+```
+<!--rehype:className=wrap-text -->
+
+将视频延迟 3 秒（即将音频提前 3 秒）
+
+```bash
+$ ffmpeg -i input.mov -itsoffset 3 -i input.mov -map 1:v -map 0:a -codec:a copy -codec:v copy output.mov
+```
+<!--rehype:className=wrap-text -->
+
 
 ### 图片中的视频
 
@@ -195,6 +252,18 @@ $ ffmpeg -f image2 -i image%d.jpg video.mp4
 ```bash
 $ ffmpeg -i video.mp4 image%d.jpg
 ```
+
+### 转换为 Gif
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+$ ffmpeg -ss 2 -t 28 -i input.mp4 \
+    -vf "fps=10,scale=1080:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+    -loop 0 output.gif
+```
+<!--rehype:className=wrap-text -->
+
+有关更多信息，请参阅 [StackOverflow 问题](https://superuser.com/a/556031)
 
 另见
 ---
