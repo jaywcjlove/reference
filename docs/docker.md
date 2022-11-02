@@ -575,7 +575,7 @@ docker run -d --name portainer \
 $ mkdir -p ~/.config
 $ docker run -it --name code-server  \
   -p 127.0.0.1:8080:8080 \
-  -v "$HOME/.config:/home/coder/.config" \
+  -v "$HOME/.config/code-server:/home/coder/.config" \
   -v "$PWD:/home/coder/project" \
   -u "$(id -u):$(id -g)" \
   -e "DOCKER_USER=$USER" \
