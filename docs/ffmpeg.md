@@ -3,8 +3,37 @@ FFmpeg 备忘清单
 
 本备忘清单是 [FFmpeg](https://ffmpeg.org/) 中常见视频处理操作的备忘清单
 
-参数参考
+FFmpeg 参考
 ---
+
+### 安装
+
+Linux
+
+```
+$ apt-get install ffmpeg
+$ yum install ffmpeg
+```
+
+MacOS
+
+```bash
+$ brew install ffmpeg
+```
+
+### 示例
+
+mp4 转 avi:
+
+```bash
+$ ffmpeg -i input.mp4 output.avi
+```
+
+webm 转 mp4:
+
+```bash
+$ ffmpeg -i movie.webm movie.mp4
+```
 
 ### 常用开关
 
