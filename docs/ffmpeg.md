@@ -254,16 +254,60 @@ $ ffmpeg -i video.mp4 image%d.jpg
 ```
 
 ### 转换为 Gif
-<!--rehype:wrap-class=col-span-3-->
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
-$ ffmpeg -ss 2 -t 28 -i input.mp4 \
-    -vf "fps=10,scale=1080:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
-    -loop 0 output.gif
+$ ffmpeg -ss 2 -t 28 -i input.mp4 -vf "fps=10,scale=1080:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
 ```
 <!--rehype:className=wrap-text -->
 
-有关更多信息，请参阅 [StackOverflow 问题](https://superuser.com/a/556031)
+上面有关更多信息，请参阅 [StackOverflow 问题](https://superuser.com/a/556031)
+
+```bash
+# 转换为 GIF
+$ ffmpeg -i input.mov output.gif
+# 从 GIF 转换
+$ ffmpeg -i input.gif output.mov
+# 在非 GIF 格式之间转换
+$ ffmpeg -i input.mov -codec:v copy -codec:a copy output.mp4
+```
+
+### 移除音频
+
+```bash
+$ ffmpeg -i input.mov -codec:v copy -an output.mov
+```
+<!--rehype:className=wrap-text -->
+
+### 字幕
+<!--rehype:wrap-class=col-span-2-->
+
+将字幕写入视频
+
+```bash
+$ ffmpeg -i input.mov -filter:v 'subtitles=subtitles.srt' -codec:a copy output.mov
+```
+
+将字幕写入视频，具有自定义字幕样式
+
+```bash
+$ ffmpeg -i input.mov -filter:v "subtitles=subtitles.srt:force_style='FontName=Menlo Bold,Fontsize=18'" -codec:a copy output.mov
+```
+
+### 音量
+<!--rehype:wrap-class=col-span-2-->
+
+将音量减半
+
+```bash
+$ ffmpeg -i input.mov -codec:v copy -filter:a 'volume=0.5' output.mov
+```
+
+音量加倍
+
+```bash
+$ ffmpeg -i input.mov -codec:v copy -filter:a 'volume=2' output.mov
+```
 
 另见
 ---
@@ -271,3 +315,4 @@ $ ffmpeg -ss 2 -t 28 -i input.mp4 \
 - [FFmpeg 官网地址](https://ffmpeg.org/) _(ffmpeg.org)_
 - [FFmpeg Cheat Sheet](https://lzone.de/cheat-sheet/ffmpeg) _(lzone.de)_
 - [FFmpeg Cheat Sheet](https://devhints.io/ffmpeg) _(devhints.io)_
+- [FFmpeg Cheat Sheet](https://github.com/yuanqing/ffmpeg-cheatsheet) _(github.com)_
