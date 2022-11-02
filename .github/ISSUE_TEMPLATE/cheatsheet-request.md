@@ -16,7 +16,9 @@ assignees: jaywcjlove
 
 #### 提供参考资料地址
 
-- [提供 参考地址 1](https://jaywcjlove.github.io/reference)
-- [提供 官网地址](https://jaywcjlove.github.io/reference)
+提供更多参考资料有助于我们整理成备忘清单(速查表)
+
+- 提供参考地址 https://jaywcjlove.github.io/reference
+- 提供官网地址 https://jaywcjlove.github.io/reference
 
 _⚠️ 注意: 随着内容越来越多，可能甚至找不到这个工具或者语言的官网，请您在这里提供以便大家共同参与贡献内容_
