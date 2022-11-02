@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Emacs 备忘清单
+ &#x26;  emacs cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="Emacs 是可扩展的、可定制的、自记录的实时显示文本编辑器。此参考适用于 Emacs 27+为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,emacs">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/emacs.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="emacs-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" height="1em" width="1em">
+  <path d="M15.995.016c-2.385.02-4.599.525-6.625 1.457l.011-.004c4.849 2.703 9.271 7.509 11.907 10.989.531.713 1.005 1.339 1.437 1.911l.005-.025c.552-2.317-.417-6.984-2.021-9.776-.156-.271-.271-.505-.249-.521h.005l.005-.005c.129.032 1.375 1.323 1.828 1.912.801 1.02 1.109 1.615 1.552 2.968 1.14 3.532 1.896 6.401 2.531 9.667.323 1.641.901 4.609.98 5.177.004.079-.016.172-.016.193-.125-.12-.256-.24-.385-.355-.86-.755-2.568-1.885-4.245-2.817-2.093-1.156-4.156-2.151-8.765-4.213-4.208-1.885-6.145-2.781-7.667-3.547l-1.369-.683.536 1.339s2.573 1.443 2.896 1.88c0 0 3.093 5.823 4.468 9.271 1.027 2.599 2.183 5.688 2.876 6.541l.077.089C14.403 31.131 8.111 28 8.111 28c-.693-5.864-2.625-12.812-5.14-19.917-.057-.119-.115-.239-.167-.364 0-.021.187.161.411.407 2.536 2.713 7.943 5.181 13.688 6.239 1.552.272 3.135.371 4.708.297-.407-.521-.855-1.093-1.344-1.735C15.71 6.99 11.236 4.495 7.226 2.97c-.104-.037-.203-.084-.307-.115A15.865 15.865 0 0 0 .892 10.76a16.037 16.037 0 0 0-.891 5.355L.006 16c.041 6.688 4.172 12.817 10.735 15.104 1.781.62 3.593.907 5.375.896l-.12-.005c6.693-.041 12.823-4.172 15.109-10.735.62-1.781.907-3.599.891-5.38V16C31.949 9.307 27.824 3.177 21.256.896A15.96 15.96 0 0 0 15.881 0l.12.005zm8.177 8.145c.708.683 1.839 2.005 3.115 2.751 1.052 1.317 1.625 2.615 2.333 3.504-.292-.249-1.484-1.296-1.484-1.296s-1.833-1.74-2.855-2.869c-.391-.439-.427-.505-.636-.839-.083-.131-.364-1.1-.473-1.245l.005-.011z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#emacs-备忘清单"><span class="icon icon-link"></span></a>Emacs 备忘清单</h1><div class="wrap-body">
+<p><a href="https://www.gnu.org/software/emacs">Emacs</a> 是可扩展的、可定制的、自记录的实时显示文本编辑器。此参考适用于 Emacs 27+</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#启动-emacs">启动 Emacs</a><a aria-hidden="true" class="leve3 tocs-link" href="#全局描述">全局描述</a><a aria-hidden="true" class="leve3 tocs-link" href="#移动">移动</a><a aria-hidden="true" class="leve3 tocs-link" href="#案例变更">案例变更</a><a aria-hidden="true" class="leve3 tocs-link" href="#文件">文件</a><a aria-hidden="true" class="leve3 tocs-link" href="#错误恢复">错误恢复</a><a aria-hidden="true" class="leve3 tocs-link" href="#transposing">Transposing</a><a aria-hidden="true" class="leve4 tocs-link" href="#scroll">Scroll</a><a aria-hidden="true" class="leve4 tocs-link" href="#跳转">跳转</a><a aria-hidden="true" class="leve3 tocs-link" href="#标记">标记</a><a aria-hidden="true" class="leve3 tocs-link" href="#杀死和删除">杀死和删除</a><a aria-hidden="true" class="leve4 tocs-link" href="#杀死">杀死</a><a aria-hidden="true" class="leve3 tocs-link" href="#获得帮助">获得帮助</a><a aria-hidden="true" class="leve3 tocs-link" href="#多个窗口">多个窗口</a><a aria-hidden="true" class="leve3 tocs-link" href="#格式化">格式化</a><a aria-hidden="true" class="leve3 tocs-link" href="#信息">信息</a><a aria-hidden="true" class="leve4 tocs-link" href="#在节点内移动">在节点内移动</a><a aria-hidden="true" class="leve4 tocs-link" href="#在节点之间移动">在节点之间移动</a><a aria-hidden="true" class="leve4 tocs-link" href="#其他">其他</a><a aria-hidden="true" class="leve3 tocs-link" href="#小缓冲区">小缓冲区</a><a aria-hidden="true" class="leve3 tocs-link" href="#标签">标签</a><a aria-hidden="true" class="leve3 tocs-link" href="#缓冲器">缓冲器</a><a aria-hidden="true" class="leve3 tocs-link" href="#矩形">矩形</a><a aria-hidden="true" class="leve3 tocs-link" href="#键盘宏">键盘宏</a><a aria-hidden="true" class="leve2 tocs-link" href="#emacs-搜索">Emacs 搜索</a><a aria-hidden="true" class="leve3 tocs-link" href="#正则表达式常用">正则表达式（常用）</a><a aria-hidden="true" class="leve3 tocs-link" href="#正则表达式条目">正则表达式（条目）</a><a aria-hidden="true" class="leve3 tocs-link" href="#正则表达式冲突">正则表达式（冲突）</a><a aria-hidden="true" class="leve3 tocs-link" href="#增量搜索">增量搜索</a><a aria-hidden="true" class="leve3 tocs-link" href="#查询替换">查询替换</a><a aria-hidden="true" class="leve2 tocs-link" href="#杂项">杂项</a><a aria-hidden="true" class="leve3 tocs-link" href="#shell">Shell</a><a aria-hidden="true" class="leve3 tocs-link" href="#国际字符集">国际字符集</a><a aria-hidden="true" class="leve3 tocs-link" href="#寄存器">寄存器</a><a aria-hidden="true" class="leve3 tocs-link" href="#各种各样的">各种各样的</a><a aria-hidden="true" class="leve3 tocs-link" href="#处理-emacs-lisp-的命令">处理 Emacs Lisp 的命令</a><a aria-hidden="true" class="leve3 tocs-link" href="#简单的定制">简单的定制</a><a aria-hidden="true" class="leve3 tocs-link" href="#缩写">缩写</a><a aria-hidden="true" class="leve3 tocs-link" href="#拼写检查">拼写检查</a><a aria-hidden="true" class="leve3 tocs-link" href="#编写命令">编写命令</a><a aria-hidden="true" class="leve4 tocs-link" href="#语法">语法</a><a aria-hidden="true" class="leve4 tocs-link" href="#示例">示例</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="启动-emacs"><a aria-hidden="true" tabindex="-1" href="#启动-emacs"><span class="icon icon-link"></span></a>启动 Emacs</h3><div class="wrap-body">
+<p>要进入 Emacs，只需输入其名称：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ emacs
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-z</code></td><td align="left">挂起 Emacs</td></tr><tr><td align="left"><code>C-x</code> <code>C-c</code></td><td align="left">永久退出 Emacs</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="全局描述"><a aria-hidden="true" tabindex="-1" href="#全局描述"><span class="icon icon-link"></span></a>全局描述</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-&#x3C;key></code></td><td align="left">表示按住控件，然后按 <code>&#x3C;key></code></td></tr><tr><td align="left"><code>M-&#x3C;key></code></td><td align="left">表示按 <code>Esc</code> 一次，然后按 <code>&#x3C;key></code></td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+<p>注意：本备忘单遵循上述规则</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="移动"><a aria-hidden="true" tabindex="-1" href="#移动"><span class="icon icon-link"></span></a>移动</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts show-header"><thead><tr><th align="left">返回</th><th align="left">向前</th><th align="left">要移动的实体</th></tr></thead><tbody><tr><td align="left"><code>C-b</code></td><td align="left"><code>C-f</code></td><td align="left">Haracter</td></tr><tr><td align="left"><code>M-b</code></td><td align="left"><code>M-f</code></td><td align="left">单词</td></tr><tr><td align="left"><code>C-p</code></td><td align="left"><code>C-n</code></td><td align="left">线</td></tr><tr><td align="left"><code>C-a</code></td><td align="left"><code>C-e</code></td><td align="left">行开头<br><em>（或结尾）</em></td></tr><tr><td align="left"><code>M-a</code></td><td align="left"><code>M-e</code></td><td align="left">句子</td></tr><tr><td align="left"><code>M-{</code></td><td align="left"><code>M-}</code></td><td align="left">段落</td></tr><tr><td align="left"><code>C-x</code> <code>[</code></td><td align="left"><code>C-x</code> <code>]</code></td><td align="left">页</td></tr><tr><td align="left"><code>C-M-b</code></td><td align="left"><code>C-M-f</code></td><td align="left">Sexp</td></tr><tr><td align="left"><code>C-M-a</code></td><td align="left"><code>C-M-e</code></td><td align="left">功能</td></tr><tr><td align="left"><code>M-&#x3C;</code></td><td align="left"><code>M-></code></td><td align="left">缓冲区开始<br><em>（或结束）</em></td></tr></tbody></table>
+<!--rehype:className=shortcuts show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="案例变更"><a aria-hidden="true" tabindex="-1" href="#案例变更"><span class="icon icon-link"></span></a>案例变更</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>M-u</code></td><td align="left">大写单词</td></tr><tr><td align="left"><code>M-l</code></td><td align="left">小写单词</td></tr><tr><td align="left"><code>M-c</code></td><td align="left">大写单词</td></tr><tr><td align="left"><code>C-x</code> <code>C-u</code></td><td align="left">大写区域</td></tr><tr><td align="left"><code>C-x</code> <code>C-l</code></td><td align="left">小写区域</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="文件"><a aria-hidden="true" tabindex="-1" href="#文件"><span class="icon icon-link"></span></a>文件</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>C-f</code></td><td align="left">将文件读入 Emacs</td></tr><tr><td align="left"><code>C-x</code> <code>C-s</code></td><td align="left">将文件保存回磁盘</td></tr><tr><td align="left"><code>C-x</code> <code>s</code></td><td align="left">保存所有文件</td></tr><tr><td align="left"><code>C-x</code> <code>i</code></td><td align="left">将另一个文件的内容插入此缓冲区</td></tr><tr><td align="left"><code>C-x</code> <code>C-v</code></td><td align="left">将此文件替换为您的文件</td></tr><tr><td align="left"><code>C-x</code> <code>C-w</code></td><td align="left">将缓冲区写入指定文件</td></tr><tr><td align="left"><code>C-x</code> <code>C-q</code></td><td align="left">切换缓冲区的只读状态</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="错误恢复"><a aria-hidden="true" tabindex="-1" href="#错误恢复"><span class="icon icon-link"></span></a>错误恢复</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-g</code></td><td align="left">中止部分键入或执行的命令</td></tr><tr><td align="left"><code>M-x</code> 恢复会话</td><td align="left">恢复因系统崩溃而丢失的文件</td></tr><tr><td align="left"><code>C-x</code> <code>u</code> <code>C-_</code> <code>C-/</code></td><td align="left">撤消不需要的更改</td></tr><tr><td align="left"><code>M-x</code> 恢复缓冲器</td><td align="left">将缓冲区恢复到其原始内容</td></tr><tr><td align="left"><code>C-l</code></td><td align="left">重绘垃圾屏幕</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="transposing"><a aria-hidden="true" tabindex="-1" href="#transposing"><span class="icon icon-link"></span></a>Transposing</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-t</code></td><td align="left">转置字符</td></tr><tr><td align="left"><code>M-t</code></td><td align="left">转置词</td></tr><tr><td align="left"><code>C-x</code> <code>C-t</code></td><td align="left">转置线</td></tr><tr><td align="left"><code>C-M-t</code></td><td align="left">转置性别</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div><div class="h3wrap-body"><h4 id="scroll"><a aria-hidden="true" tabindex="-1" href="#scroll"><span class="icon icon-link"></span></a>Scroll</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-v</code></td><td align="left">滚动到下一个屏幕</td></tr><tr><td align="left"><code>M-v</code></td><td align="left">滚动到上一个屏幕</td></tr><tr><td align="left"><code>C-x</code> <code>&#x3C;</code></td><td align="left">向左滚动</td></tr><tr><td align="left"><code>C-x</code> <code>></code></td><td align="left">向右滚动</td></tr><tr><td align="left"><code>C-l</code></td><td align="left">将当前行滚动到 <br> <em>center, top, bottom</em></td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+<h4 id="跳转"><a aria-hidden="true" tabindex="-1" href="#跳转"><span class="icon icon-link"></span></a>跳转</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>M-g</code> <code>g</code></td><td align="left">转到行</td></tr><tr><td align="left"><code>M-g</code> <code>c</code></td><td align="left">转到字符</td></tr><tr><td align="left"><code>M-m</code></td><td align="left">返回缩进</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="标记"><a aria-hidden="true" tabindex="-1" href="#标记"><span class="icon icon-link"></span></a>标记</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-@</code> <code>C-SPC</code></td><td align="left">在标记在这里</td></tr><tr><td align="left"><code>C-x</code> <code>C-x</code></td><td align="left">交换点和标记</td></tr><tr><td align="left"><code>M-@</code></td><td align="left">设置标记 arg 单词</td></tr><tr><td align="left"><code>M-h</code></td><td align="left">标记段落</td></tr><tr><td align="left"><code>C-x</code> <code>C-p</code></td><td align="left">标记页面</td></tr><tr><td align="left"><code>C-M-@</code></td><td align="left">标记性</td></tr><tr><td align="left"><code>C-M-h</code></td><td align="left">标记功能</td></tr><tr><td align="left"><code>C-x</code> <code>h</code></td><td align="left">标记整个缓冲区</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="杀死和删除"><a aria-hidden="true" tabindex="-1" href="#杀死和删除"><span class="icon icon-link"></span></a>杀死和删除</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts show-header"><thead><tr><th align="left">向后</th><th align="left">向前</th><th align="left">要杀死的实体</th></tr></thead><tbody><tr><td align="left"><code>DEL</code></td><td align="left"><code>C-d</code></td><td align="left">字符 <br><em>(删除)</em></td></tr><tr><td align="left"><code>M-DEL</code></td><td align="left"><code>M-d</code></td><td align="left">单词</td></tr><tr><td align="left"><code>M-0</code> <code>C-k</code></td><td align="left"><code>C-k</code></td><td align="left">行 <br> <em>(到结尾)</em></td></tr><tr><td align="left"><code>C-x</code> <code>DEL</code></td><td align="left"><code>M-k</code></td><td align="left">句子</td></tr><tr><td align="left"><code>M--</code> <code>C-M-k</code></td><td align="left"><code>C-M-k</code></td><td align="left">性爱</td></tr></tbody></table>
+<!--rehype:className=shortcuts show-header-->
+</div></div><div class="h3wrap-body"><h4 id="杀死"><a aria-hidden="true" tabindex="-1" href="#杀死"><span class="icon icon-link"></span></a>杀死</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-W</code></td><td align="left">杀死区域 C-w</td></tr><tr><td align="left"><code>M-w</code></td><td align="left">复制区域杀死环</td></tr><tr><td align="left"><code>M-z</code> char</td><td align="left">杀死下一次出现的字符</td></tr><tr><td align="left"><code>C-y</code></td><td align="left">拉回最后一个被杀的东西</td></tr><tr><td align="left"><code>M-y</code></td><td align="left">用之前的杀戮替换最后的猛拉</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="获得帮助"><a aria-hidden="true" tabindex="-1" href="#获得帮助"><span class="icon icon-link"></span></a>获得帮助</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>1</code></td><td align="left">删除帮助窗口</td></tr><tr><td align="left"><code>C-M-v</code></td><td align="left">滚动帮助窗口</td></tr><tr><td align="left"><code>C-h</code> <code>a</code></td><td align="left">Apropos：显示匹配字符串的命令</td></tr><tr><td align="left"><code>C-h</code> <code>k</code></td><td align="left">描述一个键运行的功能</td></tr><tr><td align="left"><code>C-h</code> <code>f</code></td><td align="left">描述一个函数</td></tr><tr><td align="left"><code>C-h</code> <code>m</code></td><td align="left">获取特定于模式的信息</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+<p>帮助系统很简单。键入 <code>C-h</code>（或 <code>F1</code>）并按照说明进行操作。如果您是第一次使用，请键入 <code>C-h</code> <code>t</code> 以获得教程</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="多个窗口"><a aria-hidden="true" tabindex="-1" href="#多个窗口"><span class="icon icon-link"></span></a>多个窗口</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>当显示两个命令时，第二个命令是用于框架而不是窗口的类似命令</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>5</code> <code>1</code></td><td align="left"><code>C-x</code> <code>1</code></td><td align="left">删除所有其他窗口</td></tr><tr><td align="left"><code>C-x</code> <code>5</code> <code>2</code></td><td align="left"><code>C-x</code> <code>2</code></td><td align="left">拆分窗口，上方和下方</td></tr><tr><td align="left"><code>C-x</code> <code>5</code> <code>0</code></td><td align="left"><code>C-x</code> <code>0</code></td><td align="left">删除此窗口</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"> </td><td align="left"><code>C-x</code> <code>3</code></td><td align="left">拆分窗口，并排</td></tr><tr><td align="left"> </td><td align="left"><code>C-M-v</code></td><td align="left">滚动其他窗口</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>5</code> <code>o</code></td><td align="left"><code>C-x</code> <code>o</code></td><td align="left">将光标切换到另一个窗口</td></tr><tr><td align="left"><code>C-x</code> <code>5</code> <code>b</code></td><td align="left"><code>C-x</code> <code>4</code> <code>b</code></td><td align="left">在其他窗口中选择缓冲区</td></tr><tr><td align="left"><code>C-x</code> <code>5</code> <code>C-o</code></td><td align="left"><code>C-x</code> <code>4</code> <code>C-o</code></td><td align="left">在其他窗口中显示缓冲区</td></tr><tr><td align="left"><code>C-x</code> <code>5</code> <code>f</code></td><td align="left"><code>C-x</code> <code>4</code> <code>f</code></td><td align="left">在其他窗口中查找文件</td></tr><tr><td align="left"><code>C-x</code> <code>5</code> <code>r</code></td><td align="left"><code>C-x</code> <code>4</code> <code>r</code></td><td align="left">在其他窗口中以只读方式查找文件</td></tr><tr><td align="left"><code>C-x</code> <code>5</code> <code>d</code></td><td align="left"><code>C-x</code> <code>4</code> <code>d</code></td><td align="left">在其他窗口中运行 Dired</td></tr><tr><td align="left"><code>C-x</code> <code>5</code> <code>.</code></td><td align="left"><code>C-x</code> <code>4</code> <code>.</code></td><td align="left">在其他窗口中查找标签</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"> </td><td align="left"><code>C-x</code> <code>^</code></td><td align="left">让窗户变高</td></tr><tr><td align="left"> </td><td align="left"><code>C-x</code> <code>{</code></td><td align="left">缩小窗口</td></tr><tr><td align="left"> </td><td align="left"><code>C-x</code> <code>}</code></td><td align="left">让窗口变宽</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="格式化"><a aria-hidden="true" tabindex="-1" href="#格式化"><span class="icon icon-link"></span></a>格式化</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>TAB</code></td><td align="left">缩进当前行（取决于模式）</td></tr><tr><td align="left"><code>C-M-\</code></td><td align="left">缩进区域（取决于模式）</td></tr><tr><td align="left"><code>C-M-q</code></td><td align="left">缩进 sexp（取决于模式）</td></tr><tr><td align="left"><code>C-x</code> <code>TAB</code></td><td align="left">缩进区域刚性 arg 列</td></tr><tr><td align="left"><code>M-;</code></td><td align="left">缩进评论</td></tr><tr><td align="left"><code>C-o</code></td><td align="left">在点后插入换行符</td></tr><tr><td align="left"><code>C-M-o</code></td><td align="left">将其余行垂直向下移动</td></tr><tr><td align="left"><code>C-x</code> <code>C-o</code></td><td align="left">删除点周围的空行</td></tr><tr><td align="left"><code>M-^</code></td><td align="left">与上一个加入行（带 arg，下一个）</td></tr><tr><td align="left"><code>M-\</code></td><td align="left">删除点周围的所有空白</td></tr><tr><td align="left"><code>M-SPC</code></td><td align="left">在点上正好放一个空格</td></tr><tr><td align="left"><code>M-q</code></td><td align="left">填写段落</td></tr><tr><td align="left"><code>C-x</code> <code>f</code></td><td align="left">将填充列设置为 arg</td></tr><tr><td align="left"><code>C-x</code> <code>.</code></td><td align="left">设置每行开头的前缀</td></tr><tr><td align="left"><code>M-o</code></td><td align="left">设置面</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="信息"><a aria-hidden="true" tabindex="-1" href="#信息"><span class="icon icon-link"></span></a>信息</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-h</code> <code>i</code></td><td align="left">输入信息文档阅读器</td></tr><tr><td align="left"><code>C-h</code> <code>S</code></td><td align="left">在 Info 中查找指定的函数或变量</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div><div class="h3wrap-body"><h4 id="在节点内移动"><a aria-hidden="true" tabindex="-1" href="#在节点内移动"><span class="icon icon-link"></span></a>在节点内移动</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>SPC</code></td><td align="left">向前滚动</td></tr><tr><td align="left"><code>DEL</code></td><td align="left">反向滚动</td></tr><tr><td align="left"><code>b</code></td><td align="left">节点的开始</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+<h4 id="在节点之间移动"><a aria-hidden="true" tabindex="-1" href="#在节点之间移动"><span class="icon icon-link"></span></a>在节点之间移动</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>n</code></td><td align="left">下一个节点</td></tr><tr><td align="left"><code>p</code></td><td align="left">上一个节点</td></tr><tr><td align="left"><code>u</code></td><td align="left">提升</td></tr><tr><td align="left"><code>m</code></td><td align="left">按名称选择菜单项</td></tr><tr><td align="left"><code>n</code></td><td align="left">按编号 (1–9) 选择第 n 个菜单项</td></tr><tr><td align="left"><code>f</code></td><td align="left">遵循交叉引用（用 l 返回）</td></tr><tr><td align="left"><code>l</code></td><td align="left">返回您看到的最后一个节点</td></tr><tr><td align="left"><code>d</code></td><td align="left">返回目录节点</td></tr><tr><td align="left"><code>t</code></td><td align="left">转到信息文件的顶部节点</td></tr><tr><td align="left"><code>g</code></td><td align="left">按名称转到任何节点</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+<h4 id="其他"><a aria-hidden="true" tabindex="-1" href="#其他"><span class="icon icon-link"></span></a>其他</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>h</code></td><td align="left">运行信息教程</td></tr><tr><td align="left"><code>i</code></td><td align="left">在索引中查找主题</td></tr><tr><td align="left"><code>s</code></td><td align="left">搜索节点以查找正则表达式</td></tr><tr><td align="left"><code>q</code></td><td align="left">退出信息</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="小缓冲区"><a aria-hidden="true" tabindex="-1" href="#小缓冲区"><span class="icon icon-link"></span></a>小缓冲区</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>以下键在 <code>minibuffer</code> 中定义</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>TAB</code></td><td align="left">尽可能完成</td></tr><tr><td align="left"><code>SPC</code></td><td align="left">最多完成一个单词</td></tr><tr><td align="left"><code>RET</code></td><td align="left">完成并执行</td></tr><tr><td align="left"><code>?</code></td><td align="left">显示可能的完成</td></tr><tr><td align="left"><code>M-p</code></td><td align="left">获取先前的 <code>minibuffer</code> 输入</td></tr><tr><td align="left"><code>M-n</code></td><td align="left">获取稍后的 <code>minibuffer</code> 输入或默认值</td></tr><tr><td align="left"><code>M-r</code></td><td align="left">正则表达式向后搜索历史</td></tr><tr><td align="left"><code>M-s</code></td><td align="left">正则表达式向前搜索历史</td></tr><tr><td align="left"><code>C-g</code></td><td align="left">中止命令</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+<p>键入 <code>C-x</code> <code>ESC</code> <code>ESC</code> 以编辑并重复使用 <code>minibuffer</code> 的最后一个命令。键入 <code>F10</code> 以激活文本终端上的菜单栏项</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="标签"><a aria-hidden="true" tabindex="-1" href="#标签"><span class="icon icon-link"></span></a>标签</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>M-.</code></td><td align="left">查找标签（定义）</td></tr><tr><td align="left"><code>C-u</code> <code>M-.</code></td><td align="left">查找标签的下一个出现</td></tr><tr><td align="left"><code>M-x</code> 访问标签表</td><td align="left">指定一个新的标签文件</td></tr><tr><td align="left"><code>M-x</code> 标签搜索</td><td align="left">正则表达式搜索标签表中的所有文件</td></tr><tr><td align="left"><code>M-x</code> 标签查询替换</td><td align="left">对所有文件运行查询替换</td></tr><tr><td align="left"><code>M-,</code></td><td align="left">继续最后一个标签搜索或查询替换</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="缓冲器"><a aria-hidden="true" tabindex="-1" href="#缓冲器"><span class="icon icon-link"></span></a>缓冲器</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>b</code></td><td align="left">选择另一个缓冲区</td></tr><tr><td align="left"><code>C-x</code> <code>C-b</code></td><td align="left">列出所有缓冲区</td></tr><tr><td align="left"><code>C-x</code> <code>k</code></td><td align="left">杀死一个缓冲区</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="矩形"><a aria-hidden="true" tabindex="-1" href="#矩形"><span class="icon icon-link"></span></a>矩形</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>r</code> <code>r</code></td><td align="left">复制矩形进行注册</td></tr><tr><td align="left"><code>C-x</code> <code>r</code> <code>k</code></td><td align="left">杀死矩形</td></tr><tr><td align="left"><code>C-x</code> <code>r</code> <code>y</code></td><td align="left">拉长矩形</td></tr><tr><td align="left"><code>C-x</code> <code>r</code> <code>o</code></td><td align="left">打开矩形，向右移动文本</td></tr><tr><td align="left"><code>C-x</code> <code>r</code> <code>c</code></td><td align="left">空白矩形</td></tr><tr><td align="left"><code>C-x</code> <code>r</code> <code>t</code></td><td align="left">用字符串为每一行添加前缀</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="键盘宏"><a aria-hidden="true" tabindex="-1" href="#键盘宏"><span class="icon icon-link"></span></a>键盘宏</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>(</code></td><td align="left">开始定义键盘宏</td></tr><tr><td align="left"><code>C-x</code> <code>)</code></td><td align="left">结束键盘宏定义</td></tr><tr><td align="left"><code>C-x</code> <code>e</code></td><td align="left">执行最后定义的键盘宏</td></tr><tr><td align="left"><code>C-u</code> <code>C-x</code> <code>(</code></td><td align="left">附加到最后一个键盘宏</td></tr><tr><td align="left"><code>M-x</code> name-last-kbd-macro</td><td align="left">命名最后一个键盘宏</td></tr><tr><td align="left"><code>M-x</code> insert-kbd-macro</td><td align="left">在缓冲区中插入 Lisp 定义</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="emacs-搜索"><a aria-hidden="true" tabindex="-1" href="#emacs-搜索"><span class="icon icon-link"></span></a>Emacs 搜索</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="正则表达式常用"><a aria-hidden="true" tabindex="-1" href="#正则表达式常用"><span class="icon icon-link"></span></a>正则表达式（常用）</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>.</code> <code>(dot)</code></td><td align="left">除换行符外的任何单个字符</td></tr><tr><td align="left"><code>*</code></td><td align="left">零次或多次重复</td></tr><tr><td align="left"><code>+</code></td><td align="left">一次或多次重复</td></tr><tr><td align="left"><code>?</code></td><td align="left">零次或一次重复</td></tr><tr><td align="left"><code>\</code></td><td align="left">引用特殊字符</td></tr><tr><td align="left"><code>\c</code></td><td align="left">引用正则表达式特殊字符 c</td></tr><tr><td align="left"><code>|</code></td><td align="left">替代（“或”）</td></tr><tr><td align="left"><code>\(...\)</code></td><td align="left">分组</td></tr><tr><td align="left"><code>\(:?...\)</code></td><td align="left">害羞的分组</td></tr><tr><td align="left"><code>\(:NUM...\)</code></td><td align="left">显式编号分组</td></tr><tr><td align="left"><code>\n</code></td><td align="left">与第 n 组相同的文本</td></tr><tr><td align="left"><code>\b</code></td><td align="left">在断字时</td></tr><tr><td align="left"><code>\B</code></td><td align="left">不在断字</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="正则表达式条目"><a aria-hidden="true" tabindex="-1" href="#正则表达式条目"><span class="icon icon-link"></span></a>正则表达式（条目）</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">开始</th><th align="left">结束</th><th align="left">实体</th></tr></thead><tbody><tr><td align="left"><code>^</code></td><td align="left"><code>$</code></td><td align="left">行</td></tr><tr><td align="left"><code>\&#x3C;</code></td><td align="left"><code>\></code></td><td align="left">单词</td></tr><tr><td align="left"><code>\_&#x3C;</code></td><td align="left"><code>\_></code></td><td align="left">象征</td></tr><tr><td align="left"><code>\‘</code></td><td align="left"><code>\’</code></td><td align="left">缓冲</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="正则表达式冲突"><a aria-hidden="true" tabindex="-1" href="#正则表达式冲突"><span class="icon icon-link"></span></a>正则表达式（冲突）</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">这些</th><th align="left">其他</th><th align="left">class</th></tr></thead><tbody><tr><td align="left"><code>[...]</code></td><td align="left"><code>[^...]</code></td><td align="left">显式集</td></tr><tr><td align="left"><code>\w</code></td><td align="left"><code>\W</code></td><td align="left">单词语法字符</td></tr><tr><td align="left"><code>\sc</code></td><td align="left"><code>\Sc</code></td><td align="left">具有语法 c 的字符</td></tr><tr><td align="left"><code>\cc</code></td><td align="left"><code>\Cc</code></td><td align="left">类别 c 的字符</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="增量搜索"><a aria-hidden="true" tabindex="-1" href="#增量搜索"><span class="icon icon-link"></span></a>增量搜索</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-s</code></td><td align="left">向前搜索</td></tr><tr><td align="left"><code>C-r</code></td><td align="left">向后搜索</td></tr><tr><td align="left"><code>C-M-s</code></td><td align="left">正则表达式搜索</td></tr><tr><td align="left"><code>C-M-r</code></td><td align="left">反向正则表达式搜索</td></tr><tr><td align="left"><code>M-p</code></td><td align="left">选择上一个搜索字符串</td></tr><tr><td align="left"><code>M-n</code></td><td align="left">选择下一个稍后搜索字符串</td></tr><tr><td align="left"><code>RET</code></td><td align="left">退出增量搜索</td></tr><tr><td align="left"><code>DEL</code></td><td align="left">最后一个字符的撤消效果</td></tr><tr><td align="left"><code>C-g</code></td><td align="left">中止当前搜索</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+<p>再次使用 <code>C-s</code> 或 <code>C-r</code> 在任一方向重复搜索。 如果 Emacs 仍在搜索，<code>C-g</code> 只取消不匹配的部分</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查询替换"><a aria-hidden="true" tabindex="-1" href="#查询替换"><span class="icon icon-link"></span></a>查询替换</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>M-%</code></td><td align="left">以交互方式替换文本字符串</td></tr><tr><td align="left"><code>M-x</code> regexp</td><td align="left">使用正则表达式</td></tr><tr><td align="left"><code>SPC</code> / <code>y</code></td><td align="left">替换这个，继续下一个</td></tr><tr><td align="left"><code>,</code></td><td align="left">换这个，别动</td></tr><tr><td align="left"><code>DEL</code> / <code>n</code></td><td align="left">不更换就跳到下一个</td></tr><tr><td align="left"><code>!</code></td><td align="left">替换所有剩余的匹配项</td></tr><tr><td align="left"><code>^</code></td><td align="left">回到上一场比赛</td></tr><tr><td align="left"><code>RET</code></td><td align="left">退出查询替换</td></tr><tr><td align="left"><code>C-r</code></td><td align="left">进入递归编辑（C-M-c 退出）</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="杂项"><a aria-hidden="true" tabindex="-1" href="#杂项"><span class="icon icon-link"></span></a>杂项</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="shell"><a aria-hidden="true" tabindex="-1" href="#shell"><span class="icon icon-link"></span></a>Shell</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>M-!</code></td><td align="left">执行一个shell命令</td></tr><tr><td align="left"><code>M-&#x26;</code></td><td align="left">异步执行shell命令</td></tr><tr><td align="left"><code>M-</code></td><td align="left">在区域上运行 shell 命令</td></tr><tr><td align="left"><code>C-u</code> <code>M-</code></td><td align="left">通过 shell 命令过滤区域</td></tr><tr><td align="left"><code>M-x</code> shell</td><td align="left">在window shell中启动一个shell</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="国际字符集"><a aria-hidden="true" tabindex="-1" href="#国际字符集"><span class="icon icon-link"></span></a>国际字符集</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>RET</code> <code>l</code></td><td align="left">指定主要语言</td></tr><tr><td align="left"><code>M-x</code> list-input-methods</td><td align="left">显示所有输入法</td></tr><tr><td align="left"><code>C-\</code></td><td align="left">启用或禁用输入法</td></tr><tr><td align="left"><code>C-x</code> <code>RET</code> <code>c</code></td><td align="left">为下一个命令设置编码系统</td></tr><tr><td align="left"><code>M-x</code> list-coding-systems</td><td align="left">显示所有编码系统</td></tr><tr><td align="left"><code>M-x</code> prefer-coding-system</td><td align="left">选择首选的编码系统</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="寄存器"><a aria-hidden="true" tabindex="-1" href="#寄存器"><span class="icon icon-link"></span></a>寄存器</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>r</code> <code>s</code></td><td align="left">在寄存器中保存区域</td></tr><tr><td align="left"><code>C-x</code> <code>r</code> <code>i</code></td><td align="left">将寄存器内容插入缓冲区</td></tr><tr><td align="left"><code>C-x</code> <code>r</code> <code>SPC</code></td><td align="left">将点的值保存在寄存器中</td></tr><tr><td align="left"><code>C-x</code> <code>r</code> <code>j</code></td><td align="left">跳转到保存在寄存器中的点</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="各种各样的"><a aria-hidden="true" tabindex="-1" href="#各种各样的"><span class="icon icon-link"></span></a>各种各样的</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-u</code> num</td><td align="left">数值参数</td></tr><tr><td align="left"><code>M--</code></td><td align="left">否定论点</td></tr><tr><td align="left"><code>C-q</code> char</td><td align="left">带引号的插页</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="处理-emacs-lisp-的命令"><a aria-hidden="true" tabindex="-1" href="#处理-emacs-lisp-的命令"><span class="icon icon-link"></span></a>处理 Emacs Lisp 的命令</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>C-e</code></td><td align="left">评估点前的性</td></tr><tr><td align="left"><code>C-M-x</code></td><td align="left">评估电流定义</td></tr><tr><td align="left"><code>M-x</code> eval-region</td><td align="left">评估区</td></tr><tr><td align="left"><code>M-:</code></td><td align="left">读取和评估 minibuffer</td></tr><tr><td align="left"><code>M-x</code> load-library</td><td align="left">从加载路径加载 Lisp 库</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="简单的定制"><a aria-hidden="true" tabindex="-1" href="#简单的定制"><span class="icon icon-link"></span></a>简单的定制</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>M-x</code> <code>customize</code></td><td align="left">自定义变量和面</td></tr></tbody></table>
+<p>在 Emacs Lisp 中进行全局键绑定：</p>
+<pre class="wrap-text "><code class="language-emacs code-highlight"><span class="code-line"><span class="token punctuation">(</span><span class="token car">global-set-key</span> <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"C-c g"</span><span class="token punctuation">)</span> ’search-forward<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">(</span><span class="token car">global-set-key</span> <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"M-#"</span><span class="token punctuation">)</span> ’query-replace-regexp<span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="缩写"><a aria-hidden="true" tabindex="-1" href="#缩写"><span class="icon icon-link"></span></a>缩写</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>C-x</code> <code>a</code> <code>g</code></td><td align="left">添加全局缩写</td></tr><tr><td align="left"><code>C-x</code> <code>a</code> <code>l</code></td><td align="left">添加模式本地缩写</td></tr><tr><td align="left"><code>C-x</code> <code>a</code> <code>i</code> <code>g</code></td><td align="left">为这个缩写添加全局扩展</td></tr><tr><td align="left"><code>C-x</code> <code>a</code> <code>i</code> <code>l</code></td><td align="left">为这个缩写添加模式本地扩展</td></tr><tr><td align="left"><code>C-x</code> <code>a</code> <code>e</code></td><td align="left">显式扩展缩写</td></tr><tr><td align="left"><code>M-/</code></td><td align="left">动态扩展前一个单词</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="拼写检查"><a aria-hidden="true" tabindex="-1" href="#拼写检查"><span class="icon icon-link"></span></a>拼写检查</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>M-$</code></td><td align="left">检查当前单词的拼写</td></tr><tr><td align="left"><code>M-x</code> ispell 地区</td><td align="left">检查区域内所有单词的拼写</td></tr><tr><td align="left"><code>M-x</code> ispell 缓冲区</td><td align="left">检查整个缓冲区的拼写</td></tr><tr><td align="left"><code>M-x</code> flyspell 模式</td><td align="left">切换即时拼写检查</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="编写命令"><a aria-hidden="true" tabindex="-1" href="#编写命令"><span class="icon icon-link"></span></a>编写命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+</div></div><div class="h3wrap-body"><h4 id="语法"><a aria-hidden="true" tabindex="-1" href="#语法"><span class="icon icon-link"></span></a>语法</h4>
+<pre class="wrap-text "><code class="language-emacs code-highlight"><span class="code-line"><span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">command-name</span> <span class="token punctuation">(</span><span class="token arguments"><span class="token argument variable">args</span></span><span class="token punctuation">)</span></span>
+</span><span class="code-line"><span class="token string">"documentation"</span> <span class="token punctuation">(</span><span class="token interactive keyword">interactive</span> <span class="token string">"template"</span><span class="token punctuation">)</span>
+</span><span class="code-line">body<span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<h4 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h4>
+<pre class="language-emacs"><code class="language-emacs code-highlight"><span class="code-line"><span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">this-line-to-top-of-window</span> <span class="token punctuation">(</span><span class="token arguments"><span class="token argument variable">line</span></span><span class="token punctuation">)</span></span>
+</span><span class="code-line">    <span class="token string">"Reposition current line to top of window.
+</span></span><span class="code-line"><span class="token string">With prefix argument <span class="token argument">LINE</span>, put point on <span class="token argument">LINE</span>."</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token interactive keyword">interactive</span> <span class="token string">"P"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">(</span><span class="token car">recenter</span> <span class="token punctuation">(</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">null</span> line<span class="token punctuation">)</span>
+</span><span class="code-line">                  <span class="token number">0</span>
+</span><span class="code-line">              <span class="token punctuation">(</span><span class="token car">prefix-numeric-value</span> line<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
