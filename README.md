@@ -68,6 +68,7 @@ Quick Reference
 
 [Emacs](./docs/emacs.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
+[Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));-->
 [nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));-->
 [Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141/var(\-\-bg\-opacity));-->
 [Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
