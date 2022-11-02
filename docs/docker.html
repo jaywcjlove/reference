@@ -992,12 +992,12 @@
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="docker-示例"><a aria-hidden="true" tabindex="-1" href="#docker-示例"><span class="icon icon-link"></span></a>Docker 示例</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="docker-web-管理工具-portainer"><a aria-hidden="true" tabindex="-1" href="#docker-web-管理工具-portainer"><span class="icon icon-link"></span></a>Docker Web 管理工具 portainer</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> portainer <span class="token punctuation">\</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> portainer <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">-p</span> <span class="token number">8000</span>:8000 <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">-p</span> <span class="token number">9443</span>:9443 <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">--restart</span><span class="token operator">=</span>always <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">-v</span> /var/run/docker.sock:/var/run/docker.sock <span class="token punctuation">\</span>
-</span><span class="code-line">  <span class="token parameter variable">-v</span> portainer_data:/data <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-v</span> <span class="token environment constant">$HOME</span>/portainer:/data <span class="token punctuation">\</span>
 </span><span class="code-line">    portainer/portainer-ee:latest
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="在线代码编辑器-code-server"><a aria-hidden="true" tabindex="-1" href="#在线代码编辑器-code-server"><span class="icon icon-link"></span></a>在线代码编辑器 Code Server</h3><div class="wrap-body">
@@ -1033,14 +1033,14 @@
 </span><span class="code-line">  <span class="token parameter variable">-d</span> nginx
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="postgresql"><a aria-hidden="true" tabindex="-1" href="#postgresql"><span class="icon icon-link"></span></a>PostgreSQL</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">docker</span> run <span class="token parameter variable">--name</span> my-postgres <span class="token punctuation">\</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">docker</span> run <span class="token parameter variable">--name</span> my-postgres <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">-e</span> <span class="token assign-left variable">POSTGRES_PASSWORD</span><span class="token operator">=</span>mysecretpassword <span class="token punctuation">\</span>
 </span><span class="code-line">	<span class="token parameter variable">-e</span> <span class="token assign-left variable">PGDATA</span><span class="token operator">=</span>/var/lib/postgresql/data/pgdata <span class="token punctuation">\</span>
 </span><span class="code-line">	<span class="token parameter variable">-v</span> <span class="token environment constant">$HOME</span>/nginx/mount:/var/lib/postgresql/data <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">-d</span> postgres
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="媒体管理工具-dim"><a aria-hidden="true" tabindex="-1" href="#媒体管理工具-dim"><span class="icon icon-link"></span></a>媒体管理工具 Dim</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">docker</span> run <span class="token parameter variable">--name</span> my-dim <span class="token punctuation">\</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">docker</span> run <span class="token parameter variable">--name</span> my-dim <span class="token punctuation">\</span>
 </span><span class="code-line">   <span class="token parameter variable">-p</span> <span class="token number">8000</span>:8000/tcp <span class="token punctuation">\</span>
 </span><span class="code-line">   <span class="token parameter variable">-v</span> <span class="token environment constant">$HOME</span>/.config/dim:/opt/dim/config <span class="token punctuation">\</span>
 </span><span class="code-line">   <span class="token parameter variable">-v</span> <span class="token environment constant">$HOME</span>/dim/media:/media:ro <span class="token punctuation">\</span>
@@ -1048,7 +1048,7 @@
 </span></code></pre>
 <p><a href="https://github.com/Dusk-Labs/dim">Github</a></p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="gitlab"><a aria-hidden="true" tabindex="-1" href="#gitlab"><span class="icon icon-link"></span></a>Gitlab</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> gitlab <span class="token punctuation">\</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> gitlab <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">--hostname</span> gitlab.example.com <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">--publish</span> <span class="token number">8443</span>:443 <span class="token parameter variable">--publish</span> <span class="token number">8081</span>:80 <span class="token parameter variable">-p</span> <span class="token number">2222</span>:22 <span class="token punctuation">\</span>
 </span><span class="code-line">  <span class="token parameter variable">--restart</span> always <span class="token punctuation">\</span>
