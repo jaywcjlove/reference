@@ -560,12 +560,12 @@ Docker 示例
 ### Docker Web 管理工具 portainer
 
 ```bash
-docker run -d --name portainer \
+$ docker run -d --name portainer \
   -p 8000:8000 \
   -p 9443:9443 \
   --restart=always \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v portainer_data:/data \
+  -v $HOME/portainer:/data \
     portainer/portainer-ee:latest
 ```
 
@@ -616,7 +616,7 @@ $ docker run --name my-nginx \
 ### PostgreSQL
 
 ```bash
-docker run --name my-postgres \
+$ docker run --name my-postgres \
   -e POSTGRES_PASSWORD=mysecretpassword \
 	-e PGDATA=/var/lib/postgresql/data/pgdata \
 	-v $HOME/nginx/mount:/var/lib/postgresql/data \
@@ -626,7 +626,7 @@ docker run --name my-postgres \
 ### 媒体管理工具 Dim
 
 ```bash
-docker run --name my-dim \
+$ docker run --name my-dim \
    -p 8000:8000/tcp \
    -v $HOME/.config/dim:/opt/dim/config \
    -v $HOME/dim/media:/media:ro \
@@ -638,7 +638,7 @@ docker run --name my-dim \
 ### Gitlab
 
 ```bash
-sudo docker run -d --name gitlab \
+$ docker run -d --name gitlab \
   --hostname gitlab.example.com \
   --publish 8443:443 --publish 8081:80 -p 2222:22 \
   --restart always \
