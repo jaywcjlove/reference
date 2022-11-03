@@ -58,19 +58,19 @@ Quick Reference
 [Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
 [Lerna](./docs/lerna.md)<!--rehype:style=background: rgb(192 132 252/var(\-\-bg\-opacity));-->
 [Less.js](./docs/lessjs.md)<!--rehype:style=background: rgb(29 54 93/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
-[npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
-[package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173/var(\-\-bg\-opacity));-->
 [RegEx](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155/var(\-\-bg\-opacity));-->
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198/var(\-\-bg\-opacity));-->
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
-[Yarn](./docs/yarn.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## Nodejs
 
 [Express.js](./docs/expressjs.md)<!--rehype:style=background: rgb(95 151 206/var(\-\-bg\-opacity));-->
 [Koa.js](./docs/koajs.md)<!--rehype:style=background: rgb(95 151 206/var(\-\-bg\-opacity));-->
+[npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
+[package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
+[Yarn](./docs/yarn.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 工具
@@ -89,6 +89,7 @@ Quick Reference
 
 ## Linux 命令
 
+[Conan](./docs/conan.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=tag&data-lang=C/C++-->
 [Awk](./docs/awk.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Curl](./docs/curl.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Chmod](./docs/chmod.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
