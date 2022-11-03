@@ -214,6 +214,22 @@ const school = <div>学校</div>;
 `<del>` 或 `~~删除~~` | <del>~~红色~~</del>
 <!--rehype:className=shortcuts-->
 
+### 注释类配置
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+类 | 说明
+---- | ----
+`<!--rehype:className=wrap-text-->` | 强制换行
+`<!--rehype:className=show-header-->` | 展示表格表头
+`<!--rehype:className=shortcuts-->` | 快捷键样式
+`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸自动换行
+`<!--rehype:className=style-list-arrow-->` | 列表箭头样式展示表格
+`<!--rehype:className=style-list-->` | 列表样式展示表格
+`<!--rehype:className=left-align-->` | 表格末尾列左对齐
+`<!--rehype:className=style-none-->` | \<li> 没有标记
+`<!--rehype:className=style-timeline-->` | 时间轴样式
+`<!--rehype:className=style-arrow-->` | 箭头标记
+
 
 ### 隐藏卡片标题
 <!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
