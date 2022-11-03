@@ -1,4 +1,4 @@
-Vue2 备忘清单
+Vue 2 备忘清单
 ===
 
 渐进式 JavaScript 框架 [Vue 2](https://v2.cn.vuejs.org/) 备忘清单的快速参考列表，包含常用 API 和示例。
@@ -10,8 +10,9 @@ Vue2 备忘清单
 
 Vue 是一套用于构建用户界面的渐进式框架
 
-- [Vue 2.x 官方文档](https://v2.cn.vuejs.org/)
-- [Vue Router 3.x 官方文档](https://v3.router.vuejs.org/)
+- [Vue 2.x 官方文档](https://v2.cn.vuejs.org/) _(v2.cn.vuejs.org)_
+- [Vue Router 3.x 官方文档](https://v3.router.vuejs.org/) _(v3.router.vuejs.org)_
+- [Vue 3 备忘清单](./vue.md)
 <!--rehype:className=style-round-->
 
 注意：Vue 2.x 版本对应 Vue Router 3.x 路由版本

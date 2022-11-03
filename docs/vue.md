@@ -11,8 +11,9 @@ Vue 3 备忘清单
 
 Vue 是一套用于构建用户界面的渐进式框架
 
-- [Vue 3.x 官方文档](https://cn.vuejs.org/)
-- [Vue Router 4.x 官方文档](https://router.vuejs.org/zh/)
+- [Vue 3.x 官方文档](https://cn.vuejs.org/) _(cn.vuejs.org)_
+- [Vue Router 4.x 官方文档](https://router.vuejs.org/zh/) _(router.vuejs.org)_
+- [Vue 2 备忘清单](./vue2.md)
 <!--rehype:className=style-round-->
 
 注意：Vue 3.x 版本对应 Vue Router 4.x 路由版本
