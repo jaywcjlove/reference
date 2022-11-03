@@ -67,7 +67,7 @@ Contributing 贡献
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
 ```
 
-添加 `contributing` 类名，会在卡片下方添加 _`👆待完善需要您的参与`_
+添加 `contributing` 类名，会在卡片下方添加 _`👆待完善需要您的参与`_，添加 `data-info=👆看看还缺点儿什么？`，更换默认提示文本。
 
 
 ```markdown
