@@ -342,7 +342,7 @@ export default {
 API 参考
 ---
 
-### 应用实例 - (全局 API)
+### 全局 API - 应用实例
 <!--rehype:wrap-class=row-span-3-->
 
 :- | :-
@@ -365,7 +365,7 @@ API 参考
 `app.config.globalProperties` | [#](https://cn.vuejs.org/api/application.html#app-config-globalproperties)
 `app.config.optionMergeStrategies` | [#](https://cn.vuejs.org/api/application.html#app-config-optionmergestrategies)
 
-### 通用 - (全局 API)
+### 全局 API - 通用
 
 :- | :-
 :- | :-
@@ -375,7 +375,7 @@ API 参考
 `defineAsyncComponent()` | [#](https://cn.vuejs.org/api/general.html#defineasynccomponent)
 `defineCustomElement()` | [#](https://cn.vuejs.org/api/general.html#definecustomelement)
 
-### setup() - (组合式 API)
+### 组合式 API - setup()
 
 :- | :-
 :- | :-
@@ -384,7 +384,7 @@ API 参考
 `Setup 上下文` | [#](https://cn.vuejs.org/api/composition-api-setup.html#setup-context)
 `与渲染函数一起使用` | [#](https://cn.vuejs.org/api/composition-api-setup.html#usage-with-render-functions)
 
-### 响应式: 工具 - (组合式 API)
+### 组合式 API - 响应式: 工具
 
 :- | :-
 :- | :-
@@ -396,32 +396,33 @@ API 参考
 `isReactive()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreactive)
 `isReadonly()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreadonly)
 
-### 生命周期钩子 - (组合式 API)
-<!--rehype:wrap-class=row-span-2-->
+### 组合式 API - 生命周期钩子
+<!--rehype:wrap-class=row-span-3-->
 
 :- | :-
 :- | :-
-`onMounted()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onmounted)
-`onUpdated()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onupdated)
-`onUnmounted()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onunmounted)
-`onBeforeMount()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onbeforemount)
-`onBeforeUpdate()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onbeforeupdate)
-`onBeforeUnmount()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onbeforeunmount)
-`onErrorCaptured()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured)
-`onRenderTracked()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onrendertracked)
-`onRenderTriggered()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onrendertriggered)
-`onActivated()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onactivated)
-`onDeactivated()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#ondeactivated)
-`onServerPrefetch()` | [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onserverprefetch)
+`onMounted()` | 组件挂载完成后执行 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onmounted)
+`onUpdated()` | 状态变更而更新其 DOM 树之后调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onupdated)
+`onUnmounted()` | 组件实例被卸载之后调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onunmounted)
+`onBeforeMount()` | 组件被挂载之前被调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onbeforemount)
+`onBeforeUpdate()` | 状态变更而更新其 DOM 树之前调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onbeforeupdate)
+`onBeforeUnmount()` | 组件实例被卸载之前调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onbeforeunmount)
+`onErrorCaptured()` | 捕获了后代组件传递的错误时调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured)
+`onRenderTracked()` | 组件渲染过程中追踪到响应式依赖时调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onrendertracked)
+`onRenderTriggered()` | 响应式依赖的变更触发了组件渲染时调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onrendertriggered)
+`onActivated()` | 若组件实例是 \<KeepAlive> 缓存树的一部分，当组件被插入到 DOM 中时调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onactivated)
+`onDeactivated()` | 若组件实例是 \<KeepAlive> 缓存树的一部分，当组件从 DOM 中被移除时调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#ondeactivated)
+`onServerPrefetch()` | 组件实例在服务器上被渲染之前调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onserverprefetch)
+<!--rehype:className=style-list-->
 
-### 依赖注入 - (组合式 API)
+### 组合式 API - 依赖注入
 
 :- | :-
 :- | :-
 `provide()` | [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#provide)
 `inject()` | [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject)
 
-### 响应式: 核心 - (组合式 API)
+### 组合式 API - 响应式: 核心
 
 :- | :-
 :- | :-
@@ -434,7 +435,7 @@ API 参考
 `watchSyncEffect()` | [#](https://cn.vuejs.org/api/reactivity-core.html#watchsynceffect)
 `watch()` | [#](https://cn.vuejs.org/api/reactivity-core.html#watch)
 
-### 状态选项 - (选项式 API)
+### 选项式 API - 状态选项
 
 :- | :-
 :- | :-
@@ -446,7 +447,7 @@ API 参考
 `emits` | [#](https://cn.vuejs.org/api/options-state.html#emits)
 `expose` | [#](https://cn.vuejs.org/api/options-state.html#expose)
 
-### 生命周期选项 - (选项式 API)
+### 选项式 API - 生命周期选项
 <!--rehype:wrap-class=row-span-2-->
 
 :- | :-
@@ -466,16 +467,16 @@ API 参考
 `deactivated` | [#](https://cn.vuejs.org/api/options-lifecycle.html#deactivated)
 `serverPrefetch` | [#](https://cn.vuejs.org/api/options-lifecycle.html#serverprefetch)
 
-### 其他杂项 - (选项式 API)
+### 选项式 API - 其他杂项
 
 :- | :-
 :- | :-
-`name` | [#](https://cn.vuejs.org/api/options-misc.html#name)
-`inheritAttrs` | [#](https://cn.vuejs.org/api/options-misc.html#inheritattrs)
+`name` | 显式声明组件展示时的名称 [#](https://cn.vuejs.org/api/options-misc.html#name)
+`inheritAttrs` | 默认的组件 `attribute` 透传行为 [#](https://cn.vuejs.org/api/options-misc.html#inheritattrs)
 `components` | [#](https://cn.vuejs.org/api/options-misc.html#components)
 `directives` | [#](https://cn.vuejs.org/api/options-misc.html#directives)
 
-### 渲染选项 - (选项式 API)
+### 选项式 API - 渲染选项
 
 :- | :-
 :- | :-
@@ -483,7 +484,7 @@ API 参考
 `render` | [#](https://cn.vuejs.org/api/options-rendering.html#render)
 `compilerOptions` | [#](https://cn.vuejs.org/api/options-rendering.html#compileroptions)
 
-### 组件实例 - (选项式 API)
+### 选项式 API - 组件实例
 <!--rehype:wrap-class=row-span-2-->
 
 :- | :-
@@ -502,7 +503,7 @@ API 参考
 `$forceUpdate()` | [#](https://cn.vuejs.org/api/component-instance.html#forceupdate)
 `$nextTick()` | [#](https://cn.vuejs.org/api/component-instance.html#nexttick)
 
-### 组合选项 - (选项式 API)
+### 选项式 API - 组合选项
 
 :- | :-
 :- | :-
@@ -511,7 +512,7 @@ API 参考
 `mixins` | [#](https://cn.vuejs.org/api/options-composition.html#mixins)
 `extends` | [#](https://cn.vuejs.org/api/options-composition.html#extends)
 
-### 指令 - (内置内容)
+### 内置内容 - 指令
 <!--rehype:wrap-class=row-span-2-->
 
 :- | :-
@@ -532,7 +533,7 @@ API 参考
 `v-memo` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-memo)
 `v-cloak` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-cloak)
 
-### 组件 - (内置内容)
+### 内置内容 - 组件
 
 :- | :-
 :- | :-
@@ -542,7 +543,7 @@ API 参考
 `<Teleport>` | [#](https://cn.vuejs.org/api/built-in-components.html#teleport)
 `<Suspense>` | [#](https://cn.vuejs.org/api/built-in-components.html#suspense)
 
-### 特殊 Attributes - (内置内容)
+### 内置内容 - 特殊 Attributes
 
 :- | :-
 :- | :-
@@ -550,14 +551,14 @@ API 参考
 `ref` | [#](https://cn.vuejs.org/api/built-in-special-attributes.html#ref)
 `is` | [#](https://cn.vuejs.org/api/built-in-special-attributes.html#is)
 
-### 特殊元素 - (内置内容)
+### 内置内容 - 特殊元素
 
 :- | :-
 :- | :-
 `<component>` | [#](https://cn.vuejs.org/api/built-in-special-elements.html#component)
 `<slot>` | [#](https://cn.vuejs.org/api/built-in-special-elements.html#slot)
 
-### 语法定义 - (单文件组件)
+### 单文件组件 - 语法定义
 <!--rehype:wrap-class=row-span-2-->
 
 :- | :-
@@ -569,7 +570,7 @@ API 参考
 `Src 导入` | [#](https://cn.vuejs.org/api/sfc-spec.html#src-imports)
 `注释` | [#](https://cn.vuejs.org/api/sfc-spec.html#comments)
 
-### \<script setup> - (单文件组件)
+### 单文件组件 - \<script setup>
 <!--rehype:wrap-class=row-span-2-->
 
 :- | :-
@@ -586,7 +587,7 @@ API 参考
 `针对 TypeScript 的功能` | [#](https://cn.vuejs.org/api/sfc-script-setup.html#typescript-only-features)
 `限制` | [#](https://cn.vuejs.org/api/sfc-script-setup.html#restrictions)
 
-### CSS 功能 - (单文件组件)
+### 单文件组件 - CSS 功能
 
 :- | :-
 :- | :-
@@ -594,7 +595,7 @@ API 参考
 `CSS Modules` | [#](https://cn.vuejs.org/api/sfc-css-features.html#css-modules)
 `CSS 中的 v-bind()` | [#](https://cn.vuejs.org/api/sfc-css-features.html#v-bind-in-css)
 
-### 渲染函数 - (进阶 API)
+### 进阶 API - 渲染函数
 
 :- | :-
 :- | :-
@@ -607,7 +608,7 @@ API 参考
 `withDirectives()` | [#](https://cn.vuejs.org/api/render-function.html#withdirectives)
 `withModifiers()` | [#](https://cn.vuejs.org/api/render-function.html#withmodifiers)
 
-### 服务端渲染 - (进阶 API)
+### 进阶 API - 服务端渲染
 
 :- | :-
 :- | :-
@@ -619,7 +620,7 @@ API 参考
 `renderToSimpleStream()` | [#](https://cn.vuejs.org/api/ssr.html#rendertosimplestream)
 `useSSRContext()` | [#](https://cn.vuejs.org/api/ssr.html#usessrcontext)
 
-### TypeScript 工具类型 - (进阶 API)
+### 进阶 API - TypeScript 工具类型
 
 :- | :-
 :- | :-
@@ -629,7 +630,7 @@ API 参考
 `ComponentCustomProps` | [#](https://cn.vuejs.org/api/utility-types.html#componentcustomprops)
 `CSSProperties` | [#](https://cn.vuejs.org/api/utility-types.html#cssproperties)
 
-### 自定义渲染 - (进阶 API)
+### 进阶 API - 自定义渲染
 
 :- | :-
 :- | :-
