@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Cargo 备忘清单
+ &#x26;  cargo cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="此快速参考备忘清单 Cargo 提供了编译 Rust 常用命令和示例为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,cargo">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/cargo.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="cargo-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1em" height="1em" viewBox="0 0 32 32">
+  <path d="M15 3.77a.951.951 0 1 1 1.902 0 .951.951 0 0 1-1.902 0M3.654 12.38a.951.951 0 1 1 1.902 0 .951.951 0 0 1-1.902 0m22.692.044a.951.951 0 0 1 1.902 0 .951.951 0 0 1-1.902 0M6.406 13.73a.87.87 0 0 0 .441-1.146l-.422-.954h1.66v7.48H4.736a11.71 11.71 0 0 1-.379-4.47zm6.942.184v-2.205H17.3c.204 0 1.44.236 1.44 1.16 0 .768-.95 1.044-1.73 1.044zM7.952 25.785a.951.951 0 1 1 1.902 0 .951.951 0 0 1-1.902 0m14.093.044a.951.951 0 0 1 1.902 0 .951.951 0 0 1-1.902 0m.294-2.157a.867.867 0 0 0-1.03.667l-.477 2.228a11.71 11.71 0 0 1-9.765-.047l-.477-2.228a.865.865 0 0 0-1.03-.667l-1.967.422a11.71 11.71 0 0 1-1.017-1.199h9.57c.108 0 .18-.02.18-.118v-3.385c0-.1-.072-.118-.18-.118h-2.8v-2.146h3.027c.276 0 1.477.08 1.862 1.614l.565 2.5c.18.55.913 1.653 1.693 1.653h4.94a11.71 11.71 0 0 1-1.085 1.255zm5.314-8.938a11.71 11.71 0 0 1 .025 2.033h-1.2c-.12 0-.17.08-.17.197v.552c0 1.3-.732 1.58-1.374 1.653-.61.07-1.29-.256-1.372-.63-.36-2.028-.96-2.46-1.9-3.21 1.177-.748 2.402-1.85 2.402-3.327 0-1.594-1.093-2.598-1.838-3.09-1.045-.69-2.202-.827-2.514-.827H7.277a11.71 11.71 0 0 1 6.551-3.697l1.465 1.537c.33.347.88.36 1.226.028l1.64-1.567a11.71 11.71 0 0 1 8.017 5.709l-1.122 2.534a.87.87 0 0 0 .441 1.146zm2.798.04-.038-.392 1.156-1.078c.235-.22.147-.66-.153-.772l-1.477-.552-.116-.38.92-1.28c.188-.26.015-.675-.3-.727l-1.558-.253-.187-.35.655-1.437c.134-.293-.115-.667-.437-.655l-1.58.055-.25-.303.363-1.54c.073-.313-.244-.63-.557-.557l-1.54.363-.304-.25.055-1.58c.012-.32-.362-.57-.654-.437l-1.436.655-.35-.188-.254-1.558c-.05-.316-.467-.488-.727-.3l-1.28.92-.38-.115L19.47.586c-.112-.3-.553-.388-.772-.154L17.62 1.588l-.392-.038-.832-1.345c-.168-.272-.62-.272-.787 0l-.832 1.345-.392.038L13.305.43c-.22-.234-.66-.147-.772.154l-.552 1.477-.38.115-1.28-.92c-.26-.188-.676-.015-.727.3L9.34 3.114l-.35.188-1.436-.655c-.292-.133-.667.117-.654.437l.055 1.58-.304.25-1.54-.363c-.313-.073-.63.244-.557.557l.363 1.54-.25.303-1.58-.055c-.32-.01-.57.362-.437.655l.655 1.437-.188.35-1.558.253c-.316.05-.488.467-.3.727l.92 1.28-.116.38-1.477.552c-.3.112-.388.553-.153.772l1.156 1.078-.038.392-1.345.832c-.272.168-.272.62 0 .787l1.345.832.038.392L.43 18.697c-.234.22-.147.66.153.772l1.477.552.116.38-.92 1.28c-.187.26-.015.676.3.727l1.557.253.188.35-.655 1.436c-.133.292.118.667.437.655l1.58-.055.25.304-.363 1.54c-.073.312.244.63.557.556l1.54-.363.304.25-.055 1.58c-.012.32.362.57.654.437l1.436-.655.35.188.254 1.557c.05.317.467.488.727.302l1.28-.922.38.116.552 1.477c.112.3.553.388.772.153l1.078-1.156.392.04.832 1.345c.168.27.618.272.787 0l.832-1.345.392-.04 1.078 1.156c.22.235.66.147.772-.153l.552-1.477.38-.116 1.28.922c.26.187.676.015.727-.302l.254-1.557.35-.188 1.436.655c.292.133.666-.116.654-.437l-.055-1.58.303-.25 1.54.363c.313.073.63-.244.557-.556l-.363-1.54.25-.304 1.58.055c.32.013.57-.363.437-.655l-.655-1.436.187-.35 1.558-.253c.317-.05.49-.466.3-.727l-.92-1.28.116-.38 1.477-.552c.3-.113.388-.553.153-.772l-1.156-1.078.038-.392 1.345-.832c.272-.168.273-.618 0-.787z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#cargo-备忘清单"><span class="icon icon-link"></span></a>Cargo 备忘清单</h1><div class="wrap-body">
+<p>此快速参考备忘清单 <a href="https://conan.io/">Cargo</a> 提供了编译 <a href="./rust.html">Rust</a> 常用命令和示例</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#安装-rust-和-cargo">安装 Rust 和 Cargo</a><a aria-hidden="true" class="leve3 tocs-link" href="#命令说明">命令说明</a><a aria-hidden="true" class="leve3 tocs-link" href="#创建新项目">创建新项目</a><a aria-hidden="true" class="leve3 tocs-link" href="#项目目录">项目目录</a><a aria-hidden="true" class="leve3 tocs-link" href="#编译测试">编译测试</a><a aria-hidden="true" class="leve3 tocs-link" href="#配置目标">配置目标</a><a aria-hidden="true" class="leve3 tocs-link" href="#来源配置">来源配置</a><a aria-hidden="true" class="leve3 tocs-link" href="#配置">配置</a><a aria-hidden="true" class="leve2 tocs-link" href="#包相关命令">包相关命令</a><a aria-hidden="true" class="leve3 tocs-link" href="#initnew">init/new</a><a aria-hidden="true" class="leve3 tocs-link" href="#安装包">安装包</a><a aria-hidden="true" class="leve3 tocs-link" href="#搜索包">搜索包</a><a aria-hidden="true" class="leve3 tocs-link" href="#卸载包">卸载包</a><a aria-hidden="true" class="leve2 tocs-link" href="#发布命令">发布命令</a><a aria-hidden="true" class="leve3 tocs-link" href="#登录">登录</a><a aria-hidden="true" class="leve3 tocs-link" href="#所有者">所有者</a><a aria-hidden="true" class="leve3 tocs-link" href="#打包--发布公共选项">打包 &#x26; 发布公共选项</a><a aria-hidden="true" class="leve3 tocs-link" href="#打包">打包</a><a aria-hidden="true" class="leve3 tocs-link" href="#发布">发布</a><a aria-hidden="true" class="leve3 tocs-link" href="#yank">yank</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装-rust-和-cargo"><a aria-hidden="true" tabindex="-1" href="#安装-rust-和-cargo"><span class="icon icon-link"></span></a>安装 Rust 和 Cargo</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">curl</span> <span class="token parameter variable">-sSf</span> https://static.rust-lang.org/rustup.sh <span class="token operator">|</span> <span class="token function">sh</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>在 Linux 和 macOS 系统上，这可以通过以上方命令完成</p>
+<ul>
+<li><a href="https://github.com/rust-lang/cargo">Cargo 开源仓库</a> <em>(github.com)</em></li>
+<li><a href="https://doc.rust-lang.org/cargo">Cargo 官网</a> <em>(doc.rust-lang.org)</em></li>
+<li><a href="https://www.rustwiki.org.cn/zh-CN/cargo/index.html">Cargo 官网(中文)</a> <em>(rustwiki.org.cn)</em></li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="命令说明"><a aria-hidden="true" tabindex="-1" href="#命令说明"><span class="icon icon-link"></span></a>命令说明</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>cargo version</code></td><td align="left">显示版本信息以确认 Cargo 已安装</td></tr><tr><td align="left"><code>cargo new</code></td><td align="left">创建一个新项目</td></tr><tr><td align="left"><code>cargo test</code></td><td align="left">在项目中运行单元测试</td></tr><tr><td align="left"><code>cargo check</code></td><td align="left">快速编译项目，无需生成二进制文件来检查错误</td></tr><tr><td align="left"><code>cargo fmt</code></td><td align="left">自动格式化代码</td></tr><tr><td align="left"><code>cargo build</code></td><td align="left">编译一个项目</td></tr><tr><td align="left"><code>cargo run</code></td><td align="left">一步编译和运行项目</td></tr><tr><td align="left"><code>cargo clippy --all-targets -- --D warnings</code></td><td align="left">Linter 检查错误</td></tr><tr><td align="left"><code>cargo tarpaulin --ignore-tests</code></td><td align="left">检查代码覆盖率</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="创建新项目"><a aria-hidden="true" tabindex="-1" href="#创建新项目"><span class="icon icon-link"></span></a>创建新项目</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> new hello_world <span class="token parameter variable">--bin</span>
+</span></code></pre>
+<ul>
+<li><code>--bin</code> 正在制作一个二进制程序</li>
+<li><code>--lib</code> 正在创建一个库(lib)</li>
+</ul>
+<p>得到如下目录:</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">cd</span> hello_world
+</span><span class="code-line">$ tree <span class="token builtin class-name">.</span>
+</span><span class="code-line"><span class="token builtin class-name">.</span>
+</span><span class="code-line">├── Cargo.toml
+</span><span class="code-line">└── src
+</span><span class="code-line">    └── main.rs
+</span></code></pre>
+<p><code>Cargo.toml</code> 被称为一个 <code>manifest</code> 元清单，它包含了 <code>Cargo</code> 编译项目所需的所有元数据</p>
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">package</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"hello_world"</span>
+</span><span class="code-line"><span class="token key property">version</span> <span class="token punctuation">=</span> <span class="token string">"0.1.0"</span>
+</span><span class="code-line"><span class="token key property">authors</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"Your Name &#x3C;you@example.com>"</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">edition</span> <span class="token punctuation">=</span> <span class="token string">"2018"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">dependencies</span><span class="token punctuation">]</span>
+</span></code></pre>
+<p>入口文件 <code>src/main.rs</code></p>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>运行编译生成 <code>hello_world</code> 二进制文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> build
+</span><span class="code-line"><span class="token comment"># 文件放入 `target/release` 目录</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> build <span class="token parameter variable">--release</span>
+</span></code></pre>
+<p>然后运行它:</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ./target/debug/hello_world
+</span><span class="code-line">Hello, world<span class="token operator">!</span>
+</span></code></pre>
+<p>也可以直接使用 <code>cargo run</code>，它会自行<code>编译</code>并<code>运行</code>它:</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> run
+</span><span class="code-line">   Running <span class="token variable"><span class="token variable">`</span>target/hello_world<span class="token variable">`</span></span>
+</span><span class="code-line">Hello, world<span class="token operator">!</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="项目目录"><a aria-hidden="true" tabindex="-1" href="#项目目录"><span class="icon icon-link"></span></a>项目目录</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">.</span>
+</span><span class="code-line">├── Cargo.lock
+</span><span class="code-line">├── Cargo.toml
+</span><span class="code-line">├── benches     <span class="token comment"># 基准目录</span>
+</span><span class="code-line">│   └── large-input.rs
+</span><span class="code-line">├── examples    <span class="token comment"># 示例</span>
+</span><span class="code-line">│   └── simple.rs
+</span><span class="code-line">├── src         <span class="token comment"># 源代码</span>
+</span><span class="code-line">│   ├── bin
+</span><span class="code-line">│   │   └── another_executable.rs
+</span><span class="code-line">│   ├── lib.rs  <span class="token comment"># 默认库</span>
+</span><span class="code-line">│   └── main.rs <span class="token comment"># 入口文件</span>
+</span><span class="code-line">└── tests       <span class="token comment"># 集成测试</span>
+</span><span class="code-line">    └── some-integration-tests.rs
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="编译测试"><a aria-hidden="true" tabindex="-1" href="#编译测试"><span class="icon icon-link"></span></a>编译测试</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 编译输出二进制文件，放入 `target/debug` 目录</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> build
+</span><span class="code-line"><span class="token comment"># 输出二进制文件，放入 `target/release` 目录</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> build <span class="token parameter variable">--release</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> run      <span class="token comment"># 编译并运行</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> <span class="token builtin class-name">test</span>     <span class="token comment"># 运行您的测试</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> <span class="token builtin class-name">test</span> foo <span class="token comment"># 传递过滤器，来运行特定测试</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="配置目标"><a aria-hidden="true" tabindex="-1" href="#配置目标"><span class="icon icon-link"></span></a>配置目标</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text"><code class="language-toml code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">package</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># ...</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">lib</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 生成目标与库的名称. 本该默认是包名, 替换所有破折号为 下划线. (Rust `extern crate` 声明会参考该名；因此，该值必须是可用的有效Rust标识符)</span>
+</span><span class="code-line"><span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"foo"</span>
+</span><span class="code-line"><span class="token comment"># 该字段，指向 crate 的入口(位置), 路径相对于 `Cargo.toml`.</span>
+</span><span class="code-line"><span class="token key property">path</span> <span class="token punctuation">=</span> <span class="token string">"src/lib.rs"</span>
+</span><span class="code-line"><span class="token comment"># 一个给目标启用单元测试 的 标志. 会被 `cargo test`使用.</span>
+</span><span class="code-line"><span class="token key property">test</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token comment"># 一个给目标启用文档测试 的 标志. 只与库相关, 不会影响其他部分。会被 `cargo test`使用.</span>
+</span><span class="code-line"><span class="token key property">doctest</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token comment"># 一个给目标启用基准 的 标志. 会被 `cargo bench`使用.</span>
+</span><span class="code-line"><span class="token key property">bench</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token comment"># 一个给目标启用文档 的 标志. 会被 `cargo doc`使用.</span>
+</span><span class="code-line"><span class="token key property">doc</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token comment"># 若该目标为 编译器扩展, 那要把该字段设为 true，以让 Cargo 正确编译和，可用于所有依赖项.</span>
+</span><span class="code-line"><span class="token key property">plugin</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
+</span><span class="code-line"><span class="token comment"># 若该目标为 "macros 1.1" 程序宏, 那要把该字段设为 true</span>
+</span><span class="code-line"><span class="token key property">proc-macro</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
+</span><span class="code-line"><span class="token comment"># 若设为 false, `cargo test` 会为 rustc 省略 `--test` 标志, 这阻止它生成测试工具 这在二进制存在，构建管理测试运行器本身的情况下，有用.</span>
+</span><span class="code-line"><span class="token key property">harness</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token comment"># 若设置了，那 目标会使用一个与`[package]`配置不同的版本, 也许是，编译一个库 2018年版本或，编译单元测试的2015年版本. 默认情况下所有目标都使用`[package]`中指定的版本进行编译。</span>
+</span><span class="code-line"><span class="token key property">edition</span> <span class="token punctuation">=</span> <span class="token string">'2015'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="来源配置"><a aria-hidden="true" tabindex="-1" href="#来源配置"><span class="icon icon-link"></span></a>来源配置</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-toml code-highlight"><span class="code-line"><span class="token comment"># `source` 表下，就是存储有关要更换的来源名称</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">source</span><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 在`source` 表格之下的，可为一定数量的有关来源名称. 示例下面就# 定义了一个新源， 叫 `my-awesome-source`， 其内容来自本地 # `vendor`目录 ，其相对于包含`.cargo/config`文件的目录</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">source.my-awesome-source</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">directory</span> <span class="token punctuation">=</span> <span class="token string">"vendor"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Git sources 也指定一个 branch/tag/rev</span>
+</span><span class="code-line"><span class="token key property">git</span> <span class="token punctuation">=</span> <span class="token string">"https://example.com/path/to/repo"</span>
+</span><span class="code-line"><span class="token comment"># branch = "master"</span>
+</span><span class="code-line"><span class="token comment"># tag = "v1.0.1"</span>
+</span><span class="code-line"><span class="token comment"># rev = "313f44e8"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># The crates.io 默认源 在"crates-io"名称下， 且在这里我们使用 `replace-with` 字段指明 默认源更换成"my-awesome-source"源</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">source.crates-io</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">replace-with</span> <span class="token punctuation">=</span> <span class="token string">"my-awesome-source"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置"><a aria-hidden="true" tabindex="-1" href="#配置"><span class="icon icon-link"></span></a>配置</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-toml code-highlight"><span class="code-line"><span class="token comment"># 每个源都有自己的表格，名称即是表名</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">source.the-source-name</span><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 命令 `the-source-name` 会被 `another-source`取代</span>
+</span><span class="code-line"><span class="token key property">replace-with</span> <span class="token punctuation">=</span> <span class="token string">"another-source"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 有几种可用的源定义(接下来有所描述)</span>
+</span><span class="code-line"><span class="token key property">registry</span> <span class="token punctuation">=</span> <span class="token string">"https://example.com/path/to/index"</span>
+</span><span class="code-line"><span class="token key property">local-registry</span> <span class="token punctuation">=</span> <span class="token string">"path/to/registry"</span>
+</span><span class="code-line"><span class="token key property">directory</span> <span class="token punctuation">=</span> <span class="token string">"path/to/vendor"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>更换源的配置通过完成 <code>.cargo/config</code>，下面为全套可用字段是</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="包相关命令"><a aria-hidden="true" tabindex="-1" href="#包相关命令"><span class="icon icon-link"></span></a>包相关命令</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="initnew"><a aria-hidden="true" tabindex="-1" href="#initnew"><span class="icon icon-link"></span></a>init/new</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>创建一个新的 <code>cargo</code> 包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> init <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>path<span class="token punctuation">]</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> new <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>path<span class="token punctuation">]</span>
+</span></code></pre>
+<ul class="style-arrow">
+<li><code>--bin</code> 创建具有二进制目标 (src/main.rs) 的包(默认行为)</li>
+<li><code>--lib</code> 使用库目标 (src/lib.rs) 创建一个包</li>
+<li><code>--edition edition</code> 指定要使用的 Rust 版本。默认值为 <code>2021</code>。可能的值：2015、2018、2021</li>
+<li><code>--name name</code> 设置包名。默认为目录名称</li>
+<li><code>--vcs vcs</code> 为给定的版本控制系统（git、hg、pijul 或fossil）初始化一个新的 VCS 存储库，或者根本不初始化任何版本控制（无）</li>
+<li><code>--registry registry</code> 限制仅发布到该注册表</li>
+</ul>
+<!--rehype:className=style-arrow-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> new foo
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装包"><a aria-hidden="true" tabindex="-1" href="#安装包"><span class="icon icon-link"></span></a>安装包</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 从 crates.io 安装或升级软件包：</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> <span class="token function">install</span> ripgrep
+</span><span class="code-line"><span class="token comment"># 在当前目录安装或重新安装包：</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> <span class="token function">install</span> <span class="token parameter variable">--path</span> <span class="token builtin class-name">.</span>
+</span><span class="code-line"><span class="token comment"># 查看已安装包的列表：</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> <span class="token function">install</span> <span class="token parameter variable">--list</span>
+</span></code></pre>
+<hr>
+<ul>
+<li><code>--vers version</code></li>
+<li><code>--version version</code> 指定要安装的版本</li>
+<li><code>--git url</code> 用于安装指定 crate 的 Git URL</li>
+<li><code>--branch branch</code> 从 git 安装时要使用的分支</li>
+<li><code>--tag tag</code> 从 git 安装时使用的标记</li>
+<li><code>--rev sha</code> 从 git 安装时使用的特定提交</li>
+<li><code>--path path</code> 要安装的本地 crate 的文件系统路径</li>
+<li><code>--list</code> 列出所有已安装的软件包及其版本</li>
+<li><code>-f</code>, <code>--force</code> 强制覆盖现有的 crate 或二进制文件</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="搜索包"><a aria-hidden="true" tabindex="-1" href="#搜索包"><span class="icon icon-link"></span></a>搜索包</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> search <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>query<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</span></code></pre>
+<ul>
+<li><code>--limit limit</code> 限制结果数量(默认值：10，最大值：100)</li>
+<li><code>--index index</code> 要使用的注册表索引的 URL</li>
+<li><code>--registry registry</code> 要使用的注册表的名称</li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> search serde
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="卸载包"><a aria-hidden="true" tabindex="-1" href="#卸载包"><span class="icon icon-link"></span></a>卸载包</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> uninstall <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>spec<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</span></code></pre>
+<ul>
+<li><code>-p</code>, <code>--package spec...</code> 要卸载的软件包</li>
+<li><code>--bin name...</code> 仅卸载二进制名称</li>
+<li><code>--root dir</code> 从中卸载软件包的目录</li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> uninstall ripgrep
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="发布命令"><a aria-hidden="true" tabindex="-1" href="#发布命令"><span class="icon icon-link"></span></a>发布命令</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="登录"><a aria-hidden="true" tabindex="-1" href="#登录"><span class="icon icon-link"></span></a>登录</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> login <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>token<span class="token punctuation">]</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--registry</code></td><td align="left">要使用的注册表的名称</td></tr></tbody></table>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>-v</code>, <code>--verbose</code></td><td align="left">启用更加详细的输出</td></tr><tr><td align="left"><code>-q</code>, <code>--quiet</code></td><td align="left">不输出Cargo的日志信息</td></tr><tr><td align="left"><code>--color when</code></td><td align="left">输出内容的颜色 <code>auto</code>, <code>always</code>, <code>never</code></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="所有者"><a aria-hidden="true" tabindex="-1" href="#所有者"><span class="icon icon-link"></span></a>所有者</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出包的所有者：</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> owner <span class="token parameter variable">--list</span> foo
+</span><span class="code-line"><span class="token comment"># 邀请所有者加入包：</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> owner <span class="token parameter variable">--add</span> username foo
+</span><span class="code-line"><span class="token comment"># 从包中删除所有者：</span>
+</span><span class="code-line">$ <span class="token function">cargo</span> owner <span class="token parameter variable">--remove</span> username foo
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>--token token</code></td><td align="left">身份验证时使用的 API 令牌</td></tr><tr><td align="left"><code>--index index</code></td><td align="left">要使用的注册表索引的 URL</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="打包--发布公共选项"><a aria-hidden="true" tabindex="-1" href="#打包--发布公共选项"><span class="icon icon-link"></span></a>打包 &#x26; 发布公共选项</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<p>选择包</p>
+<ul>
+<li><code>-p spec...</code>, <code>--package spec...</code> Package 指定包</li>
+<li><code>--workspace</code> Package 工作区中的全体成员</li>
+<li><code>--exclude SPEC...</code> 排除指定包</li>
+</ul>
+<p>编译选项</p>
+<ul>
+<li><code>--target triple</code> 为指定架构执行 Package</li>
+<li><code>--target-dir directory</code> 用于存放生成的工件以及中间文件的目录</li>
+</ul>
+<p>特性选择</p>
+<ul>
+<li><code>--features features</code> 传递以空格或者逗号分隔的列表，其中给出要启用的特性</li>
+<li><code>--all-features</code> 为给定的包启用全部可用特性</li>
+<li><code>--no-default-features</code> 不启用给定包的default特性</li>
+</ul>
+<p>清单选项</p>
+<ul>
+<li><code>--manifest-path path</code> 用于指定 Cargo.toml 文件的路径</li>
+<li><code>--frozen</code>, <code>--locked</code> 这两个选项用于保证Cargo.lock文件是最新的</li>
+<li><code>--offline</code> 禁止Cargo访问网络</li>
+</ul>
+<p>混杂选项</p>
+<ul>
+<li><code>-j N</code>, <code>--jobs N</code> 要并行运行的作业数量</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="打包"><a aria-hidden="true" tabindex="-1" href="#打包"><span class="icon icon-link"></span></a>打包</h3><div class="wrap-body">
+<p>将本地包打包为可分发的压缩文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> package <span class="token punctuation">[</span>options<span class="token punctuation">]</span>
+</span></code></pre>
+<hr>
+<ul>
+<li><code>-l</code>, <code>--list</code> 输出包中包含的文件(不实际进行打包)。</li>
+<li><code>--no-verify</code> 构建包时不进行校验。</li>
+<li><code>--no-metadata</code> 忽略 缺少可读的元信息(如描述信息或采用的授权协议) 时产生的警告。</li>
+<li><code>--allow-dirty</code> 允许打包 在版本控制系统中仍有未提交内容 的包。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="发布"><a aria-hidden="true" tabindex="-1" href="#发布"><span class="icon icon-link"></span></a>发布</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> publish <span class="token punctuation">[</span>options<span class="token punctuation">]</span>
+</span></code></pre>
+<p>发布选项</p>
+<ul>
+<li><code>--dry-run</code> 在不上传的情况下执行所有检查</li>
+<li><code>--token token</code> 身份验证时使用的 API 令牌</li>
+<li><code>--no-verify</code> 不要通过构建内容来验证内容</li>
+<li><code>--allow-dirty</code> 允许打包具有未提交的 VCS 更改的工作目录</li>
+<li><code>--index index</code> 要使用的注册表索引的 URL</li>
+<li><code>--registry registry</code> 要发布到的注册表的名称</li>
+</ul>
+<p>打包选择</p>
+<ul>
+<li><code>-p spec</code>, <code>--package spec</code> 要发布的包</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="yank"><a aria-hidden="true" tabindex="-1" href="#yank"><span class="icon icon-link"></span></a>yank</h3><div class="wrap-body">
+<p>从服务器的索引中删除以前发布的 crate 版本</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cargo</span> yank <span class="token parameter variable">--vers</span> <span class="token number">1.0</span>.7 foo
+</span></code></pre>
+<ul>
+<li><code>--vers version</code> 要 yank 或 un-yank 的版本</li>
+<li><code>--undo</code> 撤消 yank，将版本放回索引中</li>
+<li><code>--token token</code> 身份验证时使用的 API 令牌</li>
+<li><code>--index index</code> 要使用的注册表索引的 URL</li>
+<li><code>--registry registry</code> 要使用的注册表名称</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://doc.rust-lang.org/stable/cargo/">The Cargo Book</a> <em>(doc.rust-lang.org)</em></li>
+<li><a href="https://www.rustwiki.org.cn/zh-CN/cargo/index.html">Cargo 手册 中文版</a> <em>(rustwiki.org.cn)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
