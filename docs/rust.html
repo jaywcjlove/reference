@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Rust 备忘清单
+ &#x26;  rust cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="Rust 快速参考备忘单，旨在为编写基本语法和方法提供帮助。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,rust">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/rust.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="rust-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1em" height="1em" viewBox="0 0 32 32">
+  <path d="M15 3.77a.951.951 0 1 1 1.902 0 .951.951 0 0 1-1.902 0M3.654 12.38a.951.951 0 1 1 1.902 0 .951.951 0 0 1-1.902 0m22.692.044a.951.951 0 0 1 1.902 0 .951.951 0 0 1-1.902 0M6.406 13.73a.87.87 0 0 0 .441-1.146l-.422-.954h1.66v7.48H4.736a11.71 11.71 0 0 1-.379-4.47zm6.942.184v-2.205H17.3c.204 0 1.44.236 1.44 1.16 0 .768-.95 1.044-1.73 1.044zM7.952 25.785a.951.951 0 1 1 1.902 0 .951.951 0 0 1-1.902 0m14.093.044a.951.951 0 0 1 1.902 0 .951.951 0 0 1-1.902 0m.294-2.157a.867.867 0 0 0-1.03.667l-.477 2.228a11.71 11.71 0 0 1-9.765-.047l-.477-2.228a.865.865 0 0 0-1.03-.667l-1.967.422a11.71 11.71 0 0 1-1.017-1.199h9.57c.108 0 .18-.02.18-.118v-3.385c0-.1-.072-.118-.18-.118h-2.8v-2.146h3.027c.276 0 1.477.08 1.862 1.614l.565 2.5c.18.55.913 1.653 1.693 1.653h4.94a11.71 11.71 0 0 1-1.085 1.255zm5.314-8.938a11.71 11.71 0 0 1 .025 2.033h-1.2c-.12 0-.17.08-.17.197v.552c0 1.3-.732 1.58-1.374 1.653-.61.07-1.29-.256-1.372-.63-.36-2.028-.96-2.46-1.9-3.21 1.177-.748 2.402-1.85 2.402-3.327 0-1.594-1.093-2.598-1.838-3.09-1.045-.69-2.202-.827-2.514-.827H7.277a11.71 11.71 0 0 1 6.551-3.697l1.465 1.537c.33.347.88.36 1.226.028l1.64-1.567a11.71 11.71 0 0 1 8.017 5.709l-1.122 2.534a.87.87 0 0 0 .441 1.146zm2.798.04-.038-.392 1.156-1.078c.235-.22.147-.66-.153-.772l-1.477-.552-.116-.38.92-1.28c.188-.26.015-.675-.3-.727l-1.558-.253-.187-.35.655-1.437c.134-.293-.115-.667-.437-.655l-1.58.055-.25-.303.363-1.54c.073-.313-.244-.63-.557-.557l-1.54.363-.304-.25.055-1.58c.012-.32-.362-.57-.654-.437l-1.436.655-.35-.188-.254-1.558c-.05-.316-.467-.488-.727-.3l-1.28.92-.38-.115L19.47.586c-.112-.3-.553-.388-.772-.154L17.62 1.588l-.392-.038-.832-1.345c-.168-.272-.62-.272-.787 0l-.832 1.345-.392.038L13.305.43c-.22-.234-.66-.147-.772.154l-.552 1.477-.38.115-1.28-.92c-.26-.188-.676-.015-.727.3L9.34 3.114l-.35.188-1.436-.655c-.292-.133-.667.117-.654.437l.055 1.58-.304.25-1.54-.363c-.313-.073-.63.244-.557.557l.363 1.54-.25.303-1.58-.055c-.32-.01-.57.362-.437.655l.655 1.437-.188.35-1.558.253c-.316.05-.488.467-.3.727l.92 1.28-.116.38-1.477.552c-.3.112-.388.553-.153.772l1.156 1.078-.038.392-1.345.832c-.272.168-.272.62 0 .787l1.345.832.038.392L.43 18.697c-.234.22-.147.66.153.772l1.477.552.116.38-.92 1.28c-.187.26-.015.676.3.727l1.557.253.188.35-.655 1.436c-.133.292.118.667.437.655l1.58-.055.25.304-.363 1.54c-.073.312.244.63.557.556l1.54-.363.304.25-.055 1.58c-.012.32.362.57.654.437l1.436-.655.35.188.254 1.557c.05.317.467.488.727.302l1.28-.922.38.116.552 1.477c.112.3.553.388.772.153l1.078-1.156.392.04.832 1.345c.168.27.618.272.787 0l.832-1.345.392-.04 1.078 1.156c.22.235.66.147.772-.153l.552-1.477.38-.116 1.28.922c.26.187.676.015.727-.302l.254-1.557.35-.188 1.436.655c.292.133.666-.116.654-.437l-.055-1.58.303-.25 1.54.363c.313.073.63-.244.557-.556l-.363-1.54.25-.304 1.58.055c.32.013.57-.363.437-.655l-.655-1.436.187-.35 1.558-.253c.317-.05.49-.466.3-.727l-.92-1.28.116-.38 1.477-.552c.3-.113.388-.553.153-.772l-1.156-1.078.038-.392 1.345-.832c.272-.168.273-.618 0-.787z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#rust-备忘清单"><span class="icon icon-link"></span></a>Rust 备忘清单</h1><div class="wrap-body">
+<p>Rust 快速参考备忘单，旨在为编写基本语法和方法提供帮助。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#hello_worldrs">Hello_World.rs</a><a aria-hidden="true" class="leve4 tocs-link" href="#编译运行">编译运行</a><a aria-hidden="true" class="leve3 tocs-link" href="#原始类型">原始类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#formatting">Formatting</a><a aria-hidden="true" class="leve3 tocs-link" href="#打印风格">打印风格</a><a aria-hidden="true" class="leve3 tocs-link" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" href="#函数">函数</a><a aria-hidden="true" class="leve2 tocs-link" href="#rust-类型">Rust 类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#整数">整数</a><a aria-hidden="true" class="leve3 tocs-link" href="#浮点数">浮点数</a><a aria-hidden="true" class="leve3 tocs-link" href="#布尔值">布尔值</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符">字符</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符串字面量">字符串字面量</a><a aria-hidden="true" class="leve3 tocs-link" href="#数组">数组</a><a aria-hidden="true" class="leve3 tocs-link" href="#多维数组">多维数组</a><a aria-hidden="true" class="leve3 tocs-link" href="#可变数组">可变数组</a><a aria-hidden="true" class="leve3 tocs-link" href="#切片">切片</a><a aria-hidden="true" class="leve3 tocs-link" href="#向量">向量</a><a aria-hidden="true" class="leve3 tocs-link" href="#元组">元组</a><a aria-hidden="true" class="leve2 tocs-link" href="#rust-字符串">Rust 字符串</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符串字面量-1">字符串字面量</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符串对象">字符串对象</a><a aria-hidden="true" class="leve3 tocs-link" href="#capacity">.capacity()</a><a aria-hidden="true" class="leve3 tocs-link" href="#contains">.contains()</a><a aria-hidden="true" class="leve3 tocs-link" href="#添加单个字符">添加单个字符</a><a aria-hidden="true" class="leve3 tocs-link" href="#添加整个字符串">添加整个字符串</a><a aria-hidden="true" class="leve2 tocs-link" href="#rust-运算符">Rust 运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#比较运算符">比较运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#算术运算符">算术运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#位运算符">位运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#逻辑运算符">逻辑运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#复合赋值运算符">复合赋值运算符</a><a aria-hidden="true" class="leve2 tocs-link" href="#rust-流程控制">Rust 流程控制</a><a aria-hidden="true" class="leve3 tocs-link" href="#if表达式">If表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#ifelse-表达式">If...Else 表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#ifelseifelse-表达式">If...Else...if...Else 表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#iflet-表达式">If...let 表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#匹配表达式">匹配表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#嵌套if-表达式">嵌套...If 表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#for-循环">For 循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#while-循环">While 循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#loop-关键字">Loop 关键字</a><a aria-hidden="true" class="leve3 tocs-link" href="#break-中断语句">Break 中断语句</a><a aria-hidden="true" class="leve3 tocs-link" href="#continue-继续声明">Continue 继续声明</a><a aria-hidden="true" class="leve2 tocs-link" href="#rust-函数">Rust 函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#基本函数">基本函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#按值传递">按值传递</a><a aria-hidden="true" class="leve3 tocs-link" href="#通过引用传递">通过引用传递</a><a aria-hidden="true" class="leve3 tocs-link" href="#返回">返回</a><a aria-hidden="true" class="leve3 tocs-link" href="#数组作为参数">数组作为参数</a><a aria-hidden="true" class="leve3 tocs-link" href="#返回数组">返回数组</a><a aria-hidden="true" class="leve2 tocs-link" href="#杂项">杂项</a><a aria-hidden="true" class="leve3 tocs-link" href="#类型断言-type-casting">类型断言 type-casting</a><a aria-hidden="true" class="leve3 tocs-link" href="#借用">借用</a><a aria-hidden="true" class="leve3 tocs-link" href="#取消引用">取消引用</a><a aria-hidden="true" class="leve3 tocs-link" href="#变量范围">变量范围</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="hello_worldrs"><a aria-hidden="true" tabindex="-1" href="#hello_worldrs"><span class="icon icon-link"></span></a>Hello_World.rs</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div><div class="h3wrap-body"><h4 id="编译运行"><a aria-hidden="true" tabindex="-1" href="#编译运行"><span class="icon icon-link"></span></a>编译运行</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ rustc Hello_World.rs
+</span><span class="code-line">$ ./Hello_World
+</span><span class="code-line">Hello, World<span class="token operator">!</span>
+</span></code></pre>
+</div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="原始类型"><a aria-hidden="true" tabindex="-1" href="#原始类型"><span class="icon icon-link"></span></a>原始类型</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>bool</code></td><td align="left">布尔值 (<code>true</code> <em>/</em> <code>false</code>)</td></tr><tr><td align="left"><code>char</code></td><td align="left">字符</td></tr><tr><td align="left"><code>f32</code>, <code>f64</code></td><td align="left">32 位、64 位浮点数</td></tr><tr><td align="left"><code>i64</code>, <code>i32</code>, <code>i16</code>, <code>i8</code></td><td align="left">有符号 16- ... 整数</td></tr><tr><td align="left"><code>u64</code>, <code>u32</code>, <code>u16</code>, <code>u8</code></td><td align="left">无符号 16 位，... 整数</td></tr><tr><td align="left"><code>isize</code></td><td align="left">指针大小的有符号整数</td></tr><tr><td align="left"><code>usize</code></td><td align="left">指针大小的无符号整数</td></tr></tbody></table>
+<p>查看: <a href="#rust-%E7%B1%BB%E5%9E%8B">Rust 类型</a></p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="formatting"><a aria-hidden="true" tabindex="-1" href="#formatting"><span class="icon icon-link"></span></a>Formatting</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text "><code class="language-rust code-highlight"><span class="code-line"><span class="token comment">// 单个占位符</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 多个占位符</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{} {}"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 位置参数</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{0} 是 {1} {2}，{0} 也是 {3} 编程语言"</span><span class="token punctuation">,</span> <span class="token string">"Rust"</span><span class="token punctuation">,</span> <span class="token string">"cool"</span><span class="token punctuation">,</span> <span class="token string">"language"</span><span class="token punctuation">,</span> <span class="token string">"safe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 命名参数</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{country} 是一个团结的国家"</span><span class="token punctuation">,</span> country <span class="token operator">=</span> <span class="token string">"China"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 占位符特征 :b 表示二进制， :0x 表示十六进制， :o 表示八进制</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"让我们打印 76 是二进制的 {:b} ，十六进制等价物是 {:0x} 八进制等价物是 {:o}"</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 调试特征</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"使用调试特征 {:?} 在此处打印我们想要的任何内容"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">76</span><span class="token punctuation">,</span> <span class="token char">'A'</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 1.58 中的新格式字符串</span>
+</span><span class="code-line"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">"world"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Hello {x}!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="打印风格"><a aria-hidden="true" tabindex="-1" href="#打印风格"><span class="icon icon-link"></span></a>打印风格</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token comment">// 打印输出</span>
+</span><span class="code-line"><span class="token macro property">print!</span><span class="token punctuation">(</span><span class="token string">"Hello World\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 打印后追加新行</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"追加新行"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 打印为错误</span>
+</span><span class="code-line"><span class="token macro property">eprint!</span><span class="token punctuation">(</span><span class="token string">"这是一个错误\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 打印为新行错误</span>
+</span><span class="code-line"><span class="token macro property">eprintln!</span><span class="token punctuation">(</span><span class="token string">"这是新行的错误"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token comment">// 初始化和声明变量</span>
+</span><span class="code-line"><span class="token keyword">let</span> some_variable <span class="token operator">=</span> <span class="token string">"This_is_a_variable"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 使变量可变</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> mutable_variable <span class="token operator">=</span> <span class="token string">"Mutable"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 分配多个变量</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">"ElementalX"</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// （全局）常量</span>
+</span><span class="code-line"><span class="token keyword">const</span> <span class="token constant">SCREAMING_SNAKE_CASE</span><span class="token punctuation">:</span><span class="token keyword">i64</span> <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token comment">// 行注释</span>
+</span><span class="code-line"><span class="token comment">/*.............块注释 */</span>
+</span><span class="code-line"><span class="token comment">/// 外部文档注释</span>
+</span><span class="code-line"><span class="token comment">//! 内部文档评论</span>
+</span></code></pre>
+<p>另见: <a href="https://doc.rust-lang.org/reference/comments.html">注释</a> <em>(doc.rust-lang.org)</em></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"这是一个函数!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>查看: <a href="#rust-%E5%87%BD%E6%95%B0">Functions</a></p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="rust-类型"><a aria-hidden="true" tabindex="-1" href="#rust-类型"><span class="icon icon-link"></span></a>Rust 类型</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="整数"><a aria-hidden="true" tabindex="-1" href="#整数"><span class="icon icon-link"></span></a>整数</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> a<span class="token punctuation">:</span> <span class="token keyword">u32</span> <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> b<span class="token punctuation">:</span> <span class="token keyword">u64</span> <span class="token operator">=</span> <span class="token number">877</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> c<span class="token punctuation">:</span> <span class="token keyword">i64</span> <span class="token operator">=</span> <span class="token number">8999</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> d <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">90</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="浮点数"><a aria-hidden="true" tabindex="-1" href="#浮点数"><span class="icon icon-link"></span></a>浮点数</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> sixty_bit_float<span class="token punctuation">:</span> <span class="token keyword">f64</span> <span class="token operator">=</span> <span class="token number">89.90</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> thirty_two_bit_float<span class="token punctuation">:</span> <span class="token keyword">f32</span> <span class="token operator">=</span> <span class="token number">7.90</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> just_a_float <span class="token operator">=</span> <span class="token number">69.69</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="布尔值"><a aria-hidden="true" tabindex="-1" href="#布尔值"><span class="icon icon-link"></span></a>布尔值</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> true_val<span class="token punctuation">:</span> <span class="token keyword">bool</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> false_val<span class="token punctuation">:</span> <span class="token keyword">bool</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> just_a_bool <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> is_true <span class="token operator">=</span> <span class="token number">8</span> <span class="token operator">&#x3C;</span> <span class="token number">5</span><span class="token punctuation">;</span>  <span class="token comment">// => false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符"><a aria-hidden="true" tabindex="-1" href="#字符"><span class="icon icon-link"></span></a>字符</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> first_letter_of_alphabet <span class="token operator">=</span> <span class="token char">'a'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> explicit_char<span class="token punctuation">:</span> <span class="token keyword">char</span> <span class="token operator">=</span> <span class="token char">'F'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> implicit_char <span class="token operator">=</span> <span class="token char">'8'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> emoji <span class="token operator">=</span> <span class="token string">"\u{1f600}"</span><span class="token punctuation">;</span>   <span class="token comment">// => 😀</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串字面量"><a aria-hidden="true" tabindex="-1" href="#字符串字面量"><span class="icon icon-link"></span></a>字符串字面量</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> community_name <span class="token operator">=</span> <span class="token string">"AXIAL"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> no_of_members<span class="token punctuation">:</span> <span class="token operator">&#x26;</span><span class="token keyword">str</span> <span class="token operator">=</span> <span class="token string">"ten"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"社区的名称是 {community_name}，它有 {no_of_members} 个成员"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>查看: <a href="#rust-%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数组"><a aria-hidden="true" tabindex="-1" href="#数组"><span class="icon icon-link"></span></a>数组</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line">┌─────┬─────┬─────┬─────┬─────┬─────┐
+</span><span class="code-line"><span class="token operator">|</span> <span class="token number">92</span>  <span class="token operator">|</span> <span class="token number">97</span>  <span class="token operator">|</span> <span class="token number">98</span>  <span class="token operator">|</span> <span class="token number">99</span>  <span class="token operator">|</span> <span class="token number">98</span>  <span class="token operator">|</span> <span class="token number">94</span>  <span class="token operator">|</span>
+</span><span class="code-line">└─────┴─────┴─────┴─────┴─────┴─────┘
+</span><span class="code-line">   <span class="token number">0</span>     <span class="token number">1</span>     <span class="token number">2</span>     <span class="token number">3</span>     <span class="token number">4</span>     <span class="token number">5</span>
+</span></code></pre>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">i64</span><span class="token punctuation">;</span> <span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">92</span><span class="token punctuation">,</span><span class="token number">97</span><span class="token punctuation">,</span><span class="token number">98</span><span class="token punctuation">,</span><span class="token number">99</span><span class="token punctuation">,</span><span class="token number">98</span><span class="token punctuation">,</span><span class="token number">94</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="多维数组"><a aria-hidden="true" tabindex="-1" href="#多维数组"><span class="icon icon-link"></span></a>多维数组</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line">     j0   j1   j2   j3   j4   j5
+</span><span class="code-line">   ┌────┬────┬────┬────┬────┬────┐
+</span><span class="code-line">i0 <span class="token operator">|</span> <span class="token number">1</span>  <span class="token operator">|</span> <span class="token number">2</span>  <span class="token operator">|</span> <span class="token number">3</span>  <span class="token operator">|</span> <span class="token number">4</span>  <span class="token operator">|</span> <span class="token number">5</span>  <span class="token operator">|</span> <span class="token number">6</span>  <span class="token operator">|</span>
+</span><span class="code-line">   ├────┼────┼────┼────┼────┼────┤
+</span><span class="code-line">i1 <span class="token operator">|</span> <span class="token number">6</span>  <span class="token operator">|</span> <span class="token number">5</span>  <span class="token operator">|</span> <span class="token number">4</span>  <span class="token operator">|</span> <span class="token number">3</span>  <span class="token operator">|</span> <span class="token number">2</span>  <span class="token operator">|</span> <span class="token number">1</span>  <span class="token operator">|</span>
+</span><span class="code-line">   └────┴────┴────┴────┴────┴────┘
+</span></code></pre>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">i64</span><span class="token punctuation">;</span> <span class="token number">6</span><span class="token punctuation">]</span> <span class="token punctuation">;</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">            <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="可变数组"><a aria-hidden="true" tabindex="-1" href="#可变数组"><span class="icon icon-link"></span></a>可变数组</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">i32</span> <span class="token punctuation">;</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">array<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+</span><span class="code-line">array<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>使用 <code>mut</code> 关键字使其可变</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="切片"><a aria-hidden="true" tabindex="-1" href="#切片"><span class="icon icon-link"></span></a>切片</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> array<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token keyword">i64</span><span class="token punctuation">;</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 下限包括在内，上限不包括在内</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> slices<span class="token punctuation">:</span> <span class="token operator">&#x26;</span><span class="token punctuation">[</span><span class="token keyword">i64</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&#x26;</span>array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">..</span><span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"切片的元素是：{slices:?}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="向量"><a aria-hidden="true" tabindex="-1" href="#向量"><span class="icon icon-link"></span></a>向量</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> some_vector <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+</span></code></pre>
+<p>使用 <code>vec!</code> 宏声明向量</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="元组"><a aria-hidden="true" tabindex="-1" href="#元组"><span class="icon icon-link"></span></a>元组</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> tuple <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token char">'A'</span> <span class="token punctuation">,</span> <span class="token string">"Cool"</span><span class="token punctuation">,</span> <span class="token number">78</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="rust-字符串"><a aria-hidden="true" tabindex="-1" href="#rust-字符串"><span class="icon icon-link"></span></a>Rust 字符串</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串字面量-1"><a aria-hidden="true" tabindex="-1" href="#字符串字面量-1"><span class="icon icon-link"></span></a>字符串字面量</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> cs<span class="token punctuation">:</span><span class="token operator">&#x26;</span><span class="token keyword">str</span> <span class="token operator">=</span> <span class="token string">"备忘清单"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => 为开发者分享备忘单</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"为开发者分享 {cs}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串对象"><a aria-hidden="true" tabindex="-1" href="#字符串对象"><span class="icon icon-link"></span></a>字符串对象</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token comment">// 创建一个空字符串对象</span>
+</span><span class="code-line"><span class="token keyword">let</span> my_string <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span>new<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 转换为字符串对象</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token class-name">S_string</span> <span class="token operator">=</span> a_string<span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 创建一个初始化的字符串对象</span>
+</span><span class="code-line"><span class="token keyword">let</span> lang <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"Rust"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"First language is {lang}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="capacity"><a aria-hidden="true" tabindex="-1" href="#capacity"><span class="icon icon-link"></span></a>.capacity()</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> rand <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"Random String"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">rand<span class="token punctuation">.</span><span class="token function">capacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// => 13</span>
+</span></code></pre>
+<p>以字节为单位计算字符串的容量</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="contains"><a aria-hidden="true" tabindex="-1" href="#contains"><span class="icon icon-link"></span></a>.contains()</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"ElementalX"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">name<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"Element"</span><span class="token punctuation">)</span> <span class="token comment">// => true</span>
+</span></code></pre>
+<p>检查子字符串是否包含在原始字符串中</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加单个字符"><a aria-hidden="true" tabindex="-1" href="#添加单个字符"><span class="icon icon-link"></span></a>添加单个字符</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> half_text <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"Hal"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">half_text<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token char">'f'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// => Half</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加整个字符串"><a aria-hidden="true" tabindex="-1" href="#添加整个字符串"><span class="icon icon-link"></span></a>添加整个字符串</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> hi <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"Hey there..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">hi<span class="token punctuation">.</span><span class="token function">push_str</span><span class="token punctuation">(</span><span class="token string">"How are you doing??"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => Hey there...How are you doing??</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{hi}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="rust-运算符"><a aria-hidden="true" tabindex="-1" href="#rust-运算符"><span class="icon icon-link"></span></a>Rust 运算符</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="比较运算符"><a aria-hidden="true" tabindex="-1" href="#比较运算符"><span class="icon icon-link"></span></a>比较运算符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>e == f</code></td><td align="left"><code>e</code> 等于 <code>f</code></td></tr><tr><td align="left"><code>e != f</code></td><td align="left"><code>e</code> 不等于 <code>f</code></td></tr><tr><td align="left"><code>e &#x3C; f</code></td><td align="left"><code>e</code> 小于 <code>f</code></td></tr><tr><td align="left"><code>e > f</code></td><td align="left"><code>e</code> 大于 <code>f</code></td></tr><tr><td align="left"><code>e &#x3C;= f</code></td><td align="left"><code>e</code> 小于或等于 <code>f</code></td></tr><tr><td align="left"><code>e >= f</code></td><td align="left"><code>e</code> 大于或等于 <code>f</code></td></tr></tbody></table>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token punctuation">(</span>e<span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> greater <span class="token operator">=</span> f <span class="token operator">></span> e<span class="token punctuation">;</span>        <span class="token comment">// => true</span>
+</span><span class="code-line"><span class="token keyword">let</span> less <span class="token operator">=</span> f <span class="token operator">&#x3C;</span> e<span class="token punctuation">;</span>           <span class="token comment">// => false</span>
+</span><span class="code-line"><span class="token keyword">let</span> greater_equal <span class="token operator">=</span> f <span class="token operator">>=</span> e<span class="token punctuation">;</span> <span class="token comment">// => true</span>
+</span><span class="code-line"><span class="token keyword">let</span> less_equal <span class="token operator">=</span> e <span class="token operator">&#x3C;=</span> f<span class="token punctuation">;</span>    <span class="token comment">// => true</span>
+</span><span class="code-line"><span class="token keyword">let</span> equal_to <span class="token operator">=</span> e <span class="token operator">==</span> f<span class="token punctuation">;</span>      <span class="token comment">// => false</span>
+</span><span class="code-line"><span class="token keyword">let</span> not_equal_to <span class="token operator">=</span> e <span class="token operator">!=</span> f<span class="token punctuation">;</span>  <span class="token comment">// => true</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="算术运算符"><a aria-hidden="true" tabindex="-1" href="#算术运算符"><span class="icon icon-link"></span></a>算术运算符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>a +  b</code></td><td align="left"><code>a</code> 被添加到 <code>b</code></td></tr><tr><td align="left"><code>a -  b</code></td><td align="left">从 <code>a</code> 中减去<code>b</code></td></tr><tr><td align="left"><code>a /  b</code></td><td align="left"><code>a</code> 除以 <code>b</code></td></tr><tr><td align="left"><code>a % b</code></td><td align="left">通过与 <code>b</code> 相除得到 <code>a</code> 的余数</td></tr><tr><td align="left"><code>a * b</code></td><td align="left"><code>a</code> 与 <code>b</code> 相乘</td></tr></tbody></table>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> sum<span class="token punctuation">:</span> <span class="token keyword">i32</span> <span class="token operator">=</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>            <span class="token comment">// => 9</span>
+</span><span class="code-line"><span class="token keyword">let</span> subtractions<span class="token punctuation">:</span> <span class="token keyword">i32</span> <span class="token operator">=</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>   <span class="token comment">// => -1</span>
+</span><span class="code-line"><span class="token keyword">let</span> multiplication<span class="token punctuation">:</span> <span class="token keyword">i32</span> <span class="token operator">=</span> a <span class="token operator">*</span> b<span class="token punctuation">;</span> <span class="token comment">// => 20</span>
+</span><span class="code-line"><span class="token keyword">let</span> division<span class="token punctuation">:</span> <span class="token keyword">i32</span> <span class="token operator">=</span> a <span class="token operator">/</span> b<span class="token punctuation">;</span>       <span class="token comment">// => 0</span>
+</span><span class="code-line"><span class="token keyword">let</span> modulus<span class="token punctuation">:</span> <span class="token keyword">i32</span> <span class="token operator">=</span> a <span class="token operator">%</span> b<span class="token punctuation">;</span>        <span class="token comment">// => 4</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="位运算符"><a aria-hidden="true" tabindex="-1" href="#位运算符"><span class="icon icon-link"></span></a>位运算符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">运算符</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>g &#x26; h</code></td><td align="left">二进制与</td></tr><tr><td align="left">`g</td><td align="left">h`</td></tr><tr><td align="left"><code>g ^ h</code></td><td align="left">二进制异或</td></tr><tr><td align="left"><code>g ~ h</code></td><td align="left">二进制补码</td></tr><tr><td align="left"><code>g &#x3C;&#x3C; h</code></td><td align="left">二进制左移</td></tr><tr><td align="left"><code>g >> h</code></td><td align="left">二进制右移</td></tr></tbody></table>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token punctuation">(</span>g<span class="token punctuation">,</span> h<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0x1</span><span class="token punctuation">,</span> <span class="token number">0x2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> bitwise_and <span class="token operator">=</span> g <span class="token operator">&#x26;</span> h<span class="token punctuation">;</span>  <span class="token comment">// => 0</span>
+</span><span class="code-line"><span class="token keyword">let</span> bitwise_or <span class="token operator">=</span> g <span class="token operator">|</span> h<span class="token punctuation">;</span>   <span class="token comment">// => 3</span>
+</span><span class="code-line"><span class="token keyword">let</span> bitwise_xor <span class="token operator">=</span> g <span class="token operator">^</span> h<span class="token punctuation">;</span>  <span class="token comment">// => 3</span>
+</span><span class="code-line"><span class="token keyword">let</span> right_shift <span class="token operator">=</span> g <span class="token operator">>></span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// => 0</span>
+</span><span class="code-line"><span class="token keyword">let</span> left_shift <span class="token operator">=</span> h <span class="token operator">&#x3C;&#x3C;</span> <span class="token number">4</span><span class="token punctuation">;</span>  <span class="token comment">// => 32 </span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="逻辑运算符"><a aria-hidden="true" tabindex="-1" href="#逻辑运算符"><span class="icon icon-link"></span></a>逻辑运算符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">示例</th><th align="left">意义</th></tr></thead><tbody><tr><td align="left"><code>c &#x26;&#x26; d</code></td><td align="left">两者都是真的_(AND)_</td></tr><tr><td align="left">`c</td><td align="left"></td></tr><tr><td align="left"><code>!c</code></td><td align="left"><code>c</code> 为假 <em>(NOT)</em></td></tr></tbody></table>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> and <span class="token operator">=</span> c <span class="token operator">&#x26;&#x26;</span> d<span class="token punctuation">;</span>  <span class="token comment">// => false</span>
+</span><span class="code-line"><span class="token keyword">let</span> or  <span class="token operator">=</span> c <span class="token operator">||</span> d<span class="token punctuation">;</span>  <span class="token comment">// => true</span>
+</span><span class="code-line"><span class="token keyword">let</span> not <span class="token operator">=</span> <span class="token operator">!</span>c<span class="token punctuation">;</span>      <span class="token comment">// => false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="复合赋值运算符"><a aria-hidden="true" tabindex="-1" href="#复合赋值运算符"><span class="icon icon-link"></span></a>复合赋值运算符</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> k <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> l <span class="token operator">=</span> k<span class="token punctuation">;</span>
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">运算符</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>k += l</code></td><td align="left">添加一个值并赋值，然后 <code>k=9</code></td></tr><tr><td align="left"><code>k -= l</code></td><td align="left"><code>Substrate</code> 一个值并赋值，然后 <code>k=18</code></td></tr><tr><td align="left"><code>k /= l</code></td><td align="left">除以一个值并赋值，然后 <code>k=9</code></td></tr><tr><td align="left"><code>k *= l</code></td><td align="left">乘一个值并赋值，然后 <code>k=81</code></td></tr><tr><td align="left"><code>k |= l</code></td><td align="left">按位或并赋值，则 <code>k=89</code></td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="rust-流程控制"><a aria-hidden="true" tabindex="-1" href="#rust-流程控制"><span class="icon icon-link"></span></a>Rust 流程控制</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="if表达式"><a aria-hidden="true" tabindex="-1" href="#if表达式"><span class="icon icon-link"></span></a>If表达式</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> case1<span class="token punctuation">:</span> <span class="token keyword">i32</span> <span class="token operator">=</span> <span class="token number">81</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> case2<span class="token punctuation">:</span> <span class="token keyword">i32</span> <span class="token operator">=</span> <span class="token number">82</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> case1 <span class="token operator">&#x3C;</span> case2 <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"case1 大于 case2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ifelse-表达式"><a aria-hidden="true" tabindex="-1" href="#ifelse-表达式"><span class="icon icon-link"></span></a>If...Else 表达式</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> case3 <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> case4 <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> case3 <span class="token operator">>=</span> case4 <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"case3 优于 case4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"case4 大于 case3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ifelseifelse-表达式"><a aria-hidden="true" tabindex="-1" href="#ifelseifelse-表达式"><span class="icon icon-link"></span></a>If...Else...if...Else 表达式</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> foo <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> bar <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> foo <span class="token operator">==</span> bar <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"foo 等于 bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> foo <span class="token operator">&#x3C;</span> bar <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"foo 小于 bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> foo <span class="token operator">!=</span> bar <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"foo 不等于 bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Nothing"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="iflet-表达式"><a aria-hidden="true" tabindex="-1" href="#iflet-表达式"><span class="icon icon-link"></span></a>If...let 表达式</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> arr1<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token keyword">i64</span> <span class="token punctuation">;</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token keyword">let</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>_<span class="token punctuation">]</span> <span class="token operator">=</span> arr1<span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"与数组一起使用"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> arr2<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token operator">&#x26;</span><span class="token keyword">str</span><span class="token punctuation">;</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token string">"two"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token keyword">let</span><span class="token punctuation">[</span><span class="token string">"Apple"</span><span class="token punctuation">,</span> _<span class="token punctuation">]</span> <span class="token operator">=</span> arr2<span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"也适用于 str 数组"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> tuple_1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">"India"</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">,</span> <span class="token number">90.432</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token keyword">let</span><span class="token punctuation">(</span>_<span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">78.99</span><span class="token punctuation">)</span> <span class="token operator">=</span> tuple_1<span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"也适用于元组"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">let</span> tuple_2 <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">89</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token string">"Okay"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token keyword">let</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span><span class="token number">89</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> blank<span class="token punctuation">)</span> <span class="token operator">=</span> tuple_2 <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"一切{blank}伴侣？"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">let</span> tuple_3 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">89</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">,</span> <span class="token string">"Yes"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token keyword">let</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">89</span><span class="token punctuation">,</span> <span class="token string">"Yes"</span><span class="token punctuation">)</span> <span class="token operator">=</span> tuple_3<span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"模式确实匹配"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"模式不匹配"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="匹配表达式"><a aria-hidden="true" tabindex="-1" href="#匹配表达式"><span class="icon icon-link"></span></a>匹配表达式</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> day_of_week <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">match</span> day_of_week <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token number">1</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"兄弟们今天是星期一"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token number">2</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"兄弟们今天是星期二"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token number">3</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"兄弟们今天是星期三"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token number">4</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"兄弟们今天是星期四"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token number">5</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"兄弟们今天是星期五"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token number">6</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"兄弟们今天是星期六"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token number">7</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"兄弟们今天是星期天"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    _ <span class="token operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"默认!"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="嵌套if-表达式"><a aria-hidden="true" tabindex="-1" href="#嵌套if-表达式"><span class="icon icon-link"></span></a>嵌套...If 表达式</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> nested_conditions <span class="token operator">=</span> <span class="token number">89</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> nested_conditions <span class="token operator">==</span> <span class="token number">89</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">let</span> just_a_value <span class="token operator">=</span> <span class="token number">98</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">if</span> just_a_value <span class="token operator">>=</span> <span class="token number">97</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"大于 97"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="for-循环"><a aria-hidden="true" tabindex="-1" href="#for-循环"><span class="icon icon-link"></span></a>For 循环</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token keyword">mut</span> i <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">..</span><span class="token number">15</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  i<span class="token operator">-=</span><span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"i 的值为：{i}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="while-循环"><a aria-hidden="true" tabindex="-1" href="#while-循环"><span class="icon icon-link"></span></a>While 循环</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> check <span class="token operator">=</span>  <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">while</span> check <span class="token operator">&#x3C;</span> <span class="token number">11</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"check 是：{check}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  check<span class="token operator">+=</span><span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"递增后：{check}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">if</span> check <span class="token operator">==</span> <span class="token number">10</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token comment">// 停止 while</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="loop-关键字"><a aria-hidden="true" tabindex="-1" href="#loop-关键字"><span class="icon icon-link"></span></a>Loop 关键字</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">loop</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"你好，世界永远！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>无限循环表示</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="break-中断语句"><a aria-hidden="true" tabindex="-1" href="#break-中断语句"><span class="icon icon-link"></span></a>Break 中断语句</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">loop</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"i 是 {i}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">if</span> i <span class="token operator">></span> <span class="token number">100</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  i <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="continue-继续声明"><a aria-hidden="true" tabindex="-1" href="#continue-继续声明"><span class="icon icon-link"></span></a>Continue 继续声明</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>v<span class="token punctuation">,</span> c<span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">..</span><span class="token number">10</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">enumerate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{c} 数字循环"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">if</span> v <span class="token operator">==</span> <span class="token number">9</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"我们继续？"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">{</span><span class="token string">"v 的值为：{v}"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="rust-函数"><a aria-hidden="true" tabindex="-1" href="#rust-函数"><span class="icon icon-link"></span></a>Rust 函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="基本函数"><a aria-hidden="true" tabindex="-1" href="#基本函数"><span class="icon icon-link"></span></a>基本函数</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">print_message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Hello, Quick Reference!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 在 Rust 中调用函数</span>
+</span><span class="code-line">  <span class="token function">print_message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="按值传递"><a aria-hidden="true" tabindex="-1" href="#按值传递"><span class="icon icon-link"></span></a>按值传递</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">let</span> x<span class="token punctuation">:</span><span class="token keyword">u32</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">let</span> y<span class="token punctuation">:</span><span class="token keyword">u32</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment">// => 200</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"计算: {}"</span><span class="token punctuation">,</span> <span class="token function">cal_rect</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">cal_rect</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span><span class="token keyword">u32</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span><span class="token keyword">u32</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">u32</span>
+</span><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  x <span class="token operator">*</span> y
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通过引用传递"><a aria-hidden="true" tabindex="-1" href="#通过引用传递"><span class="icon icon-link"></span></a>通过引用传递</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">let</span> <span class="token keyword">mut</span> by_ref <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>      <span class="token comment">// => 3</span>
+</span><span class="code-line">  <span class="token function">power_of_three</span><span class="token punctuation">(</span><span class="token operator">&#x26;</span><span class="token keyword">mut</span> by_ref<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{by_ref}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// => 9</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">power_of_three</span><span class="token punctuation">(</span>by_ref<span class="token punctuation">:</span> <span class="token operator">&#x26;</span><span class="token keyword">mut</span> <span class="token keyword">i32</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 取消引用很重要</span>
+</span><span class="code-line">  <span class="token operator">*</span>by_ref <span class="token operator">=</span> <span class="token operator">*</span>by_ref <span class="token operator">*</span> <span class="token operator">*</span>by_ref<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{by_ref}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// => 9</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="返回"><a aria-hidden="true" tabindex="-1" href="#返回"><span class="icon icon-link"></span></a>返回</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">let</span> <span class="token punctuation">(</span><span class="token keyword">mut</span> radius<span class="token punctuation">,</span> <span class="token keyword">mut</span> pi<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">3.14</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">let</span><span class="token punctuation">(</span>area<span class="token punctuation">,</span> _perimeter<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">calculate</span> <span class="token punctuation">(</span>
+</span><span class="code-line">      <span class="token operator">&#x26;</span><span class="token keyword">mut</span> radius<span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token operator">&#x26;</span><span class="token keyword">mut</span> pi
+</span><span class="code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"圆的面积和周长为：{area} &#x26; {_perimeter}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">calculate</span><span class="token punctuation">(</span>radius <span class="token punctuation">:</span> <span class="token operator">&#x26;</span><span class="token keyword">mut</span> <span class="token keyword">f64</span><span class="token punctuation">,</span> pi<span class="token punctuation">:</span> <span class="token operator">&#x26;</span><span class="token keyword">mut</span> <span class="token keyword">f64</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token punctuation">(</span><span class="token keyword">f64</span><span class="token punctuation">,</span> <span class="token keyword">f64</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">let</span> perimeter <span class="token operator">=</span> <span class="token number">2.0</span> <span class="token operator">*</span> <span class="token operator">*</span>pi <span class="token operator">*</span> <span class="token operator">*</span>radius<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">let</span> area <span class="token operator">=</span> <span class="token operator">*</span>pi <span class="token operator">*</span> <span class="token operator">*</span>radius <span class="token operator">*</span> <span class="token operator">*</span>radius<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span> <span class="token punctuation">(</span>area<span class="token punctuation">,</span> perimeter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数组作为参数"><a aria-hidden="true" tabindex="-1" href="#数组作为参数"><span class="icon icon-link"></span></a>数组作为参数</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">let</span> <span class="token keyword">mut</span> array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">i32</span> <span class="token punctuation">;</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">print_arrays</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"元素：{array:?}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">print_arrays</span><span class="token punctuation">(</span><span class="token keyword">mut</span> array<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token keyword">i32</span><span class="token punctuation">;</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">89</span><span class="token punctuation">;</span>
+</span><span class="code-line">  array<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">90</span><span class="token punctuation">;</span>
+</span><span class="code-line">  array<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">91</span><span class="token punctuation">;</span>
+</span><span class="code-line">  array<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">92</span><span class="token punctuation">;</span>
+</span><span class="code-line">  array<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">93</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"元素：{array:?}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="返回数组"><a aria-hidden="true" tabindex="-1" href="#返回数组"><span class="icon icon-link"></span></a>返回数组</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">let</span> <span class="token keyword">mut</span> arr<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token keyword">i32</span><span class="token punctuation">;</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">multiply</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"数组是：{:?}"</span><span class="token punctuation">,</span> <span class="token function">multiply</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">multiply</span> <span class="token punctuation">(</span><span class="token keyword">mut</span> arr<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">i32</span> <span class="token punctuation">;</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token punctuation">[</span><span class="token keyword">i32</span> <span class="token punctuation">;</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">{</span>
+</span><span class="code-line">  arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">90</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">for</span> <span class="token keyword">mut</span> i <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">..</span><span class="token number">5</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="杂项"><a aria-hidden="true" tabindex="-1" href="#杂项"><span class="icon icon-link"></span></a>杂项</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类型断言-type-casting"><a aria-hidden="true" tabindex="-1" href="#类型断言-type-casting"><span class="icon icon-link"></span></a>类型断言 type-casting</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> a_int <span class="token operator">=</span> <span class="token number">90</span><span class="token punctuation">;</span> <span class="token comment">// int</span>
+</span><span class="code-line"><span class="token comment">// int 到 float</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> type_cast <span class="token operator">=</span> <span class="token punctuation">(</span>a_int <span class="token keyword">as</span> <span class="token keyword">f64</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> orginal<span class="token punctuation">:</span> <span class="token keyword">char</span> <span class="token operator">=</span> <span class="token char">'I'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// char 到 int => 73</span>
+</span><span class="code-line"><span class="token keyword">let</span> type_casted<span class="token punctuation">:</span> <span class="token keyword">i64</span> <span class="token operator">=</span> orginal <span class="token keyword">as</span> <span class="token keyword">i64</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>要在 <code>Rust</code> 中执行类型转换，必须使用 <code>as</code> 关键字</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="借用"><a aria-hidden="true" tabindex="-1" href="#借用"><span class="icon icon-link"></span></a>借用</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> foo <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> borrowed_foo <span class="token operator">=</span> <span class="token operator">&#x26;</span>foo<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{borrowed_foo}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<hr>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> bar <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> mutable_borrowed_bar <span class="token operator">=</span> <span class="token operator">&#x26;</span><span class="token keyword">mut</span> bar<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{mutable_borrowed_bar}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>这里借用的值使用 <code>&#x26;</code> 运算符从值一中借用值</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="取消引用"><a aria-hidden="true" tabindex="-1" href="#取消引用"><span class="icon icon-link"></span></a>取消引用</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">let</span> <span class="token keyword">mut</span> borrow <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> deref <span class="token operator">=</span> <span class="token operator">&#x26;</span><span class="token keyword">mut</span> borrow<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> <span class="token operator">*</span>deref<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>可以使用 <code>*</code> 操作符在 rust 中取消引用</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="变量范围"><a aria-hidden="true" tabindex="-1" href="#变量范围"><span class="icon icon-link"></span></a>变量范围</h3><div class="wrap-body">
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 范围仅限于此大括号</span>
+</span><span class="code-line">  <span class="token keyword">let</span> a_number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{a_number}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>这将产生错误，因为变量 <code>a_number</code> 的范围在大括号处结束</p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://doc.rust-lang.org/book/ch00-00-introduction.html">The Rust Document</a> <em>(doc.rust-lang.org)</em></li>
+<li><a href="https://doc.rust-lang.org/reference/introduction.html">The Rust Reference</a> <em>(doc.rust-lang.org)</em></li>
+<li><a href="https://phaiax.github.io/rust-cheatsheet/">Rust Cheatsheet</a> <em>(phaiax.github.io)</em></li>
+<li><a href="https://jaywcjlove.github.io/rust-cn-document-for-docker/std/std/">Rust 标准库文档中文版</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://jaywcjlove.github.io/rust-cn-document-for-docker/book/">Rust 程序设计语言 中文版</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://jaywcjlove.github.io/rust-cn-document-for-docker/rust-by-example-cn/">Rust By Example 中文版</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://jaywcjlove.github.io/rust-cn-document-for-docker/reference/">Rust 参考手册中文版</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://jaywcjlove.github.io/rust-cn-document-for-docker/rustdoc/">RustDoc 手册中文版</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://jaywcjlove.github.io/rust-cn-document-for-docker/rust-cookbook/">Rust Cookbook 中文版</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
