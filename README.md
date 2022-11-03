@@ -38,6 +38,7 @@ Quick Reference
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [Python](./docs/python.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
+[Rust](./docs/rust.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
