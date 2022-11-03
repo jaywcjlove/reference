@@ -71,26 +71,26 @@ Sed 命令
 ### 命令
 <!--rehype:wrap-class=col-span-2-->
 
-| Command | Example                                | Description                 |
-|---------|----------------------------------------|-----------------------------|
-| `p`     | sed -n '1,4 p' input.txt               | Print lines 1-4             |
-| `p`     | sed -n -e '1,4 p' -e '6,7 p' input.txt | Print lines 1-4 and 6-7     |
-| `d`     | sed '1,4 d' input.txt                  | Print lines except 1-4      |
-| `w`     | sed -n '1,4 w output.txt' input.txt    | Write pattern space to file |
-| `a`     | sed '2 a new-line' input.txt           | Append line after           |
-| `i`     | sed '2 i new-line' input.txt           | Insert line before          |
+命令 | 示例 | 描述 
+:- | :-  |:- 
+`p`     | sed -n '1,4 p' input.txt               | 打印第 1-4 行
+`p`     | sed -n -e '1,4 p' -e '6,7 p' input.txt | 打印第 1-4 行和第 6-7 行
+`d`     | sed '1,4 d' input.txt                  | 打印除 1-4 之外的行
+`w`     | sed -n '1,4 w output.txt' input.txt    | 将模式空间写入文件
+`a`     | sed '2 a new-line' input.txt           | 在后面追加一行
+`i`     | sed '2 i new-line' input.txt           | 在前面插入行
 <!--rehype:className=show-header-->
 
 ### 空间命令
 
-| Command | Description                                                  |
-|---------|--------------------------------------------------------------|
-| `n`     | 打印模式空间，空模式空间，读取下一行 |
-| `x`     | 用保持空间交换模式空间 |
-| `h`     | 复制模式空间以保持空间 |
-| `H`     | 追加模式空间以保持空间 |
-| `g`     | 将保持空间复制到模式空间 |
-| `G`     | 将保持空间附加到模式空间 |
+命令 | 描述 
+:- | :- 
+`n`     | 打印模式空间，空模式空间，读取下一行
+`x`     | 用保持空间交换模式空间
+`h`     | 复制模式空间以保持空间
+`H`     | 追加模式空间以保持空间
+`g`     | 将保持空间复制到模式空间
+`G`     | 将保持空间附加到模式空间
 
 ### Flags
 
