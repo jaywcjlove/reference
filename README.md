@@ -38,7 +38,7 @@ Quick Reference
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [Python](./docs/python.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
-[Rust](./docs/rust.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
+[Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
@@ -90,8 +90,9 @@ Quick Reference
 
 ## Linux 命令
 
-[Conan](./docs/conan.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=tag&data-lang=C/C++-->
 [Awk](./docs/awk.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Conan](./docs/conan.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=tag&data-lang=C/C++-->
+[Cargo](./docs/cargo.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));&class=tag&data-lang=Rust-->
 [Curl](./docs/curl.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Chmod](./docs/chmod.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68/var(\-\-bg\-opacity));-->

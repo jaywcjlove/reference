@@ -35,10 +35,10 @@ Hello, World!
 
 查看: [Rust 类型](#rust-类型)
 
-### Formatting
+### 格式化
 <!--rehype:wrap-class=row-span-2-->
 
-```rust {.wrap}
+```rust
 // 单个占位符
 println!("{}", 1);
 // 多个占位符
@@ -108,8 +108,69 @@ fn main(){
 
 查看: [Functions](#rust-函数)
 
+### 声明宏
+
+```rust
+macro_rules! foo {
+  ($l:tt) => { bar!($l); }
+}
+macro_rules! bar {
+  (3) => {}
+}
+foo!(3);
+```
+
+### 元变量
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+`item` | 程序项
+`block` | 块表达式
+`stmt` | 语句<br/> _(注意此选择器不匹配句尾的分号)_
+`pat` | 模式
+`expr` | 表达式
+`ty` | 类型
+`ident` | 标识符或关键字
+`path` | 类型表达式 形式的路径
+`tt` | `token` 树<br/> _(单个 `token` 或宏匹配定界符 `()`、`[]` 或 `{}` 中的标记)_
+`meta` | 属性，属性中的内容
+`lifetime` | 生存期 `token`
+`vis` | 可能为空的可见性限定符
+`literal` | 匹配 `-?` 字面量表达式
+
+### 结构体
+
+```rust
+struct Point { x: i32, y: i32 }
+let p = Point { x: 10, y: 11 };
+let px: i32 = p.x;
+```
+
+结构体是一个使用关键字 `struct` 定义的标称型(nominal)结构体类型
+
+### 枚举
+
+```rust
+enum Foo {
+  Bar,       // 0
+  Baz = 123, // 123
+  Quux,      // 124
+}
+
+let baz_discriminant = Foo::Baz as u32;
+assert_eq!(baz_discriminant, 123);
+```
+
 Rust 类型
 --------
+
+### 类型别名
+
+```rust
+type Point = (u8, u8);
+let p: Point = (41, 68);
+```
 
 ### 整数
 
@@ -148,7 +209,7 @@ let emoji = "\u{1f600}";   // => 😀
 
 ### 字符串字面量
 
-```rust {.wrap}
+```rust
 let community_name = "AXIAL";
 let no_of_members: &str = "ten";
 println!("社区的名称是 {community_name}，它有 {no_of_members} 个成员");
@@ -663,6 +724,16 @@ fn multiply (mut arr: [i32 ; 5]) -> [i32 ; 5]{
 ```
 <!--rehype:className=wrap-text -->
 
+### 泛型函数
+
+```rust
+use std::fmt::Debug;
+fn foo<T>(x: &[T]) where T: Debug {
+    // 省略细节
+}
+foo(&[1, 2]);
+```
+
 杂项
 -----
 
@@ -724,6 +795,7 @@ println!("{a_number}");
 另见
 --------
 
+- [Cargo 备忘清单](./cargo.md) _(jaywcjlove.github.io)_
 - [The Rust Document](https://doc.rust-lang.org/book/ch00-00-introduction.html) _(doc.rust-lang.org)_
 - [The Rust Reference](https://doc.rust-lang.org/reference/introduction.html) _(doc.rust-lang.org)_
 - [Rust Cheatsheet](https://phaiax.github.io/rust-cheatsheet/) _(phaiax.github.io)_
