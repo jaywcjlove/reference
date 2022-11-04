@@ -5,8 +5,6 @@ import { create } from './create.mjs';
 
 export const OUTOUT = path.resolve(process.cwd(), 'dist');
 export const DOCS = path.resolve(process.cwd(), 'docs');
-export const CSSPATH = path.resolve(process.cwd(), 'scripts/style.css');
-export const CSS_OUTPUT_PATH = path.resolve(OUTOUT, 'style/style.css');
 
 export async function createHTML(files = [], num = 0) {
   const dataFile = files[num];
@@ -46,9 +44,8 @@ export async function createHTML(files = [], num = 0) {
 export async function run() {
   await fs.ensureDir(OUTOUT);
   await fs.emptyDir(OUTOUT);
-  await fs.ensureDir(path.dirname(CSS_OUTPUT_PATH));
+  await fs.ensureDir(path.resolve(OUTOUT, 'style'));
   await fs.copy(path.resolve(process.cwd(), 'scripts/style'), path.resolve(OUTOUT, 'style'));
-  // await fs.copyFile(CSSPATH, CSS_OUTPUT_PATH);
   const files = await recursiveReaddirFiles(process.cwd(), {
     ignored: /\/(node_modules|\.git)/,
     exclude: /(\.json|\.mjs|CONTRIBUTING\.md)$/,
