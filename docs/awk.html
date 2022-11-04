@@ -95,14 +95,14 @@
 </span><span class="code-line">   <span class="token punctuation">..</span>.
 </span><span class="code-line">END            <span class="token punctuation">{</span><span class="token operator">&#x3C;</span> 最后的动作 <span class="token operator">></span><span class="token punctuation">}</span>
 </span></code></pre>
-</div></div><div class="h3wrap-body"><h4 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h4>
+<h4 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h4>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'
 </span></span><span class="code-line"><span class="token string">    BEGIN { print "\n>>>Start" }
 </span></span><span class="code-line"><span class="token string">    !/(login|shutdown)/ { print NR, $0 }
 </span></span><span class="code-line"><span class="token string">    END { print "&#x3C;&#x3C;&#x3C;END\n" }
 </span></span><span class="code-line"><span class="token string">'</span> /etc/passwd
 </span></code></pre>
-</div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">          <span class="token variable">$1</span>      <span class="token variable">$2</span>/<span class="token variable"><span class="token variable">$(</span>NF-1<span class="token variable">)</span></span>    <span class="token variable">$3</span>/<span class="token variable">$NF</span>
 </span><span class="code-line">           ▼          ▼           ▼ 
@@ -392,11 +392,11 @@
 </span></span><span class="code-line"><span class="token string">    END {print var1, var2}
 </span></span><span class="code-line"><span class="token string">'</span> <span class="token operator">&#x3C;</span>/dev/null
 </span></code></pre>
-</div></div><div class="h3wrap-body"><h4 id="使用-shell-变量"><a aria-hidden="true" tabindex="-1" href="#使用-shell-变量"><span class="icon icon-link"></span></a>使用 shell 变量</h4>
+<h4 id="使用-shell-变量"><a aria-hidden="true" tabindex="-1" href="#使用-shell-变量"><span class="icon icon-link"></span></a>使用 shell 变量</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">varName</span><span class="token operator">=</span><span class="token string">"<span class="token environment constant">$PWD</span>"</span> <span class="token string">'
 </span></span><span class="code-line"><span class="token string">    END {print varName}'</span> <span class="token operator">&#x3C;</span>/dev/null
 </span></code></pre>
-</div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="awk-运算符"><a aria-hidden="true" tabindex="-1" href="#awk-运算符"><span class="icon icon-link"></span></a>Awk 运算符</h2><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="awk-运算符"><a aria-hidden="true" tabindex="-1" href="#awk-运算符"><span class="icon icon-link"></span></a>Awk 运算符</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="运算符"><a aria-hidden="true" tabindex="-1" href="#运算符"><span class="icon icon-link"></span></a>运算符</h3><div class="wrap-body">
 
 
@@ -424,7 +424,7 @@
 
 
 <table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>{print $1}</code></td><td align="left">第一个字段</td></tr><tr><td align="left"><code>$2 == "foo"</code></td><td align="left">等于</td></tr><tr><td align="left"><code>$2 != "foo"</code></td><td align="left">不等于</td></tr><tr><td align="left"><code>"foo" in array</code></td><td align="left">在数组中</td></tr></tbody></table>
-</div></div><div class="h3wrap-body"><h4 id="正则表达式"><a aria-hidden="true" tabindex="-1" href="#正则表达式"><span class="icon icon-link"></span></a>正则表达式</h4>
+<h4 id="正则表达式"><a aria-hidden="true" tabindex="-1" href="#正则表达式"><span class="icon icon-link"></span></a>正则表达式</h4>
 
 
 
@@ -470,8 +470,8 @@
 
 
 <table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>($2 &#x3C;= 4 || $3 &#x3C; 20)</code></td><td align="left">或者</td></tr><tr><td align="left"><code>($1 == 4 &#x26;&#x26; $3 &#x3C; 20)</code></td><td align="left">和</td></tr></tbody></table>
-</div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="运算符-1"><a aria-hidden="true" tabindex="-1" href="#运算符-1"><span class="icon icon-link"></span></a>运算符</h3><div class="wrap-body">
-</div></div><div class="h3wrap-body"><h4 id="算术运算"><a aria-hidden="true" tabindex="-1" href="#算术运算"><span class="icon icon-link"></span></a>算术运算</h4>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="运算符-1"><a aria-hidden="true" tabindex="-1" href="#运算符-1"><span class="icon icon-link"></span></a>运算符</h3><div class="wrap-body">
+<h4 id="算术运算"><a aria-hidden="true" tabindex="-1" href="#算术运算"><span class="icon icon-link"></span></a>算术运算</h4>
 <ul class="cols-3 style-none">
 <li><code>+</code></li>
 <li><code>-</code></li>
@@ -501,13 +501,13 @@
 <li><code>>=</code></li>
 </ul>
 <!--rehype:className=cols-3 style-none-->
-</div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="示例-2"><a aria-hidden="true" tabindex="-1" href="#示例-2"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="示例-2"><a aria-hidden="true" tabindex="-1" href="#示例-2"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    if ("foo" ~ "^fo+$")
 </span></span><span class="code-line"><span class="token string">        print "Fooey!";
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="h3wrap-body"><h4 id="不匹配"><a aria-hidden="true" tabindex="-1" href="#不匹配"><span class="icon icon-link"></span></a>不匹配</h4>
+<h4 id="不匹配"><a aria-hidden="true" tabindex="-1" href="#不匹配"><span class="icon icon-link"></span></a>不匹配</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    if ("boo" !~ "^fo+$")
 </span></span><span class="code-line"><span class="token string">        print "Boo!";
@@ -521,7 +521,7 @@
 </span></span><span class="code-line"><span class="token string">        print "Fooey!";
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="awk-函数"><a aria-hidden="true" tabindex="-1" href="#awk-函数"><span class="icon icon-link"></span></a>Awk 函数</h2><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="awk-函数"><a aria-hidden="true" tabindex="-1" href="#awk-函数"><span class="icon icon-link"></span></a>Awk 函数</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="常用功能"><a aria-hidden="true" tabindex="-1" href="#常用功能"><span class="icon icon-link"></span></a>常用功能</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 
@@ -681,12 +681,12 @@
 </span></span><span class="code-line"><span class="token string">        print "Huh?";
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="h3wrap-body"><h4 id="三元运算符"><a aria-hidden="true" tabindex="-1" href="#三元运算符"><span class="icon icon-link"></span></a>三元运算符</h4>
+<h4 id="三元运算符"><a aria-hidden="true" tabindex="-1" href="#三元运算符"><span class="icon icon-link"></span></a>三元运算符</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">2</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    print (count==1) ? "Yes" : "Huh?";
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="存在"><a aria-hidden="true" tabindex="-1" href="#存在"><span class="icon icon-link"></span></a>存在</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="存在"><a aria-hidden="true" tabindex="-1" href="#存在"><span class="icon icon-link"></span></a>存在</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    assoc["foo"] = "bar";
 </span></span><span class="code-line"><span class="token string">    assoc["bar"] = "baz";
@@ -694,7 +694,7 @@
 </span></span><span class="code-line"><span class="token string">        print "Fooey!";
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="h3wrap-body"><h4 id="不存在"><a aria-hidden="true" tabindex="-1" href="#不存在"><span class="icon icon-link"></span></a>不存在</h4>
+<h4 id="不存在"><a aria-hidden="true" tabindex="-1" href="#不存在"><span class="icon icon-link"></span></a>不存在</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    assoc["foo"] = "bar";
 </span></span><span class="code-line"><span class="token string">    assoc["bar"] = "baz";
@@ -702,7 +702,7 @@
 </span></span><span class="code-line"><span class="token string">        print "Huh!";
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="switch"><a aria-hidden="true" tabindex="-1" href="#switch"><span class="icon icon-link"></span></a>switch</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="switch"><a aria-hidden="true" tabindex="-1" href="#switch"><span class="icon icon-link"></span></a>switch</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> -F: <span class="token string">'{
 </span></span><span class="code-line"><span class="token string">    switch (NR * 2 + 1) {
 </span></span><span class="code-line"><span class="token string">        case 3:
@@ -725,13 +725,13 @@
 </span></span><span class="code-line"><span class="token string">        print "i=" i;
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="h3wrap-body"><h4 id="1-到-100-之间的-2-的幂"><a aria-hidden="true" tabindex="-1" href="#1-到-100-之间的-2-的幂"><span class="icon icon-link"></span></a>1 到 100 之间的 2 的幂</h4>
+<h4 id="1-到-100-之间的-2-的幂"><a aria-hidden="true" tabindex="-1" href="#1-到-100-之间的-2-的幂"><span class="icon icon-link"></span></a>1 到 100 之间的 2 的幂</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    for (i = 1; i &#x3C;= 100; i *= 2)
 </span></span><span class="code-line"><span class="token string">        print i
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="forin"><a aria-hidden="true" tabindex="-1" href="#forin"><span class="icon icon-link"></span></a>for...in</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="forin"><a aria-hidden="true" tabindex="-1" href="#forin"><span class="icon icon-link"></span></a>for...in</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    assoc["key1"] = "val1"
 </span></span><span class="code-line"><span class="token string">    assoc["key2"] = "val2"
@@ -739,15 +739,15 @@
 </span></span><span class="code-line"><span class="token string">        print assoc[key];
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="h3wrap-body"><h4 id="arguments"><a aria-hidden="true" tabindex="-1" href="#arguments"><span class="icon icon-link"></span></a>Arguments</h4>
+<h4 id="arguments"><a aria-hidden="true" tabindex="-1" href="#arguments"><span class="icon icon-link"></span></a>Arguments</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    for (argnum in ARGV)
 </span></span><span class="code-line"><span class="token string">        print ARGV[argnum];
 </span></span><span class="code-line"><span class="token string">}'</span> a b c
 </span></code></pre>
-</div></div><div class="wrap h3body-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="示例-3"><a aria-hidden="true" tabindex="-1" href="#示例-3"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="示例-3"><a aria-hidden="true" tabindex="-1" href="#示例-3"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-3-->
-</div></div><div class="h3wrap-body"><h4 id="反向记录"><a aria-hidden="true" tabindex="-1" href="#反向记录"><span class="icon icon-link"></span></a>反向记录</h4>
+<h4 id="反向记录"><a aria-hidden="true" tabindex="-1" href="#反向记录"><span class="icon icon-link"></span></a>反向记录</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> -F: <span class="token string">'{ x[NR] = $0 }
 </span></span><span class="code-line"><span class="token string">    END {
 </span></span><span class="code-line"><span class="token string">        for (i = NR; i > 0; i--)
@@ -778,7 +778,7 @@
 </span></span><span class="code-line"><span class="token string">    END{print s}
 </span></span><span class="code-line"><span class="token string">'</span> /etc/passwd
 </span></code></pre>
-</div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="while"><a aria-hidden="true" tabindex="-1" href="#while"><span class="icon icon-link"></span></a>while</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="while"><a aria-hidden="true" tabindex="-1" href="#while"><span class="icon icon-link"></span></a>while</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    while (a &#x3C; 10) {
@@ -787,7 +787,7 @@
 </span></span><span class="code-line"><span class="token string">    }
 </span></span><span class="code-line"><span class="token string">}'</span>
 </span></code></pre>
-</div></div><div class="h3wrap-body"><h4 id="dowhile"><a aria-hidden="true" tabindex="-1" href="#dowhile"><span class="icon icon-link"></span></a>do...while</h4>
+<h4 id="dowhile"><a aria-hidden="true" tabindex="-1" href="#dowhile"><span class="icon icon-link"></span></a>do...while</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'{
 </span></span><span class="code-line"><span class="token string">    i = 1
 </span></span><span class="code-line"><span class="token string">    do {
@@ -796,7 +796,7 @@
 </span></span><span class="code-line"><span class="token string">    } while (i &#x3C;= 5)
 </span></span><span class="code-line"><span class="token string">}'</span> /etc/passwd
 </span></code></pre>
-</div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="break"><a aria-hidden="true" tabindex="-1" href="#break"><span class="icon icon-link"></span></a>Break</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="break"><a aria-hidden="true" tabindex="-1" href="#break"><span class="icon icon-link"></span></a>Break</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN {
 </span></span><span class="code-line"><span class="token string">    break_num = 5
 </span></span><span class="code-line"><span class="token string">    for (i = 0; i &#x3C; 10; i++) {
@@ -818,7 +818,7 @@
 </span></code></pre>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="awk-格式化打印"><a aria-hidden="true" tabindex="-1" href="#awk-格式化打印"><span class="icon icon-link"></span></a>Awk 格式化打印</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="用法"><a aria-hidden="true" tabindex="-1" href="#用法"><span class="icon icon-link"></span></a>用法</h3><div class="wrap-body">
-</div></div><div class="h3wrap-body"><h4 id="右对齐"><a aria-hidden="true" tabindex="-1" href="#右对齐"><span class="icon icon-link"></span></a>右对齐</h4>
+<h4 id="右对齐"><a aria-hidden="true" tabindex="-1" href="#右对齐"><span class="icon icon-link"></span></a>右对齐</h4>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN{printf "|%10s|\n", "hello"}'</span>
 </span><span class="code-line"><span class="token comment"># |     hello|</span>
 </span></code></pre>
@@ -826,7 +826,7 @@
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">awk</span> <span class="token string">'BEGIN{printf "|%-10s|\n", "hello"}'</span>
 </span><span class="code-line"><span class="token comment"># |hello     |</span>
 </span></code></pre>
-</div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通用说明符"><a aria-hidden="true" tabindex="-1" href="#通用说明符"><span class="icon icon-link"></span></a>通用说明符</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通用说明符"><a aria-hidden="true" tabindex="-1" href="#通用说明符"><span class="icon icon-link"></span></a>通用说明符</h3><div class="wrap-body">
 
 
 
@@ -951,7 +951,7 @@
 <li><a href="https://www-zeuthen.desy.de/dv/documentation/unixguide/infohtml/gawk/gawk.html">GNU awk 用户指南</a> <em>(www-zeuthen.desy.de)</em></li>
 <li><a href="https://gist.github.com/Rafe/3102414">AWK cheatsheet</a> <em>(gist.github.com)</em></li>
 </ul>
-</div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
 if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
   window.onhashchange = function () {
     anchorPoint()
