@@ -855,7 +855,7 @@ console.log(array[1]);
 
 ### replace()
 
-```javascript {.wrap}
+```javascript
 let text = 'Do you like aPPles?';
 let regex = /apples/i
  
@@ -1091,7 +1091,7 @@ MySQL中的正则表达式
 
 
 ### REGEXP
-```sql {.wrap}
+```sql
 expr REGEXP pat 
 ```
 
@@ -1164,7 +1164,7 @@ mysql> SELECT regexp_like('a\nb\nc', '^b$', 'm');
 
 ### REGEXP_INSTR
 
-``` {.wrap}
+```
 REGEXP_INSTR(expr, pat[, pos[, occurrence[, return_option[, match_type]]]])
 ```
 

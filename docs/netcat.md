@@ -192,7 +192,7 @@ $ cat video.avi | nc -l 8000
 
 客户端 Client
 
-```shell {.wrap}
+```shell
 $ nc 192.168.1.9 8000 | mplayer -vo x11 -cache 3000 -
 ```
 

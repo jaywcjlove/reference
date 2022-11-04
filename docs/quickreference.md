@@ -260,6 +260,22 @@ const school = <div>学校</div>;
 
 上面的 `markdown` 代码在 `meta` 位置添加 `preview` 标识，HTML 代码将被执行预览
 
+### KaTeX 数学渲染
+
+```KaTeX
+c = \pm\sqrt{a^2 + b^2}
+L = \frac{1}{2} \rho v^2 S C_L
+```
+
+上面示例 `Markdown` 代码源码
+
+```markdown {1}
+  ```KaTeX
+  c = \pm\sqrt{a^2 + b^2}
+  L = \frac{1}{2} \rho v^2 S C_L
+```
+
+还可以单行展示 `KaTeX:c = \pm\sqrt{a^2 + b^2}`，需要标记 \`KaTeX:数学公式\` 将被显示成数学公式，这是基于 [KaTeX](https://katex.org/) 生成
 
 布局
 ---

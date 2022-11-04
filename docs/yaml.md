@@ -57,7 +57,7 @@ other_thing: *VAR_NAME
 
 #### ↓ 等效的 JSON
 
-```json {.wrap}
+```json
 {
   "some_thing": "foobar",
   "other_thing": "foobar"
@@ -84,7 +84,7 @@ description: |
 
 #### ↓ 等效的 JSON
 
-```json {.wrap}
+```json
 {"description": "hello\nworld\n"}
 ```
 
@@ -102,7 +102,7 @@ child:
 
 #### ↓ 等效的 JSON
 
-```json {.wrap}
+```json
 {
   "parent": {
     "a": 2,
@@ -129,7 +129,7 @@ other_values:
 
 #### ↓ 等效的 JSON
 
-```json {.wrap}
+```json
 {
   "values": [
     "Will be",
@@ -154,7 +154,7 @@ description: >
 
 #### ↓ 等效的 JSON
 
-```json {.wrap}
+```json
 {"description": "hello world\n"}
 ```
 

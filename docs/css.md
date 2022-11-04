@@ -1116,7 +1116,7 @@ grid-row-gap: length;
 ### minmax() 函数
 <!--rehype:wrap-class=col-span-2-->
 
-```css {.wrap}
+```css
 .grid {
   display: grid;
   grid-template-columns: 100px minmax(100px, 500px) 100px; 

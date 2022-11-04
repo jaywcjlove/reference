@@ -74,7 +74,7 @@ a{Click me}
 
 p>{Click }+a{here}+{ 继续}
 
-```html {.wrap}
+```html
 <p>Click <a href="">here</a> 继续</p>
 ```
 
