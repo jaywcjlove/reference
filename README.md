@@ -20,8 +20,9 @@ Quick Reference
 <!--rehype:style=padding-bottom: 23px;-->
 
 [CMake](./docs/cmake.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));&class=contributing-->
-[FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
+[FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
+[MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
 <!--rehype:class=home-card-->
 

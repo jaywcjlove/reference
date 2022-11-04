@@ -117,7 +117,7 @@ export function getTocsTree(arr = [], result = []) {
       if (titleNum(toc.tagName) > 3) {
         panle = [toc, ...header];
       }
-      if (resultChilds.length > 0) {
+      if (resultChilds.length > -1) {
         const bodyStyle = toc.properties['body-style'];
         delete toc.properties['body-style'];
         const bodyClass = toc.properties['body-class'];
@@ -125,12 +125,16 @@ export function getTocsTree(arr = [], result = []) {
         if (Array.isArray(panle)) {
           panle = panle.concat(resultChilds);
         } else if (panle.children) {
-          panle.children = panle.children.concat({
-            type: 'element',
-            tagName: 'div',
-            properties: { class: [`h${level}wrap-body`, bodyClass], style: bodyStyle },
-            children: [...resultChilds],
-          });
+          if (titleNum(toc.tagName) < 3) {
+            panle.children = panle.children.concat({
+              type: 'element',
+              tagName: 'div',
+              properties: { class: [`h${level}wrap-body`, bodyClass], style: bodyStyle },
+              children: [...resultChilds],
+            });
+          } else {
+            panle.children[0].children[1].children = panle.children[0].children[1].children.concat(resultChilds);
+          }
         }
       }
       if (Array.isArray(panle)) {
