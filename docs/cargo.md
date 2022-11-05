@@ -19,6 +19,7 @@ $ curl -sSf https://static.rust-lang.org/rustup.sh | sh
 - [Cargo 开源仓库](https://github.com/rust-lang/cargo) _(github.com)_
 - [Cargo 官网](https://doc.rust-lang.org/cargo) _(doc.rust-lang.org)_
 - [Cargo 官网(中文)](https://www.rustwiki.org.cn/zh-CN/cargo/index.html) _(rustwiki.org.cn)_
+- [Rust 社区的 crate 仓库](https://crates.io/) _(crates.io)_
 
 ### 命令说明
 <!--rehype:wrap-class=col-span-2-->
