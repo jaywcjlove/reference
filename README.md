@@ -32,12 +32,14 @@ Quick Reference
 [C](./docs/c.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));&class=tag&data-lang=Docker-->
+[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193/var(\-\-bg\-opacity));-->
 [INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
+[MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [Python](./docs/python.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
@@ -62,6 +64,7 @@ Quick Reference
 [RegEx](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155/var(\-\-bg\-opacity));-->
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198/var(\-\-bg\-opacity));-->
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
+[Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## Nodejs
@@ -99,9 +102,11 @@ Quick Reference
 [Curl](./docs/curl.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Chmod](./docs/chmod.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68/var(\-\-bg\-opacity));-->
+[CMake](./docs/cmake.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));&class=contributing-->
 [Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62/var(\-\-bg\-opacity));-->
 [Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
 [Htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Home Brew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));-->
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
