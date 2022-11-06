@@ -331,7 +331,7 @@ $ ffmpeg -i video.mp4 image%d.jpg
 ```
 
 ### 转换为 Gif
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-3-->
 
 ```bash
 $ ffmpeg -ss 2 -t 28 -i input.mp4 -vf "fps=10,scale=1080:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
@@ -356,8 +356,23 @@ $ ffmpeg -i input.mov -codec:v copy -an output.mov
 ```
 <!--rehype:className=wrap-text -->
 
+### 将输入文件转码为 DVD PAL 格式
+
+```bash
+$ ffmpeg -y -threads 8 -i inFile -target pal-dvd -ac 2 -aspect 16:9 -acodec mp2 -ab 224000 -vf pad=0:­0:0:0 outFile
+```
+<!--rehype:className=wrap-text -->
+
+
+### 转换为灰度
+
+```bash
+$ ffmpeg -y -i inFile -flags gray outFile
+```
+
+
 ### 字幕
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 将字幕写入视频
 
@@ -370,9 +385,24 @@ $ ffmpeg -i input.mov -filter:v 'subtitles=subtitles.srt' -codec:a copy output.m
 ```bash
 $ ffmpeg -i input.mov -filter:v "subtitles=subtitles.srt:force_style='FontName=Menlo Bold,Fontsize=18'" -codec:a copy output.mov
 ```
+<!--rehype:className=wrap-text -->
+
+### 制造 1 分钟的音频噪音
+
+```bash
+$ ffmpeg -ar 48000 -t 60 -f s16le -acodec pcm_s16le -i /dev/u­random -ab 64K -f mp2 -acodec mp2 -y noise.mp2
+```
+<!--rehype:className=wrap-text -->
+
+### 从视频中提取图像
+
+```bash
+$ ffmpeg -i foo.avi -r 1 -s WxH -f image2 outFil­e%0­3d.png
+```
+<!--rehype:className=wrap-text -->
 
 ### 音量
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 将音量减半
 
@@ -385,6 +415,84 @@ $ ffmpeg -i input.mov -codec:v copy -filter:a 'volume=0.5' output.mov
 ```bash
 $ ffmpeg -i input.mov -codec:v copy -filter:a 'volume=2' output.mov
 ```
+
+### 将图像文件转换为其他格式
+
+```bash
+$ ffmpeg -i foo012­2.png foo.tiff 
+```
+
+pgm, ppm, pam, pgmyuv, jpeg, gif, png, tiff, sgi
+
+### 将图像转换为 AVI 文件
+
+```bash
+$ ffmpeg -f image2 -i foo-%0­3d.jpeg -r 12 -s WxH foo.avi
+```
+<!--rehype:className=wrap-text -->
+
+### 将 WAV 文件转换为 MP3
+
+```bash
+$ ffmpeg -i source­_so­ng.wav -vn -ar 44100 -ac 2 -ab 192 -f mp3 final_­son­g.mp3
+```
+<!--rehype:className=wrap-text -->
+
+### 从视频中提取音频，将其转码为 MP3
+
+```bash
+$ ffmpeg -i source.avi -vn -ar 44100 -ac 2 -ab 192 -f mp3 sound.mp3
+```
+<!--rehype:className=wrap-text -->
+
+### 将 .avi 转换为 .flv
+
+```bash
+$ ffmpeg -i source.avi -ab 56 -ar 44100 -b 200 -r 15 -s 320x240 -f flv output.flv
+```
+<!--rehype:className=wrap-text -->
+
+### 将图片附加到 mp3
+
+```bash
+$ ffmpeg -i input.mp3 -i cover.png -c copy -metad­ata:s:v title=­"­Album cover" -metad­ata:s:v commen­t="Cover (Front­)" out.mp3
+```
+<!--rehype:className=wrap-text -->
+
+### 将视频与声音文件混合
+
+```bash
+$ ffmpeg -i song.wav -i source­_vi­deo.avi outvid­eo.mpg
+```
+<!--rehype:className=wrap-text -->
+
+### 编写带有 ID3v2.3 页眉和 ID3v1 页脚的 mp3
+
+```bash
+$ ffmpeg -i inFile -id3v2­_ve­rsion 3 -write­_id3v1 1 outFil­e.mp3
+```
+<!--rehype:className=wrap-text -->
+
+### 连接输入文件
+
+```bash
+$ cat inFile1 inFile2 | ffmpeg -f mpeg -i - -vcodec copy -acodec copy outFil­e.mpg
+```
+<!--rehype:className=wrap-text -->
+
+### 使用比特率和 mp3 音频的编解码器对剪辑进行编码
+
+```bash
+$ ffmpeg -i clip.avi -vcodec libxvid -b 800000 -acodec libmp3lame -ab 128 new-cl­ip.avi
+```
+<!--rehype:className=wrap-text -->
+
+### 将音频流与来自不同文件的视频流合并
+
+```bash
+$ ffmpeg -i audioS.mp4 -i videoS.mp4 -c copy -map 0:a -map 1:v outFil­e.mp4
+```
+<!--rehype:className=wrap-text -->
 
 另见
 ---
