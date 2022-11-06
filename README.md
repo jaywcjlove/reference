@@ -57,8 +57,6 @@ Quick Reference
 [Sass](./docs/sass.md)<!--rehype:style=background: rgb(207 100 154/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
 [HTML](./docs/html.md)<!--rehype:style=background: rgb(228 77 39/var(\-\-bg\-opacity));-->
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31/var(\-\-bg\-opacity));-->
-[Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
-[Lerna](./docs/lerna.md)<!--rehype:style=background: rgb(192 132 252/var(\-\-bg\-opacity));-->
 [Less.js](./docs/lessjs.md)<!--rehype:style=background: rgb(29 54 93/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173/var(\-\-bg\-opacity));-->
 [RegEx](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155/var(\-\-bg\-opacity));-->
@@ -69,7 +67,9 @@ Quick Reference
 ## Nodejs
 
 [Express.js](./docs/expressjs.md)<!--rehype:style=background: rgb(95 151 206/var(\-\-bg\-opacity));-->
+[Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91/var(\-\-bg\-opacity));-->
 [Koa.js](./docs/koajs.md)<!--rehype:style=background: rgb(95 151 206/var(\-\-bg\-opacity));-->
+[Lerna](./docs/lerna.md)<!--rehype:style=background: rgb(192 132 252/var(\-\-bg\-opacity));-->
 [npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [Yarn](./docs/yarn.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
