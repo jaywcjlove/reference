@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>YUM 备忘清单
+ &#x26;  yum cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这个 YUM 快速参考备忘单显示了它的常用命令使用清单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,yum">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/yum.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="yum-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#yum-备忘清单"><span class="icon icon-link"></span></a>YUM 备忘清单</h1><div class="wrap-body">
+<p>这个 YUM 快速参考备忘单显示了它的常用命令使用清单。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#yum-清单查询">YUM 清单查询</a><a aria-hidden="true" class="leve3 tocs-link" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" href="#yum-查询">YUM 查询</a><a aria-hidden="true" class="leve4 tocs-link" href="#help">help</a><a aria-hidden="true" class="leve3 tocs-link" href="#单独的包">单独的包</a><a aria-hidden="true" class="leve4 tocs-link" href="#list">list</a><a aria-hidden="true" class="leve4 tocs-link" href="#info">info</a><a aria-hidden="true" class="leve4 tocs-link" href="#deplist">deplist</a><a aria-hidden="true" class="leve4 tocs-link" href="#provides">provides</a><a aria-hidden="true" class="leve4 tocs-link" href="#search">search</a><a aria-hidden="true" class="leve4 tocs-link" href="#updateinfo">updateinfo</a><a aria-hidden="true" class="leve3 tocs-link" href="#包组">包组</a><a aria-hidden="true" class="leve4 tocs-link" href="#grouplist">grouplist</a><a aria-hidden="true" class="leve4 tocs-link" href="#groupinfo">groupinfo</a><a aria-hidden="true" class="leve4 tocs-link" href="#check-update">check-update</a><a aria-hidden="true" class="leve3 tocs-link" href="#管理-yum-存储库">管理 YUM 存储库</a><a aria-hidden="true" class="leve4 tocs-link" href="#repolist">repolist</a><a aria-hidden="true" class="leve4 tocs-link" href="#repoinfo">repoinfo</a><a aria-hidden="true" class="leve4 tocs-link" href="#repo-pkgs">repo-pkgs</a><a aria-hidden="true" class="leve4 tocs-link" href="#makecache">makecache</a><a aria-hidden="true" class="leve3 tocs-link" href="#故障排除和维护-yum">故障排除和维护 YUM</a><a aria-hidden="true" class="leve4 tocs-link" href="#check">check</a><a aria-hidden="true" class="leve4 tocs-link" href="#history">history</a><a aria-hidden="true" class="leve4 tocs-link" href="#clean">clean</a><a aria-hidden="true" class="leve4 tocs-link" href="#fssnapshot">fssnapshot</a><a aria-hidden="true" class="leve4 tocs-link" href="#fs">fs</a><a aria-hidden="true" class="leve3 tocs-link" href="#使用-yum-管理语言包">使用 YUM 管理语言包</a><a aria-hidden="true" class="leve4 tocs-link" href="#langavailable">langavailable</a><a aria-hidden="true" class="leve4 tocs-link" href="#langinfo">langinfo</a><a aria-hidden="true" class="leve4 tocs-link" href="#langinstall">langinstall</a><a aria-hidden="true" class="leve4 tocs-link" href="#langlist">langlist</a><a aria-hidden="true" class="leve4 tocs-link" href="#langremove">langremove</a><a aria-hidden="true" class="leve3 tocs-link" href="#使用-yum-安装删除和升级软件包">使用 YUM 安装、删除和升级软件包</a><a aria-hidden="true" class="leve4 tocs-link" href="#install">install</a><a aria-hidden="true" class="leve4 tocs-link" href="#update">update</a><a aria-hidden="true" class="leve4 tocs-link" href="#update-to">update-to</a><a aria-hidden="true" class="leve4 tocs-link" href="#upgrade">upgrade</a><a aria-hidden="true" class="leve4 tocs-link" href="#localinstall">localinstall</a><a aria-hidden="true" class="leve4 tocs-link" href="#downgrade">downgrade</a><a aria-hidden="true" class="leve4 tocs-link" href="#reinstall">reinstall</a><a aria-hidden="true" class="leve4 tocs-link" href="#swap">swap</a><a aria-hidden="true" class="leve4 tocs-link" href="#eraseremove">erase/remove</a><a aria-hidden="true" class="leve4 tocs-link" href="#autoremove">autoremove</a><a aria-hidden="true" class="leve4 tocs-link" href="#groupinstall">groupinstall</a><a aria-hidden="true" class="leve3 tocs-link" href="#更多-yum-相关命令安装-yum-utils-软件包">更多 YUM 相关命令（安装 yum-utils 软件包）</a><a aria-hidden="true" class="leve4 tocs-link" href="#find-repos-of-install">find-repos-of-install</a><a aria-hidden="true" class="leve4 tocs-link" href="#needs-restarting">needs-restarting</a><a aria-hidden="true" class="leve4 tocs-link" href="#repoclosure">repoclosure</a><a aria-hidden="true" class="leve4 tocs-link" href="#repoquery">repoquery</a><a aria-hidden="true" class="leve4 tocs-link" href="#reposync">reposync</a><a aria-hidden="true" class="leve4 tocs-link" href="#repotrack">repotrack</a><a aria-hidden="true" class="leve4 tocs-link" href="#show-installed">show-installed</a><a aria-hidden="true" class="leve4 tocs-link" href="#verifytree">verifytree</a><a aria-hidden="true" class="leve4 tocs-link" href="#yum-complete-transaction">yum-complete-transaction</a><a aria-hidden="true" class="leve4 tocs-link" href="#yumdb">yumdb</a><a aria-hidden="true" class="leve4 tocs-link" href="#yumdownloader">yumdownloader</a><a aria-hidden="true" class="leve3 tocs-link" href="#不同-yum-命令的常用选项">不同 YUM 命令的常用选项</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="yum-清单查询"><a aria-hidden="true" tabindex="-1" href="#yum-清单查询"><span class="icon icon-link"></span></a>YUM 清单查询</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>yum（<code>Y</code>ellow dog <code>U</code>pdater, <code>M</code>odified）是一个在 <code>Fedora</code> 和 <code>RedHat</code> 以及 SUSE 中的 <code>Shell</code> 前端软件包管理器</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>package <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</span></code></pre>
+<hr>
+<ul>
+<li><a href="http://yum.baseurl.org/">YUM 官方网站</a> <em>(yum.baseurl.org)</em></li>
+<li><a href="https://docs.fedoraproject.org/en-US/Fedora/15/html/Deployment_Guide/ch-yum.html">Fedora 中的 Yum 文档</a> <em>(fedoraproject.org)</em></li>
+<li><a href="http://wiki.centos.org/PackageManagement/Yum/">CentOS 中的 Yum 文档</a> <em>(wiki.centos.org)</em></li>
+<li><a href="https://www.scientificlinux.org/documentation/faq/yum.apt.repo">Scientific Linux 中的 Yum 文档</a> <em>(scientificlinux.org)</em></li>
+</ul>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="yum-查询"><a aria-hidden="true" tabindex="-1" href="#yum-查询"><span class="icon icon-link"></span></a>YUM 查询</h3><div class="wrap-body">
+<p>子命令描述和任务</p>
+<h4 id="help"><a aria-hidden="true" tabindex="-1" href="#help"><span class="icon icon-link"></span></a>help</h4>
+<p>显示 yum 命令和选项</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">yum <span class="token builtin class-name">help</span>
+</span></code></pre>
+<p>显示 yum 子命令和选项</p>
+</div></div></div><div class="wrap h3body-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="单独的包"><a aria-hidden="true" tabindex="-1" href="#单独的包"><span class="icon icon-link"></span></a>单独的包</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<h4 id="list"><a aria-hidden="true" tabindex="-1" href="#list"><span class="icon icon-link"></span></a>list</h4>
+<p>列出存储库中的包名称</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出存储库中的包名称</span>
+</span><span class="code-line">yum list available
+</span><span class="code-line"><span class="token comment"># 列出所有可用的包</span>
+</span><span class="code-line">yum list installed
+</span><span class="code-line"><span class="token comment"># 列出所有已安装的包</span>
+</span><span class="code-line">yum list all
+</span><span class="code-line"><span class="token comment"># 列出已安装和可用的软件包</span>
+</span><span class="code-line">yum list kernel
+</span></code></pre>
+<h4 id="info"><a aria-hidden="true" tabindex="-1" href="#info"><span class="icon icon-link"></span></a>info</h4>
+<p>列出已安装和可用的内核包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出有关 `vsftpd` 软件包的信息</span>
+</span><span class="code-line">$ yum info vsftpd
+</span></code></pre>
+<h4 id="deplist"><a aria-hidden="true" tabindex="-1" href="#deplist"><span class="icon icon-link"></span></a>deplist</h4>
+<p>显示包的依赖项</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum deplist nfs-utils
+</span></code></pre>
+<p>列出依赖项和提供它们的包</p>
+<h4 id="provides"><a aria-hidden="true" tabindex="-1" href="#provides"><span class="icon icon-link"></span></a>provides</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 查找提供查询文件的包</span>
+</span><span class="code-line">$ yum provides “*bin/top”
+</span><span class="code-line"><span class="token comment"># 显示包含 README.top 文件的包</span>
+</span><span class="code-line">$ yum provides “*/README.top”
+</span></code></pre>
+<h4 id="search"><a aria-hidden="true" tabindex="-1" href="#search"><span class="icon icon-link"></span></a>search</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 查找名称或描述中带有 samba 的软件包</span>
+</span><span class="code-line">$ yum search samba
+</span></code></pre>
+<h4 id="updateinfo"><a aria-hidden="true" tabindex="-1" href="#updateinfo"><span class="icon icon-link"></span></a>updateinfo</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 获取有关可用软件包更新的信息</span>
+</span><span class="code-line">$ yum updateinfo security
+</span></code></pre>
+<p>获取有关可用 security 更新的信息</p>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="包组"><a aria-hidden="true" tabindex="-1" href="#包组"><span class="icon icon-link"></span></a>包组</h3><div class="wrap-body">
+<h4 id="grouplist"><a aria-hidden="true" tabindex="-1" href="#grouplist"><span class="icon icon-link"></span></a>grouplist</h4>
+<p>列出已安装和可用软件包组的名称</p>
+<h4 id="groupinfo"><a aria-hidden="true" tabindex="-1" href="#groupinfo"><span class="icon icon-link"></span></a>groupinfo</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 查看 Web 服务器组中的包</span>
+</span><span class="code-line">$ yum groupinfo <span class="token string">"Web Server"</span>
+</span></code></pre>
+<h4 id="check-update"><a aria-hidden="true" tabindex="-1" href="#check-update"><span class="icon icon-link"></span></a>check-update</h4>
+<p>查询存储库以获取可用的软件包更新</p>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="管理-yum-存储库"><a aria-hidden="true" tabindex="-1" href="#管理-yum-存储库"><span class="icon icon-link"></span></a>管理 YUM 存储库</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="repolist"><a aria-hidden="true" tabindex="-1" href="#repolist"><span class="icon icon-link"></span></a>repolist</h4>
+<p>显示启用的软件存储库</p>
+<h4 id="repoinfo"><a aria-hidden="true" tabindex="-1" href="#repoinfo"><span class="icon icon-link"></span></a>repoinfo</h4>
+<p>显示有关启用的 <code>yum</code> 存储库的信息 *</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum repoinfo rhel-7-server-rpms
+</span></code></pre>
+<p>请参阅有关 rhel-7-server-rpms 存储库的信息</p>
+<h4 id="repo-pkgs"><a aria-hidden="true" tabindex="-1" href="#repo-pkgs"><span class="icon icon-link"></span></a>repo-pkgs</h4>
+<p>使用特定存储库中的包 *</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出来自 my-rpms 存储库的软件包</span>
+</span><span class="code-line">$ yum repo-pkgs my-rpms list
+</span><span class="code-line"><span class="token comment"># 从 my-rpms repo 安装所有软件包</span>
+</span><span class="code-line">$ yum repo-pkgs my-rpms <span class="token function">install</span>
+</span><span class="code-line"><span class="token comment"># 从 my-rpms 存储库中删除所有软件包</span>
+</span><span class="code-line">$ yum repo-pkgs my-rpms remove
+</span></code></pre>
+<h4 id="makecache"><a aria-hidden="true" tabindex="-1" href="#makecache"><span class="icon icon-link"></span></a>makecache</h4>
+<p>下载 <code>yum</code> 存储库数据到缓存</p>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="故障排除和维护-yum"><a aria-hidden="true" tabindex="-1" href="#故障排除和维护-yum"><span class="icon icon-link"></span></a>故障排除和维护 YUM</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="check"><a aria-hidden="true" tabindex="-1" href="#check"><span class="icon icon-link"></span></a>check</h4>
+<p>检查本地 RPM 数据库是否有问题（运行了很长时间）</p>
+<h4 id="history"><a aria-hidden="true" tabindex="-1" href="#history"><span class="icon icon-link"></span></a>history</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出所有 yum 安装、更新和清理操作</span>
+</span><span class="code-line">$ yum <span class="token function">history</span> list
+</span><span class="code-line"><span class="token comment"># 显示 yum info 3 的详细信息</span>
+</span><span class="code-line">$ yum <span class="token function">history</span> info <span class="token number">3</span>
+</span><span class="code-line"><span class="token comment"># 撤消事务 3 中的 yum 操作</span>
+</span><span class="code-line">$ yum <span class="token function">history</span> undo <span class="token number">3</span>
+</span><span class="code-line"><span class="token comment"># 重做事务 3 中撤消的 yum 操作</span>
+</span><span class="code-line">$ yum <span class="token function">history</span> redo <span class="token number">3</span>
+</span></code></pre>
+<h4 id="clean"><a aria-hidden="true" tabindex="-1" href="#clean"><span class="icon icon-link"></span></a>clean</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 删除缓存中保存的包</span>
+</span><span class="code-line">$ yum clean packages
+</span><span class="code-line"><span class="token comment"># 从缓存中清除所有包和元数据</span>
+</span><span class="code-line">$ yum clean all
+</span></code></pre>
+<p>清除缓存的包数据</p>
+<h4 id="fssnapshot"><a aria-hidden="true" tabindex="-1" href="#fssnapshot"><span class="icon icon-link"></span></a>fssnapshot</h4>
+<p>列出 LVM 快照（帮助在包更新后回滚）</p>
+<h4 id="fs"><a aria-hidden="true" tabindex="-1" href="#fs"><span class="icon icon-link"></span></a>fs</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出启用的文件系统过滤器</span>
+</span><span class="code-line">$ yum fs filters
+</span><span class="code-line"><span class="token comment"># 过滤所有正在安装的文档（小心！）</span>
+</span><span class="code-line">$ yum fs documentation
+</span></code></pre>
+<p>对文件系统采取行动（防止在最小系统上安装 doc 或语言文件）非常有用！</p>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="使用-yum-管理语言包"><a aria-hidden="true" tabindex="-1" href="#使用-yum-管理语言包"><span class="icon icon-link"></span></a>使用 YUM 管理语言包</h3><div class="wrap-body">
+<h4 id="langavailable"><a aria-hidden="true" tabindex="-1" href="#langavailable"><span class="icon icon-link"></span></a>langavailable</h4>
+<p>列出已安装的语言 *</p>
+<h4 id="langinfo"><a aria-hidden="true" tabindex="-1" href="#langinfo"><span class="icon icon-link"></span></a>langinfo</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出与西班牙语相关的软件包</span>
+</span><span class="code-line">$ yum langinfo es
+</span></code></pre>
+<h4 id="langinstall"><a aria-hidden="true" tabindex="-1" href="#langinstall"><span class="icon icon-link"></span></a>langinstall</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 安装与西班牙语相关的软件包</span>
+</span><span class="code-line">$ yum langinstall es
+</span></code></pre>
+<h4 id="langlist"><a aria-hidden="true" tabindex="-1" href="#langlist"><span class="icon icon-link"></span></a>langlist</h4>
+<p>列出已安装的语言 *</p>
+<h4 id="langremove"><a aria-hidden="true" tabindex="-1" href="#langremove"><span class="icon icon-link"></span></a>langremove</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 删除与西班牙语相关的软件包</span>
+</span><span class="code-line">$ yum langremove es
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="使用-yum-安装删除和升级软件包"><a aria-hidden="true" tabindex="-1" href="#使用-yum-安装删除和升级软件包"><span class="icon icon-link"></span></a>使用 YUM 安装、删除和升级软件包</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="install"><a aria-hidden="true" tabindex="-1" href="#install"><span class="icon icon-link"></span></a>install</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 安装 vsftpd 包</span>
+</span><span class="code-line">$ yum <span class="token function">install</span> vsftpd
+</span></code></pre>
+<h4 id="update"><a aria-hidden="true" tabindex="-1" href="#update"><span class="icon icon-link"></span></a>update</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 使用可用更新更新所有软件包</span>
+</span><span class="code-line">$ yum update
+</span><span class="code-line"><span class="token comment"># 更新 httpd 包（如果可用）</span>
+</span><span class="code-line">$ yum update httpd
+</span><span class="code-line"><span class="token comment"># 应用与安全相关的包更新</span>
+</span><span class="code-line">$ yum update <span class="token parameter variable">--security</span>
+</span></code></pre>
+<h4 id="update-to"><a aria-hidden="true" tabindex="-1" href="#update-to"><span class="icon icon-link"></span></a>update-to</h4>
+<p>将一个或所有软件包更新到特定版本</p>
+<h4 id="upgrade"><a aria-hidden="true" tabindex="-1" href="#upgrade"><span class="icon icon-link"></span></a>upgrade</h4>
+<p>更新包考虑过时</p>
+<h4 id="localinstall"><a aria-hidden="true" tabindex="-1" href="#localinstall"><span class="icon icon-link"></span></a>localinstall</h4>
+<p>从本地文件、http 或 ftp 安装包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum localinstall abc-1-1.i686.rpm
+</span></code></pre>
+<p>从本地目录安装 abc 包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum localinstall http://myrepo/abc-1-1.i686.rpm
+</span></code></pre>
+<p>从 FTP 站点安装 abc</p>
+<h4 id="downgrade"><a aria-hidden="true" tabindex="-1" href="#downgrade"><span class="icon icon-link"></span></a>downgrade</h4>
+<p>将软件包降级到早期版本</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum downgrade abc
+</span></code></pre>
+<p>将 abc 包降级到早期版本</p>
+<h4 id="reinstall"><a aria-hidden="true" tabindex="-1" href="#reinstall"><span class="icon icon-link"></span></a>reinstall</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 重新安装 util-linux（以替换任何已删除的文件）</span>
+</span><span class="code-line">$ yum reinstall util-linux
+</span></code></pre>
+<h4 id="swap"><a aria-hidden="true" tabindex="-1" href="#swap"><span class="icon icon-link"></span></a>swap</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 删除 ftp 包并安装 lftp 包</span>
+</span><span class="code-line">$ yum swap <span class="token function">ftp</span> lftp
+</span></code></pre>
+<h4 id="eraseremove"><a aria-hidden="true" tabindex="-1" href="#eraseremove"><span class="icon icon-link"></span></a>erase/remove</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 删除 vsftpd 包和依赖</span>
+</span><span class="code-line">$ yum remove vsftpd
+</span></code></pre>
+<h4 id="autoremove"><a aria-hidden="true" tabindex="-1" href="#autoremove"><span class="icon icon-link"></span></a>autoremove</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 删除 httpd 和其他不需要的包</span>
+</span><span class="code-line">$ yum autoremove httpd
+</span></code></pre>
+<h4 id="groupinstall"><a aria-hidden="true" tabindex="-1" href="#groupinstall"><span class="icon icon-link"></span></a>groupinstall</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 安装 Web 服务器包</span>
+</span><span class="code-line">$ yum groupinstall <span class="token string">"Web server"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="更多-yum-相关命令安装-yum-utils-软件包"><a aria-hidden="true" tabindex="-1" href="#更多-yum-相关命令安装-yum-utils-软件包"><span class="icon icon-link"></span></a>更多 YUM 相关命令（安装 yum-utils 软件包）</h3><div class="wrap-body">
+<h4 id="find-repos-of-install"><a aria-hidden="true" tabindex="-1" href="#find-repos-of-install"><span class="icon icon-link"></span></a>find-repos-of-install</h4>
+<p>查找包来自哪个存储库</p>
+<h4 id="needs-restarting"><a aria-hidden="true" tabindex="-1" href="#needs-restarting"><span class="icon icon-link"></span></a>needs-restarting</h4>
+<p>查找已更新且需要重启的进程</p>
+<h4 id="repoclosure"><a aria-hidden="true" tabindex="-1" href="#repoclosure"><span class="icon icon-link"></span></a>repoclosure</h4>
+<p>从存储库中获取未满足的依赖项列表</p>
+<h4 id="repoquery"><a aria-hidden="true" tabindex="-1" href="#repoquery"><span class="icon icon-link"></span></a>repoquery</h4>
+<p>查询远程仓库和本地 <code>RPM</code> 数据库</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 显示依赖包</span>
+</span><span class="code-line">$ repoquery <span class="token parameter variable">--requires</span> <span class="token parameter variable">--resolve</span> <span class="token function">bash</span>
+</span></code></pre>
+<h4 id="reposync"><a aria-hidden="true" tabindex="-1" href="#reposync"><span class="icon icon-link"></span></a>reposync</h4>
+<p>将 <code>yum</code> 存储库同步到本地目录</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 从 repo 获取包</span>
+</span><span class="code-line">$ reposync <span class="token parameter variable">-r</span> rhel-atomic-host-beta-rpms
+</span></code></pre>
+<h4 id="repotrack"><a aria-hidden="true" tabindex="-1" href="#repotrack"><span class="icon icon-link"></span></a>repotrack</h4>
+<p>下载一个包及其所有依赖项</p>
+<h4 id="show-installed"><a aria-hidden="true" tabindex="-1" href="#show-installed"><span class="icon icon-link"></span></a>show-installed</h4>
+<p>列出已安装的 RPM 包和统计信息</p>
+<h4 id="verifytree"><a aria-hidden="true" tabindex="-1" href="#verifytree"><span class="icon icon-link"></span></a>verifytree</h4>
+<p>检查本地 yum 存储库的一致性</p>
+<h4 id="yum-complete-transaction"><a aria-hidden="true" tabindex="-1" href="#yum-complete-transaction"><span class="icon icon-link"></span></a>yum-complete-transaction</h4>
+<p>尝试完成未完成的 yum 交易</p>
+<h4 id="yumdb"><a aria-hidden="true" tabindex="-1" href="#yumdb"><span class="icon icon-link"></span></a>yumdb</h4>
+<p>检查或更改 yum 数据库</p>
+<h4 id="yumdownloader"><a aria-hidden="true" tabindex="-1" href="#yumdownloader"><span class="icon icon-link"></span></a>yumdownloader</h4>
+<p>从 repo 下载一个包到当前目录</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="不同-yum-命令的常用选项"><a aria-hidden="true" tabindex="-1" href="#不同-yum-命令的常用选项"><span class="icon icon-link"></span></a>不同 YUM 命令的常用选项</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">yum <span class="token parameter variable">--disableplugin</span><span class="token operator">=</span>langpacks info vsftpd
+</span><span class="code-line"><span class="token comment"># 显示与正在运行的进程相关的包</span>
+</span><span class="code-line">yum <span class="token parameter variable">--enableplugin</span><span class="token operator">=</span>ps <span class="token function">ps</span>
+</span><span class="code-line">yum <span class="token function">install</span> <span class="token function">docker</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">--enablerepo</span><span class="token operator">=</span>rhel-7-server-extras-rpm
+</span><span class="code-line">yum list available <span class="token parameter variable">--disablerepo</span><span class="token operator">=</span>epel
+</span><span class="code-line"><span class="token comment"># 下载 vsftpd 包到缓存</span>
+</span><span class="code-line">yum <span class="token function">install</span> <span class="token parameter variable">--downloadonly</span> vsftpd
+</span></code></pre>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list"><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>-y</code></td><td>如果出现提示，假设是</td></tr><tr><td align="left"><code>--assumeno</code></td><td>如果提示，则假设否</td></tr><tr><td align="left"><code>-q</code></td><td>不产生任何输出</td></tr><tr><td align="left"><code>-v</code></td><td>产生额外的调试输出</td></tr><tr><td align="left"><code>--noplugins</code></td><td>运行命令而不加载任何 yum 插件</td></tr><tr><td align="left"><code>--disableplugin=</code></td><td>禁用单个命令的特定插件</td></tr><tr><td align="left"><code>--enableplugin=</code></td><td>启用已安装但当前已禁用的插件</td></tr><tr><td align="left"><code>--enablerepo=</code></td><td>为单个命令启用当前禁用的 repo（通配符可以）</td></tr><tr><td align="left"><code>--disablerepo=</code></td><td>为单个命令禁用当前启用的 repo（通配符可以）</td></tr><tr><td align="left"><code>--downloadonly</code></td><td>下载到 <code>/var/cache/yum/arch/prod/repo/packages/</code>，但不要安装</td></tr><tr><td align="left"><code>--filter-???=</code></td><td>代替???与vendors, rpm-groups, arches 和其他人一起过滤输出</td></tr><tr><td align="left"><code>--changelog</code></td><td>显示包的变更日志信息</td></tr></tbody></table>
+<!--rehype:className=style-list-->
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="http://yum.baseurl.org/">YUM 官方网站</a> <em>(yum.baseurl.org)</em></li>
+<li><a href="https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf">YUM 备忘清单(适用于红帽 RedHad 企业 Linux)</a> <em>(access.redhat.com)</em></li>
+<li><a href="http://prefetch.net/articles/yum.html">用 yum 管理软件包</a> <em>(prefetch.net)</em></li>
+<li><a href="https://docs.fedoraproject.org/en-US/Fedora/15/html/Deployment_Guide/ch-yum.html">Fedora 中的 Yum 文档</a> <em>(fedoraproject.org)</em></li>
+<li><a href="http://wiki.centos.org/PackageManagement/Yum/">CentOS 中的 Yum 文档</a> <em>(wiki.centos.org)</em></li>
+<li><a href="https://www.scientificlinux.org/documentation/faq/yum.apt.repo">Scientific Linux 中的 Yum 文档</a> <em>(scientificlinux.org)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
