@@ -87,6 +87,7 @@ Quick Reference
 [Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8/var(\-\-bg\-opacity));-->
 [WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 [XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
+[Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## Linux 命令
