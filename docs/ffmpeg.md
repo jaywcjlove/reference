@@ -7,6 +7,7 @@ FFmpeg 参考
 ---
 
 ### 安装
+<!--rehype:wrap-class=row-span-2-->
 
 Linux
 
@@ -22,6 +23,7 @@ $ brew install ffmpeg
 ```
 
 ### 示例
+<!--rehype:wrap-class=row-span-2-->
 
 mp4 转 avi:
 
@@ -35,40 +37,86 @@ webm 转 mp4:
 $ ffmpeg -i movie.webm movie.mp4
 ```
 
-### 常用开关
+### 全局选项
+
+:- | -
+:- | -
+`-y` | 覆盖输出文件
+`-n` | 不要覆盖输出文件
+
+### 主要选项
+
+:- | -
+:- | -
+`-f fmt` | 强制输入或输出文件格式
+`-i fName` | 输入文件名，未指定显示内容流的摘要
+`-c codecName` | 指定编解码器 [输入或输出]
+`-fs Nbytes` | 以 Nbytes 指定最大输出文件大小
+
+### 基础参数
+
+:- | -
+:- | -
+`-codecs`             | 列出可用编码
+`-formats`            | 列出支持的格式
+`-protocols`          | 列出支持的协议
+`-i input.mp4`        | 指定输入文件
+`-c:v libx264`        | 指定视频编码
+`-c:a aac`            | 指定音频编码
+`-vcodec libx264`     | 旧写法
+`-acodec aac`         | 旧写法
+`-fs SIZE`            | 指定文件大小
+
+### 视频参数
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+:- | -
+:- | -
+`-b bRate` | 设置视频比特率(单位 kbit/s)
+`-fixaspect` | 固定纵横比
+`-bt tolerance` | 设置视频比特率容差(单位 kbit/s)
+`-maxrate bRate` | 设置最大视频比特率容差(单位 kbit/s)
+`-minrate bRate` | 设置最小视频比特率容差(单位 kbit/s)
+`-bufsize size` | 设置速率控制缓冲区大小(以 kByte 为单位)
+`-sameq` | 使用与源相同的视频质量(意味着 VBR)
+`-newvideo` | 将新的视频流添加到当前输出流
+`-aspect RATIO` | 纵横比(4:3、16:9 或 1.25)
+`-r RATE` | 每秒帧率
+`-s WIDTHxHEIGHT` | 帧大小
+`-vn` | 没有视频
+
+### 码率设置
 
 ```bash
--codecs   # 列出编解码器
--c:v      # 视频编解码器(-vcodec)-'copy'复制流
--c:a      # 音频编解码器(-acodec)
--fs SIZE  # 限制文件大小（字节）
+-b:v 1M      # 视频比特率(1M = 1Mbit/s)
+-b:a 1M      # 音频比特率(1M = 1Mbit/s)
 ```
 
-### 音频
+### 尺寸规格
 
-```bash
--aq QUALITY  # 音频质量（特定于编解码器）
--ar 44100    # 音频采样率 (Hz)
--ac 1        # 音频通道（1=单声道，2=立体声）
--an          # 没有音频
--vol N       # 音量（256=正常）
-```
+:- | - | - | -
+:- | - | - | -
+`K` 或 `k` | 103 | 1000 字节 | 千字节 Kilobytes
+`M` | 106 | 1000000 字节 | 兆字节 Megabytes
+`G` | 109 | 1000000000 | 千兆字节 Gigabytes
+`Ki` | 210 | 1024 | 千字节 Kibibyte
+`Mi` | 220 | 1048576 | 兆字节 Mebibyte
+`Gi` | 230 | 1073741824 | Gibibyte
 
-### 比特率
 
-```bash
--b:v 1M      # 视频比特率（1M = 1Mbit/s）
--b:a 1M      # 音频比特率
-```
+### 音频参数
+<!--rehype:wrap-class=col-span-2-->
 
-#### 视频
-
-```bash
--aspect RATIO    # 纵横比（4:3、16:9 或 1.25）
--r RATE          # 每秒帧率
--s WIDTHxHEIGHT  # 帧大小
--vn              # 没有视频
-```
+:- | -
+:- | -
+`-ab bRate` | 设置音频比特率(单位 kbit/s)
+`-aframes N` | 设置要录制的音频帧数 [-frames:a 的别名]
+`-aq q` | 设置音频质量(特定于编解码器，VBR) [-q:a 的别名]
+`-an` | 禁用录音
+`-acodec codec` | 设置音频编解码器。[-codec:a 的别名] 使用 'copy' 复制流。
+`-vol` | 以 256 的倍数更改音频音量，其中 256 = 100%(正常)音量。例如 512 = 200%
+`-newaudio` | 将新的音频流添加到当前输出流
+`-alang code` | 设置当前音频流的 ISO 639 语言代码(3 个字母)
 
 视频编辑
 ---
@@ -116,7 +164,7 @@ $ ffmpeg -i input.avi -r 24 output.avi
 $ ffmpeg -r 1 -i input.m2v -r 24 output.avi
 ```
 
-将输入文件的帧速率（仅对原始格式有效）强制为 1 fps，将输出文件的帧速率强制为 24 fps
+将输入文件的帧速率(仅对原始格式有效)强制为 1 fps，将输出文件的帧速率强制为 24 fps
 
 ### 剪切视频部分
 <!--rehype:wrap-class=col-span-2-->
@@ -188,7 +236,7 @@ $ ffmpeg -i file.mp4 -vn -acodec copy output.aac
 ```
 <!--rehype:className=wrap-text -->
 
-将`-vn`（无视频）与 `-acodec copy` 结合起来。请注意，输出文件扩展名必须与输入文件中的音频编解码器匹配，`-acodec copy` 才能工作。
+将`-vn`(无视频)与 `-acodec copy` 结合起来。请注意，输出文件扩展名必须与输入文件中的音频编解码器匹配，`-acodec copy` 才能工作。
 
 ### 创建缩略图
 <!--rehype:wrap-class=row-span-2-->
@@ -259,7 +307,7 @@ $ ffmpeg -i input.mov -itsoffset 3 -i input.mov -map 0:v -map 1:a -codec:a copy 
 ```
 <!--rehype:className=wrap-text -->
 
-将视频延迟 3 秒（即将音频提前 3 秒）
+将视频延迟 3 秒(即将音频提前 3 秒)
 
 ```bash
 $ ffmpeg -i input.mov -itsoffset 3 -i input.mov -map 1:v -map 0:a -codec:a copy -codec:v copy output.mov
@@ -345,3 +393,4 @@ $ ffmpeg -i input.mov -codec:v copy -filter:a 'volume=2' output.mov
 - [FFmpeg Cheat Sheet](https://lzone.de/cheat-sheet/ffmpeg) _(lzone.de)_
 - [FFmpeg Cheat Sheet](https://devhints.io/ffmpeg) _(devhints.io)_
 - [FFmpeg Cheat Sheet](https://github.com/yuanqing/ffmpeg-cheatsheet) _(github.com)_
+- [FFmpeg Cheat Sheet](https://cheatography.com/thetartankilt/cheat-sheets/ffmpeg/) _(cheatography.com)_
