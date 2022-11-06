@@ -228,3 +228,58 @@ curl "https://{foo,bar}.com/file_[1-4].webp" --output "#1_#2.webp"
 <!--rehype:className=wrap-text -->
 
 下载一系列文件（输出`foo_file1.webp`、`foo_file2.webp…bar_file1_webp`等）
+
+### 将输出重定向到文件
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+$ curl http://url/file > file
+```
+
+### 基本认证
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+$ curl --user username:password http://example.com/
+$ curl -u username:password http://example.com/
+```
+
+### 写入文件而不是标准输出
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+$ curl -o file http://url/file
+$ curl --output file http://url/file
+```
+
+### 下载头信息
+
+```bash
+$ curl -I url
+# 显示头信息
+```
+
+### 将输出写入名为远程文件的文件
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+$ curl -o file http://url/file
+$ curl --output file http://url/file
+```
+
+### 执行远程脚本
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+$ curl -s http://url/myscript.sh
+```
+
+### 配置文件
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+curl -K file
+# 从文件中读取配置
+curl --config file
+$HOME/.curlrc # 类 UNIX 系统中的默认配置文件
+```
