@@ -494,6 +494,92 @@ $ ffmpeg -i audioS.mp4 -i videoS.mp4 -c copy -map 0:a -map 1:v outFil­e.mp4
 ```
 <!--rehype:className=wrap-text -->
 
+### 合并视频
+
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+
+合并相同规格(解码/分辨率/帧率)视频
+
+```bash
+# mylist.txt >>>
+file '1.mp4'
+file '2.mp4'
+file '3.mp4'
+
+# 这些文件是相对路径，如使用绝对路径需要添加 `-safe 0` 参数
+$ ffmpeg -f concat -i mylist.txt -c copy output.mp4
+```
+<!--rehype:className=wrap-text -->
+
+合并当前目录下所有视频
+
+```bash
+$ ffmpeg -f concat -safe 0 -i <(for f in ./*.mp4; do echo "file '$PWD/$f'"; done) -c copy output.mp4
+```
+
+合并不同规格视频，保证视频不变形
+
+```bash
+$ ffmpeg -i 1.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts tmp1.ts
+$ ffmpeg -i 2.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts tmp2.ts
+$ ffmpeg -i 3.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts tmp3.ts
+
+$ ffmpeg -threads 2 -i "concat:tmp1.ts|tmp2.ts|tmp3.ts"  -vf "scale=720:1080:force_original_aspect_ratio=decrease,pad=720:1080:(ow-iw)/2:(oh-ih)/2" -pix_fmt yuvj420p -shortest -y output.mp4
+```
+<!--rehype:className=wrap-text -->
+
+合并不同解码视频
+
+```bash
+$ ffmpeg -i input1.mp4 -i input2.webm -i input3.mov \
+-filter_complex "[0:v:0][0:a:0][1:v:0][1:a:0][2:v:0][2:a:0]concat=n=3:v=1:a=1[outv][outa]" \
+-map "[outv]" -map "[outa]" output.mkv
+```
+<!--rehype:className=wrap-text -->
+
+合并视频并重新编码音频
+
+```bash
+$ ffmpeg -f concat -i mylist.txt -c:v copy -c:a flac -strict -2 output.mp4
+```
+<!--rehype:className=wrap-text -->
+
+### 合并音频与图片
+
+合并多个音频，自定义背景图片，生成视频音乐
+
+```bash
+# mylist.txt >>>
+file '1.mp3'
+file '2.mp3'
+file '3.mp3'
+
+# OBS: 46500 = 25:50 minutes * 60 * 30fps
+# echo "00:25:50" | awk -F: '{ print (($1 * 3600) + ($2 * 60) + $3) * 30 }'
+$ ffmpeg -y -loop 1 -i cover.jpg -f concat -i mylist.txt -c:v libx264 -r 30 -pix_fmt yuv420p -vframes 46500 -c:a aac -b:a 192k -strict experimental -shortest output.mp4
+```
+<!--rehype:className=wrap-text -->
+
+### 添加水印
+
+在视频左上方 20,20 的位置插入 logo.png 图片
+
+```bash
+# -b:v 548k 可选参数，设置视频比特率，默认 200k 最好设置与原视频一致
+ffmpeg -i 1.mp4 -acodec copy -b:v 548k -vf "movie=logo.png[watermark];[in][watermark]overlay=20:20" output.mp4
+```
+<!--rehype:className=wrap-text -->
+
+### 去除水印
+
+设置一个矩形覆盖区域 x=10:y=10:w=120:h=45
+
+```bash
+# show=1 为可选参数，设置显示边框，方便调试用的
+ffmpeg -i 1.mp4 -b:v 548k -vf delogo=x=10:y=10:w=120:h=45:show=1 output.mp4
+```
+<!--rehype:className=wrap-text -->
+
 另见
 ---
 
