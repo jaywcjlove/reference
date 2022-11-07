@@ -252,21 +252,21 @@ $ yum update --security
 
 #### upgrade
 
-更新包考虑过时
+```bash
+$ yum -y upgrade
+```
+
+更新包考虑过时，只升级所有包，不升级软件和系统内核
 
 #### localinstall
 
-从本地文件、http 或 ftp 安装包
-
 ```bash
+# 从本地文件、http 或 ftp 安装包
 $ yum localinstall abc-1-1.i686.rpm
-```
-
-从本地目录安装 abc 包
-
-```bash
+# 从本地目录安装 abc 包
 $ yum localinstall http://myrepo/abc-1-1.i686.rpm
 ```
+<!--rehype:className=wrap-text-->
 
 从 FTP 站点安装 abc
 
@@ -369,8 +369,17 @@ $ reposync -r rhel-atomic-host-beta-rpms
 
 #### yumdownloader
 
-从 repo 下载一个包到当前目录
+```bash
+# 使用本地源离线安装 net-tools 工具包
+$ yumdownloader net-tools.x86_64
+# 使用 –destdir 参数设置下载的目标目录
+$ yumdownloader net-tools.x86_64 --destdir=/usr/local/bin/
+# 使用 –resolve 参数解决依赖关系并下载所需的安装包
+$ yumdownloader net-tools.x86_64 --resolve --destdir=/usr/local/bin/
+```
+<!--rehype:className=wrap-text-->
 
+从 repo 下载一个包到当前目录
 
 ### 不同 YUM 命令的常用选项
 
