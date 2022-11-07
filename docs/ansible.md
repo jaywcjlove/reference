@@ -48,7 +48,7 @@ bar.example.com
 检查Inventory是否生效
 
 ```shell
-ansible all --list-hosts
+$ ansible all --list-hosts
 ```
 ping所有目标
 

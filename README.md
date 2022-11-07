@@ -19,6 +19,7 @@ Quick Reference
 坑已挖，需要您的参与完善和贡献！🙏
 <!--rehype:style=padding-bottom: 23px;-->
 
+[Ansible](./docs/ansible.md)<!--rehype:style=background: rgb(238 0 0/var(\-\-bg\-opacity));&class=contributing tag&data-lang=RedHad&data-info=👆看看还缺点儿什么？-->
 [CMake](./docs/cmake.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));&class=contributing-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->

@@ -1374,10 +1374,11 @@ a[href^="http"]:empty::before {
 }
 ```
 
-如果你的 `<a>` 标签里面没有内容，将 `href` 的值作为内容展示
+如果 `<a>` 标签里面没有内容，将 `href` 的值作为内容展示
 
 
 ### 使用 :root 表示灵活类型
+<!--rehype:wrap-class=row-span-2-->
 
 响应式布局中的字体大小应该能够根据每个视口进行调整，您可以使用 `:root` 根据视口高度和宽度计算字体大小
 
@@ -1387,13 +1388,26 @@ a[href^="http"]:empty::before {
 }
 ```
 
-现在您可以根据 `:root` 计算的值使用根 `em` 单位：
+您可以根据 `:root` 计算的值使用根 `em` 单位：
 
 ```css
 body {
   font: 1rem/1.6 sans-serif;
 }
 ```
+
+### 类似 contenteditable 的样式
+
+```css
+div {
+  -webkit-user-modify: 
+    read-write-plaintext-only;
+}
+```
+<!--rehype:className=wrap-text -->
+
+通过样式来控制一个元素 `div` 是否可以编辑
+
 
 另见
 ---------
