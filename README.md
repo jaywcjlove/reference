@@ -76,22 +76,22 @@ Quick Reference
 [Lerna](./docs/lerna.md)<!--rehype:style=background: rgb(192 132 252/var(\-\-bg\-opacity));-->
 [npm](./docs/npm.md)<!--rehype:style=background: rgb(203 2 0/var(\-\-bg\-opacity));-->
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
-[Yarn](./docs/yarn.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
+[Yarn](./docs/yarn.md)<!--rehype:style=background: rgb(33 136 182/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 工具
 
-[Emacs](./docs/emacs.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));-->
-[Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));-->
-[nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));-->
+[Emacs](./docs/emacs.md)<!--rehype:style=background: rgb(98 36 134/var(\-\-bg\-opacity));-->
+[Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54/var(\-\-bg\-opacity));-->
+[nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 153 0/var(\-\-bg\-opacity));-->
 [Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141/var(\-\-bg\-opacity));-->
 [Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
 [Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 [Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8/var(\-\-bg\-opacity));-->
-[WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
+[WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220/var(\-\-bg\-opacity));-->
 [XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
-[Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
+[Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## Linux 命令
