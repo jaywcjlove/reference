@@ -67,10 +67,10 @@ npm 备忘清单
 ### 缓存 cache
 
 ```bash
-npm cache add <package-spec>    # 将指定的包添加到本地缓存
-npm cache clean [<key>]         # 删除缓存文件夹中的所有数据
-npm cache ls [<name>@<version>]
-npm cache verify # 验证缓存文件夹的内容，垃圾收集任何不需要的数据，
+$ npm cache add <package-spec>    # 将指定的包添加到本地缓存
+$ npm cache clean [<key>]         # 删除缓存文件夹中的所有数据
+$ npm cache ls [<name>@<version>]
+$ npm cache verify # 验证缓存文件夹的内容，垃圾收集任何不需要的数据，
                  # 并验证缓存索引和所有缓存数据的完整性
 ```
 
@@ -93,23 +93,23 @@ npm cache verify # 验证缓存文件夹的内容，垃圾收集任何不需要�
 
 ```bash
 # 将某人添加为所有者
-npm owner add USERNAME PACKAGENAME
+$ npm owner add USERNAME PACKAGENAME
 # 列出包
-npm ls
+$ npm ls
 # 向安装旧版本软件包的用户添加警告(弃用)
-npm deprecate PACKAGE@"< 0.2.0" "critical bug fixed in v0.2.0"
+$ npm deprecate PACKAGE@"< 0.2.0" "critical bug fixed in v0.2.0"
 # 更新所有包或选定的包
-npm update [-g] PACKAGE
+$ npm update [-g] PACKAGE
 # 检查过时的包
-npm outdated [PACKAGE]
+$ npm outdated [PACKAGE]
 ```
 
 ### 取消发布包
 
 ```bash
-npm unpublish <package-name> -f
+$ npm unpublish <package-name> -f
 # 取消指定版本
-npm unpublish <package-name>@<version>
+$ npm unpublish <package-name>@<version>
 ```
 
 注意：如果您取消发布整个包，则必须在 24 小时后才能发布该包的任何新版本
@@ -128,23 +128,20 @@ $ npm owner add <user> <your-package-name>
 ### 要将包转移到 npm 用户帐户
 
 ```bash
-npm owner add <their-username> <package-name>
 # 新维护者接受邀请
-npm owner rm <your-username> <package-name>
-```
-
-写入启用了双因素身份验证
-
-```bash
-npm owner add <their-username> <package-name> --otp=123456
+$ npm owner add <their-username> <package-name>
+# 删除维护者
+$ npm owner rm <your-username> <package-name>
+# 写入启用了双因素身份验证
+$ npm owner add <their-username> <package-name> --otp=123456
 ```
 
 ### 发布包 npmjs.org
 
 ```bash
-npm publish
+$ npm publish
 # 第一次需要指定公开参数
-npm publish --access public
+$ npm publish --access public
 ```
 
 发布公开包，到 [npmjs.org](https://docs.npmjs.com)
@@ -153,8 +150,10 @@ npm publish --access public
 
 ```bash
 $ npm install -g nrm # 安装 nrm 包
-$ nrm ls             # 查看 registry 列表
-$ nrm use cnpm       # 将注册表切换到 cnpm
+# 查看 registry 列表
+$ nrm ls             
+# 将注册表切换到 cnpm
+$ nrm use cnpm       
 ```
 
 配置
