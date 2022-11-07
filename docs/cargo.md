@@ -6,8 +6,7 @@ Cargo 备忘清单
 入门
 --------
 
-### 安装 Rust 和 Cargo
-
+### 安装/升级 Rust 和 Cargo
 
 ```bash
 $ curl -sSf https://static.rust-lang.org/rustup.sh | sh
