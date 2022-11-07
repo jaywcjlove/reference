@@ -191,14 +191,16 @@
 <h4 id="update-to"><a aria-hidden="true" tabindex="-1" href="#update-to"><span class="icon icon-link"></span></a>update-to</h4>
 <p>将一个或所有软件包更新到特定版本</p>
 <h4 id="upgrade"><a aria-hidden="true" tabindex="-1" href="#upgrade"><span class="icon icon-link"></span></a>upgrade</h4>
-<p>更新包考虑过时</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum <span class="token parameter variable">-y</span> upgrade
+</span></code></pre>
+<p>更新包考虑过时，只升级所有包，不升级软件和系统内核</p>
 <h4 id="localinstall"><a aria-hidden="true" tabindex="-1" href="#localinstall"><span class="icon icon-link"></span></a>localinstall</h4>
-<p>从本地文件、http 或 ftp 安装包</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum localinstall abc-1-1.i686.rpm
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 从本地文件、http 或 ftp 安装包</span>
+</span><span class="code-line">$ yum localinstall abc-1-1.i686.rpm
+</span><span class="code-line"><span class="token comment"># 从本地目录安装 abc 包</span>
+</span><span class="code-line">$ yum localinstall http://myrepo/abc-1-1.i686.rpm
 </span></code></pre>
-<p>从本地目录安装 abc 包</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ yum localinstall http://myrepo/abc-1-1.i686.rpm
-</span></code></pre>
+<!--rehype:className=wrap-text-->
 <p>从 FTP 站点安装 abc</p>
 <h4 id="downgrade"><a aria-hidden="true" tabindex="-1" href="#downgrade"><span class="icon icon-link"></span></a>downgrade</h4>
 <p>将软件包降级到早期版本</p>
@@ -253,6 +255,14 @@
 <h4 id="yumdb"><a aria-hidden="true" tabindex="-1" href="#yumdb"><span class="icon icon-link"></span></a>yumdb</h4>
 <p>检查或更改 yum 数据库</p>
 <h4 id="yumdownloader"><a aria-hidden="true" tabindex="-1" href="#yumdownloader"><span class="icon icon-link"></span></a>yumdownloader</h4>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 使用本地源离线安装 net-tools 工具包</span>
+</span><span class="code-line">$ yumdownloader net-tools.x86_64
+</span><span class="code-line"><span class="token comment"># 使用 –destdir 参数设置下载的目标目录</span>
+</span><span class="code-line">$ yumdownloader net-tools.x86_64 <span class="token parameter variable">--destdir</span><span class="token operator">=</span>/usr/local/bin/
+</span><span class="code-line"><span class="token comment"># 使用 –resolve 参数解决依赖关系并下载所需的安装包</span>
+</span><span class="code-line">$ yumdownloader net-tools.x86_64 <span class="token parameter variable">--resolve</span> <span class="token parameter variable">--destdir</span><span class="token operator">=</span>/usr/local/bin/
+</span></code></pre>
+<!--rehype:className=wrap-text-->
 <p>从 repo 下载一个包到当前目录</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="不同-yum-命令的常用选项"><a aria-hidden="true" tabindex="-1" href="#不同-yum-命令的常用选项"><span class="icon icon-link"></span></a>不同 YUM 命令的常用选项</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">yum <span class="token parameter variable">--disableplugin</span><span class="token operator">=</span>langpacks info vsftpd
