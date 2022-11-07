@@ -134,6 +134,7 @@ Docker 镜像
 <!--rehype:body-class=cols-2-->
 
 ### 操控
+<!--rehype:wrap-class=row-span-2-->
 
 | `Example` | Description |
 |-----------|-----------|
@@ -157,6 +158,12 @@ $ docker build - < context.tar.gz
 $ docker build -t eon/nginx-server .
 $ docker build -f myOtherDockerfile .
 $ curl example.com/remote/Dockerfile | docker build -f - .
+```
+
+### 删除 \<none> 镜像
+
+```bash
+$ docker rmi -f $(docker images | grep "none" | awk '{print $3}')
 ```
 
 Docker 网络
