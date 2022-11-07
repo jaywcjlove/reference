@@ -516,6 +516,7 @@ $ ffmpeg -f concat -i mylist.txt -c copy output.mp4
 ```bash
 $ ffmpeg -f concat -safe 0 -i <(for f in ./*.mp4; do echo "file '$PWD/$f'"; done) -c copy output.mp4
 ```
+<!--rehype:className=wrap-text -->
 
 合并不同规格视频，保证视频不变形
 
