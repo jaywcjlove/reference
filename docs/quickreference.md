@@ -29,7 +29,7 @@ HTML 存放在仓库根目录下的 `dist` 目录中，将 `dist/index.html` 静
 
 ### 介绍
 
-在备忘清单采用 `HTML 注释语法`，标识网站布局和一些样式，目的是为了在 `GitHub` 中也是正常毫无瑕疵的预览 `Markdown`。
+在备忘清单采用 `HTML 注释语法`，标识网站布局和一些样式，目的是为了在 `GitHub` 中也是正常毫无瑕疵的预览 [`Markdown`](./markdown.md)。
 
 ```markdown
 ### 卡片标题
@@ -45,7 +45,7 @@ HTML 存放在仓库根目录下的 `dist` 目录中，将 `dist/index.html` 静
 ### 注释语法介绍
 <!--rehype:wrap-class=row-span-3&style=color:black;background-color: #d7a100;-->
 
-- 在某个 Markdown 语法下方或者后面，添加 HTML注释
+- 在某个 [`Markdown`](./markdown.md) 语法下方或者后面，添加 HTML注释
 - 以 `<!--rehype:` 开始，`-->` 结束，包裹参数内容
 - 内容采用 URL 参数的字符拼接方式
 
@@ -78,7 +78,7 @@ HTML 存放在仓库根目录下的 `dist` 目录中，将 `dist/index.html` 静
 ---- | ----
 `body-style` | 包裹所有卡片`外壳`的样式
 `body-class` | 用于卡片栏布局，添加`类`名
-`wrap-style` | 卡片栏添加 CSS 样式
+`wrap-style` | 卡片栏添加 [CSS](./css.md) 样式
 `wrap-class` | 用于卡片占位，添加`类`名
 
 ### 文字颜色
@@ -135,7 +135,7 @@ export const Student = (
 );
 ```
 
-上面 `{1,4-5}` 行代码高亮，下面是 `Markdown` 代码示例
+上面 `{1,4-5}` 行代码高亮，下面是 [`Markdown`](./markdown.md) 代码示例
 
 ```markdown
   ```jsx {1,4-5}
@@ -258,7 +258,7 @@ const school = <div>学校</div>;
 <b>这里是你的 HTML 代码</b>
 ```
 
-上面的 `markdown` 代码在 `meta` 位置添加 `preview` 标识，HTML 代码将被执行预览
+上面的 [`markdown`](./markdown.md) 代码在 `meta` 位置添加 `preview` 标识，[HTML](./html.md) 代码将被执行预览
 
 ### KaTeX 数学渲染
 
@@ -267,7 +267,7 @@ c = \pm\sqrt{a^2 + b^2}
 L = \frac{1}{2} \rho v^2 S C_L
 ```
 
-上面示例 `Markdown` 代码源码
+上面示例 [`Markdown`](./markdown.md) 代码源码
 
 ```markdown {1}
   ```KaTeX
@@ -275,7 +275,7 @@ L = \frac{1}{2} \rho v^2 S C_L
   L = \frac{1}{2} \rho v^2 S C_L
 ```
 
-还可以单行展示 `KaTeX:c = \pm\sqrt{a^2 + b^2}`，需要标记 \`KaTeX:数学公式\` 将被显示成数学公式，这是基于 [KaTeX](https://katex.org/) 生成
+还可以单行展示 `KaTeX:c = \pm\sqrt{a^2 + b^2}`，需要标记 <code>\`KaTeX:数学公式\`</code> 将被显示成数学公式，这是基于 [KaTeX](https://katex.org/) 生成
 
 布局
 ---
@@ -368,7 +368,7 @@ H2 部分
 ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
 ```
 
-上面布局效果 Markdown 源码：
+上面布局效果 [Markdown](./markdown.md) 源码：
 
 ```markdown
 ### H3 Title 1
@@ -393,7 +393,7 @@ H2 部分
 ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
 ```
 
-上面布局效果 Markdown 源码：
+上面布局效果 [Markdown](./markdown.md) 源码：
 
 ```markdown
 ### Title 1
@@ -441,7 +441,7 @@ H2 部分
 ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
 ```
 
-上面布局效果 Markdown 源码：
+上面布局效果 [Markdown](./markdown.md) 源码：
 
 ```markdown
 ### Title 1
@@ -465,7 +465,7 @@ H2 部分
 ╰┈┈┈╯ ╰┈┈┈┈┈┈┈┈┈╯
 ```
 
-上面布局效果 Markdown 源码：
+上面布局效果 [Markdown](./markdown.md) 源码：
 
 ```markdown
 ### Title 1
@@ -489,7 +489,7 @@ H2 部分
 ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
 ```
 
-上面布局效果 Markdown 源码：
+上面布局效果 [Markdown](./markdown.md) 源码：
 
 ```markdown
 ### Title 1
@@ -513,7 +513,7 @@ H2 部分
 ╰┈┈┈┈┈┈┈┈┈╯ ╰┈┈┈╯
 ```
 
-上面布局效果 Markdown 源码：
+上面布局效果 [Markdown](./markdown.md) 源码：
 
 ```markdown
 ### Title 1
@@ -537,7 +537,7 @@ H2 部分
 ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
 ```
 
-上面布局效果 Markdown 源码：
+上面布局效果 [Markdown](./markdown.md) 源码：
 
 ```markdown
 H2 部分
@@ -568,7 +568,7 @@ H2 部分
 ╰┈┈┈╯ ╰┈┈┈╯ ╰┈┈┈╯
 ```
 
-上面布局效果 Markdown 源码：
+上面布局效果 [Markdown](./markdown.md) 源码：
 
 ```markdown
 ### Title 1
