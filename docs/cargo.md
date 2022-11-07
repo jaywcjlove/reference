@@ -36,12 +36,40 @@ $ curl -sSf https://static.rust-lang.org/rustup.sh | sh
 `cargo clippy --all-targets -- --D warnings` | Linter 检查错误
 `cargo tarpaulin --ignore-tests` | 检查代码覆盖率
 
+### 切换源
+<!--rehype:wrap-class=col-span-2&style=background:#e91e63;--->
+
+```bash
+$ touch ~/.cargo/config # 添加配置文件
+$ vim ~/.cargo/config   # 编辑配置文件
+```
+
+配置文件 `config` 内容
+
+```toml
+[source.crates-io]
+registry = "https://github.com/rust-lang/crates.io-index"
+replace-with = 'tuna' # 👈 如果需要提交包注释配置源
+
+[source.tuna]
+registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+# registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+```
+
+💥 注意切换源需要删除缓存目录
+
+```bash
+$ rm -rf ~/.cargo/.package-cache   # ⚠️ 删除缓存目录内容
+```
+
 ### 创建新项目
 <!--rehype:wrap-class=row-span-3-->
 
 ```bash
 $ cargo new hello_world --bin
 ```
+
+---
 
 - `--bin` 正在制作一个二进制程序
 - `--lib` 正在创建一个库(lib)
@@ -167,7 +195,7 @@ edition = '2015'
 # `source` 表下，就是存储有关要更换的来源名称
 [source]
 
-# 在`source` 表格之下的，可为一定数量的有关来源名称. 示例下面就# 定义了一个新源， 叫 `my-awesome-source`， 其内容来自本地 # `vendor`目录 ，其相对于包含`.cargo/config`文件的目录
+# 在`source` 表格之下的，可为一定数量的有关来源名称. 示例下面就，定义了一个新源， 叫 `my-awesome-source`，其内容来自本地，`vendor`目录 ，其相对于包含 `.cargo/config` 文件的目录
 [source.my-awesome-source]
 directory = "vendor"
 
@@ -177,7 +205,7 @@ git = "https://example.com/path/to/repo"
 # tag = "v1.0.1"
 # rev = "313f44e8"
 
-# The crates.io 默认源 在"crates-io"名称下， 且在这里我们使用 `replace-with` 字段指明 默认源更换成"my-awesome-source"源
+# crates.io 默认源 在"crates-io"名称下，且在这里我们使用 `replace-with` 字段指明 默认源更换成"my-awesome-source"源
 [source.crates-io]
 replace-with = "my-awesome-source"
 ```
@@ -199,7 +227,7 @@ directory = "path/to/vendor"
 ```
 <!--rehype:className=wrap-text -->
 
-更换源的配置通过完成 `.cargo/config`，下面为全套可用字段是
+更换源的配置通过完成 `.cargo/config`，上面是全套可用字段
 
 包相关命令
 ---
