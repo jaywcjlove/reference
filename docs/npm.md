@@ -1,7 +1,7 @@
 npm 备忘清单
 ===
 
-这个 npm 快速参考备忘单显示了它的常用命令使用清单。
+这个 [npm](https://www.npmjs.com/) 快速参考备忘单显示了它的常用命令使用清单
 
 常用命令
 ----
@@ -74,70 +74,55 @@ npm cache verify # 验证缓存文件夹的内容，垃圾收集任何不需要�
                  # 并验证缓存索引和所有缓存数据的完整性
 ```
 
-用于添加、列出或清理 npm 缓存文件夹
+用于添加、列出或清理 [npm](https://www.npmjs.com/) 缓存文件夹
 
 ### 更新
 
-| 命令                    | 描述     |
-| ---                     | ---       |
-| `npm version <version>` | 要更改 `package.json` 中的版本号 |
-| `npm update`            | 更新生产包 |
-| `npm update --dev`      | 更新开发包 |
-| `npm update -g`         | 更新全局包 |
-| `npm update lodash`     | 更新 `lodash` 包 |
+命令 | 描述 
+:- | - 
+`npm version <version>` | 要更改 `package.json` 中的版本号
+`npm update`            | 更新生产包
+`npm update --dev`      | 更新开发包
+`npm update -g`         | 更新全局包
+`npm update lodash`     | 更新 `lodash` 包
 
 
 ### 杂项功能
 <!--rehype:wrap-class=row-span-2-->
 
-将某人添加为所有者
 
 ```bash
+# 将某人添加为所有者
 npm owner add USERNAME PACKAGENAME
-```
-
-列出包
-
-```bash
+# 列出包
 npm ls
-```
-
-向安装旧版本软件包的用户添加警告(弃用)
-
-```bash
+# 向安装旧版本软件包的用户添加警告(弃用)
 npm deprecate PACKAGE@"< 0.2.0" "critical bug fixed in v0.2.0"
-```
-
-更新所有包或选定的包
-
-```bash
+# 更新所有包或选定的包
 npm update [-g] PACKAGE
-```
-
-检查过时的包
-
-```bash
+# 检查过时的包
 npm outdated [PACKAGE]
 ```
 
+### 取消发布包
+
+```bash
+npm unpublish <package-name> -f
+# 取消指定版本
+npm unpublish <package-name>@<version>
+```
+
+注意：如果您取消发布整个包，则必须在 24 小时后才能发布该包的任何新版本
+
 ### 更改包裹可见性
 
-将公共包设为私有
-
 ```bash
-npm access restricted <package-name>
-```
-
-公开私有包
-
-```bash
-npm access public <package-name>
-```
-
-授予私有包访问权限
-
-```bash
-npm owner add <user> <your-package-name>
+# 将公共包设为私有
+$ npm access restricted <package-name>
+# 公开私有包
+$ npm access public <package-name>
+# 授予私有包访问权限
+$ npm owner add <user> <your-package-name>
 ```
 
 ### 要将包转移到 npm 用户帐户
@@ -154,16 +139,6 @@ npm owner rm <your-username> <package-name>
 npm owner add <their-username> <package-name> --otp=123456
 ```
 
-### 取消发布包
-
-```bash
-npm unpublish <package-name> -f
-# 取消指定版本
-npm unpublish <package-name>@<version>
-```
-
-注意：如果您取消发布整个包，则必须在 24 小时后才能发布该包的任何新版本。
-
 ### 发布包 npmjs.org
 
 ```bash
@@ -172,7 +147,15 @@ npm publish
 npm publish --access public
 ```
 
-发布公开包，到 npmjs.org
+发布公开包，到 [npmjs.org](https://docs.npmjs.com)
+
+### 使用 nrm 切换 registry
+
+```bash
+$ npm install -g nrm # 安装 nrm 包
+$ nrm ls             # 查看 registry 列表
+$ nrm use cnpm       # 将注册表切换到 cnpm
+```
 
 配置
 ---
@@ -188,15 +171,27 @@ npm publish --access public
 
 
 ### 配置内容
-<!--rehype:wrap-class=col-span-2-->
 
 ```ini
 # last modified: 01 Jan 2016
 ; Set a new registry for a scoped package
 @myscope:registry=https://registry.npmmirror.com
 ```
+<!--rehype:className=wrap-text -->
 
-注释使用 `#`, `;` 放置到一行的开头。`.npmrc` 文件由指定此注释语法的 [`npm/ini`](https://github.com/npm/ini) 解析
+注释使用 `#`, `;` 放置到一行的开头， [`.npmrc`](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc) 文件由指定此注释语法的 [`npm/ini`](https://github.com/npm/ini) 解析
+
+
+### registry
+
+:- | :-
+:- | :-
+`npm` | https://registry.npmjs.org/
+`yarn` | https://registry.yarnpkg.com/
+`tencent` | https://mirrors.cloud.tencent.com/npm/
+`cnpm` | https://r.cnpmjs.org/
+`taobao` | https://registry.npmmirror.com/
+`npmMirror` | https://skimdb.npmjs.com/registry/
 
 ### `.npmignore`
 
@@ -223,7 +218,7 @@ npm publish --access public
 $ npm install -g <package-name> --registry=https://registry.npmmirror.com
 ```
 
-将配置放置在 `.npmrc` 全局配置文件中，或者在项目的根目录中。
+将配置放置在 [`.npmrc`](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc) 全局配置文件中，或者在项目的根目录中。
 
 ```ini
 ; registry=https://registry.npmjs.org/
@@ -241,7 +236,7 @@ registry=https://registry.npmmirror.com
 替换 npm 仓库地址为 npmmirror(淘宝) 镜像地址
 
 ```bash
-npm config set registry https://registry.npmmirror.com
+$ npm config set registry https://registry.npmmirror.com
 ```
 
 请参阅：[npmmirror 中国镜像站](https://npmmirror.com/)
