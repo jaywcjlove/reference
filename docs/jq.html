@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>jq 备忘清单
+ &#x26;  jq cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这个快速参考备忘单提供了使用 jq 命令的各种方法。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,jq">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/jq.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="jq-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#jq-备忘清单"><span class="icon icon-link"></span></a>jq 备忘清单</h1><div class="wrap-body">
+<p>这个快速参考备忘单提供了使用 <a href="https://stedolan.github.io/jq/">jq</a> 命令的各种方法。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" href="#选项">选项</a><a aria-hidden="true" class="leve2 tocs-link" href="#学习示例">学习示例</a><a aria-hidden="true" class="leve3 tocs-link" href="#获取一个键的值">获取一个键的值</a><a aria-hidden="true" class="leve3 tocs-link" href="#数组运算">数组运算</a><a aria-hidden="true" class="leve3 tocs-link" href="#构造一个数组对象">构造一个数组/对象</a><a aria-hidden="true" class="leve3 tocs-link" href="#计算一个值的长度">计算一个值的长度</a><a aria-hidden="true" class="leve3 tocs-link" href="#取出数组中的键">取出数组中的键</a><a aria-hidden="true" class="leve3 tocs-link" href="#使用多个过滤器">使用多个过滤器</a><a aria-hidden="true" class="leve3 tocs-link" href="#管道传递给下一个过滤器">管道传递给下一个过滤器</a><a aria-hidden="true" class="leve3 tocs-link" href="#条件语句判断">条件语句判断</a><a aria-hidden="true" class="leve3 tocs-link" href="#每个输入调用过滤器">每个输入调用过滤器</a><a aria-hidden="true" class="leve3 tocs-link" href="#条件判断">条件判断</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符串插入值并进行运算">字符串插入值并进行运算</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>jq 就像用于 JSON 数据的 <a href="./sed.html">sed</a> - 您可以使用它来切片、过滤、映射和转换结构化数据</p>
+<ul>
+<li><a href="https://stedolan.github.io/jq/">jq 官网</a> <em>(stedolan.github.io)</em></li>
+<li><a href="https://jaywcjlove.github.io/linux-command/c/jq.html">jq 命令使用</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+<p>安装</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> jq <span class="token comment"># Debian&#x26; Ubuntu</span>
+</span><span class="code-line">$ <span class="token function">sudo</span> dnf <span class="token function">install</span> jq     <span class="token comment"># Fedora </span>
+</span><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">zypper</span> <span class="token function">install</span> jq  <span class="token comment"># openSUSE</span>
+</span><span class="code-line">$ <span class="token function">sudo</span> pacman <span class="token parameter variable">-S</span> jq    <span class="token comment"># Arch</span>
+</span><span class="code-line">$ brew <span class="token function">install</span> jq      <span class="token comment"># macOS &#x26; Homebrew</span>
+</span><span class="code-line">$ port <span class="token function">install</span> jq      <span class="token comment"># macOS &#x26; MacPorts</span>
+</span></code></pre>
+<p>语法</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ jq <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token operator">&#x3C;</span>jq filter<span class="token operator">></span> <span class="token punctuation">[</span>file<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</span><span class="code-line">$ jq <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token parameter variable">--args</span> <span class="token operator">&#x3C;</span>jq filter<span class="token operator">></span> <span class="token punctuation">[</span>strings<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</span><span class="code-line">$ jq <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token parameter variable">--jsonargs</span> <span class="token operator">&#x3C;</span>jq filter<span class="token operator">></span> <span class="token punctuation">[</span>JSON_TEXTS<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="选项"><a aria-hidden="true" tabindex="-1" href="#选项"><span class="icon icon-link"></span></a>选项</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>-c</code></td><td>紧凑而不是漂亮的输出</td></tr><tr><td align="left"><code>-n</code></td><td>使用<code>null</code>作为单个输入值</td></tr><tr><td align="left"><code>-e</code></td><td>根据输出设置退出状态代码</td></tr><tr><td align="left"><code>-s</code></td><td>将所有输入读取（吸取）到数组中；应用过滤器</td></tr><tr><td align="left"><code>-r</code></td><td>输出原始字符串，而不是JSON文本</td></tr><tr><td align="left"><code>-R</code></td><td>读取原始字符串，而不是JSON文本</td></tr><tr><td align="left"><code>-C</code></td><td>为 JSON 着色</td></tr><tr><td align="left"><code>-M</code></td><td>单色（不要为JSON着色）</td></tr><tr><td align="left"><code>-S</code></td><td>在输出上排序对象的键</td></tr><tr><td align="left"><code>--tab</code></td><td>使用制表符进行缩进</td></tr><tr><td align="left"><code>--arg a v</code></td><td>将变量 <code>$a</code> 设置为 value <code>&#x3C;v></code></td></tr><tr><td align="left"><code>--argjson a v</code></td><td>将变量 <code>$a</code> 设置为 JSON value <code>&#x3C;v></code></td></tr><tr><td align="left"><code>--slurpfile a f</code></td><td>将变量 <code>$a</code> 设置为从<code>&#x3C;f></code>读取的JSON文本数组</td></tr><tr><td align="left"><code>--rawfile a f</code></td><td>将变量 <code>$a</code> 设置为包含<code>&#x3C;f></code>内容的字符串</td></tr><tr><td align="left"><code>--args</code></td><td>其余参数是字符串参数，而不是文件</td></tr><tr><td align="left"><code>--jsonargs</code></td><td>其余的参数是JSON参数，而不是文件</td></tr><tr><td align="left"><code>--</code></td><td>终止参数处理</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="学习示例"><a aria-hidden="true" tabindex="-1" href="#学习示例"><span class="icon icon-link"></span></a>学习示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="获取一个键的值"><a aria-hidden="true" tabindex="-1" href="#获取一个键的值"><span class="icon icon-link"></span></a>获取一个键的值</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'{"foo": 42, "bar": "less interesting data"}'</span> <span class="token operator">|</span> jq <span class="token string">'.foo'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token number">42</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数组运算"><a aria-hidden="true" tabindex="-1" href="#数组运算"><span class="icon icon-link"></span></a>数组运算</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'[{"name":"JSON", "good":true}, {"name":"XML", "good":false}]'</span> <span class="token operator">|</span> jq <span class="token string">'.[1]'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"XML"</span>,
+</span><span class="code-line">  <span class="token string">"good"</span><span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="构造一个数组对象"><a aria-hidden="true" tabindex="-1" href="#构造一个数组对象"><span class="icon icon-link"></span></a>构造一个数组/对象</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'{"user":"stedolan","titles":["JQ Primer", "More JQ"]}'</span> <span class="token operator">|</span> jq <span class="token string">'{user, title: .titles[]}'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token string">"user"</span><span class="token builtin class-name">:</span> <span class="token string">"stedolan"</span>,
+</span><span class="code-line">  <span class="token string">"title"</span><span class="token builtin class-name">:</span> <span class="token string">"JQ Primer"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token string">"user"</span><span class="token builtin class-name">:</span> <span class="token string">"stedolan"</span>,
+</span><span class="code-line">  <span class="token string">"title"</span><span class="token builtin class-name">:</span> <span class="token string">"More JQ"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="计算一个值的长度"><a aria-hidden="true" tabindex="-1" href="#计算一个值的长度"><span class="icon icon-link"></span></a>计算一个值的长度</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'[[1,2], "string", {"a":2}, null]'</span> <span class="token operator">|</span> jq <span class="token string">'.[] | length'</span>              
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token number">2</span>
+</span><span class="code-line"><span class="token number">6</span>
+</span><span class="code-line"><span class="token number">1</span>
+</span><span class="code-line"><span class="token number">0</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="取出数组中的键"><a aria-hidden="true" tabindex="-1" href="#取出数组中的键"><span class="icon icon-link"></span></a>取出数组中的键</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'{"abc": 1, "abcd": 2, "Foo": 3}'</span> <span class="token operator">|</span> jq <span class="token string">'keys'</span>              
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token punctuation">[</span>
+</span><span class="code-line">  <span class="token string">"Foo"</span>,
+</span><span class="code-line">  <span class="token string">"abc"</span>,
+</span><span class="code-line">  <span class="token string">"abcd"</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="使用多个过滤器"><a aria-hidden="true" tabindex="-1" href="#使用多个过滤器"><span class="icon icon-link"></span></a>使用多个过滤器</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'{ "foo": 42, "bar": "something else", "baz": true}'</span> <span class="token operator">|</span> jq <span class="token string">'.foo, .bar'</span> 
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token number">42</span>
+</span><span class="code-line"><span class="token string">"something else"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="管道传递给下一个过滤器"><a aria-hidden="true" tabindex="-1" href="#管道传递给下一个过滤器"><span class="icon icon-link"></span></a>管道传递给下一个过滤器</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'[{"name":"JSON", "good":true}, {"name":"XML", "good":false}]'</span> <span class="token operator">|</span> jq <span class="token string">'.[] | .name'</span>     
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token string">"JSON"</span>
+</span><span class="code-line"><span class="token string">"XML"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="条件语句判断"><a aria-hidden="true" tabindex="-1" href="#条件语句判断"><span class="icon icon-link"></span></a>条件语句判断</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'[1,5,3,0,7]'</span> <span class="token operator">|</span> jq <span class="token string">'map(select(. >= 2))'</span>        
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token punctuation">[</span>
+</span><span class="code-line">  <span class="token number">5</span>,
+</span><span class="code-line">  <span class="token number">3</span>,
+</span><span class="code-line">  <span class="token number">7</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="每个输入调用过滤器"><a aria-hidden="true" tabindex="-1" href="#每个输入调用过滤器"><span class="icon icon-link"></span></a>每个输入调用过滤器</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'[1,2,3]'</span> <span class="token operator">|</span> jq <span class="token string">'map(.+1)'</span>
+</span></code></pre>
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token punctuation">[</span>
+</span><span class="code-line">  <span class="token number">2</span>,
+</span><span class="code-line">  <span class="token number">3</span>,
+</span><span class="code-line">  <span class="token number">4</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="条件判断"><a aria-hidden="true" tabindex="-1" href="#条件判断"><span class="icon icon-link"></span></a>条件判断</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'2'</span> <span class="token operator">|</span> jq <span class="token string">'if . == 0 then "zero" elif . == 1 then "one" else "many" end'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token string">"many"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串插入值并进行运算"><a aria-hidden="true" tabindex="-1" href="#字符串插入值并进行运算"><span class="icon icon-link"></span></a>字符串插入值并进行运算</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'42'</span> <span class="token operator">|</span> jq <span class="token string">'"The input was \(.), which is one less than \(.+1)"'</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>输出结果</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line"><span class="token string">"The input was 42, which is one less than 43"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://stedolan.github.io/jq/">jq 官网</a> <em>(stedolan.github.io)</em></li>
+<li><a href="https://jaywcjlove.github.io/linux-command/c/jq.html">jq 命令使用</a> <em>(jaywcjlove.github.io)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
