@@ -1396,6 +1396,27 @@ body {
 }
 ```
 
+### 吸附滚动
+<!--rehype:wrap-class=row-span-2-->
+
+```css {5,12}
+.container {
+  height: 250px;
+  overflow-x: scroll;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  column-gap: 10px;
+}
+.child {
+  flex: 0 0 66%;
+  width: 250px;
+  background-color: #663399;
+  scroll-snap-align: center;
+}
+```
+
+可用于 `轮播图` 效果，[效果预览](https://codesandbox.io/embed/pensive-leftpad-w9p8rk?fontsize=14&hidenavigation=1&theme=dark)
+
 ### 类似 contenteditable 的样式
 
 ```css

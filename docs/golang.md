@@ -89,7 +89,7 @@ Golang 基本类型
 s1 := "Hello" + "World"
 s2 := `A "raw" string literal
 can include line breaks.`
-// 输出：11
+// 输出：10
 fmt.Println(len(s1))
 // 输出：Hello
 fmt.Println(string(s1[0:5]))
