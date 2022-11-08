@@ -42,7 +42,7 @@ Quick Reference
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [Python](./docs/python.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
-[PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163/var(\-\-bg\-opacity));-->
+[PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->
@@ -86,16 +86,16 @@ Quick Reference
 [Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54/var(\-\-bg\-opacity));-->
 [nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 153 0/var(\-\-bg\-opacity));-->
 [Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141/var(\-\-bg\-opacity));-->
-[Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
+[Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));&class=tag&data-lang=macOS-->
 [Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0/var(\-\-bg\-opacity));-->
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 [Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8/var(\-\-bg\-opacity));-->
 [WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220/var(\-\-bg\-opacity));-->
 [XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
-[Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233/var(\-\-bg\-opacity));-->
+[Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233/var(\-\-bg\-opacity));&class=tag&data-lang=macOS-->
 <!--rehype:class=home-card-->
 
-## Linux 命令
+## 命令
 
 [Ansible](./docs/ansible.md)<!--rehype:style=background: rgb(238 0 0/var(\-\-bg\-opacity));&class=contributing tag&data-lang=RedHad&data-info=👆看看还缺点儿什么？-->
 [Awk](./docs/awk.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
@@ -110,8 +110,9 @@ Quick Reference
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
 [Htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
-[Home Brew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));-->
+[Home Brew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));&class=tag&data-lang=macOS-->
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[jq](./docs/jq.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=JSON-->
 [Lsof](./docs/lsof.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Netcat](./docs/netcat.md)<!--rehype:style=background: rgb(4 92 135/var(\-\-bg\-opacity));-->
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
@@ -122,7 +123,7 @@ Quick Reference
 
 ## 其它
 
-[Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=排版说明-->
 [Github Actions](./docs/github-actions.md)<!--rehype:style=background: rgb(121 184 255/var(\-\-bg\-opacity));-->
 [Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
