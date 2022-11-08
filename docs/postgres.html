@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>PostgreSQL 备忘清单
+ &#x26;  postgres cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="PostgreSQL 备忘清单为您提供了常用的 PostgreSQL 命令和语句。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,postgres">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/postgres.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="postgresql-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" height="1em" width="1em">
+  <path d="M22.839 0a13.59 13.59 0 0 0-3.677.536l-.083.027a15.132 15.132 0 0 0-2.276-.219c-1.573-.027-2.923.353-4.011.989C11.719.964 9.495.317 7.151.448c-1.629.088-3.411.583-4.735 1.979C1.104 3.818.407 5.974.552 8.912c.041.807.271 2.124.656 3.837.38 1.709.917 3.709 1.589 5.537.672 1.823 1.405 3.463 2.552 4.577.572.557 1.364 1.032 2.296.991.652-.027 1.24-.313 1.751-.735.249.328.516.468.755.599.308.167.599.281.907.355.552.14 1.495.323 2.599.135a5.083 5.083 0 0 0 1.167-.359l.047 1.307c.057 1.38.095 2.656.505 3.776.068.183.251 1.12.969 1.953.724.833 2.129 1.349 3.739 1.005 1.131-.24 2.573-.677 3.532-2.041.948-1.344 1.375-3.276 1.459-6.412.02-.172.047-.312.072-.448l.224.021h.027c1.208.052 2.521-.12 3.62-.631.968-.448 1.703-.901 2.239-1.708.131-.199.281-.443.319-.86.041-.411-.199-1.063-.595-1.364-.791-.604-1.291-.375-1.828-.26a8.698 8.698 0 0 1-1.599.192c1.541-2.593 2.645-5.353 3.276-7.792.375-1.443.584-2.771.599-3.932.021-1.161-.077-2.187-.771-3.077C28.481.802 25.423.03 23.059.005h-.219zm-.063.855c2.235-.021 5.093.604 7.145 3.228.464.589.6 1.448.584 2.511s-.213 2.328-.573 3.719c-.692 2.699-2.011 5.833-3.859 8.652a.847.847 0 0 0 .208.115c.385.161 1.265.296 3.025-.063.443-.095.767-.156 1.105.099a.69.69 0 0 1 .244.568.921.921 0 0 1-.177.448c-.339.509-1.009.995-1.869 1.396-.76.353-1.855.536-2.817.547-.489.005-.937-.032-1.319-.152l-.02-.004c-.147 1.411-.484 4.203-.704 5.473-.176 1.025-.484 1.844-1.072 2.453-.589.615-1.417.979-2.537 1.219-1.385.297-2.391-.021-3.041-.568s-.948-1.276-1.125-1.719c-.124-.307-.187-.703-.249-1.235a26.832 26.832 0 0 1-.136-1.911c-.041-1.12-.057-2.24-.041-3.365a4.092 4.092 0 0 1-2.068 1.016c-.921.156-1.739 0-2.228-.12a3.032 3.032 0 0 1-.693-.271c-.229-.12-.443-.255-.588-.527a.75.75 0 0 1-.073-.509.806.806 0 0 1 .287-.443c.265-.215.615-.333 1.14-.443.959-.199 1.297-.333 1.5-.496.172-.135.371-.416.713-.828 0-.015 0-.036-.005-.052a3.961 3.961 0 0 1-1.771-.479c-.197.208-1.224 1.292-2.468 2.792-.521.624-1.099.984-1.713 1.011-.609.025-1.163-.281-1.631-.735-.937-.912-1.688-2.48-2.339-4.251s-1.177-3.744-1.557-5.421c-.375-1.683-.599-3.037-.631-3.688-.14-2.776.511-4.645 1.625-5.828s2.641-1.625 4.131-1.713c2.672-.151 5.213.781 5.724.979.989-.672 2.265-1.088 3.859-1.063a9.85 9.85 0 0 1 2.24.292l.027-.016a9.11 9.11 0 0 1 .984-.28 12.864 12.864 0 0 1 2.76-.339zm.203.89h-.197c-.76.009-1.527.099-2.271.26 1.661.735 2.916 1.864 3.801 3 .615.781 1.12 1.64 1.505 2.557.152.355.251.651.303.88.031.115.047.213.057.312 0 .052.005.105-.021.193 0 .005-.005.016-.005.021.043 1.167-.249 1.957-.287 3.072-.025.808.183 1.756.235 2.792.047.973-.072 2.041-.703 3.093.052.063.099.125.151.193 1.672-2.636 2.88-5.547 3.521-8.032.344-1.339.525-2.552.541-3.509.016-.959-.161-1.657-.391-1.948-1.792-2.287-4.213-2.871-6.24-2.885zm-6.391.343c-1.572.005-2.703.48-3.561 1.193-.887.74-1.48 1.745-1.865 2.781-.464 1.224-.625 2.411-.688 3.219l.021-.011a6.787 6.787 0 0 1 1.771-.687c.667-.157 1.391-.204 2.041.052.657.249 1.193.848 1.391 1.749.939 4.344-.291 5.959-.744 7.177-.172.443-.323.891-.443 1.349.057-.011.115-.027.172-.032.323-.025.572.079.719.141.459.192.771.588.943 1.041a2.2 2.2 0 0 1 .093.38.572.572 0 0 1 .027.167 72.023 72.023 0 0 0 .015 4.984c.032.719.079 1.349.136 1.849.057.495.135.875.188 1.005.171.427.421.984.875 1.364.448.381 1.093.631 2.276.381 1.025-.224 1.656-.527 2.077-.964.423-.443.672-1.052.833-1.984.245-1.401.729-5.464.787-6.224-.025-.579.057-1.021.245-1.36.187-.344.479-.557.735-.672.124-.057.244-.093.343-.125a13.47 13.47 0 0 0-.323-.432 6.04 6.04 0 0 1-.891-1.463 7.408 7.408 0 0 0-.344-.647c-.176-.317-.4-.719-.635-1.172-.469-.896-.979-1.989-1.245-3.052-.265-1.063-.301-2.161.376-2.932.599-.688 1.656-.973 3.233-.812-.047-.141-.072-.261-.151-.443a10.469 10.469 0 0 0-1.391-2.355c-1.339-1.713-3.511-3.412-6.859-3.469zm-8.853.068a7.72 7.72 0 0 0-.505.016c-1.349.079-2.62.468-3.532 1.432-.911.969-1.509 2.547-1.38 5.167.027.5.24 1.885.609 3.536.371 1.652.896 3.595 1.527 5.313.629 1.713 1.391 3.208 2.12 3.916.364.349.681.495.968.485.287-.016.636-.183 1.063-.693a57.33 57.33 0 0 1 2.412-2.729 4.666 4.666 0 0 1-1.552-4.203c.135-.984.156-1.907.135-2.636-.015-.708-.063-1.176-.063-1.473v-.032l-.005-.009c0-1.537.272-3.057.792-4.5.375-.996.928-2 1.76-2.819-.817-.271-2.271-.676-3.843-.755a7.764 7.764 0 0 0-.505-.016zm16.53 7.041c-.905.016-1.411.251-1.681.552-.376.433-.412 1.193-.177 2.131.233.937.719 1.984 1.172 2.855.224.437.443.828.619 1.145.183.323.313.547.391.745.073.177.157.333.24.479.349-.74.412-1.464.375-2.224-.047-.937-.265-1.896-.229-2.864.037-1.136.261-1.876.277-2.751a7.899 7.899 0 0 0-.985-.068zm-10.978.158c-.276 0-.552.036-.823.099a6.102 6.102 0 0 0-1.537.599 3.319 3.319 0 0 0-.463.303l-.032.025c.011.199.047.667.063 1.365.016.76 0 1.728-.145 2.776-.323 2.281 1.333 4.167 3.276 4.172.115-.469.301-.944.489-1.443.541-1.459 1.604-2.521.708-6.677-.145-.677-.437-.953-.839-1.109a1.935 1.935 0 0 0-.697-.109zm10.557.27h.068c.083.005.167.011.239.031a.532.532 0 0 1 .183.073.21.21 0 0 1 .099.145v.011a.386.386 0 0 1-.047.183.92.92 0 0 1-.145.197.875.875 0 0 1-.516.281.78.78 0 0 1-.547-.135 1.04 1.04 0 0 1-.172-.157.318.318 0 0 1-.084-.172.235.235 0 0 1 .052-.171.69.69 0 0 1 .157-.12c.129-.073.301-.125.5-.152.072-.009.145-.015.213-.02zm-10.428.224c.068 0 .147.005.22.015.208.032.385.084.525.167a.52.52 0 0 1 .177.141.32.32 0 0 1 .073.224.44.44 0 0 1-.1.208.847.847 0 0 1-.192.172.841.841 0 0 1-.599.151.96.96 0 0 1-.557-.301 1.061 1.061 0 0 1-.157-.219.36.36 0 0 1-.057-.24c.021-.14.141-.219.256-.26.131-.043.271-.057.411-.052zm12.079 9.791h-.005c-.192.073-.353.1-.489.163a.587.587 0 0 0-.317.285c-.089.152-.156.423-.136.885a.622.622 0 0 0 .199.095c.224.068.609.115 1.036.109.849-.011 1.896-.208 2.453-.469a5.25 5.25 0 0 0 1.255-.817c-1.859.38-2.905.281-3.552.016a1.935 1.935 0 0 1-.443-.267zm-10.708.125h-.027c-.072.005-.172.032-.375.251-.464.52-.625.848-1.005 1.151-.385.307-.88.469-1.875.672a2.573 2.573 0 0 0-.615.192c.036.032.036.043.093.068.147.084.333.152.485.193.427.104 1.124.229 1.859.104.729-.125 1.489-.475 2.141-1.385.115-.156.124-.391.031-.641-.093-.244-.297-.463-.437-.52a1.033 1.033 0 0 0-.276-.084z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#postgresql-备忘清单"><span class="icon icon-link"></span></a>PostgreSQL 备忘清单</h1><div class="wrap-body">
+<p><a href="https://www.postgresql.org/docs/current/">PostgreSQL</a> 备忘清单为您提供了常用的 PostgreSQL 命令和语句。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#入门-1">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#psql-命令">psql 命令</a><a aria-hidden="true" class="leve3 tocs-link" href="#获得帮助">获得帮助</a><a aria-hidden="true" class="leve2 tocs-link" href="#postgresql-工作">PostgreSQL 工作</a><a aria-hidden="true" class="leve3 tocs-link" href="#recon-观察">Recon 观察</a><a aria-hidden="true" class="leve3 tocs-link" href="#databases-数据库">Databases 数据库</a><a aria-hidden="true" class="leve3 tocs-link" href="#tables-表">Tables 表</a><a aria-hidden="true" class="leve3 tocs-link" href="#permissions-权限">Permissions 权限</a><a aria-hidden="true" class="leve3 tocs-link" href="#columns-列">Columns 列</a><a aria-hidden="true" class="leve3 tocs-link" href="#data-数据">Data 数据</a><a aria-hidden="true" class="leve3 tocs-link" href="#users-用户">Users 用户</a><a aria-hidden="true" class="leve3 tocs-link" href="#schema">Schema</a><a aria-hidden="true" class="leve2 tocs-link" href="#postgresql-命令">PostgreSQL 命令</a><a aria-hidden="true" class="leve3 tocs-link" href="#表">表</a><a aria-hidden="true" class="leve3 tocs-link" href="#查询缓冲区">查询缓冲区</a><a aria-hidden="true" class="leve3 tocs-link" href="#信息">信息</a><a aria-hidden="true" class="leve3 tocs-link" href="#连接">连接</a><a aria-hidden="true" class="leve3 tocs-link" href="#格式化">格式化</a><a aria-hidden="true" class="leve3 tocs-link" href="#输入输出">输入输出</a><a aria-hidden="true" class="leve3 tocs-link" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" href="#杂项">杂项</a><a aria-hidden="true" class="leve3 tocs-link" href="#大对象">大对象</a><a aria-hidden="true" class="leve2 tocs-link" href="#各种各样的">各种各样的</a><a aria-hidden="true" class="leve3 tocs-link" href="#备份">备份</a><a aria-hidden="true" class="leve3 tocs-link" href="#恢复">恢复</a><a aria-hidden="true" class="leve3 tocs-link" href="#远程访问">远程访问</a><a aria-hidden="true" class="leve3 tocs-link" href="#导入导出-csv">导入/导出 CSV</a><a aria-hidden="true" class="leve2 tocs-link" href="#also-see">Also see</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="入门-1"><a aria-hidden="true" tabindex="-1" href="#入门-1"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
+<p>切换和连接</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token parameter variable">-u</span> postgres psql
+</span></code></pre>
+<p>列出所有数据库</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token assign-left variable">postgres</span><span class="token operator">=</span><span class="token comment"># \l</span>
+</span></code></pre>
+<p>连接到名为 postgres 的数据库</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token assign-left variable">postgres</span><span class="token operator">=</span><span class="token comment"># \c postgres</span>
+</span></code></pre>
+<p>断开</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token assign-left variable">postgres</span><span class="token operator">=</span><span class="token comment"># \q</span>
+</span><span class="code-line"><span class="token assign-left variable">postgres</span><span class="token operator">=</span><span class="token comment"># \!</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="psql-命令"><a aria-hidden="true" tabindex="-1" href="#psql-命令"><span class="icon icon-link"></span></a>psql 命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">参数</th><th>示例</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>[-d] &#x3C;database></code></td><td>psql -d mydb</td><td>连接到数据库</td></tr><tr><td align="left"><code>-U</code></td><td>psql -U john mydb</td><td>以特定用户身份连接</td></tr><tr><td align="left"><code>-h</code> <code>-p</code></td><td>psql -h localhost -p 5432 mydb</td><td>连接到主机/端口</td></tr><tr><td align="left"><code>-U</code> <code>-h</code> <code>-p</code> <code>-d</code></td><td>psql -U admin -h 192.168.1.5 -p 2506 -d mydb</td><td>连接远程 PostgreSQL</td></tr><tr><td align="left"><code>-W</code></td><td>psql -W mydb</td><td>强制密码</td></tr><tr><td align="left"><code>-c</code></td><td>psql -c '\c postgres' -c '\dt'</td><td>执行 SQL 查询或命令</td></tr><tr><td align="left"><code>-H</code></td><td>psql -c "\l+" -H postgres > database.html</td><td>生成 HTML 报告</td></tr><tr><td align="left"><code>-l</code></td><td>psql -l</td><td>列出所有数据库</td></tr><tr><td align="left"><code>-f</code></td><td>psql mydb -f file.sql</td><td>从文件执行命令</td></tr><tr><td align="left"><code>-V</code></td><td>psql -V</td><td>打印 psql 版本</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="获得帮助"><a aria-hidden="true" tabindex="-1" href="#获得帮助"><span class="icon icon-link"></span></a>获得帮助</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\h</code></td><td>SQL 命令语法帮助</td></tr><tr><td align="left"><code>\h</code> DELETE</td><td>DELETE SQL 语句语法</td></tr><tr><td align="left"><code>\?</code></td><td>PostgreSQL 命令列表</td></tr></tbody></table>
+<p>在 PostgreSQL 控制台中运行</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="postgresql-工作"><a aria-hidden="true" tabindex="-1" href="#postgresql-工作"><span class="icon icon-link"></span></a>PostgreSQL 工作</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="recon-观察"><a aria-hidden="true" tabindex="-1" href="#recon-观察"><span class="icon icon-link"></span></a>Recon 观察</h3><div class="wrap-body">
+<p>显示版本</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SHOW</span> SERVER_VERSION<span class="token punctuation">;</span>
+</span></code></pre>
+<p>显示系统状态</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\conninfo
+</span></code></pre>
+<p>显示环境变量</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SHOW</span> <span class="token keyword">ALL</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>列出用户</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SELECT</span> rolname <span class="token keyword">FROM</span> pg_roles<span class="token punctuation">;</span>
+</span></code></pre>
+<p>显示当前用户</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SELECT</span> <span class="token keyword">current_user</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>显示当前用户的权限</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\du
+</span></code></pre>
+<p>显示当前数据库</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SELECT</span> current_database<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>显示数据库中的所有表</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\dt
+</span></code></pre>
+<p>列出函数</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\df <span class="token operator">&#x3C;</span><span class="token keyword">schema</span><span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="databases-数据库"><a aria-hidden="true" tabindex="-1" href="#databases-数据库"><span class="icon icon-link"></span></a>Databases 数据库</h3><div class="wrap-body">
+<p>列出数据库</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\l
+</span></code></pre>
+<p>连接到数据库</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\c <span class="token operator">&#x3C;</span>database_name<span class="token operator">></span>
+</span></code></pre>
+<p>显示当前数据库</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SELECT</span> current_database<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p><a href="http://www.postgresql.org/docs/current/static/sql-createdatabase.html">创建数据库</a></p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token operator">&#x3C;</span>database_name<span class="token operator">></span> <span class="token keyword">WITH</span> OWNER <span class="token operator">&#x3C;</span>username<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p><a href="http://www.postgresql.org/docs/current/static/sql-dropdatabase.html">删除数据库</a></p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">DROP</span> <span class="token keyword">DATABASE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token operator">&#x3C;</span>database_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p><a href="http://www.postgresql.org/docs/current/static/sql-alterdatabase.html">重命名数据库</a></p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">ALTER</span> <span class="token keyword">DATABASE</span> <span class="token operator">&#x3C;</span>old_name<span class="token operator">></span> <span class="token keyword">RENAME</span> <span class="token keyword">TO</span> <span class="token operator">&#x3C;</span>new_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="tables-表"><a aria-hidden="true" tabindex="-1" href="#tables-表"><span class="icon icon-link"></span></a>Tables 表</h3><div class="wrap-body">
+<p>列出当前数据库中的表</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line">\dt
+</span><span class="code-line"><span class="token keyword">SELECT</span> table_schema<span class="token punctuation">,</span>table_name <span class="token keyword">FROM</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> table_schema<span class="token punctuation">,</span>table_name<span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>全局列表</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\dt <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">.</span>
+</span><span class="code-line"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> pg_catalog<span class="token punctuation">.</span>pg_tables
+</span></code></pre>
+<p>列表表架构</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line">\d <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span>
+</span><span class="code-line">\d<span class="token operator">+</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span>
+</span><span class="code-line"><span class="token keyword">SELECT</span> column_name<span class="token punctuation">,</span> data_type<span class="token punctuation">,</span> character_maximum_length
+</span><span class="code-line"><span class="token keyword">FROM</span> INFORMATION_SCHEMA<span class="token punctuation">.</span><span class="token keyword">COLUMNS</span>
+</span><span class="code-line"><span class="token keyword">WHERE</span> table_name <span class="token operator">=</span> <span class="token string">'&#x3C;table_name>'</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p><a href="http://www.postgresql.org/docs/current/static/sql-createtable.html">创建表</a></p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span><span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span> <span class="token operator">&#x3C;</span>column_type<span class="token operator">></span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span> <span class="token operator">&#x3C;</span>column_type<span class="token operator">></span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>创建表，主键自增</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span> <span class="token keyword">SERIAL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p><a href="http://www.postgresql.org/docs/current/static/sql-droptable.html">删除表</a></p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token keyword">CASCADE</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="permissions-权限"><a aria-hidden="true" tabindex="-1" href="#permissions-权限"><span class="icon icon-link"></span></a>Permissions 权限</h3><div class="wrap-body">
+<p>成为 postgres 用户，如果您有权限错误</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">su</span> - postgres
+</span><span class="code-line">psql
+</span></code></pre>
+<p><a href="http://www.postgresql.org/docs/current/static/sql-grant.html">授予</a> 对数据库的所有权限</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token keyword">DATABASE</span> <span class="token operator">&#x3C;</span>db_name<span class="token operator">></span> <span class="token keyword">TO</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>授予数据库连接权限</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">GRANT</span> <span class="token keyword">CONNECT</span> <span class="token keyword">ON</span> <span class="token keyword">DATABASE</span> <span class="token operator">&#x3C;</span>db_name<span class="token operator">></span> <span class="token keyword">TO</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>授予架构权限</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">GRANT</span> <span class="token keyword">USAGE</span> <span class="token keyword">ON</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">public</span> <span class="token keyword">TO</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>授予函数权限</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">GRANT</span> <span class="token keyword">EXECUTE</span> <span class="token keyword">ON</span> <span class="token keyword">ALL</span> FUNCTIONS <span class="token operator">IN</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">public</span> <span class="token keyword">TO</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>授予在所有表上选择、更新、插入、删除的权限</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">GRANT</span> <span class="token keyword">SELECT</span><span class="token punctuation">,</span> <span class="token keyword">UPDATE</span><span class="token punctuation">,</span> <span class="token keyword">INSERT</span> <span class="token keyword">ON</span> <span class="token keyword">ALL</span> <span class="token keyword">TABLES</span> <span class="token operator">IN</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">public</span> <span class="token keyword">TO</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>在表上授予权限</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">GRANT</span> <span class="token keyword">SELECT</span><span class="token punctuation">,</span> <span class="token keyword">UPDATE</span><span class="token punctuation">,</span> <span class="token keyword">INSERT</span> <span class="token keyword">ON</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token keyword">TO</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>授予对表的选择权限</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">GRANT</span> <span class="token keyword">SELECT</span> <span class="token keyword">ON</span> <span class="token keyword">ALL</span> <span class="token keyword">TABLES</span> <span class="token operator">IN</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">public</span> <span class="token keyword">TO</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="columns-列"><a aria-hidden="true" tabindex="-1" href="#columns-列"><span class="icon icon-link"></span></a>Columns 列</h3><div class="wrap-body">
+<p><a href="http://www.postgresql.org/docs/current/static/sql-altertable.html">添加栏目</a></p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span>
+</span><span class="code-line"><span class="token keyword">ADD</span> <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span> <span class="token operator">&#x3C;</span>data_type<span class="token operator">></span> <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>constraints<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>更新栏</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span>
+</span><span class="code-line"><span class="token keyword">ALTER</span> <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span> <span class="token keyword">TYPE</span> <span class="token operator">&#x3C;</span>data_type<span class="token operator">></span> <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>constraints<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>删除列</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span>
+</span><span class="code-line"><span class="token keyword">DROP</span> <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>将列更新为自增主键</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span>
+</span><span class="code-line"><span class="token keyword">ADD</span> <span class="token keyword">COLUMN</span> <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span> <span class="token keyword">SERIAL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用自动递增的主键插入表中</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span>
+</span><span class="code-line"><span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token keyword">DEFAULT</span><span class="token punctuation">,</span> <span class="token operator">&#x3C;</span>value1<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token punctuation">(</span><span class="token operator">&#x3C;</span>column1_name<span class="token operator">></span><span class="token punctuation">,</span><span class="token operator">&#x3C;</span>column2_name<span class="token operator">></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">VALUES</span> <span class="token punctuation">(</span> <span class="token operator">&#x3C;</span>value1<span class="token operator">></span><span class="token punctuation">,</span><span class="token operator">&#x3C;</span>value2<span class="token operator">></span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="data-数据"><a aria-hidden="true" tabindex="-1" href="#data-数据"><span class="icon icon-link"></span></a>Data 数据</h3><div class="wrap-body">
+<p><a href="http://www.postgresql.org/docs/current/static/sql-select.html">选择</a> 所有数据</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>读取一行数据</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token keyword">LIMIT</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>搜索数据</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token keyword">WHERE</span> <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span> <span class="token operator">=</span> <span class="token operator">&#x3C;</span><span class="token keyword">value</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p><a href="http://www.postgresql.org/docs/current/static/sql-insert.html">插入</a> 数据</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span> <span class="token keyword">VALUES</span><span class="token punctuation">(</span> <span class="token operator">&#x3C;</span>value_1<span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&#x3C;</span>value_2<span class="token operator">></span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p><a href="http://www.postgresql.org/docs/current/static/sql-update.html">更新</a> 数据</p>
+<pre class="wrap-text"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">UPDATE</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span>
+</span><span class="code-line"><span class="token keyword">SET</span> <span class="token operator">&#x3C;</span>column_1<span class="token operator">></span> <span class="token operator">=</span> <span class="token operator">&#x3C;</span>value_1<span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&#x3C;</span>column_2<span class="token operator">></span> <span class="token operator">=</span> <span class="token operator">&#x3C;</span>value_2<span class="token operator">></span>
+</span><span class="code-line"><span class="token keyword">WHERE</span> <span class="token operator">&#x3C;</span>column_1<span class="token operator">></span> <span class="token operator">=</span> <span class="token operator">&#x3C;</span><span class="token keyword">value</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p><a href="http://www.postgresql.org/docs/current/static/sql-delete.html">删除</a> 所有数据</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>删除特定数据</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> <span class="token operator">&#x3C;</span>table_name<span class="token operator">></span>
+</span><span class="code-line"><span class="token keyword">WHERE</span> <span class="token operator">&#x3C;</span>column_name<span class="token operator">></span> <span class="token operator">=</span> <span class="token operator">&#x3C;</span><span class="token keyword">value</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="users-用户"><a aria-hidden="true" tabindex="-1" href="#users-用户"><span class="icon icon-link"></span></a>Users 用户</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>列出角色</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">SELECT</span> rolname <span class="token keyword">FROM</span> pg_roles<span class="token punctuation">;</span>
+</span></code></pre>
+<p><a href="http://www.postgresql.org/docs/current/static/sql-createuser.html">创建用户</a></p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span> <span class="token keyword">WITH</span> PASSWORD <span class="token string">'&#x3C;password>'</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p><a href="http://www.postgresql.org/docs/current/static/sql-dropuser.html">删除用户</a></p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">DROP</span> <span class="token keyword">USER</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<p><a href="http://www.postgresql.org/docs/current/static/sql-alterrole.html">更改</a> 用户密码</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">ALTER</span> ROLE <span class="token operator">&#x3C;</span>user_name<span class="token operator">></span> <span class="token keyword">WITH</span> PASSWORD <span class="token string">'&#x3C;password>'</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="schema"><a aria-hidden="true" tabindex="-1" href="#schema"><span class="icon icon-link"></span></a>Schema</h3><div class="wrap-body">
+<p>列出 Schemas</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\dn
+</span><span class="code-line"><span class="token keyword">SELECT</span> schema_name <span class="token keyword">FROM</span> information_schema<span class="token punctuation">.</span>schemata<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">SELECT</span> nspname <span class="token keyword">FROM</span> pg_catalog<span class="token punctuation">.</span>pg_namespace<span class="token punctuation">;</span>
+</span></code></pre>
+<p><a href="http://www.postgresql.org/docs/current/static/sql-createschema.html">创建架构</a></p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">CREATE</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token operator">&#x3C;</span>schema_name<span class="token operator">></span><span class="token punctuation">;</span>
+</span></code></pre>
+<p><a href="http://www.postgresql.org/docs/current/static/sql-dropschema.html">删除模式</a></p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">DROP</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token operator">&#x3C;</span>schema_name<span class="token operator">></span> <span class="token keyword">CASCADE</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="postgresql-命令"><a aria-hidden="true" tabindex="-1" href="#postgresql-命令"><span class="icon icon-link"></span></a>PostgreSQL 命令</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="表"><a aria-hidden="true" tabindex="-1" href="#表"><span class="icon icon-link"></span></a>表</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\d &#x3C;table></code></td><td>描述表</td></tr><tr><td align="left"><code>\d+ &#x3C;table></code></td><td>详细描述表格</td></tr><tr><td align="left"><code>\dt</code></td><td>列出当前模式中的表</td></tr><tr><td align="left"><code>\dt *.*</code></td><td>列出所有模式中的表</td></tr><tr><td align="left"><code>\dt &#x3C;schema>.*</code></td><td>列出架构的表</td></tr><tr><td align="left"><code>\dp</code></td><td>列出表访问权限</td></tr><tr><td align="left"><code>\det[+]</code></td><td>列出外部表</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查询缓冲区"><a aria-hidden="true" tabindex="-1" href="#查询缓冲区"><span class="icon icon-link"></span></a>查询缓冲区</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\e [FILE]</code></td><td>编辑查询缓冲区(或文件)</td></tr><tr><td align="left"><code>\ef [FUNC]</code></td><td>编辑函数定义</td></tr><tr><td align="left"><code>\p</code></td><td>显示内容</td></tr><tr><td align="left"><code>\r</code></td><td>重置(清除)查询缓冲区</td></tr><tr><td align="left"><code>\s [FILE]</code></td><td>显示历史记录或保存到文件</td></tr><tr><td align="left"><code>\w FILE</code></td><td>将查询缓冲区写入文件</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist row-span-4"><div class="wrap-header h3wrap"><h3 id="信息"><a aria-hidden="true" tabindex="-1" href="#信息"><span class="icon icon-link"></span></a>信息</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-4-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\l[+]</code></td><td>列出所有数据库</td></tr><tr><td align="left"><code>\dn[S+]</code></td><td>列出架构</td></tr><tr><td align="left"><code>\di[S+]</code></td><td>列出索引</td></tr><tr><td align="left"><code>\du[+]</code></td><td>列出角色</td></tr><tr><td align="left"><code>\ds[S+]</code></td><td>列出序列</td></tr><tr><td align="left"><code>\df[antw][S+]</code></td><td>列出函数</td></tr><tr><td align="left"><code>\deu[+]</code></td><td>列出用户映射</td></tr><tr><td align="left"><code>\dv[S+]</code></td><td>列表视图</td></tr><tr><td align="left"><code>\dl</code></td><td>列出大对象</td></tr><tr><td align="left"><code>\dT[S+]</code></td><td>列出数据类型</td></tr><tr><td align="left"><code>\da[S]</code></td><td>列出聚合</td></tr><tr><td align="left"><code>\db[+]</code></td><td>列出表空间</td></tr><tr><td align="left"><code>\dc[S+]</code></td><td>列出转化</td></tr><tr><td align="left"><code>\dC[+]</code></td><td>列出演员表</td></tr><tr><td align="left"><code>\ddp</code></td><td>列出默认权限</td></tr><tr><td align="left"><code>\dd[S]</code></td><td>显示对象描述</td></tr><tr><td align="left"><code>\dD[S+]</code></td><td>列出域</td></tr><tr><td align="left"><code>\des[+]</code></td><td>列出国外服务器</td></tr><tr><td align="left"><code>\dew[+]</code></td><td>列出外部数据包装器</td></tr><tr><td align="left"><code>\dF[+]</code></td><td>列出文本搜索配置</td></tr><tr><td align="left"><code>\dFd[+]</code></td><td>列出文本搜索词典</td></tr><tr><td align="left"><code>\dFp[+]</code></td><td>列出文本搜索解析器</td></tr><tr><td align="left"><code>\dFt[+]</code></td><td>列出文本搜索模板</td></tr><tr><td align="left"><code>\dL[S+]</code></td><td>列出程序语言</td></tr><tr><td align="left"><code>\do[S]</code></td><td>列出运算符</td></tr><tr><td align="left"><code>\dO[S+]</code></td><td>列出排序规则</td></tr><tr><td align="left"><code>\drds</code></td><td>列出每个数据库的角色设置</td></tr><tr><td align="left"><code>\dx[+]</code></td><td>列出扩展</td></tr></tbody></table>
+<p><code>S</code>：显示系统对象，<code>+</code>：附加细节</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="连接"><a aria-hidden="true" tabindex="-1" href="#连接"><span class="icon icon-link"></span></a>连接</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\c [DBNAME]</code></td><td>连接到新数据库</td></tr><tr><td align="left"><code>\encoding [ENCODING]</code></td><td>显示或设置客户端编码</td></tr><tr><td align="left"><code>\password [USER]</code></td><td>更改密码</td></tr><tr><td align="left"><code>\conninfo</code></td><td>显示信息</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="格式化"><a aria-hidden="true" tabindex="-1" href="#格式化"><span class="icon icon-link"></span></a>格式化</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\a</code></td><td>在未对齐和对齐之间切换</td></tr><tr><td align="left"><code>\C [STRING]</code></td><td>设置表格标题，如果没有则取消设置</td></tr><tr><td align="left"><code>\f [STRING]</code></td><td>显示或设置未对齐的字段分隔符</td></tr><tr><td align="left"><code>\H</code></td><td>切换 HTML 输出模式</td></tr><tr><td align="left"><code>\t [on|off]</code></td><td>仅显示行</td></tr><tr><td align="left"><code>\T [STRING]</code></td><td>设置或取消设置 HTML &#x3C;table> 标签属性</td></tr><tr><td align="left"><code>\x [on|off]</code></td><td>切换扩展输出</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="输入输出"><a aria-hidden="true" tabindex="-1" href="#输入输出"><span class="icon icon-link"></span></a>输入输出</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\copy ...</code></td><td>导入/导出表 <em>另见：</em> <a href="#%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA-csv">复制</a></td></tr><tr><td align="left"><code>\echo [STRING]</code></td><td>打印字符串</td></tr><tr><td align="left"><code>\i FILE</code></td><td>执行文件</td></tr><tr><td align="left"><code>\o [FILE]</code></td><td>将所有结果导出到文件</td></tr><tr><td align="left"><code>\qecho [STRING]</code></td><td>输出流的字符串</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\prompt [TEXT] NAME</code></td><td>设置变量</td></tr><tr><td align="left"><code>\set [NAME [VALUE]]</code></td><td>设置变量 <em>(如果没有参数，则列出所有变量)</em></td></tr><tr><td align="left"><code>\unset NAME</code></td><td>删除变量</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="杂项"><a aria-hidden="true" tabindex="-1" href="#杂项"><span class="icon icon-link"></span></a>杂项</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>\cd [DIR]</code></td><td>更改目录</td></tr><tr><td align="left"><code>\timing [on|off]</code></td><td>切换时间</td></tr><tr><td align="left"><code>\! [COMMAND]</code></td><td>在shell中执行</td></tr><tr><td align="left"><code>\! ls -l</code></td><td>在shell中列出所有</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="大对象"><a aria-hidden="true" tabindex="-1" href="#大对象"><span class="icon icon-link"></span></a>大对象</h3><div class="wrap-body">
+<ul>
+<li><code>\lo_export LOBOID FILE</code></li>
+<li><code>\lo_import FILE [COMMENT]</code></li>
+<li><code>\lo_list</code></li>
+<li><code>\lo_unlink LOBOID</code></li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="各种各样的"><a aria-hidden="true" tabindex="-1" href="#各种各样的"><span class="icon icon-link"></span></a>各种各样的</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="备份"><a aria-hidden="true" tabindex="-1" href="#备份"><span class="icon icon-link"></span></a>备份</h3><div class="wrap-body">
+<p>使用 pg_dumpall 备份所有数据库</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ pg_dumpall <span class="token parameter variable">-U</span> postgres <span class="token operator">></span> all.sql
+</span></code></pre>
+<p>使用 pg_dump 备份数据库</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ pg_dump <span class="token parameter variable">-d</span> mydb <span class="token parameter variable">-f</span> mydb_backup.sql
+</span></code></pre>
+<ul class="style-none">
+<li>  <code>-a</code>   只转储数据，而不是模式(schema)</li>
+<li>  <code>-s</code>   只转储模式，不转储数据</li>
+<li>  <code>-c</code>   在重新创建之前删除数据库</li>
+<li>  <code>-C</code>   还原前创建数据库</li>
+<li>  <code>-t</code>   仅转储命名表</li>
+<li>  <code>-F</code>   格式(<code>c</code>：自定义，<code>d</code>：目录，<code>t</code>：tar)</li>
+</ul>
+<!--rehype:className=style-none-->
+<p>使用 <code>pg_dump -?</code> 获取完整的选项列表</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="恢复"><a aria-hidden="true" tabindex="-1" href="#恢复"><span class="icon icon-link"></span></a>恢复</h3><div class="wrap-body">
+<p>使用 psql 恢复数据库</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ psql <span class="token parameter variable">-U</span> user mydb <span class="token operator">&#x3C;</span> mydb_backup.sql
+</span></code></pre>
+<p>使用 pg_restore 恢复数据库</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ pg_restore <span class="token parameter variable">-d</span> mydb mydb_backup.sql <span class="token parameter variable">-c</span>
+</span></code></pre>
+<ul class="style-none">
+<li>  <code>-U</code>   指定数据库用户</li>
+<li>  <code>-c</code>   在重新创建之前删除数据库</li>
+<li>  <code>-C</code>   还原前创建数据库</li>
+<li>  <code>-e</code>   如果遇到错误退出</li>
+<li>  <code>-F</code>   格式(<code>c</code>:自定义，<code>d</code>:目录，<code>t</code>:tar，<code>p</code>:纯文本sql(默认))</li>
+</ul>
+<!--rehype:className=style-none-->
+<p>使用 <code>pg_restore -?</code> 获取完整的选项列表</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="远程访问"><a aria-hidden="true" tabindex="-1" href="#远程访问"><span class="icon icon-link"></span></a>远程访问</h3><div class="wrap-body">
+<p>获取 postgresql.conf 的位置</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ psql <span class="token parameter variable">-U</span> postgres <span class="token parameter variable">-c</span> <span class="token string">'SHOW config_file'</span>
+</span></code></pre>
+<p>附加到 postgresql.conf</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">listen_addresses <span class="token operator">=</span> <span class="token string">'*'</span>
+</span></code></pre>
+<p>附加到 pg_hba.conf(与 postgresql.conf 相同的位置)</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">host</span>  all  all  <span class="token number">0.0</span>.0.0/0  md5
+</span><span class="code-line"><span class="token function">host</span>  all  all  ::/0       md5
+</span></code></pre>
+<p>重启 PostgreSQL 服务器</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> systemctl restart postgresql
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="导入导出-csv"><a aria-hidden="true" tabindex="-1" href="#导入导出-csv"><span class="icon icon-link"></span></a>导入/导出 CSV</h3><div class="wrap-body">
+<p>将表格导出为 CSV 文件</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\copy <span class="token keyword">table</span> <span class="token keyword">TO</span> <span class="token string">'&#x3C;path>'</span> CSV
+</span><span class="code-line">\copy <span class="token keyword">table</span><span class="token punctuation">(</span>col1<span class="token punctuation">,</span>col1<span class="token punctuation">)</span> <span class="token keyword">TO</span> <span class="token string">'&#x3C;path>'</span> CSV
+</span><span class="code-line">\copy <span class="token punctuation">(</span><span class="token keyword">SELECT</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">TO</span> <span class="token string">'&#x3C;path>'</span> CSV
+</span></code></pre>
+<p>将 CSV 文件导入表格</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line">\copy <span class="token keyword">table</span> <span class="token keyword">FROM</span> <span class="token string">'&#x3C;path>'</span> CSV
+</span><span class="code-line">\copy <span class="token keyword">table</span><span class="token punctuation">(</span>col1<span class="token punctuation">,</span>col1<span class="token punctuation">)</span> <span class="token keyword">FROM</span> <span class="token string">'&#x3C;path>'</span> CSV
+</span></code></pre>
+<p>另见：<a href="https://www.postgresql.org/docs/current/sql-copy.html">复制</a></p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="also-see"><a aria-hidden="true" tabindex="-1" href="#also-see"><span class="icon icon-link"></span></a>Also see</h2><div class="wrap-body">
+<ul>
+<li><a href="https://gist.github.com/apolloclark/ea5466d5929e63043dcf#posgres-cheatsheet">Posgres-cheatsheet</a> <em>(gist.github.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
