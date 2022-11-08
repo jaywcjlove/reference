@@ -42,6 +42,7 @@ Quick Reference
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [Python](./docs/python.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
+[PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163/var(\-\-bg\-opacity));-->
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->
