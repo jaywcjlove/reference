@@ -57,6 +57,12 @@ northwest
 如果组中的所有主机共享一个变量值，则可以一次将该变量应用于整个组
 [atlanta]
 host1
+host2
+
+[atlanta:vars]
+ntp_server=ntp.atlanta.example.com
+proxy=proxy.atlanta.example.com
+
 ```
 
 ## 命令行(ad-hoc)
