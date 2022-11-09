@@ -725,7 +725,7 @@ func main() {
 ### WaitGroup
 <!--rehype:wrap-class=row-span-2-->
 
-```golang
+```go
 package main
 import (
 	"fmt"
