@@ -170,7 +170,10 @@ $ ffmpeg -r 1 -i input.m2v -r 24 output.avi
 <!--rehype:wrap-class=col-span-2-->
 
 ```bash
+# 从1分45秒开始剪切2分35秒
 $ ffmpeg -i <input> -ss 00:01:45 -t 00:02:35 -vcodec copy -acodec copy <output>
+# 从1分45秒开始剪切到第4分20秒，与上一行等效
+$ ffmpeg -i <input> -ss 00:01:45 -to 00:04:20 -codec copy <output>
 $ ffmpeg -ss 00:00:30 -i orginalfile.mpg -t 00:00:05 -vcodec copy -acodec copy newfile.mpg
 # 从 4.5 秒开始的 5 秒长的视频
 $ ffmpeg -i in.mp4 -ss 4.5 -t 5 out.mp4
