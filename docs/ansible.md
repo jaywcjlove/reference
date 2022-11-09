@@ -33,28 +33,40 @@ Ansible 备忘清单
 #### 静态Inventory
 
 `/etc/ansible/hosts`
+
 ```INI
 mail.example.com
 
 [webservers]
 foo.example.com
 bar.example.com
+```
 
-Inventory主机组使用多个IP和域名
- [web]
+### Inventory 主机组使用多个IP和域名
+
+```
+[web]
 172.18.12.5[1:4]
 [webservers]
 www[01:50].example.com
+```
 
-Inventory主机组使用子主机组
+### Inventory 主机组使用子主机组
+
+```ini
 [usa:children]
 southeast
 northeast
 southwest
 northwest
+```
 
-给多台主机设置变量 : group variables
+### 给多台主机设置变量
+
+`group variables`
 如果组中的所有主机共享一个变量值，则可以一次将该变量应用于整个组
+
+```ini
 [atlanta]
 host1
 host2
