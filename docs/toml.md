@@ -247,7 +247,7 @@ bat = "hi"
 [ j . "ʞ" .'l' ] # same as [j."ʞ".'l']
 ```
 
-### Inline Table
+### 内联表
 <!--rehype:wrap-class=col-span-2-->
 
 ```toml 
