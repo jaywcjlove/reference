@@ -606,26 +606,26 @@
 <p>参见：<a href="https://tour.golang.org/concurrency/1">Goroutines</a>, <a href="https://tour.golang.org/concurrency/2">Channels</a></p>
 </div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="waitgroup"><a aria-hidden="true" tabindex="-1" href="#waitgroup"><span class="icon icon-link"></span></a>WaitGroup</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
-<pre><code class="language-golang code-highlight"><span class="code-line">package main
-</span><span class="code-line">import (
-</span><span class="code-line">	"fmt"
-</span><span class="code-line">	"sync"
-</span><span class="code-line">	"time"
-</span><span class="code-line">)
-</span><span class="code-line">func w(id int, wg *sync.WaitGroup) {
-</span><span class="code-line">	defer wg.Done()
-</span><span class="code-line">	fmt.Printf("%d starting\n", id)
-</span><span class="code-line">	time.Sleep(time.Second)
-</span><span class="code-line">	fmt.Printf("%d done\n", id)
-</span><span class="code-line">}
-</span><span class="code-line">func main() {
-</span><span class="code-line">	var wg sync.WaitGroup
-</span><span class="code-line">	for i := 1; i &#x3C;= 5; i++ {
-</span><span class="code-line">		wg.Add(1)
-</span><span class="code-line">		go w(i, &#x26;wg)
-</span><span class="code-line">	}
-</span><span class="code-line">	wg.Wait()
-</span><span class="code-line">}
+<pre class="language-go"><code class="language-go code-highlight"><span class="code-line"><span class="token keyword">package</span> main
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token punctuation">(</span>
+</span><span class="code-line">	<span class="token string">"fmt"</span>
+</span><span class="code-line">	<span class="token string">"sync"</span>
+</span><span class="code-line">	<span class="token string">"time"</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">func</span> <span class="token function">w</span><span class="token punctuation">(</span>id <span class="token builtin">int</span><span class="token punctuation">,</span> wg <span class="token operator">*</span>sync<span class="token punctuation">.</span>WaitGroup<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">	<span class="token keyword">defer</span> wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%d starting\n"</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span>
+</span><span class="code-line">	time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+</span><span class="code-line">	fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%d done\n"</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">	<span class="token keyword">var</span> wg sync<span class="token punctuation">.</span>WaitGroup
+</span><span class="code-line">	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&#x3C;=</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+</span><span class="code-line">		wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</span><span class="code-line">		<span class="token keyword">go</span> <span class="token function">w</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token operator">&#x26;</span>wg<span class="token punctuation">)</span>
+</span><span class="code-line">	<span class="token punctuation">}</span>
+</span><span class="code-line">	wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
 <p>参见：<a href="https://golang.org/pkg/sync/#WaitGroup">WaitGroup</a></p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="closing-channels"><a aria-hidden="true" tabindex="-1" href="#closing-channels"><span class="icon icon-link"></span></a>Closing channels</h3><div class="wrap-body">
