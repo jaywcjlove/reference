@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>GraphQL 备忘清单
+ &#x26;  graphql cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这份快速参考备忘单提供了 GraphQL 的简要概述为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,graphql">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/graphql.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="graphql-备忘清单"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m2.61 4.432 4.142-2.417-.504-.864-4.143 2.417.504.864ZM2 9.5v-4H1v4h1Zm6.248-7.485 4.143 2.417.504-.864-4.143-2.417-.504.864ZM13 5.5v4h1v-4h-1Zm-.252 4.86-4.5 2.625.504.864 4.5-2.625-.504-.864Zm-5.996 2.625-4.143-2.417-.504.864 4.143 2.417.504-.864ZM6.584 1.973l-5 7.5.832.554 5-7.5-.832-.554Zm6.832 7.5-5-7.5-.832.554 5 7.5.832-.554ZM2.5 11h10v-1h-10v1Zm5-9a.5.5 0 0 1-.5-.5H6A1.5 1.5 0 0 0 7.5 3V2Zm.5-.5a.5.5 0 0 1-.5.5v1A1.5 1.5 0 0 0 9 1.5H8ZM7.5 1a.5.5 0 0 1 .5.5h1A1.5 1.5 0 0 0 7.5 0v1Zm0-1A1.5 1.5 0 0 0 6 1.5h1a.5.5 0 0 1 .5-.5V0Zm6 5a.5.5 0 0 1-.5-.5h-1A1.5 1.5 0 0 0 13.5 6V5Zm.5-.5a.5.5 0 0 1-.5.5v1A1.5 1.5 0 0 0 15 4.5h-1Zm-.5-.5a.5.5 0 0 1 .5.5h1A1.5 1.5 0 0 0 13.5 3v1Zm0-1A1.5 1.5 0 0 0 12 4.5h1a.5.5 0 0 1 .5-.5V3Zm0 8a.5.5 0 0 1-.5-.5h-1a1.5 1.5 0 0 0 1.5 1.5v-1Zm.5-.5a.5.5 0 0 1-.5.5v1a1.5 1.5 0 0 0 1.5-1.5h-1Zm-.5-.5a.5.5 0 0 1 .5.5h1A1.5 1.5 0 0 0 13.5 9v1Zm0-1a1.5 1.5 0 0 0-1.5 1.5h1a.5.5 0 0 1 .5-.5V9Zm-6 5a.5.5 0 0 1-.5-.5H6A1.5 1.5 0 0 0 7.5 15v-1Zm.5-.5a.5.5 0 0 1-.5.5v1A1.5 1.5 0 0 0 9 13.5H8Zm-.5-.5a.5.5 0 0 1 .5.5h1A1.5 1.5 0 0 0 7.5 12v1Zm0-1A1.5 1.5 0 0 0 6 13.5h1a.5.5 0 0 1 .5-.5v-1Zm-6-1a.5.5 0 0 1-.5-.5H0A1.5 1.5 0 0 0 1.5 12v-1Zm.5-.5a.5.5 0 0 1-.5.5v1A1.5 1.5 0 0 0 3 10.5H2Zm-.5-.5a.5.5 0 0 1 .5.5h1A1.5 1.5 0 0 0 1.5 9v1Zm0-1A1.5 1.5 0 0 0 0 10.5h1a.5.5 0 0 1 .5-.5V9Zm0-4a.5.5 0 0 1-.5-.5H0A1.5 1.5 0 0 0 1.5 6V5Zm.5-.5a.5.5 0 0 1-.5.5v1A1.5 1.5 0 0 0 3 4.5H2ZM1.5 4a.5.5 0 0 1 .5.5h1A1.5 1.5 0 0 0 1.5 3v1Zm0-1A1.5 1.5 0 0 0 0 4.5h1a.5.5 0 0 1 .5-.5V3Z" fill="currentColor"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#graphql-备忘清单"><span class="icon icon-link"></span></a>GraphQL 备忘清单</h1><div class="wrap-body">
+<p>这份快速参考备忘单提供了 <a href="https://graphql.org/">GraphQL</a> 的简要概述</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#概述">概述</a><a aria-hidden="true" class="leve3 tocs-link" href="#schema">Schema</a><a aria-hidden="true" class="leve3 tocs-link" href="#内置标量类型">内置标量类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#类型定义">类型定义</a><a aria-hidden="true" class="leve3 tocs-link" href="#类型修饰符">类型修饰符</a><a aria-hidden="true" class="leve3 tocs-link" href="#输入参数">输入参数</a><a aria-hidden="true" class="leve4 tocs-link" href="#基本输入">基本输入</a><a aria-hidden="true" class="leve4 tocs-link" href="#输入默认值">输入默认值</a><a aria-hidden="true" class="leve4 tocs-link" href="#具有多个参数的输入">具有多个参数的输入</a><a aria-hidden="true" class="leve4 tocs-link" href="#具有多个参数和默认值的输入">具有多个参数和默认值的输入</a><a aria-hidden="true" class="leve3 tocs-link" href="#输入类型">输入类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#自定义标量">自定义标量</a><a aria-hidden="true" class="leve3 tocs-link" href="#接口">接口</a><a aria-hidden="true" class="leve3 tocs-link" href="#联合">联合</a><a aria-hidden="true" class="leve3 tocs-link" href="#枚举">枚举</a><a aria-hidden="true" class="leve2 tocs-link" href="#查询和变更mutations">查询和变更(Mutations)</a><a aria-hidden="true" class="leve3 tocs-link" href="#字段">字段</a><a aria-hidden="true" class="leve3 tocs-link" href="#查询可以有注释">查询可以有注释</a><a aria-hidden="true" class="leve3 tocs-link" href="#参数-arguments">参数 Arguments</a><a aria-hidden="true" class="leve3 tocs-link" href="#不同类型的参数">不同类型的参数</a><a aria-hidden="true" class="leve3 tocs-link" href="#别名aliases">别名(Aliases)</a><a aria-hidden="true" class="leve3 tocs-link" href="#片段fragments">片段(Fragments)</a><a aria-hidden="true" class="leve3 tocs-link" href="#在片段内使用变量">在片段内使用变量</a><a aria-hidden="true" class="leve3 tocs-link" href="#操作名称operation-name">操作名称(Operation name)</a><a aria-hidden="true" class="leve3 tocs-link" href="#变量variables">变量(Variables)</a><a aria-hidden="true" class="leve3 tocs-link" href="#默认变量default-variables">默认变量(Default variables)</a><a aria-hidden="true" class="leve3 tocs-link" href="#指令directives">指令(Directives)</a><a aria-hidden="true" class="leve3 tocs-link" href="#变更mutations">变更(Mutations)</a><a aria-hidden="true" class="leve3 tocs-link" href="#内联片段inline-fragments">内联片段(Inline Fragments)</a><a aria-hidden="true" class="leve3 tocs-link" href="#元字段meta-fields">元字段(Meta fields)</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="概述"><a aria-hidden="true" tabindex="-1" href="#概述"><span class="icon icon-link"></span></a>概述</h3><div class="wrap-body">
+<ul>
+<li>RESTful API 的另一种方法</li>
+<li>GraphQL 是一种 API 查询语言</li>
+<li>使用清晰的共享术语轻松描述 GraphQL API 的形状。</li>
+<li>客户端发出查询/突变以读取和更新数据</li>
+<li>GraphQL 语法可以表达复杂的实体关系</li>
+<li>用 <a href="https://graphql.org/code/">不同语言</a> 实现 GraphQL 的库</li>
+</ul>
+<p><a href="https://graphql.org/">GraphQL</a></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="schema"><a aria-hidden="true" tabindex="-1" href="#schema"><span class="icon icon-link"></span></a>Schema</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>schema</code></td><td>GraphQL 架构定义</td></tr><tr><td align="left"><code>query</code></td><td>读取和遍历数据</td></tr><tr><td align="left"><code>mutation</code></td><td>修改数据或触发动作</td></tr><tr><td align="left"><code>subscription</code></td><td>发生事件时运行查询</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="内置标量类型"><a aria-hidden="true" tabindex="-1" href="#内置标量类型"><span class="icon icon-link"></span></a>内置标量类型</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>Int</code></td><td>有符号 32 位整数</td></tr><tr><td align="left"><code>Float</code></td><td>有符号双精度浮点值</td></tr><tr><td align="left"><code>String</code></td><td>UTF-8 字符序列</td></tr><tr><td align="left"><code>Boolean</code></td><td>对或错布尔值类型</td></tr><tr><td align="left"><code>ID</code></td><td>唯一标识符</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类型定义"><a aria-hidden="true" tabindex="-1" href="#类型定义"><span class="icon icon-link"></span></a>类型定义</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>scalar</code></td><td>标量类型</td></tr><tr><td align="left"><code>type</code></td><td>对象类型</td></tr><tr><td align="left"><code>interface</code></td><td>接口类型</td></tr><tr><td align="left"><code>union</code></td><td>联合类型</td></tr><tr><td align="left"><code>enum</code></td><td>枚举类型</td></tr><tr><td align="left"><code>input</code></td><td>输入对象类型</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类型修饰符"><a aria-hidden="true" tabindex="-1" href="#类型修饰符"><span class="icon icon-link"></span></a>类型修饰符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>String</code></td><td>可空字符串</td></tr><tr><td align="left"><code>String!</code></td><td>非空字符串</td></tr><tr><td align="left"><code>[String]</code></td><td>可空字符串列表</td></tr><tr><td align="left"><code>[String]!</code></td><td>可空字符串的非空列表</td></tr><tr><td align="left"><code>[String!]!</code></td><td>非空字符串的非空列表</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="输入参数"><a aria-hidden="true" tabindex="-1" href="#输入参数"><span class="icon icon-link"></span></a>输入参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="基本输入"><a aria-hidden="true" tabindex="-1" href="#基本输入"><span class="icon icon-link"></span></a>基本输入</h4>
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Query</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">users</span><span class="token punctuation">(</span><span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token scalar">Int</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">User</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="输入默认值"><a aria-hidden="true" tabindex="-1" href="#输入默认值"><span class="icon icon-link"></span></a>输入默认值</h4>
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Query</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">users</span><span class="token punctuation">(</span><span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token scalar">Int</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">User</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="具有多个参数的输入"><a aria-hidden="true" tabindex="-1" href="#具有多个参数的输入"><span class="icon icon-link"></span></a>具有多个参数的输入</h4>
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Query</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">users</span><span class="token punctuation">(</span><span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token scalar">Int</span><span class="token punctuation">,</span> <span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">User</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="具有多个参数和默认值的输入"><a aria-hidden="true" tabindex="-1" href="#具有多个参数和默认值的输入"><span class="icon icon-link"></span></a>具有多个参数和默认值的输入</h4>
+<pre class="wrap-text "><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Query</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">users</span><span class="token punctuation">(</span><span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token scalar">Int</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">User</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Query</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">users</span><span class="token punctuation">(</span><span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token scalar">Int</span><span class="token punctuation">,</span> <span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token scalar">String</span> <span class="token operator">=</span> <span class="token string">"asc"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">User</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Query</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">users</span><span class="token punctuation">(</span><span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token scalar">Int</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token attr-name">sort</span><span class="token punctuation">:</span> <span class="token scalar">String</span> <span class="token operator">=</span> <span class="token string">"asc"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">User</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="输入类型"><a aria-hidden="true" tabindex="-1" href="#输入类型"><span class="icon icon-link"></span></a>输入类型</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">input</span> <span class="token atom-input class-name">ListUsersInput</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token scalar">Int</span>
+</span><span class="code-line">  <span class="token attr-name">since_id</span><span class="token punctuation">:</span> <span class="token scalar">ID</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Mutation</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">users</span><span class="token punctuation">(</span><span class="token attr-name">params</span><span class="token punctuation">:</span> <span class="token atom-input class-name">ListUsersInput</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">User</span><span class="token punctuation">]</span><span class="token operator">!</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="自定义标量"><a aria-hidden="true" tabindex="-1" href="#自定义标量"><span class="icon icon-link"></span></a>自定义标量</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">scalar</span> <span class="token class-name">Url</span>
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token scalar">String</span>
+</span><span class="code-line">  <span class="token attr-name">homepage</span><span class="token punctuation">:</span> <span class="token class-name">Url</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="接口"><a aria-hidden="true" tabindex="-1" href="#接口"><span class="icon icon-link"></span></a>接口</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">interface</span> <span class="token class-name">Foo</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">is_foo</span><span class="token punctuation">:</span> <span class="token scalar">Boolean</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">interface</span> <span class="token class-name">Goo</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">is_goo</span><span class="token punctuation">:</span> <span class="token scalar">Boolean</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Bar</span> <span class="token keyword">implements</span> <span class="token class-name">Foo</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">is_foo</span><span class="token punctuation">:</span> <span class="token scalar">Boolean</span>
+</span><span class="code-line">  <span class="token attr-name">is_bar</span><span class="token punctuation">:</span> <span class="token scalar">Boolean</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Baz</span> <span class="token keyword">implements</span> <span class="token class-name">Foo</span><span class="token punctuation">,</span> <span class="token object">Goo</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">is_foo</span><span class="token punctuation">:</span> <span class="token scalar">Boolean</span>
+</span><span class="code-line">  <span class="token attr-name">is_goo</span><span class="token punctuation">:</span> <span class="token scalar">Boolean</span>
+</span><span class="code-line">  <span class="token attr-name">is_baz</span><span class="token punctuation">:</span> <span class="token scalar">Boolean</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>实现一个或多个接口的对象</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="联合"><a aria-hidden="true" tabindex="-1" href="#联合"><span class="icon icon-link"></span></a>联合</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Foo</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token scalar">String</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Bar</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">is_bar</span><span class="token punctuation">:</span> <span class="token scalar">String</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">union</span> <span class="token class-name">SingleUnion</span> <span class="token operator">=</span> <span class="token property">Foo</span>
+</span><span class="code-line"><span class="token keyword">union</span> <span class="token class-name">MultipleUnion</span> <span class="token operator">=</span> <span class="token property">Foo</span> <span class="token operator">|</span> <span class="token property">Bar</span>
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Root</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">single</span><span class="token punctuation">:</span> <span class="token class-name">SingleUnion</span>
+</span><span class="code-line">  <span class="token attr-name">multiple</span><span class="token punctuation">:</span> <span class="token class-name">MultipleUnion</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>一个或多个对象的联合</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="枚举"><a aria-hidden="true" tabindex="-1" href="#枚举"><span class="icon icon-link"></span></a>枚举</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">enum</span> <span class="token constant">USER_STATE</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token constant">NOT_FOUND</span>
+</span><span class="code-line">  <span class="token constant">ACTIVE</span>
+</span><span class="code-line">  <span class="token constant">INACTIVE</span>
+</span><span class="code-line">  <span class="token constant">SUSPENDED</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">type</span> <span class="token class-name">Root</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">stateForUser</span><span class="token punctuation">(</span><span class="token attr-name">userID</span><span class="token punctuation">:</span> <span class="token scalar">ID</span><span class="token operator">!</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token constant">USER_STATE</span><span class="token operator">!</span>
+</span><span class="code-line">  <span class="token attr-name">users</span><span class="token punctuation">(</span><span class="token attr-name">state</span><span class="token punctuation">:</span> <span class="token constant">USER_STATE</span><span class="token punctuation">,</span> <span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token scalar">Int</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">User</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="查询和变更mutations"><a aria-hidden="true" tabindex="-1" href="#查询和变更mutations"><span class="icon icon-link"></span></a>查询和变更(Mutations)</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字段"><a aria-hidden="true" tabindex="-1" href="#字段"><span class="icon icon-link"></span></a>字段</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token object">hero</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"hero"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查询可以有注释"><a aria-hidden="true" tabindex="-1" href="#查询可以有注释"><span class="icon icon-link"></span></a>查询可以有注释</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token object">hero</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">    <span class="token comment"># 查询可以有注释！</span>
+</span><span class="code-line">    <span class="token object">friends</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">name</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"hero"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"friends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Han Solo"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">      <span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="参数-arguments"><a aria-hidden="true" tabindex="-1" href="#参数-arguments"><span class="icon icon-link"></span></a>参数 Arguments</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property-query">human</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token string">"1000"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">    <span class="token property">height</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"human"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"height"</span><span class="token operator">:</span> <span class="token number">1.72</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="不同类型的参数"><a aria-hidden="true" tabindex="-1" href="#不同类型的参数"><span class="icon icon-link"></span></a>不同类型的参数</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property-query">human</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token string">"1000"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">    <span class="token property-query">height</span><span class="token punctuation">(</span><span class="token attr-name">unit</span><span class="token punctuation">:</span> <span class="token constant">FOOT</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"human"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"height"</span><span class="token operator">:</span> <span class="token number">5.6430448</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="别名aliases"><a aria-hidden="true" tabindex="-1" href="#别名aliases"><span class="icon icon-link"></span></a>别名(Aliases)</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">empireHero</span><span class="token punctuation">:</span> <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token constant">EMPIRE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token attr-name">jediHero</span><span class="token punctuation">:</span> <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token constant">JEDI</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"empireHero"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"jediHero"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="片段fragments"><a aria-hidden="true" tabindex="-1" href="#片段fragments"><span class="icon icon-link"></span></a>片段(Fragments)</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">leftComparison</span><span class="token punctuation">:</span> <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token constant">EMPIRE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token operator">...</span><span class="token fragment function">comparisonFields</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token attr-name">rightComparison</span><span class="token punctuation">:</span> <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token constant">JEDI</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token operator">...</span><span class="token fragment function">comparisonFields</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">​
+</span><span class="code-line"><span class="token keyword">fragment</span> <span class="token fragment function">comparisonFields</span> <span class="token keyword">on</span> <span class="token class-name">Character</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">name</span>
+</span><span class="code-line">  <span class="token property">appearsIn</span>
+</span><span class="code-line">  <span class="token object">friends</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"leftComparison"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"appearsIn"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token string">"NEWHOPE"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"EMPIRE"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"JEDI"</span>
+</span><span class="code-line">      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"friends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Han Solo"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leia Organa"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"C-3PO"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">      <span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"rightComparison"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"appearsIn"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token string">"NEWHOPE"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"EMPIRE"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"JEDI"</span>
+</span><span class="code-line">      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"friends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Han Solo"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leia Organa"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">      <span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="在片段内使用变量"><a aria-hidden="true" tabindex="-1" href="#在片段内使用变量"><span class="icon icon-link"></span></a>在片段内使用变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">query</span> <span class="token definition-query function">HeroComparison</span><span class="token punctuation">(</span><span class="token variable">$first</span><span class="token punctuation">:</span> <span class="token scalar">Int</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">leftComparison</span><span class="token punctuation">:</span> <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token constant">EMPIRE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token operator">...</span><span class="token fragment function">comparisonFields</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token attr-name">rightComparison</span><span class="token punctuation">:</span> <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token constant">JEDI</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token operator">...</span><span class="token fragment function">comparisonFields</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">​
+</span><span class="code-line"><span class="token keyword">fragment</span> <span class="token fragment function">comparisonFields</span> <span class="token keyword">on</span> <span class="token class-name">Character</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">name</span>
+</span><span class="code-line">  <span class="token property-query">friendsConnection</span><span class="token punctuation">(</span><span class="token attr-name">first</span><span class="token punctuation">:</span> <span class="token variable">$first</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">totalCount</span>
+</span><span class="code-line">    <span class="token object">edges</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token object">node</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">name</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"leftComparison"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"friendsConnection"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"totalCount"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"edges"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">          <span class="token punctuation">{</span>
+</span><span class="code-line">            <span class="token property">"node"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">              <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Han Solo"</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>
+</span><span class="code-line">          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">          <span class="token punctuation">{</span>
+</span><span class="code-line">            <span class="token property">"node"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">              <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leia Organa"</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>
+</span><span class="code-line">          <span class="token punctuation">}</span>
+</span><span class="code-line">        <span class="token punctuation">]</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"rightComparison"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"friendsConnection"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"totalCount"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"edges"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">          <span class="token punctuation">{</span>
+</span><span class="code-line">            <span class="token property">"node"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">              <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>
+</span><span class="code-line">          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">          <span class="token punctuation">{</span>
+</span><span class="code-line">            <span class="token property">"node"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">              <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Han Solo"</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>
+</span><span class="code-line">          <span class="token punctuation">}</span>
+</span><span class="code-line">        <span class="token punctuation">]</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="操作名称operation-name"><a aria-hidden="true" tabindex="-1" href="#操作名称operation-name"><span class="icon icon-link"></span></a>操作名称(Operation name)</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">query</span> <span class="token definition-query function">HeroNameAndFriends</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token object">hero</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">    <span class="token object">friends</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">name</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"hero"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"friends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Luke Skywalker"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Han Solo"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leia Organa"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">      <span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="变量variables"><a aria-hidden="true" tabindex="-1" href="#变量variables"><span class="icon icon-link"></span></a>变量(Variables)</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-graphql code-highlight"><span class="code-line"><span class="token comment"># { "graphiql": true, "variables": { "episode": JEDI } }</span>
+</span><span class="code-line"><span class="token keyword">query</span> <span class="token definition-query function">HeroNameAndFriends</span><span class="token punctuation">(</span><span class="token variable">$episode</span><span class="token punctuation">:</span> <span class="token class-name">Episode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token variable">$episode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">    <span class="token object">friends</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">name</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>变量前缀必须为 <code>$</code>，后跟其类型</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="默认变量default-variables"><a aria-hidden="true" tabindex="-1" href="#默认变量default-variables"><span class="icon icon-link"></span></a>默认变量(Default variables)</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">query</span> <span class="token definition-query function">HeroNameAndFriends</span><span class="token punctuation">(</span><span class="token variable">$episode</span><span class="token punctuation">:</span> <span class="token class-name">Episode</span> <span class="token operator">=</span> <span class="token string">"JEDI"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token variable">$episode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">    <span class="token object">friends</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">name</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="指令directives"><a aria-hidden="true" tabindex="-1" href="#指令directives"><span class="icon icon-link"></span></a>指令(Directives)</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">query</span> <span class="token definition-query function">Hero</span><span class="token punctuation">(</span><span class="token variable">$episode</span><span class="token punctuation">:</span> <span class="token class-name">Episode</span><span class="token punctuation">,</span> <span class="token variable">$withFriends</span><span class="token punctuation">:</span> <span class="token scalar">Boolean</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token variable">$episode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">    <span class="token property">friends</span> <span class="token directive function">@include</span><span class="token punctuation">(</span><span class="token attr-name">if</span><span class="token punctuation">:</span> <span class="token variable">$withFriends</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">name</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<hr>
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span> <span class="token string">"episode"</span><span class="token punctuation">:</span> <span class="token string">"JEDI"</span><span class="token punctuation">,</span> <span class="token string">"withFriends"</span><span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"hero"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<ul>
+<li><code>@include(if: Boolean)</code> 仅在参数为 <code>true</code> 时，包含此字段</li>
+<li><code>@skip(if: Boolean)</code> 如果参数为 <code>true</code>，跳过此字段</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="变更mutations"><a aria-hidden="true" tabindex="-1" href="#变更mutations"><span class="icon icon-link"></span></a>变更(Mutations)</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">mutation</span> <span class="token definition-mutation function">CreateReviewForEpisode</span><span class="token punctuation">(</span><span class="token variable variable-input">$ep</span><span class="token punctuation">:</span> <span class="token class-name">Episode</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable variable-input">$review</span><span class="token punctuation">:</span> <span class="token atom-input class-name">ReviewInput</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property-query property-mutation">createReview</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token variable variable-input">$ep</span><span class="token punctuation">,</span> <span class="token attr-name">review</span><span class="token punctuation">:</span> <span class="token variable variable-input">$review</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">stars</span>
+</span><span class="code-line">    <span class="token property">commentary</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<hr>
+<pre><code class="code-highlight"><span class="code-line">{
+</span><span class="code-line">  "ep": "JEDI",
+</span><span class="code-line">  "review": {
+</span><span class="code-line">    "stars": 5,
+</span><span class="code-line">    "commentary": "This is a great movie!"
+</span><span class="code-line">  }
+</span><span class="code-line">}
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"createReview"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"stars"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"commentary"</span><span class="token operator">:</span> <span class="token string">"This is a great movie!"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="内联片段inline-fragments"><a aria-hidden="true" tabindex="-1" href="#内联片段inline-fragments"><span class="icon icon-link"></span></a>内联片段(Inline Fragments)</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token keyword">query</span> <span class="token definition-query function">HeroForEpisode</span><span class="token punctuation">(</span><span class="token variable">$ep</span><span class="token punctuation">:</span> <span class="token class-name">Episode</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property-query">hero</span><span class="token punctuation">(</span><span class="token attr-name">episode</span><span class="token punctuation">:</span> <span class="token variable">$ep</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">name</span>
+</span><span class="code-line">    <span class="token operator">...</span> <span class="token keyword">on</span> <span class="token class-name">Droid</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">primaryFunction</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token operator">...</span> <span class="token keyword">on</span> <span class="token class-name">Human</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">height</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<hr>
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span> <span class="token string">"ep"</span><span class="token punctuation">:</span> <span class="token string">"JEDI"</span> <span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"hero"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"R2-D2"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"primaryFunction"</span><span class="token operator">:</span> <span class="token string">"Astromech"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="元字段meta-fields"><a aria-hidden="true" tabindex="-1" href="#元字段meta-fields"><span class="icon icon-link"></span></a>元字段(Meta fields)</h3><div class="wrap-body">
+<pre class="language-graphql"><code class="language-graphql code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property-query">search</span><span class="token punctuation">(</span><span class="token attr-name">text</span><span class="token punctuation">:</span> <span class="token string">"an"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">__typename</span>
+</span><span class="code-line">    <span class="token operator">...</span> <span class="token keyword">on</span> <span class="token class-name">Human</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">name</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token operator">...</span> <span class="token keyword">on</span> <span class="token class-name">Droid</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">name</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token operator">...</span> <span class="token keyword">on</span> <span class="token class-name">Starship</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">name</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>结果:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"search"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">      <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"__typename"</span><span class="token operator">:</span> <span class="token string">"Human"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Han Solo"</span>
+</span><span class="code-line">      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"__typename"</span><span class="token operator">:</span> <span class="token string">"Human"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leia Organa"</span>
+</span><span class="code-line">      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"__typename"</span><span class="token operator">:</span> <span class="token string">"Starship"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"TIE Advanced x1"</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://github.com/sogko/graphql-schema-language-cheat-sheet">GraphQL Schema Language Cheat Sheet</a> <em>(github.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
