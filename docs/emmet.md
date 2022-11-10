@@ -2054,7 +2054,7 @@ CSS
 `bfv:h` | backface-visibility:hidden;
 `bfv:v` | backface-visibility:visible;
 `bg:ie` | filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='x.png',sizingMethod='crop');
-`cm` | /_${child}_/
+`cm` | /\* ${child} */
 `colm` | columns:;
 `colmc` | column-count:;
 `colmf` | column-fill:;
