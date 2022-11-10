@@ -6,6 +6,8 @@ CSS 定义了一大组[命名颜色](https://www.w3.org/TR/css-color-4/#named-co
 Named Colors
 ---
 
+<!-- markdownlint-disable MD038 -->
+
 ### 颜色列表
 <!--rehype:wrap-class=col-span-3&style=display:none;&wrap-style=padding-top: 0;-->
 
@@ -760,7 +762,6 @@ HSL 颜色示例
 </table>
 <!--rehype:className=show-header-->
 
-
 ### 150° Green-Cyans
 <!--rehype:wrap-class=col-span-3-->
 
@@ -879,7 +880,6 @@ HSL 颜色示例
   </tbody>
 </table>
 <!--rehype:className=show-header-->
-
 
 ### 180° Cyans
 <!--rehype:wrap-class=col-span-3-->
@@ -1000,7 +1000,6 @@ HSL 颜色示例
 </table>
 <!--rehype:className=show-header-->
 
-
 ### 210° Cyan-Blues
 <!--rehype:wrap-class=col-span-3-->
 
@@ -1119,7 +1118,6 @@ HSL 颜色示例
   </tbody>
 </table>
 <!--rehype:className=show-header-->
-
 
 ### 240° blues
 <!--rehype:wrap-class=col-span-3-->
@@ -1240,7 +1238,6 @@ HSL 颜色示例
 </table>
 <!--rehype:className=show-header-->
 
-
 ### 270° Blue-Magentas
 <!--rehype:wrap-class=col-span-3-->
 
@@ -1359,7 +1356,6 @@ HSL 颜色示例
   </tbody>
 </table>
 <!--rehype:className=show-header-->
-
 
 ### 300° Magentas
 <!--rehype:wrap-class=col-span-3-->
@@ -1480,7 +1476,6 @@ HSL 颜色示例
 </table>
 <!--rehype:className=show-header-->
 
-
 ### 330° Magenta-Reds
 <!--rehype:wrap-class=col-span-3-->
 
@@ -1599,7 +1594,6 @@ HSL 颜色示例
   </tbody>
 </table>
 <!--rehype:className=show-header-->
-
 
 另见
 ----

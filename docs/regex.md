@@ -33,7 +33,6 @@ RegEX 备忘清单
 `[a-zA-Z]`    | 范围内的字符：<br>`a-z` 或 `A-Z`
 `[a-zA-Z0-9]` | 范围内的字符：<br>`a-z`、`A-Z` 或 `0-9`
 
-
 ### 量词
 
 范例 | 说明
@@ -115,7 +114,6 @@ RegEX 备忘清单
 `[\b]`       | 退格字符
 `\`          | 使任何字符文字
 
-
 ### 锚点
 
 范例 | 说明
@@ -128,7 +126,6 @@ RegEX 备忘清单
 `\z`    | 字符串的绝对结尾
 `\b`    | 一个词的边界
 `\B`    | 非单词边界
-
 
 ### 替代
 
@@ -210,8 +207,8 @@ RegEX 备忘清单
 `(?!...)`  | 负先行断言
 `(?<=...)` | 正后发断言
 `(?<!...)` | 负后发断言
-`?= `|正先行断言-存在
-`?! `|负先行断言-排除
+`?=`|正先行断言-存在
+`?!`|负先行断言-排除
 `?<=`|正后发断言-存在
 `?<!`|负后发断言-排除
 
@@ -244,30 +241,30 @@ RegEX 备忘清单
 
 :-|-
 :-|-
-`(*ACCEPT)`            | 控制动词 
-`(*FAIL)`              | 控制动词 
-`(*MARK:NAME)`         | 控制动词 
-`(*COMMIT)`            | 控制动词 
-`(*PRUNE)`             | 控制动词 
-`(*SKIP)`              | 控制动词 
-`(*THEN)`              | 控制动词 
-`(*UTF)`               | 图案修饰符 
-`(*UTF8)`              | 图案修饰符 
-`(*UTF16)`             | 图案修饰符 
-`(*UTF32)`             | 图案修饰符 
-`(*UCP)`               | 图案修饰符 
-`(*CR)`                | 换行修饰符 
-`(*LF)`                | 换行修饰符 
-`(*CRLF)`              | 换行修饰符 
-`(*ANYCRLF)`           | 换行修饰符 
-`(*ANY)`               | 换行修饰符 
-`\R`                   | 换行修饰符 
-`(*BSR_ANYCRLF)`       | 换行修饰符 
-`(*BSR_UNICODE)`       | 换行修饰符 
-`(*LIMIT_MATCH=x)`     | 正则表达式引擎修饰符 
-`(*LIMIT_RECURSION=d)` | 正则表达式引擎修饰符 
-`(*NO_AUTO_POSSESS)`   | 正则表达式引擎修饰符 
-`(*NO_START_OPT)`      | 正则表达式引擎修饰符 
+`(*ACCEPT)`            | 控制动词
+`(*FAIL)`              | 控制动词
+`(*MARK:NAME)`         | 控制动词
+`(*COMMIT)`            | 控制动词
+`(*PRUNE)`             | 控制动词
+`(*SKIP)`              | 控制动词
+`(*THEN)`              | 控制动词
+`(*UTF)`               | 图案修饰符
+`(*UTF8)`              | 图案修饰符
+`(*UTF16)`             | 图案修饰符
+`(*UTF32)`             | 图案修饰符
+`(*UCP)`               | 图案修饰符
+`(*CR)`                | 换行修饰符
+`(*LF)`                | 换行修饰符
+`(*CRLF)`              | 换行修饰符
+`(*ANYCRLF)`           | 换行修饰符
+`(*ANY)`               | 换行修饰符
+`\R`                   | 换行修饰符
+`(*BSR_ANYCRLF)`       | 换行修饰符
+`(*BSR_UNICODE)`       | 换行修饰符
+`(*LIMIT_MATCH=x)`     | 正则表达式引擎修饰符
+`(*LIMIT_RECURSION=d)` | 正则表达式引擎修饰符
+`(*NO_AUTO_POSSESS)`   | 正则表达式引擎修饰符
+`(*NO_START_OPT)`      | 正则表达式引擎修饰符
 
 正则表达式示例
 --------------
@@ -276,26 +273,25 @@ RegEX 备忘清单
 
 范例 | 说明
 :-|-
-`ring        ` | 匹配 <yel>ring</yel> sp<yel>ring</yel>board 等。 
-`.           ` | 匹配 <yel>a</yel>、<yel>9</yel>、<yel>+</yel> 等。 
-`h.o         ` | 匹配 <yel>hoo</yel>、<yel>h2o</yel>、<yel>h/o</yel> 等。 
-`ring\?      ` | 匹配 <yel>ring?</yel> 
-`\(quiet\)   ` | 匹配<yel>（安静）</yel> 
-`c:\\windows ` | 匹配 <yel>c:\windows</yel> 
+`ring` | 匹配 <yel>ring</yel> sp<yel>ring</yel>board 等。
+`.` | 匹配 <yel>a</yel>、<yel>9</yel>、<yel>+</yel> 等。
+`h.o` | 匹配 <yel>hoo</yel>、<yel>h2o</yel>、<yel>h/o</yel> 等。
+`ring\?` | 匹配 <yel>ring?</yel>
+`\(quiet\)` | 匹配<yel>（安静）</yel>
+`c:\\windows` | 匹配 <yel>c:\windows</yel>
 
 使用 `\` 搜索这些特殊字符：<br> `[ \ ^ $ . | ? * + ( ) { }`
-
 
 ### 速记类
 
 范例 | 说明
 :-|-
-`\w            ` | “单词”字符 <br> _(字母、数字或下划线)_ 
-`\d            ` | 数字 
-`\s            ` | 空格 <br> _(空格、制表符、vtab、换行符)_ 
-`\W, \D, or \S ` | 不是单词、数字或空格 
-`[\D\S]        ` | 表示不是数字或空格，两者都匹配 
-`[^\d\s]       ` | 禁止数字和空格 
+`\w` | “单词”字符 <br> _(字母、数字或下划线)_
+`\d` | 数字
+`\s` | 空格 <br> _(空格、制表符、vtab、换行符)_
+`\W, \D, or \S` | 不是单词、数字或空格
+`[\D\S]` | 表示不是数字或空格，两者都匹配
+`[^\d\s]` | 禁止数字和空格
 
 ### 出现次数
 
@@ -311,9 +307,9 @@ RegEX 备忘清单
 
 范例 | 说明
 :-|-
-`cat\|dog     ` | 匹配 <yel>cat</yel> 或 <yel>dog</yel>
-`id\|identity ` | 匹配 <yel>id</yel> 或 <yel>id</yel>entity
-`identity\|id ` | 匹配 <yel>id</yel> 或 <yel>identity</yel>
+`cat\|dog` | 匹配 <yel>cat</yel> 或 <yel>dog</yel>
+`id\|identity` | 匹配 <yel>id</yel> 或 <yel>id</yel>entity
+`identity\|id` | 匹配 <yel>id</yel> 或 <yel>identity</yel>
 
 当替代品重叠时，命令从长到短
 
@@ -334,7 +330,7 @@ RegEX 备忘清单
 范例 | 说明
 :-|-
 `*  + {n,}`<br>_greedy_  | 尽可能匹配
-`<.+>   `                | 在 <yel>\<b>bold\<\/b></yel> 中找到 1 个大匹配项
+`<.+>`                | 在 <yel>\<b>bold\<\/b></yel> 中找到 1 个大匹配项
 `*?  +? {n,}?`<br>_lazy_ | 尽可能少匹配
 `<.+?>`                  | 在 \<<yel>b</yel>>bold\<<yel>\/b</yel>> 中找到 2 个匹配项
 
@@ -343,20 +339,19 @@ RegEX 备忘清单
 
 范例 | 说明
 :-|-
-`\b              ` | “单词”边缘（非“单词”字符旁边）
-`\bring          ` | 单词以“ring”开头，例如 <yel>ringtone</yel>
-`ring\b          ` | 单词以“ring”结尾，例如 <yel>spring</yel>
-`\b9\b           ` | 匹配单个数字 <yel>9</yel>，而不是 19、91、99 等。
-`\b[a-zA-Z]{6}\b ` | 匹配 6 个字母的单词
-`\B              ` | 不是字边
-`\Bring\B        ` | 匹配 <yel>springs</yel> 和 <yel>wringer</yel>
-`^\d*$           ` | 整个字符串必须是数字
+`\b` | “单词”边缘（非“单词”字符旁边）
+`\bring` | 单词以“ring”开头，例如 <yel>ringtone</yel>
+`ring\b` | 单词以“ring”结尾，例如 <yel>spring</yel>
+`\b9\b` | 匹配单个数字 <yel>9</yel>，而不是 19、91、99 等。
+`\b[a-zA-Z]{6}\b` | 匹配 6 个字母的单词
+`\B` | 不是字边
+`\Bring\B` | 匹配 <yel>springs</yel> 和 <yel>wringer</yel>
+`^\d*$` | 整个字符串必须是数字
 `^[a-zA-Z]{4,20}$` | 字符串必须有 4-20 个字母
-`^[A-Z]          ` | 字符串必须以大写字母开头
-`[\.!?"')]$      ` | 字符串必须以终端标点结尾
+`^[A-Z]` | 字符串必须以大写字母开头
+`[\.!?"')]$` | 字符串必须以终端标点结尾
 
-
-### 修饰 
+### 修饰
 
 范例 | 说明
 :-|-
@@ -371,8 +366,8 @@ RegEX 备忘清单
 
 范例 | 说明
 :-|-
-`(in\|out)put  ` | 匹配 <yel>input</yel> 或 <yel>output</yel> 
-`\d{5}(-\d{4})?` | 美国邮政编码 _(“+ 4”可选)_ 
+`(in\|out)put` | 匹配 <yel>input</yel> 或 <yel>output</yel>
+`\d{5}(-\d{4})?` | 美国邮政编码 _(“+ 4”可选)_
 
 如果组后匹配失败，解析器会尝试每个替代方案。
 <br>
@@ -417,10 +412,9 @@ RegEX 备忘清单
 `(?<! )`                | 向后看，如果你找不到后面
 `\b\w+?(?=ing\b)`       | 匹配 <yel>warbl</yel>ing, <yel>str</yel>ing, <yel>fish</yel>ing, ...
 `\b(?!\w+ing\b)\w+\b`   | 不以“ing”结尾的单词
-`(?<=\bpre).*?\b `      | 匹配 pre<yel>tend</yel>、pre<yel>sent</yel>、pre<yel>fix</yel>、...
+`(?<=\bpre).*?\b`      | 匹配 pre<yel>tend</yel>、pre<yel>sent</yel>、pre<yel>fix</yel>、...
 `\b\w{3}(?<!pre)\w*?\b` | 不以“pre”开头的词
 `\b\w+(?<!ing)\b`       | 匹配不以“ing”结尾的单词
-
 
 ### If-then-else
 
@@ -649,8 +643,8 @@ M(?(?=.*?\bher\b)s|r)\.
 
 表达式 | 匹配示例
 :- | -
-`/(.*at)/` | `The fat cat sat on the mat`. 
-`/(.*?at)/` | `The fat` cat sat on the mat. 
+`/(.*at)/` | `The fat cat sat on the mat`.
+`/(.*?at)/` | `The fat` cat sat on the mat.
 <!--rehype:className=show-header-->
 
 Python 中的正则表达式
@@ -663,7 +657,6 @@ Python 中的正则表达式
 ```python
 import re
 ```
-
 
 ### 实例
 <!--rehype:wrap-class=col-span-2 row-span-3-->
@@ -736,10 +729,7 @@ False
 `re.compile`  | 编译正则表达式模式供以后使用
 `re.escape`   | 返回所有非字母数字反斜杠的字符串
 
-
-
 ### Flags 标志
-
 
 :- | - | -
 :- | - | -
@@ -749,8 +739,6 @@ False
 `re.S` | `re.DOTALL`     | 点匹配所有 _（包括换行符）_
 `re.U` | `re.UNICODE`    | 使 `\w`、`\b`、`\d`、`\s` _unicode 依赖_
 `re.X` | `re.VERBOSE`    | 可读风格
-
-
 
 JavaScript 中的正则表达式
 ---------------
@@ -830,7 +818,7 @@ let regex = /apples/gi;
 console.log(text.match(regex));
 ```
 
-### split() 
+### split()
 <!--rehype:wrap-class=col-span-2-->
 
 ```javascript
@@ -894,13 +882,11 @@ text.replaceAll(regex, "mangoes");
 ```
 <!--rehype:className=wrap-text-->
 
-
 PHP中的正则表达式
 ------------
 
 ### 函数
 <!--rehype:wrap-class=col-span-2-->
-
 
 :- | -
 :- | -
@@ -910,7 +896,6 @@ PHP中的正则表达式
 `preg_replace()`          | 执行正则表达式搜索和替换
 `preg_split()`            | 按正则表达式模式拆分字符串
 `preg_grep()`             | 返回与模式匹配的数组条目
-
 
 ### preg_replace
 
@@ -923,7 +908,6 @@ echo preg_replace($regex, "QuickRef", $str);
 ```
 <!--rehype:className=wrap-text-->
 
-
 ### preg_match
 
 ```php
@@ -932,7 +916,6 @@ $regex = "#quickref#i";
 // Output: 1
 echo preg_match($regex, $str);
 ```
-
 
 ### preg_matchall
 <!--rehype:wrap-class=col-span-2 row-span-2-->
@@ -952,16 +935,14 @@ if (preg_match_all($regex, $input_str, $matches_out)) {
 }
 ```
 
-
 ### preg_grep
 
-```php 
+```php
 $arr = ["Jane", "jane", "Joan", "JANE"];
 $regex = "/Jane/";
 // Output: Jane
 echo preg_grep($regex, $arr);
 ```
-
 
 ### preg_split
 <!--rehype:wrap-class=col-span-2-->
@@ -972,7 +953,6 @@ $regex = "@\s@";
 // Output: Array("Jane", "Kate", "Lucy", "Marion")
 print_r(preg_split($regex, $str));
 ```
-
 
 Java 中的正则表达式
 -------------
@@ -1003,9 +983,7 @@ boolean s3 = Pattern.matches(".s", "XXXX");
 System.out.println(s3);   // Outputs: false
 ```
 
-
 ### 模式字段
-
 
 :- | -
 :- | -
@@ -1016,7 +994,6 @@ System.out.println(s3);   // Outputs: false
 `MULTILINE`        | 多行模式
 `UNICODE_CASE`     | Unicode 感知大小写折叠
 `UNIX_LINES`       | Unix 行模式
-
 
 ### 方法
 
@@ -1029,10 +1006,10 @@ System.out.println(s3);   // Outputs: false
 
 #### 匹配器
 
-- int start([int group | 字符串名称]) 
-- int end([int group | 字符串名称]) 
+- int start([int group | 字符串名称])
+- int end([int group | 字符串名称])
 - 布尔 find([int start])
-- 字符 group([int 组 | 字符串名称]) 
+- 字符 group([int 组 | 字符串名称])
 - 匹配器重置 reset()
 
 #### String
@@ -1042,7 +1019,6 @@ System.out.println(s3);   // Outputs: false
 - String[] split(String regex[, int limit])
 
 还有更多方法...
-
 
 ### 例子
 <!--rehype:wrap-class=col-span-2-->
@@ -1073,7 +1049,6 @@ while (m.find()) {
 System.out.println(matches);
 ```
 
-
 MySQL中的正则表达式
 -------------
 <!--rehype:body-class=cols-2-->
@@ -1082,15 +1057,14 @@ MySQL中的正则表达式
 
 函数名称 | 说明
 :- | -
-`REGEXP          ` | 字符串是否匹配正则表达式
-`REGEXP_INSTR()  ` | 匹配正则表达式的子字符串的起始索引 <br>_（注意：仅限 MySQL 8.0+）_
-`REGEXP_LIKE()   ` | 字符串是否匹配正则表达式 <br>_(注意：仅 MySQL 8.0+)_
+`REGEXP` | 字符串是否匹配正则表达式
+`REGEXP_INSTR()` | 匹配正则表达式的子字符串的起始索引 <br>_（注意：仅限 MySQL 8.0+）_
+`REGEXP_LIKE()` | 字符串是否匹配正则表达式 <br>_(注意：仅 MySQL 8.0+)_
 `REGEXP_REPLACE()` | 替换匹配正则表达式的子字符串 <br>_（注意：仅限 MySQL 8.0+）_
-`REGEXP_SUBSTR() ` | 返回匹配正则表达式的子字符串 <br>_(注意：仅 MySQL 8.0+)_
-
-
+`REGEXP_SUBSTR()` | 返回匹配正则表达式的子字符串 <br>_(注意：仅 MySQL 8.0+)_
 
 ### REGEXP
+
 ```sql
 expr REGEXP pat 
 ```
@@ -1107,7 +1081,6 @@ mysql> SELECT 'a' REGEXP 'A', 'a' REGEXP BINARY 'A';
 1   0
 ```
 
-
 ### REGEXP_REPLACE
 
 ```
@@ -1122,7 +1095,6 @@ a X c
 mysql> SELECT REGEXP_REPLACE('abc ghi', '[a-z]+', 'X', 1, 2);
 abc X
 ```
-
 
 ### REGEXP_SUBSTR
 
@@ -1139,8 +1111,7 @@ mysql> SELECT REGEXP_SUBSTR('abc def ghi', '[a-z]+', 1, 3);
 ghi
 ```
 
-
-### REGEXP_LIKE 
+### REGEXP_LIKE
 
 ```
 REGEXP_LIKE(expr, pat[, match_type])
@@ -1160,7 +1131,6 @@ mysql> # m: multi-line
 mysql> SELECT regexp_like('a\nb\nc', '^b$', 'm');
 1
 ```
-
 
 ### REGEXP_INSTR
 

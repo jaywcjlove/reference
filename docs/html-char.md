@@ -3,7 +3,6 @@ HTML 字符实体备忘清单
 
 此备忘清单是 HTML 实体及其编号和名称的完整列表。还包括可以用 HTML 表示的 ASCII 字符的完整列表。
 
-
 HTML 字符实体引用
 ------
 <!--rehype:body-class=cols-1-->

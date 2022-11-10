@@ -3,7 +3,6 @@ Emmet 备忘清单
 
 [Emmet](https://emmet.io/) 是一个用于提升 [HTML](./html.md) 和 CSS 代码编写的 Web 开发人员工具包，它允许您使用著名的 CSS 选择器以光速编写大型 HTML 代码块。
 
-
 Emmet 语法
 ---------------
 
@@ -15,7 +14,6 @@ Emmet 语法
 - [Sublime Text 的 Emmet 2](https://github.com/emmetio/sublime-text-plugin) _(github.com)_
 - [Emmet for Coda](https://emmet.io/download/coda/) _(emmet.io)_
 - [Emmet for Atom](https://github.com/emmetio/emmet-atom#readme) _(github.com)_
-
 
 ### 乘法：*
 
@@ -81,7 +79,7 @@ p>{Click }+a{here}+{ 继续}
 ### ID 和 CLASS 属性
 <!--rehype:wrap-class=row-span-2-->
 
-#header
+\# header
 
 ```html
 <div id="header"></div>
@@ -198,7 +196,6 @@ ul>li.item$@2*3
     <li class="item4"></li>
 </ul>
 ```
-
 
 ### 上一层: ^
 
@@ -793,7 +790,6 @@ select
 
 select:disabled, select:d 别名 select[disabled.]
 
-
 ```html
 <select name="" id="" disabled="disabled"></select>
 ```
@@ -1162,7 +1158,7 @@ html:4s 别名 !!!4s+doc4[lang=${lang}]
 ```
 <!--rehype:className=wrap-text -->
 
-html:xt 别名 !!!xt+doc4[xmlns=http://www.w3.org/1999/xhtml xml:lang=${lang}]
+html:xt 别名 !!!xt+doc4[xmlns=<http://www.w3.org/1999/xhtml> xml:lang=${lang}]
 <!--rehype:className=wrap-text -->
 
 ```html
@@ -1179,7 +1175,7 @@ html:xt 别名 !!!xt+doc4[xmlns=http://www.w3.org/1999/xhtml xml:lang=${lang}]
 ```
 <!--rehype:className=wrap-text -->
 
-html:xs 别名 !!!xs+doc4[xmlns=http://www.w3.org/1999/xhtml xml:lang=${lang}]
+html:xs 别名 !!!xs+doc4[xmlns=<http://www.w3.org/1999/xhtml> xml:lang=${lang}]
 
 ```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -1195,7 +1191,7 @@ html:xs 别名 !!!xs+doc4[xmlns=http://www.w3.org/1999/xhtml xml:lang=${lang}]
 ```
 <!--rehype:className=wrap-text -->
 
-html:xxs 别名 !!!xxs+doc4[xmlns=http://www.w3.org/1999/xhtml xml:lang=${lang}]
+html:xxs 别名 !!!xxs+doc4[xmlns=<http://www.w3.org/1999/xhtml> xml:lang=${lang}]
 
 ```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -1968,6 +1964,7 @@ CSS
     font-weight: normal;
 }
 ```
+
 #### @i, @import
 
 ```css
@@ -2057,7 +2054,7 @@ CSS
 `bfv:h` | backface-visibility:hidden;
 `bfv:v` | backface-visibility:visible;
 `bg:ie` | filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='x.png',sizingMethod='crop');
-`cm` | /* ${child} */
+`cm` | /\* ${child} */
 `colm` | columns:;
 `colmc` | column-count:;
 `colmf` | column-fill:;
@@ -2068,7 +2065,7 @@ CSS
 `colmrw` | column-rule-width:;
 `colms` | column-span:;
 `colmw` | column-width:;
-`d:ib+` | display: inline-block;<br /> *display: inline;<br /> *zoom: 1;
+`d:ib+` | display: inline-block;<br /> *display: inline;<br />*zoom: 1;
 `jc` | justify-content:;
 `jc:c` | justify-content:center;
 `jc:fe` | justify-content:flex-end;
@@ -2384,7 +2381,7 @@ choose+ A别名 xsl:choose>xsl:when+xsl:otherwise
 </xsl:choose>
 ```
 
-xsl 别名 !!!+xsl:stylesheet[version=1.0 xmlns:xsl=http://www.w3.org/1999/XSL/Transform]>{ | }
+xsl 别名 !!!+xsl:stylesheet[version=1.0 xmlns:xsl=<http://www.w3.org/1999/XSL/Transform>]>{ | }
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -2401,4 +2398,4 @@ xsl 别名 !!!+xsl:stylesheet[version=1.0 xmlns:xsl=http://www.w3.org/1999/XSL/T
 另见
 --------
 
-* [Emmet Cheat sheet](https://docs.emmet.io/cheat-sheet/) _(docs.emmet.io)_
+- [Emmet Cheat sheet](https://docs.emmet.io/cheat-sheet/) _(docs.emmet.io)_

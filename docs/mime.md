@@ -3,7 +3,6 @@ MIME 类型 备忘清单
 
 此备忘单列出了一些常见的 Web MIME 类型。 您可以查看包含所有已注册 MIME 类型的 [IANA/MIME 媒体类型注册表](https://www.iana.org/assignments/media-types/media-types.xhtml)。
 
-
 入门
 ----
 
@@ -17,7 +16,6 @@ MIME 类型 备忘清单
 - 对于 Internet 上的文件格式或格式内容
 <!--rehype:className=style-round-->
 
-
 MIME 类型列表
 --------
 
@@ -26,8 +24,8 @@ MIME 类型列表
 
 扩展名 | MIME 类型(内容类型） | 文件种类
 :-|:-|:-
-\.aac           | audio/aac                                                                                       | AAC 音频 
-\.abw           | application/x\-abiword                                                                          | AbiWord 文档 
+\.aac           | audio/aac                                                                                       | AAC 音频
+\.abw           | application/x\-abiword                                                                          | AbiWord 文档
 \.arc           | application/x\-freearc                                                                          | 存档文档（嵌入多个文件）
 \.avi           | video/x\-msvideo                                                                                | AVI: 音频视频交错
 \.azw           | application/vnd\.amazon\.ebook                                                                  | 亚马逊 Kindle 电子书格式
@@ -87,11 +85,11 @@ MIME 类型列表
 \.webp          | image/webp                                                                                      | WEBP图像
 \.woff          | font/woff                                                                                       | Web 开放字体格式 (WOFF)
 \.woff2         | font/woff2                                                                                      | Web 开放字体格式 (WOFF)
-\.xhtml         | application/xhtml\+xml                                                                          | XHTML 
-\.xls           | application/vnd\.ms\-excel                                                                      | Microsoft Excel 
+\.xhtml         | application/xhtml\+xml                                                                          | XHTML
+\.xls           | application/vnd\.ms\-excel                                                                      | Microsoft Excel
 \.xlsx          | application/vnd\.openxmlformats\-officedocument\.spreadsheetml\.sheet                           | Microsoft Excel (OpenXML)
-\.xml           | application/xml 如果临时用户不可读(RFC 3023，第 3 节) text/xml，如果临时用户可读(RFC 3023，第 3 节)     | XML 
-\.xul           | application/vnd\.mozilla\.xul\+xml                                                              | XUL 
+\.xml           | application/xml 如果临时用户不可读(RFC 3023，第 3 节) text/xml，如果临时用户可读(RFC 3023，第 3 节)     | XML
+\.xul           | application/vnd\.mozilla\.xul\+xml                                                              | XUL
 \.zip           | application/zip                                                                                 | ZIP 档案
 \.3gp           | video/3gpp audio/3gpp 如果它不包含视频                                                            | 3GPP 音视频容器
 \.3g2           | video/3gpp2 audio/3gpp2 如果它不包含视频                                                          | 3GPP2 音视频容器

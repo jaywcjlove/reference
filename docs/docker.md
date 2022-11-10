@@ -21,7 +21,6 @@ $ docker run -d -p 80:80 docker/getting-started
 - `-p 80:80` -  将端口 80 映射到容器中的端口 80
 - `docker/getting-started` - 要使用的镜像
 
-
 在前台创建并运行容器
 
 ```shell
@@ -85,7 +84,6 @@ Docker 容器
 `docker top nginx-server`     | 运行进程
 `docker stats nginx-server`   | 容器资源使用
 `docker diff nginx-server`    | 列出对容器所做的更改
-
 
 ### 创建容器
 
@@ -235,9 +233,9 @@ docker network create -d overlay \
 | Docker 语法 | 说明 |
 |------------|------|
 `docker search search_word` | 在 docker hub 中搜索镜像。
-`docker pull user/image   ` | 从 docker hub 下载镜像。
-`docker login             ` | 向 docker hub 进行身份验证
-`docker push user/image   ` | 将镜像上传到 docker hub。
+`docker pull user/image` | 从 docker hub 下载镜像。
+`docker login` | 向 docker hub 进行身份验证
+`docker push user/image` | 将镜像上传到 docker hub。
 
 ### 镜像仓库命令
 <!--rehype:wrap-class=row-span-3-->
@@ -359,8 +357,8 @@ $ docker volume prune
 
 ### docker 主要命令
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 `attach`   | 将本地标准输入、输出和错误流附加到正在运行的容器
 `build`    | 从 Dockerfile 构建镜像
 `commit`   | 从容器的更改创建新图像
@@ -527,8 +525,8 @@ $ docker volume prune
 ### docker 管理命令
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 `docker builder`     | 管理构建
 `docker buildx*`     | Docker Buildx（Docker Inc.，v0.7.1）
 `docker compose*`    | Docker Compose（Docker Inc.，v2.2.3）
@@ -625,8 +623,8 @@ $ docker run --name my-nginx \
 ```bash
 $ docker run --name my-postgres \
   -e POSTGRES_PASSWORD=mysecretpassword \
-	-e PGDATA=/var/lib/postgresql/data/pgdata \
-	-v $HOME/nginx/mount:/var/lib/postgresql/data \
+  -e PGDATA=/var/lib/postgresql/data/pgdata \
+  -v $HOME/nginx/mount:/var/lib/postgresql/data \
   -d postgres
 ```
 

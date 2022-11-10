@@ -13,6 +13,7 @@ fn main() {
   println!("Hello, World!");
 }
 ```
+
 #### 编译运行
 
 ```shell
@@ -226,6 +227,7 @@ println!("社区的名称是 {community_name}，它有 {no_of_members} 个成员
 └─────┴─────┴─────┴─────┴─────┴─────┘
    0     1     2     3     4     5
 ```
+
 ----
 
 ```rust
@@ -243,6 +245,7 @@ i0 | 1  | 2  | 3  | 4  | 5  | 6  |
 i1 | 6  | 5  | 4  | 3  | 2  | 1  |
    └────┴────┴────┴────┴────┴────┘
 ```
+
 ----
 
 ```rust
@@ -355,7 +358,7 @@ Rust 运算符
 `e <= f` | `e` 小于或等于 `f`
 `e >= f` | `e` 大于或等于 `f`
 
----------
+----
 
 ```rust
 let (e, f) = (1, 100);
@@ -377,7 +380,7 @@ let not_equal_to = e != f;  // => true
 `a % b`  | 通过与 `b` 相除得到 `a` 的余数
 `a * b`  | `a` 与 `b` 相乘
 
-------
+----
 
 ```rust
 let (a, b) = (4, 5);
@@ -399,7 +402,7 @@ let modulus: i32 = a % b;        // => 4
 `g << h` | 二进制左移
 `g >> h` | 二进制右移
 
------
+----
 
 ```rust
 let (g, h) = (0x1, 0x2);
@@ -418,7 +421,7 @@ let left_shift = h << 4;  // => 32
 `c || d` | 要么是真的_(OR)_
 `!c`     | `c` 为假 _(NOT)_
 
-------
+----
 
 ```rust
 let (c, d) = (true, false);
@@ -498,7 +501,9 @@ if let["Apple", _] = arr2{
     println!("也适用于 str 数组");
 }
 ```
+
 ----
+
 ```rust
 let tuple_1 = ("India", 7, 90, 90.432);
 if let(_, 7, 9, 78.99) = tuple_1{
@@ -549,7 +554,7 @@ let day_of_week = 2;
     }
   };
 }
-```    
+```
 
 ### 嵌套...If 表达式
 
@@ -561,7 +566,7 @@ if nested_conditions == 89 {
         println!("大于 97");
     }
 }
-```    
+```
 
 ### For 循环
 
@@ -744,7 +749,9 @@ let a_int = 90; // int
 // int 到 float
 let mut type_cast = (a_int as f64);
 ```
-------
+
+----
+
 ```rust
 let orginal: char = 'I';
 // char 到 int => 73
@@ -760,7 +767,9 @@ let mut foo = 4;
 let mut borrowed_foo = &foo;
 println!("{borrowed_foo}");
 ```
-------
+
+----
+
 ```rust
 let mut bar = 3;
 let mut mutable_borrowed_bar = &mut bar;
@@ -790,7 +799,6 @@ println!("{a_number}");
 ```
 
 这将产生错误，因为变量 `a_number` 的范围在大括号处结束
-
 
 另见
 --------

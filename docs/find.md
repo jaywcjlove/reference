@@ -39,7 +39,6 @@ $ find . -name "json_*"
 | `-mindepth` | find / -mindepth 3 -maxdepth 5 -name pass | 在子目录级别 2 和 4 之间 |
 <!--rehype:className=show-header-->
 
-
 ### 类型
 
 |           |                      |
@@ -223,7 +222,6 @@ $ find . -type d -empty
 ```shell
 $ find . -type f -empty -delete
 ```
-
 
 查找日期和时间
 -------------

@@ -44,7 +44,6 @@ int3 = -21
 integerRange = 64
 ```
 
-
 ### 浮点数
 
 ```toml
@@ -80,7 +79,7 @@ str2 = "You can \"quote\" me."
 str3 = "Name\tJos\u00E9\nLoc\tSF."
 ```
 
-See: [Strings](#toml-strings)
+See: [Strings](#字符串)
 
 ### Table
 
@@ -165,9 +164,9 @@ bar = 2
 
 ```toml
 [table1]
-	foo = "bar"
+foo = "bar"
 [table1.nested_table]
-	baz = "bat"
+baz = "bat"
 ```
 
 ### 类数组
@@ -186,16 +185,16 @@ text = "Love it!"
 
 ```json
 {
-	"comments" : [
-		{
-			"author" : "Nate",
-			"text" : "Great Article!"
-		},
-		{
-			"author" : "Anonymous",
-			"text" : "Love It!"
-		}
-	]
+  "comments" : [
+    {
+      "author" : "Nate",
+      "text" : "Great Article!"
+    },
+    {
+      "author" : "Anonymous",
+      "text" : "Love It!"
+    }
+  ]
 }
 ```
 
@@ -224,17 +223,18 @@ type = "pug"
 [foo.bar.baz]
 bat = "hi"
 ```
+
 #### ↓ 等效的 JSON
 
 ```json
 {
-	"foo" : {
-		"bar" : {
-			"baz" : {
-				"bat" : "hi"
-			}
-		}
-	}
+ "foo" : {
+  "bar" : {
+   "baz" : {
+    "bat" : "hi"
+   }
+  }
+ }
 }
 ```
 
@@ -250,7 +250,7 @@ bat = "hi"
 ### 内联表
 <!--rehype:wrap-class=col-span-2-->
 
-```toml 
+```toml
 name = { first = "Tom", last = "Preston-Werner" }
 point = { x = 1, y = 2 }
 animal = { type.name = "pug" }
@@ -262,7 +262,6 @@ animal = { type.name = "pug" }
 - [Document](https://toml.io/en/latest) _(toml.io)_
 - [Learn X in Y minutes](https://learnxinyminutes.com/docs/toml/) _(learnxinyminutes.com)_
 - [Better TOML VSCode 插件](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml) _(visualstudio.com)_
-
 
 - [INI 格式配置文件备忘清单](./ini.md) _(jaywcjlove.github.io)_
 - [YAML 格式配置文件备忘清单](./yaml.md) _(jaywcjlove.github.io)_

@@ -81,7 +81,7 @@ $ yum provides “*bin/top”
 $ yum provides “*/README.top”
 ```
 
-#### search 
+#### search
 
 ```bash
 # 查找名称或描述中带有 samba 的软件包
@@ -394,7 +394,7 @@ yum list available --disablerepo=epel
 yum install --downloadonly vsftpd
 ```
 
----
+----
 
 :- | -
 :- | -

@@ -3,7 +3,6 @@ Electron 备忘清单
 
 此快速参考备忘单提供了 Electron v21 API 说明和使用示例。
 
-
 入门
 ----
 
@@ -15,11 +14,14 @@ Electron 备忘清单
 #### 创建你的应用程序
 
 - 安装
+
   ```bash
   mkdir my-app && cd my-app
   npm init
   ```
+
   在项目根目录会生成 `package.json`
+
   ```json
   {
     "name": "my-app",
@@ -30,22 +32,30 @@ Electron 备忘清单
     "license": "MIT"
   }
   ```
+
 - 安装依赖包
+
   ```bash
   npm install --save-dev electron
   ```
+
 - 添加开发模式打开您的应用命令
+
   ```js
   "scripts": {
     "start": "electron ."
   }
   ```
+
 - 运行命令，启动应用程序
+
   ```bash
   npm start
   ```
+
   入口都是 `main` 文件。这个文件控制了主进程，它运行在一个完整的Node.js环境中
 - 创建 `index.html` 页面
+
   ```html
   <!DOCTYPE html>
   <html>
@@ -60,7 +70,9 @@ Electron 备忘清单
     </body>
   </html>
   ```
+
 - 窗口中打开您的页面
+
   ```js
   const {
     app,
@@ -385,8 +397,8 @@ BrowserWindow
 `useContentSize` _boolean_ | _(宽)_ 和 _(高)_ 设置为web页面的尺寸。默认值 _(false)_
 `center` _boolean_ | 窗口是否在屏幕居中。默认值 _(false)_
 `minHeight`  _整数_ | 窗口的最小高度。默认值 _(0)_
-`maxWidth `  _整数_ | 窗口的最大宽度。默认值不限
-`maxHeight ` _整数_ | 窗口的最大高度。默认值不限
+`maxWidth`  _整数_ | 窗口的最大宽度。默认值不限
+`maxHeight` _整数_ | 窗口的最大高度。默认值不限
 `resizable` _boolean_ | 窗口大小是否可调整。默认值 _(true)_
 `movable` _boolean_ _(win/mac)_ | 窗口是否可移动。默认值 _(true)_
 `minimizable` _boolean_ _(win/mac)_ | 窗口是否可最小化。默认值 _(true)_
@@ -417,14 +429,14 @@ BrowserWindow
 `transparent` _boolean_ | 使窗口 <a href="/zh/docs/latest/tutorial/window-customization#create-transparent-windows">透明</a>。 默认值 _(false)_. 在Windows上，仅在无边框窗口下起作用。
 `type` _string_ | 窗口的类型, 默认为普通窗口. 更多信息见下文
 `visualEffectState` _string_ _(mac)_ | 在 macOS 上指定外观应如何响应窗口活动状态。 必须与 _(vibrancy)_ 属性一起使用。 可能的值有
-`  visualEffectState.followWindow` | 当窗口处于激活状态时，后台应自动显示为激活状态，当窗口处于非激活状态时，后台应自动显示为非激活状态。 默认为该值。
-`  visualEffectState.active` | 后台应一直显示为激活状态。
-`  visualEffectState.inactive` | 后台应一直显示为非激活状态。
+`visualEffectState.followWindow` | 当窗口处于激活状态时，后台应自动显示为激活状态，当窗口处于非激活状态时，后台应自动显示为非激活状态。 默认为该值。
+`visualEffectState.active` | 后台应一直显示为激活状态。
+`visualEffectState.inactive` | 后台应一直显示为非激活状态。
 `titleBarStyle` _string_ _(win/mac)_ | 窗口标题栏样式。默认值 _(default)_
-`  titleBarStyle.default` | 分别返回 _mac_ 或者 _win_ 的标准标题栏
-`  titleBarStyle.hidden` | 在一个隐藏的标题栏和一个全尺寸大小的内容窗口中取得结果。 在 macOS 内, 窗口将一直拥有位于左上的标准窗口控制器 _(“traffic lights”)_。 在 Windows上，当与 _(titleBarOverlay: true)_ 合并时，它将激活窗口控件叠加(详情请参阅 _(titleBarOverlay)_)，否则将不会显示窗口控件。
-`  titleBarStyle.hiddenInset` _(mac)_ | 隐藏标题栏，使用窗口边缘稍微小的红绿灯按钮替代。
-`  titleBarStyle.customButtonsOnHover` _(mac)_ | 隐藏的标题栏的全尺寸的内容窗口， 红绿灯按钮在鼠标悬停在窗口左上方时显示。**注意:**此选项目前是实验性的。
+`titleBarStyle.default` | 分别返回 _mac_ 或者 _win_ 的标准标题栏
+`titleBarStyle.hidden` | 在一个隐藏的标题栏和一个全尺寸大小的内容窗口中取得结果。 在 macOS 内, 窗口将一直拥有位于左上的标准窗口控制器 _(“traffic lights”)_。 在 Windows上，当与 _(titleBarOverlay: true)_ 合并时，它将激活窗口控件叠加(详情请参阅 _(titleBarOverlay)_)，否则将不会显示窗口控件。
+`titleBarStyle.hiddenInset` _(mac)_ | 隐藏标题栏，使用窗口边缘稍微小的红绿灯按钮替代。
+`titleBarStyle.customButtonsOnHover` _(mac)_ | 隐藏的标题栏的全尺寸的内容窗口， 红绿灯按钮在鼠标悬停在窗口左上方时显示。**注意:**此选项目前是实验性的。
 `trafficLightPosition` _Point_ _(mac)_ | 在无边框窗口中设置灯绿灯按钮位置。
 `roundedCorners` _boolean_ _(mac)_ | 无边框窗口在 macOS 上，是否应该有圆角。 默认值为 _(true)_。 属性设置为 _(false)_ ，将阻止窗口是可全屏的。
 ~~`fullscreenWindowTitle`~~ _boolean_ _(mac)_ ~~_已弃用_~~ | _titleBarStyle_ 设置为 _(hiddenInset)_ 时，在 macOS 全屏模式下标题栏显示标题。默认值为 _(false)_.
@@ -433,34 +445,34 @@ BrowserWindow
 `zoomToPageWidth` _boolean_ _(mac)_ | 在 macOS 上控制，当按住 option 点击工具栏绿色红绿灯按钮或点击窗口 &gt; 放大菜单项的行为。 如果为 _(true)_，窗口为将会缩放到适合宽度，若为 _(false)_ 将会放大到屏幕宽度。 这也会影响，直接调用 _(maximize())_ 的行为。 默认值为 _(false)_.
 `tabbingIdentifier` _string_ _(mac)_ | 选项卡组名称，允许在原生选择卡中打开窗口，macOS 10.12+ 支持。 Windows 中，有相同选项卡标识的将会组合在一起。 这会添加一个原生新增选项卡按钮到你窗口的选项卡栏，同时 _(app)_ 和窗口允许接收 _(new-window-for-tab)_ 事件。
 `webPreferences` _Object_ | 网页功能设置。
-`   webPreferences.devTools` _boolean_ | 是否开启 DevTools. 如果设置为 _(false)_, 则无法使用 _(BrowserWindow.webContents.openDevTools ())_ 打开 DevTools。 默认值为 _(true)_。
-`   webPreferences.nodeIntegration` _boolean_ | 是否启用Node integration. 默认值为 _(false)_.
-`   webPreferences.nodeIntegrationInWorker` _boolean_ | 是否在Web工作器中启用了Node集成. 默认值为 _(false)_. 更多内容参见 [多线程](https://www.electronjs.org/docs/latest/tutorial/multithreading)
-`   webPreferences.nodeIntegrationInSubFrames` _boolean_ **_实验性_**| 是否允许在子页面(iframe)或子窗口(child window)中集成Node.js； 预先加载的脚本会被注入到每一个iframe，你可以用 _(process.isMainFrame)_ 来判断当前是否处于主框架（main frame）中。
-`   webPreferences.preload` _string_ | 在页面运行其他脚本之前预先加载指定的脚本 无论页面是否集成Node, 此脚本都可以访问所有Node API 脚本路径为文件的绝对路径。 当 node integration 关闭时, 预加载的脚本将从全局范围重新引入node的全局引用标志[参考示例](https://www.electronjs.org/docs/latest/api/context-bridge#exposing-node-global-symbols)
-`   webPreferences.sandbox` _boolean_ | 如果设置该参数, 沙箱的渲染器将与窗口关联, 使它与Chromium OS-level 的沙箱兼容, 并禁用 Node. js 引擎。 它与 _(nodeIntegration)_ 的选项不同，且预加载脚本的 API 也有限制。[更多详情](https://www.electronjs.org/docs/latest/tutorial/sandbox)
-`   webPreferences.session` | [Session](https://www.electronjs.org/docs/latest/api/session#class-session) 设置页面的 session 而不是直接忽略 Session 对象, 也可用 _(partition)_ 选项来代替，它接受一个 partition 字符串. 同时设置了_(session)_ 和 _(partition)_时, _(session)_ 的优先级更高. 默认使用默认的 session.
-`   webPreferences.partition` |  string (optional) - 通过 session 的 partition 字符串来设置界面session. 如果 _(partition)_ 以 _(persist:)_开头, 该页面将使用持续的 session，并在所有页面生效，且使用同一个_(partition)_. 如果没有 _(persist:)_ 前缀, 页面将使用 in-memory session. 通过分配相同的 _(partition)_, 多个页可以共享同一会话。 默认使用默认的 session.
-`   webPreferences.zoomFactor` _number_ | 页面的默认缩放系数, _(3.0)_ 表示 _(300%)_。 默认值为 _(1.0)_.
-`   webPreferences.javascript` _boolean_ | 是否启用 JavaScript 支持。 默认值为 _(true)_。
-`   webPreferences.webSecurity` _boolean_ | 当设置为 _(false)_, 它将禁用同源策略 (通常用来测试网站), 如果此选项不是由开发者设置的，还会把 _(allowRunningInsecureContent)_设置为 _(true)_. 默认值为 _(true)_
-`   webPreferences.allowRunningInsecureContent` _boolean_ | 允许一个 https 页面运行来自http url的JavaScript, CSS 或 plugins。 默认值为 _(false)_
-`   webPreferences.images` _boolean_ | 允许加载图片。 默认值为 _(true)_
-`   webPreferences.imageAnimationPolicy` _string_ | 指定如何运行图像动画 (比如： GIF等).  可以是 _(animate)_, _(animateOnce)_ 或 _(noAnimation)_。默认值为 _(animate)_
-`   webPreferences.textAreasAreResizable` _boolean_ | 允许调整 TextArea 元素大小。 默认值为 _(true)_
-`   webPreferences.webgl` _boolean_ | 启用 WebGL 支持。 默认值为 _(true)_
-`   webPreferences.plugins` _boolean_ | 是否应该启用插件。 默认值为 _(false)_
-`   webPreferences.experimentalFeatures` _boolean_ | 启用 Chromium 的实验功能。 默认值为 _(false)_
-`   webPreferences.scrollBounce` _boolean_ _(mac)_ | 启用滚动回弹（橡皮筋）效果。 默认值为 _(false)_
-`   webPreferences.enableBlinkFeatures`_string_ | 以 _(逗号)_ 分隔的需要启用的特性列表，譬如 _(CSSVariables,KeyboardEventKey)_ 在 [RuntimeEnabledFeatures.json5](https://cs.chromium.org/chromium/src/third_party/blink/renderer/platform/runtime_enabled_features.json5?l=70) 文件中查看被支持的所有特性
-`   webPreferences.disableBlinkFeatures` _string_ | 以 _(,)_ 分隔的禁用特性列表, 如 _(CSSVariables,KeyboardEventKey)_ 在 [RuntimeEnabledFeatures.json5](https://cs.chromium.org/chromium/src/third_party/blink/renderer/platform/runtime_enabled_features.json5?l=70) 文件中查看被支持的所有特性
+`webPreferences.devTools` _boolean_ | 是否开启 DevTools. 如果设置为 _(false)_, 则无法使用 _(BrowserWindow.webContents.openDevTools ())_ 打开 DevTools。 默认值为 _(true)_。
+`webPreferences.nodeIntegration` _boolean_ | 是否启用Node integration. 默认值为 _(false)_.
+`webPreferences.nodeIntegrationInWorker` _boolean_ | 是否在Web工作器中启用了Node集成. 默认值为 _(false)_. 更多内容参见 [多线程](https://www.electronjs.org/docs/latest/tutorial/multithreading)
+`webPreferences.nodeIntegrationInSubFrames` _boolean_ **_实验性_**| 是否允许在子页面(iframe)或子窗口(child window)中集成Node.js； 预先加载的脚本会被注入到每一个iframe，你可以用 _(process.isMainFrame)_ 来判断当前是否处于主框架（main frame）中。
+`webPreferences.preload` _string_ | 在页面运行其他脚本之前预先加载指定的脚本 无论页面是否集成Node, 此脚本都可以访问所有Node API 脚本路径为文件的绝对路径。 当 node integration 关闭时, 预加载的脚本将从全局范围重新引入node的全局引用标志[参考示例](https://www.electronjs.org/docs/latest/api/context-bridge#exposing-node-global-symbols)
+`webPreferences.sandbox` _boolean_ | 如果设置该参数, 沙箱的渲染器将与窗口关联, 使它与Chromium OS-level 的沙箱兼容, 并禁用 Node. js 引擎。 它与 _(nodeIntegration)_ 的选项不同，且预加载脚本的 API 也有限制。[更多详情](https://www.electronjs.org/docs/latest/tutorial/sandbox)
+`webPreferences.session` | [Session](https://www.electronjs.org/docs/latest/api/session#class-session) 设置页面的 session 而不是直接忽略 Session 对象, 也可用 _(partition)_ 选项来代替，它接受一个 partition 字符串. 同时设置了_(session)_ 和 _(partition)_时, _(session)_ 的优先级更高. 默认使用默认的 session.
+`webPreferences.partition` |  string (optional) - 通过 session 的 partition 字符串来设置界面session. 如果 _(partition)_ 以 _(persist:)_开头, 该页面将使用持续的 session，并在所有页面生效，且使用同一个_(partition)_. 如果没有 _(persist:)_ 前缀, 页面将使用 in-memory session. 通过分配相同的 _(partition)_, 多个页可以共享同一会话。 默认使用默认的 session.
+`webPreferences.zoomFactor` _number_ | 页面的默认缩放系数, _(3.0)_ 表示 _(300%)_。 默认值为 _(1.0)_.
+`webPreferences.javascript` _boolean_ | 是否启用 JavaScript 支持。 默认值为 _(true)_。
+`webPreferences.webSecurity` _boolean_ | 当设置为 _(false)_, 它将禁用同源策略 (通常用来测试网站), 如果此选项不是由开发者设置的，还会把 _(allowRunningInsecureContent)_设置为 _(true)_. 默认值为 _(true)_
+`webPreferences.allowRunningInsecureContent` _boolean_ | 允许一个 https 页面运行来自http url的JavaScript, CSS 或 plugins。 默认值为 _(false)_
+`webPreferences.images` _boolean_ | 允许加载图片。 默认值为 _(true)_
+`webPreferences.imageAnimationPolicy` _string_ | 指定如何运行图像动画 (比如： GIF等).  可以是 _(animate)_, _(animateOnce)_ 或 _(noAnimation)_。默认值为 _(animate)_
+`webPreferences.textAreasAreResizable` _boolean_ | 允许调整 TextArea 元素大小。 默认值为 _(true)_
+`webPreferences.webgl` _boolean_ | 启用 WebGL 支持。 默认值为 _(true)_
+`webPreferences.plugins` _boolean_ | 是否应该启用插件。 默认值为 _(false)_
+`webPreferences.experimentalFeatures` _boolean_ | 启用 Chromium 的实验功能。 默认值为 _(false)_
+`webPreferences.scrollBounce` _boolean_ _(mac)_ | 启用滚动回弹（橡皮筋）效果。 默认值为 _(false)_
+`webPreferences.enableBlinkFeatures`_string_ | 以 _(逗号)_ 分隔的需要启用的特性列表，譬如 _(CSSVariables,KeyboardEventKey)_ 在 [RuntimeEnabledFeatures.json5](https://cs.chromium.org/chromium/src/third_party/blink/renderer/platform/runtime_enabled_features.json5?l=70) 文件中查看被支持的所有特性
+`webPreferences.disableBlinkFeatures` _string_ | 以 _(,)_ 分隔的禁用特性列表, 如 _(CSSVariables,KeyboardEventKey)_ 在 [RuntimeEnabledFeatures.json5](https://cs.chromium.org/chromium/src/third_party/blink/renderer/platform/runtime_enabled_features.json5?l=70) 文件中查看被支持的所有特性
 `defaultFontFamily` _Object_ | 为 font-family 设置默认字体
-`   defaultFontFamily.standard` _string_ |默认值为 _(Times New Roman)_
-`   defaultFontFamily.serif` _string_ | 默认值为 _(Times New Roman)_
-`   defaultFontFamily.sansSerif` _string_ | 默认值为 _(Arial)_
-`   defaultFontFamily.monospace` _string_ | 默认值为 _(Courier New)_
-`   defaultFontFamily.cursive` _string_ | 默认值为 _(Script)_
-`   defaultFontFamily.fantasy` _string_ | 默认值为 _(Impact)_
+`defaultFontFamily.standard` _string_ |默认值为 _(Times New Roman)_
+`defaultFontFamily.serif` _string_ | 默认值为 _(Times New Roman)_
+`defaultFontFamily.sansSerif` _string_ | 默认值为 _(Arial)_
+`defaultFontFamily.monospace` _string_ | 默认值为 _(Courier New)_
+`defaultFontFamily.cursive` _string_ | 默认值为 _(Script)_
+`defaultFontFamily.fantasy` _string_ | 默认值为 _(Impact)_
 `defaultFontSize` _Integer_ | 默认值为 _(16)_
 `defaultMonospaceFontSize` _Integer_ | 默认值为 _(13)_
 `minimumFontSize` _Integer_ | 默认值为 _(0)_
@@ -480,10 +492,10 @@ BrowserWindow
 `spellcheck` _boolean_ | 是否启用内置拼写检查器。 默认值为 _(true)_
 `enableWebSQL` _boolean_ | 是否启用 [WebSQL api](https://www.w3.org/TR/webdatabase/)。 默认值为 _(true)_
 `v8CacheOptions` _string_ | 强制 blink 使用 v8 代码缓存策略。 可接受的值为：
-`   v8CacheOptions.none` | 禁用代码缓存
-`   v8CacheOptions.code` | 基于启发式代码缓存
-`   v8CacheOptions.bypassHeatCheck` | 绕过启发式代码缓存，但使用懒编译。
-`   v8CacheOptions.bypassHeatCheckAndEagerCompile` | 与上面相同，除了编译是及时的。 默认策略是 _(code)_
+`v8CacheOptions.none` | 禁用代码缓存
+`v8CacheOptions.code` | 基于启发式代码缓存
+`v8CacheOptions.bypassHeatCheck` | 绕过启发式代码缓存，但使用懒编译。
+`v8CacheOptions.bypassHeatCheckAndEagerCompile` | 与上面相同，除了编译是及时的。 默认策略是 _(code)_
 `enablePreferredSizeMode` _boolean_ | 是否启用首选大小模式。 首选大小是包含文档布局所需的最小大小--无需滚动。 启用该属性将导致在首选大小发生变化时，在 _(WebContents)_ 上触发 _(preferred-size-changed)_ 事件。默认值为 _(false)_
 `titleBarOverlay` _Object/Boolean_ | 当在 macOS 使用无框窗口结合 _(win.setWindowButtonVisibility(true))_ 或使用 _(titleBarStyle)_ 以便标准窗口控制 (在 macOS为 "traffic lights") 可见，此属性将启用 Window Controls Overlay [JavaScript APIs](https://github.com/WICG/window-controls-overlay/blob/main/explainer.md#javascript-apis) 和 [CSS Environment Variables](https://github.com/WICG/window-controls-overlay/blob/main/explainer.md#css-environment-variables)。指定 _(true)_ 将导致覆盖默认系统颜色。 默认值为 _(false)_
 `color` _String_ _(win)_ | 启用窗口控制时覆盖面的 CSS 颜色 默认是系统颜色
@@ -683,7 +695,6 @@ child.once('ready-to-show', () => {
 `win.getBrowserViews()` _(实验功能)_ | [#](https://www.electronjs.org/zh/docs/latest/api/browser-window#wingetbrowserviews-实验功能)
 `win.setTitleBarOverlay(options)` _(win)_ | 在已开启 Window Controls Overlay 的窗口上，此方法将更新标题栏叠加层的样式 [#](https://www.electronjs.org/zh/docs/latest/api/browser-window#winsettitlebaroverlayoptions-windows)
 <!--rehype:className=style-list-->
-
 
 ### 静态方法
 <!--rehype:wrap-class=col-span-3-->

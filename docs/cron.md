@@ -1,7 +1,6 @@
 Cron 备忘清单
 ===
 
-
 [Cron](https://en.wikipedia.org/wiki/Cron) 最适合安排重复性任务。 可以使用关联的 at 实用程序来完成一次性任务的调度。
 
 Crontab 格式
@@ -27,7 +26,7 @@ Min  Hour Day  Mon  Weekday
 └─────────────────────  分钟           (0..59)
 ```
 
-------
+-------
 
 | 字段          | 范围   | 特殊字符             |
 |--------------|--------|--------------------|
@@ -37,7 +36,6 @@ Min  Hour Day  Mon  Weekday
 | 月 Month     | 1 - 12 | , - * /            |
 | 星期几        | 0 - 6  | , - * ? / L #      |
 <!--rehype:className=show-header -->
-
 
 ### 示例
 
@@ -56,7 +54,6 @@ Min  Hour Day  Mon  Weekday
 | `0 0 0 1 1 *`  | 每年 1 月 1 日（每年）   |
 | `@reboot`      | 每次重启 _(非标准)_   |
 
-
 ### 特殊字符串
 
 | 特殊字符串       | 意义                                            |
@@ -64,13 +61,12 @@ Min  Hour Day  Mon  Weekday
 | @reboot        | 运行一次，在系统启动时 _（非标准）_ |
 | @yearly        | 每年运行一次，“0 0 1 1 *” _（非标准）_ |
 | @annually      | （与@yearly 相同）_（非标准）_ |
-| @monthly       | 每月运行一次，“0 0 1 * *” _（非标准）_ |
-| @weekly        | 每周运行一次，“0 0 * * 0” _（非标准）_ |
-| @daily         | 每天运行一次，“0 0 * * *” _（非标准）_ |
+| @monthly       | 每月运行一次，“0 0 1 \* \*” _（非标准）_ |
+| @weekly        | 每周运行一次，“0 0 \* \* 0” _（非标准）_ |
+| @daily         | 每天运行一次，“0 0 \* \* \*” _（非标准）_ |
 | @midnight      | （与@daily 相同）_（非标准）_ |
-| @hourly        | 每小时运行一次，“0 * * * *” _（非标准）_ |
+| @hourly        | 每小时运行一次，“0 \* \* \* \*” _（非标准）_ |
 <!--rehype:className=show-header -->
-
 
 ### Crontab 命令
 
@@ -81,7 +77,6 @@ Min  Hour Day  Mon  Weekday
 | `crontab -r` | 删除 crontab 文件。 |
 | `crontab -v` | 显示您上次编辑 crontab 文件的时间。 _（非标准）_ |
 | `echo "@reboot echo hi" | crontab` | 轻松添加任务 |
-
 
 ### 特殊字符
 <!--rehype:wrap-class=col-span-2-->
@@ -96,7 +91,6 @@ Min  Hour Day  Mon  Weekday
 `井号 (#)` | 仅允许用于 `星期几` 字段，后面必须在 1 到 5 的范围内。例如，`4#1` 表示给定月份的“第一个星期四”。
 `问号(?)`  | 可以代替“*”并允许用于月份和星期几。使用仅限于 cron 表达式中的 `月份中的某天` 或 `星期几`。
 <!--rehype:className=show-header auto-wrap-->
-
 
 ## Also see
 

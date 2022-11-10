@@ -53,7 +53,7 @@ struct AlbumDetail: View {
 - [Picker](#picker-选择控件) _(UISegmentedControl)_
 - [Stepper](#stepper-执行语义递增和递减操作的控件) _(UIStepper)_
 - [DatePicker](#datepicker-日期控件) _(UIDatePicker)_
-- [Text](#text-文本) _(NSAttributedString)无等效项)_
+- [Text](#text) _(NSAttributedString)无等效项)_
 - [Map](#map-地图界面的视图) _(MapKit)_
 - [ProgressView](#progressview-进度视图) _(UIProgressView)_
 - [Shape](#shape) / [Rectangle](#shape) / [Circle](#shape)
@@ -229,7 +229,6 @@ Map(coordinateRegion: $region,
 ```
 
 文档 - [Map](https://developer.apple.com/documentation/mapkit/map)
-
 
 Layout(布局)
 ----
@@ -620,7 +619,6 @@ DatePicker("Maximum Date", selection: $selectedDate,
 
 文档 - [DatePicker](https://developer.apple.com/documentation/swiftui/datepicker)
 
-
 ### Slider 滑动输入条
 
 用于从值的有界线性范围中选择一个值的控件。
@@ -673,6 +671,7 @@ NavigationView {
   }
 }
 ```
+
 您可以使用 `.pickerStyle(WheelPickerStyle())` 覆盖样式。
 
 ```swift
@@ -1199,7 +1198,6 @@ struct SheetDetail: Identifiable {
 ```
 
 文档 - [ActionSheet](https://developer.apple.com/documentation/swiftui/actionsheet)
-
 
 另见
 ---

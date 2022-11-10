@@ -149,7 +149,6 @@ class Circle extends Shape {
 原型的语法糖。
 请参阅: [类](https://babeljs.io/learn-es2015/#classes)
 
-
 Promises
 --------
 
@@ -237,7 +236,9 @@ let {title, author} = {
 const scores = [22, 33]
 const [math = 50, sci = 50, arts = 50] = scores
 ```
+
 ----
+
 ```js
 // Result:
 // math === 22, sci === 33, arts === 50
@@ -252,7 +253,9 @@ function greet({ name, greeting }) {
   console.log(`${greeting}, ${name}!`)
 }
 ```
+
 ----
+
 ```js
 greet({ name: 'Larry', greeting: 'Ahoy' })
 ```
@@ -266,7 +269,9 @@ function greet({ name = 'Rauno' } = {}) {
   console.log(`Hi ${name}!`);
 }
 ```
+
 ----
+
 ```js
 greet() // Hi Rauno!
 greet({ name: 'Larry' }) // Hi Larry!
@@ -279,7 +284,9 @@ function printCoordinates({ left: x, top: y }) {
   console.log(`x: ${x}, y: ${y}`)
 }
 ```
+
 ----
+
 ```js
 printCoordinates({ left: 25, top: 90 })
 ```
@@ -456,7 +463,9 @@ Objects
 ```js
 module.exports = { hello, bye }
 ```
-同下: 
+
+同下:
+
 ```js
 module.exports = {
   hello: hello, bye: bye
@@ -524,22 +533,30 @@ Modules 模块
 import 'helpers'
 // 又名: require('···')
 ```
----
+
+----
+
 ```js
 import Express from 'express'
 // 又名: const Express = require('···').default || require('···')
 ```
----
+
+----
+
 ```js
 import { indent } from 'helpers'
 // 又名: const indent = require('···').indent
 ```
----
+
+----
+
 ```js
 import * as Helpers from 'helpers'
 // 又名: const Helpers = require('···')
 ```
----
+
+----
+
 ```js
 import { indentSpaces as indent } from 'helpers'
 // 又名: const indent = require('···').indentSpaces
@@ -554,12 +571,16 @@ import { indentSpaces as indent } from 'helpers'
 export default function () { ··· }
 // 又名: module.exports.default = ···
 ```
+
 ----
+
 ```js
 export function mymethod () { ··· }
 // 又名: module.exports.mymethod = ···
 ```
+
 ----
+
 ```js
 export const pi = 3.14159
 // 又名: module.exports.pi = ···
@@ -643,7 +664,6 @@ new URL('data.txt', import.meta.url)
 
 Node.js 环境中，`import.meta.url`返回的总是本地路径，即 `file:URL` 协议的字符串，比如 `file:///home/user/foo.js`
 
-
 Generators
 ----------
 
@@ -655,7 +675,9 @@ function* idMaker () {
   while (true) { yield id++ }
 }
 ```
----
+
+----
+
 ```js
 let gen = idMaker()
 gen.next().value  // → 0
@@ -706,7 +728,6 @@ gen[Symbol.iterator] = function* () {
 ```
 
 `Generator` 函数赋值给 `Symbol.iterator` 属性，从而使得 `gen` 对象具有了 `Iterator` 接口，可以被 `...` 运算符遍历了
-
 
 ### Symbol.iterator 属性
 

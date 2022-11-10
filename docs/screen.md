@@ -30,7 +30,6 @@ $ screen -ls
 $ screen -r <name/pid>
 ```
 
-
 ### 选项
 <!--rehype:wrap-class=col-span-2-->
 
@@ -44,7 +43,6 @@ $ screen -r <name/pid>
 `-d`    | screen -d -m wget xxxx.com/large.file | 分离模式下的开始屏幕
 `-X`    | screen -X -S debug kill               | 终止正在运行的会话
 <!--rehype:className=show-header-->
-
 
 ### 进入
 
@@ -108,7 +106,6 @@ Command | Description
 `Ctrl-A` `H`      | 在屏幕会话中启用日志记录
 <!--rehype:className=shortcuts-->
 
-
 ### 分屏
 
 Command | Description
@@ -120,7 +117,6 @@ Command | Description
 `Ctrl-A` `X`   | 删除当前区域
 `Ctrl-A` `Q`   | 删除除当前区域之外的所有区域
 <!--rehype:className=shortcuts-->
-
 
 ### 滚动
 

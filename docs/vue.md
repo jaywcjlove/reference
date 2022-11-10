@@ -3,7 +3,6 @@ Vue 3 备忘清单
 
 渐进式 JavaScript 框架 [Vue 3](https://cn.vuejs.org/) 备忘清单的快速参考列表，包含常用 API 和示例。
 
-
 入门
 ---
 
@@ -129,7 +128,7 @@ app.mount('#app')
 <span>Message: {{ msg }}</span>
 ```
 
-使用的是 `Mustache` 语法 (即双大括号)，每次 `msg` 属性更改时它也会同步更新 
+使用的是 `Mustache` 语法 (即双大括号)，每次 `msg` 属性更改时它也会同步更新
 
 ### 原始 HTML
 <!--rehype:wrap-class=col-span-2-->
@@ -208,7 +207,6 @@ data() {
   {{ formatDate(date) }}
 </span>
 ```
-
 
 ### 指令 Directives
 

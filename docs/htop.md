@@ -53,7 +53,7 @@ htop 的软件包在大多数发行版中都[可用下载](https://htop.dev/down
 `T`  | 追踪/停止
 `Z`  | 僵尸
 `D`  | 磁盘睡眠
-<!--rehype:className=shortcuts--> 
+<!--rehype:className=shortcuts-->
 
 ### 交互式命令
 <!--rehype:wrap-class=col-span-2 row-span-3-->
@@ -81,7 +81,7 @@ htop 的软件包在大多数发行版中都[可用下载](https://htop.dev/down
 `p` | 在适用的情况下显示运行程序的完整路径(这是一个切换键)
 `Ctrl-L` | 刷新：重绘屏幕并重新计算数值
 `Numbers` | PID搜索：输入进程ID，选择突出显示将移至它
-<!--rehype:className=shortcuts--> 
+<!--rehype:className=shortcuts-->
 
 ### 排序/线程
 
@@ -93,7 +93,7 @@ htop 的软件包在大多数发行版中都[可用下载](https://htop.dev/down
 `I` | `反转`排序顺序
 `K` | 隐藏`内核`线程
 `H` | 隐藏`用户`线程
-<!--rehype:className=shortcuts--> 
+<!--rehype:className=shortcuts-->
 
 ### 滚动
 
@@ -108,4 +108,4 @@ htop 的软件包在大多数发行版中都[可用下载](https://htop.dev/down
 `End` | 滚动到流程列表的`底部` <br /> _选择最后一个流程_
 `Ctrl-A`, `^` | 向`左`滚动到流程条目`开头` _(即行开头)_
 `Ctrl-E`, `$` | 向`右`滚动到流程条目`末尾` _(即行尾)_
-<!--rehype:className=shortcuts--> 
+<!--rehype:className=shortcuts-->

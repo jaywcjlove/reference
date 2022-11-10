@@ -18,7 +18,6 @@ YAML 备忘清单
 - Ansible playbook 是 YAML 文件
 <!--rehype:className=style-round-->
 
-
 ### 标量类型
 <!--rehype:wrap-class=row-span-2-->
 
@@ -350,7 +349,6 @@ set2: !!set {'one', "two"}
 
 集合表示为一个映射，其中每个键都与一个空值相关联
 
-
 ### 有序映射
 
 ```yaml
@@ -450,7 +448,6 @@ YAML 参考
 | `#` | 一次性评论指示器 |
 | <code>\`@</code> | 两者都保留供将来使用 |
 
-
 ### 核心类型（默认自动标签）
 <!--rehype:wrap-class=row-span-2-->
 
@@ -474,11 +471,12 @@ YAML 参考
 
 - `\\` (\\)
 - `\"` (")
-- `\ ` ( )
+- `\` ( )
 - `\<TAB>` (TAB)
 <!--rehype:className=cols-3 style-none-->
 
 #### C
+
 - `\0` (NUL)
 - `\a` (BEL)
 - `\b` (BS)

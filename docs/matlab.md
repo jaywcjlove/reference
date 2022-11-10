@@ -6,7 +6,6 @@ MATLAB 备忘清单
 入门
 ---
 
-
 ### 介绍
 
 MATLAB 是 `matrix laboratory` 的缩写形式
@@ -24,14 +23,18 @@ MATLAB 允许您使用单一的算术运算符或函数来处理矩阵中的所�
 ```matlab
 a + 10
 ```
+
 MATLAB 将执行上述语句，并返回以下结果：
+
 ```
 ans = 3×3
     11    13    15
     12    14    16
     17    18    20
 ```
----
+
+----
+
 ```matlab
 sin(a)
 ```
@@ -50,7 +53,9 @@ ans = 3×3
 ```matlab
 a'
 ```
+
 ----
+
 ```
 ans = 3×3
      1     2     7
@@ -63,7 +68,9 @@ ans = 3×3
 ```matlab
 p = a*inv(a)
 ```
+
 ----
+
 ```
 p = 3×3
     1.0000         0         0
@@ -79,7 +86,9 @@ p = 3×3
 ```matlab
 A = [a,a]
 ```
+
 ----
+
 ```
 A = 3×6
 
@@ -93,7 +102,9 @@ A = 3×6
 ```matlab
 A = [a; a]
 ```
+
 ----
+
 ```
 A = 6×3
 
@@ -126,7 +137,9 @@ a = 1×4
 ```matlab
 a = [1 3 5; 2 4 6; 7 8 10]
 ```
+
 ----
+
 ```
 a = 3×3
      1     3     5
@@ -139,7 +152,9 @@ a = 3×3
 ```matlab
 z = zeros(5,1)
 ```
+
 ----
+
 ```
 z = 5×1
      0
@@ -156,6 +171,7 @@ z = 5×1
 ```matlab
 sqrt(-1)
 ```
+
 ----
 
 ```
@@ -167,7 +183,9 @@ ans = 0.0000 + 1.0000i
 ```matlab
 c = [3+4i, 4+3j; -i, 10j]
 ```
+
 ----
+
 ```
 c = 2×2 complex
 
@@ -180,8 +198,8 @@ c = 2×2 complex
 
 ### 输入命令
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [ans](https://ww2.mathworks.cn/help/matlab/ref/ans.html) | 最近计算的答案
 [clc](https://ww2.mathworks.cn/help/matlab/ref/clc.html) | 清空命令行窗口
 [diary](https://ww2.mathworks.cn/help/matlab/ref/diary.html) | 将命令行窗口文本记录到日志文件中
@@ -189,23 +207,22 @@ c = 2×2 complex
 [home](https://ww2.mathworks.cn/help/matlab/ref/home.html) | 发送光标复位
 [iskeyword](https://ww2.mathworks.cn/help/matlab/ref/iskeyword.html) | 确定输入是否为 <span class="trademark">MATLAB</span> 关键字
 [more](https://ww2.mathworks.cn/help/matlab/ref/more.html) | 控制命令行窗口中的分页输出
-[commandwindow](https://ww2.mathworks.cn/help/matlab/ref/commandwindow.html) | 选择命令行窗口 
+[commandwindow](https://ww2.mathworks.cn/help/matlab/ref/commandwindow.html) | 选择命令行窗口
 [commandhistory](https://ww2.mathworks.cn/help/matlab/ref/commandhistory.html) | 打开命令历史记录窗口
 
 #### 对象
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [DisplayFormatOptions](https://ww2.mathworks.cn/help/matlab/ref/ans.html) | 命令行窗口中的输出显示格式
-
 
 ### 矩阵和数组
 <!--rehype:wrap-class=row-span-5-->
 
 创建和合并数组
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [zeros](https://ww2.mathworks.cn/help/matlab/ref/zeros.html) | 创建全零数组
 [ones](https://ww2.mathworks.cn/help/matlab/ref/ones.html) | 创建全部为 1 的数组
 [rand](https://ww2.mathworks.cn/help/matlab/ref/rand.html) | 均匀分布的随机数
@@ -222,8 +239,8 @@ c = 2×2 complex
 
 创建网格
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [linspace](https://ww2.mathworks.cn/help/matlab/ref/linspace.html) | 生成线性间距向量
 [logspace](https://ww2.mathworks.cn/help/matlab/ref/logspace.html) | 生成对数间距向量
 [freqspace](https://ww2.mathworks.cn/help/matlab/ref/freqspace.html) | 频率响应的频率间距
@@ -232,8 +249,8 @@ c = 2×2 complex
 
 确定大小、形状和排序
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [length](https://ww2.mathworks.cn/help/matlab/ref/length.html) | 最大数组维度的长度
 [size](https://ww2.mathworks.cn/help/matlab/ref/size.html) | 数组大小
 [ndims](https://ww2.mathworks.cn/help/matlab/ref/double.ndims.html) | 数组维度数目
@@ -249,8 +266,8 @@ c = 2×2 complex
 
 重构和重新排列
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [sort](https://ww2.mathworks.cn/help/matlab/ref/sort.html) | 对数组元素排序
 [sortrows](https://ww2.mathworks.cn/help/matlab/ref/double.sortrows.html) | 对矩阵行或表行进行排序
 [flip](https://ww2.mathworks.cn/help/matlab/ref/flip.html) | 翻转元素顺序
@@ -268,8 +285,8 @@ c = 2×2 complex
 
 索引
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [colon](https://ww2.mathworks.cn/help/matlab/ref/colon.html) | 向量创建、数组下标和 <code class="literal">for</code> 循环迭代
 [end](https://ww2.mathworks.cn/help/matlab/ref/end.html) | 终止代码块或指示最大数组索引
 [ind2sub](https://ww2.mathworks.cn/help/matlab/ref/ind2sub.html) | 将线性索引转换为下标
@@ -280,8 +297,8 @@ c = 2×2 complex
 
 创建数值变量
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [double](https://ww2.mathworks.cn/help/matlab/ref/double.html) | 双精度数组
 [single](https://ww2.mathworks.cn/help/matlab/ref/single.html) | 单精度数组
 [int8](https://ww2.mathworks.cn/help/matlab/ref/int8.html) | 8 位有符号整数数组
@@ -295,15 +312,15 @@ c = 2×2 complex
 
 在数值类型之间转换
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [cast](https://ww2.mathworks.cn/help/matlab/ref/cast.html) | 将变量转换为不同的数据类型
 [typecast](https://ww2.mathworks.cn/help/matlab/ref/typecast.html) | 在不更改基础数据的情况下转换数据类型
 
 查询类型和值
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [allfinite](https://ww2.mathworks.cn/help/matlab/ref/allfinite.html") | Determine if all array elements are finite
 [anynan](https://ww2.mathworks.cn/help/matlab/ref/anynan.html") | Determine if any array element is NaN
 [isinteger](https://ww2.mathworks.cn/help/matlab/ref/isinteger.html) | 确定输入是否为整数数组
@@ -316,8 +333,8 @@ c = 2×2 complex
 
 数值范围
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [eps](https://ww2.mathworks.cn/help/matlab/ref/eps.html) | 浮点相对精度
 [flintmax](https://ww2.mathworks.cn/help/matlab/ref/flintmax.html) | 浮点格式的最大连续整数
 [Inf](https://ww2.mathworks.cn/help/matlab/ref/inf.html) | 创建所有值均为 `Inf` 的数组
@@ -329,8 +346,8 @@ c = 2×2 complex
 
 ### 循环及条件语句
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [if, elseif, else](https://ww2.mathworks.cn/help/matlab/ref/if.html) | 条件为 true 时执行语句
 [switch, case, otherwise](https://ww2.mathworks.cn/help/matlab/ref/switch.html) | 执行多组语句中的一组
 [for](https://ww2.mathworks.cn/help/matlab/ref/for.html) | 用来重复指定次数的 `for` 循环
@@ -346,8 +363,8 @@ c = 2×2 complex
 
 ### 字符串数组
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [string](https://ww2.mathworks.cn/help/matlab/ref/string.html) | 字符串数组
 [strings](https://ww2.mathworks.cn/help/matlab/ref/strings.html) | 创建不包含字符的字符串数组
 [join](https://ww2.mathworks.cn/help/matlab/ref/join.html) | 合并字符串
@@ -355,8 +372,8 @@ c = 2×2 complex
 
 ### 字符数组
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [char](https://ww2.mathworks.cn/help/matlab/ref/char.html) | 字符数组
 [cellstr](https://ww2.mathworks.cn/help/matlab/ref/cellstr.html) | 转换为字符向量元胞数组
 [blanks](https://ww2.mathworks.cn/help/matlab/ref/blanks.html) | 创建空白字符数组
@@ -364,8 +381,8 @@ c = 2×2 complex
 
 ### 字符或字符串数组
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [compose](https://ww2.mathworks.cn/help/matlab/ref/compose.html) | 将数据格式化为多个字符串
 [sprintf](https://ww2.mathworks.cn/help/matlab/ref/sprintf.html) | 将数据格式化为字符串或字符向量
 [strcat](https://ww2.mathworks.cn/help/matlab/ref/strcat.html) | 水平串联字符串
@@ -373,8 +390,8 @@ c = 2×2 complex
 
 ### 字符或字符串 - 转换输入参数
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [convertCharsToStrings](https://ww2.mathworks.cn/help/matlab/ref/convertcharstostrings.html) | 将字符数组转换为字符串数组，其他数组不变
 [convertStringsToChars](https://ww2.mathworks.cn/help/matlab/ref/convertstringstochars.html) | 将字符串数组转换为字符数组，其他数组不变
 [convertContainedStringsToChars](https://ww2.mathworks.cn/help/matlab/ref/convertcontainedstringstochars.html) | 在元胞数组或结构体的任何级别转换字符串数组
@@ -382,8 +399,8 @@ c = 2×2 complex
 
 ### 字符或字符串 - 在数值和字符串之间转换
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [double](https://ww2.mathworks.cn/help/matlab/ref/double.html) | 双精度数组
 [string](https://ww2.mathworks.cn/help/matlab/ref/string.html) | 字符串数组
 [str2double](https://ww2.mathworks.cn/help/matlab/ref/str2double.html) | 将字符串转换为双精度值
@@ -394,8 +411,8 @@ c = 2×2 complex
 
 数据类型
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [ischar](https://ww2.mathworks.cn/help/matlab/ref/ischar.html) | 确定输入是否为字符数组
 [iscellstr](https://ww2.mathworks.cn/help/matlab/ref/iscellstr.html) | 确定输入是否为字符向量元胞数组
 [isstring](https://ww2.mathworks.cn/help/matlab/ref/isstring.html) | 确定输入是否为字符串数组
@@ -403,8 +420,8 @@ c = 2×2 complex
 
 文本属性
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [strlength](https://ww2.mathworks.cn/help/matlab/ref/strlength.html) | 字符串长度
 [isstrprop](https://ww2.mathworks.cn/help/matlab/ref/isstrprop.html) | 确定输入字符串中的哪些字符属于指定类别
 [isletter](https://ww2.mathworks.cn/help/matlab/ref/isletter.html) | 确定哪些字符为字母
@@ -415,8 +432,8 @@ c = 2×2 complex
 
 查找
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [contains](https://ww2.mathworks.cn/help/matlab/ref/contains.html) | 确定字符串中是否有模式
 [matches](https://ww2.mathworks.cn/help/matlab/ref/matches.html) | 确定模式是否与字符串匹配
 [count](https://ww2.mathworks.cn/help/matlab/ref/count.html) | 计算字符串中模式的出现次数
@@ -427,22 +444,22 @@ c = 2×2 complex
 
 替换
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [replace](https://ww2.mathworks.cn/help/matlab/ref/replace.html) | 查找并替换一个或多个子字符串
 [replaceBetween](https://ww2.mathworks.cn/help/matlab/ref/replacebetween.html) | 替换起点和终点之间的子字符串
 [strrep](https://ww2.mathworks.cn/help/matlab/ref/strrep.html) | 查找并替换子字符串
 
 ### 字符串匹配模式 - 构建模式
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [pattern](https://ww2.mathworks.cn/help/matlab/ref/pattern.html) | 用于搜索和匹配文本的模式
 
 ### 字符串匹配模式 - 字符匹配模式
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [alphanumericsPattern](https://ww2.mathworks.cn/help/matlab/ref/alphanumericspattern.html) | 匹配字母和数字字符
 [characterListPattern](https://ww2.mathworks.cn/help/matlab/ref/characterlistpattern.html) | 匹配列表中的字符
 [digitsPattern](https://ww2.mathworks.cn/help/matlab/ref/digitspattern.html) |  匹配数字字符
@@ -452,8 +469,8 @@ c = 2×2 complex
 
 ### 字符串匹配模式 - 模式搜索规则
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [optionalPattern](https://ww2.mathworks.cn/help/matlab/ref/optionalpattern.html) | 使模式匹配可选
 [possessivePattern](https://ww2.mathworks.cn/help/matlab/ref/possessivepattern.html) | 匹配模式而不回溯
 [caseSensitivePattern](https://ww2.mathworks.cn/help/matlab/ref/casesensitivepattern.html) | 以区分大小写的方式匹配模式
@@ -464,8 +481,8 @@ c = 2×2 complex
 ### 字符串匹配模式 - 边界模式
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [alphanumericBoundary](https://ww2.mathworks.cn/help/matlab/ref/alphanumericboundary.html) | 匹配字母数字字符与非字母数字字符之间的边界
 [digitBoundary](https://ww2.mathworks.cn/help/matlab/ref/digitboundary.html) | 匹配数字字符和非数字字符之间的边界
 [letterBoundary](https://ww2.mathworks.cn/help/matlab/ref/letterboundary.html) | 匹配字母字符和非字母字符之间的边界
@@ -478,27 +495,25 @@ c = 2×2 complex
 
 ### 字符串匹配模式 - 自定义模式显示
 
-
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [maskedPattern](https://ww2.mathworks.cn/help/matlab/ref/maskedpattern.html) | 具有指定显示名称的模式
 [namedPattern](https://ww2.mathworks.cn/help/matlab/ref/namedpattern.html) | 指定命名模式
 
 ### 字符串匹配模式 - 正则表达式
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [regexp](https://ww2.mathworks.cn/help/matlab/ref/regexp.html) | 匹配正则表达式（区分大小写）
 [regexpi](https://ww2.mathworks.cn/help/matlab/ref/regexpi.html) | 匹配正则表达式（不区分大小写）
 [regexprep](https://ww2.mathworks.cn/help/matlab/ref/regexprep.html) | 使用正则表达式替换文本
 [regexptranslate](https://ww2.mathworks.cn/help/matlab/ref/regexptranslate.html) | 将文本转换为正则表达式
 [regexpPattern](https://ww2.mathworks.cn/help/matlab/ref/regexppattern.html) | 匹配指定正则表达式的模式
 
-
 ### 字符串匹配模式 - 联接和拆分
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [join](https://ww2.mathworks.cn/help/matlab/ref/join.html) | 合并字符串
 [plus](https://ww2.mathworks.cn/help/matlab/ref/plus.html) | 添加数字，追加字符串
 [split](https://ww2.mathworks.cn/help/matlab/ref/split.html) | 在分隔符处拆分字符串
@@ -514,8 +529,8 @@ c = 2×2 complex
 ### 字符串编辑
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [erase](https://ww2.mathworks.cn/help/matlab/ref/erase.html) | 删除字符串内的子字符串
 [eraseBetween](https://ww2.mathworks.cn/help/matlab/ref/erasebetween.html) | 删除起点和终点之间的子字符串
 [extract](https://ww2.mathworks.cn/help/matlab/ref/extract.html) | 从字符串中提取子字符串
@@ -535,14 +550,13 @@ c = 2×2 complex
 
 ### 字符串比较
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [matches](https://ww2.mathworks.cn/help/matlab/ref/matches.html) | 确定模式是否与字符串匹配
 [strcmp](https://ww2.mathworks.cn/help/matlab/ref/strcmp.html) | 比较字符串
 [strcmpi](https://ww2.mathworks.cn/help/matlab/ref/strcmpi.html) | 比较字符串（不区分大小写）
 [strncmp](https://ww2.mathworks.cn/help/matlab/ref/strncmp.html) | 比较字符串的前 <code class="literal">n</code> 个字符（区分大小写）
 [strncmpi](https://ww2.mathworks.cn/help/matlab/ref/strncmpi.html) | 比较字符串的前 <code class="literal">n</code> 个字符（不区分大小写）
-
 
 ### 基本算术
 <!--rehype:wrap-class=row-span-3-->
@@ -563,8 +577,8 @@ c = 2×2 complex
 
 乘法
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [.*](https://ww2.mathworks.cn/help/matlab/ref/times.html) | 乘法
 [*](https://ww2.mathworks.cn/help/matlab/ref/mtimes.html) | 矩阵乘法
 [prod](https://ww2.mathworks.cn/help/matlab/ref/prod.html) | 数组元素的乘积
@@ -574,8 +588,8 @@ c = 2×2 complex
 
 除法
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [./](https://ww2.mathworks.cn/help/matlab/ref/rdivide.html) | 数组右除
 [.\\](https://ww2.mathworks.cn/help/matlab/ref/ldivide.html) | 数组左除
 [/](https://ww2.mathworks.cn/help/matlab/ref/mrdivide.html) | 求解关于 x 的线性方程组 xA = B
@@ -589,8 +603,8 @@ c = 2×2 complex
 
 转置
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [.'](https://ww2.mathworks.cn/help/matlab/ref/transpose.html) | 转置向量或矩阵
 ['](https://ww2.mathworks.cn/help/matlab/ref/ctranspose.html) | 复共轭转置
 [pagetranspose](https://ww2.mathworks.cn/help/matlab/ref/pagetranspose.html) | 按页转置
@@ -604,8 +618,8 @@ c = 2×2 complex
 
 ### 模除法和舍入
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [mod](https://ww2.mathworks.cn/help/matlab/ref/mod.html) | 除后的余数（取模运算）
 [rem](https://ww2.mathworks.cn/help/matlab/ref/rem.html) | 除后的余数
 [idivide](https://ww2.mathworks.cn/help/matlab/ref/idivide.html) | 带有舍入选项的整除
@@ -616,17 +630,16 @@ c = 2×2 complex
 
 ### 自定义二元函数
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [bsxfun](https://ww2.mathworks.cn/help/matlab/ref/bsxfun.html) | 对两个数组应用按元素运算（启用隐式扩展）
-
 
 ### 关系运算
 
 值的比较
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [==](https://ww2.mathworks.cn/help/matlab/ref/eq.html) | 确定相等性
 [&gt;=](https://ww2.mathworks.cn/help/matlab/ref/ge.html) | 决定大于或等于
 [&gt;](https://ww2.mathworks.cn/help/matlab/ref/gt.html) | 确定大于
@@ -640,8 +653,8 @@ c = 2×2 complex
 
 true 或 false 条件
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [Short-circuit &amp;&amp;, \|\|](https://ww2.mathworks.cn/help/matlab/ref/logicaloperatorsshortcircuit.html) | 具有短路功能的逻辑运算
 [&amp;](https://ww2.mathworks.cn/help/matlab/ref/and.html) | 计算逻辑 `AND`
 [~](https://ww2.mathworks.cn/help/matlab/ref/not.html) | 计算逻辑 `NOT`
@@ -659,8 +672,8 @@ true 或 false 条件
 
 并集、交集、集合关系
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [intersect](https://ww2.mathworks.cn/help/matlab/ref/double.intersect.html) | 设置两个数组的交集
 [ismember](https://ww2.mathworks.cn/help/matlab/ref/double.ismember.html) | 判断数组元素是否为集数组成员
 [setdiff](https://ww2.mathworks.cn/help/matlab/ref/double.setdiff.html) | 设置两个数组的差集
@@ -677,8 +690,8 @@ true 或 false 条件
 
 设置、偏移或比较特定位域
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [bitand](https://ww2.mathworks.cn/help/matlab/ref/bitand.html) | 按位 `AND`
 [bitor](https://ww2.mathworks.cn/help/matlab/ref/bitor.html) | 按位 `OR`
 [bitxor](https://ww2.mathworks.cn/help/matlab/ref/bitxor.html) | 按位 `XOR`
@@ -688,7 +701,6 @@ true 或 false 条件
 [bitshift](https://ww2.mathworks.cn/help/matlab/ref/bitshift.html) | 将位移动指定位数
 [swapbytes](https://ww2.mathworks.cn/help/matlab/ref/swapbytes.html) | 交换字节顺序
 
-
 数据导入和导出
 ---
 
@@ -697,8 +709,8 @@ true 或 false 条件
 
 #### 基本导入和导出
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [readtable](https://ww2.mathworks.cn/help/matlab/ref/readtable.html) | 基于文件创建表
 [writetable](https://ww2.mathworks.cn/help/matlab/ref/writetable.html) | 将表写入文件
 [readtimetable](https://ww2.mathworks.cn/help/matlab/ref/readtimetable.html) | 基于文件创建时间表
@@ -706,8 +718,8 @@ true 或 false 条件
 
 #### 定义导入规则
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [detectImportOptions](https://ww2.mathworks.cn/help/matlab/ref/detectimportoptions.html) | 基于文件内容生成导入选项
 [delimitedTextImportOptions](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.text.delimitedtextimportoptions.html) | 为带分隔符的文本导入选项对象
 [fixedWidthImportOptions](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.text.fixedwidthimportoptions.html) | 等宽文本文件的导入选项对象
@@ -722,8 +734,8 @@ true 或 false 条件
 
 ### 文本文件 - 读取和写入矩阵和数组
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [readmatrix](https://ww2.mathworks.cn/help/matlab/ref/readmatrix.html) | 从文件中读取矩阵
 [writematrix](https://ww2.mathworks.cn/help/matlab/ref/writematrix.html) | 将矩阵写入文件
 [readcell](https://ww2.mathworks.cn/help/matlab/ref/readcell.html) | 从文件中读取元胞数组
@@ -740,8 +752,8 @@ true 或 false 条件
 
 基本导入和导出
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [readtable](https://ww2.mathworks.cn/help/matlab/ref/readtable.html) | 基于文件创建表
 [writetable](https://ww2.mathworks.cn/help/matlab/ref/writetable.html) | 将表写入文件
 [readtimetable](https://ww2.mathworks.cn/help/matlab/ref/readtimetable.html) | 基于文件创建时间表
@@ -750,8 +762,8 @@ true 或 false 条件
 
 定义导入规则
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [detectImportOptions](https://ww2.mathworks.cn/help/matlab/ref/detectimportoptions.html) | 基于文件内容生成导入选项
 [spreadsheetImportOptions](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.spreadsheet.spreadsheetimportoptions.html) | 电子表格的导入选项对象
 [getvaropts](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.text.delimitedtextimportoptions.getvaropts.html) | 获取变量导入选项
@@ -762,8 +774,8 @@ true 或 false 条件
 
 ### 电子表格 - 读取和写入矩阵和数组
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [readmatrix](https://ww2.mathworks.cn/help/matlab/ref/readmatrix.html) | 从文件中读取矩阵
 [writematrix](https://ww2.mathworks.cn/help/matlab/ref/writematrix.html) | 将矩阵写入文件
 [readcell](https://ww2.mathworks.cn/help/matlab/ref/readcell.html) | 从文件中读取元胞数组
@@ -773,8 +785,8 @@ true 或 false 条件
 
 ### 图像
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [imfinfo](https://ww2.mathworks.cn/help/matlab/ref/imfinfo.html) | 有关图形文件的信息
 [imread](https://ww2.mathworks.cn/help/matlab/ref/imread.html) | 从图形文件读取图像
 [imwrite](https://ww2.mathworks.cn/help/matlab/ref/imwrite.html) | 将图像写入图形文件
@@ -783,8 +795,8 @@ true 或 false 条件
 ### 读取或写入 NetCDF 文件
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [nccreate](https://ww2.mathworks.cn/help/matlab/ref/nccreate.html) | 在 NetCDF 文件中创建变量
 [ncdisp](https://ww2.mathworks.cn/help/matlab/ref/ncdisp.html) | 在命令行窗口中显示 NetCDF 数据源内容
 [ncinfo](https://ww2.mathworks.cn/help/matlab/ref/ncinfo.html) |  返回有关 NetCDF 数据源的信息
@@ -796,8 +808,8 @@ true 或 false 条件
 
 ### NetCDF 库程序包 - 库函数
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [netcdf.getChunkCache](https://ww2.mathworks.cn/help/matlab/ref/netcdf.getchunkcache.html) | 检索 NetCDF 库的区块缓存设置
 [netcdf.inqLibVers](https://ww2.mathworks.cn/help/matlab/ref/netcdf.inqlibvers.html) | 返回 NetCDF 库版本信息
 [netcdf.setChunkCache](https://ww2.mathworks.cn/help/matlab/ref/netcdf.setchunkcache.html) | 设置 NetCDF 库的默认分块缓存设置
@@ -807,8 +819,8 @@ true 或 false 条件
 ### NetCDF 库程序包 - 文件操作
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [netcdf.abort](https://ww2.mathworks.cn/help/matlab/ref/netcdf.abort.html) | 还原最近的 netCDF 文件定义
 [netcdf.close](https://ww2.mathworks.cn/help/matlab/ref/netcdf.close.html) | 关闭 netCDF 文件
 [netcdf.create](https://ww2.mathworks.cn/help/matlab/ref/netcdf.create.html) | 创建新的 NetCDF 数据集
@@ -824,9 +836,8 @@ true 或 false 条件
 
 ### NetCDF 库程序包 - 维度
 
-
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [netcdf.defDim](https://ww2.mathworks.cn/help/matlab/ref/netcdf.defdim.html) | 创建 netCDF 维度
 [netcdf.inqDim](https://ww2.mathworks.cn/help/matlab/ref/netcdf.inqdim.html) | 返回 netCDF 维度名称和长度
 [netcdf.inqDimID](https://ww2.mathworks.cn/help/matlab/ref/netcdf.inqdimid.html) | 返回维度 ID
@@ -834,8 +845,8 @@ true 或 false 条件
 
 ### NetCDF 库程序包 - 组
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [netcdf.defGrp](https://ww2.mathworks.cn/help/matlab/ref/netcdf.defgrp.html) | 在 NetCDF 文件中创建组
 [netcdf.inqDimIDs](https://ww2.mathworks.cn/help/matlab/ref/netcdf.inqdimids.html) | 检索组中维度标识符列表
 [netcdf.inqGrpName](https://ww2.mathworks.cn/help/matlab/ref/netcdf.inqgrpname.html) | 检索组名
@@ -847,8 +858,8 @@ true 或 false 条件
 ### NetCDF 库程序包 - 变量
 <!--rehype:wrap-class=row-span-3-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [netcdf.defVarFill](https://ww2.mathworks.cn/help/matlab/ref/netcdf.defvarfill.html) | 定义 NetCDF 变量的填充参数
 [netcdf.defVar](https://ww2.mathworks.cn/help/matlab/ref/netcdf.defvar.html) | 创建 NetCDF 变量
 [netcdf.defVarChunking](https://ww2.mathworks.cn/help/matlab/ref/netcdf.defvarchunking.html) | 定义 NetCDF 变量的分块行为
@@ -867,8 +878,8 @@ true 或 false 条件
 
 ### NetCDF 库程序包 - 属性
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [netcdf.copyAtt](https://ww2.mathworks.cn/help/matlab/ref/netcdf.copyatt.html) | 将属性复制到新位置
 [netcdf.delAtt](https://ww2.mathworks.cn/help/matlab/ref/netcdf.delatt.html) | 删除 netCDF 属性
 [netcdf.getAtt](https://ww2.mathworks.cn/help/matlab/ref/netcdf.getatt.html) | 返回 NetCDF 属性
@@ -880,8 +891,8 @@ true 或 false 条件
 
 ### NetCDF 库程序包 - 用户定义的类型
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [netcdf.defVlen](https://ww2.mathworks.cn/help/matlab/ref/netcdf.defvlen.html) | Define user-defined variable length array type (NC_VLEN)
 [netcdf.inqUserType](https://ww2.mathworks.cn/help/matlab/ref/netcdf.inqusertype.html) | Return information about user-defined type
 [netcdf.inqVlen](https://ww2.mathworks.cn/help/matlab/ref/netcdf.inqvlen.html) | Return information about user-defined `NC_VLEN` type
@@ -889,16 +900,16 @@ true 或 false 条件
 
 ### NetCDF 库程序包 - 实用工具
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [netcdf.getConstant](https://ww2.mathworks.cn/help/matlab/ref/netcdf.getconstant.html) | 返回命名常量的数值
 [netcdf.getConstantNames](https://ww2.mathworks.cn/help/matlab/ref/netcdf.getconstantnames.html) | 返回 netCDF 库已知的常量列表
 <!--rehype:className=style-list-->
 
 ### 读取或写入 HDF5 文件
 
-:- | :- | :- 
-:- | :- | :- 
+:- | :- | :-
+:- | :- | :-
 [h5create](https://ww2.mathworks.cn/help/matlab/ref/h5create.html) | 创建 HDF5 数据集
 [h5disp](https://ww2.mathworks.cn/help/matlab/ref/h5disp.html) | 显示 HDF5 文件的内容
 [h5info](https://ww2.mathworks.cn/help/matlab/ref/h5info.html) | 有关 HDF5 文件的信息
@@ -907,12 +918,11 @@ true 或 false 条件
 [h5write](https://ww2.mathworks.cn/help/matlab/ref/h5write.html) | 写入 HDF5 数据集
 [h5writeatt](https://ww2.mathworks.cn/help/matlab/ref/h5writeatt.html) | 写入 HDF5 属性
 
-
 ### HDF5 库程序包
 <!--rehype:wrap-class=row-span-4-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [Library (H5)](https://ww2.mathworks.cn/help/matlab/ref/libraryh5.html) | General-purpose functions for use with entire HDF5 library
 [Attribute (H5A)](https://ww2.mathworks.cn/help/matlab/ref/attributeh5a.html) | Metadata associated with datasets or groups
 [Dataset (H5D)](https://ww2.mathworks.cn/help/matlab/ref/dataseth5d.html) | Multidimensional arrays of data elements and supporting metadata
@@ -932,8 +942,8 @@ true 或 false 条件
 
 ### HDF4 文件 - 高级函数
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [hdfinfo](https://ww2.mathworks.cn/help/matlab/ref/hdfinfo.html) | 有关 HDF4 或 HDF-EOS 文件的信息
 [hdfread](https://ww2.mathworks.cn/help/matlab/ref/hdfread.html) | 从 HDF4 或 HDF-EOS 文件读取数据
 [imread](https://ww2.mathworks.cn/help/matlab/ref/imread.html) | 从图形文件读取图像
@@ -942,16 +952,16 @@ true 或 false 条件
 ### 低级函数 - 包
 <!--rehype:wrap-class=row-span-3-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [matlab.io.hdf4.sd](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.hdf4.sd.html) | 直接与 HDF4 多文件科学数据集 (SD) 接口交互
 [matlab.io.hdfeos.gd](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.hdfeos.gd.html) | 低级别访问 HDF-EOS 网格数据
 [matlab.io.hdfeos.sw](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.hdfeos.sw.html) | 对 HDF-EOS 分段文件的低级别访问
 
 #### 低级函数 - 函数
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [hdfan](https://ww2.mathworks.cn/help/matlab/ref/hdfan.html) | HDF 多文件注释 (AN) 接口的入口
 [hdfhx](https://ww2.mathworks.cn/help/matlab/ref/hdfhx.html) | HDF 外部数据 (HX) 接口的入口
 [hdfh](https://ww2.mathworks.cn/help/matlab/ref/hdfh.html) | HDF H 接口的入口
@@ -966,11 +976,10 @@ true 或 false 条件
 [hdfdf24](https://ww2.mathworks.cn/help/matlab/ref/hdfdf24.html) | HDF 24 位光栅图像 (DF24) 接口的入口
 [hdfdfr8](https://ww2.mathworks.cn/help/matlab/ref/hdfdfr8.html) | HDF 8 位光栅图像 (DFR8) 接口的入口
 
-
 ### FITS 文件 - 函数
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [fitsdisp](https://ww2.mathworks.cn/help/matlab/ref/fitsdisp.html) | 显示 FITS 元数据
 [fitsinfo](https://ww2.mathworks.cn/help/matlab/ref/fitsinfo.html) | 有关 FITS 文件的信息
 [fitsread](https://ww2.mathworks.cn/help/matlab/ref/fitsread.html) | 读取 FITS 文件中的数据
@@ -978,8 +987,8 @@ true 或 false 条件
 
 ### FITS 文件 - 文件访问
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [createFile](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.createfile.html) | 创建 FITS 文件
 [openFile](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.openfile.html) | 打开 FITS 文件
 [openDiskFile](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.opendiskfile.html) | 打开 FITS 文件
@@ -990,8 +999,8 @@ true 或 false 条件
 
 ### FITS 文件 - 图像处理
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [createImg](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.createimg.html) | 创建 FITS 图像
 [getImgSize](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.getimgsize.html) | 图像大小
 [getImgType](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.getimgtype.html) | 图像的数据类型
@@ -1003,8 +1012,8 @@ true 或 false 条件
 ### FITS 文件 - 关键字
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [readCard](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.readcard.html) | 关键字的标头记录
 [readKey](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.readkey.html) | 关键字
 [readKeyCmplx](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.readkeycmplx.html) | 复数标量值形式的关键字
@@ -1024,8 +1033,8 @@ true 或 false 条件
 
 ### FITS 文件 - 标头数据单元 (HDU) 访问
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [copyHDU](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.copyhdu.html) | 将当前 HDU 从一个文件复制到另一个文件
 [getHDUnum](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.gethdunum.html) | FITS 文件中当前 HDU 的编号
 [getHDUtype](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.gethdutype.html) | 当前 HDU 的类型
@@ -1038,8 +1047,8 @@ true 或 false 条件
 
 ### FITS 文件 - 图像压缩
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [imgCompress](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.imgcompress.html) | 将 HDU 从一个文件压缩到另一个文件中
 [isCompressedImg](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.iscompressedimg.html) | 确定当前图像是否已压缩
 [setCompressionType](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.setcompressiontype.html) | 设置图像压缩类型
@@ -1050,8 +1059,8 @@ true 或 false 条件
 ### FITS 文件 - ASCII 表和二进制表
 <!--rehype:wrap-class=row-span-3-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [createTbl](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.createtbl.html) | 创建新的 ASCII 或二进制表扩展
 [insertCol](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.insertcol.html) | 向表插入列
 [insertRows](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.insertrows.html) | 向表插入行
@@ -1074,23 +1083,23 @@ true 或 false 条件
 
 ### FITS 文件 - 实用工具
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [getConstantValue](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.getconstantvalue.html) | 指定常量的数值
 [getVersion](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.getversion.html) | CFITSIO 库的修订号
 [getOpenFiles](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.fits.getopenfiles.html) | 已打开的 FITS 文件列表
 
 ### 条带交错文件
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [multibandread](https://ww2.mathworks.cn/help/matlab/ref/multibandread.html) | 从二进制文件读取条带交错文件
 [multibandwrite](https://ww2.mathworks.cn/help/matlab/ref/multibandwrite.html) | 将条带交错数据写入文件
 
 ### 常用数据格式 (CDF)
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [cdfinfo](https://ww2.mathworks.cn/help/matlab/ref/cdfinfo.html) | 有关常用数据格式 (CDF) 文件的信息
 [cdfread](https://ww2.mathworks.cn/help/matlab/ref/cdfread.html) | 读取常用数据格式 (CDF) 文件中的数据
 [cdfepoch](https://ww2.mathworks.cn/help/matlab/ref/cdfepoch.html) | 将日期文本或日期序列值转换为 CDF 格式的日期
@@ -1098,14 +1107,14 @@ true 或 false 条件
 
 #### 包
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [cdflib](https://ww2.mathworks.cn/help/matlab/ref/cdflib.html) | 与 CDF 库直接交互
 
 ### 读取视频数据
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [VideoReader](https://ww2.mathworks.cn/help/matlab/ref/videoreader.html) | 创建对象以读取视频文件
 [read](https://ww2.mathworks.cn/help/matlab/ref/videoreader.read.html) | 读取一个或多个视频帧
 [readFrame](https://ww2.mathworks.cn/help/matlab/ref/videoreader.readframe.html) | 读取下一个视频帧
@@ -1115,8 +1124,8 @@ true 或 false 条件
 
 ### 写入视频数据
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [VideoWriter](https://ww2.mathworks.cn/help/matlab/ref/videowriter.html) | 创建对象以写入视频文件
 [open](https://ww2.mathworks.cn/help/matlab/ref/videowriter.open.html) | 打开文件以写入视频数据
 [writeVideo](https://ww2.mathworks.cn/help/matlab/ref/videowriter.writevideo.html) | 将视频数据写入到文件
@@ -1125,8 +1134,8 @@ true 或 false 条件
 
 ### 读取或写入音频
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [audioread](https://ww2.mathworks.cn/help/matlab/ref/audioread.html) | 读取音频文件
 [audiowrite](https://ww2.mathworks.cn/help/matlab/ref/audiowrite.html) | 写音频文件
 [lin2mu](https://ww2.mathworks.cn/help/matlab/ref/lin2mu.html) | 将线性音频信号转换为 mu-law
@@ -1135,8 +1144,8 @@ true 或 false 条件
 
 ### 播放音频
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [audioplayer](https://ww2.mathworks.cn/help/matlab/ref/audioplayer.html) | 用于播放音频的对象
 [isplaying](https://ww2.mathworks.cn/help/matlab/ref/audioplayer.isplaying.html) | 确定播放是否正在进行
 [pause](https://ww2.mathworks.cn/help/matlab/ref/audioplayer.pause.html) | 暂停播放或录制
@@ -1147,8 +1156,8 @@ true 或 false 条件
 
 ### 录制音频
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [audiorecorder](https://ww2.mathworks.cn/help/matlab/ref/audiorecorder.html) | 用于录制音频的对象
 [getaudiodata](https://ww2.mathworks.cn/help/matlab/ref/audiorecorder.getaudiodata.html) | 将录制的音频信号存储在数值数组中
 [getplayer](https://ww2.mathworks.cn/help/matlab/ref/audiorecorder.getplayer.html) | 创建关联的 `audioplayer` 对象
@@ -1158,8 +1167,8 @@ true 或 false 条件
 
 ### 播放声音
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [audiodevinfo](https://ww2.mathworks.cn/help/matlab/ref/audiodevinfo.html) | 有关音频设备的信息
 [audiodevreset](https://ww2.mathworks.cn/help/matlab/ref/audiodevreset.html) | 刷新可用音频设备列表
 [sound](https://ww2.mathworks.cn/help/matlab/ref/sound.html) | 将信号数据矩阵转换为声音
@@ -1168,8 +1177,8 @@ true 或 false 条件
 
 ### XML 文档的读取和写入
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [matlab.io.xml.dom.DOMWriter](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.dom.domwriter-class.html) | 串行化 XML 文档的写入器
 [matlab.io.xml.dom.EntityResolver](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.dom.entityresolver-class.html) | 实体解析器的抽象基类
 [matlab.io.xml.dom.FileWriter](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.dom.filewriter-class.html) | 创建文本文件的写入器
@@ -1187,8 +1196,8 @@ true 或 false 条件
 
 ### W3C DOM
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [matlab.io.xml.dom.Attr](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.dom.attr-class.html) | XML 元素的属性
 [matlab.io.xml.dom.CDATASection](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.dom.cdatasection-class.html) | CDATA 节
 [matlab.io.xml.dom.Comment](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.dom.comment-class.html) | XML 文档中的注释
@@ -1207,8 +1216,8 @@ true 或 false 条件
 
 ### XML 变换
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [matlab.io.xml.transform.CompiledStylesheet](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.transform.compiledstylesheet-class.html) | 编译的样式表
 [matlab.io.xml.transform.ResultDocument](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.transform.resultdocument-class.html) | 将转换结果存储为文档
 [matlab.io.xml.transform.ResultString](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.transform.resultstring-class.html) | 将转换结果存储为字符串
@@ -1225,8 +1234,8 @@ true 或 false 条件
 
 ### XPath 查询
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [matlab.io.xml.xpath.CompiledExpression](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.xpath.compiledexpression-class.html) | 编译的 XPath 表达式
 [matlab.io.xml.xpath.EvalResultType](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.xpath.evalresulttype-class.html) | XPath 表达式计算的结果类型
 [matlab.io.xml.xpath.Evaluator](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.xml.xpath.evaluator-class.html) | XPath 表达式计算器
@@ -1235,8 +1244,8 @@ true 或 false 条件
 
 ### JSON 格式
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [jsondecode](https://ww2.mathworks.cn/help/matlab/ref/jsondecode.html) | 解码 JSON 格式的文本
 [jsonencode](https://ww2.mathworks.cn/help/matlab/ref/jsonencode.html) | 基于结构化 `MATLAB` 数据创建 JSON 格式的文本
 <!--rehype:className=style-list-->
@@ -1244,8 +1253,8 @@ true 或 false 条件
 ### 工作区变量和 MAT 文件
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [load](https://ww2.mathworks.cn/help/matlab/ref/load.html) | 将文件变量加载到工作区中
 [save](https://ww2.mathworks.cn/help/matlab/ref/save.html) | 将工作区变量保存到文件中
 [matfile](https://ww2.mathworks.cn/help/matlab/ref/matlab.io.matfile.html) | 访问和更改 MAT 文件中的变量，而不必将文件加载到内存中
@@ -1261,8 +1270,8 @@ true 或 false 条件
 ### 低级文件 I/O
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [fclose](https://ww2.mathworks.cn/help/matlab/ref/fclose.html) | 关闭一个或所有打开的文件
 [feof](https://ww2.mathworks.cn/help/matlab/ref/feof.html) | 检测文件末尾
 [ferror](https://ww2.mathworks.cn/help/matlab/ref/ferror.html) | 文件 I/O 错误信息
@@ -1280,8 +1289,8 @@ true 或 false 条件
 
 ### 串行和 USB 通信 - 连接和配置
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [serialportlist](https://ww2.mathworks.cn/help/matlab/ref/serialportlist.html) | 连接到您的系统的串行端口列表
 [serialport](https://ww2.mathworks.cn/help/matlab/ref/serialport.html) | 连接到串行端口
 [configureTerminator](https://ww2.mathworks.cn/help/matlab/ref/serialport.configureterminator.html) | 为与串行端口的 ASCII 字符串通信设置终止符
@@ -1289,8 +1298,8 @@ true 或 false 条件
 
 ### 串行和 USB 通信 - 读取和写入
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [read](https://ww2.mathworks.cn/help/matlab/ref/serialport.read.html) | 从串行端口读取数据
 [readline](https://ww2.mathworks.cn/help/matlab/ref/serialport.readline.html) | 从串行端口读取 ASCII 字符串数据行
 [write](https://ww2.mathworks.cn/help/matlab/ref/serialport.write.html) | 将数据写入串行端口
@@ -1298,18 +1307,17 @@ true 或 false 条件
 
 ### 串行和 USB 通信 - 控制引脚和内存
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [flush](https://ww2.mathworks.cn/help/matlab/ref/serialport.flush.html) | 清空串行端口设备缓冲区
 [getpinstatus](https://ww2.mathworks.cn/help/matlab/ref/serialport.getpinstatus.html) | 获取串行引脚状态
 [setRTS](https://ww2.mathworks.cn/help/matlab/ref/serialport.setrts.html) | 设置串行 RTS 引脚
 [setDTR](https://ww2.mathworks.cn/help/matlab/ref/serialport.setdtr.html) | 设置串行 DTR 引脚
 
-
 ### TCP/IP 通信 - 连接和配置
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [tcpclient](https://ww2.mathworks.cn/help/matlab/ref/tcpclient.html) | 创建与 TCP/IP 服务器的 TCP/IP 客户端连接
 [echotcpip](https://ww2.mathworks.cn/help/matlab/ref/echotcpip.html) | 启动或停止 TCP/IP 回显服务器
 [configureTerminator](https://ww2.mathworks.cn/help/matlab/ref/tcpclient.configureterminator.html) | 为通过 TCP/IP 与远程主机进行的 ASCII 字符串通信设置终止符
@@ -1318,8 +1326,8 @@ true 或 false 条件
 
 ### TCP/IP 通信 - 读取和写入
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [read](https://ww2.mathworks.cn/help/matlab/ref/tcpclient.read.html) | 通过 TCP/IP 读取远程主机上的数据
 [readline](https://ww2.mathworks.cn/help/matlab/ref/tcpclient.readline.html) | 通过 TCP/IP 从远程主机读取 ASCII 字符串数据行
 [write](https://ww2.mathworks.cn/help/matlab/ref/tcpclient.write.html) | 通过 TCP/IP 向远程主机写入数据
@@ -1329,8 +1337,8 @@ true 或 false 条件
 
 ### Bluetooth 通信 - 连接和配置
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [bluetoothlist](https://ww2.mathworks.cn/help/matlab/ref/bluetoothlist.html) | 扫描附近的 `Bluetooth` 经典设备
 [bluetooth](https://ww2.mathworks.cn/help/matlab/ref/bluetooth.html) | 连接到 `Bluetooth` 经典设备
 [configureTerminator](https://ww2.mathworks.cn/help/matlab/ref/bluetooth.configureterminator.html) | 为与 `Bluetooth` 设备的 ASCII 字符串通信设置终止符
@@ -1340,8 +1348,8 @@ true 或 false 条件
 ### Bluetooth 通信 - 读取和写入
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [read](https://ww2.mathworks.cn/help/matlab/ref/bluetooth.read.html) | 从 `Bluetooth` 设备读取数据
 [readline](https://ww2.mathworks.cn/help/matlab/ref/bluetooth.readline.html) | 从 `Bluetooth` 设备读取 ASCII 字符串数据行
 [write](https://ww2.mathworks.cn/help/matlab/ref/bluetooth.write.html) | 将数据写入 `Bluetooth` 设备
@@ -1352,8 +1360,8 @@ true 或 false 条件
 ### Bluetooth 低功耗通信
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [blelist](https://ww2.mathworks.cn/help/matlab/ref/blelist.html) | 扫描附近的低功耗 `Bluetooth` 外围设备
 [ble](https://ww2.mathworks.cn/help/matlab/ref/ble.html) | 连接到低功耗 `Bluetooth` 外围设备
 [characteristic](https://ww2.mathworks.cn/help/matlab/ref/matlabshared.blelib.characteristic.html) | 访问低功耗 `Bluetooth` 外围设备的特征
@@ -1366,8 +1374,8 @@ true 或 false 条件
 
 ### Web 服务
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [webread](https://ww2.mathworks.cn/help/matlab/ref/webread.html) | 从 RESTful Web 服务读取内容
 [webwrite](https://ww2.mathworks.cn/help/matlab/ref/webwrite.html) | 将数据写入 RESTful Web 服务
 [websave](https://ww2.mathworks.cn/help/matlab/ref/websave.html) | 将 RESTful Web 服务中的内容保存到文件
@@ -1378,8 +1386,8 @@ true 或 false 条件
 ### FTP 文件操作
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [ftp](https://ww2.mathworks.cn/help/matlab/ref/ftp.html) | 连接到 FTP 服务器以访问其文件
 [sftp](https://ww2.mathworks.cn/help/matlab/ref/sftp.html) | Connection to SFTP server to access its files
 [ascii](https://ww2.mathworks.cn/help/matlab/ref/ftp.ascii.html) | 将 FTP 传输模式设置为 ASCII
@@ -1396,8 +1404,8 @@ true 或 false 条件
 
 ### 物联网 (IoT) 数据
 
-:- | :- 
-:- | :- 
+:- | :-
+:- | :-
 [thingSpeakRead](https://ww2.mathworks.cn/help/matlab/ref/thingspeakread.html) | 读取存储在 `ThingSpeak` 通道中的数据
 [thingSpeakWrite](https://ww2.mathworks.cn/help/matlab/ref/thingspeakwrite.html) | 将数据写入 `ThingSpeak` 通道
 <!--rehype:className=style-list-->

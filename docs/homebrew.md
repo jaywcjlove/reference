@@ -36,7 +36,7 @@ export HOMEBREW_INSTALL_FROM_API=1
 ### 命令
 
 命令 | 说明
-:--- :--- 
+:--- :---
 `brew install git`         | `安装`一个包
 `brew reinstall git`       | 重新`安装`一个包
 `brew uninstall git`       | `删除`/`卸载`软件包
@@ -51,7 +51,7 @@ export HOMEBREW_INSTALL_FROM_API=1
 ### 更多包命令
 
 命令 | 说明
-:--- :--- 
+:--- :---
 `brew info git`            | 列出版本、注意事项等
 `brew cleanup git`         | 删除旧版本
 `brew edit git`            | 编辑此软件包
@@ -62,7 +62,7 @@ export HOMEBREW_INSTALL_FROM_API=1
 ### Brew Cask 命令
 
 命令 | 说明
-:--- :--- 
+:--- :---
 `brew install --cask firefox` | 安装火狐浏览器
 `brew list --cask`            | 列出已安装应用
 
@@ -72,7 +72,7 @@ Cask 命令用于与图形应用程序交互
 <!--rehype:wrap-class=row-span-2-->
 
 命令 | 说明
-:--- :--- 
+:--- :---
 `brew update`   | 更新 `brew` 和 `cask`
 `brew upgrade`  | 升级所有软件包
 `brew list`     | 已安装列表
@@ -120,7 +120,7 @@ $ brew info <formula>
 ### 帮助命令
 
 命令 | 说明
-:--- :--- 
+:--- :---
 `brew help` | 打印帮助信息
 `brew help <sub-command>` | 打印子命令的帮助信息
 

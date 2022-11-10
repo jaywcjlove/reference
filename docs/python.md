@@ -57,6 +57,7 @@ llo
 查看: [Strings](#python-字符串)
 
 ### Lists
+
 ```python
 mylist = []
 mylist.append(1)
@@ -67,8 +68,7 @@ for item in mylist:
 
 查看: [Lists](#python-lists)
 
-
-### If Else                                        
+### If Else
 
 ```python
 num = 200
@@ -77,6 +77,7 @@ if num > 0:
 else:
     print("num is not greater than 0")
 ```
+
 查看: [流程控制](#python-流程控制)
 
 ### 循环
@@ -88,8 +89,8 @@ for item in range(6):
 else:
     print("Finally finished!")
 ```
-查看: [Loops](#python-循环)
 
+查看: [Loops](#python-循环)
 
 ### 函数
 
@@ -101,7 +102,7 @@ else:
 来自函数的你好
 ```
 
-查看: [Functions](#python-functions)
+查看: [Functions](#函数)
 
 ### 文件处理
 <!--rehype:wrap-class=col-span-2-->
@@ -124,7 +125,7 @@ result = 16 / 4  # => 4.0 (Float Division)
 result = 16 // 4 # => 4 (Integer Division)
 result = 25 % 2  # => 1
 result = 5 ** 3  # => 125
-``` 
+```
 
 `/` 表示 x 和 y 的商，`//` 表示 x 和 y 的底商，另见 [StackOverflow](https://stackoverflow.com/a/183870/13192320)
 
@@ -151,7 +152,7 @@ message += "Part 2."
 '10 + 10 = 20'
 ```
 
-查看: [Python F-Strings](#python-f-strings-since-python)
+查看: [Python F-Strings](#f-字符串(Python 3.6+))
 
 Python 数据类型
 ---------------
@@ -165,6 +166,7 @@ multi_string = """Multiline Strings
 Lorem ipsum dolor sit amet,
 consectetur adipiscing elit """
 ```
+
 查看: [Strings](#python-字符串)
 
 ### 数字
@@ -194,8 +196,8 @@ list2 = [True, False, False]
 list3 = [1, 5, 7, 9, 3]
 list4 = list((1, 5, 7, 9, 3))
 ```
-查看: [Lists](#python-lists)
 
+查看: [Lists](#python-lists)
 
 ### 元组 Tuple
 
@@ -361,6 +363,7 @@ o
 `len()` 函数返回字符串的长度
 
 ### 多份
+
 ```python
 >>> s = '===+'
 >>> n = 8
@@ -396,7 +399,9 @@ True
 name = "John"
 print("Hello, %s!" % name)
 ```
+
 ---
+
 ```python
 name = "John"
 age = 23
@@ -782,14 +787,14 @@ while x < 4:
     x += 1  # Shorthand for x = x + 1
 ```
 
-### Break 
+### Break
 
 ```python
 x = 0
 for index in range(10):
     x = index * 10
     if index == 5:
-    	break
+        break
     print(x)
 ```
 
@@ -799,7 +804,7 @@ for index in range(10):
 for index in range(3, 8): 
     x = index * 10
     if index == 5:
-    	continue
+        continue
     print(x)
 ```
 
@@ -948,6 +953,7 @@ with open("myfile.txt") as file:
     for line in file:
         print(line)
 ```
+
 #### 带行号
 
 ```python
@@ -955,7 +961,6 @@ file = open('myfile.txt', 'r')
 for i, line in enumerate(file, start=1):
     print("Number %s: %s" % (i, line))
 ```
-
 
 ### 字符串
 
@@ -1082,8 +1087,9 @@ class ChildClass(ParentClass):
         print("Child Method")
         # 调用父级的 print_test()
         super().print_test() 
-```          
---- 
+```
+
+---
 
 ```python
 >>> child_instance = ChildClass()
@@ -1172,7 +1178,8 @@ Yoki.sound()     # => Woof!
 ```python
 # 这是单行注释
 ```
-----------
+
+---
 
 ```python
 """ 可以写多行字符串
@@ -1180,7 +1187,9 @@ Yoki.sound()     # => Woof!
     作为文档。
 """
 ```
-----------
+
+---
+
 ```python
 ''' 可以写多行字符串
     使用三个'，并且经常使用

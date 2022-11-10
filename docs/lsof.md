@@ -78,7 +78,6 @@ $ kill -9 `lsof -t -u apache`
 $ kill -9 $(lsof -t -i :8080)
 ```
 
-
 ### 参数
 <!--rehype:wrap-class=row-span-2-->
 
@@ -109,12 +108,11 @@ lsof -p $pid
 lsof -i:9981 -P -t -sTCP:LISTEN
 ```
 
-### 列出打开文件的进程:
+### 列出打开文件的进程
 
 ```bash
 lsof $filename
 ```
-
 
 示例
 ---
@@ -218,7 +216,6 @@ migration     2 root  txt   unknown                                 /proc/2/exe
 `NODE` | 索引节点（文件在磁盘上的标识）
 `NAME` | 打开文件的确切名称
 `REG` | 常规文件
-
 
 另见
 ---

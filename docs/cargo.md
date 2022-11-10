@@ -265,7 +265,7 @@ $ cargo install --path .
 $ cargo install --list
 ```
 
-----
+---
 
 - `--vers version`
 - `--version version` 指定要安装的版本
@@ -314,13 +314,13 @@ $ cargo uninstall ripgrep
 $ cargo login [options] [token]
 ```
 
-----
+---
 
 :-|:-
 :-|:-
 `--registry` | 要使用的注册表的名称
 
-----
+---
 
 :-|:-
 :-|:-
@@ -338,7 +338,8 @@ $ cargo owner --add username foo
 # 从包中删除所有者：
 $ cargo owner --remove username foo
 ```
-----
+
+---
 
 :-|:-
 :-|:-
@@ -356,7 +357,7 @@ $ cargo owner --remove username foo
 
 编译选项
 
-- `--target triple` 为指定架构执行 Package 
+- `--target triple` 为指定架构执行 Package
 - `--target-dir directory` 用于存放生成的工件以及中间文件的目录
 
 特性选择
@@ -383,7 +384,7 @@ $ cargo owner --remove username foo
 $ cargo package [options]
 ```
 
-----
+---
 
 - `-l`, `--list` 输出包中包含的文件(不实际进行打包)。
 - `--no-verify` 构建包时不进行校验。

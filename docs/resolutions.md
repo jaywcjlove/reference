@@ -133,7 +133,6 @@ Resolutions 备忘清单
 | Xiaomi Redmi Note 8 Pro (2019)     | 6.53 <sub>inch</sub> | 1080 x 2340 <sub>px</sub> | 393 x 851 <sub>px</sub>  | 395 <sub>ppi</sub> | 144 <sub>ppi</sub> | 2.75 <sub>xxhdpi</sub>  | Android 9.0   |
 <!--rehype:className=show-header-->
 
-
 ### 平板
 <!--rehype:wrap-class=col-span-3-->
 
@@ -158,7 +157,6 @@ Resolutions 备忘清单
 | Apple iPad mini 4           | 7.9 <sub>inch</sub>  | 1536 x 2048 <sub>px</sub> | 768 x 1024 <sub>px</sub>  | 324 <sub>ppi</sub> | 162 <sub>ppi</sub> | 2.0 <sub>xhdpi</sub> | iOS 8.1        |
 | Google Pixel C (2015)       | 10.2 <sub>inch</sub> | 2560x1800 <sub>px</sub>   | 1280 x 900 <sub>px</sub>  | 308 <sub>ppi</sub> | 154 <sub>ppi</sub> | 2 <sub>xhdpi</sub>   | Android 6.0.1  |
 <!--rehype:className=show-header-->
-
 
 ### 笔记本电脑
 <!--rehype:wrap-class=col-span-3-->
@@ -234,20 +232,20 @@ N/A | 16:9 | 1536 x 864 <sub>px</sub> | 1.327 | N/A | 8.5
 `WSXGA+` | 16:10 | 1680 x 1050 <sub>px</sub> | 1.764 | 1.97 | 2.23
 `FHD` | 16:9 | 1920 x 1080 <sub>px</sub> | 2.074 | 64.81 | 20.41
 `WUXGA` | 16:10 | 1920 x 1200 <sub>px</sub> | 2.304 | 0.81 | 0.93
-`QWXGA` | 16:9 | 2048 x 1152 <sub>px</sub> | 2.359 | N/A | 0.51 
+`QWXGA` | 16:9 | 2048 x 1152 <sub>px</sub> | 2.359 | N/A | 0.51
 `QXGA` |  4:3 | 2048 x 1536 <sub>px</sub> | 3.145 | - | -
-`UWFHD` | ≈21:9 | 2560 x 1080 <sub>px</sub> | 2.765 | 1.13 | N/A 
-`QHD` | 16:9 | 2560 x 1440 <sub>px</sub> | 3.686 | 6.23 | 2.15 
-`WQXGA` | 16:10 | 2560 x 1600 <sub>px</sub> | 4.096 | &lt;0.58 | &lt;2.4 
-`UWQHD` | ≈21:9 | 3440 x 1440 <sub>px</sub> | 4.954 | 0.87 | N/A 
-`4K UHD`| 16:9 | 3840 x 2160 <sub>px</sub> | 8.294 | 2.12 | N/A 
+`UWFHD` | ≈21:9 | 2560 x 1080 <sub>px</sub> | 2.765 | 1.13 | N/A
+`QHD` | 16:9 | 2560 x 1440 <sub>px</sub> | 3.686 | 6.23 | 2.15
+`WQXGA` | 16:10 | 2560 x 1600 <sub>px</sub> | 4.096 | &lt;0.58 | &lt;2.4
+`UWQHD` | ≈21:9 | 3440 x 1440 <sub>px</sub> | 4.954 | 0.87 | N/A
+`4K UHD`| 16:9 | 3840 x 2160 <sub>px</sub> | 8.294 | 2.12 | N/A
 `Other` | - | - | - | 2.00 | 15.09
 <!--rehype:className=show-header-->
 
 ### 屏幕分辨率
 
 解析度 | 像素
-:- |:- 
+:- |:-
 `540p / qHD` | 960×540<sub>px</sub>
 `720p / HD` | 1280×720<sub>px</sub>
 `1080p / Full HD / FHD` | 19201080<sub>px</sub>

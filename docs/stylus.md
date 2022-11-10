@@ -84,6 +84,7 @@ h5 {
 }
 ```
 
+<!-- markdownlint-disable MD051 -->
 另见：下面[Mixins](#混合-Mixins)
 
 ### 变量 Variables
@@ -388,6 +389,7 @@ for i in 1..3
   .text-{i}
     font-size: lookup('font-size-' + i)
 ```
+
 ### 定义检查
 
 ```stylus {1}

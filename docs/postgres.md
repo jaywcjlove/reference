@@ -3,7 +3,6 @@ PostgreSQL 备忘清单
 
 [PostgreSQL](https://www.postgresql.org/docs/current/) 备忘清单为您提供了常用的 PostgreSQL 命令和语句。
 
-
 入门
 ---------------
 
@@ -34,7 +33,6 @@ postgres=# \q
 postgres=# \!
 ```
 
-
 ### psql 命令
 <!--rehype:wrap-class=col-span-2-->
 
@@ -51,7 +49,6 @@ postgres=# \!
 `-f`                | psql mydb -f file.sql                        | 从文件执行命令
 `-V`                | psql -V                                      | 打印 psql 版本
 <!--rehype:className=show-header-->
-
 
 ### 获得帮助
 
@@ -418,8 +415,8 @@ PostgreSQL 命令
 
 ### 表
 
-:- | - 
-:- | - 
+:- | -
+:- | -
 `\d <table>`     | 描述表
 `\d+ <table>`    | 详细描述表格
 `\dt`            | 列出当前模式中的表
@@ -428,12 +425,10 @@ PostgreSQL 命令
 `\dp`            | 列出表访问权限
 `\det[+]`        | 列出外部表
 
-
-
 ### 查询缓冲区
 
-:- | - 
-:- | - 
+:- | -
+:- | -
 `\e [FILE]`  | 编辑查询缓冲区(或文件)
 `\ef [FUNC]` | 编辑函数定义
 `\p`         | 显示内容
@@ -441,13 +436,11 @@ PostgreSQL 命令
 `\s [FILE]`  | 显示历史记录或保存到文件
 `\w FILE`    | 将查询缓冲区写入文件
 
-
-
 ### 信息
 <!--rehype:wrap-class=row-span-4-->
 
-:- | - 
-:- | - 
+:- | -
+:- | -
 `\l[+]`         | 列出所有数据库
 `\dn[S+]`       | 列出架构
 `\di[S+]`       | 列出索引
@@ -479,21 +472,19 @@ PostgreSQL 命令
 
 `S`：显示系统对象，`+`：附加细节
 
-
 ### 连接
 
-:- | - 
-:- | - 
+:- | -
+:- | -
 `\c [DBNAME]`          | 连接到新数据库
 `\encoding [ENCODING]` | 显示或设置客户端编码
 `\password [USER]`     | 更改密码
 `\conninfo`            | 显示信息
 
-
 ### 格式化
 
-:- | - 
-:- | - 
+:- | -
+:- | -
 `\a`           | 在未对齐和对齐之间切换
 `\C [STRING]`  | 设置表格标题，如果没有则取消设置
 `\f [STRING]`  | 显示或设置未对齐的字段分隔符
@@ -504,8 +495,8 @@ PostgreSQL 命令
 
 ### 输入输出
 
-:- | - 
-:- | - 
+:- | -
+:- | -
 `\copy ...`       | 导入/导出表 _另见：_ [复制](#导入导出-csv)
 `\echo [STRING]`  | 打印字符串
 `\i FILE`         | 执行文件
@@ -514,16 +505,16 @@ PostgreSQL 命令
 
 ### 变量
 
-:- | - 
-:- | - 
+:- | -
+:- | -
 `\prompt [TEXT] NAME` | 设置变量
 `\set [NAME [VALUE]]` | 设置变量 _(如果没有参数，则列出所有变量)_
 `\unset NAME`         | 删除变量
 
 ### 杂项
 
-:- | - 
-:- | - 
+:- | -
+:- | -
 `\cd [DIR]`        | 更改目录
 `\timing [on\|off]` | 切换时间
 `\! [COMMAND]`     | 在shell中执行
@@ -535,7 +526,6 @@ PostgreSQL 命令
 - `\lo_import FILE [COMMENT]`
 - `\lo_list`
 - `\lo_unlink LOBOID`
-
 
 各种各样的
 -------------
@@ -635,4 +625,5 @@ $ sudo systemctl restart postgresql
 
 Also see
 --------
+
 - [Posgres-cheatsheet](https://gist.github.com/apolloclark/ea5466d5929e63043dcf#posgres-cheatsheet) _(gist.github.com)_

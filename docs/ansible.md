@@ -18,7 +18,6 @@ Ansible 备忘清单
 
 - [Ansible 官方文档](https://docs.ansible.com)
 
-
 ### 配置位置
 
 文件路径 | 说明
@@ -26,7 +25,6 @@ Ansible 备忘清单
 `/etc/ansible/ansible.cfg`  | 系统范围的配置
 `~/ansible.cfg`             | 用户特定的配置
 `$pwd/ansible.cfg`          | 当前目录下的配置
-
 
 ### Inventory文件(hosts列表)
 
@@ -86,6 +84,7 @@ proxy=proxy.atlanta.example.com
 ```shell
 $ ansible all --list-hosts
 ```
+
 ping所有目标
 
 ```shell
@@ -108,19 +107,19 @@ $ ansible all -i localhost, -e '{"ansible_connection": "local"}' -a 'hostname'
 
 ```shell
 $ ansible all -i localhost, -e '{"ansible_connection": "local"}' -m setup
-``` 
+```
 <!--rehype:className=wrap-text -->
 获取远程到本地
 
 ```shell
 $ ansible target -m fetch -a "src=/tmp/seq dest=/tmp/seq"
-``` 
+```
 <!--rehype:className=wrap-text -->
 拷贝本地到远程
 
 ```shell
 $ ansible target -m copy -a "src=/tmp/seq dest=/tmp/seq"
-``` 
+```
 <!--rehype:className=wrap-text -->
 
 ### Ansible 命令帮助
@@ -131,7 +130,7 @@ $ ansible
 $ ansible <host-pattern> [options]
 ```
 
-----
+---
 
 :- | -
 :- | -
@@ -219,7 +218,6 @@ $ ansible-galaxy init --offline <ROLE>
 ```
 <!--rehype:className=wrap-text-->
 
-
 ### ansible-doc
 
 在本地访问文档
@@ -241,13 +239,13 @@ $ ansible-doc [options] [module...]
 `--version` | 显示程序的版本号并退出
 <!--rehype:className=style-list-->
 
-
 ### ansible-vault
 
 ```bash
 $ ansible-vault
 $ ansible-vault [create|decrypt|edit|encrypt|rekey|view] [--help] [options] vaultfile.yml
 ```
+
 ---
 
 :- | -
@@ -268,6 +266,7 @@ $ ansible-vault [create|decrypt|edit|encrypt|rekey|view] [--help] [options] vaul
 $ ansible-playbook
 $ ansible-playbook playbook.yml
 ```
+
 ---
 
 :- | -
@@ -329,13 +328,14 @@ $ ansible-playbook playbook.yml
 `-K`, `--ask-become-pass` | 要求提权密码
 <!--rehype:className=style-list-->
 
-### ansible-pull 
+### ansible-pull
 <!--rehype:wrap-class=row-span-2-->
 
 ```bash
 $ ansible-pull 
 $ ansible-pull -U <repository> [options]
 ```
+
 ---
 
 :- | -
@@ -394,10 +394,9 @@ $ ansible-pull -U <repository> [options]
 <!-- ### ansible-playbook -->
 <!-- todo -->
 
-
-
 另见
 ---
+
 [Getting started with Ansible](https://docs.ansible.com/ansible/latest/getting_started/index.html)  
 [Introduction to ad hoc commands](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
 [Ansible cheatsheet](https://github.com/luckylittle/ansible-cheatsheet/blob/master/ansible-cheatsheet.txt)

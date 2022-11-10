@@ -149,14 +149,14 @@ div {
 }
 ```
 
-查看: [Flexbox](#css-flexbox) | [Flex Tricks](#css-flexbox-tricks)
+查看: [Flexbox](#css-flexbox) | [Flex Tricks](#css-flexbox-技巧)
 
 ### Grid 布局
 
 ```css
 #container {
   display: grid;
-  grid: repeat(2, 60px) / auto-flow 80px;
+s  grid: repeat(2, 60px) / auto-flow 80px;
 }
 #container > div {
   background-color: #8ca0ff;
@@ -165,7 +165,7 @@ div {
 }
 ```
 
-查看: [Grid Layout](#css-grid-layout)
+查看: [Grid Layout](#grid-布局)
 
 ### 变量和计数器
 
@@ -244,7 +244,6 @@ p:first-child {
 
 另见: [元素](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors) / [类](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Class_selectors) / [ID](https://developer.mozilla.org/zh-CN/docs/Web/CSS/ID_selectors) / [通配](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors) 选择器
 
-
 ### 组合器
 
 选择器 | 说明
@@ -277,10 +276,10 @@ p:first-child {
 
 选择器 | 说明
 :- | :-
-`a:link    ` | 链接正常 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:link)
-`a:active  ` | 链接处于点击状态 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:active)
-`a:hover   ` | 鼠标悬停链接 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:hover)
-`a:visited ` | 访问链接 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:visited)
+`a:link` | 链接正常 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:link)
+`a:active` | 链接处于点击状态 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:active)
+`a:hover` | 鼠标悬停链接 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:hover)
+`a:visited` | 访问链接 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:visited)
 
 ---
 
@@ -367,12 +366,12 @@ CSS 字体
 `font-family:`    | 字体族名或通用字体族名 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family)
 `font-size:`      | 字体的大小 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size)
 `letter-spacing:` | 文本字符的间距 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/letter-spacing)
-`line-height:`    | 多行文本间距 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height)   
-`font-weight:`     | 粗细程度 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight)   
-`font-style:`      | 字体样式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style)   
-`text-decoration:` | 文本的修饰线外观 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration)   
-`text-align:`      | 相对它的块父元素对齐 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align)   
-`text-transform:`  | 指定文本大小写 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-transform) 
+`line-height:`    | 多行文本间距 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height)
+`font-weight:`     | 粗细程度 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight)
+`font-style:`      | 字体样式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style)
+`text-decoration:` | 文本的修饰线外观 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration)
+`text-align:`      | 相对它的块父元素对齐 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align)
+`text-transform:`  | 指定文本大小写 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-transform)
 
 另见: [Font](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font)
 
@@ -488,8 +487,8 @@ CSS 背景
 
 属性 | 说明
 :- | :-
-`background:` | _([速记](#速记-1))_ 
-`background-color:`      | 查看: [Colors](#css-颜色)                                
+`background:` | _([速记](#速记-1))_
+`background-color:`      | 查看: [Colors](#css-颜色)
 `background-image:`      | 一个或者多个背景图像
 `background-position:`   | 背景图片设置初始位置
 `background-size:`       | 背景图片大小
@@ -555,7 +554,7 @@ CSS 盒子模型
 
 另见: [box-sizing](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Box-sizing)
 
-### 能见度 
+### 能见度
 
 ```css
 .invisible-elements {
@@ -564,7 +563,6 @@ CSS 盒子模型
 ```
 
 另见: [Visibility](https://developer.mozilla.org/zh-CN/docs/Web/CSS/visibility)
-
 
 ### Auto 关键字
 
@@ -576,7 +574,6 @@ div {
 ```
 
 另见: [边距(margin)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin)
-
 
 ### 溢出(Overflow)
 
@@ -607,7 +604,7 @@ animation:  bounce   300ms      linear     100ms    infinite   alternate-reverse
 
 属性 | 说明
 :- | :-
-`animation:`                 |  _([速记](#速记-2))_    
+`animation:`                 |  _([速记](#速记-2))_
 `animation-name:`            | 动画名 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-name)
 `animation-duration:`        | 动画周期的时长 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-duration)
 `animation-timing-function:` | 缓动函数 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-timing-function)
@@ -804,7 +801,7 @@ flex-wrap: nowrap | wrap | wrap-reverse;
 flex-direction: row | row-reverse | column | column-reverse;
 ```
 
-----
+---
 
 ```bash
 ╭┈┈╮  ▲         ╭┈┈╮  ┆
@@ -825,7 +822,7 @@ column-reverse  column       row             row-reverse
 align-items: flex-start | flex-end | center | baseline | stretch;
 ```
 
-----
+---
 
 ```css
   ▶ flex-start(起点对齐)    ▶ flex-end(终点对齐)
@@ -863,7 +860,7 @@ align-content: flex-start | flex-end | center | space-between | space-around | s
 ```
 <!--rehype:className=wrap-text -->
 
-----
+---
 
 ```css
  ▶ flex-start(起点对齐)     ▶ flex-end(终点对齐)
@@ -903,7 +900,7 @@ align-content: flex-start | flex-end | center | space-between | space-around | s
 }
 ```
 
-----
+---
 
 ```css
 ╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╮ ╭┈┈┈┈┈┈┈┈┈╮
@@ -927,7 +924,7 @@ align-content: flex-start | flex-end | center | space-between | space-around | s
 }
 ```
 
-----
+---
 
 ```css
 ╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╮
@@ -982,7 +979,6 @@ CSS Flexbox 技巧
 ```
 
 ### 移动布局
-
 
 ```css
 .container {
@@ -1069,7 +1065,7 @@ CSS Grid 网格布局
 ### CSS 网格行
 <!--rehype:wrap-class=row-span-2-->
 
-CSS 语法: 
+CSS 语法:
 
 - grid-row: grid-row-start / grid-row-end;
 
@@ -1128,7 +1124,7 @@ grid-row-gap: length;
 
 ### grid-row-start & grid-row-end
 
-CSS 语法: 
+CSS 语法:
 
 - grid-row-start: auto|row-line;
 - grid-row-end: auto|row-line|span n;
@@ -1165,7 +1161,6 @@ grid-row-end: span 2;
   'nav nav . .';
 }
 ```
-
 
 ### Justify Self
 
@@ -1376,7 +1371,6 @@ a[href^="http"]:empty::before {
 
 如果 `<a>` 标签里面没有内容，将 `href` 的值作为内容展示
 
-
 ### 使用 :root 表示灵活类型
 <!--rehype:wrap-class=row-span-2-->
 
@@ -1428,7 +1422,6 @@ div {
 <!--rehype:className=wrap-text -->
 
 通过样式来控制一个元素 `div` 是否可以编辑
-
 
 另见
 ---------

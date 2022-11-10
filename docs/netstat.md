@@ -42,7 +42,6 @@ $ netstat -h
 `netstat -au` | 所有 UDP 连接
 `netstat -ant` | 显示没有反向 DNS 查找的 IP 地址
 
-
 选项 | 说明
 :- | :-
 `netstat` | 活动连接
@@ -52,7 +51,6 @@ $ netstat -h
 `netstat -ant` | 显示没有反向 DNS 查找的 IP 地址
 `netstat -tnl` | 监听 TCP 端口
 `netstat -unl` | 监听 UDP 端口
-
 
 ### 网络
 
@@ -64,7 +62,6 @@ $ netstat -h
 `netstat -F` | 尽可能显示 IP 地址的域名
 
 ### 路由
-
 
 选项 | 说明
 :- | :-

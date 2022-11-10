@@ -34,11 +34,11 @@ var price: Double = 8.99
 ### 算术运算符
 <!--rehype:wrap-class=row-span-3-->
 
- - `+` 添加
- - `-` 减法
- - `*` 乘法
- - `/` 分配
- - `%` 余数
+- `+` 添加
+- `-` 减法
+- `*` 乘法
+- `/` 分配
+- `%` 余数
 <!--rehype:className=cols-5 style-none-->
 
 ----
@@ -444,7 +444,7 @@ switch num {
 // 打印: 7 奇数
 ```
 
-### 逻辑运算符！
+### 逻辑运算符
 
 ```swift
 !true          // false
@@ -480,6 +480,7 @@ false || false  // false
 ```swift
 false || true && false  // false
 ```
+
 `true && false` 首先计算返回 `false` 然后，表达式，`false` || `false` 评估并返回最终结果 `false`
 
 ### 控制执行顺序
@@ -1431,9 +1432,9 @@ enum Dessert {
 let customerOrder: Dessert = .cake(flavor: "红色天鹅绒")
 switch customerOrder {
   case let .cake(flavor):
-  	print("你点了一个 \(flavor) 蛋糕")
+    print("你点了一个 \(flavor) 蛋糕")
   case .brownie: 
-  	print("你点了一块巧克力蛋糕")
+    print("你点了一块巧克力蛋糕")
 }
 // 打印: "你点了一个红色天鹅绒蛋糕"
 ```
@@ -1521,7 +1522,7 @@ enum ShirtSize: String {
   case medium = "M"
   case large = "L"
   case extraLarge = "XL"
-	var description: String {
+  var description: String {
     return "这件衬衫尺码是 \(self.rawValue)"
   }
 }

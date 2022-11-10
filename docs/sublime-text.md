@@ -58,7 +58,7 @@ Sublime Text 备忘清单
 `⌃`  | Control  
 `⌥`  | Option(alt)  
 `⇧`  | Shift  
-`⇪`  | Caps Lock(大写)   
+`⇪`  | Caps Lock(大写)
 `fn` | 功能键就是fn  
 `↩︎`  | return/Enter
 <!--rehype:className=shortcuts-->
@@ -79,9 +79,9 @@ Sublime Text 备忘清单
 
 快捷键 | 说明
 :- | -
-`⌘ P`	   | 去任何地方
-`⌘ G`	   | 转到行号
-`⌘ R`	   | 转到符号
+`⌘ P`    | 去任何地方
+`⌘ G`    | 转到行号
+`⌘ R`    | 转到符号
 `⌘ P, :` | 转到行号(`:`之后输入数字)
 `⌘ P, #` | 转到并列出字符串模糊匹配(`#`之后输入字符)
 `⌘ P, @` | 转到并列出符号(`@`之后开始输入符号名称)

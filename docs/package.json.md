@@ -21,7 +21,7 @@ package.json 备忘清单
 }
 ```
 
-**规则**
+#### 规则
 
 - 必须小于或等于214个字符(包括 `@scope/` 范围包)
 - 不能以点（`.`）或下划线（`_`）开头
@@ -370,7 +370,7 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 - `postversion`: 改变包版本后运行，然后提交。
 - `pretest`, `test`, `posttest`: 由 `npm test` 命令运行。
 - `prestop`, `stop`, `poststop`: 由 `npm stop` 命令运行。
-- `prestart`, `start`, `poststart`: 由 `npm start` 命令运行。 
+- `prestart`, `start`, `poststart`: 由 `npm start` 命令运行。
 - `prerestart`, `restart`, `postrestart`: 由 `npm restart` 命令运行。 注意：如果没有提供重启脚本，`npm restart` 将运行 `stop` 和`start` 脚本。
 - `preshrinkwrap`, `shrinkwrap`, `postshrinkwrap`: 由 `npm shrinkwrap` 命令运行。
 
@@ -577,7 +577,6 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 此选项指定你的包的操作系统兼容性，它会检查 `process.platform`。
 
-
 ### `cpu`
 
 ```json
@@ -624,6 +623,8 @@ Yarn
 
 ### `flat`
 
+<!-- markdownlint-disable MD042 -->
+
 如果你的包只允许给定依赖的一个版本，你想强制和命令行上 [yarn install --flat](#) 相同的行为，把这个值设为 `true`。
 
 ```json
@@ -650,7 +651,6 @@ Yarn
 允许您覆盖特定嵌套依赖项的版本。 有关完整规范，请参见[选择性版本解析 RFC](https://github.com/yarnpkg/rfcs/blob/master/implemented/0000-selective-versions-resolutions.md)。
 
 注意，`yarn install --flat` 命令将会自动在 `package.json` 文件里加入 `resolutions` 字段。
-
 
 另见
 ----

@@ -3,7 +3,6 @@ Grep 备忘清单
 
 本备忘单旨在快速提醒使用命令行程序 grep 所涉及的主要概念，并假设您已经了解其用法。
 
-
 入门
 ------
 <!--rehype:body-class=cols-5-->
@@ -31,7 +30,6 @@ $ grep 'mellon' myfile.txt
 
 文件名中接受通配符。
 
-
 ### 选项示例
 <!--rehype:wrap-class=col-span-3-->
 
@@ -50,7 +48,6 @@ $ grep 'mellon' myfile.txt
 | `-l`   | grep -l 'robot' /var/log/*            | 打印匹配文件的名称
 | `-o`   | grep -o search_string filename        | 只显示字符串的匹配部分
 | `-n`   | grep -n "go" demo.txt                 | 显示匹配的行号
-
 
 Grep 正则表达式
 -------
@@ -97,13 +94,12 @@ Grep 正则表达式
 `[0-9]`       | 任何数字
 `[0-9­A-Z­a-z]` | 任何大小写字母或数字
 
-
 ### 位置
 
 :- | :-
 :- | :-
-`^ ` | 行的开头
-`$ ` | 行结束
+`^` | 行的开头
+`$` | 行结束
 `^$` | 空行
 `\<` | 词的开头
 `\>` | 词尾

@@ -75,13 +75,13 @@ JSON 备忘清单
 ```json
 { "foo": 'bar' }
 ```
-Have to be delimited by double quotes
 
+Have to be delimited by double quotes
 
 ### 数字
 <!--rehype:wrap-class=row-span-2-->
 
- 类型 | 说明 
+ 类型 | 说明
 -----|------
 `Integer`  | 数字 1-9、0 和正数或负数
 `Fraction` | 0.3、3.9 等分数
@@ -297,6 +297,7 @@ let myArray = [
   }
 ];
 ```
+
 ----
 
 |                     |                            |
@@ -320,14 +321,13 @@ let myArray = [
 ];
 ```
 
------
+----
 
 |              |           |
 |--------------|-----------|
 | `myArray[1]` | "Doe"     |
 | `myArray[5]` | true      |
 | `myArray[6]` | undefined |
-
 
 另见
 ----

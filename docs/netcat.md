@@ -18,15 +18,14 @@ $ nc [options] [host] [port]
 
 监听传入连接
 
-```shell 
+```shell
 $ nc -lp port [host] [port]
 ```
 
 ### 选项示例
 <!--rehype:wrap-class=col-span-3 row-span-2-->
 
-
-选项 | 示例 | 说明 
+选项 | 示例 | 说明
 :- | :- | :-
 `-h`   | nc -h                      | 帮助
 `-z`   | nc -z 192.168.1.9 1-100    | 端口扫描主机或 `IP` 地址
@@ -39,7 +38,6 @@ $ nc -lp port [host] [port]
 `-q`   | nc -q 1 192.168.1.9 8000   | 客户在 `EOF` 后熬夜
 `-4`   | nc -4 -l 8000              | 仅限 `IPv4`
 `-6`   | nc -6 -l 8000              | 仅限 `IPv6`
-
 
 ### 聊天客户端-服务器
 <!--rehype:wrap-class=col-span-2-->

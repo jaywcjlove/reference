@@ -118,10 +118,9 @@ $x('//a[text()="XPath"]')[0].click()
 ### 运算符
 <!--rehype:wrap-class=col-span-2-->
 
-
-运算符 | 说明  |	示例
+运算符 | 说明  | 示例
 :- | - | -
-`\|`  | 计算两个节点集 |	`//book \| //cd`
+`\|`  | 计算两个节点集 | `//book \| //cd`
 `+`   | 添加 | `6 + 4`
 `-`   | 减法 | `6 - 4`
 `*`   | 乘法 | `6 * 4`
@@ -137,8 +136,6 @@ $x('//a[text()="XPath"]')[0].click()
 `mod` | 模数（除法余数） | `5` mod `2`
 <!--rehype:className=show-header-->
 
-
-
 XPath 表达式
 -----------
 
@@ -148,7 +145,6 @@ XPath 表达式
 |------|------|------|-----------------|
 | `//` | `ul` | `/`  | `a[@id='link']` |
 | Axis | Step | Axis | Step            |
-
 
 ### 前缀
 
@@ -202,6 +198,7 @@ XPath Predicates(谓词)
 //ul[count(li) > 2]
 //ul[count(li[@class='hide']) > 0]
 ```
+
 ```bash
 # 返回具有 `<li>` 子级的 `<ul>`
 //ul[li]
@@ -251,6 +248,7 @@ text()            # //button[text()="Submit"]
 lang(str)
 namespace-uri()
 ```
+
 ```bash
 count()           # //table[count(tr)=1]
 position()        # //ol/li[position()=2]
@@ -357,12 +355,12 @@ XPath Axes
 |--------------------|--------|-------|
 `ancestor`           |        | 选择当前节点的所有祖先(父母、祖父母等)
 `ancestor-or-self`   |        | 选择当前节点所有祖先(父、祖父等)和当前节点本身
-`attribute`          | `@`    | `@href` 是 `attribute::href` 的缩写 
-`child`              |        | `div` 是 `child::div` 的缩写 
-`descendant`         |        | 选择当前节点的所有后代（子、孙等） 
+`attribute`          | `@`    | `@href` 是 `attribute::href` 的缩写
+`child`              |        | `div` 是 `child::div` 的缩写
+`descendant`         |        | 选择当前节点的所有后代（子、孙等）
 `descendant-or-self` | `//`   | `//` 是 `/descendant-or-self::node()/`的缩写  选择当前节点和当前节点本身的所有后代（子、孙等）
-`namespace`          |        | 选择当前节点的所有命名空间节点 
-`self`               | `.`    | `.` 是 `self::node()` 的缩写，选择当前节点 
+`namespace`          |        | 选择当前节点的所有命名空间节点
+`self`               | `.`    | `.` 是 `self::node()` 的缩写，选择当前节点
 `parent`             | `..`   | `..` 是 `parent::node()` 的缩写，选择当前节点的父节点
 `following`          |        | 选择文档中当前节点结束标记之后的所有内容
 `following-sibling`  |        | 选择当前节点之后的所有兄弟节点
@@ -429,5 +427,5 @@ count(//*)          # 计算所有元素
 另见
 --------
 
-* [Devhints](https://devhints.io/xpath) _(devhints.io)_
-* [Xpath test bed](http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm) _(whitebeam.org)_
+- [Devhints](https://devhints.io/xpath) _(devhints.io)_
+- [Xpath test bed](http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm) _(whitebeam.org)_
