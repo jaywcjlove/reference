@@ -1432,9 +1432,9 @@ enum Dessert {
 let customerOrder: Dessert = .cake(flavor: "红色天鹅绒")
 switch customerOrder {
   case let .cake(flavor):
-   print("你点了一个 \(flavor) 蛋糕")
+    print("你点了一个 \(flavor) 蛋糕")
   case .brownie: 
-   print("你点了一块巧克力蛋糕")
+    print("你点了一块巧克力蛋糕")
 }
 // 打印: "你点了一个红色天鹅绒蛋糕"
 ```
@@ -1522,7 +1522,7 @@ enum ShirtSize: String {
   case medium = "M"
   case large = "L"
   case extraLarge = "XL"
- var description: String {
+  var description: String {
     return "这件衬衫尺码是 \(self.rawValue)"
   }
 }

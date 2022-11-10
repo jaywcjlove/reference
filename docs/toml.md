@@ -164,9 +164,9 @@ bar = 2
 
 ```toml
 [table1]
- foo = "bar"
+foo = "bar"
 [table1.nested_table]
- baz = "bat"
+baz = "bat"
 ```
 
 ### 类数组
@@ -185,16 +185,16 @@ text = "Love it!"
 
 ```json
 {
- "comments" : [
-  {
-   "author" : "Nate",
-   "text" : "Great Article!"
-  },
-  {
-   "author" : "Anonymous",
-   "text" : "Love It!"
-  }
- ]
+  "comments" : [
+    {
+      "author" : "Nate",
+      "text" : "Great Article!"
+    },
+    {
+      "author" : "Anonymous",
+      "text" : "Love It!"
+    }
+  ]
 }
 ```
 

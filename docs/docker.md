@@ -623,8 +623,8 @@ $ docker run --name my-nginx \
 ```bash
 $ docker run --name my-postgres \
   -e POSTGRES_PASSWORD=mysecretpassword \
- -e PGDATA=/var/lib/postgresql/data/pgdata \
- -v $HOME/nginx/mount:/var/lib/postgresql/data \
+  -e PGDATA=/var/lib/postgresql/data/pgdata \
+  -v $HOME/nginx/mount:/var/lib/postgresql/data \
   -d postgres
 ```
 

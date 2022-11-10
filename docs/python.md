@@ -794,7 +794,7 @@ x = 0
 for index in range(10):
     x = index * 10
     if index == 5:
-     break
+        break
     print(x)
 ```
 
@@ -804,7 +804,7 @@ for index in range(10):
 for index in range(3, 8): 
     x = index * 10
     if index == 5:
-     continue
+        continue
     print(x)
 ```
 

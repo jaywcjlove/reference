@@ -255,18 +255,18 @@ Golang 字符串
 ```go
 package main
 import (
- "fmt"
- s "strings"
+        "fmt"
+        s "strings"
 )
 func main() {
     /* 需要将字符串导入为 s */
- fmt.Println(s.Contains("test", "e"))
+        fmt.Println(s.Contains("test", "e"))
     /* 内置 */
     fmt.Println(len("hello"))  // => 5
     // 输出: 101
- fmt.Println("hello"[1])
+        fmt.Println("hello"[1])
     // 输出: e
- fmt.Println(string("hello"[1]))
+        fmt.Println(string("hello"[1]))
 }
 ```
 
@@ -276,38 +276,38 @@ func main() {
 ```go
 package main
 import (
- "fmt"
- "os"
+        "fmt"
+        "os"
 )
 type point struct {
- x, y int
+        x, y int
 }
 func main() {
- p := point{1, 2}
- fmt.Printf("%v\n", p)                        // => {1 2}
- fmt.Printf("%+v\n", p)                       // => {x:1 y:2}
- fmt.Printf("%#v\n", p)                       // => main.point{x:1, y:2}
- fmt.Printf("%T\n", p)                        // => main.point
- fmt.Printf("%t\n", true)                     // => TRUE
- fmt.Printf("%d\n", 123)                      // => 123
- fmt.Printf("%b\n", 14)                       // => 1110
- fmt.Printf("%c\n", 33)                       // => !
- fmt.Printf("%x\n", 456)                      // => 1c8
- fmt.Printf("%f\n", 78.9)                     // => 78.9
- fmt.Printf("%e\n", 123400000.0)              // => 1.23E+08
- fmt.Printf("%E\n", 123400000.0)              // => 1.23E+08
- fmt.Printf("%s\n", "\"string\"")             // => "string"
- fmt.Printf("%q\n", "\"string\"")             // => "\"string\""
- fmt.Printf("%x\n", "hex this")               // => 6.86578E+15
- fmt.Printf("%p\n", &p)                       // => 0xc00002c040
- fmt.Printf("|%6d|%6d|\n", 12, 345)           // => |    12|   345|
- fmt.Printf("|%6.2f|%6.2f|\n", 1.2, 3.45)     // => |  1.20|  3.45|
- fmt.Printf("|%-6.2f|%-6.2f|\n", 1.2, 3.45)   // => |1.20  |3.45  |
- fmt.Printf("|%6s|%6s|\n", "foo", "b")        // => |   foo|     b|
- fmt.Printf("|%-6s|%-6s|\n", "foo", "b")      // => |foo   |b     |
- s := fmt.Sprintf("a %s", "string")
- fmt.Println(s)
- fmt.Fprintf(os.Stderr, "an %s\n", "error")
+        p := point{1, 2}
+        fmt.Printf("%v\n", p)                        // => {1 2}
+        fmt.Printf("%+v\n", p)                       // => {x:1 y:2}
+        fmt.Printf("%#v\n", p)                       // => main.point{x:1, y:2}
+        fmt.Printf("%T\n", p)                        // => main.point
+        fmt.Printf("%t\n", true)                     // => TRUE
+        fmt.Printf("%d\n", 123)                      // => 123
+        fmt.Printf("%b\n", 14)                       // => 1110
+        fmt.Printf("%c\n", 33)                       // => !
+        fmt.Printf("%x\n", 456)                      // => 1c8
+        fmt.Printf("%f\n", 78.9)                     // => 78.9
+        fmt.Printf("%e\n", 123400000.0)              // => 1.23E+08
+        fmt.Printf("%E\n", 123400000.0)              // => 1.23E+08
+        fmt.Printf("%s\n", "\"string\"")             // => "string"
+        fmt.Printf("%q\n", "\"string\"")             // => "\"string\""
+        fmt.Printf("%x\n", "hex this")               // => 6.86578E+15
+        fmt.Printf("%p\n", &p)                       // => 0xc00002c040
+        fmt.Printf("|%6d|%6d|\n", 12, 345)           // => |    12|   345|
+        fmt.Printf("|%6.2f|%6.2f|\n", 1.2, 3.45)     // => |  1.20|  3.45|
+        fmt.Printf("|%-6.2f|%-6.2f|\n", 1.2, 3.45)   // => |1.20  |3.45  |
+        fmt.Printf("|%6s|%6s|\n", "foo", "b")        // => |   foo|     b|
+        fmt.Printf("|%-6s|%-6s|\n", "foo", "b")      // => |foo   |b     |
+        s := fmt.Sprintf("a %s", "string")
+        fmt.Println(s)
+        fmt.Fprintf(os.Stderr, "an %s\n", "error")
 }
 ```
 
@@ -315,8 +315,8 @@ func main() {
 
 ### 函数实例
 
-| 实例                           | Result      |
-|-------------------------------|-------------|
+| 实例                          | Result      |
+| ----------------------------- | ----------- |
 | Contains("test", "es")        | true        |
 | Count("test", "t")            | 2           |
 | HasPrefix("test", "te")       | true        |
@@ -440,16 +440,16 @@ Golang 结构和映射
 ```go
 package main
 import (
- "fmt"
+        "fmt"
 )
 type Vertex struct {
- X int
- Y int
+        X int
+        Y int
 }
 func main() {
- v := Vertex{1, 2}
- v.X = 4
- fmt.Println(v.X, v.Y) // => 4 2
+        v := Vertex{1, 2}
+        v.X = 4
+        fmt.Println(v.X, v.Y) // => 4 2
 }
 ```
 
@@ -701,22 +701,22 @@ Golang 并发
 ```go
 package main
 import (
- "fmt"
- "time"
+        "fmt"
+        "time"
 )
 func f(from string) {
- for i := 0; i < 3; i++ {
-  fmt.Println(from, ":", i)
- }
+        for i := 0; i < 3; i++ {
+                fmt.Println(from, ":", i)
+        }
 }
 func main() {
- f("direct")
- go f("goroutine")
- go func(msg string) {
-  fmt.Println(msg)
- }("going")
- time.Sleep(time.Second)
- fmt.Println("done")
+        f("direct")
+        go f("goroutine")
+        go func(msg string) {
+                fmt.Println(msg)
+        }("going")
+        time.Sleep(time.Second)
+        fmt.Println("done")
 }
 ```
 
@@ -728,23 +728,23 @@ func main() {
 ```go
 package main
 import (
- "fmt"
- "sync"
- "time"
+        "fmt"
+        "sync"
+        "time"
 )
 func w(id int, wg *sync.WaitGroup) {
- defer wg.Done()
- fmt.Printf("%d starting\n", id)
- time.Sleep(time.Second)
- fmt.Printf("%d done\n", id)
+        defer wg.Done()
+        fmt.Printf("%d starting\n", id)
+        time.Sleep(time.Second)
+        fmt.Printf("%d done\n", id)
 }
 func main() {
- var wg sync.WaitGroup
- for i := 1; i <= 5; i++ {
-  wg.Add(1)
-  go w(i, &wg)
- }
- wg.Wait()
+        var wg sync.WaitGroup
+        for i := 1; i <= 5; i++ {
+                wg.Add(1)
+                go w(i, &wg)
+        }
+        wg.Wait()
 }
 ```
 
@@ -946,8 +946,8 @@ func main() {
 
 ### 运算符和标点符号
 
-|   |    |     |     |      |    |     |   |   |
-|---|----|-----|-----|------|----|-----|---|---|
+|     |      |       |       |        |      |       |     |     |
+| --- | ---- | ----- | ----- | ------ | ---- | ----- | --- | --- |
 | `+` | `&`  | `+=`  | `&=`  | `&&`   | `==` | `!=`  | `(` | `)` |
 | `-` | `\|` | `-=`  | `\|=` | `\|\|` | `<`  | `<=`  | `[` | `]` |
 | `*` | `^`  | `*=`  | `^=`  | `<-`   | `>`  | `>=`  | `{` | `}` |
