@@ -212,6 +212,7 @@ jobs:
 ```shell
 jobs.<job_id>.environment
 ```
+
 使用单一环境名称的示例
 
 ```yml
@@ -250,7 +251,6 @@ steps:
 ```
 
 设置环境变量的示例
-
 
 ```yml
 env:

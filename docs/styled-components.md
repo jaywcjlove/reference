@@ -3,7 +3,6 @@ styled-components 备忘清单
 
 此快速参考备忘单提供了使用 CSS in JS 工具的各种方法。
 
-
 入门
 ----
 
@@ -29,6 +28,7 @@ import styled from 'styled-components';
 ```
 
 创建一个 Title 组件
+
 ```jsx
 // 该组件将呈现具有样式的 <h1> 标签
 const Title = styled.h1`
@@ -235,7 +235,6 @@ const Demo = () => (
   </div>
 );
 ```
-
 
 ### 样式对象
 

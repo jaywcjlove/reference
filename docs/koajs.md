@@ -3,7 +3,6 @@ Koajs 备忘清单
 
 基于 Node.js 平台的下一代 web 开发框架，包含 [Koa](https://koajs.com/) 的 API 参考列表和一些示例。
 
-
 入门
 ---
 
@@ -13,6 +12,7 @@ Koajs 备忘清单
 [Koa](https://koajs.com/) 需要 [node v7.6.0](https://nodejs.org) 或更高版本来支持ES2015、异步方法，你可以安装自己支持的 `node` 版本
 
 - 安装依赖
+
   ```bash
   $ mkdir myapp # 创建目录
   $ cd myapp    # 进入目录
@@ -20,7 +20,9 @@ Koajs 备忘清单
   $ npm init -y # 初始化一个配置
   $ npm install koa # 安装依赖
   ```
+
 - 入口文件 `index.js` 添加代码：
+
   ```js
   const Koa = require('koa');
   const app = new Koa();
@@ -31,7 +33,9 @@ Koajs 备忘清单
 
   app.listen(3000);
   ```
+
 - 使用以下命令运行应用程序
+
   ```bash
   $ node index.js
   ```

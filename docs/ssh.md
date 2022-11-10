@@ -99,7 +99,6 @@ $ scp user@server:/dir/* .
 `~/.ssh/known_hosts`     | 登录主机
 `~/.ssh/authorized_keys` | 授权登录密钥
 
-
 ### SCP 选项
 
 选项 | 说明
@@ -110,7 +109,6 @@ scp `-v`      | 打印详细信息
 scp `-P` 8080 | 使用特定端口
 scp `-B`      | 批处理模式_（防止密码）_
 scp `-p`      | 保留时间和模式
-
 
 ### 配置示例
 
@@ -147,7 +145,6 @@ $ ssh -J user@proxy_host1 user@remote_host2
 $ ssh -J user@proxy_host1:port1,user@proxy_host2:port2 user@remote_host3
 ```
 <!--rehype:className=wrap-text -->
-
 
 ### ssh-copy-id
 
@@ -229,7 +226,6 @@ $ ssh-keygen -p -f ~/.ssh/id_rsa
 - dsa
 - ecdsa
 
-
 ### known_hosts
 <!--rehype:wrap-class=col-span-2-->
 
@@ -247,7 +243,7 @@ $ ssh-keygen -R <ip/hostname>
 
 ### 密钥格式
 
-- PEM 
+- PEM
 - PKCS8
 
 另见

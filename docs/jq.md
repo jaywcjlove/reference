@@ -117,7 +117,7 @@ $ echo '[[1,2], "string", {"a":2}, null]' | jq '.[] | length'
 
 输出结果
 
-```bash                    
+```bash
 2
 6
 1
@@ -133,7 +133,7 @@ $ echo '{"abc": 1, "abcd": 2, "Foo": 3}' | jq 'keys'
 
 输出结果
 
-```bash                          
+```bash
 [
   "Foo",
   "abc",
@@ -164,7 +164,7 @@ $ echo '[{"name":"JSON", "good":true}, {"name":"XML", "good":false}]' | jq '.[] 
 
 输出结果
 
-```bash                                            
+```bash
 "JSON"
 "XML"
 ```
@@ -178,7 +178,7 @@ $ echo '[1,5,3,0,7]' | jq 'map(select(. >= 2))'
 
 输出结果
 
-```bash                                            
+```bash
 [
   5,
   3,

@@ -28,18 +28,18 @@ npm 备忘清单
 
 命令 | 描述
 :- |:-
-`npm i sax`                          | `NPM` 包 
+`npm i sax`                          | `NPM` 包
 `npm i sax@latest`                   | 指定标签 `最新`
 `npm i sax@3.0.0`                    | 指定版本 `3.0.0`
-`npm i sax@">=1 <2.0"`               | 指定版本范围 
-`npm i @org/sax`                     | 范围内的 `NPM` 包 
-`npm i user/repo`                    | GitHub 
-`npm i user/repo#master`             | GitHub 
-`npm i github:user/repo`             | GitHub 
-`npm i gitlab:user/repo`             | GitLab 
-`npm i /path/to/repo`                | 绝对路径 
-`npm i ./archive.tgz`                | 压缩包 
-`npm i https://site.com/archive.tgz` | 通过 `HTTP` 压缩包 
+`npm i sax@">=1 <2.0"`               | 指定版本范围
+`npm i @org/sax`                     | 范围内的 `NPM` 包
+`npm i user/repo`                    | GitHub
+`npm i user/repo#master`             | GitHub
+`npm i github:user/repo`             | GitHub
+`npm i gitlab:user/repo`             | GitLab
+`npm i /path/to/repo`                | 绝对路径
+`npm i ./archive.tgz`                | 压缩包
+`npm i https://site.com/archive.tgz` | 通过 `HTTP` 压缩包
 <!--rehype:class=auto-wrap-->
 
 安装依赖的可用参数
@@ -78,18 +78,16 @@ $ npm cache verify # 验证缓存文件夹的内容，垃圾收集任何不需�
 
 ### 更新
 
-命令 | 描述 
-:- | - 
+命令 | 描述
+:- | -
 `npm version <version>` | 要更改 `package.json` 中的版本号
 `npm update`            | 更新生产包
 `npm update --dev`      | 更新开发包
 `npm update -g`         | 更新全局包
 `npm update lodash`     | 更新 `lodash` 包
 
-
 ### 杂项功能
 <!--rehype:wrap-class=row-span-2-->
-
 
 ```bash
 # 将某人添加为所有者
@@ -168,7 +166,6 @@ $ nrm use cnpm
 `$PREFIX/etc/npmrc` | 全局配置文件
 `/path/to/npm/npmrc` | npm 内置配置文件
 
-
 ### 配置内容
 
 ```ini
@@ -180,17 +177,16 @@ $ nrm use cnpm
 
 注释使用 `#`, `;` 放置到一行的开头， [`.npmrc`](https://docs.npmjs.com/cli/v8/configuring-npm/npmrc) 文件由指定此注释语法的 [`npm/ini`](https://github.com/npm/ini) 解析
 
-
 ### registry
 
 :- | :-
 :- | :-
-`npm` | https://registry.npmjs.org/
-`yarn` | https://registry.yarnpkg.com/
-`tencent` | https://mirrors.cloud.tencent.com/npm/
-`cnpm` | https://r.cnpmjs.org/
-`taobao` | https://registry.npmmirror.com/
-`npmMirror` | https://skimdb.npmjs.com/registry/
+`npm` | <https://registry.npmjs.org/>
+`yarn` | <https://registry.yarnpkg.com/>
+`tencent` | <https://mirrors.cloud.tencent.com/npm/>
+`cnpm` | <https://r.cnpmjs.org/>
+`taobao` | <https://registry.npmmirror.com/>
+`npmMirror` | <https://skimdb.npmjs.com/registry/>
 
 ### `.npmignore`
 

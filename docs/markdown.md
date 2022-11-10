@@ -3,7 +3,6 @@ Markdown 备忘清单
 
 这是 Markdown 语法的快速参考备忘单。
 
-
 Markdown 快速参考
 ----
 
@@ -29,7 +28,6 @@ Header 1
 Header 2
 --------
 ```
-
 
 ### 块引用
 
@@ -64,6 +62,7 @@ Header 2
 + Item 1
 + Item 2
 ```
+
 或者**任务**列表
 
 ```markdown
@@ -132,11 +131,13 @@ ___
 
 ### 代码
 
-~~~markdown
+```markdown
+
 ```javascript
 console.log("This is a block code")
 ```
-~~~
+
+```
 
 ```markdown
 ~~~css
@@ -144,11 +145,9 @@ console.log("This is a block code")
 ~~~
 ```
 
-
 ```markdown
     4 空格缩进做一个代码块
 ```
-
 
 #### 内联代码
 

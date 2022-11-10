@@ -22,7 +22,6 @@ Sketch 备忘清单
 | `t` | (Text) 文本 |
 <!--rehype:className=shortcuts-->
 
-
 ### 类型
 <!--rehype:wrap-class=row-span-2-->
 
@@ -130,7 +129,6 @@ Sketch 备忘清单
 | `Fn + ↑` | 选择上方页面 |
 | `Fn + ↓` | 选择下面的页面 |
 <!--rehype:className=shortcuts-->
-
 
 另见
 ----

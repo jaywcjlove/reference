@@ -240,7 +240,6 @@ type Data = typeof data
 
 通过 typeof 运算符重用来自现有 JavaScript 运行时值的类型。
 
-
 ### 从函数返回类型
 
 ```ts
@@ -1077,10 +1076,8 @@ console.log(fiveToHex());
 
 从 Type 中移除 this 参数。 如果 Type 没有显式声明此参数，则结果只是 Type。 否则，从 Type 创建一个不带此参数的新函数类型。 泛型被删除，只有最后一个重载签名被传播到新的函数类型中。
 
-
 JSX
 ----
-
 
 ### JSX 介绍
 
@@ -1232,7 +1229,6 @@ function NotAValidFactoryFunction() {
 ```
 
 默认情况下，`JSX.ElementClass` 是 {}，但可以对其进行扩展，以将 `JSX` 的使用限制为仅限于符合适当接口的类型。
-
 
 ### 类组件
 <!--rehype:wrap-class=col-span-2-->

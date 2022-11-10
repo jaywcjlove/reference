@@ -61,10 +61,9 @@ VSCode 备忘清单
 | `F8`                 | 转到下一个错误       |
 | `Shift` `F8`         | 转到上一个错误       |
 | `Ctrl` `Shift` `Tab` | 浏览编辑组历史       |
-| `Alt` ` ←` _/_ `→`   | 后退/前进           |
+| `Alt` `←` _/_ `→`   | 后退/前进           |
 | `Ctrl` `M`           | 切换 Tab 移动焦点   |
 <!--rehype:className=shortcuts-->
-
 
 ### 搜索和替换
 
@@ -115,7 +114,6 @@ VSCode 备忘清单
 | `Ctrl` `K` `M`              | 更改文件语言      |
 <!--rehype:className=shortcuts-->
 
-
 ### 编辑管理
 
 | -                                | -                        |
@@ -123,7 +121,7 @@ VSCode 备忘清单
 | `Ctrl` `F4` `Ctrl` `W`           | 关闭编辑器                 |
 | `Ctrl` `K` `F`                   | 关闭文件夹                 |
 | `Ctrl` `\`                       | 拆分编辑器                 |
-| `Ctrl` ` 1` _/_ `2` _/_ `3`      | 专注于第一、第二或第三编辑组  |
+| `Ctrl` `1` _/_ `2` _/_ `3`      | 专注于第一、第二或第三编辑组  |
 | `Ctrl` `K` `Ctrl` `←` _/_ `→`    | 专注于上一个/下一个编辑组    |
 | `Ctrl` `Shift` `PgUp` _/_ `PgDn` | 向左/向右移动编辑器         |
 | `Ctrl` `K` `←` _/_ `→`           | 移动活动编辑器组            |
@@ -169,7 +167,6 @@ VSCode 备忘清单
 | `Ctrl` `K` `V`     | 打开 Markdown 预览到一边                    |
 | `Ctrl` `K` `Z`     | Zen 模式（Esc Esc 退出）                    |
 <!--rehype:className=shortcuts-->
-
 
 ### 调试
 

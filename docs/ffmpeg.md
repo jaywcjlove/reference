@@ -103,7 +103,6 @@ $ ffmpeg -i movie.webm movie.mp4
 `Mi` | 220 | 1048576 | 兆字节 Mebibyte
 `Gi` | 230 | 1073741824 | Gibibyte
 
-
 ### 音频参数
 <!--rehype:wrap-class=col-span-2-->
 
@@ -317,7 +316,6 @@ $ ffmpeg -i input.mov -itsoffset 3 -i input.mov -map 1:v -map 0:a -codec:a copy 
 ```
 <!--rehype:className=wrap-text -->
 
-
 ### 图片中的视频
 
 如果您有多个编号的图像 image1.jpg、image2.jpg... 像这样从它们创建一个视频
@@ -366,13 +364,11 @@ $ ffmpeg -y -threads 8 -i inFile -target pal-dvd -ac 2 -aspect 16:9 -acodec mp2 
 ```
 <!--rehype:className=wrap-text -->
 
-
 ### 转换为灰度
 
 ```bash
 $ ffmpeg -y -i inFile -flags gray outFile
 ```
-
 
 ### 字幕
 <!--rehype:wrap-class=col-span-2 row-span-2-->

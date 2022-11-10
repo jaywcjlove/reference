@@ -17,17 +17,20 @@ $ pip --version
 ```
 <!--rehype:className=wrap-text -->
 
-如果你没有安装 PIP，你可以从这个页面下载并安装它：https://pypi.org/project/pip/
+如果你没有安装 PIP，你可以从这个页面下载并安装它：<https://pypi.org/project/pip/>
 
 ### 入门
 <!--rehype:wrap-class=row-span-4-->
 
 - 创建虚拟环境
+
   ```bash
   $ py -m venv myproject # Windows
   $ python -m venv myproject # Unix/MacOS
   ```
+
 - 其中包含子文件夹和文件，如下所示
+
   ```bash
   myproject
    ├┈Include
@@ -35,21 +38,27 @@ $ pip --version
    ├┈Scripts
    ╰┈pyvenv.cfg
   ```
+
 - 以下命令来激活环境
+
   ```bash
   # Windows:
   myproject\Scripts\activate.bat
   # Unix/MacOS:
   source myproject/bin/activate
   ```
+
 - 提示符中看到以下结果：
+
   ```bash
   # Windows:
   (myproject) C:\Users\Your Name>
   # Unix/MacOS:
   (myproject) ... $
   ```
+
 - 安装 Django
+
   ```bash
   # Windows:
   (myproject) C:\Users\Name>py -m pip install Django
@@ -248,7 +257,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-然后运行这个命令： 
+然后运行这个命令：
 
 ```bash
 $ py manage.py migrate
@@ -417,7 +426,7 @@ def testing(request):
 - `forloop.counter0` 当前循环，从 0 开始
 - `forloop.first` 循环是否在其第一次循环中
 - `forloop.last` 循环是否在其最后一次循环中
-- `forloop.parentloop` 
+- `forloop.parentloop`
 - `forloop.revcounter` 如果从末尾开始并向后计数，则以 1 结束
 - `forloop.revcounter0` 如果从末尾开始并向后计数，则以 0 结束
 
@@ -543,7 +552,7 @@ What is your name?{% endfilter %}
 
 ### 导入模板传入变量
 
-`mymenu.html`: 
+`mymenu.html`:
 
 ```django
 <div>HOME | {{ me }} | ABOUT | FORUM | {{ sponsor }}</div>
@@ -761,9 +770,6 @@ function myFunction() {
 </html>
 ```
 <!--rehype:className=wrap-text -->
-
-
-
 
 另见
 ----

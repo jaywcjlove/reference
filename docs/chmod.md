@@ -107,7 +107,6 @@ d  rwx  r-x  r-x
 | `a`         | 全部，和 ugo 一样 |
 <!--rehype:className=show-header-->
 
-
 ### 权限
 
 | 缩写 | 权限    | 值 |
@@ -137,7 +136,6 @@ Chmod 示例
 | `+`    | 添加         |
 | `-`    | 删除      |
 | `=`    | 设置        |
-
 
 ### chmod 600
 

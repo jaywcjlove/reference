@@ -374,15 +374,20 @@ Git 技巧
 ### 重命名分支
 
 - **重命名**为`new`
+
   ```shell
   $ git branch -m <new>
   $ git branch -m <old> <new> #重命名分支  
   ```
+
 - **推送**并重置
+
   ```shell
   $ git push origin -u <new>
   ```
+
 - **删除**远程分支
+
   ```shell
   $ git push origin --delete <old> #方法1
   $ git push origin :oldBranchName #方法2
@@ -826,7 +831,6 @@ $ git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
 $ git config --global --unset http.https://github.com.proxy
 $ git config --global --unset https.https://github.com.proxy
 ```
-
 
 ### clone 最新一次提交
 

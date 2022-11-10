@@ -43,11 +43,12 @@ HTML 备忘清单
 <p>我来自快速参考</p>
 <p>分享快速参考备忘单。</p>
 ```
+
 请参阅：[段落元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/p)
 
 ### HTML 链接
 
-```html 
+```html
 <a href="https://github.com/jaywcjlove/reference">
   Github
 </a>
@@ -67,8 +68,6 @@ HTML 备忘清单
 `target` | 链接目标位置：`_self`/`_blank`/`_top`/`_parent` |
 
 请参阅：[\<a> 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#attributes)
-
-
 
 ### Image 标签
 
@@ -163,9 +162,7 @@ HTML 备忘清单
   src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
 </iframe>
 
-
 请参阅：[内联框架元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)
-
 
 ### HTML 中的 JavaScript
 
@@ -176,7 +173,6 @@ HTML 备忘清单
 </script>
 ```
 
-
 #### 外部 JavaScript
 
 ```html
@@ -185,7 +181,6 @@ HTML 备忘清单
   <script src="app.js"></script>
 </body>
 ```
-
 
 ### HTML 中的 CSS
 
@@ -206,8 +201,6 @@ HTML 备忘清单
 </head>
 ```
 
-
-
 HTML5 标签
 -------------
 
@@ -227,7 +220,6 @@ HTML5 标签
 </body>
 ```
 
-
 ### 标题导航
 
 ```html
@@ -241,7 +233,6 @@ HTML5 标签
   </nav>
 </header>
 ```
-
 
 ### HTML5 Tags
 <!--rehype:wrap-class=row-span-4-->
@@ -280,7 +271,6 @@ HTML5 标签
 [track](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track)           | 媒体元素的字幕信息
 [video](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video)           | 嵌入视频
 [wbr](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr)               | 换行机会
-
 
 ### HTML5 Video
 
@@ -339,7 +329,6 @@ HTML5 标签
   音 <rp>(</rp><rt>yīn</rt><rp>)</rp>
 </ruby>
 
-
 ### HTML5 kdi
 
 ```html
@@ -358,7 +347,6 @@ HTML5 标签
  <li>User <bdi>إيان</bdi>: 90 points</li>
 </ul>
 
-
 ### HTML5 progress
 
 ```html
@@ -374,7 +362,6 @@ HTML5 标签
 ```
 
 <p>我爱<mark>备忘清单</mark></p>
-
 
 HTML 表格
 --------------
@@ -505,18 +492,17 @@ HTML 表单
 #### ↓ 预览
 
 <form method="POST" action="api/login" style="padding: 20px;">
-  <label for="email">邮箱: </label> 
+  <label for="email">邮箱: </label>
   <input type="email" id="email" name="email" class="border border-slate-400 mt-2">
   <br/>
-  <label for="pwd">密码:</label> 
+  <label for="pwd">密码:</label>
   <input type="password" id="pwd" name="pwd" class="border border-slate-400 mt-2">
   <br/>
   <input type="submit" value="登录" class="mt-2">
   <br/>
   <input type="checkbox" id="ck" name="ck" class="mt-2">
-  <label for="ck">记住我</label> 
+  <label for="ck">记住我</label>
 </form>
-
 
 HTML `<form>` 元素用于收集信息并将其发送到外部源。
 
@@ -602,13 +588,16 @@ Textarea 是一个多行文本输入控件
 单选按钮用于让用户只选择一个
 
 ### Checkboxes
+
 ```html
 <input type="checkbox" name="s" id="soc">
 <label for="soc">Soccer</label>
 <input type="checkbox" name="s" id="bas">
 <label for="bas">Baseball</label>
 ```
+
 #### ↓ 预览
+
 <form style="padding: 20px;">
     <input type="checkbox" name="sports" id="soccer">
     <label for="soccer">Soccer</label>
@@ -718,7 +707,6 @@ Textarea 是一个多行文本输入控件
 
 `将数据提交到服务器` 重置为默认值
 
-
 HTML input 标签
 -----------
 <!--rehype:body-class=cols-2-->
@@ -729,10 +717,10 @@ HTML input 标签
 输入标记是一个空元素，用于标识要从用户处获取的特定类型的字段信息。
 
 ```html
-<input type="text" name="?" value="?" minlength="6"	 required />
+<input type="text" name="?" value="?" minlength="6"  required />
 ```
 
-----
+---
 
 :-|:-
 :-|:-
@@ -794,7 +782,6 @@ HTML input 标签
 | `type="search"`         | <input type="search">                |
 | `type="range"`          | <input type="range">                 |
 
-
 ### Input CSS 选择器
 
 |               |                  |
@@ -820,6 +807,7 @@ meta 标记描述 HTML 文档中的元数据。它解释了关于 HTML 的其他
 <meta property="og:title"  content="···">
 <meta name="twitter:title" content="···">
 ```
+
 ---
 
 ```html
@@ -828,6 +816,7 @@ meta 标记描述 HTML 文档中的元数据。它解释了关于 HTML 的其他
 <meta property="og:url"  content="https://···">
 <meta name="twitter:url" content="https://···">
 ```
+
 ---
 
 ```html
@@ -836,6 +825,7 @@ meta 标记描述 HTML 文档中的元数据。它解释了关于 HTML 的其他
 <meta property="og:description"  content="···">
 <meta name="twitter:description" content="···">
 ```
+
 ---
 
 ```html
@@ -843,12 +833,14 @@ meta 标记描述 HTML 文档中的元数据。它解释了关于 HTML 的其他
 <meta property="og:image"  content="https://···">
 <meta name="twitter:image" content="https://···">
 ```
+
 ---
 
 ```html
 <!-- ua -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 ```
+
 ---
 
 ```html

@@ -192,14 +192,14 @@ puts "Hello world!"  # 代码的内联注释
 
 #### 比较运算符
 
-- `==` 
-- `!=` 
-- `>` 
-- `<` 
-- `>=` 
-- `<=` 
-- `<=>` 
-- `===` 
+- `==`
+- `!=`
+- `>`
+- `<`
+- `>=`
+- `<=`
+- `<=>`
+- `===`
 - `eql?`
 - `equal?`
 <!--rehype:className=cols-3 style-none-->
@@ -350,7 +350,7 @@ WEATHER = "rainy".freeze
 
 ### 伪变量
 
-名字 | 说明 
+名字 | 说明
 :-- | --
 `self`     | 当前方法的接收者对象
 `true`     | `TrueClass` 的实例
@@ -376,8 +376,8 @@ WEATHER = "rainy".freeze
 ### 预定义变量
 <!--rehype:wrap-class=col-span-3-->
 
-名字 | 说明 
-:-- | -- 
+名字 | 说明
+:-- | --
 `$!`         | 异常信息消息。raise 设置此变量
 `$@`         | 最后一个异常的回溯，它是 String 的数组，指示调用方法的位置。格式中的元素如：“filename:line”或“filename:line:in \`methodname'”(助记符：发生异常的地方)
 `$&`         | 与此范围内最后一次成功的模式匹配匹配的字符串，如果最后一次模式匹配失败，则返回 nil。 (助记符：在某些编辑器中类似于 &)这个变量是只读的
@@ -412,8 +412,8 @@ WEATHER = "rainy".freeze
 ### 预定义的全局常量
 <!--rehype:wrap-class=col-span-2-->
 
-名字 | 说明 
-:-- | -- 
+名字 | 说明
+:-- | --
 `TRUE`              | 典型的真值。在 Ruby 中，所有非 `false` 值（除了 `nil` 和 `false` 之外的所有值）都是 `true`
 `FALSE`             | 虚假本身
 `NIL`               | 零本身
@@ -446,18 +446,17 @@ defined? PI
 ### 数据类型
 <!--rehype:wrap-class=col-span-2 row-span-3-->
 
-
 类型    | 示例 | Class | 文档
 :-- | -- | -- | --
-`Integer` | a = 17                       | a.class > Integer <br>a.class.superclass > Numeric | [#][2]                           
-`Float`   | a = 87.23                    | a.class > Float <br>a.class.superclass > Numeric   | [#][3]                           
-`String`  | a = "Hello universe"         | a.class > String                                   | [#][4]                           
-`Array`   | a = [12, 34]                 | a.class > Array                                    | [#][5]                           
-`Hash`    | a = {type: "tea", count: 10} | a.class > Hash                                     | [#][6]                           
-`Boolean` | a = false<br>a = true        | a.class > FalseClass <br>a.class > TrueClass       | [TrueClass][7] [FalseClass][8] 
-`Symbol`  | a = :status                  | a.class > Symbol                                   | [#][9]                           
-`Range`   | a = 1..3                     | a.class > Range                                    | [#][10]                          
-`Nil`     | a = nil                      | a.class > NilClass                                 | [#][11]                          
+`Integer` | a = 17                       | a.class > Integer <br>a.class.superclass > Numeric | [#][2]
+`Float`   | a = 87.23                    | a.class > Float <br>a.class.superclass > Numeric   | [#][3]
+`String`  | a = "Hello universe"         | a.class > String                                   | [#][4]
+`Array`   | a = [12, 34]                 | a.class > Array                                    | [#][5]
+`Hash`    | a = {type: "tea", count: 10} | a.class > Hash                                     | [#][6]
+`Boolean` | a = false<br>a = true        | a.class > FalseClass <br>a.class > TrueClass       | [TrueClass][7] [FalseClass][8]
+`Symbol`  | a = :status                  | a.class > Symbol                                   | [#][9]
+`Range`   | a = 1..3                     | a.class > Range                                    | [#][10]
+`Nil`     | a = nil                      | a.class > NilClass                                 | [#][11]
 <!--rehype:className=show-header-->
 
 [进一步阅读](https://www.digitalocean.com/community/tutorials/understanding-data-types-in-ruby)
@@ -508,8 +507,7 @@ range.to_a
 
 一些有用的方法
 
-
-Method name | Output                             
+Method name | Output
 :----------- | -----
 `cover?`      | `(1..5).cover?(5)` => `true`
 `end`         | `('a'..'z').end` => `"z"`
@@ -518,6 +516,7 @@ Method name | Output
 `eql?`        | `((0..2).eql?(0..5)` => `false`
 
 ### 在 Range 中使用 step
+
 ```ruby
 (1..20).step(2) { |number| puts "#{number}"}
 # 输出
@@ -533,7 +532,6 @@ Method name | Output
 # 19
 ```
 
-
 条件结构
 ---
 
@@ -543,6 +541,7 @@ Method name | Output
 num = 2
 puts 'two' if num == 2 
 ```
+
 如果条件为真，则执行代码
 
 ### if elsif else 语句
@@ -688,7 +687,7 @@ puts string
 ### 有用的方法
 <!--rehype:wrap-class=col-span-3-->
 
-函数名称 | Output | Note 
+函数名称 | Output | Note
 :--- | ----- | ------
 length or size                   | `"HELLO World".length` => `11` <br> `"HELLO World".size` => `11`                                    | 返回字符串的长度
 reverse                          | `"hello worlD".reverse` => `"Dlrow olleh"`                                                            | 返回反转的字符串
@@ -718,7 +717,6 @@ squeeze                          | `"Booook".squeeze` => `"Bok"`                
 eql?                             | `s = 'foo'` => `true` <br> `s.eql?('foo')` => `true`         | 如果对象具有相同的长度和内容，则返回 true；作为自己；否则为假
 \+                                | `"sammy " + "shark"` => `"sammyshark"`                      | 返回 self 和给定的其他字符串的连接
 \+                                | `"sammy " + "shark"` => `"sammyshark"`                      | 返回 self 和给定的其他字符串的连接
-
 
 方法
 ---
@@ -802,6 +800,7 @@ Mobile = Class.new do
 end
 Mobile.ring
 ```
+
 ```ruby
 Mobile = Class.new
 class << Mobile
@@ -888,6 +887,7 @@ puts a
 nil.nil?
 # true
 ```
+
 您可以拥有自己的布尔方法
 
 ```ruby
@@ -1096,7 +1096,6 @@ give_me_data p
 ```
 
 proc 就像一个可以存储在变量中的块
-
 
 ### 任意参数
 <!--rehype:wrap-class=row-span-2-->
@@ -1441,7 +1440,6 @@ arr.uniq #=> [2, 5, 6, 556, 8, 9, 0, 123]
 ```
 <!--rehype:className=wrap-text-->
 
-
 ### 检查数组中是否存在值（`include？`）
 
 ```ruby
@@ -1511,13 +1509,16 @@ sorted_primes = primes.sort
 puts "#{sorted_primes}"
 # 输出 => [2, 3, 5, 7]
 ```
+
 or in-place sort
+
 ```ruby
 primes = [7, 2, 3, 5]
 primes.sort!
 puts "#{primes}"
 # 输出 => [2, 3, 5, 7]
 ```
+
 ```ruby
 planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
 planets.sort
@@ -1628,7 +1629,6 @@ primes = [7, 2, 3, 5, 5]
 primes.delete(5)
 # [7, 2, 3]
 ```
-
 
 ### each
 <!--rehype:wrap-class=row-span-3-->
@@ -1754,6 +1754,7 @@ end
 ```
 <!--rehype:className=wrap-text-->
 ---
+
 ```ruby
 a = 1
 star = '*'
@@ -1858,7 +1859,9 @@ data_sample = [2, 3, 5, 7]
 # 17
 # 19
 ```
+
 ---
+
 ```ruby
 19.step(1, -2) { |number| puts "#{number}"}
 # 输出
@@ -1894,6 +1897,7 @@ numbers.inject(:+)
 # 输出
 # 10
 ```
+
 使用初始值和符号
 
 ```ruby
@@ -2002,7 +2006,6 @@ p str #=> "sixth fifth fourth third second first "
 
 布尔可枚举方法
 ---
-
 
 ### 布尔可枚举方法
 <!--rehype:wrap-class=row-span-2-->
@@ -2160,7 +2163,9 @@ while count >= 1
   # while loop ends here
 end
 ```
+
 输出
+
 ```
 Ruby Cheatsheet
 Ruby Cheatsheet
@@ -2178,7 +2183,9 @@ for count in 1..5 do
   puts text
 end
 ```
+
 输出
+
 ```
 Ruby Cheatsheet
 Ruby Cheatsheet
@@ -2201,7 +2208,9 @@ loop do
   # ending of ruby do..while loop
 end
 ```
+
 输出
+
 ```
 Ruby Cheatsheet
 ```
@@ -2218,7 +2227,9 @@ until var == 11 do
   # here loop ends
 end
 ```
+
 输出
+
 ```
 70
 80
@@ -2403,6 +2414,7 @@ true
 a.instance_of? Numeric
 false
 ```
+
 如果对象是给定类的实例，而不是子类或超类，则返回 true
 
 ### 打印一个类的所有方法名
@@ -2412,7 +2424,9 @@ puts (String.methods).sort
 # 排除从 Object 类继承的方法
 puts (String.methods - Object.public_instance_methods).sort
 ```
+
 ### 检查一个类是否有特定的方法
+
 ```ruby
 String.respond_to?(:prepend)
 true
@@ -2420,16 +2434,12 @@ String.respond_to?(:append)
 false
 ```
 
-
 另见
 ---
 
 - [Ruby 官网](https://www.ruby-lang.org/en/) _(ruby-lang.org)_
 - [Ruby Cheatsheet](https://github.com/lifeparticle/Ruby-Cheatsheet) _(github.com)_
 
-
-
-[1]: https://ruby-doc.org/core-3.1.2/doc/keywords_rdoc.html
 [2]: https://ruby-doc.org/core-3.1.2/Integer.html
 [3]: https://ruby-doc.org/core-3.1.2/Float.html
 [4]: https://ruby-doc.org/core-3.1.2/String.html
@@ -2440,4 +2450,3 @@ false
 [9]: https://ruby-doc.org/core-3.1.2/Symbol.html
 [10]: https://ruby-doc.org/core-3.1.2/Range.html
 [11]: https://ruby-doc.org/core-3.1.2/NilClass.html
-[12]: https://ruby-doc.org/core-3.1.2/Exception.html

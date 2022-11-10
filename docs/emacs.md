@@ -133,7 +133,7 @@ $ emacs
 <!--rehype:wrap-class=row-span-2-->
 
 向后 | 向前 | 要杀死的实体
-:- | :- | :- 
+:- | :- | :-
 `DEL`         | `C-d`   | 字符 <br>_(删除)_
 `M-DEL`       | `M-d`   | 单词
 `M-0` `C-k`   | `C-k`   | 行 <br/> _(到结尾)_
@@ -522,5 +522,3 @@ With prefix argument LINE, put point on LINE."
                   0
               (prefix-numeric-value line))))
 ```
-
-

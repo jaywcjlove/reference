@@ -13,7 +13,6 @@ Curl 是一种在服务器之间传输数据的工具，支持协议，包括 HT
 - [Curl GitHub 源码仓库](https://github.com/curl/curl) _(github.com)_
 - [Curl 官方网站](https://curl.se/) _(curl.se)_
 
-
 ### Options
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
@@ -151,9 +150,9 @@ curl -sSL https://get.rvm.io | bash
 命令 | 说明
 :- | :-
 `curl -L -s http://ipecho.net/plain, curl -L -s http://whatismijnip.nl` | 获取我的公共 `IP`
-`curl -u $username:$password http://repo.dennyzhang.com/README.txt` | 带凭证的 `curl` 
+`curl -u $username:$password http://repo.dennyzhang.com/README.txt` | 带凭证的 `curl`
 `curl -v -F key1=value1 -F upload=@localfilename <URL>` | `curl` 上传
-`curl -k -v --http2 https://www.google.com/` | 使用 http2 curl 
+`curl -k -v --http2 https://www.google.com/` | 使用 http2 curl
 `curl -T cryptopp552.zip -u test:test ftp://10.32.99.187/` | curl `ftp` 上传
 `curl -u test:test ftp://10.32.99.187/cryptopp552.zip -o cryptopp552.zip` | curl `ftp` 下载
 `curl -v -u admin:admin123 --upload-file package1.zip http://mysever:8081/dir/package1.zip` | 使用凭证 `curl` 上传

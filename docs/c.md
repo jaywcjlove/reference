@@ -560,13 +560,13 @@ printf("Line 6 - c 的值是 %d\n", c );
 <!--rehype:wrap-class=col-span-2-->
 
 运算符 | 描述 | 实例
-:- |:- |:- 
+:- |:- |:-
 `&` | 按位与操作，按二进制位进行"与"运算 | `(A & B)` 将得到 `12` 即为 0000 1100
 `\|` | 按位或运算符，按二进制位进行"或"运算 | `(A \| B)` 将得到 `61` 即为 0011 1101
 `^` | 异或运算符，按二进制位进行"异或"运算 | `(A ^ B)` 将得到 `49` 即为 0011 0001
 `~` | 取反运算符，按二进制位进行"取反"运算 | `(~A)` 将得到 `-61` 即为 1100 0011
-`<<` | 	二进制左移运算符 | `A << 2` 将得到 `240` 即为 1111 0000
-`>>` | 	二进制右移运算符 | `A >> 2` 将得到 `15` 即为 0000 1111
+`<<` |  二进制左移运算符 | `A << 2` 将得到 `240` 即为 1111 0000
+`>>` |  二进制右移运算符 | `A >> 2` 将得到 `15` 即为 0000 1111
 
 数据类型 Data Types
 ---
@@ -608,7 +608,7 @@ printf("%c\n", myLetter);
 printf("%lf\n", myDouble);
 ```
 
----
+----
 
 数据类型 | 说  明
 :- | :-
@@ -619,7 +619,6 @@ printf("%lf\n", myDouble);
 `float` | 单精度浮点型
 `double` | 双精度浮点型
 `void` | 无类型
-
 
 ### 基本格式说明符
 
@@ -659,17 +658,17 @@ printf("%c\n", myLetter);
 
 指令 | 描述
 ---- | ----
-`#define` | 定义宏 
-`#include` | 包含一个源代码文件 
-`#undef` | 取消已定义的宏 
-`#ifdef` | 如果宏已经定义，则返回真 
-`#ifndef` | 如果宏没有定义，则返回真 
-`#if` | 如果给定条件为真，则编译下面代码 
-`#else` | `#if` 的替代方案 
+`#define` | 定义宏
+`#include` | 包含一个源代码文件
+`#undef` | 取消已定义的宏
+`#ifdef` | 如果宏已经定义，则返回真
+`#ifndef` | 如果宏没有定义，则返回真
+`#if` | 如果给定条件为真，则编译下面代码
+`#else` | `#if` 的替代方案
 `#elif` | 如果 `#if` 条件为假，当前条件为`真`
-`#endif` | 结束一个 `#if……#else` 条件编译块 
-`#error` | 当遇到标准错误时，输出错误消息 
-`#pragma` | 使用标准化方法，向编译器发布特殊的命令到编译器中 
+`#endif` | 结束一个 `#if……#else` 条件编译块
+`#error` | 当遇到标准错误时，输出错误消息
+`#pragma` | 使用标准化方法，向编译器发布特殊的命令到编译器中
 
 ```c
 // 所有的 MAX_ARRAY_LENGTH 替换为 20
@@ -742,8 +741,6 @@ Carole 和 Debra: 我们爱你！
 ```
 
 需要把一个宏的参数转换为字符串常量时，使用字符串常量化运算符 `#`
-
-
 
 ### 标记粘贴运算符（##）
 
@@ -821,12 +818,12 @@ void myFunction() { // 声明 declaration
 }
 ```
 
----
+----
 
 - `Declaration` 声明函数名称、返回类型和参数 _(如果有)_
 - `Definition` 函数体 _(要执行的代码)_
 
----
+----
 
 ```c
 // 函数声明
@@ -949,7 +946,7 @@ printf("%f", floor(1.4)); // 四舍五入 (舍)
 printf("%f", pow(4, 3));  // x(4)的y(3)次方
 ```
 
----
+----
 
 - `abs(x)` 绝对值
 - `acos(x)` 反余弦值
@@ -1304,16 +1301,21 @@ void main (){
 
 - 安装 [`Docker`](./docker.md)
 - 创建 [`Dockerfile`](./dockerfile.md) 文件
+
     ```dockerfile
     FROM alpine:3.14
     RUN apk add --no-cache gcc musl-dev
     RUN apk add --no-cache g++
     ```
+
 - 生成本地 myalpine 镜像
+
     ```bash
     docker build -t myalpine .
     ```
+
 - 运行映像，把当前路径 `($PWD)` 映射至容器的 `/test` 目录，用 `gcc` 编译程序，`exit`返回
+
     ```bash
     docker run -it -v $PWD:/test myalpine
     root@b1a38bd7107a:/# cd test
@@ -1323,7 +1325,6 @@ void main (){
     exit
     ```
 <!--rehype:className=style-timeline-->
-
 
 另见
 ---

@@ -46,7 +46,7 @@ G gg H M L k j ▶  print("to")
 ┆        ╰┈┈┈┈┈▷ 
 ┆                 - SCREEN 1 END
 ╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈▷  print("SCREEN 2")
-``` 
+```
 
 ### 动作
 <!--rehype:wrap-class=row-span-2-->
@@ -163,7 +163,7 @@ G gg H M L k j ▶  print("to")
 快捷方式 | 说明
 :- | -
 | `d` _\|_ `x` | 删除选择 _(剪切)_
-| `s`          | 替换选择 
+| `s`          | 替换选择
 | `y`          | Yank 选择 _(复制)_
 <!--rehype:className=shortcuts-->
 
@@ -210,7 +210,7 @@ Vim 运算符
 
 快捷方式 | 说明
 :- | -
-`d`      | <yel>w</yel> 
+`d`      | <yel>w</yel>
 运算符 | 动作
 <!--rehype:className=shortcuts-->
 
@@ -275,7 +275,6 @@ Vim 文本对象
 
 ### 用法
 <!--rehype:style=background:#d7a100;-->
-
 
 快捷方式 | 说明
 :- | -
@@ -435,6 +434,7 @@ Vim 搜索和替换
 ```vim
 :%s/{pattern}/{str}/[flags]
 ```
+
 ---
 
 :- | -
@@ -460,7 +460,7 @@ Vim 搜索和替换
 `,3`    | 接下来的 `3` 行
 `-3,`   | 转发 `3` 行
 
-###  全局命令
+### 全局命令
 <!--rehype:wrap-class=row-span-2-->
 
 ```vim
@@ -515,7 +515,6 @@ Vim 搜索和替换
 
 ### 例子
 <!--rehype:wrap-class=col-span-2-->
-
 
 ```shell
 :s/a\|b/xxx\0xxx/g               # 将 "a b"      修改为 "xxxaxxx xxxbxxx"

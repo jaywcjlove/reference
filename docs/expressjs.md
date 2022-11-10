@@ -10,16 +10,21 @@ Express 备忘清单
 <!--rehype:wrap-class=row-span-2-->
 
 - 创建项目，添加 `package.json` 配置
+
   ```bash
   $ mkdir myapp # 创建目录
   $ cd myapp    # 进入目录
   $ npm init -y # 初始化一个配置
   ```
+
 - 安装依赖
+
   ```bash
   $ npm install express # 安装依赖
   ```
+
 - 入口文件 `index.js` 添加代码：
+
   ```js
   const express = require('express')
   const app = express()
@@ -31,7 +36,9 @@ Express 备忘清单
     console.log(`监听端口${port}示例应用`)
   })
   ```
+
 - 使用以下命令运行应用程序
+
   ```bash
   $ node index.js
   ```
@@ -189,7 +196,7 @@ app.get('/', function (req, res) {
 
 :- | :-
 :- | :-
-`res.app ` | [#](http://expressjs.com/en/4x/api.html#res.app)
+`res.app` | [#](http://expressjs.com/en/4x/api.html#res.app)
 `res.headersSent` | [#](http://expressjs.com/en/4x/api.html#res.headersSent)
 `res.locals` | [#](http://expressjs.com/en/4x/api.html#res.locals)
 

@@ -111,7 +111,6 @@ function () {}
 
 如果代码块内容太长，使用强制换行类(`wrap-text`)解决
 
-
 ### 展示表格表头
 
 ```markdown
@@ -170,7 +169,7 @@ export const Student = (
 
 ### 快捷键样式
 
-| Key | value | 
+| Key | value |
 | ---- | ---- |
 | `快捷键` | 说明    |
 | `快捷键` | 说明    |
@@ -230,7 +229,6 @@ const school = <div>学校</div>;
 `<!--rehype:className=style-none-->` | \<li> 没有标记
 `<!--rehype:className=style-timeline-->` | 时间轴样式
 `<!--rehype:className=style-arrow-->` | 箭头标记
-
 
 ### 隐藏卡片标题
 <!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
@@ -583,7 +581,6 @@ H2 部分
 
 在 `Title 1` 标题添加 `col-span-2` 和 `row-span-2` 占位类，使用 `空格` 间隔。
 
-
 表格
 ---
 
@@ -700,14 +697,19 @@ H2 部分
 <!--rehype:wrap-class=row-span-2-->
 
 - **重命名为 new_name**
+
   ```bash
   $ git branch -m <new_name>
   ```
+
 - 推送和**重置**
+
   ```bash
   $ git push origin -u <new_name>
   ```
+
 - 删除远程分支
+
   ```bash
   $ git push origin --delete <old>
   ```

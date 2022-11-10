@@ -64,7 +64,6 @@ NAME = "John"   # => Error (关于空间)
 
 见：[特殊参数](http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables)
 
-
 ### 函数
 
 ```bash
@@ -204,7 +203,7 @@ DIRPATH=${SRC%$BASEPATH}
 echo $DIRPATH   # => "/path/to/"
 ```
 
-### Transform 
+### Transform
 
 ```bash
 STR="HELLO WORLD!"
@@ -220,7 +219,7 @@ echo "${ARR[@],}" # => hello world
 echo "${ARR[@]^}" # => Hello World
 ```
 
-Bash 数组 
+Bash 数组
 ------
 
 ### 定义数组
@@ -247,14 +246,14 @@ Numbers+=(4 5) # 附加 => 1 2 3 4 5
 
 :- | -
 :- | -
-`${Fruits[0]}`     | 第一个元素 
-`${Fruits[-1]}`    | 最后一个元素 
-`${Fruits[*]}`     | 所有元素 
-`${Fruits[@]}`     | 所有元素 
-`${#Fruits[@]}`    | 总数 
-`${#Fruits}`       | 第一节长度 
-`${#Fruits[3]}`    | 第n个长度 
-`${Fruits[@]:3:2}` | 范围 
+`${Fruits[0]}`     | 第一个元素
+`${Fruits[-1]}`    | 最后一个元素
+`${Fruits[*]}`     | 所有元素
+`${Fruits[@]}`     | 所有元素
+`${#Fruits[@]}`    | 总数
+`${#Fruits}`       | 第一节长度
+`${#Fruits[3]}`    | 第n个长度
+`${Fruits[@]:3:2}` | 范围
 `${!Fruits[@]}`    | 所有 Key
 
 ### 迭代 Iteration
@@ -265,7 +264,9 @@ for e in "${Fruits[@]}"; do
     echo $e
 done
 ```
+
 #### With index
+
 ```bash
 for i in "${!Fruits[@]}"; do
   printf "%s\t%s\n" "$i" "${Fruits[$i]}"
@@ -443,7 +444,6 @@ fi
 `[[ f1 -ot f2 ]]` | f2 早于 f1
 `[[ f1 -ef f2 ]]` | 相同的文件
 
-
 ### 更多条件
 
 条件 | 描述
@@ -451,7 +451,7 @@ fi
 `[[ -o noclobber ]]` | 如果启用 OPTION
 `[[ ! EXPR ]]`       | 不是 Not
 `[[ X && Y ]]`       | 和 And
-`[[ X \|\| Y ]]`     | 或者 Or 
+`[[ X \|\| Y ]]`     | 或者 Or
 
 ### 逻辑和，或
 
@@ -554,7 +554,7 @@ until [ $count -gt 10 ]; do
 done
 ```
 
-### 永远 
+### 永远
 
 ```bash
 while true; do
@@ -569,7 +569,6 @@ while :; do
     # here is some code.
 done
 ```
-
 
 ### 正在读取行
 
@@ -720,8 +719,7 @@ Bash 历史
 
 `!!` 可以替换为任何有效的扩展，即 `!cat`、`!-2`、`!42` 等。
 
-
-各种各样的 
+各种各样的
 -------------
 
 ### 数值计算
@@ -740,7 +738,6 @@ $(($RANDOM%200))  # Random number 0..199
 (cd somedir; echo "I'm now in $PWD")
 pwd # still in first directory
 ```
-
 
 ### 检查命令
 
@@ -764,7 +761,6 @@ python hello.py &>/dev/null    # 标准输出和标准错误到（空null）
 ```bash
 python hello.py < foo.txt      # 将 foo.txt 提供给 python 的标准输入
 ```
-
 
 ### 来源相对
 
@@ -790,7 +786,6 @@ case "$1" in
     ;;
 esac
 ```
-
 
 ### 陷阱错误
 <!--rehype:wrap-class=col-span-2-->
@@ -862,7 +857,6 @@ fi
 
 见[特殊参数](http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables)。
 
-
 ### grep 检查
 <!--rehype:wrap-class=col-span-2-->
 
@@ -872,11 +866,10 @@ if grep -q 'foo' ~/.bash_history; then
 fi
 ```
 
-
 ### 反斜杠转义
 <!--rehype:wrap-class=row-span-2-->
 
-- &nbsp; 
+- &nbsp;
 - \!
 - \"
 - \#
@@ -963,11 +956,11 @@ echo "${args[@]}"
 另见
 ----
 
-* [Shell 教程](https://jaywcjlove.github.io/shell-tutorial) _(jaywcjlove.github.io)_
-* [Devhints](https://devhints.io/bash) _(devhints.io)_
-* [Bash-hackers wiki](http://wiki.bash-hackers.org/) _(bash-hackers.org)_
-* [Shell vars](http://wiki.bash-hackers.org/syntax/shellvars) _(bash-hackers.org)_
-* [Learn bash in y minutes](https://learnxinyminutes.com/docs/bash/) _(learnxinyminutes.com)_
-* [Bash Guide](http://mywiki.wooledge.org/BashGuide) _(mywiki.wooledge.org)_
-* [ShellCheck](https://www.shellcheck.net/) _(shellcheck.net)_
-* [shell - Standard Shell](https://devmanual.gentoo.org/tools-reference/bash/index.html) _(devmanual.gentoo.org)_
+- [Shell 教程](https://jaywcjlove.github.io/shell-tutorial) _(jaywcjlove.github.io)_
+- [Devhints](https://devhints.io/bash) _(devhints.io)_
+- [Bash-hackers wiki](http://wiki.bash-hackers.org/) _(bash-hackers.org)_
+- [Shell vars](http://wiki.bash-hackers.org/syntax/shellvars) _(bash-hackers.org)_
+- [Learn bash in y minutes](https://learnxinyminutes.com/docs/bash/) _(learnxinyminutes.com)_
+- [Bash Guide](http://mywiki.wooledge.org/BashGuide) _(mywiki.wooledge.org)_
+- [ShellCheck](https://www.shellcheck.net/) _(shellcheck.net)_
+- [shell - Standard Shell](https://devmanual.gentoo.org/tools-reference/bash/index.html) _(devmanual.gentoo.org)_

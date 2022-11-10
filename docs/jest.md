@@ -546,7 +546,6 @@ test('async test', () => {
 
 从你的测试中 _返回_ 一个 `Promise`
 
-
 ## 模拟
 
 ### 模拟函数
@@ -800,7 +799,6 @@ const fs = require('fs')
 const fs = require.requireActual('fs')
 ```
 
-
 数据驱动测试（Jest 23+）
 ----
 
@@ -885,7 +883,6 @@ test('第二个文本', () => {
 ```
 
 `Node.js` 和 `Jest` 会缓存你需要的模块。 要测试具有副作用的模块，您需要在测试之间重置模块注册表
-
 
 另见
 ----

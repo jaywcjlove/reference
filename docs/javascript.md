@@ -54,7 +54,6 @@ count = 10;
 console.log(count); // => 10
 ```
 
-
 ### const 关键字
 
 ```javascript
@@ -238,10 +237,8 @@ parseFloat();
 parseInt();                 
 ```
 
-
 JavaScript 条件
 ----
-
 
 ### 操作符
 <!--rehype:wrap-class=row-span-3-->
@@ -273,7 +270,7 @@ true && false;       // false
 1 === '1'             // false
 ```
 
-#### 逻辑运算符 !
+#### 逻辑运算符
 
 ```javascript
 let lateToWork = true;
@@ -726,7 +723,6 @@ numbers.concat(newFirstNumber)
 ```
 
 如果你想避免改变你的原始数组，你可以使用 concat。
-
 
 ### 方法 .splice()
 
@@ -1295,7 +1291,6 @@ class Song {
 }
 ```
 
-
 JavaScript Modules
 ----
 <!--rehype:body-class=cols-2-->
@@ -1639,7 +1634,7 @@ msg(); // Message: Hello World! <-- 2 秒后
 JavaScript 请求
 ----
 
-### JSON 
+### JSON
 
 ```JS
 const jsonObj = {
