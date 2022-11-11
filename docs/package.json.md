@@ -328,6 +328,84 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 字段由模块作者提供，作为 `JavaScript` 包或组件工具的提示，用于打包模块以供客户端使用。 提案就[在这里](https://github.com/defunctzombie/package-browser-field-spec)。
 
+### `exports`
+<!--rehype:wrap-class=col-span-3-->
+
+所有包的版本都支持 main 字段，但它的功能是有限的。现在在 package.json 可以使用最新的 exports 字段导出。具体参考：<https://nodejs.org/api/packages.html>
+
+   ```json
+   {
+     "name": "mod",
+     "exports":{
+       ".": "./lib/index.js",
+       "./lib/*": "./lib/*.js"
+     }
+   }
+   ```
+
+#### 导出和导入
+
+1. 如果同时出现 main 和 exports 字段，只会读取 exports 字段
+
+   ```json
+   {
+     "main": "./index.js",
+     "exports": "./index.js"
+   } 
+   ```
+
+2. 导出子路径中的模块
+
+   ```json
+   {
+     "name": "mod",
+     "exports": {
+       ".": "./index.js",
+       "./sub": "./src/sub.js"
+     }
+   }
+   ```
+
+   ```js
+   // 导入
+   import sub from "mod/sub"
+   ```
+
+3. 如果 `.` 是唯一的导出时，其提供了语法糖
+
+   ```json
+   {
+     "exports": {
+       ".": "./dist/index.js"
+     }
+     //简写
+     //"exports": "./dist/index.js"
+   }
+   ```
+
+4. 条件导出。根据导出包的格式不同而设置的情况。
+   - <span style="color:red">注意：</span>由于 require 和 import 互斥，所以 require 不能加载 es 的模块，export 不能加载 cjs 模块
+
+   :- | -
+   :- | -
+   export | 通过 import 或 import() 或 es 模块加载的任何顶层导入或解析操作加载时，匹配。
+   require | 当包通过 require() 加载时匹配。预期的格式包括 CommonJS、JSON 和本地插件。
+   node | 匹配任何 Node.js 环境。可以是 cjs 或 es 模块文件。必须在 import 或 require 之后。
+   default | 默认的降级条件。可以是一个 cjs 或 es 模块文件。这个条件应该总是排在最后。
+
+   ```json
+   {
+     "exports": {
+       ".": {
+         "import":"./dist/index.mjs",
+         "require":"./dist/index.cjs",
+         "node": "./dist/ployfill.js",
+         "default": "./dist/default.js"
+       }
+     }
+   }
+   ```
+
 ## 任务类字段
 
 包里还可以包含一些可执行脚本或者其他配置信息。
