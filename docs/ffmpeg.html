@@ -411,12 +411,13 @@
 <pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> file.aac <span class="token parameter variable">-acodec</span> mp3 <span class="token parameter variable">-ar</span> <span class="token number">44100</span> <span class="token parameter variable">-ab</span> <span class="token number">128000</span> output.mp3
 </span></code></pre>
 <!--rehype:className=wrap-text -->
-</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="-map-命令"><a aria-hidden="true" tabindex="-1" href="#-map-命令"><span class="icon icon-link"></span></a>-map 命令</h3><div class="wrap-body">
-<!--rehype:wrap-class=col-span-2-->
-<p class="wrap-text "><code>-map</code> 命令用于指定索引文件，以及索引文件中流类型和它的索引</p>
-<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="-map-命令"><a aria-hidden="true" tabindex="-1" href="#-map-命令"><span class="icon icon-link"></span></a>-map 命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p><code>-map</code> 命令用于指定索引文件，以及索引文件中流类型和它的索引</p>
+<hr>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token parameter variable">-map</span> index:stram_type:stream_index
 </span></code></pre>
+<hr>
 
 
 
@@ -439,24 +440,17 @@
 
 
 <table><thead><tr><th align="left">:-</th><th>-</th></tr></thead><tbody><tr><td align="left"><code>input_file_index</code></td><td>输入的文件索引(从 0 开始)</td></tr><tr><td align="left"><code>stream_type</code></td><td>指定文件流的类型(a -> 音频，v -> 视频，s -> 字幕)</td></tr><tr><td align="left"><code>stream_index</code></td><td>指定流类型的索引(从 0 开始)</td></tr></tbody></table>
-<ul>
-<li>
 <p>将第一个输入文件的第二个音频拷贝到 out.mp3</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> input.mp4 <span class="token parameter variable">-map</span> <span class="token number">0</span>:a:1 <span class="token parameter variable">-c</span> copy out.mp3
 </span></code></pre>
-</li>
-<li>
 <p>将第一个输入文件的视频流和第二个输入文件的音频流拷贝到 out.mp4</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> i1.mp4 <span class="token parameter variable">-i</span> i2.mp4 <span class="token parameter variable">-map</span> <span class="token number">0</span>:v <span class="token parameter variable">-map</span> <span class="token number">0</span>:a <span class="token parameter variable">-c</span> copy out.mp4
 </span></code></pre>
-</li>
-</ul>
 <h4 id="反向--map-命令"><a aria-hidden="true" tabindex="-1" href="#反向--map-命令"><span class="icon icon-link"></span></a>反向 -map 命令</h4>
 <!--rehype:wrap-class=col-span-2-->
 <p class="wrap-text ">反向的 map 命令（在 map 命令的参数前加负号）。例如，<code>-map -0:a:0</code>，忽略第一个文件中的第一个音频流。</p>
 <!--rehype:className=wrap-text -->
-</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="切换容器转换类型"><a aria-hidden="true" tabindex="-1" href="#切换容器转换类型"><span class="icon icon-link"></span></a>切换容器(转换类型)</h3><div class="wrap-body">
-<!--rehype:wrap-class=row-span-2-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="切换容器转换类型"><a aria-hidden="true" tabindex="-1" href="#切换容器转换类型"><span class="icon icon-link"></span></a>切换容器(转换类型)</h3><div class="wrap-body">
 <p>将容器从 <code>MKV</code> 更改为 <code>MP4</code></p>
 <pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> file.mkv <span class="token parameter variable">-acodec</span> copy <span class="token parameter variable">-vcodec</span> copy file.mp4
 </span></code></pre>
@@ -475,15 +469,15 @@
 </span></code></pre>
 <!--rehype:className=wrap-text -->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="图片中的视频"><a aria-hidden="true" tabindex="-1" href="#图片中的视频"><span class="icon icon-link"></span></a>图片中的视频</h3><div class="wrap-body">
-<p>如果您有多个编号的图像 image1.jpg、image2.jpg... 像这样从它们创建一个视频</p>
 <pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-f</span> image2 <span class="token parameter variable">-i</span> image%d.jpg video.mp4
 </span></code></pre>
 <!--rehype:className=wrap-text -->
+<p>多个编号的图像 image1.jpg、image2.jpg... 像这样从它们创建一个视频</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将视频拆分为图像"><a aria-hidden="true" tabindex="-1" href="#将视频拆分为图像"><span class="icon icon-link"></span></a>将视频拆分为图像</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-i</span> video.mp4 image%d.jpg
 </span></code></pre>
-</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="录屏"><a aria-hidden="true" tabindex="-1" href="#录屏"><span class="icon icon-link"></span></a>录屏</h3><div class="wrap-body">
-<!--rehype:wrap-class=col-span-2-->
+</div></div></div><div class="wrap h3body-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="录屏"><a aria-hidden="true" tabindex="-1" href="#录屏"><span class="icon icon-link"></span></a>录屏</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 <h4 id="查找所有可用设备"><a aria-hidden="true" tabindex="-1" href="#查找所有可用设备"><span class="icon icon-link"></span></a>查找所有可用设备</h4>
 <pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ ffmpeg <span class="token parameter variable">-f</span> avfoundation <span class="token parameter variable">-list_devices</span> <span class="token boolean">true</span> <span class="token parameter variable">-i</span> <span class="token string">""</span>
 </span></code></pre>
