@@ -14,7 +14,7 @@ Contributing 贡献
 这是您可以在 Quick Reference 备忘清单上使用的样式参考！【备忘清单介绍】
 ```
 
-只需要 `标题<h1>` 和`介绍`(标题下面)。脚本会自动识别，通过 GitHub Actions 自动发布 [`Quick Reference`](https://jaywcjlove.github.io/reference) 网站。
+只需要 `标题<h1>` 和 `介绍` (标题下面)。脚本会自动识别，通过 GitHub Actions 自动发布 [`Quick Reference`](https://jaywcjlove.github.io/reference) 网站。
 
 ## 目录结构
 
@@ -38,7 +38,7 @@ Contributing 贡献
 
 ## CSS 类注释
 
-[`Quick Reference`](https://jaywcjlove.github.io/reference) 使用 [`@wcj/markdown-to-html`](https://github.com/jaywcjlove/markdown-to-html) 转换 `Markdown`，并使用 [`rehype-attr`](https://github.com/jaywcjlove/rehype-attr) 插件让其支持通过其注释语法添加类和样式。 此外，您可以在 Quick Reference 备忘清单上使用样式参考：https://jaywcjlove.github.io/reference/docs/quickreference.html
+[`Quick Reference`](https://jaywcjlove.github.io/reference) 使用 [`@wcj/markdown-to-html`](https://github.com/jaywcjlove/markdown-to-html) 转换 `Markdown`，并使用 [`rehype-attr`](https://github.com/jaywcjlove/rehype-attr) 插件让其支持通过其注释语法添加类和样式。此外，您可以在 Quick Reference 备忘清单上使用样式参考：<https://jaywcjlove.github.io/reference/docs/quickreference.html>
 
 最后，参考现有备忘清单的源代码是一个好习惯！
 
@@ -61,14 +61,13 @@ Contributing 贡献
 - SVG 图标尺寸 `<svg height="1em" width="1em"`
 - SVG 图标颜色使用继承颜色值 `<svg fill="currentColor"`
 
-#### 提示配置
+### 提示配置
 
 ```markdown
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
 ```
 
 添加 `contributing` 类名，会在卡片下方添加 _`👆待完善需要您的参与`_，添加 `data-info=👆看看还缺点儿什么？`，更换默认提示文本。
-
 
 ```markdown
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=tag&data-lang=Python-->
@@ -83,3 +82,5 @@ npm i          # 安装依赖
 npm run build  # 编译输出 HTML
 npm run start  # 监听 md 文件编译输出 HTML
 ```
+
+- 或者你也可以使用 `pnpm` 或者 `yarn` 做为包管理器

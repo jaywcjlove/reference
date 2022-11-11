@@ -234,11 +234,11 @@ $ ffmpeg -i in.mp4 -filter:v scale="538:trunc(ow/a/2)*2" -c:a copy out.mp4
 ### 提取音频流
 
 ```bash
-$ ffmpeg -i file.mp4 -vn -acodec copy output.aac 
+$ ffmpeg -i file.mp4 -vn -c copy output.aac 
 ```
 <!--rehype:className=wrap-text -->
 
-将`-vn`(无视频)与 `-acodec copy` 结合起来。请注意，输出文件扩展名必须与输入文件中的音频编解码器匹配，`-acodec copy` 才能工作。
+`-vn` (过滤视频)，使用 `-c copy`，不会重新解码和编码，加快速度。
 
 ### 创建缩略图
 <!--rehype:wrap-class=row-span-2-->
@@ -256,6 +256,12 @@ $ ffmpeg -ss 10 -i <input file> -vframes 1 -vcodec png -an thumb.png
 $ ffmpeg -i <input file> -vf fps=1/60 thumbnails/thumb%03d.png
 ```
 <!--rehype:className=wrap-text -->
+
+### 提取视频流
+
+```bash
+$ ffmpeg -i file.mp4 -an -c copy output.mp4
+```
 
 ### 处理 id3 标签
 <!--rehype:wrap-class=row-span-2-->
@@ -281,6 +287,40 @@ $ ffmpeg -i file.mp3 -acodec copy -metadata title="<title>" -metadata artist="<a
 ```bash
 $ ffmpeg -i file.aac -acodec mp3 -ar 44100 -ab 128000 output.mp3
 ```
+<!--rehype:className=wrap-text -->
+
+### -map 命令
+<!--rehype:wrap-class=col-span-2-->
+
+`-map` 命令用于指定索引文件，以及索引文件中流类型和它的索引
+<!--rehype:className=wrap-text -->
+
+```bash
+-map index:stram_type:stream_index
+```
+
+:- | -
+:- | -
+`input_file_index` | 输入的文件索引(从 0 开始)
+`stream_type` | 指定文件流的类型(a -> 音频，v -> 视频，s -> 字幕)
+`stream_index` | 指定流类型的索引(从 0 开始)
+
+- 将第一个输入文件的第二个音频拷贝到 out.mp3
+
+   ```bash
+   $ ffmpeg -i input.mp4 -map 0:a:1 -c copy out.mp3
+   ```
+
+- 将第一个输入文件的视频流和第二个输入文件的音频流拷贝到 out.mp4
+
+   ```bash
+   $ ffmpeg -i i1.mp4 -i i2.mp4 -map 0:v -map 0:a -c copy out.mp4
+   ```
+
+#### 反向 -map 命令
+<!--rehype:wrap-class=col-span-2-->
+
+反向的 map 命令（在 map 命令的参数前加负号）。例如，`-map -0:a:0`，忽略第一个文件中的第一个音频流。
 <!--rehype:className=wrap-text -->
 
 ### 切换容器(转换类型)
@@ -331,6 +371,39 @@ $ ffmpeg -f image2 -i image%d.jpg video.mp4
 $ ffmpeg -i video.mp4 image%d.jpg
 ```
 
+### 录屏
+<!--rehype:wrap-class=col-span-2-->
+
+#### 查找所有可用设备
+
+```bash
+$ ffmpeg -f avfoundation -list_devices true -i ""
+```
+<!--rehype:className=wrap-text -->
+
+<span style="color:red">一定要选择好设备，根据设备进行配置。</sapn>
+
+#### windows 下录屏
+
+```bash
+$ ffmpeg -hide_banner -loglevel error -stats -f gdigrab -framerate 60 \
+-offset_x 0 -offset_y 0 -video_size 1920x1080 -draw_mouse 1 -i deskop \
+-c:v libx264 -r 60 -preset ultrafast -pix_fmt yuv420p -y screen_record.mp4
+```
+
+#### mac 下录屏
+
+```bash
+$ ffmpeg -f avfoundation -i 1:0 -preset ultrafast out.mkv
+```
+
+### 将输入文件转码为 DVD PAL 格式
+
+```bash
+$ ffmpeg -y -threads 8 -i inFile -target pal-dvd -ac 2 -aspect 16:9 -acodec mp2 -ab 224000 -vf pad=0:­0:0:0 outFile
+```
+<!--rehype:className=wrap-text -->
+
 ### 转换为 Gif
 <!--rehype:wrap-class=col-span-2 row-span-3-->
 
@@ -350,25 +423,24 @@ $ ffmpeg -i input.gif output.mov
 $ ffmpeg -i input.mov -codec:v copy -codec:a copy output.mp4
 ```
 
-### 移除音频
-
-```bash
-$ ffmpeg -i input.mov -codec:v copy -an output.mov
-```
-<!--rehype:className=wrap-text -->
-
-### 将输入文件转码为 DVD PAL 格式
-
-```bash
-$ ffmpeg -y -threads 8 -i inFile -target pal-dvd -ac 2 -aspect 16:9 -acodec mp2 -ab 224000 -vf pad=0:­0:0:0 outFile
-```
-<!--rehype:className=wrap-text -->
-
 ### 转换为灰度
 
 ```bash
 $ ffmpeg -y -i inFile -flags gray outFile
 ```
+
+### 字幕格式转换
+
+```bash
+# srt -> ass
+$ ffmpeg -i subtitle.srt subtitle.ass
+# ass -> vtt
+$ ffmpeg -i subtitle.ass subtitle.vtt
+```
+
+srt、ass、vtt 等格式之间可以相互转换
+
+<!--rehype:className=wrap-text -->
 
 ### 字幕
 <!--rehype:wrap-class=col-span-2 row-span-2-->
