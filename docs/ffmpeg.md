@@ -290,14 +290,17 @@ $ ffmpeg -i file.aac -acodec mp3 -ar 44100 -ab 128000 output.mp3
 <!--rehype:className=wrap-text -->
 
 ### -map 命令
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 `-map` 命令用于指定索引文件，以及索引文件中流类型和它的索引
-<!--rehype:className=wrap-text -->
+
+----
 
 ```bash
 -map index:stram_type:stream_index
 ```
+
+----
 
 :- | -
 :- | -
@@ -305,17 +308,17 @@ $ ffmpeg -i file.aac -acodec mp3 -ar 44100 -ab 128000 output.mp3
 `stream_type` | 指定文件流的类型(a -> 音频，v -> 视频，s -> 字幕)
 `stream_index` | 指定流类型的索引(从 0 开始)
 
-- 将第一个输入文件的第二个音频拷贝到 out.mp3
+将第一个输入文件的第二个音频拷贝到 out.mp3
 
-   ```bash
-   $ ffmpeg -i input.mp4 -map 0:a:1 -c copy out.mp3
-   ```
+```bash
+$ ffmpeg -i input.mp4 -map 0:a:1 -c copy out.mp3
+```
 
-- 将第一个输入文件的视频流和第二个输入文件的音频流拷贝到 out.mp4
+将第一个输入文件的视频流和第二个输入文件的音频流拷贝到 out.mp4
 
-   ```bash
-   $ ffmpeg -i i1.mp4 -i i2.mp4 -map 0:v -map 0:a -c copy out.mp4
-   ```
+```bash
+$ ffmpeg -i i1.mp4 -i i2.mp4 -map 0:v -map 0:a -c copy out.mp4
+```
 
 #### 反向 -map 命令
 <!--rehype:wrap-class=col-span-2-->
@@ -324,7 +327,6 @@ $ ffmpeg -i file.aac -acodec mp3 -ar 44100 -ab 128000 output.mp3
 <!--rehype:className=wrap-text -->
 
 ### 切换容器(转换类型)
-<!--rehype:wrap-class=row-span-2-->
 
 将容器从 `MKV` 更改为 `MP4`
 
@@ -358,12 +360,12 @@ $ ffmpeg -i input.mov -itsoffset 3 -i input.mov -map 1:v -map 0:a -codec:a copy 
 
 ### 图片中的视频
 
-如果您有多个编号的图像 image1.jpg、image2.jpg... 像这样从它们创建一个视频
-
 ```bash
 $ ffmpeg -f image2 -i image%d.jpg video.mp4
 ```
 <!--rehype:className=wrap-text -->
+
+多个编号的图像 image1.jpg、image2.jpg... 像这样从它们创建一个视频
 
 ### 将视频拆分为图像
 
@@ -372,7 +374,7 @@ $ ffmpeg -i video.mp4 image%d.jpg
 ```
 
 ### 录屏
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 #### 查找所有可用设备
 
