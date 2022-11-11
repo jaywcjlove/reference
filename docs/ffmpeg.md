@@ -386,7 +386,7 @@ $ ffmpeg -f avfoundation -list_devices true -i ""
 #### windows 下录屏
 
 ```bash
-ffmpeg -hide_banner -loglevel error -stats -f gdigrab -framerate 60 \
+$ ffmpeg -hide_banner -loglevel error -stats -f gdigrab -framerate 60 \
 -offset_x 0 -offset_y 0 -video_size 1920x1080 -draw_mouse 1 -i deskop \
 -c:v libx264 -r 60 -preset ultrafast -pix_fmt yuv420p -y screen_record.mp4
 ```
@@ -394,7 +394,7 @@ ffmpeg -hide_banner -loglevel error -stats -f gdigrab -framerate 60 \
 #### mac 下录屏
 
 ```bash
-ffmpeg -f avfoundation -i 1:0 -preset ultrafast out.mkv
+$ ffmpeg -f avfoundation -i 1:0 -preset ultrafast out.mkv
 ```
 
 ### 将输入文件转码为 DVD PAL 格式
