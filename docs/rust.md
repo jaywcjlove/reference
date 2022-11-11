@@ -177,8 +177,8 @@ let p: Point = (41, 68);
 
 ```rust
 let mut a: u32 = 8;
-let b: u64 = 877;
-let c: i64 = 8999;
+let b = 877_u64;
+let c = 8999i64;
 let d = -90;
 ```
 
@@ -308,7 +308,7 @@ let S_string = a_string.to_string()
 // 创建一个初始化的字符串对象
 let lang = String::from("Rust");  
 println!("First language is {lang}");
- ```
+```
 
 ### .capacity()
 
@@ -343,6 +343,91 @@ hi.push_str("How are you doing??");
 // => Hey there...How are you doing??
 println!("{hi}");
 ```
+
+### 字符或字符串转换
+
+1. 原生字符串，无需增加转义字符（`\`）转义
+
+   ```rust
+   let str1 = r#"\hello"#;
+   println!("{}", str1);
+   // \hello
+   ```
+
+2. 字节和字节串
+
+   ```rust
+   let str2 = b'a';
+   println!("{}", str2);
+   // 97
+   let str3 = b"\\hello";
+   println!("{:?}", str3);
+   //[92, 104, 101, 108, 108, 111]
+   let str4 = br#"\hello"#;
+   println!("{:?}", str4);
+   //[92, 104, 101, 108, 108, 111]
+   ```
+
+Rust 动态数组
+-----------
+
+### 创建动态数组
+
+```rust
+let v: Vec<i32> = Vec::new();
+// 使用宏
+let v1 = vec![1, 2, 3];
+```
+
+### 读取元素
+
+```rust
+let v = vec![1, 2, 3, 4, 5];
+
+let element = &v[100];
+// panic，越界
+let element2 = v.get(100);
+println!("{:?}", element2);
+//None
+```
+
+### 遍历数组
+
+1. 只读取数组中的元素
+
+   ```rust
+   let v = vec![1, 2, 3];
+   for i in &v {
+       println!("{}", i);
+   }
+   ```
+
+2. 遍历的同时修改数组中的元素
+
+   ```rust
+   let mut v = vec![1, 2, 3];
+   for i in &mut v {
+       *i += 10
+   }
+   ```
+
+### 常用方法
+<!--rehype:wrap-class=col-span-3-->
+
+-|:-
+-|:-
+len()                   | 返回 vec 的长度
+is_empty()              | vec 是否为空
+push(value)             | 在 vec 尾部插入元素
+pop()                   | 删除并返回 vec 尾部的元素,vec 为空则返回 None
+insert(index,element)   | 在指定索引处插入元素
+remove(index)           | 删除指定索引处的元素并返回被删除的元素,索引越界将 panic 报错退出
+clear()                 | 清空 vec
+append(vec)             | 将另一个 vec 中的所有元素追加移入 vec 中,移动的 vec 变为空
+truncate(len)           | 将 vec 截断到指定长度,多余的元素被删除
+retain(f)               | 根据给定的函数，保留满足条件的元素
+drain(range)            | 删除 vec 中指定范围的元素,同时返回一个迭代该范围所有元素的迭代器
+split_off(index)        | 切分 vec，索引左边的元素保留在原 vec 中(含索引)，索引右边的元素(不含索引)在返回的 vec 中
 
 Rust 运算符
 -----------
@@ -396,7 +481,7 @@ let modulus: i32 = a % b;        // => 4
 运算符 | 描述
 :- | :-
 `g & h`  | 二进制与
-`g | h`  | 二进制或
+`g \| h`  | 二进制或
 `g ^ h`  | 二进制异或
 `g ~ h`  | 二进制补码
 `g << h` | 二进制左移
@@ -527,33 +612,32 @@ else {
 
 ```rust
 let day_of_week = 2;
-  match day_of_week {
-    1 => {
-      println!("兄弟们今天是星期一");
-    },
-    2 => {
-      println!("兄弟们今天是星期二");
-    },
-    3 => {
-      println!("兄弟们今天是星期三");
-    },
-    4 => {
-      println!("兄弟们今天是星期四");
-    },
-    5 => {
-      println!("兄弟们今天是星期五");
-    },
-    6 => {
-      println!("兄弟们今天是星期六");
-    },
-    7 => {
-      println!("兄弟们今天是星期天");
-    },
-    _ => {
-      println!("默认!")
-    }
-  };
-}
+match day_of_week {
+  1 => {
+    println!("兄弟们今天是星期一");
+  },
+  2 => {
+    println!("兄弟们今天是星期二");
+  },
+  3 => {
+    println!("兄弟们今天是星期三");
+  },
+  4 => {
+    println!("兄弟们今天是星期四");
+  },
+  5 => {
+    println!("兄弟们今天是星期五");
+  },
+  6 => {
+    println!("兄弟们今天是星期六");
+  },
+  7 => {
+    println!("兄弟们今天是星期天");
+  },
+  _ => {
+    println!("默认!")
+  }
+};
 ```
 
 ### 嵌套...If 表达式
@@ -778,7 +862,7 @@ println!("{mutable_borrowed_bar}");
 
 这里借用的值使用 `&` 运算符从值一中借用值
 
-### 取消引用
+### 解引用
 
 ```rust
 let mut borrow = 10;
@@ -786,9 +870,9 @@ let deref = &mut borrow;
 println!("{}", *deref);
 ```
 
-可以使用 `*` 操作符在 rust 中取消引用
+`*` 操作符用于解引用
 
-### 变量范围
+### 作用域
 
 ```rust
 {
@@ -798,7 +882,7 @@ println!("{}", *deref);
 println!("{a_number}");
 ```
 
-这将产生错误，因为变量 `a_number` 的范围在大括号处结束
+这将产生错误，因为变量 `a_number` 的生命周期在大括号处结束
 
 另见
 --------
