@@ -616,7 +616,7 @@ M(?(?=.*?\bher\b)s|r)\.
 表达式 | 匹配示例
 :- | -
 `The` | The `fat` cat sat on the mat.
-`/The/gi` | The `fat` `cat` `sat` on the `mat`.
+`/The/gi` | `The` fat cat sat on `the` mat.
 <!--rehype:className=show-header-->
 
 修饰语 `i` 用于忽略大小写，`g` 表示全局搜索。
