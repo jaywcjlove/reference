@@ -19,6 +19,7 @@ fn main() {
 ```shell
 $ rustc Hello_World.rs
 $ ./Hello_World
+
 Hello, World!
 ```
 
@@ -396,48 +397,8 @@ println!("{:?}", str4);
 Rust 动态数组
 -----------
 
-### 创建动态数组
-
-```rust
-let v: Vec<i32> = Vec::new();
-// 使用宏
-let v1 = vec![1, 2, 3];
-```
-
-### 读取元素
-
-```rust
-let v = vec![1, 2, 3, 4, 5];
-
-let element = &v[100];
-// panic，越界
-let element2 = v.get(100);
-println!("{:?}", element2);
-//None
-```
-
-### 遍历数组
-
-1. 只读取数组中的元素
-
-   ```rust
-   let v = vec![1, 2, 3];
-   for i in &v {
-       println!("{}", i);
-   }
-   ```
-
-2. 遍历的同时修改数组中的元素
-
-   ```rust
-   let mut v = vec![1, 2, 3];
-   for i in &mut v {
-       *i += 10
-   }
-   ```
-
 ### 常用方法
-<!--rehype:wrap-class=col-span-3-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 -|:-
 -|:-
@@ -453,6 +414,45 @@ println!("{:?}", element2);
 `retain(f)`               | 根据给定的函数，保留满足条件的元素
 `drain(range)`            | 删除 `vec` 中指定范围的元素,同时返回一个迭代该范围所有元素的迭代器
 `split_off(index)`        | 切分 `vec`，索引左边的元素保留在原 `vec` 中(含索引)，索引右边的元素(不含索引)在返回的 `vec` 中
+
+### 创建动态数组
+
+```rust
+let v: Vec<i32> = Vec::new();
+// 使用宏
+let v1 = vec![1, 2, 3];
+```
+
+### 遍历数组
+
+只读取数组中的元素
+
+```rust
+let v = vec![1, 2, 3];
+for i in &v {
+  println!("{}", i);
+}
+```
+
+遍历的同时修改数组中的元素
+
+```rust
+let mut v = vec![1, 2, 3];
+for i in &mut v {
+  *i += 10
+}
+```
+
+### 读取元素
+
+```rust
+let v = vec![1, 2, 3, 4, 5];
+let element = &v[100];
+// panic，越界
+let element2 = v.get(100);
+println!("{:?}", element2);
+//None
+```
 
 Rust 运算符
 -----------
@@ -527,8 +527,8 @@ let left_shift = h << 4;  // => 32
 
 示例 | 意义
 :- | :-
-`c && d` | 两者都是真的_(AND)_
-`c || d` | 要么是真的_(OR)_
+`c && d` | 两者都是真的 _(AND)_
+`c \|\| d` | 要么是真的 _(OR)_
 `!c`     | `c` 为假 _(NOT)_
 
 ----
@@ -754,15 +754,15 @@ fn main(){
 
 ```rust
 struct Point {
-    x: i32,
-    y: i32,
-    z: i32,
+  x: i32,
+  y: i32,
+  z: i32,
 }
 
 let origin = Point { x: 0, y: 0, z: 0 };
 
 match origin {
-    Point { x, .. } => println!("x is {}", x),
+  Point { x, .. } => println!("x is {}", x),
 }
 ```
 
@@ -772,9 +772,9 @@ match origin {
 let hello = ('h', 'e', 'l', 'l', 'o');
 
 match hello {
-    (h, _, _, l, o) => {
-        println!("char: {}, {}, {}", h, l, o)
-    },
+  (h, _, _, l, o) => {
+      println!("char: {}, {}, {}", h, l, o)
+  },
 }
 ```
 
@@ -785,9 +785,9 @@ match hello {
 ```rust
 let x = Some(10);
 match x {
-    Some(1) => println!("x = 1"),
-    Some(y) => println!("y = {:?}", y),
-    _ => println!("None"),
+  Some(1) => println!("x = 1"),
+  Some(y) => println!("y = {:?}", y),
+  _ => println!("None"),
 }// y = 10
 ```
 
@@ -799,25 +799,27 @@ match x {
 ```rust
 let grade = 'A';
 match grade {
-    good @ 'A'..='C' => println!("your grade is {}", good),
-    _ => println!("Come on"),
+  good @ 'A'..='C' => println!("your grade is {}", good),
+  _ => println!("Come on"),
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
 ```rust
 #[derive(Debug)]
 struct Point {
-    x: i32,
-    y: i32,
+  x: i32,
+  y: i32,
 }
 fn main(){
-    let p @ Point {x: px, y: py } = Point {x: 10, y: 23};
-    println!("x: {}, y: {}", px, py);
-    println!("{:?}", p);
+  let p @ Point {x: px, y: py } = Point {x: 10, y: 23};
+  println!("x: {}, y: {}", px, py);
+  println!("{:?}", p);
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
@@ -825,10 +827,10 @@ fn main(){
 
 ```rust
 match 1 {
-    num @ (1 | 2) => {
-        println!("{}", num);
-    }
-    _ => {}
+  num @ (1 | 2) => {
+      println!("{}", num);
+  }
+  _ => {}
 }
 ```
 
@@ -837,11 +839,12 @@ match 1 {
 ```rust
 let x = Some(2);
 match x {
-    Some(1) => println!("x = 1"),
-    Some(y) if y == 2 => println!("y = {:?}", y),
-    _ => println!("No match"),
+  Some(1) => println!("x = 1"),
+  Some(y) if y == 2 => println!("y = {:?}", y),
+  _ => println!("No match"),
 }// y = 2
 ```
+<!--rehype:className=wrap-text -->
 
 Rust 函数
 --------
@@ -857,21 +860,23 @@ fn print_message(){
 ```
 
 ### 参数值
+<!--rehype:wrap-class=row-span-2-->
 
 rust 需要为函数的参数标明确定的类型
 
 ```rust
 fn another_fn(a:u8, b: &str){
-    println!("我是 u8:{}", a);
-    println!("我是 &str:{}", b);
+  println!("我是 u8:{}", a);
+  println!("我是 &str:{}", b);
 }
 
 fn main(){
-    another_fn(10, "hello")
+  another_fn(10, "hello")
 }
 ```
 
 ### 返回值
+<!--rehype:wrap-class=row-span-2-->
 
 如果不指定返回值，rust 默认返回 `()` 类型
 
@@ -880,16 +885,14 @@ fn main(){
 fn main(){}
 ```
 
-----
-
-使用 `->` 指定返回值，如果**表达式**在最后一行，无需使用 return
+使用 `->` 指定返回值，如果**表达式**在最后一行，无需使用 `return`
 
 ```rust
 fn add(a:i32, b:i32) -> i32 {
-    if a + b < 100 {
-        return a - b;
-    }
-    a + b
+  if a + b < 100 {
+    return a - b;
+  }
+  a + b
 }
 ```
 
