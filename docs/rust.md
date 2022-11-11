@@ -344,29 +344,29 @@ hi.push_str("How are you doing??");
 println!("{hi}");
 ```
 
-### 字符或字符串转换
+### 原生字符串
 
-1. 原生字符串，无需增加转义字符（`\`）转义
+```rust
+let str1 = r#"\hello"#;
+println!("{}", str1);
+// \hello
+```
 
-   ```rust
-   let str1 = r#"\hello"#;
-   println!("{}", str1);
-   // \hello
-   ```
+原生字符串，无需增加转义字符（`\`）转义
 
-2. 字节和字节串
+### 字节和字节串
 
-   ```rust
-   let str2 = b'a';
-   println!("{}", str2);
-   // 97
-   let str3 = b"\\hello";
-   println!("{:?}", str3);
-   //[92, 104, 101, 108, 108, 111]
-   let str4 = br#"\hello"#;
-   println!("{:?}", str4);
-   //[92, 104, 101, 108, 108, 111]
-   ```
+```rust
+let str2 = b'a';
+println!("{}", str2);
+// 97
+let str3 = b"\\hello";
+println!("{:?}", str3);
+// [92, 104, 101, 108, 108, 111]
+let str4 = br#"\hello"#;
+println!("{:?}", str4);
+// [92, 104, 101, 108, 108, 111]
+```
 
 Rust 动态数组
 -----------
@@ -416,18 +416,18 @@ println!("{:?}", element2);
 
 -|:-
 -|:-
-len()                   | 返回 vec 的长度
-is_empty()              | vec 是否为空
-push(value)             | 在 vec 尾部插入元素
-pop()                   | 删除并返回 vec 尾部的元素,vec 为空则返回 None
-insert(index,element)   | 在指定索引处插入元素
-remove(index)           | 删除指定索引处的元素并返回被删除的元素,索引越界将 panic 报错退出
-clear()                 | 清空 vec
-append(vec)             | 将另一个 vec 中的所有元素追加移入 vec 中,移动的 vec 变为空
-truncate(len)           | 将 vec 截断到指定长度,多余的元素被删除
-retain(f)               | 根据给定的函数，保留满足条件的元素
-drain(range)            | 删除 vec 中指定范围的元素,同时返回一个迭代该范围所有元素的迭代器
-split_off(index)        | 切分 vec，索引左边的元素保留在原 vec 中(含索引)，索引右边的元素(不含索引)在返回的 vec 中
+`len()`                   | 返回 `vec` 的长度
+`is_empty()`              | `vec` 是否为空
+`push(value)`             | 在 `vec` 尾部插入元素
+`pop()`                   | 删除并返回 `vec` 尾部的元素或者返回 `None`
+`insert(index,element)`   | 在指定索引处插入元素
+`remove(index)`           | 删除指定索引处的元素并返回被删除的元素，索引越界将 panic 报错退出
+`clear()`                 | 清空 `vec`
+`append(vec)`             | 将另一个 `vec` 中的所有元素追加移入 `vec` 中，移动的 `vec` 变为空
+`truncate(len)`           | 将 `vec` 截断到指定长度,多余的元素被删除
+`retain(f)`               | 根据给定的函数，保留满足条件的元素
+`drain(range)`            | 删除 `vec` 中指定范围的元素,同时返回一个迭代该范围所有元素的迭代器
+`split_off(index)`        | 切分 `vec`，索引左边的元素保留在原 `vec` 中(含索引)，索引右边的元素(不含索引)在返回的 `vec` 中
 
 Rust 运算符
 -----------
