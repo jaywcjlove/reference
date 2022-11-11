@@ -456,6 +456,7 @@ $ ffmpeg -i input.mov -filter:v 'subtitles=subtitles.srt' -codec:a copy output.m
 ```bash
 $ ffmpeg -i input.mov -filter:v "subtitles=subtitles.srt:force_style='FontName=Menlo Bold,Fontsize=18'" -codec:a copy output.mov
 ```
+<!--rehype:className=wrap-text -->
 
 ### 制造 1 分钟的音频噪音
 
