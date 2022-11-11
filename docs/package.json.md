@@ -12,6 +12,8 @@ package.json 备忘清单
 
 - [npm 文档](https://docs.npmjs.com/files/package.json) _(npmjs.com)_
 - [yarnpkg 文档](https://classic.yarnpkg.com/en/docs/package-json) _(yarnpkg.com)_
+- [packages 文档](https://nodejs.org/api/packages.html) _(nodejs.org)_
+- [npm 备忘清单(速查表)](./npm.md) _(jaywcjlove.github.io)_
 
 ### `name`
 
@@ -329,88 +331,98 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 字段由模块作者提供，作为 `JavaScript` 包或组件工具的提示，用于打包模块以供客户端使用。 提案就[在这里](https://github.com/defunctzombie/package-browser-field-spec)。
 
 ### `exports`
-<!--rehype:wrap-class=col-span-3-->
 
-所有包的版本都支持 main 字段，但它的功能是有限的。现在在 package.json 可以使用最新的 exports 字段导出。具体参考：<https://nodejs.org/api/packages.html>
+```json
+{
+  "name": "mod",
+  "exports":{
+    ".": "./lib/index.js",
+    "./lib/*": "./lib/*.js"
+  }
+}
+```
 
-   ```json
-   {
-     "name": "mod",
-     "exports":{
-       ".": "./lib/index.js",
-       "./lib/*": "./lib/*.js"
-     }
-   }
-   ```
+使用最新的 `exports` 字段导出，可规避 `main` 字段局限性 [具体参考](https://nodejs.org/api/packages.html)
 
-#### 导出和导入
+### exports 导出子路径中的模块
 
-1. 如果同时出现 main 和 exports 字段，只会读取 exports 字段
+```json
+{
+  "name": "mod",
+  "exports": {
+    ".": "./index.js",
+    "./sub": "./src/sub.js"
+  }
+}
+```
 
-   ```json
-   {
-     "main": "./index.js",
-     "exports": "./index.js"
-   } 
-   ```
+导入
 
-2. 导出子路径中的模块
+```js
+import sub from "mod/sub"
+```
 
-   ```json
-   {
-     "name": "mod",
-     "exports": {
-       ".": "./index.js",
-       "./sub": "./src/sub.js"
-     }
-   }
-   ```
+### exports 简写 (`.` 唯一的导出)
 
-   ```js
-   // 导入
-   import sub from "mod/sub"
-   ```
+```json
+{
+  "exports": {
+    ".": "./dist/index.js"
+  }
+}
+```
 
-3. 如果 `.` 是唯一的导出时，其提供了语法糖
+简写
 
-   ```json
-   {
-     "exports": {
-       ".": "./dist/index.js"
-     }
-     //简写
-     //"exports": "./dist/index.js"
-   }
-   ```
+```json
+{
+  "exports": "./dist/index.js"
+}
+```
 
-4. 条件导出。根据导出包的格式不同而设置的情况。
-   - <span style="color:red">注意：</span>由于 require 和 import 互斥，所以 require 不能加载 es 的模块，export 不能加载 cjs 模块
+### 条件导出(exports)
+<!--rehype:wrap-class=col-span-2-->
 
-   :- | -
-   :- | -
-   export | 通过 import 或 import() 或 es 模块加载的任何顶层导入或解析操作加载时，匹配。
-   require | 当包通过 require() 加载时匹配。预期的格式包括 CommonJS、JSON 和本地插件。
-   node | 匹配任何 Node.js 环境。可以是 cjs 或 es 模块文件。必须在 import 或 require 之后。
-   default | 默认的降级条件。可以是一个 cjs 或 es 模块文件。这个条件应该总是排在最后。
+:- | -
+:- | -
+`export` | 通过 `import` 或 `import()` 或 `es` 模块加载的任何顶层导入或解析操作加载时，匹配。
+`require` | 当包通过 `require()` 加载时匹配。预期的格式包括 CommonJS、JSON 和本地插件。
+`node` | 匹配任何 `Node.js` 环境。可以是 `cjs` 或 `es` 模块文件。必须在 `import` 或 `require` 之后。
+`default` | 默认的降级条件。可以是一个 `cjs` 或 `es` 模块文件。这个条件应该总是排在最后。
 
-   ```json
-   {
-     "exports": {
-       ".": {
-         "import":"./dist/index.mjs",
-         "require":"./dist/index.cjs",
-         "node": "./dist/ployfill.js",
-         "default": "./dist/default.js"
-       }
-     }
-   }
-   ```
+```js
+{
+  "exports": {
+    ".": {
+      "import":"./dist/index.mjs",
+      "require":"./dist/index.cjs",  // 当包通过 `require()` 加载时匹配
+      "node": "./dist/ployfill.js",  // 匹配任何 `Node.js` 环境
+      "default": "./dist/default.js" // 默认的降级条件
+    }
+  }
+}
+```
+
+<red>注意：</red>由于 `require` 和 `import` 互斥，所以 `require` 不能加载 `es` 的模块，`export` 不能加载 `cjs` 模块
+
+### 导出和导入
+
+```json
+{
+  "main": "./index.js",
+  "exports": "./index.js"
+} 
+```
+
+如果同时出现 <red>~~`main`~~</red> 和 `exports` 字段，只会读取 `exports` 字段
 
 ## 任务类字段
 
 包里还可以包含一些可执行脚本或者其他配置信息。
 
 ### `scripts`
+
+脚本是定义自动化开发相关任务的好方法，比如使用一些简单的构建过程或开发工具。 在 `scripts` 字段里定义的脚本，可以通过 `yarn run <script>` 命令来执行。 例如，下面 `build-project` 脚本可以通过 `yarn run build-project` 调用，并执行 `node build-project.js`。
 
 ```json
 {
@@ -420,11 +432,13 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 }
 ```
 
-脚本是定义自动化开发相关任务的好方法，比如使用一些简单的构建过程或开发工具。 在 `scripts` 字段里定义的脚本，可以通过 `yarn run <script>` 命令来执行。 例如，上述 `build-project` 脚本可以通过 `yarn run build-project` 调用，并执行 `node build-project.js`。
-
 有一些特殊的脚本名称。 如果定义了 `preinstall` 脚本，它会在包安装前被调用。 出于兼容性考虑，`install`、`postinstall` 和 `prepublish` 脚本会在包完成安装后被调用。
 
+----
+
 `start` 脚本的默认值为 `node server.js`。
+
+----
 
 参考文档：[npm docs](https://docs.npmjs.com/files/package.json#default-values)
 
@@ -433,24 +447,24 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 对于以下脚本，`npm` 支持 `package.json` 文件的 `scripts` 默认命令字段：
 
-- `prepublish`: 在打包并发布包之前运行，以及在没有任何参数的本地 `npm` 安装之前运行。 （见下文）
-- `prepare`: 在打包和发布包之前运行，在没有任何参数的本地 `npm install` 上运行，以及安装 git 依赖项时（见下文）。 这是在 `preublish` 之后运行，但是在 `preublishOnly` 之前运行。
-- `prepublishOnly`: 在包准备和打包之前运行，仅限于npm发布。 （见下文。）
+- `prepublish`: 在打包并发布包之前运行，以及在没有任何参数的本地 `npm` 安装之前运行
+- `prepare`: 在打包和发布包之前运行，在没有任何参数的本地 `npm install` 上运行，以及安装 git 依赖项时。 这是在 `preublish` 之后运行，但是在 `preublishOnly` 之前运行
+- `prepublishOnly`: 在包准备和打包之前运行，仅限于npm发布
 - `prepack`: 在打包 `tarball` 之前运行（在 `npm pack`，`npm publish`，以及安装 git 依赖项时）
-- `postpack`: 在生成 `tarball` 之后运行并移动到其最终目标。
-- `publish`, `postpublish`: 在包发布后运行。
-- `preinstall`: 在安装软件包之前运行。
-- `install`, `postinstall`: 安装包后运行。
-- `preuninstall`, `uninstall`: 在卸载软件包之前运行。
-- `postuninstall`: 在卸载软件包之后运行。
-- `preversion`: 在改变包版本之前运行。
-- `version`: 改变包版本后运行，但提交之前。
-- `postversion`: 改变包版本后运行，然后提交。
-- `pretest`, `test`, `posttest`: 由 `npm test` 命令运行。
-- `prestop`, `stop`, `poststop`: 由 `npm stop` 命令运行。
-- `prestart`, `start`, `poststart`: 由 `npm start` 命令运行。
-- `prerestart`, `restart`, `postrestart`: 由 `npm restart` 命令运行。 注意：如果没有提供重启脚本，`npm restart` 将运行 `stop` 和`start` 脚本。
-- `preshrinkwrap`, `shrinkwrap`, `postshrinkwrap`: 由 `npm shrinkwrap` 命令运行。
+- `postpack`: 在生成 `tarball` 之后运行并移动到其最终目标
+- `publish`, `postpublish`: 在包发布后运行
+- `preinstall`: 在安装软件包之前运行
+- `install`, `postinstall`: 安装包后运行
+- `preuninstall`, `uninstall`: 在卸载软件包之前运行
+- `postuninstall`: 在卸载软件包之后运行
+- `preversion`: 在改变包版本之前运行
+- `version`: 改变包版本后运行，但提交之前
+- `postversion`: 改变包版本后运行，然后提交
+- `pretest`, `test`, `posttest`: 由 `npm test` 命令运行
+- `prestop`, `stop`, `poststop`: 由 `npm stop` 命令运行
+- `prestart`, `start`, `poststart`: 由 `npm start` 命令运行
+- `prerestart`, `restart`, `postrestart`: 由 `npm restart` 命令运行。 注意：如果没有提供重启脚本，`npm restart` 将运行 `stop` 和`start` 脚本
+- `preshrinkwrap`, `shrinkwrap`, `postshrinkwrap`: 由 `npm shrinkwrap` 命令运行
 
 参考文档：[npm docs](https://docs.npmjs.com/misc/scripts).
 
@@ -734,3 +748,7 @@ Yarn
 ----
 
 - [PACKAGE.JSON 中文说明](https://jaywcjlove.github.io/package.json) _(github.io)_
+- [npm 文档](https://docs.npmjs.com/files/package.json) _(npmjs.com)_
+- [yarnpkg 文档](https://classic.yarnpkg.com/en/docs/package-json) _(yarnpkg.com)_
+- [packages 文档](https://nodejs.org/api/packages.html) _(nodejs.org)_
+- [npm 备忘清单(速查表)](./npm.md) _(jaywcjlove.github.io)_
