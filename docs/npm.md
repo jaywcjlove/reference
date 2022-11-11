@@ -257,6 +257,36 @@ ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-
 //somewhere.com/another/:_authToken=MYTOKEN2
 ```
 
+纯 ESM 包
+----
+
+### CommonJS 项目移动到 ESM
+<!--rehype:wrap-class=col-span-3-->
+
+- 将 `"type": "module"` 添加到您的 [package.json](./package.json.md)
+- 将 [package.json](./package.json.md) 中的 `"main": "index.js"` 替换为 `"exports": "./index.js"`。
+- 将 [package.json](./package.json.md) 中的 `"engines"` 字段更新为 Node.js 14: `"node": ">=14.16"`。(不包括 <red>~~Node.js 12~~</red>，因为它不再受支持)
+- 删除 `"use strict"`；来自所有 JavaScript 文件
+- 将所有 `require()` / `module.export` 替换为 `import` / `export`
+- 仅使用完整的相对文件路径进行导入：`import x from '.';` → `import x from './index.js';`
+- 如果您有 `TypeScript` 类型定义（例如 `index.d.ts`），请将其更新为使用 ESM 导入/导出
+- 可选但推荐使用 `node:` 导入[协议](https://nodejs.org/api/esm.html#esm_node_imports)
+
+### TypeScript 项目输出 ESM
+<!--rehype:wrap-class=col-span-3-->
+
+- 确保您使用的是 TypeScript 4.7 或更高版本
+- 将 `"type": "module"` 添加到您的 [package.json](./package.json.md)
+- 将 [package.json](./package.json.md) 中的 `"main": "index.js"` 替换为 `"exports": "./index.js"`
+- 将 [package.json](./package.json.md) 中的 `"engines"` 字段更新为 Node.js 14: `"node": ">=14.16"`。 （不包括 <red>~~Node.js 12~~</red>，因为它不再受支持）
+- 将 `"module": "node16"`, `"moduleResolution": "node16"` 添加到您的 [tsconfig.json](./typescript.md) ([列子](https://github.com/sindresorhus/tsconfig/blob/main/tsconfig.json))
+- 仅使用完整的相对文件路径进行导入：`import x from '.';` → `import x from './index.js';`
+- 删除 `namespace` 使用并改用 `export`
+- 可选但推荐使用 `node:` 导入[协议](https://nodejs.org/api/esm.html#esm_node_imports)
+- **即使您正在导入 `.ts` 文件，也必须在相对导入中使用 `.js` 扩展名**
+
+阅读[官方 ESM 指南](https://www.typescriptlang.org/docs/handbook/esm-node.html)
+
 另见
 ----
 
