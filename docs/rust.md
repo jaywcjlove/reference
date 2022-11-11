@@ -163,6 +163,31 @@ let baz_discriminant = Foo::Baz as u32;
 assert_eq!(baz_discriminant, 123);
 ```
 
+### 语句与表达式
+
+在 rust 中，语句无需返回值，而表达式总要返回值
+
+#### 语句
+
+```rust
+let a = "hello".to_string();
+let b = a + " world";
+println!("{}", b);
+```
+
+#### 表达式
+
+```rust
+fn main(){
+    let x = {
+        let a = "hello".to_string();
+        a + " world"
+    };
+    println!("{}", x);
+    // hello world
+}
+```
+
 Rust 类型
 --------
 
@@ -535,29 +560,7 @@ let mut l = k;
 Rust 流程控制
 ------------
 
-### If表达式
-
-```rust
-let case1: i32 = 81;
-let case2: i32 = 82;
-if case1 < case2 {
-  println!("case1 大于 case2");
-}
-```
-
-### If...Else 表达式
-
-```rust
-let case3 = 8;
-let case4 = 9;
-if case3 >= case4 {
-  println!("case3 优于 case4");
-} else {
-  println!("case4 大于 case3");
-}
-```
-
-### If...Else...if...Else 表达式
+### If 表达式
 
 ```rust
 let foo = 12;
@@ -573,93 +576,22 @@ if foo == bar {
 }
 ```
 
-### If...let 表达式
-<!--rehype:wrap-class=row-span-3-->
-
-```rust
-let mut arr1:[i64 ; 3] = [1,2,3];
-if let[1,2,_] = arr1{
-    println!("与数组一起使用");
-}
-let mut arr2:[&str; 2] = ["one", "two"];
-if let["Apple", _] = arr2{
-    println!("也适用于 str 数组");
-}
-```
-
-----
-
-```rust
-let tuple_1 = ("India", 7, 90, 90.432);
-if let(_, 7, 9, 78.99) = tuple_1{
-    println!("也适用于元组");
-}
-let tuple_2 = ( 9, 7, 89, 12, "Okay");
-if let(9, 7,89, 12, blank) = tuple_2 {
-    println!("一切{blank}伴侣？");
-}
-let tuple_3 = (89, 90, "Yes");
-if let(9, 89, "Yes") = tuple_3{
-    println!("模式确实匹配");
-}
-else {
-    println!("模式不匹配");
-}
-```
-
-### 匹配表达式
-<!--rehype:wrap-class=row-span-3-->
-
-```rust
-let day_of_week = 2;
-match day_of_week {
-  1 => {
-    println!("兄弟们今天是星期一");
-  },
-  2 => {
-    println!("兄弟们今天是星期二");
-  },
-  3 => {
-    println!("兄弟们今天是星期三");
-  },
-  4 => {
-    println!("兄弟们今天是星期四");
-  },
-  5 => {
-    println!("兄弟们今天是星期五");
-  },
-  6 => {
-    println!("兄弟们今天是星期六");
-  },
-  7 => {
-    println!("兄弟们今天是星期天");
-  },
-  _ => {
-    println!("默认!")
-  }
-};
-```
-
-### 嵌套...If 表达式
-
-```rust
-let nested_conditions = 89;
-if nested_conditions == 89 {
-    let just_a_value = 98;
-    if just_a_value >= 97 {
-        println!("大于 97");
-    }
-}
-```
-
 ### For 循环
+<!--rehype:wrap-class=col-span-2-->
 
 ```rust
-for mut i in 0..15 {
-  i-=1;
-  println!("i 的值为：{i}");
+let mut vec = [1, 2, 3];
+for v in &mut vec {
+  *v -= 1;
+  println!("v 的值为：{v}");
 }
 ```
+
+使用方法                      | 等价使用方式                         | 所有权
+:-|:-:|:-
+for item in collection      | for item in collection.into_iter() | 转移所有权
+for item in &collection     | for item in collection.iter()      | 不可变借用
+for item in &mut collection | for item in collection.iter_mut()  | 可变借用
 
 ### While 循环
 
@@ -667,7 +599,7 @@ for mut i in 0..15 {
 let mut check =  0;
 while check < 11{
   println!("check 是：{check}");
-  check+=1;
+  check += 1;
   println!("递增后：{check}");
   if check == 10{
     break; // 停止 while
@@ -675,7 +607,7 @@ while check < 11{
 }
 ```
 
-### Loop 关键字
+### Loop 循环
 
 ```rust
 loop {
@@ -684,19 +616,6 @@ loop {
 ```
 
 无限循环表示
-
-### Break 中断语句
-
-```rust
-let mut i = 1;
-loop {
-  println!("i 是 {i}");
-  if i > 100 {
-    break;
-  }
-  i *= 2;
-}
-```
 
 ### Continue 继续声明
 
@@ -711,117 +630,278 @@ for (v, c) in (0..10+1).enumerate(){
 }
 ```
 
+### Break 中断语句
+
+`break` 可以单独使用，也可以带一个返回值
+
+```rust
+let mut i = 1;
+let res = loop {
+  println!("i 是 {i}");
+  if i > 100 {
+    break i - 100;
+  }
+  i *= 2;
+}
+
+println!("{res}"); // 28
+```
+
+Rust 模式匹配
+--------
+
+### match
+<!--rehype:wrap-class=row-span-2-->
+
+match 模式匹配，使用 `a | b` 表示匹配 a **或** b，使用 `_`，表示匹配剩余所有选项
+
+```rust
+fn main(){
+    let grade = Grade::A;
+    match grade {
+        Grade::A => println!("Good"),
+        Grade::B => println!("Not bad"),
+        Grade::C | Grade::D => println!("Come on"),
+        _ => println!("emmm"),
+    }
+}
+
+enum Grade {
+    A,
+    B,
+    C,
+    D,
+    E,
+    F,
+}
+```
+
+#### `matches!` 宏
+
+它可以将一个表达式跟模式进行匹配，然后返回匹配的结果 `true` 或 `false`
+
+```rust
+assert!(matches!('x' ',A'..='Z' | 'a'..='z'));
+assert!(matches!(Some(101), Some(x) if x > 100));
+```
+
+### if let 匹配
+
+match 表达式需要匹配所有的枚举才能结束，但通常我们只需要匹配我们需要的值
+
+```rust
+let x = 3;
+match Some(x) {
+    Some(3) => println!("I guess that x is 3"),
+    _ => ()
+}
+```
+
+使用 `if let`
+
+```rust
+let x = 3;
+if let Some(3) = Some(x) {
+    println!("I guess that x is 3");
+}
+```
+
+### while let
+
+```rust
+let mut stack = vec![];
+
+stack.push(1);
+stack.push(2);
+stack.push(3);
+
+while let Some(top) = stack.pop() {
+    println!("{}", top);
+}
+```
+
+### 其它模式匹配
+
+#### for 循环迭代器
+
+```rust
+for (i, v) in collection.iter().enumerate(){}
+```
+
+#### let
+
+```rust
+let (x, _, y) = (1, 2, 3);
+println!("{x},{y}");
+```
+
+### 函数中的模式匹配
+
+```rust
+fn add((x, y): (i32, i32)) -> i32 {
+    x + y
+}
+fn main(){
+  let sum = add(1, 2);
+  println!("{sum}");
+}
+```
+
+### 忽略参数
+<!--rehype:wrap-class=row-span-2-->
+
+#### 使用 `..` 忽略剩余参数
+
+```rust
+struct Point {
+    x: i32,
+    y: i32,
+    z: i32,
+}
+
+let origin = Point { x: 0, y: 0, z: 0 };
+
+match origin {
+    Point { x, .. } => println!("x is {}", x),
+}
+```
+
+#### 使用 `_` 忽略部分参数
+
+```rust
+let hello = ('h', 'e', 'l', 'l', 'o');
+
+match hello {
+    (h, _, _, l, o) => {
+        println!("char: {}, {}, {}", h, l, o)
+    },
+}
+```
+
+### 匹配命名变量
+
+以下代码，只要给定的 x 是 Some 类型，但 Some 中的值不是 1，都会匹配到 y
+
+```rust
+let x = Some(10);
+match x {
+    Some(1) => println!("x = 1"),
+    Some(y) => println!("y = {:?}", y),
+    _ => println!("None"),
+}// y = 10
+```
+
+### `@` 绑定
+<!--rehype:wrap-class=row-span-2-->
+
+`@` 运算符允许为一个字段绑定另外一个变量。
+
+```rust
+let grade = 'A';
+match grade {
+    good @ 'A'..='C' => println!("your grade is {}", good),
+    _ => println!("Come on"),
+}
+```
+
+----
+
+```rust
+#[derive(Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+fn main(){
+    let p @ Point {x: px, y: py } = Point {x: 10, y: 23};
+    println!("x: {}, y: {}", px, py);
+    println!("{:?}", p);
+}
+```
+
+----
+
+如果使用 `|`，需要使用 `()`，进行多个模式的绑定
+
+```rust
+match 1 {
+    num @ (1 | 2) => {
+        println!("{}", num);
+    }
+    _ => {}
+}
+```
+
+### 使用匹配守卫
+
+```rust
+let x = Some(2);
+match x {
+    Some(1) => println!("x = 1"),
+    Some(y) if y == 2 => println!("y = {:?}", y),
+    _ => println!("No match"),
+}// y = 2
+```
+
 Rust 函数
 --------
 
-### 基本函数
+### 函数命名
+
+rust 的函数使用蛇形命名法（snake case）
 
 ```rust
 fn print_message(){
   println!("Hello, Quick Reference!");
 }
-fn main(){
-  // 在 Rust 中调用函数
-  print_message();
-}
 ```
 
-### 按值传递
+### 参数值
+
+rust 需要为函数的参数标明确定的类型
 
 ```rust
-fn main()
-{
-  let x:u32 = 10;
-  let y:u32 = 20;
-  
-  // => 200
-  println!("计算: {}", cal_rect(x, y));
+fn another_fn(a:u8, b: &str){
+    println!("我是 u8:{}", a);
+    println!("我是 &str:{}", b);
 }
-fn cal_rect(x:u32, y:u32) -> u32
-{
-  x * y
+
+fn main(){
+    another_fn(10, "hello")
 }
 ```
 
-### 通过引用传递
+### 返回值
+
+如果不指定返回值，rust 默认返回 `()` 类型
 
 ```rust
-fn main(){
-  let mut by_ref = 3;      // => 3
-  power_of_three(&mut by_ref);
-  println!("{by_ref}");  // => 9
-}
-fn power_of_three(by_ref: &mut i32){
-  // 取消引用很重要
-  *by_ref = *by_ref * *by_ref;
-  println!("{by_ref}");  // => 9
-}
+// 在 bin 中的入口函数默认返回 ()
+fn main(){}
 ```
 
-### 返回
+----
+
+使用 `->` 指定返回值，如果**表达式**在最后一行，无需使用 return
 
 ```rust
-fn main(){
-  let (mut radius, mut pi) = (3.0, 3.14);
-  let(area, _perimeter) = calculate (
-      &mut radius,
-      &mut pi
-  );
-  println!("圆的面积和周长为：{area} & {_perimeter}");
-}
-fn calculate(radius : &mut f64, pi: &mut f64) -> (f64, f64){
-  let perimeter = 2.0 * *pi * *radius;
-  let area = *pi * *radius * *radius;
-  return (area, perimeter);
+fn add(a:i32, b:i32) -> i32 {
+    if a + b < 100 {
+        return a - b;
+    }
+    a + b
 }
 ```
+
+### 永不返回 `!`
+
+```rust
+fn dead_end() -> ! {
+    panic!("panic!!!!!");
+}
+```
+
 <!--rehype:className=wrap-text -->
-
-### 数组作为参数
-
-```rust
-fn main(){
-  let mut array: [i32 ; 5] = [1,2,3,4,6];
-  print_arrays(array);
-  println!("元素：{array:?}");
-}
-fn print_arrays(mut array:[i32; 5]) {
-  array[0] = 89;
-  array[1] = 90;
-  array[2] = 91;
-  array[3] = 92;
-  array[4] = 93;
-  println!("元素：{array:?}");
-}
-```
-
-### 返回数组
-
-```rust
-fn main(){
-  let mut arr:[i32; 5] = [2,4,6,8,10];
-  multiply(arr);
-  println!("数组是：{:?}", multiply(arr));
-}
-fn multiply (mut arr: [i32 ; 5]) -> [i32 ; 5]{
-  arr[2] = 90;
-  for mut i in 0..5 {
-      arr[i] = arr[i] * arr[2];
-  }
-  return arr;
-}
-```
-<!--rehype:className=wrap-text -->
-
-### 泛型函数
-
-```rust
-use std::fmt::Debug;
-fn foo<T>(x: &[T]) where T: Debug {
-    // 省略细节
-}
-foo(&[1, 2]);
-```
 
 杂项
 -----
