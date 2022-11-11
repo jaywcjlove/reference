@@ -381,7 +381,7 @@ import sub from "mod/sub"
 ```
 
 ### 条件导出(exports)
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 :- | -
 :- | -
@@ -405,7 +405,7 @@ import sub from "mod/sub"
 
 <red>注意：</red>由于 `require` 和 `import` 互斥，所以 `require` 不能加载 `es` 的模块，`export` 不能加载 `cjs` 模块
 
-### 导出和导入
+### `main` Vs `exports`
 
 ```json
 {
