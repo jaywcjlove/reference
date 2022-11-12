@@ -1264,3 +1264,46 @@ class Select<T> extends React.Component<SelectProps<T>, any> {}
 // 使用
 const Form = () => <Select<string> items={['a', 'b']} />;
 ```
+
+各种各样的技巧
+---
+
+### keyof 取 interface 的键
+<!--rehype:wrap-class=row-span-2-->
+
+```ts
+interface Point {
+    x: number;
+    y: number;
+}
+ 
+// type keys = "x" | "y"
+type keys = keyof Point;
+```
+
+### 索引签名
+
+```ts
+interface NumberOrString {
+  [index: string]: string | number;
+  length: number;
+  name: string;
+}
+```
+
+### 从数组中提取类型
+
+```ts
+type Point = { x: number; y: number; }
+type Data = Point[];
+// Data 是个数组，提取里面的元素类型
+type PointDetail = Data[number];
+// type PointDetail = { x: number; y: number; }
+```
+
+### 只读元组类型
+
+```ts
+const point = [3, 4] as const
+// type 'readonly [3, 4]'
+```
