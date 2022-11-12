@@ -10,8 +10,8 @@ TypeScript 备忘清单
 
 TypeScript 是具有类型语法的 JavaScript。Interface 是为了匹配它们的运行时行为而构建的。
 
-- [JavaScript 备忘清单](./javascript.md)
-- [TypeScript 官网](https://www.typescriptlang.org/)
+- [JavaScript 备忘清单](./javascript.md) _(jaywcjlove.github.io)_
+- [TypeScript 官网](https://www.typescriptlang.org/)  _(typescriptlang.org)_
 
 ### 内置类型基元
 
@@ -1307,3 +1307,9 @@ type PointDetail = Data[number];
 const point = [3, 4] as const
 // type 'readonly [3, 4]'
 ```
+
+另见
+----
+
+- [JavaScript 备忘清单](./javascript.md)
+- [TypeScript 官网](https://www.typescriptlang.org/) _(typescriptlang.org)_
