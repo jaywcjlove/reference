@@ -19,6 +19,7 @@ fn main() {
 ```shell
 $ rustc Hello_World.rs
 $ ./Hello_World
+
 Hello, World!
 ```
 
