@@ -121,33 +121,17 @@ $ ffmpeg -i movie.webm movie.mp4
 ---
 <!--rehype:body-class=cols-2-->
 
-### 裁剪
-<!--rehype:wrap-class=row-span-2-->
+### 剪切视频部分
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
-$ ffmpeg -i <input> -filter:v "crop=640:480:100:25" <output>
-```
-<!--rehype:className=wrap-text -->
-
-通过从输入视频中复制偏移 `x=100px` `y=25px` 的相应窗口来创建 `640x480` 大小的输出视频
-
-```bash
-# 裁剪到宽度 360，高度 640
-$ ffmpeg -i input.mov -filter:v 'crop=360:640:0:0' -codec:a copy output.mov
-```
-<!--rehype:className=wrap-text -->
-
-裁剪到宽度 360，高度 640，从坐标 (10, 20) 开始
-
-```bash
-$ ffmpeg -i input.mov -filter:v 'crop=360:640:10:20' -codec:a copy output.mov
-```
-<!--rehype:className=wrap-text -->
-
-### 缩放
-
-```bash
-$ ffmpeg -i <输入> -vf scale=640:480 <输出>
+# 从1分45秒开始剪切2分35秒
+$ ffmpeg -i <input> -ss 00:01:45 -t 00:02:35 -vcodec copy -acodec copy <output>
+# 从1分45秒开始剪切到第4分20秒，与上一行等效
+$ ffmpeg -i <input> -ss 00:01:45 -to 00:04:20 -codec copy <output>
+$ ffmpeg -ss 00:00:30 -i orginalfile.mpg -t 00:00:05 -vcodec copy -acodec copy newfile.mpg
+# 从 4.5 秒开始的 5 秒长的视频
+$ ffmpeg -i in.mp4 -ss 4.5 -t 5 out.mp4
 ```
 <!--rehype:className=wrap-text -->
 
@@ -164,20 +148,6 @@ $ ffmpeg -r 1 -i input.m2v -r 24 output.avi
 ```
 
 将输入文件的帧速率(仅对原始格式有效)强制为 1 fps，将输出文件的帧速率强制为 24 fps
-
-### 剪切视频部分
-<!--rehype:wrap-class=col-span-2-->
-
-```bash
-# 从1分45秒开始剪切2分35秒
-$ ffmpeg -i <input> -ss 00:01:45 -t 00:02:35 -vcodec copy -acodec copy <output>
-# 从1分45秒开始剪切到第4分20秒，与上一行等效
-$ ffmpeg -i <input> -ss 00:01:45 -to 00:04:20 -codec copy <output>
-$ ffmpeg -ss 00:00:30 -i orginalfile.mpg -t 00:00:05 -vcodec copy -acodec copy newfile.mpg
-# 从 4.5 秒开始的 5 秒长的视频
-$ ffmpeg -i in.mp4 -ss 4.5 -t 5 out.mp4
-```
-<!--rehype:className=wrap-text -->
 
 ### H265 2-pass 编码
 <!--rehype:wrap-class=row-span-2-->
@@ -212,14 +182,6 @@ $ ffmpeg -i <input> -c copy -metadata:s:v:0 rotate=90 <output>
 
 不要为旋转重新编码，而是简单地为旋转角度添加一个视频元数据字段
 
-### 放慢视频速度
-
-```bash
-$ ffmpeg -i in.mp4 -filter:v "setpts=4.0*PTS" out.mp4
-```
-
-使用过滤器减慢视频。 此示例将视频减慢四倍
-
 ### 缩放到特定宽度
 
 ```bash
@@ -239,23 +201,6 @@ $ ffmpeg -i file.mp4 -vn -c copy output.aac
 <!--rehype:className=wrap-text -->
 
 `-vn` (过滤视频)，使用 `-c copy`，不会重新解码和编码，加快速度。
-
-### 创建缩略图
-<!--rehype:wrap-class=row-span-2-->
-
-在 10 秒时创建一个缩略图
-
-```bash
-$ ffmpeg -ss 10 -i <input file> -vframes 1 -vcodec png -an thumb.png
-```
-<!--rehype:className=wrap-text -->
-
-例如，要每 `n` 秒创建一次缩略图，请使用 `-vf fps=1/n`
-
-```bash
-$ ffmpeg -i <input file> -vf fps=1/60 thumbnails/thumb%03d.png
-```
-<!--rehype:className=wrap-text -->
 
 ### 提取视频流
 
@@ -286,6 +231,13 @@ $ ffmpeg -i file.mp3 -acodec copy -metadata title="<title>" -metadata artist="<a
 
 ```bash
 $ ffmpeg -i file.aac -acodec mp3 -ar 44100 -ab 128000 output.mp3
+```
+<!--rehype:className=wrap-text -->
+
+### 将输入文件转码为 DVD PAL 格式
+
+```bash
+$ ffmpeg -y -threads 8 -i inFile -target pal-dvd -ac 2 -aspect 16:9 -acodec mp2 -ab 224000 -vf pad=0:­0:0:0 outFile
 ```
 <!--rehype:className=wrap-text -->
 
@@ -399,10 +351,19 @@ $ ffmpeg -hide_banner -loglevel error -stats -f gdigrab -framerate 60 \
 $ ffmpeg -f avfoundation -i 1:0 -preset ultrafast out.mkv
 ```
 
-### 将输入文件转码为 DVD PAL 格式
+### 合并音频与图片
+
+合并多个音频，自定义背景图片，生成视频音乐
 
 ```bash
-$ ffmpeg -y -threads 8 -i inFile -target pal-dvd -ac 2 -aspect 16:9 -acodec mp2 -ab 224000 -vf pad=0:­0:0:0 outFile
+# mylist.txt >>>
+file '1.mp3'
+file '2.mp3'
+file '3.mp3'
+
+# OBS: 46500 = 25:50 minutes * 60 * 30fps
+# echo "00:25:50" | awk -F: '{ print (($1 * 3600) + ($2 * 60) + $3) * 30 }'
+$ ffmpeg -y -loop 1 -i cover.jpg -f concat -i mylist.txt -c:v libx264 -r 30 -pix_fmt yuv420p -vframes 46500 -c:a aac -b:a 192k -strict experimental -shortest output.mp4
 ```
 <!--rehype:className=wrap-text -->
 
@@ -569,7 +530,7 @@ $ ffmpeg -i audioS.mp4 -i videoS.mp4 -c copy -map 0:a -map 1:v outFil­e.mp4
 
 ### 合并视频
 
-<!--rehype:wrap-class=col-span-2 row-span-3-->
+<!--rehype:wrap-class=col-span-3 row-span-3-->
 
 合并相同规格(解码/分辨率/帧率)视频
 
@@ -618,19 +579,70 @@ $ ffmpeg -f concat -i mylist.txt -c:v copy -c:a flac -strict -2 output.mp4
 ```
 <!--rehype:className=wrap-text -->
 
-### 合并音频与图片
+视频过滤器
+---
 
-合并多个音频，自定义背景图片，生成视频音乐
+### 格式
+
+如果一个 fliter 有多个参数，需要使用 `,` 分隔
 
 ```bash
-# mylist.txt >>>
-file '1.mp3'
-file '2.mp3'
-file '3.mp3'
+$ ffmpeg -i test.avi -c:v libx264 -vf "scale=1024:-1,transpose=1,crop=iw/3:ih/3" output.mp4
+```
 
-# OBS: 46500 = 25:50 minutes * 60 * 30fps
-# echo "00:25:50" | awk -F: '{ print (($1 * 3600) + ($2 * 60) + $3) * 30 }'
-$ ffmpeg -y -loop 1 -i cover.jpg -f concat -i mylist.txt -c:v libx264 -r 30 -pix_fmt yuv420p -vframes 46500 -c:a aac -b:a 192k -strict experimental -shortest output.mp4
+### 缩放
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+$ ffmpeg -i input.mp4 -vf "scale=640:480" out.mp4
+# -1 → 指根据另一个参数帮我们推断
+$ ffmpeg -i input.mp4 -vf "scale=720:-1" out.mp4
+# 宽度和高度
+ffmpeg -i input.mp4 -vf "scale=w=800:h=600" output.mp4
+# in_w\in_h 输入尺寸
+ffmpeg -i input.mkv -vf "scale=w=1/2*in_w:h=1/2*in_h" output.mkv
+```
+<!--rehype:className=wrap-text -->
+
+### 裁剪
+
+从左上角开始，复制 `x=0px` `y=0px` 的相应窗口来创建 `1280x720` 大小的输出视频
+
+```bash
+ffmpeg -i input.mp4 -vf "crop=w=1280:h=720:x=0:y=0" output.mp4
+```
+
+裁剪到宽度 360，高度 640，从坐标 (10, 20) 开始
+
+```bash
+$ ffmpeg -i input.mov -vf 'crop=360:640:10:20' output.mov
+```
+<!--rehype:className=wrap-text -->
+
+### 去除水印
+
+设置一个矩形覆盖区域 x=10:y=10:w=120:h=45
+
+```bash
+# show=1 为可选参数，设置显示边框，方便调试用的
+ffmpeg -i 1.mp4 -b:v 548k -vf delogo=x=10:y=10:w=120:h=45:show=1 output.mp4
+```
+<!--rehype:className=wrap-text -->
+
+### 创建缩略图
+<!--rehype:wrap-class=row-span-2-->
+
+在 10 秒时创建一个缩略图
+
+```bash
+$ ffmpeg -ss 10 -i <input file> -vframes 1 -vcodec png -an thumb.png
+```
+<!--rehype:className=wrap-text -->
+
+例如，要每 `n` 秒创建一次缩略图，请使用 `-vf fps=1/n`
+
+```bash
+$ ffmpeg -i <input file> -vf fps=1/60 thumbnails/thumb%03d.png
 ```
 <!--rehype:className=wrap-text -->
 
@@ -644,15 +656,65 @@ ffmpeg -i 1.mp4 -acodec copy -b:v 548k -vf "movie=logo.png[watermark];[in][water
 ```
 <!--rehype:className=wrap-text -->
 
-### 去除水印
-
-设置一个矩形覆盖区域 x=10:y=10:w=120:h=45
+### 视频旋转
 
 ```bash
-# show=1 为可选参数，设置显示边框，方便调试用的
-ffmpeg -i 1.mp4 -b:v 548k -vf delogo=x=10:y=10:w=120:h=45:show=1 output.mp4
+# 顺时针旋转 90
+$ ffmpeg -i input.avi -vf "rotate=90*PI/180" out.mp4 
+# 顺时针旋转 180，翻转 90
+$ ffmpeg -i input.mp4 -vf "rotate=PI" out.mp4
 ```
-<!--rehype:className=wrap-text -->
+
+### 更改视频播放速度
+
+```bash
+# 加速 2 倍
+$ ffmpeg -i input.mkv -vf "setpts=0.5*PTS" output.mkv 
+# 减速 2 倍
+$ ffmpeg -i input.mp4 -vf "setpts=2*PTS" output.mp4
+```
+
+### 添加背景音乐
+
+```bash
+# -t 10 文件时长，单位为秒，建议取值原始视频总时长
+$ ffmpeg -i 1.mp4 -i test.mp3 \
+  -filter_complex "[1:a]aloop=loop=-1:size=2e+09[out];[out][0:a]amix" \
+  -t 10 out.mp4
+```
+
+音频过滤器
+---
+
+### 调节音量
+
+```bash
+# 增大音量
+$ ffmpeg -i test.mp4 -af "volumn=1.5" out.mp4
+```
+
+### 统一视频的音量
+
+```bash
+$ ffmpeg -i test.mp4 -af "loudnorm=I=-5:LRA=1" out.mp4
+```
+
+### 重新映射通道数
+
+```bash
+# 使左右耳的声音同时出现
+$ ffmpeg -i input.mp3 -af "channelmap=1-0|1-1" output.mp3
+```
+
+### 更改音频速度
+
+```bash
+$ ffmpeg -i input.wav -af "atempo=0.75" output.wav 
+# 加速 4 倍
+$ ffmpeg -i input.mp3 -af "atempo=2.0,atempo=2.0" ouutput.mp3
+```
+
+atempo 它只接受 0.5(半速) 到 2 (倍速)之间的值。为了越过这个限制，你可以链式使用这个过滤器
 
 另见
 ---
