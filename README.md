@@ -147,10 +147,11 @@ Quick Reference
 [`我有一张备忘单(速查表)`](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)<!--rehype:class=home-button text-grey&target=__blank-->
 <!--rehype:style=margin-top:3rem-->
 
-<!--rehype:ignore:start-->
-## 贡献
+## 感谢所有贡献者
+<!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
-请参阅[贡献指南](./CONTRIBUTING.md)了解如何开始。一如既往，感谢我们出色的贡献者！
+请参阅 [Quick Reference](./docs/quickreference.md) 了解如何开始。一如既往，感谢我们出色的贡献者！
+<!--rehype:style=padding-bottom:1rem;-->
 
 <!--GAMFC--><a href="https://github.com/jaywcjlove">
   <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调™"/>
@@ -186,8 +187,10 @@ Quick Reference
   <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
 </a><!--GAMFC-END-->
 
-上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
+贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成
+<!--rehype:style=padding-top:1rem;-->
 
+<!--rehype:ignore:start-->
 ## License
 
 MIT © [Kenny Wong](https://github.com/jaywcjlove)

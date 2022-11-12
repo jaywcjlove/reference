@@ -8,7 +8,7 @@ Quick Reference 备忘清单
 
 ### 本地编译预览
 
-简单的将仓库克隆下来本地调试页面展示。
+将仓库克隆到本地调试页面。请参阅[贡献指南](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)了解如何开始
 
 #### 克隆仓库
 
@@ -22,12 +22,101 @@ git clone git@github.com:jaywcjlove/reference.git
 ```shell
 npm i         # 安装依赖
 npm run build # 编译输出 HTML
-npm run start # 监听 md 文件编译输出 HTML
 ```
 
 HTML 存放在仓库根目录下的 `dist` 目录中，将 `dist/index.html` 静态页面在浏览器中打开预览。
 
+```shell
+npm run start # 监听 md 文件编译输出 HTML
+```
+
+### 目录结构
+
+```bash
+.
+├── CONTRIBUTING.md   # 贡献说明
+├── Dockerfile
+├── LICENSE
+├── README.md   # Home(首页) 内容
+├── dist        # 编译后的静态资源目录
+├── docs        # Markdown 文档（速查表）
+│   ├── bash.md
+│   ├── ....
+│   └── yaml.md
+├── package.json
+└── scripts     # MD 转 HTML 的编译脚本
+    ├── assets  # LOGO 图标文件资源
+    ├── ....
+    └── watch.mjs
+```
+
+### 添加一个备忘清单
+
+一个简单的备忘清单包含 `页面大标题<h1>`，放在大标题下面的 `介绍` 文本，`<h2>` 分类标题，`<h3>` 内容为 `卡片`
+
+```markdown
+备忘清单 (页面大标题)
+===
+
+这是您可以在当前清单上使用的样式参考！备忘清单介绍
+
+入门 (分类标题)
+---
+
+### 介绍 (卡片)
+
+卡片内容
+```
+
+上面 markdown 内容存放到 `docs` 目录中，命名为 `xxx.md`
+
+### 首页导航
+<!--rehype:wrap-class=col-span-2-->
+
+首页(`README.md`)存放在仓库的根目录，通过这个 `README.md` 自动生成首页导航，下面是导航实例：
+
+```markdown
+## Linux 命令
+
+[Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68/var(\-\-bg\-opacity));-->
+<!--rehype:class=home-card-->
+```
+
+首页导航图标存放在 `scripts/assets` 目录中，如果你的备忘清单定义为 `docs/cron.md`，那么你的图标就定义为 `cron.svg` 存放到 `scripts/assets` 目录中，重新编译首页当行菜单就拥有了图标。
+
+- 图标存放在 [`scripts/assets`](https://github.com/jaywcjlove/reference/blob/main/scripts/assets) 目录中
+- 图片名称与清单名称保持一致 `cron.md` -> `cron.svg` (注意大小写)
+- SVG 图标尺寸 `<svg height="1em" width="1em"`
+- SVG 图标颜色使用继承颜色值 `<svg fill="currentColor"`
+- 使用 `<!--rehype:class=home-card-->` 标识卡片样式
+
+### 首页提示配置
+
+```markdown
+[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
+```
+<!--rehype:className=wrap-text -->
+
+添加 `contributing` 类名，会在卡片下方默认添加 `👆待完善需要您的参与`
+
+```markdown
+class=tag&data-info=👆看看还缺点儿什么？
+```
+
+上面示例将默认提示更改为： `👆看看还缺点儿什么？`
+
+```markdown
+[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=tag&data-lang=Python-->
+```
+<!--rehype:className=wrap-text -->
+
+添加 `class=tag&data-lang=Python` 类名和参数，会在卡片右上角标记 _`Python`_
+
+Markdown 语法注释
+---
+
 ### 介绍
+<!--rehype:wrap-class=row-span-2-->
 
 在备忘清单采用 `HTML 注释语法`，标识网站布局和一些样式，目的是为了在 `GitHub` 中也是正常毫无瑕疵的预览 [`Markdown`](./markdown.md)。
 
@@ -40,10 +129,10 @@ HTML 存放在仓库根目录下的 `dist` 目录中，将 `dist/index.html` 静
 ```
 <!--rehype:className=wrap-text -->
 
-使用 `col-span-2` 类标识，卡片占 `2` 列位置
+上面基础示例，使用 `col-span-2` 类标识，卡片占 `2` 列位置，参考现有备忘清单的源代码是一个好习惯！
 
 ### 注释语法介绍
-<!--rehype:wrap-class=row-span-3&style=color:black;background-color: #d7a100;-->
+<!--rehype:wrap-class=row-span-4&style=color:black;background-color: #d7a100;-->
 
 - 在某个 [`Markdown`](./markdown.md) 语法下方或者后面，添加 HTML注释
 - 以 `<!--rehype:` 开始，`-->` 结束，包裹参数内容
@@ -149,11 +238,11 @@ export const Student = (
 添加注释配置 `<!--rehype:tooltips-->` 添加一个 Tooltips 提示。
 
 ### H3 部分(卡片)背景颜色
-<!--rehype:wrap-style=background: #00c69357;-->
+<!--rehype:wrap-style=background: #8dffd42e;-->
 
 ```markdown
 ### H3 部分(卡片)背景颜色
-<!--rehype:wrap-style=background: #00c69357;-->
+<!--rehype:wrap-style=background: #8dffd42e;-->
 ```
 <!--rehype:className=wrap-text -->
 
@@ -214,35 +303,6 @@ const school = <div>学校</div>;
 `<del>` 或 `~~删除~~` | <del>~~红色~~</del>
 <!--rehype:className=shortcuts-->
 
-### 注释类配置
-<!--rehype:wrap-class=col-span-2 row-span-2-->
-
-类 | 说明
----- | ----
-`<!--rehype:className=wrap-text-->` | 强制换行
-`<!--rehype:className=show-header-->` | 展示表格表头
-`<!--rehype:className=shortcuts-->` | 快捷键样式
-`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸自动换行
-`<!--rehype:className=style-list-arrow-->` | 列表箭头样式展示表格
-`<!--rehype:className=style-list-->` | 列表样式展示表格
-`<!--rehype:className=left-align-->` | 表格末尾列左对齐
-`<!--rehype:className=style-none-->` | \<li> 没有标记
-`<!--rehype:className=style-timeline-->` | 时间轴样式
-`<!--rehype:className=style-arrow-->` | 箭头标记
-
-### 隐藏卡片标题
-<!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
-
-```
-隐藏卡片标题，在 H3 标题下面添加注释样式
-```
-
-```markdown {2}
-### 隐藏卡片标题
-<!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
-```
-<!--rehype:className=wrap-text -->
-
 ### HTML 代码预览
 
 ```
@@ -258,6 +318,35 @@ const school = <div>学校</div>;
 ```
 
 上面的 [`markdown`](./markdown.md) 代码在 `meta` 位置添加 `preview` 标识，[HTML](./html.md) 代码将被执行预览
+
+### 隐藏卡片标题
+<!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
+
+```
+隐藏卡片标题，在 H3 标题下面添加注释样式
+```
+
+```markdown {2}
+### 隐藏卡片标题
+<!--rehype:style=display:none;&wrap-style=padding-top: 0;-->
+```
+<!--rehype:className=wrap-text -->
+
+### 注释类配置
+<!--rehype:wrap-class=col-span-2-->
+
+类 | 说明
+---- | ----
+`<!--rehype:className=wrap-text-->` | 强制换行
+`<!--rehype:className=show-header-->` | 展示表格表头
+`<!--rehype:className=shortcuts-->` | 快捷键样式
+`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸自动换行
+`<!--rehype:className=style-list-arrow-->` | 列表箭头样式展示表格
+`<!--rehype:className=style-list-->` | 列表样式展示表格
+`<!--rehype:className=left-align-->` | 表格末尾列左对齐
+`<!--rehype:className=style-none-->` | \<li> 没有标记
+`<!--rehype:className=style-timeline-->` | 时间轴样式
+`<!--rehype:className=style-arrow-->` | 箭头标记
 
 ### KaTeX 数学渲染
 
