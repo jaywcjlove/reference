@@ -452,7 +452,7 @@ M(?(?=.*?\bher\b)s|r)\.
 
 表达式 | 匹配示例
 :- | -
-`.ar` | The `car` `par`ked in the `gar`age.
+`.ar` | The `car` <pur>`par`</pur>ked in the `gar`age.
 `ar[.]` | A garage is a good place to park a c`ar`.
 <!--rehype:className=show-header-->
 
@@ -474,7 +474,7 @@ M(?(?=.*?\bher\b)s|r)\.
 
 表达式 | 匹配示例
 :- | -
-`[a-z]*` | T`he` `car` `parked` `in` `the` `garage` #21.
+`[a-z]*` | T`he` <pur>`car`</pur> `parked` <pur>`in`</pur> `the` <pur>`garage`</pur> #21.
 `\s*cat\s*` | The fat `cat` sat on the con`cat`enation.
 
 表达式 `[a-z]*` 匹配一个行中所有以小写字母开头的字符串。
@@ -503,7 +503,7 @@ M(?(?=.*?\bher\b)s|r)\.
 `[0-9]{2,3}` | The number was 9.`999`7 but we rounded it off to `10`.0.
 `[0-9]{2,}` | The number was 9.`9997` but we rounded it off to `10`.0.
 `[0-9]{3}` | The number was 9.`999`7 but we rounded it off to 10.0.
-<!--rehype:className=show-header-->
+<!--rehype:className=style-list-arrow-->
 
 ### `(...)` 特征标群
 
@@ -722,7 +722,7 @@ False
 函数 | 说明
 :-|-
 `re.findall`  | 返回包含所有匹配项的列表
-`re.finditer` | 返回一个可迭代的匹配对象（每个匹配一个）
+`re.finditer` | 返回一个可迭代的匹配对象<br/> _(每个匹配一个)_
 `re.search`   | 如果字符串中的任何位置存在匹配项，则返回 Match 对象
 `re.split`    | 返回一个列表，其中字符串在每次匹配时被拆分
 `re.sub`      | 用字符串替换一个或多个匹配项
