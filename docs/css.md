@@ -250,10 +250,10 @@ p:first-child {
 :- | :-
 `div.classname` | 具有特定类名的 div
 `div#idname`    | 具有特定 ID 的 div
-`div p`         | div 中的段落
-`div > p`       | div 子节点中的所有 `P` 标签
-`div + p`       | div 之后的 `P` 标签
-`div ~ p`       | div 前面的 `P` 标签
+`div p`         | div 中的所有段落
+`div > p`       | 父元素是 div 的 `P` 标签
+`div + p`       | div 之后的第一个同级 `P` 标签
+`div ~ p`       | div 之后所有的同级 `P` 标签
 
 另见: [相邻兄弟](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Adjacent_sibling_combinator) / [通用兄弟](https://developer.mozilla.org/zh-CN/docs/Web/CSS/General_sibling_combinator) / [子](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator) 选择器
 
