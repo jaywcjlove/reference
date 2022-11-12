@@ -83,4 +83,17 @@ npm run build  # 编译输出 HTML
 npm run start  # 监听 md 文件编译输出 HTML
 ```
 
-- 或者你也可以使用 `pnpm` 或者 `yarn` 做为包管理器
+或者你也可以使用 `pnpm` 或者 `yarn` 做为包管理器
+
+
+## 贡献
+
+请参阅[贡献指南](./CONTRIBUTING.md)了解如何开始。一如既往，感谢我们出色的贡献者！
+
+<!--GAMFC--><!--GAMFC-END-->
+
+上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
+
+## License
+
+MIT © [Kenny Wong](https://github.com/jaywcjlove)
