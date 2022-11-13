@@ -92,8 +92,9 @@ Min  Hour Day  Mon  Weekday
 `问号(?)`  | 可以代替“*”并允许用于月份和星期几。使用仅限于 cron 表达式中的 `月份中的某天` 或 `星期几`。
 <!--rehype:className=show-header auto-wrap-->
 
-## Also see
+另见
+----
 
-* [Devhints](https://devhints.io/cron) _(devhints.io)_
-* [Crontab Generator](https://crontab-generator.org/) _(crontab-generator.org)_
-* [Crontab guru](https://crontab.guru/) _(crontab.guru)_
+- [Devhints](https://devhints.io/cron) _(devhints.io)_
+- [Crontab Generator](https://crontab-generator.org/) _(crontab-generator.org)_
+- [Crontab guru](https://crontab.guru/) _(crontab.guru)_
