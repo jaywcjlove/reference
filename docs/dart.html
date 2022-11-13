@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Dart 备忘清单
+ &#x26;  dart cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="包含最重要概念、功能、方法等的 Dart 备忘单。初学者的完整快速参考为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,dart">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/dart.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="dart-备忘清单"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M4.105 4.105S9.158 1.58 11.684.316a3.079 3.079 0 0 1 1.481-.315c.766.047 1.677.788 1.677.788L24 9.948v9.789h-4.263V24H9.789l-9-9C.303 14.5 0 13.795 0 13.105c0-.319.18-.818.316-1.105l3.789-7.895zm.679.679v11.787c.002.543.021 1.024.498 1.508L10.204 23h8.533v-4.263L4.784 4.784zm12.055-.678c-.899-.896-1.809-1.78-2.74-2.643-.302-.267-.567-.468-1.07-.462-.37.014-.87.195-.87.195L6.341 4.105l10.498.001z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#dart-备忘清单"><span class="icon icon-link"></span></a>Dart 备忘清单</h1><div class="wrap-body">
+<p>包含最重要概念、功能、方法等的 <a href="https://dart.dev/">Dart</a> 备忘单。初学者的完整快速参考</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#安装-dart">安装 Dart</a><a aria-hidden="true" class="leve4 tocs-link" href="#windows">Windows</a><a aria-hidden="true" class="leve4 tocs-link" href="#linux">Linux</a><a aria-hidden="true" class="leve4 tocs-link" href="#mac">Mac</a><a aria-hidden="true" class="leve3 tocs-link" href="#hellodart">hello.dart</a><a aria-hidden="true" class="leve4 tocs-link" href="#windows-1">Windows</a><a aria-hidden="true" class="leve3 tocs-link" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" href="#数据类型">数据类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符串插值">字符串插值</a><a aria-hidden="true" class="leve3 tocs-link" href="#导入-imports">导入 Imports</a><a aria-hidden="true" class="leve2 tocs-link" href="#操作符">操作符</a><a aria-hidden="true" class="leve3 tocs-link" href="#算术运算符">算术运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#逻辑运算符">逻辑运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#等式和关系运算符">等式和关系运算符</a><a aria-hidden="true" class="leve2 tocs-link" href="#控制流条件">控制流：条件</a><a aria-hidden="true" class="leve3 tocs-link" href="#if-和-else-if">if 和 else if</a><a aria-hidden="true" class="leve3 tocs-link" href="#switch-case">switch case</a><a aria-hidden="true" class="leve2 tocs-link" href="#控制流循环">控制流：循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#while-循环">while 循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#do-while-循环">do-while 循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#for-循环">for 循环</a><a aria-hidden="true" class="leve2 tocs-link" href="#collections">Collections</a><a aria-hidden="true" class="leve3 tocs-link" href="#lists">Lists</a><a aria-hidden="true" class="leve3 tocs-link" href="#maps">Maps</a><a aria-hidden="true" class="leve3 tocs-link" href="#sets">Sets</a><a aria-hidden="true" class="leve2 tocs-link" href="#函数">函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#函数示例">函数示例</a><a aria-hidden="true" class="leve3 tocs-link" href="#箭头语法-">箭头语法 (=>)</a><a aria-hidden="true" class="leve3 tocs-link" href="#anonymous-lambda-functions">Anonymous (lambda) functions</a><a aria-hidden="true" class="leve2 tocs-link" href="#类和对象">类和对象</a><a aria-hidden="true" class="leve3 tocs-link" href="#类-class">类 Class</a><a aria-hidden="true" class="leve3 tocs-link" href="#对象-object">对象 Object</a><a aria-hidden="true" class="leve3 tocs-link" href="#构造函数">构造函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#抽象类">抽象类</a><a aria-hidden="true" class="leve3 tocs-link" href="#getters-setters">Getters Setters</a><a aria-hidden="true" class="leve2 tocs-link" href="#隐式接口">隐式接口</a><a aria-hidden="true" class="leve3 tocs-link" href="#一个基本的界面">一个基本的界面</a><a aria-hidden="true" class="leve3 tocs-link" href="#扩展类">扩展类</a><a aria-hidden="true" class="leve2 tocs-link" href="#异常">异常</a><a aria-hidden="true" class="leve3 tocs-link" href="#throw">Throw</a><a aria-hidden="true" class="leve3 tocs-link" href="#catch">Catch</a><a aria-hidden="true" class="leve3 tocs-link" href="#finally">Finally</a><a aria-hidden="true" class="leve2 tocs-link" href="#futures">Futures</a><a aria-hidden="true" class="leve3 tocs-link" href="#async-await">Async Await</a><a aria-hidden="true" class="leve2 tocs-link" href="#各种各样的">各种各样的</a><a aria-hidden="true" class="leve3 tocs-link" href="#null-和-null-感知">Null 和 Null 感知</a><a aria-hidden="true" class="leve3 tocs-link" href="#三元运算符">三元运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#条件属性访问">条件属性访问</a><a aria-hidden="true" class="leve3 tocs-link" href="#级联符号-">级联符号 (..)</a><a aria-hidden="true" class="leve3 tocs-link" href="#扩展运算符-">扩展运算符 (...)</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装-dart"><a aria-hidden="true" tabindex="-1" href="#安装-dart"><span class="icon icon-link"></span></a>安装 Dart</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="windows"><a aria-hidden="true" tabindex="-1" href="#windows"><span class="icon icon-link"></span></a>Windows</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">C:<span class="token punctuation">\</span><span class="token operator">></span> choco <span class="token function">install</span> dart-sdk <span class="token comment"># Windows</span>
+</span></code></pre>
+<h4 id="linux"><a aria-hidden="true" tabindex="-1" href="#linux"><span class="icon icon-link"></span></a>Linux</h4>
+<p>执行以下一次性设置</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt-get</span> update
+</span><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> apt-transport-https
+</span><span class="code-line">$ <span class="token function">wget</span> -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub <span class="token operator">|</span> <span class="token function">sudo</span> gpg <span class="token parameter variable">--dearmor</span> <span class="token parameter variable">-o</span> /usr/share/keyrings/dart.gpg
+</span><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/apt/sources.list.d/dart_stable.list
+</span></code></pre>
+<p>安装 Dart SDK</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt-get</span> update
+</span><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> dart
+</span></code></pre>
+<h4 id="mac"><a aria-hidden="true" tabindex="-1" href="#mac"><span class="icon icon-link"></span></a>Mac</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ brew tap dart-lang/dart
+</span><span class="code-line">$ brew <span class="token function">install</span> dart
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="hellodart"><a aria-hidden="true" tabindex="-1" href="#hellodart"><span class="icon icon-link"></span></a>hello.dart</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 应用执行开始的顶级函数</span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Hello World!"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印到控制台</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>每个应用程序都有一个 <code>main()</code> 函数</p>
+<h4 id="windows-1"><a aria-hidden="true" tabindex="-1" href="#windows-1"><span class="icon icon-link"></span></a>Windows</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ dart compile exe hellow.dart
+</span><span class="code-line">$ <span class="token function">time</span> ./hello.exe
+</span><span class="code-line">Hello World<span class="token operator">!</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line">int x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 显式键入</span>
+</span><span class="code-line"><span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">// 类型推断 - 具有类型推断的通用var</span>
+</span><span class="code-line"><span class="token keyword">dynamic</span> z <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span> <span class="token comment">// 变量可以采用任何类型</span>
+</span><span class="code-line">z <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"cool"</span></span><span class="token punctuation">;</span> <span class="token comment">// cool</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 如果您从不打算更改变量，请使用 final 或 const</span>
+</span><span class="code-line"><span class="token comment">// 像这样的东西：</span>
+</span><span class="code-line"><span class="token keyword">final</span> email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"temid@gmail.com"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 与 var 相同，但不能重新分配</span>
+</span><span class="code-line"><span class="token keyword">final</span> <span class="token class-name">String</span> email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"temid@gmail.com"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 你不能改变价值</span>
+</span><span class="code-line"><span class="token keyword">const</span> qty <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">// 编译时常数</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="数据类型"><a aria-hidden="true" tabindex="-1" href="#数据类型"><span class="icon icon-link"></span></a>数据类型</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 整数，范围 -2^63 到 2^63 - 1</span>
+</span><span class="code-line">int age <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 浮点数字</span>
+</span><span class="code-line">
+</span><span class="code-line">double height <span class="token operator">=</span> <span class="token number">1.85</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 您还可以将变量声明为 num</span>
+</span><span class="code-line"><span class="token comment">// x 可以同时具有 int 和 double 值</span>
+</span><span class="code-line">num x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">num <span class="token operator">+=</span> <span class="token number">2.5</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: 3.5</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token class-name">String</span> name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Nicola"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">bool isFavourite <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">bool isLoaded <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 这是一条正常的单行注释</span>
+</span><span class="code-line"><span class="token comment">/// 这是一个文档注释，用于文档库，</span>
+</span><span class="code-line"><span class="token comment">/// 类及其成员。 IDE 和 dartdoc 等工具</span>
+</span><span class="code-line"><span class="token comment">/// doc 特别注释。</span>
+</span><span class="code-line"><span class="token comment">/* 也支持此类注释 */</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串插值"><a aria-hidden="true" tabindex="-1" href="#字符串插值"><span class="icon icon-link"></span></a>字符串插值</h3><div class="wrap-body">
+<pre class="wrap-text "><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 可以对字符串类型使用单引号或双引号</span>
+</span><span class="code-line"><span class="token keyword">var</span> firstName <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'Nicola'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">var</span> lastName <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Tesla"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 可以用 $ 将变量嵌入到字符串中</span>
+</span><span class="code-line"><span class="token class-name">String</span> fullName <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"</span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">firstName</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">lastName</span></span><span class="token string">"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 与 + 连接</span>
+</span><span class="code-line"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Albert "</span></span> <span class="token operator">+</span> <span class="token string-literal"><span class="token string">"Einstein"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token class-name">String</span> upperCase <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'</span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">firstName<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>upperCase<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: NICOLA</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="导入-imports"><a aria-hidden="true" tabindex="-1" href="#导入-imports"><span class="icon icon-link"></span></a>导入 Imports</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 导入核心库</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'dart:math'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 从外部包导入库</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:test/test.dart'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 导入文件</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'path/to/my_other_file.dart'</span></span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="操作符"><a aria-hidden="true" tabindex="-1" href="#操作符"><span class="icon icon-link"></span></a>操作符</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="算术运算符"><a aria-hidden="true" tabindex="-1" href="#算术运算符"><span class="icon icon-link"></span></a>算术运算符</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印: 5</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印: -1</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印: 6</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印: 2.5 - 结果是 double</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">~/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: 2 - 结果是n int</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印: 1 - 余</span>
+</span><span class="code-line">int a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+</span></code></pre>
+<hr>
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 增</span>
+</span><span class="code-line">b <span class="token operator">=</span> <span class="token operator">++</span>a<span class="token punctuation">;</span> <span class="token comment">// 前增量 - 在 b 获得其值之前增加 a</span>
+</span><span class="code-line">b <span class="token operator">=</span> a<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 后增量 - 在 b 获得它的值之后增加 a</span>
+</span><span class="code-line"><span class="token comment">// 递</span>
+</span><span class="code-line">b <span class="token operator">=</span> <span class="token operator">--</span>a<span class="token punctuation">;</span> <span class="token comment">// 前减量 - 在 b 获得它的值之前减少 a</span>
+</span><span class="code-line">b <span class="token operator">=</span> a<span class="token operator">--</span><span class="token punctuation">;</span> <span class="token comment">// 后减量 - 在 b 获得它的值之后递减 a</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="逻辑运算符"><a aria-hidden="true" tabindex="-1" href="#逻辑运算符"><span class="icon icon-link"></span></a>逻辑运算符</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// !expr 反转表达式（将 false 更改为 true，反之亦然）</span>
+</span><span class="code-line"><span class="token comment">// ||  逻辑或</span>
+</span><span class="code-line"><span class="token comment">// &#x26;&#x26;  逻辑与</span>
+</span><span class="code-line">bool isOutOfStock <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line">int quantity <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isOutOfStock <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">(</span>quantity <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">||</span> quantity <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// ...Order the product...</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="等式和关系运算符"><a aria-hidden="true" tabindex="-1" href="#等式和关系运算符"><span class="icon icon-link"></span></a>等式和关系运算符</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: true - 平等的</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: true - 不相等</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印: true - 比...更棒</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">&#x3C;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印: true - 少于</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: true - 大于或等于</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">&#x3C;=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: true - 小于或等于</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="控制流条件"><a aria-hidden="true" tabindex="-1" href="#控制流条件"><span class="icon icon-link"></span></a>控制流：条件</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="if-和-else-if"><a aria-hidden="true" tabindex="-1" href="#if-和-else-if"><span class="icon icon-link"></span></a>if 和 else if</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">if</span><span class="token punctuation">(</span>age <span class="token operator">&#x3C;</span> <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Teen"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span> age <span class="token operator">></span> <span class="token number">18</span> <span class="token operator">&#x26;&#x26;</span> age <span class="token operator">&#x3C;</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Adult"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Old"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="switch-case"><a aria-hidden="true" tabindex="-1" href="#switch-case"><span class="icon icon-link"></span></a>switch case</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">Pet</span> <span class="token punctuation">{</span>dog<span class="token punctuation">,</span> cat<span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token class-name">Pet</span> myPet <span class="token operator">=</span> <span class="token class-name">Pet</span><span class="token punctuation">.</span>dog<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">switch</span><span class="token punctuation">(</span>myPet<span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">case</span> <span class="token class-name">Pet</span><span class="token punctuation">.</span>dog<span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'My Pet is Dog.'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">case</span> <span class="token class-name">Pet</span><span class="token punctuation">.</span>cat<span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'My Pet is Cat.'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token keyword">break</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">default</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'I don\'t have a Pet'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 打印: My Pet is Dog.</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="控制流循环"><a aria-hidden="true" tabindex="-1" href="#控制流循环"><span class="icon icon-link"></span></a>控制流：循环</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="while-循环"><a aria-hidden="true" tabindex="-1" href="#while-循环"><span class="icon icon-link"></span></a>while 循环</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>dreamsAchieved<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">workHard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>循环迭代之前的 <code>while</code> 循环检查条件</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="do-while-循环"><a aria-hidden="true" tabindex="-1" href="#do-while-循环"><span class="icon icon-link"></span></a>do-while 循环</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">do</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">workHard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>dreamsAchieved<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p><code>do-while</code> 循环在执行循环内的语句后验证条件</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="for-循环"><a aria-hidden="true" tabindex="-1" href="#for-循环"><span class="icon icon-link"></span></a>for 循环</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">for</span><span class="token punctuation">(</span>int i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&#x3C;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">var</span> numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 列表的 for-in 循环</span>
+</span><span class="code-line"><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> number <span class="token keyword">in</span> numbers<span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="collections"><a aria-hidden="true" tabindex="-1" href="#collections"><span class="icon icon-link"></span></a>Collections</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="lists"><a aria-hidden="true" tabindex="-1" href="#lists"><span class="icon icon-link"></span></a>Lists</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 有序的对象组</span>
+</span><span class="code-line"><span class="token keyword">var</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>list<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Print: 3</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>list<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Print: 2</span>
+</span><span class="code-line"><span class="token comment">// 列表声明和初始化的其他方式</span>
+</span><span class="code-line"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> cities <span class="token operator">=</span> <span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"New York"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"Mumbai"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"Tokyo"</span></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 创建一个编译时常量的列表</span>
+</span><span class="code-line"><span class="token keyword">const</span> constantCities <span class="token operator">=</span> <span class="token keyword">const</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"New York"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"Mumbai"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"Tokyo"</span></span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="maps"><a aria-hidden="true" tabindex="-1" href="#maps"><span class="icon icon-link"></span></a>Maps</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 映射是关联键和值的对象</span>
+</span><span class="code-line"><span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 要初始化地图，请执行以下操作：</span>
+</span><span class="code-line">person<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'firstName'</span></span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'Nicola'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">person<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'lastName'</span></span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'Tesla'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 打印: {firstName:Nicola, lastName:Tesla}</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>person<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'lastName'</span></span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 打印: Tesla</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">var</span> nobleGases <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// Key: Value</span>
+</span><span class="code-line">  <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'helium'</span></span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token number">10</span><span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'neon'</span></span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token number">18</span><span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'argon'</span></span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="sets"><a aria-hidden="true" tabindex="-1" href="#sets"><span class="icon icon-link"></span></a>Sets</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// Dart 中的集合是唯一项的无序集合</span>
+</span><span class="code-line"><span class="token keyword">var</span> halogens <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string-literal"><span class="token string">'fluorine'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'chlorine'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'bromine'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'iodine'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'astatine'</span></span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 创建一个空集</span>
+</span><span class="code-line"><span class="token keyword">var</span> names <span class="token operator">=</span> <span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> names <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 这也有效</span>
+</span><span class="code-line"><span class="token comment">//var names = {}; // 创建地图，而不是集合</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数示例"><a aria-hidden="true" tabindex="-1" href="#函数示例"><span class="icon icon-link"></span></a>函数示例</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// dart 中的函数是对象并且有一个类型</span>
+</span><span class="code-line">int <span class="token function">add</span><span class="token punctuation">(</span>int a<span class="token punctuation">,</span> int b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">return</span> a<span class="token operator">+</span>b<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 函数可以分配给变量</span>
+</span><span class="code-line">int sum <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 回报：5</span>
+</span><span class="code-line"><span class="token comment">// 可以作为参数传递给其他函数</span>
+</span><span class="code-line">int totalSum <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 返回：7</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="箭头语法-"><a aria-hidden="true" tabindex="-1" href="#箭头语法-"><span class="icon icon-link"></span></a>箭头语法 (=>)</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 只包含一个表达式的函数，您可以使用简写语法</span>
+</span><span class="code-line">bool <span class="token function">isFav</span><span class="token punctuation">(</span><span class="token class-name">Product</span> product<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> favProductsList<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>product<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="anonymous-lambda-functions"><a aria-hidden="true" tabindex="-1" href="#anonymous-lambda-functions"><span class="icon icon-link"></span></a>Anonymous (lambda) functions</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 没有名字的小单行函数</span>
+</span><span class="code-line">int <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> a<span class="token operator">+</span>b<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// lambda 函数大多作为参数传递给其他函数</span>
+</span><span class="code-line"><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">  <span class="token string-literal"><span class="token string">'apples'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'bananas'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'oranges'</span></span>
+</span><span class="code-line"><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'</span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">list<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span></span><span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">item</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 打印: 0: apples 1: bananas 2: oranges</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="类和对象"><a aria-hidden="true" tabindex="-1" href="#类和对象"><span class="icon icon-link"></span></a>类和对象</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类-class"><a aria-hidden="true" tabindex="-1" href="#类-class"><span class="icon icon-link"></span></a>类 Class</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment">// 方法</span>
+</span><span class="code-line">    <span class="token keyword">void</span> <span class="token function">voice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Meow"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="对象-object"><a aria-hidden="true" tabindex="-1" href="#对象-object"><span class="icon icon-link"></span></a>对象 Object</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 类的实例</span>
+</span><span class="code-line"><span class="token comment">// 在 myCat 下面是 Cat 类的对象</span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token class-name">Cat</span> myCat <span class="token operator">=</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    myCat<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Kitty"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">    myCat<span class="token punctuation">.</span><span class="token function">voice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: Meow</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="构造函数"><a aria-hidden="true" tabindex="-1" href="#构造函数"><span class="icon icon-link"></span></a>构造函数</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token class-name">Cat</span> myCat <span class="token operator">=</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Kitty"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span>myCat<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: Kitty</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="抽象类"><a aria-hidden="true" tabindex="-1" href="#抽象类"><span class="icon icon-link"></span></a>抽象类</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 抽象类——不能实例化的类</span>
+</span><span class="code-line"><span class="token comment">// 这个类被声明为抽象的，因此不能被实例化</span>
+</span><span class="code-line"><span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractContainer</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 定义构造函数、字段、方法...</span>
+</span><span class="code-line">  <span class="token keyword">void</span> <span class="token function">updateChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 抽象方法</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="getters-setters"><a aria-hidden="true" tabindex="-1" href="#getters-setters"><span class="icon icon-link"></span></a>Getters Setters</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 提供对对象属性的读写访问</span>
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment">// getter</span>
+</span><span class="code-line">    <span class="token class-name">String</span> <span class="token keyword">get</span> catName <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token comment">// setter</span>
+</span><span class="code-line">    <span class="token keyword">void</span> <span class="token keyword">set</span> <span class="token function">catName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="隐式接口"><a aria-hidden="true" tabindex="-1" href="#隐式接口"><span class="icon icon-link"></span></a>隐式接口</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="一个基本的界面"><a aria-hidden="true" tabindex="-1" href="#一个基本的界面"><span class="icon icon-link"></span></a>一个基本的界面</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 一个人。隐式接口包含 greet()。</span>
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 在接口中，但仅在此库中可见。</span>
+</span><span class="code-line">  <span class="token keyword">final</span> <span class="token class-name">String</span> _name<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 不在接口中，因为这是一个构造函数。</span>
+</span><span class="code-line">  <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 在接口中</span>
+</span><span class="code-line">  <span class="token class-name">String</span> <span class="token function">greet</span><span class="token punctuation">(</span><span class="token class-name">String</span> who<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string-literal"><span class="token string">'Hello, </span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">who</span></span><span class="token string">. I am </span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">_name</span></span><span class="token string">.'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// Person 接口的实现。</span>
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Impostor</span> <span class="token keyword">implements</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token class-name">String</span> <span class="token keyword">get</span> _name <span class="token operator">=</span><span class="token operator">></span> <span class="token string-literal"><span class="token string">''</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token class-name">String</span> <span class="token function">greet</span><span class="token punctuation">(</span><span class="token class-name">String</span> who<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string-literal"><span class="token string">'Hi </span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">who</span></span><span class="token string">. Do you know who I am?'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token class-name">String</span> <span class="token function">greetBob</span><span class="token punctuation">(</span><span class="token class-name">Person</span> person<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> person<span class="token punctuation">.</span><span class="token function">greet</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'Bob'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greetBob</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'Kathy'</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 打印: Hello, Bob. I am Kathy.</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greetBob</span><span class="token punctuation">(</span><span class="token class-name">Impostor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment">// 打印: Hi Bob. Do you know who I am?</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="扩展类"><a aria-hidden="true" tabindex="-1" href="#扩展类"><span class="icon icon-link"></span></a>扩展类</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Phone</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">void</span> <span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token function">_call</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token function">_sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 使用 extends 创建子类</span>
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">SmartPhone</span> <span class="token keyword">extends</span> <span class="token class-name">Phone</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">void</span> <span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token comment">// 使用 super 来引用超类</span>
+</span><span class="code-line">        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token function">_takePhotos</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token function">_playGames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="异常"><a aria-hidden="true" tabindex="-1" href="#异常"><span class="icon icon-link"></span></a>异常</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="throw"><a aria-hidden="true" tabindex="-1" href="#throw"><span class="icon icon-link"></span></a>Throw</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 抛出 throws 或引发 raises 和异常 exception</span>
+</span><span class="code-line"><span class="token keyword">throw</span> <span class="token class-name">IntegerDivisionByZeroException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 你也可以抛出任意对象</span>
+</span><span class="code-line"><span class="token keyword">throw</span> <span class="token string-literal"><span class="token string">"Product out of stock!"</span></span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="catch"><a aria-hidden="true" tabindex="-1" href="#catch"><span class="icon icon-link"></span></a>Catch</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    int c <span class="token operator">=</span> <span class="token number">3</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">on</span> <span class="token class-name">IntegerDivisionByZeroException</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token comment">// 一个特定的异常</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'Can not divide integer by 0.'</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">on</span> <span class="token class-name">Exception</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token comment">// 任何其他异常情况</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'Unknown exception: </span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">e</span></span><span class="token string">'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token comment">// 没有指定类型，处理所有</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'Something really unknown: </span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">e</span></span><span class="token string">'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="finally"><a aria-hidden="true" tabindex="-1" href="#finally"><span class="icon icon-link"></span></a>Finally</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 确保某些代码无论是否抛出异常都能运行</span>
+</span><span class="code-line"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">cookFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'Error: </span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">e</span></span><span class="token string">'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 先处理异常</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">cleanKitchen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 然后清理</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="futures"><a aria-hidden="true" tabindex="-1" href="#futures"><span class="icon icon-link"></span></a>Futures</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="async-await"><a aria-hidden="true" tabindex="-1" href="#async-await"><span class="icon icon-link"></span></a>Async Await</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 异步函数：它们在设置可能耗时的操作后返回</span>
+</span><span class="code-line"><span class="token comment">// async 和 await 关键字支持异步编程</span>
+</span><span class="code-line"><span class="token class-name">Future</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token class-name">String</span> userName<span class="token operator">=</span><span class="token string-literal"><span class="token string">"Temidjoy"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">return</span>
+</span><span class="code-line">    <span class="token class-name">Future</span><span class="token punctuation">.</span><span class="token function">delayed</span><span class="token punctuation">(</span>
+</span><span class="code-line">      <span class="token class-name">Duration</span><span class="token punctuation">(</span>seconds<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> userName
+</span><span class="code-line">    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 异步</span>
+</span><span class="code-line"><span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">async</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'Authenticating please wait...'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">userName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="各种各样的"><a aria-hidden="true" tabindex="-1" href="#各种各样的"><span class="icon icon-link"></span></a>各种各样的</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="null-和-null-感知"><a aria-hidden="true" tabindex="-1" href="#null-和-null-感知"><span class="icon icon-link"></span></a>Null 和 Null 感知</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line">int x<span class="token punctuation">;</span> <span class="token comment">// 任何对象的初始值为 null</span>
+</span><span class="code-line"><span class="token comment">// ?? 空感知运算符</span>
+</span><span class="code-line">x <span class="token operator">?</span><span class="token operator">?</span><span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span>   <span class="token comment">// ??= 赋值运算符，仅当变量当前为 null 时才为其赋值</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: 6</span>
+</span><span class="code-line">x <span class="token operator">?</span><span class="token operator">?</span><span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: 6 - 结果仍然是 6</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">null</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: 10。如果不为空，则显示左侧的值，否则返回右侧的值</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="三元运算符"><a aria-hidden="true" tabindex="-1" href="#三元运算符"><span class="icon icon-link"></span></a>三元运算符</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 条件 ? 条件如果为真 : 条件如果为假</span>
+</span><span class="code-line">bool isAvailable<span class="token punctuation">;</span>
+</span><span class="code-line">isAvailable <span class="token operator">?</span> <span class="token function">orderproduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token function">addToFavourite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="条件属性访问"><a aria-hidden="true" tabindex="-1" href="#条件属性访问"><span class="icon icon-link"></span></a>条件属性访问</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line">userObject<span class="token operator">?</span><span class="token punctuation">.</span>userName
+</span><span class="code-line"><span class="token comment">// 上面的代码片段等效于以下代码：</span>
+</span><span class="code-line"><span class="token punctuation">(</span>userObject <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">?</span> userObject<span class="token punctuation">.</span>userName <span class="token punctuation">:</span> <span class="token keyword">null</span>
+</span><span class="code-line"><span class="token comment">// 您可以将 ? 的多种用途链接起来。一起在一个表达式中</span>
+</span><span class="code-line">userObject<span class="token operator">?</span><span class="token punctuation">.</span>userName<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 如果 userObject 或 userObject.userName 为 null，则前面的代码返回 null 并且从不调用 toString()</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="级联符号-"><a aria-hidden="true" tabindex="-1" href="#级联符号-"><span class="icon icon-link"></span></a>级联符号 (..)</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 允许您对同一对象进行一系列操作</span>
+</span><span class="code-line"><span class="token comment">// 而不是这样做</span>
+</span><span class="code-line"><span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">user<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Nicola"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">user<span class="token punctuation">.</span>email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"nicola@g.c"</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">user<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 你可以这样做</span>
+</span><span class="code-line"><span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Nicola"</span></span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token punctuation">.</span>email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"nicola@g.c"</span></span>
+</span><span class="code-line">  <span class="token punctuation">.</span><span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="扩展运算符-"><a aria-hidden="true" tabindex="-1" href="#扩展运算符-"><span class="icon icon-link"></span></a>扩展运算符 (...)</h3><div class="wrap-body">
+<pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 将多个值插入到集合中</span>
+</span><span class="code-line"><span class="token keyword">var</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">var</span> list2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>list<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>list2<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: 4</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://dart.dev/">Dart 官方文档</a> <em>(dart.dev)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
