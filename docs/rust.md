@@ -143,25 +143,30 @@ foo!(3);
 
 ### 结构体
 
+结构体是一个使用关键字 `struct` 定义的标称型(nominal)结构体类型
+
 ```rust
 struct Point { x: i32, y: i32 }
 let p = Point { x: 10, y: 11 };
 let px: i32 = p.x;
 ```
 
-结构体是一个使用关键字 `struct` 定义的标称型(nominal)结构体类型
-
-### 枚举
+#### 元祖结构体
 
 ```rust
-enum Foo {
-  Bar,       // 0
-  Baz = 123, // 123
-  Quux,      // 124
-}
+struct Color (i32, i32, i32);
+let black = Color(0,0,0);
+```
 
-let baz_discriminant = Foo::Baz as u32;
-assert_eq!(baz_discriminant, 123);
+#### 单元结构体
+
+不关心该类型的内容, 只关心它的行为。
+
+```rust
+struct Solution;
+impl Solution{
+    // ...
+}
 ```
 
 ### 语句与表达式
@@ -246,6 +251,9 @@ println!("社区的名称是 {community_name}，它有 {no_of_members} 个成员
 查看: [字符串](#rust-字符串)
 
 ### 数组
+<!--rehype:wrap-class=row-span-2-->
+
+这里介绍的是固定长度的数组。rust 中常用的是集合类型 vec 表示的[动态数组](#rust-动态数组)
 
 ```rust
 ┌─────┬─────┬─────┬─────┬─────┬─────┐
@@ -260,27 +268,7 @@ println!("社区的名称是 {community_name}，它有 {no_of_members} 个成员
 let array: [i64; 6] = [92,97,98,99,98,94];
 ```
 
-### 多维数组
-<!--rehype:wrap-class=row-span-2-->
-
-```rust
-     j0   j1   j2   j3   j4   j5
-   ┌────┬────┬────┬────┬────┬────┐
-i0 | 1  | 2  | 3  | 4  | 5  | 6  |
-   ├────┼────┼────┼────┼────┼────┤
-i1 | 6  | 5  | 4  | 3  | 2  | 1  |
-   └────┴────┴────┴────┴────┴────┘
-```
-
 ----
-
-```rust
-let array: [[i64; 6] ;2] = [
-            [1,2,3,4,5,6],
-            [6,5,4,3,2,1]];
-```
-
-### 可变数组
 
 ```rust
 let mut array: [i32 ; 3] = [2,6,10];
@@ -298,14 +286,6 @@ let mut array: [ i64; 4] = [1,2,3,4];
 let mut slices: &[i64] = &array[0..3]
 println!("切片的元素是：{slices:?}");
 ```
-
-### 向量
-
-```rust
-let some_vector = vec![1,2,3,4,5]; 
-```
-
-使用 `vec!` 宏声明向量
 
 ### 元组
 
@@ -397,8 +377,68 @@ println!("{:?}", str4);
 Rust 动态数组
 -----------
 
+### 创建动态数组
+
+```rust
+let v: Vec<i32> = Vec::new();
+// 使用宏
+let v1 = vec![1, 2, 3];
+```
+
+### 读取元素
+
+```rust
+let v = vec![1, 2, 3, 4, 5];
+
+let element = &v[100];
+// panic，越界
+let element2 = v.get(100);
+println!("{:?}", element2);
+//None
+```
+
+### 遍历数组
+
+1. 只读取数组中的元素
+
+   ```rust
+   let v = vec![1, 2, 3];
+   for i in &v {
+       println!("{}", i);
+   }
+   ```
+
+2. 遍历的同时修改数组中的元素
+
+   ```rust
+   let mut v = vec![1, 2, 3];
+   for i in &mut v {
+       *i += 10
+   }
+   ```
+
+### 多维数组
+
+```rust
+     j0   j1   j2   j3   j4   j5
+   ┌────┬────┬────┬────┬────┬────┐
+i0 | 1  | 2  | 3  | 4  | 5  | 6  |
+   ├────┼────┼────┼────┼────┼────┤
+i1 | 6  | 5  | 4  | 3  | 2  | 1  |
+   └────┴────┴────┴────┴────┴────┘
+```
+
+----
+
+```rust
+let arr = vec![
+    vec![1, 2, 3, 4, 5, 6],
+    vec![6, 5, 4, 3, 2, 1]
+];
+```
+
 ### 常用方法
-<!--rehype:wrap-class=col-span-2 row-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 -|:-
 -|:-
@@ -415,43 +455,84 @@ Rust 动态数组
 `drain(range)`            | 删除 `vec` 中指定范围的元素,同时返回一个迭代该范围所有元素的迭代器
 `split_off(index)`        | 切分 `vec`，索引左边的元素保留在原 `vec` 中(含索引)，索引右边的元素(不含索引)在返回的 `vec` 中
 
-### 创建动态数组
+枚举
+--------
+
+### 在结构体中使用枚举
 
 ```rust
-let v: Vec<i32> = Vec::new();
-// 使用宏
-let v1 = vec![1, 2, 3];
-```
+enum IpAddrKind {
+  V4,
+  V6,
+}
+struct IpAddr {
+  kind: IpAddrKind,
+  address: String,
+}
 
-### 遍历数组
-
-只读取数组中的元素
-
-```rust
-let v = vec![1, 2, 3];
-for i in &v {
-  println!("{}", i);
+fn main(){
+    let ip = IpAddr{
+        kind: IpAddrKind::V4,
+        address: String::from("127.0.0.1")
+    };
 }
 ```
 
-遍历的同时修改数组中的元素
+### 枚举的变体
 
 ```rust
-let mut v = vec![1, 2, 3];
-for i in &mut v {
-  *i += 10
+enum IpAddrKind {
+  V4(u8, u8, u8, u8),
+  V6(String),
+}
+
+fn main() {
+  let home = IpAddrKind::V4(127, 0, 0, 1);
+  let loopback = IpAddrKind::V6(String::from("::1"));
 }
 ```
 
-### 读取元素
+----
 
 ```rust
-let v = vec![1, 2, 3, 4, 5];
-let element = &v[100];
-// panic，越界
-let element2 = v.get(100);
-println!("{:?}", element2);
-//None
+enum Message{
+  Quit,
+  Move {x:i32, y:i32},
+  Write(String),
+  ChangeColor(i32, i32, i32),
+}
+fn main(){
+  let q = Message::Quit;
+  let m = Message::Move {x:10, y:20};
+  let w = Message:: Write(String::from("hello"));
+  let c = Message::ChangeColor(10, 20, 30);
+}
+```
+
+### 模式匹配结构体
+
+```rust
+#[derive(Debug)]
+enum Grade {
+    A,
+    B,
+    C,
+}
+enum Subject {
+    Math(Grade),
+    English(Grade),
+}
+
+fn subject_grade(sub: Subject) {
+  match sub {
+    Subject::Math(grade) => println!("The Math is {:?}", grade),
+    Subject::English(grade) => println!("The Math is {:?}", grade),
+  }
+}
+
+fn main() {
+    subject_grade(Subject::Math(Grade::A));
+}
 ```
 
 Rust 运算符
@@ -527,8 +608,8 @@ let left_shift = h << 4;  // => 32
 
 示例 | 意义
 :- | :-
-`c && d` | 两者都是真的 _(AND)_
-`c \|\| d` | 要么是真的 _(OR)_
+`c && d` | 两者都是真的_(AND)_
+`c || d` | 要么是真的_(OR)_
 `!c`     | `c` 为假 _(NOT)_
 
 ----
@@ -754,15 +835,15 @@ fn main(){
 
 ```rust
 struct Point {
-  x: i32,
-  y: i32,
-  z: i32,
+    x: i32,
+    y: i32,
+    z: i32,
 }
 
 let origin = Point { x: 0, y: 0, z: 0 };
 
 match origin {
-  Point { x, .. } => println!("x is {}", x),
+    Point { x, .. } => println!("x is {}", x),
 }
 ```
 
@@ -772,9 +853,9 @@ match origin {
 let hello = ('h', 'e', 'l', 'l', 'o');
 
 match hello {
-  (h, _, _, l, o) => {
-      println!("char: {}, {}, {}", h, l, o)
-  },
+    (h, _, _, l, o) => {
+        println!("char: {}, {}, {}", h, l, o)
+    },
 }
 ```
 
@@ -785,9 +866,9 @@ match hello {
 ```rust
 let x = Some(10);
 match x {
-  Some(1) => println!("x = 1"),
-  Some(y) => println!("y = {:?}", y),
-  _ => println!("None"),
+    Some(1) => println!("x = 1"),
+    Some(y) => println!("y = {:?}", y),
+    _ => println!("None"),
 }// y = 10
 ```
 
@@ -799,27 +880,25 @@ match x {
 ```rust
 let grade = 'A';
 match grade {
-  good @ 'A'..='C' => println!("your grade is {}", good),
-  _ => println!("Come on"),
+    good @ 'A'..='C' => println!("your grade is {}", good),
+    _ => println!("Come on"),
 }
 ```
-<!--rehype:className=wrap-text -->
 
 ----
 
 ```rust
 #[derive(Debug)]
 struct Point {
-  x: i32,
-  y: i32,
+    x: i32,
+    y: i32,
 }
 fn main(){
-  let p @ Point {x: px, y: py } = Point {x: 10, y: 23};
-  println!("x: {}, y: {}", px, py);
-  println!("{:?}", p);
+    let p @ Point {x: px, y: py } = Point {x: 10, y: 23};
+    println!("x: {}, y: {}", px, py);
+    println!("{:?}", p);
 }
 ```
-<!--rehype:className=wrap-text -->
 
 ----
 
@@ -827,10 +906,10 @@ fn main(){
 
 ```rust
 match 1 {
-  num @ (1 | 2) => {
-      println!("{}", num);
-  }
-  _ => {}
+    num @ (1 | 2) => {
+        println!("{}", num);
+    }
+    _ => {}
 }
 ```
 
@@ -839,12 +918,11 @@ match 1 {
 ```rust
 let x = Some(2);
 match x {
-  Some(1) => println!("x = 1"),
-  Some(y) if y == 2 => println!("y = {:?}", y),
-  _ => println!("No match"),
+    Some(1) => println!("x = 1"),
+    Some(y) if y == 2 => println!("y = {:?}", y),
+    _ => println!("No match"),
 }// y = 2
 ```
-<!--rehype:className=wrap-text -->
 
 Rust 函数
 --------
@@ -860,23 +938,21 @@ fn print_message(){
 ```
 
 ### 参数值
-<!--rehype:wrap-class=row-span-2-->
 
 rust 需要为函数的参数标明确定的类型
 
 ```rust
 fn another_fn(a:u8, b: &str){
-  println!("我是 u8:{}", a);
-  println!("我是 &str:{}", b);
+    println!("我是 u8:{}", a);
+    println!("我是 &str:{}", b);
 }
 
 fn main(){
-  another_fn(10, "hello")
+    another_fn(10, "hello")
 }
 ```
 
 ### 返回值
-<!--rehype:wrap-class=row-span-2-->
 
 如果不指定返回值，rust 默认返回 `()` 类型
 
@@ -885,14 +961,16 @@ fn main(){
 fn main(){}
 ```
 
-使用 `->` 指定返回值，如果**表达式**在最后一行，无需使用 `return`
+----
+
+使用 `->` 指定返回值，如果**表达式**在最后一行，无需使用 return
 
 ```rust
 fn add(a:i32, b:i32) -> i32 {
-  if a + b < 100 {
-    return a - b;
-  }
-  a + b
+    if a + b < 100 {
+        return a - b;
+    }
+    a + b
 }
 ```
 
