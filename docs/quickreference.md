@@ -95,7 +95,7 @@ npm run start # 监听 md 文件编译输出 HTML
 ```markdown
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
 ```
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text-->
 
 添加 `contributing` 类名，会在卡片下方默认添加 `👆待完善需要您的参与`
 
@@ -108,7 +108,7 @@ class=tag&data-info=👆看看还缺点儿什么？
 ```markdown
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=tag&data-lang=Python-->
 ```
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text-->
 
 添加 `class=tag&data-lang=Python` 类名和参数，会在卡片右上角标记 _`Python`_
 
@@ -127,7 +127,7 @@ Markdown 语法注释
 卡片 Markdown 内容展示，下面注释语法为文字内容改变样式
 <!--rehype:style=color: red;-->
 ```
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text-->
 
 上面基础示例，使用 `col-span-2` 类标识，卡片占 `2` 列位置，参考现有备忘清单的源代码是一个好习惯！
 
@@ -159,7 +159,7 @@ Markdown 语法注释
 ### 标题
 <!--rehype:wrap-class=row-span-3&style=color:red;-->
 ```
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text-->
 
 #### 参数说明
 
@@ -185,7 +185,7 @@ _我是红色_<!--rehype:style=color: red;-->
 **加粗变大红色**
 <!--rehype:style=color: red;font-size: 18px-->
 ```
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text-->
 
 上面添加注释样式，文字 _加粗变大红色_<!--rehype:style=color: red;font-size: 18px--> 变`红`并且`大`了
 
@@ -195,7 +195,7 @@ _我是红色_<!--rehype:style=color: red;-->
 \```js
 function () {}
 \```
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text-->
 ```
 
 如果代码块内容太长，使用强制换行类(`wrap-text`)解决

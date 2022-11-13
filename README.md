@@ -31,6 +31,7 @@ Quick Reference
 
 [Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [C](./docs/c.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));-->
+[Dart](./docs/dart.md)<!--rehype:style=background: rgb(64 196 255/var(\-\-bg\-opacity));-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));&class=tag&data-lang=Docker-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
@@ -42,10 +43,10 @@ Quick Reference
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
-[PHP](./docs/php.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
-[Python](./docs/python.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
+[PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147/var(\-\-bg\-opacity));-->
+[Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));-->
 [PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
-[Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));-->
+[Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45/var(\-\-bg\-opacity));-->
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->

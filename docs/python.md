@@ -1232,3 +1232,10 @@ else:                    # try/except 块的可选子句。 必须遵循除块�
 finally:                 # 在所有情况下执行
     print("我们可以在这里清理资源")
 ```
+
+另见
+----
+
+- [Python](https://www.python.org/)  _(python.org)_
+- [Learn X in Y minutes](https://learnxinyminutes.com/docs/python/) _(learnxinyminutes.com)_
+- [Regex in python](./regex.md#python-中的正则表达式) _(quickref.me)_
