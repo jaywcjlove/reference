@@ -90,39 +90,74 @@ npm run start  # 监听 md 文件编译输出 HTML
 
 请参阅[贡献指南](./CONTRIBUTING.md)了解如何开始。一如既往，感谢我们出色的贡献者！
 
-<!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调™">
-  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调™"/>
-</a>
-<a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
-  <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
-</a>
-<a href="https://github.com/catcto" title="喵仙人">
-  <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
-</a>
-<a href="https://github.com/demigodliu" title="DemigodLiu">
-  <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
-</a>
-<a href="https://github.com/JetSquirrel" title="JetSquirrel">
-  <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
-</a>
-<a href="https://github.com/gaoxiaoduan" title="coderduan">
-  <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="coderduan"/>
-</a>
-<a href="https://github.com/hweining" title="hweining">
-  <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
-</a>
-<a href="https://github.com/liliangrong777" title="liliangrong777">
-  <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
-</a>
-<a href="https://github.com/onewesong" title="onewesong">
-  <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
-</a>
-<a href="https://github.com/ryanhex53" title="ryanhex53">
-  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
-</a>
-<a href="https://github.com/zxx-457" title="zxx-457">
-  <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
-</a><!--GAMFC-END-->
+<!--GAMFC--><table><tr>
+  <td align="center">
+    <a href="https://github.com/jaywcjlove" title="小弟调调™">
+      <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调™"/>
+    <br /><sub><b>小弟调调™</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
+      <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
+    <br /><sub><b>fw_qaq</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/catcto" title="喵仙人">
+      <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
+    <br /><sub><b>喵仙人</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/demigodliu" title="DemigodLiu">
+      <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
+    <br /><sub><b>DemigodLiu</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/JetSquirrel" title="JetSquirrel">
+      <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
+    <br /><sub><b>JetSquirrel</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/gaoxiaoduan" title="coderduan">
+      <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="coderduan"/>
+    <br /><sub><b>coderduan</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/hweining" title="hweining">
+      <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
+    <br /><sub><b>hweining</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/liliangrong777" title="liliangrong777">
+      <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
+    <br /><sub><b>liliangrong777</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/onewesong" title="onewesong">
+      <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
+    <br /><sub><b>onewesong</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/ryanhex53" title="ryanhex53">
+      <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
+    <br /><sub><b>ryanhex53</b></sub>
+    </a>
+  </td>
+  <td align="center">
+    <a href="https://github.com/zxx-457" title="zxx-457">
+      <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
+    <br /><sub><b>zxx-457</b></sub>
+    </a>
+  </td>
+</tr></table><!--GAMFC-END-->
 
 上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
 
