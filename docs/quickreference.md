@@ -146,7 +146,7 @@ Markdown 语法注释
 #### 示例
 
 ```markdown
-### H2 部分
+## H2 部分
 <!--rehype:body-class=cols-2-->
 
 ### H3 部分

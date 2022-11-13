@@ -23,6 +23,7 @@ Quick Reference
 [CMake](./docs/cmake.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));&class=contributing-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
+[LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
 <!--rehype:class=home-card-->
@@ -40,8 +41,9 @@ Quick Reference
 [INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
+[LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
-[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
+[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(1 117 143/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147/var(\-\-bg\-opacity));-->
 [Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));-->
