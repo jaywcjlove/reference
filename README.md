@@ -154,37 +154,37 @@ Quick Reference
 请参阅 [Quick Reference](./docs/quickreference.md) 了解如何开始。一如既往，感谢我们出色的贡献者！
 <!--rehype:style=padding-bottom:1rem;-->
 
-<!--GAMFC--><a href="https://github.com/jaywcjlove">
+<!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调™">
   <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调™"/>
 </a>
-<a href="https://github.com/Jack-Zhang-1314">
+<a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
   <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
 </a>
-<a href="https://github.com/catcto">
+<a href="https://github.com/catcto" title="喵仙人">
   <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
 </a>
-<a href="https://github.com/demigodliu">
+<a href="https://github.com/demigodliu" title="DemigodLiu">
   <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
 </a>
-<a href="https://github.com/JetSquirrel">
+<a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
 </a>
-<a href="https://github.com/gaoxiaoduan">
+<a href="https://github.com/gaoxiaoduan" title="coderduan">
   <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="coderduan"/>
 </a>
-<a href="https://github.com/hweining">
+<a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
 </a>
-<a href="https://github.com/liliangrong777">
+<a href="https://github.com/liliangrong777" title="liliangrong777">
   <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
 </a>
-<a href="https://github.com/onewesong">
+<a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
 </a>
-<a href="https://github.com/ryanhex53">
+<a href="https://github.com/ryanhex53" title="ryanhex53">
   <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
 </a>
-<a href="https://github.com/zxx-457">
+<a href="https://github.com/zxx-457" title="zxx-457">
   <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
 </a><!--GAMFC-END-->
 
