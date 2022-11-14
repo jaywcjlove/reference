@@ -340,7 +340,7 @@ a:active { color: red; }
 :- | :-
 `p:first-child`         | 第一个孩子 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-child)
 `p:last-child`          | 最后一个孩子 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:last-child)
-`p:first-of-type`       | 首先是某种类型 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-of-type)
+`p:first-of-type`       | 第一个 p 类型的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-of-type)
 `p:last-of-type`        | 某种类型的最后一个 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:last-of-type)
 `p:nth-child(2)`        | 其父母的第二个孩子 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child)
 `p:nth-child(3n42)`     | Nth-child(an + b) 公式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child)
@@ -352,8 +352,8 @@ a:active { color: red; }
 `:is(header, div) p`    | 可以选择的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is)
 `:where(header, div) p` | 与 `:is` 相同 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:where)
 `a:has(> img)`          | 包含 `img` 元素的 `a` 元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:has)
-`::first-letter`        | 第一行的第一个字母 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-letter)
-`::first-line`          | 第一行应用样式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-line)
+`::first-letter`        | 第一行的第一个字母 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-letter)
+`::first-line`          | 第一行应用样式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-line)
 
 CSS 字体
 ------
