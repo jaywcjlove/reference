@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Julia 备忘清单
+ &#x26;  julia cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="本备忘清单旨在快速理解 Julia 一份简单而粗略的语言概览，供您参考。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,julia">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/julia.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="julia-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 234 151">
+<path fill="currentColor" d="M44.4519565,56.2879688 L44.4519565,123.30109 C44.6129734,128.045059 43.9365796,132.780279 42.4538159,137.289445 C41.3975884,140.486966 39.488118,143.335289 36.9315073,145.526977 C34.4491469,147.561382 31.4874884,148.926728 28.328351,149.493094 C24.6499538,150.207169 20.9090714,150.549532 17.1621635,150.515016 C14.697617,150.540493 12.237511,150.300076 9.82452683,149.797934 C7.94021993,149.417438 6.12125023,148.76498 4.42470261,147.861035 C3.12541251,147.189554 2.00596054,146.216479 1.16012839,145.023328 C0.417866268,144.066901 0.0104722421,142.893053 0.000640110633,141.68243 C-0.027402649,139.682282 0.867265468,137.78067 2.42610495,136.527117 C4.3072243,135.065905 6.65332886,134.3343 9.03157761,134.467277 C10.0050542,134.446711 10.9730464,134.612156 11.8839096,134.955387 C12.6625959,135.255777 13.396535,135.661265 14.0653198,136.160578 C14.6903806,136.665327 15.2815339,137.210678 15.8349448,137.793094 C16.3079721,138.40323 16.7352964,138.967664 17.1009214,139.501477 C17.7517198,140.395652 18.5274342,141.191836 19.4043589,141.865699 C19.9237689,142.223017 20.5298596,142.433783 21.1589018,142.475836 C21.6975954,142.482029 22.226807,142.333907 22.6840151,142.048969 C23.1959461,141.666448 23.5748251,141.13282 23.7671792,140.523398 C24.1022021,139.584499 24.3074764,138.604256 24.3773159,137.609824 C24.5619565,136.060945 24.6433081,134.502012 24.6213706,132.942164 L24.6213706,61.7494922 L44.4519565,56.2879688 Z M73.4350503,57.8747812 L73.4355073,103.730098 C73.4286776,104.981036 73.6725016,106.220669 74.1525893,107.375836 C74.68359,108.436549 75.4020238,109.3925 76.2732143,110.197547 C77.1726157,111.012132 78.204284,111.667454 79.3238979,112.135359 C80.4824619,112.623247 81.7276268,112.872124 82.9847182,112.867066 C83.8358383,112.829018 84.6708213,112.621593 85.4408042,112.25693 C86.4244048,111.805426 87.3469967,111.231417 88.1866479,110.548547 C89.1830827,109.791696 90.1071945,108.944083 90.9471167,108.016594 C91.8743056,107.030822 92.6974967,105.952174 93.4036596,104.797723 L93.4036596,57.8747812 L113.234246,57.8747812 L113.234246,123.469277 L93.4036596,123.469277 L93.4036596,117.367453 C90.9171044,119.552956 88.1270511,121.366706 85.1204253,122.752195 C82.4487719,124.000813 79.5419179,124.666376 76.5931362,124.704633 C73.5251745,124.748269 70.4750348,124.231265 67.5928198,123.179062 C64.9275784,122.157209 62.4680675,120.663885 60.3319643,118.770539 C58.3044443,116.935342 56.6609537,114.716319 55.4965737,112.241848 C54.3249743,109.713798 53.7257243,106.95834 53.7412673,104.172047 L53.7412673,57.8747812 L73.4350503,57.8747812 Z M218.824917,58.1796211 C221.811594,58.8462298 224.650304,60.0561363 227.199558,61.7490352 C229.26996,63.1619009 230.94079,65.0850713 232.050488,67.3325859 C233.110219,69.6305216 233.631969,72.139862 233.576058,74.6697656 L233.606679,123.46882 L213.776093,123.469277 L213.776093,118.252266 C212.738565,119.14526 211.664698,119.995144 210.557222,120.799758 C209.454858,121.594613 208.280135,122.283961 207.048593,122.858684 C205.667911,123.461583 204.225495,123.91184 202.747015,124.201441 C200.844491,124.543437 198.913468,124.701537 196.980652,124.673555 C194.21834,124.714756 191.469081,124.286681 188.850066,123.407578 C186.610925,122.631205 184.540214,121.435311 182.748699,119.883867 C181.102652,118.382826 179.797056,116.546763 178.919691,114.499125 C178.02715,112.390849 177.575479,110.122227 177.592472,107.832867 C177.549509,105.510229 178.023622,103.207105 178.980476,101.090285 C179.962005,99.0695119 181.27701,97.2285663 182.870269,95.6447578 C184.601742,93.9607701 186.533262,92.4955533 188.62155,91.2819375 C190.907645,89.955973 193.276946,88.7789557 195.714675,87.7582266 C198.262167,86.7056836 200.901066,85.7445469 203.601207,84.8446523 L211.609765,82.235918 L213.791175,81.7628906 L213.791175,75.2648203 C213.826367,73.4869688 213.600136,71.7136875 213.119796,70.0021055 C212.806131,68.7110809 212.206705,67.5069173 211.36571,66.4783945 C210.662106,65.568045 209.715437,64.8751942 208.634949,64.4797969 C207.491799,64.0623595 206.282436,63.8556375 205.065535,63.8696602 C203.722822,63.8357393 202.384874,64.0423751 201.114957,64.4797969 C200.146021,64.8391405 199.273899,65.4188342 198.567464,66.1730977 C197.92048,66.8612473 197.444799,67.6922011 197.179003,68.5985625 C196.879148,69.587118 196.735132,70.616354 196.752136,71.6492461 C196.759527,72.8573622 196.615974,74.0616703 196.324812,75.2341992 C196.101603,76.3438826 195.626752,77.3875549 194.936808,78.2848828 C194.20353,79.1532532 193.264827,79.8245633 192.206046,80.2377773 C190.806474,80.8203451 189.296765,81.0909386 187.781984,81.0307266 C186.480405,81.0463326 185.185686,80.8399998 183.953433,80.4205898 C182.883637,80.017973 181.896278,79.4235441 181.039859,78.6665039 C180.237737,77.9013332 179.581294,76.9968076 179.102503,75.9969844 C178.65841,74.9446518 178.430255,73.8138252 178.431582,72.671625 C178.444506,70.3816085 179.259551,68.1685341 180.735019,66.4171523 C182.441591,64.3416967 184.547455,62.6299639 186.927792,61.3834102 C189.777698,59.894272 192.815374,58.7961888 195.95873,58.1188359 C199.520008,57.294594 203.164685,56.8851142 206.820078,56.8985625 C210.858863,56.8300078 214.891249,57.2609883 218.824917,58.1796211 Z M172.588894,56.4716953 L172.588894,123.469277 L152.758308,123.469277 L152.758308,61.9323047 L172.588894,56.4716953 Z M142.08023,26.7715195 L142.08023,123.469277 L122.249644,123.469277 L122.249644,32.2321289 L142.08023,26.7715195 Z M213.776093,89.6498789 C211.807296,90.4928035 209.887201,91.4452216 208.024812,92.502668 C206.158286,93.5022364 204.391063,94.6770696 202.747015,96.0112969 C201.259992,97.1732505 199.949705,98.5451188 198.857222,100.083902 C197.896681,101.384874 197.363634,102.951918 197.331595,104.56875 C197.328092,105.77543 197.492369,106.976741 197.819761,108.138164 C198.113186,109.170696 198.560622,110.153082 199.14698,111.052195 C199.656049,111.801128 200.290767,112.456411 201.023093,112.989094 C201.699087,113.460751 202.502275,113.716209 203.326531,113.721715 C205.051154,113.657969 206.726792,113.130998 208.17746,112.196145 C210.0836,111.038818 211.926962,109.781127 213.699769,108.428379 L213.776093,89.6498789 Z M161.39757,28.2664675 C168.893339,28.2692109 174.968656,34.3468125 174.968656,41.842582 C174.960429,49.3433789 168.877343,55.4191523 161.377003,55.4191523 C153.880777,55.4104688 147.810488,49.3287539 147.815968,41.8325273 C147.821457,34.3367578 153.901343,28.2632695 161.39757,28.2664675 Z M194.026402,28.2664675 C201.522628,28.2692109 207.597945,34.3468125 207.597945,41.842582 C207.589382,49.2392012 201.674423,55.250106 194.317535,55.4156487 L194.005,55.419 L193.694787,55.4157268 C186.342606,55.2412594 180.439402,49.2246396 180.445257,41.8325273 C180.450746,34.3367578 186.530632,28.2632695 194.026402,28.2664675 Z M33.8200385,28.2664687 C41.3180932,28.2664687 47.3961518,34.3449844 47.3961518,41.842582 C47.3879253,49.3374375 41.314437,55.4109258 33.8200385,55.4191523 C26.3219839,55.4196094 20.2434682,49.3410937 20.2434682,41.842582 C20.2434682,34.3445273 26.3219839,28.2664687 33.8200385,28.2664687 Z M177.699417,0 C185.197472,0 191.275539,6.07851563 191.275539,13.5765703 C191.279539,17.1784066 189.85049,20.6338734 187.303605,23.1807579 C184.756721,25.7276424 181.301254,27.1566916 177.699417,27.152692 C170.201363,27.152692 164.122847,21.074168 164.122847,13.5765703 C164.122847,6.07851563 170.201363,0 177.699417,0 Z"></path></svg><a aria-hidden="true" tabindex="-1" href="#julia-备忘清单"><span class="icon icon-link"></span></a>Julia 备忘清单</h1><div class="wrap-body">
+<p>本备忘清单旨在快速理解 <a href="https://mysql.com">Julia</a> 一份简单而粗略的语言概览，供您参考。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#julia-是什么">Julia 是什么？</a><a aria-hidden="true" class="leve3 tocs-link" href="#赋值语句">赋值语句</a><a aria-hidden="true" class="leve3 tocs-link" href="#常量定义">常量定义</a><a aria-hidden="true" class="leve3 tocs-link" href="#行尾注释">行尾注释</a><a aria-hidden="true" class="leve3 tocs-link" href="#链式操作">链式操作</a><a aria-hidden="true" class="leve3 tocs-link" href="#函数定义">函数定义</a><a aria-hidden="true" class="leve3 tocs-link" href="#插入-latex-符号">插入 LaTeX 符号</a><a aria-hidden="true" class="leve3 tocs-link" href="#运算符">运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#shellrepl-环境">shell/REPL 环境</a><a aria-hidden="true" class="leve3 tocs-link" href="#缺失值与空值">缺失值与空值</a><a aria-hidden="true" class="leve3 tocs-link" href="#自我检查与反射">自我检查与反射</a><a aria-hidden="true" class="leve3 tocs-link" href="#随机数">随机数</a><a aria-hidden="true" class="leve3 tocs-link" href="#异常处理">异常处理</a><a aria-hidden="true" class="leve3 tocs-link" href="#类型">类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#标准库">标准库</a><a aria-hidden="true" class="leve3 tocs-link" href="#表达式">表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#输入输出">输入/输出</a><a aria-hidden="true" class="leve3 tocs-link" href="#宏">宏</a><a aria-hidden="true" class="leve3 tocs-link" href="#并行计算">并行计算</a><a aria-hidden="true" class="leve3 tocs-link" href="#数组">数组</a><a aria-hidden="true" class="leve3 tocs-link" href="#线性代数">线性代数</a><a aria-hidden="true" class="leve2 tocs-link" href="#控制流与循环">控制流与循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#条件语句">条件语句</a><a aria-hidden="true" class="leve3 tocs-link" href="#for-循环">for 循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#嵌套循环">嵌套循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#枚举">枚举</a><a aria-hidden="true" class="leve3 tocs-link" href="#while-循环">while 循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#退出循环">退出循环</a><a aria-hidden="true" class="leve3 tocs-link" href="#退出本次循环">退出本次循环</a><a aria-hidden="true" class="leve2 tocs-link" href="#数字相关">数字相关</a><a aria-hidden="true" class="leve3 tocs-link" href="#整数类型">整数类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#浮点类型">浮点类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#类型的最大和最小值">类型的最大和最小值</a><a aria-hidden="true" class="leve3 tocs-link" href="#复数类型">复数类型</a><a aria-hidden="true" class="leve3 tocs-link" href="#虚数单位">虚数单位</a><a aria-hidden="true" class="leve3 tocs-link" href="#机器精度">机器精度</a><a aria-hidden="true" class="leve3 tocs-link" href="#圆整">圆整</a><a aria-hidden="true" class="leve3 tocs-link" href="#类型转换">类型转换</a><a aria-hidden="true" class="leve3 tocs-link" href="#全局常量">全局常量</a><a aria-hidden="true" class="leve3 tocs-link" href="#更多常量">更多常量</a><a aria-hidden="true" class="leve2 tocs-link" href="#模块">模块</a><a aria-hidden="true" class="leve3 tocs-link" href="#定义">定义</a><a aria-hidden="true" class="leve3 tocs-link" href="#包含文件-filenamejl">包含文件 filename.jl</a><a aria-hidden="true" class="leve3 tocs-link" href="#加载">加载</a><a aria-hidden="true" class="leve3 tocs-link" href="#导出">导出</a><a aria-hidden="true" class="leve2 tocs-link" href="#包管理">包管理</a><a aria-hidden="true" class="leve3 tocs-link" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" href="#在-julia-会话中使用-pkg-管理包">在 Julia 会话中使用 Pkg 管理包</a><a aria-hidden="true" class="leve3 tocs-link" href="#交互式包管理模式">交互式包管理模式</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="julia-是什么"><a aria-hidden="true" tabindex="-1" href="#julia-是什么"><span class="icon icon-link"></span></a>Julia 是什么？</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<ul>
+<li><strong><code>Julia</code></strong> 是一种为科学计算而生的，开源、多平台、高性能的高级编程语言</li>
+<li><strong><code>Julia</code></strong> 有一个基于 LLVM 的 JIT 编译器，这让使用者无需编写底层的代码也能拥有像 C 与 FORTRAN 那样的性能。因为代码在运行中编译，你可以在 shell 或 REPL 中运行代码，这也是一种推荐的工作流程</li>
+<li><strong><code>Julia</code></strong> 是动态类型的。并且提供了为并行计算和分布式运算设计的多重派发机制</li>
+<li><strong><code>Julia</code></strong> 自带包管理器</li>
+<li><strong><code>Julia</code></strong> 有许多内置的数学函数，包括特殊函数 (例如：Gamma 函数)。并且支持开箱即用的复数运算</li>
+<li><strong><code>Julia</code></strong> 允许你通过类似 Lisp 的宏来自动生成代码</li>
+<li><strong><code>Julia</code></strong> 诞生于 2012 年</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="赋值语句"><a aria-hidden="true" tabindex="-1" href="#赋值语句"><span class="icon icon-link"></span></a>赋值语句</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">answer <span class="token operator">=</span> <span class="token number">42</span>
+</span><span class="code-line">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">;</span> <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"A string"</span>
+</span><span class="code-line">x<span class="token punctuation">,</span> y <span class="token operator">=</span> y<span class="token punctuation">,</span> x     <span class="token comment"># 交换 x, y</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常量定义"><a aria-hidden="true" tabindex="-1" href="#常量定义"><span class="icon icon-link"></span></a>常量定义</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">const</span> DATE_OF_BIRTH <span class="token operator">=</span> <span class="token number">2012</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="行尾注释"><a aria-hidden="true" tabindex="-1" href="#行尾注释"><span class="icon icon-link"></span></a>行尾注释</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">i <span class="token operator">=</span> <span class="token number">1</span>           <span class="token comment"># 这是一行注释</span>
+</span><span class="code-line"><span class="token comment"># 多行注释</span>
+</span><span class="code-line"><span class="token comment">#= 这是另一行注释 =#</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="链式操作"><a aria-hidden="true" tabindex="-1" href="#链式操作"><span class="icon icon-link"></span></a>链式操作</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">x <span class="token operator">=</span> y <span class="token operator">=</span> z <span class="token operator">=</span> <span class="token number">1</span>   <span class="token comment"># 从右向左</span>
+</span><span class="code-line"><span class="token number">0</span> <span class="token operator">&#x3C;</span> x <span class="token operator">&#x3C;</span> <span class="token number">3</span>       <span class="token comment"># true</span>
+</span><span class="code-line"><span class="token number">5</span> <span class="token operator">&#x3C;</span> x <span class="token operator">!=</span> y <span class="token operator">&#x3C;</span> <span class="token number">5</span>  <span class="token comment"># false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数定义"><a aria-hidden="true" tabindex="-1" href="#函数定义"><span class="icon icon-link"></span></a>函数定义</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">function</span> add_one<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="插入-latex-符号"><a aria-hidden="true" tabindex="-1" href="#插入-latex-符号"><span class="icon icon-link"></span></a>插入 LaTeX 符号</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token operator">\</span>delta <span class="token operator">+</span> <span class="token punctuation">[</span>Tab<span class="token punctuation">]</span> <span class="token comment"># δ</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="运算符"><a aria-hidden="true" tabindex="-1" href="#运算符"><span class="icon icon-link"></span></a>运算符</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">基本算数运算</td><td align="left"><code>+</code>，<code>-</code>，<code>*</code>，<code>/</code></td></tr><tr><td align="left">幂运算</td><td align="left"><code>2^3</code> => 8</td></tr><tr><td align="left">除法</td><td align="left"><code>3/12</code> => 0.25</td></tr><tr><td align="left">反向除法</td><td align="left"><code>7\3 == 3/7</code> => true</td></tr><tr><td align="left">取余</td><td align="left"><code>x % y</code> 或 <code>rem(x,y)</code></td></tr><tr><td align="left">取反</td><td align="left"><code>!true</code> => false</td></tr><tr><td align="left">等于</td><td align="left"><code>a == b</code></td></tr><tr><td align="left">不等于</td><td align="left"><code>a != b</code> 或 <code>a ≠ b</code></td></tr><tr><td align="left">小于与大于</td><td align="left"><code>&#x3C;</code> 与 <code>></code></td></tr><tr><td align="left">小于等于</td><td align="left"><code>&#x3C;=</code> 或 <code>≤</code></td></tr><tr><td align="left">大于等于</td><td align="left"><code>>=</code> 或 <code>≥</code></td></tr><tr><td align="left">逐元素运算(点运算)</td><td align="left"><code>[1, 2, 3] .+ [1, 2, 3] == [2, 4, 6]</code> => true<br> <code>[1, 2, 3] .* [1, 2, 3] == [1, 4, 9]</code> => true</td></tr><tr><td align="left">检测非数值(NaN)</td><td align="left"><code>isnan(NaN)</code> => true <br>而不是 <code>NaN == NaN</code> => false</td></tr><tr><td align="left">三元运算符</td><td align="left"><code>a == b ? "Equal" : "Not equal"</code></td></tr><tr><td align="left">短路 AND 和 OR 表达式</td><td align="left"><code>a &#x26;&#x26; b</code> 和 <code>a || b</code></td></tr><tr><td align="left">对象等价</td><td align="left"><code>a === b</code></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="shellrepl-环境"><a aria-hidden="true" tabindex="-1" href="#shellrepl-环境"><span class="icon icon-link"></span></a>shell/REPL 环境</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">上一次运算的结果</td><td align="left"><code>ans</code></td></tr><tr><td align="left">中断命令执行</td><td align="left"><kbd>Ctrl</kbd> + <kbd>C</kbd></td></tr><tr><td align="left">清屏</td><td align="left"><kbd>Ctrl</kbd> + <kbd>L</kbd></td></tr><tr><td align="left">运行程序文件</td><td align="left"><code>include("filename.jl")</code></td></tr><tr><td align="left">查找 func 相关的帮助</td><td align="left"><code>?func</code></td></tr><tr><td align="left">查找 func 的所有定义</td><td align="left"><code>apropos("func")</code></td></tr><tr><td align="left">命令行模式</td><td align="left"><code>;</code></td></tr><tr><td align="left">包管理模式</td><td align="left"><code>]</code></td></tr><tr><td align="left">帮助模式</td><td align="left"><code>?</code></td></tr><tr><td align="left">查找特殊符号输入方式</td><td align="left"><code>?☆ # "☆" can be typed by \bigwhitestar&#x3C;tab></code></td></tr><tr><td align="left">退出特殊模式，返回到 REPL</td><td align="left">在空行上按 <kbd>Backspace</kbd></td></tr><tr><td align="left">退出 REPL</td><td align="left"><code>exit()</code> 或 <kbd>Ctrl</kbd> + <kbd>D</kbd></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="缺失值与空值"><a aria-hidden="true" tabindex="-1" href="#缺失值与空值"><span class="icon icon-link"></span></a>缺失值与空值</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">空值(Null)</td><td align="left"><code>nothing</code></td></tr><tr><td align="left">缺失数据</td><td align="left"><code>missing</code></td></tr><tr><td align="left">浮点数的非数值</td><td align="left"><code>NaN</code></td></tr><tr><td align="left">滤除缺失值</td><td align="left"><code>collect(skipmissing([1, 2, missing])) == [1,2]</code></td></tr><tr><td align="left">替换缺失值</td><td align="left"><code>collect((df[:col], 1))</code></td></tr><tr><td align="left">检查是否有缺失值</td><td align="left"><code>ismissing(x)</code> 而不是 <code>x == missing</code></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="自我检查与反射"><a aria-hidden="true" tabindex="-1" href="#自我检查与反射"><span class="icon icon-link"></span></a>自我检查与反射</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">类型</td><td align="left"><code>typeof(name)</code></td></tr><tr><td align="left">类型检查</td><td align="left"><code>isa(name, TypeName)</code></td></tr><tr><td align="left">列出子类型</td><td align="left"><code>subtypes(TypeName)</code></td></tr><tr><td align="left">列出超类型</td><td align="left"><code>supertype(TypeName)</code></td></tr><tr><td align="left">函数方法</td><td align="left"><code>methods(func)</code></td></tr><tr><td align="left">即时编译的字节码</td><td align="left"><code>code_llvm(expr)</code></td></tr><tr><td align="left">汇编代码</td><td align="left"><code>code_native(expr)</code></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="随机数"><a aria-hidden="true" tabindex="-1" href="#随机数"><span class="icon icon-link"></span></a>随机数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">设置随机数种子</td><td align="left"><code>Random.seed!(seed)</code></td></tr><tr><td align="left">产生随机数</td><td align="left"><code>rand()</code> # 均匀分布 [0,1)<br><code>randn()</code> # 正态分布 (-Inf, Inf)</td></tr><tr><td align="left">产生特定分布的随机数</td><td align="left"><code>using Distributions</code><br><code>my_dist = Bernoulli(0.2)</code> 举例<br><code>rand(my_dist)</code></td></tr><tr><td align="left">以概率 p 从 A 中进行伯努利抽样</td><td align="left"><code>randsubseq(A, p)</code></td></tr><tr><td align="left">随机重排 A 中的元素</td><td align="left"><code>shuffle(A)</code></td></tr></tbody></table>
+<p>许多随机数函数都需要 <code>using Random</code></p>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="异常处理"><a aria-hidden="true" tabindex="-1" href="#异常处理"><span class="icon icon-link"></span></a>异常处理</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token comment"># 抛出异常 SomeExcep</span>
+</span><span class="code-line">throw<span class="token punctuation">(</span>SomeExcep<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 再次引发当前的异常</span>
+</span><span class="code-line">rethrow<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>定义新异常 NewExcep</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">struct</span> NewExcep <span class="token operator">&#x3C;:</span> Exception
+</span><span class="code-line">    v<span class="token punctuation">::</span>String
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">Base<span class="token punctuation">.</span>showerror<span class="token punctuation">(</span>io<span class="token punctuation">::</span>IO<span class="token punctuation">,</span> e<span class="token punctuation">::</span>NewExcep<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">print</span><span class="token punctuation">(</span>io<span class="token punctuation">,</span> <span class="token string">"A problem with $(e.v)!"</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">throw<span class="token punctuation">(</span>NewExcep<span class="token punctuation">(</span><span class="token string">"x"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 抛出带文本的异常</span>
+</span><span class="code-line">error<span class="token punctuation">(</span>msg<span class="token punctuation">)</span>
+</span></code></pre>
+<p>异常处理流程</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">try</span>
+</span><span class="code-line">  <span class="token comment"># 进行一些可能会失败的操作</span>
+</span><span class="code-line">  <span class="token keyword">catch</span> ex
+</span><span class="code-line">    <span class="token keyword">if</span> isa<span class="token punctuation">(</span>ex<span class="token punctuation">,</span> SomeExcep<span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token comment"># 处理异常 SomeExcep</span>
+</span><span class="code-line">    <span class="token keyword">elseif</span> isa<span class="token punctuation">(</span>ex<span class="token punctuation">,</span> AnotherExcep<span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token comment"># 处理另一个异常 AnotherExcep</span>
+</span><span class="code-line">    <span class="token keyword">else</span>
+</span><span class="code-line">        <span class="token comment"># 处理其余的异常</span>
+</span><span class="code-line">    <span class="token keyword">end</span>
+</span><span class="code-line">  <span class="token keyword">finally</span>
+</span><span class="code-line">  <span class="token comment"># 永远执行这些语句</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-4"><div class="wrap-header h3wrap"><h3 id="类型"><a aria-hidden="true" tabindex="-1" href="#类型"><span class="icon icon-link"></span></a>类型</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-4-->
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token comment"># 类型注释</span>
+</span><span class="code-line">var<span class="token punctuation">::</span>TypeName
+</span><span class="code-line"><span class="token comment"># 类型声明</span>
+</span><span class="code-line"><span class="token keyword">struct</span> Programmer
+</span><span class="code-line">    name<span class="token punctuation">::</span>String
+</span><span class="code-line">    birth_year<span class="token punctuation">::</span>UInt16
+</span><span class="code-line">    fave_language<span class="token punctuation">::</span>AbstractString
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token comment"># 可变类型声明</span>
+</span><span class="code-line">将 <span class="token keyword">struct</span> 替换为 mutable <span class="token keyword">struct</span>
+</span><span class="code-line"><span class="token comment"># 类型别名</span>
+</span><span class="code-line"><span class="token keyword">const</span> Nerd <span class="token operator">=</span> Programmer
+</span><span class="code-line"><span class="token comment"># 类型构造器</span>
+</span><span class="code-line">methods<span class="token punctuation">(</span>TypeName<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 类型实例</span>
+</span><span class="code-line">me <span class="token operator">=</span> Programmer<span class="token punctuation">(</span><span class="token string">"Ian"</span><span class="token punctuation">,</span> <span class="token number">1984</span><span class="token punctuation">,</span> <span class="token string">"Julia"</span><span class="token punctuation">)</span>
+</span><span class="code-line">me <span class="token operator">=</span> Nerd<span class="token punctuation">(</span><span class="token string">"Ian"</span><span class="token punctuation">,</span> <span class="token number">1984</span><span class="token punctuation">,</span> <span class="token string">"Julia"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 子类型声明</span>
+</span><span class="code-line"><span class="token keyword">abstract</span> <span class="token keyword">type</span> Bird <span class="token keyword">end</span>
+</span><span class="code-line"><span class="token keyword">struct</span> Duck <span class="token operator">&#x3C;:</span> Bird
+</span><span class="code-line">    pond<span class="token punctuation">::</span>String
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token comment"># 参数化类型</span>
+</span><span class="code-line"><span class="token keyword">struct</span> Point<span class="token punctuation">{</span>T <span class="token operator">&#x3C;:</span> Real<span class="token punctuation">}</span>
+</span><span class="code-line">    x<span class="token punctuation">::</span>T
+</span><span class="code-line">    y<span class="token punctuation">::</span>T
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line">p <span class="token operator">=</span> Point<span class="token punctuation">{</span>Float64<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 联合类型</span>
+</span><span class="code-line">Union<span class="token punctuation">{</span>Int<span class="token punctuation">,</span> String<span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment"># 遍历类型层级</span>
+</span><span class="code-line">supertype<span class="token punctuation">(</span>TypeName<span class="token punctuation">)</span> 和 subtypes<span class="token punctuation">(</span>TypeName<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 默认的超类型</span>
+</span><span class="code-line">Any
+</span><span class="code-line"><span class="token comment"># 所有字段</span>
+</span><span class="code-line">fieldnames<span class="token punctuation">(</span>TypeName<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 所有字段类型</span>
+</span><span class="code-line">TypeName<span class="token punctuation">.</span>types
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="标准库"><a aria-hidden="true" tabindex="-1" href="#标准库"><span class="icon icon-link"></span></a>标准库</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">Random</td><td align="left"><code>rand</code>, <code>randn</code>, <code>randsubseq</code></td></tr><tr><td align="left">Statistics</td><td align="left"><code>mean</code>, <code>std</code>, <code>cor</code>, <code>median</code>, <code>quantile</code></td></tr><tr><td align="left">LinearAlgebra</td><td align="left"><code>I</code>, <code>eigvals</code>, <code>eigvecs</code>, <code>det</code>, <code>cholesky</code></td></tr><tr><td align="left">SparseArrays</td><td align="left"><code>sparse</code>, <code>SparseVector</code>, <code>SparseMatrixCSC</code></td></tr><tr><td align="left">Distributed</td><td align="left"><code>@distributed</code>, <code>pmap</code>, <code>addprocs</code></td></tr><tr><td align="left">Dates</td><td align="left"><code>DateTime</code>, <code>Date</code></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="表达式"><a aria-hidden="true" tabindex="-1" href="#表达式"><span class="icon icon-link"></span></a>表达式</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>使用引用 <code>:( ... )</code> 或块引用 <code>quote ... end</code> 可以创建一个表达式，就像 <code>parse(str)</code>，和 <code>Expr(:call, ...)</code>。</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">x <span class="token operator">=</span> <span class="token number">1</span>
+</span><span class="code-line">line <span class="token operator">=</span> <span class="token string">"1 + $x"</span>         <span class="token comment"># 一些代码</span>
+</span><span class="code-line">expr <span class="token operator">=</span> Meta<span class="token punctuation">.</span>parse<span class="token punctuation">(</span>line<span class="token punctuation">)</span> <span class="token comment"># 生成一个 Expr 对象</span>
+</span><span class="code-line">typeof<span class="token punctuation">(</span>expr<span class="token punctuation">)</span> <span class="token operator">==</span> Expr <span class="token comment"># true</span>
+</span><span class="code-line">dump<span class="token punctuation">(</span>expr<span class="token punctuation">)</span>           <span class="token comment"># 打印生成抽象语法(AST)</span>
+</span><span class="code-line">eval<span class="token punctuation">(</span>expr<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span>      <span class="token comment"># 对 Expr 对象求值: true</span>
+</span></code></pre>
+<p>Julia 具有同像性：程序被表示为语言本身的数据结构。 实际上 <code>Julia</code> 语言里的任何东西都是一个表达式 <code>Expr</code>。符号(<code>Symbols</code>)即驻留字符串 ，以冒号 <code>:</code> 为前缀。相对于其他类型来说，符号效率更高。它也经常用作标识符、字典的键或者数据表里的列名。符号不能进行拼接。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="输入输出"><a aria-hidden="true" tabindex="-1" href="#输入输出"><span class="icon icon-link"></span></a>输入/输出</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<p>读取流</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">stream <span class="token operator">=</span> stdin
+</span><span class="code-line"><span class="token keyword">for</span> line <span class="token keyword">in</span> eachline<span class="token punctuation">(</span>stream<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token comment"># 做点啥</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+<p>读取文件</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">open<span class="token punctuation">(</span>filename<span class="token punctuation">)</span> <span class="token keyword">do</span> file
+</span><span class="code-line">    <span class="token keyword">for</span> line <span class="token keyword">in</span> eachline<span class="token punctuation">(</span>file<span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token comment"># 做点啥</span>
+</span><span class="code-line">    <span class="token keyword">end</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+<p>读取/写入 CSV 文件</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token comment"># 读取 CSV 文件</span>
+</span><span class="code-line"><span class="token keyword">using</span> CSV
+</span><span class="code-line">data <span class="token operator">=</span> CSV<span class="token punctuation">.</span>File<span class="token punctuation">(</span>filename<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 写入 CSV 文件</span>
+</span><span class="code-line"><span class="token punctuation">[</span>label<span class="token punctuation">]</span><span class="token punctuation">(</span>koajs<span class="token punctuation">.</span>md<span class="token punctuation">)</span>CSV<span class="token punctuation">.</span>write<span class="token punctuation">(</span>filename<span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+</span></code></pre>
+<p>读取/保存 Julia 对象</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">using</span> JLD
+</span><span class="code-line"><span class="token comment"># 保存 Julia 对象</span>
+</span><span class="code-line">save<span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">"object_key"</span><span class="token punctuation">,</span> object<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 读取 Julia 对象</span>
+</span><span class="code-line">d <span class="token operator">=</span> load<span class="token punctuation">(</span>filename<span class="token punctuation">)</span> <span class="token comment"># 返回对象的字典</span>
+</span></code></pre>
+<p>读取/保存 HDF5</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">using</span> HDF5
+</span><span class="code-line"><span class="token comment"># 保存 HDF5</span>
+</span><span class="code-line">h5write<span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">"key"</span><span class="token punctuation">,</span> object<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 读取 HDF5</span>
+</span><span class="code-line">h5read<span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">"key"</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="宏"><a aria-hidden="true" tabindex="-1" href="#宏"><span class="icon icon-link"></span></a>宏</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>宏允许你在程序中自动生成代码（如：表达式）</p>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token comment"># 定义</span>
+</span><span class="code-line"><span class="token keyword">macro</span> macroname<span class="token punctuation">(</span>expr<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token comment"># 做点啥</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+<p>使用</p>
+<pre class="wrap-text"><code class="language-julia code-highlight"><span class="code-line">macroname<span class="token punctuation">(</span>ex1<span class="token punctuation">,</span> ex2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> 或 @macroname ex1<span class="token punctuation">,</span> ex2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>内置的宏</p>
+<pre class="wrap-text"><code class="language-julia code-highlight"><span class="code-line">@assert    <span class="token comment"># assert (单元测试)</span>
+</span><span class="code-line">@which     <span class="token comment"># 查看对特定参数使用的方法/查找函数所在的模块</span>
+</span><span class="code-line">@time      <span class="token comment"># 运行时间与内存分配统计</span>
+</span><span class="code-line">@elapsed   <span class="token comment"># 返回执行用时</span>
+</span><span class="code-line">@allocated <span class="token comment"># 查看内存分配</span>
+</span><span class="code-line">@async     <span class="token comment"># 异步任务</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">using</span> Test
+</span><span class="code-line">@test          <span class="token comment"># 精确相等</span>
+</span><span class="code-line">@test x ≈ y    <span class="token comment"># 近似相等 isapprox(x, y)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">using</span> Profile
+</span><span class="code-line">@profile        <span class="token comment"># 优化</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>创建 卫生宏 (hygienic macros)的规则：</p>
+<ul>
+<li>在宏的内部只通过 <code>local</code> 声明本地变量</li>
+<li>在宏的内部不使用 <code>eval</code></li>
+<li>转义插值表达式以避免宏变大：<code>$(esc(expr))</code></li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="并行计算"><a aria-hidden="true" tabindex="-1" href="#并行计算"><span class="icon icon-link"></span></a>并行计算</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>并行计算相关的工具可以在标准库 <code>Distributed</code> 里找到</p>
+<pre class="wrap-text"><code class="language-julia code-highlight"><span class="code-line"><span class="token comment"># 启动带 N 各 worker 的 REPL</span>
+</span><span class="code-line">julia <span class="token operator">-</span>p N
+</span><span class="code-line"><span class="token comment"># 可用的 worker 数量</span>
+</span><span class="code-line">nprocs<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 添加 N 个 worker</span>
+</span><span class="code-line">addprocs<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 查看所有 worker 的 pid</span>
+</span><span class="code-line"><span class="token keyword">for</span> pid <span class="token keyword">in</span> workers<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">println</span><span class="token punctuation">(</span>pid<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token comment"># 获得正在执行的 worker 的 id</span>
+</span><span class="code-line">myid<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 移除 worker</span>
+</span><span class="code-line">rmprocs<span class="token punctuation">(</span>pid<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 在特定 pid 的 worker 上运行 f(args)</span>
+</span><span class="code-line">r <span class="token operator">=</span> remotecall<span class="token punctuation">(</span>f<span class="token punctuation">,</span> pid<span class="token punctuation">,</span> args<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 或:</span>
+</span><span class="code-line">r <span class="token operator">=</span> @spawnat pid f<span class="token punctuation">(</span>args<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span><span class="code-line">fetch<span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 在特定 pid 的 worker 上运行 f(args) (更高效)</span>
+</span><span class="code-line">remotecall_fetch<span class="token punctuation">(</span>f<span class="token punctuation">,</span> pid<span class="token punctuation">,</span> args<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 在任意 worker 上运行 f(args)</span>
+</span><span class="code-line">r <span class="token operator">=</span> @spawn f<span class="token punctuation">(</span>args<span class="token punctuation">)</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> fetch<span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 在所有 worker 上运行 f(args)</span>
+</span><span class="code-line">r <span class="token operator">=</span> <span class="token punctuation">[</span>@spawnat w f<span class="token punctuation">(</span>args<span class="token punctuation">)</span> <span class="token keyword">for</span> w <span class="token keyword">in</span> workers<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> fetch<span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 让表达式 expr 在所有 worker 上执行</span>
+</span><span class="code-line">@everywhere expr
+</span><span class="code-line"><span class="token comment"># 并行化带规约函数 red 的循环</span>
+</span><span class="code-line">sum <span class="token operator">=</span> @distributed <span class="token punctuation">(</span>red<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token operator">^</span><span class="token number">6</span>
+</span><span class="code-line">    <span class="token comment"># 进行并行任务</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token comment"># 将 f 用用到集合 coll 中的所有元素上</span>
+</span><span class="code-line">pmap<span class="token punctuation">(</span>f<span class="token punctuation">,</span> coll<span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="数组"><a aria-hidden="true" tabindex="-1" href="#数组"><span class="icon icon-link"></span></a>数组</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">声明数组</td><td align="left"><code>arr = Float64[]</code></td></tr><tr><td align="left">预分配内存</td><td align="left"><code>sizehint!(arr, 10^4)</code></td></tr><tr><td align="left">访问与赋值</td><td align="left"><code>arr = Any[1,2]</code><br><code>arr[1] = "Some text"</code></td></tr><tr><td align="left">从 m 到 n 的子数组</td><td align="left"><code>arr[m:n]</code></td></tr><tr><td align="left">n 个 <code>0.0</code> 填充的数组</td><td align="left"><code>zeros(n)</code></td></tr><tr><td align="left">n 个 <code>1.0</code> 填充的数组</td><td align="left"><code>ones(n)</code></td></tr><tr><td align="left">n 个随机 Int8 填充的数组</td><td align="left"><code>rand(Int8, n)</code></td></tr><tr><td align="left">用值 val 填充数组</td><td align="left"><code>fill!(arr, val)</code></td></tr><tr><td align="left">弹出最后一个元素</td><td align="left"><code>pop!(arr)</code></td></tr><tr><td align="left">弹出第一个元素</td><td align="left"><code>popfirst!(a)</code></td></tr><tr><td align="left">n 个 <code>#undef</code> 填充的数组</td><td align="left"><code>Vector{Type}(undef,n)</code></td></tr><tr><td align="left">n 个从 <code>start</code> 到 <code>stop</code> 的等间距数</td><td align="left"><code>range(start,stop=stop,length=n)</code></td></tr><tr><td align="left">将值 <code>val</code> 作为最后一个元素压入数组</td><td align="left"><code>push!(arr, val)</code></td></tr><tr><td align="left">将值 <code>val</code> 作为第一个元素压入数组</td><td align="left"><code>pushfirst!(arr, val)</code></td></tr><tr><td align="left">删除指定索引值的元素</td><td align="left"><code>deleteat!(arr, idx)</code></td></tr><tr><td align="left">数组排序</td><td align="left"><code>sort!(arr)</code></td></tr><tr><td align="left">将 <code>b</code> 连接到 <code>a</code> 后</td><td align="left"><code>append!(a,b)</code></td></tr><tr><td align="left">转化为字符串，并以 delim 分隔</td><td align="left"><code>join(arr, delim)</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<hr>
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token comment"># 数组比较</span>
+</span><span class="code-line">a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">;</span><span class="token punctuation">]</span>
+</span><span class="code-line">b <span class="token operator">=</span> a      <span class="token comment"># b 指向 a</span>
+</span><span class="code-line">a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">99</span>
+</span><span class="code-line">a <span class="token operator">==</span> b     <span class="token comment"># true</span>
+</span><span class="code-line"><span class="token comment"># 复制元素(而不是地址)/深拷贝</span>
+</span><span class="code-line">b <span class="token operator">=</span> copy<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</span><span class="code-line">b <span class="token operator">=</span> deepcopy<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 检查值 val 是否在数组 arr 中</span>
+</span><span class="code-line"><span class="token keyword">in</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> arr<span class="token punctuation">)</span> <span class="token comment"># 或</span>
+</span><span class="code-line">val <span class="token keyword">in</span> arr
+</span><span class="code-line"><span class="token comment"># 改变维数</span>
+</span><span class="code-line">reshape<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">'</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="线性代数"><a aria-hidden="true" tabindex="-1" href="#线性代数"><span class="icon icon-link"></span></a>线性代数</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">单位矩阵</td><td align="left"><code>I</code></td></tr><tr><td align="left">定义矩阵</td><td align="left"><code>M = [1 0; 0 1]</code></td></tr><tr><td align="left">矩阵维数</td><td align="left"><code>size(M)</code></td></tr><tr><td align="left">选出第 i 行</td><td align="left"><code>M[i, :]</code></td></tr><tr><td align="left">选出第 j 列</td><td align="left"><code>M[:, j]</code></td></tr><tr><td align="left">水平拼接</td><td align="left"><code>M = [a b] 或 M = hcat(a, b)</code></td></tr><tr><td align="left">竖直拼接</td><td align="left"><code>M = [a ; b]</code> 或 <code>M = vcat(a, b)</code></td></tr><tr><td align="left">矩阵转置</td><td align="left"><code>transpose(M)</code></td></tr><tr><td align="left">共轭转置</td><td align="left"><code>M'</code> 或 <code>adjoint(M)</code></td></tr><tr><td align="left">迹(trace)</td><td align="left"><code>tr(M)</code></td></tr><tr><td align="left">行列式</td><td align="left"><code>det(M)</code></td></tr><tr><td align="left">秩(rank)</td><td align="left"><code>rank(M)</code></td></tr><tr><td align="left">特征值</td><td align="left"><code>eigvals(M)</code></td></tr><tr><td align="left">特征向量</td><td align="left"><code>eigvecs(M)</code></td></tr><tr><td align="left">矩阵求逆</td><td align="left"><code>inv(M)</code></td></tr><tr><td align="left">解矩阵方程 <code>M*x == v</code></td><td align="left"><code>M\v</code> 比 <code>inv(M)*v</code> 更好</td></tr><tr><td align="left">求 Moore-Penrose 伪逆</td><td align="left"><code>pinv(M)</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="控制流与循环"><a aria-hidden="true" tabindex="-1" href="#控制流与循环"><span class="icon icon-link"></span></a>控制流与循环</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="条件语句"><a aria-hidden="true" tabindex="-1" href="#条件语句"><span class="icon icon-link"></span></a>条件语句</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">if</span> x <span class="token operator">&#x3C;</span> y
+</span><span class="code-line">    <span class="token keyword">println</span><span class="token punctuation">(</span><span class="token string">"x is less than y"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">elseif</span> x <span class="token operator">></span> y
+</span><span class="code-line">    <span class="token keyword">println</span><span class="token punctuation">(</span><span class="token string">"x is greater than y"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">    <span class="token keyword">println</span><span class="token punctuation">(</span><span class="token string">"x is equal to y"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="for-循环"><a aria-hidden="true" tabindex="-1" href="#for-循环"><span class="icon icon-link"></span></a>for 循环</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token number">10</span>
+</span><span class="code-line">    <span class="token keyword">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="嵌套循环"><a aria-hidden="true" tabindex="-1" href="#嵌套循环"><span class="icon icon-link"></span></a>嵌套循环</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token number">5</span>
+</span><span class="code-line">    <span class="token keyword">println</span><span class="token punctuation">(</span>i<span class="token operator">*</span>j<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="枚举"><a aria-hidden="true" tabindex="-1" href="#枚举"><span class="icon icon-link"></span></a>枚举</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token punctuation">(</span>idx<span class="token punctuation">,</span> val<span class="token punctuation">)</span> <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">println</span><span class="token punctuation">(</span><span class="token string">"the $idx-th element is $val"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="while-循环"><a aria-hidden="true" tabindex="-1" href="#while-循环"><span class="icon icon-link"></span></a>while 循环</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">while</span> bool_expr
+</span><span class="code-line">    <span class="token comment"># 做点啥</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="退出循环"><a aria-hidden="true" tabindex="-1" href="#退出循环"><span class="icon icon-link"></span></a>退出循环</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">julia<span class="token operator">></span> i <span class="token operator">=</span> <span class="token number">0</span>
+</span><span class="code-line">julia<span class="token operator">></span> <span class="token keyword">while</span> <span class="token boolean">true</span>
+</span><span class="code-line">           <span class="token keyword">global</span> i <span class="token operator">+=</span> <span class="token number">1</span>
+</span><span class="code-line highlight-line">           i <span class="token operator">></span> <span class="token number">5</span> <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">break</span>
+</span><span class="code-line">           <span class="token keyword">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</span><span class="code-line">       <span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="退出本次循环"><a aria-hidden="true" tabindex="-1" href="#退出本次循环"><span class="icon icon-link"></span></a>退出本次循环</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token number">6</span>
+</span><span class="code-line highlight-line">    iseven<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">continue</span>
+</span><span class="code-line">    <span class="token keyword">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="数字相关"><a aria-hidden="true" tabindex="-1" href="#数字相关"><span class="icon icon-link"></span></a>数字相关</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="整数类型"><a aria-hidden="true" tabindex="-1" href="#整数类型"><span class="icon icon-link"></span></a>整数类型</h3><div class="wrap-body">
+<p><code>IntN</code> 和 <code>UIntN</code>, 且 <code>N ∈ {8, 16, 32, 64, 128}</code>, <code>BigInt</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="浮点类型"><a aria-hidden="true" tabindex="-1" href="#浮点类型"><span class="icon icon-link"></span></a>浮点类型</h3><div class="wrap-body">
+<p><code>FloatN</code> 且 <code>N ∈ {16, 32, 64}</code>
+<code>BigFloat</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类型的最大和最小值"><a aria-hidden="true" tabindex="-1" href="#类型的最大和最小值"><span class="icon icon-link"></span></a>类型的最大和最小值</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">typemin<span class="token punctuation">(</span>Int8<span class="token punctuation">)</span>
+</span><span class="code-line">typemax<span class="token punctuation">(</span>Int64<span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="复数类型"><a aria-hidden="true" tabindex="-1" href="#复数类型"><span class="icon icon-link"></span></a>复数类型</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">Complex<span class="token punctuation">{</span>T<span class="token operator">&#x3C;:</span>Real<span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="虚数单位"><a aria-hidden="true" tabindex="-1" href="#虚数单位"><span class="icon icon-link"></span></a>虚数单位</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token constant">im</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="机器精度"><a aria-hidden="true" tabindex="-1" href="#机器精度"><span class="icon icon-link"></span></a>机器精度</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">eps<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 等价于 eps(Float64)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="圆整"><a aria-hidden="true" tabindex="-1" href="#圆整"><span class="icon icon-link"></span></a>圆整</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">round<span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment"># 浮点数圆整</span>
+</span><span class="code-line">round<span class="token punctuation">(</span>Int<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment"># 整数圆整</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类型转换"><a aria-hidden="true" tabindex="-1" href="#类型转换"><span class="icon icon-link"></span></a>类型转换</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token comment"># 尝试进行转换/可能会报错</span>
+</span><span class="code-line">convert<span class="token punctuation">(</span>TypeName<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 调用类型构造器转换</span>
+</span><span class="code-line">TypeName<span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="全局常量"><a aria-hidden="true" tabindex="-1" href="#全局常量"><span class="icon icon-link"></span></a>全局常量</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token constant">pi</span> <span class="token comment"># 3.1415...</span>
+</span><span class="code-line"><span class="token constant">π</span>  <span class="token comment"># 3.1415...</span>
+</span><span class="code-line"><span class="token constant">im</span> <span class="token comment"># real(im * im) == -1</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="更多常量"><a aria-hidden="true" tabindex="-1" href="#更多常量"><span class="icon icon-link"></span></a>更多常量</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">using</span> Base<span class="token punctuation">.</span>MathConstants
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="模块"><a aria-hidden="true" tabindex="-1" href="#模块"><span class="icon icon-link"></span></a>模块</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="定义"><a aria-hidden="true" tabindex="-1" href="#定义"><span class="icon icon-link"></span></a>定义</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">module</span> PackageName
+</span><span class="code-line"><span class="token comment"># 添加模块定义</span>
+</span><span class="code-line"><span class="token comment"># 使用 export 让定义对外可见</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="包含文件-filenamejl"><a aria-hidden="true" tabindex="-1" href="#包含文件-filenamejl"><span class="icon icon-link"></span></a>包含文件 filename.jl</h3><div class="wrap-body">
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line">include<span class="token punctuation">(</span><span class="token string">"filename.jl"</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="加载"><a aria-hidden="true" tabindex="-1" href="#加载"><span class="icon icon-link"></span></a>加载</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-julia"><code class="language-julia code-highlight"><span class="code-line"><span class="token keyword">using</span> ModuleName <span class="token comment"># 导出所有名称</span>
+</span><span class="code-line"><span class="token comment"># 仅导出 x, y</span>
+</span><span class="code-line"><span class="token keyword">using</span> ModuleName<span class="token punctuation">:</span> x<span class="token punctuation">,</span> y
+</span><span class="code-line"><span class="token comment"># 仅导出 x, y</span>
+</span><span class="code-line"><span class="token keyword">using</span> ModuleName<span class="token punctuation">.</span>x<span class="token punctuation">,</span> ModuleName<span class="token punctuation">.</span>y<span class="token punctuation">:</span>
+</span><span class="code-line"><span class="token comment"># 仅导出 ModuleName</span>
+</span><span class="code-line"><span class="token keyword">import</span> ModuleName 
+</span><span class="code-line"><span class="token comment"># 仅导出 x, y</span>
+</span><span class="code-line"><span class="token keyword">import</span> ModuleName<span class="token punctuation">:</span> x<span class="token punctuation">,</span> y 
+</span><span class="code-line"><span class="token comment"># 仅导出 x, y</span>
+</span><span class="code-line"><span class="token keyword">import</span> ModuleName<span class="token punctuation">.</span>x<span class="token punctuation">,</span> ModuleName<span class="token punctuation">.</span>y
+</span></code></pre>
+<p><code>using</code> 和 <code>import</code> 只有一点区别：使用 <code>using</code> 时，你需要写 <code>function Foo.bar(..</code> 来给 <code>Foo</code> 模块的函数 <code>bar</code> 增添一个新方法； 而使用 <code>import Foo.bar</code> 时，只需写 <code>function bar(...</code> 就能达到同样的效果</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="导出"><a aria-hidden="true" tabindex="-1" href="#导出"><span class="icon icon-link"></span></a>导出</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-julia code-highlight"><span class="code-line"><span class="token comment"># 得到模块导出名称的数组</span>
+</span><span class="code-line">names<span class="token punctuation">(</span>ModuleName<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 包含未导出的、弃用的</span>
+</span><span class="code-line"><span class="token comment"># 和编译器产生的名称</span>
+</span><span class="code-line">names<span class="token punctuation">(</span>ModuleName<span class="token punctuation">,</span> all<span class="token punctuation">::</span>Bool<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 也显示从其他模块显式导入的名称</span>
+</span><span class="code-line">names<span class="token punctuation">(</span>ModuleName<span class="token punctuation">,</span> all<span class="token punctuation">::</span>Bool<span class="token punctuation">,</span> imported<span class="token punctuation">::</span>Bool<span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="包管理"><a aria-hidden="true" tabindex="-1" href="#包管理"><span class="icon icon-link"></span></a>包管理</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>一个程序包必须先<a href="https://github.com/JuliaRegistries/General">注册</a>，然后才能在包管理器中看到它。在 Julia 1.0 中，有两种使用包管理器的方法：</p>
+<ul>
+<li>一是通过 <code>using Pkg</code> 导入 <code>Pkg</code> 模块，然后用它的函数管理其他包；</li>
+<li>或者在 REPL 中输入 <code>]</code>，然后按回车。进入特殊的交互式包管理模式。 (要从包管理模式返回 REPL，只需要在空行上按退格键 <code>BACKSPACE</code> 就行了)</li>
+</ul>
+<p>注意新的工具总是先添加到交互式模式中，然后才会加入 <code>Pkg</code> 模块</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="在-julia-会话中使用-pkg-管理包"><a aria-hidden="true" tabindex="-1" href="#在-julia-会话中使用-pkg-管理包"><span class="icon icon-link"></span></a>在 Julia 会话中使用 Pkg 管理包</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">列出已安装的包</td><td align="left"><code>Pkg.status()</code></td></tr><tr><td align="left">更新所有包</td><td align="left"><code>Pkg.update()</code></td></tr><tr><td align="left">安装包</td><td align="left"><code>Pkg.add("PackageName")</code></td></tr><tr><td align="left">重新构建包</td><td align="left"><code>Pkg.build("PackageName")</code></td></tr><tr><td align="left">使用包</td><td align="left"><code>using PackageName</code></td></tr><tr><td align="left">删除包</td><td align="left"><code>Pkg.rm("PackageName")</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="交互式包管理模式"><a aria-hidden="true" tabindex="-1" href="#交互式包管理模式"><span class="icon icon-link"></span></a>交互式包管理模式</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">添加包</td><td align="left"><code>add PackageName</code></td></tr><tr><td align="left">删除包</td><td align="left"><code>rm PackageName</code></td></tr><tr><td align="left">更新包</td><td align="left"><code>update PackageName</code></td></tr><tr><td align="left">使用开发版本</td><td align="left"><code>dev PackageName</code> 或 <code>dev GitRepoUrl</code></td></tr><tr><td align="left">返回普通发行版</td><td align="left"><code>free PackageName</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://cheatsheet.juliadocs.org/zh-cn/">快速入门一份简单而粗略的语言概览</a></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
