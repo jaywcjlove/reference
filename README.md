@@ -176,6 +176,9 @@ Quick Reference
 <a href="https://github.com/gaoxiaoduan" title="coderduan">
   <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="coderduan"/>
 </a>
+<a href="https://github.com/hua03" title="hua03">
+  <img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/>
+</a>
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
 </a>
