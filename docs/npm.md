@@ -240,6 +240,26 @@ $ npx -c 'eslint && say "hooray, lint passed"'
 ```
 <!--rehype:className=wrap-text-->
 
+### 创建一个 React Naive 项目
+
+```bash
+$ npx react-native init AwesomeProject
+$ npx react-native init AwesomeTSProject --template react-native-template-typescript
+```
+<!--rehype:className=wrap-text-->
+
+使用 `npx` 直接创建一个  [React Native]((https://reactnative.dev/docs/environment-setup#creating-a-new-application)) 应用
+
+### 创建一个 React 应用
+
+```bash
+$ npx create-react-app my-app
+$ npx create-react-app my-app --template typescript
+```
+<!--rehype:className=wrap-text-->
+
+使用 `npx` 跳过安装 [CRA](https://reactnative.dev/docs/environment-setup#creating-a-new-application)，直接创建一个 [React](./react.md) 应用
+
 配置
 ---
 
@@ -378,3 +398,4 @@ ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-
 
 - [npm 仓库、网站和命令行界面的文档](https://docs.npmjs.com/) _(npmjs.com)_
 - [npmmirror 中国镜像站](https://npmmirror.com/) _(npmmirror.com)_
+- [](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/package-managers/javascript/npm/commands/npx.html) _(michaelcurrin.github.io)_
