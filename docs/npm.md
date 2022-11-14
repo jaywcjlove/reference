@@ -154,6 +154,92 @@ $ nrm ls
 $ nrm use cnpm       
 ```
 
+npx
+---
+
+### 介绍
+
+从本地或远程 npm 包运行命令
+
+```bash
+npx -- <pkg>[@<version>] [args...]
+npx --package=<pkg>[@<version>] -- <cmd> [args...]
+npx -c '<cmd> [args...]'
+npx --package=foo -c '<cmd> [args...]'
+```
+<!--rehype:className=wrap-text-->
+
+`npx` 二进制文件在 `npm v7.0.0` 中被重写，并且当时不推荐使用独立的 `npx` 包
+
+```bash
+$ npm install eslint
+# 运行：
+$ ./node_modules/.bin/eslint
+```
+
+上面命令简化，直接运行下面👇命令
+
+```bash
+$ npx eslint
+```
+
+命令 `npx` 将自动安装并运行 `eslint`
+
+### npx VS npm exec
+
+```bash
+$ npx foo@latest bar --package=@npmcli/foo
+# npm 将解析 foo 包名，并运行以下命令：
+$ foo bar --package=@npmcli/foo
+```
+<!--rehype:className=wrap-text-->
+
+由于 npm 的参数解析逻辑，运行这个命令是不同的:
+
+```bash
+$ npm exec foo@latest bar --package=@npmcli/foo
+# npm 将首先解析 --package 选项
+# 解析 @npmcli/foo 包
+# 然后，它将在该上下文中执行以下命令：
+$ foo@latest bar
+```
+<!--rehype:className=wrap-text-->
+
+下面命令是与 `npx` 等效的
+
+```bash
+$ npm exec -- foo@latest bar --package=@npmcli/foo
+# 等效的
+$ npx foo@latest bar --package=@npmcli/foo
+```
+<!--rehype:className=wrap-text-->
+
+### npx VS npm exec 示例
+
+使用提供的参数在本地依赖项中运行 `tap` 版本：
+
+```bash
+$ npm exec -- tap --bail test/foo.js
+$ npx tap --bail test/foo.js
+```
+
+通过指定 `--package` 选项运行名称与包名称匹配的命令以外的命令：
+
+```bash
+$ npm exec --package=foo -- bar --bar-argument
+# ~ or ~
+$ npx --package=foo bar --bar-argument
+```
+<!--rehype:className=wrap-text-->
+
+在当前项目的上下文中运行任意 `shell` 脚本：
+
+```bash
+$ npm x -c 'eslint && say "hooray, lint passed"'
+$ npx -c 'eslint && say "hooray, lint passed"'
+```
+<!--rehype:className=wrap-text-->
+
 配置
 ---
 
