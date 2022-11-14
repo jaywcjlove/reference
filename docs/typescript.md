@@ -1308,6 +1308,22 @@ const point = [3, 4] as const
 // type 'readonly [3, 4]'
 ```
 
+### 类型推导（infer）
+
+```ts
+type Capitalize<T extends string> = T extends `${infer U}${infer V}`
+  ? `${Uppercase<U>}${V}`
+  : T
+type capitalized = Capitalize<"hello world"> // Hello World
+```
+
+- 也可以在 infer 中使用条件约束（`extends`）
+
+```ts
+type SomeBigInt = "100" extends `${infer U extends bigint}` ? U : never;
+// 100n
+```
+
 另见
 ----
 
