@@ -117,6 +117,7 @@ Environments
    c & d
 \end{matrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ```LaTeX
 \begin{matrix}
@@ -124,6 +125,7 @@ Environments
    c & d
 \end{matrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ### Environments 2
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
@@ -134,6 +136,7 @@ Environments
    c & d
 \end{array}
 ```
+<!--rehype:style=flex:1;-->
 
 ```LaTeX
 \begin{array}{cc}
@@ -151,6 +154,7 @@ Environments
    c & d
 \end{pmatrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ```LaTeX
 \begin{pmatrix}
@@ -158,6 +162,7 @@ Environments
    c & d
 \end{pmatrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ### Environments 4
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
@@ -185,6 +190,7 @@ Environments
    c & d
 \end{vmatrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ```LaTeX
 \begin{vmatrix}
@@ -192,6 +198,7 @@ Environments
    c & d
 \end{vmatrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ### Environments 6
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
@@ -202,6 +209,7 @@ Environments
    c & d
 \end{Vmatrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ```LaTeX
 \begin{Vmatrix}
@@ -209,6 +217,7 @@ Environments
    c & d
 \end{Vmatrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ### Environments 7
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
@@ -239,6 +248,7 @@ Environments
    g & h & i
 \end{array}
 ```
+<!--rehype:style=flex:1;-->
 
 ```LaTeX
 \def\arraystretch{1.5}
@@ -293,6 +303,7 @@ x = \begin{cases}
    c & d
 \end{smallmatrix}
 ```
+<!--rehype:style=flex:1;-->
 
 ```LaTeX
 \begin{smallmatrix}
@@ -311,6 +322,7 @@ x = \begin{cases}
    0<j<n
 \end{subarray}}
 ```
+<!--rehype:style=flex:1;-->
 
 ```LaTeX
 \sum_{
@@ -320,7 +332,7 @@ x = \begin{cases}
 \end{subarray}}
 ```
 
-### Environments 12
+### Environments 13
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -340,7 +352,7 @@ x = \begin{cases}
 \end{equation}
 ```
 
-### Environments 12
+### Environments 14
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -358,7 +370,7 @@ x = \begin{cases}
 \end{align}
 ```
 
-### Environments 12
+### Environments 15
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -376,7 +388,7 @@ x = \begin{cases}
 \end{gather}
 ```
 
-### Environments 12
+### Environments 16
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -394,7 +406,7 @@ x = \begin{cases}
 \end{alignat}
 ```
 
-### Environments 12
+### Environments 17
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
