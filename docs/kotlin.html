@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Kotlin 备忘清单
+ &#x26;  kotlin cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="Kotlin 备忘清单是 Kotlin 编程语言的单页参考表为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,kotlin">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/kotlin.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="kotlin-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" height="1em" width="1em">
+  <path d="m1.734 32 15.068-15.333L32 32zM0 0h16L0 16.667zm17.865 0L0 18.667V32L32 0z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#kotlin-备忘清单"><span class="icon icon-link"></span></a>Kotlin 备忘清单</h1><div class="wrap-body">
+<p>Kotlin 备忘清单是 <a href="https://kotlinlang.org">Kotlin</a> 编程语言的单页参考表</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#kotlin-简介">Kotlin 简介</a><a aria-hidden="true" class="leve3 tocs-link" href="#main-函数">main() 函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#打印声明">打印声明</a><a aria-hidden="true" class="leve3 tocs-link" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" href="#执行顺序">执行顺序</a><a aria-hidden="true" class="leve2 tocs-link" href="#数据类型和变量">数据类型和变量</a><a aria-hidden="true" class="leve3 tocs-link" href="#可变变量">可变变量</a><a aria-hidden="true" class="leve3 tocs-link" href="#不可变变量">不可变变量</a><a aria-hidden="true" class="leve3 tocs-link" href="#类型推断">类型推断</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符串连接">字符串连接</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符串模板">字符串模板</a><a aria-hidden="true" class="leve3 tocs-link" href="#内置属性和函数">内置属性和函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#字符转义序列">字符转义序列</a><a aria-hidden="true" class="leve3 tocs-link" href="#算术运算符">算术运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#操作顺序">操作顺序</a><a aria-hidden="true" class="leve3 tocs-link" href="#增强赋值运算符">增强赋值运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#递增和递减运算符">递增和递减运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#数学库">数学库</a><a aria-hidden="true" class="leve2 tocs-link" href="#条件表达式">条件表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#if-表达式">if 表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#else-表达式">else 表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#else-if-表达式">Else-If 表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#比较运算符">比较运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#逻辑运算符">逻辑运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#and-运算符-">AND 运算符： &#x26;&#x26;</a><a aria-hidden="true" class="leve3 tocs-link" href="#或运算符">或运算符：||</a><a aria-hidden="true" class="leve3 tocs-link" href="#not-运算符">NOT 运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#评估顺序">评估顺序</a><a aria-hidden="true" class="leve3 tocs-link" href="#嵌套条件">嵌套条件</a><a aria-hidden="true" class="leve3 tocs-link" href="#当表达式">当表达式</a><a aria-hidden="true" class="leve3 tocs-link" href="#范围运算符">范围运算符</a><a aria-hidden="true" class="leve3 tocs-link" href="#等式运算符">等式运算符</a><a aria-hidden="true" class="leve2 tocs-link" href="#collections">Collections</a><a aria-hidden="true" class="leve3 tocs-link" href="#不可变列表">不可变列表</a><a aria-hidden="true" class="leve3 tocs-link" href="#可变列表">可变列表</a><a aria-hidden="true" class="leve3 tocs-link" href="#访问列表元素">访问列表元素</a><a aria-hidden="true" class="leve3 tocs-link" href="#大小属性">大小属性</a><a aria-hidden="true" class="leve3 tocs-link" href="#列表操作">列表操作</a><a aria-hidden="true" class="leve3 tocs-link" href="#不可变集">不可变集</a><a aria-hidden="true" class="leve3 tocs-link" href="#可变集">可变集</a><a aria-hidden="true" class="leve3 tocs-link" href="#访问集合元素">访问集合元素</a><a aria-hidden="true" class="leve3 tocs-link" href="#不可变映射">不可变映射</a><a aria-hidden="true" class="leve3 tocs-link" href="#可变映射">可变映射</a><a aria-hidden="true" class="leve3 tocs-link" href="#检索映射键和值">检索映射键和值</a><a aria-hidden="true" class="leve3 tocs-link" href="#添加和删除地图条目">添加和删除地图条目</a><a aria-hidden="true" class="leve2 tocs-link" href="#函数">函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#函数-1">函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#函数参数">函数参数</a><a aria-hidden="true" class="leve3 tocs-link" href="#默认参数">默认参数</a><a aria-hidden="true" class="leve3 tocs-link" href="#命名参数">命名参数</a><a aria-hidden="true" class="leve3 tocs-link" href="#返回声明">返回声明</a><a aria-hidden="true" class="leve3 tocs-link" href="#单表达式函数">单表达式函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#函数字面量">函数字面量</a><a aria-hidden="true" class="leve2 tocs-link" href="#类">类</a><a aria-hidden="true" class="leve3 tocs-link" href="#类示例">类示例</a><a aria-hidden="true" class="leve3 tocs-link" href="#类实例">类实例</a><a aria-hidden="true" class="leve3 tocs-link" href="#主构造函数">主构造函数</a><a aria-hidden="true" class="leve3 tocs-link" href="#初始化块">初始化块</a><a aria-hidden="true" class="leve3 tocs-link" href="#成员函数">成员函数</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="kotlin-简介"><a aria-hidden="true" tabindex="-1" href="#kotlin-简介"><span class="icon icon-link"></span></a>Kotlin 简介</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="main-函数"><a aria-hidden="true" tabindex="-1" href="#main-函数"><span class="icon icon-link"></span></a>main() 函数</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// Code goes here</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>main() 函数是每个 Kotlin 程序的起点，在执行之前必须包含在代码中</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="打印声明"><a aria-hidden="true" tabindex="-1" href="#打印声明"><span class="icon icon-link"></span></a>打印声明</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Greetings, earthling!"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Take me to "</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"your leader."</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">/* 
+</span></span><span class="code-line"><span class="token comment">打印:
+</span></span><span class="code-line"><span class="token comment">Greetings, earthling!
+</span></span><span class="code-line"><span class="token comment">Take me to your leader.
+</span></span><span class="code-line"><span class="token comment">*/</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token comment">// 这是单行注释</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">/*
+</span></span><span class="code-line"><span class="token comment">这个
+</span></span><span class="code-line"><span class="token comment">注释
+</span></span><span class="code-line"><span class="token comment">用于
+</span></span><span class="code-line"><span class="token comment">多
+</span></span><span class="code-line"><span class="token comment">行
+</span></span><span class="code-line"><span class="token comment">*/</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="执行顺序"><a aria-hidden="true" tabindex="-1" href="#执行顺序"><span class="icon icon-link"></span></a>执行顺序</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"I will be printed first."</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"I will be printed second."</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"I will be printed third."</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="数据类型和变量"><a aria-hidden="true" tabindex="-1" href="#数据类型和变量"><span class="icon icon-link"></span></a>数据类型和变量</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="可变变量"><a aria-hidden="true" tabindex="-1" href="#可变变量"><span class="icon icon-link"></span></a>可变变量</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">25</span>
+</span><span class="code-line">age <span class="token operator">=</span> <span class="token number">26</span>  
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="不可变变量"><a aria-hidden="true" tabindex="-1" href="#不可变变量"><span class="icon icon-link"></span></a>不可变变量</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">val</span> goldenRatio <span class="token operator">=</span> <span class="token number">1.618</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类型推断"><a aria-hidden="true" tabindex="-1" href="#类型推断"><span class="icon icon-link"></span></a>类型推断</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token comment">// 以下变量在双引号内分配了一个文本值</span>
+</span><span class="code-line"><span class="token comment">// 因此推断的类型是 String</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">var</span> color <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Purple"</span></span> 
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串连接"><a aria-hidden="true" tabindex="-1" href="#字符串连接"><span class="icon icon-link"></span></a>字符串连接</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> streetAddress <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"123 Main St."</span></span>
+</span><span class="code-line"><span class="token keyword">var</span> cityState <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Brooklyn, NY"</span></span> 
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>streetAddress <span class="token operator">+</span> <span class="token string-literal singleline"><span class="token string">" "</span></span> <span class="token operator">+</span> cityState<span class="token punctuation">)</span> 
+</span><span class="code-line"><span class="token comment">// 打印: 123 Main St. Brooklyn, NY </span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串模板"><a aria-hidden="true" tabindex="-1" href="#字符串模板"><span class="icon icon-link"></span></a>字符串模板</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> address <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"123 Main St."</span></span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"The address is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">address</span></span><span class="token string">"</span></span><span class="token punctuation">)</span> 
+</span><span class="code-line"><span class="token comment">// 打印: The address is 123 Main St.</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="内置属性和函数"><a aria-hidden="true" tabindex="-1" href="#内置属性和函数"><span class="icon icon-link"></span></a>内置属性和函数</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> monument <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"the Statue of Liberty"</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>monument<span class="token punctuation">.</span><span class="token function">capitalize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 打印: The Statue of Liberty</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>monument<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 打印: 21</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="字符转义序列"><a aria-hidden="true" tabindex="-1" href="#字符转义序列"><span class="icon icon-link"></span></a>字符转义序列</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"\"Excellent!\" I cried. \"Elementary,\" said he."</span></span><span class="token punctuation">)</span> 
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 打印: "Excellent!" I cried. "Elementary," said he.  </span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<ul>
+<li><code>\n</code> 插入新行</li>
+<li><code>\t</code> 插入标签</li>
+<li><code>\r</code> 插入回车</li>
+<li><code>\'</code> 插入单引号</li>
+<li><code>\"</code> 插入双引号</li>
+<li><code>\\</code> 插入反斜杠</li>
+<li><code>\$</code> 插入美元符号</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="算术运算符"><a aria-hidden="true" tabindex="-1" href="#算术运算符"><span class="icon icon-link"></span></a>算术运算符</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token number">5</span> <span class="token operator">+</span> <span class="token number">7</span>  <span class="token comment">// 12</span>
+</span><span class="code-line"><span class="token number">9</span> <span class="token operator">-</span> <span class="token number">2</span>  <span class="token comment">// 7</span>
+</span><span class="code-line"><span class="token number">8</span> <span class="token operator">*</span> <span class="token number">4</span>  <span class="token comment">// 32</span>
+</span><span class="code-line"><span class="token number">25</span> <span class="token operator">/</span> <span class="token number">5</span> <span class="token comment">// 5 </span>
+</span><span class="code-line"><span class="token number">31</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token comment">// 1 </span>
+</span></code></pre>
+<p><code>+</code> 加法、<code>-</code> 减法、<code>*</code> 乘法、<code>/</code> 除法和 <code>%</code> 模数</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="操作顺序"><a aria-hidden="true" tabindex="-1" href="#操作顺序"><span class="icon icon-link"></span></a>操作顺序</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token number">5</span> <span class="token operator">+</span> <span class="token number">8</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">/</span> <span class="token number">4</span> <span class="token operator">-</span> <span class="token number">3</span> <span class="token comment">// 6 </span>
+</span><span class="code-line"><span class="token number">3</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span>   <span class="token comment">// 7</span>
+</span><span class="code-line"><span class="token number">4</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">*</span> <span class="token number">7</span>     <span class="token comment">// 15</span>
+</span><span class="code-line"><span class="token number">3</span> <span class="token operator">+</span> <span class="token number">18</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">1</span>    <span class="token comment">// 12  </span>
+</span><span class="code-line"><span class="token number">6</span> <span class="token operator">-</span> <span class="token number">3</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span>     <span class="token comment">// 7   </span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="增强赋值运算符"><a aria-hidden="true" tabindex="-1" href="#增强赋值运算符"><span class="icon icon-link"></span></a>增强赋值运算符</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> batteryPercentage <span class="token operator">=</span> <span class="token number">80</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 长语法</span>
+</span><span class="code-line">batteryPercentage <span class="token operator">=</span> batteryPercantage <span class="token operator">+</span> <span class="token number">10</span> 
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 带有增广赋值运算符的短句法</span>
+</span><span class="code-line">batteryPercentage <span class="token operator">+=</span> <span class="token number">10</span> 
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="递增和递减运算符"><a aria-hidden="true" tabindex="-1" href="#递增和递减运算符"><span class="icon icon-link"></span></a>递增和递减运算符</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> year <span class="token operator">=</span> <span class="token number">2019</span> 
+</span><span class="code-line">year<span class="token operator">++</span> <span class="token comment">// 2020</span>
+</span><span class="code-line">year<span class="token operator">--</span> <span class="token comment">// 2019 </span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数学库"><a aria-hidden="true" tabindex="-1" href="#数学库"><span class="icon icon-link"></span></a>数学库</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line">Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token number">3.0</span><span class="token punctuation">)</span>  <span class="token comment">// 8.0</span>
+</span><span class="code-line">Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span>      <span class="token comment">// 6 </span>
+</span><span class="code-line">Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span>    <span class="token comment">// 12</span>
+</span><span class="code-line">Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span><span class="token number">13.7</span><span class="token punctuation">)</span>    <span class="token comment">// 14</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="条件表达式"><a aria-hidden="true" tabindex="-1" href="#条件表达式"><span class="icon icon-link"></span></a>条件表达式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="if-表达式"><a aria-hidden="true" tabindex="-1" href="#if-表达式"><span class="icon icon-link"></span></a>if 表达式</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> morning <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>morning<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Rise and shine!"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 打印: Rise and shine!</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="else-表达式"><a aria-hidden="true" tabindex="-1" href="#else-表达式"><span class="icon icon-link"></span></a>else 表达式</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> rained <span class="token operator">=</span> <span class="token boolean">false</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>rained<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"今天不需要给植物浇水。"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"植物需要浇水！"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 打印: 植物需要浇水！</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="else-if-表达式"><a aria-hidden="true" tabindex="-1" href="#else-if-表达式"><span class="icon icon-link"></span></a>Else-If 表达式</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">65</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">&#x3C;</span> <span class="token number">18</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"您被视为未成年人"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">&#x3C;</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"您被视为成年人"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"你被认为是高级"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 打印: 你被认为是高级</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="比较运算符"><a aria-hidden="true" tabindex="-1" href="#比较运算符"><span class="icon icon-link"></span></a>比较运算符</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> myAge <span class="token operator">=</span> <span class="token number">19</span>
+</span><span class="code-line"><span class="token keyword">var</span> sisterAge <span class="token operator">=</span> <span class="token number">11</span>
+</span><span class="code-line"><span class="token keyword">var</span> cousinAge <span class="token operator">=</span> <span class="token number">11</span>
+</span><span class="code-line">
+</span><span class="code-line">myAge <span class="token operator">></span> sisterAge  <span class="token comment">// true</span>
+</span><span class="code-line">myAge <span class="token operator">&#x3C;</span> cousinAge  <span class="token comment">// false</span>
+</span><span class="code-line">myAge <span class="token operator">>=</span> cousinAge <span class="token comment">// true</span>
+</span><span class="code-line">myAge <span class="token operator">&#x3C;=</span> sisterAge <span class="token comment">// false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="逻辑运算符"><a aria-hidden="true" tabindex="-1" href="#逻辑运算符"><span class="icon icon-link"></span></a>逻辑运算符</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> humid <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token keyword">var</span> raining <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token keyword">var</span> jacket <span class="token operator">=</span> <span class="token boolean">false</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span><span class="token operator">!</span>humid<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 打印: false</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>jacket <span class="token operator">&#x26;&#x26;</span> raining<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 打印: true</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>humid <span class="token operator">||</span> raining<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// 打印: true</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="and-运算符-"><a aria-hidden="true" tabindex="-1" href="#and-运算符-"><span class="icon icon-link"></span></a>AND 运算符： &#x26;&#x26;</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> humid <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token keyword">var</span> raining <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token keyword">var</span> shorts <span class="token operator">=</span> <span class="token boolean">false</span>
+</span><span class="code-line"><span class="token keyword">var</span> sunny <span class="token operator">=</span> <span class="token boolean">false</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// true AND true</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>humid <span class="token operator">&#x26;&#x26;</span> raining<span class="token punctuation">)</span> <span class="token comment">//  true</span>
+</span><span class="code-line"><span class="token comment">// true AND false</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>humid <span class="token operator">&#x26;&#x26;</span> shorts<span class="token punctuation">)</span>  <span class="token comment">//  false</span>
+</span><span class="code-line"><span class="token comment">// false AND true</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>sunny <span class="token operator">&#x26;&#x26;</span> raining<span class="token punctuation">)</span> <span class="token comment">//  false</span>
+</span><span class="code-line"><span class="token comment">// false AND false</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>shorts <span class="token operator">&#x26;&#x26;</span> sunny<span class="token punctuation">)</span>  <span class="token comment">// false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="或运算符"><a aria-hidden="true" tabindex="-1" href="#或运算符"><span class="icon icon-link"></span></a>或运算符：||</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> late <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token keyword">var</span> skipBreakfast <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token keyword">var</span> underslept <span class="token operator">=</span> <span class="token boolean">false</span>
+</span><span class="code-line"><span class="token keyword">var</span> checkEmails <span class="token operator">=</span> <span class="token boolean">false</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// true OR true</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>skipBreakfast <span class="token operator">||</span> late<span class="token punctuation">)</span> <span class="token comment">//  true</span>
+</span><span class="code-line"><span class="token comment">// true OR false</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>late <span class="token operator">||</span> checkEmails<span class="token punctuation">)</span> <span class="token comment">//  true</span>
+</span><span class="code-line"><span class="token comment">// false OR true</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>underslept <span class="token operator">||</span> late<span class="token punctuation">)</span> <span class="token comment">//  true</span>
+</span><span class="code-line"><span class="token comment">// false OR false</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>checkEmails <span class="token operator">||</span> underslept<span class="token punctuation">)</span> <span class="token comment">// false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="not-运算符"><a aria-hidden="true" tabindex="-1" href="#not-运算符"><span class="icon icon-link"></span></a>NOT 运算符</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> hungry <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token keyword">var</span> full <span class="token operator">=</span> <span class="token boolean">false</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span><span class="token operator">!</span>hungry<span class="token punctuation">)</span> <span class="token comment">//  false</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span><span class="token operator">!</span>full<span class="token punctuation">)</span> <span class="token comment">//  true</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="评估顺序"><a aria-hidden="true" tabindex="-1" href="#评估顺序"><span class="icon icon-link"></span></a>评估顺序</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token operator">!</span><span class="token boolean">true</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">(</span><span class="token boolean">false</span> <span class="token operator">||</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token comment">// false</span>
+</span><span class="code-line"><span class="token comment">/*
+</span></span><span class="code-line"><span class="token comment">(false || true) 被评估首先返回 true。
+</span></span><span class="code-line"><span class="token comment">然后，评估 !true &#x26;&#x26; true 并返回最终结果 false
+</span></span><span class="code-line"><span class="token comment">*/</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token operator">!</span><span class="token boolean">false</span> <span class="token operator">&#x26;&#x26;</span> <span class="token boolean">true</span> <span class="token operator">||</span> <span class="token boolean">false</span> <span class="token comment">// true</span>
+</span><span class="code-line"><span class="token comment">/*
+</span></span><span class="code-line"><span class="token comment">!false 被评估首先返回 true。 
+</span></span><span class="code-line"><span class="token comment">然后评估 true &#x26;&#x26; true，返回 true。
+</span></span><span class="code-line"><span class="token comment">那么，真|| 评估 false 最终返回 true
+</span></span><span class="code-line"><span class="token comment">*/</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="嵌套条件"><a aria-hidden="true" tabindex="-1" href="#嵌套条件"><span class="icon icon-link"></span></a>嵌套条件</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> studied <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token keyword">var</span> wellRested <span class="token operator">=</span> <span class="token boolean">true</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>wellRested<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"祝你今天好运！"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>studied<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"你应该为考试做好准备！"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"考试前花几个小时学习！"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 打印: 祝你今天好运！</span>
+</span><span class="code-line"><span class="token comment">// 打印: 你应该为考试做好准备！</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="当表达式"><a aria-hidden="true" tabindex="-1" href="#当表达式"><span class="icon icon-link"></span></a>当表达式</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> grade <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"A"</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">when</span><span class="token punctuation">(</span>grade<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token string-literal singleline"><span class="token string">"A"</span></span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"很棒的工作！"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token string-literal singleline"><span class="token string">"B"</span></span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"做得太好了！"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token string-literal singleline"><span class="token string">"C"</span></span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"你通过了！"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">else</span> <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"关！下次一定要多准备！"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 打印: 很棒的工作！</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="范围运算符"><a aria-hidden="true" tabindex="-1" href="#范围运算符"><span class="icon icon-link"></span></a>范围运算符</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> height <span class="token operator">=</span> <span class="token number">46</span> <span class="token comment">// inches</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>height <span class="token keyword">in</span> <span class="token number">1</span><span class="token operator">..</span><span class="token number">53</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"抱歉，您必须至少 54 英寸才能乘坐过山车"</span></span>）
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// Prints: 抱歉，您必须至少 54 英寸才能乘坐过山车</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="等式运算符"><a aria-hidden="true" tabindex="-1" href="#等式运算符"><span class="icon icon-link"></span></a>等式运算符</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> myAge <span class="token operator">=</span> <span class="token number">22</span>
+</span><span class="code-line"><span class="token keyword">var</span> sisterAge <span class="token operator">=</span> <span class="token number">21</span>
+</span><span class="code-line">
+</span><span class="code-line">myAge <span class="token operator">==</span> sisterAge <span class="token comment">// false</span>
+</span><span class="code-line">myAge <span class="token operator">!==</span> sisterAge <span class="token comment">// true</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="collections"><a aria-hidden="true" tabindex="-1" href="#collections"><span class="icon icon-link"></span></a>Collections</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="不可变列表"><a aria-hidden="true" tabindex="-1" href="#不可变列表"><span class="icon icon-link"></span></a>不可变列表</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> programmingLanguages <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"C#"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Java"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Kotlin"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Ruby"</span></span><span class="token punctuation">)</span> 
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="可变列表"><a aria-hidden="true" tabindex="-1" href="#可变列表"><span class="icon icon-link"></span></a>可变列表</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> fruits <span class="token operator">=</span> <span class="token function">mutableListOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Orange"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Apple"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Banana"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Mango"</span></span><span class="token punctuation">)</span> 
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="访问列表元素"><a aria-hidden="true" tabindex="-1" href="#访问列表元素"><span class="icon icon-link"></span></a>访问列表元素</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> cars <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"BMW"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Ferrari"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Volvo"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Tesla"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>cars<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// Prints: Volvo</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="大小属性"><a aria-hidden="true" tabindex="-1" href="#大小属性"><span class="icon icon-link"></span></a>大小属性</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> worldContinents <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Asia"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Africa"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"North America"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"South America"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Antarctica"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Europe"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Australia"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>worldContinents<span class="token punctuation">.</span>size<span class="token punctuation">)</span> <span class="token comment">// Prints: 7</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="列表操作"><a aria-hidden="true" tabindex="-1" href="#列表操作"><span class="icon icon-link"></span></a>列表操作</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> seas <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Black Sea"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Caribbean Sea"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"North Sea"</span></span><span class="token punctuation">)</span> 
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>seas<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"North Sea"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// Prints: true</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// contains() 函数对任何列表执行读取操作并确定元素是否存在</span>
+</span><span class="code-line">seas<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Baltic Sea"</span></span><span class="token punctuation">)</span> <span class="token comment">// 错误：无法对不可变列表执行写操作</span>
+</span><span class="code-line"><span class="token comment">// add() 函数只能在可变列表上调用，因此上面的代码会引发错误</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="不可变集"><a aria-hidden="true" tabindex="-1" href="#不可变集"><span class="icon icon-link"></span></a>不可变集</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> primaryColors <span class="token operator">=</span> <span class="token function">setOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Red"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Blue"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Yellow"</span></span><span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="可变集"><a aria-hidden="true" tabindex="-1" href="#可变集"><span class="icon icon-link"></span></a>可变集</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> womenInTech <span class="token operator">=</span> <span class="token function">mutableSetOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Ada Lovelace"</span></span><span class="token punctuation">,</span>  <span class="token string-literal singleline"><span class="token string">"Grace Hopper"</span></span><span class="token punctuation">,</span>  <span class="token string-literal singleline"><span class="token string">"Radia Perlman"</span></span><span class="token punctuation">,</span>  <span class="token string-literal singleline"><span class="token string">"Sister Mary Kenneth Keller"</span></span><span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="访问集合元素"><a aria-hidden="true" tabindex="-1" href="#访问集合元素"><span class="icon icon-link"></span></a>访问集合元素</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> companies <span class="token operator">=</span> <span class="token function">setOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Facebook"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Apple"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Netflix"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Google"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>companies<span class="token punctuation">.</span><span class="token function">elementAt</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Prints: Google</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>companies<span class="token punctuation">.</span><span class="token function">elementAt</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Returns and Error</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>companies<span class="token punctuation">.</span><span class="token function">elementAtOrNull</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Prints: null</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="不可变映射"><a aria-hidden="true" tabindex="-1" href="#不可变映射"><span class="icon icon-link"></span></a>不可变映射</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> averageTemp <span class="token operator">=</span> <span class="token function">mapOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"winter"</span></span> <span class="token keyword">to</span> <span class="token number">35</span><span class="token punctuation">,</span>  <span class="token string-literal singleline"><span class="token string">"spring"</span></span> <span class="token keyword">to</span> <span class="token number">60</span><span class="token punctuation">,</span>  <span class="token string-literal singleline"><span class="token string">"summer"</span></span> <span class="token keyword">to</span> <span class="token number">85</span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"fall"</span></span> <span class="token keyword">to</span> <span class="token number">55</span><span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="可变映射"><a aria-hidden="true" tabindex="-1" href="#可变映射"><span class="icon icon-link"></span></a>可变映射</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> europeanDomains <span class="token operator">=</span> <span class="token function">mutableMapOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Germany"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"de"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Slovakia"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"sk"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Hungary"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"hu"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Norway"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"no"</span></span><span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="检索映射键和值"><a aria-hidden="true" tabindex="-1" href="#检索映射键和值"><span class="icon icon-link"></span></a>检索映射键和值</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> oscarWinners <span class="token operator">=</span> <span class="token function">mutableMapOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Parasite"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"Bong Joon-ho"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Green Book"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"Jim Burke"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"The Shape Of Water"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"Guillermo del Toro"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>oscarWinners<span class="token punctuation">.</span>keys<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Prints: [Parasite, Green Book, The Shape Of Water]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>oscarWinners<span class="token punctuation">.</span>values<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Prints: [Bong Joon-ho, Jim Burke, Guillermo del Toro]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>oscarWinners<span class="token punctuation">[</span><span class="token string-literal singleline"><span class="token string">"Parasite"</span></span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Prints: Bong Joon-ho</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加和删除地图条目"><a aria-hidden="true" tabindex="-1" href="#添加和删除地图条目"><span class="icon icon-link"></span></a>添加和删除地图条目</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">var</span> worldCapitals <span class="token operator">=</span> <span class="token function">mutableMapOf</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"United States"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"Washington D.C."</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Germany"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"Berlin"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Mexico"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"Mexico City"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"France"</span></span> <span class="token keyword">to</span> <span class="token string-literal singleline"><span class="token string">"Paris"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">worldCapitals<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Brazil"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Brasilia"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>worldCapitals<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Prints: {United States=Washington D.C., Germany=Berlin, Mexico=Mexico City, France=Paris, Brazil=Brasilia}</span>
+</span><span class="code-line">
+</span><span class="code-line">worldCapitals<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Germany"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">println</span><span class="token punctuation">(</span>worldCapitals<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">// Prints: {United States=Washington D.C., Mexico=Mexico City, France=Paris, Brazil=Brasilia}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数-1"><a aria-hidden="true" tabindex="-1" href="#函数-1"><span class="icon icon-link"></span></a>函数</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">fun</span> <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Hey there!"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// Function call</span>
+</span><span class="code-line">  <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Prints: Hey there!</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数参数"><a aria-hidden="true" tabindex="-1" href="#函数参数"><span class="icon icon-link"></span></a>函数参数</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">fun</span> <span class="token function">birthday</span><span class="token punctuation">(</span>name<span class="token operator">:</span> String<span class="token punctuation">,</span> age<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">   <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Happy birthday </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">name</span></span><span class="token string">! You turn </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">age</span></span><span class="token string"> today!"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">birthday</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Oscar"</span></span><span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Happy birthday Oscar! You turn 25 today!</span>
+</span><span class="code-line">  <span class="token function">birthday</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Amarah"</span></span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Happy birthday Amarah! You turn 30 today!</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="默认参数"><a aria-hidden="true" tabindex="-1" href="#默认参数"><span class="icon icon-link"></span></a>默认参数</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">fun</span> <span class="token function">favoriteLanguage</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> language <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Kotlin"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">name</span></span><span class="token string">. Your favorite programming language is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">language</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>  
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">favoriteLanguage</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Manon"</span></span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Hello, Manon. Your favorite programming language is Kotlin</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token function">favoriteLanguage</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Lee"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Java"</span></span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Hello, Lee. Your favorite programming language is Java</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="命名参数"><a aria-hidden="true" tabindex="-1" href="#命名参数"><span class="icon icon-link"></span></a>命名参数</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">fun</span> <span class="token function">findMyAge</span><span class="token punctuation">(</span>currentYear<span class="token operator">:</span> Int<span class="token punctuation">,</span> birthYear<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">   <span class="token keyword">var</span> myAge <span class="token operator">=</span> currentYear <span class="token operator">-</span> birthYear
+</span><span class="code-line">   <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"I am </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">myAge</span></span><span class="token string"> years old."</span></span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">findMyAge</span><span class="token punctuation">(</span>currentYear <span class="token operator">=</span> <span class="token number">2020</span><span class="token punctuation">,</span> birthYear <span class="token operator">=</span> <span class="token number">1995</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token comment">// Prints: I am 25 years old.</span>
+</span><span class="code-line">  <span class="token function">findMyAge</span><span class="token punctuation">(</span>birthYear <span class="token operator">=</span> <span class="token number">1920</span><span class="token punctuation">,</span> currentYear <span class="token operator">=</span> <span class="token number">2020</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token comment">// Prints: I am 100 years old.</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="返回声明"><a aria-hidden="true" tabindex="-1" href="#返回声明"><span class="icon icon-link"></span></a>返回声明</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token comment">// Return type is declared outside the parentheses</span>
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">getArea</span><span class="token punctuation">(</span>length<span class="token operator">:</span> Int<span class="token punctuation">,</span> width<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> area <span class="token operator">=</span> length <span class="token operator">*</span> width
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// return statement</span>
+</span><span class="code-line">  <span class="token keyword">return</span> area
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> myArea <span class="token operator">=</span> <span class="token function">getArea</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"The area is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">myArea</span></span><span class="token string">."</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token comment">// Prints: The area is 80.</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="单表达式函数"><a aria-hidden="true" tabindex="-1" href="#单表达式函数"><span class="icon icon-link"></span></a>单表达式函数</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">fun</span> <span class="token function">fullName</span><span class="token punctuation">(</span>firstName<span class="token operator">:</span> String<span class="token punctuation">,</span> lastName<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">firstName</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">lastName</span></span><span class="token string">"</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">fullName</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Ariana"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Ortega"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Ariana Ortega</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">fullName</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Kai"</span></span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Gittens"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Kai Gittens</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数字面量"><a aria-hidden="true" tabindex="-1" href="#函数字面量"><span class="icon icon-link"></span></a>函数字面量</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// Anonymous Function:</span>
+</span><span class="code-line">  <span class="token keyword">var</span> getProduct <span class="token operator">=</span> <span class="token keyword">fun</span><span class="token punctuation">(</span>num1<span class="token operator">:</span> Int<span class="token punctuation">,</span> num2<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">{</span>
+</span><span class="code-line">     <span class="token keyword">return</span> num1 <span class="token operator">*</span> num2
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getProduct</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: 24</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// Lambda Expression</span>
+</span><span class="code-line">  <span class="token keyword">var</span> getDifference <span class="token operator">=</span> <span class="token punctuation">{</span> num1<span class="token operator">:</span> Int<span class="token punctuation">,</span> num2<span class="token operator">:</span> Int <span class="token operator">-></span> num1 <span class="token operator">-</span> num2 <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token function">getDifference</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token comment">// Prints: 7</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="类"><a aria-hidden="true" tabindex="-1" href="#类"><span class="icon icon-link"></span></a>类</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类示例"><a aria-hidden="true" tabindex="-1" href="#类示例"><span class="icon icon-link"></span></a>类示例</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token comment">// 具有包含默认值的属性的类</span>
+</span><span class="code-line"><span class="token keyword">class</span> Student <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Lucia"</span></span>
+</span><span class="code-line">  <span class="token keyword">var</span> semester <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Fall"</span></span>
+</span><span class="code-line">  <span class="token keyword">var</span> gpa <span class="token operator">=</span> <span class="token number">3.95</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 没有类体的简写语法</span>
+</span><span class="code-line"><span class="token keyword">class</span> Student 
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类实例"><a aria-hidden="true" tabindex="-1" href="#类实例"><span class="icon icon-link"></span></a>类实例</h3><div class="wrap-body">
+<pre class="language-kotlin"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token comment">// Class</span>
+</span><span class="code-line"><span class="token keyword">class</span> Student <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Lucia"</span></span>
+</span><span class="code-line">  <span class="token keyword">var</span> semester <span class="token operator">=</span> <span class="token string-literal singleline"><span class="token string">"Fall"</span></span>
+</span><span class="code-line">  <span class="token keyword">var</span> gpa <span class="token operator">=</span> <span class="token number">3.95</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> student <span class="token operator">=</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   
+</span><span class="code-line">  <span class="token comment">// Instance</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span>name<span class="token punctuation">)</span>     
+</span><span class="code-line">  <span class="token comment">// Prints: Lucia</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span>semester<span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Fall</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span>gpa<span class="token punctuation">)</span>      
+</span><span class="code-line">  <span class="token comment">// Prints: 3.95  </span>
+</span><span class="code-line"><span class="token punctuation">}</span> 
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="主构造函数"><a aria-hidden="true" tabindex="-1" href="#主构造函数"><span class="icon icon-link"></span></a>主构造函数</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">class</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> gpa<span class="token operator">:</span> Double<span class="token punctuation">,</span> <span class="token keyword">val</span> semester<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> estimatedGraduationYear<span class="token operator">:</span> Int<span class="token punctuation">)</span> 
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> student <span class="token operator">=</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Lucia"</span></span><span class="token punctuation">,</span> <span class="token number">3.95</span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Fall"</span></span><span class="token punctuation">,</span> <span class="token number">2022</span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span>name<span class="token punctuation">)</span>     
+</span><span class="code-line">  <span class="token comment">// Prints: Lucia</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span>gpa<span class="token punctuation">)</span>      
+</span><span class="code-line">  <span class="token comment">// Prints: 3.95</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span>semester<span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Fall</span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span>estimatedGraduationYear<span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: 2022</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="初始化块"><a aria-hidden="true" tabindex="-1" href="#初始化块"><span class="icon icon-link"></span></a>初始化块</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">class</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> gpa<span class="token operator">:</span> Double<span class="token punctuation">,</span> <span class="token keyword">val</span> semester<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> estimatedGraduationYear<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">init</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">name</span></span><span class="token string"> has </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token expression">estimatedGraduationYear <span class="token operator">-</span> <span class="token number">2020</span></span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> years left in college."</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> student <span class="token operator">=</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Lucia"</span></span><span class="token punctuation">,</span> <span class="token number">3.95</span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Fall"</span></span><span class="token punctuation">,</span> <span class="token number">2022</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token comment">// Prints: Lucia has 2 years left in college. </span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="成员函数"><a aria-hidden="true" tabindex="-1" href="#成员函数"><span class="icon icon-link"></span></a>成员函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text"><code class="language-kotlin code-highlight"><span class="code-line"><span class="token keyword">class</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> gpa<span class="token operator">:</span> Double<span class="token punctuation">,</span> <span class="token keyword">val</span> semester<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> estimatedGraduationYear<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword">init</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$</span><span class="token expression">name</span></span><span class="token string"> has </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token expression">estimatedGraduationYear <span class="token operator">-</span> <span class="token number">2020</span></span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> years left in college."</span></span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// 成员函数</span>
+</span><span class="code-line">  <span class="token keyword">fun</span> <span class="token function">calculateLetterGrade</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token keyword">when</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      gpa <span class="token operator">>=</span> <span class="token number">3.0</span> <span class="token operator">-></span> <span class="token string-literal singleline"><span class="token string">"A"</span></span>
+</span><span class="code-line">      gpa <span class="token operator">>=</span> <span class="token number">2.7</span> <span class="token operator">-></span> <span class="token string-literal singleline"><span class="token string">"B"</span></span>
+</span><span class="code-line">      gpa <span class="token operator">>=</span> <span class="token number">1.7</span> <span class="token operator">-></span> <span class="token string-literal singleline"><span class="token string">"C"</span></span>
+</span><span class="code-line">      gpa <span class="token operator">>=</span> <span class="token number">1.0</span> <span class="token operator">-></span> <span class="token string-literal singleline"><span class="token string">"D"</span></span>
+</span><span class="code-line">      <span class="token keyword">else</span> <span class="token operator">-></span> <span class="token string-literal singleline"><span class="token string">"E"</span></span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 创建实例并调用函数时，将执行 when 表达式并返回字母等级</span>
+</span><span class="code-line"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">var</span> student <span class="token operator">=</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"Lucia"</span></span><span class="token punctuation">,</span> <span class="token number">3.95</span><span class="token punctuation">,</span> <span class="token string-literal singleline"><span class="token string">"Fall"</span></span><span class="token punctuation">,</span> <span class="token number">2022</span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Lucia has 2 years left in college. </span>
+</span><span class="code-line">  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token expression">student<span class="token punctuation">.</span>name</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'s letter grade is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token expression">student<span class="token punctuation">.</span><span class="token function">calculateLetterGrade</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">."</span></span><span class="token punctuation">)</span> 
+</span><span class="code-line">  <span class="token comment">// Prints: Lucia's letter grade is A. </span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://kotlinlang.org/">Kotlin 语言官方文档</a> <em>(kotlinlang.org)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
