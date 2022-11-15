@@ -239,7 +239,7 @@ Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 <!--rehype:wrap-class=col-span-2-->
 
 ```html
-目前只支持部分段内 HTML 元素效果，包括 <kdb>, <b>, <i>, <em>, <sup>, <sub>, <br>
+目前只支持部分段内 HTML 元素效果，包括 <kbd>, <b>, <i>, <em>, <sup>, <sub>, <br>
 ```
 
 另见
