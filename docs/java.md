@@ -782,6 +782,12 @@ try {
   System.out.println("always printed");
 }
 ```
+### util工具类
+```
+Collections
+Arrays
+Random
+```
 
 另见
 ---
