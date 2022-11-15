@@ -782,12 +782,20 @@ try {
   System.out.println("always printed");
 }
 ```
+
 ### util工具类
-```
-Collections
-Arrays
-Random
-```
+
+- `ArrayDeque` 提供 resizable-array 并实现 Deque 接
+- `Arrays` 包含一个静态工厂，允许将数组视为列表
+- `Collections` 包含对集合进行操作或返回集合的静态方法
+- `Date` 表示特定的时间瞬间，精度为毫秒
+- `Dictionary` 是任何类的抽象父类，例如 Hashtable，它将键映射到值
+- `EnumMap` 一个专门用于枚举键的 Map 实现
+- `EnumSet` 一个专门用于枚举键的 Set 实现
+- `Formatter` 提供对布局对齐和对齐、数字、字符串和日期/时间数据的常用格式以及特定于语言环境的输出的支持
+- `Random` 实例用于生成伪随机数流
+- `UUID` 表示一个不可变的通用唯一标识符
+- `Vector` 实现了一个可增长的对象数组
 
 另见
 ---
