@@ -9,7 +9,7 @@ Quick Reference
 <!--rehype:ignore:end-->
 
 <!--rehype:ignore:start-->
-[![Quick Reference](https://user-images.githubusercontent.com/1680273/200623638-280ac85b-0cfa-4c60-bae3-ae14231acc6f.png)](https://jaywcjlove.github.io/reference)
+[![Quick Reference](https://user-images.githubusercontent.com/1680273/201931931-d8559417-0a15-46af-a009-ec1e56e5b778.png)](https://jaywcjlove.github.io/reference)
 <!--rehype:ignore:end-->
 
 为开发人员分享快速参考备忘清单【速查表】。在看到 [Reference](https://github.com/Randy8080/reference) 快速参考备忘单，感觉非常简单，造中文版本的轮子使命感突然来了，为了方便自己的技术栈查阅，如果您提供一个清单，我将抽空搬运，立即撸起来 :)。如果您发现此处的备忘单不合适，您可以通过提交 [PR](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md) 来修复它或提供更好的备忘清单，只针对【中文】用户。以下是开源天使提供的一些备忘清单和快速参考 :)。
@@ -44,6 +44,7 @@ Quick Reference
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
 [Julia](./docs/julia.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
+[Kotlin](./docs/kotlin.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(1 117 143/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
