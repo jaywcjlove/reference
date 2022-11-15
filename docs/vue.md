@@ -429,32 +429,32 @@ API 参考
 
 :- | :-
 :- | :-
-`createApp()` | [#](https://cn.vuejs.org/api/application.html#create-app)
-`createSSRApp()` | [#](https://cn.vuejs.org/api/application.html#create-ssr-app)
-`app.mount()` | [#](https://cn.vuejs.org/api/application.html#app-mount)
-`app.unmount()` | [#](https://cn.vuejs.org/api/application.html#app-unmount)
-`app.provide()` | [#](https://cn.vuejs.org/api/application.html#app-provide)
-`app.component()` | [#](https://cn.vuejs.org/api/application.html#app-component)
-`app.directive()` | [#](https://cn.vuejs.org/api/application.html#app-directive)
-`app.use()` | [#](https://cn.vuejs.org/api/application.html#app-use)
-`app.mixin()` | [#](https://cn.vuejs.org/api/application.html#app-mixin)
-`app.version` | [#](https://cn.vuejs.org/api/application.html#app-version)
-`app.config` | [#](https://cn.vuejs.org/api/application.html#app-config)
-`app.config.errorHandler` | [#](https://cn.vuejs.org/api/application.html#app-config-errorhandler)
-`app.config.warnHandler` | [#](https://cn.vuejs.org/api/application.html#app-config-warnhandler)
-`app.config.performance` | [#](https://cn.vuejs.org/api/application.html#app-config-performance)
-`app.config.compilerOptions` | [#](https://cn.vuejs.org/api/application.html#app-config-compileroptions)
-`app.config.globalProperties` | [#](https://cn.vuejs.org/api/application.html#app-config-globalproperties)
-`app.config.optionMergeStrategies` | [#](https://cn.vuejs.org/api/application.html#app-config-optionmergestrategies)
+`createApp()` | 创建一个应用实例 [#](https://cn.vuejs.org/api/application.html#create-app)
+`createSSRApp()` | 以 [SSR 激活](https://cn.vuejs.org/guide/scaling-up/ssr.html#client-hydration)模式创建一个应用实例 [#](https://cn.vuejs.org/api/application.html#create-ssr-app)
+`app.mount()` | 将应用实例挂载在一个容器元素中 [#](https://cn.vuejs.org/api/application.html#app-mount)
+`app.unmount()` | 卸载一个已挂载的应用实例 [#](https://cn.vuejs.org/api/application.html#app-unmount)
+`app.provide()` | 提供一个可以在应用中的所有后代组件中注入使用的值 [#](https://cn.vuejs.org/api/application.html#app-provide)
+`app.component()` | 注册或获取全局组件 [#](https://cn.vuejs.org/api/application.html#app-component)
+`app.directive()` | 注册或获取全局指令 [#](https://cn.vuejs.org/api/application.html#app-directive)
+`app.use()` | 安装一个插件 [#](https://cn.vuejs.org/api/application.html#app-use)
+`app.mixin()` | 全局注册一个混入 [#](https://cn.vuejs.org/api/application.html#app-mixin)
+`app.version` | 当前应用所使用的 Vue 版本号 [#](https://cn.vuejs.org/api/application.html#app-version)
+`app.config` | 获得应用实例的配置设定 [#](https://cn.vuejs.org/api/application.html#app-config)
+`app.config.errorHandler` | 为应用内抛出的未捕获错误指定一个全局处理函数 [#](https://cn.vuejs.org/api/application.html#app-config-errorhandler)
+`app.config.warnHandler` | 为 Vue 的运行时警告指定一个自定义处理函数 [#](https://cn.vuejs.org/api/application.html#app-config-warnhandler)
+`app.config.performance` | 在浏览器开发工具中追踪性能表现 [#](https://cn.vuejs.org/api/application.html#app-config-performance)
+`app.config.compilerOptions` | 配置运行时编译器的选项 [#](https://cn.vuejs.org/api/application.html#app-config-compileroptions)
+`app.config.globalProperties` | 注册全局属性对象 [#](https://cn.vuejs.org/api/application.html#app-config-globalproperties)
+`app.config.optionMergeStrategies` | 定义自定义组件选项的合并策略的对象 [#](https://cn.vuejs.org/api/application.html#app-config-optionmergestrategies)
 
 ### 全局 API - 通用
 
 :- | :-
 :- | :-
-`version` | [#](https://cn.vuejs.org/api/general.html#version)
-`nextTick()` | [#](https://cn.vuejs.org/api/general.html#nexttick)
-`defineComponent()` | [#](https://cn.vuejs.org/api/general.html#definecomponent)
-`defineAsyncComponent()` | [#](https://cn.vuejs.org/api/general.html#defineasynccomponent)
+`version` | Vue 版本号 [#](https://cn.vuejs.org/api/general.html#version)
+`nextTick()` | 等待下一次 DOM 更新后执行回调 [#](https://cn.vuejs.org/api/general.html#nexttick)
+`defineComponent()` | 在定义 Vue 组件时提供类型推导的辅助函数 [#](https://cn.vuejs.org/api/general.html#definecomponent)
+`defineAsyncComponent()` | 定义一个异步组件 [#](https://cn.vuejs.org/api/general.html#defineasynccomponent)
 `defineCustomElement()` | [#](https://cn.vuejs.org/api/general.html#definecustomelement)
 
 ### 组合式 API - setup()
@@ -470,13 +470,13 @@ API 参考
 
 :- | :-
 :- | :-
-`isRef()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#isref)
-`unref()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#unref)
-`toRef()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#toref)
-`toRefs()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#torefs)
-`isProxy()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#isproxy)
-`isReactive()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreactive)
-`isReadonly()` | [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreadonly)
+`isRef()` | 判断是否为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#isref)
+`unref()` | 是 ref，返回内部值，否则返回参数本身 [#](https://cn.vuejs.org/api/reactivity-utilities.html#unref)
+`toRef()` | 创建一个属性对应的 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#toref)
+`toRefs()` | 将对象上的每一个可枚举属性转换为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#torefs)
+`isProxy()` | 检查一个对象是否是由 `reactive()`、`readonly()`、`shallowReactive()` 或 `shallowReadonly()` 创建的代理 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isproxy)
+`isReactive()` | 检查一个对象是否是由 `reactive()` 或 `shallowReactive()` 创建的代理。  [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreactive)
+`isReadonly()` | 检查传入的值是否为只读对象 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreadonly)
 
 ### 组合式 API - 生命周期钩子
 <!--rehype:wrap-class=row-span-3-->
@@ -501,144 +501,144 @@ API 参考
 
 :- | :-
 :- | :-
-`provide()` | [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#provide)
-`inject()` | [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject)
+`provide()` | 提供一个可以被后代组件中注入使用的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#provide)
+`inject()` | 注入一个由祖先组件提供的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject)
 
 ### 组合式 API - 响应式: 核心
 
 :- | :-
 :- | :-
-`ref()` | [#](https://cn.vuejs.org/api/reactivity-core.html#ref)
-`computed ()` | [#](https://cn.vuejs.org/api/reactivity-core.html#computed)
-`reactive()` | [#](https://cn.vuejs.org/api/reactivity-core.html#reactive)
-`readonly()` | [#](https://cn.vuejs.org/api/reactivity-core.html#readonly)
-`watchEffect()` | [#](https://cn.vuejs.org/api/reactivity-core.html#watcheffect)
-`watchPostEffect()` | [#](https://cn.vuejs.org/api/reactivity-core.html#watchposteffect)
-`watchSyncEffect()` | [#](https://cn.vuejs.org/api/reactivity-core.html#watchsynceffect)
-`watch()` | [#](https://cn.vuejs.org/api/reactivity-core.html#watch)
+`ref()` | 返回一个 ref 对象 [#](https://cn.vuejs.org/api/reactivity-core.html#ref)
+`computed ()` | 定义一个计算属性 [#](https://cn.vuejs.org/api/reactivity-core.html#computed)
+`reactive()` | 返回一个对象的响应式代理 [#](https://cn.vuejs.org/api/reactivity-core.html#reactive)
+`readonly()` | 返回一个原值的只读代理 [#](https://cn.vuejs.org/api/reactivity-core.html#readonly)
+`watchEffect()` | 立即运行一个函数，同时监听 [#](https://cn.vuejs.org/api/reactivity-core.html#watcheffect)
+`watchPostEffect()` | `watchEffect()` 使用 `flush: 'post'` 选项时的别名。 [#](https://cn.vuejs.org/api/reactivity-core.html#watchposteffect)
+`watchSyncEffect()` | `watchEffect()` 使用 `flush: 'sync'` 选项时的别名。 [#](https://cn.vuejs.org/api/reactivity-core.html#watchsynceffect)
+`watch()` | 侦听一个或多个响应式数据源 [#](https://cn.vuejs.org/api/reactivity-core.html#watch)
 
 ### 选项式 API - 状态选项
 
 :- | :-
 :- | :-
-`data` | [#](https://cn.vuejs.org/api/options-state.html#data)
-`props` | [#](https://cn.vuejs.org/api/options-state.html#props)
-`computed` | [#](https://cn.vuejs.org/api/options-state.html#computed)
-`methods` | [#](https://cn.vuejs.org/api/options-state.html#methods)
-`watch` | [#](https://cn.vuejs.org/api/options-state.html#watch)
-`emits` | [#](https://cn.vuejs.org/api/options-state.html#emits)
-`expose` | [#](https://cn.vuejs.org/api/options-state.html#expose)
+`data` | 声明组件初始响应式状态 [#](https://cn.vuejs.org/api/options-state.html#data)
+`props` | 声明一个组件的 props [#](https://cn.vuejs.org/api/options-state.html#props)
+`computed` | 声明要在组件实例上暴露的计算属性 [#](https://cn.vuejs.org/api/options-state.html#computed)
+`methods` | 声明要混入到组件实例中的方法 [#](https://cn.vuejs.org/api/options-state.html#methods)
+`watch` | 声明在数据更改时调用的侦听回调 [#](https://cn.vuejs.org/api/options-state.html#watch)
+`emits` | 声明由组件触发的自定义事件 [#](https://cn.vuejs.org/api/options-state.html#emits)
+`expose` | 声明当组件实例被父组件通过模板引用访问时暴露的公共属性 [#](https://cn.vuejs.org/api/options-state.html#expose)
 
 ### 选项式 API - 生命周期选项
 <!--rehype:wrap-class=row-span-2-->
 
 :- | :-
 :- | :-
-`beforeCreate` | [#](https://cn.vuejs.org/api/options-lifecycle.html#beforecreate)
-`created` | [#](https://cn.vuejs.org/api/options-lifecycle.html#created)
-`beforeMount` | [#](https://cn.vuejs.org/api/options-lifecycle.html#beforemount)
-`mounted` | [#](https://cn.vuejs.org/api/options-lifecycle.html#mounted)
-`beforeUpdate` | [#](https://cn.vuejs.org/api/options-lifecycle.html#beforeupdate)
-`updated` | [#](https://cn.vuejs.org/api/options-lifecycle.html#updated)
-`beforeUnmount` | [#](https://cn.vuejs.org/api/options-lifecycle.html#beforeunmount)
-`unmounted` | [#](https://cn.vuejs.org/api/options-lifecycle.html#unmounted)
-`errorCaptured` | [#](https://cn.vuejs.org/api/options-lifecycle.html#errorcaptured)
-`renderTracked` | [#](https://cn.vuejs.org/api/options-lifecycle.html#rendertracked)
-`renderTriggered` | [#](https://cn.vuejs.org/api/options-lifecycle.html#rendertriggered-sup-classvt-badge-dev-only)
-`activated` | [#](https://cn.vuejs.org/api/options-lifecycle.html#activated)
-`deactivated` | [#](https://cn.vuejs.org/api/options-lifecycle.html#deactivated)
-`serverPrefetch` | [#](https://cn.vuejs.org/api/options-lifecycle.html#serverprefetch)
+`beforeCreate` | 组件实例初始化完成之后立即调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#beforecreate)
+`created` | 组件实例处理完所有与状态相关的选项后调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#created)
+`beforeMount` | 组件被挂载之前调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#beforemount)
+`mounted` | 组件被挂载之后调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#mounted)
+`beforeUpdate` | 状态变更而更新其 DOM 树之前调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#beforeupdate)
+`updated` | 状态变更而更新其 DOM 树之后调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#updated)
+`beforeUnmount` | 组件实例被卸载之前调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#beforeunmount)
+`unmounted` | 组件实例被卸载之后调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#unmounted)
+`errorCaptured` | 捕获了后代组件传递的错误时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#errorcaptured)
+`renderTracked` _Dev only_ | 组件渲染过程中追踪到响应式依赖时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#rendertracked)
+`renderTriggered` _Dev only_ | 响应式依赖的变更触发了组件渲染时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#rendertriggered-sup-classvt-badge-dev-only)
+`activated` | 若组件实例是 <KeepAlive> 缓存树的一部分，当组件被插入到 DOM 中时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#activated)
+`deactivated` | 若组件实例是 <KeepAlive> 缓存树的一部分，当组件从 DOM 中被移除时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#deactivated)
+`serverPrefetch` _SSR only_ | 组件实例在服务器上被渲染之前调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#serverprefetch)
 
 ### 选项式 API - 其他杂项
 
 :- | :-
 :- | :-
 `name` | 显式声明组件展示时的名称 [#](https://cn.vuejs.org/api/options-misc.html#name)
-`inheritAttrs` | 默认的组件 `attribute` 透传行为 [#](https://cn.vuejs.org/api/options-misc.html#inheritattrs)
-`components` | [#](https://cn.vuejs.org/api/options-misc.html#components)
-`directives` | [#](https://cn.vuejs.org/api/options-misc.html#directives)
+`inheritAttrs` | 是否启用默认的组件 `attribute` 透传行为 [#](https://cn.vuejs.org/api/options-misc.html#inheritattrs)
+`components` | 注册对当前组件实例可用的组件 [#](https://cn.vuejs.org/api/options-misc.html#components)
+`directives` | 注册对当前组件实例可用的指令 [#](https://cn.vuejs.org/api/options-misc.html#directives)
 
 ### 选项式 API - 渲染选项
 
 :- | :-
 :- | :-
-`template` | [#](https://cn.vuejs.org/api/options-rendering.html#template)
-`render` | [#](https://cn.vuejs.org/api/options-rendering.html#render)
-`compilerOptions` | [#](https://cn.vuejs.org/api/options-rendering.html#compileroptions)
+`template` | 声明组件的字符串模板 [#](https://cn.vuejs.org/api/options-rendering.html#template)
+`render` | 编程式地创建组件虚拟 DOM 树的函数 [#](https://cn.vuejs.org/api/options-rendering.html#render)
+`compilerOptions` | 配置组件模板的运行时编译器选项 [#](https://cn.vuejs.org/api/options-rendering.html#compileroptions)
 
 ### 选项式 API - 组件实例
 <!--rehype:wrap-class=row-span-2-->
 
 :- | :-
 :- | :-
-`$data` | [#](https://cn.vuejs.org/api/component-instance.html#data)
-`$props` | [#](https://cn.vuejs.org/api/component-instance.html#props)
-`$el` | [#](https://cn.vuejs.org/api/component-instance.html#el)
-`$options` | [#](https://cn.vuejs.org/api/component-instance.html#options)
-`$parent` | [#](https://cn.vuejs.org/api/component-instance.html#parent)
-`$root` | [#](https://cn.vuejs.org/api/component-instance.html#root)
-`$slots` | [#](https://cn.vuejs.org/api/component-instance.html#slots)
-`$refs` | [#](https://cn.vuejs.org/api/component-instance.html#refs)
-`$attrs` | [#](https://cn.vuejs.org/api/component-instance.html#attrs)
-`$watch()` | [#](https://cn.vuejs.org/api/component-instance.html#watch)
-`$emit()` | [#](https://cn.vuejs.org/api/component-instance.html#emit)
-`$forceUpdate()` | [#](https://cn.vuejs.org/api/component-instance.html#forceupdate)
-`$nextTick()` | [#](https://cn.vuejs.org/api/component-instance.html#nexttick)
+`$data` | 观察的数据对象 [#](https://cn.vuejs.org/api/component-instance.html#data)
+`$props` | 组件已解析的 props 对象 [#](https://cn.vuejs.org/api/component-instance.html#props)
+`$el` | 实例管理的 DOM 根节点 [#](https://cn.vuejs.org/api/component-instance.html#el)
+`$options` | 实例的初始化选项 [#](https://cn.vuejs.org/api/component-instance.html#options)
+`$parent` | 父实例 [#](https://cn.vuejs.org/api/component-instance.html#parent)
+`$root` | 当前组件树的根实例 [#](https://cn.vuejs.org/api/component-instance.html#root)
+`$slots` | 访问被插槽分发的内容 [#](https://cn.vuejs.org/api/component-instance.html#slots)
+`$refs` | DOM 元素和组件实例 [#](https://cn.vuejs.org/api/component-instance.html#refs)
+`$attrs` | 包含了组件所有[透传 attributes](https://cn.vuejs.org/guide/components/attrs.html) [#](https://cn.vuejs.org/api/component-instance.html#attrs)
+`$watch()` | 观察 Vue 实例上的一个表达式或者一个函数计算结果的变化 [#](https://cn.vuejs.org/api/component-instance.html#watch)
+`$emit()` | 触发一个自定义事件 [#](https://cn.vuejs.org/api/component-instance.html#emit)
+`$forceUpdate()` | 强制该组件重新渲染 [#](https://cn.vuejs.org/api/component-instance.html#forceupdate)
+`$nextTick()` | 回调延迟执行 [#](https://cn.vuejs.org/api/component-instance.html#nexttick)
 
 ### 选项式 API - 组合选项
 
 :- | :-
 :- | :-
-`provide` | [#](https://cn.vuejs.org/api/options-composition.html#provide)
-`inject` | [#](https://cn.vuejs.org/api/options-composition.html#inject)
-`mixins` | [#](https://cn.vuejs.org/api/options-composition.html#mixins)
-`extends` | [#](https://cn.vuejs.org/api/options-composition.html#extends)
+`provide` | 提供可以被后代组件注入的值 [#](https://cn.vuejs.org/api/options-composition.html#provide)
+`inject` | 注入一个由祖先组件提供的值 [#](https://cn.vuejs.org/api/options-composition.html#inject)
+`mixins` | 接收一个混入对象的数组 [#](https://cn.vuejs.org/api/options-composition.html#mixins)
+`extends` | 要继承的“基类”组件 [#](https://cn.vuejs.org/api/options-composition.html#extends)
 
 ### 内置内容 - 指令
 <!--rehype:wrap-class=row-span-2-->
 
 :- | :-
 :- | :-
-`v-text` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-text)
-`v-html` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-html)
-`v-show` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-show)
-`v-if` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-if)
+`v-text` | 更新元素的 `textContent` [#](https://cn.vuejs.org/api/built-in-directives.html#v-text)
+`v-html` | 更新元素的 `innerHTML` [#](https://cn.vuejs.org/api/built-in-directives.html#v-html)
+`v-show` | 切换元素的 `display` css 属性 [#](https://cn.vuejs.org/api/built-in-directives.html#v-show)
+`v-if` | 有条件地渲染元素 [#](https://cn.vuejs.org/api/built-in-directives.html#v-if)
 `v-else` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-else)
 `v-else-if` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-else-if)
-`v-for` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-for)
-`v-on` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-on)
-`v-bind` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-bind)
-`v-model` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-model)
-`v-slot` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-slot)
-`v-pre` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-pre)
-`v-once` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-once)
-`v-memo` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-memo)
-`v-cloak` | [#](https://cn.vuejs.org/api/built-in-directives.html#v-cloak)
+`v-for` | 多次渲染元素或模板块 [#](https://cn.vuejs.org/api/built-in-directives.html#v-for)
+`v-on` | 绑定事件监听器 [#](https://cn.vuejs.org/api/built-in-directives.html#v-on)
+`v-bind` | 动态地绑定一个或多个属性 [#](https://cn.vuejs.org/api/built-in-directives.html#v-bind)
+`v-model` | 创建双向绑定 [#](https://cn.vuejs.org/api/built-in-directives.html#v-model)
+`v-slot` | 提供插槽或接收 props 的插槽 [#](https://cn.vuejs.org/api/built-in-directives.html#v-slot)
+`v-pre` | 跳过元素和它的子元素编译过程 [#](https://cn.vuejs.org/api/built-in-directives.html#v-pre)
+`v-once` | 只渲染元素和组件一次 [#](https://cn.vuejs.org/api/built-in-directives.html#v-once)
+`v-memo` _(3.2+)_ | 缓存一个模板的子树 [#](https://cn.vuejs.org/api/built-in-directives.html#v-memo)
+`v-cloak` | 保持在元素上直到实例结束编译 [#](https://cn.vuejs.org/api/built-in-directives.html#v-cloak)
 
 ### 内置内容 - 组件
 
 :- | :-
 :- | :-
-`<Transition>` | [#](https://cn.vuejs.org/api/built-in-components.html#transition)
-`<TransitionGroup>` | [#](https://cn.vuejs.org/api/built-in-components.html#transitiongroup)
-`<KeepAlive>` | [#](https://cn.vuejs.org/api/built-in-components.html#keepalive)
-`<Teleport>` | [#](https://cn.vuejs.org/api/built-in-components.html#teleport)
-`<Suspense>` | [#](https://cn.vuejs.org/api/built-in-components.html#suspense)
+`<Transition>` | 单个元素/组件的过渡效果 [#](https://cn.vuejs.org/api/built-in-components.html#transition)
+`<TransitionGroup>` | 多个元素/组件的过渡效果 [#](https://cn.vuejs.org/api/built-in-components.html#transitiongroup)
+`<KeepAlive>` | 缓存包裹在其中的动态切换组件 [#](https://cn.vuejs.org/api/built-in-components.html#keepalive)
+`<Teleport>` | 将其插槽内容渲染到 DOM 中的另一个位置 [#](https://cn.vuejs.org/api/built-in-components.html#teleport)
+`<Suspense>` _(Experimental)_ | 协调对组件树中嵌套的异步依赖的处理 [#](https://cn.vuejs.org/api/built-in-components.html#suspense)
 
 ### 内置内容 - 特殊 Attributes
 
 :- | :-
 :- | :-
-`key` | [#](https://cn.vuejs.org/api/built-in-special-attributes.html#key)
-`ref` | [#](https://cn.vuejs.org/api/built-in-special-attributes.html#ref)
-`is` | [#](https://cn.vuejs.org/api/built-in-special-attributes.html#is)
+`key` | 用在 Vue 的虚拟 DOM 算法 [#](https://cn.vuejs.org/api/built-in-special-attributes.html#key)
+`ref` | 元素或子组件注册引用信息 [#](https://cn.vuejs.org/api/built-in-special-attributes.html#ref)
+`is` | 绑定动态组件 [#](https://cn.vuejs.org/api/built-in-special-attributes.html#is)
 
 ### 内置内容 - 特殊元素
 
 :- | :-
 :- | :-
-`<component>` | [#](https://cn.vuejs.org/api/built-in-special-elements.html#component)
-`<slot>` | [#](https://cn.vuejs.org/api/built-in-special-elements.html#slot)
+`<component>` | 渲染一个“元组件”用于动态组件或元素 [#](https://cn.vuejs.org/api/built-in-special-elements.html#component)
+`<slot>` | 组件模板中的插槽内容出口 [#](https://cn.vuejs.org/api/built-in-special-elements.html#slot)
 
 ### 单文件组件 - 语法定义
 <!--rehype:wrap-class=row-span-2-->
@@ -681,14 +681,14 @@ API 参考
 
 :- | :-
 :- | :-
-`h()` | [#](https://cn.vuejs.org/api/render-function.html#h)
-`mergeProps()` | [#](https://cn.vuejs.org/api/render-function.html#mergeprops)
-`cloneVNode()` | [#](https://cn.vuejs.org/api/render-function.html#clonevnode)
-`isVNode()` | [#](https://cn.vuejs.org/api/render-function.html#isvnode)
-`resolveComponent()` | [#](https://cn.vuejs.org/api/render-function.html#resolvecomponent)
-`resolveDirective()` | [#](https://cn.vuejs.org/api/render-function.html#resolvedirective)
-`withDirectives()` | [#](https://cn.vuejs.org/api/render-function.html#withdirectives)
-`withModifiers()` | [#](https://cn.vuejs.org/api/render-function.html#withmodifiers)
+`h()` | 创建虚拟 DOM 节点 [#](https://cn.vuejs.org/api/render-function.html#h)
+`mergeProps()` | 合并多个 props 对象 [#](https://cn.vuejs.org/api/render-function.html#mergeprops)
+`cloneVNode()` | 克隆一个 vnode [#](https://cn.vuejs.org/api/render-function.html#clonevnode)
+`isVNode()` | 判断一个值是否为 vnode 类型 [#](https://cn.vuejs.org/api/render-function.html#isvnode)
+`resolveComponent()` | 按名称手动解析已注册的组件 [#](https://cn.vuejs.org/api/render-function.html#resolvecomponent)
+`resolveDirective()` | 按名称手动解析已注册的指令 [#](https://cn.vuejs.org/api/render-function.html#resolvedirective)
+`withDirectives()` | 用于给 vnode 增加自定义指令 [#](https://cn.vuejs.org/api/render-function.html#withdirectives)
+`withModifiers()` | 用于向事件处理函数添加内置 `v-on 修饰符` [#](https://cn.vuejs.org/api/render-function.html#withmodifiers)
 
 ### 进阶 API - 服务端渲染
 
@@ -706,17 +706,17 @@ API 参考
 
 :- | :-
 :- | :-
-`PropType<T>` | [#](https://cn.vuejs.org/api/utility-types.html#proptypet)
-`ComponentCustomProperties` | [#](https://cn.vuejs.org/api/utility-types.html#componentcustomproperties)
-`ComponentCustomOptions` | [#](https://cn.vuejs.org/api/utility-types.html#componentcustomoptions)
-`ComponentCustomProps` | [#](https://cn.vuejs.org/api/utility-types.html#componentcustomprops)
-`CSSProperties` | [#](https://cn.vuejs.org/api/utility-types.html#cssproperties)
+`PropType<T>` | 在用运行时 props 声明时给一个 prop 标注更复杂的类型定义 [#](https://cn.vuejs.org/api/utility-types.html#proptypet)
+`ComponentCustomProperties` | 增强组件实例类型以支持自定义全局属性 [#](https://cn.vuejs.org/api/utility-types.html#componentcustomproperties)
+`ComponentCustomOptions` | 扩展组件选项类型以支持自定义选项 [#](https://cn.vuejs.org/api/utility-types.html#componentcustomoptions)
+`ComponentCustomProps` | 扩展全局可用的 TSX props [#](https://cn.vuejs.org/api/utility-types.html#componentcustomprops)
+`CSSProperties` | 扩展在样式属性绑定上允许的值的类型 [#](https://cn.vuejs.org/api/utility-types.html#cssproperties)
 
 ### 进阶 API - 自定义渲染
 
 :- | :-
 :- | :-
-`createRenderer()` | [#](https://cn.vuejs.org/api/custom-renderer.html#create-renderer)
+`createRenderer()` | 创建一个自定义渲染器 [#](https://cn.vuejs.org/api/custom-renderer.html#create-renderer)
 
 另见
 ---
