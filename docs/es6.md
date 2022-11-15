@@ -160,6 +160,7 @@ class Dog {
     this.#name = name;
   }
   printName() {
+    //只能在类内部调用私有字段
     console.log(`你的名字是${this.#name}`)
   }
 }
@@ -167,7 +168,6 @@ class Dog {
 const dog = new Dog("putty")
 //console.log(this.#name) 
 //Private identifiers are not allowed outside class bodies.
-//只能在类内部调用私有字段
 dog.printName()
 ```
 
