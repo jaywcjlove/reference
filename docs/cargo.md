@@ -154,8 +154,18 @@ $ cargo build
 # 输出二进制文件，放入 `target/release` 目录
 $ cargo build --release
 $ cargo run      # 编译并运行
-$ cargo test     # 运行您的测试
-$ cargo test foo # 传递过滤器，来运行特定测试
+```
+
+#### 测试
+
+```bash
+$ cargo test     # 运行你的所有测试
+# 指定函数过滤器
+$ cargo test test_foo # 开头是 test_foo 的函数都会运行，例如(test_foo_bar)
+# 指定特定模块中的测试函数(通常可以简写 cargo test foo::bar::tests::test_foo)
+cargo test --package rustt --lib -- foo::bar::tests::test_foo --exact --nocapture
+# 指定特定测试的模块(通常可以简写 cargo test foo::bar::tests)
+cargo test --package rustt --lib -- foo::bar::tests --nocapture
 ```
 
 ### 配置目标
