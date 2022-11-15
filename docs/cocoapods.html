@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>CocoaPods 备忘清单
+ &#x26;  cocoapods cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="CocoaPods 是 Swift 和 Objective-C Cocoa 项目的依赖管理器，此快速参考备忘单显示了它的常用命令使用清单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,cocoapods">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/cocoapods.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="cocoapods-备忘清单"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M8.812 17.176c-2.968 0-4.956-2.308-4.956-5.176 0-2.705 1.776-5.176 4.91-5.176 2.407 0 3.856 1.445 4.207 3.357h3.95C16.479 6.427 13.51 3.42 8.718 3.42 3.131 3.42 0 7.523 0 12c0 4.57 3.295 8.58 8.766 8.58 4.58 0 7.549-2.822 8.18-6.272h-4.02c-.467 1.609-1.916 2.868-4.114 2.868zM24 12.068l-3.466 8.055-2.38-1.022 2.992-7.055-3.01-7.096 2.433-1.042Z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#cocoapods-备忘清单"><span class="icon icon-link"></span></a>CocoaPods 备忘清单</h1><div class="wrap-body">
+<p><a href="https://en.wikipedia.org/wiki/Cron">CocoaPods</a> 是 <a href="./swift.html">Swift</a> 和 Objective-C Cocoa 项目的依赖管理器，此快速参考备忘单显示了它的常用命令使用清单。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" href="#更新-cocoapods">更新 CocoaPods</a><a aria-hidden="true" class="leve3 tocs-link" href="#安装-1">安装</a><a aria-hidden="true" class="leve3 tocs-link" href="#更新过时的依赖">更新过时的依赖</a><a aria-hidden="true" class="leve3 tocs-link" href="#更新依赖">更新依赖</a><a aria-hidden="true" class="leve3 tocs-link" href="#清理-pods-依赖">清理 Pods 依赖</a><a aria-hidden="true" class="leve3 tocs-link" href="#pod-env">pod env</a><a aria-hidden="true" class="leve3 tocs-link" href="#将-pod-添加到-xcode-项目">将 Pod 添加到 Xcode 项目</a><a aria-hidden="true" class="leve3 tocs-link" href="#创建一个新的-cocoapod">创建一个新的 Cocoapod</a><a aria-hidden="true" class="leve3 tocs-link" href="#浏览">浏览</a><a aria-hidden="true" class="leve3 tocs-link" href="#规格">规格</a><a aria-hidden="true" class="leve3 tocs-link" href="#repos">Repos</a><a aria-hidden="true" class="leve3 tocs-link" href="#trunk">Trunk</a><a aria-hidden="true" class="leve2 tocs-link" href="#什么是-podfile">什么是 Podfile？</a><a aria-hidden="true" class="leve3 tocs-link" href="#简单配置">简单配置</a><a aria-hidden="true" class="leve3 tocs-link" href="#添加测试">添加测试</a><a aria-hidden="true" class="leve3 tocs-link" href="#指定-pod-版本">指定 pod 版本</a><a aria-hidden="true" class="leve3 tocs-link" href="#隐式抽象目标">隐式抽象目标</a><a aria-hidden="true" class="leve3 tocs-link" href="#多个目标共享同一个-pod">多个目标共享同一个 pod</a><a aria-hidden="true" class="leve2 tocs-link" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> gem <span class="token function">install</span> cocoapods
+</span></code></pre>
+<p>无 Sudo 安装，不想为此过程授予 <code>RubyGems</code> 管理员权限</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">export</span> <span class="token assign-left variable">GEM_HOME</span><span class="token operator">=</span><span class="token environment constant">$HOME</span>/.gem
+</span><span class="code-line"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$GEM_HOME</span>/bin:<span class="token environment constant">$PATH</span>
+</span></code></pre>
+<p>编辑 <code>.bash_profile</code> 配置文件，添加上面内容</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ gem <span class="token function">install</span> cocoapods --user-install
+</span><span class="code-line">$ gem <span class="token function">which</span> cocoapods
+</span><span class="code-line">/Users/wcj/.gem/ruby/2.0.0/gems/cocoapods-0.29.0/lib/cocoapods.rb
+</span><span class="code-line">$ /Users/wcj/.gem/ruby/2.0.0/bin/pod <span class="token function">install</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="更新-cocoapods"><a aria-hidden="true" tabindex="-1" href="#更新-cocoapods"><span class="icon icon-link"></span></a>更新 CocoaPods</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ gem <span class="token function">install</span> cocoapods
+</span></code></pre>
+<p>或者对于预发布版本</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ gem <span class="token function">install</span> cocoapods <span class="token parameter variable">--pre</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装-1"><a aria-hidden="true" tabindex="-1" href="#安装-1"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pod <span class="token function">install</span>
+</span></code></pre>
+<p>在您的项目中安装新的 <code>pod</code>，即使你已经有一个 <code>Podfile</code> 并且之前运行过 <code>pod install</code>； 因此，即使您只是在已经使用 <code>CocoaPods</code> 的项目中添加/删除 <code>pod</code></p>
+<ul>
+<li>会在 <code>Podfile.lock</code> 文件中为每个 pod 写入已安装的版本，此文件跟踪每个 pod 的已安装版本并锁定这些版本</li>
+<li>它只会解析 <code>Podfile.lock</code> 中尚未列出的 pod 的依赖关系</li>
+<li>对于 <code>Podfile.lock</code> 中列出的 pod，会下载 <code>Podfile.lock</code> 中列出的显式版本，而不尝试检查是否有更新的版本可用</li>
+</ul>
+<p>下载 <code>Podfile</code> 中定义的所有依赖项，并在 <code>./Pods</code> 中创建一个 <code>Xcode Pods</code> 库项目</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="更新过时的依赖"><a aria-hidden="true" tabindex="-1" href="#更新过时的依赖"><span class="icon icon-link"></span></a>更新过时的依赖</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pod outdated
+</span></code></pre>
+<p>显示当前 <code>Podfile.lock</code> 中过时的 <code>pod</code>，但仅显示来自规范 <code>repos</code> 的那些，而不是来自本地/外部来源的那些</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="更新依赖"><a aria-hidden="true" tabindex="-1" href="#更新依赖"><span class="icon icon-link"></span></a>更新依赖</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pod update
+</span><span class="code-line">$ pod update PODNAME
+</span></code></pre>
+<p>更新由指定 <code>pod</code> 名称标识的 <code>Pod</code>。 如果没有指定 <code>Pod</code> 名称，它会更新所有 <code>Pod</code>，而忽略 <code>Podfile.lock</code> 的内容。 此命令保留用于更新依赖项，应使用 <code>pod install</code> 安装对 <code>Podfile</code> 的更改</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="清理-pods-依赖"><a aria-hidden="true" tabindex="-1" href="#清理-pods-依赖"><span class="icon icon-link"></span></a>清理 Pods 依赖</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pod deintegrate
+</span></code></pre>
+<p>从 <code>CocoaPods</code> 中分离您的项目。 从您的 <code>Xcode</code> 项目中删除所有 <code>CocoaPods</code> 的痕迹。如果未指定 <code>xcodeproj</code>，则将在当前目录中搜索 <code>Xcode</code> 项目</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pod-env"><a aria-hidden="true" tabindex="-1" href="#pod-env"><span class="icon icon-link"></span></a>pod env</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pod <span class="token function">env</span>
+</span></code></pre>
+<p>显示 pod 环境</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将-pod-添加到-xcode-项目"><a aria-hidden="true" tabindex="-1" href="#将-pod-添加到-xcode-项目"><span class="icon icon-link"></span></a>将 Pod 添加到 Xcode 项目</h3><div class="wrap-body">
+<ul class="style-timeline">
+<li>
+<p>创建一个 Podfile，并添加您的依赖项</p>
+<pre class="language-ruby"><code class="language-ruby code-highlight"><span class="code-line"><span class="token comment"># Podfile</span>
+</span><span class="code-line">target <span class="token string-literal"><span class="token string">'MyApp'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">  pod <span class="token string-literal"><span class="token string">'AFNetworking'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'~> 3.0'</span></span>
+</span><span class="code-line">  pod <span class="token string-literal"><span class="token string">'FBSDKCoreKit'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'~> 4.9'</span></span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</li>
+<li>
+<p>在您的项目目录中运行 <code>$ pod install</code></p>
+</li>
+<li>
+<p>打开 <code>App.xcworkspace</code> 并构建</p>
+</li>
+</ul>
+<!--rehype:className=style-timeline-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="创建一个新的-cocoapod"><a aria-hidden="true" tabindex="-1" href="#创建一个新的-cocoapod"><span class="icon icon-link"></span></a>创建一个新的 Cocoapod</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list"><thead><tr><th align="left">命令</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>pod lib create pod_name</code></td><td>为您创建一个新的 pod 项目</td></tr><tr><td align="left"><code>pod trunk push pod_name.podspec</code></td><td>将 podspec 推送到 trunk</td></tr><tr><td align="left"><code>pod spec create pod_name</code></td><td>为您创建 podspec 模板</td></tr></tbody></table>
+<!--rehype:className=style-list-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="浏览"><a aria-hidden="true" tabindex="-1" href="#浏览"><span class="icon icon-link"></span></a>浏览</h3><div class="wrap-body">
+<ul>
+<li><code>pod search QUERY</code> 搜索名称、摘要、描述或作者与 QUERY 匹配的 pod，忽略大小写。 如果指定了 --simple 选项，这将只搜索 pod 的名称</li>
+<li><code>pod list</code> 列出所有可用的 pod</li>
+<li><code>pod try NAME|URL</code> 下载具有给定名称（或 Git URL）的 Pod，如果需要，安装其依赖项并打开其演示项目。 如果提供了 Git URL，则使用 repo 的头部。 如果指定了 Git URL，则可以提供 --podspec_name，如果 podspec 名称由于某种原因与 git 存储库不同</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="规格"><a aria-hidden="true" tabindex="-1" href="#规格"><span class="icon icon-link"></span></a>规格</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<ul>
+<li><code>pod spec create [NAME\|https://github.com/USER/REPO]</code> 在当前工作目录中创建一个名为 NAME.podspec 的 PodSpec。如果传递了 GitHub url，则预先填充规范。</li>
+<li><code>pod spec lint [NAME.podspec|DIRECTORY|http://PATH/NAME.podspec ...]</code> 验证 NAME.podspec。 如果提供了 DIRECTORY，它会验证找到的 podspec 文件，包括子文件夹。 如果省略参数，则默认为当前工作目录。</li>
+<li><code>pod spec cat [QUERY]</code> 将名称与 QUERY 匹配的 podspec 的内容打印到标准输出。</li>
+<li><code>pod spec which [QUERY]</code> 打印名称与 QUERY 匹配的 .podspec 文件的路径</li>
+<li><code>pod spec edit [QUERY]</code> 打开要编辑的与 QUERY 匹配的 podspec。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="repos"><a aria-hidden="true" tabindex="-1" href="#repos"><span class="icon icon-link"></span></a>Repos</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">命令</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>pod repo add NAME URL [BRANCH]</code></td><td>在 <code>~/.cocoapods/repos/</code> 的本地 spec-repos 目录中克隆 URL。远程可以稍后由 NAME 引用</td></tr><tr><td align="left"><code>pod repo update [NAME]</code></td><td>更新 spec-repo NAME 的本地克隆。如果 NAME 被省略，这将更新 ~/.cocoapods/repos 中的所有 spec-repos</td></tr><tr><td align="left"><code>pod repo lint [NAME|DIRECTORY]</code></td><td>对 spec-repo NAME 进行 lints。如果提供了目录，则假定它是存储库的根目录。最后，如果没有提供 NAME，这将 lint CocoaPods 已知的所有规范库</td></tr><tr><td align="left"><code>pod repo list</code></td><td>从 <code>~/.cocoapods/repos/</code> 的本地 spec-repos 目录中列出 repos</td></tr><tr><td align="left"><code>pod repo remove NAME</code></td><td>从 <code>~/.cocoapods/repos/</code> 的本地 spec-repos 目录中删除名为 NAME 的远程</td></tr><tr><td align="left"><code>pod repo push REPO [NAME.podspec]</code></td><td>验证当前工作目录中的 <code>NAME.podspec</code> 或 *.podspec，在 REPO 的本地副本 (<code>~/.cocoapods/repos/[REPO]</code>) 中为 pod 创建目录和版本文件夹，将 podspec 文件复制到版本中目录，最后它将 REPO 推送到其远程</td></tr><tr><td align="left"><code>pod setup</code></td><td>在 <code>~/.cocoapods/repos</code> 创建一个目录，该目录将保存您的规范存储库。它将在这里创建公共主规范仓库的克隆：<a href="https://github.com/CocoaPods/Specs">https://github.com/CocoaPods/Specs</a> 如果克隆已经存在，它将确保它是最新的</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="trunk"><a aria-hidden="true" tabindex="-1" href="#trunk"><span class="icon icon-link"></span></a>Trunk</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<ul>
+<li><code>pod trunk add-owner POD OWNER-EMAIL</code> 将具有指定 OWNER-EMAIL 的注册用户添加为给定 POD 的 <code>owner</code></li>
+<li><code>pod trunk info NAME</code> 返回有关 Pod 的信息</li>
+<li><code>pod trunk me</code> 包括有关您的注册的信息，然后是您的所有会话</li>
+<li><code>pod trunk push [PATH]</code> 在 PATH 发布 podspec 以使其可供 <code>master</code> 规范存储库的所有用户使用</li>
+<li><code>pod trunk register EMAIL [NAME]</code> 注册一个新帐户，或创建一个新会话</li>
+<li><code>pod trunk remove-owner POD OWNER-EMAIL</code> 将具有指定 OWNER-EMAIL 的用户从给定 POD 的 owner 中移除</li>
+<li><code>pod trunk deprecate NAME</code> 弃用 pod</li>
+<li><code>pod trunk delete NAME VERSION</code> <em>警告</em>：删除其他人所依赖的 Pod 版本通常被认为是不良行为！请考虑改用 <red><code>deprecate</code></red> 命令</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="什么是-podfile"><a aria-hidden="true" tabindex="-1" href="#什么是-podfile"><span class="icon icon-link"></span></a>什么是 Podfile？</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="简单配置"><a aria-hidden="true" tabindex="-1" href="#简单配置"><span class="icon icon-link"></span></a>简单配置</h3><div class="wrap-body">
+<pre class="language-ruby"><code class="language-ruby code-highlight"><span class="code-line">target <span class="token string-literal"><span class="token string">'MyApp'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">  use_frameworks<span class="token operator">!</span>
+</span><span class="code-line">  pod <span class="token string-literal"><span class="token string">'Alamofire'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'~> 3.0'</span></span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+<p>Podfile 可以非常简单，这会将 Alamofire 添加到单个目标</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="添加测试"><a aria-hidden="true" tabindex="-1" href="#添加测试"><span class="icon icon-link"></span></a>添加测试</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text"><code class="language-ruby code-highlight"><span class="code-line">source <span class="token string-literal"><span class="token string">'https://github.com/CocoaPods/Specs.git'</span></span>
+</span><span class="code-line">source <span class="token string-literal"><span class="token string">'https://github.com/Artsy/Specs.git'</span></span>
+</span><span class="code-line">
+</span><span class="code-line">platform <span class="token symbol">:ios</span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'9.0'</span></span>
+</span><span class="code-line">inhibit_all_warnings<span class="token operator">!</span>
+</span><span class="code-line">
+</span><span class="code-line">target <span class="token string-literal"><span class="token string">'MyApp'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">  pod <span class="token string-literal"><span class="token string">'GoogleAnalytics'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'~> 3.1'</span></span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 拥有自己的 OCMock 副本</span>
+</span><span class="code-line">  <span class="token comment"># 并且可以通过应用访问 GoogleAnalytics</span>
+</span><span class="code-line">  <span class="token comment"># 承载测试目标</span>
+</span><span class="code-line">
+</span><span class="code-line">  target <span class="token string-literal"><span class="token string">'MyAppTests'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">    inherit<span class="token operator">!</span> <span class="token symbol">:search_paths</span>
+</span><span class="code-line">    pod <span class="token string-literal"><span class="token string">'OCMock'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'~> 2.0.1'</span></span>
+</span><span class="code-line">  <span class="token keyword">end</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line">post_install <span class="token keyword">do</span> <span class="token operator">|</span>installer<span class="token operator">|</span>
+</span><span class="code-line">  installer<span class="token punctuation">.</span>pods_project<span class="token punctuation">.</span>targets<span class="token punctuation">.</span><span class="token keyword">each</span> <span class="token keyword">do</span> <span class="token operator">|</span>target<span class="token operator">|</span>
+</span><span class="code-line">    puts target<span class="token punctuation">.</span>name
+</span><span class="code-line">  <span class="token keyword">end</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>链接应用程序及其测试包的更复杂 Podfile 的示例</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="指定-pod-版本"><a aria-hidden="true" tabindex="-1" href="#指定-pod-版本"><span class="icon icon-link"></span></a>指定 pod 版本</h3><div class="wrap-body">
+<p>在开始一个项目时，希望使用最新版本的 Pod。这种情况，只需忽略版本要求</p>
+<pre class="language-ruby"><code class="language-ruby code-highlight"><span class="code-line">pod <span class="token string-literal"><span class="token string">'SSZipArchive'</span></span>
+</span></code></pre>
+<p>稍后在项目中，您可能希望冻结到特定版本的 Pod，在这种情况下，您可以指定该版本号</p>
+<pre class="language-ruby"><code class="language-ruby code-highlight"><span class="code-line">pod <span class="token string-literal"><span class="token string">'Objection'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'0.9'</span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="隐式抽象目标"><a aria-hidden="true" tabindex="-1" href="#隐式抽象目标"><span class="icon icon-link"></span></a>隐式抽象目标</h3><div class="wrap-body">
+<p>Podfile 的根目录存在隐式抽象目标，因此您可以将上面的示例编写为</p>
+<pre class="language-ruby"><code class="language-ruby code-highlight"><span class="code-line">pod <span class="token string-literal"><span class="token string">'ShowsKit'</span></span>
+</span><span class="code-line">pod <span class="token string-literal"><span class="token string">'Fabric'</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 拥有自己的 ShowsKit + ShowWebAuth 副本</span>
+</span><span class="code-line">target <span class="token string-literal"><span class="token string">'ShowsiOS'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">  pod <span class="token string-literal"><span class="token string">'ShowWebAuth'</span></span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 拥有自己的 ShowsKit + ShowTVAuth 副本</span>
+</span><span class="code-line">target <span class="token string-literal"><span class="token string">'ShowsTV'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">  pod <span class="token string-literal"><span class="token string">'ShowTVAuth'</span></span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="多个目标共享同一个-pod"><a aria-hidden="true" tabindex="-1" href="#多个目标共享同一个-pod"><span class="icon icon-link"></span></a>多个目标共享同一个 pod</h3><div class="wrap-body">
+<pre class="language-ruby"><code class="language-ruby code-highlight"><span class="code-line"><span class="token comment"># 在任何 Xcode 项目中都没有名为“Shows”的目标</span>
+</span><span class="code-line">abstract_target <span class="token string-literal"><span class="token string">'Shows'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">  pod <span class="token string-literal"><span class="token string">'ShowsKit'</span></span>
+</span><span class="code-line">  pod <span class="token string-literal"><span class="token string">'Fabric'</span></span>
+</span><span class="code-line">  <span class="token comment"># 拥有自己的 ShowsKit + ShowWebAuth 副本</span>
+</span><span class="code-line">  target <span class="token string-literal"><span class="token string">'ShowsiOS'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">    pod <span class="token string-literal"><span class="token string">'ShowWebAuth'</span></span>
+</span><span class="code-line">  <span class="token keyword">end</span>
+</span><span class="code-line">  <span class="token comment"># 拥有自己的 ShowsKit + ShowTVAuth 副本</span>
+</span><span class="code-line">  target <span class="token string-literal"><span class="token string">'ShowsTV'</span></span> <span class="token keyword">do</span>
+</span><span class="code-line">    pod <span class="token string-literal"><span class="token string">'ShowTVAuth'</span></span>
+</span><span class="code-line">  <span class="token keyword">end</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://cocoapods.org/">CocoaPods 官方网站</a> <em>(cocoapods.org)</em></li>
+<li><a href="https://github.com/SebastianBoldt/Cocoapods-Cheatsheet">Cocoapods Cheatsheet</a> <em>(github.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang, All rights reserved.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
