@@ -9,18 +9,17 @@ Rust 快速参考备忘单，旨在为编写基本语法和方法提供帮助。
 ### 配置 vscode 调试
 <!--rehype:wrap-class=row-span-2-->
 
-参考：<https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#source-path-remapping>
-
-下载 CodeLLDB，选择 rust 自动生成 launch.json 文件
+[配置参考](https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#source-path-remapping)。下载 CodeLLDB，选择 rust 自动生成 launch.json 文件
 
 ```json
 {
   "configurations": [
-    // 添加一下行，使 vec、hashmap 等类型显示正常
+    // 添加一下行，使 vec/hashmap 等类型显示正常
     "sourceLanguages": ["rust"]
   ]
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
@@ -34,6 +33,7 @@ Rust 快速参考备忘单，旨在为编写基本语法和方法提供帮助。
   }
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ### Hello_World.rs
 
@@ -506,6 +506,7 @@ fn main(){
     };
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ### 枚举的变体
 
@@ -520,6 +521,7 @@ fn main() {
   let loopback = IpAddrKind::V6(String::from("::1"));
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
@@ -537,6 +539,7 @@ fn main(){
   let c = Message::ChangeColor(10, 20, 30);
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ### 模式匹配结构体
 
@@ -563,6 +566,7 @@ fn main() {
     subject_grade(Subject::Math(Grade::A));
 }
 ```
+<!--rehype:className=wrap-text -->
 
 Rust 运算符
 -----------
@@ -767,13 +771,13 @@ match 模式匹配，使用 `a | b` 表示匹配 a **或** b，使用 `_`，表�
 
 ```rust
 fn main(){
-    let grade = Grade::A;
-    match grade {
-        Grade::A => println!("Good"),
-        Grade::B => println!("Not bad"),
-        Grade::C | Grade::D => println!("Come on"),
-        _ => println!("emmm"),
-    }
+  let grade = Grade::A;
+  match grade {
+    Grade::A => println!("Good"),
+    Grade::B => println!("Not bad"),
+    Grade::C | Grade::D => println!("Come on"),
+    _ => println!("emmm"),
+  }
 }
 
 enum Grade {
@@ -785,6 +789,7 @@ enum Grade {
     F,
 }
 ```
+<!--rehype:className=wrap-text -->
 
 #### `matches!` 宏
 
@@ -794,6 +799,7 @@ enum Grade {
 assert!(matches!('x' ',A'..='Z' | 'a'..='z'));
 assert!(matches!(Some(101), Some(x) if x > 100));
 ```
+<!--rehype:className=wrap-text -->
 
 ### if let 匹配
 
@@ -802,10 +808,11 @@ match 表达式需要匹配所有的枚举才能结束，但通常我们只需�
 ```rust
 let x = 3;
 match Some(x) {
-    Some(3) => println!("I guess that x is 3"),
-    _ => ()
+  Some(3) => println!("I guess that x is 3"),
+  _ => ()
 }
 ```
+<!--rehype:className=wrap-text -->
 
 使用 `if let`
 
@@ -837,6 +844,7 @@ while let Some(top) = stack.pop() {
 ```rust
 for (i, v) in collection.iter().enumerate(){}
 ```
+<!--rehype:className=wrap-text -->
 
 #### let
 
@@ -875,6 +883,7 @@ match origin {
     Point { x, .. } => println!("x is {}", x),
 }
 ```
+<!--rehype:className=wrap-text -->
 
 #### 使用 `_` 忽略部分参数
 
@@ -887,6 +896,7 @@ match hello {
     },
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ### 匹配命名变量
 
@@ -913,6 +923,7 @@ match grade {
     _ => println!("Come on"),
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
@@ -928,6 +939,7 @@ fn main(){
     println!("{:?}", p);
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
@@ -952,6 +964,7 @@ match x {
     _ => println!("No match"),
 }// y = 2
 ```
+<!--rehype:className=wrap-text -->
 
 Rust 函数
 --------
