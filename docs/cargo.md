@@ -127,24 +127,27 @@ $ cargo run
 Hello, world!
 ```
 
-### 项目目录
+### 来源配置
 
-```bash
-.
-├── Cargo.lock
-├── Cargo.toml
-├── benches     # 基准目录
-│   └── large-input.rs
-├── examples    # 示例
-│   └── simple.rs
-├── src         # 源代码
-│   ├── bin
-│   │   └── another_executable.rs
-│   ├── lib.rs  # 默认库
-│   └── main.rs # 入口文件
-└── tests       # 集成测试
-    └── some-integration-tests.rs
+```toml
+# `source` 表下，就是存储有关要更换的来源名称
+[source]
+
+# 在`source` 表格之下的，可为一定数量的有关来源名称. 示例下面就，定义了一个新源， 叫 `my-awesome-source`，其内容来自本地，`vendor`目录 ，其相对于包含 `.cargo/config` 文件的目录
+[source.my-awesome-source]
+directory = "vendor"
+
+# Git sources 也指定一个 branch/tag/rev
+git = "https://example.com/path/to/repo"
+# branch = "master"
+# tag = "v1.0.1"
+# rev = "313f44e8"
+
+# crates.io 默认源 在"crates-io"名称下，且在这里我们使用 `replace-with` 字段指明 默认源更换成"my-awesome-source"源
+[source.crates-io]
+replace-with = "my-awesome-source"
 ```
+<!--rehype:className=wrap-text -->
 
 ### 编译测试
 
@@ -163,10 +166,12 @@ $ cargo test     # 运行你的所有测试
 # 指定函数过滤器
 $ cargo test test_foo # 开头是 test_foo 的函数都会运行，例如(test_foo_bar)
 # 指定特定模块中的测试函数(通常可以简写 cargo test foo::bar::tests::test_foo)
-cargo test --package rustt --lib -- foo::bar::tests::test_foo --exact --nocapture
+$ cargo test --package rustt --lib -- foo::bar::tests::test_foo --exact --nocapture
+
 # 指定特定测试的模块(通常可以简写 cargo test foo::bar::tests)
-cargo test --package rustt --lib -- foo::bar::tests --nocapture
+$ cargo test --package rustt --lib -- foo::bar::tests --nocapture
 ```
+<!--rehype:className=wrap-text-->
 
 ### 配置目标
 <!--rehype:wrap-class=row-span-2-->
@@ -198,27 +203,24 @@ edition = '2015'
 ```
 <!--rehype:className=wrap-text-->
 
-### 来源配置
+### 项目目录
 
-```toml
-# `source` 表下，就是存储有关要更换的来源名称
-[source]
-
-# 在`source` 表格之下的，可为一定数量的有关来源名称. 示例下面就，定义了一个新源， 叫 `my-awesome-source`，其内容来自本地，`vendor`目录 ，其相对于包含 `.cargo/config` 文件的目录
-[source.my-awesome-source]
-directory = "vendor"
-
-# Git sources 也指定一个 branch/tag/rev
-git = "https://example.com/path/to/repo"
-# branch = "master"
-# tag = "v1.0.1"
-# rev = "313f44e8"
-
-# crates.io 默认源 在"crates-io"名称下，且在这里我们使用 `replace-with` 字段指明 默认源更换成"my-awesome-source"源
-[source.crates-io]
-replace-with = "my-awesome-source"
+```bash
+.
+├── Cargo.lock
+├── Cargo.toml
+├── benches     # 基准目录
+│   └── large-input.rs
+├── examples    # 示例
+│   └── simple.rs
+├── src         # 源代码
+│   ├── bin
+│   │   └── another_executable.rs
+│   ├── lib.rs  # 默认库
+│   └── main.rs # 入口文件
+└── tests       # 集成测试
+    └── some-integration-tests.rs
 ```
-<!--rehype:className=wrap-text -->
 
 ### 配置
 
