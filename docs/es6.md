@@ -707,6 +707,7 @@ new URL('data.txt', import.meta.url)
 Node.js 环境中，`import.meta.url`返回的总是本地路径，即 `file:URL` 协议的字符串，比如 `file:///home/user/foo.js`
 
 ### 导入断言（Import Assertions）
+<!--rehype:wrap-class=col-span-2-->
 
 #### 静态导入
 
