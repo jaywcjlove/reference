@@ -275,66 +275,149 @@ v-on:submit.prevent="onSubmit"
 ### 声明状态
 
 ```html
-<div>{{ count }}</div>
+<div>{{ state.count }}</div>
 ```
 
 ---
 
-```js {2,4}
-export default {
-  data() {
+```js {6,7,11}
+import { defineComponent, reactive } from 'vue';
+
+// `defineComponent`用于IDE推导类型
+export default defineComponent({
+  // `setup` 是一个专门用于组合式 API 的特殊钩子函数
+  setup() {
+    const state = reactive({ count: 0 });
+
+    // 暴露 state 到模板
     return {
-      count: 0
-    }
+      state
+    };
   },
-}
+});
 ```
 
 ### 声明方法
 
 ```html
 <button @click="increment">
-  {{ count }}
+  {{ state.count }}
 </button>
 ```
 
 ---
 
-```js {8-10}
-export default {
-  data() {
+```js {7-9,14}
+import { defineComponent, reactive } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const state = reactive({ count: 0 });
+
+    function increment() {
+      state.count++;
+    }
+
+    // 不要忘记同时暴露 increment 函数
     return {
-      count: 0
-    }
+      state,
+      increment
+    };
   },
-  methods: {
-    increment() {
-      this.count++
-    }
-  }
+})
+```
+
+### `<script setup>` setup语法糖
+
+```html {1}
+<script setup>
+// setup语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
+import { reactive } from 'vue';
+
+const state = reactive({ count: 0 })
+
+function increment() {
+  state.count++
 }
+</script>
+
+<template>
+  <button @click="increment">
+    {{ state.count }}
+  </button>
+</template>
+```
+
+### 用 `ref()` 定义响应式变量
+
+```js
+// `reactive`只能用于对象、数组和 Map、Set 这样的集合类型，对 string、number 和 boolean 这样的原始类型则需要使用`ref`
+import { ref } from 'vue';
+
+const count = ref(0);
+
+console.log(count); // { value: 0 }
+console.log(count.value); // 0
+
+count.value++;
+console.log(count.value); // 1
+
+const objectRef = ref({ count: 0 });
+
+// 这是响应式的替换
+objectRef.value = { count: 1 };
+
+const obj = {
+  foo: ref(1),
+  bar: ref(2)
+};
+
+// 该函数接收一个 ref
+// 需要通过 .value 取值
+// 但它会保持响应性
+callSomeFunction(obj.foo);
+
+// 仍然是响应式的
+const { foo, bar } = obj;
+```
+
+```html
+<!-- PS: 在html模板中不需要带.value就可以使用 -->
+<script setup>
+import { ref } from 'vue';
+
+const count = ref(0);
+</script>
+
+<template>
+  <div>
+    {{ count }}
+  </div>
+</template>
 ```
 
 ### 有状态方法
 
 ```js
-import { debounce } from 'lodash-es'
-export default {
-  created() {
+import { reactive, defineComponent, onUnmounted } from 'vue';
+import { debounce } from 'lodash-es';
+
+export default defineComponent({
+  setup() {
     // 每个实例都有了自己的预置防抖的处理函数
-    this.debouncedClick = debounce(this.click, 500)
-  },
-  unmounted() {
-    // 最好是在组件卸载时
-    // 清除掉防抖计时器
-    this.debouncedClick.cancel()
-  },
-  methods: {
-    click() {
+    const debouncedClick = debounce(click, 500);
+
+    function click() {
       // ... 对点击的响应 ...
     }
-  }
-}
+
+    // 最好是在组件卸载时
+    // 清除掉防抖计时器
+    onUnmounted(() => {
+      debouncedClick.cancel();
+    });
+  },
+});
 ```
 <!--rehype:className=wrap-text -->
 
