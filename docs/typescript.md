@@ -1268,8 +1268,24 @@ const Form = () => <Select<string> items={['a', 'b']} />;
 各种各样的技巧
 ---
 
+### 类型推导（infer）
+<!--rehype:wrap-class=col-span-2-->
+
+```ts
+type Capitalize<T extends string> = T extends `${infer U}${infer V}`
+  ? `${Uppercase<U>}${V}`
+  : T
+type capitalized = Capitalize<"hello world"> // Hello World
+```
+
+- 也可以在 infer 中使用条件约束（`extends`）
+
+```ts
+type SomeBigInt = "100" extends `${infer U extends bigint}` ? U : never;
+// 100n
+```
+
 ### keyof 取 interface 的键
-<!--rehype:wrap-class=row-span-2-->
 
 ```ts
 interface Point {
