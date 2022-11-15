@@ -219,9 +219,9 @@ String(23);
 (23).toString();            
 // 从字符串返回数字
 Number("23");               
-// 解码 URI。 结果：“我的 page.asp”
+// 解码 URI。 结果：“my page.asp”
 decodeURI(enc);             
-// 编码 URI。 结果：“my%page.asp”
+// 编码 URI。 结果：“my%20page.asp”
 encodeURI(uri);             
 // 解码 URI 组件
 decodeURIComponent(enc);    
