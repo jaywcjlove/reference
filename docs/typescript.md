@@ -1316,12 +1316,246 @@ type Data = Point[];
 type PointDetail = Data[number];
 // type PointDetail = { x: number; y: number; }
 ```
+<!--rehype:className=wrap-text-->
 
 ### 只读元组类型
 
 ```ts
 const point = [3, 4] as const
 // type 'readonly [3, 4]'
+```
+
+TSConfig Ref
+---
+
+### 顶层配置
+
+:- | --
+:- | --
+`files` [#](https://www.typescriptlang.org/zh/tsconfig#files) | 指定要`包含`在程序中的文件的允许列表
+`extends` [#](https://www.typescriptlang.org/zh/tsconfig#extends) | 包含要`继承`的另一个配置文件的路径
+`include` [#](https://www.typescriptlang.org/zh/tsconfig#include) | 指定要`包含`在程序中的文件名或模式数组
+`exclude` [#](https://www.typescriptlang.org/zh/tsconfig#exclude) | 指定解析包含时应`跳过`的文件名或模式数组
+`references` [#](https://www.typescriptlang.org/zh/tsconfig#references) | 项目引用是一种将 TypeScript 程序构造成更小部分的方法
+<!--rehype:className=style-list-arrow-->
+
+---
+
+```js
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "strictNullChecks": false
+  }
+}
+```
+
+### 类型检查(compilerOptions)
+<!--rehype:wrap-class=row-span-3-->
+
+:- | --
+:- | --
+`allowUnreachableCode` [#](https://www.typescriptlang.org/zh/tsconfig#allowUnreachableCode) | 允许无法访问的代码
+`allowUnusedLabels` [#](https://www.typescriptlang.org/zh/tsconfig#allowUnusedLabels) | 允许未使用的标签
+`alwaysStrict` [#](https://www.typescriptlang.org/zh/tsconfig#alwaysStrict) | 始终严格
+`exactOptionalPropertyTypes` [#](https://www.typescriptlang.org/zh/tsconfig#exactOptionalPropertyTypes) | 启用后，TypeScript 应用更严格的规则来处理它如何处理类型或具有 ? 字首
+`noFallthroughCasesInSwitch` [#](https://www.typescriptlang.org/zh/tsconfig#noFallthroughCasesInSwitch) | 在 switch 语句中报告失败案例的错误
+`noImplicitAny` [#](https://www.typescriptlang.org/zh/tsconfig#noImplicitAny) | 在某些不存在类型注释的情况下，TypeScript 将在无法推断类型时回退到变量的任何类型
+`noImplicitOverride` [#](https://www.typescriptlang.org/zh/tsconfig#noImplicitOverride) | 当处理使用继承的类时，子类可能与在基类中重命名时重载的函数“不同步”
+`noImplicitReturns` [#](https://www.typescriptlang.org/zh/tsconfig#noImplicitReturns) | 没有隐式返回
+`noImplicitThis` [#](https://www.typescriptlang.org/zh/tsconfig#noImplicitThis) | 使用隐含的“any”类型在“this”表达式上引发错误
+`noPropertyAccessFromIndexSignature` [#](https://www.typescriptlang.org/zh/tsconfig#noPropertyAccessFromIndexSignature) | 此设置确保通过“点”（obj.key）语法访问字段和“索引”（obj[“key”]）以及在类型中声明属性的方式之间的一致性
+`noUncheckedIndexedAccess` [#](https://www.typescriptlang.org/zh/tsconfig#noUncheckedIndexedAccess) | TypeScript 有一种方法可以通过索引签名来描述对象上具有未知键但已知值的对象
+`noUnusedLocals` [#](https://www.typescriptlang.org/zh/tsconfig#noUnusedLocals) | 报告未使用的局部变量的错误
+`noUnusedParameters` [#](https://www.typescriptlang.org/zh/tsconfig#noUnusedParameters) | 报告函数中未使用参数的错误
+`strict` [#](https://www.typescriptlang.org/zh/tsconfig#strict) | 严格标志启用了范围广泛的类型检查行为，从而更有效地保证了程序的正确性
+`strictBindCallApply` [#](https://www.typescriptlang.org/zh/tsconfig#strictBindCallApply) | TypeScript 将检查函数调用、绑定和应用的内置方法是否使用底层函数的正确参数调用
+`strictFunctionTypes` [#](https://www.typescriptlang.org/zh/tsconfig#strictFunctionTypes) | 此标志会导致更正确地检查函数参数
+`strictNullChecks` [#](https://www.typescriptlang.org/zh/tsconfig#strictNullChecks) | 严格的空检查
+`strictPropertyInitialization` [#](https://www.typescriptlang.org/zh/tsconfig#strictPropertyInitialization) | 严格的属性初始化
+`useUnknownInCatchVariables` [#](https://www.typescriptlang.org/zh/tsconfig#useUnknownInCatchVariables) | 在 TypeScript 4.0 中，添加了支持以允许将 catch 子句中的变量类型从 any 更改为 unknown
+<!--rehype:className=style-list-arrow-->
+
+### 模块(compilerOptions)
+<!--rehype:wrap-class=row-span-2-->
+
+:- | --
+:- | --
+`allowUmdGlobalAccess` [#](https://www.typescriptlang.org/zh/tsconfig#allowUmdGlobalAccess) | 为 true 时，将允许你在模块文件中以全局变量的形式访问 UMD 的导出
+`baseUrl` [#](https://www.typescriptlang.org/zh/tsconfig#baseUrl) | 可以让您设置解析非绝对路径模块名时的基准目录
+`module` [#](https://www.typescriptlang.org/zh/tsconfig#module) | 设置程序的模块系统
+`moduleResolution` [#](https://www.typescriptlang.org/zh/tsconfig#moduleResolution) | 指定模块解析策略：'node'（Node.js）或 'classic'
+`moduleSuffixes` [#](https://www.typescriptlang.org/zh/tsconfig#moduleSuffixes) | 提供一种在解析模块时覆盖要搜索的默认文件名后缀列表的方法
+`noResolve` [#](https://www.typescriptlang.org/zh/tsconfig#noResolve) | 默认情况下，TypeScript 将检查导入和 `<reference` 指令的初始文件集，并将这些解析的文件添加到您的程序中
+`paths` [#](https://www.typescriptlang.org/zh/tsconfig#paths) | 一些将模块导入重新映射到相对于 baseUrl 路径的配置
+`resolveJsonModule` [#](https://www.typescriptlang.org/zh/tsconfig#resolveJsonModule) | 允许导入带有“.json”扩展名的模块，这是 node 项目中的常见做法
+`rootDir` [#](https://www.typescriptlang.org/zh/tsconfig#rootDir) | 默认: 所有输入的非声明文件中的最长公共路径
+`rootDirs` [#](https://www.typescriptlang.org/zh/tsconfig#rootDirs) | 通过 rootDirs，你可以告诉编译器有许多“虚拟”的目录作为一个根目录
+`typeRoots` [#](https://www.typescriptlang.org/zh/tsconfig#typeRoots) | 默认情况下，所有 可见 的 ”@types” 包都将包含在你的编译过程中
+`types` [#](https://www.typescriptlang.org/zh/tsconfig#types) | 默认情况下，所有 可见 的 ”@types” 包都将包含在你的编译过程中
+<!--rehype:className=style-list-arrow-->
+
+### Emit(compilerOptions)
+<!--rehype:wrap-class=row-span-2-->
+
+:- | --
+:- | --
+`declaration` [#](https://www.typescriptlang.org/zh/tsconfig#declaration) |
+`declarationDir` [#](https://www.typescriptlang.org/zh/tsconfig#declarationDir) |
+`declarationMap` [#](https://www.typescriptlang.org/zh/tsconfig#declarationMap) |
+`downlevelIteration` [#](https://www.typescriptlang.org/zh/tsconfig#downlevelIteration) |
+`emitBOM` [#](https://www.typescriptlang.org/zh/tsconfig#emitBOM) |
+`emitDeclarationOnly` [#](https://www.typescriptlang.org/zh/tsconfig#emitDeclarationOnly) |
+`importHelpers` [#](https://www.typescriptlang.org/zh/tsconfig#importHelpers) |
+`importsNotUsedAsValues` [#](https://www.typescriptlang.org/zh/tsconfig#importsNotUsedAsValues) |
+`inlineSourceMap` [#](https://www.typescriptlang.org/zh/tsconfig#inlineSourceMap) |
+`inlineSources` [#](https://www.typescriptlang.org/zh/tsconfig#inlineSources) |
+`mapRoot` [#](https://www.typescriptlang.org/zh/tsconfig#mapRoot) |
+`newLine` [#](https://www.typescriptlang.org/zh/tsconfig#newLine) |
+`noEmit` [#](https://www.typescriptlang.org/zh/tsconfig#noEmit) |
+`noEmitHelpers` [#](https://www.typescriptlang.org/zh/tsconfig#noEmitHelpers) |
+`noEmitOnError` [#](https://www.typescriptlang.org/zh/tsconfig#noEmitOnError) |
+`outDir` [#](https://www.typescriptlang.org/zh/tsconfig#outDir) |
+`outFile` [#](https://www.typescriptlang.org/zh/tsconfig#outFile) |
+`preserveConstEnums` [#](https://www.typescriptlang.org/zh/tsconfig#preserveConstEnums) |
+`preserveValueImports` [#](https://www.typescriptlang.org/zh/tsconfig#preserveValueImports) |
+`removeComments` [#](https://www.typescriptlang.org/zh/tsconfig#removeComments) |
+`sourceMap` [#](https://www.typescriptlang.org/zh/tsconfig#sourceMap) |
+`sourceRoot` [#](https://www.typescriptlang.org/zh/tsconfig#sourceRoot) |
+`stripInternal` [#](https://www.typescriptlang.org/zh/tsconfig#stripInternal) |
+
+### JavaScript 支持(compilerOptions)
+
+:- | --
+:- | --
+`allowJs` [#](https://www.typescriptlang.org/zh/tsconfig#allowJs) | 允许 JavaScript 文件在你的工程中被引入，而不是仅仅允许 .ts 和 .tsx 文件
+`checkJs` [#](https://www.typescriptlang.org/zh/tsconfig#checkJs) | 与 allowJs 配合使用，当 checkJs 被启用时，JavaScript 文件中会报告错误
+`maxNodeModuleJsDepth` [#](https://www.typescriptlang.org/zh/tsconfig#maxNodeModuleJsDepth) | 在 node_modules 下搜索和加载 JavaScript 文件的最大依赖深度
+<!--rehype:className=style-list-arrow-->
+
+### 编辑器支持(compilerOptions)
+
+:- | --
+:- | --
+`disableSizeLimit` [#](https://www.typescriptlang.org/zh/tsconfig#disableSizeLimit) | 分配的内存量有一个上限。打开此标志将删除限制
+`plugins` [#](https://www.typescriptlang.org/zh/tsconfig#plugins) | 可在编辑器内运行的语言服务插件列表
+<!--rehype:className=style-list-arrow-->
+
+### 互操作约束(compilerOptions)
+
+:- | --
+:- | --
+`allowSyntheticDefaultImports` [#](https://www.typescriptlang.org/zh/tsconfig#allowSyntheticDefaultImports) |
+`esModuleInterop` [#](https://www.typescriptlang.org/zh/tsconfig#esModuleInterop) |
+`forceConsistentCasingInFileNames` [#](https://www.typescriptlang.org/zh/tsconfig#forceConsistentCasingInFileNames) |
+`isolatedModules` [#](https://www.typescriptlang.org/zh/tsconfig#isolatedModules) |
+`preserveSymlinks` [#](https://www.typescriptlang.org/zh/tsconfig#preserveSymlinks) |
+
+### 向后兼容性(compilerOptions)
+
+:- | --
+:- | --
+`charset` [#](https://www.typescriptlang.org/zh/tsconfig#charset) |
+`keyofStringsOnly` [#](https://www.typescriptlang.org/zh/tsconfig#keyofStringsOnly) |
+`noImplicitUseStrict` [#](https://www.typescriptlang.org/zh/tsconfig#noImplicitUseStrict) |
+`noStrictGenericChecks` [#](https://www.typescriptlang.org/zh/tsconfig#noStrictGenericChecks) |
+`out` [#](https://www.typescriptlang.org/zh/tsconfig#out) |
+`suppressExcessPropertyErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressExcessPropertyErrors) |
+`suppressImplicitAnyIndexErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressImplicitAnyIndexErrors) |
+
+### 语言与环境(compilerOptions)
+
+:- | --
+:- | --
+`emitDecoratorMetadata` [#](https://www.typescriptlang.org/zh/tsconfig#emitDecoratorMetadata) |
+`experimentalDecorators` [#](https://www.typescriptlang.org/zh/tsconfig#experimentalDecorators) |
+`jsx` [#](https://www.typescriptlang.org/zh/tsconfig#jsx) |
+`jsxFactory` [#](https://www.typescriptlang.org/zh/tsconfig#jsxFactory) |
+`jsxFragmentFactory` [#](https://www.typescriptlang.org/zh/tsconfig#jsxFragmentFactory) |
+`jsxImportSource` [#](https://www.typescriptlang.org/zh/tsconfig#jsxImportSource) |
+`lib` [#](https://www.typescriptlang.org/zh/tsconfig#lib) |
+`moduleDetection` [#](https://www.typescriptlang.org/zh/tsconfig#moduleDetection) |
+`noLib` [#](https://www.typescriptlang.org/zh/tsconfig#noLib) |
+`reactNamespace` [#](https://www.typescriptlang.org/zh/tsconfig#reactNamespace) |
+`target` [#](https://www.typescriptlang.org/zh/tsconfig#target) |
+`useDefineForClassFields` [#](https://www.typescriptlang.org/zh/tsconfig#useDefineForClassFields) |
+
+### 编译器诊断(compilerOptions)
+
+:- | --
+:- | --
+`diagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#diagnostics) |
+`explainFiles` [#](https://www.typescriptlang.org/zh/tsconfig#explainFiles) |
+`extendedDiagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#extendedDiagnostics) |
+`generateCpuProfile` [#](https://www.typescriptlang.org/zh/tsconfig#generateCpuProfile) |
+`listEmittedFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listEmittedFiles) |
+`listFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listFiles) |
+`traceResolution` [#](https://www.typescriptlang.org/zh/tsconfig#traceResolution) |
+
+### 项目(compilerOptions)
+
+:- | --
+:- | --
+`composite` [#](https://www.typescriptlang.org/zh/tsconfig#composite) |
+`disableReferencedProjectLoad` [#](https://www.typescriptlang.org/zh/tsconfig#disableReferencedProjectLoad) |
+`disableSolutionSearching` [#](https://www.typescriptlang.org/zh/tsconfig#disableSolutionSearching) |
+`disableSourceOfProjectReferenceRedirect` [#](https://www.typescriptlang.org/zh/tsconfig#disableSourceOfProjectReferenceRedirect) |
+`incremental` [#](https://www.typescriptlang.org/zh/tsconfig#incremental) |
+`tsBuildInfoFile` [#](https://www.typescriptlang.org/zh/tsconfig#tsBuildInfoFile) |
+
+### 输出格式(compilerOptions)
+
+:- | --
+:- | --
+`noErrorTruncation` [#](https://www.typescriptlang.org/zh/tsconfig#noErrorTruncation) |
+`preserveWatchOutput` [#](https://www.typescriptlang.org/zh/tsconfig#preserveWatchOutput) |
+`pretty` [#](https://www.typescriptlang.org/zh/tsconfig#pretty) |
+
+### 完整性(compilerOptions)
+
+:- | --
+:- | --
+`skipDefaultLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipDefaultLibCheck) |
+`skipLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipLibCheck) |
+
+### 监听选项(watchOptions)
+
+:- | --
+:- | --
+`watchFile` [#](https://www.typescriptlang.org/zh/tsconfig#watch-watchFile) |
+`watchDirectory` [#](https://www.typescriptlang.org/zh/tsconfig#watch-watchDirectory) |
+`fallbackPolling` [#](https://www.typescriptlang.org/zh/tsconfig#watch-fallbackPolling) |
+`synchronousWatchDirectory` [#](https://www.typescriptlang.org/zh/tsconfig#watch-synchronousWatchDirectory) |
+`excludeDirectories` [#](https://www.typescriptlang.org/zh/tsconfig#watch-excludeDirectories) |
+`excludeFiles` [#](https://www.typescriptlang.org/zh/tsconfig#watch-excludeFiles) |
+
+---
+
+```js
+{
+  "watchOptions": {
+    "synchronousWatchDirectory": true
+  }
+}
+```
+
+### 类型采集(typeAcquisition)
+
+:- | --
+:- | --
+`enable` [#](https://www.typescriptlang.org/zh/tsconfig#type-enable) |
+`include` [#](https://www.typescriptlang.org/zh/tsconfig#type-include) |
+`exclude` [#](https://www.typescriptlang.org/zh/tsconfig#type-exclude) |
+`disableFilenameBasedTypeAcquisition` [#](https://www.typescriptlang.org/zh/tsconfig#type-disableFilenameBasedTypeAcquisition) |
+
+---
+
+```js
+{
+  "typeAcquisition": {
+    "enable": false
+  }
+}
 ```
 
 另见
