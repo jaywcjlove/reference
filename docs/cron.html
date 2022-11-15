@@ -49,13 +49,13 @@
 </span><span class="code-line">分钟  小时  天   月   周
 </span></code></pre>
 <hr>
-<pre><code class="code-highlight"><span class="code-line">*    *    *    *    *  要执行的命令
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">*    *    *    *    *   <span class="token operator">&#x3C;</span>要执行的命令<span class="token operator">></span>
 </span><span class="code-line">┬    ┬    ┬    ┬    ┬
-</span><span class="code-line">│    │    │    │    └─  星期几         (0=周日 .. 6=星期六)
-</span><span class="code-line">│    │    │    └──────  月            (1..12)
-</span><span class="code-line">│    │    └───────────  月份中的某天    (1..31)
-</span><span class="code-line">│    └────────────────  小时           (0..23)
-</span><span class="code-line">└─────────────────────  分钟           (0..59)
+</span><span class="code-line">│    │    │    │    └─  星期几         <span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">=</span>周日 <span class="token punctuation">..</span> <span class="token assign-left variable">6</span><span class="token operator">=</span>星期六<span class="token punctuation">)</span>
+</span><span class="code-line">│    │    │    └──────  月            <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">12</span><span class="token punctuation">)</span>
+</span><span class="code-line">│    │    └───────────  月份中的某天    <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">31</span><span class="token punctuation">)</span>
+</span><span class="code-line">│    └────────────────  小时           <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">..</span><span class="token number">23</span><span class="token punctuation">)</span>
+</span><span class="code-line">└─────────────────────  分钟           <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">..</span><span class="token number">59</span><span class="token punctuation">)</span>
 </span></code></pre>
 <hr>
 
@@ -93,8 +93,13 @@
 
 
 
-<table class="show-header "><thead><tr><th>字段</th><th>范围</th><th>特殊字符</th></tr></thead><tbody><tr><td>分钟 Minute</td><td>0 - 59</td><td>, - * /</td></tr><tr><td>小时 Hour</td><td>0 - 23</td><td>, - * /</td></tr><tr><td>月份中的某天</td><td>1 - 31</td><td>, - * ? / L W</td></tr><tr><td>月 Month</td><td>1 - 12</td><td>, - * /</td></tr><tr><td>星期几</td><td>0 - 6</td><td>, - * ? / L #</td></tr></tbody></table>
-<!--rehype:className=show-header -->
+
+
+
+
+
+<table class="show-header"><thead><tr><th>字段</th><th>范围</th><th>特殊字符</th></tr></thead><tbody><tr><td>分钟 Minute</td><td>0 - 59</td><td><kbd>,</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>/</kbd></td></tr><tr><td>小时 Hour</td><td>0 - 23</td><td><kbd>,</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>/</kbd></td></tr><tr><td>月份中的某天</td><td>1 - 31</td><td><kbd>,</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>?</kbd> <kbd>/</kbd> <kbd>L</kbd> <kbd>W</kbd></td></tr><tr><td>月 Month</td><td>1 - 12</td><td><kbd>,</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>/</kbd></td></tr><tr><td>星期几</td><td>0 - 6</td><td><kbd>,</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>?</kbd> <kbd>/</kbd> <kbd>L</kbd> <kbd>#</kbd></td></tr><tr><td>年 Year</td><td>1970–2099</td><td><kbd>,</kbd> <kbd>-</kbd></td></tr></tbody></table>
+<!--rehype:className=show-header-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
 
 
@@ -153,7 +158,7 @@
 
 
 
-<table><thead><tr><th>Example</th><th>Description</th></tr></thead><tbody><tr><td><code>*/15 * * * *</code></td><td>每 15 分钟</td></tr><tr><td><code>0 * * * *</code></td><td>每隔一小时</td></tr><tr><td><code>0 */2 * * *</code></td><td>每 2 小时</td></tr><tr><td><code>15 2 * * *</code></td><td>每天凌晨 2 点 15 分</td></tr><tr><td><code>15 2 * * ?</code></td><td>每天凌晨 2 点 15 分</td></tr><tr><td><code>10 9 * * 5</code></td><td>每周五上午 9:10</td></tr><tr><td><code>0 0 * * 0</code></td><td>每个星期日的午夜</td></tr><tr><td><code>15 2 * * 1L</code></td><td>每月最后一个星期一凌晨 2 点 15 分</td></tr><tr><td><code>15 0 * * 4#2</code></td><td>每个月的第二个星期四早上 00:15</td></tr><tr><td><code>0 0 0 1 * *</code></td><td>每个月的 1 日（每月）</td></tr><tr><td><code>0 0 0 1 1 *</code></td><td>每年 1 月 1 日（每年）</td></tr><tr><td><code>@reboot</code></td><td>每次重启 <em>(非标准)</em></td></tr></tbody></table>
+<table><thead><tr><th>Example</th><th>Description</th></tr></thead><tbody><tr><td><code>*/15 * * * *</code></td><td>每 15 分钟</td></tr><tr><td><code>0 * * * *</code></td><td>每隔一小时</td></tr><tr><td><code>0 */2 * * *</code></td><td>每 2 小时</td></tr><tr><td><code>15 2 * * *</code></td><td>每天凌晨 2 点 15 分</td></tr><tr><td><code>15 2 * * ?</code></td><td>每天凌晨 2 点 15 分</td></tr><tr><td><code>10 9 * * 5</code></td><td>每周五上午 9:10</td></tr><tr><td><code>0 0 * * 0</code></td><td>每个星期日的午夜</td></tr><tr><td><code>15 2 * * 1L</code></td><td>每月最后一个星期一凌晨 2 点 15 分</td></tr><tr><td><code>15 0 * * 4#2</code></td><td>每个月的第二个星期四早上 00:15</td></tr><tr><td><code>0 0 0 1 * *</code></td><td>每个月的 1 日(每月)</td></tr><tr><td><code>0 0 0 1 1 *</code></td><td>每年 1 月 1 日(每年)</td></tr><tr><td><code>@reboot</code></td><td>每次重启 <em>(非标准)</em></td></tr></tbody></table>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="特殊字符串"><a aria-hidden="true" tabindex="-1" href="#特殊字符串"><span class="icon icon-link"></span></a>特殊字符串</h3><div class="wrap-body">
 
 
@@ -196,7 +201,7 @@
 
 
 
-<table class="show-header "><thead><tr><th>特殊字符串</th><th>意义</th></tr></thead><tbody><tr><td>@reboot</td><td>运行一次，在系统启动时 <em>（非标准）</em></td></tr><tr><td>@yearly</td><td>每年运行一次，“0 0 1 1 *” <em>（非标准）</em></td></tr><tr><td>@annually</td><td>（与@yearly 相同）<em>（非标准）</em></td></tr><tr><td>@monthly</td><td>每月运行一次，“0 0 1 * *” <em>（非标准）</em></td></tr><tr><td>@weekly</td><td>每周运行一次，“0 0 * * 0” <em>（非标准）</em></td></tr><tr><td>@daily</td><td>每天运行一次，“0 0 * * *” <em>（非标准）</em></td></tr><tr><td>@midnight</td><td>（与@daily 相同）<em>（非标准）</em></td></tr><tr><td>@hourly</td><td>每小时运行一次，“0 * * * *” <em>（非标准）</em></td></tr></tbody></table>
+<table class="show-header "><thead><tr><th>特殊字符串</th><th>意义</th></tr></thead><tbody><tr><td>@reboot</td><td>运行一次，在系统启动时 <em>(非标准)</em></td></tr><tr><td>@yearly</td><td>每年运行一次，“0 0 1 1 *” <em>(非标准)</em></td></tr><tr><td>@annually</td><td>(与@yearly 相同)<em>(非标准)</em></td></tr><tr><td>@monthly</td><td>每月运行一次，“0 0 1 * *” <em>(非标准)</em></td></tr><tr><td>@weekly</td><td>每周运行一次，“0 0 * * 0” <em>(非标准)</em></td></tr><tr><td>@daily</td><td>每天运行一次，“0 0 * * *” <em>(非标准)</em></td></tr><tr><td>@midnight</td><td>(与@daily 相同)<em>(非标准)</em></td></tr><tr><td>@hourly</td><td>每小时运行一次，“0 * * * *” <em>(非标准)</em></td></tr></tbody></table>
 <!--rehype:className=show-header -->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="crontab-命令"><a aria-hidden="true" tabindex="-1" href="#crontab-命令"><span class="icon icon-link"></span></a>Crontab 命令</h3><div class="wrap-body">
 
@@ -224,11 +229,10 @@
 
 
 
-
-
-
-
-<table><thead><tr><th>-</th><th>-</th></tr></thead><tbody><tr><td><code>crontab -e</code></td><td>如果不存在，则编辑或创建一个 crontab 文件。</td></tr><tr><td><code>crontab -l</code></td><td>显示 crontab 文件。</td></tr><tr><td><code>crontab -r</code></td><td>删除 crontab 文件。</td></tr><tr><td><code>crontab -v</code></td><td>显示您上次编辑 crontab 文件的时间。 <em>（非标准）</em></td></tr><tr><td>`echo "@reboot echo hi"</td><td>crontab`</td></tr></tbody></table>
+<table><thead><tr><th>-</th><th>-</th></tr></thead><tbody><tr><td><code>crontab -e</code></td><td>如果不存在，则编辑或创建一个 crontab 文件</td></tr><tr><td><code>crontab -l</code></td><td>显示 crontab 文件</td></tr><tr><td><code>crontab -r</code></td><td>删除 crontab 文件</td></tr><tr><td><code>crontab -v</code></td><td>显示您上次编辑 crontab 文件的时间 <em>(非标准)</em></td></tr></tbody></table>
+<p>轻松添加任务</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">"@reboot echo hi"</span> <span class="token punctuation">\</span><span class="token operator">|</span> <span class="token function">crontab</span>
+</span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="特殊字符"><a aria-hidden="true" tabindex="-1" href="#特殊字符"><span class="icon icon-link"></span></a>特殊字符</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 
@@ -268,7 +272,7 @@
 
 
 
-<table class="show-header auto-wrap"><thead><tr><th>特殊字符</th><th>说明</th></tr></thead><tbody><tr><td><code>星号(*)</code></td><td>匹配字段中的所有值或任何可能的值。</td></tr><tr><td><code>横杆(-)</code></td><td>用于定义范围。例如：第 5 个字段（星期几）中的 1-5 每个工作日，即星期一到星期五</td></tr><tr><td><code>斜线 (/)</code></td><td>第一个字段（分钟）/15 表示每十五分钟或范围的增量。</td></tr><tr><td><code>逗号(,)</code></td><td>用于分隔项目。例如：第二个字段（小时）中的 2、6、8 在凌晨 2 点、早上 6 点和早上 8 点执行</td></tr><tr><td><code>L</code></td><td>仅允许用于 <code>月份中的某天</code> 或 <code>星期几</code> 字段，<code>星期几</code> 中的 <code>2L</code> 表示每个月的最后一个星期二</td></tr><tr><td><code>井号 (#)</code></td><td>仅允许用于 <code>星期几</code> 字段，后面必须在 1 到 5 的范围内。例如，<code>4#1</code> 表示给定月份的“第一个星期四”。</td></tr><tr><td><code>问号(?)</code></td><td>可以代替“*”并允许用于月份和星期几。使用仅限于 cron 表达式中的 <code>月份中的某天</code> 或 <code>星期几</code>。</td></tr></tbody></table>
+<table class="show-header auto-wrap"><thead><tr><th>特殊字符</th><th>说明</th></tr></thead><tbody><tr><td><code>星号(*)</code></td><td>匹配字段中的所有值或任何可能的值。</td></tr><tr><td><code>横杆(-)</code></td><td>用于定义范围。例如：第 5 个字段(星期几)中的 1-5 每个工作日，即星期一到星期五</td></tr><tr><td><code>斜线 (/)</code></td><td>第一个字段(分钟)/15 表示每十五分钟或范围的增量。</td></tr><tr><td><code>逗号(,)</code></td><td>用于分隔项目。例如：第二个字段(小时)中的 2、6、8 在凌晨 2 点、早上 6 点和早上 8 点执行</td></tr><tr><td><code>L</code></td><td>仅允许用于 <code>月份中的某天</code> 或 <code>星期几</code> 字段，<code>星期几</code> 中的 <code>2L</code> 表示每个月的最后一个星期二</td></tr><tr><td><code>井号 (#)</code></td><td>仅允许用于 <code>星期几</code> 字段，后面必须在 1 到 5 的范围内。例如，<code>4#1</code> 表示给定月份的“第一个星期四”。</td></tr><tr><td><code>问号(?)</code></td><td>可以代替“*”并允许用于月份和星期几。使用仅限于 cron 表达式中的 <code>月份中的某天</code> 或 <code>星期几</code>。</td></tr></tbody></table>
 <!--rehype:className=show-header auto-wrap-->
 </div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
