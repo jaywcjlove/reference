@@ -249,7 +249,7 @@ $ npx react-native init AwesomeTSProject --template react-native-template-typesc
 ```
 <!--rehype:className=wrap-text-->
 
-使用 `npx` 直接创建一个  [React Native]((https://reactnative.dev/docs/environment-setup#creating-a-new-application)) 应用
+使用 `npx` 直接创建一个  [React Native](https://reactnative.dev/docs/environment-setup#creating-a-new-application) 应用
 
 ### 创建一个 React 应用
 
