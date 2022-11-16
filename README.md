@@ -233,6 +233,19 @@ Quick Reference
 贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成
 <!--rehype:style=padding-top:1rem;-->
 
+
+## 国内镜像
+<!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
+
+由于中国国内访问，时常打不开，你可以访问下面镜像网站。
+
+[ecdata.cn](http://ref.ecdata.cn/)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));height: 3rem;-->
+[mofe.io](http://quickref.mofe.io)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));height: 3rem;-->
+<!--rehype:class=home-card&style=margin:1.2rem 0;display: flex;justify-content: center;-->
+
+如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 gh-pages 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
+
+
 <!--rehype:ignore:start-->
 ## License
 
