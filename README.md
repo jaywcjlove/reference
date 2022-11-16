@@ -34,6 +34,7 @@ Quick Reference
 [Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [C](./docs/c.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));-->
 [C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13/var(\-\-bg\-opacity));&class=contributing-->
+[CPP](./docs/cpp.md)<!--rehype:style=background: rgb(6 147 13/var(\-\-bg\-opacity));&class=contributing-->
 [Dart](./docs/dart.md)<!--rehype:style=background: rgb(64 196 255/var(\-\-bg\-opacity));-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));&class=tag&data-lang=Docker-->

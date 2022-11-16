@@ -440,4 +440,4 @@ ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-
 
 - [npm 仓库、网站和命令行界面的文档](https://docs.npmjs.com/) _(npmjs.com)_
 - [npmmirror 中国镜像站](https://npmmirror.com/) _(npmmirror.com)_
-- [](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/package-managers/javascript/npm/commands/npx.html) _(michaelcurrin.github.io)_
+- [Dev Cheatsheets npx](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/package-managers/javascript/npm/commands/npx.html) _(michaelcurrin.github.io)_
