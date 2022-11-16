@@ -301,7 +301,7 @@ System.out.println(concat);
 Java 数组
 -------
 
-### 申明 Declare
+### 声明 Declare
 
 ```java
 int[] a1;
