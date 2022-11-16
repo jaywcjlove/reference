@@ -155,6 +155,47 @@ $ nrm ls
 $ nrm use cnpm       
 ```
 
+### init
+
+用于设置新的或现有的 `npm` 包
+
+```bash
+$ npm init <package-spec> # (如同 `npx <package-spec>)
+$ npm init <@scope>       # (如同 `npx <@scope>/create`)
+```
+
+别名: `create`, `innit`
+
+:- | --
+:- | --
+`npm init foo` | `npm exec create-foo`
+`npm init @usr/foo` | `npm exec @usr/create-foo`
+`npm init @usr` | `npm exec @usr/create`
+`npm init @usr@2.0.0` | `npm exec @usr/create@2.0.0`
+`npm init @usr/foo@2.0.0` | `npm exec @usr/create-foo@2.0.0`
+<!--rehype:className=left-align-->
+
+### exec
+
+命令允许您在与通过 `npm run` 运行它类似的上下文中从 npm 包
+
+```bash
+$ npm exec -- <pkg>[@<version>] [args...]
+$ npm exec --package=<pkg>[@<version>] -- <cmd> [args...]
+$ npm exec -c '<cmd> [args...]'
+$ npm exec --package=foo -c '<cmd> [args...]'
+```
+
+别名: x
+
+```bash
+$ npm exec --package yo --package generator-node --call "yo node"
+
+$ npm exec --package=foo -- bar --bar-argument
+# ~ or ~
+$ npx --package=foo bar --bar-argument
+```
+
 npx
 ---
 
