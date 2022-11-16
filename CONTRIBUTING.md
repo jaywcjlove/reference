@@ -135,9 +135,6 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/ryanhex53" title="ryanhex53">
   <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
 </a>
-<a href="https://github.com/xing133" title="xing133">
-  <img src="https://avatars.githubusercontent.com/u/5336490?v=4" width="42;" alt="xing133"/>
-</a>
 <a href="https://github.com/zxx-457" title="zxx-457">
   <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
 </a>
