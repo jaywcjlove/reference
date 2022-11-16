@@ -99,6 +99,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/catcto" title="喵仙人">
   <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
 </a>
+<a href="https://github.com/13812700839" title="13812700839">
+  <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="13812700839"/>
+</a>
 <a href="https://github.com/CharlotteZeng" title="Chart">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
 </a>
@@ -126,6 +129,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
 </a>
+<a href="https://github.com/larry-xue" title="larry">
+  <img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="larry"/>
+</a>
 <a href="https://github.com/liliangrong777" title="liliangrong777">
   <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
 </a>
@@ -134,6 +140,12 @@ npm run start  # 监听 md 文件编译输出 HTML
 </a>
 <a href="https://github.com/ryanhex53" title="ryanhex53">
   <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
+</a>
+<a href="https://github.com/wjjwkwindy" title="wjjwkwindy">
+  <img src="https://avatars.githubusercontent.com/u/9508591?v=4" width="42;" alt="wjjwkwindy"/>
+</a>
+<a href="https://github.com/xing133" title="xing133">
+  <img src="https://avatars.githubusercontent.com/u/5336490?v=4" width="42;" alt="xing133"/>
 </a>
 <a href="https://github.com/zxx-457" title="zxx-457">
   <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
