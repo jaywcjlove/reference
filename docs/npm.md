@@ -21,6 +21,7 @@ npm 备忘清单
 `npm install <package_name>@<tag>` | 使用 `dist-tags` 安装包
 `npm install -g <package_name>`    | 全局安装包
 `npm uninstall <package_name>`     | 卸载包
+`npm uninstall -g <package_name>`  | 全局卸载包
 <!--rehype:class=auto-wrap-->
 
 ### 安装
