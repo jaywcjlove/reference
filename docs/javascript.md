@@ -1276,7 +1276,7 @@ array.map(function(value){
 // zhangsan x3 
 ```
 
-其中一些全局对象，如 setTimeout 等，它们和未显示绑定 this 的数组一样，都会指向全局对象（`Window`）
+其中一些全局对象，如 setTimeout 等，它们和未显示绑定 this 的部分数组方法一样，都会指向全局对象（`Window`）
 
 ```js
 setTimeout(function(){ 
