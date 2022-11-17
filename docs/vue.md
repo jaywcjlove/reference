@@ -68,8 +68,9 @@ $ npm run build
 import { createApp } from 'vue'
 
 const app = createApp({
-  data() {
-    return { count: 0 }
+  setup() {
+    const count = ref(0)
+    return { count }
   }
 })
 app.mount('#app')
@@ -91,11 +92,13 @@ app.mount('#app')
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <div id="app">{{ message }}</div>
 <script>
-  const { createApp } = Vue
+  const { createApp, ref } = Vue
   createApp({
-    data() {
+    setup() {
+			const message = ref('Hello Vue!')
+      
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
@@ -111,8 +114,10 @@ app.mount('#app')
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   createApp({
     data() {
+			const message = ref('Hello Vue!')
+      
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
@@ -283,10 +288,14 @@ v-on:submit.prevent="onSubmit"
 ---
 
 ```js {2,4}
+import { ref } from 'vue'
+
 export default {
-  data() {
+  setup() {
+    const count = ref(0)
+    
     return {
-      count: 0
+      count
     }
   },
 }
@@ -303,38 +312,43 @@ export default {
 ---
 
 ```js {8-10}
+import { ref } from 'vue'
+
 export default {
-  data() {
+  setup() {
+    const count = ref(0)
+    
+    const increment = () => {
+      count.value++
+    }
+    
     return {
-      count: 0
+      count,
+      increment
     }
   },
-  methods: {
-    increment() {
-      this.count++
-    }
-  }
 }
 ```
 
 ### 有状态方法
 
 ```js
+import { onMounted, onUnmounted } from 'vue'
 import { debounce } from 'lodash-es'
+
 export default {
-  created() {
-    // 每个实例都有了自己的预置防抖的处理函数
-    this.debouncedClick = debounce(this.click, 500)
-  },
-  unmounted() {
-    // 最好是在组件卸载时
-    // 清除掉防抖计时器
-    this.debouncedClick.cancel()
-  },
-  methods: {
-    click() {
-      // ... 对点击的响应 ...
-    }
+  setup(){
+    const click = () => {}
+    
+    let debouncedClick = () => {}
+    
+    onMounted(() => {
+      debouncedClick = debounce(click, 500)
+    })
+    
+    onUnmounted(() => {
+      debouncedClick.cancel();
+    })
   }
 }
 ```
