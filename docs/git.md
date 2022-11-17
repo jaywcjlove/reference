@@ -185,6 +185,7 @@ $ git tag my_tag
 ```shell
 $ git checkout -b <branch-name> origin/<branch-name>
 ```
+<!--rehype:className=wrap-text-->
 
 ### 临时提交
 
@@ -256,7 +257,7 @@ $ git show [SHA]
 行尾空格 | 默认被忽略，可使用`\`进行转义
 行首空格 | 被正常处理，不会被忽略
 
-当前 `.gitignore` 文件定义规则的优先级高于上级路径 `.gitignore` 定义规则的优先级；后定义的规则优先级高于前面定义规则的优先级。
+当前 `.gitignore` 文件定义规则的优先级高于上级路径 `.gitignore` 定义规则的优先级；后定义的规则优先级高于前面定义规则的优先级
 
 ```gitignore showLineNumbers
 # 忽略当前目录logs文件夹下的全部内容
@@ -389,6 +390,7 @@ $ git log --stat -M
 ```
 
 ### git 配置 ssh 代理
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
 $ cat ~/.ssh/config
@@ -712,6 +714,7 @@ $ git blame <file-name>
 ```bash
 $ git commit --amend --author='Author Name <email@address.com>'
 ```
+<!--rehype:className=wrap-text-->
 
 ### 修改远程仓库的 url
 
@@ -791,6 +794,7 @@ $ git rebase --autostash
 ```bash
 $ git fetch origin pull/<id>/head:<branch-name>
 ```
+<!--rehype:className=wrap-text-->
 
 ### 详细展示一行中的修改
 
