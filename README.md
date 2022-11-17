@@ -202,6 +202,9 @@ Quick Reference
 <a href="https://github.com/cool9203" title="cool9203">
   <img src="https://avatars.githubusercontent.com/u/29609607?v=4" width="42;" alt="cool9203"/>
 </a>
+<a href="https://github.com/godotc" title="godotc">
+  <img src="https://avatars.githubusercontent.com/u/79260851?v=4" width="42;" alt="godotc"/>
+</a>
 <a href="https://github.com/hua03" title="hua03">
   <img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/>
 </a>
@@ -213,6 +216,9 @@ Quick Reference
 </a>
 <a href="https://github.com/liliangrong777" title="liliangrong777">
   <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
+</a>
+<a href="https://github.com/mofelee" title="mofelee">
+  <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
 </a>
 <a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
@@ -234,6 +240,9 @@ Quick Reference
 </a>
 <a href="https://github.com/lvzhenbo" title="吕振波">
   <img src="https://avatars.githubusercontent.com/u/32427677?v=4" width="42;" alt="吕振波"/>
+</a>
+<a href="https://github.com/lisheng741" title="芦荟柚子茶">
+  <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
 </a><!--GAMFC-END-->
 
 贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成
