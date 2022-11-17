@@ -3,6 +3,7 @@ import rehypeDocument from 'rehype-document';
 import remarkGemoji from 'remark-gemoji';
 import rehypeRaw from 'rehype-raw';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { getCodeString } from 'rehype-rewrite';
 import rehypeSlug from 'rehype-slug';
 import { htmlTagAddAttri } from './nodes/htmlTagAddAttri.mjs';
 import { footer } from './nodes/footer.mjs';
@@ -26,6 +27,14 @@ export function create(str = '', options = {}) {
     .replace(/\[([\s\S]*?)?\]\(([\s\S]*?)?\)/g, '$1')
     .replace(/\n/, '');
   const subTitle = options.filename && !options.isHome ? `${options.filename} cheatsheet & ` : '';
+  /** 用于搜索数据 */
+  const detailData = {
+    title: title.replace(/\n/g, ''),
+    path: '',
+    intro: description,
+    icon: '',
+    sections: [],
+  };
   const mdOptions = {
     showLineNumbers: false,
     hastNode: false,
@@ -66,7 +75,10 @@ export function create(str = '', options = {}) {
       return plugins;
     },
     rewrite: (node, index, parent) => {
-      rehypeTitle(node, options.filename);
+      const iconName = rehypeTitle(node, options.filename);
+      if (iconName) {
+        detailData.icon = iconName;
+      }
       homeCardIcons(node, parent, options.isHome);
       tooltips(node, index, parent);
       htmlTagAddAttri(node, options);
@@ -77,6 +89,13 @@ export function create(str = '', options = {}) {
           if (!options.isHome) {
             const tocsMenus = getTocsTitleNode([...tocsData]);
             node.children = addTocsInWarp([...tocsData], getTocsTitleNodeWarpper(tocsMenus));
+            tocsMenus.forEach((menu) => {
+              detailData.sections.push({
+                a: menu?.properties?.href,
+                t: getCodeString(menu.children),
+                l: menu?.properties['data-num'],
+              });
+            });
           } else {
             node.children = tocsData;
           }
@@ -87,6 +106,6 @@ export function create(str = '', options = {}) {
       }
     },
   };
-
-  return markdown(str, mdOptions);
+  const htmlStr = markdown(str, mdOptions);
+  return { html: htmlStr, data: detailData };
 }
