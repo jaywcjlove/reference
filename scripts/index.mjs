@@ -45,7 +45,9 @@ export async function createHTML(files = [], num = 0) {
     searchData[options.filename] = data;
     searchData.name = options.filename;
     await fs.writeJSON(SEARCH_DATA_CACHE, searchData);
-    const resultSearchData = Object.keys({ ...searchData }).map((name) => searchData[name]);
+    const resultSearchData = Object.keys({ ...searchData })
+      .map((name) => searchData[name])
+      .filter((item) => typeof item !== 'string');
     await fs.writeJSON(SEARCH_DATA, resultSearchData);
   }
   await fs.writeFile(outputHTMLPath, html);

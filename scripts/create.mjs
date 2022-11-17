@@ -89,12 +89,18 @@ export function create(str = '', options = {}) {
           if (!options.isHome) {
             const tocsMenus = getTocsTitleNode([...tocsData]);
             node.children = addTocsInWarp([...tocsData], getTocsTitleNodeWarpper(tocsMenus));
-            tocsMenus.forEach((menu) => {
-              detailData.sections.push({
-                a: menu?.properties?.href,
-                t: getCodeString(menu.children),
-                l: menu?.properties['data-num'],
-              });
+            tocsMenus.forEach((menu, idx) => {
+              const level = menu?.properties['data-num'];
+              if (idx + 1 === tocsMenus.length && level === 2) {
+                return;
+              }
+              if (level < 4) {
+                detailData.sections.push({
+                  a: menu?.properties?.href,
+                  t: getCodeString(menu.children),
+                  l: menu?.properties['data-num'],
+                });
+              }
             });
           } else {
             node.children = tocsData;
