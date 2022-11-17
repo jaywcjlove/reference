@@ -188,15 +188,16 @@ lengthOfString.Contains("How"); // => true
 ### 频繁字符串拼接
 
 ```cs
-// 对于频繁拼接字符串的场景（如：成百上千次循环）
-// 使用 System.Text.StringBuilder 提升性能
 var sb = new StringBuilder();
 for (int i = 0; i < 100; i++)
 {
     sb.Append(i.ToString());
 }
-Console.WriteLine(sb.ToString()); // => 123456789....
+Console.WriteLine(sb.ToString());
+// => 123456789....
 ```
+
+对于频繁拼接字符串的场景（如：成百上千次循环），使用 `System.Text.StringBuilder` 提升性能
 
 <!--rehype:className=wrap-text-->
 
