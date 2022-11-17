@@ -83,4 +83,97 @@ npm run build  # 编译输出 HTML
 npm run start  # 监听 md 文件编译输出 HTML
 ```
 
-- 或者你也可以使用 `pnpm` 或者 `yarn` 做为包管理器
+或者你也可以使用 `pnpm` 或者 `yarn` 做为包管理器
+
+
+## 贡献
+
+请参阅[贡献指南](./CONTRIBUTING.md)了解如何开始。一如既往，感谢我们出色的贡献者！
+
+<!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调™">
+  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调™"/>
+</a>
+<a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
+  <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
+</a>
+<a href="https://github.com/catcto" title="喵仙人">
+  <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
+</a>
+<a href="https://github.com/13812700839" title="花殇">
+  <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
+</a>
+<a href="https://github.com/Smartdousha" title="Anko">
+  <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
+</a>
+<a href="https://github.com/CharlotteZeng" title="Chart">
+  <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
+</a>
+<a href="https://github.com/demigodliu" title="DemigodLiu">
+  <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
+</a>
+<a href="https://github.com/jasnzhuang" title="Jason Zhuang">
+  <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
+</a>
+<a href="https://github.com/JetSquirrel" title="JetSquirrel">
+  <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
+</a>
+<a href="https://github.com/HanaNoryu" title="Noryu">
+  <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
+</a>
+<a href="https://github.com/chyok" title="chyok">
+  <img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/>
+</a>
+<a href="https://github.com/gaoxiaoduan" title="coderduan">
+  <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="coderduan"/>
+</a>
+<a href="https://github.com/cool9203" title="cool9203">
+  <img src="https://avatars.githubusercontent.com/u/29609607?v=4" width="42;" alt="cool9203"/>
+</a>
+<a href="https://github.com/godotc" title="godotc">
+  <img src="https://avatars.githubusercontent.com/u/79260851?v=4" width="42;" alt="godotc"/>
+</a>
+<a href="https://github.com/hua03" title="hua03">
+  <img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/>
+</a>
+<a href="https://github.com/hweining" title="hweining">
+  <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
+</a>
+<a href="https://github.com/larry-xue" title="larry">
+  <img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="larry"/>
+</a>
+<a href="https://github.com/liliangrong777" title="liliangrong777">
+  <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
+</a>
+<a href="https://github.com/mofelee" title="mofelee">
+  <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
+</a>
+<a href="https://github.com/onewesong" title="onewesong">
+  <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
+</a>
+<a href="https://github.com/partoneplay" title="partoneplay">
+  <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
+</a>
+<a href="https://github.com/ryanhex53" title="ryanhex53">
+  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
+</a>
+<a href="https://github.com/wjjwkwindy" title="wjjwkwindy">
+  <img src="https://avatars.githubusercontent.com/u/9508591?v=4" width="42;" alt="wjjwkwindy"/>
+</a>
+<a href="https://github.com/xing133" title="xing133">
+  <img src="https://avatars.githubusercontent.com/u/5336490?v=4" width="42;" alt="xing133"/>
+</a>
+<a href="https://github.com/zxx-457" title="zxx-457">
+  <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
+</a>
+<a href="https://github.com/lvzhenbo" title="吕振波">
+  <img src="https://avatars.githubusercontent.com/u/32427677?v=4" width="42;" alt="吕振波"/>
+</a>
+<a href="https://github.com/lisheng741" title="芦荟柚子茶">
+  <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
+</a><!--GAMFC-END-->
+
+上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
+
+## License
+
+MIT © [Kenny Wong](https://github.com/jaywcjlove)

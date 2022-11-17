@@ -10,6 +10,17 @@ body {
     'Segoe UI Emoji';
 }
 
+::-webkit-scrollbar {
+  background: transparent;
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-fg-muted);
+  border-radius: 10px;
+}
+
 [data-color-mode*='dark'] body .dark {
   display: none;
 }
@@ -162,14 +173,17 @@ menu {
   padding: 0;
 }
 
-yel {
-  color: var(--color-prettylights-syntax-variable);
+yel,
+yel code {
+  color: var(--color-prettylights-syntax-variable) !important;
 }
-red {
-  color: var(--color-danger-fg);
+red,
+red code {
+  color: var(--color-danger-fg) !important;
 }
-pur {
-  color: var(--color-prettylights-syntax-entity);
+pur,
+pur code {
+  color: var(--color-prettylights-syntax-entity) !important;
 }
 
 :is(.h3wrap-body, .wrap-body) p > code,
@@ -718,6 +732,16 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
   padding-bottom: 0.75rem;
   color: var(--color-fg-subtle);
   background-color: var(--color-bg-subtle);
+}
+
+.wrap-header.h3wrap > .wrap-body > p:only-child,
+.h3wrap-body p:only-child {
+  background-color: transparent !important;
+  border-radius: 0.5rem;
+}
+
+.wrap-header.h3wrap > .wrap-body > p:only-child:before {
+  background-color: transparent !important;
 }
 
 .wrap-header.h3wrap > .wrap-body > p:first-child:before {

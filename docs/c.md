@@ -44,7 +44,7 @@ int myNum3 = 15;  // myNum3 值为 15
 myNum3 = 10;      // 现在 myNum3 值为 10
 
 float myFloatNum = 5.99; // 浮点数
-char myLetter = 'D';     // 字符串
+char myLetter = 'D';     // 字符
 
 int x = 5;
 int y = 6;

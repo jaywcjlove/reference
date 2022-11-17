@@ -107,7 +107,7 @@ export function getTocsTree(arr = [], result = []) {
               {
                 type: 'element',
                 tagName: 'div',
-                properties: { class: 'wrap-body' },
+                properties: { class: ['wrap-body'] },
                 children: [...header],
               },
             ],
@@ -133,7 +133,12 @@ export function getTocsTree(arr = [], result = []) {
               children: [...resultChilds],
             });
           } else {
+            panle.children[0].children[1].properties?.class.push(bodyClass);
             panle.children[0].children[1].children = panle.children[0].children[1].children.concat(resultChilds);
+            if (panle.children[0].children[1].properties && bodyStyle) {
+              const initStyle = panle.children[0].children[1].properties?.style || '';
+              panle.children[0].children[1].properties.style = initStyle + bodyStyle;
+            }
           }
         }
       }

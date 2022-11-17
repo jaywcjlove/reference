@@ -29,7 +29,7 @@ echo $NAME      # => John (变量)
 echo "$NAME"    # => John (变量)
 echo '$NAME'    # => $NAME (确切的字符串)
 echo "${NAME}!" # => John! (变量)
-NAME = "John"   # => Error (关于空间)
+NAME = "John"   # => Error (关于空格)
 ```
 
 ### 注释
