@@ -108,6 +108,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
 </a>
+<a href="https://github.com/Alex-Programer" title="Alex">
+  <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
+</a>
 <a href="https://github.com/Smartdousha" title="Anko">
   <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
 </a>
@@ -122,6 +125,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 </a>
 <a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
+</a>
+<a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
+  <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
 </a>
 <a href="https://github.com/HanaNoryu" title="Noryu">
   <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
