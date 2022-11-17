@@ -81,7 +81,7 @@ export function create(str = '', options = {}) {
             node.children = tocsData;
           }
           node.children.unshift(header(options));
-          node.children.push(footer());
+          node.children.push(footer(options));
           node.children.push(anchorPoint());
         }
       }
