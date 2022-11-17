@@ -160,7 +160,7 @@ abc.endsWith("wxy", abc.length - 1);
 // trim、trimEnd 和 trimStart 用于去除首尾空格
 " ab c ".trim(); // "ab c"
 // 数字转为十六进制 (16)、八进制 (8) 或二进制 (2)
-128.toString(16);
+(128).toString(16);
 ```
 
 ### 数字
