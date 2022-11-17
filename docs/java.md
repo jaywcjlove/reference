@@ -783,6 +783,26 @@ try {
 }
 ```
 
+### 反射
+
+```java
+/**
+* 利用反射动态加载依赖库
+* java9及以上版本可用
+* @param jar jar文件
+*/
+Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+method.setAccessible(true);
+MethodHandle addURL = lookup.unreflect(method);
+URL url = jar.toURI().toURL();
+URLClassLoader urlClassLoader = new URLClassLoader(new URL[] {url});
+addURL.invoke(urlClassLoader, url);
+//java8
+Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+method.setAccessible(true);
+method.invoke(classLoader, url);
+```
+
 ### util工具类
 
 - `ArrayDeque` 提供 resizable-array 并实现 Deque 接
