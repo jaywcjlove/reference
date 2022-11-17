@@ -337,16 +337,16 @@ const school = <div>学校</div>;
 
 类 | 说明
 ---- | ----
-`<!--rehype:className=wrap-text-->` | 强制换行
-`<!--rehype:className=show-header-->` | 展示表格表头
-`<!--rehype:className=shortcuts-->` | 快捷键样式
-`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸自动换行
-`<!--rehype:className=style-list-arrow-->` | 列表箭头样式展示表格
-`<!--rehype:className=style-list-->` | 列表样式展示表格
-`<!--rehype:className=left-align-->` | 表格末尾列左对齐
-`<!--rehype:className=style-none-->` | \<li> 没有标记
-`<!--rehype:className=style-timeline-->` | 时间轴样式
-`<!--rehype:className=style-arrow-->` | 箭头标记
+`<!--rehype:className=wrap-text-->` | 强制`换行`
+`<!--rehype:className=show-header-->` | 展示表格`表头`
+`<!--rehype:className=shortcuts-->` | `快捷键`样式
+`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸`自动换行`
+`<!--rehype:className=style-list-arrow-->` | 列表`箭头`样式展示表格
+`<!--rehype:className=style-list-->` | `列表`样式展示表格
+`<!--rehype:className=left-align-->` | 表格末尾列`左对齐`
+`<!--rehype:className=style-none-->` | \<li> 没有标记样式
+`<!--rehype:className=style-timeline-->` | `时间轴`样式
+`<!--rehype:className=style-arrow-->` | `箭头`标记
 
 ### KaTeX 数学渲染
 
