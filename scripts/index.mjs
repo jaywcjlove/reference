@@ -42,7 +42,7 @@ export async function createHTML(files = [], num = 0) {
     const searchData = await fs.readJSON(SEARCH_DATA);
     data.path = path.relative(OUTOUT, outputHTMLPath);
     searchData[options.filename] = data;
-    await fs.writeJSON(SEARCH_DATA, searchData, { spaces: 2 });
+    await fs.writeJSON(SEARCH_DATA, searchData);
   }
   await fs.writeFile(outputHTMLPath, html);
   console.log(`♻️ \x1b[32;1m ${path.relative(OUTOUT, outputHTMLPath)} \x1b[0m`);
