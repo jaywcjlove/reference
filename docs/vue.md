@@ -419,6 +419,66 @@ export default defineComponent({
   },
 });
 ```
+
+响应式进阶 —— wath和computed
+---
+
+### 监听状态
+
+```js
+<script setup>
+import { ref, watch } from 'vue';
+
+const count = ref(0)
+const isEvent = ref(false)
+
+function increment() {
+  state.count++
+}
+
+watch(count, function() {
+  isEvent.value = count.value % 2 === 0
+})
+</script>
+
+<template>
+  <button @click="increment">
+    {{ count }}
+  </button>
+  <p>is event: {{ isEvent ? 'yes' : 'no' }}</p>
+</template>
+```
+
+### 立即监听状态
+
+```js
+watch(count, function() {
+  isEvent.value = count.value % 2 === 0
+}, {
+  // 上例中的 watch 不会立即执行，导致 isEvent 状态的初始值不准确。配置立即执行，会在一开始的时候立即执行一次
+  immediate: true
+})
+```
+
+### 计算状态
+
+```js
+<script setup>
+import { ref, computed } from 'vue';
+
+const text = ref('')
+
+// computed 的回调函数里，会根据已有并用到的状态计算出新的状态
+const capital = computed(function(){
+  return text.value.toUpperCase();
+})
+</script>
+
+<template>
+  <input v-model="text" />
+  <p>to capital: {{ capital }}</p>
+</template>
+```
 <!--rehype:className=wrap-text -->
 
 API 参考
