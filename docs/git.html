@@ -133,8 +133,9 @@
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> tag my_tag
 </span></code></pre>
 <p>从远程分支中创建并切换到本地分支</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> checkout <span class="token parameter variable">-b</span> <span class="token operator">&#x3C;</span>branch-name<span class="token operator">></span> origin/<span class="token operator">&#x3C;</span>branch-name<span class="token operator">></span>
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> checkout <span class="token parameter variable">-b</span> <span class="token operator">&#x3C;</span>branch-name<span class="token operator">></span> origin/<span class="token operator">&#x3C;</span>branch-name<span class="token operator">></span>
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="临时提交"><a aria-hidden="true" tabindex="-1" href="#临时提交"><span class="icon icon-link"></span></a>临时提交</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 保存已修改和分阶段的更改</span>
 </span><span class="code-line">$ <span class="token function">git</span> stash
@@ -227,7 +228,7 @@
 
 
 <table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">行首 <code>#</code></td><td align="left">全行注释，不支持行尾类注释 <em>(转义 <code>\#</code>)</em></td></tr><tr><td align="left">行首 <strong><code>!</code></strong></td><td align="left">否定模式 <em>(转义 <code>\!</code>)</em></td></tr><tr><td align="left"><code>**</code></td><td align="left">匹配任意路径</td></tr><tr><td align="left"><code>*</code></td><td align="left">匹配任意多个字符</td></tr><tr><td align="left"><code>?</code></td><td align="left">匹配任意一个字符</td></tr><tr><td align="left"><code>doc/**</code></td><td align="left">匹配 <code>doc</code> 文件夹下的全部内容</td></tr><tr><td align="left"><code>doc/**/a</code></td><td align="left">匹配任意深度路径下的 <code>a</code> 文件或文件夹</td></tr><tr><td align="left"><code>/</code></td><td align="left">表示路径分隔符，不区分操作系统</td></tr><tr><td align="left"><code>/</code> 结尾</td><td align="left">仅会匹配文件夹，否则会匹配文件和文件夹</td></tr><tr><td align="left">空行</td><td align="left">不匹配任何文件</td></tr><tr><td align="left">行尾空格</td><td align="left">默认被忽略，可使用<code>\</code>进行转义</td></tr><tr><td align="left">行首空格</td><td align="left">被正常处理，不会被忽略</td></tr></tbody></table>
-<p>当前 <code>.gitignore</code> 文件定义规则的优先级高于上级路径 <code>.gitignore</code> 定义规则的优先级；后定义的规则优先级高于前面定义规则的优先级。</p>
+<p>当前 <code>.gitignore</code> 文件定义规则的优先级高于上级路径 <code>.gitignore</code> 定义规则的优先级；后定义的规则优先级高于前面定义规则的优先级</p>
 <pre class="wrap-text"><code class="language-gitignore code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 忽略当前目录logs文件夹下的全部内容</span>
 </span><span class="code-line line-number" line="2"><span class="token entry string"><span class="token punctuation">/</span>logs<span class="token punctuation">/</span></span>
 </span><span class="code-line line-number" line="3"><span class="token entry string"><span class="token punctuation">/</span>logs<span class="token punctuation">/</span><span class="token operator">*</span></span>
@@ -311,7 +312,8 @@
 <p>显示所有提交日志，并指示任何移动的路径</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> log <span class="token parameter variable">--stat</span> <span class="token parameter variable">-M</span>
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="git-配置-ssh-代理"><a aria-hidden="true" tabindex="-1" href="#git-配置-ssh-代理"><span class="icon icon-link"></span></a>git 配置 ssh 代理</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="git-配置-ssh-代理"><a aria-hidden="true" tabindex="-1" href="#git-配置-ssh-代理"><span class="icon icon-link"></span></a>git 配置 ssh 代理</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
 <pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cat</span> ~/.ssh/config
 </span><span class="code-line">Host gitlab.com
 </span><span class="code-line"><span class="token comment"># 直接使用 shadowsocks 提供的 socks5 代理端口</span>
@@ -514,8 +516,9 @@
 </span></code></pre>
 <p><code>blame</code> 的意思为<code>责怪</code>，你懂的。</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="修改作者名"><a aria-hidden="true" tabindex="-1" href="#修改作者名"><span class="icon icon-link"></span></a>修改作者名</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">git</span> commit <span class="token parameter variable">--amend</span> <span class="token parameter variable">--author</span><span class="token operator">=</span><span class="token string">'Author Name &#x3C;email@address.com>'</span>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">git</span> commit <span class="token parameter variable">--amend</span> <span class="token parameter variable">--author</span><span class="token operator">=</span><span class="token string">'Author Name &#x3C;email@address.com>'</span>
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="修改远程仓库的-url"><a aria-hidden="true" tabindex="-1" href="#修改远程仓库的-url"><span class="icon icon-link"></span></a>修改远程仓库的 url</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">git</span> remote set-url origin <span class="token operator">&#x3C;</span>URL<span class="token operator">></span>
 </span></code></pre>
@@ -556,8 +559,9 @@
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">git</span> rebase <span class="token parameter variable">--autostash</span>
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从远程仓库根据-id拉下某一状态到本地分支"><a aria-hidden="true" tabindex="-1" href="#从远程仓库根据-id拉下某一状态到本地分支"><span class="icon icon-link"></span></a>从远程仓库根据 ID，拉下某一状态，到本地分支</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">git</span> fetch origin pull/<span class="token operator">&#x3C;</span>id<span class="token operator">></span>/head:<span class="token operator">&#x3C;</span>branch-name<span class="token operator">></span>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">git</span> fetch origin pull/<span class="token operator">&#x3C;</span>id<span class="token operator">></span>/head:<span class="token operator">&#x3C;</span>branch-name<span class="token operator">></span>
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="详细展示一行中的修改"><a aria-hidden="true" tabindex="-1" href="#详细展示一行中的修改"><span class="icon icon-link"></span></a>详细展示一行中的修改</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">git</span> <span class="token function">diff</span> --word-diff
 </span></code></pre>
