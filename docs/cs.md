@@ -185,6 +185,39 @@ lengthOfString.Length           // => 9
 lengthOfString.Contains("How"); // => true
 ```
 
+### 频繁字符串拼接
+
+```cs
+// 对于频繁拼接字符串的场景（如：成百上千次循环）
+// 使用 System.Text.StringBuilder 提升性能
+var sb = new StringBuilder();
+for (int i = 0; i < 100; i++)
+{
+    sb.Append(i.ToString());
+}
+Console.WriteLine(sb.ToString()); // => 123456789....
+```
+
+<!--rehype:className=wrap-text-->
+
+### 原始字符串文本
+
+<!--rehype:wrap-class=col-span-2-->
+
+```cs
+// C#11 语法, 至少3个双引号(""")开头和结尾，内容可以输入任何原始字符
+// 单行: 左引号，右引号，内容 三者同行
+string singleLine = """Content begin "Hello World!" end.""";
+
+// 多行：左引号，右引号各一行，内容需与右引号缩进对齐
+string multiLine = """
+    Content begin "Hello World!" /\n<>"" end.
+    """;
+Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
+```
+
+<!--rehype:className=wrap-text-->
+
 杂项
 -----------
 
