@@ -7,6 +7,7 @@ export const OUTOUT = path.resolve(process.cwd(), 'dist');
 export const DOCS = path.resolve(process.cwd(), 'docs');
 /** 搜索数据路径 */
 export const SEARCH_DATA = path.resolve(OUTOUT, 'data.json');
+export const SEARCH_DATA_CACHE = path.resolve(process.cwd(), 'node_modules/.cache/reference/data.json');
 
 export async function createHTML(files = [], num = 0) {
   const dataFile = files[num];
@@ -39,10 +40,13 @@ export async function createHTML(files = [], num = 0) {
   };
   const { html, data } = create(mdstr.toString(), options);
   if (!options.isHome) {
-    const searchData = await fs.readJSON(SEARCH_DATA);
+    const searchData = await fs.readJSON(SEARCH_DATA_CACHE);
     data.path = path.relative(OUTOUT, outputHTMLPath);
     searchData[options.filename] = data;
-    await fs.writeJSON(SEARCH_DATA, searchData);
+    searchData.name = options.filename;
+    await fs.writeJSON(SEARCH_DATA_CACHE, searchData);
+    const resultSearchData = Object.keys({ ...searchData }).map((name) => searchData[name]);
+    await fs.writeJSON(SEARCH_DATA, resultSearchData);
   }
   await fs.writeFile(outputHTMLPath, html);
   console.log(`♻️ \x1b[32;1m ${path.relative(OUTOUT, outputHTMLPath)} \x1b[0m`);
@@ -53,7 +57,9 @@ export async function run() {
   await fs.ensureDir(OUTOUT);
   await fs.emptyDir(OUTOUT);
   await fs.ensureDir(path.resolve(OUTOUT, 'style'));
-  await fs.writeFile(SEARCH_DATA, '{}');
+  await fs.ensureFile(SEARCH_DATA_CACHE);
+  await fs.writeFile(SEARCH_DATA_CACHE, '{}');
+  await fs.writeFile(SEARCH_DATA, '[]');
   await fs.copy(path.resolve(process.cwd(), 'scripts/style'), path.resolve(OUTOUT, 'style'));
   const files = await recursiveReaddirFiles(process.cwd(), {
     ignored: /\/(node_modules|\.git)/,
