@@ -207,26 +207,26 @@ temp?
 `EXPOSE <port> [<port>/<protocol>...]` | 运行时侦听指定的网络端口
 <!--rehype:class=auto-wrap-->
 
-### 服务静态网站的最小 Docker 镜像
+### Docker 镜像多阶段构建
 <!--rehype:wrap-class=col-span-2-->
 
 ```dockerfile
-FROM lipanski/docker-static-website:latest
-# 使用 .dockerignore 文件来控制图像中的内容！
-# 复制当前目录内容，到容器中
-COPY ./ .
+FROM golang:alpine as builder
+RUN apk --no-cache add git
+WORKDIR /go/src/github.com/go/helloworld/
+RUN go get -d -v github.com/go-sql-driver/mysql
+COPY app.go .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+FROM alpine:latest as prod
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=builder /go/src/github.com/go/helloworld/app .
+CMD ["./app"]
 ```
+<!--rehype:className=wrap-text -->
 
-这会产生一个 **`154KB +`** 的单层镜像。 如果您需要以不同的方式配置 `httpd`，您可以覆盖 CMD 行：
-
-```dockerfile
-FROM lipanski/docker-static-website:latest
-COPY . .
-
-CMD ["/busybox", "httpd", "-f", "-v", "-p", "3000", "-c", "httpd.conf"]
-```
-
-缩小镜像过程[查看原文](https://lipanski.com/posts/smallest-docker-image-static-website)，镜像 [Dockerfile 源码](https://github.com/lipanski/docker-static-website)。
+使用多阶段构建能将构建依赖留在 builder 镜像中，只将编译完成后的二进制文件拷贝到运行环境中，大大减少镜像体积。
 
 ## 也可以看看
 
