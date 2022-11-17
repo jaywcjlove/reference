@@ -173,6 +173,12 @@ ALTER TABLE t1 RENAME TO t2;
 ALTER TABLE t1 RENAME c1 TO c2 ;
 ```
 
+将列c1的数据类型改为datatype
+
+```sql
+ALTER TABLE t1 MODIFY c1 datatype;
+```
+
 删除表中的所有数据
 
 ```sql

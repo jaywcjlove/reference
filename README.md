@@ -9,7 +9,7 @@ Quick Reference
 <!--rehype:ignore:end-->
 
 <!--rehype:ignore:start-->
-[![Quick Reference](https://user-images.githubusercontent.com/1680273/200623638-280ac85b-0cfa-4c60-bae3-ae14231acc6f.png)](https://jaywcjlove.github.io/reference)
+[![Quick Reference](https://user-images.githubusercontent.com/1680273/201931931-d8559417-0a15-46af-a009-ec1e56e5b778.png)](https://jaywcjlove.github.io/reference)
 <!--rehype:ignore:end-->
 
 为开发人员分享快速参考备忘清单【速查表】。在看到 [Reference](https://github.com/Randy8080/reference) 快速参考备忘单，感觉非常简单，造中文版本的轮子使命感突然来了，为了方便自己的技术栈查阅，如果您提供一个清单，我将抽空搬运，立即撸起来 :)。如果您发现此处的备忘单不合适，您可以通过提交 [PR](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md) 来修复它或提供更好的备忘清单，只针对【中文】用户。以下是开源天使提供的一些备忘清单和快速参考 :)。
@@ -21,8 +21,10 @@ Quick Reference
 
 [Ansible](./docs/ansible.md)<!--rehype:style=background: rgb(238 0 0/var(\-\-bg\-opacity));&class=contributing tag&data-lang=RedHad&data-info=👆看看还缺点儿什么？-->
 [CMake](./docs/cmake.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));&class=contributing-->
+[C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13/var(\-\-bg\-opacity));&class=contributing-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
+[LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
 <!--rehype:class=home-card-->
@@ -31,6 +33,9 @@ Quick Reference
 
 [Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [C](./docs/c.md)<!--rehype:style=background: rgb(92 107 192/var(\-\-bg\-opacity));-->
+[C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13/var(\-\-bg\-opacity));&class=contributing-->
+[CPP](./docs/cpp.md)<!--rehype:style=background: rgb(6 147 13/var(\-\-bg\-opacity));&class=contributing-->
+[Dart](./docs/dart.md)<!--rehype:style=background: rgb(64 196 255/var(\-\-bg\-opacity));-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));&class=tag&data-lang=Docker-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
@@ -39,12 +44,16 @@ Quick Reference
 [INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
 [Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
+[Julia](./docs/julia.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
+[Kotlin](./docs/kotlin.md)<!--rehype:style=background: rgb(211 55 49/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
+[LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));-->
-[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(103 61 156/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
+[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(1 117 143/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
-[Python](./docs/python.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
+[PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147/var(\-\-bg\-opacity));-->
+[Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));-->
 [PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163/var(\-\-bg\-opacity));&class=tag&data-lang=SQL-->
-[Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));-->
+[Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45/var(\-\-bg\-opacity));-->
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));-->
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57/var(\-\-bg\-opacity));-->
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->
@@ -102,6 +111,7 @@ Quick Reference
 [Ansible](./docs/ansible.md)<!--rehype:style=background: rgb(238 0 0/var(\-\-bg\-opacity));&class=contributing tag&data-lang=RedHad&data-info=👆看看还缺点儿什么？-->
 [Awk](./docs/awk.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Conan](./docs/conan.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=tag&data-lang=C/C++-->
+[CocoaPods](./docs/cocoapods.md)<!--rehype:style=background: rgb(251 0 6/var(\-\-bg\-opacity));&class=tag&data-lang=C/C++-->
 [Cargo](./docs/cargo.md)<!--rehype:style=background: rgb(71 71 71/var(\-\-bg\-opacity));&class=tag&data-lang=Rust-->
 [Curl](./docs/curl.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [Chmod](./docs/chmod.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
@@ -147,17 +157,110 @@ Quick Reference
 [`我有一张备忘单(速查表)`](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)<!--rehype:class=home-button text-grey&target=__blank-->
 <!--rehype:style=margin-top:3rem-->
 
-<!--rehype:ignore:start-->
-## 贡献
+## 感谢所有贡献者
+<!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
-请参阅[贡献指南](./CONTRIBUTING.md)了解如何开始。一如既往，感谢我们出色的贡献者！
+请参阅 [Quick Reference](./docs/quickreference.md) 了解如何开始。一如既往，感谢我们出色的贡献者！
+<!--rehype:style=padding-bottom:1rem;-->
 
-<a href="https://github.com/jaywcjlove/reference/graphs/contributors">
-  <img src="https://jaywcjlove.github.io/reference/CONTRIBUTORS.svg" />
+<!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调™">
+  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调™"/>
 </a>
+<a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
+  <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
+</a>
+<a href="https://github.com/catcto" title="喵仙人">
+  <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
+</a>
+<a href="https://github.com/13812700839" title="花殇">
+  <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
+</a>
+<a href="https://github.com/Smartdousha" title="Anko">
+  <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
+</a>
+<a href="https://github.com/CharlotteZeng" title="Chart">
+  <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
+</a>
+<a href="https://github.com/demigodliu" title="DemigodLiu">
+  <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
+</a>
+<a href="https://github.com/jasnzhuang" title="Jason Zhuang">
+  <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
+</a>
+<a href="https://github.com/JetSquirrel" title="JetSquirrel">
+  <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
+</a>
+<a href="https://github.com/HanaNoryu" title="Noryu">
+  <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
+</a>
+<a href="https://github.com/chyok" title="chyok">
+  <img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/>
+</a>
+<a href="https://github.com/gaoxiaoduan" title="coderduan">
+  <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="coderduan"/>
+</a>
+<a href="https://github.com/cool9203" title="cool9203">
+  <img src="https://avatars.githubusercontent.com/u/29609607?v=4" width="42;" alt="cool9203"/>
+</a>
+<a href="https://github.com/godotc" title="godotc">
+  <img src="https://avatars.githubusercontent.com/u/79260851?v=4" width="42;" alt="godotc"/>
+</a>
+<a href="https://github.com/hua03" title="hua03">
+  <img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/>
+</a>
+<a href="https://github.com/hweining" title="hweining">
+  <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
+</a>
+<a href="https://github.com/larry-xue" title="larry">
+  <img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="larry"/>
+</a>
+<a href="https://github.com/liliangrong777" title="liliangrong777">
+  <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
+</a>
+<a href="https://github.com/mofelee" title="mofelee">
+  <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
+</a>
+<a href="https://github.com/onewesong" title="onewesong">
+  <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
+</a>
+<a href="https://github.com/partoneplay" title="partoneplay">
+  <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
+</a>
+<a href="https://github.com/ryanhex53" title="ryanhex53">
+  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
+</a>
+<a href="https://github.com/wjjwkwindy" title="wjjwkwindy">
+  <img src="https://avatars.githubusercontent.com/u/9508591?v=4" width="42;" alt="wjjwkwindy"/>
+</a>
+<a href="https://github.com/xing133" title="xing133">
+  <img src="https://avatars.githubusercontent.com/u/5336490?v=4" width="42;" alt="xing133"/>
+</a>
+<a href="https://github.com/zxx-457" title="zxx-457">
+  <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
+</a>
+<a href="https://github.com/lvzhenbo" title="吕振波">
+  <img src="https://avatars.githubusercontent.com/u/32427677?v=4" width="42;" alt="吕振波"/>
+</a>
+<a href="https://github.com/lisheng741" title="芦荟柚子茶">
+  <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
+</a><!--GAMFC-END-->
 
-上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
+贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成
+<!--rehype:style=padding-top:1rem;-->
 
+## 国内镜像网站
+<!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
+
+由于中国国内访问，时常打不开，你可以访问下面镜像网站。推荐我的[镜像网站](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)
+
+[ecdata.cn](http://ref.ecdata.cn/)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));height: 3rem;-->
+[mofe.io](http://quickref.mofe.io)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));height: 3rem;-->
+<!--rehype:class=home-card&style=margin:1.2rem 0;display: flex;justify-content: center;-->
+
+如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 gh-pages 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
+
+
+<!--rehype:ignore:start-->
 ## License
 
 MIT © [Kenny Wong](https://github.com/jaywcjlove)

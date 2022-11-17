@@ -23,7 +23,7 @@ $ go run hello.go
 Hello, world!
 ```
 
-或者在 [Go repl](https://repl.it/languages/go) 中尝试一下
+或者在 [Go repl](https://repl.it/languages/go) 中尝试一，`go` 命令[参考](#go-命令)
 
 ### 变量
 
@@ -954,6 +954,54 @@ func main() {
 | `/` | `<<` | `/=`  | `<<=` | `++`   | `=`  | `:=`  | `,` | `;` |
 | `%` | `>>` | `%=`  | `>>=` | `--`   | `!`  | `...` | `.` | `:` |
 |     | `&^` | `&^=` |       |        |      |       |     |     |
+
+Go 命令
+---
+
+### Go 编译器命令
+
+:- | --
+:- | --
+`go command [参数]`  | go 命令 [参数]
+`go build`          | 编译包和依赖包
+`go clean`          | 移除对象和缓存文件
+`go doc`            | 显示包的文档
+`go env`            | 打印go的环境变量信息
+`go bug`            | 报告bug
+`go fix`            | 更新包使用新的api
+`go fmt`            | 格式规范化代码
+`go generate`       | 通过处理资源生成go文件
+`go get`            | 下载并安装包及其依赖
+`go install`        | 编译和安装包及其依赖
+`go list`           | 列出所有包
+`go run`            | 编译和运行go程序
+`go test`           | 测试
+`go tool`           | 运行给定的go工具
+`go version`        | 显示go当前版本
+`go vet`            | 发现代码中可能的错误
+
+### ENV
+
+:- | --
+:- | --
+`GOOS`         | 编译系统
+`GOARCH`       | 编译arch
+`GO111MODULE`  | gomod开关
+`GOPROXY`      | go代理 <https://goproxy.io>  <https://goproxy.cn>
+`GOSSAFUNC`    | 生成 `SSA.html` 文件，展示代码优化的每一步 `GOSSAFUNC=func_name go build`
+<!--rehype:className=style-list-arrow-->
+
+### Module
+
+:- | --
+:- | --
+`go mod init`         | 初始化当前文件夹，创建go.mod文件
+`go mod download`     | 下载依赖的module到本地
+`go mod tidy`         | 增加缺少的module，删除无用的module
+`go mod vendor`       | 将依赖复制到vendor下
+文件 `go.mod`          |  依赖列表和版本约束
+文件 `go.sum`          |  记录 `module` 文件 `hash` 值，用于安全校验
+<!--rehype:className=style-list-arrow-->
 
 另见
 --------

@@ -149,6 +149,41 @@ class Circle extends Shape {
 原型的语法糖。
 请参阅: [类](https://babeljs.io/learn-es2015/#classes)
 
+### 私有类
+
+javascript 默认字段是公共的（`public`）,如果需要注明私有，可以使用（`#`）
+
+```js
+class Dog {
+  #name;
+  constructor(name) {
+    this.#name = name;
+  }
+  printName() {
+    //只能在类内部调用私有字段
+    console.log(`你的名字是${this.#name}`)
+  }
+}
+
+const dog = new Dog("putty")
+//console.log(this.#name) 
+//Private identifiers are not allowed outside class bodies.
+dog.printName()
+```
+
+#### 静态私有类
+
+```js
+class ClassWithPrivate {
+  static #privateStaticField;
+  static #privateStaticFieldWithInitializer = 42;
+
+  static #privateStaticMethod() {
+    // …
+  }
+}
+```
+
 Promises
 --------
 
@@ -455,6 +490,13 @@ function foo() {}
 foo.name // "foo"
 ```
 
+### length 属性
+
+```js
+function foo(a, b){}
+foo.length // 2
+```
+
 Objects
 -------
 
@@ -663,6 +705,23 @@ new URL('data.txt', import.meta.url)
 ```
 
 Node.js 环境中，`import.meta.url`返回的总是本地路径，即 `file:URL` 协议的字符串，比如 `file:///home/user/foo.js`
+
+### 导入断言（Import Assertions）
+<!--rehype:wrap-class=col-span-2-->
+
+#### 静态导入
+
+```js
+import json from "./package.json" assert {type: "json"}
+// 导入 json 文件中的所有对象
+```
+
+#### 动态导入
+
+```js
+const json = 
+     await import("./package.json", { assert: { type: "json" } })
+```
 
 Generators
 ----------

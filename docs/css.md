@@ -250,10 +250,10 @@ p:first-child {
 :- | :-
 `div.classname` | 具有特定类名的 div
 `div#idname`    | 具有特定 ID 的 div
-`div p`         | div 中的段落
-`div > p`       | div 子节点中的所有 `P` 标签
-`div + p`       | div 之后的 `P` 标签
-`div ~ p`       | div 前面的 `P` 标签
+`div p`         | div 中的所有段落
+`div > p`       | 父元素是 div 的 `P` 标签
+`div + p`       | div 之后的第一个同级 `P` 标签
+`div ~ p`       | div 之后所有的同级 `P` 标签
 
 另见: [相邻兄弟](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Adjacent_sibling_combinator) / [通用兄弟](https://developer.mozilla.org/zh-CN/docs/Web/CSS/General_sibling_combinator) / [子](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator) 选择器
 
@@ -340,7 +340,7 @@ a:active { color: red; }
 :- | :-
 `p:first-child`         | 第一个孩子 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-child)
 `p:last-child`          | 最后一个孩子 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:last-child)
-`p:first-of-type`       | 首先是某种类型 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-of-type)
+`p:first-of-type`       | 第一个 p 类型的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-of-type)
 `p:last-of-type`        | 某种类型的最后一个 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:last-of-type)
 `p:nth-child(2)`        | 其父母的第二个孩子 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child)
 `p:nth-child(3n42)`     | Nth-child(an + b) 公式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child)
@@ -352,8 +352,8 @@ a:active { color: red; }
 `:is(header, div) p`    | 可以选择的元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is)
 `:where(header, div) p` | 与 `:is` 相同 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:where)
 `a:has(> img)`          | 包含 `img` 元素的 `a` 元素 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:has)
-`::first-letter`        | 第一行的第一个字母 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-letter)
-`::first-line`          | 第一行应用样式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:first-line)
+`::first-letter`        | 第一行的第一个字母 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-letter)
+`::first-line`          | 第一行应用样式 [#](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-line)
 
 CSS 字体
 ------

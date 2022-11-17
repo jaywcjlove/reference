@@ -18,10 +18,25 @@ jobs:
 
       - name: Generate Contributors Images
         uses: jaywcjlove/github-action-contributors@main
+        id: contributors
         with:
           filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
           output: dist/CONTRIBUTORS.svg
           avatarSize: 42
+
+      - name: Modify CONTRIBUTING.md
+        uses: jaywcjlove/github-action-modify-file-content@main
+        with:
+          path: CONTRIBUTING.md
+          body: |
+            ${{steps.contributors.outputs.htmlList}}
+
+      - name: Modify README.md
+        uses: jaywcjlove/github-action-modify-file-content@main
+        with:
+          path: README.md
+          body: |
+            ${{steps.contributors.outputs.htmlList}}
 
       - name: Create Tag
         id: create_tag

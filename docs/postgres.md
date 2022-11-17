@@ -623,7 +623,7 @@ $ sudo systemctl restart postgresql
 
 另见：[复制](https://www.postgresql.org/docs/current/sql-copy.html)
 
-Also see
---------
+另见
+----
 
 - [Posgres-cheatsheet](https://gist.github.com/apolloclark/ea5466d5929e63043dcf#posgres-cheatsheet) _(gist.github.com)_

@@ -301,7 +301,7 @@ System.out.println(concat);
 Java 数组
 -------
 
-### 申明 Declare
+### 声明 Declare
 
 ```java
 int[] a1;
@@ -782,6 +782,40 @@ try {
   System.out.println("always printed");
 }
 ```
+
+### 反射
+
+```java
+/**
+* 利用反射动态加载依赖库
+* java9及以上版本可用
+* @param jar jar文件
+*/
+Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+method.setAccessible(true);
+MethodHandle addURL = lookup.unreflect(method);
+URL url = jar.toURI().toURL();
+URLClassLoader urlClassLoader = new URLClassLoader(new URL[] {url});
+addURL.invoke(urlClassLoader, url);
+//java8
+Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+method.setAccessible(true);
+method.invoke(classLoader, url);
+```
+
+### util工具类
+
+- `ArrayDeque` 提供 resizable-array 并实现 Deque 接
+- `Arrays` 包含一个静态工厂，允许将数组视为列表
+- `Collections` 包含对集合进行操作或返回集合的静态方法
+- `Date` 表示特定的时间瞬间，精度为毫秒
+- `Dictionary` 是任何类的抽象父类，例如 Hashtable，它将键映射到值
+- `EnumMap` 一个专门用于枚举键的 Map 实现
+- `EnumSet` 一个专门用于枚举键的 Set 实现
+- `Formatter` 提供对布局对齐和对齐、数字、字符串和日期/时间数据的常用格式以及特定于语言环境的输出的支持
+- `SecureRandom` 实例用于生成安全的伪随机数流
+- `UUID` 表示一个不可变的通用唯一标识符
+- `Vector` 实现了一个可增长的对象数组
 
 另见
 ---
