@@ -102,6 +102,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
 </a>
+<a href="https://github.com/Smartdousha" title="Anko">
+  <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
+</a>
 <a href="https://github.com/CharlotteZeng" title="Chart">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
 </a>
@@ -116,6 +119,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 </a>
 <a href="https://github.com/HanaNoryu" title="Noryu">
   <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
+</a>
+<a href="https://github.com/chyok" title="chyok">
+  <img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/>
 </a>
 <a href="https://github.com/gaoxiaoduan" title="coderduan">
   <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="coderduan"/>
