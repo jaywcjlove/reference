@@ -400,3 +400,4 @@ $ ansible-pull -U <repository> [options]
 [Getting started with Ansible](https://docs.ansible.com/ansible/latest/getting_started/index.html)  
 [Introduction to ad hoc commands](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
 [Ansible cheatsheet](https://github.com/luckylittle/ansible-cheatsheet/blob/master/ansible-cheatsheet.txt)
+[Ansible Tutorial for Beginners: Ultimate Playbook & Examples](https://spacelift.io/blog/ansible-tutorial)
