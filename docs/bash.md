@@ -27,9 +27,9 @@ NAME="John"
 echo ${NAME}    # => John (变量)
 echo $NAME      # => John (变量)
 echo "$NAME"    # => John (变量)
-echo '$NAME'    # => $NAME (确切的字符串)
+echo '$NAME'    # => $NAME (字符串原样输出)
 echo "${NAME}!" # => John! (变量)
-NAME = "John"   # => Error (关于空格)
+NAME = "John"   # => Error (注意不能有空格)
 ```
 
 ### 注释
@@ -39,8 +39,8 @@ NAME = "John"   # => Error (关于空格)
 
 : '
 这是一个
-非常整洁的评论
-在 bash
+非常整洁的
+bash 注释
 '
 ```
 
@@ -53,11 +53,11 @@ NAME = "John"   # => Error (关于空格)
 :-|-
 `$1` … `$9` | 参数 1 ... 9
 `$0`        | 脚本本身的名称
-`$1`        | 第一个论点
+`$1`        | 第一个参数
 `${10}`     | 位置参数 10
 `$#`        | 参数数量
 `$$`        | shell 的进程 id
-`$*`        | 所有论据
+`$*`        | 所有参数
 `$@`        | 所有参数，从第一个开始
 `$-`        | 当前选项
 `$_`        | 上一个命令的最后一个参数
@@ -277,8 +277,8 @@ done
 <!--rehype:wrap-class=col-span-2-->
 
 ```bash
-Fruits=("${Fruits[@]}" "Watermelon")         # 推
-Fruits+=('Watermelon')                       # 也推
+Fruits=("${Fruits[@]}" "Watermelon")         # 添加
+Fruits+=('Watermelon')                       # 也是添加
 Fruits=( ${Fruits[@]/Ap*/} )                 # 通过正则表达式匹配删除
 unset Fruits[2]                              # 删除一项
 Fruits=("${Fruits[@]}")                      # 复制
@@ -350,14 +350,14 @@ Bash 条件句
 :- | -
 `[[ NUM -eq NUM ]]` | 等于 <yel>Eq</yel>ual                            |
 `[[ NUM -ne NUM ]]` | 不等于 <yel>N</yel>ot <yel>e</yel>qual             |
-`[[ NUM -lt NUM ]]` | 少于 <yel>L</yel>ess <yel>t</yel>han             |
-`[[ NUM -le NUM ]]` | 小于或等于 <yel>L</yel>ess than or <yel>e</yel>qual    |
+`[[ NUM -lt NUM ]]` | 小于 <yel>L</yel>ess <yel>t</yel>han             |
+`[[ NUM -le NUM ]]` | 小于等于 <yel>L</yel>ess than or <yel>e</yel>qual    |
 `[[ NUM -gt NUM ]]` | 大于 <yel>G</yel>reater <yel>t</yel>han          |
-`[[ NUM -ge NUM ]]` | 大于或等于 <yel>G</yel>reater than or <yel>e</yel>qual |
-`(( NUM < NUM ))`   | 少于
+`[[ NUM -ge NUM ]]` | 大于等于 <yel>G</yel>reater than or <yel>e</yel>qual |
+`(( NUM < NUM ))`   | 小于
 `(( NUM <= NUM ))`  | 小于或等于
-`(( NUM > NUM ))`   | 比...更棒
-`(( NUM >= NUM ))`  | 大于或等于
+`(( NUM > NUM ))`   | 比...更大
+`(( NUM >= NUM ))`  | 大于等于
 
 ### 字符串条件
 
@@ -365,7 +365,7 @@ Bash 条件句
 :- | -
 `[[ -z STR ]]`     | 空字符串
 `[[ -n STR ]]`     | <yel>非</yel>空字符串
-`[[ STR == STR ]]` | 平等的
+`[[ STR == STR ]]` | 相等
 `[[ STR = STR ]]`  | 相等（同上）
 `[[ STR < STR ]]`  | 小于 _(ASCII)_
 `[[ STR > STR ]]`  | 大于 _(ASCII)_
@@ -411,7 +411,7 @@ if [[ '1. abc' =~ ([a-z]+) ]]; then
 fi
 ```
 
-#### 更小
+#### 小于
 
 ```bash
 if (( $a < $b )); then
@@ -441,7 +441,7 @@ fi
 `[[ -w FILE ]]`   | 可写
 `[[ -x FILE ]]`   | 可执行文件
 `[[ f1 -nt f2 ]]` | f1 比 f2 新
-`[[ f1 -ot f2 ]]` | f2 早于 f1
+`[[ f1 -ot f2 ]]` | f2 比 f1 新
 `[[ f1 -ef f2 ]]` | 相同的文件
 
 ### 更多条件
@@ -492,7 +492,7 @@ for i in {1..5}; do
 done
 ```
 
-#### 具有步长
+#### 步长
 
 ```bash
 for i in {5..50..5}; do
@@ -510,7 +510,7 @@ while [[ $i -lt 4 ]]; do
 done
 ```
 
-### 自动递增
+### 自动递减
 
 ```bash
 i=3
@@ -554,7 +554,7 @@ until [ $count -gt 10 ]; do
 done
 ```
 
-### 永远
+### 死循环
 
 ```bash
 while true; do
@@ -562,7 +562,7 @@ while true; do
 done
 ```
 
-### 永远（简写）
+### 死循环（简写）
 
 ```bash
 while :; do
@@ -570,7 +570,7 @@ while :; do
 done
 ```
 
-### 正在读取行
+### 读取文件的每一行
 
 ```bash
 cat file.txt | while read line; do
@@ -613,7 +613,7 @@ myfunc() {
 result="$(myfunc)"
 ```
 
-### 正在引发错误
+### 抛出错误
 
 ```bash
 myfunc() {
@@ -719,7 +719,7 @@ Bash 历史
 
 `!!` 可以替换为任何有效的扩展，即 `!cat`、`!-2`、`!42` 等。
 
-各种各样的
+杂项
 -------------
 
 ### 数值计算
