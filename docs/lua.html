@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Lua 备忘清单
+ &#x26;  lua cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="包含最重要概念、函数、方法等的 Lua 备忘单。 初学者的完整快速参考。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,lua">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/lua.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="lua-备忘清单"><!--?xml version="1.0" encoding="utf-8"?-->
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+
+<svg version="1.0" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1em" height="1em" viewBox="0 0 947 947" enable-background="new 0 0 947 947" xml:space="preserve">
+<g>
+	<path fill="#000080" d="M835.5,473.6c0-199.8-162.2-362-362-362s-362,162.2-362,362c0,199.8,162.2,362,362,362
+		S835.5,673.4,835.5,473.6"></path>
+	<path fill="#FFFFFF" d="M729.5,323.6c0-58.5-47.5-106-106-106s-106,47.5-106,106c0,58.5,47.5,106,106,106S729.5,382.1,729.5,323.6"></path>
+	<path fill="#000080" d="M941.5,111.5c0-58.5-47.5-106-106-106s-106,47.5-106,106c0,58.5,47.5,106,106,106S941.5,170.1,941.5,111.5"></path>
+	<g>
+		<path fill="#FFFFFF" d="M258.1,627.8h117.3v26.7H227.8V417h30.3V627.8z"></path>
+		<path fill="#FFFFFF" d="M515.5,654.5v-23.8c-16,22.5-31.9,31.3-57,31.3c-33.2,0-54.4-18.2-54.4-46.6V483.8h27v120.9
+			c0,20.5,13.7,33.6,35.2,33.6c28.3,0,46.6-22.8,46.6-57.7v-96.8h27v170.7H515.5z"></path>
+		<path fill="#FFFFFF" d="M738.4,659.1c-8.8,2.3-13,2.9-18.6,2.9c-17.6,0-26.1-7.8-28-25.1c-19.2,17.6-36.5,25.1-58,25.1
+			c-34.5,0-56-19.5-56-50.5c0-22.2,10.1-37.5,30-45.6c10.4-4.2,16.3-5.5,54.7-10.4c21.5-2.6,28.3-7.5,28.3-18.9v-7.2
+			c0-16.3-13.7-25.4-38.1-25.4c-25.4,0-37.8,9.4-40.1,30.3h-27.4c0.7-16.9,3.9-26.7,11.7-35.5c11.4-12.7,31.9-19.9,56.7-19.9
+			c42,0,64.2,16.3,64.2,46.6v100.4c0,8.5,5.2,13.4,14.7,13.4c1.6,0,2.9,0,5.9-0.7V659.1z M690.8,570.1c-9.1,4.2-15,5.5-43.7,9.4
+			c-29,4.2-41.1,13.4-41.1,31.3c0,17.3,12.4,27.4,33.6,27.4c16,0,29.3-5.2,40.4-15.3c8.1-7.5,10.8-13,10.8-22.2V570.1z"></path>
+	</g>
+	<path fill="none" stroke="#808080" stroke-width="10.8612" stroke-miterlimit="10" stroke-dasharray="40.8475" d="M890.6,261
+		c33.5,65.8,51,138.6,51,212.5c0,258.4-209.7,468.1-468.1,468.1S5.4,731.9,5.4,473.5C5.4,215.1,215.1,5.4,473.5,5.4
+		c83.1,0,164.6,22.1,236.2,63.9"></path>
+</g>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#lua-备忘清单"><span class="icon icon-link"></span></a>Lua 备忘清单</h1><div class="wrap-body">
+<p>包含最重要概念、函数、方法等的 Lua 备忘单。 初学者的完整快速参考。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#下载">下载</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#其它下载方式">其它下载方式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hello-world">hello world</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#运行">运行</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#单行注释">单行注释</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#多行注释">多行注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#type-函数">type() 函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#number">number</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#string">string</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#">[[]]</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#字符串连接">字符串连接(..)</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#字符串长度">字符串长度(#)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#table">table</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#迭代-table">迭代 table</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#指定键">指定键</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量">变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#默认值">默认值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#全局和局部变量">全局和局部变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#赋值">赋值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#交换变量">交换变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#赋值个数不一致">赋值个数不一致</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#运算符">运算符</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#类型转换">类型转换</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#条件语句">条件语句</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#运算符-1">运算符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#关系运算符">关系运算符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#逻辑运算符">逻辑运算符</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#while-循环">while 循环</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#if-语句">if 语句</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#if--elseif--else">if .. elseif() .. else</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#for-循环">for 循环</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#repeatuntil-循环">repeat...until 循环</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#break">break</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="下载"><a aria-hidden="true" tabindex="-1" href="#下载"><span class="icon icon-link"></span></a>下载</h3><div class="wrap-body">
+<p>macos 使用 homebrew 下载</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ brew <span class="token function">install</span> lua
+</span></code></pre>
+<h4 id="其它下载方式"><a aria-hidden="true" tabindex="-1" href="#其它下载方式"><span class="icon icon-link"></span></a>其它下载方式</h4>
+<ul>
+<li><a href="https://luabinaries.sourceforge.net/download.html">下载地址</a></li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 查看 lua 是否安装成功</span>
+</span><span class="code-line">$ lua <span class="token parameter variable">-v</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="hello-world"><a aria-hidden="true" tabindex="-1" href="#hello-world"><span class="icon icon-link"></span></a>hello world</h3><div class="wrap-body">
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token comment">#!/usr/bin/env lua</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="运行"><a aria-hidden="true" tabindex="-1" href="#运行"><span class="icon icon-link"></span></a>运行</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ lua ./hello.lua
+</span><span class="code-line"><span class="token comment"># 或者也可以像 bash 脚本一样</span>
+</span><span class="code-line">$ <span class="token function">chmod</span> +x hello.lua
+</span><span class="code-line">./hello.lua
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<h4 id="单行注释"><a aria-hidden="true" tabindex="-1" href="#单行注释"><span class="icon icon-link"></span></a>单行注释</h4>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token comment">-- 以两个减号开始</span>
+</span></code></pre>
+<h4 id="多行注释"><a aria-hidden="true" tabindex="-1" href="#多行注释"><span class="icon icon-link"></span></a>多行注释</h4>
+<p>多行注释以 <code>--[[</code> 开头, 以 <code>]]</code> 结尾</p>
+<pre class="wrap-text "><code class="language-lua code-highlight"><span class="code-line"><span class="token comment">--[[
+</span></span><span class="code-line"><span class="token comment">
+</span></span><span class="code-line"><span class="token comment">]]</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="type-函数"><a aria-hidden="true" tabindex="-1" href="#type-函数"><span class="icon icon-link"></span></a>type() 函数</h3><div class="wrap-body">
+<p>使用 <code>type()</code> 函数可以判断变量或者值的类型</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- boolean</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token keyword">nil</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- nil</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="number"><a aria-hidden="true" tabindex="-1" href="#number"><span class="icon icon-link"></span></a>number</h3><div class="wrap-body">
+<p>Lua 默认只有一种 number 类型 double (双精度) 类型</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">0.3</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>2e <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="string"><a aria-hidden="true" tabindex="-1" href="#string"><span class="icon icon-link"></span></a>string</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token comment">-- 使用 ''</span>
+</span><span class="code-line"><span class="token keyword">local</span> str1 <span class="token operator">=</span> <span class="token string">'str1'</span>
+</span><span class="code-line"><span class="token comment">-- 使用 ""</span>
+</span><span class="code-line"><span class="token keyword">local</span> str2 <span class="token operator">=</span> <span class="token string">"str2"</span>
+</span></code></pre>
+<h4 id=""><a aria-hidden="true" tabindex="-1" href="#"><span class="icon icon-link"></span></a><code>[[]]</code></h4>
+<p>使用 <code>[[]]</code> 跨行表示多个字符串</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> html <span class="token operator">=</span> <span class="token string">[[
+</span></span><span class="code-line"><span class="token string">&#x3C;html>
+</span></span><span class="code-line"><span class="token string">&#x3C;head>&#x3C;/head>
+</span></span><span class="code-line"><span class="token string">&#x3C;body>
+</span></span><span class="code-line"><span class="token string">    &#x3C;a href="https://www.twle.cn/">简单编程&#x3C;/a>
+</span></span><span class="code-line"><span class="token string">&#x3C;/body>
+</span></span><span class="code-line"><span class="token string">&#x3C;/html>
+</span></span><span class="code-line"><span class="token string">]]</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="字符串连接"><a aria-hidden="true" tabindex="-1" href="#字符串连接"><span class="icon icon-link"></span></a>字符串连接(<code>..</code>)</h4>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"a"</span> <span class="token operator">..</span> <span class="token string">'b'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">-- ab</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">157</span> <span class="token operator">..</span> <span class="token number">428</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">-- 157428</span>
+</span></code></pre>
+<h4 id="字符串长度"><a aria-hidden="true" tabindex="-1" href="#字符串长度"><span class="icon icon-link"></span></a>字符串长度(<code>#</code>)</h4>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token operator">#</span><span class="token string">"string"</span><span class="token punctuation">)</span> <span class="token comment">-- 6</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="table"><a aria-hidden="true" tabindex="-1" href="#table"><span class="icon icon-link"></span></a>table</h3><div class="wrap-body">
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> table <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="迭代-table"><a aria-hidden="true" tabindex="-1" href="#迭代-table"><span class="icon icon-link"></span></a>迭代 table</h4>
+<p>默认的初始索引会从 1 开始</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> array <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"orange"</span><span class="token punctuation">,</span> <span class="token string">"grape"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>array<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- apple</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token function">pairs</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span>k <span class="token operator">..</span> <span class="token string">" : "</span> <span class="token operator">..</span> v<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token comment">-- 1 : apple</span>
+</span><span class="code-line"><span class="token comment">-- 2 : pear</span>
+</span><span class="code-line"><span class="token comment">-- 3 : orange</span>
+</span><span class="code-line"><span class="token comment">-- 4 : grape</span>
+</span></code></pre>
+<h4 id="指定键"><a aria-hidden="true" tabindex="-1" href="#指定键"><span class="icon icon-link"></span></a>指定键</h4>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> array <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span><span class="code-line">array<span class="token punctuation">.</span>one <span class="token operator">=</span> <span class="token string">"apple"</span>
+</span><span class="code-line">array<span class="token punctuation">[</span><span class="token string">"two"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"peach"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>array<span class="token punctuation">.</span>one<span class="token punctuation">)</span> <span class="token comment">-- apple</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>array<span class="token punctuation">.</span>two<span class="token punctuation">)</span> <span class="token comment">-- peach</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+<h4 id="默认值"><a aria-hidden="true" tabindex="-1" href="#默认值"><span class="icon icon-link"></span></a>默认值</h4>
+<p>变量的默认值均是 nil</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token comment">#!/usr/bin/env lua</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token comment">-- nil</span>
+</span></code></pre>
+<h4 id="全局和局部变量"><a aria-hidden="true" tabindex="-1" href="#全局和局部变量"><span class="icon icon-link"></span></a>全局和局部变量</h4>
+<p>Lua 中的变量全是全局变量，那怕是语句块或是函数里，除非用 local 显式声明为局部变量</p>
+<pre class="wrap-text "><code class="language-lua code-highlight"><span class="code-line"><span class="token comment">#!/usr/bin/env lua</span>
+</span><span class="code-line"><span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">local</span> b <span class="token operator">=</span> <span class="token number">12</span>
+</span><span class="code-line">  a <span class="token operator">=</span> <span class="token number">23</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">-- 23</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token comment">-- nil</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="赋值"><a aria-hidden="true" tabindex="-1" href="#赋值"><span class="icon icon-link"></span></a>赋值</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line">a <span class="token operator">=</span> <span class="token string">"hello "</span> <span class="token operator">..</span> <span class="token string">"world"</span> <span class="token comment">-- 改变 变量</span>
+</span><span class="code-line">t<span class="token punctuation">.</span>n <span class="token operator">=</span> t<span class="token punctuation">.</span>n <span class="token operator">+</span> <span class="token number">1</span>  <span class="token comment">-- 改变 table</span>
+</span></code></pre>
+<hr>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token comment">-- 给多个变量赋值</span>
+</span><span class="code-line">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">*</span>a  <span class="token comment">--> a=10; b=20</span>
+</span></code></pre>
+<h4 id="交换变量"><a aria-hidden="true" tabindex="-1" href="#交换变量"><span class="icon icon-link"></span></a>交换变量</h4>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> x<span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span>
+</span><span class="code-line">x<span class="token punctuation">,</span> y <span class="token operator">=</span> y<span class="token punctuation">,</span> x
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">-- 3, 1</span>
+</span></code></pre>
+<hr>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> tab <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span><span class="code-line">tab<span class="token punctuation">.</span>one <span class="token operator">=</span> <span class="token number">2</span>
+</span><span class="code-line">tab<span class="token punctuation">.</span>two <span class="token operator">=</span> <span class="token number">1</span>
+</span><span class="code-line">
+</span><span class="code-line">tab<span class="token punctuation">[</span><span class="token string">"one"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> tab<span class="token punctuation">[</span><span class="token string">"two"</span><span class="token punctuation">]</span> <span class="token operator">=</span> tab<span class="token punctuation">.</span>two<span class="token punctuation">,</span> tab<span class="token punctuation">.</span>one
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>tab<span class="token punctuation">.</span>one<span class="token punctuation">,</span> tab<span class="token punctuation">.</span>two<span class="token punctuation">)</span> <span class="token comment">-- 1    2</span>
+</span></code></pre>
+<h4 id="赋值个数不一致"><a aria-hidden="true" tabindex="-1" href="#赋值个数不一致"><span class="icon icon-link"></span></a>赋值个数不一致</h4>
+<ul class="style-round">
+<li>
+<p>如果变量个数<strong>大于</strong>值的个数，按变量个数补足 nil</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span>      <span class="token comment">--> 1   3   nil</span>
+</span></code></pre>
+</li>
+<li>
+<p>如果变量个数<strong>小于</strong>值的个数，多余的值会被忽略</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line">a <span class="token operator">=</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">local</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> a<span class="token punctuation">,</span> a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> a <span class="token operator">+</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token comment">--> 1   2</span>
+</span></code></pre>
+</li>
+</ul>
+<!--rehype:className=style-round-->
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="运算符"><a aria-hidden="true" tabindex="-1" href="#运算符"><span class="icon icon-link"></span></a>运算符</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left">+</td><td align="left">加法</td></tr><tr><td align="left">-</td><td align="left">减法</td></tr><tr><td align="left">*</td><td align="left">乘法</td></tr><tr><td align="left">/</td><td align="left">除法</td></tr><tr><td align="left">%</td><td align="left">取余，求出除法的余数</td></tr><tr><td align="left">^</td><td align="left">乘幂，计算次方</td></tr><tr><td align="left">-</td><td align="left">负号，取负值</td></tr></tbody></table>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token comment">-- 7</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span> <span class="token comment">-- 1</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">/</span> b<span class="token punctuation">)</span> <span class="token comment">-- 1.3333333333333</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token comment">-- 12</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">%</span> b<span class="token punctuation">)</span> <span class="token comment">-- 1</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">^</span> b<span class="token punctuation">)</span> <span class="token comment">-- 64.0</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类型转换"><a aria-hidden="true" tabindex="-1" href="#类型转换"><span class="icon icon-link"></span></a>类型转换</h3><div class="wrap-body">
+<ul class="style-round">
+<li>
+<p>在算术运算中，string 类型会尝试自动转换为 number 时</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token string">"str"</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"2"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">-- print(a + b) -- error</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>b <span class="token operator">+</span> c<span class="token punctuation">)</span> <span class="token comment">-- 3</span>
+</span></code></pre>
+</li>
+<li>
+<p>number 类型使用 <code>..</code> 会自动转换为 string</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">type</span><span class="token punctuation">(</span>a <span class="token operator">..</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span></code></pre>
+</li>
+<li>
+<p>其它方式的转换</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token function">tostring</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- string</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token function">tonumber</span><span class="token punctuation">(</span><span class="token string">"12"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- number</span>
+</span></code></pre>
+</li>
+</ul>
+<!--rehype:className=style-round-->
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="条件语句"><a aria-hidden="true" tabindex="-1" href="#条件语句"><span class="icon icon-link"></span></a>条件语句</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="运算符-1"><a aria-hidden="true" tabindex="-1" href="#运算符-1"><span class="icon icon-link"></span></a>运算符</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="关系运算符"><a aria-hidden="true" tabindex="-1" href="#关系运算符"><span class="icon icon-link"></span></a>关系运算符</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">符号</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left">==</td><td align="left">等于</td></tr><tr><td align="left">~=</td><td align="left">不等于</td></tr><tr><td align="left">></td><td align="left">大于</td></tr><tr><td align="left">&#x3C;</td><td align="left">小于</td></tr><tr><td align="left">>=</td><td align="left">大于等于</td></tr><tr><td align="left">&#x3C;=</td><td align="left">小于等于</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">&#x3C;</span> b<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">&#x3C;=</span> b<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">==</span> b<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">~=</span> b<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">></span> b<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">>=</span> b<span class="token punctuation">)</span><span class="token comment">-- true</span>
+</span></code></pre>
+<h4 id="逻辑运算符"><a aria-hidden="true" tabindex="-1" href="#逻辑运算符"><span class="icon icon-link"></span></a>逻辑运算符</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">符号</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left"><code>and</code></td><td align="left">逻辑与</td></tr><tr><td align="left"><code>or</code></td><td align="left">逻辑或操作符</td></tr><tr><td align="left"><code>not</code></td><td align="left">逻辑非操作符</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token keyword">false</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token keyword">and</span> b<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token keyword">and</span> <span class="token keyword">not</span> b<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>a <span class="token keyword">or</span> b<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="while-循环"><a aria-hidden="true" tabindex="-1" href="#while-循环"><span class="icon icon-link"></span></a>while 循环</h3><div class="wrap-body">
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> num <span class="token operator">=</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">while</span> <span class="token punctuation">(</span>num <span class="token operator">&#x3C;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"num 的值为:"</span><span class="token punctuation">,</span> num<span class="token punctuation">)</span>
+</span><span class="code-line">  num <span class="token operator">=</span> num <span class="token operator">+</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="if-语句"><a aria-hidden="true" tabindex="-1" href="#if-语句"><span class="icon icon-link"></span></a>if 语句</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p><span style="color:red">注意: Lua 中 0 为 true，但是 Lua 中的 <code>nil</code> 可以当作 <code>false</code></span></p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"0 为 true"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+<h4 id="if--elseif--else"><a aria-hidden="true" tabindex="-1" href="#if--elseif--else"><span class="icon icon-link"></span></a>if .. elseif() .. else</h4>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> age <span class="token operator">=</span> <span class="token number">27</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">&#x3C;</span> <span class="token number">18</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">then</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"age 小于 18"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">elseif</span> <span class="token punctuation">(</span>age <span class="token operator">&#x3C;</span> <span class="token number">25</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">then</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"age 小于 25"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">elseif</span> <span class="token punctuation">(</span>age <span class="token operator">&#x3C;</span> <span class="token number">30</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">then</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"age 小于 30"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"age 大于 30"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"age 的值为 :"</span><span class="token punctuation">,</span> age<span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="for-循环"><a aria-hidden="true" tabindex="-1" href="#for-循环"><span class="icon icon-link"></span></a>for 循环</h3><div class="wrap-body">
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+<ul class="style-round">
+<li>
+<p>lua 中的 for 循环从参数 1 变化到参数 2，每次变化以参数 3 为步长递增 i，并执行一次表达式</p>
+</li>
+<li>
+<p>参数三，是可选的，如果不指定，默认是 1</p>
+</li>
+<li>
+<p>参数二只会在一开始求值，其后不会再进行运算</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> f <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"in f(x) "</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">return</span> x <span class="token operator">*</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</li>
+</ul>
+<!--rehype:className=style-round-->
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="repeatuntil-循环"><a aria-hidden="true" tabindex="-1" href="#repeatuntil-循环"><span class="icon icon-link"></span></a>repeat...until 循环</h3><div class="wrap-body">
+<p>repeat...until 循环的条件语句在当前循环结束后判断</p>
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> num <span class="token operator">=</span> <span class="token number">11</span>
+</span><span class="code-line"><span class="token keyword">repeat</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"num 的值为: "</span><span class="token punctuation">,</span> num<span class="token punctuation">)</span>
+</span><span class="code-line">  num <span class="token operator">=</span> num <span class="token operator">+</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">until</span> <span class="token punctuation">(</span>num <span class="token operator">></span> <span class="token number">10</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment">-- num 的值为：11</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="break"><a aria-hidden="true" tabindex="-1" href="#break"><span class="icon icon-link"></span></a>break</h3><div class="wrap-body">
+<pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> num <span class="token operator">=</span> <span class="token number">11</span>
+</span><span class="code-line"><span class="token keyword">repeat</span>
+</span><span class="code-line">  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"num 的值为: "</span><span class="token punctuation">,</span> num<span class="token punctuation">)</span>
+</span><span class="code-line">  num <span class="token operator">=</span> num <span class="token operator">+</span> <span class="token number">1</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">></span> <span class="token number">15</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token keyword">break</span>
+</span><span class="code-line">  <span class="token keyword">end</span>
+</span><span class="code-line"><span class="token keyword">until</span> <span class="token punctuation">(</span>num <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="http://www.lua.org">Lua</a></li>
+<li><a href="https://wiki.luatos.com/luaGuide/introduction.html">luatos</a></li>
+<li><a href="https://www.twle.cn/l/yufei/lua53/lua-basic-index.html">Lua 教程</a></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
