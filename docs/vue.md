@@ -64,13 +64,11 @@ $ npm run build
 <!--rehype:wrap-class=row-span-2-->
 
 ```js
-import { createApp, ref } from 'vue'
+import { createApp } from 'vue'
 
 const app = createApp({
-  setup() {
-    const count = ref(0)
-
-    return { count }
+  data() {
+    return { count: 0 }
   }
 })
 app.mount('#app')
@@ -92,18 +90,15 @@ app.mount('#app')
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <div id="app">{{ message }}</div>
 <script>
-  const { createApp, ref } = Vue
+  const { createApp } = Vue
   createApp({
-    setup() {
-      const message = ref('Hello Vue!')
-
+    data() {
       return {
-        message
+        message: 'Hello Vue!'
       }
     }
   }).mount('#app')
 </script>
-
 ```
 <!--rehype:className=wrap-text -->
 
@@ -112,13 +107,11 @@ app.mount('#app')
 ```html
 <div id="app">{{ message }}</div>
 <script type="module">
-  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   createApp({
-    setup() {
-      const message = ref('Hello Vue!')
-
+    data() {
       return {
-        message
+        message: 'Hello Vue!'
       }
     }
   }).mount('#app')
@@ -215,48 +208,26 @@ data() {
 </span>
 ```
 
+### 指令 Directives
+
+```html
+<p v-if="seen">Now you see me</p>
+```
+
+### 参数 Arguments
+
+```html
+<a v-bind:href="url"> ... </a>
+<!-- 简写 -->
+<a :href="url"> ... </a>
+```
+
 ### 绑定事件
 
 ```html
 <a v-on:click="doSomething"> ... </a>
 <!-- 简写 -->
 <a @click="doSomething"> ... </a>
-```
-
-### 获取事件对象
-<!--rehype:wrap-class=row-span-2-->
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const onClick = function(e){
-  console.log(e)
-}
-</script>
-
-<template>
-  <button @click="onClick">click</button>
-</template>
-```
-
-### 传参的同时获取事件对象
-<!--rehype:wrap-class=row-span-2-->
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const onClick = function(msg, e){
-  console.log(msg, e)
-}
-</script>
-
-<template>
-  <button @click="onClick('Hello Vue!', $event)">
-    click
-  </button>
-</template>
 ```
 <!--rehype:className=wrap-text-->
 
@@ -298,32 +269,6 @@ v-on:submit.prevent="onSubmit"
   ┆   ╰─ Argument 跟随冒号或速记符号
   ╰─ Name 以 v- 开头使用速记时可以省略
 ```
-
-### 指令 Directives
-
-```html
-<p v-if="seen">Now you see me</p>
-```
-
-### 自定义指令 Directives
-<!--rehype:wrap-class=row-span-2-->
-
-```html
-<script setup>
-const vAdmin = {
-  created(el, binding, vnode, prevVnode) {
-    el.style.display = isAdmin ? 'block' : 'none'
-  },
-}
-</script>
-
-<template>
-  <button v-admin>Settings</button>
-</template>
-```
-<!--rehype:className=wrap-text-->
-
-更多[指令函数参考](https://vuejs.org/guide/reusability/custom-directives.html)
 
 响应式基础
 ---
@@ -477,28 +422,6 @@ export default defineComponent({
 });
 ```
 
-### 响应式样式
-
-```js
-<script setup>
-import { ref } from 'vue'
-const open = ref(false);
-</script>
-
-<template>
-  <button @click="open = !open">Toggle</button>
-  <div>Hello Vue!</div>  
-</template>
-
-<style scope>
-  div{
-    transition: height 0.1s linear;
-    overflow: hidden;
-    height: v-bind(open ? '30px' : '0px');
-  }
-</style>
-```
-
 响应式进阶 —— wath和computed
 ---
 
@@ -558,6 +481,119 @@ const capital = computed(function(){
   <p>to capital: {{ capital }}</p>
 </template>
 ```
+
+组件通信
+---
+
+### defineProps
+
+```js
+<script setup>
+import { defineProps } from 'vue';
+
+// 这里可以将 `username` 解构出来，但是一旦解构出来再使用，就不具备响应式能力
+defineProps({
+  username: String
+})
+</script>
+
+<template>
+  <p>username: {{ username }}</p>
+</template>
+```
+
+子组件定义需要的参数
+
+```js
+<script setup>
+const username = 'vue'
+</script>
+
+<template>
+  <children :username="username" />
+</template>
+```
+
+父组件参入参数
+
+### defineEmits
+
+```js
+<script setup>
+import { defineEmits, ref } from 'vue';
+
+const emit = defineEmits(['search'])
+  
+const keyword = ref('')
+
+const onSearch = function() {
+  emit('search', keyword.value)
+}
+</script>
+
+<template>
+  <input v-model="keyword" />
+  <button @click="onSearch">search</button>
+</template>
+```
+
+子组件定义支持 `emit` 的函数
+
+```js
+<script setup>
+const onSearch = function(keyword){
+  console.log(keyword)
+}
+</script>
+
+<template>
+  <children @search="onSearch" />
+</template>
+```
+
+父组件绑定子组件定义的事件
+
+### defineExpose
+
+```js
+<script setup>
+import { defineExpose, ref } from 'vue';
+
+const keyword = ref('')
+
+const onSearch = function() {
+  console.log(keyword.value)
+}
+
+defineExpose({ onSearch })
+</script>
+
+<template>
+  <input v-model="keyword" />
+</template>
+```
+
+子组件对父组件暴露方法
+
+```js
+<script setup>
+import { ref } from 'vue'  
+
+const childrenRef = ref(null)
+
+const onSearch = function(){
+  childrenRef.value.onSearch()
+}
+</script>
+
+<template>
+  <children ref='childrenRef' />
+  <button @click="onSearch">search</button>
+</template>
+```
+
+父组件调用子组件的方法
+
 <!--rehype:className=wrap-text -->
 
 API 参考
