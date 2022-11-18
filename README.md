@@ -12,7 +12,7 @@ Quick Reference
 [![Quick Reference](https://user-images.githubusercontent.com/1680273/201931931-d8559417-0a15-46af-a009-ec1e56e5b778.png)](https://jaywcjlove.github.io/reference)
 <!--rehype:ignore:end-->
 
-为开发人员分享快速参考备忘清单【速查表】。在看到 [Reference](https://github.com/Randy8080/reference) 快速参考备忘单，感觉非常简单，造中文版本的轮子使命感突然来了，为了方便自己的技术栈查阅，如果您提供一个清单，我将抽空搬运，立即撸起来 :)。如果您发现此处的备忘单不合适，您可以通过提交 [PR](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md) 来修复它或提供更好的备忘清单，只针对【中文】用户。以下是开源天使提供的一些备忘清单和快速参考 :)。
+为开发人员分享快速参考备忘清单【速查表】。这是英文版 [Reference](https://github.com/Randy8080/reference) 的中文版本，目的是为了方便自己的技术栈查阅，如果您提供一个清单，我将抽空搬运，立即撸起来 :)。如果您发现此处的备忘单不合适，您可以通过提交 [PR](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md) 来修复它或提供更好的备忘清单，只针对【中文】用户。以下是开源天使提供的一些备忘清单和快速参考 :)。
 
 ## 正在建设中...
 
@@ -133,6 +133,7 @@ Quick Reference
 [Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123/var(\-\-bg\-opacity));-->
+[CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 其它
@@ -169,6 +170,15 @@ Quick Reference
 <a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
   <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
 </a>
+<a href="https://github.com/Alex-Programer" title="Alex">
+  <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
+</a>
+<a href="https://github.com/mofelee" title="mofelee">
+  <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
+</a>
+<a href="https://github.com/expoli" title="expoli">
+  <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
+</a>
 <a href="https://github.com/partoneplay" title="partoneplay">
   <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
 </a>
@@ -184,6 +194,9 @@ Quick Reference
 <a href="https://github.com/CharlotteZeng" title="Chart">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
 </a>
+<a href="https://github.com/DaiNing810" title="DaiN">
+  <img src="https://avatars.githubusercontent.com/u/94962339?v=4" width="42;" alt="DaiN"/>
+</a>
 <a href="https://github.com/demigodliu" title="DemigodLiu">
   <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
 </a>
@@ -192,6 +205,9 @@ Quick Reference
 </a>
 <a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
+</a>
+<a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
+  <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
 </a>
 <a href="https://github.com/HanaNoryu" title="Noryu">
   <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
@@ -225,9 +241,6 @@ Quick Reference
 </a>
 <a href="https://github.com/liliangrong777" title="liliangrong777">
   <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
-</a>
-<a href="https://github.com/mofelee" title="mofelee">
-  <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
 </a>
 <a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>

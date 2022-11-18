@@ -10,6 +10,8 @@ export function rehypeTitle(node, iconName) {
     if (iconExist) {
       const svgNode = getSVGNode(iconPath);
       node.children = [...svgNode, ...node.children];
+      // 如果存在返回图标名称
+      return iconName;
     } else {
       const svgNode = getSVGNode(iconDefaultPath);
       node.children = [...svgNode, ...node.children];

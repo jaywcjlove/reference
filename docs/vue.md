@@ -229,6 +229,7 @@ data() {
 <!-- 简写 -->
 <a @click="doSomething"> ... </a>
 ```
+<!--rehype:className=wrap-text-->
 
 ### 动态参数
 
@@ -331,7 +332,6 @@ export default defineComponent({
 
 ```html {1}
 <script setup>
-// setup语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
 import { reactive } from 'vue';
 
 const state = reactive({ count: 0 })
@@ -347,6 +347,8 @@ function increment() {
   </button>
 </template>
 ```
+
+**`setup`** 语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
 
 ### 用 `ref()` 定义响应式变量
 
@@ -419,6 +421,179 @@ export default defineComponent({
   },
 });
 ```
+
+响应式进阶 —— wath和computed
+---
+
+### 监听状态
+
+```js
+<script setup>
+import { ref, watch } from 'vue';
+
+const count = ref(0)
+const isEvent = ref(false)
+
+function increment() {
+  state.count++
+}
+
+watch(count, function() {
+  isEvent.value = count.value % 2 === 0
+})
+</script>
+
+<template>
+  <button @click="increment">
+    {{ count }}
+  </button>
+  <p>is event: {{ isEvent ? 'yes' : 'no' }}</p>
+</template>
+```
+
+### 立即监听状态
+
+```js
+watch(count, function() {
+  isEvent.value = count.value % 2 === 0
+}, {
+  // 上例中的 watch 不会立即执行，导致 isEvent 状态的初始值不准确。配置立即执行，会在一开始的时候立即执行一次
+  immediate: true
+})
+```
+
+### 计算状态
+
+```js
+<script setup>
+import { ref, computed } from 'vue';
+
+const text = ref('')
+
+// computed 的回调函数里，会根据已有并用到的状态计算出新的状态
+const capital = computed(function(){
+  return text.value.toUpperCase();
+})
+</script>
+
+<template>
+  <input v-model="text" />
+  <p>to capital: {{ capital }}</p>
+</template>
+```
+
+组件通信
+---
+
+### defineProps
+
+```js
+<script setup>
+import { defineProps } from 'vue';
+
+// 这里可以将 `username` 解构出来，但是一旦解构出来再使用，就不具备响应式能力
+defineProps({
+  username: String
+})
+</script>
+
+<template>
+  <p>username: {{ username }}</p>
+</template>
+```
+
+子组件定义需要的参数
+
+```js
+<script setup>
+const username = 'vue'
+</script>
+
+<template>
+  <children :username="username" />
+</template>
+```
+
+父组件参入参数
+
+### defineEmits
+
+```js
+<script setup>
+import { defineEmits, ref } from 'vue';
+
+const emit = defineEmits(['search'])
+  
+const keyword = ref('')
+
+const onSearch = function() {
+  emit('search', keyword.value)
+}
+</script>
+
+<template>
+  <input v-model="keyword" />
+  <button @click="onSearch">search</button>
+</template>
+```
+
+子组件定义支持 `emit` 的函数
+
+```js
+<script setup>
+const onSearch = function(keyword){
+  console.log(keyword)
+}
+</script>
+
+<template>
+  <children @search="onSearch" />
+</template>
+```
+
+父组件绑定子组件定义的事件
+
+### defineExpose
+
+```js
+<script setup>
+import { defineExpose, ref } from 'vue';
+
+const keyword = ref('')
+
+const onSearch = function() {
+  console.log(keyword.value)
+}
+
+defineExpose({ onSearch })
+</script>
+
+<template>
+  <input v-model="keyword" />
+</template>
+```
+
+子组件对父组件暴露方法
+
+```js
+<script setup>
+import { ref } from 'vue'  
+
+const childrenRef = ref(null)
+
+const onSearch = function(){
+  childrenRef.value.onSearch()
+}
+</script>
+
+<template>
+  <children ref='childrenRef' />
+  <button @click="onSearch">search</button>
+</template>
+```
+
+父组件调用子组件的方法
+
 <!--rehype:className=wrap-text -->
 
 API 参考

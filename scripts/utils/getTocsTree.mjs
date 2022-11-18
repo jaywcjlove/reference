@@ -10,7 +10,12 @@ export function getTocsTitleNode(arr = [], result = []) {
   arr.forEach(({ tagName, type, properties, children }) => {
     if (/^h[23456]/.test(tagName)) {
       const num = titleNum(tagName);
-      const props = { 'aria-hidden': 'true', class: `leve${num} tocs-link`, href: '#' + (properties.id || '') };
+      const props = {
+        'aria-hidden': 'true',
+        class: `leve${num} tocs-link`,
+        'data-num': num,
+        href: '#' + (properties.id || ''),
+      };
       const title = getCodeString(children || []);
       result.push({ tagName: 'a', type, properties: props, children: [{ type: 'text', value: title || ' ' }] });
     } else if (children?.length > 0) {
