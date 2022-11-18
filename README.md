@@ -135,6 +135,7 @@ Quick Reference
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123/var(\-\-bg\-opacity));-->
 [CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255/var(\-\-bg\-opacity));-->
+[tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 其它
