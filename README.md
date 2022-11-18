@@ -224,6 +224,12 @@ Quick Reference
 <a href="https://github.com/HanaNoryu" title="Noryu">
   <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
 </a>
+<a href="https://github.com/whb1998a" title="WHB">
+  <img src="https://avatars.githubusercontent.com/u/44045064?v=4" width="42;" alt="WHB"/>
+</a>
+<a href="https://github.com/y52y" title="Zyj">
+  <img src="https://avatars.githubusercontent.com/u/51304324?v=4" width="42;" alt="Zyj"/>
+</a>
 <a href="https://github.com/chyok" title="chyok">
   <img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/>
 </a>
