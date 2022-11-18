@@ -117,6 +117,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/Smartdousha" title="Anko">
   <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
 </a>
+<a href="https://github.com/Brid9e" title="Brid9e">
+  <img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Brid9e"/>
+</a>
 <a href="https://github.com/CharlotteZeng" title="Chart">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
 </a>
@@ -131,6 +134,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 </a>
 <a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
+</a>
+<a href="https://github.com/Lihuagreek" title="Lihuagreek">
+  <img src="https://avatars.githubusercontent.com/u/51040740?v=4" width="42;" alt="Lihuagreek"/>
 </a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
@@ -158,6 +164,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 </a>
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
+</a>
+<a href="https://github.com/k983551019" title="k983551019">
+  <img src="https://avatars.githubusercontent.com/u/48147837?v=4" width="42;" alt="k983551019"/>
 </a>
 <a href="https://github.com/kdxcxs" title="kdxcxs">
   <img src="https://avatars.githubusercontent.com/u/18746192?v=4" width="42;" alt="kdxcxs"/>
