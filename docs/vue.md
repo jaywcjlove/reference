@@ -550,6 +550,119 @@ const capital = computed(function(){
   <p>to capital: {{ capital }}</p>
 </template>
 ```
+
+组件通信
+---
+
+### defineProps
+
+```js
+<script setup>
+import { defineProps } from 'vue';
+
+// 这里可以将 `username` 解构出来，但是一旦解构出来再使用，就不具备响应式能力
+defineProps({
+  username: String
+})
+</script>
+
+<template>
+  <p>username: {{ username }}</p>
+</template>
+```
+
+子组件定义需要的参数
+
+```js
+<script setup>
+const username = 'vue'
+</script>
+
+<template>
+  <children :username="username" />
+</template>
+```
+
+父组件参入参数
+
+### defineEmits
+
+```js
+<script setup>
+import { defineEmits, ref } from 'vue';
+
+const emit = defineEmits(['search'])
+  
+const keyword = ref('')
+
+const onSearch = function() {
+  emit('search', keyword.value)
+}
+</script>
+
+<template>
+  <input v-model="keyword" />
+  <button @click="onSearch">search</button>
+</template>
+```
+
+子组件定义支持 `emit` 的函数
+
+```js
+<script setup>
+const onSearch = function(keyword){
+  console.log(keyword)
+}
+</script>
+
+<template>
+  <children @search="onSearch" />
+</template>
+```
+
+父组件绑定子组件定义的事件
+
+### defineExpose
+
+```js
+<script setup>
+import { defineExpose, ref } from 'vue';
+
+const keyword = ref('')
+
+const onSearch = function() {
+  console.log(keyword.value)
+}
+
+defineExpose({ onSearch })
+</script>
+
+<template>
+  <input v-model="keyword" />
+</template>
+```
+
+子组件对父组件暴露方法
+
+```js
+<script setup>
+import { ref } from 'vue'  
+
+const childrenRef = ref(null)
+
+const onSearch = function(){
+  childrenRef.value.onSearch()
+}
+</script>
+
+<template>
+  <children ref='childrenRef' />
+  <button @click="onSearch">search</button>
+</template>
+```
+
+父组件调用子组件的方法
+
 <!--rehype:className=wrap-text -->
 
 API 参考
