@@ -6,7 +6,7 @@ Conventional Commits 备忘清单
 入门
 ----
 
-### 示例
+### 常用
 <!--rehype:wrap-class=row-span-1-->
 
 |   类型   |  描述 |
