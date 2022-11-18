@@ -27,6 +27,7 @@ Quick Reference
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
+[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -133,8 +134,6 @@ Quick Reference
 [Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123/var(\-\-bg\-opacity));-->
-[CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
-[APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 其它
@@ -171,14 +170,8 @@ Quick Reference
 <a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
   <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
 </a>
-<a href="https://github.com/Alex-Programer" title="Alex">
-  <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
-</a>
 <a href="https://github.com/mofelee" title="mofelee">
   <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
-</a>
-<a href="https://github.com/expoli" title="expoli">
-  <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
 </a>
 <a href="https://github.com/partoneplay" title="partoneplay">
   <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
@@ -189,17 +182,14 @@ Quick Reference
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
 </a>
+<a href="https://github.com/Alex-Programer" title="Alex">
+  <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
+</a>
 <a href="https://github.com/Smartdousha" title="Anko">
   <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
 </a>
-<a href="https://github.com/Brid9e" title="Brid9e">
-  <img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Brid9e"/>
-</a>
 <a href="https://github.com/CharlotteZeng" title="Chart">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
-</a>
-<a href="https://github.com/DaiNing810" title="DaiN">
-  <img src="https://avatars.githubusercontent.com/u/94962339?v=4" width="42;" alt="DaiN"/>
 </a>
 <a href="https://github.com/demigodliu" title="DemigodLiu">
   <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
@@ -209,9 +199,6 @@ Quick Reference
 </a>
 <a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
-</a>
-<a href="https://github.com/Lihuagreek" title="Lihuagreek">
-  <img src="https://avatars.githubusercontent.com/u/51040740?v=4" width="42;" alt="Lihuagreek"/>
 </a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
@@ -240,9 +227,6 @@ Quick Reference
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
 </a>
-<a href="https://github.com/k983551019" title="k983551019">
-  <img src="https://avatars.githubusercontent.com/u/48147837?v=4" width="42;" alt="k983551019"/>
-</a>
 <a href="https://github.com/kdxcxs" title="kdxcxs">
   <img src="https://avatars.githubusercontent.com/u/18746192?v=4" width="42;" alt="kdxcxs"/>
 </a>
@@ -251,9 +235,6 @@ Quick Reference
 </a>
 <a href="https://github.com/liliangrong777" title="liliangrong777">
   <img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/>
-</a>
-<a href="https://github.com/lykjjj" title="lykjjj">
-  <img src="https://avatars.githubusercontent.com/u/58510058?v=4" width="42;" alt="lykjjj"/>
 </a>
 <a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
