@@ -140,6 +140,7 @@ Quick Reference
 
 [Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=排版说明-->
 [Github Actions](./docs/github-actions.md)<!--rehype:style=background: rgb(121 184 255/var(\-\-bg\-opacity));-->
+[Conventional Commits](./docs/conventional-commits.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=约定式提交-->
 [Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=CSS-->
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=HTML-->
