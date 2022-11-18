@@ -10,8 +10,6 @@ tar 备忘清单
 
 在Linux平台上，`tar` 命令是主要的归档实用程序。了解各种 `tar` 命令选项将帮助您掌握归档文件操作。`tar` 代表磁带存档。
 
-以前 unix 系统管理员使用 `tar` 执行磁带机备份。`tar` 命令用于获取文件和目录的集合，并生成高度压缩的归档文件，在Linux中通常称为 `tarball` 或 `tar`、`gzip` 和 `bzip`。
-
 #### 语法
 
 ```shell
@@ -19,8 +17,9 @@ tar [-ABcdgGhiklmMoOpPrRsStuUvwWxzZ][-C <目的目录>][-f <备份文件>][--del
 ```
 <!--rehype:className=wrap-text -->
 
+以前 unix 系统管理员使用 `tar` 执行磁带机备份。`tar` 命令用于获取文件和目录的集合，并生成高度压缩的归档文件，在Linux中通常称为 `tarball` 或 `tar`、`gzip` 和 `bzip`。
+
 ### 选项
-<!--rehype:wrap-class=col-span-2-->
 
 :- | -
 :- | -
