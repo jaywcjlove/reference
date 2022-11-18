@@ -1423,6 +1423,15 @@ div {
 
 通过样式来控制一个元素 `div` 是否可以编辑
 
+### 定义容器的长宽比
+
+```
+div {
+  aspect-ratio: 1/1 
+}
+```
+属性 [aspect-ratio](https://developer.mozilla.org/zh-CN/docs/Web/CSS/aspect-ratio) 可以非常容易的定义一个容器的长宽比
+
 另见
 ---------
 
