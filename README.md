@@ -134,6 +134,7 @@ Quick Reference
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123/var(\-\-bg\-opacity));-->
 [CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
+[APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 其它
