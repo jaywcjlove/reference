@@ -223,6 +223,38 @@ data() {
 <a @click="doSomething"> ... </a>
 ```
 
+### 获取事件对象
+
+```js
+<script setup>
+import { ref } from 'vue'
+
+const onClick = function(e){
+  console.log(e)
+}
+</script>
+
+<template>
+  <button @click="onClick">click</button>
+</template>
+```
+
+### 传参的同时获取事件对象
+
+```js
+<script setup>
+import { ref } from 'vue'
+
+const onClick = function(msg, e){
+  console.log(msg, e)
+}
+</script>
+
+<template>
+  <button @click="onClick('Hello Vue!', $event)">click</button>
+</template>
+```
+
 ### 动态参数
 
 ```html
