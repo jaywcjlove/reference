@@ -1,7 +1,7 @@
 Lua 备忘清单
 ===
 
-包含最重要概念、函数、方法等的 Lua 备忘单。 初学者的完整快速参考。
+包含最重要概念、函数、方法等的 [Lua](http://www.lua.org) 备忘单。 初学者的完整快速参考。
 
 入门
 ---
@@ -16,7 +16,7 @@ $ brew install lua
 
 #### 其它下载方式
 
-* [下载地址](https://luabinaries.sourceforge.net/download.html)
+* [下载地址](https://luabinaries.sourceforge.net/download.html) _(sourceforge.net)_
 
 ```bash
 # 查看 lua 是否安装成功
@@ -299,12 +299,12 @@ print(a ^ b) -- 64.0
 
 符号 | 含义
 :-  | :-
-==  | 等于
-~=  | 不等于
-\>  | 大于
-\<  | 小于
-\>= | 大于等于
-\<= | 小于等于
+`==`  | 等于
+`~=`  | 不等于
+`>`  | 大于
+`<`  | 小于
+`>=` | 大于等于
+`<=` | 小于等于
 <!--rehype:className=show-header-->
 
 ```lua
@@ -347,8 +347,6 @@ end
 ### if 语句
 <!--rehype:wrap-class=row-span-2-->
 
-<span style="color:red">注意: Lua 中 0 为 true，但是 Lua 中的 `nil` 可以当作 `false`</span>
-
 ```lua
 if(0)
 then
@@ -377,6 +375,8 @@ end
 print("age 的值为 :", age)
 ```
 
+<red>注意: </red>`Lua` 中 `0` 为 `true`，但是 `Lua` 中的 `nil` 可以当作 `false`
+
 ### for 循环
 
 ```lua
@@ -389,23 +389,19 @@ end
 * 参数三，是可选的，如果不指定，默认是 1
 * 参数二只会在一开始求值，其后不会再进行运算
 
-   ```lua
-   local f = function(x)
-     print("in f(x) ")
-     return x * 2
-   end
-   
-   for i = 1, f(5) do
-     print(i)
-   end
-   ```
+```lua
+local f = function(x)
+  print("in f(x) ")
+  return x * 2
+end
 
-<!--rehype:className=style-round-->
-<!--rehype:className=wrap-text -->
+for i = 1, f(5) do
+  print(i)
+end
+```
+<!--rehype:className=style-round wrap-text-->
 
 ### repeat...until 循环
-
-repeat...until 循环的条件语句在当前循环结束后判断
 
 ```lua
 local num = 11
@@ -415,6 +411,8 @@ repeat
 until (num > 10)
 -- num 的值为：11
 ```
+
+`repeat...until` 循环的条件语句在当前循环结束后判断
 
 ### break
 
@@ -432,6 +430,6 @@ until (num > 20)
 另见
 ----
 
-* [Lua](http://www.lua.org)
-* [luatos](https://wiki.luatos.com/luaGuide/introduction.html)
-* [Lua 教程](https://www.twle.cn/l/yufei/lua53/lua-basic-index.html)
+* [Lua 官网](http://www.lua.org) _(lua.org)_
+* [luatos](https://wiki.luatos.com/luaGuide/introduction.html) _(wiki.luatos.com)_
+* [Lua 教程](https://www.twle.cn/l/yufei/lua53/lua-basic-index.html) _(twle.cn)_
