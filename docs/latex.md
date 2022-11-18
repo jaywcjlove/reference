@@ -105,6 +105,16 @@ Supported Functions
 | `KaTex:\iota`      | <pur>`\iota`</pur>       | `KaTex:\pi`       | <pur>`\pi`</pur>          | `KaTex:\zeta`     | <pur>`\zeta`</pur>        | `KaTex:\vartheta`     | <pur>`\vartheta`</pur>        | `KaTex:\Sigma`    | <pur>`\Sigma`</pur>       |  `KaTex:\gimel`   | <pur>`\gimel`</pur>   |
 <!--rehype:className=show-header left-align-->
 
+### `KaTex:\LaTeX` math constructs
+<!--rehype:wrap-class=col-span-3-->
+
+预览 | 方法 | 预览 | 方法 | 预览 | 方法
+:- | :- | :- | :- | :- | :-
+| `KaTex:\frac{abc}{xyz}`   | <pur>`\frac{abc}{xyz}`</pur>      | `KaTex:\overline{abc}`     | <pur>`\overline{abc}`</pur>      | `KaTex:\overrightarrow{abc}`     | <pur>`\overrightarrow{abc}`</pur>      |
+| `KaTex:f’`                | <pur>`f’`</pur>                   | `KaTex:\underline{abc}`    | <pur>`\underline{abc}`</pur>     | `KaTex:\overleftarrow{abc}`      | <pur>`\overleftarrow{abc}`</pur>       |
+| `KaTex:\sqrt{abc}`        | <pur>`\sqrt{abc}`</pur>           | `KaTex:\widehat{abc}`      | <pur>`\widehat{abc}`</pur>       | `KaTex:\overbrace{abc}`          | <pur>`\overbrace{abc}`</pur>           |
+| `KaTex:\sqrt[n]{abc}`     | <pur>`\sqrt[n]{abc}`</pur>        | `KaTex:\widetilde{abc}`    | <pur>`\widetilde{abc}`</pur>     | `KaTex:\underbrace{abc}`         | <pur>`\underbrace{abc}`</pur>          |
+
 ### 分隔符 Delimiters
 <!--rehype:wrap-class=col-span-3-->
 
@@ -119,6 +129,42 @@ Supported Functions
 | `KaTeX:∣ ∣` | <pur>`\lvert` `\rvert`</pur>    | `KaTex:\lVert \rVert` | <pur>`\lVert` `\rVert`</pur>       |  | <pur>`\left.`</pur> |  | <pur>`\right.`</pur> | `KaTex:\backslash` | <pur>`\backslash`</pur> |
 | `KaTeX:\lang` `KaTeX:\rang` | <pur>`\lang` `\rang`<pur>   | `KaTeX:\lt \gt` | <pur>`\lt \gt`</pur>                 | `KaTex:⟦ ⟧` | <pur>`⟦ ⟧`</pur>  | `KaTex:\llbracket \rrbracket` | <pur>`\llbracket` `\rrbracket`</pur> | `KaTex:\lBrace \rBrace` | <pur>`\lBrace \rBrace`</pur> |
 <!--rehype:className=show-header left-align-->
+
+可以使用一对表达式 `\left` `KaTeX:s_1` 和 `\right` `KaTeX:s_2` 来将分隔符 `KaTeX:s_1` 和 `KaTeX:s_2` 的高度与其内容的高度进行匹配，例如:
+:- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :-
+:- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :-
+| `KaTeX:\left\|` | `KaTeX:expr` | `KaTeX:\right\|` | | `KaTeX:\left\{` |`KaTeX:expr` | `KaTeX:\right\}` | | `KaTeX:\left\Vert`| `KaTeX:expr` | `KaTeX:\right.` |
+
+### Variable-sized symbols
+<!--rehype:wrap-class=col-span-3-->
+
+预览 | 方法 | 预览 | 方法 | 预览 | 方法 | 预览| 方法 | 预览 | 方法
+:- | :- | :- | :- | :- | :- | :- | :- | :- | :-
+| `KaTeX:\sum`      | <pur>`\sum`</pur>         | `KaTeX:\int`  | <pur>`\int`</pur>         |  `KaTeX:\biguplus`    | <pur>`\biguplus`</pur>        | `KaTeX:\bigoplus`     | <pur>`\bigoplus`</pur>        |  `KaTeX:\bigvee`      | <pur>`\bigvee`</pur>          |
+| `KaTeX:\prod`     | <pur>`\prod`</pur>        | `KaTeX:\oint` | <pur>`\oint`</pur>        |  `KaTeX:\bigcap`      | <pur>`\bigcap`</pur>          | `KaTeX:\bigotimes`    | <pur>`\bigotimes`</pur>       |  `KaTeX:\bigwedge`    | <pur>`\bigwedge`</pur>        |
+| `KaTeX:\coprod`   | <pur>`\coprod`</pur>      | `KaTeX:\iint` | <pur>`\iint`</pur>        |  `KaTeX:\bigcup`      | <pur>`\bigcup`</pur>          | `KaTeX:\bigodot`      | <pur>`\bigodot`</pur>         |  `KaTeX:\bigodot`     | <pur>`\bigodot`</pur>         |
+<!--rehype:className=show-header left-align-->
+
+### Standard Function Names
+<!--rehype:wrap-class=col-span-3-->
+
+预览 | 方法 | 预览 | 方法 | 预览 | 方法 | 预览| 方法
+:- | :- | :- | :- | :- | :- | :- | :-
+| `KaTeX:\arccos`   | <pur>`\arccos`</pur>  | `KaTeX:\arcsin`   | <pur>`\arcsin`</pur>  | `KaTeX:\arcsin`   | <pur>`\arcsin`</pur>  | `KaTeX:\arg`      | <pur>`\arg`</pur>     |
+| `KaTeX:\cos`      | <pur>`\cos`</pur>     | `KaTeX:\cosh`     | <pur>`\cosh`</pur>    | `KaTeX:\cot`      | <pur>`\cot`</pur>     | `KaTeX:\coth`     | <pur>`\coth`</pur>    |
+| `KaTeX:\csc`      | <pur>`\csc`</pur>     | `KaTeX:\deg`      | <pur>`\deg`</pur>     | `KaTeX:\det`      | <pur>`\det`</pur>     | `KaTeX:\dim`      | <pur>`\dim`</pur>     |
+| `KaTeX:\exp`      | <pur>`\exp`</pur>     | `KaTeX:\gcd`      | <pur>`\gcd`</pur>     | `KaTeX:\hom`      | <pur>`\hom`</pur>     | `KaTeX:\inf`      | <pur>`\inf`</pur>     |
+| `KaTeX:\ker`      | <pur>`\ker`</pur>     | `KaTeX:\lg`       | <pur>`\lg`</pur>      | `KaTeX:\lim`      | <pur>`\lim`</pur>     | `KaTeX:\liminf`   | <pur>`\liminf`</pur>  |
+| `KaTeX:\limsup`   | <pur>`\limsup`</pur>  | `KaTeX:\ln`       | <pur>`\ln`</pur>      | `KaTeX:\log`      | <pur>`\log`</pur>     | `KaTeX:\max`      | <pur>`\max`</pur>     |
+| `KaTeX:\min`      | <pur>`\min`</pur>     | `KaTeX:\Pr`       | <pur>`\Pr`</pur>      | `KaTeX:\sec`      | <pur>`\sec`</pur>     | `KaTeX:\sin`      | <pur>`\sin`</pur>     |
+| `KaTeX:\sinh`     | <pur>`\sinh`</pur>    | `KaTeX:\sup`      | <pur>`\sup`</pur>     | `KaTeX:\tan`      | <pur>`\tan`</pur>     | `KaTeX:\tanh`     | <pur>`\tanh`</pur>    |
+<!--rehype:className=show-header left-align-->
+
+函数名应该用罗马字体，而不是斜体，例如:
+:- | :- | :- | :-
+:- | :- | :- | :-
+| Correct: |  <pur>`\tan(at-n\pi)`</pur> | `KaTeX:\rightarrow` | `KaTeX:\tan(at-n\pi)`|
+| Incorrect: | <pur>`tan(at-n\pi)`</pur> | `katex:\rightarrow` | `KaTeX:tan(at-n\pi)` |
 
 Environments
 ---
@@ -446,3 +492,4 @@ x = \begin{cases}
 
 - [LaTeX 官网](https://www.latex-project.org/) _(latex-project.org)_
 - [KaTeX 官网](https://katex.org/) _(katex.org)_
+- [symbols.pdf](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf) _(cmor-faculty.rice.edu)_
