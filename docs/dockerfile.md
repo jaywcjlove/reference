@@ -207,8 +207,11 @@ temp?
 `EXPOSE <port> [<port>/<protocol>...]` | 运行时侦听指定的网络端口
 <!--rehype:class=auto-wrap-->
 
+Dockerfile 示例
+----
+<!--rehype:body-class=cols-2-->
+
 ### 服务静态网站的最小 Docker 镜像
-<!--rehype:wrap-class=col-span-2-->
 
 ```dockerfile
 FROM lipanski/docker-static-website:latest
@@ -223,10 +226,30 @@ COPY ./ .
 FROM lipanski/docker-static-website:latest
 COPY . .
 
-CMD ["/busybox", "httpd", "-f", "-v", "-p", "3000", "-c", "httpd.conf"]
+CMD ["/busybox","httpd","-f","-v","-p","3000","-c","httpd.conf"]
 ```
 
 缩小镜像过程[查看原文](https://lipanski.com/posts/smallest-docker-image-static-website)，镜像 [Dockerfile 源码](https://github.com/lipanski/docker-static-website)。
+
+### Docker 镜像多阶段构建
+
+```dockerfile
+FROM golang:alpine as builder
+RUN apk --no-cache add git
+WORKDIR /go/src/github.com/go/helloworld/
+RUN go get -d -v github.com/go-sql-driver/mysql
+COPY app.go .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+FROM alpine:latest as prod
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=builder /go/src/github.com/go/helloworld/app .
+CMD ["./app"]
+```
+<!--rehype:className=wrap-text -->
+
+使用多阶段构建能将构建依赖留在 builder 镜像中，只将编译完成后的二进制文件拷贝到运行环境中，大大减少镜像体积。
 
 ## 也可以看看
 

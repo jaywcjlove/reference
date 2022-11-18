@@ -56,17 +56,21 @@ export async function createHTML(files = [], num = 0) {
 }
 
 export async function run() {
-  await fs.ensureDir(OUTOUT);
-  await fs.emptyDir(OUTOUT);
-  await fs.ensureDir(path.resolve(OUTOUT, 'style'));
-  await fs.ensureFile(SEARCH_DATA_CACHE);
-  await fs.writeFile(SEARCH_DATA_CACHE, '{}');
-  await fs.writeFile(SEARCH_DATA, '[]');
-  await fs.copy(path.resolve(process.cwd(), 'scripts/style'), path.resolve(OUTOUT, 'style'));
-  const files = await recursiveReaddirFiles(process.cwd(), {
-    ignored: /\/(node_modules|\.git)/,
-    exclude: /(\.json|\.mjs|CONTRIBUTING\.md)$/,
-    filter: (item) => item.ext === 'md',
-  });
-  createHTML(files);
+  try {
+    await fs.ensureDir(OUTOUT);
+    await fs.emptyDir(OUTOUT);
+    await fs.ensureDir(path.resolve(OUTOUT, 'style'));
+    await fs.ensureFile(SEARCH_DATA_CACHE);
+    await fs.writeFile(SEARCH_DATA_CACHE, '{}');
+    await fs.writeFile(SEARCH_DATA, '[]');
+    await fs.copy(path.resolve(process.cwd(), 'scripts/style'), path.resolve(OUTOUT, 'style'));
+    const files = await recursiveReaddirFiles(process.cwd(), {
+      ignored: /\/(node_modules|\.git)/,
+      exclude: /(\.json|\.mjs|CONTRIBUTING\.md)$/,
+      filter: (item) => item.ext === 'md',
+    });
+    createHTML(files);
+  } catch (error) {
+    console.log('ERR:', error);
+  }
 }

@@ -64,13 +64,11 @@ $ npm run build
 <!--rehype:wrap-class=row-span-2-->
 
 ```js
-import { createApp, ref } from 'vue'
+import { createApp } from 'vue'
 
 const app = createApp({
-  setup() {
-    const count = ref(0)
-
-    return { count }
+  data() {
+    return { count: 0 }
   }
 })
 app.mount('#app')
@@ -92,18 +90,15 @@ app.mount('#app')
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <div id="app">{{ message }}</div>
 <script>
-  const { createApp, ref } = Vue
+  const { createApp } = Vue
   createApp({
-    setup() {
-      const message = ref('Hello Vue!')
-
+    data() {
       return {
-        message
+        message: 'Hello Vue!'
       }
     }
   }).mount('#app')
 </script>
-
 ```
 <!--rehype:className=wrap-text -->
 
@@ -112,13 +107,11 @@ app.mount('#app')
 ```html
 <div id="app">{{ message }}</div>
 <script type="module">
-  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   createApp({
-    setup() {
-      const message = ref('Hello Vue!')
-
+    data() {
       return {
-        message
+        message: 'Hello Vue!'
       }
     }
   }).mount('#app')
@@ -215,6 +208,20 @@ data() {
 </span>
 ```
 
+### 指令 Directives
+
+```html
+<p v-if="seen">Now you see me</p>
+```
+
+### 参数 Arguments
+
+```html
+<a v-bind:href="url"> ... </a>
+<!-- 简写 -->
+<a :href="url"> ... </a>
+```
+
 ### 绑定事件
 
 ```html
@@ -222,38 +229,7 @@ data() {
 <!-- 简写 -->
 <a @click="doSomething"> ... </a>
 ```
-
-### 获取事件对象
-
-```js
-<script setup>
-import { ref } from 'vue'
-
-const onClick = function(e){
-  console.log(e)
-}
-</script>
-
-<template>
-  <button @click="onClick">click</button>
-</template>
-```
-
-### 传参的同时获取事件对象
-
-```js
-<script setup>
-import { ref } from 'vue'
-
-const onClick = function(msg, e){
-  console.log(msg, e)
-}
-</script>
-
-<template>
-  <button @click="onClick('Hello Vue!', $event)">click</button>
-</template>
-```
+<!--rehype:className=wrap-text-->
 
 ### 动态参数
 
@@ -293,30 +269,6 @@ v-on:submit.prevent="onSubmit"
   ┆   ╰─ Argument 跟随冒号或速记符号
   ╰─ Name 以 v- 开头使用速记时可以省略
 ```
-
-### 指令 Directives
-
-```html
-<p v-if="seen">Now you see me</p>
-```
-
-### 自定义指令 Directives
-
-```js
-<script setup>
-const vAdmin = {
-  created(el, binding, vnode, prevVnode) {
-    el.style.display = isAdmin ? 'block' : 'none'
-  },
-}
-</script>
-
-<template>
-  <button v-admin>Settings</button>
-</template>
-```
-
-更多指令函数参考：<https://vuejs.org/guide/reusability/custom-directives.html>
 
 响应式基础
 ---
@@ -380,7 +332,6 @@ export default defineComponent({
 
 ```html {1}
 <script setup>
-// setup语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
 import { reactive } from 'vue';
 
 const state = reactive({ count: 0 })
@@ -396,6 +347,8 @@ function increment() {
   </button>
 </template>
 ```
+
+**`setup`** 语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
 
 ### 用 `ref()` 定义响应式变量
 
@@ -467,28 +420,6 @@ export default defineComponent({
     });
   },
 });
-```
-
-### 响应式样式
-
-```js
-<script setup>
-import { ref } from 'vue'
-const open = ref(false);
-</script>
-
-<template>
-  <button @click="open = !open">Toggle</button>
-  <div>Hello Vue!</div>  
-</template>
-
-<style scope>
-  div{
-    transition: height 0.1s linear;
-    overflow: hidden;
-    height: v-bind(open ? '30px' : '0px');
-  }
-</style>
 ```
 
 响应式进阶 —— wath和computed

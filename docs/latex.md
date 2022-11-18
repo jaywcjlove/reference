@@ -90,6 +90,21 @@ Supported Functions
 `\right`  | `\bigg` | `\biggl` | `\biggm` | `\biggr`
 `` | `\Bigg` | `\Biggl` | `\Biggm` | `\Biggr`
 
+### 希腊和希伯来字母 Greek and Hebrew letters
+<!--rehype:wrap-class=col-span-3-->
+
+预览 | 方法 | 预览 | 方法 | 预览 | 方法 | 预览| 方法 | 预览 | 方法 | 预览 | 方法
+:- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :-
+| `KaTex:\alpha`     | <pur>`\alpha`</pur>      | `KaTex:\kappa`    | <pur>`\kappa`</pur>       | `KaTex:\psi`      | <pur>`\psi`</pur>         | `KaTex:\digamma`      | <pur>`\digamma`</pur>         | `KaTex:\Delta`    | <pur>`\Delta`</pur>       |  `KaTex:\Theta`   | <pur>`\Theta`</pur>   |
+| `KaTex:\beta`      | <pur>`\beta`</pur>       | `KaTex:\lambda`   | <pur>`\lambda`</pur>      | `KaTex:\rho`      | <pur>`\rho`</pur>         | `KaTex:\varepsilon`   | <pur>`\varepsilon`</pur>      | `KaTex:\Gamma`    | <pur>`\Gamma`</pur>       |  `KaTex:\Upsilon` | <pur>`\Upsilon`</pur> |
+| `KaTex:\chi`       | <pur>`\chi`</pur>        | `KaTex:\mu`       | <pur>`\mu`</pur>          | `KaTex:\sigma`    | <pur>`\sigma`</pur>       | `KaTex:\varkappa`     | <pur>`\varkappa`</pur>        | `KaTex:\Lambda`   | <pur>`\Lambda`</pur>      |  `KaTex:\Xi`      | <pur>`\Xi`</pur>      |
+| `KaTex:\delta`     | <pur>`\delta`</pur>      | `KaTex:\nu`       | <pur>`\nu`</pur>          | `KaTex:\tau`      | <pur>`\tau`</pur>         | `KaTex:\varphi`       | <pur>`\varphi`</pur>          | `KaTex:\Omega`    | <pur>`\Omega`</pur>       |  |
+| `KaTex:\epsilon`   | <pur>`\epsilon`</pur>    | `KaTex:o`         | <pur>`o`</pur>            | `KaTex:\theta`    | <pur>`\theta`</pur>       | `KaTex:\varpi`        | <pur>`\varpi`</pur>           | `KaTex:\Phi`      | <pur>`\Phi`</pur>         |  `KaTex:\aleph`   | <pur>`\aleph`</pur>   |
+| `KaTex:\eta`       | <pur>`\eta`</pur>        | `KaTex:\omega`    | <pur>`\omega`</pur>       | `KaTex:\upsilon`  | <pur>`\upsilon`</pur>     | `KaTex:\varrho`       | <pur>`\varrho`</pur>          | `KaTex:\Pi`       | <pur>`\Pi`</pur>          |  `KaTex:\beth`    | <pur>`\beth`</pur>    |
+| `KaTex:\gamma`     | <pur>`\gamma`</pur>      | `KaTex:\phi`      | <pur>`\phi`</pur>         | `KaTex:\xi`       | <pur>`\xi`</pur>          | `KaTex:\varsigma`     | <pur>`\varsigma`</pur>        | `KaTex:\Psi`      | <pur>`\Psi`</pur>         |  `KaTex:\daleth`  | <pur>`\daleth`</pur>  |
+| `KaTex:\iota`      | <pur>`\iota`</pur>       | `KaTex:\pi`       | <pur>`\pi`</pur>          | `KaTex:\zeta`     | <pur>`\zeta`</pur>        | `KaTex:\vartheta`     | <pur>`\vartheta`</pur>        | `KaTex:\Sigma`    | <pur>`\Sigma`</pur>       |  `KaTex:\gimel`   | <pur>`\gimel`</pur>   |
+<!--rehype:className=show-header left-align-->
+
 ### 分隔符 Delimiters
 <!--rehype:wrap-class=col-span-3-->
 
