@@ -193,9 +193,6 @@ Quick Reference
 <a href="https://github.com/CharlotteZeng" title="Chart">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
 </a>
-<a href="https://github.com/DaiNing810" title="DaiN">
-  <img src="https://avatars.githubusercontent.com/u/94962339?v=4" width="42;" alt="DaiN"/>
-</a>
 <a href="https://github.com/demigodliu" title="DemigodLiu">
   <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
 </a>
