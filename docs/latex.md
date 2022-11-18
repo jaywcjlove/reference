@@ -130,6 +130,54 @@ Supported Functions
 `KaTex:\digamma` | <pur>`\digamma`</pur>
 <!--rehype:className=show-header left-align-->
 
+### 注解
+<!--rehype:wrap-class=col-span-3-->
+
+:- | :- | :- | :- | :-
+:- | :- | :- | :- | :-
+`KaTex:\cancel{5}` | <pur>`\cancel{5}`</pur> | `KaTex:\overbrace{a+b+c}^{\text{note}}` | <pur>`\overbrace{a+b+c}^{\text{note}}`</pur>
+`KaTex:\bcancel{5}` | <pur>`\bcancel{5}`</pur> | `KaTex:\underbrace{a+b+c}_{\text{note}}` | <pur>`\underbrace{a+b+c}_{\text{note}}`</pur>
+`KaTex:\xcancel{ABC}` | <pur>`\xcancel{ABC}`</pur> | `KaTex:\not =` | <pur>`\not =`</pur>
+`KaTex:\sout{abc}` | <pur>`\sout{abc}`</pur> | `KaTex:\boxed{\pi=\frac c d}` | <pur>`\boxed{\pi=\frac c d}`</pur>
+`KaTex:\$a_{\angl n}` _<red>MD语法冲突</red>_ | <pur>`$a_{\angl n}`</pur> | `KaTex:a_\angln` | <pur>`a_\angln`</pur>
+`KaTex:​\phase{-78^\circ}` | <pur>`​\phase{-78^\circ}`</pur>
+
+<pur>\tag{hi} x+y^{2x}</pur>
+
+```KaTex
+\tag{hi} x+y^{2x}
+```
+
+<pur>\tag*{hi} x+y^{2x}</pur>
+
+```KaTex
+\tag*{hi} x+y^{2x}
+```
+
+### 垂直布局
+<!--rehype:wrap-class=col-span-3-->
+
+:- | :- | :- | :- | :- | :-
+:- | :- | :- | :- | :- | :-
+`KaTex:x_n` | <pur>`x_n`</pur> | `KaTex:\stackrel{!}{=}` | <pur>`\stackrel{!}{=}`</pur> | `KaTex:a \atop b` | `a \atop b`
+`KaTex:e^x` | <pur>`e^x`</pur> | `KaTex:\overset{!}{=}` | <pur>`\overset{!}{=}`</pur> | `KaTex:a\raisebox{0.25em}{$b$}c` | `a\raisebox{0.25em}{$b$}c`
+`KaTex:_u^o` | <pur>`_u^o`</pur> | `KaTex:\underset{!}{=}` | <pur>`\underset{!}{=}`</pur> | `KaTex:a+\left(\vcenter{\hbox{$\frac{\frac a b}c$}}\right)` | `a+\left(\vcenter{\hbox{$\frac{\frac a b}c$}}\right)`
+`KaTex:\sum_{\substack{0<i<m\\0<j<n}}` | <pur>`\sum_{\substack{0<i<m\\0<j<n}}`</pur>
+
+### 重叠和间距
+<!--rehype:wrap-class=col-span-3-->
+
+ :- | :- | :- | :-
+ :- | :- | :- | :-
+`KaTex:{=}\mathllap{/\,}` <pur>{=}\mathllap{/\,}</pur> | `KaTex:\left(x^{\smash{2}}\right)` | <pur>\left(x^{\smash{2}}\right)</pur>
+`KaTex:\mathrlap{\,/}{=}` <pur>\mathrlap{\,/}{=}</pur> | `KaTex:\sqrt{\smash[b]{y}}` | <pur>\sqrt{\smash[b]{y}}</pur>
+
+`\sum_{\mathclap{1\le i\le j\le n}} x_{ij}`
+
+```KaTex
+\sum_{\mathclap{1\le i\le j\le n}} x_{ij}
+```
+
 ### `KaTex:\LaTeX` math constructs
 <!--rehype:wrap-class=col-span-3-->
 
@@ -532,11 +580,39 @@ x = \begin{cases}
 \end{CD}
 ```
 
-### xxx
+样式、颜色、大小和字体
+---
 
-```KaTeX
-{\KaTeX}
-```
+### Color 颜色
+
+:- | :-
+:- | :-
+`KaTex:\color{blue} F=ma` | <pur>`\color{blue} F=ma`</pur>
+`KaTex:\textcolor{blue}{F=ma}` | <pur>`\textcolor{blue}{F=ma}`</pur>
+`KaTex:\textcolor{#228B22}{F=ma}` | <pur>`\textcolor{#228B22}{F=ma}`</pur>
+`KaTex:\colorbox{aqua}{$F=ma$}` | <pur>`\colorbox{aqua}{$F=ma$}`</pur>
+`KaTex:\fcolorbox{red}{aqua}{$F=ma$}` | <pur>`\fcolorbox{red}{aqua}{$F=ma$}`</pur>
+
+### Font 字体
+<!--rehype:wrap-class=col-span-2-->
+
+:- | :- | :- | :- | :- | :-
+:- | :- | :- | :- | :- | :-
+`KaTex:\Huge AB` | <pur>`\Huge AB`</pur> | `KaTex:\normalsize AB` | <pur>`\normalsize AB`</pur> | `KaTex:\normalsize AB` | <pur>\normalsize AB</pur>
+`KaTex:\huge AB` | <pur>`\huge AB`</pur> | `KaTex:\huge AB` | <pur>`\huge AB`</pur> | `KaTex:\small AB` | <pur>\small AB</pur>
+`KaTex:\LARGE AB` | <pur>`\LARGE AB`</pur> | `KaTex:\LARGE AB` | <pur>`\LARGE AB`</pur> | `KaTex:\footnotesize AB` | <pur>\footnotesize AB</pur>
+`KaTex:\Large AB` | <pur>`\Large AB`</pur> | `KaTex:\Large AB` | <pur>`\Large AB`</pur> | `KaTex:\scriptsize AB` | <pur>\scriptsize AB</pur>
+`KaTex:\large AB` | <pur>`\large AB`</pur> | `KaTex:\large AB` | <pur>`\large AB`</pur> | `KaTex:\tiny AB` | <pur>\tiny AB</pur>
+
+### Style 样式
+<!--rehype:wrap-class=col-span-3-->
+
+:- | :- | :- | :-
+:- | :- | :- | :-
+`KaTex:\displaystyle\sum_{i=1}^n` | <pur>\displaystyle\sum_{i=1}^n</pur> | `KaTex:\textstyle\sum_{i=1}^n` | <pur>\textstyle\sum_{i=1}^n</pur>
+`KaTex:\scriptstyle x` | <pur>\scriptstyle x</pur> | `KaTex:\scriptscriptstyle x` | <pur>\scriptscriptstyle x</pur>
+`KaTex:\lim\limits_x` | <pur>\lim\limits_x</pur> | `KaTex:\lim\nolimits_x` | <pur>\lim\nolimits_x</pur>
+`KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur>
 
 另见
 ----
