@@ -190,7 +190,7 @@ let isMorning: Bool = true
 常量是不可变的。它们的值不能改变：
 
 ```swift
-让 numberOfToys: Int = 8
+let numberOfToys: Int = 8
 numberOfToys += 1
 // ❌ 错误：numberOfToys 不可变
 ```
