@@ -64,11 +64,13 @@ $ npm run build
 <!--rehype:wrap-class=row-span-2-->
 
 ```js
-import { createApp } from 'vue'
+import { createApp, ref } from 'vue'
 
 const app = createApp({
-  data() {
-    return { count: 0 }
+  setup() {
+    const count = ref(0)
+
+    return { count }
   }
 })
 app.mount('#app')
@@ -90,15 +92,18 @@ app.mount('#app')
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <div id="app">{{ message }}</div>
 <script>
-  const { createApp } = Vue
+  const { createApp, ref } = Vue
   createApp({
-    data() {
+    setup() {
+      const message = ref('Hello Vue!')
+
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
 </script>
+
 ```
 <!--rehype:className=wrap-text -->
 
@@ -107,11 +112,13 @@ app.mount('#app')
 ```html
 <div id="app">{{ message }}</div>
 <script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   createApp({
-    data() {
+    setup() {
+      const message = ref('Hello Vue!')
+
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
@@ -214,6 +221,38 @@ data() {
 <a v-on:click="doSomething"> ... </a>
 <!-- 简写 -->
 <a @click="doSomething"> ... </a>
+```
+
+### 获取事件对象
+
+```js
+<script setup>
+import { ref } from 'vue'
+
+const onClick = function(e){
+  console.log(e)
+}
+</script>
+
+<template>
+  <button @click="onClick">click</button>
+</template>
+```
+
+### 传参的同时获取事件对象
+
+```js
+<script setup>
+import { ref } from 'vue'
+
+const onClick = function(msg, e){
+  console.log(msg, e)
+}
+</script>
+
+<template>
+  <button @click="onClick('Hello Vue!', $event)">click</button>
+</template>
 ```
 
 ### 动态参数
@@ -428,6 +467,28 @@ export default defineComponent({
     });
   },
 });
+```
+
+### 响应式样式
+
+```js
+<script setup>
+import { ref } from 'vue'
+const open = ref(false);
+</script>
+
+<template>
+  <button @click="open = !open">Toggle</button>
+  <div>Hello Vue!</div>  
+</template>
+
+<style scope>
+  div{
+    transition: height 0.1s linear;
+    overflow: hidden;
+    height: v-bind(open ? '30px' : '0px');
+  }
+</style>
 ```
 
 响应式进阶 —— wath和computed
