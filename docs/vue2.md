@@ -17,11 +17,13 @@ Vue 是一套用于构建用户界面的渐进式框架
 
 注意：Vue 2.x 版本对应 Vue Router 3.x 路由版本
 
-#### 快速创建 **Vue** 项目 ([Vue CLI](https://cli.vuejs.org/zh/guide/creating-a-project.html))
+#### 快速创建 **Vue** 项目
 
 ```bash
 npx @vue/cli create hello-world
 ```
+
+参考: [Vue CLI](https://cli.vuejs.org/zh/guide/creating-a-project.html) 创建一个项目
 
 ### 声明式渲染
 
@@ -634,7 +636,6 @@ Jane Doe
 ```
 
 ### v-for/v-if
-[v-for和v-if不推荐一起使用](https://v2.cn.vuejs.org/v2/guide/conditional.html)
 
 ```html {2,3}
 <li
@@ -655,6 +656,8 @@ Jane Doe
 </ul>
 <p v-else>No todos left!</p>
 ```
+
+注意: `v-for` 和 `v-if` 不推荐一起使用[参考官方文档](https://v2.cn.vuejs.org/v2/guide/conditional.html#v-if-与-v-for-一起使用)
 
 ### 组件上使用 v-for
 
