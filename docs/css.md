@@ -1430,6 +1430,7 @@ div {
   aspect-ratio: 1/1 
 }
 ```
+
 属性 [aspect-ratio](https://developer.mozilla.org/zh-CN/docs/Web/CSS/aspect-ratio) 可以非常容易的定义一个容器的长宽比
 
 另见
