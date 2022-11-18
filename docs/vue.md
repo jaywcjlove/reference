@@ -214,14 +214,6 @@ data() {
 <p v-if="seen">Now you see me</p>
 ```
 
-### 参数 Arguments
-
-```html
-<a v-bind:href="url"> ... </a>
-<!-- 简写 -->
-<a :href="url"> ... </a>
-```
-
 ### 绑定事件
 
 ```html
