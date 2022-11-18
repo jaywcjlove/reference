@@ -27,7 +27,7 @@ Quick Reference
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
 [Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
-[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));-->
+[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -60,6 +60,7 @@ Quick Reference
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
+[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
 <!--rehype:class=home-card-->
 
 ## 前端
@@ -134,6 +135,9 @@ Quick Reference
 [Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123/var(\-\-bg\-opacity));-->
+[CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
+[APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255/var(\-\-bg\-opacity));-->
+[tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 其它

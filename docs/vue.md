@@ -422,6 +422,28 @@ export default defineComponent({
 });
 ```
 
+### 响应式样式
+
+```js
+<script setup>
+import { ref } from 'vue'
+const open = ref(false);
+</script>
+
+<template>
+  <button @click="open = !open">Toggle</button>
+  <div>Hello Vue!</div>  
+</template>
+
+<style scope>
+  div{
+    transition: height 0.1s linear;
+    overflow: hidden;
+    height: v-bind(open ? '30px' : '0px');
+  }
+</style>
+```
+
 响应式进阶 —— watch和computed
 ---
 
