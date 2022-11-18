@@ -135,6 +135,7 @@ Quick Reference
 [Systemd](./docs/systemd.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [SSH](./docs/ssh.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
+[Sysdig](./docs/sysdig.md)<!--rehype:style=background: rgb(1 171 199/var(\-\-bg\-opacity));-->
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123/var(\-\-bg\-opacity));-->
 [CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99/var(\-\-bg\-opacity));-->
