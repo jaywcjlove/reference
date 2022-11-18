@@ -422,7 +422,7 @@ export default defineComponent({
 });
 ```
 
-响应式进阶 —— wath和computed
+响应式进阶 —— watch和computed
 ---
 
 ### 监听状态
