@@ -1278,7 +1278,7 @@ type Capitalize<T extends string> = T extends `${infer U}${infer V}`
 type capitalized = Capitalize<"hello world"> // Hello World
 ```
 
-- 也可以在 infer 中使用条件约束（`extends`）
+也可以在 infer 中使用条件约束（`extends`）
 
 ```ts
 type SomeBigInt = "100" extends `${infer U extends bigint}` ? U : never;
@@ -1351,7 +1351,7 @@ TSConfig Ref
 ```
 
 ### 类型检查(compilerOptions)
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-4-->
 
 :- | --
 :- | --
@@ -1396,33 +1396,34 @@ TSConfig Ref
 <!--rehype:className=style-list-arrow-->
 
 ### Emit(compilerOptions)
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-6-->
 
 :- | --
 :- | --
-`declaration` [#](https://www.typescriptlang.org/zh/tsconfig#declaration) |
-`declarationDir` [#](https://www.typescriptlang.org/zh/tsconfig#declarationDir) |
-`declarationMap` [#](https://www.typescriptlang.org/zh/tsconfig#declarationMap) |
-`downlevelIteration` [#](https://www.typescriptlang.org/zh/tsconfig#downlevelIteration) |
-`emitBOM` [#](https://www.typescriptlang.org/zh/tsconfig#emitBOM) |
-`emitDeclarationOnly` [#](https://www.typescriptlang.org/zh/tsconfig#emitDeclarationOnly) |
-`importHelpers` [#](https://www.typescriptlang.org/zh/tsconfig#importHelpers) |
-`importsNotUsedAsValues` [#](https://www.typescriptlang.org/zh/tsconfig#importsNotUsedAsValues) |
-`inlineSourceMap` [#](https://www.typescriptlang.org/zh/tsconfig#inlineSourceMap) |
-`inlineSources` [#](https://www.typescriptlang.org/zh/tsconfig#inlineSources) |
-`mapRoot` [#](https://www.typescriptlang.org/zh/tsconfig#mapRoot) |
-`newLine` [#](https://www.typescriptlang.org/zh/tsconfig#newLine) |
-`noEmit` [#](https://www.typescriptlang.org/zh/tsconfig#noEmit) |
-`noEmitHelpers` [#](https://www.typescriptlang.org/zh/tsconfig#noEmitHelpers) |
-`noEmitOnError` [#](https://www.typescriptlang.org/zh/tsconfig#noEmitOnError) |
-`outDir` [#](https://www.typescriptlang.org/zh/tsconfig#outDir) |
-`outFile` [#](https://www.typescriptlang.org/zh/tsconfig#outFile) |
-`preserveConstEnums` [#](https://www.typescriptlang.org/zh/tsconfig#preserveConstEnums) |
-`preserveValueImports` [#](https://www.typescriptlang.org/zh/tsconfig#preserveValueImports) |
-`removeComments` [#](https://www.typescriptlang.org/zh/tsconfig#removeComments) |
-`sourceMap` [#](https://www.typescriptlang.org/zh/tsconfig#sourceMap) |
-`sourceRoot` [#](https://www.typescriptlang.org/zh/tsconfig#sourceRoot) |
-`stripInternal` [#](https://www.typescriptlang.org/zh/tsconfig#stripInternal) |
+`declaration` [#](https://www.typescriptlang.org/zh/tsconfig#declaration) | 为项目中的每个 TypeScript 或 JavaScript 文件生成 .d.ts 文件
+`declarationDir` [#](https://www.typescriptlang.org/zh/tsconfig#declarationDir) | 提供一种配置发出声明文件的根目录的方法
+`declarationMap` [#](https://www.typescriptlang.org/zh/tsconfig#declarationMap) | 为映射回原始 .ts 源文件的 .d.ts 文件生成源映射
+`downlevelIteration` [#](https://www.typescriptlang.org/zh/tsconfig#downlevelIteration) | 降级是 TypeScript 的术语，用于转译到旧版本的 JavaScript
+`emitBOM` [#](https://www.typescriptlang.org/zh/tsconfig#emitBOM) | 控制 TypeScript 在写入输出文件时是否会发出字节顺序标记 (BOM)
+`emitDeclarationOnly` [#](https://www.typescriptlang.org/zh/tsconfig#emitDeclarationOnly) | 只发出 .d.ts 文件；不要发出 .js 文件
+`importHelpers` [#](https://www.typescriptlang.org/zh/tsconfig#importHelpers) | 对于某些降级操作，TypeScript 使用一些辅助代码来执行扩展类、展开数组或对象以及异步操作等操作
+`importsNotUsedAsValues` [#](https://www.typescriptlang.org/zh/tsconfig#importsNotUsedAsValues) | 此标志控制导入的工作方式，有 3 个不同的选项: `remove`, `preserve`, `error`
+`inlineSourceMap` [#](https://www.typescriptlang.org/zh/tsconfig#inlineSourceMap) | 设置后，TypeScript 不会写出 .js.map 文件来提供源映射，而是将源映射内容嵌入到 .js 文件中
+`inlineSources` [#](https://www.typescriptlang.org/zh/tsconfig#inlineSources) | 设置后，TypeScript 会将 .ts 文件的原始内容作为嵌入字符串包含在源映射中（使用源映射的 sourcesContent 属性）
+`mapRoot` [#](https://www.typescriptlang.org/zh/tsconfig#mapRoot) | 指定调试器应该定位映射文件而不是生成位置的位置
+`newLine` [#](https://www.typescriptlang.org/zh/tsconfig#newLine) | 指定发出文件时要使用的行尾顺序：“CRLF”（dos）或“LF”（unix）
+`noEmit` [#](https://www.typescriptlang.org/zh/tsconfig#noEmit) | 不要发出编译器输出文件，如 JavaScript 源代码、源映射或声明
+`noEmitHelpers` [#](https://www.typescriptlang.org/zh/tsconfig#noEmitHelpers) | 您可以在全局范围内为您使用的助手提供实现，并完全关闭助手函数的发出，而不是使用 importHelpers 导入助手
+`noEmitOnError` [#](https://www.typescriptlang.org/zh/tsconfig#noEmitOnError) | 如果报告了任何错误，请不要发出编译器输出文件，如 JavaScript 源代码、源映射或声明
+`outDir` [#](https://www.typescriptlang.org/zh/tsconfig#outDir) | 如果指定，.js（以及 .d.ts、.js.map 等）文件将被发送到此目录中
+`outFile` [#](https://www.typescriptlang.org/zh/tsconfig#outFile) | 如果指定，所有全局（非模块）文件将连接到指定的单个输出文件中
+`preserveConstEnums` [#](https://www.typescriptlang.org/zh/tsconfig#preserveConstEnums) | 不要删除生成的代码中的 const enum 声明
+`preserveValueImports` [#](https://www.typescriptlang.org/zh/tsconfig#preserveValueImports) | 在某些情况下，TypeScript 无法检测到您正在使用导入
+`removeComments` [#](https://www.typescriptlang.org/zh/tsconfig#removeComments) | 转换为 JavaScript 时从 TypeScript 文件中删除所有注释
+`sourceMap` [#](https://www.typescriptlang.org/zh/tsconfig#sourceMap) | 启用源映射文件的生成
+`sourceRoot` [#](https://www.typescriptlang.org/zh/tsconfig#sourceRoot) | 指定调试器应定位 TypeScript 文件的位置，而不是相对源位置
+`stripInternal` [#](https://www.typescriptlang.org/zh/tsconfig#stripInternal) | 不要为在其 JSDoc 注释中具有 @internal 注释的代码发出声明
+<!--rehype:className=style-list-arrow-->
 
 ### JavaScript 支持(compilerOptions)
 
@@ -1445,89 +1446,98 @@ TSConfig Ref
 
 :- | --
 :- | --
-`allowSyntheticDefaultImports` [#](https://www.typescriptlang.org/zh/tsconfig#allowSyntheticDefaultImports) |
-`esModuleInterop` [#](https://www.typescriptlang.org/zh/tsconfig#esModuleInterop) |
-`forceConsistentCasingInFileNames` [#](https://www.typescriptlang.org/zh/tsconfig#forceConsistentCasingInFileNames) |
-`isolatedModules` [#](https://www.typescriptlang.org/zh/tsconfig#isolatedModules) |
-`preserveSymlinks` [#](https://www.typescriptlang.org/zh/tsconfig#preserveSymlinks) |
+`allowSyntheticDefaultImports` [#](https://www.typescriptlang.org/zh/tsconfig#allowSyntheticDefaultImports) | 允许合成默认导入
+`esModuleInterop` [#](https://www.typescriptlang.org/zh/tsconfig#esModuleInterop) | ES 模块互操作
+`forceConsistentCasingInFileNames` [#](https://www.typescriptlang.org/zh/tsconfig#forceConsistentCasingInFileNames) | 在文件名中强制使用一致的大小写
+`isolatedModules` [#](https://www.typescriptlang.org/zh/tsconfig#isolatedModules) | 隔离模块
+`preserveSymlinks` [#](https://www.typescriptlang.org/zh/tsconfig#preserveSymlinks) | 保留符号链接
+<!--rehype:className=style-list-arrow-->
 
 ### 向后兼容性(compilerOptions)
+<!--rehype:wrap-class=row-span-2-->
 
 :- | --
 :- | --
-`charset` [#](https://www.typescriptlang.org/zh/tsconfig#charset) |
-`keyofStringsOnly` [#](https://www.typescriptlang.org/zh/tsconfig#keyofStringsOnly) |
-`noImplicitUseStrict` [#](https://www.typescriptlang.org/zh/tsconfig#noImplicitUseStrict) |
-`noStrictGenericChecks` [#](https://www.typescriptlang.org/zh/tsconfig#noStrictGenericChecks) |
-`out` [#](https://www.typescriptlang.org/zh/tsconfig#out) |
-`suppressExcessPropertyErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressExcessPropertyErrors) |
-`suppressImplicitAnyIndexErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressImplicitAnyIndexErrors) |
-
-### 语言与环境(compilerOptions)
-
-:- | --
-:- | --
-`emitDecoratorMetadata` [#](https://www.typescriptlang.org/zh/tsconfig#emitDecoratorMetadata) |
-`experimentalDecorators` [#](https://www.typescriptlang.org/zh/tsconfig#experimentalDecorators) |
-`jsx` [#](https://www.typescriptlang.org/zh/tsconfig#jsx) |
-`jsxFactory` [#](https://www.typescriptlang.org/zh/tsconfig#jsxFactory) |
-`jsxFragmentFactory` [#](https://www.typescriptlang.org/zh/tsconfig#jsxFragmentFactory) |
-`jsxImportSource` [#](https://www.typescriptlang.org/zh/tsconfig#jsxImportSource) |
-`lib` [#](https://www.typescriptlang.org/zh/tsconfig#lib) |
-`moduleDetection` [#](https://www.typescriptlang.org/zh/tsconfig#moduleDetection) |
-`noLib` [#](https://www.typescriptlang.org/zh/tsconfig#noLib) |
-`reactNamespace` [#](https://www.typescriptlang.org/zh/tsconfig#reactNamespace) |
-`target` [#](https://www.typescriptlang.org/zh/tsconfig#target) |
-`useDefineForClassFields` [#](https://www.typescriptlang.org/zh/tsconfig#useDefineForClassFields) |
-
-### 编译器诊断(compilerOptions)
-
-:- | --
-:- | --
-`diagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#diagnostics) |
-`explainFiles` [#](https://www.typescriptlang.org/zh/tsconfig#explainFiles) |
-`extendedDiagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#extendedDiagnostics) |
-`generateCpuProfile` [#](https://www.typescriptlang.org/zh/tsconfig#generateCpuProfile) |
-`listEmittedFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listEmittedFiles) |
-`listFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listFiles) |
-`traceResolution` [#](https://www.typescriptlang.org/zh/tsconfig#traceResolution) |
-
-### 项目(compilerOptions)
-
-:- | --
-:- | --
-`composite` [#](https://www.typescriptlang.org/zh/tsconfig#composite) |
-`disableReferencedProjectLoad` [#](https://www.typescriptlang.org/zh/tsconfig#disableReferencedProjectLoad) |
-`disableSolutionSearching` [#](https://www.typescriptlang.org/zh/tsconfig#disableSolutionSearching) |
-`disableSourceOfProjectReferenceRedirect` [#](https://www.typescriptlang.org/zh/tsconfig#disableSourceOfProjectReferenceRedirect) |
-`incremental` [#](https://www.typescriptlang.org/zh/tsconfig#incremental) |
-`tsBuildInfoFile` [#](https://www.typescriptlang.org/zh/tsconfig#tsBuildInfoFile) |
-
-### 输出格式(compilerOptions)
-
-:- | --
-:- | --
-`noErrorTruncation` [#](https://www.typescriptlang.org/zh/tsconfig#noErrorTruncation) |
-`preserveWatchOutput` [#](https://www.typescriptlang.org/zh/tsconfig#preserveWatchOutput) |
-`pretty` [#](https://www.typescriptlang.org/zh/tsconfig#pretty) |
+`charset` [#](https://www.typescriptlang.org/zh/tsconfig#charset) | 在早期版本的 TypeScript 中，这控制了从磁盘读取文本文件时使用的编码
+`keyofStringsOnly` [#](https://www.typescriptlang.org/zh/tsconfig#keyofStringsOnly) | 此标志将 `keyof` 类型运算符更改为返回 `string` 而不是 `string | number` 当应用于具有字符串索引签名的类型时
+`noImplicitUseStrict` [#](https://www.typescriptlang.org/zh/tsconfig#noImplicitUseStrict) | 默认情况下，当向非 ES6 目标发出模块文件时，TypeScript 发出`"use strict"`；文件顶部的序言。此设置禁用序言
+`noStrictGenericChecks` [#](https://www.typescriptlang.org/zh/tsconfig#noStrictGenericChecks) | TypeScript 在比较两个泛型函数时会统一类型参数
+`out` [#](https://www.typescriptlang.org/zh/tsconfig#out) | 请改用 `outFile`
+`suppressExcessPropertyErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressExcessPropertyErrors) | 抑制过多的属性错误
+`suppressImplicitAnyIndexErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressImplicitAnyIndexErrors) | 抑制隐式任何索引错误
+<!--rehype:className=style-list-arrow-->
 
 ### 完整性(compilerOptions)
 
 :- | --
 :- | --
-`skipDefaultLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipDefaultLibCheck) |
-`skipLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipLibCheck) |
+`skipDefaultLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipDefaultLibCheck) | 请改用 `skipLibCheck`
+`skipLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipLibCheck) | 跳过声明文件的类型检查
+
+### 语言与环境(compilerOptions)
+<!--rehype:wrap-class=row-span-2-->
+
+:- | --
+:- | --
+`emitDecoratorMetadata` [#](https://www.typescriptlang.org/zh/tsconfig#emitDecoratorMetadata) | 发射装饰器元数据
+`experimentalDecorators` [#](https://www.typescriptlang.org/zh/tsconfig#experimentalDecorators) | 实验装饰器
+`jsx` [#](https://www.typescriptlang.org/zh/tsconfig#jsx) | 控制 JSX 在 JavaScript 文件中的输出方式
+`jsxFactory` [#](https://www.typescriptlang.org/zh/tsconfig#jsxFactory) | 使用经典 JSX 运行时编译 JSX 元素时更改在 .js 文件中调用的函数
+`jsxFragmentFactory` [#](https://www.typescriptlang.org/zh/tsconfig#jsxFragmentFactory) | 指定在使用 jsxFactory 编译器选项指定 react JSX emit 时要使用的 JSX 片段工厂函数，例如 `Fragment`
+`jsxImportSource` [#](https://www.typescriptlang.org/zh/tsconfig#jsxImportSource) | 声明模块说明符用于在将 jsx 用作 TypeScript 4.1 中引入的“react-jsx”或“react-jsxdev”时导入 jsx 和 jsxs 工厂函数
+`lib` [#](https://www.typescriptlang.org/zh/tsconfig#lib) | TypeScript 包括一组默认的内建 JS 接口（例如 Math）的类型定义，以及在浏览器环境中存在的对象的类型定义（例如 document）
+`moduleDetection` [#](https://www.typescriptlang.org/zh/tsconfig#moduleDetection) | 模块检测
+`noLib` [#](https://www.typescriptlang.org/zh/tsconfig#noLib) | 禁用自动包含任何库文件
+`reactNamespace` [#](https://www.typescriptlang.org/zh/tsconfig#reactNamespace) | 请改用 jsxFactory
+`target` [#](https://www.typescriptlang.org/zh/tsconfig#target) | 现代浏览器支持全部 ES6 的功能，所以 ES6 是一个不错的选择
+`useDefineForClassFields` [#](https://www.typescriptlang.org/zh/tsconfig#useDefineForClassFields) | 为类字段使用定义
+<!--rehype:className=style-list-arrow-->
+
+### 输出格式(compilerOptions)
+
+:- | --
+:- | --
+`noErrorTruncation` [#](https://www.typescriptlang.org/zh/tsconfig#noErrorTruncation) | 不要截断错误消息
+`preserveWatchOutput` [#](https://www.typescriptlang.org/zh/tsconfig#preserveWatchOutput) | 保留监视输出
+`pretty` [#](https://www.typescriptlang.org/zh/tsconfig#pretty) | 使用颜色和上下文对错误和消息进行样式化，默认情况下启用
+<!--rehype:className=style-list-arrow-->
+
+### 项目(compilerOptions)
+
+:- | --
+:- | --
+`composite` [#](https://www.typescriptlang.org/zh/tsconfig#composite) | composite 选项会强制执行某些约束，使得构建工具（包括 在 --build 模式下的 TypeScript 本身）可以快速确定一个工程是否已经建立
+`disableReferencedProjectLoad` [#](https://www.typescriptlang.org/zh/tsconfig#disableReferencedProjectLoad) | 禁用引用项目加载
+`disableSolutionSearching` [#](https://www.typescriptlang.org/zh/tsconfig#disableSolutionSearching) | 禁用解决方案搜索
+`disableSourceOfProjectReferenceRedirect` [#](https://www.typescriptlang.org/zh/tsconfig#disableSourceOfProjectReferenceRedirect) | 禁用源项目引用重定向
+`incremental` [#](https://www.typescriptlang.org/zh/tsconfig#incremental) | 使 TypeScript 将上次编译的工程图信息保存到磁盘上的文件中
+`tsBuildInfoFile` [#](https://www.typescriptlang.org/zh/tsconfig#tsBuildInfoFile) | 这个选项可以让您指定一个文件来存储增量编译信息，以作为复合工程的一部分，从而可以更快的构建更大的 TypeScript 代码库
+<!--rehype:className=style-list-arrow-->
+
+### 编译器诊断(compilerOptions)
+
+:- | --
+:- | --
+`diagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#diagnostics) | 用于输出调试信息
+`explainFiles` [#](https://www.typescriptlang.org/zh/tsconfig#explainFiles) | 打印 TypeScript 视为项目一部分的文件的名称以及它们是编译一部分的原因
+`extendedDiagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#extendedDiagnostics) | 您可以使用此标志来发现 TypeScript 在编译时将时间花在哪里
+`generateCpuProfile` [#](https://www.typescriptlang.org/zh/tsconfig#generateCpuProfile) | 此选项使您有机会让 TypeScript 在编译器运行期间发出 v8 CPU 配置文件
+`listEmittedFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listEmittedFiles) | 将编译过程中生成的文件的名称打印到终端
+`listFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listFiles) | 打印编译部分文件的名称
+`traceResolution` [#](https://www.typescriptlang.org/zh/tsconfig#traceResolution) | 当您尝试调试未包含模块的原因时
+<!--rehype:className=style-list-arrow-->
 
 ### 监听选项(watchOptions)
 
 :- | --
 :- | --
-`watchFile` [#](https://www.typescriptlang.org/zh/tsconfig#watch-watchFile) |
-`watchDirectory` [#](https://www.typescriptlang.org/zh/tsconfig#watch-watchDirectory) |
-`fallbackPolling` [#](https://www.typescriptlang.org/zh/tsconfig#watch-fallbackPolling) |
-`synchronousWatchDirectory` [#](https://www.typescriptlang.org/zh/tsconfig#watch-synchronousWatchDirectory) |
-`excludeDirectories` [#](https://www.typescriptlang.org/zh/tsconfig#watch-excludeDirectories) |
-`excludeFiles` [#](https://www.typescriptlang.org/zh/tsconfig#watch-excludeFiles) |
+`watchFile` [#](https://www.typescriptlang.org/zh/tsconfig#watch-watchFile) | 如何监视单个文件的策略
+`watchDirectory` [#](https://www.typescriptlang.org/zh/tsconfig#watch-watchDirectory) | 在缺乏递归文件监视功能的系统下监视整个目录树的策略
+`fallbackPolling` [#](https://www.typescriptlang.org/zh/tsconfig#watch-fallbackPolling) | 使用文件系统事件时，此选项指定当系统用完本机文件观察器和/或不支持本机文件观察器时使用的轮询策略
+`synchronousWatchDirectory` [#](https://www.typescriptlang.org/zh/tsconfig#watch-synchronousWatchDirectory) | 在本机不支持递归监视的平台上同步调用回调并更新目录监视程序的状态
+`excludeDirectories` [#](https://www.typescriptlang.org/zh/tsconfig#watch-excludeDirectories) | 您可以使用 excludeFiles 来大幅减少在 --watch 期间监视的文件数量
+`excludeFiles` [#](https://www.typescriptlang.org/zh/tsconfig#watch-excludeFiles) | 您可以使用 excludeFiles 从监视的文件中删除一组特定文件
+<!--rehype:className=style-list-arrow-->
 
 ---
 
@@ -1543,10 +1553,11 @@ TSConfig Ref
 
 :- | --
 :- | --
-`enable` [#](https://www.typescriptlang.org/zh/tsconfig#type-enable) |
-`include` [#](https://www.typescriptlang.org/zh/tsconfig#type-include) |
-`exclude` [#](https://www.typescriptlang.org/zh/tsconfig#type-exclude) |
-`disableFilenameBasedTypeAcquisition` [#](https://www.typescriptlang.org/zh/tsconfig#type-disableFilenameBasedTypeAcquisition) |
+`enable` [#](https://www.typescriptlang.org/zh/tsconfig#type-enable) | 提供用于在 JavaScript 项目中禁用类型获取的配置
+`include` [#](https://www.typescriptlang.org/zh/tsconfig#type-include) | 如果您有一个 JavaScript 项目，其中 TypeScript 需要额外的指导来理解全局依赖关系，或者已通过 disableFilenameBasedTypeAcquisition 禁用了内置推理
+`exclude` [#](https://www.typescriptlang.org/zh/tsconfig#type-exclude) | 提供用于禁用 JavaScript 项目中特定模块的类型获取的配置
+`disableFilenameBasedTypeAcquisition` [#](https://www.typescriptlang.org/zh/tsconfig#type-disableFilenameBasedTypeAcquisition) | TypeScript 的类型获取可以根据项目中的文件名推断出应该添加哪些类型
+<!--rehype:className=style-list-arrow-->
 
 ---
 
