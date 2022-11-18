@@ -64,11 +64,13 @@ $ npm run build
 <!--rehype:wrap-class=row-span-2-->
 
 ```js
-import { createApp } from 'vue'
+import { createApp, ref } from 'vue'
 
 const app = createApp({
-  data() {
-    return { count: 0 }
+  setup() {
+    const count = ref(0)
+
+    return { count }
   }
 })
 app.mount('#app')
@@ -90,15 +92,18 @@ app.mount('#app')
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <div id="app">{{ message }}</div>
 <script>
-  const { createApp } = Vue
+  const { createApp, ref } = Vue
   createApp({
-    data() {
+    setup() {
+      const message = ref('Hello Vue!')
+
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
 </script>
+
 ```
 <!--rehype:className=wrap-text -->
 
@@ -107,11 +112,13 @@ app.mount('#app')
 ```html
 <div id="app">{{ message }}</div>
 <script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   createApp({
-    data() {
+    setup() {
+      const message = ref('Hello Vue!')
+
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
@@ -440,7 +447,7 @@ const open = ref(false);
 
 <template>
   <button @click="open = !open">Toggle</button>
-  <div>hello world</div>  
+  <div>Hello Vue!</div>  
 </template>
 
 <style scope>
