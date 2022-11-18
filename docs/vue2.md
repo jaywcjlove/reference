@@ -634,6 +634,7 @@ Jane Doe
 ```
 
 ### v-for/v-if
+[v-for和v-if不推荐一起使用](https://v2.cn.vuejs.org/v2/guide/conditional.html)
 
 ```html {2,3}
 <li
