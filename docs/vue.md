@@ -208,12 +208,6 @@ data() {
 </span>
 ```
 
-### 指令 Directives
-
-```html
-<p v-if="seen">Now you see me</p>
-```
-
 ### 绑定事件
 
 ```html
@@ -260,6 +254,30 @@ v-on:submit.prevent="onSubmit"
   ┆   ╰─ Argument 跟随冒号或速记符号
   ╰─ Name 以 v- 开头使用速记时可以省略
 ```
+
+### 指令 Directives
+
+```html
+<p v-if="seen">Now you see me</p>
+```
+
+### 自定义指令 Directives
+
+```js
+<script setup>
+const vAdmin = {
+  created(el, binding, vnode, prevVnode) {
+    el.style.display = isAdmin ? 'block' : 'none'
+  },
+}
+</script>
+
+<template>
+  <button v-admin>Settings</button>
+</template>
+```
+
+更多指令函数参考：<https://vuejs.org/guide/reusability/custom-directives.html>
 
 响应式基础
 ---
