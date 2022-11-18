@@ -105,6 +105,31 @@ Supported Functions
 | `KaTex:\iota`      | <pur>`\iota`</pur>       | `KaTex:\pi`       | <pur>`\pi`</pur>          | `KaTex:\zeta`     | <pur>`\zeta`</pur>        | `KaTex:\vartheta`     | <pur>`\vartheta`</pur>        | `KaTex:\Sigma`    | <pur>`\Sigma`</pur>       |  `KaTex:\gimel`   | <pur>`\gimel`</pur>   |
 <!--rehype:className=show-header left-align-->
 
+### 字母和 Unicode
+<!--rehype:wrap-class=col-span-3-->
+
+预览 | 方法 | 预览 | 方法 | 预览 | 方法 | 预览 | 方法
+:- | :- | :- | :- | :- | :- | :- | :-
+`KaTex:\Alpha` | <pur>`\Alpha`</pur> | `KaTex:\Beta` | <pur>`\Beta`</pur> | `KaTex:\Gamma` | <pur>`\Gamma`</pur> | `KaTex:\Delta` | <pur>`\Delta`</pur>
+`KaTex:\Epsilon` | <pur>`\Epsilon`</pur> | `KaTex:\Zeta` | <pur>`\Zeta`</pur> | `KaTex:\Eta` | <pur>`\Eta`</pur> | `KaTex:\Theta` | <pur>`\Theta`</pur>
+`KaTex:\Iota` | <pur>`\Iota`</pur> | `KaTex:\Kappa` | <pur>`\Kappa`</pur> | `KaTex:\Lambda` | <pur>`\Lambda`</pur> | `KaTex:\Mu` | <pur>`\Mu`</pur>
+`KaTex:\Nu` | <pur>`\Nu`</pur> | `KaTex:\Xi` | <pur>`\Xi`</pur> | `KaTex:\Omicron` | <pur>`\Omicron`</pur> | `KaTex:\Pi` | <pur>`\Pi`</pur>
+`KaTex:\Rho` | <pur>`\Rho`</pur> | `KaTex:\Sigma` | <pur>`\Sigma`</pur> | `KaTex:\Tau` | <pur>`\Tau`</pur> | `KaTex:\Upsilon` | <pur>`\Upsilon`</pur>
+`KaTex:\Phi` | <pur>`\Phi`</pur> | `KaTex:\Chi` | <pur>`\Chi`</pur> | `KaTex:\Psi` | <pur>`\Psi`</pur> | `KaTex:\Omega` | <pur>`\Omega`</pur>
+`KaTex:\varGamma` | <pur>`\varGamma`</pur> | `KaTex:\varDelta` | <pur>`\varDelta`</pur> | `KaTex:\varTheta` | <pur>`\varTheta`</pur> | `KaTex:\varLambda` | <pur>`\varLambda`</pur>
+`KaTex:\varXi` | <pur>`\varXi`</pur> | `KaTex:\varPi` | <pur>`\varPi`</pur> | `KaTex:\varSigma` | <pur>`\varSigma`</pur> | `KaTex:\varUpsilon` | <pur>`\varUpsilon`</pur>
+`KaTex:\varPhi` | <pur>`\varPhi`</pur> | `KaTex:\varPsi` | <pur>`\varPsi`</pur> | `KaTex:\varOmega` | <pur>`\varOmega`</pur> |
+`KaTex:\alpha` | <pur>`\alpha`</pur> | `KaTex:\beta` | <pur>`\beta`</pur> | `KaTex:\gamma` | <pur>`\gamma`</pur> | `KaTex:\delta` | <pur>`\delta`</pur>
+`KaTex:\epsilon` | <pur>`\epsilon`</pur> | `KaTex:\zeta` | <pur>`\zeta`</pur> | `KaTex:\eta` | <pur>`\eta`</pur> | `KaTex:\theta` | <pur>`\theta`</pur>
+`KaTex:\iota` | <pur>`\iota`</pur> | `KaTex:\kappa` | <pur>`\kappa`</pur> | `KaTex:\lambda` | <pur>`\lambda`</pur> | `KaTex:\mu` | <pur>`\mu`</pur>
+`KaTex:\nu` | <pur>`\nu`</pur> | `KaTex:\xi` | <pur>`\xi`</pur> | `KaTex:\omicron` | <pur>`\omicron`</pur> | `KaTex:\pi` | <pur>`\pi`</pur>
+`KaTex:\rho` | <pur>`\rho`</pur> | `KaTex:\sigma` | <pur>`\sigma`</pur> | `KaTex:\tau` | <pur>`\tau`</pur> | `KaTex:\upsilon` | <pur>`\upsilon`</pur>
+`KaTex:\phi` | <pur>`\phi`</pur> | `KaTex:\chi` | <pur>`\chi`</pur> | `KaTex:\psi` | <pur>`\psi`</pur> | `KaTex:\omega` | <pur>`\omega`</pur>
+`KaTex:\varepsilon` | <pur>`\varepsilon`</pur> | `KaTex:\varkappa` | <pur>`\varkappa`</pur> | `KaTex:\vartheta` | <pur>`\vartheta`</pur> | `KaTex:\thetasym` | <pur>`\thetasym`</pur>
+`KaTex:\varpi` | <pur>`\varpi`</pur> | `KaTex:\varrho` | <pur>`\varrho`</pur> | `KaTex:\varsigma` | <pur>`\varsigma`</pur> | `KaTex:\varphi` | <pur>`\varphi`</pur>
+`KaTex:\digamma` | <pur>`\digamma`</pur>
+<!--rehype:className=show-header left-align-->
+
 ### `KaTex:\LaTeX` math constructs
 <!--rehype:wrap-class=col-span-3-->
 
@@ -135,7 +160,7 @@ Supported Functions
 :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :-
 | `KaTeX:\left\|` | `KaTeX:expr` | `KaTeX:\right\|` | | `KaTeX:\left\{` |`KaTeX:expr` | `KaTeX:\right\}` | | `KaTeX:\left\Vert`| `KaTeX:expr` | `KaTeX:\right.` |
 
-### Variable-sized symbols
+### 可变大小的符号
 <!--rehype:wrap-class=col-span-3-->
 
 预览 | 方法 | 预览 | 方法 | 预览 | 方法 | 预览| 方法 | 预览 | 方法
@@ -145,7 +170,7 @@ Supported Functions
 | `KaTeX:\coprod`   | <pur>`\coprod`</pur>      | `KaTeX:\iint` | <pur>`\iint`</pur>        |  `KaTeX:\bigcup`      | <pur>`\bigcup`</pur>          | `KaTeX:\bigodot`      | <pur>`\bigodot`</pur>         |  `KaTeX:\bigodot`     | <pur>`\bigodot`</pur>         |
 <!--rehype:className=show-header left-align-->
 
-### Standard Function Names
+### 标准函数名称
 <!--rehype:wrap-class=col-span-3-->
 
 预览 | 方法 | 预览 | 方法 | 预览 | 方法 | 预览| 方法
@@ -161,10 +186,30 @@ Supported Functions
 <!--rehype:className=show-header left-align-->
 
 函数名应该用罗马字体，而不是斜体，例如:
+
 :- | :- | :- | :-
 :- | :- | :- | :-
 | Correct: |  <pur>`\tan(at-n\pi)`</pur> | `KaTeX:\rightarrow` | `KaTeX:\tan(at-n\pi)`|
 | Incorrect: | <pur>`tan(at-n\pi)`</pur> | `katex:\rightarrow` | `KaTeX:tan(at-n\pi)` |
+
+### 逻辑与集合论
+<!--rehype:wrap-class=col-span-3-->
+
+:- | :- | :- | :- | :- | :- | :- | :-
+:- | :- | :- | :- | :- | :- | :- | :-
+`KaTeX:\forall`  | <pur>`\forall`</pur> | `KaTeX:\complement` | <pur>`\complement`</pur> | `KaTeX:\therefore` | <pur>`\therefore`</pur> | `KaTeX:\emptyset` | <pur>`\emptyset`</pur>
+`KaTeX:\exists`  | <pur>`\exists`</pur> | `KaTeX:\subset` | <pur>`\subset`</pur> | `KaTeX:\because` | <pur>`\because`</pur> | `KaTeX:\empty` | <pur>`\empty`</pur>
+`KaTeX:\exist`   | <pur>`\exist`</pur> | `KaTeX:\supset` | <pur>`\supset`</pur> | `KaTeX:\mapsto` | <pur>`\mapsto`</pur> | `KaTeX:\varnothing` | <pur>`\varnothing`</pur>
+`KaTeX:\nexists` | <pur>`\nexists`</pur> | `KaTeX:\mid` | <pur>`\mid`</pur> | `KaTeX:\to` | <pur>`\to`</pur> | `KaTeX:\implies` | <pur>`\implies`</pur>
+`KaTeX:\in`      | <pur>`\in`</pur> | `KaTeX:\land` | <pur>`\land`</pur> | `KaTeX:\gets` | <pur>`\gets`</pur> | `KaTeX:\impliedby` | <pur>`\impliedby`</pur>
+`KaTeX:\isin`    | <pur>`\isin`</pur> | `KaTeX:\lor` | <pur>`\lor`</pur> | `KaTeX:\leftrightarrow` | <pur>`\leftrightarrow`</pur> | `KaTeX:\iff` | <pur>`\iff`</pur>
+`KaTeX:\notin`   | <pur>`\notin`</pur> | `KaTeX:\ni` | <pur>`\ni`</pur> | `KaTeX:\notni` | <pur>`\notni`</pur> | `KaTeX:\neg` `KaTeX:\lnot` | <pur>`\neg`</pur> 或 <pur>`\lnot`</pur>
+
+---
+
+:- | :- | :- | :-
+:- | :- | :- | :-
+`KaTeX:\Set{ x \| x<\frac 1 2 }` | <pur>\Set{ x \| x<\frac 1 2 }</pur> | `KaTeX:\set{x\|x<5}` | <pur>\set{x\|x<5}</pur>
 
 Environments
 ---
@@ -485,6 +530,12 @@ x = \begin{cases}
 @VbVV @AAcA \\
    C @= D
 \end{CD}
+```
+
+### xxx
+
+```KaTeX
+{\KaTeX}
 ```
 
 另见
