@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>APT 备忘清单
+ &#x26;  apt cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这个 APT 快速参考备忘单显示了它的常用命令使用清单。为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,apt">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/apt.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="apt-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#apt-备忘清单"><span class="icon icon-link"></span></a>APT 备忘清单</h1><div class="wrap-body">
+<p>这个 APT 快速参考备忘单显示了它的常用命令使用清单。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#apt-清单查询">APT 清单查询</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命令查询">命令查询</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#update">update</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#upgrade">upgrade</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#install">install</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#remove和purge">remove和purge</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#remove">remove</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#purge">purge</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#autoremove自动删除依赖">autoremove自动删除依赖</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#list">list</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#搜索查找软件包详细信息">搜索查找软件包详细信息</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#search">search</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#show">show</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#edit-sources-快速换源">edit-sources 快速换源</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="apt-清单查询"><a aria-hidden="true" tabindex="-1" href="#apt-清单查询"><span class="icon icon-link"></span></a>APT 清单查询</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>APT（<code>A</code>dvanced <code>P</code>ackaging <code>T</code>ools）是<code>Debian</code>及其派生的<code>Linux</code>软件包管理器。APT可以自动下载，配置，安装二进制或者源代码格式的软件包，因此简化了Unix系统上管理软件的过程。APT最早被设计成<code>dpkg的前端</code>，用来处理deb格式的软件包。现在经过<code>APT-RPM</code>组织修改，APT已经可以安装在支持RPM的系统管理RPM包。</p>
+<p>它结合了apt-get和apt-cache工具中最常用的命令以及选项与默认值。<code>apt</code>命令必须以具有<code>sudo</code>权限的用户运行。</p>
+<p>命令语法格式</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">apt</span> <span class="token punctuation">[</span> OPTIONS <span class="token punctuation">]</span> COMMAND
+</span></code></pre>
+<hr>
+<p>相关参考文献</p>
+<ul>
+<li><a href="https://manpages.debian.org/unstable/apt/apt.8.en.html">APT（8） 官方网站</a></li>
+<li><a href="https://manpages.debian.org/unstable/apt/apt.conf.5.en.html">apt.conf(5) 官方文档</a></li>
+<li><a href="https://manpages.debian.org/unstable/apt/sources.list.5.en.html">sources.list(5) 官方文档</a></li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="命令查询"><a aria-hidden="true" tabindex="-1" href="#命令查询"><span class="icon icon-link"></span></a>命令查询</h3><div class="wrap-body">
+<p>子命令描述和任务，显示 apt 命令和选项。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">apt</span> <span class="token parameter variable">-h</span> or <span class="token parameter variable">--help</span>
+</span><span class="code-line"><span class="token comment"># 或</span>
+</span><span class="code-line">$ <span class="token function">apt</span> 
+</span></code></pre>
+<p>查看指令用法</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">man</span> <span class="token function">apt</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="update"><a aria-hidden="true" tabindex="-1" href="#update"><span class="icon icon-link"></span></a>update</h3><div class="wrap-body">
+<p>从APT存储库中获取最新索引数据。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> update
+</span></code></pre>
+<p>在升级或安装新软件包之前，建议始终先运行一次更新软件包索引。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="upgrade"><a aria-hidden="true" tabindex="-1" href="#upgrade"><span class="icon icon-link"></span></a>upgrade</h3><div class="wrap-body">
+<p>将安装的软件包升级到最新版本，该命令不会升级那些已删除软件包的依赖。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> upgrade
+</span></code></pre>
+<p>升级单个软件包。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> upgrade package_name
+</span></code></pre>
+<p>升级整个系统，则会删除当前安装的软件包。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> full-upgrade
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="install"><a aria-hidden="true" tabindex="-1" href="#install"><span class="icon icon-link"></span></a>install</h3><div class="wrap-body">
+<p>安装软件包。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> package_name
+</span></code></pre>
+<p>如果只想升级，不要安装</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token operator">&#x3C;</span>package_name<span class="token operator">></span> --only-upgrade
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>安装多个软件包，包名用空格分隔。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> package1 package2
+</span></code></pre>
+<p>安装本地deb文件，提供文件的完整路径。否则，apt命令将尝试从APT存储库中检索并安装软件包。
+<code>Deb是所有基于Debian的发行版使用的安装软件包格式</code>。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> /full/path/file.deb
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="remove和purge"><a aria-hidden="true" tabindex="-1" href="#remove和purge"><span class="icon icon-link"></span></a>remove和purge</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>要删除已安装的程序包，你可以使用apt子命令<code>remove</code>和<code>purge</code>。</p>
+<h4 id="remove"><a aria-hidden="true" tabindex="-1" href="#remove"><span class="icon icon-link"></span></a>remove</h4>
+<p>remove子命令将卸载指定的软件包，<code>但可能会留下一些配置文件</code>。
+通过remove方式卸载的软件包可以通过重新安装软件包来恢复，因为个人配置文件还在本地。</p>
+<p>卸载指定的软件包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> remove package_name
+</span></code></pre>
+<p>指定多个软件包，以空格分隔</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> remove package1 package2
+</span></code></pre>
+<h4 id="purge"><a aria-hidden="true" tabindex="-1" href="#purge"><span class="icon icon-link"></span></a>purge</h4>
+<p>purge子命令将卸载指定的软件包和配置文件。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> purge package_name
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="autoremove自动删除依赖"><a aria-hidden="true" tabindex="-1" href="#autoremove自动删除依赖"><span class="icon icon-link"></span></a>autoremove自动删除依赖</h3><div class="wrap-body">
+<p>用于删除自动安装的包，这些包都是为了满足其他包的依赖关系，现在不再需要这些包，因为依赖关系已更改或者同时删除了需要它们的包。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> autoremove
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="list"><a aria-hidden="true" tabindex="-1" href="#list"><span class="icon icon-link"></span></a>list</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>打印所有软件包的列表，包括软件包的版本和结构的信息。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> list
+</span></code></pre>
+<p>要确定是否安装了指定的软件包，可以使用grep命令过滤输出。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> list <span class="token operator">|</span> <span class="token function">grep</span> package_name
+</span></code></pre>
+<p>仅列出已安装的软件包。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> list <span class="token parameter variable">--installed</span>
+</span></code></pre>
+<p>获取可升级软件包的列表。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> list <span class="token parameter variable">--upgradeable</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="搜索查找软件包详细信息"><a aria-hidden="true" tabindex="-1" href="#搜索查找软件包详细信息"><span class="icon icon-link"></span></a>搜索查找软件包详细信息</h3><div class="wrap-body">
+<h4 id="search"><a aria-hidden="true" tabindex="-1" href="#search"><span class="icon icon-link"></span></a>search</h4>
+<p>在可用软件源列表中搜索指定的软件包。如果找到该软件包，则将返回名称与搜索词匹配的软件包。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> search package_name
+</span></code></pre>
+<h4 id="show"><a aria-hidden="true" tabindex="-1" href="#show"><span class="icon icon-link"></span></a>show</h4>
+<p>显示有关给定软件包的信息，包括其依赖项、安装、下载大小、软件包可用的来源、软件包内容的描述等。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> show package_name
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="edit-sources-快速换源"><a aria-hidden="true" tabindex="-1" href="#edit-sources-快速换源"><span class="icon icon-link"></span></a>edit-sources 快速换源</h3><div class="wrap-body">
+<p>允许您在首选的文本编辑器中编辑<code>sources.list(5)</code> 文件，同时还提供基本的健全性检查。</p>
+<p>首次换源可以使用<code>edit-sources</code></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> show edit-sources
+</span></code></pre>
+<p>换源后更新一下软件包索引。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">apt</span> update
+</span></code></pre>
+<p>之后可以使用<code>select-editor</code>更换默认编辑器</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> select-editor
+</span></code></pre>
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
