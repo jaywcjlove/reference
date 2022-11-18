@@ -224,8 +224,9 @@ data() {
 ```
 
 ### 获取事件对象
+<!--rehype:wrap-class=row-span-2-->
 
-```js
+```html
 <script setup>
 import { ref } from 'vue'
 
@@ -240,8 +241,9 @@ const onClick = function(e){
 ```
 
 ### 传参的同时获取事件对象
+<!--rehype:wrap-class=row-span-2-->
 
-```js
+```html
 <script setup>
 import { ref } from 'vue'
 
@@ -251,9 +253,12 @@ const onClick = function(msg, e){
 </script>
 
 <template>
-  <button @click="onClick('Hello Vue!', $event)">click</button>
+  <button @click="onClick('Hello Vue!', $event)">
+    click
+  </button>
 </template>
 ```
+<!--rehype:className=wrap-text-->
 
 ### 动态参数
 
@@ -301,8 +306,9 @@ v-on:submit.prevent="onSubmit"
 ```
 
 ### 自定义指令 Directives
+<!--rehype:wrap-class=row-span-2-->
 
-```js
+```html
 <script setup>
 const vAdmin = {
   created(el, binding, vnode, prevVnode) {
@@ -315,8 +321,9 @@ const vAdmin = {
   <button v-admin>Settings</button>
 </template>
 ```
+<!--rehype:className=wrap-text-->
 
-更多指令函数参考：<https://vuejs.org/guide/reusability/custom-directives.html>
+更多[指令函数参考](https://vuejs.org/guide/reusability/custom-directives.html)
 
 响应式基础
 ---
@@ -380,7 +387,6 @@ export default defineComponent({
 
 ```html {1}
 <script setup>
-// setup语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
 import { reactive } from 'vue';
 
 const state = reactive({ count: 0 })
@@ -396,6 +402,8 @@ function increment() {
   </button>
 </template>
 ```
+
+**`setup`** 语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
 
 ### 用 `ref()` 定义响应式变量
 
