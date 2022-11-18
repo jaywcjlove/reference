@@ -61,6 +61,8 @@ Contributing 贡献
 - SVG 图标尺寸 `<svg height="1em" width="1em"`
 - SVG 图标颜色使用继承颜色值 `<svg fill="currentColor"`
 
+图标可以在 [icongo 图标搜索](https://icongo.github.io/) 中搜索
+
 ### 提示配置
 
 ```markdown
