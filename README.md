@@ -26,7 +26,7 @@ Quick Reference
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
-[Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
+[Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -59,6 +59,7 @@ Quick Reference
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247/var(\-\-bg\-opacity));&class=tag&data-lang=swift-->
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
+[Lua](./docs/lua.md)<!--rehype:style=background: rgb(64 196 255/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 ## 前端
@@ -77,7 +78,7 @@ Quick Reference
 [RegEx 正则表达式](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155/var(\-\-bg\-opacity));-->
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198/var(\-\-bg\-opacity));-->
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));-->
-[Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
+[Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## Nodejs
@@ -291,7 +292,6 @@ Quick Reference
 <!--rehype:class=home-card&style=margin:1.2rem 0;display: flex;justify-content: center;-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 gh-pages 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
-
 
 <!--rehype:ignore:start-->
 ## License
