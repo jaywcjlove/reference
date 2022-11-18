@@ -428,3 +428,10 @@ repeat
   end
 until (num > 20)
 ```
+
+另见
+----
+
+* [Lua](http://www.lua.org)
+* [luatos](https://wiki.luatos.com/luaGuide/introduction.html)
+* [Lua 教程](https://www.twle.cn/l/yufei/lua53/lua-basic-index.html)
