@@ -96,11 +96,11 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
   <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
 </a>
-<a href="https://github.com/expoli" title="expoli">
-  <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
-</a>
 <a href="https://github.com/mofelee" title="mofelee">
   <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
+</a>
+<a href="https://github.com/expoli" title="expoli">
+  <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
 </a>
 <a href="https://github.com/partoneplay" title="partoneplay">
   <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
