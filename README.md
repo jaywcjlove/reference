@@ -62,7 +62,7 @@ Quick Reference
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132/var(\-\-bg\-opacity));-->
 [YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230/var(\-\-bg\-opacity));-->
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128/var(\-\-bg\-opacity));-->
-[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->
+[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->
 <!--rehype:class=home-card-->
 
 ## 前端
