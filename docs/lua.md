@@ -427,6 +427,232 @@ repeat
 until (num > 20)
 ```
 
+函数
+---
+
+### 初始化
+
+像变量一样，如果加上 `local` 那么就是局部函数
+
+```lua
+local function main()
+  print("这是一个局部函数")
+end
+```
+
+---
+
+你也可以将函数赋值给一个变量
+
+```lua
+local main = function()
+  print("这是一个局部函数")
+end
+```
+
+### 返回值
+
+```lua
+local function min(a, b)
+  if (a < b) then
+    return a
+  else
+    return b
+  end
+end
+
+print(min(1, 2))
+```
+
+### 参数
+
+```lua
+local p = function(res)
+  print("打印自己的风格", res)
+end
+
+local function main(a, b, p)
+  p(a + b)
+end
+
+main(1, 2, p)
+```
+
+### 多个返回值
+
+```lua
+local function min(a)
+  local sum = 0
+  local factorial = 1
+  for i, v in pairs(a) do
+    sum = sum + v
+    factorial = factorial * v
+  end
+  return sum, factorial
+end
+
+local a, b = min({ 1, 2, 3, 4 })
+
+print(a, b)
+```
+
+### 可变参数(`...`)
+
+```lua
+local function average(...)
+  local result = 0
+  local arg = { ... }
+  for i, v in ipairs(arg) do
+    result = result + v
+  end
+  return result / #arg
+end
+
+print("平均值为", average(1, 3, 5, 7, 9, 11))
+```
+
+字符串
+---
+
+### 字符串方法
+<!--rehype:wrap-class=col-span-2-->
+
+```lua
+-- 全部转换为大写
+string.upper("str") -- STR
+
+-- 全部转换为小写
+string.lower("STR") -- str
+
+-- 指定替换的字符串个数, 最后一个参数可选，默认是全部替换
+string.gsub("aaaa", "a", "b", 3) -- bbba  3
+string.gsub("Today is 29/01/2019", "%d%d/%d%d/%d%d%d%d", "good day.")
+-- Today is a good day. 1
+
+-- 查找第一个匹配的字符串，第三个参数可以提供开始查找的位置，默认从 1 开始
+-- 如果未找到，则返回 nil
+string.find("referference", "fer") -- 3   5
+string.find("Today is 29/01/2021", "%d%d/%d%d/%d%d%d%d") -- 10      19
+
+-- 字符串反转
+string.reverse("fw") -- wf
+
+-- 格式化字符串
+string.format("value:%c", 1) -- value:a
+
+-- 转换字符并拼接
+string.char(97,98,99,100) -- abcd
+
+-- 将字符转化为整数值。 int 用来指定某个字符，默认第一个字符
+string.byte("ABCD",4) -- 68
+
+-- 计算字符串长度
+string.len("abc") -- 3
+
+-- 返回字符串的 n 个拷贝
+string.rep("fw", n) -- fwfw
+
+-- 剪切字符串，第三个参数可选，默认是字符串长度
+string.sub("referference", 5, 6) -- rf
+```
+
+### 正则匹配
+
+:-   | :-
+:-   | :-
+`%a` | 与任何字母配对
+`%c` | 与任何控制符配对(例如\n)
+`%d` | 与任何数字配对
+`%l` | 与任何小写字母配对
+`%p` | 与任何标点(punctuation)配对
+`%s` | 与空白字符配对
+`%u` | 与任何大写字母配对
+`%w` | 与任何字母/数字配对
+`%x` | 与任何十六进制数配对
+`%z` | 与任何代表0的字符配对
+<!--rehype:className=left-align-->
+
+#### match
+
+第三个参数可选，默认从 1 开始。如果没有捕获组返回整个字符串，匹配失败返回 nil
+
+```lua
+string.match(
+  "I have 2 questions for you.", 
+  "(%d+) (%a+) "
+)  -- 2       questions
+```
+
+#### gmatch
+
+返回一个迭代器函数，每次调用迭代器函数，如果参数 pattern 描述的字符串没有找到，迭代函数返回nil
+
+```lua
+for world in string.gmatch("I have 2 questions for you.", "%a+") do
+  print(world)
+end
+-- I
+-- have
+-- questions
+-- for
+-- you
+```
+
+<!--rehype:className=style-round wrap-text-->
+
+table
+---
+
+### 初始化数组
+
+初始化一个空数组
+
+```lua
+local array = {} 
+```
+
+---
+
+默认的数组索引从 1 开始
+
+```lua
+local array = { "a", "b", "c", "d" }
+array[5] = "e"
+
+for i = 1, 5 do
+  print(array[i])
+end
+```
+
+### 多维数组
+
+```lua
+local array = {
+  { "a", "b", "c" },
+  { "d", "e", "f" }
+}
+
+for i = 1, 2 do
+  for j = 1, 3 do
+    print(array[i][j])
+  end
+end
+```
+
+### 初始化 table
+
+```lua
+local table = {}
+
+table.name = "fw"
+table.age = "18"
+table["sex"] = "boy"
+
+-- 如果想要删除一个 table，那么可以使用 nil 赋值
+table = nil
+print(table)
+```
+
 另见
 ----
 
