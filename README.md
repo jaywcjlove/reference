@@ -26,8 +26,8 @@ Quick Reference
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
-[Vue 3 ](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
-[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(43 91 132/var(\-\-bg\-opacity));&class=contributing&data-info=👆看看还缺点儿什么？-->
+[Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131/var(\-\-bg\-opacity));&class=contributing-->
+[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->
 <!--rehype:class=home-card-->
 
 ## 编程
