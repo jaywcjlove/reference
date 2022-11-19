@@ -88,7 +88,7 @@ Supported Functions
 `\left`   | `\big`  | `\bigl`  | `\bigm`  | `\bigr`
 `\middle` | `\Big`  | `\Bigl`  | `\Bigm`  | `\Bigr`
 `\right`  | `\bigg` | `\biggl` | `\biggm` | `\biggr`
-`` | `\Bigg` | `\Biggl` | `\Biggm` | `\Biggr`
+`\` | `\Bigg` | `\Biggl` | `\Biggm` | `\Biggr`
 
 ### 希腊和希伯来字母 Greek and Hebrew letters
 <!--rehype:wrap-class=col-span-3-->
