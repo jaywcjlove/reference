@@ -463,8 +463,66 @@ class SmartPhone extends Phone {
     }
 }
 ```
+
 枚举
 -----
+
+### 定义枚举
+
+```dart
+enum Color { red, green, blue }
+```
+
+使用枚举，像访问任何其他静态变量一样访问枚举值：
+
+```dart
+final favoriteColor = Color.blue;
+if (favoriteColor == Color.blue) {
+  print('Your favorite color is blue!');
+}
+```
+
+枚举中的每个值都有一个索引获取器，它返回枚举声明中值从零开始的位置。 例如，第一个值的索引为 0，第二个值的索引为 1
+
+```dart
+assert(Color.red.index == 0);
+assert(Color.green.index == 1);
+assert(Color.blue.index == 2);
+```
+
+要获取所有枚举值的列表，请使用枚举的值常量
+
+```dart
+List<Color> colors = Color.values;
+assert(colors[2] == Color.blue);
+```
+
+您可以在 switch 语句中使用枚举，如果您没有处理枚举的所有值，您将收到警告：
+
+```dart
+var aColor = Color.blue;
+
+switch (aColor) {
+  case Color.red:
+    print('Red as roses!');
+    break;
+  case Color.green:
+    print('Green as grass!');
+    break;
+  default: // 没有这个，你会看到一个警告
+    print(aColor); // 'Color.blue'
+}
+```
+
+如果您需要访问枚举值的名称，例如 `Color.blue` 中的“blue”，请使用 `.name` 属性：
+
+```dart
+print(Color.blue.name); // 'blue'
+```
+
+### 枚举示例
+
+声明了一个具有多个实例、实例变量、一个 `getter` 和一个已实现接口的增强型枚举
 
 ```dart
 // 简单定义一个枚举类型
@@ -479,8 +537,7 @@ enum Planet {
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
   // 定义一个构造函数
-  const Planet(
-      {required this.planetType, required this.moons, required this.hasRings});
+  const Planet({required this.planetType, required this.moons, required this.hasRings});
 
   // 声明枚举类型中的变量
   final PlanetType planetType;
@@ -489,10 +546,10 @@ enum Planet {
 
   // 实现枚举类型中的get 方法
   bool get isGiant =>
-      planetType == PlanetType.gas || planetType == PlanetType.ice;
+    planetType == PlanetType.gas || planetType == PlanetType.ice;
 }
 
-  // 使用枚举类型
+// 使用枚举类型
 void main()
 {
   final yourPlanet = Planet.mercury;
@@ -501,7 +558,6 @@ void main()
     print('Your planet is not a "giant planet".');
   }
 }
-
 ```
 
 异常
