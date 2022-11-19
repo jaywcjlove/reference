@@ -632,8 +632,8 @@ local array = {
   { "d", "e", "f" }
 }
 
-for i = 1, 2 do
-  for j = 1, 3 do
+for i = 1, #array do
+  for j = 1, #array[i] do
     print(array[i][j])
   end
 end
@@ -648,9 +648,128 @@ table.name = "fw"
 table.age = "18"
 table["sex"] = "boy"
 
+-- 获取 table 的长度
+
+print(#table) -- 3
+
 -- 如果想要删除一个 table，那么可以使用 nil 赋值
 table = nil
 print(table)
+```
+
+### table 方法
+<!--rehype:wrap-class=col-span-2-->
+
+```lua
+-- 用于连接 table 中指定的元素
+-- table.concat(table [, sep [, start [, end]]])
+local a = { "apple", "orange", "peach" }
+print(table.concat(a, "->", 2, 3)) -- orange->peach
+
+-- 用于向指定闻之插入元素。默认数组末尾
+-- table.insert(table, [pos,] value)
+local a = { "apple", "orange", "peach" }
+table.insert(a, 1, "pear")
+print(a[1]) -- pear
+
+-- table.move(a1,f,e,t[,a2])
+-- 表a1，a1下标开始位置f，a1下标结束位置e，t选择移动到的开始位置(如果没有a2，默认a1的下标)
+local array = { "a", "b", "c" }
+
+for i,v in pairs(table.move(array, 1, 3, 2)) do
+  print(v)
+end -- a a b c
+
+-- table.sort (table [, comp])
+-- 排序，默认是升序
+local array = { "a", "c", "b" }
+
+local f = function(a, b)
+  return string.byte(a) - string.byte(b) > 0
+end
+
+table.sort(array, f)
+for i, v in pairs(array) do
+  print(v)
+end -- c b a
+```
+
+### 迭代器
+
+#### 无状态的迭代器
+
+```lua
+function square(d,n)
+   if n < d
+   then
+      n = n + 1
+   return n, n*n
+   end
+end
+
+for i,n in square,5,0
+do
+   print(i,n)
+end
+```
+
+#### for 循环迭代器
+
+```lua
+for i, n in pairs({ 1, 2, 3, 4 }) do
+  print(i, n)
+end
+```
+
+模块
+---
+
+### 定义模块
+
+```lua
+-- a.lua
+local mod = {}
+
+mod.cool = "this is a mod"
+function mod.test()
+  print("this is a function")
+end
+
+return mod
+```
+
+### 导入模块
+
+一般我们可以直接使用 `require` 导入
+
+```lua
+-- b.lua
+-- local mod = require("a")
+-- 使用 pcall 确保 require 函数导入成功，失败则返回一个 false 状态
+local status, mod = pcall(require, "a")
+
+if not status then
+  return
+end
+
+mod.test()
+print(mod.cool)
+```
+
+### 私有函数
+
+```lua
+local mod = {}
+
+local function private()
+  print("private")
+end
+
+function mod.public()
+  private()
+end
+
+return mod
 ```
 
 另见
