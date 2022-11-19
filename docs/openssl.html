@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>OpenSSL 备忘清单
+ &#x26;  openssl cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这个 OpenSSL 快速参考备忘单展示了它的常用命令使用清单为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,openssl">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="https://github.com/jaywcjlove/reference/blob/main/docs/openssl.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script>
+  const LOCAL_NANE = '_dark_mode_theme_'
+  const rememberedValue = localStorage.getItem(LOCAL_NANE);
+  if (rememberedValue && ['light', 'dark'].includes(rememberedValue)) {
+    document.documentElement.setAttribute('data-color-mode', rememberedValue);
+  }
+  const button = document.querySelector('#darkMode');
+  button.onclick = () => {
+    const theme = document.documentElement.dataset.colorMode;
+    const mode = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem(LOCAL_NANE, mode);
+  }
+</script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="openssl-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 64 37"><path fill="currentColor" d="M16.365,3.888 C12.8963333,3.888 10.1373333,5.18133333 8.088,7.768 C6.05466667,10.3533333 5.038,13.8766667 5.038,18.338 C5.038,22.7846667 6.05466667,26.3003333 8.088,28.885 C10.1373333,31.4716667 12.8963333,32.765 16.365,32.765 C19.8336667,32.765 22.577,31.4716667 24.595,28.885 C26.6283333,26.2996667 27.645,22.784 27.645,18.338 C27.645,13.876 26.6283333,10.3526667 24.595,7.768 C22.577,5.18133333 19.8336667,3.888 16.365,3.888 Z M16.365,0.01 C21.3156667,0.01 25.273,1.67666667 28.237,5.01 C31.201,8.32066667 32.683,12.7666667 32.683,18.348 C32.683,23.9133333 31.201,28.3593333 28.237,31.686 C25.273,34.9966667 21.3156667,36.652 16.365,36.652 C11.3983333,36.652 7.425,34.9966667 4.445,31.686 C1.48166667,28.368 0,23.9186667 0,18.338 C0,12.7566667 1.482,8.31066667 4.446,5 C7.426,1.66666667 11.3993333,0 16.366,0 L16.365,0.01 Z M61.682,1.76 L61.682,9.233 C59.742,8.36633333 57.85,7.712 56.006,7.27 C54.1613333,6.82866667 52.4193333,6.608 50.78,6.608 C48.604,6.608 46.996,6.908 45.956,7.508 C44.916,8.108 44.396,9.038 44.396,10.298 C44.396,11.2446667 44.7426667,11.9856667 45.436,12.521 C46.1453333,13.041 47.422,13.4903333 49.266,13.869 L53.144,14.649 C57.0706667,15.4376667 59.8613333,16.636 61.516,18.244 C63.172,19.852 64,22.1376667 64,25.101 C64,28.9943333 62.8413333,31.8953333 60.524,33.804 C58.222,35.696 54.6986667,36.642 49.954,36.642 C47.7153333,36.642 45.4686667,36.4286667 43.214,36.002 C40.9593333,35.5766667 38.7046667,34.946 36.45,34.11 L36.45,26.436 C38.7046667,27.634 40.8803333,28.5406667 42.977,29.156 C45.0903333,29.756 47.1236667,30.056 49.077,30.056 C51.0636667,30.056 52.585,29.725 53.641,29.063 C54.697,28.401 55.225,27.455 55.225,26.225 C55.225,25.1216667 54.8623333,24.2703333 54.137,23.671 C53.4276667,23.071 52.001,22.535 49.857,22.063 L46.333,21.283 C42.8016667,20.5263333 40.216,19.3203333 38.576,17.665 C36.952,16.0096667 36.14,13.7786667 36.14,10.972 C36.14,7.456 37.275,4.752 39.545,2.86 C41.815,0.968 45.0783333,0.022 49.335,0.022 C51.275,0.022 53.2693333,0.172 55.318,0.472 C57.3673333,0.756 59.488,1.18933333 61.68,1.772 L61.682,1.76 Z" transform="translate(0 .164)"></path></svg><a aria-hidden="true" tabindex="-1" href="#openssl-备忘清单"><span class="icon icon-link"></span></a>OpenSSL 备忘清单</h1><div class="wrap-body">
+<p>这个 <a href="https://www.openssl.org/">OpenSSL</a> 快速参考备忘单展示了它的常用命令使用清单</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基础">基础</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#编码解码">编码/解码</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用哈希">使用哈希</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#非对称加密">非对称加密</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#对称加密">对称加密</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#数字签名">数字签名</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#数字证书">数字证书</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用-tls-协议">使用 TLS 协议</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#个人安全环境-pse">个人安全环境 (PSE)</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#查看">查看</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-pem-编码证书">查看 PEM 编码证书</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-der-编码证书">查看 DER 编码证书</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看证书链中的所有证书">查看证书链中的所有证书</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#转换">转换</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#转换示例">转换示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#openssl-转换-pem">OpenSSL 转换 PEM</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#openssl-转换-der">OpenSSL 转换 DER</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#openssl-转换-pfx">OpenSSL 转换 PFX</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#openssl-转换-p7b">OpenSSL 转换 P7B</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通过-openssl-生成-rsa-密钥">通过 OpenSSL 生成 rsa 密钥</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#openssl-中的-rsa-工具选项">OpenSSL 中的 RSA 工具选项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#支持以下加密算法">支持以下加密算法</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#格式">格式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#rsa-公钥">RSA 公钥</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#加密的-pem-私钥">加密的 PEM 私钥</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#识别为-pem-格式">识别为 PEM 格式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#crl">CRL</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#crt">CRT</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#csr">CSR</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#new-csr">NEW CSR</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pem">PEM</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pkcs7">PKCS7</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#私钥">私钥</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#dsa密钥">DSA密钥</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#椭圆曲线">椭圆曲线</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pgp-私钥">PGP 私钥</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pgp-公钥">PGP 公钥</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#校验">校验</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#验证信任链">验证信任链</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#截止日期">截止日期</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#验证本地证书文件">验证本地证书文件</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#验证远程服务器">验证远程服务器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#验证-curl">验证 curl</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#验证-openssl-s_client">验证 openssl s_client</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#使用-sni">使用 SNI</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#没有-sni">没有 SNI</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用私钥验证-tls-证书">使用私钥验证 TLS 证书</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#java-key-store">Java Key store</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#java-密钥库">Java 密钥库</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#创建">创建</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用-certstrap-创建开发证书">使用 certstrap 创建开发证书</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用-mkcert-创建开发证书">使用 mkcert 创建开发证书</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="基础"><a aria-hidden="true" tabindex="-1" href="#基础"><span class="icon icon-link"></span></a>基础</h3><div class="wrap-body">
+<p>检查版本</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl version <span class="token parameter variable">-a</span>
+</span></code></pre>
+<p>它在使用四个 CPU 内核并测试 RSA 算法的系统上运行速度有多快</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl speed <span class="token parameter variable">-multi</span> <span class="token number">4</span> rsa
+</span></code></pre>
+<p>获得基本帮助</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl <span class="token builtin class-name">help</span>
+</span></code></pre>
+<p>生成 20 个随机字节并将它们显示在屏幕上</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl rand <span class="token parameter variable">-hex</span> <span class="token number">20</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="编码解码"><a aria-hidden="true" tabindex="-1" href="#编码解码"><span class="icon icon-link"></span></a>编码/解码</h3><div class="wrap-body">
+<p>使用 Base64 编码文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl base64 <span class="token parameter variable">-in</span> file.data
+</span></code></pre>
+<p>使用 Base64 编码一些文本</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"some text"</span> <span class="token operator">|</span> openssl base64
+</span></code></pre>
+<p>Base64 解码一个文件并输出到另一个文件</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl base64 <span class="token parameter variable">-d</span> <span class="token parameter variable">-in</span> encode­d.data <span class="token parameter variable">-out</span> decode­d.data
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="使用哈希"><a aria-hidden="true" tabindex="-1" href="#使用哈希"><span class="icon icon-link"></span></a>使用哈希</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>列出可用的摘要算法</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl list -diges­t-a­lgo­rithms
+</span></code></pre>
+<p>使用 SHA256 散列文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl dgst <span class="token parameter variable">-sha256</span> file.data
+</span></code></pre>
+<p>使用 SHA256 散列文件及其二进制形式的输出（无输出十六进制编码） 没有 ASCII 或编码字符将打印到控制台，只有纯字节。 您可以附加 ' | xxd'</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl dgst <span class="token parameter variable">-binary</span> <span class="token parameter variable">-sha256</span> file.data
+</span></code></pre>
+<p>使用 SHA3-512 的哈希文本</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"some text"</span> <span class="token operator">|</span> openssl dgst -sha3-512
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>创建 HMAC - 使用特定密钥（以字节为单位）的文件的 SHA384</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl dgst <span class="token parameter variable">-SHA384</span> <span class="token parameter variable">-mac</span> HMAC <span class="token parameter variable">-macopt</span> hexkey:369bd7d655 file.data
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>创建 HMAC - 一些文本的 SHA512</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"some text"</span> <span class="token operator">|</span> openssl dgst <span class="token parameter variable">-mac</span> HMAC <span class="token parameter variable">-macopt</span> hexkey­:36­9bd­7d655 <span class="token parameter variable">-sha512</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="非对称加密"><a aria-hidden="true" tabindex="-1" href="#非对称加密"><span class="icon icon-link"></span></a>非对称加密</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>列出可用的椭圆曲线</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl ecparam -list_­curves
+</span></code></pre>
+<p>创建 4096 位 RSA 公私密钥对</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl genrsa <span class="token parameter variable">-out</span> pub_pr­iv.key <span class="token number">4096</span>
+</span></code></pre>
+<p>显示详细的私钥信息</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-text</span> <span class="token parameter variable">-in</span> pub_priv.key <span class="token parameter variable">-noout</span>
+</span></code></pre>
+<p>使用 AES-256 算法加密公私钥对</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> pub_priv.key <span class="token parameter variable">-out</span> encrypted.key <span class="token parameter variable">-aes256</span>
+</span></code></pre>
+<p>删除密钥文件加密并将它们保存到另一个文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> encrypted.key <span class="token parameter variable">-out</span> cleartext.key
+</span></code></pre>
+<p>将公私钥对文件的公钥复制到另一个文件中</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> pub_priv.key <span class="token parameter variable">-pubout</span> <span class="token parameter variable">-out</span> pubkey.key
+</span></code></pre>
+<p>使用 RSA 公钥加密文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsautl <span class="token parameter variable">-encrypt</span> <span class="token parameter variable">-inkey</span> pubkey.key <span class="token parameter variable">-pubin</span> <span class="token parameter variable">-in</span> cleartext.file <span class="token parameter variable">-out</span> ciphertext.file
+</span></code></pre>
+<p>使用 RSA 私钥解密文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsautl <span class="token parameter variable">-decrypt</span> <span class="token parameter variable">-inkey</span> pub_priv.key <span class="token parameter variable">-in</span> ciphertext.file <span class="token parameter variable">-out</span> decrypted.file
+</span></code></pre>
+<p>使用 P-224 椭圆曲线创建私钥</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl ecparam <span class="token parameter variable">-name</span> secp224k1 <span class="token parameter variable">-genkey</span> <span class="token parameter variable">-out</span> ecpriv.key
+</span></code></pre>
+<p>使用 3DES 算法加密私钥</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl ec <span class="token parameter variable">-in</span> ecP384priv.key <span class="token parameter variable">-des3</span> <span class="token parameter variable">-out</span> ecP384priv_enc.key
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="对称加密"><a aria-hidden="true" tabindex="-1" href="#对称加密"><span class="icon icon-link"></span></a>对称加密</h3><div class="wrap-body">
+<p>列出所有支持的对称加密密码</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl enc <span class="token parameter variable">-list</span>
+</span></code></pre>
+<p>使用提供的 ASCII 编码密码和 AES-128-ECB 算法加密文件</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl enc -aes-128-ecb <span class="token parameter variable">-in</span> cleartext.file <span class="token parameter variable">-out</span> ciphertext.file <span class="token parameter variable">-pass</span> pass:thisisthepassword
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用 AES-256-CBC 和密钥文件解密文件</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl enc <span class="token parameter variable">-d</span> -aes-256-cbc <span class="token parameter variable">-in</span> ciphertext.file <span class="token parameter variable">-out</span> cleartext.file <span class="token parameter variable">-pass</span> file:./key.file
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用以十六进制数字形式提供的特定加密密钥 (K) 加密文件</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl enc -aes-128-ecb <span class="token parameter variable">-in</span> cleartext.file <span class="token parameter variable">-out</span> ciphertext.file <span class="token parameter variable">-K</span> 1881807b2d1b3d22f14e9ec52563d981 <span class="token parameter variable">-nosalt</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用指定的加密密钥（K：256 位）和初始化向量（iv：128 位）在 CBC 块密码模式下使用 ARIA 256 加密文件</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl enc -aria-256-cbc <span class="token parameter variable">-in</span> cleartext.file <span class="token parameter variable">-out</span> ciphertext.file <span class="token parameter variable">-K</span> f92d2e986b7a2a01683b4c40d0cbcf6feaa669ef2bb5ec3a25ce85d9548291c1 <span class="token parameter variable">-iv</span> 470bc29762496046882b61ecee68e07c <span class="token parameter variable">-nosalt</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用提供的密钥和 iv 在 COUNTER 块密码模式下使用 Camellia 192 算法加密文件</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl enc -camellia-192-ctr <span class="token parameter variable">-in</span> cleartext.file <span class="token parameter variable">-out</span> ciphertext.file <span class="token parameter variable">-K</span> 6c7a1b3487d28d3bf444186d7c529b48d67dd6206c7a1b34 <span class="token parameter variable">-iv</span> 470bc29762496046882b61ecee68e07c
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="数字签名"><a aria-hidden="true" tabindex="-1" href="#数字签名"><span class="icon icon-link"></span></a>数字签名</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>为私钥生成 DSA 参数。 2048 位长度</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl dsaparam <span class="token parameter variable">-out</span> dsaparam.pem <span class="token number">2048</span>
+</span></code></pre>
+<p>生成用于签署文档的 DSA 公私密钥并使用 AES128 算法对其进行保护</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl gendsa <span class="token parameter variable">-out</span> dsaprivatekey.pem -aes-128-cbc dsaparam.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将DSA公私钥文件的公钥复制到另一个文件中</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl dsa <span class="token parameter variable">-in</span> dsaprivatekey.pem <span class="token parameter variable">-pubout</span> <span class="token parameter variable">-out</span> dsapublickey.pem
+</span></code></pre>
+<p>打印出 DSA 密钥对文件的内容</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl dsa <span class="token parameter variable">-in</span> dsaprivatekey.pem <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span>
+</span></code></pre>
+<p>使用 RSA 私钥对文件的 sha-256 哈希进行签名</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl dgst <span class="token parameter variable">-sha256</span> <span class="token parameter variable">-sign</span> rsakey.key <span class="token parameter variable">-out</span> signature.data document.pdf
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用公钥验证 SHA-256 文件签名</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl dgst <span class="token parameter variable">-sha256</span> <span class="token parameter variable">-verify</span> publickey.pem <span class="token parameter variable">-signature</span> signature.data original.file
+</span></code></pre>
+<p>使用 DSA 私钥对文件的 sha3-512 哈希进行签名</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkeyutl <span class="token parameter variable">-sign</span> <span class="token parameter variable">-pkeyopt</span> digest:sha3-512 <span class="token parameter variable">-in</span> document.docx <span class="token parameter variable">-inkey</span> dsaprivatekey.pem <span class="token parameter variable">-out</span> signature.data
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>验证 DSA 签名</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkeyutl <span class="token parameter variable">-verify</span> <span class="token parameter variable">-sigfile</span> dsasignature.data <span class="token parameter variable">-inkey</span> dsakey.pem <span class="token parameter variable">-in</span> document.docx
+</span></code></pre>
+<p>使用 P-384 椭圆曲线创建私钥</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl ecparam <span class="token parameter variable">-name</span> secp384r1 <span class="token parameter variable">-genkey</span> <span class="token parameter variable">-out</span> ecP384priv.key
+</span></code></pre>
+<p>使用3DES算法加密私钥</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl ec <span class="token parameter variable">-in</span> ecP384priv.key <span class="token parameter variable">-des3</span> <span class="token parameter variable">-out</span> ecP384priv_enc.key
+</span></code></pre>
+<p>使用带有生成密钥的椭圆曲线对 PDF 文件进行签名</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkeyutl <span class="token parameter variable">-sign</span> <span class="token parameter variable">-inkey</span> ecP384priv_enc.key <span class="token parameter variable">-pkeyopt</span> digest:sha3-512 <span class="token parameter variable">-in</span> document.pdf <span class="token parameter variable">-out</span> signature.data
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>验证文件的签名。 如果没问题，您必须收到“签名验证成功”</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkeyutl <span class="token parameter variable">-verify</span> <span class="token parameter variable">-in</span> document.pdf <span class="token parameter variable">-sigfile</span> signature.data <span class="token parameter variable">-inkey</span> ecP384priv_enc.key
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="数字证书"><a aria-hidden="true" tabindex="-1" href="#数字证书"><span class="icon icon-link"></span></a>数字证书</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>生成 CSR 文件和 4096 位 RSA 密钥对</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl req <span class="token parameter variable">-newkey</span> rsa:4096 <span class="token parameter variable">-keyout</span> private.key <span class="token parameter variable">-out</span> request.csr
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>显示证书签名请求 ( CSR ) 内容</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl req <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span> <span class="token parameter variable">-in</span> request.csr
+</span></code></pre>
+<p>显示 CSR 文件中包含的公钥</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl req <span class="token parameter variable">-pubkey</span> <span class="token parameter variable">-noout</span> <span class="token parameter variable">-in</span> request.csr
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用现有私钥创建证书签名请求 ( CSR )。 当您需要在不更改私钥的情况下更新公共数字证书时，这会很有用</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl req <span class="token parameter variable">-new</span> <span class="token parameter variable">-key</span> private.key <span class="token parameter variable">-out</span> request.csr
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>创建 EC P384 曲线参数文件以在下一步中使用椭圆曲线生成 CSR</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl genpkey <span class="token parameter variable">-genparam</span> <span class="token parameter variable">-algorithm</span> EC <span class="token parameter variable">-out</span> EC_params.pem <span class="token parameter variable">-pkeyopt</span> ec_paramgen_curve:secp384r1 <span class="token parameter variable">-pkeyopt</span> ec_param_enc:named_curve
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用在上一步中创建的椭圆曲线 P384 参数文件创建 CSR 文件。 而不是使用 RSA 密钥。</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl req <span class="token parameter variable">-newkey</span> ec:EC_params.pem <span class="token parameter variable">-keyout</span> EC_P384_priv.key <span class="token parameter variable">-out</span> EC_request.csr
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>创建自签名证书，新的 2048 位 RSA 密钥对，有效期为一年</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl req <span class="token parameter variable">-newkey</span> rsa:2048 <span class="token parameter variable">-nodes</span> <span class="token parameter variable">-keyout</span> priv.key <span class="token parameter variable">-x509</span> <span class="token parameter variable">-days</span> <span class="token number">365</span> <span class="token parameter variable">-out</span> cert.crt
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>使用 CSR 文件和用于签名的私钥创建并签署新证书（您必须准备好 openssl.cnf 文件）</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl ca <span class="token parameter variable">-in</span> request.csr <span class="token parameter variable">-out</span> certificate.crt <span class="token parameter variable">-config</span> ./CA/config/openssl.cnf
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>显示PEM格式证书信息</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span> <span class="token parameter variable">-in</span> cert.crt
+</span></code></pre>
+<p>以 Abstract Sintax Notation One (ASN.1) 显示证书信息</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl asn1parse <span class="token parameter variable">-in</span> cert.crt
+</span></code></pre>
+<p>提取证书的公钥</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-pubkey</span> <span class="token parameter variable">-noout</span> <span class="token parameter variable">-in</span> cert.crt
+</span></code></pre>
+<p>在证书中提取公钥的模数</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-modulus</span> <span class="token parameter variable">-noout</span> <span class="token parameter variable">-in</span> cert.crt
+</span></code></pre>
+<p>从 HTTPS/TLS 连接中提取域证书</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-connect</span> domain.com:443 <span class="token operator">|</span> openssl x509 <span class="token parameter variable">-out</span> certificate.crt
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将证书从 PEM 格式转换为 DER 格式</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-inform</span> PEM <span class="token parameter variable">-outform</span> DER <span class="token parameter variable">-in</span> cert.crt <span class="token parameter variable">-out</span> cert.der
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>检查证书公钥是否与私钥和请求文件匹配。 每个文件一步。 必须在输出哈希中匹配</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-modulus</span> <span class="token parameter variable">-in</span> certificate.crt <span class="token parameter variable">-noout</span> <span class="token operator">|</span> openssl dgst <span class="token parameter variable">-sha256</span>
+</span><span class="code-line">$ openssl rsa <span class="token parameter variable">-modulus</span> <span class="token parameter variable">-in</span> private.key <span class="token parameter variable">-noout</span> <span class="token operator">|</span> openssl dgst <span class="token parameter variable">-sha256</span>
+</span><span class="code-line">$ openssl req <span class="token parameter variable">-modulus</span> <span class="token parameter variable">-in</span> request.csr <span class="token parameter variable">-noout</span> <span class="token operator">|</span> openssl dgst <span class="token parameter variable">-sha256</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2 col-span-2"><div class="wrap-header h3wrap"><h3 id="使用-tls-协议"><a aria-hidden="true" tabindex="-1" href="#使用-tls-协议"><span class="icon icon-link"></span></a>使用 TLS 协议</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2 col-span-2-->
+<p>列出所有支持的密码套件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl ciphers <span class="token parameter variable">-V</span> <span class="token string">'ALL'</span>
+</span></code></pre>
+<p>列出 AES 支持的所有密码套件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl ciphers <span class="token parameter variable">-V</span> <span class="token string">'AES'</span>
+</span></code></pre>
+<p>列出所有支持 CAMELLIA 和 SHA256 算法的密码套件。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl ciphers <span class="token parameter variable">-V</span> <span class="token string">'CAMELLIA+SHA256'</span>
+</span></code></pre>
+<p>使用端口 443 (HTTPS) 与服务器的 TLS 连接</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-connect</span> domain.com:443
+</span></code></pre>
+<p>使用 v1.2 与服务器的 TLS 连接</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-tls1_2</span> <span class="token parameter variable">-connect</span> domain.com:443
+</span></code></pre>
+<p>TLS 连接和禁用 v1.0</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-no_tls1</span> domain.com:443
+</span></code></pre>
+<p>使用特定密码套件的 TLS 连接</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-cipher</span> DHE-RSA-AES256-GCM-SHA384 domain.com:443
+</span></code></pre>
+<p>显示服务器提供的所有证书的 TLS 连接</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-showcerts</span> domain.com:443
+</span></code></pre>
+<p>使用证书、私钥和仅支持 TLS 1.2 设置监听端口以接收 TLS 连接</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_server <span class="token parameter variable">-port</span> <span class="token number">443</span> <span class="token parameter variable">-cert</span> cert.crt <span class="token parameter variable">-key</span> priv.key <span class="token parameter variable">-tls1_2</span>
+</span></code></pre>
+<p>从 HTTPS/TLS 连接中提取域证书</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-connect</span> domain.com:443 <span class="token operator">|</span> openssl x509 <span class="token parameter variable">-out</span> certificate.crt
+</span></code></pre>
+<p>nmap 命令：通过 HTTPS/TLS 连接显示启用的密码套件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ nmap <span class="token parameter variable">--script</span> ssl-enum-ciphers <span class="token parameter variable">-p</span> <span class="token number">443</span> domain.com
+</span></code></pre>
+<p>nmap 命令：使用 SNI 通过 TLS (HTTPS) 连接显示启用的密码套件。 （将其更改为所需的 IP 和域名）</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ nmap <span class="token parameter variable">--script</span> ssl-enum-ciphers --script-args<span class="token operator">=</span>tls.servername<span class="token operator">=</span>domain.com <span class="token number">172.67</span>.129.11
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="个人安全环境-pse"><a aria-hidden="true" tabindex="-1" href="#个人安全环境-pse"><span class="icon icon-link"></span></a>个人安全环境 (PSE)</h3><div class="wrap-body">
+<p>将证书从 PEM (base64) 格式转换为 DER（二进制）格式</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-in</span> certif­ica­te.pem <span class="token parameter variable">-outform</span> DER <span class="token parameter variable">-out</span> certif­ica­te.der
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将证书和私钥插入 PKCS #12 格式文件。 这些文件可以导入到 Windows 证书管理器或 Java Key Store (jks) 文件中</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkcs12 <span class="token parameter variable">-export</span> <span class="token parameter variable">-out</span> cert_key.p12 <span class="token parameter variable">-inkey</span> private.key <span class="token parameter variable">-in</span> certificate.crt
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>显示 PKCS #12 文件的内容</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkcs12 <span class="token parameter variable">-in</span> cert_k­ey.p12
+</span></code></pre>
+<p>将 .p12 文件转换为 Java Key Store。 此命令使用 java keytool 而不是 openssl。</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">keytool <span class="token parameter variable">-importkeystore</span> <span class="token parameter variable">-destkeystore</span> javakeystore.jks <span class="token parameter variable">-srckeystore</span> cert_key.p12 <span class="token parameter variable">-srcstoretype</span> pkcs12
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将 PEM 证书转换为 PKCS #7 格式</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl crl2pkcs7 <span class="token parameter variable">-nocrl</span> <span class="token parameter variable">-certfile</span> certificate.crt <span class="token parameter variable">-out</span> cert.p7b
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将 PKCS #7 文件从 PEM 转换为 DER</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkcs7 <span class="token parameter variable">-in</span> cert.p7b <span class="token parameter variable">-outform</span> DER <span class="token parameter variable">-out</span> p7.der
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="查看"><a aria-hidden="true" tabindex="-1" href="#查看"><span class="icon icon-link"></span></a>查看</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看-pem-编码证书"><a aria-hidden="true" tabindex="-1" href="#查看-pem-编码证书"><span class="icon icon-link"></span></a>查看 PEM 编码证书</h3><div class="wrap-body">
+<p>使用具有证书扩展名的命令将 cert.xxx 替换为证书名称</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-in</span> cert.pem <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span>
+</span><span class="code-line">$ openssl x509 <span class="token parameter variable">-in</span> cert.cer <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span>
+</span><span class="code-line">$ openssl x509 <span class="token parameter variable">-in</span> cert.crt <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span>
+</span></code></pre>
+<p>如果您收到以下错误，则表示您正在尝试查看 DER 编码的证书，并且需要使用下面“查看 DER 编码的证书”部分中的命令：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">unable to load certificate
+</span><span class="code-line"><span class="token number">12626</span>:error:0906D06C:PEM routines:PEM_read_bio:no start line:pem_lib.c:647:Expecting: TRUSTED CERTIFICATE View DER encoded Certificate
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="查看-der-编码证书"><a aria-hidden="true" tabindex="-1" href="#查看-der-编码证书"><span class="icon icon-link"></span></a>查看 DER 编码证书</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">openssl x509 <span class="token parameter variable">-in</span> certificate.der <span class="token parameter variable">-inform</span> der <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span>
+</span></code></pre>
+<p>如果您收到以下错误，则表示您正在尝试使用用于 DER 编码证书的命令查看 PEM 编码证书。 使用上面“查看 PEM 编码证书”部分中的命令：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">unable to load certificate
+</span><span class="code-line"><span class="token number">13978</span>:error:0D0680A8:asn1 encoding routines:ASN1_CHECK_TLEN:wrong tag:tasn_dec.c:1306:
+</span><span class="code-line"><span class="token number">13978</span>:error:0D07803A:asn1 encoding routines:ASN1_ITEM_EX_D2I:nested asn1 error:tasn_dec.c:380:Type<span class="token operator">=</span>X509
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="查看证书链中的所有证书"><a aria-hidden="true" tabindex="-1" href="#查看证书链中的所有证书"><span class="icon icon-link"></span></a>查看证书链中的所有证书</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># subject + issuer</span>
+</span><span class="code-line">openssl crl2pkcs7 <span class="token parameter variable">-nocrl</span> <span class="token parameter variable">-certfile</span> host.domain.tld-ca-chain.pem <span class="token operator">|</span> openssl pkcs7 <span class="token parameter variable">-print_certs</span> <span class="token parameter variable">-noout</span>
+</span><span class="code-line"><span class="token comment"># full public keys</span>
+</span><span class="code-line">openssl crl2pkcs7 <span class="token parameter variable">-nocrl</span> <span class="token parameter variable">-certfile</span> host.domain.tld-ca-chain.pem <span class="token operator">|</span> openssl pkcs7 <span class="token parameter variable">-print_certs</span> <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="转换"><a aria-hidden="true" tabindex="-1" href="#转换"><span class="icon icon-link"></span></a>转换</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="转换示例"><a aria-hidden="true" tabindex="-1" href="#转换示例"><span class="icon icon-link"></span></a>转换示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<p>将 DER 文件 (.crt .cer .der) 转换为 PEM</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">openssl x509 <span class="token parameter variable">-inform</span> der <span class="token parameter variable">-in</span> certificate.cer <span class="token parameter variable">-out</span> certificate.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将 PEM 文件转换为 DER</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">openssl x509 <span class="token parameter variable">-outform</span> der <span class="token parameter variable">-in</span> certificate.pem <span class="token parameter variable">-out</span> certificate.der
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将包含私钥和证书的 PKCS#12 文件 (.pfx .p12) 转换为 PEM</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">openssl pkcs12 <span class="token parameter variable">-in</span> keyStore.pfx <span class="token parameter variable">-out</span> keyStore.pem <span class="token parameter variable">-nodes</span>
+</span><span class="code-line"><span class="token comment"># 您可以添加 -nocerts 以仅输出私钥或添加 -nokeys 以仅输出证书</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将 PEM 证书文件和私钥转换为 PKCS#12 (.pfx .p12)</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">openssl pkcs12 <span class="token parameter variable">-export</span> <span class="token parameter variable">-out</span> certificate.pfx <span class="token parameter variable">-inkey</span> privateKey.key <span class="token parameter variable">-in</span> certificate.crt <span class="token parameter variable">-certfile</span> CACert.crt
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将 PEM 转换为 CRT（.CRT 文件）</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">openssl x509 <span class="token parameter variable">-outform</span> der <span class="token parameter variable">-in</span> certificate.pem <span class="token parameter variable">-out</span> certificate.crt
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="openssl-转换-pem"><a aria-hidden="true" tabindex="-1" href="#openssl-转换-pem"><span class="icon icon-link"></span></a>OpenSSL 转换 PEM</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>将 PEM 转换为 DER</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-outform</span> der <span class="token parameter variable">-in</span> certificate.pem <span class="token parameter variable">-out</span> certificate.der
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将 PEM 转换为 P7B</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl crl2pkcs7 <span class="token parameter variable">-nocrl</span> <span class="token parameter variable">-certfile</span> certificate.cer <span class="token parameter variable">-out</span> certificate.p7b <span class="token parameter variable">-certfile</span> CACert.cer
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将 PEM 转换为 PFX</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkcs12 <span class="token parameter variable">-export</span> <span class="token parameter variable">-out</span> certificate.pfx <span class="token parameter variable">-inkey</span> privateKey.key <span class="token parameter variable">-in</span> certificate.crt <span class="token parameter variable">-certfile</span> CACert.crt
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="openssl-转换-der"><a aria-hidden="true" tabindex="-1" href="#openssl-转换-der"><span class="icon icon-link"></span></a>OpenSSL 转换 DER</h3><div class="wrap-body">
+<p>将 DER 转换为 PEM</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-inform</span> der <span class="token parameter variable">-in</span> certificate.cer <span class="token parameter variable">-out</span> certificate.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="openssl-转换-pfx"><a aria-hidden="true" tabindex="-1" href="#openssl-转换-pfx"><span class="icon icon-link"></span></a>OpenSSL 转换 PFX</h3><div class="wrap-body">
+<p>将 PFX 转换为 PEM</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkcs12 <span class="token parameter variable">-in</span> certificate.pfx <span class="token parameter variable">-out</span> certificate.cer <span class="token parameter variable">-nodes</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="openssl-转换-p7b"><a aria-hidden="true" tabindex="-1" href="#openssl-转换-p7b"><span class="icon icon-link"></span></a>OpenSSL 转换 P7B</h3><div class="wrap-body">
+<p>将 P7B 转换为 PEM</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkcs7 <span class="token parameter variable">-print_certs</span> <span class="token parameter variable">-in</span> certificate.p7b <span class="token parameter variable">-out</span> certificate.cer
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将 P7B 转换成 PFX</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl pkcs7 <span class="token parameter variable">-print_certs</span> <span class="token parameter variable">-in</span> certificate.p7b <span class="token parameter variable">-out</span> certificate.cer
+</span><span class="code-line">$ openssl pkcs12 <span class="token parameter variable">-export</span> <span class="token parameter variable">-in</span> certificate.cer <span class="token parameter variable">-inkey</span> privateKey.key <span class="token parameter variable">-out</span> certificate.pfx <span class="token parameter variable">-certfile</span> CACert.cer
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="通过-openssl-生成-rsa-密钥"><a aria-hidden="true" tabindex="-1" href="#通过-openssl-生成-rsa-密钥"><span class="icon icon-link"></span></a>通过 OpenSSL 生成 rsa 密钥</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>在命令行上使用 OpenSSL 您首先需要生成公钥和私钥。 您应该使用 <code>-passout</code> 参数对这个文件进行密码保护，这个参数可以采用许多不同的形式，因此请查阅 OpenSSL 文档</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl genrsa <span class="token parameter variable">-out</span> private.pem <span class="token number">4096</span>
+</span></code></pre>
+<p>这将创建一个名为 private.pem 的密钥文件，它使用 4096 位。 这个文件实际上有私钥和公钥，所以你应该从这个文件中提取公钥：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> private.pem <span class="token parameter variable">-out</span> public.pem <span class="token parameter variable">-outform</span> PEM <span class="token parameter variable">-pubout</span>
+</span><span class="code-line"><span class="token comment"># or</span>
+</span><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> private.pem <span class="token parameter variable">-pubout</span> <span class="token operator">></span> public.pem
+</span><span class="code-line"><span class="token comment"># or</span>
+</span><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> private.pem <span class="token parameter variable">-pubout</span> <span class="token parameter variable">-out</span> public.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>您现在将拥有仅包含您的公钥的 public.pem，您可以与第 3 方自由共享。 您可以通过使用您的公钥自己加密一些东西然后使用您的私钥解密来测试这一切，首先我们需要一些数据来加密：</p>
+<p>示例文件：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'too many secrets'</span> <span class="token operator">></span> file.txt
+</span></code></pre>
+<p>您现在在 file.txt 中有一些数据，让我们使用 OpenSSL 和公钥对其进行加密：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsautl <span class="token parameter variable">-encrypt</span> <span class="token parameter variable">-inkey</span> public.pem <span class="token parameter variable">-pubin</span> <span class="token parameter variable">-in</span> file.txt <span class="token parameter variable">-out</span> file.ssl
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>这会创建一个 file.txt 的加密版本，称为 file.ssl，如果你看这个文件，它只是二进制垃圾，对任何人都没有什么用处。 现在您可以使用私钥对其进行解密：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsautl <span class="token parameter variable">-decrypt</span> <span class="token parameter variable">-inkey</span> private.pem <span class="token parameter variable">-in</span> file.ssl <span class="token parameter variable">-out</span> decrypted.txt
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>您现在将在 decrypted.txt 中有一个未加密的文件：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">cat</span> decrypted.txt
+</span><span class="code-line"> <span class="token operator">|</span>output -<span class="token operator">></span> too many secrets
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-3"><div class="wrap-header h3wrap"><h3 id="openssl-中的-rsa-工具选项"><a aria-hidden="true" tabindex="-1" href="#openssl-中的-rsa-工具选项"><span class="icon icon-link"></span></a>OpenSSL 中的 RSA 工具选项</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+<p>NAME</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ rsa - RSA key processing tool
+</span></code></pre>
+<p>SYNOPSIS 概要</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token punctuation">[</span>-help<span class="token punctuation">]</span> <span class="token punctuation">[</span>-inform PEM<span class="token operator">|</span>NET<span class="token operator">|</span>DER<span class="token punctuation">]</span> <span class="token punctuation">[</span>-outform PEM<span class="token operator">|</span>NET<span class="token operator">|</span>DER<span class="token punctuation">]</span> <span class="token punctuation">[</span>-in filename<span class="token punctuation">]</span> <span class="token punctuation">[</span>-passin arg<span class="token punctuation">]</span> <span class="token punctuation">[</span>-out filename<span class="token punctuation">]</span> <span class="token punctuation">[</span>-passout arg<span class="token punctuation">]</span> <span class="token punctuation">[</span>-aes128<span class="token punctuation">]</span> <span class="token punctuation">[</span>-aes192<span class="token punctuation">]</span> <span class="token punctuation">[</span>-aes256<span class="token punctuation">]</span> <span class="token punctuation">[</span>-camellia128<span class="token punctuation">]</span> <span class="token punctuation">[</span>-camellia192<span class="token punctuation">]</span> <span class="token punctuation">[</span>-camellia256<span class="token punctuation">]</span> <span class="token punctuation">[</span>-des<span class="token punctuation">]</span> <span class="token punctuation">[</span>-des3<span class="token punctuation">]</span> <span class="token punctuation">[</span>-idea<span class="token punctuation">]</span> <span class="token punctuation">[</span>-text<span class="token punctuation">]</span> <span class="token punctuation">[</span>-noout<span class="token punctuation">]</span> <span class="token punctuation">[</span>-modulus<span class="token punctuation">]</span> <span class="token punctuation">[</span>-check<span class="token punctuation">]</span> <span class="token punctuation">[</span>-pubin<span class="token punctuation">]</span> <span class="token punctuation">[</span>-pubout<span class="token punctuation">]</span> <span class="token punctuation">[</span>-RSAPublicKey_in<span class="token punctuation">]</span> <span class="token punctuation">[</span>-RSAPublicKey_out<span class="token punctuation">]</span> <span class="token punctuation">[</span>-engine id<span class="token punctuation">]</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>DESCRIPTION 描述</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">rsa 命令处理 RSA 密钥。 它们可以在各种形式之间转换，并且可以打印出它们的组成部分。
+</span><span class="code-line">请注意，此命令使用传统的 SSLeay 兼容格式进行私钥加密：较新的应用程序
+</span><span class="code-line">应该使用 pkcs8 实用程序使用更安全的 PKCS<span class="token comment">#8 格式。</span>
+</span></code></pre>
+<p>COMMAND OPTIONS 命令选项</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token parameter variable">-help</span>
+</span><span class="code-line"><span class="token comment">#> 打印出使用信息。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-inform</span> DER<span class="token operator">|</span>NET<span class="token operator">|</span>PEM
+</span><span class="code-line"><span class="token comment">#> 这指定了输入格式。 DER 选项使用与 PKCS #1 RSAPrivateKey 或 SubjectPublicKeyInfo 格式兼容的 ASN1 DER 编码形式。 PEM 形式是默认格式：它由 DER 格式 base64 编码，并带有额外的页眉和页脚行。 输入 PKCS#8 格式的私钥也 接受。 NET 形式是一种在注释部分中描述的格式。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-outform</span> DER<span class="token operator">|</span>NET<span class="token operator">|</span>PEM
+</span><span class="code-line"><span class="token comment">#> 这指定了输出格式，选项与 -inform 选项具有相同的含义。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-in</span> filename
+</span><span class="code-line"><span class="token comment">#> 如果未指定此选项，这将指定要从中读取密钥的输入文件名或标准输入。 如果密钥被加密，将提示输入密码。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-passin</span> arg
+</span><span class="code-line"><span class="token comment">#> 输入文件密码源。有关 arg 格式的更多信息，请参阅 openssl 中的 PASS PHRASE ARGUMENTS 部分。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-out</span> filename
+</span><span class="code-line"><span class="token comment">#> 如果未指定此选项，这将指定要写入密钥的输出文件名或标准输出。如果设置了任何加密选项，则会提示输入密码。输出文件名不应与输入文件名相同。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-passout</span> password
+</span><span class="code-line"><span class="token comment">#> 输出文件密码源。有关 arg 格式的更多信息，请参阅 openssl 中的 PASS PHRASE ARGUMENTS 部分。</span>
+</span><span class="code-line">
+</span><span class="code-line">-aes128<span class="token operator">|</span>-aes192<span class="token operator">|</span>-aes256<span class="token operator">|</span>-camellia128<span class="token operator">|</span>-camellia192<span class="token operator">|</span>-camellia256<span class="token operator">|</span>-des<span class="token operator">|</span>-des3<span class="token operator">|</span>-idea
+</span><span class="code-line"><span class="token comment">#> 这些选项在输出之前使用指定的密码加密私钥。提示输入密码。如果未指定这些选项，则密钥将以纯文本形式写入。这意味着使用 rsa 实用程序读取没有加密选项的加密密钥可用于从密钥中删除密码短语，或者通过设置可用于添加或更改密码短语的加密选项。这些选项只能用于 PEM 格式的输出文件。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-text</span>
+</span><span class="code-line"><span class="token comment">#> 除了编码版本之外，还以纯文本形式打印出各种公钥或私钥组件。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-noout</span>
+</span><span class="code-line"><span class="token comment">#> 此选项可防止输出密钥的编码版本。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-modulus</span>
+</span><span class="code-line"><span class="token comment">#> 此选项打印出密钥模数的值。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-check</span>
+</span><span class="code-line"><span class="token comment">#> 此选项检查 RSA 私钥的一致性。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-pubin</span>
+</span><span class="code-line"><span class="token comment">#> 默认情况下，从输入文件中读取私钥：使用此选项，改为读取公钥。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-pubout</span>
+</span><span class="code-line"><span class="token comment">#> 默认情况下输出私钥：使用此选项将输出公钥。 如果输入是公钥，则会自动设置此选项。</span>
+</span><span class="code-line">
+</span><span class="code-line">-RSAPublicKey_in, <span class="token parameter variable">-RSAPublicKey_out</span>
+</span><span class="code-line"><span class="token comment">#> 类似于 -pubin 和 -pubout，除了使用 RSAPublicKey 格式。</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token parameter variable">-engine</span> <span class="token function">id</span>
+</span><span class="code-line"><span class="token comment">#> 指定引擎（通过其唯一 ID 字符串）将导致 rsa 尝试获取对指定引擎的功能引用，从而在需要时对其进行初始化。 然后引擎将被设置为所有可用算法的默认值。</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="支持以下加密算法"><a aria-hidden="true" tabindex="-1" href="#支持以下加密算法"><span class="icon icon-link"></span></a>支持以下加密算法</h3><div class="wrap-body">
+<ul class="cols-3">
+<li><code>-aes128</code></li>
+<li><code>-aes192</code></li>
+<li><code>-aes256</code></li>
+<li><code>-des3</code></li>
+<li><code>-des</code></li>
+</ul>
+<!--rehype:className=cols-3-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
+<p>要删除 RSA 私钥上的密码短语：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> key.pem <span class="token parameter variable">-out</span> keyout.pem
+</span></code></pre>
+<p>要使用三重 DES 加密私钥：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> key.pem <span class="token parameter variable">-des3</span> <span class="token parameter variable">-out</span> keyout.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>要将私钥从 PEM 格式转换为 DER 格式：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> key.pem <span class="token parameter variable">-outform</span> DER <span class="token parameter variable">-out</span> keyout.der
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>将私钥的组件打印到标准输出：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> key.pem <span class="token parameter variable">-text</span> <span class="token parameter variable">-noout</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>仅输出私钥的公共部分：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> key.pem <span class="token parameter variable">-pubout</span> <span class="token parameter variable">-out</span> pubkey.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>以 RSAPublicKey 格式输出私钥的公共部分：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl rsa <span class="token parameter variable">-in</span> key.pem <span class="token parameter variable">-RSAPublicKey_out</span> <span class="token parameter variable">-out</span> pubkey.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="格式"><a aria-hidden="true" tabindex="-1" href="#格式"><span class="icon icon-link"></span></a>格式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="rsa-公钥"><a aria-hidden="true" tabindex="-1" href="#rsa-公钥"><span class="icon icon-link"></span></a>RSA 公钥</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">-----BEGIN RSA PUBLIC KEY-----
+</span><span class="code-line">-----END RSA PUBLIC KEY-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="加密的-pem-私钥"><a aria-hidden="true" tabindex="-1" href="#加密的-pem-私钥"><span class="icon icon-link"></span></a>加密的 PEM 私钥</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">-----BEGIN RSA PRIVATE KEY-----
+</span><span class="code-line">Proc-Type: <span class="token number">4</span>,ENCRYPTED
+</span><span class="code-line">-----END RSA PRIVATE KEY-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-7"><div class="wrap-header h3wrap"><h3 id="识别为-pem-格式"><a aria-hidden="true" tabindex="-1" href="#识别为-pem-格式"><span class="icon icon-link"></span></a>识别为 PEM 格式</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-7-->
+<p>为了让 OpenSSL 将其识别为 PEM 格式，它必须使用 Base64 进行编码，并带有以下标头：</p>
+<pre><code class="code-highlight"><span class="code-line">-----BEGIN CERTIFICATE-----
+</span><span class="code-line">and footer :
+</span><span class="code-line">-----END CERTIFICATE-----
+</span></code></pre>
+<p>此外，每行的长度不得超过 79 个字符。 否则你会收到错误：</p>
+<pre class="wrap-text"><code class="code-highlight"><span class="code-line">2675996:error:0906D064:PEM routines:PEM_read_bio:bad base64 decode:pem_lib.c:818:
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>注意：PEM 标准 (RFC1421) 要求行长度为 64 个字符。 可以使用 UNIX 命令行实用程序转换存储为单行的 PEM 证书：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">fold</span> <span class="token parameter variable">-w</span> <span class="token number">64</span>
+</span></code></pre>
+<hr>
+<ul>
+<li>PKCS#1 RSAPublicKey (PEM header: BEGIN RSA PUBLIC KEY)</li>
+<li>PKCS#8 EncryptedPrivateKeyInfo (PEM header: BEGIN ENCRYPTED PRIVATE KEY)</li>
+<li>PKCS#8 PrivateKeyInfo (PEM header: BEGIN PRIVATE KEY)</li>
+<li>X.509 SubjectPublicKeyInfo (PEM header: BEGIN PUBLIC KEY)</li>
+<li>CSR PEM header : (PEM header:—-BEGIN NEW CERTIFICATE REQUEST—–)</li>
+<li>DSA PrivateKeyInfo (PEM header: (—–BEGIN DSA PRIVATE KEY—-)</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="crl"><a aria-hidden="true" tabindex="-1" href="#crl"><span class="icon icon-link"></span></a>CRL</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">-----BEGIN X509 CRL-----
+</span><span class="code-line">-----END X509 CRL-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="crt"><a aria-hidden="true" tabindex="-1" href="#crt"><span class="icon icon-link"></span></a>CRT</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">-----BEGIN CERTIFICATE-----
+</span><span class="code-line">-----END CERTIFICATE-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="csr"><a aria-hidden="true" tabindex="-1" href="#csr"><span class="icon icon-link"></span></a>CSR</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">-----BEGIN CERTIFICATE REQUEST-----
+</span><span class="code-line">-----END CERTIFICATE REQUEST-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="new-csr"><a aria-hidden="true" tabindex="-1" href="#new-csr"><span class="icon icon-link"></span></a>NEW CSR</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">-----BEGIN NEW CERTIFICATE REQUEST-----
+</span><span class="code-line">-----END NEW CERTIFICATE REQUEST-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pem"><a aria-hidden="true" tabindex="-1" href="#pem"><span class="icon icon-link"></span></a>PEM</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">-----END RSA PRIVATE KEY-----
+</span><span class="code-line">-----BEGIN RSA PRIVATE KEY-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pkcs7"><a aria-hidden="true" tabindex="-1" href="#pkcs7"><span class="icon icon-link"></span></a>PKCS7</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">-----BEGIN PKCS7-----
+</span><span class="code-line">-----END PKCS7-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="私钥"><a aria-hidden="true" tabindex="-1" href="#私钥"><span class="icon icon-link"></span></a>私钥</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">-----BEGIN PRIVATE KEY-----
+</span><span class="code-line">-----END PRIVATE KEY-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="dsa密钥"><a aria-hidden="true" tabindex="-1" href="#dsa密钥"><span class="icon icon-link"></span></a>DSA密钥</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">-----BEGIN DSA PRIVATE KEY-----
+</span><span class="code-line">-----END DSA PRIVATE KEY-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="椭圆曲线"><a aria-hidden="true" tabindex="-1" href="#椭圆曲线"><span class="icon icon-link"></span></a>椭圆曲线</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">-----BEGIN EC PRIVATE KEY-----
+</span><span class="code-line">-----BEGIN EC PRIVATE KEY-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pgp-私钥"><a aria-hidden="true" tabindex="-1" href="#pgp-私钥"><span class="icon icon-link"></span></a>PGP 私钥</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">-----BEGIN PGP PRIVATE KEY BLOCK-----
+</span><span class="code-line">-----END PGP PRIVATE KEY BLOCK-----
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pgp-公钥"><a aria-hidden="true" tabindex="-1" href="#pgp-公钥"><span class="icon icon-link"></span></a>PGP 公钥</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">-----BEGIN PGP PUBLIC KEY BLOCK-----
+</span><span class="code-line">-----END PGP PUBLIC KEY BLOCK-----
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="校验"><a aria-hidden="true" tabindex="-1" href="#校验"><span class="icon icon-link"></span></a>校验</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>在建立 SSL/TLS 连接之前，客户端需要确保收到的证书有效。为了做到这一点，客户端不仅要验证其公钥的真实性，还要验证与之相关的其他元数据（了解这一点对于了解典型数字证书的内容很重要）：</p>
+<ul>
+<li><strong><code>签名验证</code></strong> 这确保了证书没有以任何方式被更改</li>
+<li><strong><code>证书尚未过期</code></strong> 当证书由 CA 颁发时，它会指定一个到期日期</li>
+<li><strong><code>证书主题与主机名匹配</code></strong> 证书是为特定服务器颁发的。因此，证书主题名称需要与客户端尝试连接的 URL 相匹配</li>
+<li><strong><code>它没有被撤销</code></strong> 有时证书可以在任何需要的情况下被其颁发者撤销（例如，关联的私钥已被公开，因此证书无效）</li>
+<li><strong><code>它由受信任的 CA 签名</code></strong> 为了证明证书的真实性，我们需要获取 CA 证书并验证其可信度。然而在 PKI 中有一个信任链的概念，因此 CA 证书可能是由另一个 CA 颁发的。因此我们需要获得另一个 CA 的证书并验证它。依此类推……因此，为了信任证书，我们需要一直导航到根 CA。最后，如果我们信任根 CA，可以肯定地说我们信任整个链</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="验证信任链"><a aria-hidden="true" tabindex="-1" href="#验证信任链"><span class="icon icon-link"></span></a>验证信任链</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 -->
+<p>a) 您的整个 CA 链在一个文件中，实际的网络服务器或客户端证书在另一个文件中</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl verify <span class="token parameter variable">-untrusted</span> ca-chain.pem 客户端证书.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>b) 单独文件中的根证书和中间证书以及另一个文件中的实际网络服务器或客户端证书</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl verify <span class="token parameter variable">-CAfile</span> root.pem <span class="token parameter variable">-untrusted</span> intermediate-chain.pem client-cert.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>如果您有多个中间 <code>CA</code>（例如 <code>root.pem -> intermediate1.pem -> intermediate2.pem -> client-cert.pem</code>），将它们连接到一个文件中并通过：<code>-untrusted intermediate-chain.pem</code> 或执行它与 cat：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl verify <span class="token parameter variable">-CAfile</span> root.pem <span class="token parameter variable">-untrusted</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">cat</span> intermediate1.pem intermediate2.pem<span class="token punctuation">)</span> client-cert.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>实例</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl verify <span class="token parameter variable">-CAfile</span> letsencrypt-root-cert/isrgrootx1.pem.txt <span class="token parameter variable">-untrusted</span> letsencrypt-intermediate-cert/letsencryptauthorityx3.pem.txt /etc/letsencrypt/live/sitename.tld/cert.pem 
+</span><span class="code-line">/etc/letsencrypt/live/sitename.tld/cert.pem: OK
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="截止日期"><a aria-hidden="true" tabindex="-1" href="#截止日期"><span class="icon icon-link"></span></a>截止日期</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-enddate</span> <span class="token parameter variable">-noout</span> <span class="token parameter variable">-in</span> file.pem
+</span></code></pre>
+<h4 id="验证本地证书文件"><a aria-hidden="true" tabindex="-1" href="#验证本地证书文件"><span class="icon icon-link"></span></a>验证本地证书文件</h4>
+<p>这是我的 bash 命令行，用于按过期顺序列出多个证书，最近过期的证书最先过期。</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">pem</span> <span class="token keyword">in</span> /etc/ssl/certs/*.pem<span class="token punctuation">;</span> <span class="token keyword">do</span> 
+</span><span class="code-line">    <span class="token builtin class-name">printf</span> <span class="token string">'%s: %s\n'</span> <span class="token punctuation">\</span>
+</span><span class="code-line">      <span class="token string">"$(date --date="<span class="token variable"><span class="token variable">$(</span>openssl x509 <span class="token parameter variable">-enddate</span> <span class="token parameter variable">-noout</span> <span class="token parameter variable">-in</span> <span class="token string">"<span class="token variable">$pem</span>"</span><span class="token operator">|</span><span class="token function">cut</span> <span class="token parameter variable">-d</span><span class="token operator">=</span> <span class="token parameter variable">-f</span> <span class="token number">2</span><span class="token variable">)</span></span>"</span> --iso-8601<span class="token punctuation">)</span><span class="token string">" \
+</span></span><span class="code-line"><span class="token string">      "</span><span class="token variable">$pem</span>"
+</span><span class="code-line"><span class="token keyword">done</span> <span class="token operator">|</span> <span class="token function">sort</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>示例输出：</p>
+<pre><code class="code-highlight"><span class="code-line">2015-12-16: /etc/ssl/certs/Staat_der_Nederlanden_Root_CA.pem
+</span><span class="code-line">2016-03-22: /etc/ssl/certs/CA_Disig.pem
+</span><span class="code-line">2016-08-14: /etc/ssl/certs/EBG_Elektronik_Sertifika_Hizmet_S.pem
+</span></code></pre>
+<h4 id="验证远程服务器"><a aria-hidden="true" tabindex="-1" href="#验证远程服务器"><span class="icon icon-link"></span></a>验证远程服务器</h4>
+<p>这是一个 bash 函数，它会检查你所有的服务器，假设你正在使用 DNS 循环法。 请注意，这需要 GNU 日期并且不能在 Mac OS 上运行</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function-name function">check_certs</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token keyword">then</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"domain name missing"</span>
+</span><span class="code-line">    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line">  <span class="token keyword">fi</span>
+</span><span class="code-line">  <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+</span><span class="code-line">  <span class="token builtin class-name">shift</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token assign-left variable">now_epoch</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span> <span class="token function">date</span> +%s <span class="token variable">)</span></span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token function">dig</span> +noall +answer <span class="token variable">$name</span> <span class="token operator">|</span> <span class="token keyword">while</span> <span class="token builtin class-name">read</span> _ _ _ _ <span class="token function">ip</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$ip</span>:"</span>
+</span><span class="code-line">    <span class="token assign-left variable">expiry_date</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span> <span class="token builtin class-name">echo</span> <span class="token operator">|</span> openssl s_client <span class="token parameter variable">-showcerts</span> <span class="token parameter variable">-servername</span> $name <span class="token parameter variable">-connect</span> $ip:443 <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> openssl x509 <span class="token parameter variable">-inform</span> pem <span class="token parameter variable">-noout</span> <span class="token parameter variable">-enddate</span> <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-d</span> <span class="token string">"="</span> <span class="token parameter variable">-f</span> <span class="token number">2</span> <span class="token variable">)</span></span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">" <span class="token variable">$expiry_date</span>"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token assign-left variable">expiry_epoch</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span> <span class="token function">date</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$expiry_date</span>"</span> +%s <span class="token variable">)</span></span>
+</span><span class="code-line">    <span class="token assign-left variable">expiry_days</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$((</span> <span class="token punctuation">(</span>$expiry_epoch <span class="token operator">-</span> $now_epoch<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">3600</span> <span class="token operator">*</span> <span class="token number">24</span><span class="token punctuation">)</span> <span class="token variable">))</span></span>"</span>
+</span><span class="code-line">    <span class="token builtin class-name">echo</span> <span class="token string">"    <span class="token variable">$expiry_days</span> days"</span>
+</span><span class="code-line">  <span class="token keyword">done</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>输出示例：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ check_certs stackoverflow.com
+</span><span class="code-line"><span class="token number">151.101</span>.1.69: Aug <span class="token number">14</span> <span class="token number">12</span>:00:00 <span class="token number">2019</span> GMT    <span class="token number">603</span> days
+</span><span class="code-line"><span class="token number">151.101</span>.65.69: Aug <span class="token number">14</span> <span class="token number">12</span>:00:00 <span class="token number">2019</span> GMT    <span class="token number">603</span> days
+</span><span class="code-line"><span class="token number">151.101</span>.129.69: Aug <span class="token number">14</span> <span class="token number">12</span>:00:00 <span class="token number">2019</span> GMT    <span class="token number">603</span> days
+</span><span class="code-line"><span class="token number">151.101</span>.193.69: Aug <span class="token number">14</span> <span class="token number">12</span>:00:00 <span class="token number">2019</span> GMT    <span class="token number">603</span> days
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="验证-curl"><a aria-hidden="true" tabindex="-1" href="#验证-curl"><span class="icon icon-link"></span></a>验证 curl</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">--insecure</span> <span class="token parameter variable">-v</span> https://www.google.com <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN { cert=0 } /^\* Server certificate:/ { cert=1 } /^\*/ { if (cert) print }'</span>
+</span><span class="code-line">
+</span><span class="code-line">* Server certificate:
+</span><span class="code-line">*  subject: <span class="token assign-left variable">C</span><span class="token operator">=</span>US<span class="token punctuation">;</span> <span class="token assign-left variable">ST</span><span class="token operator">=</span>California<span class="token punctuation">;</span> <span class="token assign-left variable">L</span><span class="token operator">=</span>Mountain View<span class="token punctuation">;</span> <span class="token assign-left variable">O</span><span class="token operator">=</span>Google LLC<span class="token punctuation">;</span> <span class="token assign-left variable">CN</span><span class="token operator">=</span>www.google.com
+</span><span class="code-line">*  start date: Mar  <span class="token number">1</span> 09:46:35 <span class="token number">2019</span> GMT
+</span><span class="code-line">*  expire date: May <span class="token number">24</span> 09:25:00 <span class="token number">2019</span> GMT
+</span><span class="code-line">*  issuer: <span class="token assign-left variable">C</span><span class="token operator">=</span>US<span class="token punctuation">;</span> <span class="token assign-left variable">O</span><span class="token operator">=</span>Google Trust Services<span class="token punctuation">;</span> <span class="token assign-left variable">CN</span><span class="token operator">=</span>Google Internet Authority G3
+</span><span class="code-line">*  SSL certificate verify ok.
+</span><span class="code-line">* Using HTTP2, server supports multi-use
+</span><span class="code-line">* Connection state changed <span class="token punctuation">(</span>HTTP/2 confirmed<span class="token punctuation">)</span>
+</span><span class="code-line">* Copying HTTP/2 data <span class="token keyword">in</span> stream buffer to connection buffer after upgrade: <span class="token assign-left variable">len</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line">* Using Stream ID: <span class="token number">1</span> <span class="token punctuation">(</span>easy handle 0x7ff5dc803600<span class="token punctuation">)</span>
+</span><span class="code-line">* Connection state changed <span class="token punctuation">(</span>MAX_CONCURRENT_STREAMS updated<span class="token punctuation">)</span><span class="token operator">!</span>
+</span><span class="code-line">* Connection <span class="token comment">#0 to host www.google.com left intact</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>您需要为 <a href="./curl.html">curl</a> 提供整个证书链，因为 <a href="./curl.html">curl</a> 不再附带任何 CA 证书。 由于 cacert 选项只能使用一个文件，因此您需要将完整的链信息连接到 1 个文件中。 从 <a href="https://curl.haxx.se/ca/cacert.pem">https://curl.haxx.se/ca/cacert.pem</a> 获取根 CA 证书包。</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">curl</span> <span class="token parameter variable">--cacert</span> certRepo <span class="token parameter variable">-u</span> user:passwd <span class="token parameter variable">-X</span> GET <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> <span class="token string">"https//somesecureserver.com/rest/field"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="验证-openssl-s_client"><a aria-hidden="true" tabindex="-1" href="#验证-openssl-s_client"><span class="icon icon-link"></span></a>验证 openssl s_client</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="使用-sni"><a aria-hidden="true" tabindex="-1" href="#使用-sni"><span class="icon icon-link"></span></a>使用 SNI</h4>
+<p>如果远程服务器使用 SNI（即在一个 IP 地址上共享多个 SSL 主机），您将需要发送正确的主机名以获得正确的证书（<code>-servername</code> 选项用于启用 SNI 支持）。</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-showcerts</span> <span class="token parameter variable">-servername</span> www.example.com <span class="token parameter variable">-connect</span> www.example.com:443 <span class="token operator">&#x3C;</span>/dev/null
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<h4 id="没有-sni"><a aria-hidden="true" tabindex="-1" href="#没有-sni"><span class="icon icon-link"></span></a>没有 SNI</h4>
+<p>如果远程服务器没有使用 SNI，那么你可以跳过 <code>-servername</code> 参数：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">openssl s_client <span class="token parameter variable">-showcerts</span> <span class="token parameter variable">-connect</span> www.example.com:443 <span class="token operator">&#x3C;</span>/dev/null
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>要查看站点证书的完整详细信息，您也可以使用以下命令链：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token operator">|</span> <span class="token punctuation">\</span>
+</span><span class="code-line">    openssl s_client <span class="token parameter variable">-servername</span> www.example.com <span class="token parameter variable">-connect</span> www.example.com:443 <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token punctuation">\</span>
+</span><span class="code-line">    openssl x509 <span class="token parameter variable">-text</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>对于带有 starttls 的 SMTP，请使用：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-connect</span> server:port <span class="token parameter variable">-starttls</span> smtp
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>对于 Client Auth 保护的资源，请使用：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-connect</span> host:port <span class="token parameter variable">-key</span> our_private_key.pem <span class="token parameter variable">-showcerts</span> <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">-cert</span> our_server-signed_cert.pem
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p><code>-prexit</code> 也会返回数据：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ openssl s_client <span class="token parameter variable">-connect</span> host:port <span class="token parameter variable">-prexit</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="使用私钥验证-tls-证书"><a aria-hidden="true" tabindex="-1" href="#使用私钥验证-tls-证书"><span class="icon icon-link"></span></a>使用私钥验证 TLS 证书</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>希望您永远不会遇到不知道用于生成 TLS 证书的私钥的情况，但如果您知道……这里是您可以检查的方法。</p>
+<p>注意：这比将证书上传到生产环境以检查它们更好😉</p>
+<p>假设我们已经生成了一个名为 example.com.key 的私钥和一个名为 example.com.crt 的证书，我们可以使用 openssl 检查 MD5 哈希值是否相同：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ openssl x509 <span class="token parameter variable">-noout</span> <span class="token parameter variable">-modulus</span> <span class="token parameter variable">-in</span> example.com.crt <span class="token operator">|</span> openssl md5
+</span><span class="code-line">$ openssl rsa <span class="token parameter variable">-noout</span> <span class="token parameter variable">-modulus</span> <span class="token parameter variable">-in</span> example.com.key <span class="token operator">|</span> openssl md5
+</span></code></pre>
+<p>为了让事情变得更好，你可以写一个脚本：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token shebang important">#!/bin/bash</span>
+</span><span class="code-line"><span class="token assign-left variable">CERT_MD5</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>openssl x509 <span class="token parameter variable">-noout</span> <span class="token parameter variable">-modulus</span> <span class="token parameter variable">-in</span> example.com.crt <span class="token operator">|</span> openssl md5<span class="token variable">)</span></span>
+</span><span class="code-line"> <span class="token assign-left variable">KEY_MD5</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>openssl rsa  <span class="token parameter variable">-noout</span> <span class="token parameter variable">-modulus</span> <span class="token parameter variable">-in</span> example.com.key <span class="token operator">|</span> openssl md5<span class="token variable">)</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$CERT_MD5</span>"</span> <span class="token operator">==</span> <span class="token string">"<span class="token variable">$KEY_MD5</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line">  <span class="token builtin class-name">echo</span> <span class="token string">"Private key matches certificate"</span>
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">  <span class="token builtin class-name">echo</span> <span class="token string">"Private key does not match certificate"</span>
+</span><span class="code-line"><span class="token keyword">fi</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="java-key-store"><a aria-hidden="true" tabindex="-1" href="#java-key-store"><span class="icon icon-link"></span></a>Java Key store</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="java-密钥库"><a aria-hidden="true" tabindex="-1" href="#java-密钥库"><span class="icon icon-link"></span></a>Java 密钥库</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ keytool <span class="token parameter variable">-importcert</span> <span class="token parameter variable">-file</span> certificate.cer <span class="token parameter variable">-keystore</span> keystore.jks <span class="token parameter variable">-alias</span> <span class="token string">"Alias"</span> 
+</span><span class="code-line">$ <span class="token punctuation">..</span><span class="token punctuation">\</span><span class="token punctuation">..</span><span class="token punctuation">\</span>bin<span class="token punctuation">\</span>keytool <span class="token parameter variable">-import</span> <span class="token parameter variable">-trustcacerts</span> <span class="token parameter variable">-keystore</span> cacerts <span class="token parameter variable">-storepass</span> changeit <span class="token parameter variable">-noprompt</span> <span class="token parameter variable">-alias</span> yourAliasName <span class="token parameter variable">-file</span> path<span class="token punctuation">\</span>to<span class="token punctuation">\</span>certificate.cer
+</span><span class="code-line">$ keytool <span class="token parameter variable">-import</span> <span class="token parameter variable">-alias</span> joe <span class="token parameter variable">-file</span> mycert.cer <span class="token parameter variable">-keystore</span> mycerts <span class="token parameter variable">-storepass</span> changeit
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="创建"><a aria-hidden="true" tabindex="-1" href="#创建"><span class="icon icon-link"></span></a>创建</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="使用-certstrap-创建开发证书"><a aria-hidden="true" tabindex="-1" href="#使用-certstrap-创建开发证书"><span class="icon icon-link"></span></a>使用 <code>certstrap</code> 创建开发证书</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ brew <span class="token function">install</span> certstrap
+</span><span class="code-line">$ certstrap init --common-name <span class="token string">"ExampleDevCA"</span> <span class="token parameter variable">--expires</span> <span class="token string">"10 years"</span> <span class="token parameter variable">-o</span> <span class="token string">"My Tech Inc."</span> <span class="token parameter variable">-c</span> <span class="token string">"DE"</span> <span class="token parameter variable">-l</span> <span class="token string">"Muenchen"</span> <span class="token parameter variable">--st</span> <span class="token string">"Bayern"</span> <span class="token parameter variable">--stdout</span>
+</span><span class="code-line">$ certstrap request-cert --common-name <span class="token string">"example.localhost"</span> <span class="token parameter variable">-o</span> <span class="token string">"My Tech Inc."</span> <span class="token parameter variable">-c</span> <span class="token string">"DE"</span> <span class="token parameter variable">-l</span> <span class="token string">"Muenchen"</span> <span class="token parameter variable">--st</span> <span class="token string">"Bayern"</span> <span class="token parameter variable">--stdout</span> <span class="token parameter variable">--domain</span> <span class="token string">"*.example.localhost"</span>,<span class="token string">"example.localhost"</span>,<span class="token string">"localhost"</span>
+</span><span class="code-line">$ certstrap sign <span class="token string">"example.localhost"</span> <span class="token parameter variable">--CA</span> ExampleDevCA
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="使用-mkcert-创建开发证书"><a aria-hidden="true" tabindex="-1" href="#使用-mkcert-创建开发证书"><span class="icon icon-link"></span></a>使用 <code>mkcert</code> 创建开发证书</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ brew <span class="token function">install</span> mkcert
+</span><span class="code-line">$ mkcert <span class="token string">"*.example.localhost"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Clean up with:</span>
+</span><span class="code-line">$ <span class="token function">rm</span> <span class="token parameter variable">-vrf</span> <span class="token string">"<span class="token environment constant">$HOME</span>/Library/Application Support/mkcert"</span>  _wildcard.example*
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://www.openssl.org/">OpenSSL 官网</a> <em>(openssl.org)</em></li>
+<li><a href="https://cheatography.com/albertx/cheat-sheets/openssl/">OpenSSL Cheat Sheet</a> <em>(cheatography.com)</em></li>
+<li><a href="https://megamorf.gitlab.io/cheat-sheets/openssl/#convert">OpenSSL Cheat Sheet</a> <em>(megamorf.gitlab.io)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script>
+if(('onhashchange' in window) && ((typeof document.documentMode==='undefined') || document.documentMode==8)) {
+  window.onhashchange = function () {
+    anchorPoint()
+    updateAnchor()
+  };
+}
+function anchorPoint() {
+  const hash = window.location.hash?.replace(/^#/, '') || '';
+  const elm = document.getElementById(decodeURIComponent(hash));
+  Array.from(document.querySelectorAll('.h2wrap-body .wrap')).forEach((elm) => elm.classList.remove('active'))
+  if (elm?.tagName === 'H3') {
+    elm?.parentElement?.parentElement?.classList.add('active');
+  }
+}
+anchorPoint();
+
+function updateAnchor(element) {
+  const anchorContainer = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+  anchorContainer.forEach((tocanchor) => {
+    tocanchor.classList.remove('is-active-link');
+  });
+  const anchor = element || document.querySelector(`a.tocs-link[href='${decodeURIComponent(window.location.hash)}']`);
+  if (anchor) {
+    anchor.classList.add('is-active-link');
+  }
+}
+// toc 定位
+updateAnchor()
+const anchor = document.querySelectorAll('.menu-tocs .menu-modal a.tocs-link');
+anchor.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    updateAnchor()
+  })
+})
+</script></body>
+</html>
