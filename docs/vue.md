@@ -616,6 +616,46 @@ const onSearch = function(){
 
 父组件调用子组件的方法
 
+### Provide / Inject
+
+```ts
+// types
+import type { InjectionKey, Ref } from 'vue'
+
+export const ProvideKey = Symbol() as InjectionKey<Ref<string>>
+```
+
+```ts
+<script setup lang="ts">
+import { provide, ref } from 'vue'
+import { ProvideKey } from './types'
+
+const text = ref<string>('123')
+provide(ProvideKey, text)
+</script>
+
+<template>
+  <input v-model="text" />
+</template>
+```
+
+父组件为后代组件提供数据
+
+```ts
+<script setup lang="ts">
+import { inject } from 'vue'
+import { ProvideKey } from './types'
+
+const value = inject(ProvideKey)
+</script>
+
+<template>
+  <h4>{{value}}</h4>
+</template>
+```
+
+后代组件注入父组件提供的数据
+
 <!--rehype:className=wrap-text -->
 
 API 参考
