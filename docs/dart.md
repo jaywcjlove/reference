@@ -463,6 +463,46 @@ class SmartPhone extends Phone {
     }
 }
 ```
+枚举
+-----
+
+```dart
+// 简单定义一个枚举类型
+enum PlanetType { terrestrial, gas, ice }
+
+// 定义一个行星复杂的枚举类型
+enum Planet {
+  mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  venus(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  
+  uranus(planetType: PlanetType.ice, moons: 27, hasRings: true),
+  neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
+
+  // 定义一个构造函数
+  const Planet(
+      {required this.planetType, required this.moons, required this.hasRings});
+
+  // 声明枚举类型中的变量
+  final PlanetType planetType;
+  final int moons;
+  final bool hasRings;
+
+  // 实现枚举类型中的get 方法
+  bool get isGiant =>
+      planetType == PlanetType.gas || planetType == PlanetType.ice;
+}
+
+  // 使用枚举类型
+void main()
+{
+  final yourPlanet = Planet.mercury;
+
+  if (!yourPlanet.isGiant) {
+    print('Your planet is not a "giant planet".');
+  }
+}
+
+```
 
 异常
 -----
