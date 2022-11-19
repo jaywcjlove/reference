@@ -6,7 +6,7 @@ import { darkMode } from '../utils/darkMode.mjs';
 const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets/quickreference.svg');
 const ICONS_SEARCH_PATH = path.resolve(process.cwd(), 'scripts/assets/search.svg');
 
-export function header({ homePath, githubURL = '' }) {
+export function header({ homePath, githubURL = '', isHome } = {}) {
   const svgNode = getSVGNode(ICONS_PATH);
   const svgSearchNode = getSVGNode(ICONS_SEARCH_PATH);
   const data = [
@@ -50,7 +50,7 @@ export function header({ homePath, githubURL = '' }) {
       label: '编辑',
       children: [editor],
     },
-    ...darkMode(),
+    ...darkMode({ homePath, isHome }),
     {
       menu: true,
       href: 'https://github.com/jaywcjlove/reference',
