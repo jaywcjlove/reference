@@ -140,7 +140,7 @@ Supported Functions
 `KaTex:\xcancel{ABC}` | <pur>`\xcancel{ABC}`</pur> | `KaTex:\not =` | <pur>`\not =`</pur>
 `KaTex:\sout{abc}` | <pur>`\sout{abc}`</pur> | `KaTex:\boxed{\pi=\frac c d}` | <pur>`\boxed{\pi=\frac c d}`</pur>
 `KaTex:\$a_{\angl n}` _<red>MD语法冲突</red>_ | <pur>`$a_{\angl n}`</pur> | `KaTex:a_\angln` | <pur>`a_\angln`</pur>
-`KaTex:​\phase{-78^\circ}` | <pur>`​\phase{-78^\circ}`</pur>
+`KaTex:\phase{-78^\circ}` | <pur>`\phase{-78^\circ}`</pur>
 
 <pur>\tag{hi} x+y^{2x}</pur>
 
@@ -184,7 +184,7 @@ Supported Functions
 预览 | 方法 | 预览 | 方法 | 预览 | 方法
 :- | :- | :- | :- | :- | :-
 | `KaTex:\frac{abc}{xyz}`   | <pur>`\frac{abc}{xyz}`</pur>      | `KaTex:\overline{abc}`     | <pur>`\overline{abc}`</pur>      | `KaTex:\overrightarrow{abc}`     | <pur>`\overrightarrow{abc}`</pur>      |
-| `KaTex:f’`                | <pur>`f’`</pur>                   | `KaTex:\underline{abc}`    | <pur>`\underline{abc}`</pur>     | `KaTex:\overleftarrow{abc}`      | <pur>`\overleftarrow{abc}`</pur>       |
+| `KaTex:f'`                | <pur>`f'`</pur>                   | `KaTex:\underline{abc}`    | <pur>`\underline{abc}`</pur>     | `KaTex:\overleftarrow{abc}`      | <pur>`\overleftarrow{abc}`</pur>       |
 | `KaTex:\sqrt{abc}`        | <pur>`\sqrt{abc}`</pur>           | `KaTex:\widehat{abc}`      | <pur>`\widehat{abc}`</pur>       | `KaTex:\overbrace{abc}`          | <pur>`\overbrace{abc}`</pur>           |
 | `KaTex:\sqrt[n]{abc}`     | <pur>`\sqrt[n]{abc}`</pur>        | `KaTex:\widetilde{abc}`    | <pur>`\widetilde{abc}`</pur>     | `KaTex:\underbrace{abc}`         | <pur>`\underbrace{abc}`</pur>          |
 
@@ -258,6 +258,62 @@ Supported Functions
 :- | :- | :- | :-
 :- | :- | :- | :-
 `KaTeX:\Set{ x \| x<\frac 1 2 }` | <pur>\Set{ x \| x<\frac 1 2 }</pur> | `KaTeX:\set{x\|x<5}` | <pur>\set{x\|x<5}</pur>
+
+运算符
+---
+
+### 数学运算符
+<!--rehype:wrap-class=col-span-3 row-span-2-->
+
+:- | :- | :- | :- | :- | :- | :- | :-
+:- | :- | :- | :- | :- | :- | :- | :-
+`KaTex:\arcsin` | <pur>`\arcsin`</pur> | `KaTex:\cosec` | <pur>`\cosec`</pur> | `KaTex:\deg` | <pur>`\deg`</pur> | `KaTex:\sec` | <pur>`\sec`</pur>
+`KaTex:\arccos` | <pur>`\arccos`</pur> | `KaTex:\cosh` | <pur>`\cosh`</pur> | `KaTex:\dim` | <pur>`\dim`</pur> | `KaTex:\sin` | <pur>`\sin`</pur>
+`KaTex:\arctan` | <pur>`\arctan`</pur> | `KaTex:\cot` | <pur>`\cot`</pur> | `KaTex:\exp` | <pur>`\exp`</pur> | `KaTex:\sinh` | <pur>`\sinh`</pur>
+`KaTex:\arctg` | <pur>`\arctg`</pur> | `KaTex:\cotg` | <pur>`\cotg`</pur> | `KaTex:\hom` | <pur>`\hom`</pur> | `KaTex:\sh` | <pur>`\sh`</pur>
+`KaTex:\arcctg` | <pur>`\arcctg`</pur> | `KaTex:\coth` | <pur>`\coth`</pur> | `KaTex:\ker` | <pur>`\ker`</pur> | `KaTex:\tan` | <pur>`\tan`</pur>
+`KaTex:\arg` | <pur>`\arg`</pur> | `KaTex:\csc` | <pur>`\csc`</pur> | `KaTex:\lg` | <pur>`\lg`</pur> | `KaTex:\tanh` | <pur>`\tanh`</pur>
+`KaTex:\ch` | <pur>`\ch`</pur> | `KaTex:\ctg` | <pur>`\ctg`</pur> | `KaTex:\ln` | <pur>`\ln`</pur> | `KaTex:\tg` | <pur>`\tg`</pur>
+`KaTex:\cos` | <pur>`\cos`</pur> | `KaTex:\cth` | <pur>`\cth`</pur> | `KaTex:\log` | <pur>`\log`</pur> | `KaTex:\th` | <pur>`\th`</pur>
+`KaTex:\operatorname{f}` | <pur>`\operatorname{f}`</pur> |
+`KaTex:\argmax` | <pur>`\argmax`</pur> | `KaTex:\injlim` | <pur>`\injlim`</pur> | `KaTex:\min` | <pur>`\min`</pur> | `KaTex:\varinjlim` | <pur>`\varinjlim`</pur>
+`KaTex:\argmin` | <pur>`\argmin`</pur> | `KaTex:\lim` | <pur>`\lim`</pur> | `KaTex:\plim` | <pur>`\plim`</pur> | `KaTex:\varliminf` | <pur>`\varliminf`</pur>
+`KaTex:\det` | <pur>`\det`</pur> | `KaTex:\liminf` | <pur>`\liminf`</pur> | `KaTex:\Pr` | <pur>`\Pr`</pur> | `KaTex:\varlimsup` | <pur>`\varlimsup`</pur>
+`KaTex:\gcd` | <pur>`\gcd`</pur> | `KaTex:\limsup` | <pur>`\limsup`</pur> | `KaTex:\projlim` | <pur>`\projlim`</pur> | `KaTex:\varprojlim` | <pur>`\varprojlim`</pur>
+`KaTex:\inf` | <pur>`\inf`</pur> | `KaTex:\max` | <pur>`\max`</pur> | `KaTex:\sup` | <pur>`\sup`</pur> | `KaTex:\operatorname*{f}` | <pur>`\operatorname*{f}`</pur>
+`KaTex:\operatornamewithlimits{f}` | <pur>`\operatornamewithlimits{f}`</pur> |
+
+### 大运算符
+<!--rehype:wrap-class=col-span-2-->
+
+:- | :- | :- | :- | :- | :- | :- | :-
+:- | :- | :- | :- | :- | :- | :- | :-
+`KaTex:\sum` | <pur>`\sum`</pur> | `KaTex:\prod` | <pur>`\prod`</pur> | `KaTex:\bigotimes` | <pur>`\bigotimes`</pur> | `KaTex:\bigvee` | <pur>`\bigvee`</pur>
+`KaTex:\int` | <pur>`\int`</pur> | `KaTex:\coprod` | <pur>`\coprod`</pur> | `KaTex:\bigoplus` | <pur>`\bigoplus`</pur> | `KaTex:\bigwedge` | <pur>`\bigwedge`</pur>
+`KaTex:\iint` | <pur>`\iint`</pur> | `KaTex:\intop` | <pur>`\intop`</pur> | `KaTex:\bigodot` | <pur>`\bigodot`</pur> | `KaTex:\bigcap` | <pur>`\bigcap`</pur>
+`KaTex:\iiint` | <pur>`\iiint`</pur> | `KaTex:\smallint` | <pur>`\smallint`</pur> | `KaTex:\biguplus` | <pur>`\biguplus`</pur> | `KaTex:\bigcup` | <pur>`\bigcup`</pur>
+
+### 分数和二项式
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :- | :- | :-
+:- | :- | :- | :-
+`KaTex:\frac{a}{b}` | <pur>`\frac{a}{b}`</pur> | `KaTex:\tfrac{a}{b}` | <pur>`\tfrac{a}{b}`</pur>
+`KaTex:{a \over b}` | <pur>`{a \over b}`</pur> | `KaTex:\dfrac{a}{b}` | <pur>`\dfrac{a}{b}`</pur>
+`KaTex:\genfrac ( ] {2pt}{1}a{a+1}` | <pur>`\genfrac ( ] {2pt}{1}a{a+1}`</pur> | `KaTex:{a \above{2pt} b+1}` | <pur>`{a \above{2pt} b+1}`</pur>
+`KaTex:a/b` | <pur>`a/b`</pur> | `KaTex:\cfrac{a}{1 + \cfrac{1}{b}}` | <pur>`\cfrac{a}{1 + \cfrac{1}{b}}`</pur>
+
+:- | :- | :- | :-
+:- | :- | :- | :-
+`KaTex:\binom{n}{k}` | <pur>`\binom{n}{k}`</pur> | `KaTex:\dbinom{n}{k}` | <pur>`\dbinom{n}{k}`</pur>
+`KaTex:{n\brace k}` | <pur>`{n\brace k}`</pur> | `KaTex:{n \choose k}` | <pur>`{n \choose k}`</pur>
+`KaTex:\tbinom{n}{k}` | <pur>`\tbinom{n}{k}`</pur> | `KaTex:{n\brack k}` | <pur>`{n\brack k}`</pur>
+
+### \sqrt
+
+:- | :- | :- | :-
+:- | :- | :- | :-
+`KaTex:\sqrt{x}` | <pur>`\sqrt{x}`</pur> | `KaTex:\sqrt[3]{x}` | <pur>`\sqrt[3]{x}`</pur>
 
 Environments
 ---

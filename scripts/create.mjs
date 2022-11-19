@@ -38,6 +38,9 @@ export function create(str = '', options = {}) {
   const mdOptions = {
     showLineNumbers: false,
     hastNode: false,
+    katexOptions: {
+      strict: false,
+    },
     remarkPlugins: [remarkGemoji],
     rehypePlugins: [
       rehypeSlug,
