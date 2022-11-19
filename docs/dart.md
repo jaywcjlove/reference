@@ -521,6 +521,7 @@ print(Color.blue.name); // 'blue'
 ```
 
 ### 枚举示例
+<!--rehype:wrap-class=col-span-2-->
 
 声明了一个具有多个实例、实例变量、一个 `getter` 和一个已实现接口的增强型枚举
 
@@ -557,6 +558,64 @@ void main()
   if (!yourPlanet.isGiant) {
     print('Your planet is not a "giant planet".');
   }
+}
+```
+
+Mixin
+-----
+
+### 定义Mixin
+<!--rehype:wrap-class=col-span-2-->
+`Dart`中类只能单继承，使用`Mixin`可以实现多个继承，复用多个类中代码的方法。
+
+```dart
+// 定义Mixin
+mixin Piloted {
+  int astronauts = 1;
+
+  void describeCrew() {
+    print('Number of astronauts: $astronauts');
+  }
+}
+```
+
+使用`with`关键字并在其后跟上`Mixin类`的名字来使用
+
+```dart
+// 使用with将Piloted混入
+class PilotedCraft extends Spacecraft with Piloted {
+  // ···
+}
+```
+
+支持混入多个Mixin，如果出现相同的方法后混入的Mixin会覆盖前面的
+
+```dart
+class Musician extends Performer with Musical {
+  // ···
+}
+
+// 混入多个Mixin
+class Maestro extends Person with Musical, Aggressive, Demented {
+  Maestro(String maestroName) {
+    name = maestroName;
+    canConduct = true;
+  }
+}
+```
+
+使用关键字`on`来指定哪些类可以使用该Mixin，比如有Mixin类`MusicalPerformer`，但是`MusicalPerformer`只能被`Musician`类使用，则可以这样定义`MusicalPerformer`：
+
+```dart
+class Musician {
+  // ...
+}
+// 现在MusicalPerformer 只能在 Musican及其子类中使用
+mixin MusicalPerformer on Musician {
+  // ...
+}
+class SingerDancer extends Musician with MusicalPerformer {
+  // ...
 }
 ```
 
