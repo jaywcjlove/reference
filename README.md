@@ -41,6 +41,7 @@ Quick Reference
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));&class=tag&data-lang=Docker-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
+[Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Dart-->
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193/var(\-\-bg\-opacity));-->
 [GraphQL](./docs/graphql.md)<!--rehype:style=background: rgb(214 66 146/var(\-\-bg\-opacity));-->
 [INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
