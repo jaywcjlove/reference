@@ -127,7 +127,7 @@ Quick Reference
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
 [Htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
-[Home Brew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));&class=tag&data-lang=macOS-->
+[Homebrew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));&class=tag&data-lang=macOS-->
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [jq](./docs/jq.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=JSON-->
 [Lsof](./docs/lsof.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->

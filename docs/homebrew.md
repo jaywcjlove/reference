@@ -77,7 +77,7 @@ Cask 命令用于与图形应用程序交互
 `brew upgrade`  | 升级所有软件包
 `brew list`     | 已安装列表
 `brew outdated` | 升级需要什么？
-`brew doctor`   | 诊断冲泡问题
+`brew doctor`   | 诊断 brew 问题
 `brew pin <formula>` | 防止指定软件包升级
 `brew unpin <formula>` | 允许升级指定的软件包
 
@@ -86,11 +86,14 @@ Cask 命令用于与图形应用程序交互
 ```bash
 $ brew cleanup # 删除旧版本的已安装软件包
 $ brew cleanup <formula> # 删除旧版本指定软件包
+$ brew cleanup -s # 删除未安装的软件包
+$ brew cleanup --prune=all # 删除所有 Homebrew 缓存
+$ rm -rf $(brew --cache) # 直接删除 Homebrew 的缓存目录
 # 显示所有将被删除的软件包(试运行)
-$ brew cleanup -n 
+$ brew cleanup -n
 ```
 
-### brew 源码仓库
+### Brew 源码仓库
 
 ```bash
 # 列出所有当前点击的源码仓库（点击）
@@ -111,7 +114,7 @@ $ brew untap <user/repo>
 $ brew list
 # 显示所有本地可用的 brew 配方
 $ brew search
-# 对用于 brew 的软件包名称执行子字符串搜索
+# 搜索包含指定字符的 brew 配方
 $ brew search <text>
 # 显示有关软件包的信息
 $ brew info <formula>
