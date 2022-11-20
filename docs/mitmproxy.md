@@ -44,7 +44,6 @@ h ◀ ─── + ─── ▶ l           ││ page
 <!--rehype:className=shortcuts-->
 
 ### 安装
-<!--rehype:wrap-class=col-span-2-->
 
 - [mitmproxy 文档](https://docs.mitmproxy.org/stable/) _(mitmproxy.org)_
 - [mitmproxy 开源仓库](https://github.com/mitmproxy/mitmproxy) _(github.com)_
@@ -54,6 +53,16 @@ h ◀ ─── + ─── ▶ l           ││ page
 ```bash
 $ brew install mitmproxy # macOS
 ```
+
+### 代理模式
+
+Argument | Effect
+:-- | --
+`-R REVERSE_PROXY`, `--reverse REVERSE_PROXY` | 将所有请求转发到上游 HTTP 服务器：`http[s]://host[:port]`。客户端始终可以通过 `HTTPS` 和 `HTTP` 进行连接，与服务器的连接由指定的方案决定
+`--socks` | 设置 `SOCKS5` 代理模式
+`-T`, `--transparent` | 设置透明代理模式
+`-U UPSTREAM_PROXY`, `--upstream UPSTREAM_PROXY` | 将所有请求转发到上游代理服务器：`http://host[:port]`
+<!--rehype:className=style-list-->
 
 ### 流（视图）
 <!--rehype:wrap-class=row-span-2-->
@@ -116,6 +125,23 @@ $ brew install mitmproxy # macOS
 `Ctrl` `right` | 聚焦下一个布局窗格
 `Shift` `tab`  | 聚焦下一个布局窗格
 <!--rehype:className=shortcuts-->
+
+### 代理选项
+<!--rehype:wrap-class=col-span-2-->
+
+:---|---
+:---|---
+`-b ADDR`, `--bind-address ADDR` | 将代理绑定到的地址（默认为所有接口）
+`-I HOST`, `--ignore HOST` | 忽略主机并转发所有流量而不对其进行处理。在透明模式下，建议使用 IP 地址（范围），而不是主机名。在常规模式下，仅忽略 SSL 流量并应使用主机名。提供的值被解释为正则表达式并匹配 ip 或主机名。可以多次通过
+`--tcp HOST` | 与模式匹配的所有主机的通用 TCP SSL 代理模式。类似于 `--ignore`，但 SSL 连接被拦截。通信内容以详细模式打印到日志中
+`-n`, `--no-server` | 不要启动代理服务器。用于离线分析以前捕获的流
+`-p PORT`, `--port PORT` | 代理服务端口。默认值：`8080`
+`--http2`, `--no-http2` | 显式启用/禁用 `HTTP/2` 支持。默认情况下禁用，直到主要网站正确实施规范。默认值将在未来版本中更改
+`--no-websocket`, `--websocket` | 显式启用/禁用 `WebSocket` 支持。默认启用
+`--raw-tcp`, `--no-raw-tcp` | 显式启用/禁用实验性原始 `TCP` 支持。默认情况下禁用。默认值将在未来版本中更改
+`--spoof-source-address` | 使用客户端的 IP 进行服务器端连接。与 `–upstream-bind-address` 结合使用以欺骗固定源地址
+`--upstream-bind-address UPSTREAM_BIND_ADDRESS` | 将上游请求绑定到的地址（默认为无）
+<!--rehype:className=style-list-->
 
 Mitmproxy 过滤器
 ---------------
@@ -253,3 +279,4 @@ addons = [
 - [mitmproxy addons](https://github.com/mitmproxy/mitmproxy/tree/master/examples/addons) _(github.com)_
 - [mitmproxy 文档](https://docs.mitmproxy.org/stable/) _(mitmproxy.org)_
 - [mitmproxy 开源仓库](https://github.com/mitmproxy/mitmproxy) _(github.com)_
+- [mitmproxy 备忘清单](https://www.stut-it.net/blog/2017/mitmproxy-cheatsheet.html) _(stut-it.net)_
