@@ -107,14 +107,23 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/mofelee" title="mofelee">
   <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
 </a>
+<a href="https://github.com/JeffersonHuang" title="Jefferson">
+  <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson"/>
+</a>
 <a href="https://github.com/partoneplay" title="partoneplay">
   <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
+</a>
+<a href="https://github.com/ryanhex53" title="ryanhex53">
+  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
 </a>
 <a href="https://github.com/catcto" title="喵仙人">
   <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
 </a>
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
+</a>
+<a href="https://github.com/sjh42" title="42:p">
+  <img src="https://avatars.githubusercontent.com/u/34529275?v=4" width="42;" alt="42:p"/>
 </a>
 <a href="https://github.com/Smartdousha" title="Anko">
   <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
@@ -139,6 +148,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 </a>
 <a href="https://github.com/Lihuagreek" title="Lihuagreek">
   <img src="https://avatars.githubusercontent.com/u/51040740?v=4" width="42;" alt="Lihuagreek"/>
+</a>
+<a href="https://github.com/LufsX" title="LufsX">
+  <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
 </a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
@@ -190,9 +202,6 @@ npm run start  # 监听 md 文件编译输出 HTML
 </a>
 <a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
-</a>
-<a href="https://github.com/ryanhex53" title="ryanhex53">
-  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
 </a>
 <a href="https://github.com/wjjwkwindy" title="wjjwkwindy">
   <img src="https://avatars.githubusercontent.com/u/9508591?v=4" width="42;" alt="wjjwkwindy"/>

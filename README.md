@@ -24,6 +24,7 @@ Quick Reference
 [C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13/var(\-\-bg\-opacity));&class=contributing-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
+[Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Dart-->
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128/var(\-\-bg\-opacity));-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
@@ -41,6 +42,7 @@ Quick Reference
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223/var(\-\-bg\-opacity));-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153/var(\-\-bg\-opacity));&class=tag&data-lang=Docker-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
+[Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Dart-->
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193/var(\-\-bg\-opacity));-->
 [GraphQL](./docs/graphql.md)<!--rehype:style=background: rgb(214 66 146/var(\-\-bg\-opacity));-->
 [INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60/var(\-\-bg\-opacity));-->
@@ -126,10 +128,11 @@ Quick Reference
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
 [Htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
-[Home Brew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));&class=tag&data-lang=macOS-->
+[Homebrew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87/var(\-\-bg\-opacity));&class=tag&data-lang=macOS-->
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [jq](./docs/jq.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=JSON-->
 [Lsof](./docs/lsof.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135/var(\-\-bg\-opacity));-->
 [Netcat](./docs/netcat.md)<!--rehype:style=background: rgb(4 92 135/var(\-\-bg\-opacity));-->
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [OpenSSL](./docs/openssl.md)<!--rehype:style=background: rgb(114 20 18/var(\-\-bg\-opacity));-->
@@ -187,14 +190,23 @@ Quick Reference
 <a href="https://github.com/mofelee" title="mofelee">
   <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
 </a>
+<a href="https://github.com/JeffersonHuang" title="Jefferson">
+  <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson"/>
+</a>
 <a href="https://github.com/partoneplay" title="partoneplay">
   <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
+</a>
+<a href="https://github.com/ryanhex53" title="ryanhex53">
+  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
 </a>
 <a href="https://github.com/catcto" title="喵仙人">
   <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
 </a>
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
+</a>
+<a href="https://github.com/sjh42" title="42:p">
+  <img src="https://avatars.githubusercontent.com/u/34529275?v=4" width="42;" alt="42:p"/>
 </a>
 <a href="https://github.com/Smartdousha" title="Anko">
   <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
@@ -219,6 +231,9 @@ Quick Reference
 </a>
 <a href="https://github.com/Lihuagreek" title="Lihuagreek">
   <img src="https://avatars.githubusercontent.com/u/51040740?v=4" width="42;" alt="Lihuagreek"/>
+</a>
+<a href="https://github.com/LufsX" title="LufsX">
+  <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
 </a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
@@ -270,9 +285,6 @@ Quick Reference
 </a>
 <a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
-</a>
-<a href="https://github.com/ryanhex53" title="ryanhex53">
-  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
 </a>
 <a href="https://github.com/wjjwkwindy" title="wjjwkwindy">
   <img src="https://avatars.githubusercontent.com/u/9508591?v=4" width="42;" alt="wjjwkwindy"/>

@@ -464,6 +464,161 @@ class SmartPhone extends Phone {
 }
 ```
 
+枚举
+-----
+
+### 定义枚举
+
+```dart
+enum Color { red, green, blue }
+```
+
+使用枚举，像访问任何其他静态变量一样访问枚举值：
+
+```dart
+final favoriteColor = Color.blue;
+if (favoriteColor == Color.blue) {
+  print('Your favorite color is blue!');
+}
+```
+
+枚举中的每个值都有一个索引获取器，它返回枚举声明中值从零开始的位置。 例如，第一个值的索引为 0，第二个值的索引为 1
+
+```dart
+assert(Color.red.index == 0);
+assert(Color.green.index == 1);
+assert(Color.blue.index == 2);
+```
+
+要获取所有枚举值的列表，请使用枚举的值常量
+
+```dart
+List<Color> colors = Color.values;
+assert(colors[2] == Color.blue);
+```
+
+您可以在 switch 语句中使用枚举，如果您没有处理枚举的所有值，您将收到警告：
+
+```dart
+var aColor = Color.blue;
+
+switch (aColor) {
+  case Color.red:
+    print('Red as roses!');
+    break;
+  case Color.green:
+    print('Green as grass!');
+    break;
+  default: // 没有这个，你会看到一个警告
+    print(aColor); // 'Color.blue'
+}
+```
+
+如果您需要访问枚举值的名称，例如 `Color.blue` 中的“blue”，请使用 `.name` 属性：
+
+```dart
+print(Color.blue.name); // 'blue'
+```
+
+### 枚举示例
+<!--rehype:wrap-class=col-span-2-->
+
+声明了一个具有多个实例、实例变量、一个 `getter` 和一个已实现接口的增强型枚举
+
+```dart
+// 简单定义一个枚举类型
+enum PlanetType { terrestrial, gas, ice }
+
+// 定义一个行星复杂的枚举类型
+enum Planet {
+  mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  venus(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
+  
+  uranus(planetType: PlanetType.ice, moons: 27, hasRings: true),
+  neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
+
+  // 定义一个构造函数
+  const Planet({required this.planetType, required this.moons, required this.hasRings});
+
+  // 声明枚举类型中的变量
+  final PlanetType planetType;
+  final int moons;
+  final bool hasRings;
+
+  // 实现枚举类型中的get 方法
+  bool get isGiant =>
+    planetType == PlanetType.gas || planetType == PlanetType.ice;
+}
+
+// 使用枚举类型
+void main()
+{
+  final yourPlanet = Planet.mercury;
+
+  if (!yourPlanet.isGiant) {
+    print('Your planet is not a "giant planet".');
+  }
+}
+```
+
+Mixin
+-----
+
+### 定义Mixin
+<!--rehype:wrap-class=col-span-2-->
+`Dart`中类只能单继承，使用`Mixin`可以实现多个继承，复用多个类中代码的方法。
+
+```dart
+// 定义Mixin
+mixin Piloted {
+  int astronauts = 1;
+
+  void describeCrew() {
+    print('Number of astronauts: $astronauts');
+  }
+}
+```
+
+使用`with`关键字并在其后跟上`Mixin类`的名字来使用
+
+```dart
+// 使用with将Piloted混入
+class PilotedCraft extends Spacecraft with Piloted {
+  // ···
+}
+```
+
+支持混入多个Mixin，如果出现相同的方法后混入的Mixin会覆盖前面的
+
+```dart
+class Musician extends Performer with Musical {
+  // ···
+}
+
+// 混入多个Mixin
+class Maestro extends Person with Musical, Aggressive, Demented {
+  Maestro(String maestroName) {
+    name = maestroName;
+    canConduct = true;
+  }
+}
+```
+
+使用关键字`on`来指定哪些类可以使用该Mixin，比如有Mixin类`MusicalPerformer`，但是`MusicalPerformer`只能被`Musician`类使用，则可以这样定义`MusicalPerformer`：
+
+```dart
+class Musician {
+  // ...
+}
+// 现在MusicalPerformer 只能在 Musican及其子类中使用
+mixin MusicalPerformer on Musician {
+  // ...
+}
+class SingerDancer extends Musician with MusicalPerformer {
+  // ...
+}
+```
+
 异常
 -----
 

@@ -600,6 +600,96 @@ end
 
 <!--rehype:className=style-round wrap-text-->
 
+数学方法
+---
+
+### 常用方法
+
+```lua
+-- 一个比任何数字都大的浮点数
+math.huge
+
+-- 最小值的整数
+math.mininteger
+
+local a = math.abs(-1) -- 1
+
+-- 返回不小于该数到最小整数
+local b = math.ceil(1.2) -- 2
+
+-- 返回不大于该数到最大整数
+local c = math.floor(1.2) -- 1
+
+-- 取余
+local d = math.fmod(9.9, 9) -- 0.9
+
+-- 返回最大值
+local g = math.max(1, 2, 3) -- 3
+-- 返回最小值
+local h = math.min(1, 2, 3) -- 1
+
+-- 返回参数的平方根
+local r = math.sqrt(3) -- 9
+```
+
+### 工具方法
+
+```lua
+-- 返回数字的类型，
+local l = math.type(1.2) -- float
+local m = math.type(3) -- integer
+local n = math.type("") -- nil
+
+-- 返回以指定底底对数
+local e = math.log(4, 2) -- 2
+
+-- 返回以 e 为底的自然对数
+local f = math.exp(2) -- 7.3890560989307
+
+-- 返回 [0,1) 区间内一致分布的浮点伪随机数
+math.random()
+-- 返回 [1, n] 区间内一致分布的整数伪随机数
+math.random(10)
+-- 返回 [n, m] 区间内一致分布的整数伪随机数
+math.random(10, 100)
+
+-- 无符号整数比较，参数一 小于 参数二 则返回 true，否则返回 false
+local o = math.ult(1, 10)
+
+-- 如果参数可以转换为一个整数，则返回该整数，否则返回 nil
+local p = math.tointeger("3") -- 3
+local q = math.tointeger(0.32) -- nil
+
+-- 返回整数和小数部分
+local i, j = math.modf(3.14) -- 3   0.14
+```
+
+### 其它方法
+
+```lua
+-- 圆周率
+math.pi -- 3.1415926535898
+
+-- 正弦方法（以下皆是以弧度表示）
+math.sin(math.pi / 2) -- 1.0
+-- 余弦方法
+math.cos(math.pi) -- -1.0
+-- 正切方法
+math.tan(math.pi / 4) -- 1.0
+
+-- 反正弦方法（以下皆是以弧度表示）
+math.acos(1.0) -- 0.0
+-- 反余弦方法
+math.acos(1.0) -- 1.5707963267949
+-- 反正弦方法
+math.atan(1.0) -- 0.78539816339745
+
+-- 角度转换为弧度
+math.rad(90) -- 1.5707963267949
+-- 弧度转换为角度
+math.deg(math.pi) -- 180.0
+```
+
 table
 ---
 
