@@ -132,6 +132,7 @@ Quick Reference
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [jq](./docs/jq.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));&class=tag&data-lang=JSON-->
 [Lsof](./docs/lsof.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
+[Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135/var(\-\-bg\-opacity));-->
 [Netcat](./docs/netcat.md)<!--rehype:style=background: rgb(4 92 135/var(\-\-bg\-opacity));-->
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129/var(\-\-bg\-opacity));-->
 [OpenSSL](./docs/openssl.md)<!--rehype:style=background: rgb(114 20 18/var(\-\-bg\-opacity));-->
