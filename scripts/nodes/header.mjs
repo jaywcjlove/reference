@@ -4,9 +4,45 @@ import { getSVGNode } from '../utils/getSVGNode.mjs';
 import { darkMode } from '../utils/darkMode.mjs';
 
 const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets/quickreference.svg');
-export function header({ homePath, githubURL = '' }) {
+const ICONS_SEARCH_PATH = path.resolve(process.cwd(), 'scripts/assets/search.svg');
+
+export function header({ homePath, githubURL = '', isHome } = {}) {
   const svgNode = getSVGNode(ICONS_PATH);
+  const svgSearchNode = getSVGNode(ICONS_SEARCH_PATH);
   const data = [
+    {
+      menu: true,
+      href: 'javascript:void(0);',
+      class: ['searchbtn'],
+      id: 'searchbtn',
+      children: [
+        ...svgSearchNode,
+        {
+          type: 'element',
+          tagName: 'span',
+          children: [
+            {
+              type: 'text',
+              value: '搜索',
+            },
+          ],
+        },
+        {
+          type: 'element',
+          tagName: 'span',
+          children: [
+            {
+              type: 'text',
+              value: '⌘',
+            },
+            {
+              type: 'text',
+              value: 'K',
+            },
+          ],
+        },
+      ],
+    },
     {
       menu: true,
       href: githubURL,
@@ -14,7 +50,7 @@ export function header({ homePath, githubURL = '' }) {
       label: '编辑',
       children: [editor],
     },
-    ...darkMode(),
+    ...darkMode({ homePath, isHome }),
     {
       menu: true,
       href: 'https://github.com/jaywcjlove/reference',

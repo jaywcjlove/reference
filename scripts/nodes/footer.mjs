@@ -1,8 +1,8 @@
 import formatter from '@uiw/formatter';
 
-export function footer(options = {}) {
+export function footer({ isHome } = {}) {
   let footerText = '© 2022 Kenny Wang.';
-  if (options.isHome) {
+  if (isHome) {
     const now = new Date();
     const utc = now.getTime() + now.getTimezoneOffset() * 60000;
     const cst = new Date(utc + 3600000 * 8);

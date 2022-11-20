@@ -11,7 +11,9 @@ CSS 备忘清单
 
 CSS 功能丰富，不仅仅是布局页面
 
-#### 外部样式表
+#### 外部样式表 `<link>`
+
+`
 
 ```html
 <link
@@ -22,7 +24,7 @@ CSS 功能丰富，不仅仅是布局页面
 ```
 <!--rehype:className=wrap-text -->
 
-#### 内部样式表
+#### 内部样式表 `<style>`
 
 ```html
 <style>
@@ -32,7 +34,7 @@ CSS 功能丰富，不仅仅是布局页面
 </style>
 ```
 
-#### 内联样式
+#### 内联样式 `style`
 
 ```html
 <h2 style="text-align: center;">
@@ -1258,8 +1260,25 @@ li::before {
 }
 ```
 
-Css 3 技巧
+CSS 技巧
 ------------
+
+### 强制不换行
+
+```css
+p {
+  white-space:nowrap;
+}
+```
+
+### 强制换行
+
+```css
+p {
+  word-break:break-all; /* 英文 */
+  white-space:pre-wrap; /* 中文 */
+}
+```
 
 ### 滚动条平滑
 

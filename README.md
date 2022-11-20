@@ -187,8 +187,14 @@ Quick Reference
 <a href="https://github.com/mofelee" title="mofelee">
   <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
 </a>
+<a href="https://github.com/JeffersonHuang" title="Jefferson">
+  <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson"/>
+</a>
 <a href="https://github.com/partoneplay" title="partoneplay">
   <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
+</a>
+<a href="https://github.com/ryanhex53" title="ryanhex53">
+  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
 </a>
 <a href="https://github.com/catcto" title="喵仙人">
   <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
@@ -216,9 +222,6 @@ Quick Reference
 </a>
 <a href="https://github.com/jasnzhuang" title="Jason Zhuang">
   <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
-</a>
-<a href="https://github.com/JeffersonHuang" title="Jefferson">
-  <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson"/>
 </a>
 <a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
@@ -276,9 +279,6 @@ Quick Reference
 </a>
 <a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
-</a>
-<a href="https://github.com/ryanhex53" title="ryanhex53">
-  <img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/>
 </a>
 <a href="https://github.com/wjjwkwindy" title="wjjwkwindy">
   <img src="https://avatars.githubusercontent.com/u/9508591?v=4" width="42;" alt="wjjwkwindy"/>

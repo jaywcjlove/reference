@@ -80,6 +80,7 @@ body {
   --color-attention-subtle: #fff8c5;
   --color-danger-fg: #cf222e;
   --box-shadow: 109 109 109;
+  --primary-color: #228e6c;
 }
 
 [data-color-mode*='dark'],
@@ -128,6 +129,7 @@ body {
   --color-attention-subtle: rgba(187, 128, 9, 0.15);
   --color-danger-fg: #f85149;
   --box-shadow: 0 0 0;
+  --primary-color: #228e6c;
 }
 
 body {
@@ -539,6 +541,21 @@ a.text-grey {
 }
 .header-nav .menu a > span {
   font-size: 0.9rem;
+}
+.header-nav .menu .searchbtn {
+  text-decoration-color: transparent;
+  gap: 0.75rem;
+}
+.header-nav .menu .searchbtn span:last-child {
+  transition: all 0.3s;
+  border: 1px solid var(--color-border-default);
+  border-radius: 3px;
+  padding: 1px 1px 1px 3px;
+  letter-spacing: 3px;
+}
+.header-nav .menu .searchbtn:hover span:last-child {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
 }
 .header-nav .menu button {
   font-family: inherit;
@@ -1199,6 +1216,158 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
   font-size: 0.75rem;
 }
 
+body.search {
+  overflow: hidden;
+}
+#mysearch {
+  transition: all 0.3s;
+  display: none;
+}
+#mysearch.show .mysearch-box {
+  background-color: var(--color-canvas-default);
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  width: 100%;
+  height: 100%;
+}
+#mysearch.show .mysearch-result > * {
+  width: 50%;
+  overflow-y: auto;
+  padding: 0.6rem;
+}
+#mysearch.show .mysearch-result > :last-child {
+  background-color: var(--color-neutral-muted);
+  border-bottom-right-radius: 0.5rem;
+}
+#mysearch.show .mysearch-result {
+  display: flex;
+  flex: 1;
+  height: calc(100% - 3.5rem);
+}
+#mysearch.show {
+  background-color: var(--color-neutral-muted);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mysearch-input {
+  height: 3.5rem;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--color-neutral-muted);
+}
+.mysearch-input > :first-child {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mysearch-input > :first-child svg {
+  margin-left: 1rem;
+  font-size: 1.3rem;
+  position: absolute;
+  color: var(--primary-color);
+}
+.mysearch-input > :first-child input {
+  flex: 1;
+  height: 100%;
+  padding-left: 2.9rem;
+  font-size: 1.6rem;
+  color: var(--color-fg-default);
+  border: 0;
+  font-weight: 800;
+  background: transparent;
+  outline: 0;
+}
+#mysearch-close:hover {
+  color: var(--primary-color);
+}
+#mysearch-close {
+  background-color: transparent;
+  color: var(--color-fg-default);
+  border: 0;
+  padding: 0 1.6rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+#mysearch-menu a + a {
+  margin: 0.2rem 0;
+}
+#mysearch-menu a {
+  display: flex;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+  transition: all 0.3s;
+  white-space: pre-wrap;
+  text-decoration: none;
+  color: var(--color-fg-default);
+}
+#mysearch-menu a:hover,
+#mysearch-menu a.active {
+  background-color: var(--color-neutral-muted);
+  border-radius: 0.5rem;
+}
+#mysearch-content ol li div a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+#mysearch-content ol li div a {
+  padding: 0.125rem 0.5rem;
+  border-radius: 100px;
+  margin: 0.1rem 0.2rem;
+  color: var(--color-fg-subtle);
+}
+#mysearch-content ol li div {
+  margin-left: -1.54rem;
+  padding-top: 0.82rem;
+}
+#mysearch-content ol li > a:hover {
+  text-decoration: underline;
+}
+#mysearch-content ol li > a {
+  font-weight: bold;
+}
+#mysearch-content ol li a {
+  font-size: 0.85rem;
+  white-space: nowrap;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-fg-default);
+  transition: all 0.3s;
+}
+#mysearch-content ol li {
+  word-break: break-all;
+  white-space: pre-wrap;
+  padding-bottom: 1.56rem;
+}
+#mysearch-content ol {
+  list-style: auto;
+  padding-left: 1.75rem;
+}
+#mysearch-content h3 {
+  padding-bottom: 1.3rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  color: var(--color-fg-subtle);
+  max-width: 23rem;
+  margin: 0 auto;
+  font-size: 0.85rem;
+}
+
 @media (min-width: 1024px) {
   .h2wrap-body {
     display: grid;
@@ -1206,6 +1375,10 @@ body:not(.home) .h2wrap-body > .wrap:hover .h3wrap > h3 a::after {
   }
   .h2wrap-body > .wrap {
     margin-bottom: 0;
+  }
+  #mysearch.show {
+    padding-bottom: 5rem;
+    padding-top: 4rem;
   }
 }
 @media (375px <= width <= 1024px) {
