@@ -140,7 +140,7 @@ DefaultTextStyle(
 ```
 <!--rehype:className=wrap-text-->
 
-### 字体
+### 字体设置加载
 <!--rehype:wrap-class=row-span-4-->
 
 - 在 asset 中声明，要先在 `pubspec.yaml` 中声明它
