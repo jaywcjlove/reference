@@ -24,6 +24,7 @@ Quick Reference
 [C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13/var(\-\-bg\-opacity));&class=contributing-->
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Python-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9/var(\-\-bg\-opacity));&class=contributing-->
+[Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254/var(\-\-bg\-opacity));&class=contributing tag&data-lang=Dart-->
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128/var(\-\-bg\-opacity));&class=contributing-->
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128/var(\-\-bg\-opacity));-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168/var(\-\-bg\-opacity));&class=contributing-->
