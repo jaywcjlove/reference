@@ -62,7 +62,7 @@ export function search({ homePath = '', isHome } = {}) {
                     {
                       type: 'element',
                       tagName: 'input',
-                      properties: { id: ['mysearch-input'], type: 'search' },
+                      properties: { id: ['mysearch-input'], type: 'search', placeholder: '搜索备忘清单' },
                       children: [],
                     },
                     {
