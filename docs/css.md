@@ -1260,6 +1260,186 @@ li::before {
 }
 ```
 
+CSS 函数
+-----------
+
+### calc()
+
+```css
+width: calc(100% - 80px);
+```
+
+声明 CSS 属性值时执行一些计算
+
+### clamp()
+
+```css
+font-size: clamp(1rem, 10vw, 2rem);
+```
+
+设置随窗口大小改变的字体大小
+
+### attr()
+
+```css
+p:before {
+  content: attr(data-foo) " ";
+}
+```
+
+获取选择到的元素的某一 HTML 属性值
+
+### counter()
+<!--rehype:wrap-class=row-span-2-->
+
+返回一个代表计数器的当前值的字符串
+
+```html
+<ol>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+```
+
+```css
+ol {
+  counter-reset: listCounter;
+}
+li {
+  counter-increment: listCounter;
+}
+li::after {
+  content: "[" counter(listCounter) "] == ["
+    counter(listCounter, upper-roman) "]";
+}
+```
+
+显示
+
+```
+1. [1]==[I]
+2. [2]==[II]
+3. [3]==[III]
+```
+
+### counters()
+
+```css
+ol {
+  counter-reset: count;
+}
+li {
+  counter-increment: count;
+}
+li::marker {
+   content: counters(count, '.', upper-alpha) ') ';
+}
+li::before {
+  content: counters(count, ".", decimal-leading-zero) " == " counters(count, ".", lower-alpha);
+}
+```
+
+嵌套计数器，返回表示指定计数器当前值的连接字符串
+
+### env()
+
+```html
+<meta name="viewport" content="... viewport-fit=cover">
+```
+<!--rehype:className=wrap-text-->
+
+---
+
+```css
+body {
+  padding:
+    env(safe-area-inset-top, 20px)
+    env(safe-area-inset-right, 20px)
+    env(safe-area-inset-bottom, 20px)
+    env(safe-area-inset-left, 20px);
+}
+```
+
+用户代理定义的环境变量值插入你的 CSS 中
+
+### fit-content()
+
+```css
+fit-content(200px)
+fit-content(5cm)
+fit-content(30vw)
+fit-content(100ch)
+```
+
+将给定大小夹紧为可用大小
+
+### max()
+
+从一个逗号分隔的表达式列表中选择最大（正方向）的值作为属性的值
+
+```css
+width: max(10vw, 4em, 80px);
+```
+
+例子中，宽度最小会是 80px，除非视图宽度大于 800px 或者是一个 em 比 20px 宽
+
+### min()
+
+```css
+width: min(1vw, 4em, 80px);
+```
+
+从逗号分隔符表达式中选择一个最小值作为 CSS 的属性值
+
+### minmax()
+
+```css
+minmax(200px, 1fr)
+minmax(400px, 50%)
+minmax(30%, 300px)
+minmax(100px, max-content)
+minmax(min-content, 400px)
+minmax(max-content, auto)
+minmax(auto, 300px)
+minmax(min-content, auto)
+```
+
+### repeat() 轨道列表的重复片段
+
+```css
+repeat(auto-fill, 250px)
+repeat(auto-fit, 250px)
+repeat(4, 1fr)
+repeat(4, [col-start] 250px [col-end])
+repeat(4, [col-start] 60% [col-end])
+```
+
+定义了一个长宽范围的闭区间
+
+### url()
+
+```css
+background: url("topbanner.png") #00D no-repeat fixed;
+list-style: square url(http://www.example.com/redball.png)
+```
+<!--rehype:className=wrap-text-->
+
+### var()
+
+```css
+:root {
+  --main-bg-color: pink;
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
+```
+<!--rehype:className=wrap-text-->
+
+代替元素中任何属性中的值的任何部分
+
 CSS 技巧
 ------------
 
