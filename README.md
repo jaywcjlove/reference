@@ -285,6 +285,9 @@ Quick Reference
 <a href="https://github.com/lykjjj" title="lykjjj">
   <img src="https://avatars.githubusercontent.com/u/58510058?v=4" width="42;" alt="lykjjj"/>
 </a>
+<a href="https://github.com/mancuoj" title="mancuoj">
+  <img src="https://avatars.githubusercontent.com/u/45707684?v=4" width="42;" alt="mancuoj"/>
+</a>
 <a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
 </a>
