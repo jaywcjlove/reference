@@ -37,9 +37,9 @@ npm run start # 监听 md 文件编译输出 HTML
 ├── CONTRIBUTING.md   # 贡献说明
 ├── Dockerfile
 ├── LICENSE
-├── README.md   # Home(首页) 内容
-├── dist        # 编译后的静态资源目录
-├── docs        # Markdown 文档（速查表）
+├── README.md  # 🌐 Home(首页)内容
+├── dist       # 📦 编译后的静态资源目录
+├── docs       # 👈 Markdown 文档(速查表)
 │   ├── bash.md
 │   ├── ....
 │   └── yaml.md
@@ -433,17 +433,20 @@ H2 部分
 ### 卡片 3 (H3 部分)
 ```
 
-类 | 说明
----- | ----
+---
+
+:-- | --
+:-- | --
+合并 **列** 布局 |
 `col-span-2` | `2` 列占位
 `col-span-3` | `3` 列占位
 `col-span-4` | `4` 列占位
-`col-span-5` | `5` 列占位
+`col-span-{2~10}` | `{2~10}` 列占位
+合并 **行** 布局 |
 `row-span-2` | `2` 行占位
 `row-span-3` | `3` 行占位
 `row-span-4` | `4` 行占位
-`row-span-5` | `5` 行占位
-<!--rehype:className=show-header -->
+`row-span-{2~10}` | `{2~10}` 行占位
 
 ### 卡片合并行布局 1
 
@@ -762,7 +765,7 @@ H2 部分
 列表
 ---
 
-### 一栏（默认）
+### 一栏(默认)
 
 - Item 1
 - Item 2
