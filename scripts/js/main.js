@@ -41,8 +41,9 @@ const fuse = new Fuse(REFS_DATA, {
   matchEmptyQuery: !0,
   threshold: .1,
   keys: [
-    { name: "title", weight: 12 }, 
+    { name: "name", weight: 12 }, 
     { name: 'intro', weight: 2 }, 
+    { name: 'tags', weight: 2 }, 
     { name: 'sections.t', weight: 5 }
   ],
 });
@@ -70,9 +71,13 @@ document.addEventListener('keydown', (ev) => {
   }
 });
 
+let result = []
+let inputValue = '';
+
 function showSearch() {
   document.body.classList.add('search');
   searchBox.classList.add('show');
+  searchResult('')
   searchInput.focus();
 }
 
@@ -80,22 +85,29 @@ function hideSearch() {
   document.body.classList.remove('search');
   searchBox.classList.remove('show');
 }
-let result = []
-let inputValue = '';
+function getValueReg(val = '') {
+  return new RegExp(val.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&').replace(/-/g, '\\x2d'), 'ig');
+}
 
 function searchResult(value) {
   inputValue = value;
   result = fuse.search(value);
+  if (!value) {
+    result = REFS_DATA.map(item => ({ item: item }));
+  }
   let menuHTML = '';
   result.forEach((item, idx) => {
-    const label = item.item.title.replace(new RegExp(value, 'ig'), (txt) => {
+    const label = item.item.name.replace(getValueReg(value), (txt) => {
+      return `<mark>${txt}</mark>`
+    })
+    const tags = (item.item.tags || []).join(',').replace(getValueReg(value), (txt) => {
       return `<mark>${txt}</mark>`
     })
     const href = isHome ? item.item.path : item.item.path.replace('docs/', '');
     if (idx === 0) {
-      menuHTML += `<a href="${href}" class="active">${label}</a>`;
+      menuHTML += `<a href="${href}" class="active"><span>${label}</span><sup>${tags}</sup></a>`;
     } else {
-      menuHTML += `<a href="${href}">${label}</a>`;
+      menuHTML += `<a href="${href}"><span>${label}</span><sup>${tags}</sup></a>`;
     }
   });
   searchMenu.innerHTML = menuHTML;
@@ -116,13 +128,13 @@ function searchResult(value) {
 
 function searchSectionsResult(idx = 0) {
   const data = result[idx] || [];
-  const title = (data.item?.intro || '').replace(new RegExp(inputValue, 'ig'), (txt) => {
+  const title = (data.item?.intro || '').replace(getValueReg(inputValue), (txt) => {
     return `<mark>${txt}</mark>`
   });
   let sectionHTML = `<h3>${title}</h3><ol>`;
   if (data && data.item && data.item.sections) {
     data.item.sections.forEach((item, idx) => {
-      const label = item.t.replace(new RegExp(inputValue, 'ig'), (txt) => {
+      const label = item.t.replace(getValueReg(inputValue), (txt) => {
         return `<mark>${txt}</mark>`
       })
       const href = isHome ? data.item.path : data.item.path.replace('docs/', '');

@@ -82,7 +82,14 @@ export function create(str = '', options = {}) {
       if (iconName) {
         detailData.icon = iconName;
       }
-      homeCardIcons(node, parent, options.isHome);
+      const resultHomeCard = homeCardIcons(node, parent, options.isHome);
+      if (options.filename && resultHomeCard[options.filename]) {
+        detailData.rgb = resultHomeCard[options.filename].rgb;
+        detailData.name = resultHomeCard[options.filename].title;
+        if (resultHomeCard[options.filename].tags) {
+          detailData.tags = resultHomeCard[options.filename].tags;
+        }
+      }
       tooltips(node, index, parent);
       htmlTagAddAttri(node, options);
       rehypeUrls(node);
@@ -111,7 +118,6 @@ export function create(str = '', options = {}) {
           }
           node.children.unshift(header(options));
           node.children.push(footer(options));
-          // node.children.push(search(options));
           node.children = node.children.concat(search(options));
         }
       }
