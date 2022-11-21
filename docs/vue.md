@@ -683,8 +683,10 @@ API 参考
 `app.config.compilerOptions` | 配置运行时编译器的选项 [#](https://cn.vuejs.org/api/application.html#app-config-compileroptions)
 `app.config.globalProperties` | 注册全局属性对象 [#](https://cn.vuejs.org/api/application.html#app-config-globalproperties)
 `app.config.optionMergeStrategies` | 定义自定义组件选项的合并策略的对象 [#](https://cn.vuejs.org/api/application.html#app-config-optionmergestrategies)
+<!--rehype:className=style-list-->
 
 ### 全局 API - 通用
+<!--rehype:wrap-class=row-span-2-->
 
 :- | :-
 :- | :-
@@ -692,7 +694,8 @@ API 参考
 `nextTick()` | 等待下一次 DOM 更新后执行回调 [#](https://cn.vuejs.org/api/general.html#nexttick)
 `defineComponent()` | 在定义 Vue 组件时提供类型推导的辅助函数 [#](https://cn.vuejs.org/api/general.html#definecomponent)
 `defineAsyncComponent()` | 定义一个异步组件 [#](https://cn.vuejs.org/api/general.html#defineasynccomponent)
-`defineCustomElement()` | [#](https://cn.vuejs.org/api/general.html#definecustomelement)
+`defineCustomElement()` | 和 `defineComponent` 接受的参数相同，不同的是会返回一个原生自定义元素类的构造器 [#](https://cn.vuejs.org/api/general.html#definecustomelement)
+<!--rehype:className=style-list-->
 
 ### 组合式 API - setup()
 
@@ -703,20 +706,14 @@ API 参考
 `Setup 上下文` | [#](https://cn.vuejs.org/api/composition-api-setup.html#setup-context)
 `与渲染函数一起使用` | [#](https://cn.vuejs.org/api/composition-api-setup.html#usage-with-render-functions)
 
-### 组合式 API - 响应式: 工具
+### 组合式 API - 依赖注入
 
 :- | :-
 :- | :-
-`isRef()` | 判断是否为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#isref)
-`unref()` | 是 ref，返回内部值，否则返回参数本身 [#](https://cn.vuejs.org/api/reactivity-utilities.html#unref)
-`toRef()` | 创建一个属性对应的 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#toref)
-`toRefs()` | 将对象上的每一个可枚举属性转换为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#torefs)
-`isProxy()` | 检查一个对象是否是由 `reactive()`、`readonly()`、`shallowReactive()` 或 `shallowReadonly()` 创建的代理 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isproxy)
-`isReactive()` | 检查一个对象是否是由 `reactive()` 或 `shallowReactive()` 创建的代理。  [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreactive)
-`isReadonly()` | 检查传入的值是否为只读对象 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreadonly)
+`provide()` | 提供一个可以被后代组件中注入使用的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#provide)
+`inject()` | 注入一个由祖先组件提供的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject)
 
 ### 组合式 API - 生命周期钩子
-<!--rehype:wrap-class=row-span-3-->
 
 :- | :-
 :- | :-
@@ -734,12 +731,18 @@ API 参考
 `onServerPrefetch()` | 组件实例在服务器上被渲染之前调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onserverprefetch)
 <!--rehype:className=style-list-->
 
-### 组合式 API - 依赖注入
+### 组合式 API - 响应式: 工具
 
 :- | :-
 :- | :-
-`provide()` | 提供一个可以被后代组件中注入使用的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#provide)
-`inject()` | 注入一个由祖先组件提供的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject)
+`isRef()` | 判断是否为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#isref)
+`unref()` | 是 ref，返回内部值，否则返回参数本身 [#](https://cn.vuejs.org/api/reactivity-utilities.html#unref)
+`toRef()` | 创建一个属性对应的 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#toref)
+`toRefs()` | 将对象上的每一个可枚举属性转换为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#torefs)
+`isProxy()` | 检查一个对象是否是由 `reactive()`、`readonly()`、`shallowReactive()` 或 `shallowReadonly()` 创建的代理 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isproxy)
+`isReactive()` | 检查一个对象是否是由 `reactive()` 或 `shallowReactive()` 创建的代理。  [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreactive)
+`isReadonly()` | 检查传入的值是否为只读对象 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreadonly)
+<!--rehype:className=style-list-->
 
 ### 组合式 API - 响应式: 核心
 
@@ -753,6 +756,7 @@ API 参考
 `watchPostEffect()` | `watchEffect()` 使用 `flush: 'post'` 选项时的别名。 [#](https://cn.vuejs.org/api/reactivity-core.html#watchposteffect)
 `watchSyncEffect()` | `watchEffect()` 使用 `flush: 'sync'` 选项时的别名。 [#](https://cn.vuejs.org/api/reactivity-core.html#watchsynceffect)
 `watch()` | 侦听一个或多个响应式数据源 [#](https://cn.vuejs.org/api/reactivity-core.html#watch)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 状态选项
 
@@ -765,9 +769,10 @@ API 参考
 `watch` | 声明在数据更改时调用的侦听回调 [#](https://cn.vuejs.org/api/options-state.html#watch)
 `emits` | 声明由组件触发的自定义事件 [#](https://cn.vuejs.org/api/options-state.html#emits)
 `expose` | 声明当组件实例被父组件通过模板引用访问时暴露的公共属性 [#](https://cn.vuejs.org/api/options-state.html#expose)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 生命周期选项
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 :- | :-
 :- | :-
@@ -785,6 +790,7 @@ API 参考
 `activated` | 若组件实例是 <KeepAlive> 缓存树的一部分，当组件被插入到 DOM 中时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#activated)
 `deactivated` | 若组件实例是 <KeepAlive> 缓存树的一部分，当组件从 DOM 中被移除时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#deactivated)
 `serverPrefetch` _SSR only_ | 组件实例在服务器上被渲染之前调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#serverprefetch)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 其他杂项
 
@@ -794,6 +800,7 @@ API 参考
 `inheritAttrs` | 是否启用默认的组件 `attribute` 透传行为 [#](https://cn.vuejs.org/api/options-misc.html#inheritattrs)
 `components` | 注册对当前组件实例可用的组件 [#](https://cn.vuejs.org/api/options-misc.html#components)
 `directives` | 注册对当前组件实例可用的指令 [#](https://cn.vuejs.org/api/options-misc.html#directives)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 渲染选项
 
@@ -802,6 +809,7 @@ API 参考
 `template` | 声明组件的字符串模板 [#](https://cn.vuejs.org/api/options-rendering.html#template)
 `render` | 编程式地创建组件虚拟 DOM 树的函数 [#](https://cn.vuejs.org/api/options-rendering.html#render)
 `compilerOptions` | 配置组件模板的运行时编译器选项 [#](https://cn.vuejs.org/api/options-rendering.html#compileroptions)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 组件实例
 <!--rehype:wrap-class=row-span-2-->
@@ -851,6 +859,7 @@ API 参考
 `v-once` | 只渲染元素和组件一次 [#](https://cn.vuejs.org/api/built-in-directives.html#v-once)
 `v-memo` _(3.2+)_ | 缓存一个模板的子树 [#](https://cn.vuejs.org/api/built-in-directives.html#v-memo)
 `v-cloak` | 保持在元素上直到实例结束编译 [#](https://cn.vuejs.org/api/built-in-directives.html#v-cloak)
+`serverPrefetch` _SSR only_ | 组件实例在服务器上被渲染之前调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#serverprefetch)
 
 ### 内置内容 - 组件
 
@@ -861,6 +870,7 @@ API 参考
 `<KeepAlive>` | 缓存包裹在其中的动态切换组件 [#](https://cn.vuejs.org/api/built-in-components.html#keepalive)
 `<Teleport>` | 将其插槽内容渲染到 DOM 中的另一个位置 [#](https://cn.vuejs.org/api/built-in-components.html#teleport)
 `<Suspense>` _(Experimental)_ | 协调对组件树中嵌套的异步依赖的处理 [#](https://cn.vuejs.org/api/built-in-components.html#suspense)
+<!--rehype:className=style-list-->
 
 ### 内置内容 - 特殊 Attributes
 
@@ -948,6 +958,7 @@ API 参考
 `ComponentCustomOptions` | 扩展组件选项类型以支持自定义选项 [#](https://cn.vuejs.org/api/utility-types.html#componentcustomoptions)
 `ComponentCustomProps` | 扩展全局可用的 TSX props [#](https://cn.vuejs.org/api/utility-types.html#componentcustomprops)
 `CSSProperties` | 扩展在样式属性绑定上允许的值的类型 [#](https://cn.vuejs.org/api/utility-types.html#cssproperties)
+<!--rehype:className=style-list-->
 
 ### 进阶 API - 自定义渲染
 
