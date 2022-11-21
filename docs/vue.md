@@ -64,11 +64,14 @@ $ npm run build
 <!--rehype:wrap-class=row-span-2-->
 
 ```js
-import { createApp } from 'vue'
+import { createApp, ref } from 'vue'
 
 const app = createApp({
-  data() {
-    return { count: 0 }
+  setup() {
+    const message = ref("Hello Vue3")
+    return {
+      message
+    }
   }
 })
 app.mount('#app')
@@ -90,11 +93,12 @@ app.mount('#app')
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <div id="app">{{ message }}</div>
 <script>
-  const { createApp } = Vue
+  const { createApp, ref } = Vue
   createApp({
-    data() {
+    setup() {
+      const message = ref("Hello Vue3")
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
@@ -105,13 +109,14 @@ app.mount('#app')
 ### 使用 ES 模块构建版本
 
 ```html
-<div id="app">{{ message }}</div>
+<div id="app">{{ message, ref }}</div>
 <script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   createApp({
-    data() {
+    setup() {
+      const message = ref("Hello Vue3")
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
@@ -164,21 +169,28 @@ app.mount('#app')
 ### 动态绑定多个值
 <!--rehype:wrap-class=row-span-2-->
 
-```js
-data() {
-  return {
-    objectOfAttrs: {
-      id: 'container',
-      class: 'wrapper'
-    }
-  }
-}
-```
-
 通过不带参数的 `v-bind`，你可以将它们绑定到单个元素上
 
-```html
-<div v-bind="objectOfAttrs"></div>
+```vue
+<script setup>
+  import comp from "./Comp.vue"
+  import {ref} from "vue"
+  const a = ref("hello")
+  const b = ref("world")
+</script>
+
+<template>
+  <comp v-bind="{a, b}"></comp>
+</template>
+```
+
+如果你是使用的 `setup` 语法糖。需要使用 `defineprops` 声名（可以直接使用`a`/`b`）
+
+```js
+const props = defineProps({
+  a: String,
+  b: String
+})
 ```
 
 ### 使用 JavaScript 表达式
@@ -424,7 +436,7 @@ export default defineComponent({
 
 ### 响应式样式
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'
 const open = ref(false);
@@ -449,7 +461,7 @@ const open = ref(false);
 
 ### 监听状态
 
-```js
+```vue
 <script setup>
 import { ref, watch } from 'vue';
 
@@ -486,7 +498,7 @@ watch(count, function() {
 
 ### 计算状态
 
-```js
+```vue
 <script setup>
 import { ref, computed } from 'vue';
 
@@ -509,7 +521,7 @@ const capital = computed(function(){
 
 ### defineProps
 
-```js
+```vue
 <script setup>
 import { defineProps } from 'vue';
 
@@ -526,7 +538,7 @@ defineProps({
 
 子组件定义需要的参数
 
-```js
+```vue
 <script setup>
 const username = 'vue'
 </script>
@@ -540,7 +552,7 @@ const username = 'vue'
 
 ### defineEmits
 
-```js
+```vue
 <script setup>
 import { defineEmits, ref } from 'vue';
 
@@ -561,7 +573,7 @@ const onSearch = function() {
 
 子组件定义支持 `emit` 的函数
 
-```js
+```vue
 <script setup>
 const onSearch = function(keyword){
   console.log(keyword)
@@ -577,7 +589,7 @@ const onSearch = function(keyword){
 
 ### defineExpose
 
-```js
+```vue
 <script setup>
 import { defineExpose, ref } from 'vue';
 
@@ -597,7 +609,7 @@ defineExpose({ onSearch })
 
 子组件对父组件暴露方法
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'  
 
