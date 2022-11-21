@@ -171,7 +171,7 @@ app.mount('#app')
 
 通过不带参数的 `v-bind`，你可以将它们绑定到单个元素上
 
-```vue
+```html
 <script setup>
   import comp from "./Comp.vue"
   import {ref} from "vue"
@@ -436,7 +436,7 @@ export default defineComponent({
 
 ### 响应式样式
 
-```vue
+```html
 <script setup>
 import { ref } from 'vue'
 const open = ref(false);
@@ -461,7 +461,7 @@ const open = ref(false);
 
 ### 监听状态
 
-```vue
+```html
 <script setup>
 import { ref, watch } from 'vue';
 
@@ -498,7 +498,7 @@ watch(count, function() {
 
 ### 计算状态
 
-```vue
+```html
 <script setup>
 import { ref, computed } from 'vue';
 
@@ -521,7 +521,7 @@ const capital = computed(function(){
 
 ### defineProps
 
-```vue
+```html
 <script setup>
 import { defineProps } from 'vue';
 
@@ -538,7 +538,7 @@ defineProps({
 
 子组件定义需要的参数
 
-```vue
+```html
 <script setup>
 const username = 'vue'
 </script>
@@ -552,7 +552,7 @@ const username = 'vue'
 
 ### defineEmits
 
-```vue
+```html
 <script setup>
 import { defineEmits, ref } from 'vue';
 
@@ -573,7 +573,7 @@ const onSearch = function() {
 
 子组件定义支持 `emit` 的函数
 
-```vue
+```html
 <script setup>
 const onSearch = function(keyword){
   console.log(keyword)
@@ -589,7 +589,7 @@ const onSearch = function(keyword){
 
 ### defineExpose
 
-```vue
+```html
 <script setup>
 import { defineExpose, ref } from 'vue';
 
@@ -609,7 +609,7 @@ defineExpose({ onSearch })
 
 子组件对父组件暴露方法
 
-```vue
+```html
 <script setup>
 import { ref } from 'vue'  
 
