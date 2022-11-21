@@ -884,7 +884,7 @@ H3 部分 - 占位效果展示
 <!--rehype:wrap-class=row-span-2-->
 
 ```
-...
+...合并两行
 ```
 
 `<!--rehype:wrap-class=row-span-2-->`
@@ -893,7 +893,7 @@ H3 部分 - 占位效果展示
 <!--rehype:wrap-class=col-span-2-->
 
 ```
-...
+...合并两列
 ```
 
 `<!--rehype:wrap-class=col-span-2-->`
@@ -902,7 +902,7 @@ H3 部分 - 占位效果展示
 <!--rehype:style=background:#e91e63;-->
 
 ```
-...
+...红色标题配置
 ```
 
 `<!--rehype:style=background:#e91e63;-->`
@@ -911,7 +911,7 @@ H3 部分 - 占位效果展示
 <!--rehype:style=background:#d7a100;-->
 
 ```
-...
+...黄色标题配置
 ```
 
 `<!--rehype:style=background:#d7a100;-->`
