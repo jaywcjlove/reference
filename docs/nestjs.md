@@ -11,26 +11,15 @@ NestJS 备忘清单
 [NestJS](https://docs.nestjs.com/) 需要 [Node.js >= 12](https://nodejs.org)
 
 ```bash
-npm i -g @nestjs/cli
-nest new project-name
+$ npm i -g @nestjs/cli
+$ nest new project-name
 ```
 
-[Nest CLI](https://docs.nestjs.com/cli/overview) 是一个命令行界面工具，可以帮助你初始化、开发和维护你的Nest应用程序
+[Nest CLI](https://docs.nestjs.com/cli/overview) 是一个命令行界面工具，可以帮助你初始化、开发和维护你的Nest应用程序，安装依赖并启动开发服务器
 
 ```bash
-⚡ We will scaffold your app in a few seconds..
-
-? Which package manager would you ❤️  to use?
- - npm
- - yarn
- - pnpm
-```
-
-安装依赖并启动开发服务器
-
-```bash
-cd <your-project-name>
-npm run start
+$ cd <your-project-name>
+$ npm run start
 ```
 
 当你准备将应用发布到生产环境时，请运行：
@@ -43,19 +32,20 @@ $ npm run build
 
 ### CLI指令
 
-Command | Alias | Description
+命令 | 别名 | 描述
 :-|-|-
-| Command | Alias | Description
-| `new` | n | 使用模板快速创建应用
-| `generate` | g | 自动生成`Controller`、`Providers` 和 `Modules`
-| `build` | | 打包并输出./dist目录
-| `start` | | 打包并运行
-| `add`   | | 安装一个符合Nest的库，同`npm install`
-| `info`  | i | 输出系统信息、CLI版本和Nest Package信息
+`new` | n | 使用模板快速创建应用
+`generate` | g | 自动生成`Controller`、`Providers` 和 `Modules`
+`build` | | 打包并输出./dist目录
+`start` | | 打包并运行
+`add`   | | 安装一个符合Nest的库，同`npm install`
+`info`  | i | 输出系统信息、CLI版本和Nest Package信息
+<!--rehype:className=show-header left-align-->
 
 ### Platform(平台)
+<!--rehype:wrap-class=row-span-2-->
 
-目前`NestJS`支持两个`Node HTTP`平台：[Express](https://expressjs.com/) 和 [Fastify](https://www.fastify.io/)。从技术上讲，一旦创建了适配器，Nest 便可以使用任何 Node HTTP 框架
+目前 `NestJS` 支持两个 `Node HTTP` 平台：[Express](https://expressjs.com/) 和 [Fastify](https://www.fastify.io/)。从技术上讲，一旦创建了适配器，Nest 便可以使用任何 Node HTTP 框架
 
 #### platform-express
 
@@ -70,6 +60,7 @@ async function bootstrap() {
 }
 bootstrap()
 ```
+<!--rehype:className=wrap-text-->
 
 #### platform-fastify
 
@@ -88,18 +79,19 @@ async function bootstrap() {
 }
 bootstrap()
 ```
+<!--rehype:className=wrap-text-->
 
 ### 目录
 
-```
-├── src             # 源代码目录
-│   ├── app.module.ts            // 应用程序的根模块
-|   └── app.controller.spec.ts   // 控制器的单元测试
-|   ├── app.controller.ts        // 单个路由的基本控制器
-|   └── app.service.ts           // 具有单一方法的基本服务
-|   └── main.ts                  // 应用程序的入口文件，它使用核心函数 NestFactory 来创建 Nest 应用程序的实例
-|
-└── test            # 测试目录
+```bash
+├── src      # 源代码目录
+│   ├── app.module.ts          # 应用程序的根模块
+│   ├── app.controller.spec.ts # 控制器的单元测试
+│   ├── app.controller.ts      # 单个路由的基本控制器
+│   ├── app.service.ts         # 具有单一方法的基本服务
+│   └── main.ts # 应用程序的入口文件
+│               # 它使用核心函数 NestFactory 来创建 Nest 应用程序的实例
+└── test      # 测试目录
     ├── app.e2e-spec.ts
     └── jest-e2e.json
 ```
@@ -109,12 +101,13 @@ bootstrap()
 `NestCLI` 默认是使用`TypeScript`进行初始化项目的，如果需要使用`JavaScript`请使用以下指令
 
 ```bash
-git clone https://github.com/nestjs/javascript-starter.git
+$ git clone https://github.com/nestjs/javascript-starter.git
 
-cd <javascript-starter>
-npm install
-npm run start
+$ cd <javascript-starter>
+$ npm install
+$ npm run start
 ```
+<!--rehype:className=wrap-text-->
 
 需要[注意]((https://docs.nestjs.com/first-steps#language))的一点是，`JavaScript`的版本是需要`Babel`的
 
