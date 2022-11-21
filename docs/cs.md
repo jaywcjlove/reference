@@ -82,7 +82,7 @@ Console.WriteLine(name); // => John Doe
 
 ### 用户输入
 
-```cs
+```cs showLineNumbers
 Console.WriteLine("Enter number:");
 if(int.TryParse(Console.ReadLine(),out int input))
 {
@@ -90,7 +90,6 @@ if(int.TryParse(Console.ReadLine(),out int input))
   Console.WriteLine($"You entered {input}");
 }
 ```
-<!--rehype:className=wrap-text-->
 
 ### 条件判断
 
@@ -170,7 +169,7 @@ Console.WriteLine(name); // => John Doe
 
 ### 逐字字符串
 
-```cs
+```cs showLineNumbers
 string longString = @"I can type any characters in here !#@$%^&*()__+ '' \n \t except double quotes and I will be taken literally. I even work with multiple lines.";
 ```
 <!--rehype:className=wrap-text-->
@@ -199,10 +198,7 @@ Console.WriteLine(sb.ToString());
 
 对于频繁拼接字符串的场景（如：成百上千次循环），使用 `System.Text.StringBuilder` 提升性能
 
-<!--rehype:className=wrap-text-->
-
 ### 原始字符串文本
-
 <!--rehype:wrap-class=col-span-2-->
 
 ```cs
@@ -217,16 +213,14 @@ string multiLine = """
 Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
 ```
 
-<!--rehype:className=wrap-text-->
-
 杂项
 -----------
 
 ### 常用 .NET 概念
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-3-->
 
 概念 | 中文名 | 定义
-:- | -|-- 
+:- | -|--
 Runtime | 运行时 | 执行给定的已编译代码单元所需的服务集合
 Common Language Runtime (CLR) | 通用语言运行库 | 主要定位、加载和托管 .NET 对象。<br/>CLR 还处理内存管理、应用程序托管、线程协调、执行安全检查和其他低级细节
 Managed code | 托管代码 | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
