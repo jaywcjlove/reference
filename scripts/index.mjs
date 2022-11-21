@@ -42,7 +42,7 @@ export async function createHTML(files = [], num = 0) {
   const { html, data } = create(mdstr.toString(), options);
   if (!options.isHome) {
     const searchData = await fs.readJSON(SEARCH_DATA_CACHE);
-    data.path = path.relative(OUTOUT, outputHTMLPath);
+    data.path = path.relative(OUTOUT, outputHTMLPath).replace(/[\\/]/g, '/');
     searchData[options.filename] = data;
     searchData.name = options.filename;
     await fs.writeJSON(SEARCH_DATA_CACHE, searchData);
