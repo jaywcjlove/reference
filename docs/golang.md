@@ -401,7 +401,7 @@ for _, num := range nums {
 fmt.Println("sum:", sum)
 ```
 
-### While 循环
+### For 循环
 
 ```go
 i := 1
@@ -701,22 +701,22 @@ Golang 并发
 ```go
 package main
 import (
-        "fmt"
-        "time"
+    "fmt"
+    "time"
 )
 func f(from string) {
-        for i := 0; i < 3; i++ {
-                fmt.Println(from, ":", i)
-        }
+    for i := 0; i < 3; i++ {
+            fmt.Println(from, ":", i)
+    }
 }
 func main() {
-        f("direct")
-        go f("goroutine")
-        go func(msg string) {
-                fmt.Println(msg)
-        }("going")
-        time.Sleep(time.Second)
-        fmt.Println("done")
+    f("direct")
+    go f("goroutine")
+    go func(msg string) {
+            fmt.Println(msg)
+    }("going")
+    time.Sleep(time.Second)
+    fmt.Println("done")
 }
 ```
 
@@ -728,23 +728,23 @@ func main() {
 ```go
 package main
 import (
-        "fmt"
-        "sync"
-        "time"
+    "fmt"
+    "sync"
+    "time"
 )
 func w(id int, wg *sync.WaitGroup) {
-        defer wg.Done()
-        fmt.Printf("%d starting\n", id)
-        time.Sleep(time.Second)
-        fmt.Printf("%d done\n", id)
+    defer wg.Done()
+    fmt.Printf("%d starting\n", id)
+    time.Sleep(time.Second)
+    fmt.Printf("%d done\n", id)
 }
 func main() {
-        var wg sync.WaitGroup
-        for i := 1; i <= 5; i++ {
-                wg.Add(1)
-                go w(i, &wg)
-        }
-        wg.Wait()
+    var wg sync.WaitGroup
+    for i := 1; i <= 5; i++ {
+            wg.Add(1)
+            go w(i, &wg)
+    }
+    wg.Wait()
 }
 ```
 
