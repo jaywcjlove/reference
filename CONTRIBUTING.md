@@ -215,6 +215,9 @@ npm run start  # 监听 md 文件编译输出 HTML
 <a href="https://github.com/lvzhenbo" title="吕振波">
   <img src="https://avatars.githubusercontent.com/u/32427677?v=4" width="42;" alt="吕振波"/>
 </a>
+<a href="https://github.com/qyl27" title="秋雨落">
+  <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋雨落"/>
+</a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶">
   <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
 </a><!--GAMFC-END-->
