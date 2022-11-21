@@ -298,7 +298,7 @@ import { defineComponent, reactive } from 'vue';
 
 // `defineComponent`用于IDE推导类型
 export default defineComponent({
-  // `setup` 是一个专门用于组合式 API 的特殊钩子函数
+  // setup 用于组合式 API 的特殊钩子函数
   setup() {
     const state = reactive({ count: 0 });
 
@@ -309,6 +309,7 @@ export default defineComponent({
   },
 });
 ```
+<!--rehype:className=wrap-text-->
 
 ### 声明方法
 
@@ -339,6 +340,7 @@ export default defineComponent({
   },
 })
 ```
+<!--rehype:className=wrap-text-->
 
 ### `<script setup>` setup语法糖
 
@@ -363,29 +365,27 @@ function increment() {
 **`setup`** 语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
 
 ### 用 `ref()` 定义响应式变量
+<!--rehype:wrap-class=row-span-2-->
+
+`reactive`只能用于对象、数组和 `Map`、`Set` 这样的集合类型，对 string、number 和 boolean 这样的原始类型则需要使用`ref`
 
 ```js
-// `reactive`只能用于对象、数组和 Map、Set 这样的集合类型，对 string、number 和 boolean 这样的原始类型则需要使用`ref`
 import { ref } from 'vue';
 
 const count = ref(0);
 
 console.log(count); // { value: 0 }
 console.log(count.value); // 0
-
 count.value++;
 console.log(count.value); // 1
-
 const objectRef = ref({ count: 0 });
 
 // 这是响应式的替换
 objectRef.value = { count: 1 };
-
 const obj = {
   foo: ref(1),
   bar: ref(2)
 };
-
 // 该函数接收一个 ref
 // 需要通过 .value 取值
 // 但它会保持响应性
@@ -395,8 +395,9 @@ callSomeFunction(obj.foo);
 const { foo, bar } = obj;
 ```
 
+在 html 模板中不需要带 `.value` 就可以使用
+
 ```html
-<!-- PS: 在html模板中不需要带.value就可以使用 -->
 <script setup>
 import { ref } from 'vue';
 
@@ -411,6 +412,7 @@ const count = ref(0);
 ```
 
 ### 有状态方法
+<!--rehype:wrap-class=col-span-2-->
 
 ```js
 import { reactive, defineComponent, onUnmounted } from 'vue';
@@ -435,6 +437,7 @@ export default defineComponent({
 ```
 
 ### 响应式样式
+<!--rehype:wrap-class=col-span-2-->
 
 ```html
 <script setup>
@@ -456,10 +459,11 @@ const open = ref(false);
 </style>
 ```
 
-响应式进阶 —— watch和computed
+响应式进阶 —— watch 和 computed
 ---
 
 ### 监听状态
+<!--rehype:wrap-class=row-span-2-->
 
 ```html
 <script setup>
@@ -481,11 +485,14 @@ watch(count, function() {
   <button @click="increment">
     {{ count }}
   </button>
-  <p>is event: {{ isEvent ? 'yes' : 'no' }}</p>
+  <p>
+    is event: {{ isEvent ? 'yes' : 'no' }}
+  </p>
 </template>
 ```
 
 ### 立即监听状态
+<!--rehype:wrap-class=col-span-2-->
 
 ```js
 watch(count, function() {
@@ -495,15 +502,16 @@ watch(count, function() {
   immediate: true
 })
 ```
+<!--rehype:className=wrap-text-->
 
 ### 计算状态
+<!--rehype:wrap-class=col-span-2-->
 
 ```html
 <script setup>
 import { ref, computed } from 'vue';
 
 const text = ref('')
-
 // computed 的回调函数里，会根据已有并用到的状态计算出新的状态
 const capital = computed(function(){
   return text.value.toUpperCase();
@@ -525,7 +533,8 @@ const capital = computed(function(){
 <script setup>
 import { defineProps } from 'vue';
 
-// 这里可以将 `username` 解构出来，但是一旦解构出来再使用，就不具备响应式能力
+// 这里可以将 `username` 解构出来，
+// 但是一旦解构出来再使用，就不具备响应式能力
 defineProps({
   username: String
 })
@@ -557,9 +566,7 @@ const username = 'vue'
 import { defineEmits, ref } from 'vue';
 
 const emit = defineEmits(['search'])
-  
 const keyword = ref('')
-
 const onSearch = function() {
   emit('search', keyword.value)
 }
@@ -594,7 +601,6 @@ const onSearch = function(keyword){
 import { defineExpose, ref } from 'vue';
 
 const keyword = ref('')
-
 const onSearch = function() {
   console.log(keyword.value)
 }
@@ -614,8 +620,7 @@ defineExpose({ onSearch })
 import { ref } from 'vue'  
 
 const childrenRef = ref(null)
-
-const onSearch = function(){
+const onSearch = function() {
   childrenRef.value.onSearch()
 }
 </script>
@@ -631,13 +636,15 @@ const onSearch = function(){
 ### Provide / Inject
 
 ```ts
-// types
 import type { InjectionKey, Ref } from 'vue'
 
 export const ProvideKey = Symbol() as InjectionKey<Ref<string>>
 ```
+<!--rehype:className=wrap-text-->
 
-```ts
+在应用中使用 `ProvideKey`
+
+```html
 <script setup lang="ts">
 import { provide, ref } from 'vue'
 import { ProvideKey } from './types'
