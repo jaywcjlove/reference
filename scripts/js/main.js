@@ -71,22 +71,47 @@ searchInput.addEventListener('input', (evn) => searchResult(evn.target.value));
 let activeMenu = {}
 let result = []
 let inputValue = '';
+let activeIndex = 0
 
 document.addEventListener('keydown', (ev) => {
-  console.log('ev::', ev)
   if (ev.metaKey && ev.key.toLocaleLowerCase() === 'k') {
     searchBox.classList.contains('show') ? hideSearch() : showSearch();
   }
   if (ev.key.toLocaleLowerCase() === 'enter') {
-    console.log('activeMenu:', activeMenu)
     window.location.href = getDocUrl(activeMenu.path)
   }
+  if (ev.key.toLocaleLowerCase() === 'arrowdown') {
+    activeAnchorElm('down')
+  }
+  if (ev.key.toLocaleLowerCase() === 'arrowup') {
+    activeAnchorElm('up')
+  }
 });
+
+function activeAnchorElm(type) {
+  if (type === 'down') {
+    ++activeIndex;
+  }
+  if (type === 'up') {
+    --activeIndex;
+  }
+  const data = Array.from(searchMenu.children);
+  if (activeIndex < 0) activeIndex = 0;
+  if (activeIndex >= data.length) activeIndex = data.length - 1;
+  anchorElm = data[activeIndex];
+  if (anchorElm) {
+    data.forEach(item => item.classList.remove('active'));
+    anchorElm.classList.add('active');
+    activeMenu = result[activeIndex];
+    activeIndex = activeIndex;
+    searchSectionsResult(activeIndex);
+  }
+}
 
 function showSearch() {
   document.body.classList.add('search');
   searchBox.classList.add('show');
-  searchResult('')
+  searchResult(searchInput.value || '');
   searchInput.focus();
 }
 
@@ -107,13 +132,14 @@ function searchResult(value) {
   let menuHTML = '';
   result.forEach((item, idx) => {
     const label = item.item.name.replace(getValueReg(value), (txt) => {
-      return `<mark>${txt}</mark>`
+      return `<mark>${txt}</mark>`;
     })
     const tags = (item.item.tags || []).join(',').replace(getValueReg(value), (txt) => {
-      return `<mark>${txt}</mark>`
+      return `<mark>${txt}</mark>`;
     })
     const href = isHome ? item.item.path : item.item.path.replace('docs/', '');
     if (idx === 0) {
+      activeIndex = idx;
       activeMenu = item.item;
       menuHTML += `<a href="${href}" class="active"><span>${label}</span><sup>${tags}</sup></a>`;
     } else {
@@ -122,12 +148,13 @@ function searchResult(value) {
   });
   searchMenu.innerHTML = menuHTML;
   searchSectionsResult();
-  const data = Array.from(searchMenu.children)
+  const data = Array.from(searchMenu.children);
   data.forEach((anchor, idx) => {
     anchor.onmouseenter = (evn) => {
       data.forEach(item => item.classList.remove('active'));
       evn.target.classList.add('active');
       activeMenu = result[idx];
+      activeIndex = idx;
       searchSectionsResult(idx);
     }
   });
@@ -138,23 +165,19 @@ function searchResult(value) {
 }
 function searchSectionsResult(idx = 0) {
   const data = result[idx] || [];
-  const title = (data.item?.intro || '').replace(getValueReg(inputValue), (txt) => {
-    return `<mark>${txt}</mark>`
-  });
+  const title = (data.item?.intro || '').replace(getValueReg(inputValue), (txt) => `<mark>${txt}</mark>`);
   let sectionHTML = `<h3>${title}</h3><ol>`;
   if (data && data.item && data.item.sections) {
     data.item.sections.forEach((item, idx) => {
-      const label = item.t.replace(getValueReg(inputValue), (txt) => {
-        return `<mark>${txt}</mark>`
-      })
+      const label = item.t.replace(getValueReg(inputValue), (txt) => `<mark>${txt}</mark>`);
       const href = getDocUrl(data.item.path);
       if (item.l < 3) {
-        sectionHTML += `<li><a href="${href + item.a}">${label}</a><div>`
+        sectionHTML += `<li><a href="${href + item.a}">${label}</a><div>`;
       } else {
-        sectionHTML += `<a href="${href + item.a}">${label}</a>`
+        sectionHTML += `<a href="${href + item.a}">${label}</a>`;
       }
       if (data.item.sections.length === idx + 1) {
-        sectionHTML += `</div></li>`
+        sectionHTML += `</div></li>`;
       }
     })
   }
