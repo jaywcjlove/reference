@@ -76,7 +76,7 @@ export async function run() {
     await copyCSSFile();
     await copyJSFile();
     const files = await recursiveReaddirFiles(process.cwd(), {
-      ignored: /\/(node_modules|\.git)/,
+      ignored: /[\\/](node_modules|\.git)/g,
       exclude: /(\.json|\.mjs|CONTRIBUTING\.md)$/,
       filter: (item) => item.ext === 'md',
     });
