@@ -41,7 +41,7 @@ const fuse = new Fuse(REFS_DATA, {
   matchEmptyQuery: !0,
   threshold: .1,
   keys: [
-    { name: "name", weight: 12 }, 
+    { name: "name", weight: 20 }, 
     { name: 'intro', weight: 2 }, 
     { name: 'tags', weight: 2 }, 
     { name: 'sections.t', weight: 5 }
