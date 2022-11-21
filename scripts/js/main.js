@@ -55,7 +55,9 @@ const closeBtn = document.getElementById('mysearch-close');
 const searchMenu = document.getElementById('mysearch-menu');
 const searchContent = document.getElementById('mysearch-content');
 const isHome = document.body.classList.contains('home');
-
+function getDocUrl(url = '') {
+  return isHome ? url : url.replace('docs/', '');
+}
 searchBtn.addEventListener('click', (ev) => {
   ev.preventDefault();
   showSearch();
@@ -65,14 +67,21 @@ closeBtn.addEventListener('click', hideSearch);
 searchBox.addEventListener('click', hideSearch);
 searchBox.firstChild.addEventListener('click', (ev) => ev.stopPropagation());
 searchInput.addEventListener('input', (evn) => searchResult(evn.target.value));
+
+let activeMenu = {}
+let result = []
+let inputValue = '';
+
 document.addEventListener('keydown', (ev) => {
+  console.log('ev::', ev)
   if (ev.metaKey && ev.key.toLocaleLowerCase() === 'k') {
     searchBox.classList.contains('show') ? hideSearch() : showSearch();
   }
+  if (ev.key.toLocaleLowerCase() === 'enter') {
+    console.log('activeMenu:', activeMenu)
+    window.location.href = getDocUrl(activeMenu.path)
+  }
 });
-
-let result = []
-let inputValue = '';
 
 function showSearch() {
   document.body.classList.add('search');
@@ -105,6 +114,7 @@ function searchResult(value) {
     })
     const href = isHome ? item.item.path : item.item.path.replace('docs/', '');
     if (idx === 0) {
+      activeMenu = item.item;
       menuHTML += `<a href="${href}" class="active"><span>${label}</span><sup>${tags}</sup></a>`;
     } else {
       menuHTML += `<a href="${href}"><span>${label}</span><sup>${tags}</sup></a>`;
@@ -117,6 +127,7 @@ function searchResult(value) {
     anchor.onmouseenter = (evn) => {
       data.forEach(item => item.classList.remove('active'));
       evn.target.classList.add('active');
+      activeMenu = result[idx];
       searchSectionsResult(idx);
     }
   });
@@ -125,7 +136,6 @@ function searchResult(value) {
     item.addEventListener('click', hideSearch);
   })
 }
-
 function searchSectionsResult(idx = 0) {
   const data = result[idx] || [];
   const title = (data.item?.intro || '').replace(getValueReg(inputValue), (txt) => {
@@ -137,7 +147,7 @@ function searchSectionsResult(idx = 0) {
       const label = item.t.replace(getValueReg(inputValue), (txt) => {
         return `<mark>${txt}</mark>`
       })
-      const href = isHome ? data.item.path : data.item.path.replace('docs/', '');
+      const href = getDocUrl(data.item.path);
       if (item.l < 3) {
         sectionHTML += `<li><a href="${href + item.a}">${label}</a><div>`
       } else {
