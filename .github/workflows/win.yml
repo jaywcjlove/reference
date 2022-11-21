@@ -18,3 +18,10 @@ jobs:
       - run: |
           cd ${{ github.workspace }}
           ls
+          cd dist
+          ls
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: ${{ github.workspace }}\dist\**\*
