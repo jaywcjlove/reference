@@ -68,7 +68,7 @@ var bo = false;
     用于文档 **/
 ```
 
-### Strings
+### 字符串
 
 ```cs
 string first = "John";
@@ -78,9 +78,9 @@ string name = first + " " + last;
 Console.WriteLine(name); // => John Doe
 ```
 
-查看: [Strings](#c-字符串)
+查看: [C#字符串](#c-字符串)
 
-### User Input
+### 用户输入
 
 ```cs
 Console.WriteLine("Enter number:");
@@ -92,7 +92,7 @@ if(int.TryParse(Console.ReadLine(),out int input))
 ```
 <!--rehype:className=wrap-text-->
 
-### 条件句
+### 条件判断
 
 ```cs
 int j = 10;
@@ -222,13 +222,13 @@ Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
 杂项
 -----------
 
-### 一般 .NET 条款
+### 常用 .NET 概念
 <!--rehype:wrap-class=col-span-2-->
 
-条款 | 定义
-:- | -
-Runtime | 执行给定的已编译代码单元所需的服务集合
-Common Language Runtime (CLR) | 主要定位、加载和托管 .NET 对象。<br/>CLR 还处理内存管理、应用程序托管、线程协调、执行安全检查和其他低级细节
-Managed code | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
-Unmanaged code | 直接编译为机器代码且不能由 .NET 运行时直接托管的代码。<br/>不包含空闲内存管理、垃圾收集等。从 C/C++ 创建的 DLL 就是示例
+概念 | 中文名 | 定义
+:- | -|-- 
+Runtime | 运行时 | 执行给定的已编译代码单元所需的服务集合
+Common Language Runtime (CLR) | 通用语言运行库 | 主要定位、加载和托管 .NET 对象。<br/>CLR 还处理内存管理、应用程序托管、线程协调、执行安全检查和其他低级细节
+Managed code | 托管代码 | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
+Unmanaged code | 非托管代码 | 直接编译为机器代码且不能由 .NET 运行时直接托管的代码。<br/>不包含空闲内存管理、垃圾收集等。从 C/C++ 创建的 DLL 就是示例
 <!--rehype:className=show-header-->
