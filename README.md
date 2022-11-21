@@ -38,7 +38,7 @@ Quick Reference
 [Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223);-->
 [C](./docs/c.md)<!--rehype:style=background: rgb(92 107 192);-->
 [C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->
-[CPP](./docs/cpp.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->
+[C++](./docs/cpp.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->
 [Dart](./docs/dart.md)<!--rehype:style=background: rgb(64 196 255);-->
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223);-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->
