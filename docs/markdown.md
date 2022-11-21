@@ -167,8 +167,8 @@ console.log("This is a block code")
 简单的风格
 
 ```markdown
- 左栏 | 中间栏 | 右栏
-:-------: | :-------:|:-------:
+左栏 | 中间栏 | 右栏
+:--- | ---- | ----
 单元格 1   | 居中      |    $1600
 单元格 2   | 单元格 3  |     $12
 ```
@@ -222,18 +222,18 @@ Markdown 表格生成器：[tableconvert.com](https://tableconvert.com/)
 
 | 字符 | 转义 | 描述 |
 |------------|--------|-------------|
-| \\         | \\\\   | backslash 反斜杠             |
-| \`         | \\\`   | backtick 反引号              |
-| \*         | \\\*   | asterisk 星号                |
-| \_         | \\\_   | underscore 下划线            |
-| \{\}       | \\\{\} | curly braces 花括号          |
-| \[\]       | \\\[\] | square brackets 方括号       |
-| \(\)       | \\\(\) | parentheses 圆括号           |
-| \#         | \\\#   | hash mark 哈希标记           |
-| \+         | \\\+   | plus sign 加号               |
-| \-         | \\\-   | minus sign \(hyphen\) 减号(连字符) |
-| \.         | \\\.   | dot 点                      |
-| \!         | \\\!   | exclamation mark 感叹号      |
+| <pur>\\</pur>         | \\\\   | backslash 反斜杠             |
+| <pur>\`</pur>         | \\\`   | backtick 反引号              |
+| <pur>\*</pur>         | \\\*   | asterisk 星号                |
+| <pur>\_</pur>         | \\\_   | underscore 下划线            |
+| <pur>\{\}</pur>       | \\\{\} | curly braces 花括号          |
+| <pur>\[\]</pur>       | \\\[\] | square brackets 方括号       |
+| <pur>\(\)</pur>       | \\\(\) | parentheses 圆括号           |
+| <pur>\#</pur>         | \\\#   | hash mark 哈希标记           |
+| <pur>\+</pur>         | \\\+   | plus sign 加号               |
+| <pur>\-</pur>         | \\\-   | minus sign \(hyphen\) 减号(连字符) |
+| <pur>\.</pur>         | \\\.   | dot 点                      |
+| <pur>\!</pur>         | \\\!   | exclamation mark 感叹号      |
 
 ### 行内 HTML 元素
 <!--rehype:wrap-class=col-span-2-->
