@@ -928,7 +928,59 @@ Host github.com
 ```
 <!--rehype:className=wrap-text-->
 
+Conventional Commmits
+----
+
+### 格式
+<!--rehype:wrap-class=col-span-3-->
+
+```text
+<type>(<scope>): <short summary>
+  │       │             │
+  │       │             └─⫸ 紧凑简短的描述，无需大写，也不需要用句号结尾
+  │       │
+  │       └─⫸ Commit 范围: animations|bazel|benchpress|common|compiler|compiler-cli|core|
+  │                          elements|forms|http|language-service|localize|platform-browser|
+  │                          platform-browser-dynamic|platform-server|router|service-worker|
+  │                          upgrade|zone.js|packaging|changelog|docs-infra|migrations|ngcc|ve|
+  │                          devtools....
+  │
+  └─⫸ Commit 类型: build|ci|doc|docs|feat|fix|perf|refactor|test
+                    website|chore|style|type|revert
+```
+
+### 常用
+<!--rehype:wrap-class=row-span-1-->
+
+|   类型   |  描述 |
+| ----------|------------ |
+| `feat:`   | 新特性     |
+| `fix(scope):`   | 修复 scope 中的 Bug |
+| `feat!:` / `feat(scope)!:` | breaking change /  重构 API |
+| `chore(deps):` | 更新依赖 |
+<!--rehype:className=left-align-->
+
+### Commit 类型
+<!--rehype:wrap-class=col-span-2-->
+
+|   类型   |  描述 |
+| ----------|------------ |
+| `build:` | 变更影响的是**构建系统**或者**外部依赖** (如: gulp, npm) |
+| `ci:` | 修改了 CI 配置文件或脚本 (如: Github Action, Travis) |
+| `chore:` | **【重要】** 变更不影响源代码或测试（如更新了辅助工具、库等) |
+| `docs:` | 只修改了文档 |
+| `feat:` | **【重要】** 一个新特性 |
+| `fix:` | **【重要】** 修复了一个 Bug |
+| `perf:` | 增强性能的代码变更 |
+| `refactor:` | 并非修复 Bug 或添加新特性的代码变更 |
+| `revert:` | 回退代码 |
+| `style:` | 变更不影响一些有意义的代码 (如: 删除空格、格式化代码、添加分号等) |
+| `test:` | 添加测试代码或修正已有的测试 |
+<!--rehype:className=left-align-->
+
 另见
 ---
 
 - [最常用的 git 提示和技巧](https://github.com/git-tips/tips)
+- [Conventional Commits 官方网站](https://www.conventionalcommits.org/zh-hans/v1.0.0/) _(conventionalcommits.org)_
+- [Conventional Commits Cheatsheet](https://gist.github.com/Zekfad/f51cb06ac76e2457f11c80ed705c95a3) _(gist.github.com)_
