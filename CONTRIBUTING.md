@@ -160,6 +160,9 @@ REF_LABEL=网站首页
 <a href="https://github.com/expoli" title="expoli">
   <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
 </a>
+<a href="https://github.com/jasnzhuang" title="Jason Zhuang">
+  <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
+</a>
 <a href="https://github.com/JeffersonHuang" title="Jefferson">
   <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson"/>
 </a>
@@ -192,9 +195,6 @@ REF_LABEL=网站首页
 </a>
 <a href="https://github.com/demigodliu" title="DemigodLiu">
   <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
-</a>
-<a href="https://github.com/jasnzhuang" title="Jason Zhuang">
-  <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
 </a>
 <a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
