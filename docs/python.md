@@ -10,7 +10,7 @@ Python 备忘单是 [Python 3](https://www.python.org/) 编程语言的单页参
 
 - [Python](https://www.python.org/)  _(python.org)_
 - [Learn X in Y minutes](https://learnxinyminutes.com/docs/python/) _(learnxinyminutes.com)_
-- [Regex in python](./regex.md#python-中的正则表达式) _(quickref.me)_
+- [Regex in python](./regex.md#python-中的正则表达式) _(jaywcjlove.github.io)_
 
 ### Hello World
 
@@ -144,9 +144,9 @@ message += "Part 2."
 ### f-字符串(Python 3.6+)
 
 ```python
->>> website = 'Quickref.ME'
+>>> website = 'Quick Reference'
 >>> f"Hello, {website}"
-"Hello, Quickref.ME"
+"Hello, Quick Reference"
 >>> num = 10
 >>> f'{num} + 10 = {num + 10}'
 '10 + 10 = 20'
@@ -1238,4 +1238,4 @@ finally:                 # 在所有情况下执行
 
 - [Python](https://www.python.org/)  _(python.org)_
 - [Learn X in Y minutes](https://learnxinyminutes.com/docs/python/) _(learnxinyminutes.com)_
-- [Regex in python](./regex.md#python-中的正则表达式) _(quickref.me)_
+- [Regex in python](./regex.md#python-中的正则表达式) _(jaywcjlove.github.io)_

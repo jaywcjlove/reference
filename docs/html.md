@@ -855,7 +855,7 @@ meta 标记描述 HTML 文档中的元数据。它解释了关于 HTML 的其他
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_CA">
 <meta property="og:title" content="HTML cheatsheet">
-<meta property="og:url" content="https://quickref.me/html">
+<meta property="og:url" content="https://jaywcjlove.github.io/">
 <meta property="og:image" content="https://xxx.com/image.jpg">
 <meta property="og:site_name" content="Name of your website">
 <meta property="og:description" content="Description of this page">
@@ -869,7 +869,7 @@ Facebook、Instagram、Pinterest、LinkedIn 等使用。
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@QuickRef_ME">
 <meta name="twitter:title" content="HTML cheatsheet">
-<meta name="twitter:url" content="https://quickref.me/html">
+<meta name="twitter:url" content="https://jaywcjlove.github.io/">
 <meta name="twitter:description" content="Description of this page">
 <meta name="twitter:image" content="https://xxx.com/image.jpg">
 ```

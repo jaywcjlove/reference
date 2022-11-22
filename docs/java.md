@@ -35,7 +35,7 @@ int num = 5;
 float floatNum = 5.99f;
 char letter = 'D';
 boolean bool = true;
-String site = "quickref.me";
+String site = "jaywcjlove.github.io";
 ```
 
 ### 原始数据类型

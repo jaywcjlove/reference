@@ -64,8 +64,8 @@ JSON 备忘清单
 
 ```json
 {
-  "url": "https://quickref.me",
-  "msg" : "Hi,\n\"QuickRef.ME\"",
+  "url": "https://jaywcjlove.github.io",
+  "msg" : "Hi,\n\"Quick Reference\"",
   "intro": "Share quick reference and cheat sheet for developers."
 }
 ```
