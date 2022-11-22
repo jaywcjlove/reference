@@ -6,6 +6,35 @@ Rust 快速参考备忘单，旨在为编写基本语法和方法提供帮助。
 入门
 ---
 
+### 配置 vscode 调试
+<!--rehype:wrap-class=row-span-2-->
+
+[配置参考](https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#source-path-remapping)。下载 CodeLLDB，选择 rust 自动生成 launch.json 文件
+
+```json
+{
+  "configurations": [
+    // 添加一下行，使 vec/hashmap 等类型显示正常
+    "sourceLanguages": ["rust"]
+  ]
+}
+```
+<!--rehype:className=wrap-text -->
+
+----
+
+将编译文件与标准库的位置进行映射
+
+```json
+{
+  "lldb.launch.sourceMap": {
+    // 你自己的映射 hash 和映射路径
+    "/rustc/4b91a6ea7258a947e59c6522cd5898e7c0a6a88f": "/Users/feiwu/.rustup/toolchains/stable-aarch64-apple-darwin/lib/rustlib/src/rust"
+  }
+}
+```
+<!--rehype:className=wrap-text -->
+
 ### Hello_World.rs
 
 ```rust
@@ -477,6 +506,7 @@ fn main(){
     };
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ### 枚举的变体
 
@@ -491,6 +521,7 @@ fn main() {
   let loopback = IpAddrKind::V6(String::from("::1"));
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
@@ -508,6 +539,7 @@ fn main(){
   let c = Message::ChangeColor(10, 20, 30);
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ### 模式匹配结构体
 
@@ -534,6 +566,7 @@ fn main() {
     subject_grade(Subject::Math(Grade::A));
 }
 ```
+<!--rehype:className=wrap-text -->
 
 Rust 运算符
 -----------
@@ -738,13 +771,13 @@ match 模式匹配，使用 `a | b` 表示匹配 a **或** b，使用 `_`，表�
 
 ```rust
 fn main(){
-    let grade = Grade::A;
-    match grade {
-        Grade::A => println!("Good"),
-        Grade::B => println!("Not bad"),
-        Grade::C | Grade::D => println!("Come on"),
-        _ => println!("emmm"),
-    }
+  let grade = Grade::A;
+  match grade {
+    Grade::A => println!("Good"),
+    Grade::B => println!("Not bad"),
+    Grade::C | Grade::D => println!("Come on"),
+    _ => println!("emmm"),
+  }
 }
 
 enum Grade {
@@ -756,6 +789,7 @@ enum Grade {
     F,
 }
 ```
+<!--rehype:className=wrap-text -->
 
 #### `matches!` 宏
 
@@ -765,6 +799,7 @@ enum Grade {
 assert!(matches!('x' ',A'..='Z' | 'a'..='z'));
 assert!(matches!(Some(101), Some(x) if x > 100));
 ```
+<!--rehype:className=wrap-text -->
 
 ### if let 匹配
 
@@ -773,10 +808,11 @@ match 表达式需要匹配所有的枚举才能结束，但通常我们只需�
 ```rust
 let x = 3;
 match Some(x) {
-    Some(3) => println!("I guess that x is 3"),
-    _ => ()
+  Some(3) => println!("I guess that x is 3"),
+  _ => ()
 }
 ```
+<!--rehype:className=wrap-text -->
 
 使用 `if let`
 
@@ -808,6 +844,7 @@ while let Some(top) = stack.pop() {
 ```rust
 for (i, v) in collection.iter().enumerate(){}
 ```
+<!--rehype:className=wrap-text -->
 
 #### let
 
@@ -846,6 +883,7 @@ match origin {
     Point { x, .. } => println!("x is {}", x),
 }
 ```
+<!--rehype:className=wrap-text -->
 
 #### 使用 `_` 忽略部分参数
 
@@ -858,6 +896,7 @@ match hello {
     },
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ### 匹配命名变量
 
@@ -884,6 +923,7 @@ match grade {
     _ => println!("Come on"),
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
@@ -899,6 +939,7 @@ fn main(){
     println!("{:?}", p);
 }
 ```
+<!--rehype:className=wrap-text -->
 
 ----
 
@@ -923,6 +964,7 @@ match x {
     _ => println!("No match"),
 }// y = 2
 ```
+<!--rehype:className=wrap-text -->
 
 Rust 函数
 --------
@@ -981,8 +1023,107 @@ fn dead_end() -> ! {
     panic!("panic!!!!!");
 }
 ```
-
 <!--rehype:className=wrap-text -->
+
+惯用转换
+-----
+
+### &str -> String
+
+```rust
+String::from("str");
+"str".to_string();
+"str".to_owned();
+```
+
+### &str -> &[u8]
+
+```rust
+"str".as_bytes();
+```
+
+或者你也可以使用 `b""`
+
+```rust
+println!("{:?}", b"str");
+```
+
+### &str -> Vec<u8>
+
+```rust
+"str".as_bytes().to_vec();
+"str".as_bytes().to_owned();
+```
+
+### String -> &str
+
+```rust
+let s = String::from("str");
+let r = s.as_str();
+```
+
+### String -> &[u8]
+
+```rust
+let s = String::from("str");
+let v = s.as_bytes();
+```
+
+### String -> Vec<u8>
+
+```rust
+let s = String::from("str");
+let v = s.into_bytes();
+```
+
+### &[u8] -> &str
+
+```rust
+let b = "str".as_bytes();
+let str = std::str::from_utf8(b).unwrap();
+```
+
+### &[u8] -> String
+
+```rust
+let b = "str".as_bytes();
+let str = String::from_utf8(b.to_vec()).unwrap();
+```
+
+### &[u8] -> Vec<u8>
+
+```rust
+let b = "str".as_bytes();
+let str = b.to_vec();
+```
+
+----
+
+```rust
+let b = "str".as_bytes();
+let str = b.to_owned();
+```
+
+### Vec<u8> -> &str
+
+```rust
+let b = "str".as_bytes().to_vec();
+let s = std::str::from_utf8(&b).unwrap();
+```
+
+### Vec<u8> -> &[u8]
+
+```rust
+let b = "str".as_bytes().to_vec();
+let s = b.as_slice();
+```
+
+### Vec<u8> -> String
+
+```rust
+let b = "str".as_bytes().to_vec();
+let s = String::from_utf8(b).unwrap();
+```
 
 杂项
 -----

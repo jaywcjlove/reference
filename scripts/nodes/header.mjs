@@ -1,12 +1,67 @@
 import path from 'path';
-import { github, editor } from './logo.mjs';
+import * as dotenv from 'dotenv';
+import { github, editor, home } from './logo.mjs';
 import { getSVGNode } from '../utils/getSVGNode.mjs';
 import { darkMode } from '../utils/darkMode.mjs';
 
+dotenv.config();
+
 const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets/quickreference.svg');
-export function header({ homePath, githubURL = '' }) {
+const ICONS_SEARCH_PATH = path.resolve(process.cwd(), 'scripts/assets/search.svg');
+
+export function getReferrals() {
+  const url = process.env.REF_URL;
+  const label = process.env.REF_LABEL;
+  if (!url || !label) return [];
+  return [
+    {
+      menu: true,
+      href: url,
+      target: '__blank',
+      label: label,
+      children: [home],
+    },
+  ];
+}
+
+export function header({ homePath, githubURL = '', isHome } = {}) {
   const svgNode = getSVGNode(ICONS_PATH);
+  const svgSearchNode = getSVGNode(ICONS_SEARCH_PATH);
   const data = [
+    {
+      menu: true,
+      href: 'javascript:void(0);',
+      class: ['searchbtn'],
+      id: 'searchbtn',
+      children: [
+        ...svgSearchNode,
+        {
+          type: 'element',
+          tagName: 'span',
+          children: [
+            {
+              type: 'text',
+              value: '搜索',
+            },
+          ],
+        },
+        {
+          type: 'element',
+          tagName: 'span',
+          children: [
+            {
+              type: 'text',
+              value: '⌘',
+            },
+            {
+              type: 'text',
+              value: 'K',
+            },
+          ],
+        },
+      ],
+    },
+    ...getReferrals(),
     {
       menu: true,
       href: githubURL,
@@ -14,7 +69,7 @@ export function header({ homePath, githubURL = '' }) {
       label: '编辑',
       children: [editor],
     },
-    ...darkMode(),
+    ...darkMode({ homePath, isHome }),
     {
       menu: true,
       href: 'https://github.com/jaywcjlove/reference',

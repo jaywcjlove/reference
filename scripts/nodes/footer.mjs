@@ -1,5 +1,13 @@
+import formatter from '@uiw/formatter';
 
-export function footer() {
+export function footer({ isHome } = {}) {
+  let footerText = '© 2022 Kenny Wang.';
+  if (isHome) {
+    const now = new Date();
+    const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+    const cst = new Date(utc + 3600000 * 8);
+    footerText += ` Updated on ${formatter('YYYY/MM/DD HH:mm:ss', cst)}`;
+  }
   return {
     type: 'element',
     tagName: 'footer',
@@ -13,10 +21,8 @@ export function footer() {
         properties: {
           class: ['max-container'],
         },
-        children: [
-          { type: 'text', value: '© 2022 Kenny Wang, All rights reserved.' }
-        ],
-      }
+        children: [{ type: 'text', value: footerText }],
+      },
     ],
   };
 }

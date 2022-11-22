@@ -21,6 +21,7 @@ npm 备忘清单
 `npm install <package_name>@<tag>` | 使用 `dist-tags` 安装包
 `npm install -g <package_name>`    | 全局安装包
 `npm uninstall <package_name>`     | 卸载包
+`npm uninstall -g <package_name>`  | 全局卸载包
 <!--rehype:class=auto-wrap-->
 
 ### 安装
@@ -154,6 +155,47 @@ $ nrm ls
 $ nrm use cnpm       
 ```
 
+### init
+
+用于设置新的或现有的 `npm` 包
+
+```bash
+$ npm init <package-spec> # (如同 `npx <package-spec>)
+$ npm init <@scope>       # (如同 `npx <@scope>/create`)
+```
+
+别名: `create`, `innit`
+
+:- | --
+:- | --
+`npm init foo` | `npm exec create-foo`
+`npm init @usr/foo` | `npm exec @usr/create-foo`
+`npm init @usr` | `npm exec @usr/create`
+`npm init @usr@2.0.0` | `npm exec @usr/create@2.0.0`
+`npm init @usr/foo@2.0.0` | `npm exec @usr/create-foo@2.0.0`
+<!--rehype:className=left-align-->
+
+### exec
+
+命令允许您在与通过 `npm run` 运行它类似的上下文中从 npm 包
+
+```bash
+$ npm exec -- <pkg>[@<version>] [args...]
+$ npm exec --package=<pkg>[@<version>] -- <cmd> [args...]
+$ npm exec -c '<cmd> [args...]'
+$ npm exec --package=foo -c '<cmd> [args...]'
+```
+
+别名: x
+
+```bash
+$ npm exec --package yo --package generator-node --call "yo node"
+
+$ npm exec --package=foo -- bar --bar-argument
+# ~ or ~
+$ npx --package=foo bar --bar-argument
+```
+
 npx
 ---
 
@@ -248,7 +290,7 @@ $ npx react-native init AwesomeTSProject --template react-native-template-typesc
 ```
 <!--rehype:className=wrap-text-->
 
-使用 `npx` 直接创建一个  [React Native]((https://reactnative.dev/docs/environment-setup#creating-a-new-application)) 应用
+使用 `npx` 直接创建一个  [React Native](https://reactnative.dev/docs/environment-setup#creating-a-new-application) 应用
 
 ### 创建一个 React 应用
 
@@ -398,4 +440,4 @@ ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-
 
 - [npm 仓库、网站和命令行界面的文档](https://docs.npmjs.com/) _(npmjs.com)_
 - [npmmirror 中国镜像站](https://npmmirror.com/) _(npmmirror.com)_
-- [](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/package-managers/javascript/npm/commands/npx.html) _(michaelcurrin.github.io)_
+- [Dev Cheatsheets npx](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/package-managers/javascript/npm/commands/npx.html) _(michaelcurrin.github.io)_

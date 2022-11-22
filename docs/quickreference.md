@@ -37,9 +37,9 @@ npm run start # 监听 md 文件编译输出 HTML
 ├── CONTRIBUTING.md   # 贡献说明
 ├── Dockerfile
 ├── LICENSE
-├── README.md   # Home(首页) 内容
-├── dist        # 编译后的静态资源目录
-├── docs        # Markdown 文档（速查表）
+├── README.md  # 🌐 Home(首页)内容
+├── dist       # 📦 编译后的静态资源目录
+├── docs       # 👈 Markdown 文档(速查表)
 │   ├── bash.md
 │   ├── ....
 │   └── yaml.md
@@ -337,16 +337,16 @@ const school = <div>学校</div>;
 
 类 | 说明
 ---- | ----
-`<!--rehype:className=wrap-text-->` | 强制换行
-`<!--rehype:className=show-header-->` | 展示表格表头
-`<!--rehype:className=shortcuts-->` | 快捷键样式
-`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸自动换行
-`<!--rehype:className=style-list-arrow-->` | 列表箭头样式展示表格
-`<!--rehype:className=style-list-->` | 列表样式展示表格
-`<!--rehype:className=left-align-->` | 表格末尾列左对齐
-`<!--rehype:className=style-none-->` | \<li> 没有标记
-`<!--rehype:className=style-timeline-->` | 时间轴样式
-`<!--rehype:className=style-arrow-->` | 箭头标记
+`<!--rehype:className=wrap-text-->` | 强制`换行`
+`<!--rehype:className=show-header-->` | 展示表格`表头`
+`<!--rehype:className=shortcuts-->` | `快捷键`样式
+`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸`自动换行`
+`<!--rehype:className=style-list-arrow-->` | 列表`箭头`样式展示表格
+`<!--rehype:className=style-list-->` | `列表`样式展示表格
+`<!--rehype:className=left-align-->` | 表格末尾列`左对齐`
+`<!--rehype:className=style-none-->` | \<li> 没有标记样式
+`<!--rehype:className=style-timeline-->` | `时间轴`样式
+`<!--rehype:className=style-arrow-->` | `箭头`标记
 
 ### KaTeX 数学渲染
 
@@ -433,17 +433,20 @@ H2 部分
 ### 卡片 3 (H3 部分)
 ```
 
-类 | 说明
----- | ----
+---
+
+:-- | --
+:-- | --
+合并 **列** 布局 |
 `col-span-2` | `2` 列占位
 `col-span-3` | `3` 列占位
 `col-span-4` | `4` 列占位
-`col-span-5` | `5` 列占位
+`col-span-{2~10}` | `{2~10}` 列占位
+合并 **行** 布局 |
 `row-span-2` | `2` 行占位
 `row-span-3` | `3` 行占位
 `row-span-4` | `4` 行占位
-`row-span-5` | `5` 行占位
-<!--rehype:className=show-header -->
+`row-span-{2~10}` | `{2~10}` 行占位
 
 ### 卡片合并行布局 1
 
@@ -762,7 +765,7 @@ H2 部分
 列表
 ---
 
-### 一栏（默认）
+### 一栏(默认)
 
 - Item 1
 - Item 2
@@ -881,7 +884,7 @@ H3 部分 - 占位效果展示
 <!--rehype:wrap-class=row-span-2-->
 
 ```
-...
+...合并两行
 ```
 
 `<!--rehype:wrap-class=row-span-2-->`
@@ -890,7 +893,7 @@ H3 部分 - 占位效果展示
 <!--rehype:wrap-class=col-span-2-->
 
 ```
-...
+...合并两列
 ```
 
 `<!--rehype:wrap-class=col-span-2-->`
@@ -899,7 +902,7 @@ H3 部分 - 占位效果展示
 <!--rehype:style=background:#e91e63;-->
 
 ```
-...
+...红色标题配置
 ```
 
 `<!--rehype:style=background:#e91e63;-->`
@@ -908,7 +911,7 @@ H3 部分 - 占位效果展示
 <!--rehype:style=background:#d7a100;-->
 
 ```
-...
+...黄色标题配置
 ```
 
 `<!--rehype:style=background:#d7a100;-->`

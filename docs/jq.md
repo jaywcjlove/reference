@@ -229,6 +229,25 @@ $ echo '42' | jq '"The input was \(.), which is one less than \(.+1)"'
 ```
 <!--rehype:className=wrap-text -->
 
+### 字符串转 JSON 数组
+
+```bash
+$ echo 'a b c d' | jq -R 'split(" ")'
+```
+<!--rehype:className=wrap-text -->
+
+输出结果
+
+```json
+[
+  "a",
+  "b",
+  "c",
+  "d"
+]
+```
+<!--rehype:className=wrap-text -->
+
 另见
 ----
 

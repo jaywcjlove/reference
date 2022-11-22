@@ -1,0 +1,27 @@
+name: Win CI
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: npm install
+      - run: npm run build
+      - run: |
+          cd ${{ github.workspace }}
+          ls
+          cd dist
+          ls
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: ${{ github.workspace }}\dist\**\*

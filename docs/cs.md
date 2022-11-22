@@ -68,7 +68,7 @@ var bo = false;
     用于文档 **/
 ```
 
-### Strings
+### 字符串
 
 ```cs
 string first = "John";
@@ -78,11 +78,11 @@ string name = first + " " + last;
 Console.WriteLine(name); // => John Doe
 ```
 
-查看: [Strings](#c-字符串)
+查看: [C#字符串](#c-字符串)
 
-### User Input
+### 用户输入
 
-```cs
+```cs showLineNumbers
 Console.WriteLine("Enter number:");
 if(int.TryParse(Console.ReadLine(),out int input))
 {
@@ -90,9 +90,8 @@ if(int.TryParse(Console.ReadLine(),out int input))
   Console.WriteLine($"You entered {input}");
 }
 ```
-<!--rehype:className=wrap-text-->
 
-### 条件句
+### 条件判断
 
 ```cs
 int j = 10;
@@ -170,7 +169,7 @@ Console.WriteLine(name); // => John Doe
 
 ### 逐字字符串
 
-```cs
+```cs showLineNumbers
 string longString = @"I can type any characters in here !#@$%^&*()__+ '' \n \t except double quotes and I will be taken literally. I even work with multiple lines.";
 ```
 <!--rehype:className=wrap-text-->
@@ -185,16 +184,45 @@ lengthOfString.Length           // => 9
 lengthOfString.Contains("How"); // => true
 ```
 
+### 频繁字符串拼接
+
+```cs
+var sb = new StringBuilder();
+for (int i = 0; i < 100; i++)
+{
+    sb.Append(i.ToString());
+}
+Console.WriteLine(sb.ToString());
+// => 123456789....
+```
+
+对于频繁拼接字符串的场景（如：成百上千次循环），使用 `System.Text.StringBuilder` 提升性能
+
+### 原始字符串文本
+<!--rehype:wrap-class=col-span-2-->
+
+```cs
+// C#11 语法, 至少3个双引号(""")开头和结尾，内容可以输入任何原始字符
+// 单行: 左引号，右引号，内容 三者同行
+string singleLine = """Content begin "Hello World!" end.""";
+
+// 多行：左引号，右引号各一行，内容需与右引号缩进对齐
+string multiLine = """
+    Content begin "Hello World!" /\n<>"" end.
+    """;
+Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
+```
+
 杂项
 -----------
 
-### 一般 .NET 条款
-<!--rehype:wrap-class=col-span-2-->
+### 常用 .NET 概念
+<!--rehype:wrap-class=col-span-3-->
 
-条款 | 定义
-:- | -
-Runtime | 执行给定的已编译代码单元所需的服务集合
-Common Language Runtime (CLR) | 主要定位、加载和托管 .NET 对象。<br/>CLR 还处理内存管理、应用程序托管、线程协调、执行安全检查和其他低级细节
-Managed code | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
-Unmanaged code | 直接编译为机器代码且不能由 .NET 运行时直接托管的代码。<br/>不包含空闲内存管理、垃圾收集等。从 C/C++ 创建的 DLL 就是示例
+概念 | 中文名 | 定义
+:- | -|--
+Runtime | 运行时 | 执行给定的已编译代码单元所需的服务集合
+Common Language Runtime (CLR) | 通用语言运行库 | 主要定位、加载和托管 .NET 对象。<br/>CLR 还处理内存管理、应用程序托管、线程协调、执行安全检查和其他低级细节
+Managed code | 托管代码 | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
+Unmanaged code | 非托管代码 | 直接编译为机器代码且不能由 .NET 运行时直接托管的代码。<br/>不包含空闲内存管理、垃圾收集等。从 C/C++ 创建的 DLL 就是示例
 <!--rehype:className=show-header-->

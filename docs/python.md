@@ -336,7 +336,7 @@ o
 'baco'
 ```
 
-#### 迈着大步
+#### 步长
 
 ```python
 >>> s = '12345' * 5
@@ -1224,7 +1224,7 @@ try:
     # 使用“raise”来引发错误
     raise IndexError("这是一个索引错误")
 except IndexError as e:
-    pass                 # 通行证只是一个空操作。 通常你会在这里做恢复。
+    pass                 # pass只是一个空操作。 通常你会在这里做恢复。
 except (TypeError, NameError):
     pass                 # 如果需要，可以一起处理多个异常。
 else:                    # try/except 块的可选子句。 必须遵循除块之外的所有内容
