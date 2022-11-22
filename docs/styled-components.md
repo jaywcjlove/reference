@@ -1,4 +1,4 @@
-styled-components 备忘清单
+Styled Components 备忘清单
 ====
 
 此快速参考备忘单提供了使用 CSS in JS 工具的各种方法。
