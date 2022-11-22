@@ -1,10 +1,28 @@
 import path from 'path';
-import { github, editor } from './logo.mjs';
+import * as dotenv from 'dotenv';
+import { github, editor, home } from './logo.mjs';
 import { getSVGNode } from '../utils/getSVGNode.mjs';
 import { darkMode } from '../utils/darkMode.mjs';
 
+dotenv.config();
+
 const ICONS_PATH = path.resolve(process.cwd(), 'scripts/assets/quickreference.svg');
 const ICONS_SEARCH_PATH = path.resolve(process.cwd(), 'scripts/assets/search.svg');
+
+export function getReferrals() {
+  const url = process.env.REF_URL;
+  const label = process.env.REF_LABEL;
+  if (!url || !label) return [];
+  return [
+    {
+      menu: true,
+      href: url,
+      target: '__blank',
+      label: label,
+      children: [home],
+    },
+  ];
+}
 
 export function header({ homePath, githubURL = '', isHome } = {}) {
   const svgNode = getSVGNode(ICONS_PATH);
@@ -43,6 +61,7 @@ export function header({ homePath, githubURL = '', isHome } = {}) {
         },
       ],
     },
+    ...getReferrals(),
     {
       menu: true,
       href: githubURL,
