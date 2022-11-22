@@ -1,7 +1,8 @@
 Git 备忘清单
 ===
 
-本备忘单总结了常用的 [Git](https://git-scm.com/) 命令行指令，以供快速参考。
+本备忘单总结了常用的 [Git](https://git-scm.com/) 命令行指令，以供快速参考。其中<>表示必备参数，是必须被替换的占位；[]表示可选参数；{}表示一组必须的项目，必须要在{a|b|c}内给出的选择里选一个。
+
 
 入门
 ----
@@ -11,7 +12,7 @@ Git 备忘清单
 创建一个新的本地存储库
 
 ```shell
-$ git init [项目名称]
+$ git init <项目名称>
 ```
 
 克隆存储库(代码仓库)
@@ -23,13 +24,13 @@ $ git clone <git_url>
 将存储库克隆到指定目录
 
 ```shell
-$ git clone <git_url> 指定目录
+$ git clone <git_url> [指定目录]
 ```
 
 将存储库克隆到指定目录，并指定分支
 
 ```shell
-$ git clone <git_url> -b <分支名称> 指定目录
+$ git clone <git_url> -b <分支名称> [指定目录]
 ```
 
 ### 做出改变
@@ -44,7 +45,7 @@ $ git status
 暂存文件，准备提交
 
 ```shell
-$ git add [file]
+$ git add <file>
 ```
 
 暂存**所有**更改的文件，准备提交
@@ -92,7 +93,7 @@ $ git diff --staged
 在指定分支之前应用当前分支的任何提交
 
 ```shell
-$ git rebase [branch]
+$ git rebase <branch>
 ```
 
 ### 配置
@@ -101,13 +102,13 @@ $ git rebase [branch]
 设置将附加到您的提交和标签的名称
 
 ```shell
-$ git config --global user.name "name"
+$ git config --global user.name "你的用户名"
 ```
 
 设置将附加到您的提交和标签 tags 的**电子邮件地址**
 
 ```shell
-$ git config --global user.email "email"
+$ git config --global user.email "你的电子邮件地址"
 ```
 
 启用 Git 输出的一些着色
@@ -128,10 +129,10 @@ $ git config --global --edit
 $ git config --list
 ```
 
-删除全局设置
+删除全局设置中的entry-name项目
 
 ```bash
-$ git config --global --unset <entry-name>
+$ git config --global --unset entry-name
 ```
 
 ### 使用分支
