@@ -25,6 +25,7 @@ export function create(str = '', options = {}) {
   description = (description[0] || '')
     .replace(/^\n[=\n]+/, '')
     .replace(/\[([\s\S]*?)?\]\(([\s\S]*?)?\)/g, '$1')
+    .replace(/<!--([\s\S]*?)-->/gi, '')
     .replace(/\n/, '');
   const subTitle = options.filename && !options.isHome ? `${options.filename} cheatsheet & ` : '';
   /** 用于搜索数据 */
