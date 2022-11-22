@@ -93,39 +93,92 @@ jobs:
             http://localhost:9667/
             ```
 
-      # Create Docker Image in Github
-      - name: Login to GitHub registry
-        run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Build docker image
-        run: docker build -t ghcr.io/jaywcjlove/reference:latest .
-
-      - name: Publish to GitHub registry
-        run: docker push ghcr.io/jaywcjlove/reference:latest
-
-      - name: Tag docker image (beta) and publish to GitHub registry
-        if: steps.create_tag.outputs.successful
-        run: |
-          echo "version: v${{ steps.changelog.outputs.version }}"
-          docker tag ghcr.io/jaywcjlove/reference:latest ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
-          docker push ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
-
       # Create Docker Image
-      - name: Docker login
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-        
-      - name: Build reference image
-        run: docker image build -t reference .
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Tags & Push image(latest)
-        run: |
-          echo "DOCKER_USER: ${{ secrets.DOCKER_USER }}"
-          docker tag reference ${{ secrets.DOCKER_USER }}/reference:latest
-          docker push ${{ secrets.DOCKER_USER }}/reference:latest
+      - name: Build and push image:latest
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          context: .
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ secrets.DOCKER_USER }}/reference:latest
 
-      - name: Tags & Push image
+      - name: Build and push image:tags
+        uses: docker/build-push-action@v3
         if: steps.create_tag.outputs.successful
-        run: |
-          echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
-          docker tag reference ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
-          docker push ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
+        with:
+          push: true
+          context: .
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
+
+      # Create Docker Image in Github
+      - name: Login to the GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image:latest
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          context: .
+          platforms: linux/amd64,linux/arm64
+          tags: ghcr.io/jaywcjlove/reference:latest
+
+      - name: Build and push image:tags
+        uses: docker/build-push-action@v3
+        if: steps.create_tag.outputs.successful
+        with:
+          push: true
+          context: .
+          platforms: linux/amd64,linux/arm64
+          tags: ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+
+
+
+      # # Create Docker Image in Github
+      # - name: Login to GitHub registry
+      #   run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      # - name: Build docker image
+      #   run: docker build -t ghcr.io/jaywcjlove/reference:latest .
+
+      # - name: Publish to GitHub registry
+      #   run: docker push ghcr.io/jaywcjlove/reference:latest
+
+      # - name: Tag docker image (beta) and publish to GitHub registry
+      #   if: steps.create_tag.outputs.successful
+      #   run: |
+      #     echo "version: v${{ steps.changelog.outputs.version }}"
+      #     docker tag ghcr.io/jaywcjlove/reference:latest ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+      #     docker push ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+
+      # # Create Docker Image
+      # - name: Docker login
+      #   run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+        
+      # - name: Build reference image
+      #   run: docker image build -t reference .
+
+      # - name: Tags & Push image(latest)
+      #   run: |
+      #     echo "DOCKER_USER: ${{ secrets.DOCKER_USER }}"
+      #     docker tag reference ${{ secrets.DOCKER_USER }}/reference:latest
+      #     docker push ${{ secrets.DOCKER_USER }}/reference:latest
+
+      # - name: Tags & Push image
+      #   if: steps.create_tag.outputs.successful
+      #   run: |
+      #     echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
+      #     docker tag reference ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
+      #     docker push ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
