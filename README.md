@@ -29,8 +29,9 @@ Quick Reference
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->
 [NestJS](./docs/nestjs.md)<!--rehype:style=background: rgb(237 21 67);&class=contributing-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->
-[Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->
+[Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);&class=contributing tag&data-lang=SQL-->
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->
+[Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -56,6 +57,7 @@ Quick Reference
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156);-->
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(1 117 143);&class=tag&data-lang=SQL-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->
+[Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);-->
 [PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147);-->
 [Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132);-->
 [PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163);&class=tag&data-lang=SQL-->
