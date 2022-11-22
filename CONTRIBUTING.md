@@ -80,13 +80,66 @@ Contributing 贡献
 ## 本地开发
 
 ```bash
-npm i          # 安装依赖
-npm run build  # 编译输出 HTML
-npm run start  # 监听 md 文件编译输出 HTML
+$ git clone https://github.com/jaywcjlove/reference.git 
+$ npm i          # 安装依赖
+$ npm run build  # 编译输出 HTML
+$ npm run start  # 监听 md 文件编译输出 HTML
 ```
 
 或者你也可以使用 `pnpm` 或者 `yarn` 做为包管理器
 
+## 快捷部署方法
+
+由于中国国内访问，时常打不开，推荐您部署的镜像网站，大家可以在这里留言推荐您的镜像网站网址，我将放置在首页推荐
+
+### 方法一，只需要克隆 gh-pages 分支代码到你的静态服务就可以了
+
+```shell
+$ git clone https://github.com/jaywcjlove/reference.git -b gh-pages
+```
+
+### 方法二，使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版
+
+```shell
+$ docker pull wcjiang/reference
+
+$ docker run --name reference --rm -d -p 9667:3000 wcjiang/reference:latest
+# Or
+$ docker run --name reference -itd -p 9667:3000 wcjiang/reference:latest
+```
+
+### 方法三，克隆仓库自己编译，添加导航菜单
+
+```bash
+$ git clone https://github.com/jaywcjlove/reference.git 
+$ npm install    # 安装依赖
+$ npm run build  # 编译输出静态页面
+$ npm run start  # 开发模式，监听实时编译输出静态页面
+```
+
+文件被输出到 `dist` 目录，将 `dist` 目录静态页面部署到静态服务就可以了
+
+<img width="423" alt="image" src="https://user-images.githubusercontent.com/1680273/203210099-cd9e1377-bceb-40cc-98f1-4c4c549a3986.png">
+
+提供自定义菜单，在项目的根目录建立 `.env` 文件，添加下面内容
+
+```ini
+REF_URL=http://ref.xxx.cn/
+REF_LABEL=网站首页
+```
+
+### 国内镜像
+
+由于中国国内访问，时常打不开，你可以访问下面镜像网站。
+
+- [ecdata.cn](http://ref.ecdata.cn)
+- [mofe.io](http://quickref.mofe.io)
+- [aibk.cn](https://quickref.aibk.cn)
+- [laoleng.vip](http://bbs.laoleng.vip/reference/)
+- [liujiapeng.com](https://www.liujiapeng.com/)
+- [dbyun.net](https://www.dbyun.net/reference/index.html)
+
+感谢🙏
 
 ## 贡献
 
