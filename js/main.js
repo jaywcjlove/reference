@@ -132,7 +132,7 @@ function searchResult(value) {
   }
   let menuHTML = '';
   result.forEach((item, idx) => {
-    const label = item.item.name.replace(getValueReg(value), (txt) => {
+    const label = (item.item.name || '').replace(getValueReg(value), (txt) => {
       return `<mark>${txt}</mark>`;
     })
     const tags = (item.item.tags || []).join(',').replace(getValueReg(value), (txt) => {
