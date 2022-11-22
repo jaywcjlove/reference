@@ -75,7 +75,7 @@ Quick Reference
 [Electron](./docs/electron.md)<!--rehype:style=background: rgb(0 72 153);-->
 [Emmet](./docs/emmet.md)<!--rehype:style=background: rgb(122 203 23);-->
 [ES 6](./docs/es6.md)<!--rehype:style=background: rgb(122 203 23);&class=tag&data-lang=JS-->
-[Styled Components](./docs/styled-components.md)<!--rehype:style=background: rgb(221 60 184);&class=tag&data-lang=css-->
+[Styled Components](./docs/styled-components.md)<!--rehype:style=background: rgb(221 60 184);&class=tag&data-lang=CSS-->
 [Stylus](./docs/stylus.md)<!--rehype:style=background: rgb(109 161 63);&class=tag&data-lang=CSS-->
 [Sass](./docs/sass.md)<!--rehype:style=background: rgb(207 100 154);&class=tag&data-lang=CSS-->
 [HTML](./docs/html.md)<!--rehype:style=background: rgb(228 77 39);-->
