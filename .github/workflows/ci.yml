@@ -98,7 +98,7 @@ jobs:
         run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build docker image
-        run: docker build -t ghcr.io/jaywcjlove/reference:latest .
+        run: docker buildx build --platform=linux/amd64,linux/arm64,linux/x86_64 -t ghcr.io/jaywcjlove/reference:latest .
 
       - name: Publish to GitHub registry
         run: docker push ghcr.io/jaywcjlove/reference:latest
@@ -115,7 +115,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
         
       - name: Build reference image
-        run: docker image build -t reference .
+        run: docker buildx build --platform=linux/amd64,linux/arm64,linux/x86_64 -t reference .
 
       - name: Tags & Push image(latest)
         run: |
