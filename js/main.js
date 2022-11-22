@@ -78,7 +78,8 @@ document.addEventListener('keydown', (ev) => {
     searchBox.classList.contains('show') ? hideSearch() : showSearch();
   }
   if (ev.key.toLocaleLowerCase() === 'enter') {
-    window.location.href = getDocUrl(activeMenu.path)
+    const url = activeMenu.path || activeMenu?.item.path;
+    window.location.href = getDocUrl(url);
   }
   if (ev.key.toLocaleLowerCase() === 'arrowdown') {
     activeAnchorElm('down')
