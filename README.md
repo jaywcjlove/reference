@@ -318,10 +318,11 @@ Quick Reference
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站。推荐我的[镜像网站](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)
 
-[ecdata.cn](http://ref.ecdata.cn)<!--rehype:style=background: rgb(16 185 129);height: 3rem;-->
-[mofe.io](http://quickref.mofe.io)<!--rehype:style=background: rgb(16 185 129);height: 3rem;-->
-[aibk.cn](https://quickref.aibk.cn)<!--rehype:style=background: rgb(16 185 129);height: 3rem;-->
-<!--rehype:class=home-card&style=margin:1.2rem 0;display: flex;justify-content: center;-->
+[ecdata.cn](http://ref.ecdata.cn)<!--rehype:style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->  
+[mofe.io](http://quickref.mofe.io)<!--rehype:style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->  
+[aibk.cn](https://quickref.aibk.cn)<!--rehype:style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->  
+[laoleng.vip](http://bbs.laoleng.vip/reference/)<!--rehype:style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->  
+<!--rehype:class=home-card&style=margin:1.2rem 0;display: flex;justify-content: center;gap: 1rem;-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 gh-pages 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
 
