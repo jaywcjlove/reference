@@ -332,6 +332,315 @@ ALTER TABLE employee
     DROP COLUMN vacationPay;
 ```
 
+### 约束类型和代码
+
+类型代码 | 类型描述 | 作用于级别
+:-- | -- | --
+`C` | 检查表 | Column
+`O` | 在视图上只读 | Object
+`P` | 首要的关键 | Object
+`R` | 参考 AKA 外键 | Column
+`U` | 唯一键 | Column
+`V` | 检查视图上的选项 | Object
+
+### 显示约束
+
+以下语句显示了系统中的所有约束：
+
+```sql
+SELECT
+    table_name,
+    constraint_name,
+    constraint_type
+FROM user_constraints;
+```
+
+### 选择参照约束
+
+以下语句显示了源和目标表/列对的所有引用约束（外键）：
+
+```sql
+SELECT
+    c_list.CONSTRAINT_NAME as NAME,
+    c_src.TABLE_NAME as SRC_TABLE,
+    c_src.COLUMN_NAME as SRC_COLUMN,
+    c_dest.TABLE_NAME as DEST_TABLE,
+    c_dest.COLUMN_NAME as DEST_COLUMN
+FROM ALL_CONSTRAINTS c_list,
+    ALL_CONS_COLUMNS c_src,
+    ALL_CONS_COLUMNS c_dest
+WHERE c_list.CONSTRAINT_NAME = c_src.CONSTRAINT_NAME
+    AND c_list.R_CONSTRAINT_NAME = c_dest.CONSTRAINT_NAME
+    AND c_list.CONSTRAINT_TYPE = 'R'
+```
+
+### 对表设置约束
+
+使用 `CREATE TABLE` 语句创建检查约束的语法是：
+
+```sql
+CREATE TABLE table_name
+(
+    column1 datatype null/not null,
+    column2 datatype null/not null,
+    ...
+    CONSTRAINT constraint_name CHECK (column_name condition) [DISABLE]
+);
+```
+
+例如：
+
+```sql
+CREATE TABLE suppliers
+(
+    supplier_id  numeric(4),
+    supplier_name  varchar2(50),
+    CONSTRAINT check_supplier_id
+    CHECK (supplier_id BETWEEN 100 and 9999)
+);
+```
+
+### 表上的唯一索引
+
+使用 `CREATE TABLE` 语句创建唯一约束的语法是：
+
+```sql
+CREATE TABLE table_name
+(
+    column1 datatype null/not null,
+    column2 datatype null/not null,
+    ...
+    CONSTRAINT constraint_name UNIQUE (column1, column2, column_n)
+);
+```
+
+例如：
+
+```sql
+CREATE TABLE customer
+(
+    id   integer not null,
+    name varchar2(20),
+    CONSTRAINT customer_id_constraint UNIQUE (id)
+);
+```
+
+### 添加唯一约束
+
+唯一约束的语法是：
+
+```sql
+ALTER TABLE [table name]
+    ADD CONSTRAINT [constraint name] UNIQUE( [column name] ) USING INDEX [index name];
+```
+
+例如：
+
+```sql
+ALTER TABLE employee
+    ADD CONSTRAINT uniqueEmployeeId UNIQUE(employeeId) USING INDEX ourcompanyIndx_tbs;
+```
+
+### 添加外部约束
+
+foregin 约束的语法是：
+
+```sql
+ALTER TABLE [table name]
+    ADD CONSTRAINT [constraint name] FOREIGN KEY (column,...) REFERENCES table [(column,...)] [ON DELETE {CASCADE | SET NULL}]
+```
+
+例如：
+
+```sql
+ALTER TABLE employee
+    ADD CONSTRAINT fk_departament FOREIGN KEY (departmentId) REFERENCES departments(Id);
+```
+
+### 删除约束
+
+删除（删除）约束的语法是：
+
+```sql
+ALTER TABLE [table name]
+    DROP CONSTRAINT [constraint name];
+```
+
+例如：
+
+```sql
+ALTER TABLE employee
+    DROP CONSTRAINT uniqueEmployeeId;
+```
+
+INDEXES
+----
+
+### 创建索引
+
+创建索引的语法是：
+
+```sql
+CREATE [UNIQUE] INDEX index_name
+    ON table_name (column1, column2, . column_n)
+    [ COMPUTE STATISTICS ];
+```
+
+`UNIQUE` 表示索引列中值的组合必须是唯一的
+
+`COMPUTE STATISTICS` 告诉 Oracle 在创建索引期间收集统计信息。 然后优化器使用这些统计信息来选择执行语句时的最佳执行计划。例如：
+
+```sql
+CREATE INDEX customer_idx
+    ON customer (customer_name);
+```
+
+在此示例中，已在名为 `customer_idx` 的客户表上创建了一个索引。它仅包含 `customer_name` 字段
+
+下面创建一个包含多个字段的索引：
+
+```sql
+CREATE INDEX customer_idx
+    ON supplier (customer_name, country);
+```
+
+以下内容在创建索引时收集统计信息：
+
+```sql
+CREATE INDEX customer_idx
+    ON supplier (customer_name, country)
+    COMPUTE STATISTICS;
+```
+
+### 创建基于函数的索引
+<!--rehype:wrap-class=col-span-2-->
+
+在 `Oracle` 中，您不仅限于在列上创建索引。您可以创建基于函数的索引
+
+创建基于函数的索引的语法是：
+
+```sql
+CREATE [UNIQUE] INDEX index_name
+    ON table_name (function1, function2, . function_n)
+    [ COMPUTE STATISTICS ];
+```
+
+例如：
+
+```sql
+CREATE INDEX customer_idx
+    ON customer (UPPER(customer_name));
+-- 已创建基于 customer_name 字段的大写评估的索引
+```
+
+为确保 `Oracle` 优化器在执行 SQL 语句时使用此索引，请确保 `UPPER(customer_name)` 的计算结果不为 `NULL` 值。 为确保这一点，请将 `UPPER(customer_name) IS NOT NULL` 添加到 `WHERE` 子句中，如下所示：
+
+```sql
+SELECT customer_id, customer_name, UPPER(customer_name)
+FROM customer
+WHERE UPPER(customer_name) IS NOT NULL
+ORDER BY UPPER(customer_name);
+```
+
+### 重命名索引
+
+重命名索引的语法是：
+
+```sql
+ALTER INDEX index_name
+    RENAME TO new_index_name;
+```
+
+例如：
+
+```sql
+ALTER INDEX customer_id
+    RENAME TO new_customer_id;
+```
+
+在此示例中，`customer_id` 重命名为 `new_customer_id`
+
+### 收集索引的统计信息
+
+如果您需要在索引首次创建后收集统计信息或者您想要更新统计信息，您总是可以使用 ALTER INDEX 命令来收集统计信息。 您收集统计信息以便 `oracle` 可以有效地使用索引。 这将重新计算表大小、行数、块数、段数并更新字典表，以便 `oracle` 在选择执行计划时可以有效地使用数据。
+
+收集索引统计信息的语法是：
+
+```sql
+ALTER INDEX index_name
+    REBUILD COMPUTE STATISTICS;
+```
+
+例如：
+
+```sql
+ALTER INDEX customer_idx
+    REBUILD COMPUTE STATISTICS;
+```
+
+在此示例中，为名为 `customer_idx` 的索引收集统计信息
+
+### 删除索引
+
+删除索引的语法是：
+
+```sql
+DROP INDEX index_name;
+```
+
+例如：
+
+```sql
+DROP INDEX customer_idx;
+```
+
+在此示例中，删除了 `customer_idx`
+
+DBA 相关
+---
+
+### 创建用户
+
+创建用户的语法是：
+
+```sql
+CREATE USER username IDENTIFIED BY password;
+```
+
+例如：
+
+```sql
+CREATE USER brian IDENTIFIED BY brianpass;
+```
+
+### 授予特权
+
+授予权限的语法是：
+
+```sql
+GRANT privilege TO user;
+```
+
+例如：
+
+```sql
+GRANT dba TO brian;
+```
+
+### 更改密码
+
+更改用户密码的语法是：
+
+```sql
+ALTER USER username IDENTIFIED BY password;
+```
+
+例如：
+
+```sql
+ALTER USER brian IDENTIFIED BY brianpassword;
+```
+
 另见
 ---
 
