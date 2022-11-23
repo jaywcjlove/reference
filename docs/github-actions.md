@@ -834,6 +834,87 @@ steps:
 [`peaceiris/actions-gh-pages`](https://github.com/peaceiris/actions-gh-pages) | 将文件或文件夹内容提交到 `gh-pages` 分支
 <!--rehype:className=style-list-->
 
+### 在 Github 中创建 Docker 镜像
+<!--rehype:wrap-class=row-span-3-->
+
+```yml
+- name: Set up Docker Buildx
+  uses: docker/setup-buildx-action@v2
+- name: 登录 GitHub 容器注册表
+  uses: docker/login-action@v2
+  with:
+    registry: ghcr.io
+    username: ${{ github.actor }}
+    password: ${{ secrets.GITHUB_TOKEN }}
+
+- name: 构建并推送 image:latest
+  uses: docker/build-push-action@v3
+  with:
+    push: true
+    context: .
+    platforms: linux/amd64,linux/arm64
+    tags: ghcr.io/jaywcjlove/reference:latest
+
+- name: 构建并推送 image:tags
+  uses: docker/build-push-action@v3
+  if: steps.create_tag.outputs.successful
+  with:
+    push: true
+    context: .
+    platforms: linux/amd64,linux/arm64
+    tags: ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+```
+
+### 在 Docker Hub 中创建 Docker 镜像
+<!--rehype:wrap-class=row-span-3-->
+
+```yml
+- name: Set up Docker Buildx
+  uses: docker/setup-buildx-action@v2
+- name: 登录到 Docker Hub
+  uses: docker/login-action@v2
+  with:
+    username: ${{ secrets.DOCKER_USER }}
+    password: ${{ secrets.DOCKER_PASSWORD }}
+
+- name: 构建并推送 image:latest
+  uses: docker/build-push-action@v3
+  with:
+    push: true
+    context: .
+    platforms: linux/amd64,linux/arm64
+    tags: ${{ secrets.DOCKER_USER }}/reference:latest
+
+- name: 构建并推送 image:tags
+  uses: docker/build-push-action@v3
+  if: steps.create_tag.outputs.successful
+  with:
+    push: true
+    context: .
+    platforms: linux/amd64,linux/arm64
+    tags: ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
+```
+
+### 检查签出仓库并安装 nodejs
+
+```yml
+- uses: actions/checkout@v3
+- uses: actions/setup-node@v3
+  with:
+    node-version: 16
+```
+
+### 生成贡献者头像列表
+
+```yml
+- name: Generate Contributors Images
+  uses: jaywcjlove/github-action-contributors@main
+  id: contributors
+  with:
+    output: dist/CONTRIBUTORS.svg
+    avatarSize: 42
+```
+
 另见
 ---
 
