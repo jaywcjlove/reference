@@ -866,4 +866,4 @@ location = /robots.txt {
 ---
 
 - [Nginx 安装维护入门学习笔记](https://jaywcjlove.github.io/nginx-tutorial) _(jaywcjlove.github.io)_
-- [](https://virtubox.github.io/advanced-nginx-cheatsheet/) _(virtubox.github.io)_
+- [advanced-nginx-cheatsheet](https://virtubox.github.io/advanced-nginx-cheatsheet/) _(virtubox.github.io)_
