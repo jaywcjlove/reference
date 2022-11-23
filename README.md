@@ -321,8 +321,8 @@ Quick Reference
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)
 
+[quickref.cn](https://quickref.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
-[mofe.io](http://quickref.mofe.io)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [aibk.cn](https://quickref.aibk.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [laoleng.vip](http://bbs.laoleng.vip/reference/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [liujiapeng.com](https://www.liujiapeng.com/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
