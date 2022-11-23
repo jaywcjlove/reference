@@ -366,7 +366,7 @@ Bash 条件句
 `[[ -z STR ]]`     | 空字符串
 `[[ -n STR ]]`     | <yel>非</yel>空字符串
 `[[ STR == STR ]]` | 相等
-`[[ STR = STR ]]`  | 相等（同上）
+`[[ STR = STR ]]`  | 相等(同上)
 `[[ STR < STR ]]`  | 小于 _(ASCII)_
 `[[ STR > STR ]]`  | 大于 _(ASCII)_
 `[[ STR != STR ]]` | 不相等
@@ -562,7 +562,7 @@ while true; do
 done
 ```
 
-### 死循环（简写）
+### 死循环(简写)
 
 ```bash
 while :; do
@@ -590,7 +590,7 @@ myfunc() {
 ```
 
 ```bash
-# 同上（替代语法）
+# 同上(替代语法)
 function myfunc() {
   echo "hello $1"
 }
@@ -711,7 +711,7 @@ Bash 历史
 
 代码 | 描述
 :- | -
-`!!:n`   | 仅扩展最近命令中的第 `n` 个标记（命令为 `0`；第一个参数为 `1`）
+`!!:n`   | 仅扩展最近命令中的第 `n` 个标记(命令为 `0`；第一个参数为 `1`)
 `!^`     | 从最近的命令展开第一个参数
 `!$`     | 从最近的命令中展开最后一个标记
 `!!:n-m` | 从最近的命令扩展令牌范围
@@ -750,12 +750,12 @@ command -V cd
 <!--rehype:wrap-class=row-span-2 col-span-2-->
 
 ```bash
-python hello.py > output.txt   # 标准输出到（文件）
-python hello.py >> output.txt  # 标准输出到（文件），追加
-python hello.py 2> error.log   # 标准错误到（文件）
+python hello.py > output.txt   # 标准输出到(文件)
+python hello.py >> output.txt  # 标准输出到(文件)，追加
+python hello.py 2> error.log   # 标准错误到(文件)
 python hello.py 2>&1           # 标准错误到标准输出
-python hello.py 2>/dev/null    # 标准错误到（空null）
-python hello.py &>/dev/null    # 标准输出和标准错误到（空null）
+python hello.py 2>/dev/null    # 标准错误到(空null)
+python hello.py &>/dev/null    # 标准输出和标准错误到(空null)
 ```
 
 ```bash
@@ -953,6 +953,131 @@ echo "${args[@]}"
 
 将参数放入数组中，然后追加
 
+Bash 颜色
+----
+
+### 颜色着色语法示例
+<!--rehype:wrap-class=row-span-2-->
+
+您可以通过为其输出着色来使您的 BASH 脚本更漂亮，使用以下模板编写彩色文本：
+
+```bash
+echo -e "\e[COLORm文字变色了\e[0m"
+```
+
+#### 示例
+
+```bash
+$ echo -e "\e[31m命令行中显示红色文字\e[0m"
+```
+
+<red>命令行中显示红色文字</red>
+
+```
+$ echo -e "\e[42m绿色背景\e[0m"
+```
+
+`绿色背景`<!--rehype:style=background:green;color: black;-->
+
+Option | Description
+:- | --
+`-e` | 启用反斜杠转义的解释
+`\e[` 或 `\x1b[` 或 `\033[` | 开始颜色修改
+`COLORm` | 颜色代码 + `m` 在末尾
+`\e[0m` 或 `\x1b[0m` 或 `\033[0m` | 结束颜色修改
+<!--rehype:className=left-align-->
+
+`0x1b` 字面上称为 `ESC`
+
+#### 示例
+
+```bash
+$ echo -e "\e[3m下划线文本\e[0m"
+```
+
+`下划线文本`<!--rehype:style=text-decoration: underline;color: inherit;-->
+
+```bash
+$ echo -e "\e[1;33;4;44m粗体下划线蓝色背景黄色文字的文本\e[0m"
+```
+<!--rehype:className=wrap-text-->
+
+`粗体下划线蓝色背景黄色文字的文本`<!--rehype:style=text-decoration: underline;color: inherit;font-weight: bold;color: #cdcd00;background: #0000ee;-->
+
+```bash
+\e[         # 启用转义
+1;33;4;44   # 参数 (1;33;4;44)
+m           # 设置图形模式
+```
+
+#### 样式
+
+:- | -- | --
+:- | -- | --
+`0` | 普通字符(复位或正常) | 关闭所有属性
+`1` | **粗体**字
+`2` | 弱化(降低强度) | 未广泛支持
+`3` | 斜体 | 未广泛支持有时为反相显示
+`4` | 下划线
+`5` | 缓慢闪烁
+`6` | 快速闪烁
+`7` | 反显
+`8` | 隐藏 | 未广泛支持。
+`9` | 划除
+<!--rehype:className=left-align-->
+### ANSI — 颜色转义码
+
+颜色 | 前景色 | 背景色 | 示例
+:- | -- | -- | --
+`Black` 黑色 | 30 | 40 | ``<!--rehype:style=background:#000;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Red` 红色 | 31 | 41 | ``<!--rehype:style=background:#c23621;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Green` 绿色 | 32 | 42 | ``<!--rehype:style=background:#25bc26;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Yellow` 黄色 | 33 | 43 | ``<!--rehype:style=background:#cdcd00;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Blue` 蓝色 | 34 | 44 | ``<!--rehype:style=background:#0000ee;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Purple` 紫色 | 35 | 45 | ``<!--rehype:style=background:#cd00cd;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Cyan` 青色 | 36 | 46 | ``<!--rehype:style=background:#00AAAA;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`White` 白色 | 37 | 47 | ``<!--rehype:style=background:#e5e5e5;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+<!--rehype:className=show-header left-align-->
+
+### ANSI — 颜色转义码(亮色)
+
+颜色 | 前景色 | 背景色 | 示例
+:- | -- | -- | --
+`Bright Black(Gray)` 灰色 | 90 | 100 | ``<!--rehype:style=background:#555555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Red` 亮红色 | 91 | 101 | ``<!--rehype:style=background:#FF5555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Green` 亮绿色 | 92 | 102 | ``<!--rehype:style=background:#55FF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Yellow` 亮黄色 | 93 | 103 | ``<!--rehype:style=background:#FFFF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Blue` 亮蓝色 | 94 | 104 | ``<!--rehype:style=background:#5555FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Magenta` 亮紫色 | 95 | 105 | ``<!--rehype:style=background:#FF55FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Cyan` 亮青色 | 96 | 106 | ``<!--rehype:style=background:#55FFFF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright White` 浅灰 | 97 | 107 | ``<!--rehype:style=background:#ffffff;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+<!--rehype:className=show-header left-align-->
+
+### 可用功能
+<!--rehype:wrap-class=col-span-2-->
+
+:- | -- | --
+:- | -- | --
+`n` A | 光标上移 | 光标向指定的方向移动 `n`(默认1)格
+`n` B | 光标下移 | 光标向指定的方向移动 `n`(默认1)格
+`n` C | 光标前移 | 光标向指定的方向移动 `n`(默认1)格
+`n` D | 光标后移 | 光标向指定的方向移动 `n`(默认1)格
+`n` E | 光标移到下一行 | 光标移动到下面第 `n`(默认1)行的开头(非ANSI.SYS)
+`n` F | 光标移到上一行 | 光标移动到上面第 `n`(默认1)行的开头(非ANSI.SYS)
+`n` G | 光标水平绝对 | 光标移动到第 `n`(默认1)列(非ANSI.SYS)
+`n`;`m` H | 光标位置 | 光标移动到第 `n`行、第 `m` 列。值从1开始，且默认为1(左上角)
+`n` J | ED – 擦除显示 | 清除屏幕的部分区域
+`n` K | EL – 擦除行 | 清除行内的部分区域
+`n` S | SU – 向上滚动 | 整页向上滚动 `n`(默认1)行。新行添加到底部 (非ANSI.SYS)
+`n` T | SD – 向下滚动 | 整页向下滚动 `n`(默认1)行。新行添加到顶部 (非ANSI.SYS)
+`n`;`m`f | HVP – 水平垂直位置 | 同CUP
+`n` `m` | SGR – 选择图形再现 | 设置SGR参数，包括文字颜色
+`5i` | 打开辅助端口 | 启用辅助串行端口，通常用于本地串行打印机
+`4i` | 关闭辅助端口 | 禁用辅助串行端口，通常用于本地串行打印机
+`6n` | DSR – 设备状态报告 | 以 `ESC[n;mR` (就像在键盘上输入)向应用程序报告光标位置(CPR)，其中 `n`是行， `m` 是列
+`s` | SCP – 保存光标位置 | 保存光标的当前位置
+`u` | RCP – 恢复光标位置 | 恢复保存的光标位置
+
 另见
 ----
 
@@ -964,3 +1089,4 @@ echo "${args[@]}"
 - [Bash Guide](http://mywiki.wooledge.org/BashGuide) _(mywiki.wooledge.org)_
 - [ShellCheck](https://www.shellcheck.net/) _(shellcheck.net)_
 - [shell - Standard Shell](https://devmanual.gentoo.org/tools-reference/bash/index.html) _(devmanual.gentoo.org)_
+- [ANSI 转义序列](https://zh.wikipedia.org/wiki/ANSI转义序列) _(zh.wikipedia.org)_
