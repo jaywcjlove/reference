@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>GitLab CI/CD 备忘清单
+ &#x26;  gitlab-ci cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="本备忘单总结了 GitLab CI/CD 常用的配置说明，以供快速参考为开发人员分享快速参考备忘单。">
+<meta keywords="Quick,Reference,cheatsheet,gitlab-ci">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/gitlab-ci.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="gitlab-cicd-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#gitlab-cicd-备忘清单"><span class="icon icon-link"></span></a>GitLab CI/CD 备忘清单</h1><div class="wrap-body">
+<p>本备忘单总结了 <a href="https://docs.gitlab.com/ee/ci/yaml/#default">GitLab CI/CD</a> 常用的配置说明，以供快速参考</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#关键字">关键字</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#关键字-1">关键字</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#关键字-2">关键字</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#全局关键词">全局关键词</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#default">default</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#include">include</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#includelocal">include:local</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#includeproject">include:project</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#includeremote">include:remote</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#includetemplate">include:template</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#stages">stages</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#workflow">workflow</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#workflowname">workflow:name</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#workflowrulesvariables">workflow:rules:variables</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#workflowrules">workflow:rules</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#job-关键词">Job 关键词</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#after_script">after_script</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#allow_failure">allow_failure</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#allow_failureexit_codes">allow_failure:exit_codes</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#before_script">before_script</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#coverage">coverage</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#dast_configuration">dast_configuration</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#dependencies">dependencies</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#extends">extends</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#inherit">inherit</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#inheritdefault">inherit:default</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#inheritvariables">inherit:variables</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#interruptible">interruptible</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pages">pages</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#parallel">parallel</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#parallelmatrix">parallel:matrix</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#resource_group">resource_group</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#retry">retry</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#retrywhen">retry:when</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#script">script</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#secrets">secrets</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#secretsvault">secrets:vault</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#secretsfile">secrets:file</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#services">services</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#servicepull_policy">service:pull_policy</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#stage">stage</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#stage-pre">stage: .pre</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#stage-post">stage: .post</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#tags">tags</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#timeout">timeout</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#trigger">trigger</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#triggerinclude">trigger:include</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#triggerproject">trigger:project</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#triggerstrategy">trigger:strategy</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#triggerforward">trigger:forward</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#variables">variables</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#variablesdescription">variables:description</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#variablesexpand">variables:expand</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#when">when</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#artifacts">artifacts</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactspaths">artifacts:paths</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactsexclude">artifacts:exclude</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactsexpire_in">artifacts:expire_in</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactsexpose_as">artifacts:expose_as</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactsname">artifacts:name</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactspublic">artifacts:public</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactsreports">artifacts:reports</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactsuntracked">artifacts:untracked</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#artifactswhen">artifacts:when</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#cache">cache</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cachepaths">cache:paths</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cachekey">cache:key</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#cachekeyfiles">cache:key:files</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#cachekeyprefix">cache:key:prefix</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cacheuntracked">cache:untracked</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cachewhen">cache:when</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cachepolicy">cache:policy</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#environment">environment</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#environmentname">environment:name</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#environmenturl">environment:url</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#environmenton_stop">environment:on_stop</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#environmentaction">environment:action</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#environmentauto_stop_in">environment:auto_stop_in</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#environmentkubernetes">environment:kubernetes</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#environmentdeployment_tier">environment:deployment_tier</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#dynamic-environments">Dynamic environments</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#image">image</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#imagename">image:name</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#imageentrypoint">image:entrypoint</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#imagepull_policy">image:pull_policy</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#needs">needs</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#needsartifacts">needs:artifacts</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#needsproject">needs:project</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#needspipelinejob">needs:pipeline:job</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#needsoptional">needs:optional</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#needspipeline">needs:pipeline</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#only--except">only / except</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#onlyrefs--exceptrefs">only:refs / except:refs</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#onlyvariables--exceptvariables">only:variables / except:variables</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#onlychanges--exceptchanges">only:changes / except:changes</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#onlykubernetes--exceptkubernetes">only:kubernetes / except:kubernetes</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#release">release</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#releasetag_name">release:tag_name</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#releasetag_message">release:tag_message</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#releasename">release:name</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#releasedescription">release:description</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#releaseref">release:ref</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#releasemilestones">release:milestones</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#releasereleased_at">release:released_at</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#releaseassetslinks">release:assets:links</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#rules">rules</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#rulesif">rules:if</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ruleschanges">rules:changes</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#ruleschangespaths">rules:changes:paths</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#ruleschangescompare_to">rules:changes:compare_to</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#rulesexists">rules:exists</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#rulesallow_failure">rules:allow_failure</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#rulesvariables">rules:variables</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="关键字"><a aria-hidden="true" tabindex="-1" href="#关键字"><span class="icon icon-link"></span></a>关键字</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="关键字-1"><a aria-hidden="true" tabindex="-1" href="#关键字-1"><span class="icon icon-link"></span></a>关键字</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">关键字</th><th>描述</th></tr></thead><tbody><tr><td align="left"><a href="#default">default</a></td><td>工作关键字的自定义默认值 <a href="https://docs.gitlab.com/ee/ci/yaml/#default">#</a></td></tr><tr><td align="left"><a href="#include">include</a></td><td>从其他 YAML 文件导入配置 <a href="https://docs.gitlab.com/ee/ci/yaml/#include">#</a></td></tr><tr><td align="left"><a href="#stages">stages</a></td><td>管道阶段的名称和顺序 <a href="https://docs.gitlab.com/ee/ci/yaml/#stages">#</a></td></tr><tr><td align="left"><a href="#variables">variables</a></td><td>为管道中的所有作业定义 CI/CD 变量 <a href="https://docs.gitlab.com/ee/ci/yaml/#variables">#</a></td></tr><tr><td align="left"><a href="#workflow">workflow</a></td><td>控制运行什么类型的管道 <a href="https://docs.gitlab.com/ee/ci/yaml/#workflow">#</a></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="关键字-2"><a aria-hidden="true" tabindex="-1" href="#关键字-2"><span class="icon icon-link"></span></a>关键字</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">关键字</th><th>描述</th></tr></thead><tbody><tr><td align="left"><a href="#after_script">after_script</a></td><td>覆盖一组在作业之后执行的命令 <a href="https://docs.gitlab.com/ee/ci/yaml/#after_script">#</a></td></tr><tr><td align="left"><a href="#allow_failure">allow_failure</a></td><td>允许作业失败。失败的作业不会导致管道失败 <a href="https://docs.gitlab.com/ee/ci/yaml/#allow_failure">#</a></td></tr><tr><td align="left"><a href="#artifacts">artifacts</a></td><td>成功时附加到作业的文件和目录列表 <a href="https://docs.gitlab.com/ee/ci/yaml/#artifacts">#</a></td></tr><tr><td align="left"><a href="#before_script">before_script</a></td><td>覆盖在作业之前执行的一组命令 <a href="https://docs.gitlab.com/ee/ci/yaml/#before_script">#</a></td></tr><tr><td align="left"><a href="#cache">cache</a></td><td>应在后续运行之间缓存的文件列表 <a href="https://docs.gitlab.com/ee/ci/yaml/#cache">#</a></td></tr><tr><td align="left"><a href="#coverage">coverage</a></td><td>给定作业的代码覆盖率设置 <a href="https://docs.gitlab.com/ee/ci/yaml/#coverage">#</a></td></tr><tr><td align="left"><a href="#dast_configuration">dast_configuration</a></td><td>在作业级别使用 DAST 配置文件中的配置 <a href="https://docs.gitlab.com/ee/ci/yaml/#dast_configuration">#</a></td></tr><tr><td align="left"><a href="#dependencies">dependencies</a></td><td>通过提供要从中获取工件的作业列表来限制将哪些工件传递给特定作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#dependencies">#</a></td></tr><tr><td align="left"><a href="#environment">environment</a></td><td>作业部署到的环境的名称 <a href="https://docs.gitlab.com/ee/ci/yaml/#environment">#</a></td></tr><tr><td align="left"><a href="#only--except">except</a></td><td>控制何时不创建作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#only--except">#</a></td></tr><tr><td align="left"><a href="#extends">extends</a></td><td>此作业继承自的配置条目 <a href="https://docs.gitlab.com/ee/ci/yaml/#extends">#</a></td></tr><tr><td align="left"><a href="#image">image</a></td><td>使用 Docker 镜像 <a href="https://docs.gitlab.com/ee/ci/yaml/#image">#</a></td></tr><tr><td align="left"><a href="#inherit">inherit</a></td><td>选择所有作业继承的全局默认值 <a href="https://docs.gitlab.com/ee/ci/yaml/#inherit">#</a></td></tr><tr><td align="left"><a href="#interruptible">interruptible</a></td><td>定义作业是否可以在被较新的运行冗余时取消 <a href="https://docs.gitlab.com/ee/ci/yaml/#interruptible">#</a></td></tr><tr><td align="left"><a href="#needs">needs</a></td><td>在阶段排序之前执行作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#needs">#</a></td></tr><tr><td align="left"><a href="#only--except">only</a></td><td>控制何时创建作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#only--except">#</a></td></tr><tr><td align="left"><a href="#pages">pages</a></td><td>上传作业的结果以与 GitLab Pages 一起使用 <a href="https://docs.gitlab.com/ee/ci/yaml/#pages">#</a></td></tr><tr><td align="left"><a href="#parallel">parallel</a></td><td>应并行运行多少个作业实例 <a href="https://docs.gitlab.com/ee/ci/yaml/#parallel">#</a></td></tr><tr><td align="left"><a href="#release">release</a></td><td>指示运行器生成释放对象 <a href="https://docs.gitlab.com/ee/ci/yaml/#release">#</a></td></tr><tr><td align="left"><a href="#resource_group">resource_group</a></td><td>限制作业并发 <a href="https://docs.gitlab.com/ee/ci/yaml/#resource_group">#</a></td></tr><tr><td align="left"><a href="#retry">retry</a></td><td>发生故障时可以自动重试作业的时间和次数 <a href="https://docs.gitlab.com/ee/ci/yaml/#retry">#</a></td></tr><tr><td align="left"><a href="#rules">rules</a></td><td>用于评估和确定作业的选定属性以及是否创建的条件列表 <a href="https://docs.gitlab.com/ee/ci/yaml/#rules">#</a></td></tr><tr><td align="left"><a href="#script">script</a></td><td>由运行器执行的 Shell 脚本 <a href="https://docs.gitlab.com/ee/ci/yaml/#script">#</a></td></tr><tr><td align="left"><a href="#secrets">secrets</a></td><td>CI/CD 保密工作需要 <a href="https://docs.gitlab.com/ee/ci/yaml/#secrets">#</a></td></tr><tr><td align="left"><a href="#services">services</a></td><td>使用 Docker 服务映像 <a href="https://docs.gitlab.com/ee/ci/yaml/#services">#</a></td></tr><tr><td align="left"><a href="#stage">stage</a></td><td>定义作业阶段 <a href="https://docs.gitlab.com/ee/ci/yaml/#stage">#</a></td></tr><tr><td align="left"><a href="#tags">tags</a></td><td>用于选择跑步者的标签列表 <a href="https://docs.gitlab.com/ee/ci/yaml/#tags">#</a></td></tr><tr><td align="left"><a href="#timeout">timeout</a></td><td>定义优先于项目范围设置的自定义作业级超时 <a href="https://docs.gitlab.com/ee/ci/yaml/#timeout">#</a></td></tr><tr><td align="left"><a href="#trigger">trigger</a></td><td>定义下游管道触发器 <a href="https://docs.gitlab.com/ee/ci/yaml/#trigger">#</a></td></tr><tr><td align="left"><a href="#variables">variables</a></td><td>在作业级别定义作业变量 <a href="https://docs.gitlab.com/ee/ci/yaml/#variables">#</a></td></tr><tr><td align="left"><a href="#when">when</a></td><td>何时运行作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#when">#</a></td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="全局关键词"><a aria-hidden="true" tabindex="-1" href="#全局关键词"><span class="icon icon-link"></span></a>全局关键词</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="default"><a aria-hidden="true" tabindex="-1" href="#default"><span class="icon icon-link"></span></a>default</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<ul class="cols-3">
+<li><a href="#after_script">after_script</a></li>
+<li><a href="#artifacts">artifacts</a></li>
+<li><a href="#before_script">before_script</a></li>
+<li><a href="#cache">cache</a></li>
+<li><a href="#image">image</a></li>
+<li><a href="#interruptible">interruptible</a></li>
+<li><a href="#retry">retry</a></li>
+<li><a href="#services">services</a></li>
+<li><a href="#tags">tags</a></li>
+<li><a href="#timeout">timeout</a></li>
+</ul>
+<!--rehype:className=cols-3-->
+<p>示例</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">default</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">image</span><span class="token punctuation">:</span> ruby<span class="token punctuation">:</span><span class="token number">3.0</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">rspec</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span> bundle exec rspec
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">rspec 2.7</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">image</span><span class="token punctuation">:</span> ruby<span class="token punctuation">:</span><span class="token number">2.7</span>
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span> bundle exec rspec
+</span></code></pre>
+<p>在此示例中，<code>ruby:3.0</code> 是管道中所有作业的默认图像值。<code>rspec 2.7</code> 作业不使用默认值，因为它使用特定于作业的图像部分覆盖了默认值</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="include"><a aria-hidden="true" tabindex="-1" href="#include"><span class="icon icon-link"></span></a>include</h3><div class="wrap-body">
+<p>在 <code>11.4</code> 中移至 <code>GitLab</code> 免费版，使用 <code>include</code> 将外部 <code>YAML</code> 文件包含在您的 <code>CI/CD</code> 配置中</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">include</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">local</span><span class="token punctuation">:</span> <span class="token string">'/temp/.gitlab-ci-template.yml'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="includelocal"><a aria-hidden="true" tabindex="-1" href="#includelocal"><span class="icon icon-link"></span></a>include:local</h3><div class="wrap-body">
+<p>使用 <code>include:local</code> 包含与 <code>.gitlab-ci.yml</code> 文件位于同一存储库中的文件</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">include</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">local</span><span class="token punctuation">:</span> <span class="token string">'/temp/.gitlab-ci-template.yml'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="includeproject"><a aria-hidden="true" tabindex="-1" href="#includeproject"><span class="icon icon-link"></span></a>include:project</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>要在同一个 GitLab 实例上包含来自另一个私有项目的文件，请使用 <code>include:project</code> 和 <code>include:file</code></p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">include</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">project</span><span class="token punctuation">:</span> <span class="token string">'group/my-project'</span>
+</span><span class="code-line">    <span class="token key atrule">file</span><span class="token punctuation">:</span> <span class="token string">'/temp/.gitlab-ci-template.yml'</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">project</span><span class="token punctuation">:</span> <span class="token string">'group/subgroup/my-project-2'</span>
+</span><span class="code-line">    <span class="token key atrule">file</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">'/temp/.builds.yml'</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">'/temp/.tests.yml'</span>
+</span></code></pre>
+<p>您还可以指定一个 <code>ref</code>：</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">include</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">project</span><span class="token punctuation">:</span> <span class="token string">'group/my-project'</span>
+</span><span class="code-line">    <span class="token key atrule">ref</span><span class="token punctuation">:</span> main    <span class="token comment"># Git branch</span>
+</span><span class="code-line">    <span class="token key atrule">file</span><span class="token punctuation">:</span> <span class="token string">'/templates/.gitlab-ci.yml'</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">project</span><span class="token punctuation">:</span> <span class="token string">'group/my-project'</span>
+</span><span class="code-line">    <span class="token key atrule">ref</span><span class="token punctuation">:</span> v1.0.0   <span class="token comment"># Git Tag</span>
+</span><span class="code-line">    <span class="token key atrule">file</span><span class="token punctuation">:</span> <span class="token string">'/templates/.gitlab-ci.yml'</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">project</span><span class="token punctuation">:</span> <span class="token string">'group/my-project'</span>
+</span><span class="code-line">    <span class="token key atrule">ref</span><span class="token punctuation">:</span> 787123b  <span class="token comment"># Git SHA</span>
+</span><span class="code-line">    <span class="token key atrule">file</span><span class="token punctuation">:</span> <span class="token string">'/templates/.gitlab-ci.yml'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="includeremote"><a aria-hidden="true" tabindex="-1" href="#includeremote"><span class="icon icon-link"></span></a>include:remote</h3><div class="wrap-body">
+<p>使用带有完整 <code>URL</code> 的 <code>include:remote</code> 来包含来自不同位置的文件</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">include</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">remote</span><span class="token punctuation">:</span> <span class="token string">'https://gitlab.com/example-project/-/raw/main/.gitlab-ci.yml'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="includetemplate"><a aria-hidden="true" tabindex="-1" href="#includetemplate"><span class="icon icon-link"></span></a>include:template</h3><div class="wrap-body">
+<p>使用 <code>include:template</code> 来包含 <code>.gitlab-ci.yml</code> 模板</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token comment"># 文件来自 GitLab 模板集合</span>
+</span><span class="code-line"><span class="token key atrule">include</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">template</span><span class="token punctuation">:</span> Auto<span class="token punctuation">-</span>DevOps.gitlab<span class="token punctuation">-</span>ci.yml
+</span></code></pre>
+<p>多个 <code>include:template</code> 文件：</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">include</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">template</span><span class="token punctuation">:</span> Android<span class="token punctuation">-</span>Fastlane.gitlab<span class="token punctuation">-</span>ci.yml
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">template</span><span class="token punctuation">:</span> Auto<span class="token punctuation">-</span>DevOps.gitlab<span class="token punctuation">-</span>ci.yml
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="stages"><a aria-hidden="true" tabindex="-1" href="#stages"><span class="icon icon-link"></span></a>stages</h3><div class="wrap-body">
+<p>使用阶段来定义包含作业组的阶段。如果 <code>.gitlab-ci.yml</code> 文件中未定义阶段，则默认管道阶段为：</p>
+<ul class="cols-2">
+<li><a href="#stage-pre">.pre</a></li>
+<li>build</li>
+<li>test</li>
+<li>deploy</li>
+<li><a href="#stage-post">.post</a></li>
+</ul>
+<!--rehype:className=cols-2-->
+<hr>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">stages</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> build
+</span><span class="code-line">  <span class="token punctuation">-</span> test
+</span><span class="code-line">  <span class="token punctuation">-</span> deploy
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="workflow"><a aria-hidden="true" tabindex="-1" href="#workflow"><span class="icon icon-link"></span></a>workflow</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="workflowname"><a aria-hidden="true" tabindex="-1" href="#workflowname"><span class="icon icon-link"></span></a>workflow:name</h3><div class="wrap-body">
+<p>您可以在 workflow: 中使用 name 来定义管道的名称</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">workflow</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'分支管道：$CI_COMMIT_BRANCH'</span>
+</span></code></pre>
+<p>根据管道条件具有不同管道名称的配置：</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">variables</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">PIPELINE_NAME</span><span class="token punctuation">:</span> <span class="token string">'默认管道名称'</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">workflow</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'$PIPELINE_NAME'</span>
+</span><span class="code-line">  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">if</span><span class="token punctuation">:</span> <span class="token string">'$CI_PIPELINE_SOURCE == "merge_request_event"'</span>
+</span><span class="code-line">      <span class="token key atrule">variables</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">PIPELINE_NAME</span><span class="token punctuation">:</span> <span class="token string">'MR pipeline: $CI_COMMIT_BRANCH'</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">if</span><span class="token punctuation">:</span> <span class="token string">'$CI_MERGE_REQUEST_LABELS =~ /pipeline:run-in-ruby3/'</span>
+</span><span class="code-line">      <span class="token key atrule">variables</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">PIPELINE_NAME</span><span class="token punctuation">:</span> <span class="token string">'Ruby 3 pipeline'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="workflowrulesvariables"><a aria-hidden="true" tabindex="-1" href="#workflowrulesvariables"><span class="icon icon-link"></span></a>workflow:rules:variables</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>您可以在 <code>workflow:rules</code> 中使用变量来定义特定管道条件的变量</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">variables</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">DEPLOY_VARIABLE</span><span class="token punctuation">:</span> <span class="token string">"default-deploy"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">workflow</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">if</span><span class="token punctuation">:</span> $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+</span><span class="code-line">      <span class="token key atrule">variables</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">DEPLOY_VARIABLE</span><span class="token punctuation">:</span> <span class="token string">"deploy-production"</span>  <span class="token comment"># 覆盖全局定义的 DEPLOY_VARIABLE</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">if</span><span class="token punctuation">:</span> $CI_COMMIT_REF_NAME =~ /feature/
+</span><span class="code-line">      <span class="token key atrule">variables</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">IS_A_FEATURE</span><span class="token punctuation">:</span> <span class="token string">"true"</span>                  <span class="token comment"># 定义一个新变量</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">when</span><span class="token punctuation">:</span> always                            <span class="token comment"># 在其他情况下运行管道</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">job1</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">variables</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">DEPLOY_VARIABLE</span><span class="token punctuation">:</span> <span class="token string">"job1-default-deploy"</span>
+</span><span class="code-line">  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">if</span><span class="token punctuation">:</span> $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+</span><span class="code-line">      <span class="token key atrule">variables</span><span class="token punctuation">:</span>                                   <span class="token comment"># 覆盖定义的 DEPLOY_VARIABLE</span>
+</span><span class="code-line">        <span class="token key atrule">DEPLOY_VARIABLE</span><span class="token punctuation">:</span> <span class="token string">"job1-deploy-production"</span>  <span class="token comment"># 在工作层面。</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">when</span><span class="token punctuation">:</span> on_success                             <span class="token comment"># 在其他情况下运行作业</span>
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "Run script with $DEPLOY_VARIABLE as an argument"
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "Run another script if $IS_A_FEATURE exists"
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">job2</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "Run script with $DEPLOY_VARIABLE as an argument"
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "Run another script if $IS_A_FEATURE exists"
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="workflowrules"><a aria-hidden="true" tabindex="-1" href="#workflowrules"><span class="icon icon-link"></span></a>workflow:rules</h3><div class="wrap-body">
+<p>工作流(workflow)中的 <code>rules</code> 关键字类似于作业中定义的 <a href="#rules"><code>rules</code></a>，但控制是否创建整个管道</p>
+<ul class="cols-2">
+<li><a href="#rulesif">rules: if</a></li>
+<li><a href="#ruleschanges">rules: changes</a></li>
+<li><a href="#rulesexists">rules: exists</a></li>
+<li><a href="#when">when</a></li>
+<li><a href="#workflowrulesvariables">variables</a></li>
+</ul>
+<!--rehype:className=cols-2-->
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">workflow</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">if</span><span class="token punctuation">:</span> $CI_COMMIT_TITLE =~ /<span class="token punctuation">-</span>draft$/
+</span><span class="code-line">      <span class="token key atrule">when</span><span class="token punctuation">:</span> never
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">if</span><span class="token punctuation">:</span> $CI_PIPELINE_SOURCE == "merge_request_event"
+</span><span class="code-line">    <span class="token punctuation">-</span> <span class="token key atrule">if</span><span class="token punctuation">:</span> $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="job-关键词"><a aria-hidden="true" tabindex="-1" href="#job-关键词"><span class="icon icon-link"></span></a>Job 关键词</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="after_script"><a aria-hidden="true" tabindex="-1" href="#after_script"><span class="icon icon-link"></span></a>after_script</h3><div class="wrap-body">
+<p>在每个作业（包括失败的作业）<strong>之后</strong>运行的命令数组</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "示例脚本部分"
+</span><span class="code-line">  <span class="token key atrule">after_script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "在“script”部分完成后执行此命令"
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="allow_failure"><a aria-hidden="true" tabindex="-1" href="#allow_failure"><span class="icon icon-link"></span></a>allow_failure</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>确定管道是否应在作业失败时继续运行</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job1</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">stage</span><span class="token punctuation">:</span> test
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> execute_script_1
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">job2</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">stage</span><span class="token punctuation">:</span> test
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> execute_script_2
+</span><span class="code-line">  <span class="token key atrule">allow_failure</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">job3</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">stage</span><span class="token punctuation">:</span> deploy
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> deploy_to_staging
+</span><span class="code-line">  <span class="token key atrule">environment</span><span class="token punctuation">:</span> staging
+</span></code></pre>
+<h4 id="allow_failureexit_codes"><a aria-hidden="true" tabindex="-1" href="#allow_failureexit_codes"><span class="icon icon-link"></span></a>allow_failure:exit_codes</h4>
+<p>控制何时允许作业失败。对于任何列出的退出代码，作业是 <code>allow_failure: true</code>，对于任何其他退出代码，<code>allow_failure</code> false</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">test_job_1</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "运行导致退出代码 1 的脚本。此作业失败"
+</span><span class="code-line">    <span class="token punctuation">-</span> exit 1
+</span><span class="code-line">  <span class="token key atrule">allow_failure</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">exit_codes</span><span class="token punctuation">:</span> <span class="token number">137</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key atrule">test_job_2</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "运行导致退出代码 137 的脚本。允许此作业失败"
+</span><span class="code-line">    <span class="token punctuation">-</span> exit 137
+</span><span class="code-line">  <span class="token key atrule">allow_failure</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">exit_codes</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token number">137</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token number">255</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="before_script"><a aria-hidden="true" tabindex="-1" href="#before_script"><span class="icon icon-link"></span></a>before_script</h3><div class="wrap-body">
+<p>在每个作业的 <code>script</code> 命令之前运行，但在工件恢复之后运行</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">before_script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "在任何“script<span class="token punctuation">:</span>”命令之前执行此命令。"
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> echo "此命令在作业的“before_script”命令之后执行"
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="coverage"><a aria-hidden="true" tabindex="-1" href="#coverage"><span class="icon icon-link"></span></a>coverage</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="dast_configuration"><a aria-hidden="true" tabindex="-1" href="#dast_configuration"><span class="icon icon-link"></span></a>dast_configuration</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="dependencies"><a aria-hidden="true" tabindex="-1" href="#dependencies"><span class="icon icon-link"></span></a>dependencies</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="extends"><a aria-hidden="true" tabindex="-1" href="#extends"><span class="icon icon-link"></span></a>extends</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="inherit"><a aria-hidden="true" tabindex="-1" href="#inherit"><span class="icon icon-link"></span></a>inherit</h3><div class="wrap-body">
+<h4 id="inheritdefault"><a aria-hidden="true" tabindex="-1" href="#inheritdefault"><span class="icon icon-link"></span></a>inherit:default</h4>
+<h4 id="inheritvariables"><a aria-hidden="true" tabindex="-1" href="#inheritvariables"><span class="icon icon-link"></span></a>inherit:variables</h4>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="interruptible"><a aria-hidden="true" tabindex="-1" href="#interruptible"><span class="icon icon-link"></span></a>interruptible</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pages"><a aria-hidden="true" tabindex="-1" href="#pages"><span class="icon icon-link"></span></a>pages</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="parallel"><a aria-hidden="true" tabindex="-1" href="#parallel"><span class="icon icon-link"></span></a>parallel</h3><div class="wrap-body">
+<h4 id="parallelmatrix"><a aria-hidden="true" tabindex="-1" href="#parallelmatrix"><span class="icon icon-link"></span></a>parallel:matrix</h4>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="resource_group"><a aria-hidden="true" tabindex="-1" href="#resource_group"><span class="icon icon-link"></span></a>resource_group</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="retry"><a aria-hidden="true" tabindex="-1" href="#retry"><span class="icon icon-link"></span></a>retry</h3><div class="wrap-body">
+<h4 id="retrywhen"><a aria-hidden="true" tabindex="-1" href="#retrywhen"><span class="icon icon-link"></span></a>retry:when</h4>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="script"><a aria-hidden="true" tabindex="-1" href="#script"><span class="icon icon-link"></span></a>script</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="secrets"><a aria-hidden="true" tabindex="-1" href="#secrets"><span class="icon icon-link"></span></a>secrets</h3><div class="wrap-body">
+<h4 id="secretsvault"><a aria-hidden="true" tabindex="-1" href="#secretsvault"><span class="icon icon-link"></span></a>secrets:vault</h4>
+<h4 id="secretsfile"><a aria-hidden="true" tabindex="-1" href="#secretsfile"><span class="icon icon-link"></span></a>secrets:file</h4>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="services"><a aria-hidden="true" tabindex="-1" href="#services"><span class="icon icon-link"></span></a>services</h3><div class="wrap-body">
+<h4 id="servicepull_policy"><a aria-hidden="true" tabindex="-1" href="#servicepull_policy"><span class="icon icon-link"></span></a>service:pull_policy</h4>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="stage"><a aria-hidden="true" tabindex="-1" href="#stage"><span class="icon icon-link"></span></a>stage</h3><div class="wrap-body">
+<h4 id="stage-pre"><a aria-hidden="true" tabindex="-1" href="#stage-pre"><span class="icon icon-link"></span></a>stage: .pre</h4>
+<h4 id="stage-post"><a aria-hidden="true" tabindex="-1" href="#stage-post"><span class="icon icon-link"></span></a>stage: .post</h4>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="tags"><a aria-hidden="true" tabindex="-1" href="#tags"><span class="icon icon-link"></span></a>tags</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="timeout"><a aria-hidden="true" tabindex="-1" href="#timeout"><span class="icon icon-link"></span></a>timeout</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="trigger"><a aria-hidden="true" tabindex="-1" href="#trigger"><span class="icon icon-link"></span></a>trigger</h3><div class="wrap-body">
+<h4 id="triggerinclude"><a aria-hidden="true" tabindex="-1" href="#triggerinclude"><span class="icon icon-link"></span></a>trigger:include</h4>
+<h4 id="triggerproject"><a aria-hidden="true" tabindex="-1" href="#triggerproject"><span class="icon icon-link"></span></a>trigger:project</h4>
+<h4 id="triggerstrategy"><a aria-hidden="true" tabindex="-1" href="#triggerstrategy"><span class="icon icon-link"></span></a>trigger:strategy</h4>
+<h4 id="triggerforward"><a aria-hidden="true" tabindex="-1" href="#triggerforward"><span class="icon icon-link"></span></a>trigger:forward</h4>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="variables"><a aria-hidden="true" tabindex="-1" href="#variables"><span class="icon icon-link"></span></a>variables</h3><div class="wrap-body">
+<h4 id="variablesdescription"><a aria-hidden="true" tabindex="-1" href="#variablesdescription"><span class="icon icon-link"></span></a>variables:description</h4>
+<h4 id="variablesexpand"><a aria-hidden="true" tabindex="-1" href="#variablesexpand"><span class="icon icon-link"></span></a>variables:expand</h4>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="when"><a aria-hidden="true" tabindex="-1" href="#when"><span class="icon icon-link"></span></a>when</h3><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="artifacts"><a aria-hidden="true" tabindex="-1" href="#artifacts"><span class="icon icon-link"></span></a>artifacts</h2><div class="wrap-body">
+<p>使用工件指定要将哪些文件另存为作业 artifacts。作业 artifacts 是作业成功、失败或始终附加到作业的文件和目录的列表</p>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactspaths"><a aria-hidden="true" tabindex="-1" href="#artifactspaths"><span class="icon icon-link"></span></a>artifacts:paths</h3><div class="wrap-body">
+<p>路径是相对于项目目录（$CI_PROJECT_DIR）的，不能直接链接到项目目录之外</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> binaries/
+</span><span class="code-line">      <span class="token punctuation">-</span> .config
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactsexclude"><a aria-hidden="true" tabindex="-1" href="#artifactsexclude"><span class="icon icon-link"></span></a>artifacts:exclude</h3><div class="wrap-body">
+<p>防止将文件添加到 artifacts 存档中</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> binaries/
+</span><span class="code-line">  <span class="token key atrule">exclude</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> binaries/<span class="token important">**/*.o</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactsexpire_in"><a aria-hidden="true" tabindex="-1" href="#artifactsexpire_in"><span class="icon icon-link"></span></a>artifacts:expire_in</h3><div class="wrap-body">
+<p>指定作业 artifacts 在它们过期和被删除之前存储多长时间</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">expire_in</span><span class="token punctuation">:</span> 1 week
+</span></code></pre>
+<hr>
+<ul class="cols-2">
+<li>'42'</li>
+<li>42 seconds</li>
+<li>3 mins 4 sec</li>
+<li>2 hrs 20 min</li>
+<li>2h20min</li>
+<li>6 mos 1 day</li>
+<li>47 yrs 6 mos and 4d</li>
+<li>3 weeks and 2 days</li>
+<li>never</li>
+</ul>
+<!--rehype:className=cols-2-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactsexpose_as"><a aria-hidden="true" tabindex="-1" href="#artifactsexpose_as"><span class="icon icon-link"></span></a>artifacts:expose_as</h3><div class="wrap-body">
+<p>使用 <code>artifacts:expose_as</code> 关键字在合并请求 UI 中公开作业 artifacts</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">test</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"echo 'test' > file.txt"</span><span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">expose_as</span><span class="token punctuation">:</span> <span class="token string">'artifact 1'</span>
+</span><span class="code-line">    <span class="token key atrule">paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'file.txt'</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactsname"><a aria-hidden="true" tabindex="-1" href="#artifactsname"><span class="icon icon-link"></span></a>artifacts:name</h3><div class="wrap-body">
+<p>定义创建的 <code>artifacts</code> 存档的名称。您可以为每个存档指定一个唯一的名称</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"job1-artifacts-file"</span>
+</span><span class="code-line">    <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> binaries/
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactspublic"><a aria-hidden="true" tabindex="-1" href="#artifactspublic"><span class="icon icon-link"></span></a>artifacts:public</h3><div class="wrap-body">
+<p>确定作业工件是否应该公开可用</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">public</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactsreports"><a aria-hidden="true" tabindex="-1" href="#artifactsreports"><span class="icon icon-link"></span></a>artifacts:reports</h3><div class="wrap-body">
+<p>收集作业中包含的模板生成的 <code>artifacts</code></p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">rspec</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">stage</span><span class="token punctuation">:</span> test
+</span><span class="code-line">  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> bundle install
+</span><span class="code-line">    <span class="token punctuation">-</span> rspec <span class="token punctuation">-</span><span class="token punctuation">-</span>format RspecJunitFormatter <span class="token punctuation">-</span><span class="token punctuation">-</span>out rspec.xml
+</span><span class="code-line">  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">reports</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">junit</span><span class="token punctuation">:</span> rspec.xml
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactsuntracked"><a aria-hidden="true" tabindex="-1" href="#artifactsuntracked"><span class="icon icon-link"></span></a>artifacts:untracked</h3><div class="wrap-body">
+<p>将所有 Git 未跟踪文件添加为 <code>artifacts</code>（连同在 <code>artifacts:paths</code> 中定义的路径）</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">untracked</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="artifactswhen"><a aria-hidden="true" tabindex="-1" href="#artifactswhen"><span class="icon icon-link"></span></a>artifacts:when</h3><div class="wrap-body">
+<p>作业失败或尽管失败时上传 <code>artifacts</code></p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">job</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">when</span><span class="token punctuation">:</span> on_failure
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="cache"><a aria-hidden="true" tabindex="-1" href="#cache"><span class="icon icon-link"></span></a>cache</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cachepaths"><a aria-hidden="true" tabindex="-1" href="#cachepaths"><span class="icon icon-link"></span></a>cache:paths</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="cachekey"><a aria-hidden="true" tabindex="-1" href="#cachekey"><span class="icon icon-link"></span></a>cache:key</h3><div class="wrap-body">
+<h4 id="cachekeyfiles"><a aria-hidden="true" tabindex="-1" href="#cachekeyfiles"><span class="icon icon-link"></span></a><code>cache:key:files</code></h4>
+<h4 id="cachekeyprefix"><a aria-hidden="true" tabindex="-1" href="#cachekeyprefix"><span class="icon icon-link"></span></a><code>cache:key:prefix</code></h4>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cacheuntracked"><a aria-hidden="true" tabindex="-1" href="#cacheuntracked"><span class="icon icon-link"></span></a>cache:untracked</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cachewhen"><a aria-hidden="true" tabindex="-1" href="#cachewhen"><span class="icon icon-link"></span></a>cache:when</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cachepolicy"><a aria-hidden="true" tabindex="-1" href="#cachepolicy"><span class="icon icon-link"></span></a>cache:policy</h3><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="environment"><a aria-hidden="true" tabindex="-1" href="#environment"><span class="icon icon-link"></span></a>environment</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="environmentname"><a aria-hidden="true" tabindex="-1" href="#environmentname"><span class="icon icon-link"></span></a>environment:name</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="environmenturl"><a aria-hidden="true" tabindex="-1" href="#environmenturl"><span class="icon icon-link"></span></a>environment:url</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="environmenton_stop"><a aria-hidden="true" tabindex="-1" href="#environmenton_stop"><span class="icon icon-link"></span></a>environment:on_stop</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="environmentaction"><a aria-hidden="true" tabindex="-1" href="#environmentaction"><span class="icon icon-link"></span></a>environment:action</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="environmentauto_stop_in"><a aria-hidden="true" tabindex="-1" href="#environmentauto_stop_in"><span class="icon icon-link"></span></a>environment:auto_stop_in</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="environmentkubernetes"><a aria-hidden="true" tabindex="-1" href="#environmentkubernetes"><span class="icon icon-link"></span></a>environment:kubernetes</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="environmentdeployment_tier"><a aria-hidden="true" tabindex="-1" href="#environmentdeployment_tier"><span class="icon icon-link"></span></a>environment:deployment_tier</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="dynamic-environments"><a aria-hidden="true" tabindex="-1" href="#dynamic-environments"><span class="icon icon-link"></span></a>Dynamic environments</h3><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="image"><a aria-hidden="true" tabindex="-1" href="#image"><span class="icon icon-link"></span></a>image</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="imagename"><a aria-hidden="true" tabindex="-1" href="#imagename"><span class="icon icon-link"></span></a>image:name</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="imageentrypoint"><a aria-hidden="true" tabindex="-1" href="#imageentrypoint"><span class="icon icon-link"></span></a>image:entrypoint</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="imagepull_policy"><a aria-hidden="true" tabindex="-1" href="#imagepull_policy"><span class="icon icon-link"></span></a>image:pull_policy</h3><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="needs"><a aria-hidden="true" tabindex="-1" href="#needs"><span class="icon icon-link"></span></a>needs</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="needsartifacts"><a aria-hidden="true" tabindex="-1" href="#needsartifacts"><span class="icon icon-link"></span></a>needs:artifacts</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="needsproject"><a aria-hidden="true" tabindex="-1" href="#needsproject"><span class="icon icon-link"></span></a>needs:project</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="needspipelinejob"><a aria-hidden="true" tabindex="-1" href="#needspipelinejob"><span class="icon icon-link"></span></a>needs:pipeline:job</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="needsoptional"><a aria-hidden="true" tabindex="-1" href="#needsoptional"><span class="icon icon-link"></span></a>needs:optional</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="needspipeline"><a aria-hidden="true" tabindex="-1" href="#needspipeline"><span class="icon icon-link"></span></a>needs:pipeline</h3><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="only--except"><a aria-hidden="true" tabindex="-1" href="#only--except"><span class="icon icon-link"></span></a>only / except</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="onlyrefs--exceptrefs"><a aria-hidden="true" tabindex="-1" href="#onlyrefs--exceptrefs"><span class="icon icon-link"></span></a>only:refs / except:refs</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="onlyvariables--exceptvariables"><a aria-hidden="true" tabindex="-1" href="#onlyvariables--exceptvariables"><span class="icon icon-link"></span></a>only:variables / except:variables</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="onlychanges--exceptchanges"><a aria-hidden="true" tabindex="-1" href="#onlychanges--exceptchanges"><span class="icon icon-link"></span></a>only:changes / except:changes</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="onlykubernetes--exceptkubernetes"><a aria-hidden="true" tabindex="-1" href="#onlykubernetes--exceptkubernetes"><span class="icon icon-link"></span></a>only:kubernetes / except:kubernetes</h3><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="release"><a aria-hidden="true" tabindex="-1" href="#release"><span class="icon icon-link"></span></a>release</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="releasetag_name"><a aria-hidden="true" tabindex="-1" href="#releasetag_name"><span class="icon icon-link"></span></a>release:tag_name</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="releasetag_message"><a aria-hidden="true" tabindex="-1" href="#releasetag_message"><span class="icon icon-link"></span></a>release:tag_message</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="releasename"><a aria-hidden="true" tabindex="-1" href="#releasename"><span class="icon icon-link"></span></a>release:name</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="releasedescription"><a aria-hidden="true" tabindex="-1" href="#releasedescription"><span class="icon icon-link"></span></a>release:description</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="releaseref"><a aria-hidden="true" tabindex="-1" href="#releaseref"><span class="icon icon-link"></span></a>release:ref</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="releasemilestones"><a aria-hidden="true" tabindex="-1" href="#releasemilestones"><span class="icon icon-link"></span></a>release:milestones</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="releasereleased_at"><a aria-hidden="true" tabindex="-1" href="#releasereleased_at"><span class="icon icon-link"></span></a>release:released_at</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="releaseassetslinks"><a aria-hidden="true" tabindex="-1" href="#releaseassetslinks"><span class="icon icon-link"></span></a>release:assets:links</h3><div class="wrap-body">
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="rules"><a aria-hidden="true" tabindex="-1" href="#rules"><span class="icon icon-link"></span></a>rules</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="rulesif"><a aria-hidden="true" tabindex="-1" href="#rulesif"><span class="icon icon-link"></span></a>rules:if</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="ruleschanges"><a aria-hidden="true" tabindex="-1" href="#ruleschanges"><span class="icon icon-link"></span></a>rules:changes</h3><div class="wrap-body">
+<h4 id="ruleschangespaths"><a aria-hidden="true" tabindex="-1" href="#ruleschangespaths"><span class="icon icon-link"></span></a>rules:changes:paths</h4>
+<h4 id="ruleschangescompare_to"><a aria-hidden="true" tabindex="-1" href="#ruleschangescompare_to"><span class="icon icon-link"></span></a>rules:changes:compare_to</h4>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="rulesexists"><a aria-hidden="true" tabindex="-1" href="#rulesexists"><span class="icon icon-link"></span></a>rules:exists</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="rulesallow_failure"><a aria-hidden="true" tabindex="-1" href="#rulesallow_failure"><span class="icon icon-link"></span></a>rules:allow_failure</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="rulesvariables"><a aria-hidden="true" tabindex="-1" href="#rulesvariables"><span class="icon icon-link"></span></a>rules:variables</h3><div class="wrap-body">
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js" defer></script><script src="../js/fuse.min.js" defer></script><script src="../js/main.js" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索备忘清单" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">取消</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
