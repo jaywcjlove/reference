@@ -25,6 +25,7 @@ Quick Reference
 [Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9);&class=contributing-->
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->
+[Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128);&class=contributing-->
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->
 [NestJS](./docs/nestjs.md)<!--rehype:style=background: rgb(237 21 67);&class=contributing-->
@@ -156,6 +157,7 @@ Quick Reference
 
 [Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=排版说明-->
 [Github Actions](./docs/github-actions.md)<!--rehype:style=background: rgb(121 184 255);-->
+[Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->
 [Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=CSS-->
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129);-->
 [HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=HTML-->
