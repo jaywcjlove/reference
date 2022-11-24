@@ -248,6 +248,18 @@ $ echo 'a b c d' | jq -R 'split(" ")'
 ```
 <!--rehype:className=wrap-text -->
 
+### 更改发布注册表
+
+```bash
+echo "$(jq '.publishConfig.registry = "https://npm.pkg.github.com"' package.json)" > package.json
+```
+
+将组织范围添加到包名称
+
+```bash
+echo "$(jq '.name = "@scope/package"' package.json)" > package.json
+```
+
 另见
 ----
 
