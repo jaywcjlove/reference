@@ -43,11 +43,9 @@ npm run start # 监听 md 文件编译输出 HTML
 │   ├── bash.md
 │   ├── ....
 │   └── yaml.md
+├── .refsrc.json # refs 配置
 ├── package.json
-└── scripts     # MD 转 HTML 的编译脚本
-    ├── assets  # LOGO 图标文件资源
-    ├── ....
-    └── watch.mjs
+└── assets  # LOGO 图标文件资源
 ```
 
 ### 添加一个备忘清单
