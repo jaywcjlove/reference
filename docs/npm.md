@@ -141,6 +141,7 @@ $ npm owner add <their-username> <package-name> --otp=123456
 $ npm publish
 # 第一次需要指定公开参数
 $ npm publish --access public
+$ npm publish --access public --tag previous
 ```
 
 发布公开包，到 [npmjs.org](https://docs.npmjs.com)
