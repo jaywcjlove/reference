@@ -915,6 +915,15 @@ steps:
     avatarSize: 42
 ```
 
+### 忽略失败
+
+```yml
+- run: npm publish
+  continue-on-error: true
+  env:
+    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
 另见
 ---
 
