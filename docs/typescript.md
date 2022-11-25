@@ -1325,6 +1325,66 @@ const point = [3, 4] as const
 // type 'readonly [3, 4]'
 ```
 
+CLI
+---
+
+### 使用 CLI
+
+```bash
+# 基于向后查看 tsconfig.json 的 fs 运行编译
+$ tsc
+# 使用编译器默认值仅为 index.ts 发射 JS
+$ tsc index.ts
+# 使用默认设置为文件夹 src 中的任何 .ts 文件发出 JS
+$ tsc src/*.ts
+# 使用 tsconfig.production.json 中的编译器设置发出引用的文件
+$ tsc --project tsconfig.production.json
+# 为 js 文件发出 d.ts 文件，显示布尔值的编译器选项
+$ tsc index.js --declaration --emitDeclarationOnly
+# 通过采用字符串参数的编译器选项从两个文件发出单个 .js 文件
+$ tsc app.ts util.ts --target esnext --outfile index.js
+```
+<!--rehype:className=wrap-text-->
+
+### 编译器选项
+
+:- | --
+:- | --
+`--all` _boolean_ | 显示所有编译器选项
+`--generateTrace` _string_ | 生成事件跟踪和类型列表
+`--help` _boolean_ | 提供有关 CLI 帮助的本地信息
+`--init` _boolean_ | 初始化 TypeScript 项目并创建 tsconfig.json 文件
+`--listFilesOnly` _boolean_ | 打印作为编译一部分的文件名，然后停止处理
+`--locale` _string_ | 设置来自 TypeScript 的消息传递语言。 这不影响发射
+`--project` _string_ | 编译项目给定其配置文件的路径，或带有“tsconfig.json”的文件夹
+`--showConfig` _boolean_ | 打印最终配置而不是构建
+`--version` _boolean_ | 打印编译器的版本
+<!--rehype:className=style-list-->
+
+### 构建选项
+
+:- | --
+:- | --
+`--build` _boolean_ | 构建一个或多个项目及其依赖项（如果已过期）
+`--clean` _boolean_ | 删除所有项目的输出
+`--dry` _boolean_ | 显示将构建的内容（或删除，如果使用“--clean”指定）
+`--force` _boolean_ | 构建所有项目，包括那些看起来是最新的项目
+`--verbose` _boolean_ | 启用详细日志记录
+<!--rehype:className=style-list-->
+
+### 监听选项
+
+:- | --
+:- | --
+`--excludeDirectories` _list_ | 从监视进程中删除目录列表
+`--excludeFiles` _list_ | 从监视模式的处理中删除文件列表
+`--fallbackPolling` _fixedinterval_, _priorityinterval_, _dynamicpriority_, _fixedchunksize_ | 指定当系统用完本机文件观察器时观察器应使用的方法
+`--synchronousWatchDirectory` boolean | 在本机不支持递归监视的平台上同步调用回调并更新目录监视程序的状态
+`--watch` _boolean_ | 观看输入文件
+`--watchDirectory` _usefsevents_, _fixedpollinginterval_, _dynamicprioritypolling_, _fixedchunksizepolling | 指定在缺少递归文件监视功能的系统上如何监视目录
+`--watchFile` _fixedpollinginterval_, _prioritypollinginterval_, _dynamicprioritypolling_, _fixedchunksizepolling_, _usefsevents_, _usefseventsonparentdirectory_ | 指定 TypeScript 监视模式的工作方式
+<!--rehype:className=style-list-->
+
 TSConfig Ref
 ---
 

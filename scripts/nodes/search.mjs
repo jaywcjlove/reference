@@ -12,30 +12,6 @@ export function search({ homePath = '', isHome } = {}) {
   return [
     {
       type: 'element',
-      tagName: 'script',
-      properties: {
-        src: dataJSUrl,
-        defer: true,
-      },
-    },
-    {
-      type: 'element',
-      tagName: 'script',
-      properties: {
-        src: fuseJSUrl,
-        defer: true,
-      },
-    },
-    {
-      type: 'element',
-      tagName: 'script',
-      properties: {
-        src: manJSUrl,
-        defer: true,
-      },
-    },
-    {
-      type: 'element',
       tagName: 'div',
       properties: {
         id: 'mysearch',
@@ -107,6 +83,33 @@ export function search({ homePath = '', isHome } = {}) {
           ],
         },
       ],
+    },
+    {
+      type: 'element',
+      tagName: 'script',
+      properties: {
+        src: dataJSUrl,
+        type: 'text/javascript',
+        defer: true,
+      },
+    },
+    {
+      type: 'element',
+      tagName: 'script',
+      properties: {
+        src: fuseJSUrl,
+        type: 'text/javascript',
+        defer: true,
+      },
+    },
+    {
+      type: 'element',
+      tagName: 'script',
+      properties: {
+        src: manJSUrl,
+        type: 'text/javascript',
+        defer: true,
+      },
     },
   ];
 }
