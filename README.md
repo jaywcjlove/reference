@@ -326,6 +326,7 @@ Quick Reference
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [aibk.cn](https://quickref.aibk.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
+[jgeek.cn](http://reference.jgeek.cn/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [laoleng.vip](http://bbs.laoleng.vip/reference/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [liujiapeng.com](https://www.liujiapeng.com/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [dbyun.net](https://www.dbyun.net/reference/index.html)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
