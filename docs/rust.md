@@ -850,7 +850,18 @@ for (i, v) in collection.iter().enumerate(){}
 
 ```rust
 let (x, _, y) = (1, 2, 3);
-println!("{x},{y}");
+```
+
+1.65 新增
+
+```rust
+fn get_count_item(s: &str) -> (&str, &str) {
+    let mut it = s.split(' ');
+    let (Some(str1),Some(str2)) = (it.next(),it.next()) else {
+        panic!("Can't segment count item pair");
+    };
+    (str1, str2)
+}
 ```
 
 ### 函数中的模式匹配
@@ -859,6 +870,7 @@ println!("{x},{y}");
 fn add((x, y): (i32, i32)) -> i32 {
     x + y
 }
+
 fn main(){
   let sum = add(1, 2);
   println!("{sum}");
