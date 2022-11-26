@@ -419,12 +419,20 @@ ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
 *.jpg binary
 ```
 
-计入存储库语言
+[计入存储库语言](https://github.com/github/linguist/blob/master/docs/overrides.md#using-gitattributes)
 
 ```ini
 # 标记或取消标记要根据存储库的语言统计数据而
 # 忽略或默认隐藏差异的路径
 search/index.json linguist-generated=true
+# 以下属性统计 SQL 文件
+*.sql linguist-detectable=true
+# 从统计信息中排除
+docs/formatter.rb linguist-documentation=false
+# 将它们从统计信息中排除
+special-vendored-path/* linguist-vendored
+# 将所有 .rb 文件检测为 Java 文件
+*.rb linguist-language=Java
 ```
 
 Git 技巧
