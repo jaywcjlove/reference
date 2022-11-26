@@ -33,7 +33,7 @@ GitLab CI/CD 备忘清单
 [workflow](#workflow) | 控制运行什么类型的管道 [#](https://docs.gitlab.com/ee/ci/yaml/#workflow)
 
 ### 关键字
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 关键字 | 描述
 :-- | --
@@ -69,11 +69,7 @@ GitLab CI/CD 备忘清单
 [variables](#variables) | 在作业级别定义作业变量 [#](https://docs.gitlab.com/ee/ci/yaml/#variables)
 [when](#when) | 何时运行作业 [#](https://docs.gitlab.com/ee/ci/yaml/#when)
 
-全局关键词
----
-
-### default
-<!--rehype:wrap-class=row-span-3-->
+### 全局关键词
 
 - [after_script](#after_script)
 - [artifacts](#artifacts)
@@ -87,7 +83,11 @@ GitLab CI/CD 备忘清单
 - [timeout](#timeout)
 <!--rehype:className=cols-3-->
 
-示例
+全局关键词
+---
+
+### default
+<!--rehype:wrap-class=row-span-3-->
 
 ```yml
 default:
@@ -105,21 +105,21 @@ rspec 2.7:
 
 ### include
 
-在 `11.4` 中移至 `GitLab` 免费版，使用 `include` 将外部 `YAML` 文件包含在您的 `CI/CD` 配置中
-
 ```yml
 include:
   - local: '/temp/.gitlab-ci-template.yml'
 ```
+
+在 `11.4` 中移至 `GitLab` 免费版，使用 `include` 将外部 `YAML` 文件包含在您的 `CI/CD` 配置中
 
 ### include:local
 
-使用 `include:local` 包含与 `.gitlab-ci.yml` 文件位于同一存储库中的文件
-
 ```yml
 include:
   - local: '/temp/.gitlab-ci-template.yml'
 ```
+
+使用 `include:local` 包含与 `.gitlab-ci.yml` 文件位于同一存储库中的文件
 
 ### include:project
 <!--rehype:wrap-class=row-span-3-->
@@ -153,12 +153,12 @@ include:
 
 ### include:remote
 
-使用带有完整 `URL` 的 `include:remote` 来包含来自不同位置的文件
-
 ```yml
 include:
   - remote: 'https://gitlab.com/example-project/-/raw/main/.gitlab-ci.yml'
 ```
+
+使用带有完整 `URL` 的 `include:remote` 来包含来自不同位置的文件
 
 ### include:template
 <!--rehype:wrap-class=row-span-2-->
