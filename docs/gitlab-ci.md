@@ -19,6 +19,27 @@ GitLab CI/CD 备忘清单
 - 转到`Settings` > `CI/CD` 并展开运行程序，只要您至少有一个运行器处于活动状态，旁边有一个绿色圆圈，您就有一个运行器可以处理您的工作
 <!--rehype:className=style-timeline-->
 
+### 示例
+
+```yml
+default:
+  image: node:16
+
+windows_job:
+  only:
+    - master
+  tags:
+    - windows
+  script:
+    - echo Hello, %USERNAME%!
+
+linux_job: tags:
+    - linux script:
+    - echo "Hello, $USER!"
+```
+
+`tags` 用于在不同的平台上运行作业，`only` 控制 `master` 分支提交触发
+
 关键字
 ---
 
