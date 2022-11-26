@@ -194,11 +194,11 @@ Quick Reference
 <a href="https://github.com/Alex-Programer" title="Alex">
   <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
 </a>
-<a href="https://github.com/expoli" title="expoli">
-  <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
-</a>
 <a href="https://github.com/JeffersonHuang" title="Jefferson">
   <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson"/>
+</a>
+<a href="https://github.com/expoli" title="expoli">
+  <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
 </a>
 <a href="https://github.com/sjh42" title="42:p">
   <img src="https://avatars.githubusercontent.com/u/34529275?v=4" width="42;" alt="42:p"/>
