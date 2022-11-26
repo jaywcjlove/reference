@@ -413,6 +413,196 @@ SizedBox(
 ),
 ```
 
+基础布局
+---
+
+### Container
+
+在实际开发中，Container常常用于对一个组件进行包装修饰。
+
+```dart
+// 将Contianer大小固定为100 * 100， 背景色为蓝色。
+// 把Text包裹在Container中，并将其居中
+Container(
+  width: 100,
+  height: 100,
+  color: Colors.blue,
+  alignment: Alignment.center,
+  child: Text('Hello world'),
+),
+
+```
+
+### Column
+
+列布局(Column),可以将多个子组件沿着垂直的方向摆放(竖的摆放)
+
+```dart
+// 将container 和 button 摆放到同一列。
+Column(
+   children: [
+     Container(
+       width: 100,
+       height: 100,
+       color: Colors.blue,
+       alignment: Alignment.center,
+       child: Text('Hello world'),
+     ),
+     ElevatedButton(
+       onPressed: () {},
+       child: Text('Button'),
+     ),
+   ],
+),
+```
+
+### Row
+
+行布局(Row)，可以将多个组件沿水平的方向摆放。
+
+```dart
+// 在同一行摆放3个Button
+Row(
+  children: [
+    ElevatedButton(
+      onPressed: () {},
+      child: const Text('1'),
+    ),
+    ElevatedButton(
+      onPressed: () {},
+      child: const Text('2'),
+    ),
+    ElevatedButton(
+      onPressed: () {},
+      child: const Text('3'),
+    ),
+  ],
+),
+```
+
+### Wrap
+
+将子组件从左到右依次排列，当空间不足时自动换行。
+
+```dart
+// 显示多个Flutter 的logo并自动换行
+Wrap(
+  children: [
+    FlutterLogo(),
+    FlutterLogo(),
+    FlutterLogo(),
+    FlutterLogo(),
+    FlutterLogo(),  
+    FlutterLogo(),
+  ],
+),
+```
+
+### Stack
+
+Stack 可以将一多个子组件叠在一起显示。堆叠顺序按照children属性中的列表依次堆叠摆放，默认将子控件沿左上角对齐。
+需要控制子控件位置可以嵌套`Positoned`控件。
+
+```dart
+// 依次堆叠300*300的蓝色色块、200*200的黑色色块、
+// 100*100的黄色色块
+Stack(
+  children: [
+    Container(
+      height: 300,
+      width: 300,
+      color: Colors.blue,
+    ),
+    Container(
+      height: 200,
+      width: 200,
+      color: Colors.black,
+    ),
+    Container(
+      height: 100,
+      width: 100,
+      color: Colors.yellow,
+    ),
+  ],
+),
+```
+
+### Positioned
+<!--rehype:wrap-class=row-span-2-->
+若需要控制Stack中子控件的位置，则可以嵌套改控件。
+
+```dart
+Stack(
+  children: [
+    // 默认摆放在左上位置
+    Container(
+      height: 300,
+      width: 300,
+      color: Colors.blue,
+    ),
+    // 距离左边40个、距离上面40个逻辑像素的位置
+    Positioned(
+      left: 40,
+      top: 40,
+      child: Container(
+        height: 200,
+        width: 200,
+        color: Colors.black,
+      ),
+    ),
+    // 距离左边80个、距离上面80个逻辑像素的位置
+    Positioned(
+      left: 80,
+      top: 80,
+      child: Container(
+        height: 100,
+        width: 100,
+        color: Colors.yellow,
+      ),
+    ),
+  ],
+),
+```
+
+### Align
+
+Align组件用于决定子组件对齐方式
+
+```dart
+// 使用Align将Button 居中在Container中
+Container(
+  width: 100,
+  height: 100,
+  color: Colors.green,
+  child: Align(
+    alignment: Alignment.center,
+    child: ElevatedButton(
+      onPressed: () {}, 
+      child: Text('Center'),
+    ),
+  ),
+),
+```
+
+### Center
+
+Center 组件实际上继承于Align。用于专门剧中。
+
+```dart
+//与 Align中代码效果一致
+Container(
+  width: 100,
+  height: 100,
+  color: Colors.green,
+  child: Center(
+    child: ElevatedButton(
+      onPressed: () {}, 
+      child: Text('Center'),
+    ),
+  ),
+),
+```
+
 另见
 ---
 
