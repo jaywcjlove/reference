@@ -237,7 +237,7 @@ $ git diff branchB...branchA
 $ git show [SHA]
 ```
 
-### 忽略文件
+### 忽略文件 .gitignore
 <!--rehype:wrap-class=row-span-4-->
 
 文件 `.gitignore` 指定了 `Git` 应该忽略的 **未跟踪的** 文件
@@ -402,6 +402,30 @@ Host github.com
 ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p    
 ```
 <!--rehype:className=wrap-text-->
+
+### .gitattributes
+
+```ini
+# 设置默认行为，以防人们没有设置 core.autocrlf
+* text=auto
+# 明确声明您希望始终规范化并在结帐时
+# 转换为本机行结尾的文本文件
+*.c text
+*.h text
+# 声明在结帐时始终以 CRLF 行结尾的文件
+*.sln text eol=crlf
+# 表示所有真正二进制且不应修改的文件
+*.png binary
+*.jpg binary
+```
+
+计入存储库语言
+
+```ini
+# 标记或取消标记要根据存储库的语言统计数据而
+# 忽略或默认隐藏差异的路径
+search/index.json linguist-generated=true
+```
 
 Git 技巧
 ------
