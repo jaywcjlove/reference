@@ -850,9 +850,10 @@ for (i, v) in collection.iter().enumerate(){}
 
 ```rust
 let (x, _, y) = (1, 2, 3);
+println!("{x},{y}");
 ```
 
-1.65 新增
+----
 
 ```rust
 fn get_count_item(s: &str) -> (&str, &str) {
