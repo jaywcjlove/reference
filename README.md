@@ -84,6 +84,7 @@ Quick Reference
 [HTML](./docs/html.md)<!--rehype:style=background: rgb(228 77 39);-->  
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [Less.js](./docs/lessjs.md)<!--rehype:style=background: rgb(29 54 93);&class=tag&data-lang=CSS-->  
+[Next.js](./docs/nextjs.md)<!--rehype:style=background: rgb(0 0 0);&class=tag&data-lang=React-->  
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173);-->  
 [RegEx 正则表达式](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155);-->  
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198);-->  
