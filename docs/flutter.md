@@ -421,8 +421,6 @@ SizedBox(
 在实际开发中，Container常常用于对一个组件进行包装修饰。
 
 ```dart
-// 将Contianer大小固定为100 * 100， 背景色为蓝色。
-// 把Text包裹在Container中，并将其居中
 Container(
   width: 100,
   height: 100,
@@ -430,8 +428,9 @@ Container(
   alignment: Alignment.center,
   child: Text('Hello world'),
 ),
-
 ```
+
+将 `Contianer` 大小固定为 `100 * 100`， 背景色为蓝色。把 `Text` 包裹在 `Container` 中，并将其居中
 
 ### Column
 
@@ -461,7 +460,6 @@ Column(
 行布局(Row)，可以将多个组件沿水平的方向摆放。
 
 ```dart
-// 在同一行摆放3个Button
 Row(
   children: [
     ElevatedButton(
@@ -480,12 +478,13 @@ Row(
 ),
 ```
 
+在同一行摆放 3 个 `Button`
+
 ### Wrap
 
 将子组件从左到右依次排列，当空间不足时自动换行。
 
 ```dart
-// 显示多个Flutter 的logo并自动换行
 Wrap(
   children: [
     FlutterLogo(),
@@ -498,14 +497,14 @@ Wrap(
 ),
 ```
 
+显示多个 `Flutter` 的 `logo` 并自动换行
+
 ### Stack
 
 Stack 可以将一多个子组件叠在一起显示。堆叠顺序按照children属性中的列表依次堆叠摆放，默认将子控件沿左上角对齐。
 需要控制子控件位置可以嵌套`Positoned`控件。
 
 ```dart
-// 依次堆叠300*300的蓝色色块、200*200的黑色色块、
-// 100*100的黄色色块
 Stack(
   children: [
     Container(
@@ -526,6 +525,8 @@ Stack(
   ],
 ),
 ```
+
+依次堆叠 `300*300` 的蓝色色块、`200*200` 的黑色色块、`100*100` 的黄色色块
 
 ### Positioned
 <!--rehype:wrap-class=row-span-2-->
@@ -605,12 +606,14 @@ Container(
 
 ### Flex
 
-Flex 的用法与Row或Column类似，但只需要额外传入direction参数。
-Row 和 Column组件都继承Flex组件。
-设置direction 为Axis.horizontal 表示水平方向(Row)，为Axis.vertical则为垂直方向(Column)。
+Flex 的用法与 `Row` 或 `Column` 类似，但只需要额外传入 `direction` 参数
+
+- `Row` 和 `Column` 组件都继承 `Flex` 组件
+- 设置 `direction` 为 `Axis.horizontal` 表示水平方向(`Row`)，为 `Axis.vertical`则为垂直方向(`Column`)
+
+垂直方向依次摆放3个flutter logo
 
 ```dart
-// 垂直方向依次摆放3个flutter logo
 Flex(
   direction: Axis.vertiacl,
   children；[
@@ -619,7 +622,11 @@ Flex(
     Fluterlogo(),
   ],
 ),
-// 水平方向依次摆放3个flutter logo
+```
+
+水平方向依次摆放 3 个 flutter logo
+
+```dart
 Flex(
   dirction: Axis.horizontal,
   children: [
@@ -631,8 +638,9 @@ Flex(
 ```
 
 ### Expaneded
+<!--rehype:wrap-class=row-span-2-->
 
-Expanded 用于扩张一个子组件。可以通过flex属性，用于表示该组件相对其他弹性组件放大的倍数(可以理解为一个权重)。
+Expanded 用于扩张一个子组件。可以通过 `flex` 属性，用于表示该组件相对其他弹性组件放大的倍数(可以理解为一个权重)。
 
 ```dart
 // Container 会占满剩余的全部空用空间
@@ -671,16 +679,14 @@ Row(
 ```
 
 ### Flexible
+<!--rehype:wrap-class=row-span-2-->
 
-Flexible 是Expanded组件的父类。
-与Expanded不同的是，Flexible可以通过fit属性设置子控件是否必须占满Flexibal扩展的空间。而Expaned默认子控件必须占满。
-
-将Flexible的fit属性设置为tingt，就等价于使用Expanded。
+`Flexible` 是 `Expanded` 组件的父类。
+与 `Expanded` 不同的是，`Flexible` 可以通过 `fit` 属性设置子控件是否必须占满 `Flexibal` 扩展的空间。而 `Expaned` 默认子控件必须占满
 
 ```dart
 // 如果将fit设置为tight，
 // 则绿色Container 和蓝色Container大小一样。
-
 // 如果将fit设置为loose，
 // 则两个Flexible扩展的空间大小是一样的，
 // 但绿色Container并不会填充整个扩展的空间。
@@ -705,9 +711,11 @@ Row(
 ),
 ```
 
+将 `Flexible` 的 `fit` 属性设置为 `tingt`，就等价于使用 `Expanded`
+
 ### Spacer
 
-Spacer 用于在布局中留白。例如，需要文本和图标位于一个行的两端,而中间留白时。就可以使用Spacer。
+Spacer 用于在布局中留白
 
 ```dart
 Row(
@@ -718,6 +726,8 @@ Row(
   ],
 ),
 ```
+
+例如，需要文本和图标位于一个行的两端，而中间留白时。就可以使用 `Spacer`
 
 另见
 ---
