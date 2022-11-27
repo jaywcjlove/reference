@@ -27,7 +27,7 @@ Quick Reference
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->  
 [Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->  
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128);&class=contributing-->  
-[Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->  
+[Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);&class=contributing-->  
 [NestJS](./docs/nestjs.md)<!--rehype:style=background: rgb(237 21 67);&class=contributing-->  
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->  
 [Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);&class=contributing tag&data-lang=SQL-->  
