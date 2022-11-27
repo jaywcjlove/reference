@@ -603,6 +603,122 @@ Container(
 ),
 ```
 
+### Flex
+
+Flex 的用法与Row或Column类似，但只需要额外传入direction参数。
+Row 和 Column组件都继承Flex组件。
+设置direction 为Axis.horizontal 表示水平方向(Row)，为Axis.vertical则为垂直方向(Column)。
+
+```dart
+// 垂直方向依次摆放3个flutter logo
+Flex(
+  direction: Axis.vertiacl,
+  children；[
+    Fluterlogo(),
+    Fluterlogo(),
+    Fluterlogo(),
+  ],
+),
+// 水平方向依次摆放3个flutter logo
+Flex(
+  dirction: Axis.horizontal,
+  children: [
+    Flutterlogo(),
+    Flutterlogo(),
+    Flutterlogo(),
+  ],
+),
+```
+
+### Expaneded
+
+Expanded 用于扩张一个子组件。可以通过flex属性，用于表示该组件相对其他弹性组件放大的倍数(可以理解为一个权重)。
+
+```dart
+// Container 会占满剩余的全部空用空间
+Row(
+  children: [
+    FlutterLogo(),
+    Expanded(
+      child: Container(
+        child: FlutterLogo(),
+        color: Colors.green,
+      ),
+    ),
+    FlutterLogo(),
+  ],
+),
+
+// 按照1:2 的比例分配一整行的空间
+Row(
+  children: [
+    Expanded(
+      flex: 1,
+      child: Container(
+        child: FlutterLogo(),
+        color: Colors.green,
+      ),
+    ),
+    Expanded(
+      flex: 2,
+      child: Container(
+        child: FlutterLogo(),
+        color: Colors.blue,
+      ),
+    ),
+  ],
+),
+```
+
+### Flexible
+
+Flexible 是Expanded组件的父类。
+与Expanded不同的是，Flexible可以通过fit属性设置子控件是否必须占满Flexibal扩展的空间。而Expaned默认子控件必须占满。
+
+将Flexible的fit属性设置为tingt，就等价于使用Expanded。
+
+```dart
+// 如果将fit设置为tight，
+// 则绿色Container 和蓝色Container大小一样。
+
+// 如果将fit设置为loose，
+// 则两个Flexible扩展的空间大小是一样的，
+// 但绿色Container并不会填充整个扩展的空间。
+Row(
+  children: [
+    Flexible(
+      flex: 2,
+      // fit: FlexFit.tight,
+      child: Container(
+        child: FlutterLogo(),
+        color: Colors.green,
+      ),
+    ),
+    Expanded(
+      flex: 2,
+      child: Container(
+        child: FlutterLogo(),
+        color: Colors.blue,
+      ),
+    ),
+  ],
+),
+```
+
+### Spacer
+
+Spacer 用于在布局中留白。例如，需要文本和图标位于一个行的两端,而中间留白时。就可以使用Spacer。
+
+```dart
+Row(
+  children: [
+    Text('Item'),
+    Spacer(),
+    FlutterLogo(),
+  ],
+),
+```
+
 另见
 ---
 
