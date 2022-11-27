@@ -27,7 +27,7 @@ Quick Reference
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->  
 [Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->  
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128);&class=contributing-->  
-[Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->  
+[Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);&class=contributing-->  
 [NestJS](./docs/nestjs.md)<!--rehype:style=background: rgb(237 21 67);&class=contributing-->  
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->  
 [Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);&class=contributing tag&data-lang=SQL-->  
@@ -194,11 +194,11 @@ Quick Reference
 <a href="https://github.com/Alex-Programer" title="Alex">
   <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
 </a>
-<a href="https://github.com/expoli" title="expoli">
-  <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
-</a>
 <a href="https://github.com/JeffersonHuang" title="Jefferson">
   <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson"/>
+</a>
+<a href="https://github.com/expoli" title="expoli">
+  <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
 </a>
 <a href="https://github.com/sjh42" title="42:p">
   <img src="https://avatars.githubusercontent.com/u/34529275?v=4" width="42;" alt="42:p"/>
@@ -326,10 +326,11 @@ Quick Reference
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [aibk.cn](https://quickref.aibk.cn)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
+[jgeek.cn](http://reference.jgeek.cn/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [laoleng.vip](http://bbs.laoleng.vip/reference/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [liujiapeng.com](https://www.liujiapeng.com/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [dbyun.net](https://www.dbyun.net/reference/index.html)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
-[cyolc932.fun](https://cyolc932.fun/reference/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
+[dc6.fun](https://dc6.fun/reference/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 <!--rehype:class=home-card&style=margin:2.2rem 0;display: flex;justify-content: center;gap: 1rem;flex-wrap: wrap;-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 gh-pages 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。

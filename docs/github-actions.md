@@ -924,8 +924,273 @@ steps:
     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 ```
 
+当 `npm` 推送包失败不影响整个流程，可用于自动发包
+
+GitLab CI/CD 迁移到 GitHub Actions
+---
+
+### 语法示例
+
+<yel>GitLab CI/CD</yel>
+
+```yml
+job1:
+  variables:
+    GIT_CHECKOUT: "true"
+  script:
+    - echo "Run your script here"
+```
+
+GitHub Actions
+
+```yml
+jobs:
+  job1:
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "Run your script here"
+```
+
+### 运行程序
+<!--rehype:wrap-class=row-span-2-->
+
+<yel>GitLab CI/CD</yel>
+
+```yml
+windows_job:
+  tags:
+    - windows
+  script:
+    - echo Hello, %USERNAME%!
+
+linux_job: tags:
+    - linux script:
+    - echo "Hello, $USER!"
+```
+
+GitHub Actions
+
+```yml
+windows_job:
+  runs-on: windows-latest
+  steps:
+    - run: echo Hello, %USERNAME%!
+
+linux_job:
+  runs-on: ubuntu-latest
+  steps:
+    - run: echo "Hello, $USER!"
+```
+
+在不同的平台上运行作业
+
+### Docker 映像
+
+<yel>GitLab CI/CD</yel>
+
+```yml
+my_job:
+  image: node:10.16-jessie
+```
+
+GitHub Actions
+
+```yml
+jobs:
+  my_job:
+    container: node:10.16-jessie
+```
+
+### 条件和表达式语法
+
+<yel>GitLab CI/CD</yel>
+
+```yml
+deploy_prod:
+  stage: deploy
+  script:
+    - echo "部署到生产服务器"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+```
+
+GitHub Actions
+
+```yml
+jobs:
+  deploy_prod:
+    if: contains( github.ref, 'master')
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "部署到生产服务器"
+```
+
+### Artifacts
+
+<yel>GitLab CI/CD</yel>
+
+```yml
+script:
+artifacts:
+  paths:
+    - math-homework.txt
+```
+
+GitHub Actions
+
+```yml
+- name: Upload math result for job 1
+  uses: actions/upload-artifact@v3
+  with:
+    name: homework
+    path: math-homework.txt
+```
+
+### 作业之间的依赖关系
+
+<yel>GitLab CI/CD</yel>
+
+```yml
+stages:
+  - build
+  - test
+  - deploy
+
+build_a: stage: build script:
+    - echo "该作业将首先运行"
+
+build_b: stage: build script:
+    - echo "该作业将首先运行，与 build_a 并行"
+
+test_ab: stage: test script:
+    - echo "此作业将在 build_a 和 build_b 完成后运行"
+
+deploy_ab: stage: deploy script:
+    - echo "此作业将在 test_ab 完成后运行"
+```
+
+GitHub Actions
+
+```yml
+jobs:
+  build_a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "该作业将首先运行"
+
+  build_b:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "该作业将首先运行，与 build_a 并行"
+
+  test_ab:
+    runs-on: ubuntu-latest
+    needs: [build_a,build_b]
+    steps:
+      - run: echo "此作业将在 build_a 和 build_b 完成后运行"
+
+  deploy_ab:
+    runs-on: ubuntu-latest
+    needs: [test_ab]
+    steps:
+      - run: echo "此作业将在 test_ab 完成后运行"
+```
+
+### 缓存
+
+<yel>GitLab CI/CD</yel>
+
+```yml
+image: node:latest
+
+cache: key: $CI_COMMIT_REF_SLUG paths:
+    - .npm/
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
+
+test_async: script:
+    - node ./specs/start.js ./specs/async.spec.js
+```
+
+GitHub Actions
+
+```yml
+jobs:
+  test_async:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Cache node modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: v1-npm-deps-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: v1-npm-deps-
+```
+
+### 数据库和服务容器
+
+<yel>GitLab CI/CD</yel>
+
+```yml
+container-job:
+  variables:
+    POSTGRES_PASSWORD: postgres
+    # PostgreSQL 服务容器通信的主机名
+    POSTGRES_HOST: postgres
+    # 默认的 PostgreSQL 端口
+    POSTGRES_PORT: 5432
+  image: node:10.18-jessie
+  services:
+    - postgres
+  script:
+    # 执行 package.json 文件中
+    # 所有依赖项的全新安装
+    - npm ci
+    # 运行创建 PostgreSQL 客户端的脚本，
+    # 用数据填充客户端，并检索数据
+    - node client.js
+  tags:
+    - docker
+```
+
+GitHub Actions
+
+```yml
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    container: node:10.18-jessie
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      # 执行 package.json 文件中
+      # 所有依赖项的全新安装
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Connect to PostgreSQL
+        # 运行创建 PostgreSQL 客户端的脚本，
+        # 用数据填充客户端，并检索数据
+        run: node client.js
+        env:
+          # PostgreSQL 服务容器通信的主机名
+          POSTGRES_HOST: postgres
+          # 默认的 PostgreSQL 端口
+          POSTGRES_PORT: 5432
+```
+
 另见
 ---
 
 - [Github Actions 学习笔记](https://jaywcjlove.github.io/github-actions) _(jaywcjlove.github.io)_
 - [了解 GitHub Actions](https://docs.github.com/cn/actions/learn-github-actions) _(docs.github.com)_
+- [从 GitLab CI/CD 迁移到 GitHub Actions](https://docs.github.com/cn/actions/migrating-to-github-actions/migrating-from-gitlab-cicd-to-github-actions) _(docs.github.com)_
