@@ -11,6 +11,8 @@ CocoaPods 备忘清单
 
 ```bash
 $ sudo gem install cocoapods
+# OR
+$ brew install cocoapods 
 ```
 
 无 Sudo 安装，不想为此过程授予 `RubyGems` 管理员权限
