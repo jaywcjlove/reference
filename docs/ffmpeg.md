@@ -718,6 +718,30 @@ $ ffmpeg -i test.mp4 -af "loudnorm=I=-5:LRA=1" out.mp4
 $ ffmpeg -i input.mp3 -af "channelmap=1-0|1-1" output.mp3
 ```
 
+流处理
+---
+
+### 拉流
+
+```bash
+# 拉取rtmp流并存储到本地
+$ ffmpeg -i "rtsp://127.0.0.1/test" test.mp4
+```
+
+### 推流
+
+```bash
+# 推送test.mp4到远程
+$ ffmpeg -re -i test.mp4 -f flv rtmp://127.0.0.1/test
+```
+
+### 转发
+
+```bash
+# 拉取流并转发
+$ ffmpeg -i "rtsp://127.0.0.1/test" -f mpegts -codec:v mpeg1video http://127.0.0.1/demo
+```
+
 另见
 ---
 
