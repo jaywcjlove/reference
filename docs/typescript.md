@@ -1325,6 +1325,84 @@ const point = [3, 4] as const
 // type 'readonly [3, 4]'
 ```
 
+### satisfies
+
+`satisfies` 允许将验证表达式的类型与某种类型匹配，而无需更改该表达式的结果类型。
+
+```ts
+type Colors = 'red' | 'green' | 'blue';
+
+type RGB = [red: number, green: number, blue: number];
+
+const palette: Record<Colors, string | RGB> = {
+  red: [255, 0, 0],
+  green: '#00ff00',
+  blue: [0, 0, 255],
+};
+
+// 通常的方式会推导出 redComponent 为 string | number | undefined
+const redComponent = palette.red.at(0);
+```
+
+#### 使用 satisfies
+
+```ts
+const palette = {
+  red: [255, 0, 0],
+  green: '#00ff00',
+  blue: [0, 0, 255],
+} satisfies Record<Colors, string | RGB>
+
+// undefined | number
+const redComponent = palette.red.at(0)
+```
+
+<!--rehype:className=wrap-text-->
+
+### 范型实例化表达式
+
+不使用的情况下：
+
+```ts
+const errorMap: Map<string, Error> = new Map()
+// 或者使用 type 定义别名
+type ErrorMapType = Map<string, Error>
+```
+
+使用泛型实例化表达式：
+
+```ts
+const ErrorMap = Map<string, Error>
+const errorMap = new ErrorMap()
+```
+
+#### 泛型实例化函数
+
+```ts
+function makeBox<T>(value: T) {
+    return { value };
+}
+```
+
+---
+
+不使用：
+
+```ts
+function makeHammerBox(hammer: Hammer) {
+  return makeBox(hammer);
+}
+// or...
+const makeWrenchBox: (wrench: Wrench) => Box<Wrench> = makeBox;
+```
+
+使用：
+
+```ts
+const makeStringBox = makeBox<string>;
+makeStringBox(42);
+```
+
 CLI
 ---
 
