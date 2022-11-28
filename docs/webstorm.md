@@ -90,7 +90,7 @@ Webstorm Windows & Linux 键盘映射
 `Alt` `Up` | 转到上一个方法
 `Alt` `Down` | 转到下一个方法
 `Ctrl` `]` _/_ `[` | 移动到代码块结束/开始
-`Cltrl` `Shift` `M` | 将插入符号移动到匹配的大括号
+`Ctrl` `Shift` `M` | 将插入符号移动到匹配的大括号
 `Ctrl` `F12` | 文件结构弹出
 `Ctrl` `H` | 类型层次结构
 `Ctrl` `Alt` `H` | 调用层次结构
