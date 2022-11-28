@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'jaywcjlove/reference'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -58,7 +59,6 @@ jobs:
           filter-author: (小弟调调™)
           filter: (^[\s]+?[R|r]elease)|(^[R|r]elease)
 
-
       - name: Create Release
         uses: ncipollo/release-action@v1
         if: steps.create_tag.outputs.successful
@@ -69,26 +69,26 @@ jobs:
           body: |
             Documentation ${{ needs.build.outputs.create_tag_version }}: https://raw.githack.com/jaywcjlove/reference/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
             Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
-            
+
             ${{ steps.changelog.outputs.changelog }}
 
             ## Docker
             [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Pulls](https://img.shields.io/docker/pulls/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
 
             轻松通过 `docker` 部署 `Quick Reference` 网站。
-            
+
             ```bash
             docker pull wcjiang/reference
             ```
-            
+
             ```bash
             docker run --name reference --rm -d -p 9667:3000 wcjiang/reference:latest
             # Or
             docker run --name reference -itd -p 9667:3000 wcjiang/reference:latest
             ```
-            
+
             在浏览器中访问以下 URL
-            
+
             ```bash
             http://localhost:9667/
             ```
@@ -144,8 +144,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
 
-
-
       # # Create Docker Image in Github
       # - name: Login to GitHub registry
       #   run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -166,7 +164,7 @@ jobs:
       # # Create Docker Image
       # - name: Docker login
       #   run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-        
+
       # - name: Build reference image
       #   run: docker image build -t reference .
 
