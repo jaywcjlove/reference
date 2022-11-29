@@ -22,7 +22,7 @@ $ ruby --version
 # ruby 2.7.5
 ```
 
-<red>注意:</red> macOS 12.5.1 附带了 Ruby 2.6.8，这不是 React Native 所要求的，React Native 70+ 需要 Ruby 2.7.5，可以使用下面工具切换版本：
+<red>注意:</red> macOS 12.5.1 附带了 Ruby <pur>**2.6.8**</pur>，这不是 React Native 所要求的，React Native 70+ 需要 Ruby <yel>**2.7.5**</yel>，可以使用下面工具切换版本：
 
 - [rbenv](https://github.com/rbenv/rbenv)
 - [RVM](https://rvm.io/)
@@ -162,19 +162,10 @@ export default function ViewExample() {
   return (
     <View
       style={{
-        flexDirection: "row",
-        height: 100,
-        padding: 20
+        backgroundColor: "red",
+        flex: 0.5
       }}
-    >
-      <View style={{
-        backgroundColor: "blue", flex: 0.3
-      }} />
-      <View style={{
-        backgroundColor: "red", flex: 0.5
-      }} />
-      <Text>Hello World!</Text>
-    </View>
+    />
   );
 };
 ```
@@ -185,9 +176,10 @@ export default function ViewExample() {
 
 ```jsx
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-export default function BoldAndBeautiful() {
+export default function BoldBeautiful() {
   return (
     <Text style={styles.baseText}>
       我是粗体
@@ -197,7 +189,6 @@ export default function BoldAndBeautiful() {
     </Text>
   );
 };
-
 const styles = StyleSheet.create({
   baseText: { fontWeight: 'bold' },
   innerText: { color: 'red' }
@@ -212,25 +203,21 @@ const styles = StyleSheet.create({
 import React from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 
-const UselessTextInput = () => {
-  const [text, onChangeText] = React.useState("Useless Text");
+export default function UseTextInput() {
+  const [
+    text, onChangeText
+  ] = React.useState("Useless Text");
   return (
     <SafeAreaView>
       <TextInput
-        style={styles.input}
         onChangeText={onChangeText}
         value={text}
       />
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  input: { height: 40, padding: 10, },
-});
-
-export default UselessTextInput;
 ```
+<!--rehype:className=wrap-text-->
 
 用于通过键盘将文本输入应用程序的组件
 
@@ -324,7 +311,9 @@ import { StyleSheet, Text, View } from "react-native";
 
 export const App = () => (
   <View style={styles.container}>
-    <Text style={styles.title}>React Native</Text>
+    <Text style={styles.title}>
+      React Native
+    </Text>
   </View>
 );
 
@@ -340,6 +329,7 @@ const styles = StyleSheet.create({
   }
 });
 ```
+<!--rehype:className=wrap-text-->
 
 提供类似于 CSS 样式表的抽象层
 
@@ -350,6 +340,8 @@ const styles = StyleSheet.create({
 ### Button
 
 ```jsx
+import { Button } from "react-native";
+
 <Button
   onPress={onPressLearnMore}
   title="Learn More"
@@ -363,6 +355,8 @@ const styles = StyleSheet.create({
 ### Switch
 
 ```jsx
+import { Switch } from "react-native";
+
 <Switch
   trackColor={{ false: "#767577", true: "#81b0ff" }}
   thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -646,7 +640,10 @@ export default App;
 
 ```jsx
 import React from "react";
-import { Button, PermissionsAndroid, SafeAreaView, StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  Button, PermissionsAndroid,
+  SafeAreaView, StatusBar, StyleSheet, Text, View
+} from "react-native";
 
 const requestCameraPermission = async () => {
   try {
@@ -675,7 +672,10 @@ const requestCameraPermission = async () => {
 const App = () => (
   <View style={styles.container}>
     <Text style={styles.item}>Try permissions</Text>
-    <Button title="request permissions" onPress={requestCameraPermission} />
+    <Button
+      title="request permissions"
+      onPress={requestCameraPermission}
+    />
   </View>
 );
 
@@ -704,11 +704,13 @@ export default App;
 
 ```jsx
 import React from "react";
-import { View, StyleSheet, ToastAndroid, Button, StatusBar } from "react-native";
+import {
+  View, StyleSheet, ToastAndroid, Button, StatusBar
+} from "react-native";
 
 const App = () => {
   const showToast = () => {
-    ToastAndroid.show("A pikachu appeared nearby !", ToastAndroid.SHORT);
+    ToastAndroid.show("一只皮卡丘出现在附近!", ToastAndroid.SHORT);
   };
 
   const showToastWithGravity = () => {
@@ -896,35 +898,34 @@ export default App;
 
 ```jsx
 import React, { useRef } from "react";
-import { Animated, Text, View, StyleSheet, Button, SafeAreaView } from "react-native";
+import {
+  Animated, Text, View, StyleSheet, Button, SafeAreaView
+} from "react-native";
 
 const App = () => {
-  // fadeAnim will be used as the value for opacity. Initial Value: 0
+  // fadeAnim 将用作不透明度的值。 初始值：0
   const fadeAnim = useRef(new Animated.Value(0)).current;
-
   const fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
+    // 将在 5 秒内将 fadeAnim 值更改为 1
     Animated.timing(fadeAnim, {
       toValue: 1,
       duration: 5000
     }).start();
   };
-
   const fadeOut = () => {
-    // Will change fadeAnim value to 0 in 3 seconds
+    // 将在 3 秒内将 fadeAnim 值更改为 0
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: 3000
     }).start();
   };
-
   return (
     <SafeAreaView style={styles.container}>
       <Animated.View
         style={[
           styles.fadingContainer,
           {
-            // Bind opacity to animated value
+            // 将不透明度绑定到动画值
             opacity: fadeAnim
           }
         ]}
@@ -932,8 +933,8 @@ const App = () => {
         <Text style={styles.fadingText}>Fading View!</Text>
       </Animated.View>
       <View style={styles.buttonRow}>
-        <Button title="Fade In View" onPress={fadeIn} />
-        <Button title="Fade Out View" onPress={fadeOut} />
+        <Button title="淡入淡出" onPress={fadeIn} />
+        <Button title="淡出视图" onPress={fadeOut} />
       </View>
     </SafeAreaView>
   );
@@ -949,9 +950,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "powderblue"
   },
-  fadingText: {
-    fontSize: 28
-  },
+  fadingText: { fontSize: 28 },
   buttonRow: {
     flexBasis: 100,
     justifyContent: "space-evenly",
@@ -979,7 +978,11 @@ const windowHeight = Dimensions.get('window').height;
 
 ```jsx
 import React from 'react';
-import { View, KeyboardAvoidingView, TextInput, StyleSheet, Text, Platform, TouchableWithoutFeedback, Button, Keyboard  } from 'react-native';
+import {
+  View, KeyboardAvoidingView, TextInput,
+  StyleSheet, Text, Platform,
+  TouchableWithoutFeedback, Button, Keyboard
+} from 'react-native';
 
 const KeyboardAvoidingComponent = () => {
   return (
@@ -990,7 +993,7 @@ const KeyboardAvoidingComponent = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inner}>
           <Text style={styles.header}>Header</Text>
-          <TextInput placeholder="Username" style={styles.textInput} />
+          <TextInput placeholder="用户名" style={styles.textInput} />
           <View style={styles.btnContainer}>
             <Button title="Submit" onPress={() => null} />
           </View>
@@ -1001,18 +1004,13 @@ const KeyboardAvoidingComponent = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
+  container: { flex: 1 },
   inner: {
     padding: 24,
     flex: 1,
     justifyContent: "space-around"
   },
-  header: {
-    fontSize: 36,
-    marginBottom: 48
-  },
+  header: { fontSize: 36, marginBottom: 48 },
   textInput: {
     height: 40,
     borderColor: "#000000",
@@ -1034,43 +1032,47 @@ export default KeyboardAvoidingComponent;
 
 ```jsx
 import React, { useCallback } from "react";
-import { Alert, Button, Linking, StyleSheet, View } from "react-native";
+import {
+  Alert, Button, Linking, StyleSheet, View
+} from "react-native";
 
 const supportedURL = "https://google.com";
-
 const unsupportedURL = "slack://open?team=123456";
-
 const OpenURLButton = ({ url, children }) => {
   const handlePress = useCallback(async () => {
-    // Checking if the link is supported for links with custom URL scheme.
+    // 检查具有自定义 URL 方案的链接是否支持该链接。
     const supported = await Linking.canOpenURL(url);
-
     if (supported) {
-      // Opening the link with some app, if the URL scheme is "http" the web link should be opened
-      // by some browser in the mobile
+      // 打开某些应用程序的链接，如果 URL 方案是“http”，则应打开 Web 链接
+      // 通过手机中的某些浏览器
       await Linking.openURL(url);
     } else {
-      Alert.alert(`Don't know how to open this URL: ${url}`);
+      Alert.alert(`不知道如何打开这个网址： ${url}`);
     }
   }, [url]);
-
   return <Button title={children} onPress={handlePress} />;
 };
 
-const App = () => {
+export default function App() {
   return (
     <View style={styles.container}>
-      <OpenURLButton url={supportedURL}>打开支持的 URL</OpenURLButton>
-      <OpenURLButton url={unsupportedURL}>打开不支持的 URL</OpenURLButton>
+      <OpenURLButton url={supportedURL}>
+        打开支持的 URL
+      </OpenURLButton>
+      <OpenURLButton url={unsupportedURL}>
+        打开不支持的 URL
+      </OpenURLButton>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
 });
-
-export default App;
 ```
 
 提供一个通用接口来与传入和传出应用程序链接进行交互
@@ -1080,7 +1082,9 @@ export default App;
 
 ```jsx
 import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import {
+  Alert, Modal, StyleSheet, Text, Pressable, View
+} from "react-native";
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -1091,7 +1095,7 @@ const App = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
+          Alert.alert("模态已关闭");
           setModalVisible(!modalVisible);
         }}
       >
@@ -1182,20 +1186,18 @@ var image = getImage({
 
 ```jsx
 import React from 'react';
-import { RefreshControl, SafeAreaView, ScrollView, StyleSheet, Text } from 'react-native';
-
+import {
+  RefreshControl, SafeAreaView, ScrollView, StyleSheet, Text
+} from 'react-native';
 const wait = (timeout) => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 }
-
-const App = () => {
+export default function App() {
   const [refreshing, setRefreshing] = React.useState(false);
-
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
   }, []);
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
@@ -1224,8 +1226,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-export default App;
 ```
 
 该组件在 ScrollView 内部使用，以添加下拉刷新功能
@@ -1452,3 +1452,187 @@ flexDirection 样式属性确定子元素的布局方向和顺序，可以是`ro
 ```
 
 默认所有尺寸都是<pur>**无单位**</pur>的，并且表示与密度无关的像素
+
+Props
+---
+
+### View Style Props
+<!--rehype:wrap-class=row-span-3-->
+
+```jsx
+import React from "react";
+import { View, StyleSheet } from "react-native";
+
+export default function ViewStyle() {
+  return (
+    <View style={styles.container}>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
+    backgroundColor: "#fff",
+  },
+});
+```
+<!--rehype:className=wrap-text-->
+
+---
+
+:- | --
+:- | --
+`backfaceVisibility` | [#](https://reactnative.dev/docs/view-style-props#backfacevisibility)
+`backgroundColor` | [#](https://reactnative.dev/docs/view-style-props#backgroundcolor)
+`borderBottomColor` | [#](https://reactnative.dev/docs/view-style-props#borderbottomcolor)
+`borderBottomEndRadius` | [#](https://reactnative.dev/docs/view-style-props#borderbottomendradius)
+`borderBottomLeftRadius` | [#](https://reactnative.dev/docs/view-style-props#borderbottomleftradius)
+`borderBottomRightRadius` | [#](https://reactnative.dev/docs/view-style-props#borderbottomrightradius)
+`borderBottomStartRadius` | [#](https://reactnative.dev/docs/view-style-props#borderbottomstartradius)
+`borderBottomWidth` | [#](https://reactnative.dev/docs/view-style-props#borderbottomwidth)
+`borderColor` | [#](https://reactnative.dev/docs/view-style-props#bordercolor)
+`borderEndColor` | [#](https://reactnative.dev/docs/view-style-props#borderendcolor)
+`borderLeftColor` | [#](https://reactnative.dev/docs/view-style-props#borderleftcolor)
+`borderLeftWidth` | [#](https://reactnative.dev/docs/view-style-props#borderleftwidth)
+`borderRadius` | [#](https://reactnative.dev/docs/view-style-props#borderradius)
+`borderRightColor` | [#](https://reactnative.dev/docs/view-style-props#borderrightcolor)
+`borderRightWidth` | [#](https://reactnative.dev/docs/view-style-props#borderrightwidth)
+`borderStartColor` | [#](https://reactnative.dev/docs/view-style-props#borderstartcolor)
+`borderStyle` | [#](https://reactnative.dev/docs/view-style-props#borderstyle)
+`borderTopColor` | [#](https://reactnative.dev/docs/view-style-props#bordertopcolor)
+`borderTopEndRadius` | [#](https://reactnative.dev/docs/view-style-props#bordertopendradius)
+`borderTopLeftRadius` | [#](https://reactnative.dev/docs/view-style-props#bordertopleftradius)
+`borderTopRightRadius` | [#](https://reactnative.dev/docs/view-style-props#bordertoprightradius)
+`borderTopStartRadius` | [#](https://reactnative.dev/docs/view-style-props#bordertopstartradius)
+`borderTopWidth` | [#](https://reactnative.dev/docs/view-style-props#bordertopwidth)
+`borderWidth` | [#](https://reactnative.dev/docs/view-style-props#borderwidth)
+`elevation` _Android_ | [#](https://reactnative.dev/docs/view-style-props#elevation-android)
+`opacity` | [#](https://reactnative.dev/docs/view-style-props#opacity)
+
+### Text Style Props
+<!--rehype:wrap-class=row-span-2-->
+
+:- | --
+:- | --
+`color` | [#](https://reactnative.dev/docs/text-style-props#color)
+`fontFamily` | [#](https://reactnative.dev/docs/text-style-props#fontfamily)
+`fontSize` | [#](https://reactnative.dev/docs/text-style-props#fontsize)
+`fontStyle` | [#](https://reactnative.dev/docs/text-style-props#fontstyle)
+`fontWeight` | [#](https://reactnative.dev/docs/text-style-props#fontweight)
+`includeFontPadding` _Android_ | [#](https://reactnative.dev/docs/text-style-props#includefontpadding-android)
+`fontVariant` | [#](https://reactnative.dev/docs/text-style-props#fontvariant)
+`letterSpacing` | [#](https://reactnative.dev/docs/text-style-props#letterspacing)
+`lineHeight` | [#](https://reactnative.dev/docs/text-style-props#lineheight)
+`textAlign` | [#](https://reactnative.dev/docs/text-style-props#textalign)
+`textAlignVertical` _Android_ | [#](https://reactnative.dev/docs/text-style-props#textalignvertical-android)
+`textDecorationColor` _iOS_ | [#](https://reactnative.dev/docs/text-style-props#textdecorationcolor-ios)
+`textDecorationLine` | [#](https://reactnative.dev/docs/text-style-props#textdecorationline)
+`textDecorationStyle` _iOS_ | [#](https://reactnative.dev/docs/text-style-props#textdecorationstyle-ios)
+`textShadowColor` | [#](https://reactnative.dev/docs/text-style-props#textshadowcolor)
+`textShadowOffset` | [#](https://reactnative.dev/docs/text-style-props#textshadowoffset)
+`textShadowRadius` | [#](https://reactnative.dev/docs/text-style-props#textshadowradius)
+`textTransform` | [#](https://reactnative.dev/docs/text-style-props#texttransform)
+`writingDirection` _iOS_ | [#](https://reactnative.dev/docs/text-style-props#writingdirection-ios)
+
+### Shadow Props
+
+:- | --
+:- | --
+`shadowColor` | [#](https://reactnative.dev/docs/shadow-props#shadowcolor)
+`shadowOffset` _iOS_ | [#](https://reactnative.dev/docs/shadow-props#shadowoffset-ios)
+`shadowOpacity` _iOS_ | [#](https://reactnative.dev/docs/shadow-props#shadowopacity-ios)
+`shadowRadius` _iOS_ | [#](https://reactnative.dev/docs/shadow-props#shadowradius-ios)
+
+### Layout Props
+<!--rehype:wrap-class=row-span-3-->
+
+:- | --
+:- | --
+`alignContent` | [#](https://reactnative.dev/docs/layout-props#aligncontent)
+`alignItems` | [#](https://reactnative.dev/docs/layout-props#alignitems)
+`alignSelf` | [#](https://reactnative.dev/docs/layout-props#alignself)
+`aspectRatio` | [#](https://reactnative.dev/docs/layout-props#aspectratio)
+`borderBottomWidth` | [#](https://reactnative.dev/docs/layout-props#borderbottomwidth)
+`borderEndWidth` | [#](https://reactnative.dev/docs/layout-props#borderendwidth)
+`borderLeftWidth` | [#](https://reactnative.dev/docs/layout-props#borderleftwidth)
+`borderRightWidth` | [#](https://reactnative.dev/docs/layout-props#borderrightwidth)
+`borderStartWidth` | [#](https://reactnative.dev/docs/layout-props#borderstartwidth)
+`borderTopWidth` | [#](https://reactnative.dev/docs/layout-props#bordertopwidth)
+`borderWidth` | [#](https://reactnative.dev/docs/layout-props#borderwidth)
+`bottom` | [#](https://reactnative.dev/docs/layout-props#bottom)
+`direction` | [#](https://reactnative.dev/docs/layout-props#direction)
+`display` | [#](https://reactnative.dev/docs/layout-props#display)
+`end` | [#](https://reactnative.dev/docs/layout-props#end)
+`flex` | [#](https://reactnative.dev/docs/layout-props#flex)
+`flexBasis` | [#](https://reactnative.dev/docs/layout-props#flexbasis)
+`flexDirection` | [#](https://reactnative.dev/docs/layout-props#flexdirection)
+`flexGrow` | [#](https://reactnative.dev/docs/layout-props#flexgrow)
+`flexShrink` | [#](https://reactnative.dev/docs/layout-props#flexshrink)
+`flexWrap` | [#](https://reactnative.dev/docs/layout-props#flexwrap)
+`height` | [#](https://reactnative.dev/docs/layout-props#height)
+`justifyContent` | [#](https://reactnative.dev/docs/layout-props#justifycontent)
+`left` | [#](https://reactnative.dev/docs/layout-props#left)
+`margin` | [#](https://reactnative.dev/docs/layout-props#margin)
+`marginBottom` | [#](https://reactnative.dev/docs/layout-props#marginbottom)
+`marginEnd` | [#](https://reactnative.dev/docs/layout-props#marginend)
+`marginHorizontal` | [#](https://reactnative.dev/docs/layout-props#marginhorizontal)
+`marginLeft` | [#](https://reactnative.dev/docs/layout-props#marginleft)
+`marginRight` | [#](https://reactnative.dev/docs/layout-props#marginright)
+`marginStart` | [#](https://reactnative.dev/docs/layout-props#marginstart)
+`marginTop` | [#](https://reactnative.dev/docs/layout-props#margintop)
+`marginVertical` | [#](https://reactnative.dev/docs/layout-props#marginvertical)
+`maxHeight` | [#](https://reactnative.dev/docs/layout-props#maxheight)
+`maxWidth` | [#](https://reactnative.dev/docs/layout-props#maxwidth)
+`minHeight` | [#](https://reactnative.dev/docs/layout-props#minheight)
+`minWidth` | [#](https://reactnative.dev/docs/layout-props#minwidth)
+`overflow` | [#](https://reactnative.dev/docs/layout-props#overflow)
+`padding` | [#](https://reactnative.dev/docs/layout-props#padding)
+`paddingBottom` | [#](https://reactnative.dev/docs/layout-props#paddingbottom)
+`paddingEnd` | [#](https://reactnative.dev/docs/layout-props#paddingend)
+`paddingHorizontal` | [#](https://reactnative.dev/docs/layout-props#paddinghorizontal)
+`paddingLeft` | [#](https://reactnative.dev/docs/layout-props#paddingleft)
+`paddingRight` | [#](https://reactnative.dev/docs/layout-props#paddingright)
+`paddingStart` | [#](https://reactnative.dev/docs/layout-props#paddingstart)
+`paddingTop` | [#](https://reactnative.dev/docs/layout-props#paddingtop)
+`paddingVertical` | [#](https://reactnative.dev/docs/layout-props#paddingvertical)
+`position` | [#](https://reactnative.dev/docs/layout-props#position)
+`right` | [#](https://reactnative.dev/docs/layout-props#right)
+`start` | [#](https://reactnative.dev/docs/layout-props#start)
+`top` | [#](https://reactnative.dev/docs/layout-props#top)
+`width` | [#](https://reactnative.dev/docs/layout-props#width)
+`zIndex` | [#](https://reactnative.dev/docs/layout-props#zindex)
+
+### Image Style Props
+
+```jsx
+<Image
+  style={{
+    resizeMode: "contain",
+    height: 100,
+    width: 200
+  }}
+  source={require("@expo/snack-static/react-native-logo.png")}
+/>
+```
+<!--rehype:className=wrap-text-->
+
+---
+
+:- | --
+:- | --
+`backfaceVisibility` | [#](https://reactnative.dev/docs/image-style-props#backfacevisibility)
+`backgroundColor` | [#](https://reactnative.dev/docs/image-style-props#backgroundcolor)
+`borderBottomLeftRadius` | [#](https://reactnative.dev/docs/image-style-props#borderbottomleftradius)
+`borderBottomRightRadius` | [#](https://reactnative.dev/docs/image-style-props#borderbottomrightradius)
+`borderColor` | [#](https://reactnative.dev/docs/image-style-props#bordercolor)
+`borderRadius` | [#](https://reactnative.dev/docs/image-style-props#borderradius)
+`borderTopLeftRadius` | [#](https://reactnative.dev/docs/image-style-props#bordertopleftradius)
+`borderTopRightRadius` | [#](https://reactnative.dev/docs/image-style-props#bordertoprightradius)
+`borderWidth` | [#](https://reactnative.dev/docs/image-style-props#borderwidth)
+`opacity` | [#](https://reactnative.dev/docs/image-style-props#opacity)
+`overflow` | [#](https://reactnative.dev/docs/image-style-props#overflow)
+`overlayColor` | [#](https://reactnative.dev/docs/image-style-props#overlaycolor-android)
+`resizeMode` | [#](https://reactnative.dev/docs/image-style-props#resizemode)
+`tintColor` | [#](https://reactnative.dev/docs/image-style-props#tintcolor)
