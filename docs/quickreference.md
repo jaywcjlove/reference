@@ -110,6 +110,77 @@ class=tag&data-info=👆看看还缺点儿什么？
 
 添加 `class=tag&data-lang=Python` 类名和参数，会在卡片右上角标记 _`Python`_
 
+### Command Help
+
+```bash
+Usage: refs-cli [output-dir] [--help|h]
+
+  显示帮助信息
+
+Options:
+
+  --version, -v 显示版本号
+  --help, -h    显示帮助信息
+  --watch, -w   观看并编译 Markdown 文件
+  --output, -o  输出目录。默认（分布）
+  --force, -f   强制文件重新生成
+
+Example:
+
+  $ npx refs-cli
+  $ refs-cli --watch
+  $ refs-cli --output website
+  $ refs-cli
+
+refs-cli@v0.0.1
+```
+
+### Config
+
+```json
+{
+  "title": "文档网站名称",
+  "description": "{{description}} 网站说明",
+  "keywords": "关键字,refs-cli,refs,cli",
+  "data-info": "👆需要你的参与",
+  "search": {
+    "label": "搜索",
+    "placeholder": "搜索备忘清单",
+    "cancel": "取消"
+  },
+  "editor": {
+    "label": "编辑"
+  },
+  "github": {
+    "url": "https://<github url>"
+  },
+  "home": {
+    "label": "首页",
+    "url": "https://<你的网站>"
+  },
+  "footer": "<br />备案号：支持HTML字符串"
+}
+```
+
+将 `.refsrc.json` 存放在项目的根目录下
+
+### 环境变量
+
+导航菜单
+
+```ini
+REF_URL=http://ref.ecdata.cn/
+REF_LABEL=网站首页
+```
+
+页脚添加
+
+```ini
+REF_FOOTER=备案号：沪ICP备20220000000号-1
+```
+
+在项目根目录中创建 <pur>**.env**</pur> 文件
+
 Markdown 语法注释
 ---
 
