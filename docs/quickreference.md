@@ -158,7 +158,8 @@ refs-cli@v0.0.1
     "label": "首页",
     "url": "https://<你的网站>"
   },
-  "footer": "<br />备案号：支持HTML字符串"
+  "footer": "<br />备案号：支持HTML字符串",
+  "license": "支持 HTML 字符串"
 }
 ```
 
@@ -173,10 +174,16 @@ REF_URL=http://ref.ecdata.cn/
 REF_LABEL=网站首页
 ```
 
-页脚添加
+页脚添加 (支持 HTML 字符串)
 
 ```ini
 REF_FOOTER=备案号：沪ICP备20220000000号-1
+```
+
+修改版权信息 (支持 HTML 字符串)
+
+```ini
+LICENSE=Copyright (c) <b>2022</b> 小弟调调™
 ```
 
 在项目根目录中创建 <pur>**.env**</pur> 文件
