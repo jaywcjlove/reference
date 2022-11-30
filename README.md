@@ -115,17 +115,6 @@ Quick Reference
 [XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230);-->  
 <!--rehype:class=home-card-->
 
-## 快捷键
-
-[Adobe Photoshop](./docs/adobe-photoshop.md)<!--rehype:style=background: rgb(16 185 129);-->  
-[Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54);-->  
-[Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0);&class=tag&data-lang=macOS-->  
-[Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0);-->  
-[VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230);-->  
-[WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220);-->  
-[Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233);&class=tag&data-lang=macOS-->  
-<!--rehype:class=home-card-->
-
 ## 命令
 
 [Ansible](./docs/ansible.md)<!--rehype:style=background: rgb(238 0 0);&class=contributing tag&data-lang=RedHat&data-info=👆看看还缺点儿什么？-->  
@@ -159,6 +148,18 @@ Quick Reference
 [CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255);-->  
 [tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);-->  
+<!--rehype:class=home-card-->
+
+## 快捷键
+
+[Adobe Photoshop](./docs/adobe-photoshop.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[Android Studio](./docs/android-studio.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54);-->  
+[Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0);&class=tag&data-lang=macOS-->  
+[Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0);-->  
+[VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230);-->  
+[WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220);-->  
+[Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233);&class=tag&data-lang=macOS-->  
 <!--rehype:class=home-card-->
 
 ## 其它
