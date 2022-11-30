@@ -45,6 +45,13 @@ jobs:
         with:
           package-path: ./package.json
 
+      - name: gh-pages README.md
+        working-directory: dist
+        run: |
+          cat > README.md << EOF
+          Website: https://jaywcjlove.github.io/reference
+          EOF
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
