@@ -16,7 +16,7 @@ Quick Reference
 
 ## 正在建设中...
 
-坑已挖，需要您的参与完善和贡献！🙏
+坑已挖，需要您的参与完善和[贡献](./docs/quickreference.md)！🙏
 <!--rehype:style=padding-bottom: 23px;-->
 
 [Ansible](./docs/ansible.md)<!--rehype:style=background: rgb(238 0 0);&class=contributing tag&data-lang=RedHat&data-info=👆看看还缺点儿什么？-->  
@@ -190,7 +190,7 @@ Quick Reference
 ## 感谢所有贡献者
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
-请参阅 [Quick Reference](./docs/quickreference.md) 了解如何开始。一如既往，感谢我们出色的贡献者！
+请参阅 [Quick Reference](./docs/quickreference.md) 了解如何开始。一如既往，感谢我们出色的[贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)！
 <!--rehype:style=padding-bottom:1rem;-->
 
 <!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调™">
@@ -332,7 +332,7 @@ Quick Reference
   <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
 </a><!--GAMFC-END-->
 
-贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成
+[贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 根据提交次数的先后顺序自动生成
 <!--rehype:style=padding-top:1rem;-->
 
 ## 国内镜像网站
@@ -351,7 +351,7 @@ Quick Reference
 [if010.com](https://quickref.if010.com/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 <!--rehype:class=home-card&style=margin:2.2rem 0;display: flex;justify-content: center;gap: 1rem;flex-wrap: wrap;-->
 
-如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 gh-pages 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
+如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
 
 <!--rehype:ignore:start-->
 ## License
