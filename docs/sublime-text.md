@@ -114,6 +114,16 @@ Sublime Text 备忘清单
 `⇧ ⌃ 2` | 将文件移动到组 2
 <!--rehype:className=shortcuts-->
 
+### 书签
+
+快捷键 | 说明
+---|---
+`Ctrl` `F2`  | 切换书签
+`F2`  | 下一个书签
+`Shift` `F2`  | 上一个书签
+`Ctrl` `Shift` `F2`  | 清除书签
+<!--rehype:className=shortcuts-->
+
 ### 文本操作
 
 快捷键 | 说明
@@ -148,3 +158,4 @@ $ subl README.md
 
 - [Sublime Text 官网](https://www.sublimetext.com/) _(sublimetext.com)_
 - [Sublime 编辑器快捷键](https://jaywcjlove.github.io/handbook/Shortcuts/sublime.html) _(jaywcjlove.github.io)_
+- [Keyboard shortcuts for Sublime Text](http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_win.html) _(docs.sublimetext.info)_
