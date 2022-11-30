@@ -8,7 +8,7 @@ Android Studio 软件中 130 个键盘快捷键的可视化备忘单
 
 ### 一般的
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `Ctrl` `S`  | 保存全部
 `Ctrl` `Alt` `Y`  | 同步
@@ -22,9 +22,9 @@ Shortcut | Action
 <!--rehype:className=shortcuts-->
 
 ### 导航和搜索
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `Shift` `Shift`  | 搜索所有内容，包括代码和菜单
 `Ctrl` `F`  | 寻找
@@ -53,9 +53,9 @@ Shortcut | Action
 <!--rehype:className=shortcuts-->
 
 ### 编写代码
-<!--rehype:wrap-class=row-span-4-->
+<!--rehype:wrap-class=row-span-6-->
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `Alt` `Insert`  | 生成代码，例如getters、setters、构造函数、新类
 `Ctrl` `O`  | 覆盖方法
@@ -104,7 +104,7 @@ Shortcut | Action
 
 ### 查看布局
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `Ctrl` `+`  | 放大
 `Ctrl` `-`  | 缩小
@@ -114,7 +114,7 @@ Shortcut | Action
 
 ### 布局编辑器
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `B`  | 在设计和蓝图模式之间切换
 `O`  | 在人像和风景模式之间切换
@@ -131,8 +131,9 @@ Shortcut | Action
 <!--rehype:className=shortcuts-->
 
 ### 导航编辑器
+<!--rehype:wrap-class=row-span-2-->
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `Ctrl` `+`  | 放大
 `Ctrl` `-`  | 缩小
@@ -147,7 +148,7 @@ Shortcut | Action
 
 ### 构建并运行
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `Ctrl` `F9`  | 建造
 `Shift` `F10`  | 构建并运行
@@ -155,9 +156,19 @@ Shortcut | Action
 `Ctrl` `Alt` `F10`  | 应用代码更改
 <!--rehype:className=shortcuts-->
 
+### 版本控制
+
+快捷键 | 说明
+---|---
+`Ctrl` `K`  | 提交项目到 VCS
+`Ctrl` `T`  | 从 VCS 更新项目
+`Alt` `Shift` `C`  | 查看最近的更改
+`Alt` <code>\`</code> | 打开 VCS 弹出窗口
+<!--rehype:className=shortcuts-->
+
 ### 调试
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `Shift` `F9`  | 调试
 `F8`  | 跨过
@@ -173,7 +184,7 @@ Shortcut | Action
 
 ### 重构
 
-Shortcut | Action
+快捷键 | 说明
 ---|---
 `F5`  | 复制
 `F6`  | 移动
@@ -186,16 +197,6 @@ Shortcut | Action
 `Ctrl` `Alt` `F`  | 提取字段
 `Ctrl` `Alt` `C`  | 提取常量
 `Ctrl` `Alt` `P`  | 提取参数
-<!--rehype:className=shortcuts-->
-
-### 版本控制
-
-Shortcut | Action
----|---
-`Ctrl` `K`  | 提交项目到 VCS
-`Ctrl` `T`  | 从 VCS 更新项目
-`Alt` `Shift` `C`  | 查看最近的更改
-`Alt` <code>\`</code> | 打开 VCS 弹出窗口
 <!--rehype:className=shortcuts-->
 
 另见
