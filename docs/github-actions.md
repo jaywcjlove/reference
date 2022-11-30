@@ -829,6 +829,7 @@ steps:
 [`coverage-badges-cli`](https://github.com/jaywcjlove/coverage-badges-cli) | 生成覆盖率徽章(Badges)图片
 [`action-ejs`](https://github.com/jaywcjlove/action-ejs) | 基于 ejs 生成 HTML
 [`github-action-package`](https://github.com/jaywcjlove/github-action-package) | 修改 JSON 文件内容
+[`github-action-read-file`](https://github.com/jaywcjlove/github-action-read-file) | 读取文件内容
 [`markdown-to-html-cli`](https://github.com/jaywcjlove/markdown-to-html-cli) | Markdown 转换成 HTML
 [`ncipollo/release-action`](https://github.com/ncipollo/release-action) | 创建 `Release`
 [`peaceiris/actions-gh-pages`](https://github.com/peaceiris/actions-gh-pages) | 将文件或文件夹内容提交到 `gh-pages` 分支

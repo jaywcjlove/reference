@@ -109,15 +109,20 @@ Quick Reference
 ## 工具
 
 [Emacs](./docs/emacs.md)<!--rehype:style=background: rgb(98 36 134);-->  
-[Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54);-->  
 [nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 153 0);-->  
 [Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141);-->  
+[Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8);-->  
+[XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230);-->  
+<!--rehype:class=home-card-->
+
+## 快捷键
+
+[Adobe Photoshop](./docs/adobe-photoshop.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54);-->  
 [Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0);&class=tag&data-lang=macOS-->  
 [Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0);-->  
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230);-->  
-[Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8);-->  
 [WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220);-->  
-[XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230);-->  
 [Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233);&class=tag&data-lang=macOS-->  
 <!--rehype:class=home-card-->
 
