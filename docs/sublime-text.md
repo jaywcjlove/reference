@@ -117,11 +117,20 @@ Sublime Text 备忘清单
 ### 书签
 
 快捷键 | 说明
----|---
+:- | -
 `Ctrl` `F2`  | 切换书签
 `F2`  | 下一个书签
 `Shift` `F2`  | 上一个书签
 `Ctrl` `Shift` `F2`  | 清除书签
+<!--rehype:className=shortcuts-->
+
+### 查找/替换
+
+快捷键 | 说明
+:- | -
+`Ctrl` `F`  | 查找
+`Ctrl` `H`  | 代替
+`Ctrl` `Shift` `F`  | 在文件中查找
 <!--rehype:className=shortcuts-->
 
 ### 文本操作
