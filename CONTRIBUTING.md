@@ -184,8 +184,8 @@ REF_LABEL=网站首页
 <a href="https://github.com/Brid9e" title="Brid9e">
   <img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Brid9e"/>
 </a>
-<a href="https://github.com/CharlotteZeng" title="Chart">
-  <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="Chart"/>
+<a href="https://github.com/CharlotteZeng" title="hanchZ">
+  <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="hanchZ"/>
 </a>
 <a href="https://github.com/DaiNing810" title="DaiN">
   <img src="https://avatars.githubusercontent.com/u/94962339?v=4" width="42;" alt="DaiN"/>
