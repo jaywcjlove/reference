@@ -8,8 +8,8 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 
 ### 站点范围的快捷方式
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `S`  | 聚焦搜索栏
 `G` `N`  | 转到您的通知
 `H`  | 打开并关注用户、问题或拉取请求悬浮卡
@@ -18,8 +18,8 @@ Shortcut | Action
 
 ### 资料库
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `G` `C`  | 转到 `Code` 选项卡
 `G` `I`  | 转到 `Issues` 选项卡
 `G` `P`  | 转到拉取请求选项卡
@@ -29,8 +29,8 @@ Shortcut | Action
 
 ### 源代码编辑
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `F`  | 开始在文件编辑器中搜索
 `Ctrl` `G`  | 找下一个
 `Ctrl` `Shift` `G`  | 查找上一个
@@ -43,8 +43,8 @@ Shortcut | Action
 
 ### 源码浏览
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `T`  | 激活文件查找器
 `L`  | 跳转到代码中的一行
 `W`  | 切换到新的分支或标签
@@ -55,8 +55,8 @@ Shortcut | Action
 
 ### 注释
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `B`  | 为粗体文本插入 Markdown 格式
 `Ctrl` `I`  | 插入斜体文本的 Markdown 格式
 `Ctrl` `K`  | 插入 Markdown 格式以创建链接
@@ -69,8 +69,8 @@ Shortcut | Action
 
 ### 问题和拉取请求列表
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `C`  | 创建问题
 `Ctrl` `/`  | 将光标聚焦在问题或拉取请求搜索栏上
 `U`  | 按作者过滤
@@ -82,8 +82,8 @@ Shortcut | Action
 
 ### 问题和拉取请求
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Q`  | 请求审稿人
 `M`  | 设定一个里程碑
 `L`  | 应用标签
@@ -92,8 +92,8 @@ Shortcut | Action
 
 ### 拉取请求的变化
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `C`  | 打开拉取请求中的提交列表
 `T`  | 打开拉取请求中已更改文件的列表
 `J`  | 在列表中向下移动选择
@@ -105,8 +105,8 @@ Shortcut | Action
 ### 项目板
 <!--rehype:wrap-class=row-span-2-->
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Enter/Space`  | 开始移动焦点列
 `Esc`  | 取消正在进行的移动
 `Enter`  | 完成正在进行的移动
@@ -133,16 +133,16 @@ Shortcut | Action
 
 ### 通知
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `E/L/Y`  | 标记为已读
 `Shift` `M`  | 静音线程
 <!--rehype:className=shortcuts-->
 
 ### 网络图
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Left/H`  | 向左滚动
 `Right/L`  | 向右滚动
 `Up/K`  | 向上滑动
