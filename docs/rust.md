@@ -223,6 +223,18 @@ fn main(){
 }
 ```
 
+### 区间表达式
+<!--rehype:wrap-class=col-span-2-->
+
+产生式/句法规则         | 句法         | 类型                        | 区间语义
+:-                   | :-           | :-                         | :-
+RangeExpr            | `start..end` | std::ops::Range            | start ≤ x < end
+RangeFromExpr        | `start..`    | std::ops::RangeFrom        | start ≤ x
+RangeToExpr          | `..end`      | std::ops::RangeTo          | x < end
+RangeFullExpr        | `..`         | std::ops::RangeFull        | -
+RangeInclusiveExpr   | `start..=end`| std::ops::RangeInclusive   | start ≤ x ≤ end
+RangeToInclusiveExpr | `..=end`     | std::ops::RangeToInclusive | x ≤ end
+
 Rust 类型
 --------
 
@@ -791,7 +803,7 @@ let left_shift = h << 4;  // => 32
 示例 | 意义
 :- | :-
 `c && d` | 两者都是真的_(AND)_
-`c || d` | 要么是真的_(OR)_
+`c \|\| d` | 要么是真的_(OR)_
 `!c`     | `c` 为假 _(NOT)_
 
 ----
