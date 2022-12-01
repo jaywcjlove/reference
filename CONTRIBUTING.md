@@ -247,6 +247,9 @@ REF_LABEL=网站首页
 <a href="https://github.com/kdxcxs" title="kdxcxs">
   <img src="https://avatars.githubusercontent.com/u/18746192?v=4" width="42;" alt="kdxcxs"/>
 </a>
+<a href="https://github.com/genius-kim" title="kim">
+  <img src="https://avatars.githubusercontent.com/u/119488561?v=4" width="42;" alt="kim"/>
+</a>
 <a href="https://github.com/larry-xue" title="larry">
   <img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="larry"/>
 </a>
