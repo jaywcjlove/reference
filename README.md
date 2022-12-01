@@ -58,10 +58,11 @@ Quick Reference
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156);-->  
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(1 117 143);&class=tag&data-lang=SQL-->  
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->  
-[Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);-->  
+[Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);&class=tag&data-lang=SQL-->  
 [PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147);-->  
 [Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132);-->  
 [PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163);&class=tag&data-lang=SQL-->  
+[Redis](./docs/redis.md)<!--rehype:style=background: rgb(198 47 44);-->  
 [Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45);-->  
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
