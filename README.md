@@ -56,13 +56,9 @@ Quick Reference
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128);&class=contributing-->  
 [Laravel 8](./docs/laravel.md)<!--rehype:style=background: rgb(249 50 44);&class=contributing tag&data-lang=PHP-->  
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156);-->  
-[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(1 117 143);&class=tag&data-lang=SQL-->  
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->  
-[Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);&class=tag&data-lang=SQL-->  
 [PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147);-->  
 [Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132);-->  
-[PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163);&class=tag&data-lang=SQL-->  
-[Redis](./docs/redis.md)<!--rehype:style=background: rgb(198 47 44);-->  
 [Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45);-->  
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
@@ -150,6 +146,14 @@ Quick Reference
 [CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255);-->  
 [tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);-->  
+<!--rehype:class=home-card-->
+
+## 数据库
+
+[MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(1 117 143);&class=tag&data-lang=SQL-->  
+[Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);&class=tag&data-lang=SQL-->  
+[PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163);&class=tag&data-lang=SQL-->  
+[Redis](./docs/redis.md)<!--rehype:style=background: rgb(198 47 44);-->  
 <!--rehype:class=home-card-->
 
 ## 快捷键
