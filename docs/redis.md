@@ -10,7 +10,7 @@ Redis 备忘清单
 
 Redis 是一个 `key-value` 存储系统类似 Memcached
 
-- 它支持存储的 value 类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set 有序集合)和hash（哈希类型）
+- 它支持存储的 value 类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set 有序集合)和hash(哈希类型)
 - 数据类型都支持 push/pop、add/remove 及取交集并集和差集及更丰富的操作
 
 启动 Redis
@@ -51,11 +51,11 @@ redis> GET mykey
 
 ### 数据类型
 
-- [Strings(字符串)](#redis字符串类型设置)
-- [Lists(列表)](#redis列表类型设置)
-- [Hashes(哈希)](#redis哈希类型设置)
-- [Sets(集合)](#redis集合类型设置)
-- [Sorted Sets(有序集合)](#redis排序集类型设置)
+- [Strings(字符串)](#redis-字符串类型设置)
+- [Lists(列表)](#redis-列表类型设置)
+- [Hashes(哈希)](#redis-哈希类型设置)
+- [Sets(集合)](#redis-集合类型设置)
+- [Sorted Sets(有序集合)](#redis-排序集类型设置)
 
 Redis 支持以上 5 种数据类型
 
@@ -94,57 +94,57 @@ redis> COMMAND
 ### 一些引用(可能有帮助)
 <!--rehype:wrap-class=col-span-2 row-span-4-->
 
-| -                                                                    | -                                                                                                                                |
-|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| [ACL LOAD](https://redis.io/commands/acl-load)                       | 从配置的 ACL 文件重新加载 ACL |
-| [ACL SAVE](https://redis.io/commands/acl-save)                       | 将当前的 ACL 规则保存在配置的 ACL 文件中 |
-| [ACL LIST](https://redis.io/commands/acl-list)                       | 以 ACL 配置文件格式列出当前的 ACL 规则 |
-| [ACL USERS](https://redis.io/commands/acl-users)                     | 列出所有配置的ACL规则的用户名 |
-| [ACL GETUSER](https://redis.io/commands/acl-getuser)                | 获取特定 ACL 用户的规则 |
-| [ACL SETUSER](https://redis.io/commands/acl-setuser)                | 修改或创建特定 ACL 用户的规则 |
-| [ACL DELUSER](https://redis.io/commands/acl-deluser)                | 删除指定的 ACL 用户和关联的规则 |
-| [ACL CAT](https://redis.io/commands/acl-cat)                        | 列出 ACL 类别或类别内的命令 |
-| [ACL GENPASS](https://redis.io/commands/acl-genpass)                | 生成用于 ACL 用户的伪随机安全密码 |
-| [ACL WHOAMI](https://redis.io/commands/acl-whoami)                   | 返回关联到当前连接的用户的名称 |
-| [ACL LOG](https://redis.io/commands/acl-log)                        | 列出由于 ACL 到位而被拒绝的最新事件 |
-| [ACL HELP](https://redis.io/commands/acl-help)                       | 显示有关ACL访问控制的帮助信息 |
-| [BGREWRITEAOF](https://redis.io/commands/bgrewriteaof)               | 异步重写 append-only 文件 |
-| [BGSAVE](https://redis.io/commands/bgsave)                          | 将数据集异步保存到磁盘 |
-| [CONFIG GET](https://redis.io/commands/config-get)                  | 获取配置参数的值 |
-| [CONFIG REWRITE](https://redis.io/commands/config-rewrite)           | 用内存中的配置重写配置文件 |
-| [CONFIG SET](https://redis.io/commands/config-set)                  | 将配置参数设置为给定值 |
-| [CONFIG RESETSTAT](https://redis.io/commands/config-resetstat)       | 重置 INFO 返回的统计数据 |
-| [DBSIZE](https://redis.io/commands/dbsize)                           | 返回所选数据库中的键数 |
-| [DEBUG OBJECT](https://redis.io/commands/debug-object)              | 获取某个key的调试信息 |
-| [DEBUG SEGFAULT](https://redis.io/commands/debug-segfault)           | 使服务器崩溃 |
-| [FLUSHALL](https://redis.io/commands/flushall)                      | 从所有数据库中删除所有密钥 |
-| [FLUSHDB](https://redis.io/commands/flushdb)                        | 从当前数据库中删除所有键 |
-| [LOLWUT](https://redis.io/commands/lolwut)                          | 显示一些计算机信息和 Redis 版本 |
-| [LASTSAVE](https://redis.io/commands/lastsave)                       | 获取上次成功保存到磁盘的 UNIX 时间戳 |
-| [MEMORY DOCTOR](https://redis.io/commands/memory-doctor)             | 输出内存问题报告 |
-| [MEMORY HELP](https://redis.io/commands/memory-help)                 | 显示有关内存的使用帮助 |
-| [MEMORY MALLOC-STATS](https://redis.io/commands/memory-malloc-stats) | 显示分配器内部统计 |
-| [MEMORY PURGE](https://redis.io/commands/memory-purge)               | 要求分配器释放内存 |
-| [MEMORY STATS](https://redis.io/commands/memory-stats)               | 显示内存使用详情(该死，运维的我经常用到) |
-| [MEMORY USAGE](https://redis.io/commands/memory-usage)              | 估计一个键的内存使用 |
-| [MODULE LIST](https://redis.io/commands/module-list)                 | 列出服务器加载的所有模块 |
-| [MODULE LOAD](https://redis.io/commands/module-load)                | 加载模块 |
-| [MODULE UNLOAD](https://redis.io/commands/module-unload)            | 卸载模块 |
-| [MONITOR](https://redis.io/commands/monitor)                         | 实时监听服务器收到的所有请求 |
-| [SAVE](https://redis.io/commands/save)                               | 将数据集同步保存到磁盘 |
-| [SHUTDOWN](https://redis.io/commands/shutdown)                      | 将数据集同步保存到磁盘，然后关闭服务器 |
-| [SLAVEOF](https://redis.io/commands/slaveof)                        | 使服务器成为另一个实例的副本,或将其提升为主服务器(从Redis 5开始弃用，改成REPLICAOF了) |
-| [REPLICAOF](https://redis.io/commands/replicaof)                    | 使服务器成为另一个实例的副本，或将其提升为主服务器 |
-| [SLOWLOG](https://redis.io/commands/slowlog)                        | 管理 Redis 慢查询日志 |
-| [SWAPDB](https://redis.io/commands/swapdb)                          | 交换两个Redis数据库 |
-| [SYNC](https://redis.io/commands/sync)                               | 用于复制的内部命令(主) |
-| [PSYNC](https://redis.io/commands/psync)                            | 用于复制的内部命令(备) |
-| [LATENCY DOCTOR](https://redis.io/commands/latency-doctor)           | 返回人类可读的延迟分析报告 |
-| [LATENCY GRAPH](https://redis.io/commands/latency-graph)            | 返回事件的延迟图 |
-| [LATENCY HISTORY](https://redis.io/commands/latency-history)        | 返回事件的时间戳延迟样本 |
-| [LATENCY LATEST](https://redis.io/commands/latency-latest)           | 返回所有事件的最新延迟样本 |
-| [LATENCY RESET](https://redis.io/commands/latency-reset)            | 重置一个或多个事件的延迟数据 |
-| [LATENCY HELP](https://redis.io/commands/latency-help)               | 显示有关不同子命令的有用文本 |
+:- | --
+:- | --
+[ACL LOAD](https://redis.io/commands/acl-load)                       | 从配置的 ACL 文件重新加载 ACL
+[ACL SAVE](https://redis.io/commands/acl-save)                       | 将当前的 ACL 规则保存在配置的 ACL 文件中
+[ACL LIST](https://redis.io/commands/acl-list)                       | 以 ACL 配置文件格式列出当前的 ACL 规则
+[ACL USERS](https://redis.io/commands/acl-users)                     | 列出所有配置的ACL规则的用户名
+[ACL GETUSER](https://redis.io/commands/acl-getuser)                | 获取特定 ACL 用户的规则
+[ACL SETUSER](https://redis.io/commands/acl-setuser)                | 修改或创建特定 ACL 用户的规则
+[ACL DELUSER](https://redis.io/commands/acl-deluser)                | 删除指定的 ACL 用户和关联的规则
+[ACL CAT](https://redis.io/commands/acl-cat)                        | 列出 ACL 类别或类别内的命令
+[ACL GENPASS](https://redis.io/commands/acl-genpass)                | 生成用于 ACL 用户的伪随机安全密码
+[ACL WHOAMI](https://redis.io/commands/acl-whoami)                   | 返回关联到当前连接的用户的名称
+[ACL LOG](https://redis.io/commands/acl-log)                        | 列出由于 ACL 到位而被拒绝的最新事件
+[ACL HELP](https://redis.io/commands/acl-help)                       | 显示有关ACL访问控制的帮助信息
+[BGREWRITEAOF](https://redis.io/commands/bgrewriteaof)               | 异步重写 append-only 文件
+[BGSAVE](https://redis.io/commands/bgsave)                          | 将数据集异步保存到磁盘
+[CONFIG GET](https://redis.io/commands/config-get)                  | 获取配置参数的值
+[CONFIG REWRITE](https://redis.io/commands/config-rewrite)           | 用内存中的配置重写配置文件
+[CONFIG SET](https://redis.io/commands/config-set)                  | 将配置参数设置为给定值
+[CONFIG RESETSTAT](https://redis.io/commands/config-resetstat)       | 重置 INFO 返回的统计数据
+[DBSIZE](https://redis.io/commands/dbsize)                           | 返回所选数据库中的键数
+[DEBUG OBJECT](https://redis.io/commands/debug-object)              | 获取某个key的调试信息
+[DEBUG SEGFAULT](https://redis.io/commands/debug-segfault)           | 使服务器崩溃
+[FLUSHALL](https://redis.io/commands/flushall)                      | 从所有数据库中删除所有密钥
+[FLUSHDB](https://redis.io/commands/flushdb)                        | 从当前数据库中删除所有键
+[LOLWUT](https://redis.io/commands/lolwut)                          | 显示一些计算机信息和 Redis 版本
+[LASTSAVE](https://redis.io/commands/lastsave)                       | 获取上次成功保存到磁盘的 UNIX 时间戳
+[MEMORY DOCTOR](https://redis.io/commands/memory-doctor)             | 输出内存问题报告
+[MEMORY HELP](https://redis.io/commands/memory-help)                 | 显示有关内存的使用帮助
+[MEMORY MALLOC-STATS](https://redis.io/commands/memory-malloc-stats) | 显示分配器内部统计
+[MEMORY PURGE](https://redis.io/commands/memory-purge)               | 要求分配器释放内存
+[MEMORY STATS](https://redis.io/commands/memory-stats)               | 显示内存使用详情(该死，运维的我经常用到)
+[MEMORY USAGE](https://redis.io/commands/memory-usage)              | 估计一个键的内存使用
+[MODULE LIST](https://redis.io/commands/module-list)                 | 列出服务器加载的所有模块
+[MODULE LOAD](https://redis.io/commands/module-load)                | 加载模块
+[MODULE UNLOAD](https://redis.io/commands/module-unload)            | 卸载模块
+[MONITOR](https://redis.io/commands/monitor)                         | 实时监听服务器收到的所有请求
+[SAVE](https://redis.io/commands/save)                               | 将数据集同步保存到磁盘
+[SHUTDOWN](https://redis.io/commands/shutdown)                      | 将数据集同步保存到磁盘，然后关闭服务器
+[~~SLAVEOF~~](https://redis.io/commands/slaveof)   | 使服务器成为另一个实例的副本，或将其提升为主服务器<br> _(从Redis 5开始<red>弃用</red>，改成 `REPLICAOF`了)_
+[REPLICAOF](https://redis.io/commands/replicaof)                    | 使服务器成为另一个实例的副本，或将其提升为主服务器
+[SLOWLOG](https://redis.io/commands/slowlog)                        | 管理 Redis 慢查询日志
+[SWAPDB](https://redis.io/commands/swapdb)                          | 交换两个Redis数据库
+[SYNC](https://redis.io/commands/sync)                               | 用于复制的内部命令(主)
+[PSYNC](https://redis.io/commands/psync)                            | 用于复制的内部命令(备)
+[LATENCY DOCTOR](https://redis.io/commands/latency-doctor)           | 返回人类可读的延迟分析报告
+[LATENCY GRAPH](https://redis.io/commands/latency-graph)            | 返回事件的延迟图
+[LATENCY HISTORY](https://redis.io/commands/latency-history)        | 返回事件的时间戳延迟样本
+[LATENCY LATEST](https://redis.io/commands/latency-latest)           | 返回所有事件的最新延迟样本
+[LATENCY RESET](https://redis.io/commands/latency-reset)            | 重置一个或多个事件的延迟数据
+[LATENCY HELP](https://redis.io/commands/latency-help)               | 显示有关不同子命令的有用文本
 
 ### COMMAND COUNT
 
@@ -291,16 +291,16 @@ Redis一些通用的命令
 
 ### 一些引用(可能有帮助)
 
-| -                                             | -                                                                                                            |
-|-----------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| [COPY](https://redis.io/commands/copy)       | 复制键值对 |
-| [MIGRATE](https://redis.io/commands/migrate) | 以原子方式将键值对从 Redis 实例传输到另一个实例 |
-| [MOVE](https://redis.io/commands/move)       | 将键值对移动到另一个数据库 |
-| [OBJECT](https://redis.io/commands/object)   | 检查 Redis 对象的内部结构 |
-| [RESTORE](https://redis.io/commands/restore) | 使用提供的序列化值创建键值对，之前使用 DUMP 获得 |
-| [SORT](https://redis.io/commands/sort)       | 对列表、集合或有序集合中的元素进行排序 |
-| [WAIT](https://redis.io/commands/wait)       | 等待在当前连接的上下文中发送的所有写命令的同步复制 |
-| [SCAN](https://redis.io/commands/scan)       | 增量迭代键空间 |
+:- | --
+:- | --
+[COPY](https://redis.io/commands/copy)       | 复制键值对
+[MIGRATE](https://redis.io/commands/migrate) | 以原子方式将键值对从 Redis 实例传输到另一个实例
+[MOVE](https://redis.io/commands/move)       | 将键值对移动到另一个数据库
+[OBJECT](https://redis.io/commands/object)   | 检查 Redis 对象的内部结构
+[RESTORE](https://redis.io/commands/restore) | 使用提供的序列化值创建键值对，之前使用 DUMP 获得
+[SORT](https://redis.io/commands/sort)       | 对列表、集合或有序集合中的元素进行排序
+[WAIT](https://redis.io/commands/wait)       | 等待在当前连接的上下文中发送的所有写命令的同步复制
+[SCAN](https://redis.io/commands/scan)       | 增量迭代键空间
 
 ### DEL
 
@@ -382,7 +382,7 @@ redis> TTL mykey
 (integer) -1
 ```
 
-设置键值对的生存时间（以秒为单位）
+设置键值对的生存时间(以秒为单位)
 
 ### EXPIREAT
 
@@ -471,7 +471,7 @@ redis> PTTL mykey
 (integer) 1499
 ```
 
-设置键的生存时间（以毫秒为单位）
+设置键的生存时间(以毫秒为单位)
 
 ### PEXPIREAT
 
@@ -635,32 +635,33 @@ redis> UNLINK key1 key2 key3
 
 在另一个线程中异步删除一个键。否则它就像 DEL，但不是阻塞的
 
-Redis连接相关的命令
-------------
+Redis 连接相关的命令
+------
 
 ### 一些引用(可能有帮助)
+<!--rehype:wrap-class=row-span-2-->
 
-| -                                                             | -                                                                          |
-|---------------------------------------------------------------|----------------------------------------------------------------------------|
-| [AUTH](https://redis.io/commands/auth)                       | 向服务器进行身份验证 |
-| [CLIENT CACHING](https://redis.io/commands/client-caching)   | 指示服务器在下一个请求中是否跟踪键 |
-| [CLIENT KILL](https://redis.io/commands/client-kill)         | 终止客户端的连接 |
-| [CLIENT LIST](https://redis.io/commands/client-list)         | 获取客户端连接列表 |
-| [CLIENT GETNAME](https://redis.io/commands/client-getname)    | 获取当前连接名称 |
-| [CLIENT GETREDIR](https://redis.io/commands/client-getredir)  | 获取跟踪通知重定向客户端 ID（如果有）|
-| [CLIENT PAUSE](https://redis.io/commands/client-pause)       | 停止处理来自客户端的命令一段时间 |
-| [CLIENT REPLY](https://redis.io/commands/client-reply)       | 指示服务器是否回复命令 |
-| [CLIENT SETNAME](https://redis.io/commands/client-setname)   | 设置当前连接名称 |
-| [CLIENT TRACKING](https://redis.io/commands/client-tracking) | 启用或禁用服务器辅助客户端缓存支持 |
-| [CLIENT UNBLOCK](https://redis.io/commands/client-unblock)   | 取消阻止来自不同连接的阻塞命令中阻塞的客户端 |
-| [HELLO](https://redis.io/commands/hello)                     | 切换Redis协议 |
-| [QUIT](https://redis.io/commands/quit)                        | 关闭连接 |
-| [RESET](https://redis.io/commands/reset)                      | 重置连接 |
-| [SELECT](https://redis.io/commands/select)                   | 更改为当前连接选择的数据库 |
+:- | --
+:- | --
+[AUTH](https://redis.io/commands/auth)                       | 向服务器进行身份验证
+[CLIENT CACHING](https://redis.io/commands/client-caching)   | 指示服务器在下一个请求中是否跟踪键
+[CLIENT KILL](https://redis.io/commands/client-kill)         | 终止客户端的连接
+[CLIENT LIST](https://redis.io/commands/client-list)         | 获取客户端连接列表
+[CLIENT GETNAME](https://redis.io/commands/client-getname)    | 获取当前连接名称
+[CLIENT GETREDIR](https://redis.io/commands/client-getredir)  | 获取跟踪通知重定向客户端 ID(如果有)
+[CLIENT PAUSE](https://redis.io/commands/client-pause)       | 停止处理来自客户端的命令一段时间
+[CLIENT REPLY](https://redis.io/commands/client-reply)       | 指示服务器是否回复命令
+[CLIENT SETNAME](https://redis.io/commands/client-setname)   | 设置当前连接名称
+[CLIENT TRACKING](https://redis.io/commands/client-tracking) | 启用或禁用服务器辅助客户端缓存支持
+[CLIENT UNBLOCK](https://redis.io/commands/client-unblock)   | 取消阻止来自不同连接的阻塞命令中阻塞的客户端
+[HELLO](https://redis.io/commands/hello)                     | 切换Redis协议
+[QUIT](https://redis.io/commands/quit)                        | 关闭连接
+[RESET](https://redis.io/commands/reset)                      | 重置连接
+[SELECT](https://redis.io/commands/select)                   | 更改为当前连接选择的数据库
 
 ### CLIENT ID
 
-```
+```shell
 CLIENT ID
 ```
 
@@ -675,7 +676,7 @@ ERR Unknown or disabled command 'CLIENT'
 
 ### CLIENT INFO
 
-```
+```shell
 CLIENT INFO
 ```
 
@@ -690,7 +691,7 @@ redis> CLIENT INFO
 
 ### ECHO
 
-```
+```shell
 ECHO message
 ```
 
@@ -705,7 +706,7 @@ redis> ECHO "Hello World!"
 
 ### PING
 
-```
+```shell
 PING [message]
 ```
 
@@ -720,12 +721,12 @@ redis> PING "hello world"
 
 ping 服务器
 
-Redis字符串类型设置
+Redis 字符串类型设置
 ------------
 
 ### APPEND
 
-```
+```shell
 APPEND key value
 ```
 
@@ -746,7 +747,7 @@ redis> GET mykey
 
 ### BITCOUNT
 
-```
+```shell
 BITCOUNT key [start end]
 ```
 
@@ -767,7 +768,7 @@ redis> BITCOUNT mykey 1 1
 
 ### BITFIELD
 
-```
+```shell
 BITFIELD key [GET type offset] [SET type offset value] 
 [INCRBY type offset increment] [OVERFLOW WRAP|SAT|FAIL]
 ```
@@ -784,7 +785,7 @@ redis> BITFIELD mykey INCRBY i5 100 1 GET u4 0
 
 ### BITOP
 
-```
+```shell
 BITOP operation destkey key [key ...]
 ```
 
@@ -805,7 +806,7 @@ redis> GET dest
 
 ### BITPOS
 
-```
+```shell
 BITPOS key bit [start] [end]
 ```
 
@@ -832,7 +833,7 @@ redis> BITPOS mykey 1
 
 ### DECR
 
-```
+```shell
 DECR key
 ```
 
@@ -853,7 +854,7 @@ ERR ERR value is not an integer or out of range
 
 ### DECRBY
 
-```
+```shell
 DECRBY key decrement
 ```
 
@@ -870,7 +871,7 @@ redis> DECRBY mykey 3
 
 ### GET
 
-```
+```shell
 GET key
 ```
 
@@ -889,7 +890,7 @@ redis> GET mykey
 
 ### GETBIT
 
-```
+```shell
 GETBIT key offset
 ```
 
@@ -906,11 +907,11 @@ redis> GETBIT mykey 100
 (integer) 0
 ```
 
-返回存储在 key 处的字符串值中 offset 处的位值
+返回存储在 `key` 处的字符串值中 `offset` 处的位值
 
 ### GETRANGE
 
-```
+```shell
 GETRANGE key start end
 ```
 
@@ -933,7 +934,7 @@ redis> GETRANGE mykey 10 100
 
 ### GETSET
 
-```
+```shell
 GETSET key value
 ```
 
@@ -952,7 +953,7 @@ redis> GET mycounter
 
 ### INCR
 
-```
+```shell
 INCR key
 ```
 
@@ -971,7 +972,7 @@ redis> GET mykey
 
 ### MSETNX
 
-```
+```shell
 MSETNX key value [key value ...]
 ```
 
@@ -992,7 +993,7 @@ redis> MGET key1 key2 key3
 
 ### INCRBYFLOAT
 
-```
+```shell
 INCRBYFLOAT key increment
 ```
 
@@ -1015,7 +1016,7 @@ redis> INCRBYFLOAT mykey 2.0e2
 
 ### MGET
 
-```
+```shell
 MGET key [key ...]
 ```
 
@@ -1036,7 +1037,7 @@ redis> MGET key1 key2 nonexisting
 
 ### MSET
 
-```
+```shell
 MSET key value [key value ...]
 ```
 
@@ -1055,7 +1056,7 @@ redis> GET key2
 
 ### INCRBY
 
-```
+```shell
 INCRBY key increment
 ```
 
@@ -1072,7 +1073,7 @@ redis> INCRBY mykey 5
 
 ### PSETEX
 
-```
+```shell
 PSETEX key milliseconds value
 ```
 
@@ -1087,11 +1088,11 @@ redis> GET mykey
 "Hello"
 ```
 
-设置键的值和过期时间（以毫秒为单位）
+设置键的值和过期时间(以毫秒为单位)
 
 ### SET
 
-```
+```shell
 SET key value [EX seconds|PX milliseconds|KEEPTTL] [NX|XX] 
 [GET]
 ```
@@ -1111,7 +1112,7 @@ redis> SET anotherkey "will expire in a minute" EX 60
 
 ### SETBIT
 
-```
+```shell
 SETBIT key offset value
 ```
 
@@ -1130,7 +1131,7 @@ redis> GET mykey
 
 ### SETEX
 
-```
+```shell
 SETEX key seconds value
 ```
 
@@ -1149,7 +1150,7 @@ redis> GET mykey
 
 ### SETNX
 
-```
+```shell
 SETNX key value
 ```
 
@@ -1168,7 +1169,7 @@ redis> GET mykey
 
 ### SETRANGE
 
-```
+```shell
 SETRANGE key offset value
 ```
 
@@ -1187,7 +1188,7 @@ redis> GET key1
 
 ### STRLEN
 
-```
+```shell
 STRLEN key
 ```
 
@@ -1206,7 +1207,7 @@ redis> STRLEN nonexisting
 
 ### STRALGO
 
-```
+```shell
 STRALGO LCS algo-specific-argument [algo-specific-argument 
 ...]
 ```
@@ -1228,14 +1229,14 @@ redis> STRALGO LCS KEYS key1 key2 IDX
 4) (integer) 6
 ```
 
-针对字符串运行算法（目前为 LCS）
+针对字符串运行算法(目前为 LCS)
 
-Redis集合类型设置
+Redis 集合类型设置
 ------------
 
 ### SADD
 
-```
+```shell
 SADD key member [member ...]
 ```
 
@@ -1257,7 +1258,7 @@ redis> SMEMBERS myset
 
 ### SCARD
 
-```
+```shell
 SCARD key
 ```
 
@@ -1276,7 +1277,7 @@ redis> SCARD myset
 
 ### SDIFF
 
-```
+```shell
 SDIFF key [key ...]
 ```
 
@@ -1304,7 +1305,7 @@ redis> SDIFF key1 key2
 
 ### SDIFFSTORE
 
-```
+```shell
 SDIFFSTORE destination key [key ...]
 ```
 
@@ -1334,7 +1335,7 @@ redis> SMEMBERS key
 
 ### SINTER
 
-```
+```shell
 SINTER key [key ...]
 ```
 
@@ -1361,7 +1362,7 @@ redis> SINTER key1 key2
 
 ### SINTERSTORE
 
-```
+```shell
 SINTERSTORE destination key [key ...]
 ```
 
@@ -1390,7 +1391,7 @@ redis> SMEMBERS key
 
 ### SISMEMBER
 
-```
+```shell
 SISMEMBER key member
 ```
 
@@ -1409,7 +1410,7 @@ redis> SISMEMBER myset "two"
 
 ### SMISMEMBER
 
-```
+```shell
 SMISMEMBER key member [member ...]
 ```
 
@@ -1623,15 +1624,15 @@ redis> SMEMBERS key
 
 添加多个集合并将结果集合存储在一个键中
 
-Redis列表类型设置
+Redis 列表类型设置
 ------------
 
 ### 一些引用(可能有帮助)
 
-| -                                                   | -                                                                                                  |
-|-----------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| [BRPOPLPUSH](https://redis.io/commands/brpoplpush) | 从列表中弹出一个元素，将其推入另一个列表并返回；或阻塞直到有一个可用                                     |
-| [BLMOVE](https://redis.io/commands/blmove)         | 从列表中弹出一个元素，将其推入另一个列表并返回；或阻塞直到有一个可用                                     |
+:- | --
+:- | --
+[BRPOPLPUSH](https://redis.io/commands/brpoplpush) | 从列表中弹出一个元素，将其推入另一个列表并返回；或阻塞直到有一个可用
+[BLMOVE](https://redis.io/commands/blmove)         | 从列表中弹出一个元素，将其推入另一个列表并返回；或阻塞直到有一个可用
 
 ### BLPOP
 
@@ -2057,7 +2058,7 @@ redis> LRANGE myotherlist 0 -1
 
 仅当列表存在时才将元素附加到列表
 
-Redis哈希类型设置
+Redis 哈希类型设置
 ------------
 
 ### HDEL
@@ -2339,7 +2340,7 @@ redis> HVALS myhash
 
 获取哈希中的所有值
 
-Redis排序集类型设置
+Redis 排序集类型设置
 ------------
 
 ### BZPOPMIN
@@ -2412,7 +2413,7 @@ redis> ZRANGE myzset 0 -1 WITHSCORES
 8) "3"
 ```
 
-将一个或多个成员添加到有序集合中，或者更新其分数（如果它已经存在）
+将一个或多个成员添加到有序集合中，或者更新其分数(如果它已经存在)
 
 ### ZCARD
 
@@ -3188,6 +3189,7 @@ redis> GEODIST Sicily Foo Bar
 返回地理空间索引的两个成员之间的距离
 
 ### GEORADIUS
+<!--rehype:wrap-class=row-span-3-->
 
 ```
 GEORADIUS key longitude latitude radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT 
@@ -3273,16 +3275,17 @@ redis> GEOSEARCH Sicily FROMLONLAT 15 37 BYBOX 400 400 km ASC
 
 ### 一些引用(可能有帮助)
 
-| -                                                           | -                                                                                                                                             |
-|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| [GEOSEARCHSTORE](https://redis.io/commands/geosearchstore) | 查询表示地理空间索引的排序集以获取框或圆区域内的成员，并将结果存储在另一个键中。 |
+:- | --
+:- | --
+[GEOSEARCHSTORE](https://redis.io/commands/geosearchstore) | 查询表示地理空间索引的排序集以获取框或圆区域内的成员，并将结果存储在另一个键中
+<!--rehype:className=style-list-->
 
 Redis超文本日志类型设置
 ------------
 
 ### PFADD
 
-```
+```shell
 PFADD key element [element ...]
 ```
 
@@ -3299,7 +3302,7 @@ redis> PFCOUNT hll
 
 ### PFCOUNT
 
-```
+```shell
 PFCOUNT key [key ...]
 ```
 
@@ -3324,7 +3327,7 @@ redis> PFCOUNT hll some-other-hll
 
 ### PFMERGE
 
-```
+```shell
 PFMERGE destkey sourcekey [sourcekey ...]
 ```
 
@@ -3349,15 +3352,16 @@ Redis流命令
 
 ### 一些引用(可能有帮助)
 
-| -                                                   | -                                                                                                                                                                                  |
-|-----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [XINFO](https://redis.io/commands/xinfo)           | 获取有关流和消费者组的信息 |
-| [XDEL](https://redis.io/commands/xdel)             | 从流中删除指定的条目。返回实际删除的项目数，如果某些 ID 不存在，则可能与传递的 ID 数不同 |
-| [XREAD](https://redis.io/commands/xread)           | 返回多个流中从未见过的元素，其 ID 大于调用者为每个流报告的 ID |
-| [XGROUP](https://redis.io/commands/xgroup)         | 创建、销毁和管理消费者组 |
-| [XREADGROUP](https://redis.io/commands/xreadgroup) | 使用消费者组从流中返回新条目，或访问给定消费者的待处理条目的历史记录 |
-| [XCLAIM](https://redis.io/commands/xclaim)         | 更改（或获取）消费者组中消息的所有权，就好像消息已传递给指定的消费者一样 |
-| [XPENDING](https://redis.io/commands/xpending)     | 从流消费者组待定条目列表中返回信息和条目，这些信息是已获取但从未确认的消息 |
+:- | --
+:- | --
+[XINFO](https://redis.io/commands/xinfo)           | 获取有关流和消费者组的信息
+[XDEL](https://redis.io/commands/xdel)             | 从流中删除指定的条目。返回实际删除的项目数，如果某些 ID 不存在，则可能与传递的 ID 数不同
+[XREAD](https://redis.io/commands/xread)           | 返回多个流中从未见过的元素，其 ID 大于调用者为每个流报告的 ID
+[XGROUP](https://redis.io/commands/xgroup)         | 创建、销毁和管理消费者组
+[XREADGROUP](https://redis.io/commands/xreadgroup) | 使用消费者组从流中返回新条目，或访问给定消费者的待处理条目的历史记录
+[XCLAIM](https://redis.io/commands/xclaim)         | 更改(或获取)消费者组中消息的所有权，就好像消息已传递给指定的消费者一样
+[XPENDING](https://redis.io/commands/xpending)     | 从流消费者组待定条目列表中返回信息和条目，这些信息是已获取但从未确认的消息
+<!--rehype:className=style-list-->
 
 ### XADD
 
@@ -3393,7 +3397,7 @@ redis> XRANGE mystream - +
 
 ### XTRIM
 
-```
+```shell
 XTRIM key MAXLEN [=|~] length
 ```
 
@@ -3416,11 +3420,11 @@ redis> XRANGE mystream - +
       8) "D"
 ```
 
-将流修剪为（大约如果传递了“~”）特定大小
+将流修剪为(大约如果传递了“~”)特定大小
 
 ### XRANGE
 
-```
+```shell
 XRANGE key start end [COUNT count]
 ```
 
@@ -3455,8 +3459,9 @@ redis> XRANGE writers - + COUNT 2
 返回流中的一系列元素，其 ID 与指定的 ID 间隔相匹配
 
 ### XREVRANGE
+<!--rehype:wrap-class=row-span-2-->
 
-```
+```shell
 XREVRANGE key end start [COUNT count]
 ```
 
@@ -3483,11 +3488,11 @@ redis> XREVRANGE writers + - COUNT 1
       4) "Adichie"
 ```
 
-返回流中的一系列元素，ID 与指定的 ID 间隔相匹配，与 XRANGE 相比，顺序相反（从大到小的 ID）
+返回流中的一系列元素，ID 与指定的 ID 间隔相匹配，与 XRANGE 相比，顺序相反(从大到小的 ID)
 
 ### XLEN
 
-```
+```shell
 XLEN key
 ```
 
@@ -3508,7 +3513,7 @@ redis> XLEN mystream
 
 ### XACK
 
-```
+```shell
 XACK key group ID [ID ...]
 ```
 
@@ -3519,16 +3524,17 @@ redis> XACK mystream mygroup 1526569495631-0
 ERR Unknown or disabled command 'XACK'
 ```
 
-将待处理消息标记为已正确处理，有效地将其从消费者组的待处理条目列表中删除，该命令的返回值是成功确认的消息数，即我们实际能够在PEL中解析的ID。
+将待处理消息标记为已正确处理，有效地将其从消费者组的待处理条目列表中删除，该命令的返回值是成功确认的消息数，即我们实际能够在 `PEL` 中解析的 `ID`
 
 集群方面的东西
 ------------
 <!--rehype:body-class=cols-2-->
 
 ### 节点、集群
+<!--rehype:wrap-class=row-span-3-->
 
-| -                                                                                         | -                                                                |
-|-------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+:- | --
+:- | --
 | [CLUSTER ADDSLOTS](https://redis.io/commands/cluster-addslots)                           | 为接收节点分配新的哈希槽 |
 | [CLUSTER BUMPEPOCH](https://redis.io/commands/cluster-bumpepoch)                          | 提前集群配置纪元 |
 | [CLUSTER COUNT-FAILURE-REPORTS](https://redis.io/commands/cluster-count-failure-reports) | 返回给定节点的活动故障报告数 |
@@ -3556,33 +3562,33 @@ ERR Unknown or disabled command 'XACK'
 
 ### 交易
 
-| -                                            | -                                                                   |
-|----------------------------------------------|---------------------------------------------------------------------|
-| [DISCARD](https://redis.io/commands/discard) | 丢弃 MULTI 之后发出的所有命令 |
-| [EXEC](https://redis.io/commands/exec)       | 执行 MULTI 之后发出的所有命令 |
-| [MULTI](https://redis.io/commands/multi)     | 标记事务块的开始 |
-| [UNWATCH](https://redis.io/commands/unwatch) | 忘记所有监视的键 |
-| [WATCH](https://redis.io/commands/watch)    | 观察给定的键以确定MULTI/EXEC块的执行 |
+:- | --
+:- | --
+[DISCARD](https://redis.io/commands/discard) | 丢弃 MULTI 之后发出的所有命令
+[EXEC](https://redis.io/commands/exec)       | 执行 MULTI 之后发出的所有命令
+[MULTI](https://redis.io/commands/multi)     | 标记事务块的开始
+[UNWATCH](https://redis.io/commands/unwatch) | 忘记所有监视的键
+[WATCH](https://redis.io/commands/watch)    | 观察给定的键以确定MULTI/EXEC块的执行
 
 ### 脚本
 
-| -                                                         | -                                                    |
-|-----------------------------------------------------------|------------------------------------------------------|
-| [EVAL](https://redis.io/commands/eval)                   | 执行 Lua 脚本服务器端 |
-| [EVALSHA](https://redis.io/commands/evalsha)             | 执行 Lua 脚本服务器端 |
-| [SCRIPT DEBUG](https://redis.io/commands/script-debug)   | 为执行的脚本设置调试模式 |
-| [SCRIPT EXISTS](https://redis.io/commands/script-exists) | 检查脚本缓存中是否存在脚本 |
-| [SCRIPT FLUSH](https://redis.io/commands/script-flush)    | 从脚本缓存中删除所有脚本 |
-| [SCRIPT KILL](https://redis.io/commands/script-kill)      | 终止当前正在执行的脚本 |
-| [SCRIPT LOAD](https://redis.io/commands/script-load)     | 将指定的 Lua 脚本加载到脚本缓存中 |
+:- | --
+:- | --
+[EVAL](https://redis.io/commands/eval)                   | 执行 Lua 脚本服务器端
+[EVALSHA](https://redis.io/commands/evalsha)             | 执行 Lua 脚本服务器端
+[SCRIPT DEBUG](https://redis.io/commands/script-debug)   | 为执行的脚本设置调试模式
+[SCRIPT EXISTS](https://redis.io/commands/script-exists) | 检查脚本缓存中是否存在脚本
+[SCRIPT FLUSH](https://redis.io/commands/script-flush)    | 从脚本缓存中删除所有脚本
+[SCRIPT KILL](https://redis.io/commands/script-kill)      | 终止当前正在执行的脚本
+[SCRIPT LOAD](https://redis.io/commands/script-load)     | 将指定的 Lua 脚本加载到脚本缓存中
 
 ### 发布操作
 
-| -                                                       | -                                                                          |
-|---------------------------------------------------------|----------------------------------------------------------------------------|
-| [PSUBSCRIBE](https://redis.io/commands/psubscribe)     | 侦听发布到与给定模式匹配的频道的消息 |
-| [PUBSUB](https://redis.io/commands/pubsub)             | 检查 Pub/Sub 子系统的状态 |
-| [PUBLISH](https://redis.io/commands/publish)           | 向频道发布消息 |
-| [PUNSUBSCRIBE](https://redis.io/commands/punsubscribe) | 停止监听发布到与给定模式匹配的频道的消息 |
-| [SUBSCRIBE](https://redis.io/commands/subscribe)       | 收听发布到给定频道的消息 |
-| [UNSUBSCRIBE](https://redis.io/commands/unsubscribe)   | 停止收听发布到给定频道的消息 |
+:- | --
+:- | --
+[PSUBSCRIBE](https://redis.io/commands/psubscribe)     | 侦听发布到与给定模式匹配的频道的消息
+[PUBSUB](https://redis.io/commands/pubsub)             | 检查 Pub/Sub 子系统的状态
+[PUBLISH](https://redis.io/commands/publish)           | 向频道发布消息
+[PUNSUBSCRIBE](https://redis.io/commands/punsubscribe) | 停止监听发布到与给定模式匹配的频道的消息
+[SUBSCRIBE](https://redis.io/commands/subscribe)       | 收听发布到给定频道的消息
+[UNSUBSCRIBE](https://redis.io/commands/unsubscribe)   | 停止收听发布到给定频道的消息
