@@ -366,6 +366,7 @@ Quick Reference
 [cas-air.cn](https://www.ccommunity.cas-air.cn/index.html)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;&class=contributing&data-info=👆非镜像，另起炉灶-->
 [1han.wiki](https://code.1han.wiki/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [linzhe.top](https://linzhe.top/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
+[xushanxiang.com](https://xushanxiang.com/ref/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [winnerzr01.github.io](https://winnerzr01.github.io/Quick-Reference/index.html)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;&class=contributing&data-info=👆需要梯子-->
 <!--rehype:class=home-card&style=margin:2.2rem 0;display: flex;justify-content: center;gap: 1rem;flex-wrap: wrap;-->
 
