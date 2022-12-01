@@ -68,7 +68,7 @@ $ npx react-native run-ios
 <!--rehype:className=shortcuts-->
 
 ### macOS 安装 Android 环境
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 您将需要 Node、Watchman、React Native 命令行界面、JDK 和 Android Studio
 
@@ -141,11 +141,14 @@ $ npx react-native start
 $ npx react-native run-ios
 ```
 
----
+### 打开 React Native Debug 菜单
 
 :- | --
 :- | --
-`⌘` + `M` | 打开<yel>开发者</yel>菜单
+`⌘` + `M`(Android) | 打开<yel>开发者</yel>菜单
+`⌘` + `D`(iOS) | 打开<yel>开发者</yel>菜单
+`Ctrl` + `D`(Linux) | 打开<yel>开发者</yel>菜单
+<pur>摇动您的设备</pur> | 打开<yel>开发者</yel>菜单
 按两次 `R` 键 | 构建并运行
 <!--rehype:className=shortcuts-->
 
