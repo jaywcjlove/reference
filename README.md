@@ -154,6 +154,7 @@ Quick Reference
 
 ## 快捷键
 
+[Adobe Lightroom](./docs/adobe-lightroom.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Adobe Photoshop](./docs/adobe-photoshop.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Android Studio](./docs/android-studio.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Firefox](./docs/firefox.md)<!--rehype:style=background: rgb(253 53 76);-->  

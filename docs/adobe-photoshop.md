@@ -8,8 +8,8 @@ Adobe Photoshop 中 283 个[键盘快捷键](https://helpx.adobe.com/photoshop/u
 
 ### 热门快捷方式
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `T`  | 自由变换
 `[`  | 减小画笔大小
 `]`  | 增加画笔大小
@@ -29,8 +29,8 @@ Shortcut | Action
 
 ### 使用功能键
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `F1`  | 开始帮助
 `F2`  | 剪切
 `F3`  | 复制
@@ -49,8 +49,8 @@ Shortcut | Action
 ### 选择工具
 <!--rehype:wrap-class=row-span-3-->
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `V`  | 移动工具
 `M`  | 矩形选框工具
 `L`  | 套索工具
@@ -88,8 +88,8 @@ Shortcut | Action
 ### 查看图片
 <!--rehype:wrap-class=row-span-2-->
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `Tab`  | 循环浏览打开的文档
 `Ctrl` `Shift` `Tab`  | 切换到上一个文档
 `Ctrl` `Shift` `W`  | 在 Photoshop 中关闭文件并打开 Bridge
@@ -110,8 +110,8 @@ Shortcut | Action
 
 ### 使用木偶变形
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Esc`  | 完全取消
 `Ctrl` `Z`  | 撤消最后一次引脚调整
 `Ctrl` `A`  | 选择所有引脚
@@ -121,8 +121,8 @@ Shortcut | Action
 
 ### 使用优化边缘
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `Alt` `R`  | 打开优化边缘对话框
 `F`  | 通过预览模式向前循环
 `Shift` `F`  | 通过预览模式向后循环
@@ -134,8 +134,8 @@ Shortcut | Action
 
 ### 使用滤镜库
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `Alt` `F`  | 重新应用上次使用的过滤器
 `Ctrl`  | 将取消按钮更改为默认值
 `Alt`  | 将取消按钮更改为重置
@@ -147,8 +147,8 @@ Shortcut | Action
 ### 使用液化滤镜
 <!--rehype:wrap-class=row-span-2-->
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `W`  | 向前扭曲工具
 `R`  | 重构工具
 `C`  | 顺时针旋转工具
@@ -168,8 +168,8 @@ Shortcut | Action
 ### 使用消失点
 <!--rehype:wrap-class=row-span-2-->
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `X`  | 缩放 2 倍(临时)
 `Ctrl` `+`  | 放大
 `Ctrl` `-`  | 缩小
@@ -191,8 +191,8 @@ Shortcut | Action
 ### 使用 Camera Raw 对话框
 <!--rehype:wrap-class=row-span-5-->
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Z`  | 缩放工具
 `H`  | 手工具
 `I`  | 白平衡工具
@@ -251,8 +251,8 @@ Shortcut | Action
 
 ### 使用黑白对话框
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `Shift` `Alt` `B`  | 打开黑白对话框
 `Up/Down`  | 将所选值增加/减少 1%
 `Shift` `Up/Down`  | 将所选值增加/减少 10%
@@ -260,16 +260,16 @@ Shortcut | Action
 
 ### 编辑路径
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl`  | 从路径选择、笔、添加锚点、删除锚点或将点工具转换为直接选择工具
 `Alt`  | 当指针位于锚点或方向点上时，从钢笔工具切换到自由钢笔工具以转换点工具
 <!--rehype:className=shortcuts-->
 
 ### 变换选区、选区边框和路径
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Alt`  | 从中心变换或反射
 `Shift`  | 约束
 `Ctrl`  | 歪曲
@@ -281,8 +281,8 @@ Shortcut | Action
 
 ### 使用曲线
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `M`  | 打开曲线对话框
 `+`  | 选择曲线上的下一个点
 `-`  | 选择曲线上的前一点
@@ -294,8 +294,8 @@ Shortcut | Action
 
 ### 用于绘画
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Alt` `Shift` `0-9`  | 混合器画笔更改混合设置
 `0-9`  | 混合刷改变湿设置
 `00`  | 搅拌刷变湿并混合至零
@@ -311,8 +311,8 @@ Shortcut | Action
 ### 用于混合模式
 <!--rehype:wrap-class=row-span-2-->
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `-/+`  | 循环混合模式
 `Shift` `Alt` `N`  | 普通的
 `Shift` `Alt` `I`  | 溶解
@@ -344,8 +344,8 @@ Shortcut | Action
 
 ### 格式类型
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `Shift` `L/C/R`  | 左对齐、居中或右对齐
 `Ctrl` `Shift` `X`  | 选择 100% 水平比例
 `Ctrl` `Shift` `Alt` `X`  | 选择 100% 垂直比例
@@ -363,8 +363,8 @@ Shortcut | Action
 
 ### 使用面板
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Shift` `Enter`  | 应用值并保持文本框处于活动状态
 `Tab`  | 显示/隐藏所有面板
 `Shift` `Tab`  | 显示/隐藏除工具箱和选项栏之外的所有面板
@@ -374,8 +374,8 @@ Shortcut | Action
 
 ### 使用调整图层
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Alt` `3`  | 选择红色通道进行调整
 `Alt` `4`  | 选择绿色通道进行调整
 `Alt` `5`  | 选择蓝色通道进行调整
@@ -385,8 +385,8 @@ Shortcut | Action
 
 ### 使用画笔面板
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `,/.`  | 选择上一个/下一个画笔大小
 `Shift` `,/.`  | 选择第一个/最后一个画笔
 `Caps Lock`  | 显示画笔的精确十字线
@@ -395,8 +395,8 @@ Shortcut | Action
 
 ### 使用克隆源面板
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Alt` `Shift`  | 显示克隆源(覆盖 iamge)
 `Alt` `Shift` `(arrows)`  | 轻推克隆源
 `Alt` `Shift` `</>`  | 旋转克隆源
@@ -405,8 +405,8 @@ Shortcut | Action
 
 ### 使用图层面板
 
-Shortcut | Action
----|---
+快捷键 | 说明
+:- | -
 `Ctrl` `Shift` `N`  | 新层
 `Ctrl` `J`  | 通过复制新建图层
 `Ctrl` `Shift` `J`  | 通过剪切新建图层
