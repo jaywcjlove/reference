@@ -362,6 +362,11 @@ Quick Reference
 [dc6.fun](https://dc6.fun/reference/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [if010.com](https://quickref.if010.com/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
 [pipecraft.net](https://quickref.pipecraft.net/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;&class=contributing&data-info=👆需要梯子-->
+[isteed.cc](https://ref.isteed.cc/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
+[cas-air.cn](https://www.ccommunity.cas-air.cn/index.html)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;&class=contributing&data-info=👆非镜像，另起炉灶-->
+[1han.wiki](https://code.1han.wiki/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
+[linzhe.top](https://linzhe.top/)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;-->
+[winnerzr01.github.io](https://winnerzr01.github.io/Quick-Reference/index.html)<!--rehype:target=_blank&style=background: rgb(16 185 129);height: 2.6rem;border-radius: 2rem;font-weight: bold;&class=contributing&data-info=👆需要梯子-->
 <!--rehype:class=home-card&style=margin:2.2rem 0;display: flex;justify-content: center;gap: 1rem;flex-wrap: wrap;-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
