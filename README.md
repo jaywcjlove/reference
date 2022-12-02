@@ -224,6 +224,9 @@ Quick Reference
 <a href="https://github.com/sjh42" title="42:p">
   <img src="https://avatars.githubusercontent.com/u/34529275?v=4" width="42;" alt="42:p"/>
 </a>
+<a href="https://github.com/LufsX" title="LufsX">
+  <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
+</a>
 <a href="https://github.com/partoneplay" title="partoneplay">
   <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
 </a>
@@ -262,9 +265,6 @@ Quick Reference
 </a>
 <a href="https://github.com/Lihuagreek" title="Lihuagreek">
   <img src="https://avatars.githubusercontent.com/u/51040740?v=4" width="42;" alt="Lihuagreek"/>
-</a>
-<a href="https://github.com/LufsX" title="LufsX">
-  <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
 </a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
