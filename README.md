@@ -88,6 +88,7 @@ Quick Reference
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198);-->  
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131);-->  
 [Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->  
+[</> htmx](./docs/htmx.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->  
 <!--rehype:class=home-card-->
 
 ## Nodejs
