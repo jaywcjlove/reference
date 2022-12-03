@@ -1,7 +1,13 @@
 React Native 备忘清单
 ===
 
+[![NPM version](https://img.shields.io/npm/v/react-native.svg?style=flat)](https://npmjs.org/package/react-native)
+[![Downloads](https://img.shields.io/npm/dm/react-native.svg?style=flat)](https://www.npmjs.com/package/react-native)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/facebook/react-native)](https://github.com/facebook/react-native/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/facebook/react-native)
+
 适合初学者的综合 [React Native](https://reactnative.dev/) 备忘清单，在开始 [React Native](https://reactnative.dev/) 之前需要先掌握 [react](./react.md) 库
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ---

@@ -1,7 +1,13 @@
 Styled Components 备忘清单
 ====
 
-此快速参考备忘单提供了使用 CSS in JS 工具的各种方法。
+[![NPM version](https://img.shields.io/npm/v/styled-components.svg?style=flat)](https://npmjs.org/package/styled-components)
+[![Downloads](https://img.shields.io/npm/dm/styled-components.svg?style=flat)](https://www.npmjs.com/package/styled-components)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/styled-components/styled-components)](https://github.com/styled-components/styled-components/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/styled-components/styled-components)
+
+此快速参考备忘单提供了使用 CSS in JS 工具的各种方法
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ----

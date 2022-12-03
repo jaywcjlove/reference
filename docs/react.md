@@ -1,14 +1,20 @@
 React 备忘清单
 ===
 
+[![NPM version](https://img.shields.io/npm/v/react.svg?style=flat)](https://npmjs.org/package/react)
+[![Downloads](https://img.shields.io/npm/dm/react.svg?style=flat)](https://www.npmjs.com/package/react)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/facebook/react)](https://github.com/facebook/react/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/facebook/react)
+
 适合初学者的综合 React 备忘清单。
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ----
 
 ### 介绍
 
-React 是一个用于构建用户界面的 JavaScript 库。
+React 是一个用于构建用户界面的 JavaScript 库
 
 - [React 官方文档](https://reactjs.org/) _(reactjs.org)_
 - [Styled Components 备忘清单](./styled-components.md) _(jaywcjlove.github.io)_

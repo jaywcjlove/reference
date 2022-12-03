@@ -1,7 +1,13 @@
 \</> htmx 备忘清单
 ===
 
+[![NPM version](https://img.shields.io/npm/v/htmx.org.svg?style=flat)](https://npmjs.org/package/htmx.org)
+[![Downloads](https://img.shields.io/npm/dm/htmx.org.svg?style=flat)](https://www.npmjs.com/package/htmx.org)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/bigskysoftware/htmx)](https://github.com/bigskysoftware/htmx/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/bigskysoftware/htmx)
+
 适合初学者的综合 [htmx](https://htmx.org/) 备忘清单
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ---
@@ -17,16 +23,11 @@
   点击我
 </button>
 ```
+<!--rehype:className=wrap-text-->
 
 `hx-post` 和 `hx-swap` 属性告诉 `htmx`：
 
 > 当用户单击此按钮时，向 `/clicked` 发出 `AJAX` 请求，并用响应替换整个按钮
-
----
-
-[![NPM version](https://img.shields.io/npm/v/htmx.org.svg?style=flat)](https://npmjs.org/package/htmx.org)
-[![Downloads](https://img.shields.io/npm/dm/htmx.org.svg?style=flat)](https://www.npmjs.com/package/htmx.org)
-[![Repo Dependents](https://badgen.net/github/dependents-repo/bigskysoftware/htmx)](https://github.com/bigskysoftware/htmx/network/dependents)
 
 ```bash
 $ npm install htmx.org

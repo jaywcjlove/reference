@@ -1,7 +1,13 @@
 Next.js 备忘清单
 ===
 
-这是一份快速参考备忘单，包含 Next.js 的 API 参考列表和一些示例
+[![NPM version](https://img.shields.io/npm/v/next.svg?style=flat)](https://www.npmjs.com/package/next)
+[![Downloads](https://img.shields.io/npm/dm/next.svg?style=flat)](https://www.npmjs.com/package/next)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/vercel/next.js)](https://github.com/vercel/next.js/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/vercel/next.js)
+
+这是一份快速参考备忘单，包含 [Next.js](https://nextjs.org/) 的 API 参考列表和一些示例
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ----
