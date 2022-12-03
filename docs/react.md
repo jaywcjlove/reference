@@ -18,6 +18,7 @@ React 是一个用于构建用户界面的 JavaScript 库
 
 - [React 官方文档](https://reactjs.org/) _(reactjs.org)_
 - [Styled Components 备忘清单](./styled-components.md) _(jaywcjlove.github.io)_
+- [TypeScript JSX 备忘清单](./typescript.md#jsx) _(jaywcjlove.github.io)_
 
 ```js
 import {createRoot} from 'react-dom/client'

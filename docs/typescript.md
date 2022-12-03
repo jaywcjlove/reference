@@ -1,6 +1,11 @@
 TypeScript 备忘清单
 ===
 
+[![NPM version](https://img.shields.io/npm/v/typescript.svg?style=flat)](https://www.npmjs.com/package/typescript)
+[![Downloads](https://img.shields.io/npm/dm/typescript.svg?style=flat)](https://www.npmjs.com/package/typescript)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/Microsoft/TypeScript)](https://github.com/Microsoft/TypeScript/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/Microsoft/TypeScript)
+
 包含最重要基础、泛型、方法、class 等 TypeScript 强类型编程语言语法的快速参考备忘单。初学者的完整快速参考。
 
 入门 Interface
@@ -1265,6 +1270,24 @@ class Select<T> extends React.Component<SelectProps<T>, any> {}
 const Form = () => <Select<string> items={['a', 'b']} />;
 ```
 
+### 函数组件 ref
+<!--rehype:wrap-class=col-span-3-->
+
+```tsx
+import { FC, ForwardedRef, forwardRef, PropsWithRef } from "react";
+
+function InternalProgress(props: ProgressProps, ref?: ForwardedRef<HTMLDivElement>) {
+  return (
+    <div {...props} ref={ref}>
+      {props.children}
+    </div>
+  )
+}
+
+export interface ProgressProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+export const Progress: FC<PropsWithRef<ProgressProps>> = forwardRef<HTMLDivElement>(InternalProgress)
+```
+
 各种各样的技巧
 ---
 
@@ -1331,16 +1354,21 @@ const point = [3, 4] as const
 
 ```ts
 type Colors = 'red' | 'green' | 'blue';
+type RGB = [
+  red: number,
+  green: number,
+  blue: number
+];
+type Palette = Record<Colors, string | RGB>
 
-type RGB = [red: number, green: number, blue: number];
-
-const palette: Record<Colors, string | RGB> = {
+const palette: Palette = {
   red: [255, 0, 0],
   green: '#00ff00',
   blue: [0, 0, 255],
 };
 
-// 通常的方式会推导出 redComponent 为 string | number | undefined
+// 通常的方式会推导出 redComponent 为
+// => string | number | undefined
 const redComponent = palette.red.at(0);
 ```
 
