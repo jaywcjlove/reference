@@ -6,7 +6,7 @@ React 备忘清单
 [![Repo Dependents](https://badgen.net/github/dependents-repo/facebook/react)](https://github.com/facebook/react/network/dependents)
 [![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/facebook/react)
 
-适合初学者的综合 React 备忘清单。
+适合初学者的综合 React 备忘清单
 <!--rehype:style=padding-top: 12px;-->
 
 入门
