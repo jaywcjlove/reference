@@ -58,8 +58,20 @@ TARGET: PREREQUISITES
 * `target`: 规则的目标。目标可以是规则的动作（如 `clean` 等），也可以是目标文件或者最后的可执行文件。
 * `prerequisites`: 规则的依赖。生成规则目标文件所需要的文件名列表（通常一个目标依赖于一个或者多个文件）。
 * `command`: 规则的命令行。规则要执行的动作（任意的 shell 命令或者在 shell 下执行的程序）。<span style="color:red">命令需要以 tab 键开头</span>
-
 <!--rehype:className=style-round-->
+
+```bash
+$ make [TARGET ...]
+```
+
+---
+
+```bash
+$ make        # 没有参数首先运行 TARGET
+$ make help   # 显示可用目标
+$ make dist   # 从当前目录制作一个发布存档
+$ make check  # 无需安装的单元测试
+```
 
 ### 清空目标文件
 
@@ -113,5 +125,5 @@ include foo.make
 ---
 
 * [make 中文教程](https://seisman.github.io/how-to-write-makefile/overview.html) _(seisman.github.io)_
-* [make 手册](https://www.gnu.org/software/make/manual/make.html#toc-Overview-of-make)_(www.gnu.org)_
-* [make 官网](https://www.gnu.org/software/make/)_www.gnu.org_
+* [make 手册](https://www.gnu.org/software/make/manual/make.html#toc-Overview-of-make) _(www.gnu.org)_
+* [make 官网](https://www.gnu.org/software/make/) _www.gnu.org_
