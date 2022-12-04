@@ -238,6 +238,9 @@ Quick Reference
 <a href="https://github.com/catcto" title="喵仙人">
   <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
 </a>
+<a href="https://github.com/heStudio-Network" title="醉、倾城">
+  <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
+</a>
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
 </a>
@@ -345,9 +348,6 @@ Quick Reference
 </a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶">
   <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
-</a>
-<a href="https://github.com/heStudio-Network" title="醉、倾城">
-  <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
 </a><!--GAMFC-END-->
 
 [贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 根据提交次数的先后顺序自动生成
@@ -375,8 +375,9 @@ Quick Reference
 [xushanxiang.com](https://xushanxiang.com/ref/)<!--rehype:target=_blank-->
 [winnerzr01.github.io](https://winnerzr01.github.io/Quick-Reference/index.html)<!--rehype:target=_blank&class=contributing&data-info=👆需要梯子-->
 [ref.isteed.cc](https://ref.isteed.cc/)<!--rehype:target=_blank-->
-[quickref.hestudio.xyz](https://quickref.hestudio.xyz)<!--rehype:target=_blank-->
+[quickref.hestudio.org](https://quickref.hestudio.org)<!--rehype:target=_blank-->
 [ref.surcode.cn](https://ref.surcode.cn)<!--rehype:target=_blank-->
+[quickref.hestudio.org](https://quickref.hestudio.org)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
