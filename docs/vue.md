@@ -677,6 +677,434 @@ const value = inject(ProvideKey)
 
 <!--rehype:className=wrap-text -->
 
+Vue 中使用 TypeScript
+---
+
+### 为组件的 props 标注类型
+<!--rehype:wrap-class=row-span-4-->
+
+当使用 `<script setup>` 时，`defineProps()` 宏函数支持从它的参数中推导类型
+
+```html
+<script setup lang="ts">
+const props = defineProps({
+  foo: { type: String, required: true },
+  bar: Number
+})
+
+props.foo // string
+props.bar // number | undefined
+</script>
+```
+
+对同一个文件中的一个接口或对象类型字面量的引用：
+
+```ts
+interface Props {/* ... */}
+
+defineProps<Props>()
+```
+
+#### Props 解构默认值
+
+```ts
+export interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  msg: 'hello',
+  labels: () => ['one', 'two']
+})
+```
+
+使用目前为实验性的响应性语法糖
+
+```html
+<script setup lang="ts">
+interface Props {
+  name: string
+  count?: number
+}
+
+// 对 defineProps() 的响应性解构
+// 默认值会被编译为等价的运行时选项
+const {
+  name, count = 100
+} = defineProps<Props>()
+</script>
+```
+
+### 为组件的 emits 标注类型
+
+```html
+<script setup lang="ts">
+// 运行时
+const emit = defineEmits(['change', 'update'])
+
+// 基于类型
+const emit = defineEmits<{
+  (e: 'change', id: number): void
+  (e: 'update', value: string): void
+}>()
+</script>
+```
+
+### 为 ref() 标注类型
+
+ref 会根据初始化时的值推导其类型：
+
+```ts
+import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+const year: Ref<string | number> = ref('2020')
+
+year.value = 2020 // 成功！
+```
+
+### 为 reactive() 标注类型
+
+```ts
+import { reactive } from 'vue'
+
+interface Book {
+  title: string
+  year?: number
+}
+
+const book: Book = reactive({
+  title: 'Vue 3 指引'
+})
+```
+
+### 为 computed() 标注类型
+
+你还可以通过泛型参数显式指定类型：
+
+```ts
+const double = computed<number>(() => {
+  // 若返回值不是 number 类型则会报错
+})
+```
+
+### 为事件处理函数标注类型
+<!--rehype:wrap-class=row-span-2-->
+
+```html
+<script setup lang="ts">
+function handleChange(event) {
+  // `event` 隐式地标注为 `any` 类型
+  console.log(event.target.value)
+}
+</script>
+
+<template>
+  <input
+    type="text"
+    @change="handleChange" />
+</template>
+```
+
+显式地为事件处理函数的参数标注类型
+
+```ts
+function handleChange(event: Event) {
+  const target = event.target as HTMLInputElement
+  console.log(target.value)
+}
+```
+
+### 为 provide / inject 标注类型
+
+```ts
+import { provide, inject } from 'vue'
+import type { InjectionKey } from 'vue'
+
+const key = Symbol() as InjectionKey<string>
+// 若提供的是非字符串值会导致错误
+provide(key, 'foo')
+// foo 的类型：string | undefined
+const foo = inject(key)
+```
+
+### 为模板引用标注类型
+
+```html
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
+const el = ref<HTMLInputElement | null>(null)
+
+onMounted(() => {
+  el.value?.focus()
+})
+</script>
+
+<template>
+  <input ref="el" />
+</template>
+```
+
+### 为组件模板引用标注类型
+
+```html
+<!-- MyModal.vue -->
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const isContentShown = ref(false)
+const open = 
+      () => (isContentShown.value = true)
+
+defineExpose({
+  open
+})
+</script>
+```
+
+使用 TypeScript 内置的 `InstanceType` 工具类型来获取其实例类
+
+```html
+<!-- App.vue -->
+<script setup lang="ts">
+import MyModal from './MyModal.vue'
+
+type Modal = InstanceType<typeof MyModal>
+
+const modal = ref<Modal | null>(null)
+
+const openModal = () => {
+  modal.value?.open()
+}
+</script>
+```
+
+### 选项式 API 为组件的 props 标注类型
+<!--rehype:wrap-class=row-span-2-->
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  // 启用了类型推导
+  props: {
+    name: String,
+    id: [Number, String],
+    msg: { type: String, required: true },
+    metadata: null
+  },
+  mounted() {
+    // 类型：string | undefined
+    this.name
+    // 类型：number|string|undefined
+    this.id
+    // 类型：string
+    this.msg
+    // 类型：any
+    this.metadata
+  }
+})
+```
+
+使用 PropType 这个工具类型来标记更复杂的 props 类型
+
+```ts
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
+
+interface Book {
+  title: string
+  author: string
+  year: number
+}
+
+export default defineComponent({
+  props: {
+    book: {
+      // 提供相对 `Object` 更确定的类型
+      type: Object as PropType<Book>,
+      required: true
+    },
+    // 也可以标记函数
+    callback: Function as PropType<(id: number) => void>
+  },
+  mounted() {
+    this.book.title // string
+    this.book.year // number
+
+    // TS Error: argument of type 'string' is not
+    // assignable to parameter of type 'number'
+    this.callback?.('123')
+  }
+})
+```
+
+### 选项式 API 为组件的 emits 标注类型
+
+```ts
+import { defineComponent } from 'vue'
+
+type Payload = { bookName: string }
+
+export default defineComponent({
+  emits: {
+    addBook(payload: Payload) {
+      // 执行运行时校验
+      return payload.bookName.length > 0
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$emit('addBook', {
+        bookName: 123 // 类型错误
+      })
+      // 类型错误
+      this.$emit('non-declared-event')
+    }
+  }
+})
+```
+
+### 选项式 API 为计算属性标记类型
+<!--rehype:wrap-class=row-span-2-->
+
+计算属性会自动根据其返回值来推导其类型：
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  data() {
+    return {
+      message: 'Hello!'
+    }
+  },
+  computed: {
+    greeting() {
+      return this.message + '!'
+    }
+  },
+  mounted() {
+    this.greeting // 类型：string
+  }
+})
+```
+
+在某些场景中，你可能想要显式地标记出计算属性的类型以确保其实现是正确的：
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  data() {
+    return {
+      message: 'Hello!'
+    }
+  },
+  computed: {
+    // 显式标注返回类型
+    greeting(): string {
+      return this.message + '!'
+    },
+
+    // 标注一个可写的计算属性
+    greetingUppercased: {
+      get(): string {
+        return this.greeting.toUpperCase()
+      },
+      set(newValue: string) {
+        this.message = newValue.toUpperCase()
+      }
+    }
+  }
+})
+```
+
+### 选项式 API 为事件处理函数标注类型
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  methods: {
+    handleChange(event: Event) {
+      console.log((event.target as HTMLInputElement).value)
+    }
+  }
+})
+```
+
+### 选项式 API 扩展全局属性
+
+```ts
+import axios from 'axios'
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $http: typeof axios
+    $translate: (key: string) => string
+  }
+}
+```
+
+#### 类型扩展的位置
+
+我们可以将这些类型扩展放在一个 `.ts` 文件，或是一个影响整个项目的 `*.d.ts` 文件中
+
+```ts
+// 不工作，将覆盖原始类型。
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
+---
+
+```ts
+// 正常工作。
+export {}
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
+### 选项式 API 扩展自定义选项
+
+某些插件，比如 vue-router，提供了一些自定义的组件选项，比如 beforeRouteEnter：
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  beforeRouteEnter(to, from, next) {
+    // ...
+  }
+})
+```
+
+如果没有确切的类型标注，这个钩子函数的参数会隐式地标注为 `any` 类型。我们可以为 `ComponentCustomOptions` 接口扩展自定义的选项来支持：
+
+```ts
+import { Route } from 'vue-router'
+
+declare module 'vue' {
+  interface ComponentCustomOptions {
+    beforeRouteEnter?(
+      to: Route,
+      from: Route,
+      next: () => void
+    ): void
+  }
+}
+```
+
 API 参考
 ---
 
