@@ -360,7 +360,7 @@ Quick Reference
 ## 国内镜像网站
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
-由于中国国内访问，时常打不开，你可以访问下面镜像网站。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)
+由于中国国内访问，时常打不开，你可以访问下面镜像网站。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/discussions/206#discussion-4625735)
 
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank-->
 [ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank-->
