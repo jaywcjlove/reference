@@ -115,11 +115,183 @@ main.o : main.c
 include foo.make
 ```
 
-如果你想让 make 不理那些无法读取的文件，而继续执.
+如果你想让 make 不理那些无法读取的文件，并且继续执行。
 
 ```makefile
 -include <filename>
 ```
+
+变量
+---
+
+### 赋值符
+
+#### 在执行时扩展，允许递归扩展
+
+```makefile
+VARIABLE = value
+```
+
+#### 在声明时扩展
+
+可以防止递归，并且只能引用之前声明过的变量
+
+```makefile
+VARIABLE := value
+```
+
+#### 只有在该变量为空时才设置值
+
+```makefile
+VARIABLE ?= value
+```
+
+#### 将值追加到变量的尾端
+
+```makefile
+VARIABLE += value
+```
+
+### 变量
+
+需要使用 `$()` 或者 `${}` 对变量进行引用
+
+```makefile
+file = main.c
+
+run:
+	clang -o hello ${file}
+```
+
+#### 避免递归变量
+
+```makefile
+# 这样会使变量陷入无穷递归
+A = $(B)
+B = $(A)
+```
+
+---
+
+```makefile
+x := foo
+y := $(x) bar
+x := later
+
+# 等价于
+# x = later
+# y = foo bar
+```
+
+#### Shell 变量
+
+如果要使用 Shell 变量，需要在之前加上 `$`
+
+```makefile
+run:
+	echo $$HOME
+```
+
+#### 定义多行变量
+
+```makefile
+define foo
+echo foo
+echo bar
+endef
+
+run:
+	${foo}
+```
+
+### 自动变量
+<!--rehype:wrap-class=row-span-2-->
+
+#### `$@`
+
+`$@`:指代当前目标，即 Make 命令当前构建的那个目标
+
+```makefile
+foo:
+	touch $@
+```
+
+---
+
+```bash
+$ make foo
+# $@ 就是指的这里的 foo
+```
+
+#### `$<`
+
+`$<` 指代第一个前置条件。比如，规则为 t: p1 p2，那么 `$<` 就指代 p1
+
+```makefile
+a.md: b.md c.md
+  cp $< $@
+```
+
+---
+
+使用 `make a.md`,相当于以下写法
+
+```makefile
+a.md: b.md c.md
+    cp b.md a.md 
+```
+
+#### `$^`
+
+`$^` 指代所有的前置条件,去除重复项
+
+```makefile
+a.md: b.md c.md
+  echo $^
+```
+
+#### `$+`
+
+`$^` 指代所有的前置条件，不会去除重复项
+
+```makefile
+a.md: b.md c.md c.md
+	echo $+
+```
+
+#### `$?`
+
+`$?` 指代更新的依赖，只有最近更新过的依赖才会引用
+
+```makefile
+a.md: b.md c.md c.md
+	cat $? > a.md
+```
+
+#### `$*`
+
+`$*` 指代匹配符匹配的部分
+
+```makefile
+main.o: main.c
+	clang -o $* $*.c
+```
+
+---
+
+```bash
+$ make main
+# 此时 cc  main.c -o main
+```
+
+#### `$&`
+
+`$%`: 仅当目标是函数库文件中，表示规则中的目标成员名
+
+* windows 中是 `.lib` 文件
+* unix 中是 `.a` 文件
+
+<!--rehype:className=style-round-->
 
 另见
 ---
