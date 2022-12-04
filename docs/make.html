@@ -32,7 +32,7 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 <p>包含 最重要概念、函数、方法等的 make 备忘单。 初学者的完整快速参考。</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#makefile-入门">Makefile 入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#工作流程">工作流程</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件命令">文件命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#自定义文件名称">自定义文件名称</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#隐式生成">隐式生成</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#规则">规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清空目标文件">清空目标文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#换行-">换行 \</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#引用其它的-makefile">引用其它的 Makefile</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="makefile-入门"><a aria-hidden="true" tabindex="-1" href="#makefile-入门"><span class="icon icon-link"></span></a>Makefile 入门</h2><div class="wrap-body">
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#makefile-入门">Makefile 入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#工作流程">工作流程</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件命令">文件命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#自定义文件名称">自定义文件名称</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#隐式生成">隐式生成</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#规则">规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清空目标文件">清空目标文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#换行-">换行 \</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#引用其它的-makefile">引用其它的 Makefile</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#赋值符">赋值符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在执行时扩展允许递归扩展">在执行时扩展，允许递归扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在声明时扩展">在声明时扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#只有在该变量为空时才设置值">只有在该变量为空时才设置值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#将值追加到变量的尾端">将值追加到变量的尾端</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量-1">变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#避免递归变量">避免递归变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#shell-变量">Shell 变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#定义多行变量">定义多行变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自动变量">自动变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#">$@</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-1">$&#x3C;</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-2">$^</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-3">$+</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-4">$?</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-5">$*</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-6">$&#x26;</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="makefile-入门"><a aria-hidden="true" tabindex="-1" href="#makefile-入门"><span class="icon icon-link"></span></a>Makefile 入门</h2><div class="wrap-body">
 <!-- markdownlint-disable MD010 -->
 </div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">a.txt</span><span class="token punctuation">:</span> b.txt c.txt
@@ -104,9 +104,111 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token comment"># makefile</span>
 </span><span class="code-line"><span class="token keyword">include</span> foo.make
 </span></code></pre>
-<p>如果你想让 make 不理那些无法读取的文件，而继续执.</p>
+<p>如果你想让 make 不理那些无法读取的文件，并且继续执行。</p>
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token keyword">-include</span> &#x3C;filename>
 </span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="赋值符"><a aria-hidden="true" tabindex="-1" href="#赋值符"><span class="icon icon-link"></span></a>赋值符</h3><div class="wrap-body">
+<h4 id="在执行时扩展允许递归扩展"><a aria-hidden="true" tabindex="-1" href="#在执行时扩展允许递归扩展"><span class="icon icon-link"></span></a>在执行时扩展，允许递归扩展</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">VARIABLE <span class="token operator">=</span> value
+</span></code></pre>
+<h4 id="在声明时扩展"><a aria-hidden="true" tabindex="-1" href="#在声明时扩展"><span class="icon icon-link"></span></a>在声明时扩展</h4>
+<p>可以防止递归，并且只能引用之前声明过的变量</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">VARIABLE <span class="token operator">:=</span> value
+</span></code></pre>
+<h4 id="只有在该变量为空时才设置值"><a aria-hidden="true" tabindex="-1" href="#只有在该变量为空时才设置值"><span class="icon icon-link"></span></a>只有在该变量为空时才设置值</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">VARIABLE <span class="token operator">?=</span> value
+</span></code></pre>
+<h4 id="将值追加到变量的尾端"><a aria-hidden="true" tabindex="-1" href="#将值追加到变量的尾端"><span class="icon icon-link"></span></a>将值追加到变量的尾端</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">VARIABLE <span class="token operator">+=</span> value
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="变量-1"><a aria-hidden="true" tabindex="-1" href="#变量-1"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+<p>需要使用 <code>$()</code> 或者 <code>${}</code> 对变量进行引用</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">file <span class="token operator">=</span> main.c
+</span><span class="code-line">
+</span><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	clang -o hello <span class="token variable">$</span><span class="token punctuation">{</span>file<span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="避免递归变量"><a aria-hidden="true" tabindex="-1" href="#避免递归变量"><span class="icon icon-link"></span></a>避免递归变量</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token comment"># 这样会使变量陷入无穷递归</span>
+</span><span class="code-line">A <span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span>
+</span><span class="code-line">B <span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">x <span class="token operator">:=</span> foo
+</span><span class="code-line">y <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> bar
+</span><span class="code-line">x <span class="token operator">:=</span> later
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 等价于</span>
+</span><span class="code-line"><span class="token comment"># x = later</span>
+</span><span class="code-line"><span class="token comment"># y = foo bar</span>
+</span></code></pre>
+<h4 id="shell-变量"><a aria-hidden="true" tabindex="-1" href="#shell-变量"><span class="icon icon-link"></span></a>Shell 变量</h4>
+<p>如果要使用 Shell 变量，需要在之前加上 <code>$</code></p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	echo <span class="token variable">$$HOME</span>
+</span></code></pre>
+<h4 id="定义多行变量"><a aria-hidden="true" tabindex="-1" href="#定义多行变量"><span class="icon icon-link"></span></a>定义多行变量</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token keyword">define</span> foo
+</span><span class="code-line">echo foo
+</span><span class="code-line">echo bar
+</span><span class="code-line"><span class="token keyword">endef</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">{</span>foo<span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="自动变量"><a aria-hidden="true" tabindex="-1" href="#自动变量"><span class="icon icon-link"></span></a>自动变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id=""><a aria-hidden="true" tabindex="-1" href="#"><span class="icon icon-link"></span></a><code>$@</code></h4>
+<p><code>$@</code>:指代当前目标，即 Make 命令当前构建的那个目标</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">foo</span><span class="token punctuation">:</span>
+</span><span class="code-line">	touch <span class="token variable">$@</span>
+</span></code></pre>
+<hr>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">make</span> foo
+</span><span class="code-line"><span class="token comment"># $@ 就是指的这里的 foo</span>
+</span></code></pre>
+<h4 id="-1"><a aria-hidden="true" tabindex="-1" href="#-1"><span class="icon icon-link"></span></a><code>$&#x3C;</code></h4>
+<p><code>$&#x3C;</code> 指代第一个前置条件。比如，规则为 t: p1 p2，那么 <code>$&#x3C;</code> 就指代 p1</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">a.md</span><span class="token punctuation">:</span> b.md c.md
+</span><span class="code-line">  cp <span class="token variable">$&#x3C;</span> <span class="token variable">$@</span>
+</span></code></pre>
+<hr>
+<p>使用 <code>make a.md</code>,相当于以下写法</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">a.md</span><span class="token punctuation">:</span> b.md c.md
+</span><span class="code-line">    cp b.md a.md 
+</span></code></pre>
+<h4 id="-2"><a aria-hidden="true" tabindex="-1" href="#-2"><span class="icon icon-link"></span></a><code>$^</code></h4>
+<p><code>$^</code> 指代所有的前置条件,去除重复项</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">a.md</span><span class="token punctuation">:</span> b.md c.md
+</span><span class="code-line">  echo <span class="token variable">$^</span>
+</span></code></pre>
+<h4 id="-3"><a aria-hidden="true" tabindex="-1" href="#-3"><span class="icon icon-link"></span></a><code>$+</code></h4>
+<p><code>$^</code> 指代所有的前置条件，不会去除重复项</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">a.md</span><span class="token punctuation">:</span> b.md c.md c.md
+</span><span class="code-line">	echo <span class="token variable">$+</span>
+</span></code></pre>
+<h4 id="-4"><a aria-hidden="true" tabindex="-1" href="#-4"><span class="icon icon-link"></span></a><code>$?</code></h4>
+<p><code>$?</code> 指代更新的依赖，只有最近更新过的依赖才会引用</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">a.md</span><span class="token punctuation">:</span> b.md c.md c.md
+</span><span class="code-line">	cat <span class="token variable">$?</span> > a.md
+</span></code></pre>
+<h4 id="-5"><a aria-hidden="true" tabindex="-1" href="#-5"><span class="icon icon-link"></span></a><code>$*</code></h4>
+<p><code>$*</code> 指代匹配符匹配的部分</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">main.o</span><span class="token punctuation">:</span> main.c
+</span><span class="code-line">	clang -o <span class="token variable">$*</span> <span class="token variable">$*.c</span>
+</span></code></pre>
+<hr>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">make</span> main
+</span><span class="code-line"><span class="token comment"># 此时 cc  main.c -o main</span>
+</span></code></pre>
+<h4 id="-6"><a aria-hidden="true" tabindex="-1" href="#-6"><span class="icon icon-link"></span></a><code>$&#x26;</code></h4>
+<p><code>$%</code>: 仅当目标是函数库文件中，表示规则中的目标成员名</p>
+<ul class="style-round">
+<li>windows 中是 <code>.lib</code> 文件</li>
+<li>unix 中是 <code>.a</code> 文件</li>
+</ul>
+<!--rehype:className=style-round-->
 </div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://seisman.github.io/how-to-write-makefile/overview.html">make 中文教程</a> <em>(seisman.github.io)</em></li>
