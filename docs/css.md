@@ -1624,13 +1624,21 @@ div {
 
 ### 定义容器的长宽比
 
-```
+```css
 div {
   aspect-ratio: 1/1 
 }
 ```
 
 属性 [aspect-ratio](https://developer.mozilla.org/zh-CN/docs/Web/CSS/aspect-ratio) 可以非常容易的定义一个容器的长宽比
+
+### 设置光标样式
+
+```css
+body {
+  caret-color: red;
+}
+```
 
 另见
 ---------
