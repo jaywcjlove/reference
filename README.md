@@ -383,6 +383,7 @@ Quick Reference
 [surcode.cn](https://ref.surcode.cn)<!--rehype:target=_blank-->
 [hestudio.org](https://quickref.hestudio.org)<!--rehype:target=_blank-->
 [cms.im](https://quickref.cms.im/)<!--rehype:target=_blank-->
+[nuomiphp.com](https://reference.tool.nuomiphp.com/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。

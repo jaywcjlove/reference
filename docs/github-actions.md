@@ -414,7 +414,7 @@ toJSON(job)
 ```yml
 steps:
   ...
-  - name: The job has succeeded
+  - name: 作业已成功
     if: ${{ success() }}
 ```
 
@@ -423,7 +423,7 @@ steps:
 ```yml
 steps:
   ...
-  - name: The job has failed
+  - name: 作业失败
     if: ${{ failure() }}
 ```
 
