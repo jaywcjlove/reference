@@ -366,6 +366,175 @@ run:
 	${CC} -o main main.c
 ```
 
+书写规则
+---
+
+### 通配符
+
+#### `*`
+
+`*`：与 linux 系统下的一样
+
+```makefile
+# 清除所有 .o 结尾的文件
+clean:
+    rm -f *.o
+```
+
+#### `~`
+
+`~`：在 linux 或 mac 下表示用户目录，win 下表示 `HOME` 环境变量
+
+```makefile
+run:
+    ls ~
+```
+
+#### `?`
+
+`?`: 与在 linux 等类似，可以匹配单个字符
+
+```makefile
+run:
+	ls -ll packag?.json
+```
+
+### 文件搜寻（`vpath`）
+
+如果没有指定 vpath 变量，make 只会在当前的目录中去寻找依赖文件和目标文件。否则，如果当前目录没有，就会到指定的目录中去寻找
+
+:-                              | :-
+:-                              | :-
+`vpath <pattern> <directories>` | 为符合模式 \<pattern> 的文件指定搜索目录 \<directories>
+`vpath <pattern>`               | 清除符合模式<pattern>的文件的搜索目录。
+`vpath`                         | 清除所有已被设置好了的文件搜索目录
+
+#### `%`
+
+* vpath使用方法中的 \<pattern> 需要包含 `%` 字符。
+* `%` 的意思是匹配零或若干字符
+* 并且引用规则是需要使用**自动变量**
+
+```makefile
+vpath %.c dist
+TARGET = hello
+OBJ = bar.o foo.o
+
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $^
+
+%.o: $.c
+	$(CC) -o $< -o #@
+```
+
+<!--rehype:className=auto-wrap-->
+
+### 静态模式
+
+```makefile
+TARGET: PREREQUISITES :PREREQUISITES
+  COMMAMD
+#...
+```
+
+* `target` 定义了一系列的目标文件
+* 第一个 `prerequisites` 是指明了 target 的模式，也就是的目标集模式。
+* 第二个 `prerequisites` 是目标的依赖模式，它对第一个 `prerequisites` 形成的模式再进行一次依赖目标的定义
+
+```makefile
+objects = foo.o main.o
+
+$(objects): %.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
+```
+
+---
+相当于:
+
+```makefile
+foo.o : foo.c
+    $(CC) -c $(CFLAGS) foo.c -o foo.o
+main.o : main.c
+    $(CC) -c $(CFLAGS) main.c -o main.o
+```
+
+### 伪目标
+
+* **伪目标**并不是一个文件，只是一个标签。只有通过显式地指明这个**目标**才能让其生效
+* 使用 `.PHONY` 来显式地指明目标是 `伪目标`
+
+```makefile
+.PHONY : clean
+clean :
+    rm *.o temp
+```
+
+<!--rehype:className=style-round-->
+<!--rehype:className=auto-wrap-->
+
+命令
+---
+
+### 回声（`@`）
+
+正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）
+
+```makefile
+all:
+  # 会有命令执行显示
+	echo Hello, world
+```
+
+---
+
+```makefile
+all:
+  # 不会有命令执行的显示
+	@echo Hello, world
+```
+
+<!--rehype:className=auto-wrap-->
+
+### 显示命令、禁止命令
+
+#### 显示命令
+
+如果我们只希望显示命令，而不希望执行命令，可以使用 `-n` 或者 `--just-print`
+
+```bash
+$ make all --just-print 
+$ make all -n 
+```
+
+#### 禁止命令
+
+`-s` 或 `--silent` 或 `--quiet` 与 `@` 一样，用于禁止回声
+
+```bash
+$ make all -s 
+```
+
+<!--rehype:className=auto-wrap-->
+
+### 执行命令
+
+使用 tab 及换行
+
+```makefile
+exec:
+    cd /home/hchen
+    pwd
+```
+
+---
+
+使用 `;`
+
+```makefile
+exec:
+    cd /home/hchen; pwd
+```
+
 另见
 ---
 
