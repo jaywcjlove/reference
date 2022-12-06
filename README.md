@@ -169,6 +169,7 @@ Quick Reference
 [Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54);-->  
 [Gitlab](./docs/gitlab.md)<!--rehype:style=background: rgb(226 67 41);-->  
 [Google Chrome](./docs/google-chrome.md)<!--rehype:style=background: rgb(29 116 232);-->  
+[IntelliJ IDEA](./docs/intelli-j-idea.md)<!--rehype:style=background: rgb(223 148 0);&class=tag&data-lang=Java-->  
 [Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0);&class=tag&data-lang=macOS-->  
 [Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0);-->  
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230);-->  
