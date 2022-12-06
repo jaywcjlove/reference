@@ -1487,6 +1487,7 @@ br + br {
 ```
 
 ### CSS 重置
+<!--rehype:wrap-class=row-span-2-->
 
 ```css
 html {
@@ -1500,6 +1501,25 @@ html {
 ```
 
 有助于在不同的浏览器之间强制样式一致性，并为样式元素提供干净的盒子
+
+### 设置光标样式
+
+```css
+body {
+  caret-color: red;
+}
+```
+
+### 设置整个页面灰色
+<!--rehype:wrap-style=-webkit-filter: grayscale(.95);-->
+
+```css
+html {
+  -webkit-filter: grayscale(.95);
+}
+```
+
+上面示例设置了当前卡片灰色
 
 ### 使用图像作为光标
 
@@ -1631,14 +1651,6 @@ div {
 ```
 
 属性 [aspect-ratio](https://developer.mozilla.org/zh-CN/docs/Web/CSS/aspect-ratio) 可以非常容易的定义一个容器的长宽比
-
-### 设置光标样式
-
-```css
-body {
-  caret-color: red;
-}
-```
 
 另见
 ---------
