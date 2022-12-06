@@ -32,7 +32,7 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 <p>包含 最重要概念、函数、方法等的 make 备忘单。 初学者的完整快速参考。</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#makefile-入门">Makefile 入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#工作流程">工作流程</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件命令">文件命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#自定义文件名称">自定义文件名称</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#隐式生成">隐式生成</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#规则">规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清空目标文件">清空目标文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#换行-">换行 \</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#引用其它的-makefile">引用其它的 Makefile</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#赋值符">赋值符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在执行时扩展允许递归扩展">在执行时扩展，允许递归扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在声明时扩展">在声明时扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#只有在该变量为空时才设置值">只有在该变量为空时才设置值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#将值追加到变量的尾端">将值追加到变量的尾端</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量-1">变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#避免递归变量">避免递归变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#shell-变量">Shell 变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#定义多行变量">定义多行变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自动变量">自动变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#">$@</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-1">$&#x3C;</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-2">$^</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-3">$+</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-4">$?</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-5">$*</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-6">$&#x26;</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="makefile-入门"><a aria-hidden="true" tabindex="-1" href="#makefile-入门"><span class="icon icon-link"></span></a>Makefile 入门</h2><div class="wrap-body">
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#makefile-入门">Makefile 入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#工作流程">工作流程</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件命令">文件命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#自定义文件名称">自定义文件名称</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#隐式生成">隐式生成</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#规则">规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清空目标文件">清空目标文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#换行-">换行 \</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#引用其它的-makefile">引用其它的 Makefile</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#赋值符">赋值符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在执行时扩展允许递归扩展">在执行时扩展，允许递归扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在声明时扩展">在声明时扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#只有在该变量为空时才设置值">只有在该变量为空时才设置值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#将值追加到变量的尾端">将值追加到变量的尾端</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#override">override</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量-1">变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#避免递归变量">避免递归变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#shell-变量">Shell 变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#定义多行变量">定义多行变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自动变量">自动变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#">$@</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-1">$&#x3C;</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-2">$^</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-3">$+</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-4">$?</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-5">$*</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-6">$%</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#内置命名变量的参数">内置命名变量的参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#内置已命名的变量">内置已命名的变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#内置的变量">内置的变量</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#书写规则">书写规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通配符">通配符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-7">*</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-8">~</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-9">?</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件搜寻vpath">文件搜寻（vpath）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-10">%</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#静态模式">静态模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#伪目标">伪目标</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#命令">命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#回声">回声（@）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#显示命令禁止命令">显示命令、禁止命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#显示命令">显示命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#禁止命令">禁止命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#执行命令">执行命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="makefile-入门"><a aria-hidden="true" tabindex="-1" href="#makefile-入门"><span class="icon icon-link"></span></a>Makefile 入门</h2><div class="wrap-body">
 <!-- markdownlint-disable MD010 -->
 </div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">a.txt</span><span class="token punctuation">:</span> b.txt c.txt
@@ -122,6 +122,18 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 <h4 id="将值追加到变量的尾端"><a aria-hidden="true" tabindex="-1" href="#将值追加到变量的尾端"><span class="icon icon-link"></span></a>将值追加到变量的尾端</h4>
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">VARIABLE <span class="token operator">+=</span> value
 </span></code></pre>
+<h4 id="override"><a aria-hidden="true" tabindex="-1" href="#override"><span class="icon icon-link"></span></a>override</h4>
+<p>如果变量前不指定 <code>override</code>，那么命令行中指定的变量可以对 Makefile 中的变量重新定义。</p>
+<pre class="auto-wrap"><code class="language-makefile code-highlight"><span class="code-line"><span class="token comment"># 不会重新定义</span>
+</span><span class="code-line"><span class="token keyword">override</span> VARIABLE <span class="token operator">=</span> value
+</span><span class="code-line"><span class="token keyword">override</span> VARIABLE <span class="token operator">:=</span> value
+</span><span class="code-line"><span class="token keyword">override</span> VARIABLE <span class="token operator">?=</span> value
+</span><span class="code-line"><span class="token keyword">override</span> VARIABLE <span class="token operator">+=</span> value
+</span><span class="code-line"><span class="token keyword">override</span> <span class="token keyword">define</span>
+</span><span class="code-line">  <span class="token comment">#...</span>
+</span><span class="code-line"><span class="token keyword">endef</span>
+</span></code></pre>
+<!--rehype:className=auto-wrap-->
 </div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="变量-1"><a aria-hidden="true" tabindex="-1" href="#变量-1"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
 <p>需要使用 <code>$()</code> 或者 <code>${}</code> 对变量进行引用</p>
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">file <span class="token operator">=</span> main.c
@@ -202,13 +214,303 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">make</span> main
 </span><span class="code-line"><span class="token comment"># 此时 cc  main.c -o main</span>
 </span></code></pre>
-<h4 id="-6"><a aria-hidden="true" tabindex="-1" href="#-6"><span class="icon icon-link"></span></a><code>$&#x26;</code></h4>
+<h4 id="-6"><a aria-hidden="true" tabindex="-1" href="#-6"><span class="icon icon-link"></span></a><code>$%</code></h4>
 <p><code>$%</code>: 仅当目标是函数库文件中，表示规则中的目标成员名</p>
 <ul class="style-round">
 <li>windows 中是 <code>.lib</code> 文件</li>
 <li>unix 中是 <code>.a</code> 文件</li>
 </ul>
 <!--rehype:className=style-round-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="内置命名变量的参数"><a aria-hidden="true" tabindex="-1" href="#内置命名变量的参数"><span class="icon icon-link"></span></a>内置命名变量的参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>这些变量都是相关下面的命令的参数。如果没有指明其默认值，那么其默认值都是空。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>ARFLAGS</code></td><td align="left">函数库打包程序AR命令的参数。默认值是 <code>rv</code></td></tr><tr><td align="left"><code>ASFLAGS</code></td><td align="left">汇编语言编译器参数。（当明显地调用 <code>.s</code> 或 <code>.S</code> 文件时）</td></tr><tr><td align="left"><code>CFLAGS</code></td><td align="left">C 语言编译器参数。</td></tr><tr><td align="left"><code>CXXFLAGS</code></td><td align="left">C++ 语言编译器参数。</td></tr><tr><td align="left"><code>COFLAGS</code></td><td align="left">RCS 命令参数。</td></tr><tr><td align="left"><code>CPPFLAGS</code></td><td align="left">C 预处理器参数。（ <code>C</code> 和 <code>Fortran</code> 编译器也会用到）。</td></tr><tr><td align="left"><code>FFLAGS</code></td><td align="left">Fortran 语言编译器参数。</td></tr><tr><td align="left"><code>GFLAGS</code></td><td align="left">SCCS <code>get</code> 程序参数。</td></tr><tr><td align="left"><code>LDFLAGS</code></td><td align="left">链接器参数。（如：<code>ld</code> ）</td></tr><tr><td align="left"><code>PFLAGS</code></td><td align="left">Pascal 语言编译器参数。</td></tr><tr><td align="left"><code>LFLAGS</code></td><td align="left">Lex 文法分析器参数。</td></tr><tr><td align="left"><code>RFLAGS</code></td><td align="left">Ratfor 程序的 Fortran 编译器参数。</td></tr><tr><td align="left"><code>YFLAGS</code></td><td align="left">Yacc 文法分析器参数。</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="内置已命名的变量"><a aria-hidden="true" tabindex="-1" href="#内置已命名的变量"><span class="icon icon-link"></span></a>内置已命名的变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>AR</code></td><td align="left">函数库打包程序。默认命令是 <code>ar</code></td></tr><tr><td align="left"><code>AS</code></td><td align="left">汇编语言编译程序。默认命令是 <code>as</code></td></tr><tr><td align="left"><code>CC</code></td><td align="left">C 语言编译程序。默认命令是 <code>cc</code></td></tr><tr><td align="left"><code>CXX</code></td><td align="left">C++ 语言编译程序。默认命令是 <code>g++</code></td></tr><tr><td align="left"><code>CO</code></td><td align="left">从 RCS 文件中扩展文件程序。默认命令是 <code>co</code></td></tr><tr><td align="left"><code>CPP</code></td><td align="left">C 程序的预处理器（输出是标准输出设备）。默认命令是 <code>$(CC) –E</code></td></tr><tr><td align="left"><code>FC</code></td><td align="left">Fortran 和 Ratfor 的编译器和预处理程序。默认命令是 <code>f77</code></td></tr><tr><td align="left"><code>GET</code></td><td align="left">从 SCCS 文件中扩展文件的程序。默认命令是 <code>get</code></td></tr><tr><td align="left"><code>LEX</code></td><td align="left">Lex 方法分析器程序（针对于 C 或 Ratfor）。默认命令是 <code>lex</code></td></tr><tr><td align="left"><code>PC</code></td><td align="left">Pascal 语言编译程序。默认命令是 <code>pc</code></td></tr><tr><td align="left"><code>YACC</code></td><td align="left">Yacc 文法分析器（针对于 C 程序）。默认命令是 <code>yacc</code></td></tr><tr><td align="left"><code>YACCR</code></td><td align="left">Yacc 文法分析器（针对于 Ratfor 程序）。默认命令是 <code>yacc –r</code></td></tr><tr><td align="left"><code>MAKEINFO</code></td><td align="left">转换 Texinfo 源文件（.texi）到 Info 文件程序。默认命令是 <code>makeinfo</code></td></tr><tr><td align="left"><code>TEX</code></td><td align="left">从 TeX 源文件创建TeX DVI文件的程序。默认命令是 <code>tex</code></td></tr><tr><td align="left"><code>TEXI2DVI</code></td><td align="left">从 Texinfo 源文件创建 TeX DVI 文件的程序。默认命令是 <code>texi2dvi</code></td></tr><tr><td align="left"><code>WEAVE</code></td><td align="left">转换 Web 到 TeX 的程序。默认命令是 <code>weave</code></td></tr><tr><td align="left"><code>CWEAVE</code></td><td align="left">转换 C Web 到 TeX 的程序。默认命令是 <code>cweave</code></td></tr><tr><td align="left"><code>TANGLE</code></td><td align="left">转换 Web 到 Pascal 语言的程序。默认命令是 <code>tangle</code></td></tr><tr><td align="left"><code>CTANGLE</code></td><td align="left">转换 C Web 到 C。默认命令是 <code>ctangle</code></td></tr><tr><td align="left"><code>RM</code></td><td align="left">删除文件命令。默认命令是 <code>rm –f</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<h4 id="内置的变量"><a aria-hidden="true" tabindex="-1" href="#内置的变量"><span class="icon icon-link"></span></a>内置的变量</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">{</span>CC<span class="token punctuation">}</span> -o main main.c
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="书写规则"><a aria-hidden="true" tabindex="-1" href="#书写规则"><span class="icon icon-link"></span></a>书写规则</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="通配符"><a aria-hidden="true" tabindex="-1" href="#通配符"><span class="icon icon-link"></span></a>通配符</h3><div class="wrap-body">
+<h4 id="-7"><a aria-hidden="true" tabindex="-1" href="#-7"><span class="icon icon-link"></span></a><code>*</code></h4>
+<p><code>*</code>：与 linux 系统下的一样</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token comment"># 清除所有 .o 结尾的文件</span>
+</span><span class="code-line"><span class="token target symbol">clean</span><span class="token punctuation">:</span>
+</span><span class="code-line">    rm -f *.o
+</span></code></pre>
+<h4 id="-8"><a aria-hidden="true" tabindex="-1" href="#-8"><span class="icon icon-link"></span></a><code>~</code></h4>
+<p><code>~</code>：在 linux 或 mac 下表示用户目录，win 下表示 <code>HOME</code> 环境变量</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">    ls ~
+</span></code></pre>
+<h4 id="-9"><a aria-hidden="true" tabindex="-1" href="#-9"><span class="icon icon-link"></span></a><code>?</code></h4>
+<p><code>?</code>: 与在 linux 等类似，可以匹配单个字符</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	ls -ll packag?.json
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="文件搜寻vpath"><a aria-hidden="true" tabindex="-1" href="#文件搜寻vpath"><span class="icon icon-link"></span></a>文件搜寻（<code>vpath</code>）</h3><div class="wrap-body">
+<p>如果没有指定 vpath 变量，make 只会在当前的目录中去寻找依赖文件和目标文件。否则，如果当前目录没有，就会到指定的目录中去寻找</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>vpath &#x3C;pattern> &#x3C;directories></code></td><td align="left">为符合模式 &#x3C;pattern> 的文件指定搜索目录 &#x3C;directories></td></tr><tr><td align="left"><code>vpath &#x3C;pattern></code></td><td align="left">清除符合模式<pattern>的文件的搜索目录。</pattern></td></tr><tr><td align="left"><code>vpath</code></td><td align="left">清除所有已被设置好了的文件搜索目录</td></tr></tbody></table>
+<h4 id="-10"><a aria-hidden="true" tabindex="-1" href="#-10"><span class="icon icon-link"></span></a><code>%</code></h4>
+<ul>
+<li>vpath使用方法中的 &#x3C;pattern> 需要包含 <code>%</code> 字符。</li>
+<li><code>%</code> 的意思是匹配零或若干字符</li>
+<li>并且引用规则是需要使用<strong>自动变量</strong></li>
+</ul>
+<pre class="auto-wrap"><code class="language-makefile code-highlight"><span class="code-line"><span class="token keyword">vpath</span> %.c dist
+</span><span class="code-line">TARGET <span class="token operator">=</span> hello
+</span><span class="code-line">OBJ <span class="token operator">=</span> bar.o foo.o
+</span><span class="code-line">
+</span><span class="code-line"><span class="token target symbol"><span class="token variable">$</span>(TARGET)</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>OBJ<span class="token punctuation">)</span>
+</span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -o <span class="token variable">$@</span> <span class="token variable">$^</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token target symbol">%.o</span><span class="token punctuation">:</span> <span class="token variable">$.c</span>
+</span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -o <span class="token variable">$&#x3C;</span> -o <span class="token comment">#@</span>
+</span></code></pre>
+<!--rehype:className=auto-wrap-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="静态模式"><a aria-hidden="true" tabindex="-1" href="#静态模式"><span class="icon icon-link"></span></a>静态模式</h3><div class="wrap-body">
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">TARGET</span><span class="token punctuation">:</span> PREREQUISITES <span class="token punctuation">:</span>PREREQUISITES
+</span><span class="code-line">  COMMAMD
+</span><span class="code-line"><span class="token comment">#...</span>
+</span></code></pre>
+<ul>
+<li><code>target</code> 定义了一系列的目标文件</li>
+<li>第一个 <code>prerequisites</code> 是指明了 target 的模式，也就是的目标集模式。</li>
+<li>第二个 <code>prerequisites</code> 是目标的依赖模式，它对第一个 <code>prerequisites</code> 形成的模式再进行一次依赖目标的定义</li>
+</ul>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">objects <span class="token operator">=</span> foo.o main.o
+</span><span class="code-line">
+</span><span class="code-line"><span class="token target symbol"><span class="token variable">$</span>(objects)</span><span class="token punctuation">:</span> %.o<span class="token punctuation">:</span> %.c
+</span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -c <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> <span class="token variable">$&#x3C;</span> -o <span class="token variable">$@</span>
+</span></code></pre>
+<hr>
+<p>相当于:</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">foo.o</span> <span class="token punctuation">:</span> foo.c
+</span><span class="code-line">    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -c <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> foo.c -o foo.o
+</span><span class="code-line"><span class="token target symbol">main.o</span> <span class="token punctuation">:</span> main.c
+</span><span class="code-line">    <span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -c <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span> main.c -o main.o
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="伪目标"><a aria-hidden="true" tabindex="-1" href="#伪目标"><span class="icon icon-link"></span></a>伪目标</h3><div class="wrap-body">
+<ul>
+<li><strong>伪目标</strong>并不是一个文件，只是一个标签。只有通过显式地指明这个<strong>目标</strong>才能让其生效</li>
+<li>使用 <code>.PHONY</code> 来显式地指明目标是 <code>伪目标</code></li>
+</ul>
+<pre class="style-round"><code class="language-makefile code-highlight"><span class="code-line"><span class="token builtin-target builtin">.PHONY</span> <span class="token punctuation">:</span> clean
+</span><span class="code-line"><span class="token target symbol">clean</span> <span class="token punctuation">:</span>
+</span><span class="code-line">    rm *.o temp
+</span></code></pre>
+<!--rehype:className=style-round-->
+<!--rehype:className=auto-wrap-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="命令"><a aria-hidden="true" tabindex="-1" href="#命令"><span class="icon icon-link"></span></a>命令</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="回声"><a aria-hidden="true" tabindex="-1" href="#回声"><span class="icon icon-link"></span></a>回声（<code>@</code>）</h3><div class="wrap-body">
+<p>正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">all</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token comment"># 会有命令执行显示</span>
+</span><span class="code-line">	echo Hello, world
+</span></code></pre>
+<hr>
+<pre class="auto-wrap"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">all</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token comment"># 不会有命令执行的显示</span>
+</span><span class="code-line">	<span class="token operator">@</span>echo Hello, world
+</span></code></pre>
+<!--rehype:className=auto-wrap-->
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="显示命令禁止命令"><a aria-hidden="true" tabindex="-1" href="#显示命令禁止命令"><span class="icon icon-link"></span></a>显示命令、禁止命令</h3><div class="wrap-body">
+<h4 id="显示命令"><a aria-hidden="true" tabindex="-1" href="#显示命令"><span class="icon icon-link"></span></a>显示命令</h4>
+<p>如果我们只希望显示命令，而不希望执行命令，可以使用 <code>-n</code> 或者 <code>--just-print</code></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">make</span> all --just-print 
+</span><span class="code-line">$ <span class="token function">make</span> all <span class="token parameter variable">-n</span> 
+</span></code></pre>
+<h4 id="禁止命令"><a aria-hidden="true" tabindex="-1" href="#禁止命令"><span class="icon icon-link"></span></a>禁止命令</h4>
+<p><code>-s</code> 或 <code>--silent</code> 或 <code>--quiet</code> 与 <code>@</code> 一样，用于禁止回声</p>
+<pre class="auto-wrap"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">make</span> all <span class="token parameter variable">-s</span> 
+</span></code></pre>
+<!--rehype:className=auto-wrap-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="执行命令"><a aria-hidden="true" tabindex="-1" href="#执行命令"><span class="icon icon-link"></span></a>执行命令</h3><div class="wrap-body">
+<p>使用 tab 及换行</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">exec</span><span class="token punctuation">:</span>
+</span><span class="code-line">    cd /home/hchen
+</span><span class="code-line">    pwd
+</span></code></pre>
+<hr>
+<p>使用 <code>;</code></p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">exec</span><span class="token punctuation">:</span>
+</span><span class="code-line">    cd /home/hchen<span class="token punctuation">;</span> pwd
+</span></code></pre>
 </div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://seisman.github.io/how-to-write-makefile/overview.html">make 中文教程</a> <em>(seisman.github.io)</em></li>
