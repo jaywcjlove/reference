@@ -1,7 +1,12 @@
 Jest 备忘清单
 ===
 
-Jest 是一款优雅、简洁的 JavaScript 测试框架，这里介绍了它的入门和 一些 API 的索引。
+[![NPM version](https://img.shields.io/npm/v/jest.svg?style=flat)](https://www.npmjs.com/package/jest)
+[![Downloads](https://img.shields.io/npm/dm/jest.svg?style=flat)](https://www.npmjs.com/package/jest)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/facebook/jest)](https://github.com/facebook/jest/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/facebook/jest)
+
+Jest 是一款优雅、简洁的 JavaScript 测试框架，这里介绍了它的入门和 一些 API 的索引
 
 入门
 ----
@@ -40,6 +45,37 @@ npm test -- --watch
 ```
 
 查看: [Getting started](https://jestjs.io/docs/getting-started)
+
+### 常用命令
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```bash
+# 指定测试文件的名称
+$ jest my-test
+# 指定测试文件的路径
+$ jest path/to/my-test.js
+# 仅运行在 hg/git 上有改动但尚未提交的文件
+$ jest -o
+# 仅运行与 fileA.js 和 fileB.js相关的测试
+$ jest --findRelatedTests fileA.js fileB.js
+# 仅运行匹配特定名称的测试用例
+$ jest -t name-of-spec
+# 运行监视模式默认执行 jest -o 监视有改动的测试
+$ jest --watch 
+$ jest --watchAll # 监视所有测试
+```
+
+### 支持驼峰和串式命名的参数
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+# 下面给出的命令执行的结果是一样的：
+$ jest --collect-coverage
+$ jest --collectCoverage
+# 不同命名形式的参数还可以混用，如：
+$ jest --update-snapshot \
+       --detectOpenHandles
+```
 
 ### 编写测试
 <!--rehype:wrap-class=col-span-2-->
@@ -883,6 +919,79 @@ test('第二个文本', () => {
 ```
 
 `Node.js` 和 `Jest` 会缓存你需要的模块。 要测试具有副作用的模块，您需要在测试之间重置模块注册表
+
+命令参数参考
+---
+<!--rehype:body-class=cols-1-->
+
+### 命令参数
+
+:-- | --
+:-- | --
+`--bail[=<n>]`, `-b` | 在 `n` 个测试套件失败后立即退出测试套件
+`--cache` | 是否使用缓存
+`--changedFilesWithAncestor` | 运行与当前更改和上次提交中所做更改相关的测试
+`--changedSince` | 运行与自提供的分支或提交哈希以来的更改相关的测试
+`--ci` | 指定该参数时，`Jest` 会认为正在 `CI` 环境上运行
+`--clearCache` | 删除 `Jest` 的缓存目录, 然后不运行测试直接退出
+`--clearMocks` | 在每次测试前自动清除模拟的上下文
+`--collectCoverageFrom=<glob>` | 相对于 `rootDir` 的 `glob` 模式匹配需要从中收集覆盖信息的文件
+`--colors` | 即便 `stdout` 不是 `TTY` 模式，也要强制高亮显示测试结果
+`--config=<path>` | 指定配置文件的路径
+`--coverage[=<boolean>]`, `--collectCoverage` | 将测试覆盖率信息输出为报告
+`--coverageProvider=<provider>` | 指示应该使用哪个提供程序来检测代码的覆盖率
+`--debug` | 打印关于 `Jest` 配置的调试信息
+`--detectOpenHandles` | 尝试收集并打印打开的句柄以防止 `Jest` 干净地退出
+`--env=<environment>` | 所有测试都使用该测试环境设定
+`--errorOnDeprecated` | 使调用已弃用的 `API` 抛出有用的错误消息
+`--expand`, `-e` | 使用该参数来对比完整的差异和错误，而非修复
+`--filter=<file>` | 导出过滤功能的模块的路径
+`--findRelatedTests <spaceSeparatedListOfSourceFiles>` | 查找并运行涵盖作为参数传入的以空格分隔的源文件列表的测试
+`--forceExit` | 强制 `Jest` 在所有测试运行完后退出
+`--help` | 显示帮助信息，类似于本页文档
+`--ignoreProjects <project1> ... <projectN>` | 忽略特定的测试项目
+`--init` | 生成一个基础配置文件
+`--injectGlobals` | 将全局变量（`expect`,`test`,`describe`,`beforeEach`等）插入到全局环境中
+`--json` | 以 `JSON` 模式显示测试结果
+`--lastCommit` | 运行受上次提交中的文件更改影响的所有测试
+`--listTests` | 以 `JSON` 数组的形式列出所有将要运行的测试并退出
+`--logHeapUsage` | 记录每个测试后的记录堆使用情况
+`--maxConcurrency=<num>` | 防止 `Jest` 同时执行超过指定数量的测试
+`--maxWorkers=<num>\|<string>` | 设定运行测试的最大工作池数目
+`--noStackTrace` | 禁止栈跟踪信息在测试结果输出中
+`--notify` | 激活测试结果通知
+`--onlyChanged` `-o` | 尝试确定根据当前存储库中哪些已经更改的文件来运行的测试
+`--outputFile=<filename>` | 通过 `——json` 参数可以将测试结果写入到指定文件
+`--passWithNoTests` | 允许在没有找到文件的情况下通过测试
+`--projects <path1> ... <pathN>` | 从指定路径中找到的一个或多个项目运行测试；也采用路径 `globs`
+`--reporters` | 使用指定的记者进行测试
+`--resetMocks` | 每次测试前自动重置模拟状态
+`--restoreMocks` | 在每次测试前自动恢复模拟状态和实现
+`--roots` | `Jest` 应该用来搜索文件的目录路径列表
+`--runInBand`, `-i` | 仅在当前的进程中连续运行所有测试，而非通过创建的子进程的工作池来运行测试
+`--runTestsByPath` | 仅运行使用其确切路径指定的测试
+`--selectProjects <project1> ... <projectN>` | 运行指定的测试项目
+`--setupFilesAfterEnv <path1> ... <pathN>` | 运行某些代码以在每次测试之前配置或设置测试框架的模块的路径列表
+`--shard` | 测试套件分片以 `(?<shardIndex>\d+)/(?<shardCount>\d+)` 的格式执行
+`--showConfig` | 输出 `Jest` 配置，然后退出
+`--silent` | 阻止所有测试通过控制台输出信息
+`--testEnvironmentOptions=<json string>` | 带有将传递给 `testEnvironment` 的选项的 `JSON` 字符串
+`--testLocationInResults` | 向测试结果添加 `location` 字段
+`--testMatch glob1 ... globN` | `Jest` 用于检测测试文件的 `glob` 模式
+`--testNamePattern=<regex>`, `-t` | 仅运行名称与正则表达式匹配的测试
+`--testPathIgnorePatterns=<regex>\|[array]` | 在执行测试之前针对所有测试路径进行测试的单个或一组正则表达式模式字符串
+`--testPathPattern=<regex>` | 在运行测试前，匹配的 `regexp` 模式字符串的测试文件路径
+`--testRunner=<path>` | 允许你指定自定义测试运行程序
+`--testSequencer=<path>` | 允许您指定自定义测试定序器
+`--testTimeout=<number>` | 测试的默认超时时间(以毫秒为单位)。默认值：`5000`
+`--updateSnapshot`, `-u` | 在运行测试中使用这个参数来重新录制每个失败测试的快照
+`--useStderr` | 转移所有输出到 `stderr` (标准错误输出)
+`--verbose` | 层次显示测试套件中每个测试的结果
+`--version`, `-v` | 打印版本并退出
+`--watch` | 监视文件更改，并重新运行与已更改的文件相关的测试
+`--watchAll` | 监视文件的更改并在任何更改时重新运行所有测试
+`--watchman` | 是否使用 `watchman` 进行文件爬取。 默认为 `true`
+<!--rehype:className=left-align-->
 
 另见
 ----
