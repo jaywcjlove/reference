@@ -209,7 +209,7 @@ Quick Reference
 <!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调™">
   <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调™"/>
 </a>
-<a href="https://github.com/Jack-Zhang-1314" title="fw_qaq">
+<a href="https://github.com/fwqaaq" title="fw_qaq">
   <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
 </a>
 <a href="https://github.com/mofelee" title="mofelee">
@@ -343,6 +343,9 @@ Quick Reference
 </a>
 <a href="https://github.com/zxx-457" title="zxx-457">
   <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx-457"/>
+</a>
+<a href="https://github.com/eryajf" title="二丫讲梵">
+  <img src="https://avatars.githubusercontent.com/u/33259379?v=4" width="42;" alt="二丫讲梵"/>
 </a>
 <a href="https://github.com/lvzhenbo" title="吕振波">
   <img src="https://avatars.githubusercontent.com/u/32427677?v=4" width="42;" alt="吕振波"/>
