@@ -3,6 +3,7 @@ Less 备忘清单
 
 [![NPM version](https://img.shields.io/npm/v/less.svg?style=flat)](https://npmjs.org/package/less)
 [![Downloads](https://img.shields.io/npm/dm/less.svg?style=flat)](https://www.npmjs.com/package/less)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/nestjs/nest)](https://github.com/less/less.js/network/dependents)
 [![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/less/less.js)
 
 本备忘单旨在快速理解 [Less](https://github.com/less/less.js) 所涉及的主要概念，显示了它的常用方法使用清单

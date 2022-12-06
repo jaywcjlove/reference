@@ -1,7 +1,13 @@
 Koajs 备忘清单
 ===
 
-基于 Node.js 平台的下一代 web 开发框架，包含 [Koa](https://koajs.com/) 的 API 参考列表和一些示例。
+[![NPM version](https://img.shields.io/npm/v/koa.svg?style=flat)](https://npmjs.org/package/koa)
+[![Downloads](https://img.shields.io/npm/dm/koa.svg?style=flat)](https://www.npmjs.com/package/koa)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/koajs/koa)](https://github.com/koajs/koa/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/koajs/koa)
+
+基于 Node.js 平台的下一代 web 开发框架，包含 [Koa](https://koajs.com/) 的 API 参考列表和一些示例
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ---

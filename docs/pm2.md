@@ -1,7 +1,13 @@
 PM2 备忘清单
 ===
 
+[![NPM version](https://img.shields.io/npm/v/pm2.svg?style=flat)](https://npmjs.org/package/pm2)
+[![Downloads](https://img.shields.io/npm/dm/pm2.svg?style=flat)](https://www.npmjs.com/package/pm2)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/Unitech/pm2)](https://github.com/Unitech/pm2/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/Unitech/pm2)
+
 [PM2](https://pm2.keymetrics.io/) 是一个守护进程管理器，它将帮助您管理和保持您的应用程序在线。PM2 入门非常简单，它以简单直观的 CLI 形式提供
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 -----

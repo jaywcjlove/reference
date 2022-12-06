@@ -1,7 +1,13 @@
 Vue 3 备忘清单
 ===
 
-渐进式 JavaScript 框架 [Vue 3](https://cn.vuejs.org/) 备忘清单的快速参考列表，包含常用 API 和示例。
+[![NPM version](https://img.shields.io/npm/v/vue.svg?style=flat)](https://npmjs.org/package/vue)
+[![Downloads](https://img.shields.io/npm/dm/vue.svg?style=flat)](https://www.npmjs.com/package/vue)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/vuejs/core)](https://github.com/vuejs/core/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/vuejs/core)
+
+渐进式 JavaScript 框架 [Vue 3](https://cn.vuejs.org/) 备忘清单的快速参考列表，包含常用 API 和示例
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ---

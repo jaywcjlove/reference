@@ -1,7 +1,13 @@
 Lerna 备忘清单
 ===
 
-本备忘单旨在快速理解 [Lerna v6](https://github.com/lerna/lerna) 所涉及的主要概念，显示了它的常用命令使用清单。
+[![NPM version](https://img.shields.io/npm/v/lerna.svg?style=flat)](https://www.npmjs.com/package/lerna)
+[![Downloads](https://img.shields.io/npm/dm/lerna.svg?style=flat)](https://www.npmjs.com/package/lerna)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/lerna/lerna/nest)](https://github.com/lerna/lerna/nest/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/lerna/lerna/nest)
+
+本备忘单旨在快速理解 [Lerna v6](https://github.com/lerna/lerna) 所涉及的主要概念，显示了它的常用命令使用清单
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ----

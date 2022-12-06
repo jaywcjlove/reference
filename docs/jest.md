@@ -7,6 +7,7 @@ Jest 备忘清单
 [![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/facebook/jest)
 
 Jest 是一款优雅、简洁的 JavaScript 测试框架，这里介绍了它的入门和 一些 API 的索引
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ----

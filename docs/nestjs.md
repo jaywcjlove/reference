@@ -1,7 +1,13 @@
 NestJS 备忘清单
 ===
 
+[![NPM version](https://img.shields.io/npm/v/@nestjs/core.svg?style=flat)](https://www.npmjs.com/package/@nestjs/core)
+[![Downloads](https://img.shields.io/npm/dm/@nestjs/core.svg?style=flat)](https://www.npmjs.com/package/@nestjs/core)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/nestjs/nest)](https://github.com/nestjs/nest/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/nestjs/nest)
+
 [NestJS](https://docs.nestjs.com/) 是一个用于构建高效、可扩展的 Node.js 服务器端应用程序的开发框架
+<!--rehype:style=padding-top: 12px;-->
 
 创建应用
 ---
