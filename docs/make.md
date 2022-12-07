@@ -406,7 +406,7 @@ run:
 :-                              | :-
 :-                              | :-
 `vpath <pattern> <directories>` | 为符合模式 \<pattern> 的文件指定搜索目录 \<directories>
-`vpath <pattern>`               | 清除符合模式<pattern>的文件的搜索目录。
+`vpath <pattern>`               | 清除符合模式 \<pattern> 的文件的搜索目录。
 `vpath`                         | 清除所有已被设置好了的文件搜索目录
 
 #### `%`
@@ -534,6 +534,427 @@ exec:
 exec:
     cd /home/hchen; pwd
 ```
+
+判断和循环
+---
+
+### 单分支条件判断
+
+* `ifeq` 的意思表示条件语句的开始，表达式包含两个参数，如果相同则为真。
+* `ifneq` 的意思表示条件语句的开始，表达式包含两个参数，如果不同则为真。
+* `else` 表示条件表达式为假的情况。
+* `endif` 表示一个条件语句的结束，任何一个条件表达式都应该以 `endif` 结束。
+<!--rehype:className=style-round-->
+
+```makefile
+run:
+ifeq ($(CC), cc)
+	$(CC) -o foo foo.c
+else
+	$(CC) -o bar bar.c
+endif
+```
+
+### 多分支条件判断
+
+#### ifneq 语法
+
+```makefile
+ifneq (<arg1>, <arg2>)
+ifneq '<arg1>' '<arg2>'
+ifneq "<arg1>" "<arg2>"
+ifneq "<arg1>" '<arg2>'
+ifneq '<arg1>' "<arg2>"
+```
+
+#### ifeq 语法
+
+```makefile
+ifeq (<arg1>, <arg2>)
+ifeq '<arg1>' '<arg2>'
+ifeq "<arg1>" "<arg2>"
+ifeq "<arg1>" '<arg2>'
+ifeq '<arg1>' "<arg2>"
+```
+
+### ifdef
+
+```makefile
+ifdef <variable-name>
+```
+
+`ifdef` 会根据 variable-name 判断，如果为空则为真
+
+```makefile
+bar =
+foo = $(bar)
+ifdef foo
+    frobozz = yes
+else
+    frobozz = no
+endif
+
+run:
+	echo $(frobozz)
+```
+
+`ifndef` 则和 `ifdef` 是相反的意思
+
+### for 循环
+
+```makefile
+LIST = one two three
+all:
+	for i in $(LIST); do \
+	    echo $$i; \
+	done
+```
+
+函数
+---
+
+### 字符串处理函数
+<!--rehype:wrap-class=col-span-3-->
+
+#### 字符串替换函数(`subst`)
+
+* 把字串 \<text> 中的 \<from> 字符串替换成 \<to> 。
+
+```makefile
+$(subst <from>,<to>,<text>)
+```
+
+* 示例
+
+```makefile
+$(subst ee,EE,feet on the street)
+```
+
+#### 模式字符串替换函数(`patsubst`)
+
+* 查找 \<text> 中的单词（**单词以空格、Tab或回车换行分隔**）是否符合模式 \<pattern>。匹配，则以 \<replacement> 替换。
+
+```makefile
+$(patsubst <pattern>,<replacement>,<text>)
+```
+
+* 示例
+
+```makefile
+$(patsubst %.c,%.o,x.c.c bar.c)
+把字串 x.c.c bar.c 符合模式 %.c 的单词替换成 %.o ，返回结果是 x.c.o bar.o
+```
+
+#### 去空格函数(`strip`)
+
+* 去掉 <string> 字串中开头和结尾的空字符。
+
+```makefile
+$(strip <string>)
+```
+
+* 示例
+
+```makefile
+$(strip a b c )
+# 把字串 a b c  去掉开头和结尾的空格，结果是 a b c。
+```
+
+#### 查找字符串函数(`findstring`)
+
+* 在字串 \<in> 中查找 \<find> 字串。
+
+```makefile
+$(findstring <find>,<in>)
+```
+
+* 示例：
+
+```makefile
+$(findstring a,a b c)
+$(findstring a,b c)
+# 第一个函数返回 a 字符串，第二个返回空字符串
+```
+
+#### 过滤函数(`filter`)
+
+* 以 \<pattern> 模式过滤 \<text> 字符串中的单词，保留符合模式 \<pattern> 的单词。可以有多个模式。
+
+```makefile
+$(filter <pattern...>,<text>)
+```
+
+* 示例
+
+```makefile
+sources := foo.c bar.c baz.s ugh.h
+foo: $(sources)
+    cc $(filter %.c %.s,$(sources)) -o foo
+$(filter %.c %.s,$(sources)) 
+# 返回的值是 foo.c bar.c baz.s
+```
+
+#### 反过滤函数(`filter-out`)
+
+* 以 \<pattern> 模式过滤 \<text> 字符串中的单词，去除符合模式 \<pattern> 的单词。可以有多个模式。
+
+```makefile
+$(filter-out <pattern...>,<text>)
+```
+
+* 示例：
+
+```makefile
+objects=main1.o foo.o main2.o bar.o
+mains=main1.o main2.o
+$(filter-out $(mains),$(objects)) 
+# 返回值是 foo.o bar.o 。
+```
+
+#### 排序函数(`sort`)
+
+* 给字符串 \<list> 中的单词排序（升序）。
+
+```makefile
+$(sort <list>)
+```
+
+* 示例：`$(sort foo bar lose)` 返回 bar foo lose。
+* 注意：sort 函数会去掉 `<list>` 中相同的单词。
+
+#### 取单词函数（`word`)
+
+* 取字符串 \<text> 中第 \<n> 个单词。（从一开始）
+
+```makefile
+$(word <n>,<text>)
+```
+
+* 示例：`$(word 2, foo bar baz)` 返回值是 `bar`。
+
+#### 取单词串函数(`wordlist`)
+
+* 从字符串 \<text> 中取从 \<s> 开始到 \<e> 的单词串。\<s> 和 \<e> 是一个数字。
+
+```makefile
+$(wordlist <ss>,<e>,<text>)
+```
+
+示例：`$(wordlist 2, 3, foo bar baz)` 返回值是 bar baz。
+
+#### 单词个数统计函数(`words`)
+
+* 统计 \<text> 中字符串中的单词个数。
+
+```makefile
+$(words <text>)
+```
+
+* 示例：`$(words, foo bar baz)` 返回值是 3。
+
+#### 首单词函数(`firstword`)
+
+* 取字符串 \<text> 中的第一个单词。
+
+```makefile
+$(firstword <text>)
+```
+
+* 示例：`$(firstword foo bar)` 返回值是 foo。
+
+<!--rehype:className=auto-wrap-->
+
+### 文件名操作函数
+
+#### 取目录函数(`dir`)
+
+从文件名序列 \<names> 中取出目录部分。目录部分是指最后一个反斜杠（`/`）之前的部分。如果没有反斜杠，那么返回 `./`。
+
+```makefile
+$(dir <names...>)
+```
+
+---
+
+```makefile
+$(dir src/foo.c hacks) 
+#返回值是 src/ ./
+```
+
+#### 取文件函数(`notdir`)
+
+从文件名序列 \<names> 中取出非目录部分。非目录部分是指最後一个反斜杠（`/`）之后的部分。
+
+```makefile
+$(notdir <names...>)
+```
+
+---
+
+```makefile
+$(notdir src/foo.c hacks)
+# 返回值是 foo.c hacks
+```
+
+#### 取后缀函数（`suffix`)
+
+从文件名序列 \<names> 中取出各个文件名的后缀
+
+```makefile
+$(suffix <names...>)
+```
+
+---
+
+```makefile
+$(suffix src/foo.c src-1.0/bar.c hacks)
+# 返回值是 .c .c
+```
+
+#### 取前缀函数(`basename`)
+
+从文件名序列 \<names> 中取出各个文件名的前缀部分。
+
+```makefile
+$(basename <names...>)
+```
+
+---
+
+```makefile
+$(basename src/foo.c src-1.0/bar.c hacks) 
+# 返回值是 src/foo src-1.0/bar hacks
+```
+
+#### 加后缀函数(`addsuffix`)
+
+把后缀 \<suffix> 加到 \<names> 中的每个单词后面
+
+```makefile
+$(addsuffix <suffix>,<names...>)
+```
+
+---
+
+```makefile
+$(addsuffix .c,foo bar)
+# 返回值是 foo.c bar.c 
+```
+
+#### 加前缀函数(`addprefix`)
+
+把前缀 \<prefix> 加到 \<names> 中的每个单词前面。
+
+```makefile
+$(addprefix <prefix>,<names...>)
+```
+
+---
+
+```makefile
+$(addprefix src/,foo bar)
+# 返回值是 src/foo src/bar 。
+```
+
+#### 连接函数(`join`)
+
+把 \<list2> 中的单词对应地加到 \<list1> 的单词后面。
+
+```makefile
+$(join <list1>,<list2>)
+```
+
+---
+
+```makefile
+$(join aaa bbb , 111 222 333)
+# 返回值是 aaa111 bbb222 333 。
+```
+
+### 其它函数
+<!--rehype:wrap-class=col-span-2-->
+
+#### foreach 函数
+
+```makefile
+$(foreach <var>,<list>,<text>)
+```
+
+---
+
+```makefile
+# $(name) 中的单词会被挨个取出，并存到变量 n 中， $(n).o 每次根据 $(n) 计算出一个值，这些值以空格分隔，最后作为 foreach 函数的返回
+names := a b c d
+files := $(foreach n,$(names),$(n).o)
+run:
+	echo $(files)
+```
+
+#### if 函数
+
+与之前的条件语句——`ifeq` 类似
+
+```makefile
+$(if <condition>,<then-part>)
+# 或者
+$(if <condition>,<then-part>,<else-part>)
+```
+
+#### call 函数
+
+call 函数是唯一一个可以用来创建新的参数化的函数。
+
+```makefile
+$(call <expression>,<parm1>,<parm2>,...,<parmn>)
+```
+
+---
+
+```makefile
+reverse =  $(2) $(1)
+
+foo = $(call reverse,a,b)
+
+run:
+	echo $(foo)
+# b a
+```
+
+#### shell 函数
+
+使用操作系统 Shell 的命令
+
+```makefile
+contents := $(shell cat foo)
+files := $(shell echo *.c)
+```
+
+#### 控制 make 的函数
+
+```makefile
+$(error <text ...>)
+# and
+$(warning <text ...>)
+```
+
+#### origin 函数
+
+```makefile
+$(origin <variable>)
+```
+
+origin 函数用于告诉这个变量的从何而来
+
+:-              | :-
+:-              | :-
+`undefined`     | 如果 \<variable> 未定义，返回 `undefined`
+`default`       | 如果 \<variable> 是默认的，如 `CC`
+`environment`   | 如果 \<variable> 是环境变量，并且当 Makefile 执行时，-e 参数没有被打开
+`file`          | 如果 \<variable> 这个变量被定义在 Makefile 中。
+`command line`  | 如果 \<variable> 这个变量是被命令行定义的。
+`override`      | 如果 \<variable> 是被 override 指示符重新定义的。
+`automatic`     | 如果 \<variable> 是一个命令运行中的自动化变量
+<!--rehype:className=left-align-->
 
 另见
 ---
