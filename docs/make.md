@@ -369,6 +369,35 @@ run:
 书写规则
 ---
 
+### 文件搜寻（`vpath`）
+<!--rehype:wrap-class=col-span-3-->
+
+如果没有指定 vpath 变量，make 只会在当前的目录中去寻找依赖文件和目标文件。否则，如果当前目录没有，就会到指定的目录中去寻找
+
+:-                              | :-
+:-                              | :-
+`vpath <pattern> <directories>` | 为符合模式 \<pattern> 的文件指定搜索目录 \<directories>
+`vpath <pattern>`               | 清除符合模式 \<pattern> 的文件的搜索目录。
+`vpath`                         | 清除所有已被设置好了的文件搜索目录
+
+#### `%`
+
+* vpath 使用方法中的 \<pattern> 需要包含 `%` 字符。`%` 的意思是匹配零或若干字符（类似于**通配符**）,并且引用规则是需要使用**自动变量**
+
+```makefile
+vpath %.c dist
+TARGET = hello
+OBJ = bar.o foo.o
+
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $^
+
+%.o: $.c
+	$(CC) -o $< -o #@
+```
+
+<!--rehype:className=auto-wrap-->
+
 ### 通配符
 
 #### `*`
@@ -398,36 +427,6 @@ run:
 run:
 	ls -ll packag?.json
 ```
-
-### 文件搜寻（`vpath`）
-
-如果没有指定 vpath 变量，make 只会在当前的目录中去寻找依赖文件和目标文件。否则，如果当前目录没有，就会到指定的目录中去寻找
-
-:-                              | :-
-:-                              | :-
-`vpath <pattern> <directories>` | 为符合模式 \<pattern> 的文件指定搜索目录 \<directories>
-`vpath <pattern>`               | 清除符合模式 \<pattern> 的文件的搜索目录。
-`vpath`                         | 清除所有已被设置好了的文件搜索目录
-
-#### `%`
-
-* vpath使用方法中的 \<pattern> 需要包含 `%` 字符。
-* `%` 的意思是匹配零或若干字符
-* 并且引用规则是需要使用**自动变量**
-
-```makefile
-vpath %.c dist
-TARGET = hello
-OBJ = bar.o foo.o
-
-$(TARGET): $(OBJ)
-	$(CC) -o $@ $^
-
-%.o: $.c
-	$(CC) -o $< -o #@
-```
-
-<!--rehype:className=auto-wrap-->
 
 ### 静态模式
 
@@ -468,6 +467,20 @@ main.o : main.c
 clean :
     rm *.o temp
 ```
+
+### 约定俗成的规则
+<!--rehype:wrap-class=col-span-2-->
+
+:-  | :-
+:-  | :-
+`all`        | 该伪目标是所有目标的目标，一般用于编译所有的目标
+`clean`      | 该伪目标用于删除所有由 make 创建的文件
+`install`    | 该伪目标用于安装已编译好的程序，即将目标执行文件拷贝到指定目标中
+`print`      | 该伪目标用于例出改变过的源文件
+`tar`        | 该伪目标用于把源程序打包备份为 tar 文件
+`dist`       | 该伪目标用于创建压缩文件，一般将 tar 文件压成 Z 或 gz 文件
+`TAGS`       | 该伪目标用于更新所有的目标，以备完整地重编译使用
+`check/test` | 这两个伪目标用于测试 makefile 的流程
 
 <!--rehype:className=style-round-->
 <!--rehype:className=auto-wrap-->
@@ -534,6 +547,60 @@ exec:
 exec:
     cd /home/hchen; pwd
 ```
+
+### make 参数
+<!--rehype:wrap-class=col-span-3-->
+
+:-  | :-
+:-  | :-
+`-b`,`-m`     |  忽略和其它版本make的兼容性
+`-B`          |  (`--always-make`) 认为所有的目标都需要重编译
+`-C <dir>`    |  (`--directory=<dir>`) 指定读取makefile的目录
+`-e`          |  (`--environment-overrides`) 指明环境变量的值覆盖 makefile 中定义的变量的值
+`-f=<file>`   | 指定需要执行的makefile
+`-h`          | 显示帮助信息
+`-i`          | (`--ignore-errors`)在执行时忽略所有的错误
+`-I <dir>`    | (`--include-dir=<dir>`) 指定一个被包含 makefile 的搜索目标
+`-j [<nums>]` | (`--jobs[=<jobsnum>]`)指同时运行命令的个数
+`-k`          | (`--keep-going`)出错也不停止运行
+`-l <load>`   | `--load-average[=<load>]`、`-max-load[=<load>]` 指定make运行命令的负载
+`-n`          | (`--just-print`, `--dry-run`, `--recon`) 仅输出执行过程中的命令序列，但不执行
+`-o <file>`   | (`--old-file=<file>`, `--assume-old=<file>`)不重新生成的指定的 \<file>，即使目标的依赖文件新于它
+`-p`          | (`--print-data-base`) 输出 makefile 中的所有数据，包括所有的规则和变量
+`-q`          | (`--question`) 不运行命令，也不输出。仅仅是检查所指定的目标是否需要更新
+`-r`          | (`--no-builtin-rules`) 禁止 make 使用任何隐含规则
+`-R`          | (`--no-builtin-variabes`) 禁止 make 使用任何作用于变量上的隐含规则
+`-s`          | (`--silent`,`--quiet`) 在命令运行时不输出命令的输出
+`-S`          | (`--no-keep-going`, `--stop`) 取消“-k”选项的作用
+`-t`          | `--touch` 相当于 UNIX 的 touch 命令，只是把目标的修改日期变成最新的，也就是阻止生成目标的命令运行
+`-v`          | (`--version`) 输出 make 程序的版本、版权等关于 make 的信息
+`-w`          | (`--print-directory`) 输出运行 makefile 之前和之后的信息。`--no-print-directory` 可以禁止 `-w`
+`-W <file>`   | `--what-if=<file>`, `--new-file=<file>`, `--assume-file=<file>` 假定目标 \<file> 需要更新，如果和 `-n` 选项使用，那么这个参数会输出该目标更新时的运行动作
+`--warn-undefined-variables` | 只要 make 发现有未定义的变量，那么就输出警告信息
+<!--rehype:className=left-align-->
+
+### `-debug[=<options>]`
+<!--rehype:wrap-class=col-span-2-->
+
+输出 make 的调试信息。下面是 \<options>的取值：
+
+options  | :-
+:-       | :-
+`a` | `all`，输出所有的调试信息
+`b` | `basic`，只输出简单的调试信息。即输出不需要重编译的目标
+`v` | `verbose`，包括 b 的信息。输出包括 makefile 被解析的信息，不需要被重编译的依赖文件等
+`i` | `implicit`，输出所有的隐含规则
+`j` | `jobs`，输出执行规则中命令的详细信息，如命令的 PID、返回码等
+`m` | `makefile`，输出 make 读取 makefile，更新 makefile，执行 makefile 的信息
+<!--rehype:className=left-align-->
+
+### make 的退出码
+
+:-  | :-
+:-  | :-
+`0` | 成功执行
+`1` | 运行时出现错误
+`2` | 使用了 `-q` 选项，并且一些目标不需要更新
 
 判断和循环
 ---
