@@ -680,26 +680,23 @@ all:
 函数
 ---
 
-### 字符串处理函数
-<!--rehype:wrap-class=col-span-3-->
+### 字符串处理函数 - 替换函数(`subst`)
 
-#### 字符串替换函数(`subst`)
-
-* 把字串 \<text> 中的 \<from> 字符串替换成 \<to> 。
+把字串 \<text> 中的 \<from> 字符串替换成 \<to> 。
 
 ```makefile
 $(subst <from>,<to>,<text>)
 ```
 
-* 示例
+示例
 
 ```makefile
 $(subst ee,EE,feet on the street)
 ```
 
-#### 模式字符串替换函数(`patsubst`)
+### 字符串处理函数 - 模式字符串替换函数(`patsubst`)
 
-* 查找 \<text> 中的单词（**单词以空格、Tab或回车换行分隔**）是否符合模式 \<pattern>。匹配，则以 \<replacement> 替换。
+查找 \<text> 中的单词（**单词以空格、Tab或回车换行分隔**）是否符合模式 \<pattern>。匹配，则以 \<replacement> 替换。
 
 ```makefile
 $(patsubst <pattern>,<replacement>,<text>)
@@ -709,49 +706,52 @@ $(patsubst <pattern>,<replacement>,<text>)
 
 ```makefile
 $(patsubst %.c,%.o,x.c.c bar.c)
-把字串 x.c.c bar.c 符合模式 %.c 的单词替换成 %.o ，返回结果是 x.c.o bar.o
 ```
 
-#### 去空格函数(`strip`)
+把字串 x.c.c bar.c 符合模式 %.c 的单词替换成 %.o ，返回结果是 x.c.o bar.o
 
-* 去掉 <string> 字串中开头和结尾的空字符。
+### 字符串处理函数 - 去空格函数(`strip`)
+
+去掉 <string> 字串中开头和结尾的空字符。
 
 ```makefile
 $(strip <string>)
 ```
 
-* 示例
+示例
 
 ```makefile
 $(strip a b c )
-# 把字串 a b c  去掉开头和结尾的空格，结果是 a b c。
 ```
 
-#### 查找字符串函数(`findstring`)
+把字串 `a b c` 去掉开头和结尾的空格，结果是 a b c。
 
-* 在字串 \<in> 中查找 \<find> 字串。
+### 字符串处理函数 - 查找字符串函数(`findstring`)
+
+在字串 \<in> 中查找 \<find> 字串。
 
 ```makefile
 $(findstring <find>,<in>)
 ```
 
-* 示例：
+示例：
 
 ```makefile
 $(findstring a,a b c)
 $(findstring a,b c)
-# 第一个函数返回 a 字符串，第二个返回空字符串
 ```
 
-#### 过滤函数(`filter`)
+第一个函数返回 a 字符串，第二个返回空字符串
 
-* 以 \<pattern> 模式过滤 \<text> 字符串中的单词，保留符合模式 \<pattern> 的单词。可以有多个模式。
+### 字符串处理函数 - 过滤函数(`filter`)
+
+以 \<pattern> 模式过滤 \<text> 字符串中的单词，保留符合模式 \<pattern> 的单词。可以有多个模式。
 
 ```makefile
 $(filter <pattern...>,<text>)
 ```
 
-* 示例
+示例
 
 ```makefile
 sources := foo.c bar.c baz.s ugh.h
@@ -761,15 +761,15 @@ $(filter %.c %.s,$(sources))
 # 返回的值是 foo.c bar.c baz.s
 ```
 
-#### 反过滤函数(`filter-out`)
+### 字符串处理函数 - 反过滤函数(`filter-out`)
 
-* 以 \<pattern> 模式过滤 \<text> 字符串中的单词，去除符合模式 \<pattern> 的单词。可以有多个模式。
+以 \<pattern> 模式过滤 \<text> 字符串中的单词，去除符合模式 \<pattern> 的单词。可以有多个模式。
 
 ```makefile
 $(filter-out <pattern...>,<text>)
 ```
 
-* 示例：
+示例：
 
 ```makefile
 objects=main1.o foo.o main2.o bar.o
@@ -778,28 +778,28 @@ $(filter-out $(mains),$(objects))
 # 返回值是 foo.o bar.o 。
 ```
 
-#### 排序函数(`sort`)
+### 字符串处理函数 - 排序函数(`sort`)
 
-* 给字符串 \<list> 中的单词排序（升序）。
+给字符串 \<list> 中的单词排序（升序）。
 
 ```makefile
 $(sort <list>)
 ```
 
-* 示例：`$(sort foo bar lose)` 返回 bar foo lose。
-* 注意：sort 函数会去掉 `<list>` 中相同的单词。
+* 示例：`$(sort foo bar lose)` 返回 `bar foo lose`
+* 注意：sort 函数会去掉 `<list>` 中相同的单词
 
-#### 取单词函数（`word`)
+### 字符串处理函数 - 取单词函数（`word`)
 
-* 取字符串 \<text> 中第 \<n> 个单词。（从一开始）
+取字符串 \<text> 中第 \<n> 个单词。（从一开始）
 
 ```makefile
 $(word <n>,<text>)
 ```
 
-* 示例：`$(word 2, foo bar baz)` 返回值是 `bar`。
+示例：`$(word 2, foo bar baz)` 返回值是 `bar`
 
-#### 取单词串函数(`wordlist`)
+### 字符串处理函数 - 取单词串函数(`wordlist`)
 
 * 从字符串 \<text> 中取从 \<s> 开始到 \<e> 的单词串。\<s> 和 \<e> 是一个数字。
 
@@ -809,7 +809,7 @@ $(wordlist <ss>,<e>,<text>)
 
 示例：`$(wordlist 2, 3, foo bar baz)` 返回值是 bar baz。
 
-#### 单词个数统计函数(`words`)
+### 字符串处理函数 - 单词个数统计函数(`words`)
 
 * 统计 \<text> 中字符串中的单词个数。
 
@@ -819,7 +819,7 @@ $(words <text>)
 
 * 示例：`$(words, foo bar baz)` 返回值是 3。
 
-#### 首单词函数(`firstword`)
+### 字符串处理函数 - 首单词函数(`firstword`)
 
 * 取字符串 \<text> 中的第一个单词。
 
@@ -827,11 +827,10 @@ $(words <text>)
 $(firstword <text>)
 ```
 
-* 示例：`$(firstword foo bar)` 返回值是 foo。
-
-<!--rehype:className=auto-wrap-->
+* 示例：`$(firstword foo bar)` 返回值是 `foo`
 
 ### 文件名操作函数
+<!--rehype:wrap-class=row-span-2-->
 
 #### 取目录函数(`dir`)
 
@@ -950,7 +949,8 @@ $(foreach <var>,<list>,<text>)
 ---
 
 ```makefile
-# $(name) 中的单词会被挨个取出，并存到变量 n 中， $(n).o 每次根据 $(n) 计算出一个值，这些值以空格分隔，最后作为 foreach 函数的返回
+# $(name) 中的单词会被挨个取出，并存到变量 n 中，
+# $(n).o 每次根据 $(n) 计算出一个值，这些值以空格分隔，最后作为 foreach 函数的返回
 names := a b c d
 files := $(foreach n,$(names),$(n).o)
 run:
