@@ -377,7 +377,6 @@ Quick Reference
 [if010.com](https://quickref.if010.com/)<!--rehype:target=_blank-->
 [pipecraft.net](https://quickref.pipecraft.net/)<!--rehype:target=_blank&class=contributing&data-info=👆需要梯子-->
 [isteed.cc](https://ref.isteed.cc/)<!--rehype:target=_blank-->
-[cas-air.cn](https://www.ccommunity.cas-air.cn/index.html)<!--rehype:target=_blank&class=contributing&data-info=👆非镜像，另起炉灶-->
 [1han.wiki](https://code.1han.wiki/)<!--rehype:target=_blank-->
 [linzhe.top](https://linzhe.top/)<!--rehype:target=_blank-->
 [xushanxiang.com](https://xushanxiang.com/ref/)<!--rehype:target=_blank-->
@@ -388,7 +387,7 @@ Quick Reference
 [hestudio.org](https://quickref.hestudio.org)<!--rehype:target=_blank-->
 [cms.im](https://quickref.cms.im/)<!--rehype:target=_blank-->
 [nuomiphp.com](https://reference.tool.nuomiphp.com/)<!--rehype:target=_blank-->
-[eryajf.net](https://ref.eryajf.net/)<!--rehype:target=_blank-->
+[eryajf.net](https://ref.eryajf.net/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
