@@ -395,7 +395,7 @@ $ git log --stat -M
 ```bash
 $ cat ~/.ssh/config
 Host gitlab.com
-# 直接使用 shadowsocks 提供的 socks5 代理端口
+# 直接使用 sh**socks 提供的 socks5 代理端口
 ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p 
 
 Host github.com
