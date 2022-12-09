@@ -215,7 +215,7 @@ Dockerfile 示例
 
 ```dockerfile
 FROM lipanski/docker-static-website:latest
-# 使用 .dockerignore 文件来控制图像中的内容！
+# 使用 .dockerignore 文件来控制镜像中的内容！
 # 复制当前目录内容，到容器中
 COPY ./ .
 ```
