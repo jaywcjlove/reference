@@ -389,6 +389,7 @@ Quick Reference
 [cms.im](https://quickref.cms.im/)<!--rehype:target=_blank-->
 [nuomiphp.com](https://reference.tool.nuomiphp.com/)<!--rehype:target=_blank-->
 [eryajf.net](https://ref.eryajf.net/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[kjchmc.cn](https://ref.kjchmc.cn/)<!--rehype:target=_blank&class=contributing&data-info=👆实时同步，自动切换国内外节点-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
