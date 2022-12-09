@@ -32,7 +32,7 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 <p>包含 最重要概念、函数、方法等的 make 备忘单。 初学者的完整快速参考。</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#makefile-入门">Makefile 入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#工作流程">工作流程</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件命令">文件命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#自定义文件名称">自定义文件名称</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#隐式生成">隐式生成</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#规则">规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清空目标文件">清空目标文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#换行-">换行 \</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#引用其它的-makefile">引用其它的 Makefile</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#赋值符">赋值符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在执行时扩展允许递归扩展">在执行时扩展，允许递归扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在声明时扩展">在声明时扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#只有在该变量为空时才设置值">只有在该变量为空时才设置值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#将值追加到变量的尾端">将值追加到变量的尾端</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#override">override</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量-1">变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#避免递归变量">避免递归变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#shell-变量">Shell 变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#定义多行变量">定义多行变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自动变量">自动变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#">$@</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-1">$&#x3C;</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-2">$^</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-3">$+</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-4">$?</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-5">$*</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-6">$%</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#内置命名变量的参数">内置命名变量的参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#内置已命名的变量">内置已命名的变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#内置的变量">内置的变量</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#书写规则">书写规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通配符">通配符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-7">*</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-8">~</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-9">?</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件搜寻vpath">文件搜寻（vpath）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-10">%</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#静态模式">静态模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#伪目标">伪目标</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#命令">命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#回声">回声（@）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#显示命令禁止命令">显示命令、禁止命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#显示命令">显示命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#禁止命令">禁止命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#执行命令">执行命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="makefile-入门"><a aria-hidden="true" tabindex="-1" href="#makefile-入门"><span class="icon icon-link"></span></a>Makefile 入门</h2><div class="wrap-body">
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#makefile-入门">Makefile 入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#工作流程">工作流程</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件命令">文件命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#自定义文件名称">自定义文件名称</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#隐式生成">隐式生成</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#规则">规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清空目标文件">清空目标文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#换行-">换行 \</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#引用其它的-makefile">引用其它的 Makefile</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#赋值符">赋值符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在执行时扩展允许递归扩展">在执行时扩展，允许递归扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在声明时扩展">在声明时扩展</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#只有在该变量为空时才设置值">只有在该变量为空时才设置值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#将值追加到变量的尾端">将值追加到变量的尾端</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#override">override</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量-1">变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#避免递归变量">避免递归变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#shell-变量">Shell 变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#定义多行变量">定义多行变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自动变量">自动变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#">$@</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-1">$&#x3C;</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-2">$^</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-3">$+</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-4">$?</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-5">$*</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-6">$%</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#内置命名变量的参数">内置命名变量的参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#内置已命名的变量">内置已命名的变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#内置的变量">内置的变量</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#书写规则">书写规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件搜寻vpath">文件搜寻（vpath）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-7">%</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通配符">通配符</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-8">*</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-9">~</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-10">?</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#静态模式">静态模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#伪目标">伪目标</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#约定俗成的规则">约定俗成的规则</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#命令">命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#回声">回声（@）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#显示命令禁止命令">显示命令、禁止命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#显示命令">显示命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#禁止命令">禁止命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#执行命令">执行命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#make-参数">make 参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#-debugoptions">-debug[=&#x3C;options>]</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#make-的退出码">make 的退出码</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#判断和循环">判断和循环</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#单分支条件判断">单分支条件判断</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#多分支条件判断">多分支条件判断</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#ifneq-语法">ifneq 语法</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#ifeq-语法">ifeq 语法</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ifdef">ifdef</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#for-循环">for 循环</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#函数">函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---替换函数subst">字符串处理函数 - 替换函数(subst)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---模式字符串替换函数patsubst">字符串处理函数 - 模式字符串替换函数(patsubst)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---去空格函数strip">字符串处理函数 - 去空格函数(strip)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---查找字符串函数findstring">字符串处理函数 - 查找字符串函数(findstring)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---过滤函数filter">字符串处理函数 - 过滤函数(filter)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---反过滤函数filter-out">字符串处理函数 - 反过滤函数(filter-out)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---排序函数sort">字符串处理函数 - 排序函数(sort)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---取单词函数word">字符串处理函数 - 取单词函数（word)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---取单词串函数wordlist">字符串处理函数 - 取单词串函数(wordlist)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---单词个数统计函数words">字符串处理函数 - 单词个数统计函数(words)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串处理函数---首单词函数firstword">字符串处理函数 - 首单词函数(firstword)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件名操作函数">文件名操作函数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#取目录函数dir">取目录函数(dir)</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#取文件函数notdir">取文件函数(notdir)</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#取后缀函数suffix">取后缀函数（suffix)</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#取前缀函数basename">取前缀函数(basename)</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#加后缀函数addsuffix">加后缀函数(addsuffix)</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#加前缀函数addprefix">加前缀函数(addprefix)</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#连接函数join">连接函数(join)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#其它函数">其它函数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#foreach-函数">foreach 函数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#if-函数">if 函数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#call-函数">call 函数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#shell-函数">shell 函数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#控制-make-的函数">控制 make 的函数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#origin-函数">origin 函数</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="makefile-入门"><a aria-hidden="true" tabindex="-1" href="#makefile-入门"><span class="icon icon-link"></span></a>Makefile 入门</h2><div class="wrap-body">
 <!-- markdownlint-disable MD010 -->
 </div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">a.txt</span><span class="token punctuation">:</span> b.txt c.txt
@@ -385,24 +385,8 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 </span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">{</span>CC<span class="token punctuation">}</span> -o main main.c
 </span></code></pre>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="书写规则"><a aria-hidden="true" tabindex="-1" href="#书写规则"><span class="icon icon-link"></span></a>书写规则</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="通配符"><a aria-hidden="true" tabindex="-1" href="#通配符"><span class="icon icon-link"></span></a>通配符</h3><div class="wrap-body">
-<h4 id="-7"><a aria-hidden="true" tabindex="-1" href="#-7"><span class="icon icon-link"></span></a><code>*</code></h4>
-<p><code>*</code>：与 linux 系统下的一样</p>
-<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token comment"># 清除所有 .o 结尾的文件</span>
-</span><span class="code-line"><span class="token target symbol">clean</span><span class="token punctuation">:</span>
-</span><span class="code-line">    rm -f *.o
-</span></code></pre>
-<h4 id="-8"><a aria-hidden="true" tabindex="-1" href="#-8"><span class="icon icon-link"></span></a><code>~</code></h4>
-<p><code>~</code>：在 linux 或 mac 下表示用户目录，win 下表示 <code>HOME</code> 环境变量</p>
-<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
-</span><span class="code-line">    ls ~
-</span></code></pre>
-<h4 id="-9"><a aria-hidden="true" tabindex="-1" href="#-9"><span class="icon icon-link"></span></a><code>?</code></h4>
-<p><code>?</code>: 与在 linux 等类似，可以匹配单个字符</p>
-<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
-</span><span class="code-line">	ls -ll packag?.json
-</span></code></pre>
-</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="文件搜寻vpath"><a aria-hidden="true" tabindex="-1" href="#文件搜寻vpath"><span class="icon icon-link"></span></a>文件搜寻（<code>vpath</code>）</h3><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="文件搜寻vpath"><a aria-hidden="true" tabindex="-1" href="#文件搜寻vpath"><span class="icon icon-link"></span></a>文件搜寻（<code>vpath</code>）</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
 <p>如果没有指定 vpath 变量，make 只会在当前的目录中去寻找依赖文件和目标文件。否则，如果当前目录没有，就会到指定的目录中去寻找</p>
 
 
@@ -425,12 +409,10 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 
 
 
-<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>vpath &#x3C;pattern> &#x3C;directories></code></td><td align="left">为符合模式 &#x3C;pattern> 的文件指定搜索目录 &#x3C;directories></td></tr><tr><td align="left"><code>vpath &#x3C;pattern></code></td><td align="left">清除符合模式<pattern>的文件的搜索目录。</pattern></td></tr><tr><td align="left"><code>vpath</code></td><td align="left">清除所有已被设置好了的文件搜索目录</td></tr></tbody></table>
-<h4 id="-10"><a aria-hidden="true" tabindex="-1" href="#-10"><span class="icon icon-link"></span></a><code>%</code></h4>
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>vpath &#x3C;pattern> &#x3C;directories></code></td><td align="left">为符合模式 &#x3C;pattern> 的文件指定搜索目录 &#x3C;directories></td></tr><tr><td align="left"><code>vpath &#x3C;pattern></code></td><td align="left">清除符合模式 &#x3C;pattern> 的文件的搜索目录。</td></tr><tr><td align="left"><code>vpath</code></td><td align="left">清除所有已被设置好了的文件搜索目录</td></tr></tbody></table>
+<h4 id="-7"><a aria-hidden="true" tabindex="-1" href="#-7"><span class="icon icon-link"></span></a><code>%</code></h4>
 <ul>
-<li>vpath使用方法中的 &#x3C;pattern> 需要包含 <code>%</code> 字符。</li>
-<li><code>%</code> 的意思是匹配零或若干字符</li>
-<li>并且引用规则是需要使用<strong>自动变量</strong></li>
+<li>vpath 使用方法中的 &#x3C;pattern> 需要包含 <code>%</code> 字符。<code>%</code> 的意思是匹配零或若干字符（类似于<strong>通配符</strong>）,并且引用规则是需要使用<strong>自动变量</strong></li>
 </ul>
 <pre class="auto-wrap"><code class="language-makefile code-highlight"><span class="code-line"><span class="token keyword">vpath</span> %.c dist
 </span><span class="code-line">TARGET <span class="token operator">=</span> hello
@@ -443,6 +425,23 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 </span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -o <span class="token variable">$&#x3C;</span> -o <span class="token comment">#@</span>
 </span></code></pre>
 <!--rehype:className=auto-wrap-->
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="通配符"><a aria-hidden="true" tabindex="-1" href="#通配符"><span class="icon icon-link"></span></a>通配符</h3><div class="wrap-body">
+<h4 id="-8"><a aria-hidden="true" tabindex="-1" href="#-8"><span class="icon icon-link"></span></a><code>*</code></h4>
+<p><code>*</code>：与 linux 系统下的一样</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token comment"># 清除所有 .o 结尾的文件</span>
+</span><span class="code-line"><span class="token target symbol">clean</span><span class="token punctuation">:</span>
+</span><span class="code-line">    rm -f *.o
+</span></code></pre>
+<h4 id="-9"><a aria-hidden="true" tabindex="-1" href="#-9"><span class="icon icon-link"></span></a><code>~</code></h4>
+<p><code>~</code>：在 linux 或 mac 下表示用户目录，win 下表示 <code>HOME</code> 环境变量</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">    ls ~
+</span></code></pre>
+<h4 id="-10"><a aria-hidden="true" tabindex="-1" href="#-10"><span class="icon icon-link"></span></a><code>?</code></h4>
+<p><code>?</code>: 与在 linux 等类似，可以匹配单个字符</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	ls -ll packag?.json
+</span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="静态模式"><a aria-hidden="true" tabindex="-1" href="#静态模式"><span class="icon icon-link"></span></a>静态模式</h3><div class="wrap-body">
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">TARGET</span><span class="token punctuation">:</span> PREREQUISITES <span class="token punctuation">:</span>PREREQUISITES
 </span><span class="code-line">  COMMAMD
@@ -470,10 +469,54 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 <li><strong>伪目标</strong>并不是一个文件，只是一个标签。只有通过显式地指明这个<strong>目标</strong>才能让其生效</li>
 <li>使用 <code>.PHONY</code> 来显式地指明目标是 <code>伪目标</code></li>
 </ul>
-<pre class="style-round"><code class="language-makefile code-highlight"><span class="code-line"><span class="token builtin-target builtin">.PHONY</span> <span class="token punctuation">:</span> clean
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token builtin-target builtin">.PHONY</span> <span class="token punctuation">:</span> clean
 </span><span class="code-line"><span class="token target symbol">clean</span> <span class="token punctuation">:</span>
 </span><span class="code-line">    rm *.o temp
 </span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="约定俗成的规则"><a aria-hidden="true" tabindex="-1" href="#约定俗成的规则"><span class="icon icon-link"></span></a>约定俗成的规则</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-round"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>all</code></td><td align="left">该伪目标是所有目标的目标，一般用于编译所有的目标</td></tr><tr><td align="left"><code>clean</code></td><td align="left">该伪目标用于删除所有由 make 创建的文件</td></tr><tr><td align="left"><code>install</code></td><td align="left">该伪目标用于安装已编译好的程序，即将目标执行文件拷贝到指定目标中</td></tr><tr><td align="left"><code>print</code></td><td align="left">该伪目标用于例出改变过的源文件</td></tr><tr><td align="left"><code>tar</code></td><td align="left">该伪目标用于把源程序打包备份为 tar 文件</td></tr><tr><td align="left"><code>dist</code></td><td align="left">该伪目标用于创建压缩文件，一般将 tar 文件压成 Z 或 gz 文件</td></tr><tr><td align="left"><code>TAGS</code></td><td align="left">该伪目标用于更新所有的目标，以备完整地重编译使用</td></tr><tr><td align="left"><code>check/test</code></td><td align="left">这两个伪目标用于测试 makefile 的流程</td></tr></tbody></table>
 <!--rehype:className=style-round-->
 <!--rehype:className=auto-wrap-->
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="命令"><a aria-hidden="true" tabindex="-1" href="#命令"><span class="icon icon-link"></span></a>命令</h2><div class="wrap-body">
@@ -511,6 +554,467 @@ Makefile 入门，为开发人员分享快速参考备忘单。">
 <pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">exec</span><span class="token punctuation">:</span>
 </span><span class="code-line">    cd /home/hchen<span class="token punctuation">;</span> pwd
 </span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="make-参数"><a aria-hidden="true" tabindex="-1" href="#make-参数"><span class="icon icon-link"></span></a>make 参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>-b</code>,<code>-m</code></td><td align="left">忽略和其它版本make的兼容性</td></tr><tr><td align="left"><code>-B</code></td><td align="left">(<code>--always-make</code>) 认为所有的目标都需要重编译</td></tr><tr><td align="left"><code>-C &#x3C;dir></code></td><td align="left">(<code>--directory=&#x3C;dir></code>) 指定读取makefile的目录</td></tr><tr><td align="left"><code>-e</code></td><td align="left">(<code>--environment-overrides</code>) 指明环境变量的值覆盖 makefile 中定义的变量的值</td></tr><tr><td align="left"><code>-f=&#x3C;file></code></td><td align="left">指定需要执行的makefile</td></tr><tr><td align="left"><code>-h</code></td><td align="left">显示帮助信息</td></tr><tr><td align="left"><code>-i</code></td><td align="left">(<code>--ignore-errors</code>)在执行时忽略所有的错误</td></tr><tr><td align="left"><code>-I &#x3C;dir></code></td><td align="left">(<code>--include-dir=&#x3C;dir></code>) 指定一个被包含 makefile 的搜索目标</td></tr><tr><td align="left"><code>-j [&#x3C;nums>]</code></td><td align="left">(<code>--jobs[=&#x3C;jobsnum>]</code>)指同时运行命令的个数</td></tr><tr><td align="left"><code>-k</code></td><td align="left">(<code>--keep-going</code>)出错也不停止运行</td></tr><tr><td align="left"><code>-l &#x3C;load></code></td><td align="left"><code>--load-average[=&#x3C;load>]</code>、<code>-max-load[=&#x3C;load>]</code> 指定make运行命令的负载</td></tr><tr><td align="left"><code>-n</code></td><td align="left">(<code>--just-print</code>, <code>--dry-run</code>, <code>--recon</code>) 仅输出执行过程中的命令序列，但不执行</td></tr><tr><td align="left"><code>-o &#x3C;file></code></td><td align="left">(<code>--old-file=&#x3C;file></code>, <code>--assume-old=&#x3C;file></code>)不重新生成的指定的 &#x3C;file>，即使目标的依赖文件新于它</td></tr><tr><td align="left"><code>-p</code></td><td align="left">(<code>--print-data-base</code>) 输出 makefile 中的所有数据，包括所有的规则和变量</td></tr><tr><td align="left"><code>-q</code></td><td align="left">(<code>--question</code>) 不运行命令，也不输出。仅仅是检查所指定的目标是否需要更新</td></tr><tr><td align="left"><code>-r</code></td><td align="left">(<code>--no-builtin-rules</code>) 禁止 make 使用任何隐含规则</td></tr><tr><td align="left"><code>-R</code></td><td align="left">(<code>--no-builtin-variabes</code>) 禁止 make 使用任何作用于变量上的隐含规则</td></tr><tr><td align="left"><code>-s</code></td><td align="left">(<code>--silent</code>,<code>--quiet</code>) 在命令运行时不输出命令的输出</td></tr><tr><td align="left"><code>-S</code></td><td align="left">(<code>--no-keep-going</code>, <code>--stop</code>) 取消“-k”选项的作用</td></tr><tr><td align="left"><code>-t</code></td><td align="left"><code>--touch</code> 相当于 UNIX 的 touch 命令，只是把目标的修改日期变成最新的，也就是阻止生成目标的命令运行</td></tr><tr><td align="left"><code>-v</code></td><td align="left">(<code>--version</code>) 输出 make 程序的版本、版权等关于 make 的信息</td></tr><tr><td align="left"><code>-w</code></td><td align="left">(<code>--print-directory</code>) 输出运行 makefile 之前和之后的信息。<code>--no-print-directory</code> 可以禁止 <code>-w</code></td></tr><tr><td align="left"><code>-W &#x3C;file></code></td><td align="left"><code>--what-if=&#x3C;file></code>, <code>--new-file=&#x3C;file></code>, <code>--assume-file=&#x3C;file></code> 假定目标 &#x3C;file> 需要更新，如果和 <code>-n</code> 选项使用，那么这个参数会输出该目标更新时的运行动作</td></tr><tr><td align="left"><code>--warn-undefined-variables</code></td><td align="left">只要 make 发现有未定义的变量，那么就输出警告信息</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="-debugoptions"><a aria-hidden="true" tabindex="-1" href="#-debugoptions"><span class="icon icon-link"></span></a><code>-debug[=&#x3C;options>]</code></h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>输出 make 的调试信息。下面是 &#x3C;options>的取值：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">options</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>a</code></td><td align="left"><code>all</code>，输出所有的调试信息</td></tr><tr><td align="left"><code>b</code></td><td align="left"><code>basic</code>，只输出简单的调试信息。即输出不需要重编译的目标</td></tr><tr><td align="left"><code>v</code></td><td align="left"><code>verbose</code>，包括 b 的信息。输出包括 makefile 被解析的信息，不需要被重编译的依赖文件等</td></tr><tr><td align="left"><code>i</code></td><td align="left"><code>implicit</code>，输出所有的隐含规则</td></tr><tr><td align="left"><code>j</code></td><td align="left"><code>jobs</code>，输出执行规则中命令的详细信息，如命令的 PID、返回码等</td></tr><tr><td align="left"><code>m</code></td><td align="left"><code>makefile</code>，输出 make 读取 makefile，更新 makefile，执行 makefile 的信息</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="make-的退出码"><a aria-hidden="true" tabindex="-1" href="#make-的退出码"><span class="icon icon-link"></span></a>make 的退出码</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>0</code></td><td align="left">成功执行</td></tr><tr><td align="left"><code>1</code></td><td align="left">运行时出现错误</td></tr><tr><td align="left"><code>2</code></td><td align="left">使用了 <code>-q</code> 选项，并且一些目标不需要更新</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="判断和循环"><a aria-hidden="true" tabindex="-1" href="#判断和循环"><span class="icon icon-link"></span></a>判断和循环</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="单分支条件判断"><a aria-hidden="true" tabindex="-1" href="#单分支条件判断"><span class="icon icon-link"></span></a>单分支条件判断</h3><div class="wrap-body">
+<ul class="style-round">
+<li><code>ifeq</code> 的意思表示条件语句的开始，表达式包含两个参数，如果相同则为真。</li>
+<li><code>ifneq</code> 的意思表示条件语句的开始，表达式包含两个参数，如果不同则为真。</li>
+<li><code>else</code> 表示条件表达式为假的情况。</li>
+<li><code>endif</code> 表示一个条件语句的结束，任何一个条件表达式都应该以 <code>endif</code> 结束。</li>
+</ul>
+<!--rehype:className=style-round-->
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line"><span class="token keyword">ifeq</span> <span class="token punctuation">(</span><span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span>, cc<span class="token punctuation">)</span>
+</span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -o foo foo.c
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">	<span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> -o bar bar.c
+</span><span class="code-line"><span class="token keyword">endif</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="多分支条件判断"><a aria-hidden="true" tabindex="-1" href="#多分支条件判断"><span class="icon icon-link"></span></a>多分支条件判断</h3><div class="wrap-body">
+<h4 id="ifneq-语法"><a aria-hidden="true" tabindex="-1" href="#ifneq-语法"><span class="icon icon-link"></span></a>ifneq 语法</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token keyword">ifneq</span> <span class="token punctuation">(</span>&#x3C;arg1>, &#x3C;arg2><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">ifneq</span> <span class="token string">'&#x3C;arg1>'</span> <span class="token string">'&#x3C;arg2>'</span>
+</span><span class="code-line"><span class="token keyword">ifneq</span> <span class="token string">"&#x3C;arg1>"</span> <span class="token string">"&#x3C;arg2>"</span>
+</span><span class="code-line"><span class="token keyword">ifneq</span> <span class="token string">"&#x3C;arg1>"</span> <span class="token string">'&#x3C;arg2>'</span>
+</span><span class="code-line"><span class="token keyword">ifneq</span> <span class="token string">'&#x3C;arg1>'</span> <span class="token string">"&#x3C;arg2>"</span>
+</span></code></pre>
+<h4 id="ifeq-语法"><a aria-hidden="true" tabindex="-1" href="#ifeq-语法"><span class="icon icon-link"></span></a>ifeq 语法</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token keyword">ifeq</span> <span class="token punctuation">(</span>&#x3C;arg1>, &#x3C;arg2><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">ifeq</span> <span class="token string">'&#x3C;arg1>'</span> <span class="token string">'&#x3C;arg2>'</span>
+</span><span class="code-line"><span class="token keyword">ifeq</span> <span class="token string">"&#x3C;arg1>"</span> <span class="token string">"&#x3C;arg2>"</span>
+</span><span class="code-line"><span class="token keyword">ifeq</span> <span class="token string">"&#x3C;arg1>"</span> <span class="token string">'&#x3C;arg2>'</span>
+</span><span class="code-line"><span class="token keyword">ifeq</span> <span class="token string">'&#x3C;arg1>'</span> <span class="token string">"&#x3C;arg2>"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ifdef"><a aria-hidden="true" tabindex="-1" href="#ifdef"><span class="icon icon-link"></span></a>ifdef</h3><div class="wrap-body">
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token keyword">ifdef</span> &#x3C;variable-name>
+</span></code></pre>
+<p><code>ifdef</code> 会根据 variable-name 判断，如果为空则为真</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">bar <span class="token operator">=</span>
+</span><span class="code-line">foo <span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">ifdef</span> foo
+</span><span class="code-line">    frobozz <span class="token operator">=</span> yes
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">    frobozz <span class="token operator">=</span> no
+</span><span class="code-line"><span class="token keyword">endif</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	echo <span class="token variable">$</span><span class="token punctuation">(</span>frobozz<span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>ifndef</code> 则和 <code>ifdef</code> 是相反的意思</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="for-循环"><a aria-hidden="true" tabindex="-1" href="#for-循环"><span class="icon icon-link"></span></a>for 循环</h3><div class="wrap-body">
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">LIST <span class="token operator">=</span> one two three
+</span><span class="code-line"><span class="token target symbol">all</span><span class="token punctuation">:</span>
+</span><span class="code-line">	for i in <span class="token variable">$</span><span class="token punctuation">(</span>LIST<span class="token punctuation">)</span><span class="token punctuation">;</span> do \
+</span><span class="code-line">	    echo <span class="token variable">$$i;</span> \
+</span><span class="code-line">	done
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---替换函数subst"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---替换函数subst"><span class="icon icon-link"></span></a>字符串处理函数 - 替换函数(<code>subst</code>)</h3><div class="wrap-body">
+<p>把字串 &#x3C;text> 中的 &#x3C;from> 字符串替换成 &#x3C;to> 。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">subst</span> &#x3C;from>,&#x3C;to>,&#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<p>示例</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">subst</span> ee,EE,feet on the street<span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---模式字符串替换函数patsubst"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---模式字符串替换函数patsubst"><span class="icon icon-link"></span></a>字符串处理函数 - 模式字符串替换函数(<code>patsubst</code>)</h3><div class="wrap-body">
+<p>查找 &#x3C;text> 中的单词（<strong>单词以空格、Tab或回车换行分隔</strong>）是否符合模式 &#x3C;pattern>。匹配，则以 &#x3C;replacement> 替换。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">patsubst</span> &#x3C;pattern>,&#x3C;replacement>,&#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<ul>
+<li>示例</li>
+</ul>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">patsubst</span> %.c,%.o,x.c.c bar.c<span class="token punctuation">)</span>
+</span></code></pre>
+<p>把字串 x.c.c bar.c 符合模式 %.c 的单词替换成 %.o ，返回结果是 x.c.o bar.o</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---去空格函数strip"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---去空格函数strip"><span class="icon icon-link"></span></a>字符串处理函数 - 去空格函数(<code>strip</code>)</h3><div class="wrap-body">
+<p>去掉 <string> 字串中开头和结尾的空字符。</string></p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">strip</span> &#x3C;string><span class="token punctuation">)</span>
+</span></code></pre>
+<p>示例</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">strip</span> a b c <span class="token punctuation">)</span>
+</span></code></pre>
+<p>把字串 <code>a b c</code> 去掉开头和结尾的空格，结果是 a b c。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---查找字符串函数findstring"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---查找字符串函数findstring"><span class="icon icon-link"></span></a>字符串处理函数 - 查找字符串函数(<code>findstring</code>)</h3><div class="wrap-body">
+<p>在字串 &#x3C;in> 中查找 &#x3C;find> 字串。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">findstring</span> &#x3C;find>,&#x3C;in><span class="token punctuation">)</span>
+</span></code></pre>
+<p>示例：</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">findstring</span> a,a b c<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">findstring</span> a,b c<span class="token punctuation">)</span>
+</span></code></pre>
+<p>第一个函数返回 a 字符串，第二个返回空字符串</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---过滤函数filter"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---过滤函数filter"><span class="icon icon-link"></span></a>字符串处理函数 - 过滤函数(<code>filter</code>)</h3><div class="wrap-body">
+<p>以 &#x3C;pattern> 模式过滤 &#x3C;text> 字符串中的单词，保留符合模式 &#x3C;pattern> 的单词。可以有多个模式。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">filter</span> &#x3C;pattern...>,&#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<p>示例</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">sources <span class="token operator">:=</span> foo.c bar.c baz.s ugh.h
+</span><span class="code-line"><span class="token target symbol">foo</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span>
+</span><span class="code-line">    cc <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">filter</span> %.c %.s,<span class="token variable">$</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span><span class="token punctuation">)</span> -o foo
+</span><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">filter</span> %.c %.s,<span class="token variable">$</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span><span class="token punctuation">)</span> 
+</span><span class="code-line"><span class="token comment"># 返回的值是 foo.c bar.c baz.s</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---反过滤函数filter-out"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---反过滤函数filter-out"><span class="icon icon-link"></span></a>字符串处理函数 - 反过滤函数(<code>filter-out</code>)</h3><div class="wrap-body">
+<p>以 &#x3C;pattern> 模式过滤 &#x3C;text> 字符串中的单词，去除符合模式 &#x3C;pattern> 的单词。可以有多个模式。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">filter-out</span> &#x3C;pattern...>,&#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<p>示例：</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">objects<span class="token operator">=</span>main1.o foo.o main2.o bar.o
+</span><span class="code-line">mains<span class="token operator">=</span>main1.o main2.o
+</span><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">filter-out</span> <span class="token variable">$</span><span class="token punctuation">(</span>mains<span class="token punctuation">)</span>,<span class="token variable">$</span><span class="token punctuation">(</span>objects<span class="token punctuation">)</span><span class="token punctuation">)</span> 
+</span><span class="code-line"><span class="token comment"># 返回值是 foo.o bar.o 。</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---排序函数sort"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---排序函数sort"><span class="icon icon-link"></span></a>字符串处理函数 - 排序函数(<code>sort</code>)</h3><div class="wrap-body">
+<p>给字符串 &#x3C;list> 中的单词排序（升序）。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">sort</span> &#x3C;list><span class="token punctuation">)</span>
+</span></code></pre>
+<ul>
+<li>示例：<code>$(sort foo bar lose)</code> 返回 <code>bar foo lose</code></li>
+<li>注意：sort 函数会去掉 <code>&#x3C;list></code> 中相同的单词</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---取单词函数word"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---取单词函数word"><span class="icon icon-link"></span></a>字符串处理函数 - 取单词函数（<code>word</code>)</h3><div class="wrap-body">
+<p>取字符串 &#x3C;text> 中第 &#x3C;n> 个单词。（从一开始）</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">word</span> &#x3C;n>,&#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<p>示例：<code>$(word 2, foo bar baz)</code> 返回值是 <code>bar</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---取单词串函数wordlist"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---取单词串函数wordlist"><span class="icon icon-link"></span></a>字符串处理函数 - 取单词串函数(<code>wordlist</code>)</h3><div class="wrap-body">
+<ul>
+<li>从字符串 &#x3C;text> 中取从 &#x3C;s> 开始到 &#x3C;e> 的单词串。&#x3C;s> 和 &#x3C;e> 是一个数字。</li>
+</ul>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">wordlist</span> &#x3C;ss>,&#x3C;e>,&#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<p>示例：<code>$(wordlist 2, 3, foo bar baz)</code> 返回值是 bar baz。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---单词个数统计函数words"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---单词个数统计函数words"><span class="icon icon-link"></span></a>字符串处理函数 - 单词个数统计函数(<code>words</code>)</h3><div class="wrap-body">
+<ul>
+<li>统计 &#x3C;text> 中字符串中的单词个数。</li>
+</ul>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">words</span> &#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<ul>
+<li>示例：<code>$(words, foo bar baz)</code> 返回值是 3。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串处理函数---首单词函数firstword"><a aria-hidden="true" tabindex="-1" href="#字符串处理函数---首单词函数firstword"><span class="icon icon-link"></span></a>字符串处理函数 - 首单词函数(<code>firstword</code>)</h3><div class="wrap-body">
+<ul>
+<li>取字符串 &#x3C;text> 中的第一个单词。</li>
+</ul>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">firstword</span> &#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<ul>
+<li>示例：<code>$(firstword foo bar)</code> 返回值是 <code>foo</code></li>
+</ul>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="文件名操作函数"><a aria-hidden="true" tabindex="-1" href="#文件名操作函数"><span class="icon icon-link"></span></a>文件名操作函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="取目录函数dir"><a aria-hidden="true" tabindex="-1" href="#取目录函数dir"><span class="icon icon-link"></span></a>取目录函数(<code>dir</code>)</h4>
+<p>从文件名序列 &#x3C;names> 中取出目录部分。目录部分是指最后一个反斜杠（<code>/</code>）之前的部分。如果没有反斜杠，那么返回 <code>./</code>。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">dir</span> &#x3C;names...><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">dir</span> src/foo.c hacks<span class="token punctuation">)</span> 
+</span><span class="code-line"><span class="token comment">#返回值是 src/ ./</span>
+</span></code></pre>
+<h4 id="取文件函数notdir"><a aria-hidden="true" tabindex="-1" href="#取文件函数notdir"><span class="icon icon-link"></span></a>取文件函数(<code>notdir</code>)</h4>
+<p>从文件名序列 &#x3C;names> 中取出非目录部分。非目录部分是指最後一个反斜杠（<code>/</code>）之后的部分。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">notdir</span> &#x3C;names...><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">notdir</span> src/foo.c hacks<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 返回值是 foo.c hacks</span>
+</span></code></pre>
+<h4 id="取后缀函数suffix"><a aria-hidden="true" tabindex="-1" href="#取后缀函数suffix"><span class="icon icon-link"></span></a>取后缀函数（<code>suffix</code>)</h4>
+<p>从文件名序列 &#x3C;names> 中取出各个文件名的后缀</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">suffix</span> &#x3C;names...><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">suffix</span> src/foo.c src-1.0/bar.c hacks<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 返回值是 .c .c</span>
+</span></code></pre>
+<h4 id="取前缀函数basename"><a aria-hidden="true" tabindex="-1" href="#取前缀函数basename"><span class="icon icon-link"></span></a>取前缀函数(<code>basename</code>)</h4>
+<p>从文件名序列 &#x3C;names> 中取出各个文件名的前缀部分。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">basename</span> &#x3C;names...><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">basename</span> src/foo.c src-1.0/bar.c hacks<span class="token punctuation">)</span> 
+</span><span class="code-line"><span class="token comment"># 返回值是 src/foo src-1.0/bar hacks</span>
+</span></code></pre>
+<h4 id="加后缀函数addsuffix"><a aria-hidden="true" tabindex="-1" href="#加后缀函数addsuffix"><span class="icon icon-link"></span></a>加后缀函数(<code>addsuffix</code>)</h4>
+<p>把后缀 &#x3C;suffix> 加到 &#x3C;names> 中的每个单词后面</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">addsuffix</span> &#x3C;suffix>,&#x3C;names...><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">addsuffix</span> .c,foo bar<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 返回值是 foo.c bar.c </span>
+</span></code></pre>
+<h4 id="加前缀函数addprefix"><a aria-hidden="true" tabindex="-1" href="#加前缀函数addprefix"><span class="icon icon-link"></span></a>加前缀函数(<code>addprefix</code>)</h4>
+<p>把前缀 &#x3C;prefix> 加到 &#x3C;names> 中的每个单词前面。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span>addprefix &#x3C;prefix>,&#x3C;names...><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span>addprefix src/,foo bar<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 返回值是 src/foo src/bar 。</span>
+</span></code></pre>
+<h4 id="连接函数join"><a aria-hidden="true" tabindex="-1" href="#连接函数join"><span class="icon icon-link"></span></a>连接函数(<code>join</code>)</h4>
+<p>把 &#x3C;list2> 中的单词对应地加到 &#x3C;list1> 的单词后面。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">join</span> &#x3C;list1>,&#x3C;list2><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">join</span> aaa bbb , 111 222 333<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 返回值是 aaa111 bbb222 333 。</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="其它函数"><a aria-hidden="true" tabindex="-1" href="#其它函数"><span class="icon icon-link"></span></a>其它函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<h4 id="foreach-函数"><a aria-hidden="true" tabindex="-1" href="#foreach-函数"><span class="icon icon-link"></span></a>foreach 函数</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">foreach</span> &#x3C;var>,&#x3C;list>,&#x3C;text><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token comment"># $(name) 中的单词会被挨个取出，并存到变量 n 中，</span>
+</span><span class="code-line"><span class="token comment"># $(n).o 每次根据 $(n) 计算出一个值，这些值以空格分隔，最后作为 foreach 函数的返回</span>
+</span><span class="code-line">names <span class="token operator">:=</span> a b c d
+</span><span class="code-line">files <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">foreach</span> n,<span class="token variable">$</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>,<span class="token variable">$</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>.o<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	echo <span class="token variable">$</span><span class="token punctuation">(</span>files<span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="if-函数"><a aria-hidden="true" tabindex="-1" href="#if-函数"><span class="icon icon-link"></span></a>if 函数</h4>
+<p>与之前的条件语句——<code>ifeq</code> 类似</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">if</span> &#x3C;condition>,&#x3C;then-part><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># 或者</span>
+</span><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">if</span> &#x3C;condition>,&#x3C;then-part>,&#x3C;<span class="token keyword">else</span>-part><span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="call-函数"><a aria-hidden="true" tabindex="-1" href="#call-函数"><span class="icon icon-link"></span></a>call 函数</h4>
+<p>call 函数是唯一一个可以用来创建新的参数化的函数。</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">call</span> &#x3C;expression>,&#x3C;parm1>,&#x3C;parm2>,...,&#x3C;parmn><span class="token punctuation">)</span>
+</span></code></pre>
+<hr>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">reverse <span class="token operator">=</span>  <span class="token variable">$</span><span class="token punctuation">(</span>2<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">foo <span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">call</span> reverse,a,b<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token target symbol">run</span><span class="token punctuation">:</span>
+</span><span class="code-line">	echo <span class="token variable">$</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># b a</span>
+</span></code></pre>
+<h4 id="shell-函数"><a aria-hidden="true" tabindex="-1" href="#shell-函数"><span class="icon icon-link"></span></a>shell 函数</h4>
+<p>使用操作系统 Shell 的命令</p>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line">contents <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">shell</span> cat foo<span class="token punctuation">)</span>
+</span><span class="code-line">files <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">shell</span> echo *.c<span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="控制-make-的函数"><a aria-hidden="true" tabindex="-1" href="#控制-make-的函数"><span class="icon icon-link"></span></a>控制 make 的函数</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">error</span> &#x3C;text ...><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># and</span>
+</span><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">warning</span> &#x3C;text ...><span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="origin-函数"><a aria-hidden="true" tabindex="-1" href="#origin-函数"><span class="icon icon-link"></span></a>origin 函数</h4>
+<pre class="language-makefile"><code class="language-makefile code-highlight"><span class="code-line"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">origin</span> &#x3C;variable><span class="token punctuation">)</span>
+</span></code></pre>
+<p>origin 函数用于告诉这个变量的从何而来</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>undefined</code></td><td align="left">如果 &#x3C;variable> 未定义，返回 <code>undefined</code></td></tr><tr><td align="left"><code>default</code></td><td align="left">如果 &#x3C;variable> 是默认的，如 <code>CC</code></td></tr><tr><td align="left"><code>environment</code></td><td align="left">如果 &#x3C;variable> 是环境变量，并且当 Makefile 执行时，-e 参数没有被打开</td></tr><tr><td align="left"><code>file</code></td><td align="left">如果 &#x3C;variable> 这个变量被定义在 Makefile 中。</td></tr><tr><td align="left"><code>command line</code></td><td align="left">如果 &#x3C;variable> 这个变量是被命令行定义的。</td></tr><tr><td align="left"><code>override</code></td><td align="left">如果 &#x3C;variable> 是被 override 指示符重新定义的。</td></tr><tr><td align="left"><code>automatic</code></td><td align="left">如果 &#x3C;variable> 是一个命令运行中的自动化变量</td></tr></tbody></table>
+<!--rehype:className=left-align-->
 </div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://seisman.github.io/how-to-write-makefile/overview.html">make 中文教程</a> <em>(seisman.github.io)</em></li>
