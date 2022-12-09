@@ -87,6 +87,7 @@ Quick Reference
 [React Native](./docs/react-native.md)<!--rehype:style=background: rgb(34 143 173);&class=tag&data-lang=React-->  
 [RegEx 正则表达式](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155);-->  
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198);-->  
+[Tailwind CSS](./docs/tailwindcss.md)<!--rehype:style=background: rgb(49 120 198);-->  
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131);-->  
 [Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->  
 [</> htmx](./docs/htmx.md)<!--rehype:style=background: rgb(52 101 164);&class=contributing-->  
