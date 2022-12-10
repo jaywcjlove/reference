@@ -729,6 +729,166 @@ Row(
 
 例如，需要文本和图标位于一个行的两端，而中间留白时。就可以使用 `Spacer`
 
+### ListView
+
+`ListView` 是一个支持滚动的列表组件。该组件默认支持上下滑动。
+`ListView`的默认构造函数，会立即初始化`children`中的所有子`widget`，无法动态加载。
+
+```dart
+ListView(
+  children: [
+    Text('1'),
+    Text('2'),
+    Text('3'),
+    Text('4'),
+  ],
+),
+```
+
+需要动态加载，则可以使用 `ListView.builder()`命名构函数。
+
+```dart
+// 动态生成4个Text
+ListView.builder(
+  itemBuilder: (BuildContext context, int index) {
+    return Text('$index');
+  },
+  itemCount: 4,
+),
+```
+
+需要在对`ListView`中的`Item`添加分割线，则可以借助`ListView.separated()`。
+
+```dart
+// separatorBuilder 函数用于在元素之间插入分割线。
+// 也可以返回其他widget。该widget会被插入各个元素之间。
+ListView.separated(
+  itemBuilder: (BuildContext context, int index) {
+    return Text('$index');
+  },
+  itemCount: 4,
+  separatorBuilder: (BuildContext context, int index) {
+    // 使用Divider widget 画一条粗为5，颜色为红色的线
+    return const Divider(
+      height: 5,
+      thickness: 5,
+      color: Colors.red,
+    );
+  },
+),
+```
+
+### GridView
+<!--rehype:wrap-class=col-span-2-->
+`GridView`可将元素显示为二维网格状的列表组件，并支持主轴方向滚动。
+使用GridView() 构造函数，需要传入gridDelegate和children。Flutter中已经提供了两种实现方式，分别是:
+
+- `SliverGridDelegateWithFixedCrossAxisCount()` 用于交叉轴方向固定数。
+- `SliverGridDelegateWithMaxCrossAxisExtent()` 用于交叉轴方向限制最大长度。
+
+```dart
+// 使用SliverGridDelegateWithFixedCrossAxisCount
+GridView(
+  gridDelegate:
+      const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+  children: List.generate(
+      8,
+      (index) => Container(
+            color: Colors.red[index % 8 * 100],
+            child: Text("index $index"),
+          )),
+),
+
+// 使用SliverGridDelegateWithMaxCrossAxisExtent
+ GridView(
+  gridDelegate:
+      SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 200),
+  children: List.generate(
+    8,
+    (index) => Container(
+      color: Colors.red[index % 8 * 100],
+      child: Text("index $index"),
+    ),
+  ),
+),
+```
+
+`GridView.builder()`命名构造可以实现元素的动态加载，与`ListView.builder()`类似
+
+```dart
+GridView.builder(
+  itemCount: 8,
+  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 4),
+  itemBuilder: (context, index) => Container(
+    color: Colors.red[index % 8 * 100],
+    child: Text("index $index"),
+  ),
+),
+```
+
+`Gridview.count()` 一个简单的构造函数，只需要传入`crossAxisCount`（交叉轴元素的个数）和`children`即可。
+
+```dart
+GridView.count(
+  crossAxisCount: 4, // 每行固定为4个
+  children: List.generate(
+      8,
+      (index) => Container(
+            color: Colors.red[index % 8 * 100],
+            child: Text("index $index"),
+          )),
+),
+```
+
+`GridView.extent()` 用于设定每个元素在交叉轴方向的最大尺寸。当程序运行在较大屏幕时通常能看到更多的元素，而不是少量元素的放大版。通过传入`maxCrossAxisExtent`,`Gridview`会根据屏幕尺寸自动选择合适的行数量。
+
+```dart
+GridView.extent(
+  maxCrossAxisExtent: 200,
+  children: List.generate(
+      8,
+      (index) => Container(
+            color: Colors.red[index % 8 * 100],
+            child: Text("index $index"),
+          )),
+),
+```
+
+`GridView.count()`和GridView.extent()`可以看作GridView的语法糖。
+
+### PageView
+
+使用`PageView`可以实现整屏页面滚动,默认为水平方向翻页。与`ListView`类似。
+
+- `pageSnapping`参数可以设置滑动时`Page`停留在任意位置。
+- `scrollDirection`参数设置滚动方向(默认为水平方向)。
+
+```dart
+PageView(
+  pageSnapping: false, // 取消页面固定
+  scrollDirection: Axis.vertical, // 设置为垂直方向滚动
+  children: [
+    for (int i = 0; i < 4; i++)
+      Container(
+        color: Colors.red[i % 4 * 100],
+      )
+  ],
+),
+```
+
+使用`PageView.builder()`命名构造，可以动态加载页面。与`ListView.builder()`类似。
+
+```dart
+PageView.builder(
+  pageSnapping: false,
+  scrollDirection: Axis.vertical,
+  itemBuilder: (BuildContext context, int index) => Container(
+    color: Colors.red[index % 4 * 100],
+  ),
+),
+```
+
 另见
 ---
 
