@@ -1,39 +1,40 @@
-Website: https://jaywcjlove.github.io/reference
+  Website: https://jaywcjlove.github.io/reference
+  ## Docker
 
-## Docker
+  [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Pulls](https://img.shields.io/docker/pulls/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
 
-[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Pulls](https://img.shields.io/docker/pulls/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
+  轻松通过  部署  网站。
 
-轻松通过  部署  网站。
-
-Using default tag: latest
+  Using default tag: latest
 latest: Pulling from wcjiang/reference
 8423351b5fdc: Pulling fs layer
 062f4bcd38d8: Pulling fs layer
 56262d77c13f: Pulling fs layer
 a948c7981443: Pulling fs layer
-61ac8c64dd07: Pulling fs layer
+f42f7866931f: Pulling fs layer
 a948c7981443: Waiting
-61ac8c64dd07: Waiting
-56262d77c13f: Download complete
-062f4bcd38d8: Download complete
+f42f7866931f: Waiting
 8423351b5fdc: Verifying Checksum
 8423351b5fdc: Download complete
-8423351b5fdc: Pull complete
+56262d77c13f: Verifying Checksum
+56262d77c13f: Download complete
+062f4bcd38d8: Verifying Checksum
+062f4bcd38d8: Download complete
 a948c7981443: Verifying Checksum
 a948c7981443: Download complete
+8423351b5fdc: Pull complete
 062f4bcd38d8: Pull complete
 56262d77c13f: Pull complete
+f42f7866931f: Verifying Checksum
+f42f7866931f: Download complete
 a948c7981443: Pull complete
-61ac8c64dd07: Verifying Checksum
-61ac8c64dd07: Download complete
-61ac8c64dd07: Pull complete
-Digest: sha256:b3a85e1590637d32f05a9f25123b9bc529c76d806ce8efa88d14af5839723ef8
+f42f7866931f: Pull complete
+Digest: sha256:e7dae96b8ce203f37b29861789defa2b655eb58b9a571de16cf953d4befe7f78
 Status: Downloaded newer image for wcjiang/reference:latest
 docker.io/wcjiang/reference:latest
 
-03634a323addcc2507b563d040f7131131e4b0b96a1f426b2922026dec05d454
+  a2e865a8022c350a4eeacfd7cf6b5a0b0f725dbd96b46570579e347564817707
 
-在浏览器中访问以下 URL
+  在浏览器中访问以下 URL
 
-
+  
