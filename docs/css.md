@@ -13,8 +13,6 @@ CSS 功能丰富，不仅仅是布局页面
 
 #### 外部样式表 `<link>`
 
-`
-
 ```html
 <link
   href="./path/to/stylesheet/style.css"
@@ -1521,6 +1519,43 @@ html {
 
 上面示例设置了当前卡片灰色
 
+### 使用 unset 而不是重置所有属性
+
+使用 `all` 速记来指定元素的所有属性。将值设置为 `unset` 会将元素的属性更改为其初始值：
+
+```css
+button {
+  all: unset;
+}
+```
+
+注意：`IE11` 不支持 `all` 和 `unset` 速记
+
+### 超出显示省略号
+
+```css
+p {
+  overflow: hidden;/*超出部分隐藏*/
+  /* 超出部分显示省略号 */
+  text-overflow:ellipsis;
+  /* 规定段落中的文本不进行换行 */
+  white-space: nowrap;
+  width: 250px;/*需要配合宽度来使用*/
+}
+```
+
+### 给正文添加行高
+
+您不需要为每个 `<p>`、`<h*>` 等添加行高。相反，将其添加到正文：
+
+```css
+body {
+  line-height: 1.5;
+}
+```
+
+这样文本元素可以很容易地从 `body` 继承
+
 ### 使用图像作为光标
 
 ```css
@@ -1651,6 +1686,114 @@ div {
 ```
 
 属性 [aspect-ratio](https://developer.mozilla.org/zh-CN/docs/Web/CSS/aspect-ratio) 可以非常容易的定义一个容器的长宽比
+
+### 等宽表格单元格
+
+尝试使用 `table-layout: fixed` 以保持单元格宽度相等：
+
+```css
+table {
+  table-layout: fixed;
+}
+```
+
+### 利用属性选择器来选择空链接
+
+当 `<a>` 元素没有文本内容，但有 `href` 属性的时候，显示它的 `href` 属性：
+
+```css
+a[href^="http"]:empty::before {
+  content: attr(href);
+}
+```
+
+### 给 “默认” 链接定义样式
+
+给 “默认” 链接定义样式：
+
+```css
+a[href]:not([class]) {
+  color: #008000;
+  text-decoration: underline;
+}
+```
+
+通常没有 `class` 属性，以上样式可以甄别它们，而且不会影响其它样式
+
+### 用 rem 调整全局大小；用 em 调整局部大小
+<!--rehype:wrap-class=row-span-2-->
+
+在根元素设置基本字体大小后 (`html { font-size: 100%; }`), 使用 em 设置文本元素的字体大小:
+
+```css
+h2 { 
+  font-size: 2em;
+}
+p {
+  font-size: 1em;
+}
+```
+
+然后设置模块的字体大小为 rem:
+
+```css
+article {
+  font-size: 1.25rem;
+}
+aside .module {
+  font-size: .9rem;
+}
+```
+
+现在，每个模块变得独立，更容易、灵活的样式便于维护
+
+### 隐藏没有静音、自动播放的影片
+
+这是一个自定义用户样式表的不错的技巧。避免在加载页面时自动播放。如果没有静音，则不显示视频：
+
+```css
+video[autoplay]:not([muted]) {
+  display: none;
+}
+```
+
+再次，我们利用了 `:not()` 的优点
+
+### 为更好的移动体验，为表单元素设置字体大小
+
+当触发 `<select>` 的下拉列表时，为了避免表单元素在移动浏览器（iOS Safari 和其它）上的缩放，加上font-size：
+
+```css
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  font-size: 16px;
+}
+```
+
+### 使用指针事件来控制鼠标事件
+
+指针事件允许您指定鼠标如何与其触摸的元素进行交互。要禁用按钮上的默认指针事件，例如：
+
+```css
+button:disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+```
+
+就这么简单
+
+### 在用作间距的换行符上设置 `display: none`
+
+用户使用额外的换行符
+
+```css
+br + br {
+  display: none;
+}
+```
 
 另见
 ---------
