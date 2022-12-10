@@ -4,7 +4,7 @@ Bash 备忘清单
 这是开始使用 linux bash shell 脚本的快速参考备忘单。
 
 入门
----------------
+-----
 
 ### hello.sh
 
@@ -837,12 +837,78 @@ if [[ "$1" == '--' ]]; then shift; fi
 ```
 
 ### 检查命令的结果
-<!--rehype:wrap-class=col-span-2-->
 
 ```bash
 if ping -c 1 google.com; then
     echo "看来您的互联网连接正常"
 fi
+```
+
+### grep 检查
+
+```bash
+if grep -q 'foo' ~/.bash_history; then
+    echo "您过去似乎输入过“foo”"
+fi
+```
+
+### 写入文件
+<!--rehype:wrap-class=row-span-6-->
+
+:-- | --
+:-- | --
+`cat` | 用于显示文本文件内容，全部输出
+`EOF` | `end of file`，表示文本结束符
+
+---
+
+```bash
+cat > output.txt <<EOF
+this is test eof
+this is test eof2
+EOF
+```
+
+输出 `cat output.txt`
+
+```
+this is test eof
+this is test eof2
+```
+
+追加内容
+
+```bash
+cat >>2.txt <<EOF
+456
+789
+EOF
+```
+
+`$` 等特殊字符时，须利用转义字符 `\`
+
+```bash
+cat > file <<EOF
+export ORACLE_SID=yqpt 
+export PATH=\$PATH:\$ORACLE_HOME/bin  
+EOF
+```
+
+取消变量替换，`EOF` 被加上双引号或者单引号，即可取消变量的替换
+
+```bash
+cat << "EOF" > output.sh
+echo "This is output"
+echo $1
+EOF
+```
+
+所有TAB键将全部忽略[不能是空格]
+
+```bash
+cat << -EOF
+        echo "This is output"
+EOF
 ```
 
 ### 特殊变量
@@ -856,15 +922,6 @@ fi
 `$0`       | shell 脚本的文件名
 
 见[特殊参数](http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables)。
-
-### grep 检查
-<!--rehype:wrap-class=col-span-2-->
-
-```bash
-if grep -q 'foo' ~/.bash_history; then
-    echo "您过去似乎输入过“foo”"
-fi
-```
 
 ### 反斜杠转义
 <!--rehype:wrap-class=row-span-2-->
