@@ -581,6 +581,7 @@ $ ffmpeg -f concat -i mylist.txt -c:v copy -c:a flac -strict -2 output.mp4
 
 视频过滤器
 ---
+<!--rehype:body-class=cols-2-->
 
 ### 格式
 
@@ -631,7 +632,6 @@ ffmpeg -i 1.mp4 -b:v 548k -vf delogo=x=10:y=10:w=120:h=45:show=1 output.mp4
 <!--rehype:className=wrap-text -->
 
 ### 创建缩略图
-<!--rehype:wrap-class=row-span-2-->
 
 在 10 秒时创建一个缩略图
 
@@ -686,6 +686,7 @@ $ ffmpeg -i 1.mp4 -i test.mp3 \
 
 音频过滤器
 ---
+<!--rehype:body-class=cols-2-->
 
 ### 调节音量
 
@@ -720,6 +721,7 @@ $ ffmpeg -i input.mp3 -af "channelmap=1-0|1-1" output.mp3
 
 流处理
 ---
+<!--rehype:body-class=cols-2-->
 
 ### 拉流
 
@@ -736,6 +738,7 @@ $ ffmpeg -re -i test.mp4 -f flv rtmp://127.0.0.1/test
 ```
 
 ### 转发
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
 # 拉取流并转发
