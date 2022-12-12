@@ -30,8 +30,8 @@ $ ruby --version
 
 <red>注意:</red> macOS 12.5.1 附带了 Ruby <pur>**2.6.8**</pur>，这不是 React Native 所要求的，React Native 70+ 需要 Ruby <yel>**2.7.5**</yel>，可以使用下面工具切换版本：
 
-- [rbenv](https://github.com/rbenv/rbenv)
-- [RVM](https://rvm.io/)
+- [rbenv](https://github.com/rbenv/rbenv) _推荐_
+- [RVM](https://rvm.io/) _推荐_
 - [chruby](https://github.com/postmodern/chruby)
 - 带有 [asdf-ruby](https://github.com/asdf-vm/asdf-ruby) 插件的 [asdf-vm](https://github.com/asdf-vm)
 <!--rehype:className=cols-2-->
