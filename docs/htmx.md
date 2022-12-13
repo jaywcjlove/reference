@@ -17,9 +17,15 @@
 [htmx](https://htmx.org/) 是 [intercooler.js](http://intercoolerjs.org/) 的继承者
 
 ```html
-<script src="https://unpkg.com/htmx.org@1.8.4"></script>
+<script
+  src="https://unpkg.com/htmx.org@1.8.4"
+>
+</script>
 <!-- 有一个按钮POST，通过AJAX点击 -->
-<button hx-post="/clicked" hx-swap="outerHTML">
+<button
+  hx-post="/clicked"
+  hx-swap="outerHTML"
+>
   点击我
 </button>
 ```
@@ -79,7 +85,7 @@ import 'htmx.org';
 表单按照通常的 `REST-ful` 模式将 `PUT` 发回 `/contacts/1`
 
 ### 删除行
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```html
 <table class="table delete-row-example">
@@ -140,6 +146,20 @@ img {
   transition: opacity 300ms ease-in;
 }
 ```
+
+### hx-swap
+
+:-- | --
+:-- | --
+`innerHTML` | 默认，替换目标元素的内部 `html`
+`outerHTML` | 用响应替换整个目标元素
+`beforebegin` | 在目标元素之前插入响应
+`afterbegin` | 目标元素的第一个子元素之前插入响应
+`beforeend` | 目标元素的最后一个子元素之后插入响应
+`afterend` | 在目标元素之后插入响应
+`delete` | 无论响应如何，都删除目标元素
+`none` | 不附加来自响应的内容 <br />_(带外项目仍将被处理)_
+<!--rehype:className=left-align-->
 
 API 参考
 ---
