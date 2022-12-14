@@ -256,8 +256,8 @@ Quick Reference
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
 </a>
-<a href="https://github.com/Smartdousha" title="Anko">
-  <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="Anko"/>
+<a href="https://github.com/Smartdousha" title="dousha">
+  <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="dousha"/>
 </a>
 <a href="https://github.com/Brid9e" title="Brid9e">
   <img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Brid9e"/>
