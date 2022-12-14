@@ -157,12 +157,12 @@ with app.test_request_context():
 
 ### HTTP 方法
 
-默认情况下，路由仅响应 `GET` 请求。您可以使用 `route()` 装饰器的方法参数来处理不同的 `HTTP` 方法
+默认路由仅响应 `GET` 请求。可以使用 `route()` 装饰器的方法参数来处理不同的 `HTTP` 方法
 
 ```py
 from flask import request
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login',methods=['GET','POST'])
 def login():
     if request.method == 'POST':
         return do_the_login()
