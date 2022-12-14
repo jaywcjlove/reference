@@ -41,9 +41,11 @@ $ ruby --version
 ```bash
 $ npx react-native init MyApp
 # 指定 React Native 版本创建
-$ npx react-native init MyApp --version X.XX.X
+$ npx react-native init MyApp \
+  --version X.XX.X
 # 创建 typescript 版本项目
-$ npx react-native init MyTSApp --template react-native-template-typescript
+$ npx react-native init MyTSApp \
+--template react-native-template-typescript
 ```
 
 安装依赖
@@ -58,8 +60,10 @@ $ bundle exec pod install # 以安装 iOS 依赖项
 运行你的 React Native 应用程序
 
 ```bash
-# 启动监听打包 JS 服务
+# 启动监听打包 JS 服务，默认端口 8081
 $ npx react-native start
+# 指定 8088 端口
+$ npx react-native start --port=8088
 # 启动 iOS 模拟器运行你的应用
 $ npx react-native run-ios
 ```
