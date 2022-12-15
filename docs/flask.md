@@ -181,3 +181,75 @@ def login_get():
 def login_post():
     return do_the_login()
 ```
+
+### Blueprint
+
+创建蓝图Bp1
+
+```py
+from flask import Blueprint, abort, jsonify
+
+# 定义Bp1，并定义url前缀为/img
+Bp1 = Blueprint('imgBlue', __name__, template_folder='templates', url_prefix='/img')
+
+
+@Bp1.route('/getimg')
+def getImg():
+    try:
+        return jsonify(name="img", size="100KB")
+    except Exception as e:
+        abort(e)
+```
+
+创建蓝图Bp2
+
+```py
+from flask import Blueprint, abort, jsonify
+
+# 定义Bp2，并定义url前缀为/vedio
+Bp2 = Blueprint('vedioBlue', __name__, template_folder='templates', url_prefix='/vedio')
+
+
+@Bp2.route('/getvedio')
+def getVedio():
+    try:
+        return jsonify(name="vedio", size="100GB")
+    except Exception as e:
+        abort(e)
+```
+
+在flask app中引用蓝图Bp1和Bp2
+
+```py
+from flask import Flask, jsonify
+from lantu.img import Bp1
+from lantu.vedio import Bp2
+
+app = Flask(__name__)
+
+# 注册蓝图到app
+app.register_blueprint(Bp1)
+app.register_blueprint(Bp2)
+
+
+@app.route('/')
+def index():
+    return jsonify(name='phyger')
+
+
+if __name__ == '__main__':
+    app.run(host="127.0.0.1", debug=True)
+```
+
+简单测试
+
+```bash
+curl http://127.0.0.1:5000/
+>> {"name":"phyger"}
+
+curl http://127.0.0.1:5000/img/getimg
+>> {"name": "img", "size": "100KB"}
+
+curl http://127.0.0.1:5000/vedio/getvedio
+>> {"name": "vedio", "size": "100GB"}
+```
