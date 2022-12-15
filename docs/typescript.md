@@ -1350,6 +1350,7 @@ const point = [3, 4] as const
 ```
 
 ### satisfies
+<!--rehype:wrap-class=row-span-2-->
 
 `satisfies` 允许将验证表达式的类型与某种类型匹配，而无需更改该表达式的结果类型。
 
@@ -1385,10 +1386,10 @@ const palette = {
 // undefined | number
 const redComponent = palette.red.at(0)
 ```
-
 <!--rehype:className=wrap-text-->
 
 ### 范型实例化表达式
+<!--rehype:wrap-class=row-span-2-->
 
 不使用的情况下：
 
@@ -1432,6 +1433,207 @@ const makeStringBox = makeBox<string>;
 makeStringBox(42);
 ```
 
+### 识别全局修改模块
+
+```ts
+declare global {
+  interface String {
+    fancyFormat(opts: FancyOption): string;
+  }
+}
+export interface FancyOption {
+  fancinessLevel: number;
+}
+```
+
+.d.ts 模版
+---
+
+### Module: Plugin
+
+例如，当您想使用扩展另一个库的 JavaScript 代码时
+
+```ts
+import { greeter } from "super-greeter";
+// 普通欢迎 API
+greeter(2);
+greeter("Hello world");
+// 现在我们在运行时用一个新函数扩展对象
+import "hyper-super-greeter";
+greeter.hyperGreet();
+```
+
+"`super-greeter`" 的定义：
+
+```ts
+/* 此示例说明如何为您的函数设置多个重载 */
+export interface GreeterFunction {
+  (name: string): void
+  (time: number): void
+}
+/* 此示例显示如何导出接口指定的函数 */
+export const greeter: GreeterFunction;
+```
+
+我们可以像下面这样扩展现有模块：
+
+```ts
+/* 导入这个模块添加到的模块 */
+import { greeter } from "super-greeter";
+/* 声明与上面导入的模块相同的模块，然后我们扩展 greeter 函数的现有声明 */
+export module "super-greeter" {
+  export interface GreeterFunction {
+    /** Greets even better! */
+    hyperGreet(): void;
+  }
+}
+```
+<!--rehype:className=wrap-text-->
+
+### 全局库模板 Global .d.ts
+<!--rehype:wrap-class=row-span-2-->
+
+全局库可能如下所示：
+
+```ts
+function createGreeting(s) {
+  return "Hello, " + s;
+}
+```
+
+或者像这样：
+
+```ts
+window.createGreeting = function (s) {
+  return "Hello, " + s;
+};
+```
+
+<pur>类型声明示例</pur>
+
+```ts
+/* 可以作为 myLib(3) 此处包含这些调用签名 */
+declare function myLib(a: string): string;
+declare function myLib(a: number): number;
+/* 如果你希望这个库的名称是一个有效的类型名称，你可以在这里这样做例如，这允许我们写 'var x: myLib'; 确保这确实有意义！ 如果没有，只需删除此声明并在下面的命名空间内添加类型 */
+interface myLib {
+  name: string;
+  length: number;
+  extras?: string[];
+}
+/* 如果您的库在全局变量上公开了属性，请将它们放在此处。 您还应该在此处放置类型（接口和类型别名） */
+declare namespace myLib {
+  // 我们可以写 'myLib.timeout = 50;'
+  let timeout: number;
+  // 我们可以访问 'myLib.version'，但不能更改它
+  const version: string;
+  // 我们可以通过 'let c = new myLib.Cat(42)' 创建一些类或参考例如 '函数 f(c: myLib.Cat) { ... }
+  class Cat {
+    constructor(n: number);
+    // 我们可以从 'Cat' 实例中读取 'c.age' 
+    readonly age: number;
+    // 我们可以从 'Cat' 实例调用 'c.purr()' 
+    purr(): void;
+  }
+  // 我们可以将变量声明为
+  //    'var s: myLib.CatSettings = { weight: 5, name: "Maru" };'
+  interface CatSettings {
+    weight: number;
+    name: string;
+    tailLength?: number;
+  }
+  // 我们可以写 'const v: myLib.VetID = 42;'
+  //   或 'const v: myLib.VetID = "bob";'
+  type VetID = string | number;
+  // 我们可以调用 'myLib.checkCat(c)' 或 'myLib.checkCat(c, v);'
+  function checkCat(c: Cat, s?: VetID);
+}
+```
+<!--rehype:className=wrap-text-->
+
+### Module: Function
+<!--rehype:wrap-class=row-span-2-->
+
+```ts
+import greeter from "super-greeter";
+greeter(2);
+greeter("Hello world");
+```
+
+要处理通过 `UMD` 和模块导入：
+
+```ts
+/* 如果此模块是一个 UMD 模块，在模块加载器环境之外加载时公开全局变量“myFuncLib”，请在此处声明该全局变量。 否则，删除此声明 */
+export as namespace myFuncLib;
+/* 此声明指定该函数是从文件中导出的对象 */
+export = Greeter;
+/* 此示例说明如何为您的函数设置多个重载 */
+declare function Greeter(name: string): Greeter.NamedReturnType;
+declare function Greeter(length: number): Greeter.LengthReturnType;
+```
+<!--rehype:className=wrap-text-->
+
+如果你也想从你的模块中公开类型，你可以把它们放在这个块中。 通常你会想要描述函数返回类型的形状； 如本例所示，应在此处声明该类型，请注意，如果您决定包含此命名空间，则模块可能会被错误地导入为命名空间对象，除非 `--esModuleInterop` 已打开： `import * as x from '[~THE MODULE~]';` 错误的！不要这样做!
+
+```ts
+declare namespace Greeter {
+  export interface LengthReturnType {
+    width: number;
+    height: number;
+  }
+  export interface NamedReturnType {
+    firstName: string;
+    lastName: string;
+  }
+  /**
+   * 如果模块也有属性，在这里声明它们。 例如，这个声明说这个代码是合法的：
+   *  import f = require('super-greeter');
+   *  console.log(f.defaultName);
+   */
+  export const defaultName: string;
+  export let defaultLength: number;
+}
+```
+<!--rehype:className=wrap-text-->
+
+### Module: Class
+
+例如，当您想要使用如下所示的 `JavaScript` 代码时：
+
+```ts
+const Greeter = require("super-greeter");
+const greeter = new Greeter();
+greeter.greet();
+```
+
+要处理通过 `UMD` 和模块导入：
+
+```ts
+export as namespace "super-greeter";
+/* 此声明指定类构造函数是从文件中导出的对象 */
+export = Greeter;
+/* 在此类中编写模块的方法和属性 */
+declare class Greeter {
+  constructor(customGreeting?: string);
+  greet: void;
+  myMethod(opts: MyClass.MyClassMethodOptions): number;
+}
+```
+<!--rehype:className=wrap-text-->
+
+如果你也想从你的模块中公开类型，你可以把它们放在这个块中，如果您决定包含此命名空间，则模块可能会被错误地导入为命名空间对象，除非 --esModuleInterop 已打开：
+ `import * as x from '[~THE MODULE~]';` 错误的！ 不要这样做！
+
+```ts
+declare namespace MyClass {
+  export interface MyClassMethodOptions {
+    width?: number;
+    height?: number;
+  }
+}
+```
+<!--rehype:className=wrap-text-->
+
 CLI
 ---
 
@@ -1463,7 +1665,7 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 `--init` _boolean_ | 初始化 TypeScript 项目并创建 tsconfig.json 文件
 `--listFilesOnly` _boolean_ | 打印作为编译一部分的文件名，然后停止处理
 `--locale` _string_ | 设置来自 TypeScript 的消息传递语言。 这不影响发射
-`--project` _string_ | 编译项目给定其配置文件的路径，或带有“tsconfig.json”的文件夹
+`--project` _string_ | 编译项目给定其配置文件的路径，或带有 'tsconfig.json' 的文件夹
 `--showConfig` _boolean_ | 打印最终配置而不是构建
 `--version` _boolean_ | 打印编译器的版本
 <!--rehype:className=style-list-->
