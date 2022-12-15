@@ -816,6 +816,9 @@ method.invoke(classLoader, url);
 - `SecureRandom` 实例用于生成安全的伪随机数流
 - `UUID` 表示一个不可变的通用唯一标识符
 - `Vector` 实现了一个可增长的对象数组
+- `LocalDate` 表示没有时区的日期，只包含年月日，不可变并且线程安全的，java8 及以上版本可用
+- `LocalTime` 表示没有时区的时间，只包含时分秒，不可变并且线程安全的，java8 及以上版本可用
+- `LocalDateTime` 表示没有时区的日期时间，同时包含年月日时分秒，不可变并且线程安全的，java8 及以上版本可用
 
 另见
 ---
