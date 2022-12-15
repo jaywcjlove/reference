@@ -253,4 +253,3 @@ curl http://127.0.0.1:5000/img/getimg
 curl http://127.0.0.1:5000/vedio/getvedio
 >> {"name": "vedio", "size": "100GB"}
 ```
-```
