@@ -256,6 +256,9 @@ REF_LABEL=网站首页
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
 </a>
+<a href="https://github.com/joyfully-W" title="joyfully-W">
+  <img src="https://avatars.githubusercontent.com/u/32212924?v=4" width="42;" alt="joyfully-W"/>
+</a>
 <a href="https://github.com/k983551019" title="k983551019">
   <img src="https://avatars.githubusercontent.com/u/48147837?v=4" width="42;" alt="k983551019"/>
 </a>
