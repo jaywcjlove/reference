@@ -38,7 +38,7 @@
 <p>本清单对 Flask 的入门进行了简要的概述，以及其常用示例。需要有 <code>HTML</code> 和 <code>Python</code> 基础。</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#相关链接">相关链接</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hello-world">Hello World</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#hellopy">hello.py</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#运行-hellopy-程序">运行 hello.py 程序</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#或">或</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#html-转义">HTML 转义</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#路由">路由</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量规则">变量规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#唯一-url--重定向行为">唯一 URL / 重定向行为</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#url-建设">URL 建设</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#http-方法">HTTP 方法</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#相关链接">相关链接</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hello-world">Hello World</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#hellopy">hello.py</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#运行-hellopy-程序">运行 hello.py 程序</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#或">或</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#html-转义">HTML 转义</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#路由">路由</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量规则">变量规则</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#唯一-url--重定向行为">唯一 URL / 重定向行为</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#url-建设">URL 建设</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#http-方法">HTTP 方法</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#blueprint">Blueprint</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="相关链接"><a aria-hidden="true" tabindex="-1" href="#相关链接"><span class="icon icon-link"></span></a>相关链接</h3><div class="wrap-body">
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a> <em>(developer.mozilla.org)</em></li>
@@ -199,6 +199,65 @@
 </span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>post</span><span class="token punctuation">(</span><span class="token string">'/login'</span><span class="token punctuation">)</span>
 </span><span class="code-line"><span class="token keyword">def</span> <span class="token function">login_post</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 </span><span class="code-line">    <span class="token keyword">return</span> do_the_login<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="blueprint"><a aria-hidden="true" tabindex="-1" href="#blueprint"><span class="icon icon-link"></span></a>Blueprint</h3><div class="wrap-body">
+<p>创建蓝图Bp1</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Blueprint<span class="token punctuation">,</span> abort<span class="token punctuation">,</span> jsonify
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 定义Bp1，并定义url前缀为/img</span>
+</span><span class="code-line">Bp1 <span class="token operator">=</span> Blueprint<span class="token punctuation">(</span><span class="token string">'imgBlue'</span><span class="token punctuation">,</span> __name__<span class="token punctuation">,</span> template_folder<span class="token operator">=</span><span class="token string">'templates'</span><span class="token punctuation">,</span> url_prefix<span class="token operator">=</span><span class="token string">'/img'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token decorator annotation punctuation">@Bp1<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/getimg'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">getImg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">try</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"img"</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token string">"100KB"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+</span><span class="code-line">        abort<span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+</span></code></pre>
+<p>创建蓝图Bp2</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Blueprint<span class="token punctuation">,</span> abort<span class="token punctuation">,</span> jsonify
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 定义Bp2，并定义url前缀为/vedio</span>
+</span><span class="code-line">Bp2 <span class="token operator">=</span> Blueprint<span class="token punctuation">(</span><span class="token string">'vedioBlue'</span><span class="token punctuation">,</span> __name__<span class="token punctuation">,</span> template_folder<span class="token operator">=</span><span class="token string">'templates'</span><span class="token punctuation">,</span> url_prefix<span class="token operator">=</span><span class="token string">'/vedio'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token decorator annotation punctuation">@Bp2<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/getvedio'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">getVedio</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">try</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"vedio"</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token string">"100GB"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+</span><span class="code-line">        abort<span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+</span></code></pre>
+<p>在flask app中引用蓝图Bp1和Bp2</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> jsonify
+</span><span class="code-line"><span class="token keyword">from</span> lantu<span class="token punctuation">.</span>img <span class="token keyword">import</span> Bp1
+</span><span class="code-line"><span class="token keyword">from</span> lantu<span class="token punctuation">.</span>vedio <span class="token keyword">import</span> Bp2
+</span><span class="code-line">
+</span><span class="code-line">app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 注册蓝图到app</span>
+</span><span class="code-line">app<span class="token punctuation">.</span>register_blueprint<span class="token punctuation">(</span>Bp1<span class="token punctuation">)</span>
+</span><span class="code-line">app<span class="token punctuation">.</span>register_blueprint<span class="token punctuation">(</span>Bp2<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">'phyger'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+</span><span class="code-line">    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span> debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>简单测试</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> http://127.0.0.1:5000/
+</span><span class="code-line"><span class="token operator">>></span> <span class="token punctuation">{</span><span class="token string">"name"</span><span class="token builtin class-name">:</span><span class="token string">"phyger"</span><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">curl</span> http://127.0.0.1:5000/img/getimg
+</span><span class="code-line"><span class="token operator">>></span> <span class="token punctuation">{</span><span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"img"</span>, <span class="token string">"size"</span><span class="token builtin class-name">:</span> <span class="token string">"100KB"</span><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">curl</span> http://127.0.0.1:5000/vedio/getvedio
+</span><span class="code-line"><span class="token operator">>></span> <span class="token punctuation">{</span><span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"vedio"</span>, <span class="token string">"size"</span><span class="token builtin class-name">:</span> <span class="token string">"100GB"</span><span class="token punctuation">}</span>
 </span></code></pre>
 </div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js" defer></script><script src="../js/fuse.min.js" defer></script><script src="../js/main.js" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
   <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
