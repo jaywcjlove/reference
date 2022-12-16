@@ -281,6 +281,9 @@ Quick Reference
 <a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
 </a>
+<a href="https://github.com/LightQuanta" title="Light_Quanta">
+  <img src="https://avatars.githubusercontent.com/u/18213217?v=4" width="42;" alt="Light_Quanta"/>
+</a>
 <a href="https://github.com/Lihuagreek" title="Lihuagreek">
   <img src="https://avatars.githubusercontent.com/u/51040740?v=4" width="42;" alt="Lihuagreek"/>
 </a>
