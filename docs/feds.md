@@ -6,49 +6,71 @@ FED 前端导航
 社区
 ---
 
-[CSDN](https://www.csdn.net/)<!--rehype:target=_blank-->
-[GitHub](https://github.com/)<!--rehype:target=_blank-->
-[InfoQ](http://www.infoq.com/cn)<!--rehype:target=_blank-->
+[CSDN](https://www.csdn.net/)<!--rehype:target=_blank&style=background: rgb(252 85 49/var(\-\-bg\-opacity));-->
+[GitHub](https://github.com/)<!--rehype:target=_blank&style=background: rgb(0 0 0/var(\-\-bg\-opacity));-->
+[InfoQ](http://www.infoq.com/cn)<!--rehype:target=_blank&style=background: rgb(66 133 244/var(\-\-bg\-opacity));-->
 [Medium](https://medium.com/topic/technology)<!--rehype:target=_blank-->
-[SegmentFault](https://segmentfault.com/)<!--rehype:target=_blank-->
-[Stack Overflow](https://stackoverflow.com/)<!--rehype:target=_blank-->
-[V2EX](https://www.v2ex.com/?tab=tech)<!--rehype:target=_blank-->
-[博客园](https://www.cnblogs.com/)<!--rehype:target=_blank-->
-[开源中国](https://www.oschina.net/)<!--rehype:target=_blank-->
-[稀土掘金](https://juejin.im/)<!--rehype:target=_blank-->
+[SegmentFault](https://segmentfault.com/)<!--rehype:target=_blank&style=background: rgb(0 150 94/var(\-\-bg\-opacity));-->
+[Stack Overflow](https://stackoverflow.com/)<!--rehype:target=_blank&style=background: rgb(244 130 37/var(\-\-bg\-opacity));-->
+[V2EX](https://www.v2ex.com/?tab=tech)<!--rehype:target=_blank&style=background: rgb(0 0 0/var(\-\-bg\-opacity));-->
+[博客园](https://www.cnblogs.com/)<!--rehype:target=_blank&style=background: rgb(46 122 203/var(\-\-bg\-opacity));-->
+[开源中国](https://www.oschina.net/)<!--rehype:target=_blank&style=background: rgb(43 179 81/var(\-\-bg\-opacity));-->
+[稀土掘金](https://juejin.im/)<!--rehype:target=_blank&style=background: rgb(30 128 255/var(\-\-bg\-opacity));-->
+[W3cplus](https://www.w3cplus.com/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card-->
 
 构建工具
 ---
 
-[Webpack](http://webpack.github.io/)<!--rehype:target=_blank-->
-[NPM](https://www.npmjs.com/)<!--rehype:target=_blank-->
-[Yarn](https://yarnpkg.com/zh-Hans/)<!--rehype:target=_blank-->
-[pnpm](https://pnpm.io/)<!--rehype:target=_blank-->
-[Lerna](https://lerna.js.org/)<!--rehype:target=_blank-->
-[Vitejs](https://cn.vitejs.dev/)<!--rehype:target=_blank-->
-[Gulp](https://gulpjs.com/)<!--rehype:target=_blank-->
-[Parcel](https://en.parceljs.org/)<!--rehype:target=_blank-->
-[Rollup](https://rollupjs.org/guide/en/)<!--rehype:target=_blank-->
-[Turbopack](https://turbo.build/)<!--rehype:target=_blank-->
-[Create React App](https://create-react-app.dev/)<!--rehype:target=_blank-->
-[Browserify](http://browserify.org/)<!--rehype:target=_blank-->
+[Webpack](http://webpack.github.io/)<!--rehype:target=_blank&style=background: rgb(107 148 216/var(\-\-bg\-opacity));-->
+[NPM](https://www.npmjs.com/)<!--rehype:target=_blank&style=background: rgb(203 8 1/var(\-\-bg\-opacity));-->
+[Yarn](https://yarnpkg.com/zh-Hans/)<!--rehype:target=_blank&style=background: rgb(33 136 182/var(\-\-bg\-opacity));-->
+[pnpm](https://pnpm.io/)<!--rehype:target=_blank&style=background: rgb(246 146 32/var(\-\-bg\-opacity));-->
+[Lerna](https://lerna.js.org/)<!--rehype:target=_blank&style=background: rgb(147 51 234/var(\-\-bg\-opacity));-->
+[Vitejs](https://cn.vitejs.dev/)<!--rehype:target=_blank&style=background: rgb(188 52 254/var(\-\-bg\-opacity));-->
+[Gulp](https://gulpjs.com/)<!--rehype:target=_blank&style=background: rgb(207 70 71/var(\-\-bg\-opacity));-->
+[Parcel](https://en.parceljs.org/)<!--rehype:target=_blank&style=background: rgb(192 145 99/var(\-\-bg\-opacity));-->
+[Rollup](https://rollupjs.org/guide/en/)<!--rehype:target=_blank&style=background: rgb(239 51 53/var(\-\-bg\-opacity));-->
+[Turbopack](https://turbo.build/)<!--rehype:target=_blank&style=background: rgb(248 30 87/var(\-\-bg\-opacity));-->
+[Create React App](https://create-react-app.dev/)<!--rehype:target=_blank&style=background: rgb(60 106 146/var(\-\-bg\-opacity));-->
+[Browserify](http://browserify.org/)<!--rehype:target=_blank&style=background: rgb(60 106 146/var(\-\-bg\-opacity));-->
 [Yeoman](http://yeoman.io/)<!--rehype:target=_blank-->
 [Grunt](https://gruntjs.com/)<!--rehype:target=_blank-->
-[Babel](https://babeljs.io/)<!--rehype:target=_blank-->
+[Babel](https://babeljs.io/)<!--rehype:target=_blank&style=background: rgb(245 218 85/var(\-\-bg\-opacity));-->
 [FIS3](https://fex-team.github.io/fis3/)<!--rehype:target=_blank-->
+<!--rehype:class=home-card-->
+
+教程文档
+---
+
+[MDN Web Docs](https://developer.mozilla.org/zh-CN/)<!--rehype:target=_blank&style=background: rgb(140 181 255/var(\-\-bg\-opacity));-->
+[ECMAScript 6 入门](https://es6.ruanyifeng.com/)<!--rehype:target=_blank-->
+[W3C 标准](http://w3help.org/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card-->
 
 JavaScript 工具
 ---
 
 [Chrome Dev Tools](https://www.google.cn/chrome/)<!--rehype:target=_blank-->
-[ESLint](https://eslint.org/)<!--rehype:target=_blank-->
+[CoffeeScript](https://coffeescript.org/)<!--rehype:target=_blank-->
 [Firefox Developer Tools](https://www.mozilla.org/zh-CN/firefox/new/)<!--rehype:target=_blank-->
-[flow](https://flow.org/)<!--rehype:target=_blank-->
-[JSHint](http://jshint.com/)<!--rehype:target=_blank-->
-[JS压缩，格式化](https://www.css-js.com/)<!--rehype:target=_blank-->
+[flow](https://flow.org/)<!--rehype:target=_blank&style=background: rgb(232 189 54/var(\-\-bg\-opacity));-->
+[TypeScript](https://www.typescriptlang.org/)<!--rehype:target=_blank&style=background: rgb(49 120 197/var(\-\-bg\-opacity));-->
+[JS 压缩，格式化](https://www.css-js.com/)<!--rehype:target=_blank-->
+[JSDoc](https://jsdoc.app/)<!--rehype:target=_blank&style=background: rgb(197 149 199/var(\-\-bg\-opacity));-->
 [UglifyJS](http://lisperator.net/uglifyjs/transform)<!--rehype:target=_blank-->
+[Prettier](https://prettier.io/)<!--rehype:target=_blank&style=background: rgb(197 149 199/var(\-\-bg\-opacity));-->
+<!--rehype:class=home-card-->
+
+JavaScript 测试工具
+---
+
+[Chai](http://chaijs.com/)<!--rehype:target=_blank&style=background: rgb(164 8 1/var(\-\-bg\-opacity));-->
+[ESLint](https://eslint.org/)<!--rehype:target=_blank&style=background: rgb(76 50 195/var(\-\-bg\-opacity));-->
+[JSHint](http://jshint.com/)<!--rehype:target=_blank-->
+[Jasmine](https://jasmine.github.io/)<!--rehype:target=_blank&style=background: rgb(138 65 130/var(\-\-bg\-opacity));-->
+[Jest](https://jestjs.io/)<!--rehype:target=_blank&style=background: rgb(158 79 101/var(\-\-bg\-opacity));-->
+[Mochajs](https://mochajs.org/)<!--rehype:target=_blank&style=background: rgb(141 103 72/var(\-\-bg\-opacity));-->
 <!--rehype:class=home-card-->
 
 CSS 工具
@@ -73,9 +95,24 @@ CSS 工具
 [Normalize.css](http://necolas.github.io/normalize.css/)<!--rehype:target=_blank-->
 [PostCSS](http://postcss.org/)<!--rehype:target=_blank-->
 [purifycss](https://github.com/purifycss/purifycss)<!--rehype:target=_blank-->
-[SASS](http://sass-lang.com/)<!--rehype:target=_blank-->
+[Less](https://lesscss.org/)<!--rehype:target=_blank&style=background: rgb(36 74 121/var(\-\-bg\-opacity));-->
+[SASS](http://sass-lang.com/)<!--rehype:target=_blank&style=background: rgb(191 64 128/var(\-\-bg\-opacity));-->
 [Sprite Cow](http://www.spritecow.com/)<!--rehype:target=_blank-->
-[stylus](http://stylus-lang.com/)<!--rehype:target=_blank-->
+[Stylus](http://stylus-lang.com/)<!--rehype:target=_blank&style=background: rgb(126 194 66/var(\-\-bg\-opacity));-->
+[Stylelint](https://stylelint.io/)<!--rehype:target=_blank-->
+<!--rehype:class=home-card-->
+
+框架类库
+---
+
+[React](https://facebook.github.io/react/)<!--rehype:target=_blank&style=background: rgb(97 218 251/var(\-\-bg\-opacity));-->
+[Vue 中文](https://cn.vuejs.org/)<!--rehype:target=_blank&style=background: rgb(66 184 131/var(\-\-bg\-opacity));-->
+[Angular](https://angular.io/)<!--rehype:target=_blank&style=background: rgb(195 8 47/var(\-\-bg\-opacity));-->
+[jQuery](http://www.jquery123.com/)<!--rehype:target=_blank-->
+[Bootstrap](https://getbootstrap.com/)<!--rehype:target=_blank&style=background: rgb(113 44 249/var(\-\-bg\-opacity));-->
+[React Native 中文](https://reactnative.cn/)<!--rehype:target=_blank&style=background: rgb(36 120 194/var(\-\-bg\-opacity));-->
+[Flutter](https://flutter.dev/)<!--rehype:target=_blank&style=background: rgb(35 104 215/var(\-\-bg\-opacity));-->
+[RxJs](http://reactivex.io/rxjs/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card-->
 
 在线代码编辑器工具
