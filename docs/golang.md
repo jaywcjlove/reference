@@ -70,7 +70,7 @@ func say(message string) {
 多行注释 */
 ```
 
-### 如果语句
+### if 语句
 
 ```go
 if true {
@@ -431,7 +431,7 @@ for {
 }
 ```
 
-Golang 结构和映射
+Golang 结构和Maps
 --------
 
 ### 定义
@@ -467,7 +467,7 @@ v := Vertex{X: 1}
 
 您还可以输入字段名
 
-### 映射
+### Maps
 <!--rehype:wrap-class=row-span-2-->
 
 ```go
@@ -511,7 +511,7 @@ fmt.Println(plus(1, 2))
 fmt.Println(plusPlus(1, 2, 3))
 ```
 
-### 多次返回
+### 多返回值
 
 ```go
 func vals() (int, int) {
@@ -533,7 +533,7 @@ r1, r2 := func() (string, string) {
 fmt.Println(r1, r2)
 ```
 
-### 命名返回
+### 命名返回值
 
 ```go
 func split(sum int) (x, y int) {
@@ -546,7 +546,7 @@ fmt.Println(x)   // => 7
 fmt.Println(y)   // => 10
 ```
 
-### 变量函数
+### 可变参数函数
 
 ```go
 func sum(nums ...int) {
@@ -557,7 +557,7 @@ func sum(nums ...int) {
   }
   fmt.Println(total)
 }
-sum(1, 2)     //=> [1 2] 3
+sum(1, 2)     // => [1 2] 3
 sum(1, 2, 3)  // => [1 2 3] 6
 nums := []int{1, 2, 3, 4}
 sum(nums...)  // => [1 2 3 4] 10
@@ -987,7 +987,7 @@ Go 命令
 `GOOS`         | 编译系统
 `GOARCH`       | 编译arch
 `GO111MODULE`  | gomod开关
-`GOPROXY`      | go代理 <https://goproxy.io>  <https://goproxy.cn>
+`GOPROXY`      | go代理 <https://goproxy.io>  <https://goproxy.cn>  <https://mirrors.aliyun.com/goproxy/>
 `GOSSAFUNC`    | 生成 `SSA.html` 文件，展示代码优化的每一步 `GOSSAFUNC=func_name go build`
 <!--rehype:className=style-list-arrow-->
 
