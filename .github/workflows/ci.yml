@@ -135,7 +135,7 @@ jobs:
         with:
           push: true
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64,linux/arm64/v7
           tags: ${{ secrets.DOCKER_USER }}/reference:latest
 
       - name: Build and push image:tags
@@ -144,7 +144,7 @@ jobs:
         with:
           push: true
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64,linux/arm64/v7
           tags: ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
 
       # Create Docker Image in Github
@@ -160,7 +160,7 @@ jobs:
         with:
           push: true
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64,linux/arm64/v7
           tags: ghcr.io/jaywcjlove/reference:latest
 
       - name: Build and push image:tags
@@ -169,7 +169,7 @@ jobs:
         with:
           push: true
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64,linux/arm64/v7
           tags: ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
 
       # # Create Docker Image in Github
