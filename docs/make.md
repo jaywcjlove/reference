@@ -28,15 +28,15 @@ a.txt: b.txt c.txt
 
 ### 文件命令
 
-文件会以 `GNUmakefile`（不推荐使用）、`Makefile`、`makefile` 查找目录下的名称。
+make命令会以 `GNUmakefile`（不推荐使用）、`makefile`、`Makefile`（推荐使用）的顺序查找当前目录下的文件。
 
-#### 自定义文件名称
+#### 自定义文件路径
 
 ```bash
-$ make target -f NAME
+$ make target -f FILE
 ```
 
-我们可以使用 `-f NAME` 来指定需要编译的文件名
+我们可以使用 `-f FILE` 来指定makefile文件的路径
 
 #### 隐式生成
 
