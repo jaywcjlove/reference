@@ -293,7 +293,7 @@ print(a ^ b) -- 64.0
 ---
 
 ### 运算符
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 #### 关系运算符
 
