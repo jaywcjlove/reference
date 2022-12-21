@@ -1190,6 +1190,88 @@ console.log(myCat.name);
 myCat.name = 'Yankee';
 ```
 
+### Proxy
+Proxy 对象用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找、赋值、枚举、函数调用等）。
+```javascript
+// 用于拦截对象的读取属性操作。
+const handler = {
+    get: function(obj, prop) {
+        return prop in obj ? obj[prop] : 37;
+    }
+};
+
+const p = new Proxy({}, handler);
+p.a = 1;
+p.b = undefined;
+
+console.log(p.a, p.b);      // 1, undefined
+console.log('c' in p, p.c); // false, 37
+```
+
+#### 语法
+```javascript
+const p = new Proxy(target, handler)
+```
+- target 要使用 Proxy 包装的目标对象（可以是任何类型的对象，包括原生数组，函数，甚至另一个代理）。
+- handler 一个通常以函数作为属性的对象，各属性中的函数分别定义了在执行各种操作时代理 p 的行为。
+
+#### 方法
+:- | :-
+:- | :-
+`Proxy.revocable()` | 创建一个可撤销的Proxy对象。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/revocable)
+
+#### handler 对象的方法
+:- | :-
+:- | :-
+`handler.getPrototypeOf()`|Object.getPrototypeOf 方法的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/getPrototypeOf)
+`handler.setPrototypeOf()`|Object.setPrototypeOf 方法的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/setPrototypeOf)
+`handler.isExtensible()`|Object.isExtensible 方法的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/isExtensible)
+`handler.preventExtensions()`|Object.preventExtensions 方法的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/preventExtensions)
+`handler.getOwnPropertyDescriptor()`|Object.getOwnPropertyDescriptor 方法的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/getOwnPropertyDescriptor)
+`handler.defineProperty()`|Object.defineProperty 方法的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/defineProperty)
+`handler.has()`|in 操作符的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/has)
+`handler.get()`|属性读取操作的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/get)
+`handler.set()`|属性设置操作的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/set)
+`handler.deleteProperty()`|delete 操作符的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/deleteProperty)
+`handler.ownKeys()`|Object.getOwnPropertyNames 方法和 Object.getOwnPropertySymbols 方法的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/ownKeys)
+`handler.apply()`|函数调用操作的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/apply)
+`handler.construct()`|new 操作符的捕捉器。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/construct)
+
+### Reflect
+Reflect 是一个内置的对象，它提供拦截 JavaScript 操作的方法。这些方法与proxy handlers (en-US)的方法相同。Reflect不是一个函数对象，因此它是不可构造的。
+```javascript
+// 检测一个对象是否存在特定属性
+const duck = {
+  name: 'Maurice',
+  color: 'white',
+  greeting: function() {
+    console.log(`Quaaaack! My name is ${this.name}`);
+  }
+}
+
+Reflect.has(duck, 'color');
+// true
+Reflect.has(duck, 'haircut');
+// false
+```
+
+#### 静态方法
+:- | :-
+:- | :-
+`Reflect.apply(target, thisArgument, argumentsList)` | 对一个函数进行调用操作，同时可以传入一个数组作为调用参数。和 Function.prototype.apply() 功能类似。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/apply)
+`Reflect.construct(target, argumentsList[, newTarget])` | 对构造函数进行 new 操作，相当于执行 new target(...args)。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/construct)
+`Reflect.defineProperty(target, propertyKey, attributes)` | 和 Object.defineProperty() 类似。如果设置成功就会返回 true。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/defineProperty)
+`Reflect.deleteProperty(target, propertyKey)` | 作为函数的delete操作符，相当于执行 delete target[name]。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/deleteProperty)
+`Reflect.get(target, propertyKey[, receiver])` | 获取对象身上某个属性的值，类似于 target[name]。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/get)
+`Reflect.getOwnPropertyDescriptor(target, propertyKey)`  | 类似于 Object.getOwnPropertyDescriptor()。如果对象中存在该属性，则返回对应的属性描述符，否则返回 undefined。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/getOwnPropertyDescriptor)
+`Reflect.getPrototypeOf(target)` | 类似于 Object.getPrototypeOf()。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/getPrototypeOf)
+`Reflect.has(target, propertyKey)` | 判断一个对象是否存在某个属性，和 in 运算符 的功能完全相同。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/has)
+`Reflect.isExtensible(target)` | 类似于 Object.isExtensible().[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/isExtensible)
+`Reflect.ownKeys(target)` | 返回一个包含所有自身属性（不包含继承属性）的数组。(类似于 Object.keys(), 但不会受enumerable 影响).[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys)
+`Reflect.preventExtensions(target)` | 类似于 Object.preventExtensions()。返回一个Boolean。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/preventExtensions)
+`Reflect.set(target, propertyKey, value[, receiver])` | 将值分配给属性的函数。返回一个Boolean，如果更新成功，则返回true。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/set)
+`Reflect.setPrototypeOf(target, prototype)` | 设置对象原型的函数。返回一个 Boolean，如果更新成功，则返回 true。[#](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/setPrototypeOf)
+
 JavaScript this 绑定
 ----
 
