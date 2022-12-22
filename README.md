@@ -244,6 +244,9 @@ Quick Reference
 <a href="https://github.com/1834423612" title="kjch">
   <img src="https://avatars.githubusercontent.com/u/49981661?v=4" width="42;" alt="kjch"/>
 </a>
+<a href="https://github.com/pangxiaoli" title="pangxiaoli">
+  <img src="https://avatars.githubusercontent.com/u/54620953?v=4" width="42;" alt="pangxiaoli"/>
+</a>
 <a href="https://github.com/partoneplay" title="partoneplay">
   <img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/>
 </a>
@@ -306,6 +309,9 @@ Quick Reference
 </a>
 <a href="https://github.com/QDelta" title="QDelta">
   <img src="https://avatars.githubusercontent.com/u/60222316?v=4" width="42;" alt="QDelta"/>
+</a>
+<a href="https://github.com/qinxiongzhou" title="Ryan Zhou">
+  <img src="https://avatars.githubusercontent.com/u/33239096?v=4" width="42;" alt="Ryan Zhou"/>
 </a>
 <a href="https://github.com/whb1998a" title="WHB">
   <img src="https://avatars.githubusercontent.com/u/44045064?v=4" width="42;" alt="WHB"/>
@@ -420,6 +426,8 @@ Quick Reference
 [eryajf.net](https://ref.eryajf.net/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [kjchmc.cn](https://ref.kjchmc.cn/)<!--rehype:target=_blank&class=contributing&data-info=👆实时同步，多线路-->
 [likeadmin.cn](https://www.likeadmin.cn/quickref/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[ref.qiubit.cc](http://ref.qiubit.cc)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[aoh.cc](https://aoh.cc/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。

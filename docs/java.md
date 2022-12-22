@@ -89,7 +89,7 @@ boolean[] answers = {true, false};
 
 查看: [Arrays](#java-数组)
 
-### Swap
+### 交换变量 Swap
 
 ```java
 int a = 1;
@@ -101,7 +101,7 @@ b = temp;
 System.out.println(a + " " + b); // 2 1
 ```
 
-### Type Casting
+### 类型转换 Type Casting
 
 ```java
 // Widening
@@ -344,7 +344,7 @@ for (int a: arr) {
 // 输出: a b c 
 ```
 
-### Multidimensional Arrays
+### 二维数组 Multidimensional Arrays
 
 ```java
 int[][] matrix = { {1, 2, 3}, {4, 5} };
@@ -359,7 +359,7 @@ for (int i = 0; i < a.length; ++i) {
 // 输出: 1 2 3 4 5 6 7 
 ```
 
-### Sort
+### 排序 Sort
 
 ```java
 char[] chars = {'b', 'a', 'c'};
@@ -547,10 +547,10 @@ for (int i = 0; i < 5; i++) {
 Java 框架搜集
 --------------------
 
-### Java 搜集
+### Java 集合
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-搜集 | Interface   | 有序 | 已排序 | 线程安全 | 复制 | Nullable
+集合 | Interface   | 有序 | 已排序 | 线程安全 | 复制 | Nullable
 :-|:-|:-|:-|:-|:-|:-
 [ArrayList](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html)                                    | List        | Y       | _N_    | _N_         | Y         | Y
 [Vector](https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html)                                          | List        | Y       | _N_    | Y           | Y         | Y
@@ -613,6 +613,25 @@ m.forEach((key, value) -> {
     String msg = key + ": " + value;
     System.out.println(msg);
 });
+```
+
+### ConcurrentHashMap
+
+```java
+ConcurrentHashMap<Integer, String> m
+            = new ConcurrentHashMap<>();
+m.put(100, "Hello");
+m.put(101, "Geeks");
+m.put(102, "Geeks");
+// 移除
+m.remove(101, "Geeks");
+
+// 如果不存在，就添加，存在就不变更
+m.putIfAbsent(103, "Hello");
+ 
+// 替换
+m.replace(101, "Hello", "For");
+System.out.println(m);
 ```
 
 ### HashSet
@@ -771,7 +790,7 @@ text.split(Pattern.quote("|"));
 `Math.toDegrees(rad)` | 以度为单位的角度弧度
 `Math.toRadians(deg)` | 以弧度为单位的角度度
 
-### Try/Catch/Finally
+### 异常 Try/Catch/Finally
 
 ```java
 try {
