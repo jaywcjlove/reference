@@ -545,6 +545,85 @@ int main() {
 }
 ```
 
+### Lambda表达式
+
+Lambda表达式可以在函数内定义，可以理解为在函数内定义的临时函数。格式：
+
+```c++
+auto func = []() -> return_type { };
+```
+
++ `[]`为捕获列表，能够捕获其所在函数的局部变量
+    + 一个空的捕获列表代表Lambda表达式不捕获任何的变量
+    + 对于值捕获，直接在中括号中填写要捕获的变量即可：
+    
+        ```c++
+        int val = 5;
+        auto func = [val]() -> return_type { };
+        ```
+        
+    + 对于引用捕获，需要在捕获的变量前添加`&`：
+
+        ```c++
+        string str("hello world!");
+        auto func = [&str]() -> return_type { };
+        ```
+        
+    + 如果变量太多，需要编译器根据我们编写的代码自动捕获，可以采用隐式捕获的方式。
+        
+        + 全部值捕获：
+
+            ```c++
+            int val1, val2;
+            auto func = [=]() -> int
+                {
+                    return val1 + val2;
+                };
+            ```
+        
+        + 全部引用捕获：
+
+            ```c++
+            string str1("hello"), str2("word!");
+            auto func = [&]() -> string
+                {
+                    return str1 + str2;
+                };
+            ```
+            
+        + 混合隐式捕获：
+
+          如果希望对一部分变量采用值捕获，对其他变量采用引用捕获，可以混合使用：
+          
+            ```c++
+            int val1 = 123, val2 = 456;
+            string str1("123"), str2(456);
+          
+            auto func1 = [=, &str1]() -> int
+                {
+                    return val1 == std::stoi(str1) ? val1 : val2;
+                };
+                
+            auto func2 = [&, val1]() -> int
+                {
+                    return str1 == std::to_string(val1) ? str1 : str2;
+                };
+            ```
+
++ `()`是参数列表，我们只需要按照普通函数的使用方法来使用即可
++ `return_type`是函数的返回类型，`-> return_type`可以不写，编译器会自动推导
++ `{}`中的内容就是函数体，依照普通函数的使用方法使用即可
+
+此处给出一个Lambda表达式的实际使用例子（当然可以使用`str::copy`）：
+
+```c++
+std::vector<int> vec({1, 2, 3, 4, 5});  // vec中包含1, 2, 3, 4, 5
+std::for_each(vec.begin(), vec.end(), [](int& ele) -> void
+    {
+        std::cout << ele << " ";
+    });
+```
+
 C++ 预处理器
 ------------
 
