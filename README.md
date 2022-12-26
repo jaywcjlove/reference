@@ -161,6 +161,7 @@ Quick Reference
 ## 数据库
 
 [MySQL](./docs/mysql.md)<!--rehype:style=background: rgb(1 117 143);&class=tag&data-lang=SQL-->  
+[MongoDB](./docs/mongodb.md)<!--rehype:style=background: rgb(0 237 100);-->  
 [Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);&class=tag&data-lang=SQL-->  
 [PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163);&class=tag&data-lang=SQL-->  
 [Redis](./docs/redis.md)<!--rehype:style=background: rgb(198 47 44);-->  
