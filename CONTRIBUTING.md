@@ -229,6 +229,9 @@ REF_LABEL=网站首页
 <a href="https://github.com/likeshop-github" title="LikeShop技术社区">
   <img src="https://avatars.githubusercontent.com/u/77180968?v=4" width="42;" alt="LikeShop技术社区"/>
 </a>
+<a href="https://github.com/LiuYuan-SHU" title="Liuyuan">
+  <img src="https://avatars.githubusercontent.com/u/96400967?v=4" width="42;" alt="Liuyuan"/>
+</a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
 </a>
