@@ -1,7 +1,7 @@
 iptables 备忘清单
 ====
 
-iptables 是一个配置 Linux 内核 防火墙(opens new window)的命令行工具，是 [netfilter](https://en.wikipedia.org/wiki/Netfilter)(opens new window)项目的一部分。这个快速参考备忘单显示了它的常用命令使用清单
+iptables 是一个配置 Linux 内核防火墙的命令行工具，是 [netfilter](https://en.wikipedia.org/wiki/Netfilter) 项目的一部分。这个快速参考备忘单显示了它的常用命令使用清单
 
 入门
 ---
