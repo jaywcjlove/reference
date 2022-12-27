@@ -118,9 +118,9 @@ CSS 工具
 在线代码编辑器工具
 ---
 
-[CodePen](http://codepen.io/)<!--rehype:target=_blank-->
+[CodePen(http)](http://codepen.io/)<!--rehype:target=_blank-->
 [CodeSandbox](https://codesandbox.io/)<!--rehype:target=_blank-->
-[CodePen](https://codepen.io/)<!--rehype:target=_blank-->
+[CodePen(https)](https://codepen.io/)<!--rehype:target=_blank-->
 [StackBlitz](https://stackblitz.com/)<!--rehype:target=_blank-->
 [esbuild](https://esbuild.github.io/)<!--rehype:target=_blank-->
 [JSFiddle](https://jsfiddle.net/)<!--rehype:target=_blank-->
