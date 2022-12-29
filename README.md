@@ -436,6 +436,7 @@ Quick Reference
 [likeadmin.cn](https://www.likeadmin.cn/quickref/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [ref.qiubit.cc](http://ref.qiubit.cc)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [aoh.cc](https://aoh.cc/)<!--rehype:target=_blank-->
+[reference.code05.com](https://reference.code05.com/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
