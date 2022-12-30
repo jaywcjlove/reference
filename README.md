@@ -240,6 +240,9 @@ Quick Reference
 <a href="https://github.com/sjh42" title="42:p">
   <img src="https://avatars.githubusercontent.com/u/34529275?v=4" width="42;" alt="42:p"/>
 </a>
+<a href="https://github.com/LiuYuan-SHU" title="Liuyuan">
+  <img src="https://avatars.githubusercontent.com/u/96400967?v=4" width="42;" alt="Liuyuan"/>
+</a>
 <a href="https://github.com/LufsX" title="LufsX">
   <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
 </a>
@@ -299,9 +302,6 @@ Quick Reference
 </a>
 <a href="https://github.com/likeshop-github" title="LikeShop技术社区">
   <img src="https://avatars.githubusercontent.com/u/77180968?v=4" width="42;" alt="LikeShop技术社区"/>
-</a>
-<a href="https://github.com/LiuYuan-SHU" title="Liuyuan">
-  <img src="https://avatars.githubusercontent.com/u/96400967?v=4" width="42;" alt="Liuyuan"/>
 </a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
