@@ -1795,6 +1795,22 @@ br + br {
 }
 ```
 
+### 子元素选中父元素
+
+```css
+div:has(img) {
+  background: black;
+}
+```
+
+设置包含子元素 `img` 的 `div` 元素样式，还可以嵌套：
+
+```css
+div:has(h2):has(ul) {
+  background: black;
+}
+```
+
 另见
 ---------
 
