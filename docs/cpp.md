@@ -628,18 +628,19 @@ std::for_each(vec.begin(), vec.end(), [](int& ele) -> void
 
 ## C++多线程
 
-> g++编译选项：`std=c++11`
->
-> 包含头文件：
->
-> + `#include <thread>`：C++多线程库
-> + `#include <mutex>`：C++互斥量库
+### 多线程 介绍
+
+g++编译选项：`std=c++11`，包含头文件：
+
+- `#include <thread>`：C++多线程库
+- `#include <mutex>`：C++互斥量库
 
 ### 线程的创建
+<!--rehype:wrap-class=row-span-2-->
 
 以普通函数作为线程入口函数：
 
-```c++
+```cpp
 void thread_entry_function_1() { }
 void thread_entry_function_2(int val) { }
 
@@ -649,7 +650,7 @@ std::thread my_thread_2(thread_entry_function_2, 5);
 
 以类对象作为线程入口函数：
 
-```c++
+```cpp
 class Entry
 {
     void operator()() { }
@@ -658,23 +659,23 @@ class Entry
 
 Entry entry;
 // 调用operator()()
-std::thread my_thread_1(entry);	
+std::thread my_thread_1(entry);  
 // 调用Entry::entry_function
-std::thread my_thread_2(&Entry::entry_function, &entry);	
+std::thread my_thread_2(&Entry::entry_function, &entry);  
 ```
 
 以lambda表达式作为线程入口函数：
 
-```c++
+```cpp
 std::thread my_thread([]() -> void 
-      {
-         // ... 
-      });
+    {
+        // ... 
+    });
 ```
 
 ### 线程的销毁
 
-```c++
+```cpp
 thread my_thread;
 // 阻塞
 my_thread.join();
@@ -684,11 +685,11 @@ my_thread.detach();
 
 ### `this_thread`
 
-```c++
-std::this_thread::get_id();		// 获取当前线程ID
-std::this_thread::sleep_for();	// 使当前线程休眠一段指定时间
+```cpp
+std::this_thread::get_id();    // 获取当前线程ID
+std::this_thread::sleep_for();  // 使当前线程休眠一段指定时间
 std::this_thread::sleep_until();// 使当前线程休眠到指定时间
-std::this_thread::yield();		// 暂停当前线程的执行，让别的线程执行
+std::this_thread::yield();    // 暂停当前线程的执行，让别的线程执行
 ```
 
 C++ 预处理器
