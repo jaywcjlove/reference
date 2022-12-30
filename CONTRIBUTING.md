@@ -304,6 +304,9 @@ REF_LABEL=网站首页
 <a href="https://github.com/mancuoj" title="mancuoj">
   <img src="https://avatars.githubusercontent.com/u/45707684?v=4" width="42;" alt="mancuoj"/>
 </a>
+<a href="https://github.com/miclon-dev" title="miclon-dev">
+  <img src="https://avatars.githubusercontent.com/u/111753685?v=4" width="42;" alt="miclon-dev"/>
+</a>
 <a href="https://github.com/onewesong" title="onewesong">
   <img src="https://avatars.githubusercontent.com/u/17920822?v=4" width="42;" alt="onewesong"/>
 </a>
