@@ -602,14 +602,14 @@ auto func = []() -> return_type { };
       
       auto func1 = [=, &str1]() -> int
           {
-              return 	val1 == std::stoi(str1) 
-                  	? val1 : val2;
+              return   val1 == std::stoi(str1) 
+                    ? val1 : val2;
           };
           
       auto func2 = [&, val1]() -> int
           {
-              return 	str1 == std::to_string(val1) 
-                  	? str1 : str2;
+              return   str1 == std::to_string(val1) 
+                    ? str1 : str2;
           };
       ```
 
@@ -625,27 +625,28 @@ auto func = []() -> return_type { };
 std::vector<int> vec({1, 2, 3, 4, 5});  
 std::for_each(vec.begin(), vec.end(), 
               [](int& ele) -> void
-    			{
-        			std::cout << ele 
-                        	<< " ";
-    			});
+          {
+              std::cout << ele 
+                          << " ";
+          });
 ```
 
 ## C++多线程
 
-> g++编译选项：`-std=c++11`
->
-> 包含头文件：
->
-> + `#include <thread>`：C++多线程库
-> + `#include <mutex>`：C++互斥量库
-> + `#include <future>`：C++异步库
+### 多线程介绍
+
+g++编译选项：`-std=c++11`。包含头文件：
+
+- `#include <thread>`：C++多线程库
+- `#include <mutex>`：C++互斥量库
+- `#include <future>`：C++异步库
 
 ### 线程的创建
+<!--rehype:wrap-class=row-span-2-->
 
 以普通函数作为线程入口函数：
 
-```c++
+```cpp
 void entry_1() { }
 void entry_2(int val) { }
 
@@ -655,7 +656,7 @@ std::thread my_thread_2(entry_2, 5);
 
 以类对象作为线程入口函数：
 
-```c++
+```cpp
 class Entry
 {
     void operator()() { }
@@ -664,14 +665,14 @@ class Entry
 
 Entry entry;
 // 调用operator()()
-std::thread my_thread_1(entry);	
+std::thread my_thread_1(entry);  
 // 调用Entry::entry_function
-std::thread my_thread_2(&Entry::entry_function, &entry);	
+std::thread my_thread_2(&Entry::entry_function, &entry);  
 ```
 
 以lambda表达式作为线程入口函数：
 
-```c++
+```cpp
 std::thread my_thread([]() -> void 
       {
          // ... 
@@ -680,7 +681,7 @@ std::thread my_thread([]() -> void
 
 ### 线程的销毁
 
-```c++
+```cpp
 thread my_thread;
 // 阻塞
 my_thread.join();
@@ -690,18 +691,19 @@ my_thread.detach();
 
 ### `this_thread`
 
-```c++
+```cpp
 // 获取当前线程ID
-std::this_thread::get_id();	
+std::this_thread::get_id();  
 // 使当前线程休眠一段指定时间
-std::this_thread::sleep_for();	
+std::this_thread::sleep_for();  
 // 使当前线程休眠到指定时间
 std::this_thread::sleep_until();
 // 暂停当前线程的执行，让别的线程执行
-std::this_thread::yield();		
+std::this_thread::yield();    
 ```
 
 ### 锁
+<!--rehype:wrap-class=row-span-3-->
 
 > `#include <mutex>`
 
@@ -709,46 +711,46 @@ std::this_thread::yield();
 
 创建锁
 
-```c++
+```cpp
 std::mutex m;
 ```
 
 上锁
 
-```c++
+```cpp
 m.lock();
 ```
 
 解锁
 
-```c++
+```cpp
 m.unlock();
 ```
 
 尝试上锁：成功返回`true`，失败返回`false`
 
-```c++
+```cpp
 m.try_lock();
 ```
 
 解锁
 
-```c++
+```cpp
 m.unlock();
 ```
 
-#### 更简单的锁——`std::lock_guard<Mutex>`
+#### 更简单的锁 —— `std::lock_guard<Mutex>`
 
 构造时上锁，析构时解锁
 
-```c++
+```cpp
 std::mutex m;
 std::lock_guard<std::mutex> lock(m);
 ```
 
 额外参数：`std::adopt_lock`：只需解锁，无需上锁
 
-```c++
+```cpp
 // 手动上锁
 m.lock();
 std::lock_guard<mutex> lock(m, 
@@ -759,7 +761,7 @@ std::lock_guard<mutex> lock(m,
 
 构造上锁，析构解锁
 
-```c++
+```cpp
 std::mutex m;
 std::unique_lock<mutex> lock(m);
 ```
@@ -768,7 +770,7 @@ std::unique_lock<mutex> lock(m);
 
 只需解锁，无需上锁
 
-```c++
+```cpp
 // 手动上锁
 m.lock();
 std::unique_lock<mutex> lock(m, 
@@ -779,7 +781,7 @@ std::unique_lock<mutex> lock(m,
 
 尝试上锁，可以通过`std::unique_lock<Mutex>::owns_lock()`查看状态
 
-```c++
+```cpp
 std::unique_lock<mutex> lock(m, 
     std::try_to_lock);
 if (lock.owns_lock())
@@ -796,7 +798,7 @@ else
 
 绑定锁，但不上锁
 
-```c++
+```cpp
 std::unique_lock<mutex> lock(m,
     std::defer_lock);
 lock.lock();
@@ -811,7 +813,7 @@ lock.unlock();
 
 当多个线程通过这个函数调用一个可调用对象时，只会有一个线程成功调用。
 
-```c++
+```cpp
 std::once_flag flag;
 
 void foo() { }
@@ -823,13 +825,13 @@ std::call_once(flag, foo);
 
 #### 创建条件变量
 
-```c++
+```cpp
 std::condition_variable cond;
 ```
 
 #### 等待条件变量被通知
 
-```c++
+```cpp
 std::unique_lock<std::mutex>
     lock;
 extern bool predicate();
@@ -840,28 +842,31 @@ cond.wait(lock);
 cond.wait(lock, predicate);
 ```
 
-1. `wait`不断地尝试重新获取并加锁该互斥量，如果获取不到，它就卡在这里并反复尝试重新获取，如果获取到了，执行流程就继续往下走
-2. `wait`在获取到互斥量并加锁了互斥量之后：
-    1. 如果`wait`被提供了可调用对象，那么就执行这个可调用对象：
-        + 如果返回值为`false`，那么`wait`继续加锁，直到再次被notified
-        + 如果返回值为`true`，那么`wait`返回，继续执行流程
-    2. 如果`wait`没有第二个参数，那么直接返回，继续执行
+----
+
+- `wait`不断地尝试重新获取并加锁该互斥量，如果获取不到，它就卡在这里并反复尝试重新获取，如果获取到了，执行流程就继续往下走
+- `wait`在获取到互斥量并加锁了互斥量之后：
+  - 如果`wait`被提供了可调用对象，那么就执行这个可调用对象：
+    - 如果返回值为`false`，那么`wait`继续加锁，直到再次被 notified
+    - 如果返回值为`true`，那么`wait`返回，继续执行流程
+  - 如果`wait`没有第二个参数，那么直接返回，继续执行
 
 #### `std::condition_variable::notify_one`
 
-`notify_one`唤醒一个调用`wait`的线程。注意在唤醒之前要解锁，否则调用`wait`的线程也会因为无法加锁而阻塞。
+`notify_one` 唤醒一个调用 `wait` 的线程。注意在唤醒之前要解锁，否则调用 `wait` 的线程也会因为无法加锁而阻塞。
 
 #### `std::condition_variable::notify_all`
 
-唤醒所有调用`wait`的线程。
+唤醒所有调用 `wait` 的线程。
 
 ### 获取线程的运行结果
+<!--rehype:wrap-class=row-span-2-->
 
 > `#include <future>`
 
 #### 创建异步任务
 
-```c++
+```cpp
 double func(int val); 
 
 // 使用std::async创建异步任务
@@ -875,34 +880,34 @@ std::future<double> result =
 
 等待异步任务结束，但是不获取返回值：
 
-```c++
+```cpp
 result.wait();
 ```
 
 获取异步任务的返回值：
 
-```c++
+```cpp
 int val = result.get();
 ```
 
 注：
 
-+ `get()`返回右值，因此只可调用一次
-+ 只要调用上述任意函数，线程就会一直阻塞到返回值可用（入口函数运行结束）
+- `get()`返回右值，因此只可调用一次
+- 只要调用上述任意函数，线程就会一直阻塞到返回值可用（入口函数运行结束）
 
-#### `std::async`的额外参数
+#### `std::async` 的额外参数
 
-额外参数可以被放在`std::async`的第一个参数位置，用于设定`std::async`的行为：
+额外参数可以被放在 `std::async` 的第一个参数位置，用于设定 `std::async` 的行为：
 
-1. `std::launch::deferred`：入口函数的运行会被推迟到`std::future<T>::get()`或者`std::future<T>::wait()`被调用时。此时调用线程会直接运行线程入口函数，换言之，**不会创建子线程**
-2. `std::launch::async`：立即创建子线程，并运行线程入口函数
-3. `std::launch::deferred | std::launch::async`：默认值，由系统自行决定
+- `std::launch::deferred`：入口函数的运行会被推迟到`std::future<T>::get()`或者`std::future<T>::wait()`被调用时。此时调用线程会直接运行线程入口函数，换言之，**不会创建子线程**
+- `std::launch::async`：立即创建子线程，并运行线程入口函数
+- `std::launch::deferred | std::launch::async`：默认值，由系统自行决定
 
 #### 返回值的状态
 
 让当前线程等待一段时间（等待到指定时间点），以期待返回值准备好：
 
-```c++
+```cpp
 extern double foo(int val) {}
 
 std::future<double> result = 
@@ -912,41 +917,37 @@ std::future<double> result =
 std::future_status status;
 // 等待一段时间
 status = result.wait_for(
-	std::chrono::seconds(1)
-	);
+  std::chrono::seconds(1)
+  );
 // 等待到某一时间点
 status = result.wait_for(
-	std::chrono::now() +
+  std::chrono::now() +
     std::chrono::seconds(1)
-	);
+  );
 ```
 
 在指定的时间过去后，可以获取等待的结果：
 
-```c++
+```cpp
 // 返回值已经准备好
 if (status == 
-   	std::future_status::ready)
+     std::future_status::ready)
 {
     
 }
 // 超时：尚未准备好
 else if (status ==
     std::future_status::timeout)
-{
-    
-}
+{ }
 // 尚未启动: std::launch::deferred
 else if (status ==
     std::future_status::deferred)
-{
-    
-}
+{ }
 ```
 
 #### 多个返回值
 
-```c++
+```cpp
 std::shared_future<T> result;
 ```
 
