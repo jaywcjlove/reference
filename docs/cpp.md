@@ -701,6 +701,112 @@ std::this_thread::sleep_until();
 std::this_thread::yield();		
 ```
 
+### 锁
+
+> `#include <mutex>`
+
+#### 锁的基本操作
+
+创建锁
+
+```c++
+std::mutex m;
+```
+
+上锁
+
+```c++
+m.lock();
+```
+
+解锁
+
+```c++
+m.unlock();
+```
+
+尝试上锁：成功返回`true`，失败返回`false`
+
+```c++
+m.try_lock();
+```
+
+解锁
+
+```c++
+m.unlock();
+```
+
+#### 更简单的锁——`std::lock_guard<Mutex>`
+
+构造时上锁，析构时解锁
+
+```c++
+std::mutex m;
+std::lock_guard<std::mutex> lock(m);
+```
+
+额外参数：`std::adopt_lock`：只需解锁，无需上锁
+
+```c++
+// 手动上锁
+m.lock();
+std::lock_guard<mutex> lock(m, 
+    std::adopt_lock);
+```
+
+#### `unique_lock<Mutex>`
+
+构造上锁，析构解锁
+
+```c++
+std::mutex m;
+std::unique_lock<mutex> lock(m);
+```
+
+##### `std::adopt_lock`
+
+只需解锁，无需上锁
+
+```c++
+// 手动上锁
+m.lock();
+std::unique_lock<mutex> lock(m, 
+    std::adopt_lock);
+```
+
+##### `std::try_to_lock`
+
+尝试上锁，可以通过`std::unique_lock<Mutex>::owns_lock()`查看状态
+
+```c++
+std::unique_lock<mutex> lock(m, 
+    std::try_to_lock);
+if (lock.owns_lock())
+{
+    // 拿到了锁
+}
+else
+{
+    // 没有
+}
+```
+
+##### `std::defer_lock`
+
+绑定锁，但不上锁
+
+```c++
+std::unique_lock<mutex> lock(m,
+    std::defer_lock);
+lock.lock();
+lock.unlock();
+```
+
+##### `std::unique_lock<Mutex>::release`
+
+返回所管理的`mutex`对象指针，**释放所有权。**一旦释放了所有权，那么如果原来互斥量处于互斥状态，程序员有责任手动解锁。
+
 C++ 预处理器
 ------------
 
