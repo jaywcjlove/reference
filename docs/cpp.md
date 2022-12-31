@@ -807,6 +807,153 @@ lock.unlock();
 
 返回所管理的`mutex`对象指针，**释放所有权。**一旦释放了所有权，那么如果原来互斥量处于互斥状态，程序员有责任手动解锁。
 
+#### `std::call_once`
+
+当多个线程通过这个函数调用一个可调用对象时，只会有一个线程成功调用。
+
+```c++
+std::once_flag flag;
+
+void foo() { }
+
+std::call_once(flag, foo);
+```
+
+### `std::condition_variable`
+
+#### 创建条件变量
+
+```c++
+std::condition_variable cond;
+```
+
+#### 等待条件变量被通知
+
+```c++
+std::unique_lock<std::mutex>
+    lock;
+extern bool predicate();
+
+// 调用方式 1
+cond.wait(lock);
+// 调用方式 2
+cond.wait(lock, predicate);
+```
+
+1. `wait`不断地尝试重新获取并加锁该互斥量，如果获取不到，它就卡在这里并反复尝试重新获取，如果获取到了，执行流程就继续往下走
+2. `wait`在获取到互斥量并加锁了互斥量之后：
+    1. 如果`wait`被提供了可调用对象，那么就执行这个可调用对象：
+        + 如果返回值为`false`，那么`wait`继续加锁，直到再次被notified
+        + 如果返回值为`true`，那么`wait`返回，继续执行流程
+    2. 如果`wait`没有第二个参数，那么直接返回，继续执行
+
+#### `std::condition_variable::notify_one`
+
+`notify_one`唤醒一个调用`wait`的线程。注意在唤醒之前要解锁，否则调用`wait`的线程也会因为无法加锁而阻塞。
+
+#### `std::condition_variable::notify_all`
+
+唤醒所有调用`wait`的线程。
+
+### 获取线程的运行结果
+
+> `#include <future>`
+
+#### 创建异步任务
+
+```c++
+double func(int val); 
+
+// 使用std::async创建异步任务
+// 使用std::future获取结果
+// future模板中存放返回值类型
+std::future<double> result = 
+    std::async(func, 5);
+```
+
+#### 获取异步任务的返回值
+
+等待异步任务结束，但是不获取返回值：
+
+```c++
+result.wait();
+```
+
+获取异步任务的返回值：
+
+```c++
+int val = result.get();
+```
+
+注：
+
++ `get()`返回右值，因此只可调用一次
++ 只要调用上述任意函数，线程就会一直阻塞到返回值可用（入口函数运行结束）
+
+#### `std::async`的额外参数
+
+额外参数可以被放在`std::async`的第一个参数位置，用于设定`std::async`的行为：
+
+1. `std::launch::deferred`：入口函数的运行会被推迟到`std::future<T>::get()`或者`std::future<T>::wait()`被调用时。此时调用线程会直接运行线程入口函数，换言之，**不会创建子线程**
+2. `std::launch::async`：立即创建子线程，并运行线程入口函数
+3. `std::launch::deferred | std::launch::async`：默认值，由系统自行决定
+
+#### 返回值的状态
+
+让当前线程等待一段时间（等待到指定时间点），以期待返回值准备好：
+
+```c++
+extern double foo(int val) {}
+
+std::future<double> result = 
+    async(foo, 5);
+
+//返回值类型
+std::future_status status;
+// 等待一段时间
+status = result.wait_for(
+	std::chrono::seconds(1)
+	);
+// 等待到某一时间点
+status = result.wait_for(
+	std::chrono::now() +
+    std::chrono::seconds(1)
+	);
+```
+
+在指定的时间过去后，可以获取等待的结果：
+
+```c++
+// 返回值已经准备好
+if (status == 
+   	std::future_status::ready)
+{
+    
+}
+// 超时：尚未准备好
+else if (status ==
+    std::future_status::timeout)
+{
+    
+}
+// 尚未启动: std::launch::deferred
+else if (status ==
+    std::future_status::deferred)
+{
+    
+}
+```
+
+#### 多个返回值
+
+```c++
+std::shared_future<T> result;
+```
+
+如果要多次获取结果，可以使用`std::shared_future`，其会返回结果的一个**拷贝**。
+
+对于不可拷贝对象，可以在`std::shared_future`中存储对象的指针，而非指针本身。
+
 C++ 预处理器
 ------------
 
