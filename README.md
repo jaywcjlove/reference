@@ -288,6 +288,9 @@ Quick Reference
 <a href="https://github.com/eeeeeio" title="EEEEE">
   <img src="https://avatars.githubusercontent.com/u/20723545?v=4" width="42;" alt="EEEEE"/>
 </a>
+<a href="https://github.com/Ding-Kyoma" title="HooinKyoma">
+  <img src="https://avatars.githubusercontent.com/u/44542198?v=4" width="42;" alt="HooinKyoma"/>
+</a>
 <a href="https://github.com/jasnzhuang" title="Jason Zhuang">
   <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
 </a>
@@ -335,6 +338,9 @@ Quick Reference
 </a>
 <a href="https://github.com/cool9203" title="cool9203">
   <img src="https://avatars.githubusercontent.com/u/29609607?v=4" width="42;" alt="cool9203"/>
+</a>
+<a href="https://github.com/fjqz177" title="fjqz177">
+  <img src="https://avatars.githubusercontent.com/u/83070583?v=4" width="42;" alt="fjqz177"/>
 </a>
 <a href="https://github.com/gi-b716" title="gi-b716">
   <img src="https://avatars.githubusercontent.com/u/78394473?v=4" width="42;" alt="gi-b716"/>
