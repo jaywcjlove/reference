@@ -545,84 +545,415 @@ int main() {
 }
 ```
 
-### Lambda表达式
+### Lambda 表达式
+<!--rehype:wrap-class=col-span-2-->
 
-Lambda表达式可以在函数内定义，可以理解为在函数内定义的临时函数。格式：
+Lambda 表达式可以在函数内定义，可以理解为在函数内定义的临时函数。格式：
 
-```c++
+```cpp
 auto func = []() -> return_type { };
 ```
 
-+ `[]`为捕获列表，能够捕获其所在函数的局部变量
-    + 一个空的捕获列表代表Lambda表达式不捕获任何的变量
-    + 对于值捕获，直接在中括号中填写要捕获的变量即可：
-    
-        ```c++
-        int val = 5;
-        auto func = [val]() -> return_type { };
-        ```
-        
-    + 对于引用捕获，需要在捕获的变量前添加`&`：
+- `[]`为捕获列表，能够捕获其所在函数的局部变量
+  - 一个空的捕获列表代表Lambda表达式不捕获任何的变量
+  - 对于值捕获，直接在中括号中填写要捕获的变量即可：
 
-        ```c++
-        string str("hello world!");
-        auto func = [&str]() -> return_type { };
-        ```
-        
-    + 如果变量太多，需要编译器根据我们编写的代码自动捕获，可以采用隐式捕获的方式。
-        
-        + 全部值捕获：
+      ```cpp
+      int val = 5;
+      auto func = [val]() -> return_type { };
+      ```
 
-            ```c++
-            int val1, val2;
-            auto func = [=]() -> int
-                {
-                    return val1 + val2;
-                };
-            ```
-        
-        + 全部引用捕获：
+- 对于引用捕获，需要在捕获的变量前添加`&`：
 
-            ```c++
-            string str1("hello"), str2("word!");
-            auto func = [&]() -> string
-                {
-                    return str1 + str2;
-                };
-            ```
-            
-        + 混合隐式捕获：
+  ```cpp
+  string str("hello world!");
+  auto func = [&str]() -> return_type { };
+  ```
 
-          如果希望对一部分变量采用值捕获，对其他变量采用引用捕获，可以混合使用：
+- 如果变量太多，需要编译器根据我们编写的代码自动捕获，可以采用隐式捕获的方式。
+
+  - 全部值捕获：
+
+      ```cpp
+      int val1, val2;
+      auto func = [=]() -> int
+          {
+              return val1 + val2;
+          };
+      ```
+
+  - 全部引用捕获：
+
+      ```cpp
+      string str1("hello"), str2("word!");
+      auto func = [&]() -> string
+          {
+              return str1 + str2;
+          };
+      ```
+
+  - 混合隐式捕获：
+
+      如果希望对一部分变量采用值捕获，对其他变量采用引用捕获，可以混合使用：
+
+      ```cpp
+      int val1 = 123, val2 = 456;
+      string str1("123"), str2(456);
+      
+      auto func1 = [=, &str1]() -> int
+          {
+              return   val1 == std::stoi(str1) 
+                    ? val1 : val2;
+          };
           
-            ```c++
-            int val1 = 123, val2 = 456;
-            string str1("123"), str2(456);
-          
-            auto func1 = [=, &str1]() -> int
-                {
-                    return val1 == std::stoi(str1) ? val1 : val2;
-                };
-                
-            auto func2 = [&, val1]() -> int
-                {
-                    return str1 == std::to_string(val1) ? str1 : str2;
-                };
-            ```
+      auto func2 = [&, val1]() -> int
+          {
+              return   str1 == std::to_string(val1) 
+                    ? str1 : str2;
+          };
+      ```
 
-+ `()`是参数列表，我们只需要按照普通函数的使用方法来使用即可
-+ `return_type`是函数的返回类型，`-> return_type`可以不写，编译器会自动推导
-+ `{}`中的内容就是函数体，依照普通函数的使用方法使用即可
+- `()` 是参数列表，我们只需要按照普通函数的使用方法来使用即可
+- `return_type` 是函数的返回类型，`-> return_type` 可以不写，编译器会自动推导
+- `{}` 中的内容就是函数体，依照普通函数的使用方法使用即可
+<!--rehype:className=style-timeline-->
 
-此处给出一个Lambda表达式的实际使用例子（当然可以使用`str::copy`）：
+此处给出一个 Lambda 表达式的实际使用例子(当然可以使用 `str::copy`):
 
-```c++
-std::vector<int> vec({1, 2, 3, 4, 5});  // vec中包含1, 2, 3, 4, 5
-std::for_each(vec.begin(), vec.end(), [](int& ele) -> void
-    {
-        std::cout << ele << " ";
-    });
+```cpp
+// vec中包含1, 2, 3, 4, 5
+std::vector<int> vec({1, 2, 3, 4, 5});  
+std::for_each(vec.begin(), vec.end(), 
+              [](int& ele) -> void
+          {
+              std::cout << ele 
+                          << " ";
+          });
 ```
+
+## C++多线程
+
+### 多线程介绍
+
+g++编译选项：`-std=c++11`。包含头文件：
+
+- `#include <thread>`：C++多线程库
+- `#include <mutex>`：C++互斥量库
+- `#include <future>`：C++异步库
+
+### 线程的创建
+<!--rehype:wrap-class=row-span-2-->
+
+以普通函数作为线程入口函数：
+
+```cpp
+void entry_1() { }
+void entry_2(int val) { }
+
+std::thread my_thread_1(entry_1);
+std::thread my_thread_2(entry_2, 5);
+```
+
+以类对象作为线程入口函数：
+
+```cpp
+class Entry
+{
+    void operator()() { }
+    void entry_function() { }
+};
+
+Entry entry;
+// 调用operator()()
+std::thread my_thread_1(entry);  
+// 调用Entry::entry_function
+std::thread my_thread_2(&Entry::entry_function, &entry);  
+```
+
+以lambda表达式作为线程入口函数：
+
+```cpp
+std::thread my_thread([]() -> void 
+      {
+         // ... 
+      });
+```
+
+### 线程的销毁
+
+```cpp
+thread my_thread;
+// 阻塞
+my_thread.join();
+// 非阻塞
+my_thread.detach();
+```
+
+### `this_thread`
+
+```cpp
+// 获取当前线程ID
+std::this_thread::get_id();  
+// 使当前线程休眠一段指定时间
+std::this_thread::sleep_for();  
+// 使当前线程休眠到指定时间
+std::this_thread::sleep_until();
+// 暂停当前线程的执行，让别的线程执行
+std::this_thread::yield();    
+```
+
+### 锁
+<!--rehype:wrap-class=row-span-3-->
+
+> `#include <mutex>`
+
+#### 锁的基本操作
+
+创建锁
+
+```cpp
+std::mutex m;
+```
+
+上锁
+
+```cpp
+m.lock();
+```
+
+解锁
+
+```cpp
+m.unlock();
+```
+
+尝试上锁：成功返回`true`，失败返回`false`
+
+```cpp
+m.try_lock();
+```
+
+解锁
+
+```cpp
+m.unlock();
+```
+
+#### 更简单的锁 —— `std::lock_guard<Mutex>`
+
+构造时上锁，析构时解锁
+
+```cpp
+std::mutex m;
+std::lock_guard<std::mutex> lock(m);
+```
+
+额外参数：`std::adopt_lock`：只需解锁，无需上锁
+
+```cpp
+// 手动上锁
+m.lock();
+std::lock_guard<mutex> lock(m, 
+    std::adopt_lock);
+```
+
+#### `unique_lock<Mutex>`
+
+构造上锁，析构解锁
+
+```cpp
+std::mutex m;
+std::unique_lock<mutex> lock(m);
+```
+
+##### `std::adopt_lock`
+
+只需解锁，无需上锁
+
+```cpp
+// 手动上锁
+m.lock();
+std::unique_lock<mutex> lock(m, 
+    std::adopt_lock);
+```
+
+##### `std::try_to_lock`
+
+尝试上锁，可以通过`std::unique_lock<Mutex>::owns_lock()`查看状态
+
+```cpp
+std::unique_lock<mutex> lock(m, 
+    std::try_to_lock);
+if (lock.owns_lock())
+{
+    // 拿到了锁
+}
+else
+{
+    // 没有
+}
+```
+
+##### `std::defer_lock`
+
+绑定锁，但不上锁
+
+```cpp
+std::unique_lock<mutex> lock(m,
+    std::defer_lock);
+lock.lock();
+lock.unlock();
+```
+
+##### `std::unique_lock<Mutex>::release`
+
+返回所管理的`mutex`对象指针，**释放所有权。**一旦释放了所有权，那么如果原来互斥量处于互斥状态，程序员有责任手动解锁。
+
+#### `std::call_once`
+
+当多个线程通过这个函数调用一个可调用对象时，只会有一个线程成功调用。
+
+```cpp
+std::once_flag flag;
+
+void foo() { }
+
+std::call_once(flag, foo);
+```
+
+### `std::condition_variable`
+
+#### 创建条件变量
+
+```cpp
+std::condition_variable cond;
+```
+
+#### 等待条件变量被通知
+
+```cpp
+std::unique_lock<std::mutex>
+    lock;
+extern bool predicate();
+
+// 调用方式 1
+cond.wait(lock);
+// 调用方式 2
+cond.wait(lock, predicate);
+```
+
+----
+
+- `wait`不断地尝试重新获取并加锁该互斥量，如果获取不到，它就卡在这里并反复尝试重新获取，如果获取到了，执行流程就继续往下走
+- `wait`在获取到互斥量并加锁了互斥量之后：
+  - 如果`wait`被提供了可调用对象，那么就执行这个可调用对象：
+    - 如果返回值为`false`，那么`wait`继续加锁，直到再次被 notified
+    - 如果返回值为`true`，那么`wait`返回，继续执行流程
+  - 如果`wait`没有第二个参数，那么直接返回，继续执行
+
+#### `std::condition_variable::notify_one`
+
+`notify_one` 唤醒一个调用 `wait` 的线程。注意在唤醒之前要解锁，否则调用 `wait` 的线程也会因为无法加锁而阻塞。
+
+#### `std::condition_variable::notify_all`
+
+唤醒所有调用 `wait` 的线程。
+
+### 获取线程的运行结果
+<!--rehype:wrap-class=row-span-2-->
+
+> `#include <future>`
+
+#### 创建异步任务
+
+```cpp
+double func(int val); 
+
+// 使用std::async创建异步任务
+// 使用std::future获取结果
+// future模板中存放返回值类型
+std::future<double> result = 
+    std::async(func, 5);
+```
+
+#### 获取异步任务的返回值
+
+等待异步任务结束，但是不获取返回值：
+
+```cpp
+result.wait();
+```
+
+获取异步任务的返回值：
+
+```cpp
+int val = result.get();
+```
+
+注：
+
+- `get()`返回右值，因此只可调用一次
+- 只要调用上述任意函数，线程就会一直阻塞到返回值可用（入口函数运行结束）
+
+#### `std::async` 的额外参数
+
+额外参数可以被放在 `std::async` 的第一个参数位置，用于设定 `std::async` 的行为：
+
+- `std::launch::deferred`：入口函数的运行会被推迟到`std::future<T>::get()`或者`std::future<T>::wait()`被调用时。此时调用线程会直接运行线程入口函数，换言之，**不会创建子线程**
+- `std::launch::async`：立即创建子线程，并运行线程入口函数
+- `std::launch::deferred | std::launch::async`：默认值，由系统自行决定
+
+#### 返回值的状态
+
+让当前线程等待一段时间（等待到指定时间点），以期待返回值准备好：
+
+```cpp
+extern double foo(int val) {}
+
+std::future<double> result = 
+    async(foo, 5);
+
+//返回值类型
+std::future_status status;
+// 等待一段时间
+status = result.wait_for(
+  std::chrono::seconds(1)
+  );
+// 等待到某一时间点
+status = result.wait_for(
+  std::chrono::now() +
+    std::chrono::seconds(1)
+  );
+```
+
+在指定的时间过去后，可以获取等待的结果：
+
+```cpp
+// 返回值已经准备好
+if (status == 
+     std::future_status::ready)
+{
+    
+}
+// 超时：尚未准备好
+else if (status ==
+    std::future_status::timeout)
+{ }
+// 尚未启动: std::launch::deferred
+else if (status ==
+    std::future_status::deferred)
+{ }
+```
+
+#### 多个返回值
+
+```cpp
+std::shared_future<T> result;
+```
+
+如果要多次获取结果，可以使用`std::shared_future`，其会返回结果的一个**拷贝**。
+
+对于不可拷贝对象，可以在`std::shared_future`中存储对象的指针，而非指针本身。
 
 C++ 预处理器
 ------------
