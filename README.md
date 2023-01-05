@@ -436,18 +436,20 @@ Quick Reference
 [xushanxiang.com](https://xushanxiang.com/ref/)<!--rehype:target=_blank-->
 [winnerzr01.github.io](https://winnerzr01.github.io/Quick-Reference/index.html)<!--rehype:target=_blank&class=contributing&data-info=👆需要梯子-->
 [isteed.cc](https://ref.isteed.cc/)<!--rehype:target=_blank-->
-[quickref.hestudio.org](https://quickref.hestudio.org)<!--rehype:target=_blank&class=contributing&data-info=👆整点自动同步-->
+[hestudio.org](https://quickref.hestudio.org)<!--rehype:target=_blank&class=contributing&data-info=👆整点自动同步-->
 [surcode.cn](https://ref.surcode.cn)<!--rehype:target=_blank-->
 [cms.im](https://quickref.cms.im/)<!--rehype:target=_blank-->
 [nuomiphp.com](https://reference.tool.nuomiphp.com/)<!--rehype:target=_blank-->
 [eryajf.net](https://ref.eryajf.net/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [kjchmc.cn](https://ref.kjchmc.cn/)<!--rehype:target=_blank&class=contributing&data-info=👆实时同步，多线路-->
 [likeadmin.cn](https://www.likeadmin.cn/quickref/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
-[ref.qiubit.cc](http://ref.qiubit.cc)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[qiubit.cc](http://ref.qiubit.cc)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [aoh.cc](https://aoh.cc/)<!--rehype:target=_blank-->
 [reference.code05.com](https://reference.code05.com/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [kyoma.top](https://reference.kyoma.top/)<!--rehype:target=_blank&class=contributing&data-info=👆实时同步-->
 [quickreference.pages.dev](https://quickreference.pages.dev/)<!--rehype:target=_blank-->
+[code05.com](https://reference.code05.com/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[xhfun.cn](https://ref.xhfun.cn/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
