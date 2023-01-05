@@ -842,4 +842,4 @@ method.invoke(classLoader, url);
 另见
 ---
 
-- [Java 官网](https://www.java.com/zh-CN/) _(java.com)_
+- [Java 官网](https://www.oracle.com/cn/java/) _(https://www.oracle.com/cn/java/)_
