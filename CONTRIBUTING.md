@@ -132,14 +132,80 @@ REF_LABEL=网站首页
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站。
 
+- [quickref.cn](https://quickref.cn)
 - [ecdata.cn](http://ref.ecdata.cn)
-- [mofe.io](http://quickref.mofe.io)
 - [aibk.cn](https://quickref.aibk.cn)
+- [jgeek.cn](http://reference.jgeek.cn/)
 - [laoleng.vip](http://bbs.laoleng.vip/reference/)
 - [liujiapeng.com](https://www.liujiapeng.com/)
 - [dbyun.net](https://www.dbyun.net/reference/index.html)
+- [dc6.fun](https://dc6.fun/reference/)
+- [if010.com](https://quickref.if010.com/)
+- [pipecraft.net](https://quickref.pipecraft.net/)
+- [isteed.cc](https://ref.isteed.cc/)
+- [1han.wiki](https://code.1han.wiki/)
+- [linzhe.top](https://linzhe.top/)
+- [xushanxiang.com](https://xushanxiang.com/ref/)
+- [winnerzr01.github.io](https://winnerzr01.github.io/Quick-Reference/index.html)
+- [isteed.cc](https://ref.isteed.cc/)
+- [hestudio.org](https://quickref.hestudio.org)
+- [surcode.cn](https://ref.surcode.cn)
+- [cms.im](https://quickref.cms.im/)
+- [nuomiphp.com](https://reference.tool.nuomiphp.com/)
+- [eryajf.net](https://ref.eryajf.net/)
+- [kjchmc.cn](https://ref.kjchmc.cn/)
+- [likeadmin.cn](https://www.likeadmin.cn/quickref/)
+- [qiubit.cc](http://ref.qiubit.cc)
+- [aoh.cc](https://aoh.cc/)
+- [reference.code05.com](https://reference.code05.com/)
+- [kyoma.top](https://reference.kyoma.top/)
+- [quickreference.pages.dev](https://quickreference.pages.dev/)
+- [code05.com](https://reference.code05.com/)
+- [xhfun.cn](https://ref.xhfun.cn/)
 
 感谢🙏
+
+## 利用 Github Actions 定时任务来完成自动更新
+
+在仓库添加 `.github/workflows/update-ref.yml` 文件 Github Actions 配置，感谢 @eryajf https://github.com/jaywcjlove/reference/issues/102#issuecomment-1368158419 提供方法
+
+```yml
+name: 每8个小时更新一次reference
+on:
+  schedule:
+    - cron: '21 */8 * * *' # 定时任务
+  workflow_dispatch:       # 手动运行
+
+env: # 设置环境变量
+  TZ: Asia/Shanghai # 时区（设置时区可使页面中的`最近更新时间`使用时区时间）
+
+jobs:
+  build: # 自定义名称
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚜 拉取最新代码
+        uses: actions/checkout@v3
+        with:
+          ref: 'main'
+          repository: 'jaywcjlove/reference'
+
+      - name: ♻️ 编译静态文件
+        run: |
+          echo -e 'REF_URL=https://refs.xxx.net/\nREF_LABEL=网站首页' > .env
+          npm install
+          npm run build
+
+      - name: 🚁 部署到服务器
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          username: 'root'   #ssh user name
+          port: '22' # 远程服务器ssh端口，默认22
+          server: 'prod.refs.xxx.net' # 远程服务器IP
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # 认证服务器秘钥对的私钥
+          local_path: './dist/*'  # 对应我们项目打包后的静态文件路径
+          remote_path: '/data/www/refs.xxx.net' # 服务器上的路径
+          delete_remote_files: true
+```
 
 ## 贡献
 
