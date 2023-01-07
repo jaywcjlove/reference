@@ -350,7 +350,7 @@ when(grade) {
 var height = 46 // inches
 
 if (height in 1..53) {
-  println("抱歉，您必须至少 54 英寸才能乘坐过山车"）
+  println("抱歉，您必须至少 54 英寸才能乘坐过山车")
 }
 // Prints: 抱歉，您必须至少 54 英寸才能乘坐过山车
 ```
