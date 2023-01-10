@@ -213,6 +213,32 @@ string multiLine = """
 Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
 ```
 
+###字符串操作
+```cs
+//字符串分割
+string Name = "字A符A串A分A割";
+string[] Names=Name.Split(new char[] { 'A' });
+//会以A为媒介把字符串分成若干份
+for (int i = 0; i < Names.Length; i++)
+{
+    Console.Write(Names[i]);
+}
+//-----------------------------------
+//字符串截取
+string Str = "字符串截取";
+Str = Str.Substring(2, 1);
+Console.WriteLine(Str);
+//输出结果“串”，意为从第二个下标开始截取一位字符
+//-----------------------------------
+//字符串替换
+string Rep = "字符1替换";
+Rep = Rep.Replace("1", "串");
+Console.WriteLine(Rep);
+//会把字符中的 “1”替换成“串”
+```
+
+
+
 杂项
 -----------
 
