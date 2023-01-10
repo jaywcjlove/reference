@@ -213,7 +213,8 @@ string multiLine = """
 Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
 ```
 
-###字符串操作
+### 字符串操作
+
 ```cs
 //字符串分割
 string Name = "字A符A串A分A割";
@@ -236,8 +237,6 @@ Rep = Rep.Replace("1", "串");
 Console.WriteLine(Rep);
 //会把字符中的 “1”替换成“串”
 ```
-
-
 
 杂项
 -----------
