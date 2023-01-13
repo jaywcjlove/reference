@@ -311,6 +311,9 @@ Quick Reference
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
 </a>
+<a href="https://github.com/Mo3et" title="Monet Lee">
+  <img src="https://avatars.githubusercontent.com/u/34803812?v=4" width="42;" alt="Monet Lee"/>
+</a>
 <a href="https://github.com/HanaNoryu" title="Noryu">
   <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
 </a>
@@ -352,6 +355,9 @@ Quick Reference
 </a>
 <a href="https://github.com/greyhao" title="greyhao">
   <img src="https://avatars.githubusercontent.com/u/107107440?v=4" width="42;" alt="greyhao"/>
+</a>
+<a href="https://github.com/sunny0826" title="guoxudong">
+  <img src="https://avatars.githubusercontent.com/u/24563928?v=4" width="42;" alt="guoxudong"/>
 </a>
 <a href="https://github.com/hua03" title="hua03">
   <img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/>
@@ -410,6 +416,9 @@ Quick Reference
 <a href="https://github.com/lvzhenbo" title="吕振波">
   <img src="https://avatars.githubusercontent.com/u/32427677?v=4" width="42;" alt="吕振波"/>
 </a>
+<a href="https://github.com/LuckyJie12" title="夜未央">
+  <img src="https://avatars.githubusercontent.com/u/102901105?v=4" width="42;" alt="夜未央"/>
+</a>
 <a href="https://github.com/qyl27" title="秋雨落">
   <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋雨落"/>
 </a>
@@ -432,7 +441,7 @@ Quick Reference
 [laoleng.vip](http://bbs.laoleng.vip/reference/)<!--rehype:target=_blank-->
 [liujiapeng.com](https://www.liujiapeng.com/)<!--rehype:target=_blank-->
 [dbyun.net](https://www.dbyun.net/reference/index.html)<!--rehype:target=_blank-->
-[dc6.fun](https://dc6.fun/reference/)<!--rehype:target=_blank-->
+[dc6.fun](http://reference.dc6.fun)<!--rehype:target=_blank-->
 [if010.com](https://quickref.if010.com/)<!--rehype:target=_blank-->
 [pipecraft.net](https://quickref.pipecraft.net/)<!--rehype:target=_blank&class=contributing&data-info=👆需要梯子-->
 [isteed.cc](https://ref.isteed.cc/)<!--rehype:target=_blank-->
@@ -455,6 +464,8 @@ Quick Reference
 [quickreference.pages.dev](https://quickreference.pages.dev/)<!--rehype:target=_blank-->
 [code05.com](https://reference.code05.com/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [xhfun.cn](https://ref.xhfun.cn/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[caitou.org](https://quickref.caitou.org/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[guoxudong.io](https://reference.guoxudong.io/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便部署 web 版，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。

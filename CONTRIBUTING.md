@@ -304,6 +304,9 @@ jobs:
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
 </a>
+<a href="https://github.com/Mo3et" title="Monet Lee">
+  <img src="https://avatars.githubusercontent.com/u/34803812?v=4" width="42;" alt="Monet Lee"/>
+</a>
 <a href="https://github.com/HanaNoryu" title="Noryu">
   <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
 </a>
@@ -345,6 +348,9 @@ jobs:
 </a>
 <a href="https://github.com/greyhao" title="greyhao">
   <img src="https://avatars.githubusercontent.com/u/107107440?v=4" width="42;" alt="greyhao"/>
+</a>
+<a href="https://github.com/sunny0826" title="guoxudong">
+  <img src="https://avatars.githubusercontent.com/u/24563928?v=4" width="42;" alt="guoxudong"/>
 </a>
 <a href="https://github.com/hua03" title="hua03">
   <img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/>
@@ -402,6 +408,9 @@ jobs:
 </a>
 <a href="https://github.com/lvzhenbo" title="吕振波">
   <img src="https://avatars.githubusercontent.com/u/32427677?v=4" width="42;" alt="吕振波"/>
+</a>
+<a href="https://github.com/LuckyJie12" title="夜未央">
+  <img src="https://avatars.githubusercontent.com/u/102901105?v=4" width="42;" alt="夜未央"/>
 </a>
 <a href="https://github.com/qyl27" title="秋雨落">
   <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋雨落"/>
