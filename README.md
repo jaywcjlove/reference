@@ -317,6 +317,9 @@ Quick Reference
 <a href="https://github.com/HanaNoryu" title="Noryu">
   <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
 </a>
+<a href="https://github.com/Perzch" title="Perzch">
+  <img src="https://avatars.githubusercontent.com/u/67987641?v=4" width="42;" alt="Perzch"/>
+</a>
 <a href="https://github.com/PipecraftNet" title="Pipecraft">
   <img src="https://avatars.githubusercontent.com/u/88728670?v=4" width="42;" alt="Pipecraft"/>
 </a>
