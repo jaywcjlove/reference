@@ -201,7 +201,7 @@ export default Blog
 - Next.js 在后台触发页面的重新生成
 - 一旦页面生成成功，Next.js 将使缓存失效并显示更新后的页面。如果后台重新生成失败，旧页面仍将保持不变
 
-### 使用 useeffect 客户端数据获取
+### 使用 useEffect 客户端数据获取
 
 ```jsx
 import { useState, useEffect } from 'react'
@@ -399,7 +399,7 @@ const path = require('path')
 
 module.exports = {
   sassOptions: {
-    includePaths: 
+    includePaths:
         [path.join(__dirname, 'styles')],
   },
 }
@@ -1336,7 +1336,7 @@ NEXT_PUBLIC_ANALYTICS_ID=abcdefghijk
 // pages/index.js
 import setupAnalyticsService from '../lib/my-analytics-service'
 
-// 
+//
 // 它将在构建时转换为 `setupAnalyticsService('abcdefghijk')`
 setupAnalyticsService(process.env.NEXT_PUBLIC_ANALYTICS_ID)
 
@@ -1528,11 +1528,11 @@ export default function Home() {
 
 ```js
 // GET `/post` (empty object)
-{ } 
+{ }
 // `GET /post/a` (single-element array)
-{ "slug": ["a"] } 
+{ "slug": ["a"] }
 // `GET /post/a/b` (multi-element array)
-{ "slug": ["a", "b"] } 
+{ "slug": ["a", "b"] }
 ```
 
 ### 事件执行调整页面
