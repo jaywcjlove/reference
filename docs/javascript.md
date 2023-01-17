@@ -469,6 +469,15 @@ function sum(num1, num2) {
 sum(2, 4); // 6
 ```
 
+### 立即执行函数
+
+```javascript
+//命名函数并立即执行一次
+(function sum(num1, num2) {
+  return num1 + num2;
+})(2,4)//6
+```
+
 ### 函数表达式
 
 ```javascript
