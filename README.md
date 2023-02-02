@@ -284,9 +284,6 @@ Quick Reference
 <a href="https://github.com/DaiNing810" title="DaiN">
   <img src="https://avatars.githubusercontent.com/u/94962339?v=4" width="42;" alt="DaiN"/>
 </a>
-<a href="https://github.com/Damao2250" title="Damao">
-  <img src="https://avatars.githubusercontent.com/u/19251992?v=4" width="42;" alt="Damao"/>
-</a>
 <a href="https://github.com/demigodliu" title="DemigodLiu">
   <img src="https://avatars.githubusercontent.com/u/30372735?v=4" width="42;" alt="DemigodLiu"/>
 </a>
@@ -337,9 +334,6 @@ Quick Reference
 </a>
 <a href="https://github.com/hi-liyan" title="Yan Li">
   <img src="https://avatars.githubusercontent.com/u/40056492?v=4" width="42;" alt="Yan Li"/>
-</a>
-<a href="https://github.com/yikuaibro" title="ZhiQiang Li">
-  <img src="https://avatars.githubusercontent.com/u/44493045?v=4" width="42;" alt="ZhiQiang Li"/>
 </a>
 <a href="https://github.com/y52y" title="Zyj">
   <img src="https://avatars.githubusercontent.com/u/51304324?v=4" width="42;" alt="Zyj"/>
