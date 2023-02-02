@@ -297,7 +297,7 @@ RegEX 备忘清单
 
 范例 | 说明
 :-|-
-`colou?r`           | 匹配 <yel>color</yel> 或 <yel>color</yel>
+`colou?r`           | 匹配 <yel>color</yel> 或 <yel>colour</yel>
 `[BW]ill[ieamy's]*` | 匹配 <yel>Bill</yel>、<yel>Willy</yel>、<yel>William's</yel> 等。
 `[a-zA-Z]+`         | 匹配 1 个或多个字母
 `\d{3}-\d{2}-\d{4}` | 匹配 SSN
