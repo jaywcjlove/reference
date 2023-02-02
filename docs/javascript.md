@@ -88,7 +88,7 @@ console.log(single.length);
 
 ```javascript
 5 + 5 = 10     // 加法 Addition
-10 - 5 = 5     // 加法 Subtraction
+10 - 5 = 5     // 减法 Subtraction
 5 * 10 = 50    // 乘法 Multiplication
 10 / 5 = 2     // 除法 Division
 10 % 5 = 0     // 取模 Modulo
