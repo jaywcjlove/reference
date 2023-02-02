@@ -166,21 +166,22 @@
 </span><span class="code-line"><span class="token comment">//不能直接进行操作，包括读写</span>
 </span><span class="code-line"><span class="token keyword">var</span> p <span class="token operator">*</span><span class="token builtin">int</span>
 </span><span class="code-line"><span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">123</span>      <span class="token comment">// panic   nil pointer</span>
-</span><span class="code-line"><span class="token operator">--</span><span class="token operator">-</span>
-</span><span class="code-line"><span class="token comment">//而用new返回的是有默认值的指针, 为数据类型的默认值</span>
+</span></code></pre>
+<hr>
+<pre class="language-go"><code class="language-go code-highlight"><span class="code-line"><span class="token comment">//而用new返回的是有默认值的指针, 为数据类型的默认值</span>
 </span><span class="code-line"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-</span><span class="code-line">    <span class="token comment">//有一块内存存放了10，它的地址由系统自动分配，别名是a</span>
-</span><span class="code-line">    a <span class="token operator">:=</span> <span class="token number">10</span>
-</span><span class="code-line">    <span class="token comment">//内存存放的10变成了20</span>
-</span><span class="code-line">    a <span class="token operator">=</span> <span class="token number">20</span>
-</span><span class="code-line">    <span class="token keyword">var</span> p <span class="token operator">*</span><span class="token builtin">int</span>
-</span><span class="code-line">    p <span class="token operator">=</span> <span class="token operator">&#x26;</span>a   <span class="token comment">//或者直接写 p := &#x26;a</span>
-</span><span class="code-line">    <span class="token comment">//上面的p是一个指针，通过 *p 的方式同样可以访问 变量a指向 的内存</span>
-</span><span class="code-line"> 
-</span><span class="code-line">    <span class="token comment">/*当你动态申请内存的时候，指针的存在意义之一就被体现出来了*/</span> 
-</span><span class="code-line">    ptr <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span>   
-</span><span class="code-line">    <span class="token comment">//申请了一块内存空间，没有办法指定别名，new()返回内存地址，用指针接收</span>
-</span><span class="code-line">    <span class="token comment">//此时并没有变量能直接指向这块内存，所以只能通过内存地址来访问</span>
+</span><span class="code-line">  <span class="token comment">//有一块内存存放了10，它的地址由系统自动分配，别名是a</span>
+</span><span class="code-line">  a <span class="token operator">:=</span> <span class="token number">10</span>
+</span><span class="code-line">  <span class="token comment">//内存存放的10变成了20</span>
+</span><span class="code-line">  a <span class="token operator">=</span> <span class="token number">20</span>
+</span><span class="code-line">  <span class="token keyword">var</span> p <span class="token operator">*</span><span class="token builtin">int</span>
+</span><span class="code-line">  p <span class="token operator">=</span> <span class="token operator">&#x26;</span>a   <span class="token comment">//或者直接写 p := &#x26;a</span>
+</span><span class="code-line">  <span class="token comment">//上面的p是一个指针，通过 *p 的方式同样可以访问 变量a指向 的内存</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">/*当你动态申请内存的时候，指针的存在意义之一就被体现出来了*/</span> 
+</span><span class="code-line">  ptr <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span>   
+</span><span class="code-line">  <span class="token comment">//申请了一块内存空间，没有办法指定别名，new()返回内存地址，用指针接收</span>
+</span><span class="code-line">  <span class="token comment">//此时并没有变量能直接指向这块内存，所以只能通过内存地址来访问</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
 <p>参见：<a href="https://tour.golang.org/moretypes/1">指针(Pointers)</a></p>
@@ -202,16 +203,16 @@
 </span><span class="code-line"><span class="token keyword">const</span> Phi <span class="token operator">=</span> <span class="token number">1.618</span>
 </span><span class="code-line"><span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">500000000</span>
 </span><span class="code-line"><span class="token keyword">const</span> d <span class="token operator">=</span> <span class="token number">3e20</span> <span class="token operator">/</span> n
-</span><span class="code-line">
-</span><span class="code-line">常量声明可以使用 <span class="token boolean">iota</span>常量生成器 初始化，它用于
-</span><span class="code-line">生成一组以相似规则初始化的常量，但是不用每行都
-</span><span class="code-line">写一遍初始化表达式。
-</span><span class="code-line">注意：
-</span><span class="code-line">  <span class="token number">1.</span>在一个<span class="token keyword">const</span>声明语句中，在第一个声明的常量
-</span><span class="code-line">  所在的行，<span class="token boolean">iota</span>被置为<span class="token number">0</span>，然后在每一个有常量声明的行加一。
-</span><span class="code-line">  <span class="token number">2.</span>写在同一行的值是相同的
-</span><span class="code-line">
-</span><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">(</span>
+</span></code></pre>
+<p>常量声明可以使用 iota常量生成器 初始化，它用于
+生成一组以相似规则初始化的常量，但是不用每行都
+写一遍初始化表达式。
+注意：</p>
+<ol>
+<li>在一个const声明语句中，在第一个声明的常量所在的行，iota被置为0，然后在每一个有常量声明的行加一。</li>
+<li>写在同一行的值是相同的</li>
+</ol>
+<pre class="language-go"><code class="language-go code-highlight"><span class="code-line"><span class="token keyword">const</span> <span class="token punctuation">(</span>
 </span><span class="code-line">    a <span class="token operator">=</span> <span class="token boolean">iota</span>
 </span><span class="code-line">    b
 </span><span class="code-line">    c
