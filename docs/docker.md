@@ -142,7 +142,7 @@ Docker 镜像
 `docker load --input ubuntu.tar`   | 加载一个 tarred 存储库
 `docker save busybox > ubuntu.tar` | 将镜像保存到 tar 存档
 `docker history`                   | 显示镜像的历史
-`docker commit nginx`              | 将容器另存为镜像。
+`docker commit nginx my_nginx`     | 将容器另存为镜像
 `docker tag nginx eon01/nginx`     | 标记镜像
 `docker push eon01/nginx`          | 推送镜像
 
