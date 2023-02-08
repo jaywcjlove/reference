@@ -74,6 +74,9 @@ let inputValue = '';
 let activeIndex = 0
 
 document.addEventListener('keydown', (ev) => {
+  if (ev.key.toLocaleLowerCase() === 'escape') {
+    hideSearch();
+  }
   if (ev.metaKey && ev.key.toLocaleLowerCase() === 'k') {
     searchBox.classList.contains('show') ? hideSearch() : showSearch();
   }
