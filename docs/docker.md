@@ -232,10 +232,10 @@ docker network create -d overlay \
 
 | Docker 语法 | 说明 |
 |------------|------|
-`docker search search_word` | 在 docker hub 中搜索镜像。
-`docker pull user/image` | 从 docker hub 下载镜像。
+`docker search search_word` | 在 docker hub 中搜索镜像
+`docker pull user/image` | 从 docker hub 下载镜像
 `docker login` | 向 docker hub 进行身份验证
-`docker push user/image` | 将镜像上传到 docker hub。
+`docker push user/image` | 将镜像上传到 docker hub
 
 ### 镜像仓库命令
 <!--rehype:wrap-class=row-span-3-->
@@ -312,7 +312,7 @@ $ docker volume prune
 `docker-compose config` | 验证并查看 Compose 文件
 `docker-compose scale <service_name>=<replica>` | 为服务指定容器个数
 `docker-compose top` | 显示正在运行的进程
-`docker-compose run -rm -p 2022:22 web bash` | 启动 Web 服务并运行 bash 作为其命令，删除旧容器。
+`docker-compose run -rm -p 2022:22 web bash` | 启动 Web 服务并运行 bash 作为其命令，删除旧容器
 
 ### Docker Services
 
