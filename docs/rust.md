@@ -180,7 +180,7 @@ let p = Point { x: 10, y: 11 };
 let px: i32 = p.x;
 ```
 
-#### 元祖结构体
+#### 元组结构体
 
 ```rust
 struct Color (i32, i32, i32);
