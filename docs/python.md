@@ -152,7 +152,7 @@ message += "Part 2."
 '10 + 10 = 20'
 ```
 
-查看: [Python F-Strings](#f-字符串(Python 3.6+))
+查看: [Python F-Strings](#python-f-字符串-自-python-3-6-起)
 
 Python 数据类型
 ---------------
