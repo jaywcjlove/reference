@@ -254,6 +254,9 @@ Quick Reference
 <a href="https://github.com/1834423612" title="kjch">
   <img src="https://avatars.githubusercontent.com/u/49981661?v=4" width="42;" alt="kjch"/>
 </a>
+<a href="https://github.com/mancuoj" title="mancuoj">
+  <img src="https://avatars.githubusercontent.com/u/45707684?v=4" width="42;" alt="mancuoj"/>
+</a>
 <a href="https://github.com/pangxiaoli" title="pangxiaoli">
   <img src="https://avatars.githubusercontent.com/u/54620953?v=4" width="42;" alt="pangxiaoli"/>
 </a>
@@ -319,6 +322,9 @@ Quick Reference
 </a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
+</a>
+<a href="https://github.com/malcolmyu" title="Minghao Yu">
+  <img src="https://avatars.githubusercontent.com/u/3203962?v=4" width="42;" alt="Minghao Yu"/>
 </a>
 <a href="https://github.com/Mo3et" title="Monet Lee">
   <img src="https://avatars.githubusercontent.com/u/34803812?v=4" width="42;" alt="Monet Lee"/>
@@ -406,9 +412,6 @@ Quick Reference
 </a>
 <a href="https://github.com/lykjjj" title="lykjjj">
   <img src="https://avatars.githubusercontent.com/u/58510058?v=4" width="42;" alt="lykjjj"/>
-</a>
-<a href="https://github.com/mancuoj" title="mancuoj">
-  <img src="https://avatars.githubusercontent.com/u/45707684?v=4" width="42;" alt="mancuoj"/>
 </a>
 <a href="https://github.com/miclon-dev" title="miclon-dev">
   <img src="https://avatars.githubusercontent.com/u/111753685?v=4" width="42;" alt="miclon-dev"/>
