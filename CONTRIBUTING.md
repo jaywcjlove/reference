@@ -295,6 +295,9 @@ jobs:
 <a href="https://github.com/eeeeeio" title="EEEEE">
   <img src="https://avatars.githubusercontent.com/u/20723545?v=4" width="42;" alt="EEEEE"/>
 </a>
+<a href="https://github.com/gongyeheyu" title="GONGYE Heyu">
+  <img src="https://avatars.githubusercontent.com/u/85177605?v=4" width="42;" alt="GONGYE Heyu"/>
+</a>
 <a href="https://github.com/Ding-Kyoma" title="HooinKyoma">
   <img src="https://avatars.githubusercontent.com/u/44542198?v=4" width="42;" alt="HooinKyoma"/>
 </a>
