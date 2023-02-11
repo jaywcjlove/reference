@@ -489,7 +489,7 @@ Python F 字符串（自 Python 3.6+ 起）
 'text      '
 >>> f'{"test":*>10}' # 向左填充
 '******test'
->>> f'{"test":*<10}' # 填写正确
+>>> f'{"test":*<10}' # 向右填充
 'test******'
 >>> f'{"test":*^10}' # 填充中心
 '***test***'
@@ -649,7 +649,7 @@ a_list[start:end:step]
 ['spam', 'egg', 'bacon', 'tomato', 'ham', 'lobster']
 ```
 
-#### 迈着大步
+#### 跳跃索引
 
 ```python
 ['spam', 'egg', 'bacon', 'tomato', 'ham', 'lobster']
@@ -678,7 +678,7 @@ a_list[start:end:step]
 ['butter']
 ```
 
-### 使用权
+### 列表边界
 
 ```python
 >>> li = ['a', 'b', 'c', 'd']
