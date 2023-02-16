@@ -206,7 +206,41 @@ Chrome 开发者工具键盘快捷键
 `Enter`  | 执行
 <!--rehype:className=shortcuts-->
 
+Chrome 搜索引擎查询语法
+---
+
+### 语法
+
+语法 | 阐述
+:- | -
+`site:` | 指定网站
+`inurl:` | URL 中存在的关键字页面
+`intext:` | 网页内容里的关键字
+`Filetype:` | 指定文件的类型
+`intitle:` | 网页辩题中的关键字
+`link:` | 返回所有你指定的域名链接
+`info:` | 查找指定站点信息
+`cache:` | 搜索 Google 中的内容缓存
+`related:` | 搜索相关的网站
+
+<span style="color:red">注意：</span>搜索语法的 `:` 后不应该存在空格，像这样 `site:google.com`，而不是这样 `site: google.com`。
+
+### 指令
+
+指令 | 阐述
+:- | -
+`@`   | 用于搜索社交媒体，如：`@twitter`
+`*`   | 通配符省略，如：`wlop *`
+`$`   | 用于搜索指定的价格，如：`phone $400`
+`#`   | 搜索 `#` 标签，如：`#疯狂星期四`
+`-`   | 排除特定关键字，如：`中国美食 -麻辣`
+`""`  | 完全匹配的结果，如：`"最高的建筑"`
+`..`  | 某个数字范围之内的，如：`phone $50..$100`
+`OR`  | 组合搜索，如：`疯狂星期四 OR 肯德基`
+`AND` | 空格默认是 AND 指令
+
 另见
 ----
 
 - [Keyboard shortcuts for Google Chrome](https://support.google.com/chrome/answer/157179?hl=en) _(support.google.com)_
+- [Search Help for Google Chrome](https://support.google.com/websearch/answer/2466433?hl=en)

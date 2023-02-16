@@ -113,7 +113,7 @@ $("selector1, selector2 ...selectorn")
 - [[name!="value"]](https://api.jquery.com/attribute-not-equal-selector/) _选择不具有指定属性或具有指定属性但不具有特定值的元素_<!--rehype:tooltips-->
 - [[name^="value"]](https://api.jquery.com/attribute-starts-with-selector/) _选择具有指定属性且值恰好以给定字符串开头的元素_<!--rehype:tooltips-->
 - [[name]](https://api.jquery.com/has-attribute-selector/) _选择具有指定属性和任意值的元素_<!--rehype:tooltips-->
-- [[name="value"][name2="value2"]](https://api.jquery.com/multiple-attribute-selector/) _匹配匹配所有指定属性过滤器的元素_<!--rehype:tooltips-->
+- [[name="value"]](https://api.jquery.com/multiple-attribute-selector/) _匹配匹配所有指定属性过滤器的元素_<!--rehype:tooltips-->
 <!--rehype:className=cols-2 style-none-->
 
 ### 子过滤器
