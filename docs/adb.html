@@ -2,10 +2,10 @@
 <html lang="en" data-color-mode="dark">
 <head>
 <meta charset="utf-8">
-<title>Android ADB 备忘清单
+<title>Android Debug Bridge 备忘清单
  &#x26;  adb cheatsheet &#x26;  Quick Reference</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta description="ADB，Android Debug Bridge，包含在 Google 的 Android SDK 中，可用于从计算机控制您的 Android 设备。以下是您可以与 ADB 一起使用的一些最常见的命令及其用法
+<meta description="ADB 既 Android Debug Bridge，是 Google 的 Android SDK 中的一个命令行工具，可让您的计算机控制 Android 设备执行各种设备操作。以下是您可以与 ADB 一起使用的一些最常见的命令及其用法
 
 入门，为开发人员分享快速参考备忘单。">
 <meta keywords="adb,reference,Quick,Reference,cheatsheet,cheat,sheet">
@@ -26,14 +26,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
   <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
 </svg>
-</button><script src="../js/dark.js"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="android-adb-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
+</button><script src="../js/dark.js"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="android-debug-bridge-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
   <path d="m10.213 1.471.691-1.26c.046-.083.03-.147-.048-.192-.085-.038-.15-.019-.195.058l-.7 1.27A4.832 4.832 0 0 0 8.005.941c-.688 0-1.34.135-1.956.404l-.7-1.27C5.303 0 5.239-.018 5.154.02c-.078.046-.094.11-.049.193l.691 1.259a4.25 4.25 0 0 0-1.673 1.476A3.697 3.697 0 0 0 3.5 5.02h9c0-.75-.208-1.44-.623-2.072a4.266 4.266 0 0 0-1.664-1.476ZM6.22 3.303a.367.367 0 0 1-.267.11.35.35 0 0 1-.263-.11.366.366 0 0 1-.107-.264.37.37 0 0 1 .107-.265.351.351 0 0 1 .263-.11c.103 0 .193.037.267.11a.36.36 0 0 1 .112.265.36.36 0 0 1-.112.264Zm4.101 0a.351.351 0 0 1-.262.11.366.366 0 0 1-.268-.11.358.358 0 0 1-.112-.264c0-.103.037-.191.112-.265a.367.367 0 0 1 .268-.11c.104 0 .19.037.262.11a.367.367 0 0 1 .107.265c0 .102-.035.19-.107.264ZM3.5 11.77c0 .294.104.544.311.75.208.204.46.307.76.307h.758l.01 2.182c0 .276.097.51.292.703a.961.961 0 0 0 .7.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h1.343v2.182c0 .276.097.51.292.703a.972.972 0 0 0 .71.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h.76c.291 0 .54-.103.749-.308.207-.205.311-.455.311-.75V5.365h-9v6.404Zm10.495-6.587a.983.983 0 0 0-.702.278.91.91 0 0 0-.293.685v4.063c0 .271.098.501.293.69a.97.97 0 0 0 .702.284c.28 0 .517-.095.712-.284a.924.924 0 0 0 .293-.69V6.146a.91.91 0 0 0-.293-.685.995.995 0 0 0-.712-.278Zm-12.702.283a.985.985 0 0 1 .712-.283c.273 0 .507.094.702.283a.913.913 0 0 1 .293.68v4.063a.932.932 0 0 1-.288.69.97.97 0 0 1-.707.284.986.986 0 0 1-.712-.284.924.924 0 0 1-.293-.69V6.146c0-.264.098-.491.293-.68Z"></path>
 </svg>
-<a aria-hidden="true" tabindex="-1" href="#android-adb-备忘清单"><span class="icon icon-link"></span></a>Android ADB 备忘清单</h1><div class="wrap-body">
-<p><a href="https://developer.android.com/studio/command-line/adb.html">ADB</a>，Android Debug Bridge，包含在 Google 的 Android SDK 中，可用于从计算机控制您的 Android 设备。以下是您可以与 <a href="https://developer.android.com/studio/command-line/adb.html">ADB</a> 一起使用的一些最常见的命令及其用法</p>
+<a aria-hidden="true" tabindex="-1" href="#android-debug-bridge-备忘清单"><span class="icon icon-link"></span></a>Android Debug Bridge 备忘清单</h1><div class="wrap-body">
+<p><a href="https://developer.android.com/studio/command-line/adb.html">ADB</a> 既 Android Debug Bridge，是 Google 的 Android SDK 中的一个命令行工具，可让您的计算机控制 Android 设备执行各种设备操作。以下是您可以与 <a href="https://developer.android.com/studio/command-line/adb.html">ADB</a> 一起使用的一些最常见的命令及其用法</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设备基础">设备基础</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#logcat">Logcat</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例-1">示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#过滤日志输出">过滤日志输出</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件管理">文件管理</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例-2">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#远程-shell">远程 Shell</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包安装">包安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#paths">Paths</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#手机信息">手机信息</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包信息">包信息</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设备相关命令">设备相关命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#权限">权限</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#logs">Logs</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#常见的-adb-命令">常见的 ADB 命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将文件推送到-android-设备的下载文件夹">将文件推送到 Android 设备的下载文件夹</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#列出所有已安装的包并获取完整路径">列出所有已安装的包并获取完整路径</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从安卓设备中提取文件">从安卓设备中提取文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从主机安装-apk-到-android-设备">从主机安装 apk 到 Android 设备</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从-android-设备存储安装-apk">从 Android 设备存储安装 apk</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置网络代理">设置网络代理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#禁用网络代理">禁用网络代理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#显示连接的设备并选择一个设备和外壳">显示连接的设备并选择一个设备和外壳</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通过-ip-地址无线连接到设备">通过 ip 地址无线连接到设备</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#adb-通过-wifi">adb 通过 wifi</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从计算机上的-apk-文件安装应用程序">从计算机上的 apk 文件安装应用程序</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查找应用的-apk-路径">查找应用的 apk 路径</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#按名称查找应用的包名">按名称查找应用的包名</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将-apk-从设备提取到您的计算机">将 apk 从设备提取到您的计算机</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将文件从计算机复制到设备">将文件从计算机复制到设备</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#滚动屏幕">滚动屏幕</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#发文本">发文本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#发送按键事件">发送按键事件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#发送点击">发送点击</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看包的日志">查看包的日志</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设备基础">设备基础</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#logcat">Logcat</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例-1">示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#过滤日志输出">过滤日志输出</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件管理">文件管理</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例-2">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#远程-shell">远程 Shell</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包安装">包安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#paths">Paths</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#手机信息">手机信息</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包信息">包信息</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设备相关命令">设备相关命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#权限">权限</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#logs">Logs</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#常见的-adb-命令">常见的 ADB 命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将文件推送到-android-设备的下载文件夹">将文件推送到 Android 设备的下载文件夹</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#列出所有已安装的包并获取完整路径">列出所有已安装的包并获取完整路径</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从安卓设备中提取文件">从安卓设备中提取文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从主机安装-apk-到-android-设备">从主机安装 APK 到 Android 设备</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从-android-设备存储安装-apk">从 Android 设备存储安装 APK</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置网络代理">设置网络代理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#禁用网络代理">禁用网络代理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#显示连接的设备并指定一个设备进行-shell">显示连接的设备并指定一个设备进行 Shell</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通过-ip-地址连接到设备">通过 IP 地址连接到设备</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通过-wi-fi-连接-adb">通过 Wi-Fi 连接 ADB</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将计算机上的-apk-文件安装到设备">将计算机上的 APK 文件安装到设备</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查找应用的-apk-路径">查找应用的 APK 路径</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通过名称查找应用的包名">通过名称查找应用的包名</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从设备提取-apk-到您的计算机">从设备提取 APK 到您的计算机</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将文件从计算机复制到设备">将文件从计算机复制到设备</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#滚动屏幕">滚动屏幕</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#发文本">发文本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#发送按键事件">发送按键事件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#发送点击">发送点击</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看包的日志">查看包的日志</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="设备基础"><a aria-hidden="true" tabindex="-1" href="#设备基础"><span class="icon icon-link"></span></a>设备基础</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
 
@@ -81,7 +81,19 @@
 
 
 
-<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb devices</code></td><td>列出连接的设备</td></tr><tr><td align="left"><code>adb devices -l</code></td><td>列出连接的设备和种类</td></tr><tr><td align="left"><code>adb root</code></td><td>以 <code>root</code> 权限重新启动 <code>adbd</code></td></tr><tr><td align="left"><code>adb start-server</code></td><td>启动 <code>adb</code> 服务器</td></tr><tr><td align="left"><code>adb kill-server</code></td><td>杀死 <code>adb</code> 服务器</td></tr><tr><td align="left"><code>adb remount</code></td><td>重新挂载具有读/写访问权限的文件系统</td></tr><tr><td align="left"><code>adb reboot</code></td><td>重启设备</td></tr><tr><td align="left"><code>adb reboot bootloader</code></td><td>将设备重新启动到快速启动</td></tr><tr><td align="left"><code>adb disable-verity</code></td><td>将设备重新启动到快速启动</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb devices</code></td><td>列出已连接的设备</td></tr><tr><td align="left"><code>adb devices -l</code></td><td>列出已连接的设备和种类</td></tr><tr><td align="left"><code>adb connect [IP:PORT]</code></td><td>连接到指定 IP 和端口的设备</td></tr><tr><td align="left"><code>adb disconnect [IP:PORT]</code></td><td>断开指定 IP 和端口的设备连接，若未指定，则断开所有连接</td></tr><tr><td align="left"><code>adb root</code></td><td>以 <code>root</code> 权限重新启动 <code>adbd</code></td></tr><tr><td align="left"><code>adb start-server</code></td><td>启动 <code>adb</code> 服务</td></tr><tr><td align="left"><code>adb kill-server</code></td><td>停止 <code>adb</code> 服务器</td></tr><tr><td align="left"><code>adb remount</code></td><td>重新挂载具有读/写访问权限的文件系统</td></tr><tr><td align="left"><code>adb reboot</code></td><td>重启设备</td></tr><tr><td align="left"><code>adb reboot bootloader</code></td><td>将设备重启到 fastboot 模式</td></tr><tr><td align="left"><code>adb reboot recovery</code></td><td>将设备重启到恢复模式</td></tr><tr><td align="left"><code>adb disable-verity</code></td><td>禁用设备的 dm-verity 安全特性</td></tr></tbody></table>
 <!--rehype:className=left-align code-nowrap-->
 <hr>
 <ul>
@@ -131,7 +143,7 @@
 
 
 
-<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb logcat</code></td><td>开始将日志消息打印到标准输出</td></tr><tr><td align="left"><code>adb logcat -g</code></td><td>显示当前日志缓冲区大小</td></tr><tr><td align="left"><code>adb logcat -G &#x3C;size></code></td><td>设置缓冲区大小（K 或 M）</td></tr><tr><td align="left"><code>adb logcat -c</code></td><td>清除日志缓冲区</td></tr><tr><td align="left"><code>adb logcat *:V</code></td><td>启用所有日志消息（详细）</td></tr><tr><td align="left"><code>adb logcat -f &#x3C;filename></code></td><td>转储到指定文件</td></tr></tbody></table>
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb logcat</code></td><td>将日志消息打印到标准输出</td></tr><tr><td align="left"><code>adb logcat -g</code></td><td>显示当前日志缓冲区大小</td></tr><tr><td align="left"><code>adb logcat -G &#x3C;size></code></td><td>设置缓冲区大小（K 或 M）</td></tr><tr><td align="left"><code>adb logcat -c</code></td><td>清除日志缓冲区</td></tr><tr><td align="left"><code>adb logcat *:V</code></td><td>启用所有日志消息（详细）</td></tr><tr><td align="left"><code>adb logcat -f &#x3C;filename></code></td><td>将日志转储到指定文件</td></tr></tbody></table>
 <!--rehype:className=left-align code-nowrap-->
 <h4 id="示例-1"><a aria-hidden="true" tabindex="-1" href="#示例-1"><span class="icon icon-link"></span></a>示例</h4>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb logcat <span class="token parameter variable">-G</span> 16M
@@ -139,16 +151,16 @@
 </span></code></pre>
 <h4 id="过滤日志输出"><a aria-hidden="true" tabindex="-1" href="#过滤日志输出"><span class="icon icon-link"></span></a>过滤日志输出</h4>
 <ul class="cols-2 shortcuts style-none">
-<li><code>V</code> 详细(最低优先级)</li>
-<li><code>D</code> 调试</li>
-<li><code>I</code> 信息</li>
-<li><code>W</code> 警告</li>
-<li><code>E</code> 错误</li>
-<li><code>F</code> 严重错误</li>
+<li><code>V</code> 最详细的信息(最低优先级)</li>
+<li><code>D</code> 调试信息</li>
+<li><code>I</code> 普通信息</li>
+<li><code>W</code> 警告信息</li>
+<li><code>E</code> 错误信息</li>
+<li><code>F</code> 致命错误信息</li>
 <li><code>S</code> 静默(最高优先级)</li>
 </ul>
 <!--rehype:className=cols-2 shortcuts style-none-->
-<p>过滤器表达式显示了优先级不低于 <code>警告</code> 的所有标记的所有日志消息：</p>
+<p>例如，要显示优先级不低于 <code>警告</code> 的所有标记的所有日志消息，可以使用以下命令：</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb logcat *:W
 </span></code></pre>
 </div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="文件管理"><a aria-hidden="true" tabindex="-1" href="#文件管理"><span class="icon icon-link"></span></a>文件管理</h3><div class="wrap-body">
@@ -169,7 +181,7 @@
 
 
 
-<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb push &#x3C;local> &#x3C;remote></code></td><td>将本地复制到远程设备</td></tr><tr><td align="left"><code>adb pull &#x3C;remote> &#x3C;local></code></td><td>将远程设备从设备复制到本地</td></tr></tbody></table>
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb push &#x3C;local> &#x3C;remote></code></td><td>将本地文件复制到远程设备</td></tr><tr><td align="left"><code>adb pull &#x3C;remote> &#x3C;local></code></td><td>将远程设备文件复制到本地</td></tr></tbody></table>
 <!--rehype:className=left-align code-nowrap-->
 <h4 id="示例-2"><a aria-hidden="true" tabindex="-1" href="#示例-2"><span class="icon icon-link"></span></a>示例</h4>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">"This is a test"</span> <span class="token operator">></span> test.txt
@@ -210,7 +222,7 @@
 
 
 
-<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell &#x3C;command></code></td><td>在设备上运行指定的命令（大多数 unix 命令在这里工作）</td></tr><tr><td align="left"><code>adb shell wm size</code></td><td>显示当前屏幕分辨率</td></tr><tr><td align="left"><code>adb shell wm size WxH</code></td><td>将分辨率设置为 WxH</td></tr><tr><td align="left"><code>adb shell pm list packages</code></td><td>列出所有已安装的包</td></tr><tr><td align="left"><code>adb shell pm list packages -3</code></td><td>列出所有已安装的 3rd 方包</td></tr><tr><td align="left"><code>adb shell monkey -p app.package.name</code></td><td>启动指定包</td></tr></tbody></table>
+<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell &#x3C;command></code></td><td>在设备上运行指定的命令（大多数 Unix 命令在这里工作）</td></tr><tr><td align="left"><code>adb shell wm size</code></td><td>显示当前屏幕分辨率</td></tr><tr><td align="left"><code>adb shell wm size WxH</code></td><td>将分辨率设置为 WxH</td></tr><tr><td align="left"><code>adb shell pm list packages</code></td><td>列出所有已安装的应用包</td></tr><tr><td align="left"><code>adb shell pm list packages -3</code></td><td>列出所有已安装的第三方的应用包</td></tr><tr><td align="left"><code>adb shell monkey -p app.package.name</code></td><td>启动指定包名的应用程序</td></tr></tbody></table>
 <!--rehype:className=style-list-arrow-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="包安装"><a aria-hidden="true" tabindex="-1" href="#包安装"><span class="icon icon-link"></span></a>包安装</h3><div class="wrap-body">
 
@@ -238,7 +250,7 @@
 
 
 
-<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell install &#x3C;apk></code></td><td>安装应用程序</td></tr><tr><td align="left"><code>adb shell install &#x3C;path></code></td><td>手机路径安装应用</td></tr><tr><td align="left"><code>adb shell install -r &#x3C;path></code></td><td>手机路径安装应用</td></tr><tr><td align="left"><code>adb shell uninstall &#x3C;name></code></td><td>删除应用程序</td></tr></tbody></table>
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell install &#x3C;apk></code></td><td>安装应用程序</td></tr><tr><td align="left"><code>adb shell install &#x3C;path></code></td><td>从手机路径安装应用</td></tr><tr><td align="left"><code>adb shell install -r &#x3C;path></code></td><td>从手机路径安装应用（允许覆盖安装）</td></tr><tr><td align="left"><code>adb shell uninstall &#x3C;name></code></td><td>卸载应用程序</td></tr></tbody></table>
 <!--rehype:className=left-align code-nowrap-->
 </div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="paths"><a aria-hidden="true" tabindex="-1" href="#paths"><span class="icon icon-link"></span></a>Paths</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
@@ -283,7 +295,7 @@
 
 
 
-<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>/data/data/&#x3C;package>/databases</code></td><td>应用程序数据库</td></tr><tr><td align="left"><code>/data/data/&#x3C;package>/shared_prefs/</code></td><td>共享偏好</td></tr><tr><td align="left"><code>/data/app</code></td><td>用户安装的apk</td></tr><tr><td align="left"><code>/system/app</code></td><td>预装的 APK 文件</td></tr><tr><td align="left"><code>/mmt/asec</code></td><td>加密的应用程序|App2SD</td></tr><tr><td align="left"><code>/mmt/emmc</code></td><td>内部 SD 卡</td></tr><tr><td align="left"><code>/mmt/adcard</code></td><td>外部/内部 SD 卡</td></tr><tr><td align="left"><code>/mmt/adcard/external_sd</code></td><td>外置 SD 卡</td></tr></tbody></table>
+<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>/data/data/&#x3C;package>/databases</code></td><td>应用程序数据库</td></tr><tr><td align="left"><code>/data/data/&#x3C;package>/shared_prefs/</code></td><td>共享偏好设置</td></tr><tr><td align="left"><code>/data/app</code></td><td>用户安装的 APK</td></tr><tr><td align="left"><code>/system/app</code></td><td>系统预装的 APK 文件</td></tr><tr><td align="left"><code>/mmt/asec</code></td><td>加密的应用程序（App2SD）</td></tr><tr><td align="left"><code>/mmt/emmc</code></td><td>内部 SD 卡</td></tr><tr><td align="left"><code>/mmt/adcard</code></td><td>外部/内部 SD 卡</td></tr><tr><td align="left"><code>/mmt/adcard/external_sd</code></td><td>外置 SD 卡</td></tr></tbody></table>
 <!--rehype:className=style-list-arrow-->
 <hr>
 
@@ -368,7 +380,7 @@
 
 
 
-<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb get-statе</code></td><td>打印设备状态</td></tr><tr><td align="left"><code>adb get-serialno</code></td><td>获取序列号</td></tr><tr><td align="left"><code>adb shell dumpsys iphonesybinfo</code></td><td>获取 IMEI</td></tr><tr><td align="left"><code>adb shell netstat</code></td><td>列出 TCP 连接</td></tr><tr><td align="left"><code>adb shell pwd</code></td><td>打印当前工作目录</td></tr><tr><td align="left"><code>adb shell dumpsys battery</code></td><td>电池状态</td></tr><tr><td align="left"><code>adb shell pm list features</code></td><td>列出电话功能</td></tr><tr><td align="left"><code>adb shell service list</code></td><td>列出所有服务</td></tr><tr><td align="left"><code>adb shell dumpsys activity &#x3C;package>/&#x3C;activity></code></td><td>活动信息</td></tr><tr><td align="left"><code>adb shell ps</code></td><td>打印进程状态</td></tr><tr><td align="left"><code>adb shell wm size</code></td><td>显示当前屏幕分辨率</td></tr><tr><td align="left"><code>dumpsys window windows</code> | <code>grep -E 'mCurrentFocus|mFocusedApp'</code></td><td>打印当前应用程序的打开活动</td></tr></tbody></table>
+<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb get-statе</code></td><td>打印设备状态</td></tr><tr><td align="left"><code>adb get-serialno</code></td><td>获取设备的序列号</td></tr><tr><td align="left"><code>adb shell dumpsys iphonesybinfo</code></td><td>获取设备的 IMEI 信息</td></tr><tr><td align="left"><code>adb shell netstat</code></td><td>列出设备上的所有 TCP 连接</td></tr><tr><td align="left"><code>adb shell pwd</code></td><td>打印当前工作目录</td></tr><tr><td align="left"><code>adb shell dumpsys battery</code></td><td>获取设备电池状态</td></tr><tr><td align="left"><code>adb shell pm list features</code></td><td>列出设备支持的所有功能</td></tr><tr><td align="left"><code>adb shell service list</code></td><td>列出设备上运行的所有服务</td></tr><tr><td align="left"><code>adb shell dumpsys activity &#x3C;package>/&#x3C;activity></code></td><td>获取指定包和活动的信息</td></tr><tr><td align="left"><code>adb shell ps</code></td><td>打印设备上所有运行的进程状态</td></tr><tr><td align="left"><code>adb shell wm size</code></td><td>显示当前设备的屏幕分辨率</td></tr><tr><td align="left"><code>dumpsys window windows</code> | <code>grep -E 'mCurrentFocus|mFocusedApp'</code></td><td>打印当前应用程序的打开活动的信息</td></tr></tbody></table>
 <!--rehype:className=style-list-arrow-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="包信息"><a aria-hidden="true" tabindex="-1" href="#包信息"><span class="icon icon-link"></span></a>包信息</h3><div class="wrap-body">
 
@@ -412,7 +424,7 @@
 
 
 
-<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell list packages</code></td><td>列出包名称</td></tr><tr><td align="left"><code>adb shell list packages -r</code></td><td>列出包名 + apks 的路径</td></tr><tr><td align="left"><code>adb shell list packages -3</code></td><td>列出第三方包名称</td></tr><tr><td align="left"><code>adb shell list packages -s</code></td><td>仅列出系统包</td></tr><tr><td align="left"><code>adb shell list packages -u</code></td><td>列出包名称 + 已卸载</td></tr><tr><td align="left"><code>adb shell dumpsys package packages</code></td><td>列出所有应用程序的信息</td></tr><tr><td align="left"><code>adb shell dump &#x3C;name></code></td><td>列出一个包裹的信息</td></tr><tr><td align="left"><code>adb shell path &#x3C;package></code></td><td>apk文件的路径</td></tr></tbody></table>
+<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell list packages</code></td><td>列出包名称</td></tr><tr><td align="left"><code>adb shell list packages -r</code></td><td>列出包名 + apks 的路径</td></tr><tr><td align="left"><code>adb shell list packages -3</code></td><td>列出第三方包名称</td></tr><tr><td align="left"><code>adb shell list packages -s</code></td><td>仅列出系统包</td></tr><tr><td align="left"><code>adb shell list packages -u</code></td><td>列出包名称 + 已卸载</td></tr><tr><td align="left"><code>adb shell dumpsys package packages</code></td><td>列出所有应用程序的信息</td></tr><tr><td align="left"><code>adb shell dump &#x3C;name></code></td><td>列出一个包的信息</td></tr><tr><td align="left"><code>adb shell path &#x3C;package></code></td><td>列出 APK 文件的路径</td></tr></tbody></table>
 <!--rehype:className=style-list-arrow-->
 </div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="设备相关命令"><a aria-hidden="true" tabindex="-1" href="#设备相关命令"><span class="icon icon-link"></span></a>设备相关命令</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2 row-span-2-->
@@ -465,7 +477,7 @@
 
 
 
-<table class="code-nowrap left-align"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb reboot-recovery</code></td><td>重启设备进入恢复模式</td></tr><tr><td align="left"><code>adb reboot fastboot</code></td><td>重启设备进入恢复模式</td></tr><tr><td align="left"><code>adb shell screencap -p "/path/to/screenshot.png"</code></td><td>截图</td></tr><tr><td align="left"><code>adb shell screenrecord "/path/to/record.mp4"</code></td><td>录制设备屏幕</td></tr><tr><td align="left"><code>adb backup -apk -all -f backup.ab</code></td><td>备份设置和应用程序</td></tr><tr><td align="left"><code>adb backup -apk -shared -all -f backup.ab</code></td><td>备份设置、应用程序和共享存储</td></tr><tr><td align="left"><code>adb backup -apk -nosystem -all -f backup.ab</code></td><td>仅备份非系统应用程序</td></tr><tr><td align="left"><code>adb restore backup.ab</code></td><td>恢复以前的备份</td></tr><tr><td align="left"><code>adb shell am start -a android.intent.action.VIEW -d URL</code></td><td>打开网址</td></tr><tr><td align="left"><code>adb shell am start -t image/* -a android.intent.action.VIEW</code></td><td>打开画廊</td></tr></tbody></table>
+<table class="code-nowrap left-align"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb reboot recovery</code></td><td>重启设备进入恢复模式</td></tr><tr><td align="left"><code>adb reboot fastboot</code></td><td>重启设备进入恢复模式</td></tr><tr><td align="left"><code>adb shell screencap -p "/path/to/screenshot.png"</code></td><td>截图</td></tr><tr><td align="left"><code>adb shell screenrecord "/path/to/record.mp4"</code></td><td>录制设备屏幕</td></tr><tr><td align="left"><code>adb backup -apk -all -f backup.ab</code></td><td>备份设置和应用程序</td></tr><tr><td align="left"><code>adb backup -apk -shared -all -f backup.ab</code></td><td>备份设置、应用程序和共享存储</td></tr><tr><td align="left"><code>adb backup -apk -nosystem -all -f backup.ab</code></td><td>仅备份非系统应用程序</td></tr><tr><td align="left"><code>adb restore backup.ab</code></td><td>恢复以前的备份</td></tr><tr><td align="left"><code>adb shell am start -a android.intent.action.VIEW -d URL</code></td><td>打开网址</td></tr><tr><td align="left"><code>adb shell am start -t image/* -a android.intent.action.VIEW</code></td><td>打开画廊</td></tr></tbody></table>
 <!--rehype:className=code-nowrap left-align-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="权限"><a aria-hidden="true" tabindex="-1" href="#权限"><span class="icon icon-link"></span></a>权限</h3><div class="wrap-body">
 
@@ -485,7 +497,7 @@
 
 
 
-<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell permissions groups</code></td><td>列出权限组定义</td></tr><tr><td align="left"><code>adb shell list permissions -g -r</code></td><td>列出权限详细信息</td></tr></tbody></table>
+<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell permissions groups</code></td><td>列出所有已定义的权限组</td></tr><tr><td align="left"><code>adb shell list permissions -g -r</code></td><td>列出了所有权限的详细信息</td></tr></tbody></table>
 <!--rehype:className=style-list-arrow-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="logs"><a aria-hidden="true" tabindex="-1" href="#logs"><span class="icon icon-link"></span></a>Logs</h3><div class="wrap-body">
 
@@ -509,19 +521,19 @@
 <!--rehype:className=style-list-arrow-->
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="常见的-adb-命令"><a aria-hidden="true" tabindex="-1" href="#常见的-adb-命令"><span class="icon icon-link"></span></a>常见的 ADB 命令</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将文件推送到-android-设备的下载文件夹"><a aria-hidden="true" tabindex="-1" href="#将文件推送到-android-设备的下载文件夹"><span class="icon icon-link"></span></a>将文件推送到 Android 设备的下载文件夹</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb push example.apk /mnt/Download/
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb push example.apk /sdcard/Download/
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="列出所有已安装的包并获取完整路径"><a aria-hidden="true" tabindex="-1" href="#列出所有已安装的包并获取完整路径"><span class="icon icon-link"></span></a>列出所有已安装的包并获取完整路径</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell pm list packages <span class="token parameter variable">-f</span>
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从安卓设备中提取文件"><a aria-hidden="true" tabindex="-1" href="#从安卓设备中提取文件"><span class="icon icon-link"></span></a>从安卓设备中提取文件</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb pull /mnt/Download/example.apk
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb pull /sdcard/Download/example.apk
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从主机安装-apk-到-android-设备"><a aria-hidden="true" tabindex="-1" href="#从主机安装-apk-到-android-设备"><span class="icon icon-link"></span></a>从主机安装 apk 到 Android 设备</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从主机安装-apk-到-android-设备"><a aria-hidden="true" tabindex="-1" href="#从主机安装-apk-到-android-设备"><span class="icon icon-link"></span></a>从主机安装 APK 到 Android 设备</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell <span class="token function">install</span> example.apk
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从-android-设备存储安装-apk"><a aria-hidden="true" tabindex="-1" href="#从-android-设备存储安装-apk"><span class="icon icon-link"></span></a>从 Android 设备存储安装 apk</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell <span class="token function">install</span> /mnt/Download/example.apk
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从-android-设备存储安装-apk"><a aria-hidden="true" tabindex="-1" href="#从-android-设备存储安装-apk"><span class="icon icon-link"></span></a>从 Android 设备存储安装 APK</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell <span class="token function">install</span> /sdcard/Download/example.apk
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="设置网络代理"><a aria-hidden="true" tabindex="-1" href="#设置网络代理"><span class="icon icon-link"></span></a>设置网络代理</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell settings put global http_proxy <span class="token operator">&#x3C;</span>address<span class="token operator">></span>:<span class="token operator">&#x3C;</span>port<span class="token operator">></span>
@@ -529,51 +541,51 @@
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="禁用网络代理"><a aria-hidden="true" tabindex="-1" href="#禁用网络代理"><span class="icon icon-link"></span></a>禁用网络代理</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell settings put global http_proxy :0
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="显示连接的设备并选择一个设备和外壳"><a aria-hidden="true" tabindex="-1" href="#显示连接的设备并选择一个设备和外壳"><span class="icon icon-link"></span></a>显示连接的设备并选择一个设备和外壳</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="显示连接的设备并指定一个设备进行-shell"><a aria-hidden="true" tabindex="-1" href="#显示连接的设备并指定一个设备进行-shell"><span class="icon icon-link"></span></a>显示连接的设备并指定一个设备进行 Shell</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb devices
 </span><span class="code-line">$ adb <span class="token parameter variable">-s</span> 7f1c864e shell
 </span></code></pre>
 <p><code>7f1c864e</code> 是设备 <code>ID</code></p>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通过-ip-地址无线连接到设备"><a aria-hidden="true" tabindex="-1" href="#通过-ip-地址无线连接到设备"><span class="icon icon-link"></span></a>通过 ip 地址无线连接到设备</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通过-ip-地址连接到设备"><a aria-hidden="true" tabindex="-1" href="#通过-ip-地址连接到设备"><span class="icon icon-link"></span></a>通过 IP 地址连接到设备</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb connect <span class="token number">192.168</span>.56.101:5555
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist row-span-5"><div class="wrap-header h3wrap"><h3 id="adb-通过-wifi"><a aria-hidden="true" tabindex="-1" href="#adb-通过-wifi"><span class="icon icon-link"></span></a>adb 通过 wifi</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist row-span-5"><div class="wrap-header h3wrap"><h3 id="通过-wi-fi-连接-adb"><a aria-hidden="true" tabindex="-1" href="#通过-wi-fi-连接-adb"><span class="icon icon-link"></span></a>通过 Wi-Fi 连接 ADB</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-5-->
-<p>我们可以通过 <code>wifi</code> 或专门使用 <code>tcp</code> 连接使用 <code>adb</code>。 要通过 <code>wifi</code> 使用 <code>adb</code>，首先通过 <code>usb</code> 连接手机并启用 <code>usb</code> 调试。然后列出所有设备：</p>
+<p>我们可以通过 <code>Wi-Fi</code> 或专门使用 <code>tcp</code> 连接使用 <code>adb</code>。 要通过 <code>Wi-Fi</code> 使用 <code>adb</code>，首先通过 <code>USB</code> 连接手机并启用 <code>USB</code> 调试。然后列出所有设备：</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb devices
 </span><span class="code-line"><span class="token comment"># 这应该给出这样的输出：</span>
 </span><span class="code-line"><span class="token comment"># device_id    device</span>
 </span></code></pre>
-<p>现在检查 <code>android</code> 设备的 <code>ip</code>：</p>
+<p>现在检查 <code>Android</code> 设备的 <code>IP</code>：</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell <span class="token function">ifconfig</span>
 </span><span class="code-line"><span class="token comment"># 输出:</span>
 </span><span class="code-line">
 </span><span class="code-line">wlan0  Link encap:UNSPEC    Driver icnss
 </span><span class="code-line">       inet addr:XXX.XXX.X.XX  Bcast:XXX.XXX.X.XXX
 </span></code></pre>
-<p>记下 <code>inet addr</code> 后面的 <code>ip</code> 地址。我们稍后会需要它。现在在某个端口重新启动 <code>tcpip</code>：</p>
+<p>记下 <code>inet addr</code> 后的 <code>IP</code> 地址。稍后要用。现在在某个端口重新启动 <code>tcpip</code>：</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb tcpip <span class="token variable">$port</span>
 </span></code></pre>
 <p>例如 5555：</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb tcpip <span class="token number">5555</span>
 </span></code></pre>
-<p>您现在可以断开使用。 现在连接到设备只需给出以下命令：</p>
+<p>您现在可以断开 USB 线缆使用。 若要连接到设备请键入以下命令：</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb connect <span class="token variable">$ip</span><span class="token builtin class-name">:</span><span class="token variable">$port</span>
 </span></code></pre>
-<p>like:</p>
+<p>例如:</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb connect <span class="token number">192.168</span>.1.4:5555
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从计算机上的-apk-文件安装应用程序"><a aria-hidden="true" tabindex="-1" href="#从计算机上的-apk-文件安装应用程序"><span class="icon icon-link"></span></a>从计算机上的 apk 文件安装应用程序</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将计算机上的-apk-文件安装到设备"><a aria-hidden="true" tabindex="-1" href="#将计算机上的-apk-文件安装到设备"><span class="icon icon-link"></span></a>将计算机上的 APK 文件安装到设备</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb <span class="token function">install</span> /Users/dev/projects/myapp.apk
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查找应用的-apk-路径"><a aria-hidden="true" tabindex="-1" href="#查找应用的-apk-路径"><span class="icon icon-link"></span></a>查找应用的 apk 路径</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查找应用的-apk-路径"><a aria-hidden="true" tabindex="-1" href="#查找应用的-apk-路径"><span class="icon icon-link"></span></a>查找应用的 APK 路径</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell pm path com.example.myapp
 </span></code></pre>
 <p>将 <code>com.example.myapp</code> 替换为您自己的应用程序包名称</p>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="按名称查找应用的包名"><a aria-hidden="true" tabindex="-1" href="#按名称查找应用的包名"><span class="icon icon-link"></span></a>按名称查找应用的包名</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通过名称查找应用的包名"><a aria-hidden="true" tabindex="-1" href="#通过名称查找应用的包名"><span class="icon icon-link"></span></a>通过名称查找应用的包名</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell pm list package <span class="token operator">|</span> <span class="token function">grep</span> app_name
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将-apk-从设备提取到您的计算机"><a aria-hidden="true" tabindex="-1" href="#将-apk-从设备提取到您的计算机"><span class="icon icon-link"></span></a>将 apk 从设备提取到您的计算机</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从设备提取-apk-到您的计算机"><a aria-hidden="true" tabindex="-1" href="#从设备提取-apk-到您的计算机"><span class="icon icon-link"></span></a>从设备提取 APK 到您的计算机</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb pull /data/app/com.example.myapp.apk ./
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将文件从计算机复制到设备"><a aria-hidden="true" tabindex="-1" href="#将文件从计算机复制到设备"><span class="icon icon-link"></span></a>将文件从计算机复制到设备</h3><div class="wrap-body">
@@ -592,7 +604,7 @@
 </span><span class="code-line"><span class="token comment"># 66 是回车键码</span>
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="发送点击"><a aria-hidden="true" tabindex="-1" href="#发送点击"><span class="icon icon-link"></span></a>发送点击</h3><div class="wrap-body">
-<p>点击又名点击屏幕：</p>
+<p>点击屏幕：</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell input tap x y
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看包的日志"><a aria-hidden="true" tabindex="-1" href="#查看包的日志"><span class="icon icon-link"></span></a>查看包的日志</h3><div class="wrap-body">
