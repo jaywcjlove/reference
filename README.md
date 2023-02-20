@@ -473,7 +473,6 @@ Quick Reference
 [linzhe.top](https://linzhe.top/)<!--rehype:target=_blank-->
 [xushanxiang.com](https://xushanxiang.com/ref/)<!--rehype:target=_blank-->
 [winnerzr01.github.io](https://winnerzr01.github.io/Quick-Reference/index.html)<!--rehype:target=_blank&class=contributing&data-info=👆需要梯子-->
-[isteed.cc](https://ref.isteed.cc/)<!--rehype:target=_blank-->
 [hestudio.org](https://quickref.hestudio.org)<!--rehype:target=_blank&class=contributing&data-info=👆整点自动同步-->
 [surcode.cn](https://ref.surcode.cn)<!--rehype:target=_blank-->
 [cms.im](https://quickref.cms.im/)<!--rehype:target=_blank-->
