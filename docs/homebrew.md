@@ -128,6 +128,27 @@ $ brew info <formula>
 `brew help` | 打印帮助信息
 `brew help <sub-command>` | 打印子命令的帮助信息
 
+### 依赖
+
+显示`包`的依赖关系。 特定于`包`的其他选项可能是附加到命令
+
+```bash
+# 您还可以看到包和依赖关系图
+$ brew deps --tree --installed
+$ brew deps git # 显示 git 依赖
+```
+
+### 卸载 Homebrew
+
+- 使用官方卸载脚本卸载 Homebrew
+- 验证文件是否已删除
+
+```bash
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+$ sudo rm -rf /opt/homebrew
+```
+<!--rehype:className=wrap-text -->
+
 另见
 ---
 
