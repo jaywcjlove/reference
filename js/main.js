@@ -74,20 +74,21 @@ let inputValue = '';
 let activeIndex = 0
 
 document.addEventListener('keydown', (ev) => {
-  if (ev.key.toLocaleLowerCase() === 'escape') {
+  const key = ev.key.toLocaleLowerCase();
+  if (key === 'escape') {
     hideSearch();
   }
-  if (ev.metaKey && ev.key.toLocaleLowerCase() === 'k') {
+  if ((ev.metaKey || ev.ctrlKey) && key === 'k') {
     searchBox.classList.contains('show') ? hideSearch() : showSearch();
   }
-  if (ev.key.toLocaleLowerCase() === 'enter') {
+  if (key === 'enter') {
     const url = activeMenu.path || activeMenu?.item.path;
     window.location.href = getDocUrl(url);
   }
-  if (ev.key.toLocaleLowerCase() === 'arrowdown') {
+  if (key === 'arrowdown') {
     activeAnchorElm('down')
   }
-  if (ev.key.toLocaleLowerCase() === 'arrowup') {
+  if (key === 'arrowup') {
     activeAnchorElm('up')
   }
 });
