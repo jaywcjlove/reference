@@ -17,7 +17,7 @@ Android Debug Bridge 备忘清单
 `adb disconnect [IP:PORT]`        | 断开指定 IP 和端口的设备连接，若未指定，则断开所有连接
 `adb root`                        | 以 `root` 权限重新启动 `adbd`
 `adb start-server`                | 启动 `adb` 服务
-`adb kill-server`                 | 停止 `adb` 服务器
+`adb kill-server`                 | 停止 `adb` 服务
 `adb remount`                     | 重新挂载具有读/写访问权限的文件系统
 `adb reboot`                      | 重启设备
 `adb reboot bootloader`           | 将设备重启到 fastboot 模式
