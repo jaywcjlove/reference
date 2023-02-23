@@ -595,6 +595,8 @@ nums.remove(0); // 非常慢
 for (Integer value : nums) {
     System.out.println(value);
 }
+// lambda 打印元素
+nums.forEach(e -> System.out.println(e.toString()));
 ```
 
 ### HashMap
@@ -653,6 +655,7 @@ set.remove("cat");
 for (String element : set) {
     System.out.println(element);
 }
+set.forEach(e -> System.out.println(e.toString()));
 ```
 
 ### ArrayDeque
