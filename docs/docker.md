@@ -17,11 +17,11 @@ $ docker run -d -p 80:80 docker/getting-started
 
 ----
 
-- `-d` - 以分离模式运行容器
-- `-p 80:80` -  将端口 80 映射到容器中的端口 80
+- `-d` - 以分离（后台）模式运行容器
+- `-p 80:80` -  将端口 80 映射到容器中的端口 80，格式：宿主机端口:容器端口
 - `docker/getting-started` - 要使用的镜像
 
-在前台创建并运行容器
+在前台创建并运行容器（之后如果要退出容器但是不关闭容器，按*Ctrl+P+Q*即可）
 
 ```shell
 $ docker run -it -p --rm 8001:8080 --name my-nginx nginx
@@ -149,6 +149,7 @@ Docker 镜像
 ### 构建镜像
 
 ```shell
+# 注意有的最后面是英文 .
 $ docker build .
 $ docker build github.com/creack/docker-firefox
 $ docker build - < Dockerfile
