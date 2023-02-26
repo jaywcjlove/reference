@@ -1016,18 +1016,18 @@ echo "${args[@]}"
 
 以调试模式运行脚本(整个脚本都会打印调试信息)：
 
-~~~bash
+```bash
 $ bash -x myscript.sh
-~~~
+```
 
 在bash脚本中打开调试(针对部分内容打印调试信息)。
 
-~~~bash
+```bash
 #!/bin/bash
 set -x   # Enable debugging
 # some code here
 set +x   # Disable debugging output.
-~~~
+```
 
 Bash 颜色
 ----
