@@ -1010,6 +1010,25 @@ echo "${args[@]}"
 
 将参数放入数组中，然后追加
 
+### 调试模式
+
+启用调试模式，会把脚本中的每条命令的执行情况打印出来。它可以在整个会话或脚本上运行，也可以在脚本内以编程方式启用。
+
+以调试模式运行脚本(整个脚本都会打印调试信息)：
+
+~~~bash
+$ bash -x myscript.sh
+~~~
+
+在bash脚本中打开调试(针对部分内容打印调试信息)。
+
+~~~bash
+#!/bin/bash
+set -x   # Enable debugging
+# some code here
+set +x   # Disable debugging output.
+~~~
+
 Bash 颜色
 ----
 
