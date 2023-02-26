@@ -41,11 +41,11 @@
 </span></code></pre>
 <hr>
 <ul>
-<li><code>-d</code> - 以分离模式运行容器</li>
-<li><code>-p 80:80</code> -  将端口 80 映射到容器中的端口 80</li>
+<li><code>-d</code> - 以分离（后台）模式运行容器</li>
+<li><code>-p 80:80</code> -  将端口 80 映射到容器中的端口 80，格式：宿主机端口:容器端口</li>
 <li><code>docker/getting-started</code> - 要使用的镜像</li>
 </ul>
-<p>在前台创建并运行容器</p>
+<p>在前台创建并运行容器（之后如果要退出容器但是不关闭容器，按<em>Ctrl+P+Q</em>即可）</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-p</span> <span class="token parameter variable">--rm</span> <span class="token number">8001</span>:8080 <span class="token parameter variable">--name</span> my-nginx nginx
 </span></code></pre>
 <hr>
@@ -285,7 +285,8 @@
 
 <table><thead><tr><th><code>Example</code></th><th>Description</th></tr></thead><tbody><tr><td><code>docker images</code></td><td>列出镜像</td></tr><tr><td><code>docker rmi nginx</code></td><td>删除镜像</td></tr><tr><td><code>docker load &#x3C; ubuntu.tar.gz</code></td><td>加载一个 tarred 存储库</td></tr><tr><td><code>docker load --input ubuntu.tar</code></td><td>加载一个 tarred 存储库</td></tr><tr><td><code>docker save busybox > ubuntu.tar</code></td><td>将镜像保存到 tar 存档</td></tr><tr><td><code>docker history</code></td><td>显示镜像的历史</td></tr><tr><td><code>docker commit nginx my_nginx</code></td><td>将容器另存为镜像</td></tr><tr><td><code>docker tag nginx eon01/nginx</code></td><td>标记镜像</td></tr><tr><td><code>docker push eon01/nginx</code></td><td>推送镜像</td></tr></tbody></table>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="构建镜像"><a aria-hidden="true" tabindex="-1" href="#构建镜像"><span class="icon icon-link"></span></a>构建镜像</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">docker</span> build <span class="token builtin class-name">.</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 注意有的最后面是英文 .</span>
+</span><span class="code-line">$ <span class="token function">docker</span> build <span class="token builtin class-name">.</span>
 </span><span class="code-line">$ <span class="token function">docker</span> build github.com/creack/docker-firefox
 </span><span class="code-line">$ <span class="token function">docker</span> build - <span class="token operator">&#x3C;</span> Dockerfile
 </span><span class="code-line">$ <span class="token function">docker</span> build - <span class="token operator">&#x3C;</span> context.tar.gz
