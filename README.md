@@ -251,6 +251,9 @@ Quick Reference
 <a href="https://github.com/XYZscratcher" title="XYZ">
   <img src="https://avatars.githubusercontent.com/u/108533817?v=4" width="42;" alt="XYZ"/>
 </a>
+<a href="https://github.com/chaos-cn" title="chaos">
+  <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
+</a>
 <a href="https://github.com/1834423612" title="kjch">
   <img src="https://avatars.githubusercontent.com/u/49981661?v=4" width="42;" alt="kjch"/>
 </a>
@@ -361,9 +364,6 @@ Quick Reference
 </a>
 <a href="https://github.com/Lmmmmmm-bb" title="_lmmmmmm">
   <img src="https://avatars.githubusercontent.com/u/54026110?v=4" width="42;" alt="_lmmmmmm"/>
-</a>
-<a href="https://github.com/chaos-cn" title="chaos">
-  <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
 </a>
 <a href="https://github.com/chyok" title="chyok">
   <img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/>
