@@ -42,20 +42,6 @@ var str = "999";
 var bo = false;
 ```
 
-### 原始数据类型
-
-数据类型 | 尺寸 | 范围
-:- | - | -
-| `int`     | 4 bytes          | -2^31^ ^to^ 2^31^-1     |
-| `long`    | 8 bytes          | -2^63^ ^to^ 2^63^-1     |
-| `float`   | 4 bytes          | 6 ^to^ 7 decimal digits   |
-| `double`  | 8 bytes          | 15 decimal digits       |
-| `decimal` | 16 bytes         | 28 ^to^ 29 decimal digits |
-| `char`    | 2 bytes          | 0 ^to^ 65535            |
-| `bool`    | 1 bit            | true / false            |
-| `string`  | 2 bytes per char | _N/A_                   |
-<!--rehype:className=show-header-->
-
 ### 注释
 
 ```cs
@@ -131,6 +117,40 @@ foreach(int num in numbers) {
   Console.WriteLine(num);
 }
 ```
+
+
+C# 数据类型
+---------------------
+
+### 原始数据类型
+<!--rehype:wrap-class=col-span-2-->
+
+| 关键字 | 名称         | System 别名 | 占用空间   | 数据范围                                 |
+| ------ | ------------ | ----------- | ---------- | ---------------------------------------- |
+| bool   | 布尔型       | Boolean     | 1          | true/false                               |
+| sbyte  | 有符号字节型 | SByte       | 1          | -128 ~ 127                               |
+| byte   | 字节型       | Byte        | 1          | 0 ~ 255                                  |
+| short  | 短整型       | Int16       | 2          | -32,768 ~ 32,767                         |
+| ushort | 无符号短整型 | UInt16      | 2          | 0 ~ 65,535                               |
+| int    | 整型         | Int32       | 4          | -2,147,483,648 ~ 2,147,483,647           |
+| uint   | 无符号整型   | UInt32      | 4          | 0 ~ 4,294,967,295                        |
+| long   | 长整型       | Int64       | 8          | -2^63 ~ 2^63-1                           |
+| ulong  | 无符号长整型 | UInt64      | 8          | 0 ~ 2^64-1                               |
+| char   | 字符型       | Char        | 8          | UTF-16 所编码的字符                      |
+| float  | 单精度浮点型 | Single      | 4          | ±1.5x10^45 ~ ±3.4x10^38                  |
+| double | 双精度浮点型 | Double      | 8          | ±5.0x10^-324 ~ ±1.7x10^308               |
+| N/A    | 指针型       | IntPtr      | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
+| N/A    | 无符号指针型 | UIntPtr     | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） | 
+<!--rehype:className=show-header-->
+
+### 基本数据类型
+
+| 关键字                           | 名称         | System 别名 | 说明                                                               |
+| -------------------------------- | ------------ | ----------- | ------------------------------------------------------------------ |
+| （除指针型外的全部原始数据类型） |              |             | 原始数据类型都是值类型，基本数据类型包含部分本质上是引用的数据类型 |
+| string                           | 字符串       | String      | 可变长度                                                           |
+| decimal                          | 十进制浮点数 | Decimal     | 适合处理货币等计算，16字节长，不遵循 IEEE 754 关于浮点数的规则     | 
+<!--rehype:className=show-header-->
 
 C# 字符串
 ----------------
