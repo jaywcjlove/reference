@@ -42,20 +42,6 @@ var str = "999";
 var bo = false;
 ```
 
-### 原始数据类型
-
-数据类型 | 尺寸 | 范围
-:- | - | -
-| `int`     | 4 bytes          | -2^31^ ^to^ 2^31^-1     |
-| `long`    | 8 bytes          | -2^63^ ^to^ 2^63^-1     |
-| `float`   | 4 bytes          | 6 ^to^ 7 decimal digits   |
-| `double`  | 8 bytes          | 15 decimal digits       |
-| `decimal` | 16 bytes         | 28 ^to^ 29 decimal digits |
-| `char`    | 2 bytes          | 0 ^to^ 65535            |
-| `bool`    | 1 bit            | true / false            |
-| `string`  | 2 bytes per char | _N/A_                   |
-<!--rehype:className=show-header-->
-
 ### 注释
 
 ```cs
