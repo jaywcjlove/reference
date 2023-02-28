@@ -258,6 +258,40 @@ Console.WriteLine(Rep);
 //会把字符中的 “1”替换成“串”
 ```
 
+### 逻辑运算
+```cs
+//或运算, 与运算, 非运算
+bool A = true;
+bool B = false;
+bool Or = A || B; // = A | B
+bool And = A && B; // = A & B
+bool Not = !A;
+// ||,&& 与 |,& 分别为逻辑运算和条件逻辑运算, 两者的区别在于, 前者仅在必要时才会计算右侧的值, 后者始终计算右侧的值. 例如:
+bool C = false;
+bool D = true;
+bool CalcD() {
+  D = !D;
+  return D;
+}
+bool E = C && CalcD(); // C: false, D: false, E: false
+bool F = C & CalcD(); // C:false, D: true, F: false
+// 两种运算方法稍有不同, 计算结果始终相同, 但第二种可能造成其他影响.
+//异或运算
+bool Xor = A ^ B;
+```
+C#中的逻辑运算支持可空布尔类型运算. 注意条件逻辑运算不支持可空布尔类型. 
+x |	y |	x&y |	x\|y | x^y | !x
+:- | - | --- | --- | --- | --
+true | true | true | true | false | false
+true | false | false | true | true | false
+true | null | null | true | null | false
+false | true | false | true | true | true
+false | false | false | false | false | true
+false | null | false | null | null | true
+null | true | null | true | null | null
+null | false | false | null | null | null
+null | null | null | null | null | null
+
 杂项
 -----------
 
