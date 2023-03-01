@@ -469,9 +469,7 @@ Quick Reference
 [aibk.cn](https://quickref.aibk.cn)<!--rehype:target=_blank-->
 [jgeek.cn](http://reference.jgeek.cn/)<!--rehype:target=_blank-->
 [laoleng.vip](http://bbs.laoleng.vip/reference/)<!--rehype:target=_blank-->
-[liujiapeng.com](https://www.liujiapeng.com/)<!--rehype:target=_blank-->
 [dbyun.net](https://www.dbyun.net/reference/index.html)<!--rehype:target=_blank-->
-[dc6.fun](http://reference.dc6.fun)<!--rehype:target=_blank-->
 [if010.com](https://quickref.if010.com/)<!--rehype:target=_blank-->
 [pipecraft.net](https://quickref.pipecraft.net/)<!--rehype:target=_blank&class=contributing&data-info=👆需要梯子-->
 [isteed.cc](https://ref.isteed.cc/)<!--rehype:target=_blank-->
@@ -488,10 +486,8 @@ Quick Reference
 [likeadmin.cn](https://www.likeadmin.cn/quickref/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [qiubit.cc](http://ref.qiubit.cc)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [aoh.cc](https://aoh.cc/)<!--rehype:target=_blank-->
-[reference.code05.com](https://reference.code05.com/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [kyoma.top](https://reference.kyoma.top/)<!--rehype:target=_blank&class=contributing&data-info=👆实时同步-->
 [quickreference.pages.dev](https://quickreference.pages.dev/)<!--rehype:target=_blank-->
-[code05.com](https://reference.code05.com/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [xhfun.cn](https://ref.xhfun.cn/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [caitou.org](https://quickref.caitou.org/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [guoxudong.io](https://reference.guoxudong.io/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
