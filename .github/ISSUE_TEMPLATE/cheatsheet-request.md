@@ -12,9 +12,9 @@ assignees: jaywcjlove
 
 #### 优先级
 
-- [ ] 提交 PR 优先合并(优先处理)
-- [ ] 提供可复制的[中文/英文]备忘清单资料，优先添加
-- [ ] 大众化的内容(java/python)，优先搬运(小众内容请提供资料)
+- 提交 PR 优先合并(优先处理)
+- 提供可复制的[中文/英文]备忘清单资料，优先添加
+- 大众化的内容(java/python)，优先搬运(小众内容请提供资料)
 
 #### 说明项目
 
@@ -30,7 +30,8 @@ assignees: jaywcjlove
 
 提供更多参考资料有助于我们整理成备忘清单(速查表)
 
-- 提供参考地址 https://jaywcjlove.github.io/reference
-- 提供官网地址 https://jaywcjlove.github.io/reference
+- [ ] 请提供**官网**资料 https://jaywcjlove.github.io/reference
+- [ ] 请提供**参考**资料 https://jaywcjlove.github.io/reference
+- [ ] 其它参考资料: <参考资料URL>
 
 _⚠️ 注意: 随着内容越来越多，可能甚至找不到这个工具或者语言的官网，请您在这里提供以便大家共同参与贡献内容_
