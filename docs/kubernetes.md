@@ -329,8 +329,6 @@ $ kubectl explain deploy.spec
 $ kubectl get --raw /apis/metrics.k8s.io/
 ```
 
-
-
 ### 集群信息
 
 ```bash
