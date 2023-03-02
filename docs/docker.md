@@ -24,7 +24,7 @@ $ docker run -d -p 80:80 docker/getting-started
 在前台创建并运行容器（之后如果要退出容器但是不关闭容器，按*Ctrl+P+Q*即可）
 
 ```shell
-$ docker run -it -p --rm 8001:8080 --name my-nginx nginx
+$ docker run -it --rm -p  8001:8080 --name my-nginx nginx
 ```
 
 ----
