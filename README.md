@@ -357,6 +357,9 @@ Quick Reference
 <a href="https://github.com/whb1998a" title="WHB">
   <img src="https://avatars.githubusercontent.com/u/44045064?v=4" width="42;" alt="WHB"/>
 </a>
+<a href="https://github.com/BATTLEHAWK00" title="While True: learn()">
+  <img src="https://avatars.githubusercontent.com/u/45313304?v=4" width="42;" alt="While True: learn()"/>
+</a>
 <a href="https://github.com/hi-liyan" title="Yan Li">
   <img src="https://avatars.githubusercontent.com/u/40056492?v=4" width="42;" alt="Yan Li"/>
 </a>
@@ -401,6 +404,9 @@ Quick Reference
 </a>
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
+</a>
+<a href="https://github.com/auroraslot" title="irony">
+  <img src="https://avatars.githubusercontent.com/u/48817882?v=4" width="42;" alt="irony"/>
 </a>
 <a href="https://github.com/joyfully-W" title="joyfully-W">
   <img src="https://avatars.githubusercontent.com/u/32212924?v=4" width="42;" alt="joyfully-W"/>
