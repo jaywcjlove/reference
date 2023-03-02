@@ -842,6 +842,52 @@ method.invoke(classLoader, url);
 - `LocalTime` 表示没有时区的时间，只包含时分秒，不可变并且线程安全的，java8 及以上版本可用
 - `LocalDateTime` 表示没有时区的日期时间，同时包含年月日时分秒，不可变并且线程安全的，java8 及以上版本可用
 
+### IO流
+
+```java
+// 输入流转输出流
+byte[] inputContent = "test".getBytes();
+try (InputStream inputStream = new ByteArrayInputStream(inputContent);
+     OutputStream outputStream = new ByteArrayOutputStream()) {
+    byte[] buffer = new byte[1024];
+    int len;
+    while ((len = inputStream.read(buffer)) != -1) {
+        outputStream.write(buffer, 0, len);
+    }
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
+```
+
+### Collections工具类
+```java
+// 计算出现频率
+List<Integer> list = new ArrayList<>();
+list.add(1);
+list.add(2);
+list.add(2);
+list.add(3);
+list.add(3);
+list.add(3);
+int frequency = Collections.frequency(list, 2); // frequency = 2
+```
+
+### Stream流
+```java
+// 统计词频
+List<Integer> list = new ArrayList<>();
+list.add(1);
+list.add(1);
+list.add(3);
+list.add(2);
+list.add(2);
+list.add(2);
+Map<Integer, Long> frequencyMap = list.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+// 1: 2
+// 2: 3
+// 3: 1
+```
+
 另见
 ---
 
