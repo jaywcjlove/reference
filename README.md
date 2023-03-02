@@ -143,6 +143,7 @@ Quick Reference
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [iptables](./docs/iptables.md)<!--rehype:style=background: rgb(32 74 135);-->  
 [jq](./docs/jq.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=JSON-->  
+[Justfile](./docs/justfile.md)
 [Lsof](./docs/lsof.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135);-->  
 [Netcat](./docs/netcat.md)<!--rehype:style=background: rgb(4 92 135);-->  
