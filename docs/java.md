@@ -859,7 +859,8 @@ try (InputStream inputStream = new ByteArrayInputStream(inputContent);
 }
 ```
 
-### Collections工具类
+### Collections 工具类
+
 ```java
 // 计算出现频率
 List<Integer> list = new ArrayList<>();
@@ -872,7 +873,8 @@ list.add(3);
 int frequency = Collections.frequency(list, 2); // frequency = 2
 ```
 
-### Stream流
+### Stream 流
+
 ```java
 // 统计词频
 List<Integer> list = new ArrayList<>();
