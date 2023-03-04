@@ -41,9 +41,9 @@ const fuse = new Fuse(REFS_DATA, {
   matchEmptyQuery: !0,
   threshold: .1,
   keys: [
-    { name: "name", weight: 20 }, 
-    { name: 'intro', weight: 2 }, 
-    { name: 'tags', weight: 2 }, 
+    { name: "name", weight: 20 },
+    { name: 'intro', weight: 2 },
+    { name: 'tags', weight: 2 },
     { name: 'sections.t', weight: 5 }
   ],
 });
@@ -79,6 +79,7 @@ document.addEventListener('keydown', (ev) => {
     hideSearch();
   }
   if ((ev.metaKey || ev.ctrlKey) && key === 'k') {
+    ev.preventDefault();
     searchBox.classList.contains('show') ? hideSearch() : showSearch();
   }
   if (key === 'enter') {
