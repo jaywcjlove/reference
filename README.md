@@ -243,20 +243,17 @@ Quick Reference
 <a href="https://github.com/LiuYuan-SHU" title="Liuyuan">
   <img src="https://avatars.githubusercontent.com/u/96400967?v=4" width="42;" alt="Liuyuan"/>
 </a>
+<a href="https://github.com/chaos-cn" title="chaos">
+  <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
+</a>
 <a href="https://github.com/eryajf" title="二丫讲梵">
   <img src="https://avatars.githubusercontent.com/u/33259379?v=4" width="42;" alt="二丫讲梵"/>
 </a>
 <a href="https://github.com/heStudio-Network" title="醉、倾城">
   <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
 </a>
-<a href="https://github.com/sjh42" title="42:p">
-  <img src="https://avatars.githubusercontent.com/u/34529275?v=4" width="42;" alt="42:p"/>
-</a>
 <a href="https://github.com/XYZscratcher" title="XYZ">
   <img src="https://avatars.githubusercontent.com/u/108533817?v=4" width="42;" alt="XYZ"/>
-</a>
-<a href="https://github.com/chaos-cn" title="chaos">
-  <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
 </a>
 <a href="https://github.com/1834423612" title="kjch">
   <img src="https://avatars.githubusercontent.com/u/49981661?v=4" width="42;" alt="kjch"/>
