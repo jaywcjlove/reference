@@ -1811,6 +1811,20 @@ div:has(h2):has(ul) {
 }
 ```
 
+### 获取 HTML 元素的属性
+
+```html
+<a href="https://example.com">超链接</a>
+```
+
+attr HTML 元素的属性名。
+
+```css
+a:after {
+  content: " (" attr(href) ")";
+}
+```
+
 另见
 ---------
 
