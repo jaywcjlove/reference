@@ -1785,16 +1785,6 @@ button:disabled {
 
 就这么简单
 
-### 在用作间距的换行符上设置 `display: none`
-
-用户使用额外的换行符
-
-```css
-br + br {
-  display: none;
-}
-```
-
 ### 子元素选中父元素
 
 ```css
@@ -1811,6 +1801,49 @@ div:has(h2):has(ul) {
 }
 ```
 
+### 在用作间距的换行符上设置 `display: none`
+
+用户使用额外的换行符
+
+```css
+br + br {
+  display: none;
+}
+```
+
+### 给 `body` 添加行高
+
+```css
+body {
+  line-height: 1.5;
+}
+```
+
+您不需要为每个 `<p>`、`<h*>` 等分别添加行高。相反，将其添加到正文
+
+### 检查本地是否安装了字体
+<!--rehype:wrap-class=row-span-2-->
+
+```css
+@font-face {
+  font-family: "Dank Mono";
+  src:
+    /* Full name */
+    local("Dank Mono"),
+    /* Postscript name */
+    local("Dank-Mono"),
+    /* 否则，请下载它！ */
+    url("//...a.server/DankMono.woff");
+}
+
+code {
+  font-family: "Dank Mono",
+        system-ui-monospace;
+}
+```
+
+您可以在远程获取字体之前检查是否在本地安装了字体，这也是一个很好的性能提示
+
 ### 获取 HTML 元素的属性
 
 ```html
@@ -1824,6 +1857,58 @@ a:after {
   content: " (" attr(href) ")";
 }
 ```
+
+### 为表单元素设置 `:focus`
+
+```css
+a:focus, button:focus, input:focus,
+select:focus, textarea:focus {
+  box-shadow: none;
+  outline: #000 dotted 2px;
+  outline-offset: .05em;
+}
+```
+
+有视力的键盘用户依靠焦点来确定键盘事件在页面中的位置。使表单元素的焦点比浏览器的默认实现更加突出和一致
+
+### 垂直居中任何东西
+<!--rehype:wrap-class=row-span-2-->
+
+```css
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+}
+```
+
+...还有 CSS 网格：
+
+```css
+body {
+  display: grid;
+  height: 100vh;
+  margin: 0;
+  place-items: center center;
+}
+```
+
+### 逗号分隔列表
+
+```css
+ul > li:not(:last-child)::after {
+  content: ",";
+}
+```
+
+使列表项看起来像一个真实的逗号分隔列表，使用 `:not()` 伪类，最后一项不会添加逗号
 
 另见
 ---------
