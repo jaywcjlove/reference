@@ -148,3 +148,4 @@ $ unzip -l filename.zip
 ----
 
 - [Zip 官网](https://www.info-zip.org/Zip.html) _(info-zip.org)_
+- [Zip 命令帮助文档](https://jaywcjlove.github.io/linux-command/c/zip.html) _(info-zip.org)_
