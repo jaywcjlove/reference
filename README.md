@@ -157,6 +157,7 @@ Quick Reference
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123);-->  
 [CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99);-->  
+[Zip](./docs/zip.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255);-->  
 [tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);-->  
 <!--rehype:class=home-card-->
