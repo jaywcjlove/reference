@@ -214,3 +214,10 @@ Linux 命令速查表
 **`cd`** | 将目录更改为$HOME目录
 **`cd /test`** | 将目录更改为/test目录
 <!--rehype:className=style-list-->
+
+另见
+---
+
+- [Linux命令大全搜索工具](https://jaywcjlove.github.io/linux-command) _(jaywcjlove.github.io)_
+- [Linux命令大全(手册)](https://www.linuxcool.com/) _(linuxcool.com)_
+- [MAN手册 - 中文](https://manpages.debian.org/buster/manpages-zh/index.html) _(debian.org)_
