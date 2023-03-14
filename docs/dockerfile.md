@@ -214,7 +214,7 @@ Dockerfile 示例
 ### 服务静态网站的最小 Docker 镜像
 
 ```dockerfile
-FROM lipanski/docker-static-website:latest
+FROM wcjiang/docker-static-website:latest
 # 使用 .dockerignore 文件来控制镜像中的内容！
 # 复制当前目录内容，到容器中
 COPY ./ .
@@ -223,13 +223,13 @@ COPY ./ .
 这会产生一个 **`154KB +`** 的单层镜像。 如果您需要以不同的方式配置 `httpd`，您可以覆盖 CMD 行：
 
 ```dockerfile
-FROM lipanski/docker-static-website:latest
+FROM wcjiang/docker-static-website:latest
 COPY . .
 
 CMD ["/busybox","httpd","-f","-v","-p","3000","-c","httpd.conf"]
 ```
 
-缩小镜像过程[查看原文](https://lipanski.com/posts/smallest-docker-image-static-website)，镜像 [Dockerfile 源码](https://github.com/lipanski/docker-static-website)。
+缩小镜像过程[查看原文](https://lipanski.com/posts/smallest-docker-image-static-website)，镜像 [Dockerfile 源码](https://github.com/forksss/docker-static-website)。
 
 ### Docker 镜像多阶段构建
 
