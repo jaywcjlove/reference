@@ -64,6 +64,7 @@ Quick Reference
 [Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132);-->  
 [Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45);-->  
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71);-->  
+[Scala](./docs/scala.md)<!--rehype:style=background: rgb(240 81 57);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->  
 [TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132);-->  
