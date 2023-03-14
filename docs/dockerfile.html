@@ -245,18 +245,18 @@
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="dockerfile-示例"><a aria-hidden="true" tabindex="-1" href="#dockerfile-示例"><span class="icon icon-link"></span></a>Dockerfile 示例</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
 </div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="服务静态网站的最小-docker-镜像"><a aria-hidden="true" tabindex="-1" href="#服务静态网站的最小-docker-镜像"><span class="icon icon-link"></span></a>服务静态网站的最小 Docker 镜像</h3><div class="wrap-body">
-<pre class="language-dockerfile"><code class="language-dockerfile code-highlight"><span class="code-line"><span class="token instruction"><span class="token keyword">FROM</span> lipanski/docker-static-website:latest</span>
+<pre class="language-dockerfile"><code class="language-dockerfile code-highlight"><span class="code-line"><span class="token instruction"><span class="token keyword">FROM</span> wcjiang/docker-static-website:latest</span>
 </span><span class="code-line"><span class="token comment"># 使用 .dockerignore 文件来控制镜像中的内容！</span>
 </span><span class="code-line"><span class="token comment"># 复制当前目录内容，到容器中</span>
 </span><span class="code-line"><span class="token instruction"><span class="token keyword">COPY</span> ./ .</span>
 </span></code></pre>
 <p>这会产生一个 <strong><code>154KB +</code></strong> 的单层镜像。 如果您需要以不同的方式配置 <code>httpd</code>，您可以覆盖 CMD 行：</p>
-<pre class="language-dockerfile"><code class="language-dockerfile code-highlight"><span class="code-line"><span class="token instruction"><span class="token keyword">FROM</span> lipanski/docker-static-website:latest</span>
+<pre class="language-dockerfile"><code class="language-dockerfile code-highlight"><span class="code-line"><span class="token instruction"><span class="token keyword">FROM</span> wcjiang/docker-static-website:latest</span>
 </span><span class="code-line"><span class="token instruction"><span class="token keyword">COPY</span> . .</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">"/busybox"</span>,<span class="token string">"httpd"</span>,<span class="token string">"-f"</span>,<span class="token string">"-v"</span>,<span class="token string">"-p"</span>,<span class="token string">"3000"</span>,<span class="token string">"-c"</span>,<span class="token string">"httpd.conf"</span>]</span>
 </span></code></pre>
-<p>缩小镜像过程<a href="https://lipanski.com/posts/smallest-docker-image-static-website">查看原文</a>，镜像 <a href="https://github.com/lipanski/docker-static-website">Dockerfile 源码</a>。</p>
+<p>缩小镜像过程<a href="https://lipanski.com/posts/smallest-docker-image-static-website">查看原文</a>，镜像 <a href="https://github.com/forksss/docker-static-website">Dockerfile 源码</a>。</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="docker-镜像多阶段构建"><a aria-hidden="true" tabindex="-1" href="#docker-镜像多阶段构建"><span class="icon icon-link"></span></a>Docker 镜像多阶段构建</h3><div class="wrap-body">
 <pre class="wrap-text "><code class="language-dockerfile code-highlight"><span class="code-line"><span class="token instruction"><span class="token keyword">FROM</span> golang:alpine <span class="token keyword">as</span> builder</span>
 </span><span class="code-line"><span class="token instruction"><span class="token keyword">RUN</span> apk --no-cache add git</span>
