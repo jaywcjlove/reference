@@ -449,6 +449,9 @@ jobs:
 </a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶">
   <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
+</a>
+<a href="https://github.com/1250422131" title="萌新杰少">
+  <img src="https://avatars.githubusercontent.com/u/52126790?v=4" width="42;" alt="萌新杰少"/>
 </a><!--GAMFC-END-->
 
 上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
