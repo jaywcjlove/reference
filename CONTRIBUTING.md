@@ -210,8 +210,8 @@ jobs:
 
 请参阅[贡献指南](./CONTRIBUTING.md)了解如何开始。一如既往，感谢我们出色的贡献者！
 
-<!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调™">
-  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调™"/>
+<!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调">
+  <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调"/>
 </a>
 <a href="https://github.com/fwqaaq" title="fw_qaq">
   <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
@@ -279,8 +279,8 @@ jobs:
 <a href="https://github.com/Brid9e" title="Brid9e">
   <img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Brid9e"/>
 </a>
-<a href="https://github.com/ch3nnn" title="Ch3nnn">
-  <img src="https://avatars.githubusercontent.com/u/40114564?v=4" width="42;" alt="Ch3nnn"/>
+<a href="https://github.com/ch3nnn" title="陈通">
+  <img src="https://avatars.githubusercontent.com/u/40114564?v=4" width="42;" alt="陈通"/>
 </a>
 <a href="https://github.com/CharlotteZeng" title="hanchZ">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="hanchZ"/>
@@ -323,6 +323,9 @@ jobs:
 </a>
 <a href="https://github.com/malcolmyu" title="Minghao Yu">
   <img src="https://avatars.githubusercontent.com/u/3203962?v=4" width="42;" alt="Minghao Yu"/>
+</a>
+<a href="https://github.com/Moeyuuko" title="Moeyuuko">
+  <img src="https://avatars.githubusercontent.com/u/14266681?v=4" width="42;" alt="Moeyuuko"/>
 </a>
 <a href="https://github.com/Mo3et" title="Monet Lee">
   <img src="https://avatars.githubusercontent.com/u/34803812?v=4" width="42;" alt="Monet Lee"/>
