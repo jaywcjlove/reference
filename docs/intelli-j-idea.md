@@ -74,7 +74,7 @@ IDEA Windows 和 Linux 键盘映射
 `Esc`| 转到编辑器
 `Shift` `Esc`| 隐藏活动或最后一个活动窗口
 `Ctrl` `Shift` `F4`| 关闭活动运行，消息...
-`Ctrl` `G`| 去线
+`Ctrl` `G`| 导航到行:列
 `Ctrl` `E`| 最近的文件弹出窗口
 `Ctrl` `Alt` `Left` _/_ `Right`| 向后/向前导航
 `Ctrl` `Shift` `Backspace`| 导航到上次编辑位置
