@@ -45,7 +45,6 @@ FED 前端导航
 
 [MDN Web Docs](https://developer.mozilla.org/zh-CN/)<!--rehype:target=_blank&style=background: rgb(140 181 255/var(\-\-bg\-opacity));-->
 [ECMAScript 6 入门](https://es6.ruanyifeng.com/)<!--rehype:target=_blank-->
-[W3C 标准](http://w3help.org/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card-->
 
 JavaScript 工具
