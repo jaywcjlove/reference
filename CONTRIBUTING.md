@@ -231,14 +231,14 @@ jobs:
 <a href="https://github.com/expoli" title="expoli">
   <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
 </a>
+<a href="https://github.com/eryajf" title="二丫讲梵">
+  <img src="https://avatars.githubusercontent.com/u/33259379?v=4" width="42;" alt="二丫讲梵"/>
+</a>
 <a href="https://github.com/LiuYuan-SHU" title="Liuyuan">
   <img src="https://avatars.githubusercontent.com/u/96400967?v=4" width="42;" alt="Liuyuan"/>
 </a>
 <a href="https://github.com/chaos-cn" title="chaos">
   <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
-</a>
-<a href="https://github.com/eryajf" title="二丫讲梵">
-  <img src="https://avatars.githubusercontent.com/u/33259379?v=4" width="42;" alt="二丫讲梵"/>
 </a>
 <a href="https://github.com/heStudio-Network" title="醉、倾城">
   <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
@@ -458,6 +458,9 @@ jobs:
 </a>
 <a href="https://github.com/1250422131" title="萌新杰少">
   <img src="https://avatars.githubusercontent.com/u/52126790?v=4" width="42;" alt="萌新杰少"/>
+</a>
+<a href="https://github.com/qwxingzhe" title="行者">
+  <img src="https://avatars.githubusercontent.com/u/7071651?v=4" width="42;" alt="行者"/>
 </a><!--GAMFC-END-->
 
 上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
