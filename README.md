@@ -370,6 +370,9 @@ Quick Reference
 <a href="https://github.com/yikuaibro" title="yikuaibro">
   <img src="https://avatars.githubusercontent.com/u/44493045?v=4" width="42;" alt="yikuaibro"/>
 </a>
+<a href="https://github.com/Leaderzhangyi" title="ZinkCas">
+  <img src="https://avatars.githubusercontent.com/u/46915666?v=4" width="42;" alt="ZinkCas"/>
+</a>
 <a href="https://github.com/y52y" title="Zyj">
   <img src="https://avatars.githubusercontent.com/u/51304324?v=4" width="42;" alt="Zyj"/>
 </a>
