@@ -128,6 +128,7 @@ Quick Reference
 [Ansible](./docs/ansible.md)<!--rehype:style=background: rgb(238 0 0);&class=contributing tag&data-lang=RedHat&data-info=👆看看还缺点儿什么？-->  
 [Awk](./docs/awk.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Conan](./docs/conan.md)<!--rehype:style=background: rgb(0 193 9);&class=tag&data-lang=C/C++-->  
+[Conda](./docs/conda.md)<!--rehype:style=background: rgb(68 168 51);&class=tag&data-lang=Python-->  
 [CocoaPods](./docs/cocoapods.md)<!--rehype:style=background: rgb(251 0 6);&class=tag&data-lang=C/C++-->  
 [Cargo](./docs/cargo.md)<!--rehype:style=background: rgb(71 71 71);&class=tag&data-lang=Rust-->  
 [Curl](./docs/curl.md)<!--rehype:style=background: rgb(16 185 129);-->  
