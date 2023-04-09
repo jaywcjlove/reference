@@ -30,7 +30,7 @@ db // 打印当前数据库
 use <database_name>
 ```
 
-### 显示收藏
+### 显示集合
 
 ```mongodb
 show collections
@@ -50,7 +50,7 @@ CRUD
 
 ```mongodb
 db.coll.insertOne({ name: "Max" })
-db.coll.insert([{ name: "Max"}, {name:"Alex"}]) // 订购批量插入
+db.coll.insert([{ name: "Max"}, {name:"Alex"}]) // 批量插入
 db.coll.insert([{ name: "Max"}, {name:"Alex"}], {ordered: false}) // 无序批量插入
 db.coll.insert({ date: ISODate()})
 db.coll.insert({ name: "Max"}, {"writeConcern": {"w": "majority", "wtimeout": 5000}})
@@ -70,7 +70,7 @@ Commands | Description
 
 Operator | Description | Commands
 :-- | --- | ---
-`$gt`  | 比...更棒 | `db.docx.find({class:{$gt:'T'}`
+`$gt`  | 大于 | `db.docx.find({class:{$gt:'T'}`
 `$gte`  | 大于等于 | `db.docx.find({class:{$gt:'T'}`
 `$lt`  | 小于 | `db.docx.find({class:{$lt:'T'}`
 `$lte` | 小于等于 | `db.docx.find({class:{$lte:'T'}`
