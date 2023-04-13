@@ -406,8 +406,8 @@ Quick Reference
 <a href="https://github.com/greyhao" title="greyhao">
   <img src="https://avatars.githubusercontent.com/u/107107440?v=4" width="42;" alt="greyhao"/>
 </a>
-<a href="https://github.com/sunny0826" title="guoxudong">
-  <img src="https://avatars.githubusercontent.com/u/24563928?v=4" width="42;" alt="guoxudong"/>
+<a href="https://github.com/sunny0826" title="Xudong Guo">
+  <img src="https://avatars.githubusercontent.com/u/24563928?v=4" width="42;" alt="Xudong Guo"/>
 </a>
 <a href="https://github.com/hua03" title="hua03">
   <img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/>
