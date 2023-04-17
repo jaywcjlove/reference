@@ -213,8 +213,8 @@ jobs:
 <!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调">
   <img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调"/>
 </a>
-<a href="https://github.com/fwqaaq" title="fw_qaq">
-  <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fw_qaq"/>
+<a href="https://github.com/fwqaaq" title="fwqaaq">
+  <img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fwqaaq"/>
 </a>
 <a href="https://github.com/mofelee" title="mofelee">
   <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
@@ -353,6 +353,9 @@ jobs:
 </a>
 <a href="https://github.com/hi-liyan" title="Yan Li">
   <img src="https://avatars.githubusercontent.com/u/40056492?v=4" width="42;" alt="Yan Li"/>
+</a>
+<a href="https://github.com/Yo-gurts" title="Yogurt">
+  <img src="https://avatars.githubusercontent.com/u/44612841?v=4" width="42;" alt="Yogurt"/>
 </a>
 <a href="https://github.com/dfshizhiqiang" title="Zech">
   <img src="https://avatars.githubusercontent.com/u/7030019?v=4" width="42;" alt="Zech"/>
