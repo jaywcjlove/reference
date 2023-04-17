@@ -136,6 +136,7 @@ Quick Reference
 [Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68);-->  
 [CMake](./docs/cmake.md)<!--rehype:style=background: rgb(92 107 192);&class=contributing-->  
 [Make](./docs/make.md)<!--rehype:style=background: rgb(99 99 99);&class=contributing-->  
+[Gdb](./docs/gdb.md)<!--rehype:style=background: rgb(215 89 62);-->  
 [Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62);-->  
 [Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129);-->  
