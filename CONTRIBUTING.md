@@ -240,6 +240,9 @@ jobs:
 <a href="https://github.com/chaos-cn" title="chaos">
   <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
 </a>
+<a href="https://github.com/qyl27" title="秋 雨落">
+  <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋 雨落"/>
+</a>
 <a href="https://github.com/heStudio-Network" title="醉、倾城">
   <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
 </a>
@@ -266,9 +269,6 @@ jobs:
 </a>
 <a href="https://github.com/Country-If" title="Maylon">
   <img src="https://avatars.githubusercontent.com/u/62837275?v=4" width="42;" alt="Maylon"/>
-</a>
-<a href="https://github.com/qyl27" title="秋 雨落">
-  <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋 雨落"/>
 </a>
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
@@ -390,8 +390,8 @@ jobs:
 <a href="https://github.com/gi-b716" title="gi-b716">
   <img src="https://avatars.githubusercontent.com/u/78394473?v=4" width="42;" alt="gi-b716"/>
 </a>
-<a href="https://github.com/godotc" title="godotc">
-  <img src="https://avatars.githubusercontent.com/u/79260851?v=4" width="42;" alt="godotc"/>
+<a href="https://github.com/godotc" title="godot42">
+  <img src="https://avatars.githubusercontent.com/u/79260851?v=4" width="42;" alt="godot42"/>
 </a>
 <a href="https://github.com/greyhao" title="greyhao">
   <img src="https://avatars.githubusercontent.com/u/107107440?v=4" width="42;" alt="greyhao"/>
