@@ -1468,6 +1468,17 @@ html {
 
 [点击我](#入门)页面会平滑滚动到入门
 
+### 修改浏览器自动填充 input 样式
+
+```css
+input[type="text"]:autofill {
+  box-shadow: 0 0 0 1000px #000 inset;
+  -webkit-text-fill-color: white;
+}
+```
+
+另见: [:autofill](https://developer.mozilla.org/en-US/docs/Web/CSS/:autofill)
+
 ### 忽略用作间距的换行符 \<br />
 
 ```css
