@@ -46,12 +46,20 @@ var bo = false;
 
 ```cs
 // 单行注释
-/* 多行
-   注释 */
-// TODO：向 Visual Studio 中的任务列表添加注释
-/// 用于文档的单行注释
-/** 多行 注释 
-    用于文档 **/
+
+/* 
+ * 多行
+ * 注释 
+ */
+
+// TODO：向IDE中的任务列表添加注释（VS、Rider都支持）
+
+/// XML 单行注释，用于文档
+
+/**
+ * XML 多行注释，
+ *  用于文档 
+ */
 ```
 
 ### 字符串
@@ -124,7 +132,7 @@ C# 数据类型
 ### 原始数据类型
 <!--rehype:wrap-class=col-span-2-->
 
-| 关键字 | 名称         | System 别名 | 占用空间   | 数据范围                                 |
+| 关键字 | 名称         | System 别名 | 占用空间（Byte） | 数据范围                                 |
 | ------ | ------------ | ----------- | ---------- | ---------------------------------------- |
 | bool   | 布尔型       | Boolean     | 1          | true/false                               |
 | sbyte  | 有符号字节型 | SByte       | 1          | -128 ~ 127                               |
@@ -138,8 +146,8 @@ C# 数据类型
 | char   | 字符型       | Char        | 8          | UTF-16 所编码的字符                      |
 | float  | 单精度浮点型 | Single      | 4          | ±1.5x10^45 ~ ±3.4x10^38                  |
 | double | 双精度浮点型 | Double      | 8          | ±5.0x10^-324 ~ ±1.7x10^308               |
-| N/A    | 指针型       | IntPtr      | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
-| N/A    | 无符号指针型 | UIntPtr     | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
+| nint   | 指针型       | IntPtr      | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
+| nuint | 无符号指针型 | UIntPtr     | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
 <!--rehype:className=show-header-->
 
 ### 基本数据类型
@@ -284,7 +292,7 @@ bool Xor = A ^ B;
 
 C# 中的逻辑运算支持可空布尔类型运算. 注意条件逻辑运算不支持可空布尔类型.
 
-x |  y |  x&y |  x\|y | x^y | !x
+x |  y | x & y | x \| y | x ^ y | ! x 
 :- | - | --- | --- | --- | --
 true | true | true | true | false | false
 true | false | false | true | true | false
@@ -295,6 +303,7 @@ false | null | false | null | null | true
 null | true | null | true | null | null
 null | false | false | null | null | null
 null | null | null | null | null | null
+<!--rehype:className=show-header-->
 
 杂项
 -----------
