@@ -292,7 +292,7 @@ bool Xor = A ^ B;
 
 C# 中的逻辑运算支持可空布尔类型运算. 注意条件逻辑运算不支持可空布尔类型.
 
-x |  y | x & y | x \| y | x ^ y | ! x 
+x |  y | x & y | x \| y | x ^ y | ! x
 :- | - | --- | --- | --- | --
 true | true | true | true | false | false
 true | false | false | true | true | false
