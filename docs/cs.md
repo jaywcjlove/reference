@@ -148,7 +148,7 @@ C# 数据类型
 | double | 双精度浮点型 | Double      | 8          | ±5.0x10^-324 ~ ±1.7x10^308               |
 | nint   | 指针型       | IntPtr      | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
 | nuint | 无符号指针型 | UIntPtr     | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
-|<!--rehype:className=show-header-->|||||
+<!--rehype:className=show-header-->
 
 ### 基本数据类型
 
@@ -303,7 +303,7 @@ false | null | false | null | null | true
 null | true | null | true | null | null
 null | false | false | null | null | null
 null | null | null | null | null | null
-<!--rehype:className=show-header-->|||||
+<!--rehype:className=show-header-->
 
 杂项
 -----------
