@@ -377,6 +377,9 @@ Quick Reference
 <a href="https://github.com/yikuaibro" title="yikuaibro">
   <img src="https://avatars.githubusercontent.com/u/44493045?v=4" width="42;" alt="yikuaibro"/>
 </a>
+<a href="https://github.com/zhu0629" title="Zhu">
+  <img src="https://avatars.githubusercontent.com/u/13188450?v=4" width="42;" alt="Zhu"/>
+</a>
 <a href="https://github.com/Leaderzhangyi" title="ZinkCas">
   <img src="https://avatars.githubusercontent.com/u/46915666?v=4" width="42;" alt="ZinkCas"/>
 </a>
@@ -422,8 +425,8 @@ Quick Reference
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
 </a>
-<a href="https://github.com/auroraslot" title="irony">
-  <img src="https://avatars.githubusercontent.com/u/48817882?v=4" width="42;" alt="irony"/>
+<a href="https://github.com/auroraslot" title="Tang Weize">
+  <img src="https://avatars.githubusercontent.com/u/48817882?v=4" width="42;" alt="Tang Weize"/>
 </a>
 <a href="https://github.com/joyfully-W" title="joyfully-W">
   <img src="https://avatars.githubusercontent.com/u/32212924?v=4" width="42;" alt="joyfully-W"/>
