@@ -793,7 +793,7 @@ HTML meta 标签
 <!--rehype:body-class=cols-2-->
 
 ### Meta 标签
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-5-->
 
 meta 标记描述 HTML 文档中的元数据。它解释了关于 HTML 的其他材料。
 
@@ -821,7 +821,7 @@ meta 标记描述 HTML 文档中的元数据。它解释了关于 HTML 的其他
 
 ```html
 <!-- 描述 -->
-<meta name="description"         content="···">
+<meta name="description"         content="网页描述···">
 <meta property="og:description"  content="···">
 <meta name="twitter:description" content="···">
 ```
@@ -847,6 +847,32 @@ meta 标记描述 HTML 文档中的元数据。它解释了关于 HTML 的其他
 <!-- viewport -->
 <meta name="viewport" content="width=device-width">
 <meta name="viewport" content="width=1024">
+```
+
+---
+
+```html
+<!-- 重定向 -->
+<meta http-equiv="refresh" content="5;url=http://example.com/">
+<meta name="robots" content="index,follow">
+<meta name="generator" content="网站生成工具">
+<meta name="csrf-token" content="token值">
+```
+
+### 常用 Meta
+
+```html
+<meta name="description" content="网页描述···">
+<meta name="keywords" content="关键词1,关键词2,关键词3">
+<meta name="author" content="作者名">
+```
+
+### 常用 Meta
+
+```html
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="icon" href="favicon.jpg" type="image/jpeg">
 ```
 
 ### Open Graph
