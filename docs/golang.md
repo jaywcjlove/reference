@@ -1028,6 +1028,108 @@ func main() {
 ```
 <!--rehype:className=wrap-text -->
 
+Golang Embed
+---
+
+### 嵌入为string
+
+``` go
+package main
+
+import (
+    _ "embed"
+    "fmt"
+)
+
+//go:embed version.txt
+var version string
+
+func main() {
+    fmt.Printf("version %q\n", version)
+}
+```
+
+### 嵌入为[]byte
+
+``` go
+package main
+import (
+    _ "embed"
+    "fmt"
+)
+
+//go:embed version.txt
+var versionByte []byte
+
+func main() {
+    fmt.Printf("version %q\n", string(versionByte))
+}
+```
+
+### 嵌入为embed.FS
+
+``` go
+//go:embed hello.txt
+var f embed.FS
+func main() {
+  data, _ := f.ReadFile("hello.txt")
+  fmt.Println(string(data))
+}
+```
+
+### 嵌入多个文件
+
+``` go
+//go:embed hello.txt
+//go:embed hello2.txt
+var f embed.FS
+func main() {
+  data, _ := f.ReadFile("hello.txt")
+  fmt.Println(string(data))
+  data, _ = f.ReadFile("hello2.txt")
+  fmt.Println(string(data))
+}
+```
+
+### 嵌入子文件夹下的文件
+
+``` go
+//go:embed p/hello.txt p/hello2.txt
+var f embed.FS
+func main() {
+  data, _ := f.ReadFile("p/hello.txt")
+  fmt.Println(string(data))
+  data, _ = f.ReadFile("p/hello2.txt")
+  fmt.Println(string(data))
+}
+```
+
+### 同一个文件嵌入为多个变量
+
+``` go
+//go:embed hello.txt
+var s string
+//go:embed hello.txt
+var s2 string
+func main() {
+  fmt.Println(s)
+  fmt.Println(s2)
+}
+```
+
+### 匹配模式
+
+``` go
+//go:embed p/*
+var f embed.FS
+func main() {
+  data, _ := f.ReadFile("p/.hello.txt")
+  fmt.Println(string(data))
+  data, _ = f.ReadFile("p/q/.hi.txt") // 没有嵌入 p/q/.hi.txt
+  fmt.Println(string(data))
+}
+```
+
 杂项
 -------------
 
