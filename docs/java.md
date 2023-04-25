@@ -544,6 +544,154 @@ for (int i = 0; i < 5; i++) {
 // 输出: 0123
 ```
 
+Java 多线程
+--------------------
+
+### 创建线程
+
+```java
+// 实现Runnable接口
+public class RunnableThread implements Runnable {
+    @Override
+    public void run() {
+       // todo something
+    }
+}
+
+// 实现Callable接口,T 替换成实际类型
+public class CallableTask implements Callable<T> {
+    @Override
+    public T call() throws Exception {
+        // todo something
+        return null;
+    }
+}
+
+// 继承Thrad类
+public class ExtendsThread extends Thread {
+    @Override
+    public void run() {
+       // todo something
+    }
+}
+
+// 运行线程
+public static void main(String[] args) throws ExecutionException, InterruptedException {
+        new Thread(new RunnableThread()).start();
+        new ExtendsThread2().start();
+        FutureTask<Integer> integerFutureTask = new FutureTask<>(new CallableTask());
+        integerFutureTask.run();
+    }
+
+```
+
+### 线程池
+
+```java
+/**
+ *  corePoolSize: 核心线程数
+ *  maximumPoolSize: 最大线程数
+ *  keepAliveTime: 线程空闲时间
+ *  timeUni: 线程空闲时间单位
+ *  workQueue: 线程等待队列
+ *  threadFactory: 线程创建工厂
+ *  handler: 拒绝策略
+ */
+ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+                2, 5,
+                5, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(10),
+                new DefaultThreadFactory("pollName"),
+                new ThreadPoolExecutor.CallerRunsPolicy());
+
+// 内置的线程池, 不推荐生产使用
+Executors.newCachedThreadPool();
+Executors.newFixedThreadPool(10);
+Executors.newScheduledThreadPool(10);
+Executors.newSingleThreadExecutor();
+```
+
+### synchronized
+
+<!--rehype:wrap-class=row-span-1-->
+
+```java
+// 代码块
+synchronized(obj) {
+   ...
+}
+
+// (静态)方法
+public synchronized (static) void methodName() {
+   ...
+}
+```
+
+### ThreadLocal
+
+```java
+// 使用完之后一定要记得remove, 否则会内存泄露
+ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+threadLocal.set(1);
+threadLocal.get();
+threadLocal.remove();
+```
+
+### 线程等待与唤醒
+
+```java
+// 需要synchronized修饰的代码块才能使用
+wait(); 
+notify();
+notifyAll();
+
+// 使用lock的条件唤醒
+ReentrantLock lock = new ReentrantLock();
+Condition condition= lock.newCondition();
+lock.lock();
+try{
+   // 当前线程唤醒或等待
+    condition.await();
+    condition.signal();
+    condition.signalAll();
+} finally {
+  lock.unlock
+}
+
+// LockSupport,可以先unpark,后续park不会阻塞线程
+LockSupport.park(obj);
+LockSupport.unpark(thread);
+```
+
+### 线程编排
+
+```java
+// CountDownLatch
+CountDownLatch countDownLatch = new CountDownLatch(2);
+new Thread(() -> {
+    try {
+       ...
+    }finally {
+       countDownLatch.countDown();
+    }
+}).start();
+countDownLatch.await();
+
+// CompletableFuture
+CompletableFuture<Void> task1 = CompletableFuture.runAsync(() -> {});
+CompletableFuture<Void> task2 = CompletableFuture.runAsync(() -> {});
+CompletableFuture<Void> task3 = CompletableFuture.runAsync(() -> {});
+CompletableFuture.allOf(task1, task2, task3).get();
+
+// Semaphore
+Semaphore semaphore = new Semaphore(5);
+try {
+    semaphore.acquire();
+} finally {
+    semaphore.release(); 
+}
+```
+
 Java 框架搜集
 --------------------
 
