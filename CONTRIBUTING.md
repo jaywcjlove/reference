@@ -240,6 +240,9 @@ jobs:
 <a href="https://github.com/chaos-cn" title="chaos">
   <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
 </a>
+<a href="https://github.com/MarioMang" title="MarioMang">
+  <img src="https://avatars.githubusercontent.com/u/3959555?v=4" width="42;" alt="MarioMang"/>
+</a>
 <a href="https://github.com/qyl27" title="秋 雨落">
   <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋 雨落"/>
 </a>
@@ -248,9 +251,6 @@ jobs:
 </a>
 <a href="https://github.com/XYZscratcher" title="XYZ">
   <img src="https://avatars.githubusercontent.com/u/108533817?v=4" width="42;" alt="XYZ"/>
-</a>
-<a href="https://github.com/1834423612" title="kjch">
-  <img src="https://avatars.githubusercontent.com/u/49981661?v=4" width="42;" alt="kjch"/>
 </a>
 <a href="https://github.com/mancuoj" title="mancuoj">
   <img src="https://avatars.githubusercontent.com/u/45707684?v=4" width="42;" alt="mancuoj"/>
@@ -266,9 +266,6 @@ jobs:
 </a>
 <a href="https://github.com/catcto" title="喵仙人">
   <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
-</a>
-<a href="https://github.com/MarioMang" title="MarioMang">
-  <img src="https://avatars.githubusercontent.com/u/3959555?v=4" width="42;" alt="MarioMang"/>
 </a>
 <a href="https://github.com/Country-If" title="Maylon">
   <img src="https://avatars.githubusercontent.com/u/62837275?v=4" width="42;" alt="Maylon"/>
