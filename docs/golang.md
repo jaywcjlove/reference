@@ -1028,7 +1028,7 @@ func main() {
 ```
 <!--rehype:className=wrap-text -->
 
-Golang Embed
+Golang Embed (Go version >= 1.16)
 ---
 
 ### 嵌入为string
@@ -1129,6 +1129,177 @@ func main() {
   fmt.Println(string(data))
 }
 ```
+
+Golang 泛型 (Go version >= 1.18)
+-------------
+
+### 泛型类型
+<!--rehype:wrap-class=row-span-1-->
+
+```text
+type S[T int|float32|float64 ] []T
+       ┬  ────────┬──────── 
+       ┆          ╰─── 2. 类型约束
+       ╰────────────── 1. 类型形参
+```
+<!--rehype:className=wrap-text -->
+
+可以使用类型实参 int 或 string 实例化
+
+``` go
+type MyMap[K int|string, V float32 | float64] map[K]V
+
+var a MyMap[string, float64] = map[string]float64{
+    "jack_score": 9.6,
+    "bob_score":  8.4,
+}
+```
+<!--rehype:className=wrap-text -->
+- **匿名结构体不支持泛型**<!--rehype:style=color: #b43c29;-->
+- **匿名函数不支持泛型**<!--rehype:style=color: #b43c29;-->
+
+### 泛型函数
+<!--rehype:wrap-class=row-span-1-->
+
+任意类型
+
+``` go
+func Add[T any](a,b T) T {
+    return  a+b
+}
+```
+
+对类型进行约束
+
+``` go
+func Add[T string | int | int8](a,b T) T {
+    return  a+b
+}
+```
+
+类型嵌套
+
+``` go
+type WowStruct[T int | float32, S []T] struct {
+    Data     S
+    MaxValue T
+    MinValue T
+}
+
+var ws WowStruct[int, []int]  
+```
+<!--rehype:className=wrap-text -->
+
+泛型函数中进行类型声明 (go version >= 1.20)
+
+``` go
+func F[T1 any]() {
+    type x struct{} 
+    type y = x      
+}
+```
+
+### 泛型约束
+<!--rehype:wrap-class=row-span-2-->
+
+通过接口实现
+
+``` go
+type Addable interface{
+    type int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, uintptr, float32, float64, complex64, complex128, string 
+}
+
+func Add[T Addable](a,b T) T {
+    return  a+b
+}
+```
+<!--rehype:className=wrap-text -->
+
+使用 ~ 符号
+
+``` go
+type Int interface {
+    ~int | ~int8 | ~int16 | ~int32 | ~int64
+}
+
+type Uint interface {
+    ~uint | ~uint8 | ~uint16 | ~uint32
+}
+type Float interface {
+    ~float32 | ~float64
+}
+
+type Slice[T Int | Uint | Float] []T 
+
+var s Slice[int] // 正确
+
+type MyInt int
+var s2 Slice[MyInt]  // MyInt底层类型是int，所以可以用于实例化
+
+type MyMyInt MyInt
+var s3 Slice[MyMyInt]  // 正确。MyMyInt 虽然基于 MyInt ，但底层类型也是int，所以也能用于实例化
+
+type MyFloat32 float32  // 正确
+var s4 Slice[MyFloat32]
+```
+<!--rehype:className=wrap-text -->
+
+使用 ~ 时的限制：
+<!--rehype:style=color: #b43c29;-->
+1. ~后面的类型不能为接口
+2. ~后面的类型必须为基本类型
+<!--rehype:style=color: #b43c29;-->
+
+### 泛型 Receiver
+<!--rehype:wrap-class=row-span-1-->
+
+定义普通类型支持泛型
+
+``` go
+type MySlice[T int | float32] []T
+
+func (s MySlice[T]) Sum() T {
+    var sum T
+    for _, value := range s {
+        sum += value
+    }
+    return sum
+}
+```
+<!--rehype:className=wrap-text -->
+
+结构体支持泛型
+
+``` go
+type A[T int | float32 | float64] struct {
+}
+
+func (receiver A[T]) Add(a T, b T) T {
+    return a + b
+}
+
+```
+<!--rehype:className=wrap-text -->
+
+### 泛型接口
+<!--rehype:wrap-class=row-span-1-->
+
+``` go
+type Uint interface { // 接口 Uint 中有类型，所以是一般接口
+    ~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64
+}
+
+type ReadWriter interface {  // ReadWriter 接口既有方法也有类型，所以是一般接口
+    ~string | ~[]rune
+
+    Read(p []byte) (n int, err error)
+    Write(p []byte) (n int, err error)
+}
+```
+<!--rehype:className=wrap-text -->
+
+一般接口类型不能用来定义变量，只能用于泛型的类型约束中
+<!--rehype:style=color: #b43c29;-->
 
 杂项
 -------------
