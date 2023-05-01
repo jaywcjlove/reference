@@ -535,6 +535,7 @@ Quick Reference
 [moeyuuko.com](https://ref.moeyuuko.com/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [coolxy.top](https://refer.coolxy.top)<!--rehype:target=_blank-->
 [notes-bin.top](https://notes-bin.top)<!--rehype:target=_blank-->
+[tangcc.cn](https://web.tangcc.cn)<!--rehype:target=_blank-->
 [xadocker.cn](https://reference.xadocker.cn)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
