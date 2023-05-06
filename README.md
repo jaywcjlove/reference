@@ -234,8 +234,8 @@ Quick Reference
 <a href="https://github.com/mofelee" title="mofelee">
   <img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/>
 </a>
-<a href="https://github.com/JeffersonHuang" title="Jefferson">
-  <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson"/>
+<a href="https://github.com/JeffersonHuang" title="Jefferson Huang">
+  <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson Huang"/>
 </a>
 <a href="https://github.com/Alex-Programer" title="Alex">
   <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
@@ -294,8 +294,8 @@ Quick Reference
 <a href="https://github.com/dousha0w0" title="dousha0w0">
   <img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="dousha0w0"/>
 </a>
-<a href="https://github.com/Brid9e" title="Brid9e">
-  <img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Brid9e"/>
+<a href="https://github.com/Brid9e" title="Joe">
+  <img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Joe"/>
 </a>
 <a href="https://github.com/ch3nnn" title="陈通">
   <img src="https://avatars.githubusercontent.com/u/40114564?v=4" width="42;" alt="陈通"/>
