@@ -606,6 +606,75 @@ fun main() {
 ```
 <!--rehype:className=wrap-text-->
 
+### 简单的高阶函数
+<!--rehype:wrap-class=col-span-2-->
+```kotlin
+//注意啦，这里的num1AndNum2有个operation，它是接收了一个函数作为形参
+fun num1AndNum2(num1: Int, num2: Int, operation: (Int, Int) -> Int): Int {
+    //让我们试着向operation传入参数
+    return operation(num1, num2)
+}
+
+fun plus(num1: Int, num2: Int): Int {
+    return num1 + num2
+}
+
+fun main(args: Array<String>) {
+    val total = num1AndNum2(100, 200, ::plus)
+    println(total)//300
+    //怎么样？我们利用传入一个函数来充当另一个函数的参数
+}
+
+```
+
+还记得我们怎么在Java中用接口吗？
+
+试着用函数参数简化它
+
+<!--rehype:className=wrap-text-->
+
+### 以匿名函数作为参数的函数
+
+```kotlin
+//operation是一个函数类型的参数哦
+fun num1AndNum2(num1: Int, num2: Int, operation: (Int, Int) -> Int): Int {
+    return operation(num1, num2)
+}
+
+
+fun main(args: Array<String>) {
+    //这里我们定义一个匿名函数
+    val operation: (Int, Int) -> Int = { i: Int, i2: Int ->
+        i + i2
+    }
+    val total = num1AndNum2(100, 200, operation)
+    println(total) //300
+}
+
+```
+<!--rehype:className=wrap-text-->
+
+### Lambda表达式方式传入函数参数
+<!--rehype:wrap-class=col-span-2-->
+
+```kotlin
+//我们还是不改变什么
+fun num1AndNum2(num1: Int, num2: Int, operation: (Int, Int) -> Int): Int {
+    return operation(num1, num2)
+}
+
+fun main(args: Array<String>) {
+    //wow哦天哪，Lambda可以做到这样简洁
+    val total = num1AndNum2(100, 200) { n1, n2 ->
+        n1 + n2
+    }
+    println(total)
+}
+```
+
+这里之所以可以把lambda写在外部，是因为operation是最后一个参数。
+<!--rehype:className=wrap-text-->
+
 类
 ---
 
