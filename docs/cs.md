@@ -26,6 +26,31 @@ $ dotnet run
 Hello, world!
 ```
 
+### 命名空间 
+```C#   
+//使用时   using 命名名称
+using Test;
+//创建：
+namespace Test{
+    class Test_className{
+        //main方法是程序的主入口
+            public void Myclass(){
+            console.writeline("Test")
+        }
+    }
+}
+```
+
+### 访问修饰符
+| 声明的可访问性     | 含义     |
+|-----|----------------------|
+| public             | 访问不受限制 |
+| protected          | 访问限于包含类或派生自包含类的类型 (该类内部和继承类中可以访问)   |
+| internal           | 访问限于当前程序集          |
+| protected internal | 访问限于当前程序集或派生自包含类的类型         |
+| private            | 访问限于包含类              |
+| private protected  | 访问限于包含类或当前程序集中派生自包含类的类型,自 C# 7.2 之后可用 |
+
 ### 变量
 
 ```cs
