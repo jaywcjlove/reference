@@ -306,6 +306,9 @@ jobs:
 <a href="https://github.com/Ding-Kyoma" title="HooinKyoma">
   <img src="https://avatars.githubusercontent.com/u/44542198?v=4" width="42;" alt="HooinKyoma"/>
 </a>
+<a href="https://github.com/ljq" title="Jack Liu">
+  <img src="https://avatars.githubusercontent.com/u/7278286?v=4" width="42;" alt="Jack Liu"/>
+</a>
 <a href="https://github.com/jasnzhuang" title="Jason Zhuang">
   <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
 </a>
@@ -381,8 +384,8 @@ jobs:
 <a href="https://github.com/chyok" title="chyok">
   <img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/>
 </a>
-<a href="https://github.com/gaoxiaoduan" title="coderduan">
-  <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="coderduan"/>
+<a href="https://github.com/gaoxiaoduan" title="Jerrod Cole">
+  <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="Jerrod Cole"/>
 </a>
 <a href="https://github.com/cool9203" title="cool9203">
   <img src="https://avatars.githubusercontent.com/u/29609607?v=4" width="42;" alt="cool9203"/>
