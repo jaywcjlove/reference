@@ -357,8 +357,8 @@ jobs:
 <a href="https://github.com/BATTLEHAWK00" title="While True: learn()">
   <img src="https://avatars.githubusercontent.com/u/45313304?v=4" width="42;" alt="While True: learn()"/>
 </a>
-<a href="https://github.com/hi-liyan" title="Yan Li">
-  <img src="https://avatars.githubusercontent.com/u/40056492?v=4" width="42;" alt="Yan Li"/>
+<a href="https://github.com/hi-liyan" title="嘉木旅人">
+  <img src="https://avatars.githubusercontent.com/u/40056492?v=4" width="42;" alt="嘉木旅人"/>
 </a>
 <a href="https://github.com/Yo-gurts" title="Yogurt">
   <img src="https://avatars.githubusercontent.com/u/44612841?v=4" width="42;" alt="Yogurt"/>
@@ -431,6 +431,9 @@ jobs:
 </a>
 <a href="https://github.com/genius-kim" title="kim">
   <img src="https://avatars.githubusercontent.com/u/119488561?v=4" width="42;" alt="kim"/>
+</a>
+<a href="https://github.com/kubeme" title="kubernetes for me">
+  <img src="https://avatars.githubusercontent.com/u/16346220?v=4" width="42;" alt="kubernetes for me"/>
 </a>
 <a href="https://github.com/larry-xue" title="larry">
   <img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="larry"/>
