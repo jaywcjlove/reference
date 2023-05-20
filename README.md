@@ -146,7 +146,7 @@ Quick Reference
 [Netstat](./docs/netstat.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [iptables](./docs/iptables.md)<!--rehype:style=background: rgb(32 74 135);-->  
 [jq](./docs/jq.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=JSON-->  
-[Justfile](./docs/justfile.md)
+[Justfile](./docs/justfile.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Lsof](./docs/lsof.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135);-->  
 [Netcat](./docs/netcat.md)<!--rehype:style=background: rgb(4 92 135);-->  
@@ -197,7 +197,7 @@ Quick Reference
 
 ## 其它
 
-[Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=排版说明-->  
+[Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(0 182 122);&class=tag&data-lang=排版说明-->  
 [Aspect Ratio](./docs/aspect-ratio.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Github Actions](./docs/github-actions.md)<!--rehype:style=background: rgb(121 184 255);-->  
 [Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->  
@@ -205,7 +205,7 @@ Quick Reference
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=HTML-->  
 [ISO 639-1 Language Code](./docs/iso-639-1.md)<!--rehype:style=background: rgb(16 185 129);-->  
-[Emoji](./docs/emoji.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[Emoji](./docs/emoji.md)<!--rehype:style=\-\-bg\-opacity: 0.75;background-image: linear-gradient(to left, rgba(74 222 128 / var(\-\-bg\-opacity)), rgba(59 130 246 / var(\-\-bg\-opacity)));-->  
 [MIME types](./docs/mime.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Resolutions](./docs/resolutions.md)<!--rehype:style=background: rgb(16 185 129);-->  
 <!--rehype:class=home-card-->
