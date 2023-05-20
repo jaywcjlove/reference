@@ -27,7 +27,8 @@ Hello, world!
 ```
 
 ### 命名空间 
-```C#   
+
+```cs
 //使用时   using 命名名称
 using Test;
 //创建：
