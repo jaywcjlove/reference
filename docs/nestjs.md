@@ -115,7 +115,7 @@ $ npm run start
 ```
 <!--rehype:className=wrap-text-->
 
-需要[注意]((https://docs.nestjs.com/first-steps#language))的一点是，`JavaScript`的版本是需要`Babel`的
+需要[注意](<https://docs.nestjs.com/first-steps#language>)的一点是，`JavaScript` 的版本是需要 `Babel` 的
 
 另见
 ---
