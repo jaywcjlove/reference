@@ -474,8 +474,8 @@ Quick Reference
 <a href="https://github.com/wannima66" title="tmen">
   <img src="https://avatars.githubusercontent.com/u/26410255?v=4" width="42;" alt="tmen"/>
 </a>
-<a href="https://github.com/wjjwkwindy" title="wjjwkwindy">
-  <img src="https://avatars.githubusercontent.com/u/9508591?v=4" width="42;" alt="wjjwkwindy"/>
+<a href="https://github.com/wjjwkwindy" title="Hudson Alen">
+  <img src="https://avatars.githubusercontent.com/u/9508591?v=4" width="42;" alt="Hudson Alen"/>
 </a>
 <a href="https://github.com/xing133" title="xing133">
   <img src="https://avatars.githubusercontent.com/u/5336490?v=4" width="42;" alt="xing133"/>
