@@ -980,3 +980,10 @@ Github emoji 图标标记
 | :milky_way:                    | `:milky_way:`                    |
 | :partly_sunny:                 | `:partly_sunny:`                 |
 | :carrot:                       | `:carrot:`                       |
+
+另见
+--------
+
+- [Emoji finder](https://emoji.muan.co/) _(muan.co)_
+- [Full Emoji List, v15.0](https://unicode.org/emoji/charts/full-emoji-list.html) _(unicode.org)_
+- [Emoji Cheat Sheet](https://www.webfx.com/tools/emoji-cheat-sheet/) _(webfx.com)_
