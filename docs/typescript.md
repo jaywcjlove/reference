@@ -1185,17 +1185,17 @@ function Dog(prop:CeProps): JSX.Element {
 <!--rehype:wrap-class=col-span-2-->
 
 ```tsx
-interface MenuProps extends React.LiHTMLAttributes<HTMLUListElement> { ... }
-const InternalMenu = (props: MenuProps, ref?: React.ForwardedRef<HTMLUListElement>) => (
+interface MenuProps extends React.LiHTMLAttributes<HTMLUListElement> { ... };
+const InternalMenu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) => (
   <ul {...props} ref={ref} />
-);
-type MenuComponent = React.FC<React.PropsWithRef<MenuProps>> & {
+));
+
+type MenuComponent = typeof InternalMenu & {
   Item: typeof MenuItem;    // MenuItem 函数组件
   SubMenu: typeof SubMenu;  // SubMenu 函数组件
 };
-const Menu: MenuComponent = React.forwardRef<HTMLUListElement>(
-  InternalMenu
-) as unknown as MenuComponent;
+
+const Menu: MenuComponent = InternalMenu as unknown as MenuComponent;
 
 Menu.Item = MenuItem;
 Menu.SubMenu = SubMenu;
