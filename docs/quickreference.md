@@ -110,7 +110,7 @@ class=tag&data-info=👆看看还缺点儿什么？
 
 添加 `class=tag&data-lang=Python` 类名和参数，会在卡片右上角标记 _`Python`_
 
-### Command Help
+### 命令帮助
 
 ```bash
 Usage: refs-cli [output-dir] [--help|h]
@@ -135,14 +135,16 @@ Example:
 refs-cli@v0.0.1
 ```
 
-### Config
+### 配置 Config
+
+将 `.refsrc.json` 存放在项目的根目录下
 
 ```json
 {
   "title": "文档网站名称",
   "description": "{{description}} 网站说明",
   "keywords": "关键字,refs-cli,refs,cli",
-  "data-info": "👆需要你的参与",
+  "data-info": "👆 需要你的参与",
   "search": {
     "label": "搜索",
     "placeholder": "搜索备忘清单",
@@ -163,7 +165,55 @@ refs-cli@v0.0.1
 }
 ```
 
-将 `.refsrc.json` 存放在项目的根目录下
+支持 [JSON](https://www.json.org), [JSONC](https://github.com/microsoft/node-jsonc-parser), [JSON5](https://json5.org/), [YAML](https://yaml.org/), [TOML](https://toml.io), [INI](https://en.wikipedia.org/wiki/INI_file), [CJS](http://www.commonjs.org), [Typescript](https://www.typescriptlang.org/), 和 ESM 配置加载。
+
+### `TOML` 配置示例
+
+将 `.refsrc.toml` 存放在项目的根目录下
+
+```toml
+title = "Refs CLI 文档网站名称"
+description = "{{description}}. 网站说明"
+keywords = "关键字,reference,refs-cli,cli"
+data-info = "👆 需要你的参与"
+
+[search]
+  label = "搜索"
+  placeholder = "搜索备忘清单"
+  cancel = "取消"
+
+[editor]
+  label = "编辑"
+
+[github]
+  url = "<github url>"
+
+[home]
+  label = "首页"
+  url = "https://<你的网站>"
+
+footer = "<br />备案号：支持HTML字符串"
+license = "支持 HTML 字符串"
+```
+
+### 支持更多配置加载
+
+```bash
+.refsrc                .refsrc.json
+.refsrc.json5          .refsrc.jsonc
+.refsrc.yaml           .refsrc.yml
+.refsrc.toml           .refsrc.ini
+.refsrc.js             .refsrc.ts
+.refsrc.cjs            .refsrc.mjs
+.config/refsrc         .config/refsrc.json
+.config/refsrc.json5   .config/refsrc.jsonc
+.config/refsrc.yaml    .config/refsrc.yml
+.config/refsrc.toml    .config/refsrc.ini
+.config/refsrc.js      .config/refsrc.ts
+.config/refsrc.cjs     .config/refsrc.mjs
+refs.config.js         refs.config.ts
+refs.config.cjs        refs.config.mjs
+```
 
 ### 环境变量
 
