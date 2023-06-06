@@ -1312,13 +1312,16 @@ type SomeBigInt = "100" extends `${infer U extends bigint}` ? U : never;
 ### keyof 取 interface 的键
 
 ```ts
-interface Point {
-    x: number;
-    y: number;
-}
+interface Point { x: number; y: number; }
  
 // type keys = "x" | "y"
 type keys = keyof Point;
+
+type Arrayish = {
+    [n: number]: unknown;
+};
+type A = keyof Arrayish; 
+// type A = number
 ```
 
 ### 索引签名
@@ -1394,7 +1397,8 @@ const redComponent = palette.red.at(0)
 不使用的情况下：
 
 ```ts
-const errorMap: Map<string, Error> = new Map()
+const errorMap: Map<string, Error> 
+        = new Map()
 // 或者使用 type 定义别名
 type ErrorMapType = Map<string, Error>
 ```
@@ -1423,7 +1427,8 @@ function makeHammerBox(hammer: Hammer) {
   return makeBox(hammer);
 }
 // or...
-const makeWrenchBox: (wrench: Wrench) => Box<Wrench> = makeBox;
+const makeWrenchBox: (wrench: Wrench) 
+    => Box<Wrench> = makeBox;
 ```
 
 使用：
@@ -1444,6 +1449,28 @@ declare global {
 export interface FancyOption {
   fancinessLevel: number;
 }
+```
+
+### 获取数组元素的类型
+
+```ts
+const MyArray = [
+  { name: "Alice", age: 15 },
+  { name: "Bob", age: 23 },
+  { name: "Eve", age: 38 },
+];
+ 
+type Person = typeof MyArray[number];
+// type Person = {
+//   name: string;
+//   age: number;
+// }
+
+type Age = typeof MyArray[number]["age"];
+// type Age = number
+
+type Age2 = Person["age"];
+// type Age2 = number
 ```
 
 .d.ts 模版
