@@ -363,6 +363,9 @@ Quick Reference
 <a href="https://github.com/PipecraftNet" title="Pipecraft">
   <img src="https://avatars.githubusercontent.com/u/88728670?v=4" width="42;" alt="Pipecraft"/>
 </a>
+<a href="https://github.com/sevenleave" title="Poirot Hercule">
+  <img src="https://avatars.githubusercontent.com/u/24411140?v=4" width="42;" alt="Poirot Hercule"/>
+</a>
 <a href="https://github.com/QDelta" title="QDelta">
   <img src="https://avatars.githubusercontent.com/u/60222316?v=4" width="42;" alt="QDelta"/>
 </a>
