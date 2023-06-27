@@ -1249,5 +1249,5 @@ finally:                 # 在所有情况下执行
 ----
 
 - [Python](https://www.python.org/)  _(python.org)_
-- [Learn X in Y minutes](https://learnxinyminutes.com/docs/python/) _(learnxinyminutes.com)_
+- [Learn X in Y minutes](https://learnxinyminutes.com/docs/zh-cn/python-cn/) _(learnxinyminutes.com)_
 - [Regex in python](./regex.md#python-中的正则表达式) _(jaywcjlove.github.io)_
