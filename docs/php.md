@@ -969,4 +969,4 @@ echo 'CURRENT_DATE is: ' . CURRENT_DATE;
 ----
 
 - [PHP 官方中文文档](https://www.php.net/manual/zh/index.php) _(php.net)_
-- [Learn X in Y minutes](https://learnxinyminutes.com/docs/php/) _(learnxinyminutes.com)_
+- [Learn X in Y minutes](https://learnxinyminutes.com/docs/zh-cn/php-cn/) _(learnxinyminutes.com)_
