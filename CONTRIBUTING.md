@@ -489,6 +489,9 @@ jobs:
 <a href="https://github.com/ZIDOUZI" title="子斗子">
   <img src="https://avatars.githubusercontent.com/u/53157536?v=4" width="42;" alt="子斗子"/>
 </a>
+<a href="https://github.com/itldg" title="老大哥">
+  <img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/>
+</a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶">
   <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
 </a>
