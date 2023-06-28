@@ -155,6 +155,24 @@ foreach(int num in numbers) {
 }
 ```
 
+---
+
+```cs
+while(true)
+{
+   Console.WriteLine("只要给定的条件为真，while 循环语句会重复执行");
+}
+```
+
+---
+
+```cs
+do
+{
+   Console.WriteLine("与 while 类似，do...while 会确保至少执行一次循环。");
+} while( true );
+```
+
 C# 数据类型
 ---------------------
 
