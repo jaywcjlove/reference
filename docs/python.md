@@ -9,6 +9,7 @@ Python 备忘单是 [Python 3](https://www.python.org/) 编程语言的单页参
 ### 介绍
 
 - [Python](https://www.python.org/)  _(python.org)_
+- [Python 文档](https://docs.python.org/zh-cn/3/index.html)  _(docs.python.org)_
 - [Learn X in Y minutes](https://learnxinyminutes.com/docs/python/) _(learnxinyminutes.com)_
 - [Regex in python](./regex.md#python-中的正则表达式) _(jaywcjlove.github.io)_
 
@@ -877,6 +878,8 @@ def varargs(*args):
 varargs(1, 2, 3)  # => (1, 2, 3)
 ```
 
+args 的类型是 tuple
+
 ### 关键字参数
 
 ```python
@@ -885,6 +888,8 @@ def keyword_args(**kwargs):
 # => {"big": "foot", "loch": "ness"}
 keyword_args(big="foot", loch="ness")
 ```
+
+kwargs 的类型是 dict
 
 ### 返回多个
 
@@ -1180,6 +1185,182 @@ Yoki = Dog("Yoki", 4)
 print(Yoki.name) # => YOKI
 print(Yoki.legs) # => 4
 Yoki.sound()     # => Woof!
+```
+
+Python 类型标注 (自 Python 3.5 起)
+--------
+
+### 变量
+
+```python
+string: str = "ha"
+times: int = 3
+
+print(string * times)  # => hahaha
+```
+
+### 变量
+
+```python
+result: int = 1 + 2
+
+print(result)  # => 3
+```
+
+虽然标注了错误的类型，但不影响正常运行
+
+### 参数
+
+```python
+def say(name: str, start: str = "Hi"):
+    return start + ", " + name
+
+print(say("Python"))  # => Hi, Python
+```
+
+### 位置参数
+
+```python
+def calc_summary(*args: int):
+    return sum(args)
+
+print(calc_summary(3, 1, 4))  # => 8
+```
+
+表示 args 的所有元素都是 int 类型的。
+
+### 返回值
+
+```python
+def say_hello(name) -> str:
+    return "Hello, " + name
+
+var = "Python"
+print(say_hello(var))  # => Hello, Python
+```
+
+### 多种可能的返回值
+
+```python
+from typing import Union
+
+def resp200(meaningful) -> Union[int, str]:
+    return "OK" if meaningful else 200
+```
+
+表示返回值可能是 int，也可能是 str 。
+
+### 关键字参数
+
+```python
+def calc_summary(**kwargs: int):
+    return sum(kwargs.values())
+
+print(calc_summary(a=1, b=2))  # => 3
+```
+
+表示 kwargs 的所有值都是 int 类型的。
+
+### 多个返回值
+
+```python
+def resp200() -> (int, str):
+    return 200, "OK"
+```
+
+### 多种可能的返回值 (3.10+)
+
+```python
+def resp200(meaningful) -> int | str:
+    return "OK" if meaningful else 200
+```
+
+自 Python 3.10 起可用。
+
+### 属性
+
+```python
+class Employee:
+    name: str
+    age: int
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.graduated: bool = False
+```
+
+### 标注自己
+
+```python
+class Employee:
+    name: str
+    age: int
+
+    def set_name(self, name) -> "Employee":
+        self.name = name
+        return self
+```
+
+这里表示 set_name() 返回了一个 Employee 对象。
+
+### 标注自己 (3.11+)
+
+```python
+from typing import Self
+
+class Employee:
+    name: str
+    age: int
+
+    def set_name(self: Self, name) -> Self:
+        self.name = name
+        return self
+```
+
+### 标注一个值为类型的参数
+<!--rehype:wrap-class=col-span-2-->
+```python
+from typing import TypeVar, Type
+
+T = TypeVar("T")
+
+# "mapper" 的值是一个像 int、str、MyClass 这样的类型
+# "default" 是一个 T 类型的值，比如 314、"string"、MyClass()
+# 函数的返回值也是一个 T 类型的值
+def converter(raw, mapper: Type[T], default: T) -> T:
+    try:
+        return mapper(raw)
+    except:
+        return default
+
+raw: str = input("请输入一个整数：")
+result: int = converter(raw, mapper=int, default=0)
+```
+
+### 标注一个值为函数的参数
+<!--rehype:wrap-class=col-span-2-->
+
+```python
+from typing import TypeVar, Callable, Any
+
+T = TypeVar("T")
+
+def converter(raw, mapper: Callable[[Any], T], default: T) -> T:
+    try:
+        return mapper(raw)
+    except:
+        return default
+
+# Callable[[Any], T] 表示值是一个像这样声明的函数:
+# def anynomous(arg: Any) -> T:
+#     pass
+
+def is_success(value) -> bool:
+    return value in (0, "OK", True, "success")
+
+resp = dict(code=0, message="OK", data=[])
+successed: bool = converter(resp.message, mapper=is_success, default=False)
 ```
 
 各种各样的
