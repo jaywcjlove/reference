@@ -492,6 +492,9 @@ jobs:
 <a href="https://github.com/ZIDOUZI" title="子斗子">
   <img src="https://avatars.githubusercontent.com/u/53157536?v=4" width="42;" alt="子斗子"/>
 </a>
+<a href="https://github.com/aixcyi" title="砹小翼">
+  <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
+</a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶">
   <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
 </a>
@@ -500,9 +503,6 @@ jobs:
 </a>
 <a href="https://github.com/qwxingzhe" title="行者">
   <img src="https://avatars.githubusercontent.com/u/7071651?v=4" width="42;" alt="行者"/>
-</a>
-<a href="https://github.com/Zeng-qh" title="都一样">
-  <img src="https://avatars.githubusercontent.com/u/40046415?v=4" width="42;" alt="都一样"/>
 </a><!--GAMFC-END-->
 
 上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
