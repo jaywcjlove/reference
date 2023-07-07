@@ -375,6 +375,9 @@ Quick Reference
 <a href="https://github.com/QDelta" title="QDelta">
   <img src="https://avatars.githubusercontent.com/u/60222316?v=4" width="42;" alt="QDelta"/>
 </a>
+<a href="https://github.com/RivailleF" title="RivailleF">
+  <img src="https://avatars.githubusercontent.com/u/93083015?v=4" width="42;" alt="RivailleF"/>
+</a>
 <a href="https://github.com/qinxiongzhou" title="Ryan Zhou">
   <img src="https://avatars.githubusercontent.com/u/33239096?v=4" width="42;" alt="Ryan Zhou"/>
 </a>
