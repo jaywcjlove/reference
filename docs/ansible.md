@@ -47,7 +47,7 @@ ansible --version | grep "config file"
 
 `/etc/ansible/hosts`
 
-```INI
+```ini
 mail.example.com
 
 [webservers]
@@ -57,7 +57,7 @@ bar.example.com
 
 ### Inventory 主机组使用多个IP和域名
 
-```
+```ini
 [web]
 172.18.12.5[1:4]
 [webservers]
