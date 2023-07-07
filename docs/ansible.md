@@ -25,6 +25,13 @@ Ansible 备忘清单
 `/etc/ansible/ansible.cfg`  | 系统范围的配置
 `~/ansible.cfg`             | 用户特定的配置
 `$pwd/ansible.cfg`          | 当前目录下的配置
+ansible的缺省的配置文件：/etc/ansible/ansible.cfg
+ansible配置文件优先级：
+  1.如果没有任何其他的ansible配置文件，默认使用/etc/ansible/ansible.cfg
+	2. ~/.ansible.cfg 家目录下的.ansible.cfg
+	3. ./ansible.cfg 当前目录下的ansible.cfg ，即在同一目录下ansible.cfg优先级高于.ansible.cfg
+	4.环境变量 exoport ANSIBLE_CONFIG=/$DIR/ansible.cfg
+查看正在使用的ansible配置文件： ansible --version | grep "config file"
 
 ### Inventory文件(hosts列表)
 
