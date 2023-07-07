@@ -60,7 +60,8 @@
 <ul>
 <li><a href="https://docs.ansible.com">Ansible 官方文档</a></li>
 </ul>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置位置"><a aria-hidden="true" tabindex="-1" href="#配置位置"><span class="icon icon-link"></span></a>配置位置</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="配置位置"><a aria-hidden="true" tabindex="-1" href="#配置位置"><span class="icon icon-link"></span></a>配置位置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 
 
@@ -82,24 +83,18 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">文件路径</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>/etc/ansible/ansible.cfg</code></td><td>系统范围的配置</td></tr><tr><td align="left"><code>~/ansible.cfg</code></td><td>用户特定的配置</td></tr><tr><td align="left"><code>$pwd/ansible.cfg</code></td><td>当前目录下的配置</td></tr><tr><td align="left">ansible的缺省的配置文件：/etc/ansible/ansible.cfg</td><td></td></tr><tr><td align="left">ansible配置文件优先级：</td><td></td></tr><tr><td align="left">1.如果没有任何其他的ansible配置文件，默认使用/etc/ansible/ansible.cfg</td><td></td></tr></tbody></table>
-<pre><code class="code-highlight"><span class="code-line">2. ~/.ansible.cfg 家目录下的.ansible.cfg
-</span><span class="code-line">3. ./ansible.cfg 当前目录下的ansible.cfg ，即在同一目录下ansible.cfg优先级高于.ansible.cfg
-</span><span class="code-line">4.环境变量 exoport ANSIBLE_CONFIG=/$DIR/ansible.cfg
+<table><thead><tr><th align="left">文件路径</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>/etc/ansible/ansible.cfg</code></td><td>系统范围的配置</td></tr><tr><td align="left"><code>~/ansible.cfg</code></td><td>用户特定的配置</td></tr><tr><td align="left"><code>$pwd/ansible.cfg</code></td><td>当前目录下的配置</td></tr></tbody></table>
+<p>配置文件优先级</p>
+<ul class="style-timeline">
+<li>如果没有任何其他配置文件，默认使用 <code>/etc/ansible/ansible.cfg</code></li>
+<li><code>~/.ansible.cfg</code> <code>家</code>目录下的 <code>.ansible.cfg</code></li>
+<li>当前目录下的 <code>ansible.cfg</code>，即在同一目录下 <code>ansible.cfg</code> 优先级高于 <code>~/.ansible.cfg</code></li>
+<li>环境变量 <code>exoport ANSIBLE_CONFIG=/$DIR/ansible.cfg</code></li>
+</ul>
+<!--rehype:className=style-timeline-->
+<p>查看正在使用的 <code>ansible</code> 配置文件：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">ansible <span class="token parameter variable">--version</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"config file"</span>
 </span></code></pre>
-<p>查看正在使用的ansible配置文件： ansible --version | grep "config file"</p>
 </div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="inventory文件hosts列表"><a aria-hidden="true" tabindex="-1" href="#inventory文件hosts列表"><span class="icon icon-link"></span></a>Inventory文件(hosts列表)</h3><div class="wrap-body">
 <h4 id="静态inventory"><a aria-hidden="true" tabindex="-1" href="#静态inventory"><span class="icon icon-link"></span></a>静态Inventory</h4>
 <p><code>/etc/ansible/hosts</code></p>
