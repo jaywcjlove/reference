@@ -1289,6 +1289,20 @@ export interface ProgressProps extends React.DetailedHTMLProps<React.HTMLAttribu
 export const Progress: FC<PropsWithRef<ProgressProps>> = forwardRef<HTMLDivElement>(InternalProgress)
 ```
 
+### 组件 'as' 属性
+<!--rehype:wrap-class=col-span-3-->
+
+```tsx
+import React, { ElementType, ComponentPropsWithoutRef } from "react";
+
+export const Link = <T extends ElementType<any> = "a">(props: { as?: T; } & ComponentPropsWithoutRef<T>) => {
+  const Comp = props.as || "a";
+  return <Comp {...props}></Comp>;
+};
+```
+
+允许传入自定义 `React` 组件，或 `div`, `a` 标签
+
 各种各样的技巧
 ---
 
