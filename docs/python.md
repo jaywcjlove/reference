@@ -10,7 +10,7 @@ Python 备忘单是 [Python 3](https://www.python.org/) 编程语言的单页参
 
 - [Python 官方网站](https://www.python.org/)  _(python.org)_
 - [Python 文档](https://docs.python.org/zh-cn/3/index.html)  _(docs.python.org)_
-- [Y 分钟学会 Python](https://learnxinyminutes.com/docs/python/) _(learnxinyminutes.com)_
+- [Y 分钟学会 Python](https://learnxinyminutes.com/docs/zh-cn/python-cn/) _(learnxinyminutes.com)_
 - [Python 中的正则表达式](./regex.md#python-中的正则表达式) _(jaywcjlove.github.io)_
 
 ### 控制台打印
