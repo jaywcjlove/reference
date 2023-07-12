@@ -30,20 +30,22 @@ name = "John"  # 名字现在是 str 类型
 print(name)
 ```
 
-Python 不能在没有赋值的情况下声明变量
+- Python 不能在没有赋值的情况下声明变量
+- 变量可以存放不同类型的值
 
 ### 内置数据类型
 <!--rehype:wrap-class=row-span-2-->
+序列指一批有序的元素，集合指一批无序且不重复的元素
 
-:-| :-
-:-| :-
-`str`                              | Text
-`int`, `float`, `complex`          | Numeric
-`list`, `tuple`, `range`           | Sequence
-`dict`                             | Mapping
-`set`, `frozenset`                 | Set
-`bool`                             | Boolean
-`bytes`, `bytearray`, `memoryview` | Binary
+| :-                                      | :-               |
+|:----------------------------------------|:-----------------|
+| `str`                                   | 文本／字符串（Text）     |
+| `int`, `float`, `complex`               | 数值（Numeric）      |
+| `dict`                                  | 映射／键值对（Mapping）  |
+| `list`, `tuple`, `range`                | 序列（Sequence）     |
+| `set`, `frozenset`                      | 集合（Set）          |
+| `bool`                                  | 布尔值／逻辑值（Boolean） |
+| `bytes`, `bytearray`, <br> `memoryview` | 二进制数据（Binary）    |
 
 查看: [数据类型](#python-数据类型)
 
@@ -182,12 +184,16 @@ z = 1j   # 复数
 
 ### 布尔值
 
+只要内存足够，可以容纳无限大(小)的数值
+
 ```python
 my_bool = True 
 my_bool = False
 bool(0)     # => False
 bool(1)     # => True
 ```
+
+bool 是 int 的子类
 
 ### 列表
 
@@ -272,13 +278,13 @@ Python 字符串
 
 ```python
 >>> hello = "Hello, World"
->>> print(hello[1])
+>>> print(hello[1])  # 获取第二个字符
 e
->>> print(hello[-1])
+>>> print(hello[-1])  # 获取倒数第一个字符
 d
+>>> print(type(hello[-1]))  # 得到的还是字符串
+<class 'str'>
 ```
-
-获取位置 `1` 或最后的字符
 
 ### 循环
 
@@ -382,14 +388,16 @@ True
 True
 ```
 
+判断 "spam" 这个字符串是否在其它字符串里
+
 ### 字符串拼接
 
 ```python
 >>> s = 'spam'
 >>> t = 'egg'
->>> s + t
+>>> s + t  # 可以使用加号进行拼接
 'spamegg'
->>> 'spam' 'egg'
+>>> 'spam' 'egg'  # 两个字符串之间可以省略加号
 'spamegg'
 ```
 
@@ -431,28 +439,35 @@ Enter your name: Tom
 ### 插入分隔符拼接
 
 ```python
->>> "#".join(["John", "Peter", "Vicky"])
-'John#Peter#Vicky'
+>>> "、".join(["John", "Peter", "Vicky"])
+'John、Peter、Vicky'
 ```
 
 ### 头尾判断
 
 ```python
+>>> # 是否以 H 开头
+>>> "Hello, world!".endswith("H")
+True
+>>> # 是否以 h 开头
+>>> "Hello, world!".endswith("h")
+False
+>>> # 是否以 ! 结尾
 >>> "Hello, world!".endswith("!")
 True
 ```
 
 ### 转义符号
 
-| 转义符号 | 对应的操作 |
-|---|---|
-| `\\` | 输出反斜杠 |
-| `\'` | 输出单引号 |
-| `\"` | 输出双引号 |
-| `\n` | 换行 |
-| `\t` | 水平制表符 |
+| 转义符号 | 对应的操作  |
+|------|--------|
+| `\\` | 输出反斜杠  |
+| `\'` | 输出单引号  |
+| `\"` | 输出双引号  |
+| `\n` | 换行     |
+| `\t` | 水平制表符  |
 | `\r` | 光标回到首位 |
-| `\b` | 退格 |
+| `\b` | 退格     |
 
 Python f-字符串 (Python 3.6+)
 ----------------
@@ -760,17 +775,7 @@ else:
 a
 ```
 
-### else if
-
-```python
-value = True
-if not value:
-    print("Value is False")
-elif value is None:
-    print("Value is None")
-else:
-    print("Value is True")
-```
+注意条件是放在中间的
 
 Python 循环
 --------
