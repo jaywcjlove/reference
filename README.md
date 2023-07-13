@@ -384,6 +384,9 @@ Quick Reference
 <a href="https://github.com/qinxiongzhou" title="Ryan Zhou">
   <img src="https://avatars.githubusercontent.com/u/33239096?v=4" width="42;" alt="Ryan Zhou"/>
 </a>
+<a href="https://github.com/YLee9527" title="Terry Young">
+  <img src="https://avatars.githubusercontent.com/u/18697332?v=4" width="42;" alt="Terry Young"/>
+</a>
 <a href="https://github.com/whb1998a" title="WHB">
   <img src="https://avatars.githubusercontent.com/u/44045064?v=4" width="42;" alt="WHB"/>
 </a>
