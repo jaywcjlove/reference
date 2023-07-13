@@ -91,7 +91,7 @@ npm run start # 监听 md 文件编译输出 HTML
 ### 首页提示配置
 
 ```markdown
-[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
+[Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
 ```
 <!--rehype:className=wrap-text-->
 
@@ -104,7 +104,7 @@ class=tag&data-info=👆看看还缺点儿什么？
 上面示例将默认提示更改为： `👆看看还缺点儿什么？`
 
 ```markdown
-[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=tag&data-lang=Python-->
+[Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=tag&data-lang=Python-->
 ```
 <!--rehype:className=wrap-text-->
 
