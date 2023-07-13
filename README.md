@@ -258,6 +258,9 @@ Quick Reference
 <a href="https://github.com/chaos-cn" title="chaos">
   <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
 </a>
+<a href="https://github.com/aixcyi" title="砹小翼">
+  <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
+</a>
 <a href="https://github.com/MarioMang" title="MarioMang">
   <img src="https://avatars.githubusercontent.com/u/3959555?v=4" width="42;" alt="MarioMang"/>
 </a>
@@ -287,9 +290,6 @@ Quick Reference
 </a>
 <a href="https://github.com/catcto" title="喵仙人">
   <img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="喵仙人"/>
-</a>
-<a href="https://github.com/aixcyi" title="砹小翼">
-  <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
 </a>
 <a href="https://github.com/itldg" title="老大哥">
   <img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/>
@@ -510,8 +510,8 @@ Quick Reference
 <a href="https://github.com/LuckyJie12" title="夜未央">
   <img src="https://avatars.githubusercontent.com/u/102901105?v=4" width="42;" alt="夜未央"/>
 </a>
-<a href="https://github.com/ZIDOUZI" title="Benjamin Angermeier">
-  <img src="https://avatars.githubusercontent.com/u/53157536?v=4" width="42;" alt="Benjamin Angermeier"/>
+<a href="https://github.com/ZIDOUZI" title="ZIDOUZI">
+  <img src="https://avatars.githubusercontent.com/u/53157536?v=4" width="42;" alt="ZIDOUZI"/>
 </a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶">
   <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
