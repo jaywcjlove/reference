@@ -1338,6 +1338,22 @@ type A = keyof Arrayish;
 // type A = number
 ```
 
+### 两个数组合并成一个新类型
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```ts
+const named = ["aqua", "aquamarine", "azure"] as const;
+const hex = ["#00FFFF", "#7FFFD4", "#F0FFFF"] as const;
+
+type Colors = {
+  [key in (typeof named)[number]]: (typeof hex)[number];
+};
+// Colors = {
+//   aqua: "#00FFFF" | "#7FFFD4" | "#F0FFFF"; 
+//   .... 
+// }
+```
+
 ### 索引签名
 
 ```ts
@@ -1346,6 +1362,13 @@ interface NumberOrString {
   length: number;
   name: string;
 }
+```
+
+### 只读元组类型
+
+```ts
+const point = [3, 4] as const
+// type 'readonly [3, 4]'
 ```
 
 ### 从数组中提取类型
@@ -1359,15 +1382,8 @@ type PointDetail = Data[number];
 ```
 <!--rehype:className=wrap-text-->
 
-### 只读元组类型
-
-```ts
-const point = [3, 4] as const
-// type 'readonly [3, 4]'
-```
-
 ### satisfies
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 `satisfies` 允许将验证表达式的类型与某种类型匹配，而无需更改该表达式的结果类型。
 
@@ -1406,7 +1422,7 @@ const redComponent = palette.red.at(0)
 <!--rehype:className=wrap-text-->
 
 ### 范型实例化表达式
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 不使用的情况下：
 
