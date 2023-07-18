@@ -495,6 +495,9 @@ Quick Reference
 <a href="https://github.com/Mowmowj" title="shelton">
   <img src="https://avatars.githubusercontent.com/u/24759562?v=4" width="42;" alt="shelton"/>
 </a>
+<a href="https://github.com/swift-fs" title="swift">
+  <img src="https://avatars.githubusercontent.com/u/77133741?v=4" width="42;" alt="swift"/>
+</a>
 <a href="https://github.com/wannima66" title="tmen">
   <img src="https://avatars.githubusercontent.com/u/26410255?v=4" width="42;" alt="tmen"/>
 </a>
