@@ -13,6 +13,7 @@ Linux 命令速查表
 :--- | :---
 **`uname`** | 显示linux系统信息
 **`uname -r`** | 显示内核版本信息
+**`cat /etc/os-release`** | 显示linux系统详细信息
 **`uptime`** | 显示系统运行的时间<br/>(包括平均负载)
 **`hostname`** | 显示系统主机名
 **`hostname -i`** | 显示系统的IP地址
