@@ -1503,6 +1503,21 @@ type Age2 = Person["age"];
 // type Age2 = number
 ```
 
+### 范型推导出列表字面量
+<!--rehype:wrap-class=col-span-2-->
+
+```ts
+const a = <T extends string>(t: T) => t;
+const b = <T extends number>(t: T) => t;
+const c = <T extends boolean>(t: T) => t;
+const d = a("a");  // const d: 'a'
+const e = a(1);    // const d: 1
+const f = a(true); // const d: true
+
+const g = <T extends string[]>(t: [...T]) => t;  // 这里t的类型用了一个展开运算
+const h = g(["111", "222"]);  // 类型变成["111", "222"]了
+```
+
 .d.ts 模版
 ---
 
