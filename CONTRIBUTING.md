@@ -492,6 +492,9 @@ jobs:
 <a href="https://github.com/xing133" title="xing133">
   <img src="https://avatars.githubusercontent.com/u/5336490?v=4" width="42;" alt="xing133"/>
 </a>
+<a href="https://github.com/hiyms" title="yms">
+  <img src="https://avatars.githubusercontent.com/u/84654050?v=4" width="42;" alt="yms"/>
+</a>
 <a href="https://github.com/zxx457" title="zxx457">
   <img src="https://avatars.githubusercontent.com/u/114141362?v=4" width="42;" alt="zxx457"/>
 </a>
@@ -512,6 +515,9 @@ jobs:
 </a>
 <a href="https://github.com/qwxingzhe" title="行者">
   <img src="https://avatars.githubusercontent.com/u/7071651?v=4" width="42;" alt="行者"/>
+</a>
+<a href="https://github.com/binscor" title="郑乃斌">
+  <img src="https://avatars.githubusercontent.com/u/37325821?v=4" width="42;" alt="郑乃斌"/>
 </a>
 <a href="https://github.com/Zeng-qh" title="都一样">
   <img src="https://avatars.githubusercontent.com/u/40046415?v=4" width="42;" alt="都一样"/>
