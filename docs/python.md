@@ -692,6 +692,9 @@ a_list[start:end:step]
 >>> del li[0]
 >>> li
 ['butter']
+>>> li.remove('butter')
+>>> li
+[]
 ```
 
 ### 列表边界
@@ -750,6 +753,19 @@ IndexError: list index out of range
 ['re', 're', 're']
 ```
 
+### 搜索 
+  
+```python
+>>> nums = [40, 36, 89, 2, 36, 100, 7, -20.5, -999]
+>>> nums.index(2)
+3
+>>> nums.index(100, 3, 7)  # 搜索3-7之间的元素
+5
+>>> nums.index(7, 4) # 搜索4之后的元素
+6
+```  
+当寻找一个不存在的值时，抛出`ValueError`。
+  
 Python 判断
 ------------
 
