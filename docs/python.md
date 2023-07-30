@@ -753,7 +753,7 @@ IndexError: list index out of range
 ['re', 're', 're']
 ```
 
-### 搜索 
+### 搜索
   
 ```python
 >>> nums = [40, 36, 89, 2, 36, 100, 7, -20.5, -999]
@@ -764,6 +764,7 @@ IndexError: list index out of range
 >>> nums.index(7, 4) # 搜索4之后的元素
 6
 ```  
+
 当寻找一个不存在的值时，抛出`ValueError`。
   
 Python 判断
@@ -1223,12 +1224,12 @@ print(string * times)  # => hahaha
 ### 变量
 
 ```python
-result: int = 1 + 2
+result: str = 1 + 2
 
 print(result)  # => 3
 ```
 
-虽然标注了错误的类型，但不影响正常运行
+错误的类型标注不会影响正常运行，也不会报错
 
 ### 参数
 
