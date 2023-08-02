@@ -110,7 +110,7 @@
 <p>切换到 <code>my_branch</code>，并更新工作目录</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> checkout my_branch
 </span></code></pre>
-<p>创建一个名为 <code>new_branch</code> 的新分支</p>
+<p>创建并切换到新分支<code>new_branch</code></p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> checkout <span class="token parameter variable">-b</span> new_branch
 </span></code></pre>
 <p>删除名为 <code>my_branch</code> 的分支</p>
@@ -308,10 +308,10 @@
 <pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cat</span> ~/.ssh/config
 </span><span class="code-line">Host gitlab.com
 </span><span class="code-line"><span class="token comment"># 直接使用 sh**socks 提供的 socks5 代理端口</span>
-</span><span class="code-line">ProxyCommand <span class="token function">nc</span> <span class="token parameter variable">-X</span> <span class="token number">5</span> <span class="token parameter variable">-x</span> <span class="token number">127.0</span>.0.1:1080 %h %p 
+</span><span class="code-line">ProxyCommand <span class="token function">nc</span> <span class="token parameter variable">-X</span> <span class="token number">5</span> <span class="token parameter variable">-x</span> <span class="token number">127.0</span>.0.1:1080 %h %p
 </span><span class="code-line">
 </span><span class="code-line">Host github.com
-</span><span class="code-line">ProxyCommand <span class="token function">nc</span> <span class="token parameter variable">-X</span> <span class="token number">5</span> <span class="token parameter variable">-x</span> <span class="token number">127.0</span>.0.1:1080 %h %p    
+</span><span class="code-line">ProxyCommand <span class="token function">nc</span> <span class="token parameter variable">-X</span> <span class="token number">5</span> <span class="token parameter variable">-x</span> <span class="token number">127.0</span>.0.1:1080 %h %p
 </span></code></pre>
 <!--rehype:className=wrap-text-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="gitattributes"><a aria-hidden="true" tabindex="-1" href="#gitattributes"><span class="icon icon-link"></span></a>.gitattributes</h3><div class="wrap-body">
@@ -346,7 +346,7 @@
 <li>
 <p><strong>重命名</strong>为<code>new</code></p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> branch <span class="token parameter variable">-m</span> <span class="token operator">&#x3C;</span>new<span class="token operator">></span>
-</span><span class="code-line">$ <span class="token function">git</span> branch <span class="token parameter variable">-m</span> <span class="token operator">&#x3C;</span>old<span class="token operator">></span> <span class="token operator">&#x3C;</span>new<span class="token operator">></span> <span class="token comment">#重命名分支  </span>
+</span><span class="code-line">$ <span class="token function">git</span> branch <span class="token parameter variable">-m</span> <span class="token operator">&#x3C;</span>old<span class="token operator">></span> <span class="token operator">&#x3C;</span>new<span class="token operator">></span> <span class="token comment">#重命名分支</span>
 </span></code></pre>
 </li>
 <li>
@@ -376,7 +376,7 @@
 </div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="分支"><a aria-hidden="true" tabindex="-1" href="#分支"><span class="icon icon-link"></span></a>分支</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
 <p>列出所有分支及其上游</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> branch <span class="token parameter variable">-vv</span> 
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> branch <span class="token parameter variable">-vv</span>
 </span></code></pre>
 <p>快速切换到上一个分支</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">git</span> checkout -
@@ -411,7 +411,7 @@
 </span><span class="code-line"><span class="token comment"># 设置大小写敏感</span>
 </span><span class="code-line">$ <span class="token function">git</span> config core.ignorecase <span class="token boolean">false</span>
 </span><span class="code-line"><span class="token comment"># 远程有俩相同目录，通过这种方式清除掉，然后提交记录</span>
-</span><span class="code-line">$ <span class="token function">git</span> <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--cached</span> <span class="token operator">&#x3C;</span>目录/文件<span class="token operator">></span> 
+</span><span class="code-line">$ <span class="token function">git</span> <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--cached</span> <span class="token operator">&#x3C;</span>目录/文件<span class="token operator">></span>
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist row-span-4"><div class="wrap-header h3wrap"><h3 id="修改远程-commit-记录"><a aria-hidden="true" tabindex="-1" href="#修改远程-commit-记录"><span class="icon icon-link"></span></a>修改远程 Commit 记录</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-4-->
@@ -421,7 +421,7 @@
 </span><span class="code-line">pick 96dc3f9 提交 commit 描述内容 <span class="token number">1</span>
 </span><span class="code-line">pick f1cce8a 提交 commit 描述内容 <span class="token number">2</span>
 </span><span class="code-line">pick <span class="token number">6293516</span> 提交 commit 描述内容 <span class="token number">3</span>
-</span><span class="code-line"><span class="token comment"># Rebase eeb03a4..6293516 onto eeb03a4 </span>
+</span><span class="code-line"><span class="token comment"># Rebase eeb03a4..6293516 onto eeb03a4</span>
 </span><span class="code-line"><span class="token comment">#                     (3 commands)</span>
 </span><span class="code-line"><span class="token comment">#</span>
 </span><span class="code-line"><span class="token comment"># Commands:</span>
@@ -435,16 +435,16 @@
 </span></code></pre>
 <p>保存并退出，会弹出下面提示</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 您现在可以修改提交，使用</span>
-</span><span class="code-line"><span class="token comment"># </span>
+</span><span class="code-line"><span class="token comment">#</span>
 </span><span class="code-line"><span class="token comment">#   git commit --amend</span>
-</span><span class="code-line"><span class="token comment"># </span>
+</span><span class="code-line"><span class="token comment">#</span>
 </span><span class="code-line"><span class="token comment"># 对更改感到满意后，运行</span>
-</span><span class="code-line"><span class="token comment"># </span>
+</span><span class="code-line"><span class="token comment">#</span>
 </span><span class="code-line"><span class="token comment">#   git rebase --continue</span>
 </span><span class="code-line"><span class="token comment">#</span>
 </span><span class="code-line"><span class="token comment"># 1. 通过这条命令进入编辑更改 commit，保存退出</span>
 </span><span class="code-line">$ <span class="token function">git</span> commit <span class="token parameter variable">--amend</span>
-</span><span class="code-line"><span class="token comment"># 2. 保存退出确认修改，继续执行下面命令, </span>
+</span><span class="code-line"><span class="token comment"># 2. 保存退出确认修改，继续执行下面命令,</span>
 </span><span class="code-line">$ <span class="token function">git</span> rebase <span class="token parameter variable">--continue</span>
 </span><span class="code-line"><span class="token comment"># 如果修改多条记录反复执行上面两条命令直到完成所有修改</span>
 </span><span class="code-line">
@@ -452,16 +452,16 @@
 </span><span class="code-line">$ <span class="token function">git</span> push <span class="token parameter variable">-f</span> origin master
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="撤销远程记录"><a aria-hidden="true" tabindex="-1" href="#撤销远程记录"><span class="icon icon-link"></span></a>撤销远程记录</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 撤销一条记录   </span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 撤销一条记录</span>
 </span><span class="code-line">$ <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> HEAD~1
-</span><span class="code-line"><span class="token comment"># 强制同步到远程仓库  </span>
+</span><span class="code-line"><span class="token comment"># 强制同步到远程仓库</span>
 </span><span class="code-line">$ <span class="token function">git</span> push <span class="token parameter variable">-f</span> origin HEAD:master
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="放弃本地修改内容"><a aria-hidden="true" tabindex="-1" href="#放弃本地修改内容"><span class="icon icon-link"></span></a>放弃本地修改内容</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 如果有的修改以及加入暂存区的话</span>
-</span><span class="code-line">$ <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 
+</span><span class="code-line">$ <span class="token function">git</span> reset <span class="token parameter variable">--hard</span>
 </span><span class="code-line"><span class="token comment"># 还原所有修改，不会删除新增的文件</span>
-</span><span class="code-line">$ <span class="token function">git</span> checkout <span class="token builtin class-name">.</span> 
+</span><span class="code-line">$ <span class="token function">git</span> checkout <span class="token builtin class-name">.</span>
 </span><span class="code-line"><span class="token comment"># 下面命令会删除新增的文件</span>
 </span><span class="code-line">$ <span class="token function">git</span> clean <span class="token parameter variable">-xdf</span>
 </span></code></pre>
