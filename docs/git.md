@@ -155,7 +155,7 @@ $ git branch -av
 $ git checkout my_branch
 ```
 
-创建一个名为 `new_branch` 的新分支
+创建并切换到新分支`new_branch`
 
 ```shell
 $ git checkout -b new_branch
@@ -396,10 +396,10 @@ $ git log --stat -M
 $ cat ~/.ssh/config
 Host gitlab.com
 # 直接使用 sh**socks 提供的 socks5 代理端口
-ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p 
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
 
 Host github.com
-ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p    
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
 ```
 <!--rehype:className=wrap-text-->
 
@@ -444,7 +444,7 @@ Git 技巧
 
   ```shell
   $ git branch -m <new>
-  $ git branch -m <old> <new> #重命名分支  
+  $ git branch -m <old> <new> #重命名分支
   ```
 
 - **推送**并重置
@@ -488,7 +488,7 @@ $ git log --pretty=oneline --graph --decorate --all
 列出所有分支及其上游
 
 ```shell
-$ git branch -vv 
+$ git branch -vv
 ```
 
 快速切换到上一个分支
@@ -550,7 +550,7 @@ $ git config --get core.ignorecase
 # 设置大小写敏感
 $ git config core.ignorecase false
 # 远程有俩相同目录，通过这种方式清除掉，然后提交记录
-$ git rm -r --cached <目录/文件> 
+$ git rm -r --cached <目录/文件>
 ```
 
 ### 修改远程 Commit 记录
@@ -563,7 +563,7 @@ $ git rebase -i HEAD~3
 pick 96dc3f9 提交 commit 描述内容 1
 pick f1cce8a 提交 commit 描述内容 2
 pick 6293516 提交 commit 描述内容 3
-# Rebase eeb03a4..6293516 onto eeb03a4 
+# Rebase eeb03a4..6293516 onto eeb03a4
 #                     (3 commands)
 #
 # Commands:
@@ -580,16 +580,16 @@ pick 6293516 提交 commit 描述内容 3
 
 ```shell
 # 您现在可以修改提交，使用
-# 
+#
 #   git commit --amend
-# 
+#
 # 对更改感到满意后，运行
-# 
+#
 #   git rebase --continue
 #
 # 1. 通过这条命令进入编辑更改 commit，保存退出
 $ git commit --amend
-# 2. 保存退出确认修改，继续执行下面命令, 
+# 2. 保存退出确认修改，继续执行下面命令,
 $ git rebase --continue
 # 如果修改多条记录反复执行上面两条命令直到完成所有修改
 
@@ -600,9 +600,9 @@ $ git push -f origin master
 ### 撤销远程记录
 
 ```shell
-# 撤销一条记录   
+# 撤销一条记录
 $ git reset --hard HEAD~1
-# 强制同步到远程仓库  
+# 强制同步到远程仓库
 $ git push -f origin HEAD:master
 ```
 
@@ -610,9 +610,9 @@ $ git push -f origin HEAD:master
 
 ```shell
 # 如果有的修改以及加入暂存区的话
-$ git reset --hard 
+$ git reset --hard
 # 还原所有修改，不会删除新增的文件
-$ git checkout . 
+$ git checkout .
 # 下面命令会删除新增的文件
 $ git clean -xdf
 ```
