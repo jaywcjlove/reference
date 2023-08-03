@@ -770,26 +770,36 @@ IndexError: list index out of range
 Python 判断
 ------------
 
-### 一般形式
+### if-else
 
 ```python
-num = 5
-if num > 10:
-    print("num is totally bigger than 10.")
-elif num < 10:
-    print("num is smaller than 10.")
+number = int(input('输入一个整数：'))
+if number < 0:
+    print("您输入了一个负数。")
 else:
-    print("num is indeed 10.")
+    print("您输入了一个非负整数。")
 ```
 
-### 单行形式
+### if-elif-else
 
 ```python
->>> a = 330
->>> b = 200
->>> r = "a" if a > b else "b"
->>> print(r)
-a
+number = int(input('输入一个整数：'))
+if number < 0:
+    print("您输入了一个负数。")
+elif number == 0:
+    print("您输入了一个 0 。")
+else:
+    print("您输入了一个正数。")
+```
+
+### 三目运算
+
+```python
+scope = int(input('输入百分制成绩：'))
+line = 60
+tip = "及格" if scope >= line else "不及格"
+# 相当于 scope >= line ? "及格" : "不及格"
+print(tip)
 ```
 
 注意条件是放在中间的
