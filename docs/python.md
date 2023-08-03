@@ -770,26 +770,36 @@ IndexError: list index out of range
 Python 判断
 ------------
 
-### 一般形式
+### if-else
 
 ```python
-num = 5
-if num > 10:
-    print("num is totally bigger than 10.")
-elif num < 10:
-    print("num is smaller than 10.")
+number = int(input('输入一个整数：'))
+if number < 0:
+    print("您输入了一个负数。")
 else:
-    print("num is indeed 10.")
+    print("您输入了一个非负整数。")
 ```
 
-### 单行形式
+### if-elif-else
 
 ```python
->>> a = 330
->>> b = 200
->>> r = "a" if a > b else "b"
->>> print(r)
-a
+number = int(input('输入一个整数：'))
+if number < 0:
+    print("您输入了一个负数。")
+elif number == 0:
+    print("您输入了一个 0 。")
+else:
+    print("您输入了一个正数。")
+```
+
+### 三目运算
+
+```python
+scope = int(input('输入百分制成绩：'))
+line = 60
+tip = "及格" if scope >= line else "不及格"
+# 相当于 scope >= line ? "及格" : "不及格"
+print(tip)
 ```
 
 注意条件是放在中间的
@@ -939,6 +949,179 @@ add(5, 20)  # => 25
 (lambda x: x > 2)(3)
 # => 5
 (lambda x, y: x ** 2 + y ** 2)(2, 1)
+```
+
+Python 解包
+--------
+
+- 解包是将一个
+  [序列](https://docs.python.org/zh-cn/3/library/stdtypes.html#sequence-types-list-tuple-range)
+  内的多个元素依次重新分配到有限个容器的过程，这只发生在 **变量赋值**、**参数传递** 和 **生成式生成** 过程中。
+- `_` 这个变量是命令行交互中最后一次计算得到的值，在程序设计中一般用来存放解包时不再需要的值。
+  但它的含义会因赋值而改变，比如标准库 [gettext](https://docs.python.org/zh-cn/3/library/gettext.html) 中常用作动态获取翻译文本。
+
+### 等量解包
+
+```python
+ip, port = "127.0.0.1", 80
+print(ip)  # -> "127.0.0.1"
+print(port)  # -> 80
+
+# 与以下代码等价
+ip, port = ("127.0.0.1", 80)
+
+# 与以下代码效果相同
+ip, port = ["127.0.0.1", 80]
+```
+
+### 适量解包
+
+```python
+ip, _, port = "127.0.0.1:80".rpartition(":")
+print(ip)  # -> "127.0.0.1"
+print(port)  # -> "80"
+
+# _ 这个变量此刻的值是 ":" ，但一般不再使用。
+```
+
+`_` 也是一个单一变量，不允许解包多个元素，因此变量与值必须一一对应。
+
+### 过量解包
+
+```python
+major, minor, *parts = "3.10.2.beta".split(".")
+print(major)  # -> "3"
+print(minor)  # -> "10"
+print(parts)  # -> ["2", "beta"]
+
+# 可将 parts 改为 _ 来表示不再需要后面的元素
+```
+
+这里的 `*` 就是收集[序列](https://docs.python.org/zh-cn/3/library/stdtypes.html#sequence-types-list-tuple-range)在解包过程中多出来的元素，
+只能有一个，与向函数传递[位置参数](#位置参数)时的 `*` 别无二致。
+
+### 解包取左边
+
+```python
+major, minor, *_ = "3.10.2.beta".split(".")
+
+print(major)  # -> "3"
+print(minor)  # -> "10"
+```
+
+### 解包取两边
+
+```python
+major, *_, level = "3.10.2.beta".split(".")
+
+print(major)  # -> "3"
+print(level)  # -> "beta"
+```
+
+### 解包取右边
+
+```python
+*_, micro, level = "3.10.2.beta".split(".")
+
+print(micro)  # -> "2"
+print(level)  # -> "beta"
+```
+
+### 解包集合
+
+```python
+a, b, *_ = {3, 2, 1}
+print(a)  # -> 1
+print(b)  # -> 2
+print(_)  # -> [3]
+```
+
+[集合](https://docs.python.org/zh-cn/3/library/stdtypes.html#set-types-set-frozenset)
+中的元素是无序的，因此解包结果不能轻易确定。
+
+### 解包迭代器
+
+```python
+a, b, *_ = range(3)
+print(a)  # -> 0
+print(b)  # -> 1
+print(_)  # -> [2]
+```
+
+支持
+[迭代器](https://docs.python.org/zh-cn/3/library/stdtypes.html#iterator-types)
+协议的对象也可被解包。
+
+### 解包字典
+
+```python
+a, b, *_ = dict(a=1, b=2, c=3)
+print(a)  # -> "a"
+print(_)  # -> ["c"]
+a, b, *_ = dict(a=1, b=2, c=3).values()
+print(a)  # -> 1
+print(_)  # -> [3]
+```
+
+### 生成式中的解包
+
+```python
+chars = (*"abc", *"def", "g", "h")
+# -> ("a", "b", "c", "d", "e", "f", "g", "h")
+
+digits = [*range(10), *"abcdef"]
+# -> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+#     "a", "b", "c", "d", "e", "f"]
+
+part = {"小明": 18, "小亮": 22}
+summary = {"小花": 16, **part}
+print(summary)
+# -> {"小花": 16, "小明": 18, "小亮": 22}
+```
+
+- 仅在列表／元组生成式中可以使用多个 `*`
+- 仅在字典生成式中可以使用多个 `**`
+
+### 迭代中解包
+
+```python
+students = [
+    ("小明", 18),
+    ("小亮", 22),
+]
+for k, v in students:
+    print(k)  # -> "小明"、"小亮"
+    print(v)  # -> 18、22
+
+students = [
+    (0, ("小明", 18)),
+    (1, ("小亮", 22)),
+]
+for i, (k, v) in students:
+    print(i)  # -> 0、1
+    print(k)  # -> "小明"、"小亮"
+    print(v)  # -> 18、22
+```
+
+### 函数中的解包
+
+```python
+def version(major, minor, *parts):
+    print(major)  # -> "3"
+    print(minor)  # -> "10"
+    print(parts)  # -> ("2", "beta", "0")
+
+version("3", "10", "2", "beta", "0")
+# 过程类似于
+major, minor, *parts = ("3", "10", "2", "beta", "0")
+
+
+def version():
+    parts = "3.10.2.beta.0".split(".")
+    return *parts, "x64"
+
+print(version())
+# -> ("3", "10", "2", "beta", "0", "x64")
 ```
 
 Python 模块
