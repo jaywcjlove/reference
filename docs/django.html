@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Django 备忘清单
+ &#x26;  django cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="Django 是 Python 的一款 Web 框架，本备忘单旨在快速理解 Django 所涉及的主要概念，提供了最常用的 API 示例参考
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="django,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/django.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.4.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="django-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1em" height="1em" viewBox="0 0 230 230">
+  <path fill="currentColor" d="M200,0 C216.568542,-3.04359188e-15 230,13.4314575 230,30 L230,200 C230,216.568542 216.568542,230 200,230 L30,230 C13.4314575,230 9.13448861e-15,216.568542 0,200 L0,30 C-2.02906125e-15,13.4314575 13.4314575,1.01490192e-14 30,0 L200,0 Z M167.109375,83.5546875 L141.953125,83.5546875 L141.953125,132.96875 C141.953125,154.980469 140.605469,163.066406 137.011719,170.253906 C133.867188,176.992188 128.476562,181.933594 117.246094,186.875 L140.605469,198.105469 C151.835938,192.265625 157.226562,187.324219 161.269531,179.238281 C165.761719,171.152344 167.109375,161.71875 167.109375,141.503906 L167.109375,83.5546875 Z M127.128906,45.3710938 L101.972656,45.3710938 L101.972656,83.1054688 C97.9296875,82.2070312 94.7851562,82.2070312 90.7421875,82.2070312 C64.2382812,82.2070312 47.6171875,98.3789062 47.6171875,123.984375 C47.6171875,150.488281 63.3398438,164.414062 94.3359375,164.414062 C104.667969,164.414062 114.101562,163.066406 127.128906,160.820312 L127.128906,45.3710938 Z M93.4375,101.972656 C96.5820312,101.972656 98.828125,102.421875 101.972656,103.320312 L101.972656,143.300781 C97.9296875,144.199219 95.6835938,144.199219 92.9882812,144.199219 C79.9609375,144.199219 73.2226562,137.011719 73.2226562,123.535156 C73.2226562,110.058594 80.4101562,101.972656 93.4375,101.972656 Z M167.109375,45.3710938 L141.953125,45.3710938 L141.953125,70.9765625 L167.109375,70.9765625 L167.109375,45.3710938 Z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#django-备忘清单"><span class="icon icon-link"></span></a>Django 备忘清单</h1><div class="wrap-body">
+<p>Django 是 Python 的一款 Web 框架，本备忘单旨在快速理解 <a href="https://www.djangoproject.com/">Django</a> 所涉及的主要概念，提供了最常用的 API 示例参考</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#准备环境">准备环境</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#入门-1">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建项目">创建项目</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#检查-django-版本">检查 Django 版本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建应用">创建应用</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#应用目录介绍">应用目录介绍</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#视图">视图</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#urls">URLs</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模板">模板</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#更改设置">更改设置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建表模型">创建表（模型）</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#django-模板">Django 模板</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模板变量">模板变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模板中创建变量">模板中创建变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#数组循环">数组循环</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模板标签参考">模板标签参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#if-语句">If 语句</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#for-循环">For 循环</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#循环变量">循环变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#过滤值">过滤值</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#注释描述">注释描述</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#双过滤值">双过滤值</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#过滤器标签">过滤器标签</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cycle">cycle</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#每一行添加行号">每一行添加行号</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#导入模板">导入模板</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#导入模板传入变量">导入模板传入变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#过滤器参考">过滤器参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字段查询参考">字段查询参考</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#添加静态文件">添加静态文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#添加-css-文件">添加 CSS 文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#添加-js-文件">添加 JS 文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#添加图片文件">添加图片文件</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-1"><div class="wrap-header h3wrap"><h3 id="准备环境"><a aria-hidden="true" tabindex="-1" href="#准备环境"><span class="icon icon-link"></span></a>准备环境</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-1-->
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line">$ python <span class="token parameter variable">--version</span>
+</span><span class="code-line"><span class="token comment"># Python 3.9.2</span>
+</span><span class="code-line">$ pip <span class="token parameter variable">--version</span>
+</span><span class="code-line"><span class="token comment"># pip 20.2.3 from c:\python39\lib\site-packages\pip (python 3.9)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>如果你没有安装 PIP，你可以从这个页面下载并安装它：<a href="https://pypi.org/project/pip/">https://pypi.org/project/pip/</a></p>
+</div></div></div><div class="wrap h3body-not-exist row-span-4"><div class="wrap-header h3wrap"><h3 id="入门-1"><a aria-hidden="true" tabindex="-1" href="#入门-1"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-4-->
+<ul class="style-timeline">
+<li>
+<p>创建虚拟环境</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py <span class="token parameter variable">-m</span> venv myproject <span class="token comment"># Windows</span>
+</span><span class="code-line">$ python <span class="token parameter variable">-m</span> venv myproject <span class="token comment"># Unix/MacOS</span>
+</span></code></pre>
+</li>
+<li>
+<p>其中包含子文件夹和文件，如下所示</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myproject
+</span><span class="code-line"> ├┈Include
+</span><span class="code-line"> ├┈Lib
+</span><span class="code-line"> ├┈Scripts
+</span><span class="code-line"> ╰┈pyvenv.cfg
+</span></code></pre>
+</li>
+<li>
+<p>以下命令来激活环境</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># Windows:</span>
+</span><span class="code-line">myproject<span class="token punctuation">\</span>Scripts<span class="token punctuation">\</span>activate.bat
+</span><span class="code-line"><span class="token comment"># Unix/MacOS:</span>
+</span><span class="code-line"><span class="token builtin class-name">source</span> myproject/bin/activate
+</span></code></pre>
+</li>
+<li>
+<p>提示符中看到以下结果：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># Windows:</span>
+</span><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Your Name<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># Unix/MacOS:</span>
+</span><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> <span class="token punctuation">..</span>. $
+</span></code></pre>
+</li>
+<li>
+<p>安装 Django</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># Windows:</span>
+</span><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Name<span class="token operator">></span>py <span class="token parameter variable">-m</span> pip <span class="token function">install</span> Django
+</span><span class="code-line"><span class="token comment"># Unix/MacOS:</span>
+</span><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> <span class="token punctuation">..</span>. $ python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> Django
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</li>
+</ul>
+<!--rehype:className=style-timeline-->
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="创建项目"><a aria-hidden="true" tabindex="-1" href="#创建项目"><span class="icon icon-link"></span></a>创建项目</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ django-admin startproject myworld
+</span></code></pre>
+<p>创建了一个 <code>myworld</code> 文件夹，内容如下：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line">  ├┈ manage.py
+</span><span class="code-line">  ╰┈ myworld/
+</span><span class="code-line">     ├┈ __init__.py
+</span><span class="code-line">     ├┈ asgi.py
+</span><span class="code-line">     ├┈ settings.py
+</span><span class="code-line">     ├┈ urls.py
+</span><span class="code-line">     ╰┈ wsgi.py
+</span></code></pre>
+<p>运行 Django 项目</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py runserver     <span class="token comment"># Windows</span>
+</span><span class="code-line">$ python manage.py runserver <span class="token comment"># Unix/MacOS</span>
+</span></code></pre>
+<p>打开一个新的浏览器窗口并在地址栏中输入 127.0.0.1:8000</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="检查-django-版本"><a aria-hidden="true" tabindex="-1" href="#检查-django-版本"><span class="icon icon-link"></span></a>检查 Django 版本</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token punctuation">(</span>myproject<span class="token punctuation">)</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Your Name<span class="token operator">></span>django-admin <span class="token parameter variable">--version</span>
+</span><span class="code-line"><span class="token comment"># 4.0.3</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="创建应用"><a aria-hidden="true" tabindex="-1" href="#创建应用"><span class="icon icon-link"></span></a>创建应用</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py startapp members
+</span></code></pre>
+<p>项目中创建了一个名为 <code>members</code> 的文件夹，内容如下：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line">  ├┈ manage.py
+</span><span class="code-line">  ├┈ myworld/
+</span><span class="code-line">  ╰┈ members/
+</span><span class="code-line">     ├┈ migrations/
+</span><span class="code-line">     ┆  ╰┈ __init__.py
+</span><span class="code-line">     ├┈ __init__.py
+</span><span class="code-line">     ├┈ admin.py
+</span><span class="code-line">     ├┈ apps.py
+</span><span class="code-line">     ├┈ models.py
+</span><span class="code-line">     ├┈ tests.py
+</span><span class="code-line">     ╰┈ views.py
+</span></code></pre>
+<p>首先，看一下名为 <code>views.py</code> 的文件。这是我们收集发送回正确响应所需的信息的地方。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="应用目录介绍"><a aria-hidden="true" tabindex="-1" href="#应用目录介绍"><span class="icon icon-link"></span></a>应用目录介绍</h3><div class="wrap-body">
+<ul>
+<li><code>Django</code> 接收 URL，检查 <code>urls.py</code> 文件，并调用与 URL 匹配的视图。</li>
+<li>位于 <code>views.py</code> 中的视图检查相关模型。</li>
+<li>模型是从 <code>models.py</code> 文件中导入的。</li>
+<li>然后视图将数据发送到模板文件夹中的指定模板。</li>
+<li>模板包含 <code>HTML</code> 和 <code>Django</code> 标记，并使用数据将完成的 <code>HTML</code> 内容返回给浏览器</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="视图"><a aria-hidden="true" tabindex="-1" href="#视图"><span class="icon icon-link"></span></a>视图</h3><div class="wrap-body">
+<p>Django 视图是接受 <code>http</code> 请求并返回 <code>http</code> 响应的 <code>Python</code> 函数，就像 <code>HTML</code> 文档一样。</p>
+<p>使用 <code>Django</code> 的网页充满了不同任务和任务的视图。</p>
+<p>视图通常放在一个名为 <code>views.py</code> 的文件中，该文件位于应用程序的文件夹中。</p>
+<p>您的 <code>members</code> 文件夹中有一个 <code>views.py</code>，如下所示：</p>
+<pre class="language-py"><code class="language-PY code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Create your views here.</span>
+</span></code></pre>
+<p>找到它并打开它，并将内容替换为：</p>
+<pre class="language-py"><code class="language-PY code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render
+</span><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>这是一个关于如何将响应发送回浏览器的简单示例。</p>
+<p>但是我们如何执行视图呢？ 好吧，我们必须通过 URL 调用视图。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="urls"><a aria-hidden="true" tabindex="-1" href="#urls"><span class="icon icon-link"></span></a>URLs</h3><div class="wrap-body">
+<p>在与 <code>views.py</code> 文件相同的文件夹中创建一个名为 <code>urls.py</code> 的文件，并在其中输入以下代码：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path
+</span><span class="code-line"><span class="token keyword">from</span> <span class="token punctuation">.</span> <span class="token keyword">import</span> views
+</span><span class="code-line">urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    path<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>index<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+<p>刚刚创建的 <code>urls.py</code> 文件是特定于成员应用程序的。我们还必须在根目录 <code>myworld</code> 中进行一些路由。</p>
+<p>在 <code>myworld</code> 文件夹中有一个名为 <code>urls.py</code> 的文件，打开该文件并在 <code>import</code> 语句中添加 <code>include</code> 模块，并在列表中添加一个 <code>path()</code> 函数。文件将如下所示：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+</span><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> include<span class="token punctuation">,</span> path
+</span><span class="code-line">
+</span><span class="code-line">urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">  path<span class="token punctuation">(</span><span class="token string">'members/'</span><span class="token punctuation">,</span> include<span class="token punctuation">(</span><span class="token string">'members.urls'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">  path<span class="token punctuation">(</span><span class="token string">'admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+<p>如果服务器未运行，请导航到 <code>/myworld</code> 文件夹并在命令提示符下执行此命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py runserver
+</span></code></pre>
+<p>在浏览器窗口的地址栏中输入 <code>127.0.0.1:8000/members/</code></p>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="模板"><a aria-hidden="true" tabindex="-1" href="#模板"><span class="icon icon-link"></span></a>模板</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>在 <code>members</code> 文件夹中创建一个 <code>templates</code> 文件夹，并创建一个名为 <code>myfirst.html</code> 的 <code>HTML</code> 文件。文件结构应该是这样的：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line"> ├┈ manage.py
+</span><span class="code-line"> ├┈ myworld/
+</span><span class="code-line"> ╰┈ members/
+</span><span class="code-line">    ╰┈ templates/
+</span><span class="code-line">       ╰┈ myfirst.html
+</span></code></pre>
+<p>打开 <code>HTML</code> 文件并插入以下内容：</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token doctype"><span class="token punctuation">&#x3C;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>欢迎来到我的第一个 Django 项目！<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>html</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>修改视图 <code>members/views.py</code></p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
+</span><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>template <span class="token keyword">import</span> loader
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">  template <span class="token operator">=</span> loader<span class="token punctuation">.</span>get_template<span class="token punctuation">(</span><span class="token string">'myfirst.html'</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span>template<span class="token punctuation">.</span>render<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="更改设置"><a aria-hidden="true" tabindex="-1" href="#更改设置"><span class="icon icon-link"></span></a>更改设置</h4>
+<p>为了能够处理比“Hello World！”更复杂的东西，我们必须告诉 <code>Django</code> 一个新的应用程序已创建</p>
+<p>这是在 <code>myworld</code> 文件夹的 <code>myworld/settings.py</code> 文件中完成的。查找 <code>INSTALLED_APPS[]</code> 列表并添加成员应用程序，如下所示：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line">INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.admin'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.auth'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.contenttypes'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.sessions'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.messages'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'django.contrib.staticfiles'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token string">'members.apps.MembersConfig'</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+<p>然后运行这个命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py migrate
+</span></code></pre>
+<p>通过导航到 <code>/myworld</code> 文件夹启动服务器并执行以下命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py runserver
+</span></code></pre>
+<p>在浏览器窗口的地址栏中输入 127.0.0.1:8000/members/</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="创建表模型"><a aria-hidden="true" tabindex="-1" href="#创建表模型"><span class="icon icon-link"></span></a>创建表（模型）</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>在 <code>/members/</code> 文件夹中，打开 <code>models.py</code> 文件。要在我们的数据库中添加成员表，首先创建一个成员类，并描述其中的表字段：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Members</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">  firstname <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">255</span><span class="token punctuation">)</span>
+</span><span class="code-line">  lastname <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">255</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>然后导航到 <code>/myworld/</code> 文件夹并运行以下命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py makemigrations members
+</span><span class="code-line"><span class="token comment"># Migrations for 'members':</span>
+</span><span class="code-line"><span class="token comment">#   members\migrations\0001_initial.py</span>
+</span><span class="code-line"><span class="token comment">#     - Create model Members</span>
+</span></code></pre>
+<p>创建一个包含任何新更改的文件并将该文件存储在 <code>/migrations/</code> 文件夹中。下次运行 <code>py manage.py migrate</code> 时，Django 将根据迁移文件夹中新文件的内容创建并执行一条 SQL 语句。运行迁移命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ py manage.py migrate
+</span></code></pre>
+<p>从模型创建的 SQL 语句是：</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token string">"members_members"</span> <span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token string">"id"</span> <span class="token keyword">INT</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> AUTOINCREMENT<span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string">"firstname"</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token string">"lastname"</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="django-模板"><a aria-hidden="true" tabindex="-1" href="#django-模板"><span class="icon icon-link"></span></a>Django 模板</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="模板变量"><a aria-hidden="true" tabindex="-1" href="#模板变量"><span class="icon icon-link"></span></a>模板变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token comment">&#x3C;!-- template.html --></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>你好 <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">firstname</span> <span class="token delimiter punctuation">}}</span></span>，你好吗？<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>在视图 (<code>views.py</code>) 中创建变量，上面示例中的变量 <code>firstname</code> 通过视图发送到模板：</p>
+<pre class="language-py"><code class="language-py code-highlight"><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
+</span><span class="code-line"><span class="token keyword">from</span> django<span class="token punctuation">.</span>template <span class="token keyword">import</span> loader
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">testing</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">  template <span class="token operator">=</span> loader<span class="token punctuation">.</span>get_template<span class="token punctuation">(</span><span class="token string">'template.html'</span><span class="token punctuation">)</span>
+</span><span class="code-line">  context <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token string">'firstname'</span><span class="token punctuation">:</span> <span class="token string">'狂徒张三'</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span>template<span class="token punctuation">.</span>render<span class="token punctuation">(</span>context<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="模板中创建变量"><a aria-hidden="true" tabindex="-1" href="#模板中创建变量"><span class="icon icon-link"></span></a>模板中创建变量</h3><div class="wrap-body">
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">with</span> <span class="token variable">firstname</span><span class="token operator">=</span><span class="token string">"Tobias"</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>你好 <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">firstname</span> <span class="token delimiter punctuation">}}</span></span>，你好吗？<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数组循环"><a aria-hidden="true" tabindex="-1" href="#数组循环"><span class="icon icon-link"></span></a>数组循环</h3><div class="wrap-body">
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">for</span> <span class="token variable">x</span> <span class="token keyword">in</span> <span class="token variable">mymembers</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>li</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">firstname</span> <span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>li</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ul</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-5"><div class="wrap-header h3wrap"><h3 id="模板标签参考"><a aria-hidden="true" tabindex="-1" href="#模板标签参考"><span class="icon icon-link"></span></a>模板标签参考</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-5-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">标签</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>autoescape</code></td><td align="left">指定自动转义模式是打开还是关闭</td></tr><tr><td align="left"><code>block</code></td><td align="left">指定块部分</td></tr><tr><td align="left"><code>comment</code></td><td align="left">指定注释部分</td></tr><tr><td align="left"><code>csrf_token</code></td><td align="left">保护表单免受跨站点请求伪造</td></tr><tr><td align="left"><code>cycle</code></td><td align="left">指定要在循环的每个循环中使用的内容</td></tr><tr><td align="left"><code>debug</code></td><td align="left">指定调试信息</td></tr><tr><td align="left"><code>extends</code></td><td align="left">指定父模板</td></tr><tr><td align="left"><code>filter</code></td><td align="left">在返回之前过滤内容</td></tr><tr><td align="left"><code>firstof</code></td><td align="left">返回第一个非空变量</td></tr><tr><td align="left"><code>for</code></td><td align="left">指定一个 for 循环</td></tr><tr><td align="left"><code>if</code></td><td align="left">指定一个 if 语句</td></tr><tr><td align="left"><code>ifchanged</code></td><td align="left">仅当自上次迭代以来值已更改时才输出块<br> <em>(用于 for 循环)</em></td></tr><tr><td align="left"><code>include</code></td><td align="left">指定包含的内容/模板</td></tr><tr><td align="left"><code>load</code></td><td align="left">从另一个库加载模板标签</td></tr><tr><td align="left"><code>lorem</code></td><td align="left">输出随机文本</td></tr><tr><td align="left"><code>now</code></td><td align="left">输出当前日期/时间</td></tr><tr><td align="left"><code>regroup</code></td><td align="left">按组对对象进行排序</td></tr><tr><td align="left"><code>resetcycle</code></td><td align="left">循环使用，重置循环</td></tr><tr><td align="left"><code>spaceless</code></td><td align="left">删除 HTML 标签之间的空格</td></tr><tr><td align="left"><code>templatetag</code></td><td align="left">输出指定的模板标签</td></tr><tr><td align="left"><code>url</code></td><td align="left">返回 URL 的绝对 URL 部分</td></tr><tr><td align="left"><code>verbatim</code></td><td align="left">指定不应由模板引擎呈现的内容</td></tr><tr><td align="left"><code>widthratio</code></td><td align="left">给定值和最大值之间的比率计算宽度值</td></tr><tr><td align="left"><code>with</code></td><td align="left">指定要在块中使用的变量</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="if-语句"><a aria-hidden="true" tabindex="-1" href="#if-语句"><span class="icon icon-link"></span></a>If 语句</h3><div class="wrap-body">
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">if</span> <span class="token variable">greeting</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">elif</span> <span class="token variable">greeting</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Welcome<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">else</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Goodbye<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endif</span> <span class="token delimiter punctuation">%}</span></span> 
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="for-循环"><a aria-hidden="true" tabindex="-1" href="#for-循环"><span class="icon icon-link"></span></a>For 循环</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">for</span> <span class="token variable">x</span> <span class="token keyword">in</span> <span class="token variable">cars</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">brand</span> <span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">model</span> <span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">year</span> <span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span> 
+</span></code></pre>
+<p>数据 cars 空的展示内容：</p>
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">for</span> <span class="token variable">x</span> <span class="token keyword">in</span> <span class="token variable">cars</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">brand</span> <span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">model</span> <span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">year</span> <span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">empty</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>li</span><span class="token punctuation">></span></span>No members<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>li</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ul</span><span class="token punctuation">></span></span> 
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="循环变量"><a aria-hidden="true" tabindex="-1" href="#循环变量"><span class="icon icon-link"></span></a>循环变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<ul>
+<li><code>forloop.counter</code> 当前循环，从 1 开始</li>
+<li><code>forloop.counter0</code> 当前循环，从 0 开始</li>
+<li><code>forloop.first</code> 循环是否在其第一次循环中</li>
+<li><code>forloop.last</code> 循环是否在其最后一次循环中</li>
+<li><code>forloop.parentloop</code></li>
+<li><code>forloop.revcounter</code> 如果从末尾开始并向后计数，则以 1 结束</li>
+<li><code>forloop.revcounter0</code> 如果从末尾开始并向后计数，则以 0 结束</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="过滤值"><a aria-hidden="true" tabindex="-1" href="#过滤值"><span class="icon icon-link"></span></a>过滤值</h3><div class="wrap-body">
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>你好 <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">firstname</span><span class="token operator">|</span><span class="token filter function">upper</span> <span class="token delimiter punctuation">}}</span></span>，你好吗？<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>返回带有大写字母的变量名</p>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>欢迎大家<span class="token django language-django"><span class="token comment">{# 较小的注释 #}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">comment</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>欢迎女士们先生们<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endcomment</span> <span class="token delimiter punctuation">%}</span></span>
+</span></code></pre>
+<h4 id="注释描述"><a aria-hidden="true" tabindex="-1" href="#注释描述"><span class="icon icon-link"></span></a>注释描述</h4>
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>欢迎大家<span class="token django language-django"><span class="token comment">{# 较小的注释 #}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">comment</span> <span class="token string">"这是最初的欢迎信息"</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>欢迎女士们先生们<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endcomment</span> <span class="token delimiter punctuation">%}</span></span>
+</span></code></pre>
+<p>注释允许您拥有应该被忽略的代码部分</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="双过滤值"><a aria-hidden="true" tabindex="-1" href="#双过滤值"><span class="icon icon-link"></span></a>双过滤值</h3><div class="wrap-body">
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>你好 <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">firstname</span><span class="token operator">|</span><span class="token filter function">first</span><span class="token operator">|</span><span class="token filter function">upper</span> <span class="token delimiter punctuation">}}</span></span>，你好吗？<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>返回变量 <code>firstname</code> 的第一个字符，小写</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="过滤器标签"><a aria-hidden="true" tabindex="-1" href="#过滤器标签"><span class="icon icon-link"></span></a>过滤器标签</h3><div class="wrap-body">
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">filter</span> <span class="token variable">upper</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Hello everyone, how are you?<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endfilter</span> <span class="token delimiter punctuation">%}</span></span>
+</span></code></pre>
+<p>返回内容大写</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-3"><div class="wrap-header h3wrap"><h3 id="cycle"><a aria-hidden="true" tabindex="-1" href="#cycle"><span class="icon icon-link"></span></a>cycle</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+<p>如果你想为每次循环使用新的背景颜色，你可以使用 <code>cycle</code> 标签来做到这一点</p>
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">for</span> <span class="token variable">x</span> <span class="token keyword">in</span> <span class="token variable">members</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>li</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">cycle</span> <span class="token string">'lightblue'</span> <span class="token string">'pink'</span> <span class="token string">'yellow'</span> <span class="token string">'coral'</span> <span class="token string">'grey'</span> <span class="token delimiter punctuation">%}</span></span></span><span class="token punctuation">'</span></span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">      <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">firstname</span> <span class="token delimiter punctuation">}}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>li</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ul</span><span class="token punctuation">></span></span> 
+</span></code></pre>
+<p>将参数值保存在变量中，以便以后使用：</p>
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">for</span> <span class="token variable">x</span> <span class="token keyword">in</span> <span class="token variable">members</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">cycle</span> <span class="token string">'lightblue'</span> <span class="token string">'pink'</span> <span class="token string">'yellow'</span> <span class="token string">'coral'</span> <span class="token string">'grey'</span> <span class="token keyword">as</span> <span class="token variable">bgcolor</span> <span class="token variable">silent</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>li</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">bgcolor</span> <span class="token delimiter punctuation">}}</span></span></span><span class="token punctuation">'</span></span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">      <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">firstname</span> <span class="token delimiter punctuation">}}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>li</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ul</span><span class="token punctuation">></span></span> 
+</span></code></pre>
+<p>你注意到 <code>silent</code> 关键字了吗？ 确保添加这个，否则参数值将在输出中显示两次</p>
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">for</span> <span class="token variable">x</span> <span class="token keyword">in</span> <span class="token variable">members</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">cycle</span> <span class="token string">'lightblue'</span> <span class="token string">'pink'</span> <span class="token string">'yellow'</span> <span class="token string">'coral'</span> <span class="token string">'grey'</span> <span class="token keyword">as</span> <span class="token variable">bgcolor</span> <span class="token variable">silent</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">if</span> <span class="token variable">forloop</span><span class="token punctuation">.</span><span class="token variable">counter</span> <span class="token operator">==</span> <span class="token number">3</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">      <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">resetcycle</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endif</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>li</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span><span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">bgcolor</span> <span class="token delimiter punctuation">}}</span></span></span><span class="token punctuation">'</span></span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">      <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">x</span><span class="token punctuation">.</span><span class="token variable">firstname</span> <span class="token delimiter punctuation">}}</span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>li</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endfor</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ul</span><span class="token punctuation">></span></span> 
+</span></code></pre>
+<p>您可以使用 <code>{% resetcycle %}</code> 标签强制循环重新开始</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="每一行添加行号"><a aria-hidden="true" tabindex="-1" href="#每一行添加行号"><span class="icon icon-link"></span></a>每一行添加行号</h3><div class="wrap-body">
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">filter</span> <span class="token variable">upper</span><span class="token operator">|</span><span class="token filter function">linenumbers</span> <span class="token delimiter punctuation">%}</span></span>Hello!
+</span><span class="code-line">my name is
+</span><span class="code-line">Emil.
+</span><span class="code-line">What is your name?<span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">endfilter</span> <span class="token delimiter punctuation">%}</span></span>
+</span></code></pre>
+<p>返回内容<code>大写</code>并在每一行添加<code>行号</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="导入模板"><a aria-hidden="true" tabindex="-1" href="#导入模板"><span class="icon icon-link"></span></a>导入模板</h3><div class="wrap-body">
+<p><code>footer.html</code>:</p>
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>您已到达本页底部，感谢您抽出宝贵时间<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p><code>template.html</code>:</p>
+<pre class="language-django"><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>此页面包含模板中的页脚<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">include</span> <span class="token string">'footer.html'</span> <span class="token delimiter punctuation">%}</span></span> 
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="导入模板传入变量"><a aria-hidden="true" tabindex="-1" href="#导入模板传入变量"><span class="icon icon-link"></span></a>导入模板传入变量</h3><div class="wrap-body">
+<p><code>mymenu.html</code>:</p>
+<pre class="wrap-text "><code class="language-django code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span>HOME | <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">me</span> <span class="token delimiter punctuation">}}</span></span> | ABOUT | FORUM | <span class="token django language-django"><span class="token delimiter punctuation">{{</span> <span class="token variable">sponsor</span> <span class="token delimiter punctuation">}}</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p><code>template.html</code>:</p>
+<pre class="wrap-text "><code class="language-django code-highlight"><span class="code-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">include</span> <span class="token variable">mymenu</span><span class="token punctuation">.</span><span class="token variable">html</span> <span class="token keyword">with</span> <span class="token variable">me</span><span class="token operator">=</span><span class="token string">"张三"</span> <span class="token variable">sponsor</span><span class="token operator">=</span><span class="token string">"Reference"</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>Welcome<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>This is my webpage<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="过滤器参考"><a aria-hidden="true" tabindex="-1" href="#过滤器参考"><span class="icon icon-link"></span></a>过滤器参考</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">Keyword</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>add</code></td><td align="left">添加指定的值</td></tr><tr><td align="left"><code>addslashes</code></td><td align="left">在任何引号字符之前添加一个斜杠，以转义字符串</td></tr><tr><td align="left"><code>capfirst</code></td><td align="left">返回大写的第一个字母</td></tr><tr><td align="left"><code>center</code></td><td align="left">使值在指定宽度的中间居中</td></tr><tr><td align="left"><code>cut</code></td><td align="left">删除任何指定的字符或短语</td></tr><tr><td align="left"><code>date</code></td><td align="left">以指定格式返回日期</td></tr><tr><td align="left"><code>default</code></td><td align="left">如果值为 <code>False</code>，则返回指定值</td></tr><tr><td align="left"><code>default_if_none</code></td><td align="left">如果值为 <code>None</code>，则返回指定的值</td></tr><tr><td align="left"><code>dictsort</code></td><td align="left">按给定值对字典进行排序</td></tr><tr><td align="left"><code>dictsortreversed</code></td><td align="left">按给定值对字典进行反向排序</td></tr><tr><td align="left"><code>divisibleby</code></td><td align="left">如果该值可以除以指定的数字，则返回 <code>True</code>，否则返回 <code>False</code></td></tr><tr><td align="left"><code>escape</code></td><td align="left">从字符串中转义 <code>HTML</code> 代码</td></tr><tr><td align="left"><code>escapejs</code></td><td align="left">从字符串中转义 <code>JavaScript</code> 代码</td></tr><tr><td align="left"><code>filesizeformat</code></td><td align="left">将数字返回为文件大小格式</td></tr><tr><td align="left"><code>first</code></td><td align="left">返回对象的第一项（对于字符串，返回第一个字符）</td></tr><tr><td align="left"><code>floatformat</code></td><td align="left">将浮点数四舍五入到指定的小数位数，默认为一位小数</td></tr><tr><td align="left"><code>force_escape</code></td><td align="left">从字符串中转义 <code>HTML</code> 代码</td></tr><tr><td align="left"><code>get_digit</code></td><td align="left">返回数字的特定数字</td></tr><tr><td align="left"><code>iriencode</code></td><td align="left">将 <code>IRI</code> 转换为 <code>URL</code> 友好字符串</td></tr><tr><td align="left"><code>join</code></td><td align="left">将列表中的项目返回为字符串</td></tr><tr><td align="left"><code>json_script</code></td><td align="left">将一个对象返回为由 <code>&#x3C;script>&#x3C;/script></code> 标签包围的 <code>JSON</code> 对象</td></tr><tr><td align="left"><code>last</code></td><td align="left">返回对象的最后一项（对于字符串，返回最后一个字符）</td></tr><tr><td align="left"><code>length</code></td><td align="left">返回对象中的项目数，或字符串中的字符数</td></tr><tr><td align="left"><code>length_is</code></td><td align="left">如果长度与指定的数字相同，则返回 <code>True</code></td></tr><tr><td align="left"><code>linebreaks</code></td><td align="left">返回带有 <code>&#x3C;br></code> 而不是换行符和 <code>&#x3C;p></code> 而不是多个换行符的文本</td></tr><tr><td align="left"><code>linebreaksbr</code></td><td align="left">返回带有 <code>&#x3C;br></code> 的文本，而不是换行符</td></tr><tr><td align="left"><code>linenumbers</code></td><td align="left">返回每行带有行号的文本</td></tr><tr><td align="left"><code>ljust</code></td><td align="left">根据指定的宽度左对齐值</td></tr><tr><td align="left"><code>lower</code></td><td align="left">以小写字母返回文本</td></tr><tr><td align="left"><code>make_list</code></td><td align="left">将值转换为列表对象</td></tr><tr><td align="left"><code>phone2numeric</code></td><td align="left">将带字母的电话号码转换为数字电话号码</td></tr><tr><td align="left"><code>pluralize</code></td><td align="left">如果指定的数值不是 <code>1</code>，则在值的末尾添加一个 <code>s</code></td></tr><tr><td align="left"><code>pprint</code></td><td align="left"></td></tr><tr><td align="left"><code>random</code></td><td align="left">返回对象的随机项</td></tr><tr><td align="left"><code>rjust</code></td><td align="left">根据指定的宽度右对齐值</td></tr><tr><td align="left"><code>safe</code></td><td align="left">标记此文本是安全的，不应进行 <code>HTML</code> 转义</td></tr><tr><td align="left"><code>safeseq</code></td><td align="left">将对象的每个项目标记为安全且项目不应进行 <code>HTML</code> 转义</td></tr><tr><td align="left"><code>slice</code></td><td align="left">返回文本或对象的指定切片</td></tr><tr><td align="left"><code>slugify</code></td><td align="left">将文本转换为一个长字母数字小写单词</td></tr><tr><td align="left"><code>stringformat</code></td><td align="left">将值转换为指定格式</td></tr><tr><td align="left"><code>striptags</code></td><td align="left">从文本中删除 <code>HTML</code> 标记</td></tr><tr><td align="left"><code>time</code></td><td align="left">以指定格式返回时间</td></tr><tr><td align="left"><code>timesince</code></td><td align="left">返回两个日期时间之间的差</td></tr><tr><td align="left"><code>timeuntil</code></td><td align="left">返回两个日期时间之间的差</td></tr><tr><td align="left"><code>title</code></td><td align="left">文本中每个单词的第一个字符大写，所有其他字符都转换为小写</td></tr><tr><td align="left"><code>truncatechars</code></td><td align="left">将字符串缩短为指定数量的字符</td></tr><tr><td align="left"><code>truncatechars_html</code></td><td align="left">将字符串缩短为指定数量的字符，而不考虑任何 <code>HTML</code> 标记的长度</td></tr><tr><td align="left"><code>truncatewords</code></td><td align="left">将字符串缩短为指定数量的单词</td></tr><tr><td align="left"><code>truncatewords_html</code></td><td align="left">将字符串缩短为指定数量的单词，而不考虑任何 <code>HTML</code> 标记</td></tr><tr><td align="left"><code>unordered_list</code></td><td align="left">将对象的项目返回为无序列的 <code>HTML</code> 列表</td></tr><tr><td align="left"><code>upper</code></td><td align="left">以大写字母返回文本</td></tr><tr><td align="left"><code>urlencode</code></td><td align="left"><code>URL</code> 对字符串进行编码</td></tr><tr><td align="left"><code>urlize</code></td><td align="left">将字符串中的任何 <code>URL</code> 作为 <code>HTML</code> 链接返回</td></tr><tr><td align="left"><code>urlizetrunc</code></td><td align="left">将字符串中的任何 <code>URL</code> 作为 <code>HTML</code> 链接返回，但会将链接缩短为指定的字符数</td></tr><tr><td align="left"><code>wordcount</code></td><td align="left">返回文本中的单词数</td></tr><tr><td align="left"><code>wordwrap</code></td><td align="left">以指定的字符数换行</td></tr><tr><td align="left"><code>yesno</code></td><td align="left">将布尔值转换为指定值</td></tr><tr><td align="left"><code>i18n</code></td><td align="left"></td></tr><tr><td align="left"><code>l10n</code></td><td align="left"></td></tr><tr><td align="left"><code>tz</code></td><td align="left"></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字段查询参考"><a aria-hidden="true" tabindex="-1" href="#字段查询参考"><span class="icon icon-link"></span></a>字段查询参考</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">Keyword</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>contains</code></td><td align="left">包含短语</td></tr><tr><td align="left"><code>icontains</code></td><td align="left">与包含相同，但不区分大小写</td></tr><tr><td align="left"><code>date</code></td><td align="left">匹配日期</td></tr><tr><td align="left"><code>day</code></td><td align="left">匹配日期(日期，1-31)(日期)</td></tr><tr><td align="left"><code>endswith</code></td><td align="left">以。。结束</td></tr><tr><td align="left"><code>iendswith</code></td><td align="left">与 endwidth 相同，但不区分大小写</td></tr><tr><td align="left"><code>exact</code></td><td align="left">完全匹配</td></tr><tr><td align="left"><code>iexact</code></td><td align="left">与精确相同，但不区分大小写</td></tr><tr><td align="left"><code>in</code></td><td align="left">匹配其中一个值</td></tr><tr><td align="left"><code>isnull</code></td><td align="left">匹配 NULL 值</td></tr><tr><td align="left"><code>gt</code></td><td align="left">比...更棒</td></tr><tr><td align="left"><code>gte</code></td><td align="left">大于或等于</td></tr><tr><td align="left"><code>hour</code></td><td align="left">匹配一个小时(对于日期时间)</td></tr><tr><td align="left"><code>lt</code></td><td align="left">少于</td></tr><tr><td align="left"><code>lte</code></td><td align="left">小于或等于</td></tr><tr><td align="left"><code>minute</code></td><td align="left">匹配一分钟(对于日期时间)</td></tr><tr><td align="left"><code>month</code></td><td align="left">匹配一个月(日期)</td></tr><tr><td align="left"><code>quarter</code></td><td align="left">匹配一年中的一个季度 (1-4)(用于日期)</td></tr><tr><td align="left"><code>range</code></td><td align="left">之间的匹配</td></tr><tr><td align="left"><code>regex</code></td><td align="left">匹配正则表达式</td></tr><tr><td align="left"><code>iregex</code></td><td align="left">与正则表达式相同，但不区分大小写</td></tr><tr><td align="left"><code>second</code></td><td align="left">匹配一秒(对于日期时间)</td></tr><tr><td align="left"><code>startswith</code></td><td align="left">以 ... 开始</td></tr><tr><td align="left"><code>istartswith</code></td><td align="left">与 <code>startswith</code> 相同，但不区分大小写</td></tr><tr><td align="left"><code>time</code></td><td align="left">匹配时间(用于日期时间)</td></tr><tr><td align="left"><code>week</code></td><td align="left">匹配周数 (<code>1-53</code>)(用于日期)</td></tr><tr><td align="left"><code>week_day</code></td><td align="left">匹配一周中的某一天 (1-7) 1 是星期日</td></tr><tr><td align="left"><code>iso_week_day</code></td><td align="left">匹配 ISO 8601 星期几 (1-7) 1 是星期一</td></tr><tr><td align="left"><code>year</code></td><td align="left">匹配一年(日期)</td></tr><tr><td align="left"><code>iso_year</code></td><td align="left">匹配 ISO 8601 年份(日期)</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="添加静态文件"><a aria-hidden="true" tabindex="-1" href="#添加静态文件"><span class="icon icon-link"></span></a>添加静态文件</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加-css-文件"><a aria-hidden="true" tabindex="-1" href="#添加-css-文件"><span class="icon icon-link"></span></a>添加 CSS 文件</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line">  ├┈ manage.py
+</span><span class="code-line">  ├┈ myworld/
+</span><span class="code-line">  ╰┈ members/
+</span><span class="code-line">     ├┈ templates/
+</span><span class="code-line">     ├┈ static/
+</span><span class="code-line highlight-line">        ╰┈ myfirst.css
+</span></code></pre>
+<p>打开 <code>CSS</code> 文件 (<code>members/static/myfirst.css</code>) 并插入以下内容：</p>
+<pre class="language-css"><code class="language-css code-highlight"><span class="code-line"><span class="token selector">body</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token color">lightblue</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token property">font-family</span><span class="token punctuation">:</span> verdana<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>修改模板 (<code>members/templates/template.html</code>) 引入 css 文件</p>
+<pre class="wrap-text "><code class="language-django code-highlight"><span class="code-line highlight-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">load</span> <span class="token variable">static</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token doctype"><span class="token punctuation">&#x3C;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span><span class="token punctuation">></span></span>
+</span><span class="code-line highlight-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">static</span> <span class="token string">'myfirst.css'</span> <span class="token delimiter punctuation">%}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加-js-文件"><a aria-hidden="true" tabindex="-1" href="#添加-js-文件"><span class="icon icon-link"></span></a>添加 JS 文件</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line">  ├┈ manage.py
+</span><span class="code-line">  ├┈ myworld/
+</span><span class="code-line">  ╰┈ members/
+</span><span class="code-line">     ├┈ templates/
+</span><span class="code-line">     ├┈ static/
+</span><span class="code-line highlight-line">        ╰┈ myfirst.js
+</span></code></pre>
+<p>打开 <code>JS</code> 文件 (<code>members/static/myfirst.js</code>) 并插入以下内容：</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Hello from a static file!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>修改模板 (<code>members/templates/template.html</code>) 引入 <code>JS</code> 文件</p>
+<pre class="wrap-text "><code class="language-django code-highlight"><span class="code-line highlight-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">load</span> <span class="token variable">static</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token doctype"><span class="token punctuation">&#x3C;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span><span class="token punctuation">></span></span>
+</span><span class="code-line highlight-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">static</span> <span class="token string">'myfirst.js'</span> <span class="token delimiter punctuation">%}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line highlight-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>Click me!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加图片文件"><a aria-hidden="true" tabindex="-1" href="#添加图片文件"><span class="icon icon-link"></span></a>添加图片文件</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">myworld
+</span><span class="code-line">  ├┈ manage.py
+</span><span class="code-line">  ├┈ myworld/
+</span><span class="code-line">  ╰┈ members/
+</span><span class="code-line">     ├┈ templates/
+</span><span class="code-line">     ├┈ static/
+</span><span class="code-line highlight-line">        ╰┈ pineapple.jpg
+</span></code></pre>
+<p>打开 <code>JS</code> 文件 (<code>members/static/pineapple.jpg</code>) 并插入以下内容：</p>
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Hello from a static file!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>修改模板 (<code>members/templates/template.html</code>) 引入 <code>jpg</code> 文件</p>
+<pre class="wrap-text "><code class="language-django code-highlight"><span class="code-line highlight-line"><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">load</span> <span class="token variable">static</span> <span class="token delimiter punctuation">%}</span></span>
+</span><span class="code-line"><span class="token doctype"><span class="token punctuation">&#x3C;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line highlight-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token django language-django"><span class="token delimiter punctuation">{%</span> <span class="token tag keyword">static</span> <span class="token string">'pineapple.jpg'</span> <span class="token delimiter punctuation">%}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>html</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://www.djangoproject.com/">Django 官网</a> <em>(djangoproject.com)</em></li>
+<li><a href="https://www.runoob.com/django/django-tutorial.html">Django 教程</a> <em>(runoob.com)</em></li>
+<li><a href="http://c.biancheng.net/django/">Django 框架教程</a> <em>(biancheng.net)</em></li>
+<li><a href="https://www.w3cschool.cn/django4/">Django 4 中文教程</a> <em>(w3cschool.cn)</em></li>
+<li><a href="https://www.w3schools.com/django/index.php">Django Tutorial</a> <em>(w3schools.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js?v=1.4.1" defer></script><script src="../js/fuse.min.js?v=1.4.1" defer></script><script src="../js/main.js?v=1.4.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>

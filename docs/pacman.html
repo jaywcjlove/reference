@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Pacman 备忘清单
+ &#x26;  pacman cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这个是 Arch Linux 软件包管理器 Pacman 快速参考备忘单显示了它的常用命令使用清单。
+
+PACMAN 清单查询，为开发人员分享快速参考备忘单。">
+<meta keywords="pacman,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/pacman.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.4.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="pacman-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#pacman-备忘清单"><span class="icon icon-link"></span></a>Pacman 备忘清单</h1><div class="wrap-body">
+<p>这个是 Arch Linux 软件包管理器 Pacman 快速参考备忘单显示了它的常用命令使用清单。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#pacman-清单查询">PACMAN 清单查询</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装包组">安装包组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查询包数据库">查询包数据库</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清理软件包缓存">清理软件包缓存</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#pactree">Pactree</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除软件包">删除软件包</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查询一个包含具体文件的包名">查询一个包含具体文件的包名</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#其它命令">其它命令</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="pacman-清单查询"><a aria-hidden="true" tabindex="-1" href="#pacman-清单查询"><span class="icon icon-link"></span></a>PACMAN 清单查询</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>Pacman 是 Arch Linux 软件包管理器。帮助您在 Arch Linux 上使用 Pacman 软件包管理器进行软件包的安装、升级、搜索和删除等操作</p>
+<hr>
+<p>命令语法格式</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token punctuation">[</span> OPTIONS <span class="token punctuation">]</span> COMMAND
+</span></code></pre>
+<p>同步非本地(local)软件仓库并升级系统的软件包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Syu</span>
+</span></code></pre>
+<p>子命令描述和任务，显示 apt 命令和选项。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-h</span> or <span class="token parameter variable">--help</span>
+</span><span class="code-line"><span class="token comment"># 或</span>
+</span><span class="code-line">$ pacman
+</span></code></pre>
+<p>查看指令用法</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">man</span> pacman
+</span></code></pre>
+<p>请注意，使用 Pacman 命令时，需要管理员权限 <code>sudo</code></p>
+<hr>
+<p>相关参考文献</p>
+<ul>
+<li><a href="https://wiki.archlinuxcn.org/wiki/Pacman">Archlinux Wiki 官方文档</a></li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">Option</th><th>Function</th></tr></thead><tbody><tr><td align="left"><code>pacman -D, --database</code></td><td>操作软件包数据库</td></tr><tr><td align="left"><code>pacman -Q, --query</code></td><td>从数据库中查询软件包</td></tr><tr><td align="left"><code>pacman -R, --remove</code></td><td>从系统中移除软件包</td></tr><tr><td align="left"><code>pacman -S, --sync</code></td><td>同步软件包</td></tr><tr><td align="left"><code>pacman -T, --deptest</code></td><td>检查依赖关系</td></tr><tr><td align="left"><code>pacman -U, --upgrade</code></td><td>将包升级或添加到系统，并从同步存储库安装所需的依赖项。</td></tr><tr><td align="left"><code>pacman -F, --files</code></td><td>查询文件数据库。</td></tr><tr><td align="left"><code>pacman -V, --version</code></td><td>显示版本</td></tr><tr><td align="left"><code>pacman -h, --help</code></td><td>显示帮助信息</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+<p>升级所有已安装的软件包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">sudo</span> pacman <span class="token parameter variable">-Syu</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<p>要安装单个或者一系列软件包（包含软件包的依赖）</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-S</span> 包名_1 包名_2 <span class="token punctuation">..</span>.
+</span></code></pre>
+<p>要通过正则表达式安装一系列软件包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-S</span> <span class="token variable"><span class="token variable">$(</span>pacman <span class="token parameter variable">-Ssq</span> 包正则表达式<span class="token variable">)</span></span>
+</span></code></pre>
+<p>有时软件包有多个版本，放在不同的仓库内（例如 extra 和 testing）</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-S</span> extra/包名
+</span></code></pre>
+<p>要安装多个含有相似名称的软件包，可以使用花括号扩展</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-S</span> plasma-<span class="token punctuation">{</span>desktop,mediacenter,nm<span class="token punctuation">}</span>
+</span></code></pre>
+<p>可以多层扩展到需要的层次：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-S</span> plasma-<span class="token punctuation">{</span>workspace<span class="token punctuation">{</span>,-wallpapers<span class="token punctuation">}</span>,pa<span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装包组"><a aria-hidden="true" tabindex="-1" href="#安装包组"><span class="icon icon-link"></span></a>安装包组</h3><div class="wrap-body">
+<p>一些包属于一个可以同时安装的软件包组</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-S</span> gnome
+</span></code></pre>
+<p>想要查看哪些包属于 gnome 组</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Sg</span> gnome
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="查询包数据库"><a aria-hidden="true" tabindex="-1" href="#查询包数据库"><span class="icon icon-link"></span></a>查询包数据库</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<p>pacman 使用 -Q 参数查询本地软件包数据库， -S 查询同步数据库，以及 -F查询文件数据库</p>
+<p>pacman 可以在包数据库中查询软件包，查询位置包含了软件包的名字和描述</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Ss</span> string1 string2 <span class="token punctuation">..</span>.
+</span></code></pre>
+<p>使用正则</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Ss</span> <span class="token string">'^vim-'</span>
+</span></code></pre>
+<p>要查询已安装的软件包：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Qs</span> string1 string2 <span class="token punctuation">..</span>.
+</span></code></pre>
+<p>按文件名查找软件库：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-F</span> string1 string2 <span class="token punctuation">..</span>.
+</span></code></pre>
+<p>显示软件包的详尽的信息：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Si</span> package_name
+</span></code></pre>
+<p>查询本地安装包的详细信息：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Qi</span> package_name
+</span></code></pre>
+<p>同时显示备份文件和修改状态：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Qii</span> package_name
+</span></code></pre>
+<p>要获取已安装软件包所包含文件的列表：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Ql</span> package_name
+</span></code></pre>
+<p>查询远程库中软件包包含的文件：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Fl</span> package_name
+</span></code></pre>
+<p>查软件包安装的文件是否都存在：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Qk</span> package_name
+</span></code></pre>
+<p>查询数据库获取某个文件属于哪个软件包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Qo</span> /path/to/file_name
+</span></code></pre>
+<p>查询文件属于远程数据库中的哪个软件包：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-F</span> /path/to/file_name
+</span></code></pre>
+<p>查询所有不再作为依赖的软件包(孤立orphans)：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Qdt</span>
+</span></code></pre>
+<p>查询所有明确安装而且不被其它包依赖的软件包：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Qet</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="清理软件包缓存"><a aria-hidden="true" tabindex="-1" href="#清理软件包缓存"><span class="icon icon-link"></span></a>清理软件包缓存</h3><div class="wrap-body">
+<p>pacman 将下载的软件包保存在 /var/cache/pacman/pkg/ 并且不会自动移除旧的和未安装版本的软件包</p>
+<p>要删除目前没有安装的所有缓存的包，和没有被使用的同步数据库</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Sc</span>
+</span></code></pre>
+<p>要删除缓存中的全部文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Scc</span>
+</span></code></pre>
+<h4 id="pactree"><a aria-hidden="true" tabindex="-1" href="#pactree"><span class="icon icon-link"></span></a>Pactree</h4>
+<blockquote>
+<p>注意： pactree 不再是pacman包的一部分。它现在在pacman-contrib包中。</p>
+</blockquote>
+<p>要显示软件包的依赖树：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pactree package_name
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="删除软件包"><a aria-hidden="true" tabindex="-1" href="#删除软件包"><span class="icon icon-link"></span></a>删除软件包</h3><div class="wrap-body">
+<p>删除单个软件包，保留其全部已经安装的依赖关系</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-R</span> package_name
+</span></code></pre>
+<p>删除指定软件包，及其所有没有被其他已安装软件包使用的依赖关系：</p>
+<pre class="wrap-text "><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># ⚠️删除类似 gnome 这样的软件包组时，将会忽略组中软件包的安装原因，因为实际操作上执行的是逐一删除软件组的每一个软件，依赖软件包的安装原因不会被忽略。</span>
+</span><span class="code-line">$ pacman <span class="token parameter variable">-Rs</span> package_name
+</span></code></pre>
+<!--rehype:className=wrap-text -->
+<p>要删除软件包和所有依赖这个软件包的程序:</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># ⚠️此操作是递归的，请小心检查，可能会一次删除大量的软件包。</span>
+</span><span class="code-line">$ pacman <span class="token parameter variable">-Rsc</span> package_name
+</span></code></pre>
+<p>要删除一个被其他软件包依赖的软件包，但是不删除依赖这个软件包的其他软件包</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># ⚠️ 此操作有破坏系统的能力，应该尽量避免使用</span>
+</span><span class="code-line">$ pacman <span class="token parameter variable">-Rdd</span> package_name
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查询一个包含具体文件的包名"><a aria-hidden="true" tabindex="-1" href="#查询一个包含具体文件的包名"><span class="icon icon-link"></span></a>查询一个包含具体文件的包名</h3><div class="wrap-body">
+<p>同步文件数据库:</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Fy</span>
+</span></code></pre>
+<p>查询包含某个文件的包名，比如:</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-F</span> pacman
+</span><span class="code-line">core/pacman <span class="token number">5.0</span>.1-4
+</span><span class="code-line">    usr/bin/pacman
+</span><span class="code-line">    usr/share/bash-completion/completions/pacman
+</span><span class="code-line">extra/xscreensaver <span class="token number">5.36</span>-1
+</span><span class="code-line">    usr/lib/xscreensaver/pacman
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="其它命令"><a aria-hidden="true" tabindex="-1" href="#其它命令"><span class="icon icon-link"></span></a>其它命令</h3><div class="wrap-body">
+<p>升级系统时安装其他软件包：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Syu</span> package_name1 package_name2 <span class="token punctuation">..</span>.
+</span></code></pre>
+<p>下载包而不安装它：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-Sw</span> package_name
+</span></code></pre>
+<p>安装一个本地包(不从源里下载）</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-U</span> /path/to/package/package_name-version.pkg.tar.zst
+</span></code></pre>
+<p>要将本地包保存至缓存</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-U</span> file:///path/to/package/package_name-version.pkg.tar.zst
+</span></code></pre>
+<p>安装一个远程包（不在 pacman 配置的源里面）：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pacman <span class="token parameter variable">-U</span> http://www.example.com/repo/example.pkg.tar.zst
+</span></code></pre>
+</div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js?v=1.4.1" defer></script><script src="../js/fuse.min.js?v=1.4.1" defer></script><script src="../js/main.js?v=1.4.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>

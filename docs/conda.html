@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Conda备忘清单
+ &#x26;  conda cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这是开始使用 conda 命令的快速参考备忘单，初次学习可参考这里
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="conda,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/conda.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.4.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="conda备忘清单"><svg height="1em" width="1em" role="img" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Anaconda</title><path d="M12.045.033a12.181 12.182 0 00-1.361.078 17.512 17.513 0 011.813 1.433l.48.438-.465.45a15.047 15.048 0 00-1.126 1.205l-.178.215a8.527 8.527 0 01.86-.05 8.154 8.155 0 11-4.286 15.149 15.764 15.765 0 01-1.841.106h-.86a21.847 21.848 0 00.264 2.866 11.966 11.967 0 106.7-21.89zM8.17.678a12.181 12.182 0 00-2.624 1.275 15.506 15.507 0 011.813.43A18.551 18.552 0 018.17.678zM9.423.75a16.237 16.238 0 00-.995 1.998 16.15 16.152 0 011.605.66 6.98 6.98 0 01.43-.509c.234-.286.472-.559.716-.817A15.047 15.048 0 009.423.75zM4.68 2.949a14.969 14.97 0 000 2.336c.587-.065 1.196-.1 1.812-.107a16.617 16.617 0 01.48-1.748 16.48 16.481 0 00-2.292-.481zM3.62 3.5A11.938 11.938 0 001.762 5.88a17.004 17.004 0 011.877-.444A17.39 17.391 0 013.62 3.5zm4.406.287c-.143.437-.265.888-.38 1.347a8.255 8.255 0 011.67-.803c-.423-.2-.845-.38-1.29-.544zM6.3 6.216a14.051 14.052 0 00-1.555.108c.064.523.157 1.038.272 1.554a8.39 8.391 0 011.283-1.662zm-2.55.137a15.313 15.313 0 00-2.602.716h-.078v.079a17.104 17.105 0 001.267 2.544l.043.071.072-.049a16.309 16.31 0 011.734-1.083l.057-.035V8.54a16.867 16.868 0 01-.408-2.094v-.092zM.644 8.095l-.063.2A11.844 11.845 0 000 11.655v.209l.143-.152a17.706 17.707 0 011.584-1.447l.057-.043-.043-.064a16.18 16.18 0 01-1.025-1.87zm3.77 1.253l-.18.1c-.465.273-.93.573-1.375.889l-.065.05.05.064c.309.437.645.867.996 1.276l.137.165v-.208a8.176 8.176 0 01.364-2.15zM2.2 10.853l-.072.05a16.574 16.574 0 00-1.813 1.734l-.058.058.066.057a15.449 15.45 0 001.991 1.483l.072.05.043-.08a16.738 16.74 0 011.053-1.64v-.05l-.043-.05a16.99 16.99 0 01-1.19-1.54zm1.855 2.071l-.121.172a15.363 15.363 0 00-.917 1.433l-.043.072.071.043a16.61 16.61 0 001.562.766l.193.086-.086-.193a8.04 8.04 0 01-.66-2.172zm-3.976.48v.2a11.758 11.759 0 00.946 3.326l.078.186.072-.194a16.215 16.216 0 01.845-2l.057-.063-.064-.043a17.197 17.198 0 01-1.776-1.284zm2.543 1.805l-.035.08a15.764 15.765 0 00-.983 2.479v.08h.086a16.15 16.152 0 002.688.5l.072.007v-.086a17.562 17.563 0 01.164-2.056v-.065H4.55a16.266 16.266 0 01-1.849-.896zm2.544 1.169v.114a17.254 17.255 0 00-.151 1.828v.078h.931c.287 0 .624.014.946 0h.209l-.166-.129a8.011 8.011 0 01-1.64-1.834zm-3.29 2.1l.115.172a11.988 11.988 0 002.502 2.737l.157.129v-.201a22.578 22.58 0 01-.2-2.336v-.071h-.072a16.23 16.23 0 01-2.3-.387z"></path></svg><a aria-hidden="true" tabindex="-1" href="#conda备忘清单"><span class="icon icon-link"></span></a>Conda备忘清单</h1><div class="wrap-body">
+<p>这是开始使用 <code>conda</code> 命令的快速参考备忘单，初次学习可参考<a href="https://anaconda.org.cn/anaconda/user-guide/getting-started/#open-nav-win">这里</a></p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用基础命令">常用基础命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#环境与包管理">环境与包管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包与源管理">包与源管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更改环境">更改环境</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#导出环境配置">导出环境配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#另外">另外</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#额外提示">额外提示</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+<!--rehype:body-class=cols-1-->
+</div></div><div class="h2wrap-body cols-1"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常用基础命令"><a aria-hidden="true" tabindex="-1" href="#常用基础命令"><span class="icon icon-link"></span></a>常用基础命令</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">命令</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>conda info</code></td><td>查看 conda 的一系列基本信息(版本、源、路径等)</td></tr><tr><td align="left"><code>conda update -n base conda</code></td><td>在base环境中更新conda</td></tr><tr><td align="left"><code>conda install anconda=2022.05</code></td><td>安装最新的anaconda发行版(见<a href="https://docs.anaconda.com/navigator/release-notes/?utm_source=cheatsheet">发行说明</a>)</td></tr><tr><td align="left"><code>conda create --name &#x3C;ENVNAME></code></td><td>创建一个新的环境</td></tr><tr><td align="left"><code>conda activate &#x3C;ENVNAME></code></td><td>激活/切换/选择一个环境</td></tr><tr><td align="left"><code>conda env list 或者 conda info -e</code></td><td>列出所有的环境和位置看</td></tr><tr><td align="left"><code>conda list -n &#x3C;ENVNAME> --show-channel-urls</code></td><td>列出某个环境所有包和包的下载源路径</td></tr><tr><td align="left"><code>conda install -n &#x3C;ENVNAME> &#x3C;PKG1> &#x3C;PKG2></code></td><td>在某个环境中安装包</td></tr><tr><td align="left"><code>conda uninstall &#x3C;PKGNAME包名> -n &#x3C;ENVNAME环境名></code></td><td>从某个环境删除某个包</td></tr><tr><td align="left"><code>conda update --all -n &#x3C;ENVNAME环境名></code></td><td>升级某个环境的所有包</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="环境与包管理"><a aria-hidden="true" tabindex="-1" href="#环境与包管理"><span class="icon icon-link"></span></a>环境与包管理</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="包与源管理"><a aria-hidden="true" tabindex="-1" href="#包与源管理"><span class="icon icon-link"></span></a>包与源管理</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<blockquote>
+<p>在使用 <code>conda</code> 时，包依赖关系和平台细节会<strong>自动解决</strong></p>
+</blockquote>
+<p>查看命令均可搭配 <code>grep</code> 命令使用，例如：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">conda list <span class="token operator">|</span> <span class="token function">grep</span> torch  <span class="token comment">#列出所有包含torch的包</span>
+</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">Command</th><th>Description</th></tr></thead><tbody><tr><td align="left"><code>conda list</code></td><td>列出所有安装的包</td></tr><tr><td align="left"><code>conda list --show-channel-urls</code></td><td>列出包含源信息的已安装包</td></tr><tr><td align="left"><code>conda update --all</code></td><td>更新所有包</td></tr><tr><td align="left"><code>conda install -c &#x3C;CHANNELNAME源地址> &#x3C;PKG1包> &#x3C;PKG2></code></td><td>从特定源(如清华源、阿里源)安装包</td></tr><tr><td align="left"><code>conda install PKGNAME=3.1.4</code></td><td>安装指定版本的包</td></tr><tr><td align="left"><code>conda install "PKGNAME>2.5,&#x3C;3.2"</code></td><td>使用AND逻辑安装包</td></tr><tr><td align="left"><code>conda install "&#x3C;PKGNAME> [version='2.5|3.2']"</code></td><td></td></tr><tr><td align="left"><code>conda uninstall &#x3C;PKGNAME></code></td><td>卸载包</td></tr><tr><td align="left"><code>conda config --show-sources</code></td><td>查看源地址（位置越靠上，搜索的时候越优先）</td></tr><tr><td align="left"><code>conda config --add channels &#x3C;CHANNELNAME></code></td><td>添加conda的源地址</td></tr><tr><td align="left"><code>conda config --remove channels &#x3C;CHANNELNAME></code></td><td>移除conda的源地址</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="更改环境"><a aria-hidden="true" tabindex="-1" href="#更改环境"><span class="icon icon-link"></span></a>更改环境</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">Command</th><th>Description</th></tr></thead><tbody><tr><td align="left"><code>conda create -n &#x3C;ENVNAME> python=3.10</code></td><td>指定Python版本创建环境</td></tr><tr><td align="left"><code>conda create --clone &#x3C;ENVNAME> -n &#x3C;NEWENV></code></td><td>从已有环境克隆一个新环境</td></tr><tr><td align="left"><code>conda rename -n &#x3C;ENVNAME> &#x3C;NEWENVNAME></code></td><td>对环境名字重命名</td></tr><tr><td align="left"><code>conda remove -n &#x3C;ENVNAME> --all</code></td><td>通过名字删除一个环境</td></tr><tr><td align="left"><code>conda list -n &#x3C;ENVNAME> --revisions</code></td><td>列出环境的各个修订版本</td></tr><tr><td align="left"><code>conda install -n &#x3C;ENVNAME> --revision &#x3C;NUMBER>"</code></td><td>回滚到环境的某个版本本</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+<p>关于 <code>conda</code> 环境回滚可参考：<a href="https://www.pybloggers.com/2016/06/conda-revisions-letting-you-rollback-to-a-previous-version-of-your-environment/">这里</a></p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="导出环境配置"><a aria-hidden="true" tabindex="-1" href="#导出环境配置"><span class="icon icon-link"></span></a>导出环境配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>建议将导出文件命名为“environment”，环境名称将被保留</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">Command</th><th>Description</th></tr></thead><tbody><tr><td align="left"><code>conda env export --from-history>ENV.yml</code></td><td>跨平台兼容需（通过这种方式，可以省去所有其他可能是特定于平台的依赖项）</td></tr><tr><td align="left"><code>conda env export -n ENVNAME > ENV.yml</code></td><td>导出指定环境到yml文件</td></tr><tr><td align="left"><code>conda env export > ENV.yml</code></td><td>导出当前环境到yml文件</td></tr><tr><td align="left"><code>conda list --explicit>ENV.txt</code></td><td>导出包信息到当前目录</td></tr><tr><td align="left"><code>conda env create -n ENVNAME --file ENV.yml</code></td><td>从yml文件导入</td></tr><tr><td align="left"><code>conda create -n ENVNAME --file ENV.txt</code></td><td>从txt文件导入</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="另外"><a aria-hidden="true" tabindex="-1" href="#另外"><span class="icon icon-link"></span></a>另外</h3><div class="wrap-body">
+<p>查看命令帮助</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">conda <span class="token operator">&#x3C;</span>COMMAND<span class="token operator">></span> <span class="token parameter variable">--help</span>
+</span><span class="code-line">conda search <span class="token operator">&#x3C;</span>PKGNAME<span class="token operator">></span> <span class="token parameter variable">--info</span>
+</span><span class="code-line">conda clean <span class="token parameter variable">--all</span> <span class="token comment"># 清除所有未使用的文件</span>
+</span><span class="code-line">conda config <span class="token parameter variable">--show</span> <span class="token comment"># 检查conda配置</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="额外提示"><a aria-hidden="true" tabindex="-1" href="#额外提示"><span class="icon icon-link"></span></a>额外提示</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">conda COMMAND <span class="token parameter variable">--help</span>  <span class="token comment"># 获得任何命令的帮助</span>
+</span><span class="code-line"><span class="token comment"># 获取任何包裹的信息</span>
+</span><span class="code-line">conda search PKGNAME <span class="token parameter variable">--info</span>
+</span><span class="code-line"><span class="token comment"># 运行没有用户提示的命令，例如，安装多个包</span>
+</span><span class="code-line">conda COMMAND ARG <span class="token parameter variable">--yes</span>
+</span><span class="code-line">conda <span class="token function">install</span> PKG1 PKG2 <span class="token parameter variable">--yes</span> 
+</span><span class="code-line">conda clean <span class="token parameter variable">--all</span>  <span class="token comment"># 删除所有未使用的文件</span>
+</span><span class="code-line">conda config <span class="token parameter variable">--show</span>  <span class="token comment"># 检查 conda 配置</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://anaconda.org.cn/">Anaconda文档</a></li>
+<li><a href="https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">官网命令Cheat sheet</a></li>
+<li><a href="https://conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf">Conda cheatsheet PDF</a></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js?v=1.4.1" defer></script><script src="../js/fuse.min.js?v=1.4.1" defer></script><script src="../js/main.js?v=1.4.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
