@@ -225,6 +225,9 @@ jobs:
 <a href="https://github.com/Alex-Programer" title="Alex">
   <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
 </a>
+<a href="https://github.com/aixcyi" title="砹小翼">
+  <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
+</a>
 <a href="https://github.com/LufsX" title="LufsX">
   <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
 </a>
@@ -233,9 +236,6 @@ jobs:
 </a>
 <a href="https://github.com/eryajf" title="二丫讲梵">
   <img src="https://avatars.githubusercontent.com/u/33259379?v=4" width="42;" alt="二丫讲梵"/>
-</a>
-<a href="https://github.com/aixcyi" title="砹小翼">
-  <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
 </a>
 <a href="https://github.com/heStudio-Network" title="醉、倾城">
   <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
@@ -408,8 +408,8 @@ jobs:
 <a href="https://github.com/chyok" title="chyok">
   <img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/>
 </a>
-<a href="https://github.com/gaoxiaoduan" title="Jerrod Cole">
-  <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="Jerrod Cole"/>
+<a href="https://github.com/gaoxiaoduan" title="CoderDuan">
+  <img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="CoderDuan"/>
 </a>
 <a href="https://github.com/cool9203" title="cool9203">
   <img src="https://avatars.githubusercontent.com/u/29609607?v=4" width="42;" alt="cool9203"/>
