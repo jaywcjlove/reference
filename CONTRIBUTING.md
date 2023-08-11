@@ -222,11 +222,11 @@ jobs:
 <a href="https://github.com/JeffersonHuang" title="Jefferson Huang">
   <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson Huang"/>
 </a>
-<a href="https://github.com/Alex-Programer" title="Alex">
-  <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
-</a>
 <a href="https://github.com/aixcyi" title="砹小翼">
   <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
+</a>
+<a href="https://github.com/Alex-Programer" title="Alex">
+  <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
 </a>
 <a href="https://github.com/LufsX" title="LufsX">
   <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
@@ -480,8 +480,8 @@ jobs:
 <a href="https://github.com/phygerr" title="phygerr">
   <img src="https://avatars.githubusercontent.com/u/42068889?v=4" width="42;" alt="phygerr"/>
 </a>
-<a href="https://github.com/Mowmowj" title="shelton">
-  <img src="https://avatars.githubusercontent.com/u/24759562?v=4" width="42;" alt="shelton"/>
+<a href="https://github.com/Mowmowj" title="nexo">
+  <img src="https://avatars.githubusercontent.com/u/24759562?v=4" width="42;" alt="nexo"/>
 </a>
 <a href="https://github.com/swift-fs" title="swift">
   <img src="https://avatars.githubusercontent.com/u/77133741?v=4" width="42;" alt="swift"/>
