@@ -6,34 +6,34 @@ HTTP 状态码备忘清单。 每个 HTTP 状态代码的快速参考。
 HTTP 状态码
 ---
 
-### Means
+### 含义
 
-- [1xx: Informational](#1xx-信息) _这意味着已收到请求并且该过程正在继续_<!--rehype:tooltips-->
-- [2xx: Success](#2xx-成功的) _这意味着该操作已成功接收、理解和接受_<!--rehype:tooltips-->
-- [3xx: Redirection](#3xx-重定向) _这意味着必须采取进一步行动才能完成请求_<!--rehype:tooltips-->
-- [4xx: Client Error](#4xx-客户端错误) _这意味着请求包含不正确的语法或无法完成_<!--rehype:tooltips-->
-- [5xx: Server Error](#5xx-服务器错误) _这意味着服务器未能满足明显有效的请求_<!--rehype:tooltips-->
+- [1xx: 信息](#1xx-信息) _代表已收到请求并且该过程正在继续_<!--rehype:tooltips-->
+- [2xx: 成功](#2xx-成功) _代表该操作已成功接收、理解和接受_<!--rehype:tooltips-->
+- [3xx: 重定向](#3xx-重定向) _代表必须采取进一步行动才能完成请求_<!--rehype:tooltips-->
+- [4xx: 客户端错误](#4xx-客户端错误) _代表请求包含不正确的语法或无法完成_<!--rehype:tooltips-->
+- [5xx: 服务器错误](#5xx-服务器错误) _代表服务器未能满足明显有效的请求_<!--rehype:tooltips-->
 
-### 2xx. 成功的
+### 2xx. 成功
 <!--rehype:wrap-class=row-span-2-->
 
-- [200: OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) _请求没问题_<!--rehype:tooltips-->
-- [201: Created](https://tools.ietf.org/html/rfc7231#section-6.3.2) _请求完成，并创建了一个新资源_<!--rehype:tooltips-->
-- [202: Accepted](https://tools.ietf.org/html/rfc7231#section-6.3.3) _接受请求进行处理，但处理未完成_<!--rehype:tooltips-->
-- [203: Non-Authoritative Information](https://tools.ietf.org/html/rfc7231#section-6.3.4) _实体标头中的信息来自本地或第三方副本，而不是来自原始服务器_<!--rehype:tooltips-->
-- [204: No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) _响应中给出了状态码和标头，但响应中没有实体主体_<!--rehype:tooltips-->
-- [205: Reset Content](https://tools.ietf.org/html/rfc7231#section-6.3.6) _浏览器应清除用于此事务的表单以获取其他输入_<!--rehype:tooltips-->
-- [206: Partial Content](https://tools.ietf.org/html/rfc7233#section-4.1) _服务器正在返回请求大小的部分数据。 用于响应指定 Range 标头的请求。 服务器必须使用 Content-Range 标头指定响应中包含的范围_<!--rehype:tooltips-->
+- [200: OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) _请求成功_<!--rehype:tooltips-->
+- [201: 已创建](https://tools.ietf.org/html/rfc7231#section-6.3.2) _请求成功，并创建了新的资源_<!--rehype:tooltips-->
+- [202: 已接受](https://tools.ietf.org/html/rfc7231#section-6.3.3) _请求成功，但处理尚未完成_<!--rehype:tooltips-->
+- [203: Non-Authoritative Information](https://tools.ietf.org/html/rfc7231#section-6.3.4) _请求成功，但负载经过了第三方服务器的修改，而非原始负载_<!--rehype:tooltips-->
+- [204: No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) _响应给出了状态码和标头，但响应中没有实体主体_<!--rehype:tooltips-->
+- [205: Reset Content](https://tools.ietf.org/html/rfc7231#section-6.3.6) _请求成功，但浏览器应重置文档视图，比如清空表单内容、重置 canvas 状态或者刷新用户界面_<!--rehype:tooltips-->
+- [206: Partial Content](https://tools.ietf.org/html/rfc7233#section-4.1) _请求成功，服务器正在返回请求所指定部分的数据。用于响应标头中指定了数据区间的请求。服务器必须使用 Content-Range 标头指定响应中包含的数据区间_<!--rehype:tooltips-->
 
 ### 4xx. 客户端错误
 <!--rehype:wrap-class=row-span-3-->
 
 - [400: Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1) _服务器不理解该请求_<!--rehype:tooltips-->
 - [401: Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1) _请求的页面需要用户名和密码_<!--rehype:tooltips-->
-- [402: Payment Required](https://tools.ietf.org/html/rfc7231#section-6.5.2) _您还不能使用此代码_<!--rehype:tooltips-->
-- [403: Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3) _禁止访问请求的页面_<!--rehype:tooltips-->
+- [402: Payment Required](https://tools.ietf.org/html/rfc7231#section-6.5.2) _您目前还不能使用此代码。402 状态码被创建最初用于表明请求的内容只有付费之后才能获取。目前不存在标准的使用约定_<!--rehype:tooltips-->
+- [403: Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3) _禁止了对于此页面的请求_<!--rehype:tooltips-->
 - [404: Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4) _服务器找不到请求的页面_<!--rehype:tooltips-->
-- [405: Method Not Allowed](https://tools.ietf.org/html/rfc7231#section-6.5.5) _请求中指定的方法是不允许的_<!--rehype:tooltips-->
+- [405: Method Not Allowed](https://tools.ietf.org/html/rfc7231#section-6.5.5) _请求中指定的方法不被允许_<!--rehype:tooltips-->
 - [406: Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6) _服务器只能生成客户端不接受的响应_<!--rehype:tooltips-->
 - [407: Proxy Authentication Required](https://tools.ietf.org/html/rfc7235#section-3.2) _您必须先通过代理服务器进行身份验证，然后才能提供此请求_<!--rehype:tooltips-->
 - [408: Request Timeout](https://tools.ietf.org/html/rfc7231#section-6.5.7) _请求花费的时间比服务器准备等待的时间长_<!--rehype:tooltips-->
