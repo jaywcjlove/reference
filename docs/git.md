@@ -389,21 +389,8 @@ $ git mv [existing-path] [new-path]
 $ git log --stat -M
 ```
 
-### git 配置 ssh 代理
-<!--rehype:wrap-class=col-span-2-->
-
-```bash
-$ cat ~/.ssh/config
-Host gitlab.com
-# 直接使用 sh**socks 提供的 socks5 代理端口
-ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
-
-Host github.com
-ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
-```
-<!--rehype:className=wrap-text-->
-
 ### .gitattributes
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```ini
 # 设置默认行为，以防人们没有设置 core.autocrlf
@@ -434,6 +421,19 @@ special-vendored-path/* linguist-vendored
 # 将所有 .rb 文件检测为 Java 文件
 *.rb linguist-language=Java
 ```
+
+### git 配置 ssh 代理
+
+```bash
+$ cat ~/.ssh/config
+Host gitlab.com
+# 直接使用 sh**socks 提供的 socks5 代理端口
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
+
+Host github.com
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
+```
+<!--rehype:className=wrap-text-->
 
 Git 技巧
 ------
@@ -964,6 +964,7 @@ git 代码统计
 ---
 
 ### 查看 git 上的个人代码量
+<!--rehype:wrap-class=row-span-2-->
 
 - `username` 需要改成自己的
 
@@ -971,8 +972,10 @@ git 代码统计
 git log --author="username" --pretty=tformat: --numstat | awk \
 '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
 ```
+<!--rehype:className=wrap-text-->
 
 ### 统计每个人增删行数
+<!--rehype:wrap-class=row-span-2-->
 
 ```bash
 git log --format='%aN' | sort -u |\
@@ -980,6 +983,7 @@ git log --format='%aN' | sort -u |\
   git log --author="$name" --pretty=tformat: --numstat | awk \
   '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
 ```
+<!--rehype:className=wrap-text-->
 
 ### 查看仓库提交者排名
 
@@ -988,6 +992,7 @@ git log --format='%aN' | sort -u |\
 ```bash
 git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 10
 ```
+<!--rehype:className=wrap-text-->
 
 ### 提交数统计
 
