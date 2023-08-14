@@ -617,7 +617,10 @@ const stringBox = new Box("a package")
 
 ```ts
 class Location {
-  constructor(public x: number, public y: number) {}
+  constructor(
+    public x: number,
+    public y: number
+  ) {}
 }
 const loc = new Location(20, 40);
 
@@ -633,19 +636,23 @@ TypeScript 特定于类的扩展，可自动将实例字段设置为输入参数
 abstract class Animal {
   abstract getName(): string;
   printName() {
-    console.log("Hello, " + this.getName());
+   console.log("Hello, " + this.getName());
   }
 }
-class Dog extends Animal { getName(): { ... } }
+class Dog extends Animal {
+  getName(): { ... }
+}
 ```
 
 一个类可以被声明为不可实现，但可以在类型系统中被子类化。 class 成员也可以。
 
 ### 装饰器和属性
-<!--rehype:wrap-class=col-span-2-->
 
 ```ts
-import { Syncable, triggersSync, preferCache, required } from "mylib"
+import {
+  Syncable, triggersSync, preferCache,
+  required
+} from "mylib"
 
 @Syncable
 class User {
@@ -653,7 +660,9 @@ class User {
   save() { ... }
   @preferCache(false)
   get displayName() { ... }
-  update(@required info: Partial<User>) { ... }
+  update(@required info: Partial<User>) {
+    //...
+  }
 }
 ```
 
@@ -675,6 +684,21 @@ class MyClass {
 ```
 
 类可以声明索引签名，与其他对象类型的索引签名相同。
+
+### 在 forwardRef 上面声明泛型
+
+```ts
+export const Wrapper = forwardRef(
+  <T extends object>
+(
+  props: RootNodeProps<T>,
+  ref: React.LegacyRef<HTMLDivElement>
+) => {
+  return (
+    <div ref={ref}></div>
+  );
+}
+```
 
 实用程序类型
 ----
