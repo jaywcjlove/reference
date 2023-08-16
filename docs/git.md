@@ -435,6 +435,134 @@ ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
 ```
 <!--rehype:className=wrap-text-->
 
+Commit
+---
+
+### 改写历史
+<!--rehype:wrap-class=row-span-2-->
+
+重写最后的提交消息
+
+```shell
+$ git commit --amend -m "new message"
+```
+
+修改最新的提交而不更改提交消息
+
+```shell
+$ git commit --amend --no-edit
+```
+
+### 在 commit log 中显示 GPG 签名
+
+```bash
+$ git log --show-signature
+```
+
+### 修改远程 Commit 记录
+<!--rehype:wrap-class=row-span-5-->
+
+```shell
+$ git rebase -i HEAD~3
+# 表示要修改当前版本的倒数第三次状态
+# 将要更改的记录行首单词 pick 改为 edit
+pick 96dc3f9 提交 commit 描述内容 1
+pick f1cce8a 提交 commit 描述内容 2
+pick 6293516 提交 commit 描述内容 3
+# Rebase eeb03a4..6293516 onto eeb03a4
+#                     (3 commands)
+#
+# Commands:
+# p, pick = 使用提交
+# r, reword = 使用提交，但编辑提交消息
+# e, edit = 使用提交，但停止修改
+# s, squash = 使用提交，但融合到先前的提交中
+# f, fixup = 像 squash，但丢弃此提交的日志消息
+# x, exec = 使用 shell 运行命令(该行的其余部分)
+# d, drop = 删除提交
+```
+
+保存并退出，会弹出下面提示
+
+```shell
+# 您现在可以修改提交，使用
+#
+#   git commit --amend
+#
+# 对更改感到满意后，运行
+#
+#   git rebase --continue
+#
+# 1. 通过这条命令进入编辑更改 commit，保存退出
+$ git commit --amend
+# 2. 保存退出确认修改，继续执行下面命令,
+$ git rebase --continue
+# 如果修改多条记录反复执行上面两条命令直到完成所有修改
+
+# 最后，确保没有人提交进行推送，最好不要加 -f 强制推送
+$ git push -f origin master
+```
+
+### Commit
+
+```shell
+$ git commit -v --amend
+```
+
+重写最后的提交信息
+
+### 撤销远程记录
+
+```shell
+# 撤销一条记录
+$ git reset --hard HEAD~1
+# 强制同步到远程仓库
+$ git push -f origin HEAD:master
+```
+
+### 放弃本地修改内容
+
+```shell
+# 如果有的修改以及加入暂存区的话
+$ git reset --hard
+# 还原所有修改，不会删除新增的文件
+$ git checkout .
+# 下面命令会删除新增的文件
+$ git clean -xdf
+```
+
+### 把 A 分支的某一个 commit，放到 B 分支上
+
+```shell
+# 切换到 B 分支
+$ git checkout <B>
+# 将 A 分支 <hash-id> 的内容 pick 到 B 分支
+$ git cherry-pick <hash-id>
+```
+
+### 重设第一个 commit
+
+```bash
+$ git update-ref -d HEAD
+```
+
+把所有的改动都重新放回工作区，并**清空所有的 commit**，这样就可以重新提交第一个 `commit` 了
+
+### 回到远程仓库的状态
+
+```bash
+$ git fetch --all && git reset --hard origin/master
+```
+<!--rehype:className=wrap-text-->
+
+抛弃本地所有的修改，回到远程仓库的状态
+
+### commit 历史中显示 Branch1 有的但是 Branch2 没有 commit
+
+```bash
+$ git log Branch1 ^Branch2
+```
+
 Git 技巧
 ------
 
@@ -515,14 +643,6 @@ $ git checkout <branch> -- <file>
 git remote prune origin
 ```
 
-### Commit
-
-```shell
-$ git commit -v --amend
-```
-
-重写最后的提交信息
-
 ### 忽略文件的权限变化
 
 ```shell
@@ -553,70 +673,6 @@ $ git config core.ignorecase false
 $ git rm -r --cached <目录/文件>
 ```
 
-### 修改远程 Commit 记录
-<!--rehype:wrap-class=row-span-4-->
-
-```shell
-$ git rebase -i HEAD~3
-# 表示要修改当前版本的倒数第三次状态
-# 将要更改的记录行首单词 pick 改为 edit
-pick 96dc3f9 提交 commit 描述内容 1
-pick f1cce8a 提交 commit 描述内容 2
-pick 6293516 提交 commit 描述内容 3
-# Rebase eeb03a4..6293516 onto eeb03a4
-#                     (3 commands)
-#
-# Commands:
-# p, pick = 使用提交
-# r, reword = 使用提交，但编辑提交消息
-# e, edit = 使用提交，但停止修改
-# s, squash = 使用提交，但融合到先前的提交中
-# f, fixup = 像 squash，但丢弃此提交的日志消息
-# x, exec = 使用 shell 运行命令(该行的其余部分)
-# d, drop = 删除提交
-```
-
-保存并退出，会弹出下面提示
-
-```shell
-# 您现在可以修改提交，使用
-#
-#   git commit --amend
-#
-# 对更改感到满意后，运行
-#
-#   git rebase --continue
-#
-# 1. 通过这条命令进入编辑更改 commit，保存退出
-$ git commit --amend
-# 2. 保存退出确认修改，继续执行下面命令,
-$ git rebase --continue
-# 如果修改多条记录反复执行上面两条命令直到完成所有修改
-
-# 最后，确保没有人提交进行推送，最好不要加 -f 强制推送
-$ git push -f origin master
-```
-
-### 撤销远程记录
-
-```shell
-# 撤销一条记录
-$ git reset --hard HEAD~1
-# 强制同步到远程仓库
-$ git push -f origin HEAD:master
-```
-
-### 放弃本地修改内容
-
-```shell
-# 如果有的修改以及加入暂存区的话
-$ git reset --hard
-# 还原所有修改，不会删除新增的文件
-$ git checkout .
-# 下面命令会删除新增的文件
-$ git clean -xdf
-```
-
 ### 获取最近一次提交的 Hash
 
 ```shell
@@ -631,32 +687,6 @@ $ git rev-parse --short HEAD # e10721c
 $ git branch --merged master | grep -v '^\*\|  master' | xargs -n 1 git branch -d
 ```
 <!--rehype:className=wrap-text-->
-
-### 把 A 分支的某一个 commit，放到 B 分支上
-
-```shell
-# 切换到 B 分支
-$ git checkout <B>
-# 将 A 分支 <hash-id> 的内容 pick 到 B 分支
-$ git cherry-pick <hash-id>
-```
-
-### 回到远程仓库的状态
-
-```bash
-$ git fetch --all && git reset --hard origin/master
-```
-<!--rehype:className=wrap-text-->
-
-抛弃本地所有的修改，回到远程仓库的状态
-
-### 重设第一个 commit
-
-```bash
-$ git update-ref -d HEAD
-```
-
-把所有的改动都重新放回工作区，并**清空所有的 commit**，这样就可以重新提交第一个 `commit` 了
 
 ### 查看冲突文件列表
 
@@ -733,14 +763,6 @@ $ git remote show origin
 $ git describe --tags --abbrev=0
 ```
 
-### 查看某段代码是谁写的
-
-```bash
-$ git blame <file-name>
-```
-
-`blame` 的意思为`责怪`，你懂的。
-
 ### 修改作者名
 
 ```bash
@@ -765,12 +787,6 @@ $ git remote add origin <remote-url>
 
 ```bash
 $ git remote -v
-```
-
-### 查看两个星期内的改动
-
-```bash
-$ git whatchanged --since='2 weeks ago'
 ```
 
 ### 从 stash 中拿出某个文件的修改
@@ -844,18 +860,6 @@ $ git clean -X -f
 
 ```bash
 $ git status --ignored
-```
-
-### commit 历史中显示 Branch1 有的但是 Branch2 没有 commit
-
-```bash
-$ git log Branch1 ^Branch2
-```
-
-### 在 commit log 中显示 GPG 签名
-
-```bash
-$ git log --show-signature
 ```
 
 ### 新建并切换到新分支上，同时这个分支没有任何 commit
@@ -934,14 +938,6 @@ git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads
 
 最新的放在最上面
 
-### 在 commit log 中查找相关内容
-
-```bash
-git log --all --grep='<given-text>'
-```
-
-通过 grep 查找，given-text: 所需要查找的字段
-
 ### 把暂存区的指定 file 放到工作区中
 
 ```bash
@@ -960,7 +956,7 @@ Host github.com
 ```
 <!--rehype:className=wrap-text-->
 
-git 代码统计
+统计查询
 ---
 
 ### 查看 git 上的个人代码量
@@ -999,6 +995,28 @@ git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 10
 ```bash
 git log --oneline | wc -l
 ```
+
+### 查看某段代码是谁写的
+
+```bash
+$ git blame <file-name>
+```
+
+`blame` 的意思为`责怪`，你懂的。
+
+### 查看两个星期内的改动
+
+```bash
+$ git whatchanged --since='2 weeks ago'
+```
+
+### 在 commit log 中查找相关内容
+
+```bash
+git log --all --grep='<given-text>'
+```
+
+通过 grep 查找，given-text: 所需要查找的字段
 
 Conventional Commmits
 ----
