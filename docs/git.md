@@ -563,6 +563,221 @@ $ git fetch --all && git reset --hard origin/master
 $ git log Branch1 ^Branch2
 ```
 
+Git Submodule 子模块
+------
+
+### 添加子模块
+
+```bash
+$ git submodule add <仓库地址> <子模块路径>
+```
+
+### 克隆包含子模块的仓库
+
+```bash
+$ git clone <repository_url> --recursive
+```
+
+### 更新子模块
+
+```bash
+$ git submodule update --remote
+```
+
+### 切换到子模块的特定提交
+
+```bash
+$ cd <path_to_submodule>
+$ git checkout <commit_hash>
+```
+
+### 查看当前仓库中的子模块
+
+```bash
+$ git submodule status
+```
+
+### 初始化子模块
+
+```bash
+$ git submodule init
+```
+
+### 切换到父仓库的特定提交，并更新子模块
+
+```bash
+$ cd ..
+$ git checkout <commit_hash>
+$ git submodule update --remote
+```
+
+### 获取并切换子模块的最新标签
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+$ cd <path_to_submodule>
+$ git fetch --tags
+$ git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+```
+
+### 子模块递归
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+
+```bash
+# 添加所有已存在的子模块
+$ git submodule foreach --recursive git submodule add <repository_url>
+# 更新所有子模块到最新提交
+$ git submodule foreach --recursive git pull origin master
+# 检出特定的子模块路径
+$ git submodule foreach --recursive git checkout <branch_name>
+# 获取仓库中的所有子模块变化
+$ git submodule foreach --recursive git fetch
+# 获取并合并子模块的远程分支
+$ git submodule foreach --recursive git pull origin <branch_name>
+# 将子模块还原到父仓库中的初始提交
+$ git submodule foreach --recursive git checkout .
+# 获取子模块的更新并忽略本地修改
+$ git submodule foreach --recursive git fetch --all
+$ git submodule foreach --recursive git reset --hard origin/master
+```
+
+### 获取子模块的最新提交
+
+```bash
+$ cd <path_to_submodule>
+$ git pull
+```
+
+### 删除子模块
+
+```bash
+$ git submodule deinit <path_to_submodule>
+$ git rm <path_to_submodule>
+```
+
+### 切换子模块的分支
+
+```bash
+$ cd <path_to_submodule>
+$ git checkout <branch_name>
+```
+
+### 初始化并更新所有子模块
+
+```bash
+$ git submodule init
+$ git submodule update
+```
+
+### 切换子模块的特定标签
+
+```bash
+$ cd <path_to_submodule>
+$ git checkout tags/<tag_name>
+```
+
+Config 设置
+---
+
+### 查看配置的信息
+
+```bash
+$ git help config
+```
+
+获取帮助信息，查看修改个人信息的参数  
+
+### 忽略文件的权限变化
+
+```shell
+git config core.fileMode false
+```
+
+不再将文件的权限变化视作改动
+
+### 配置自动换行
+
+```bash
+$ git config --global core.autocrlf input
+```
+
+自动转换坑太大，提交到git是自动将换行符转换为 `lf`
+
+### 获取帮助信息
+
+```bash
+$ git config --list
+```
+
+### 中文乱码的解决方案
+
+```shell
+$ git config --global core.quotepath false
+```
+
+### 删除全局设置
+
+```bash
+$ git config --global --unset <entry-name>
+```
+
+### 配置 http 和 socks 代理
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```bash
+# 查看代理
+$ git config --global http.proxy
+$ git config --global https.proxy
+$ git config --global socks.proxy
+
+# 设置代理
+# 适用于 privoxy 将 socks 协议转为 http 协议的 http 端口
+$ git config --global http.proxy http://127.0.0.1:1080
+$ git config --global https.proxy http://127.0.0.1:1080
+$ git config --global socks.proxy 127.0.0.1:1080
+
+# 取消代理
+$ git config --global --unset http.proxy
+$ git config --global --unset https.proxy
+$ git config --global --unset socks.proxy
+
+# 只对 github.com 设置代理
+$ git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+$ git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
+
+# 取消 github.com 代理
+$ git config --global --unset http.https://github.com.proxy
+$ git config --global --unset https.https://github.com.proxy
+```
+
+### Git 别名
+
+```shell
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+```
+
+配置好后，再输入 `git` 命令的时候就不用再输入一大段了，例如我们要查看状态，只需：
+
+```bash
+$ git st
+```
+
+也可以看看：[更多别名](https://gist.github.com/johnpolacek/69604a1f6861129ef088)
+
+### 设置大小写敏感
+
+```shell
+# 查看git 的设置
+$ git config --get core.ignorecase
+# 设置大小写敏感
+$ git config core.ignorecase false
+# 远程有俩相同目录，通过这种方式清除掉，然后提交记录
+$ git rm -r --cached <目录/文件>
+```
+
 Git 技巧
 ------
 
@@ -643,36 +858,6 @@ $ git checkout <branch> -- <file>
 git remote prune origin
 ```
 
-### 忽略文件的权限变化
-
-```shell
-git config core.fileMode false
-```
-
-不再将文件的权限变化视作改动
-
-### Git 别名
-
-```shell
-$ git config --global alias.co checkout
-$ git config --global alias.br branch
-$ git config --global alias.ci commit
-$ git config --global alias.st status
-```
-
-也可以看看：[更多别名](https://gist.github.com/johnpolacek/69604a1f6861129ef088)
-
-### 设置大小写敏感
-
-```shell
-# 查看git 的设置
-$ git config --get core.ignorecase
-# 设置大小写敏感
-$ git config core.ignorecase false
-# 远程有俩相同目录，通过这种方式清除掉，然后提交记录
-$ git rm -r --cached <目录/文件>
-```
-
 ### 获取最近一次提交的 Hash
 
 ```shell
@@ -713,12 +898,6 @@ $ git diff <commit-id> <commit-id>
 
 ```bash
 git diff --cached
-```
-
-### 中文乱码的解决方案
-
-```shell
-$ git config --global core.quotepath false
 ```
 
 ### 展示暂存区、工作区和最近版本的不同
@@ -874,35 +1053,6 @@ $ git checkout --orphan <branch-name>
 
 ```bash
 $ git show <branch-name>:<file-name>
-```
-
-### 配置 http 和 socks 代理
-<!--rehype:wrap-class=row-span-4-->
-
-```bash
-# 查看代理
-$ git config --global http.proxy
-$ git config --global https.proxy
-$ git config --global socks.proxy
-
-# 设置代理
-# 适用于 privoxy 将 socks 协议转为 http 协议的 http 端口
-$ git config --global http.proxy http://127.0.0.1:1080
-$ git config --global https.proxy http://127.0.0.1:1080
-$ git config --global socks.proxy 127.0.0.1:1080
-
-# 取消代理
-$ git config --global --unset http.proxy
-$ git config --global --unset https.proxy
-$ git config --global --unset socks.proxy
-
-# 只对 github.com 设置代理
-$ git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
-$ git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
-
-# 取消 github.com 代理
-$ git config --global --unset http.https://github.com.proxy
-$ git config --global --unset https.https://github.com.proxy
 ```
 
 ### clone 最新一次提交
