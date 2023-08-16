@@ -84,6 +84,7 @@ $ ffmpeg -i movie.webm movie.mp4
 `-r RATE` | 每秒帧率
 `-s WIDTHxHEIGHT` | 帧大小
 `-vn` | 没有视频
+`-crf` | 指定编码的质量，数值越大压缩越高，一般范围是 18-28
 
 ### 码率设置
 
