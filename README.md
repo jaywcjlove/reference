@@ -46,12 +46,11 @@ Quick Reference
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223);-->  
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->  
 [Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python--> 
+[Ejs](./docs/ejs.md)<!--rehype:style=background: rgb(169 30 80);&class=contributing tag&data-lang=JavaScript--> 
 [Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python--> 
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->  
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193);-->  
 [GraphQL](./docs/graphql.md)<!--rehype:style=background: rgb(214 66 146);-->  
-[INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60);-->  
-[JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60);-->  
 [Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49);&class=contributing&data-info=👆看看还缺点儿什么？-->  
 [Julia](./docs/julia.md)<!--rehype:style=background: rgb(26 188 156);&class=contributing&data-info=👆看看还缺点儿什么？-->  
 [Kotlin](./docs/kotlin.md)<!--rehype:style=background: rgb(211 55 49);&class=contributing&data-info=👆看看还缺点儿什么？-->  
@@ -67,10 +66,16 @@ Quick Reference
 [Scala](./docs/scala.md)<!--rehype:style=background: rgb(34 82 94);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->  
-[TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132);-->  
-[YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230);-->  
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->  
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->  
+<!--rehype:class=home-card-->
+
+## 配置
+
+[INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60);-->  
+[JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60);-->  
+[TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132);-->  
+[YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230);-->  
 <!--rehype:class=home-card-->
 
 ## 前端
