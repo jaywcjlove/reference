@@ -55,6 +55,7 @@ $ brew install mitmproxy # macOS
 ```
 
 ### 代理模式
+<!--rehype:wrap-class=col-span-2-->
 
 Argument | Effect
 :-- | --
@@ -63,6 +64,48 @@ Argument | Effect
 `-T`, `--transparent` | 设置透明代理模式
 `-U UPSTREAM_PROXY`, `--upstream UPSTREAM_PROXY` | 将所有请求转发到上游代理服务器：`http://host[:port]`
 <!--rehype:className=style-list-->
+
+### 复制到剪贴板
+
+命令语法：
+
+```
+:export.clip format flow
+```
+
+例子：
+
+| 描述 | 命令示例 |
+| ---|--- |
+| 1. 复制为 curl 命令 | `:export.clip curl @focus` |
+| 2. 复制为 httpie | `:export.clip httpie @focus` |
+| 3. 复制为原始文件 | `:export.clip raw @focus` |
+| 4. 复制为原始 HTTP 请求 | `:export.clip raw_request @focus` |
+| 5. 复制为原始 HTTP 响应 | `:export.clip raw_response @focus` |
+<!--rehype:className=style-list-->
+
+将流程导出到系统剪贴板
+
+### 保存到文件
+
+命令语法：
+
+```
+:export.file format flow path
+```
+
+例子：
+
+| 描述 | 命令示例 |
+| ---|--- |
+| 1. 导出到 `/tmp/a.curl` | `:export.file curl @focus /tmp/a.curl` |
+| 2. 导出到 `/tmp/a.httpie` | `:export.file httpie @focus /tmp/a.httpie` |
+| 3. 导出到 `/tmp/a.raw` | `:export.file raw @focus  /tmp/a.raw` |
+| 4. 导出到 `/tmp/a.request` | `:export.file raw_request @focus /tmp/a.request` |
+| 5. 导出到 `/tmp/a.response` | `:export.file raw_response @focus /tmp/a.response` |
+<!--rehype:className=style-list-->
+
+将流程导出到系统剪贴板
 
 ### 流（视图）
 <!--rehype:wrap-class=row-span-2-->
