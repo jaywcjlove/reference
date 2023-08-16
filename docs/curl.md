@@ -63,14 +63,16 @@ Curl 是一种在服务器之间传输数据的工具，支持协议，包括 HT
 ### 头信息 Headers
 
 ```bash
--A <str>         # --user-agent
+-A <str>     # --user-agent
+-b name=val  # --cookie
 
--b name=val      # --cookie
+# 从 URL 的指定文件加载 cookie
+-b, --cookie FILE
+# 将 cookie 从 URL 保存到指定文件
+-c, --cookie-jar FILE
 
 -b FILE          # --cookie
-
 -H "X-Foo: y"    # --header
-
 --compressed     # 使用 deflate/gzip
 ```
 
