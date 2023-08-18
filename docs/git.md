@@ -685,7 +685,7 @@ Config 设置
 $ git help config
 ```
 
-获取帮助信息，查看修改个人信息的参数  
+获取帮助信息，查看修改个人信息的参数
 
 ### 忽略文件的权限变化
 
@@ -948,12 +948,6 @@ $ git describe --tags --abbrev=0
 $ git commit --amend --author='Author Name <email@address.com>'
 ```
 <!--rehype:className=wrap-text-->
-
-### 修改远程仓库的 url
-
-```bash
-$ git remote set-url origin <URL>
-```
 
 ### 增加远程仓库
 
