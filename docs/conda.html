@@ -233,6 +233,13 @@
 </span><span class="code-line">conda clean <span class="token parameter variable">--all</span> <span class="token comment"># 清除所有未使用的文件</span>
 </span><span class="code-line">conda config <span class="token parameter variable">--show</span> <span class="token comment"># 检查conda配置</span>
 </span></code></pre>
+<p>设置指定环境为默认环境</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">vim</span> ~/.bashrc
+</span><span class="code-line"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"~/anaconda/envs/ENVNAME/bin:<span class="token environment constant">$PATH</span>"</span>  <span class="token comment"># 文件末尾添加</span>
+</span><span class="code-line">conda activate ENVNAME  <span class="token comment"># :wq 保存并关闭</span>
+</span><span class="code-line"><span class="token builtin class-name">source</span> ~/.bashrc  <span class="token comment"># 更新</span>
+</span><span class="code-line">conda config <span class="token parameter variable">--set</span> auto_activate_base <span class="token boolean">false</span> <span class="token comment"># 禁用auto activate base环境</span>
+</span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="额外提示"><a aria-hidden="true" tabindex="-1" href="#额外提示"><span class="icon icon-link"></span></a>额外提示</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">conda COMMAND <span class="token parameter variable">--help</span>  <span class="token comment"># 获得任何命令的帮助</span>
 </span><span class="code-line"><span class="token comment"># 获取任何包裹的信息</span>
