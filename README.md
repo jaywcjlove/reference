@@ -46,12 +46,11 @@ Quick Reference
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223);-->  
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->  
 [Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python--> 
+[Ejs](./docs/ejs.md)<!--rehype:style=background: rgb(169 30 80);&class=contributing tag&data-lang=JavaScript--> 
 [Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python--> 
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->  
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193);-->  
 [GraphQL](./docs/graphql.md)<!--rehype:style=background: rgb(214 66 146);-->  
-[INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60);-->  
-[JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60);-->  
 [Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49);&class=contributing&data-info=👆看看还缺点儿什么？-->  
 [Julia](./docs/julia.md)<!--rehype:style=background: rgb(26 188 156);&class=contributing&data-info=👆看看还缺点儿什么？-->  
 [Kotlin](./docs/kotlin.md)<!--rehype:style=background: rgb(211 55 49);&class=contributing&data-info=👆看看还缺点儿什么？-->  
@@ -67,10 +66,16 @@ Quick Reference
 [Scala](./docs/scala.md)<!--rehype:style=background: rgb(34 82 94);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->  
-[TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132);-->  
-[YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230);-->  
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->  
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->  
+<!--rehype:class=home-card-->
+
+## 配置
+
+[INI](./docs/ini.md)<!--rehype:style=background: rgb(57 59 60);-->  
+[JSON](./docs/json.md)<!--rehype:style=background: rgb(57 59 60);-->  
+[TOML](./docs/toml.md)<!--rehype:style=background: rgb(132 132 132);-->  
+[YAML](./docs/yaml.md)<!--rehype:style=background: rgb(91 163 230);-->  
 <!--rehype:class=home-card-->
 
 ## 前端
@@ -158,6 +163,7 @@ Quick Reference
 [Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [Sysdig](./docs/sysdig.md)<!--rehype:style=background: rgb(1 171 199);-->  
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99);-->  
+[Taskset](./docs/taskset.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123);-->  
 [CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [Zip](./docs/zip.md)<!--rehype:style=background: rgb(99 99 99);-->  
@@ -182,6 +188,7 @@ Quick Reference
 [Adobe Photoshop](./docs/adobe-photoshop.md)<!--rehype:style=background: rgb(49 168 255);-->  
 [Adobe XD](./docs/adobe-xd.md)<!--rehype:style=background: rgb(255 97 246);-->  
 [Android Studio](./docs/android-studio.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[Blender](./docs/blender.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Firefox](./docs/firefox.md)<!--rehype:style=background: rgb(253 53 76);-->  
 [Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54);-->  
 [Gitlab](./docs/gitlab.md)<!--rehype:style=background: rgb(226 67 41);-->  
@@ -199,6 +206,7 @@ Quick Reference
 
 [Quick Reference](./docs/quickreference.md)<!--rehype:style=background: rgb(0 182 122);&class=tag&data-lang=排版说明-->  
 [Aspect Ratio](./docs/aspect-ratio.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[ASCII Code](./docs/ascii-code.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Github Actions](./docs/github-actions.md)<!--rehype:style=background: rgb(121 184 255);-->  
 [Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->  
 [Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=CSS-->  
@@ -237,11 +245,11 @@ Quick Reference
 <a href="https://github.com/JeffersonHuang" title="Jefferson Huang">
   <img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson Huang"/>
 </a>
-<a href="https://github.com/Alex-Programer" title="Alex">
-  <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
-</a>
 <a href="https://github.com/aixcyi" title="砹小翼">
   <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
+</a>
+<a href="https://github.com/Alex-Programer" title="Alex">
+  <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
 </a>
 <a href="https://github.com/LufsX" title="LufsX">
   <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
@@ -251,9 +259,6 @@ Quick Reference
 </a>
 <a href="https://github.com/eryajf" title="二丫讲梵">
   <img src="https://avatars.githubusercontent.com/u/33259379?v=4" width="42;" alt="二丫讲梵"/>
-</a>
-<a href="https://github.com/heStudio-Network" title="醉、倾城">
-  <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
 </a>
 <a href="https://github.com/LiuYuan-SHU" title="Yuan Liu">
   <img src="https://avatars.githubusercontent.com/u/96400967?v=4" width="42;" alt="Yuan Liu"/>
@@ -266,6 +271,9 @@ Quick Reference
 </a>
 <a href="https://github.com/qyl27" title="秋 雨落">
   <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋 雨落"/>
+</a>
+<a href="https://github.com/heStudio-Network" title="醉、倾城">
+  <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
 </a>
 <a href="https://github.com/dadatom" title="Da Da">
   <img src="https://avatars.githubusercontent.com/u/33886943?v=4" width="42;" alt="Da Da"/>
@@ -353,6 +361,9 @@ Quick Reference
 </a>
 <a href="https://github.com/likeshop-github" title="LikeShop技术社区">
   <img src="https://avatars.githubusercontent.com/u/77180968?v=4" width="42;" alt="LikeShop技术社区"/>
+</a>
+<a href="https://github.com/MackDing" title="MackGg">
+  <img src="https://avatars.githubusercontent.com/u/19878893?v=4" width="42;" alt="MackGg"/>
 </a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski">
   <img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/>
@@ -495,8 +506,8 @@ Quick Reference
 <a href="https://github.com/phygerr" title="phygerr">
   <img src="https://avatars.githubusercontent.com/u/42068889?v=4" width="42;" alt="phygerr"/>
 </a>
-<a href="https://github.com/Mowmowj" title="shelton">
-  <img src="https://avatars.githubusercontent.com/u/24759562?v=4" width="42;" alt="shelton"/>
+<a href="https://github.com/Mowmowj" title="nexo">
+  <img src="https://avatars.githubusercontent.com/u/24759562?v=4" width="42;" alt="nexo"/>
 </a>
 <a href="https://github.com/swift-fs" title="swift">
   <img src="https://avatars.githubusercontent.com/u/77133741?v=4" width="42;" alt="swift"/>
@@ -527,6 +538,9 @@ Quick Reference
 </a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶">
   <img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/>
+</a>
+<a href="https://github.com/HuaChan233" title="花开花落">
+  <img src="https://avatars.githubusercontent.com/u/75212820?v=4" width="42;" alt="花开花落"/>
 </a>
 <a href="https://github.com/1250422131" title="萌新杰少">
   <img src="https://avatars.githubusercontent.com/u/52126790?v=4" width="42;" alt="萌新杰少"/>
@@ -599,6 +613,7 @@ Quick Reference
 [hao.kim](https://ref.hao.kim)<!--rehype:target=_blank-->
 [quickref.binscor.top](https://quickref.binscor.top)<!--rehype:target=_blank&data-info=👆每天自动同步-->
 [fxkjnj.com](https://ref.fxkjnj.com/)<!--rehype:target=_blank&data-info=👆每天自动同步-->
+[tool.sakura.vin](https://tool.sakura.vin/ref/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
