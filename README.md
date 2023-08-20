@@ -266,6 +266,9 @@ Quick Reference
 <a href="https://github.com/chaos-cn" title="chaos">
   <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
 </a>
+<a href="https://github.com/MackDing" title="Blossom">
+  <img src="https://avatars.githubusercontent.com/u/19878893?v=4" width="42;" alt="Blossom"/>
+</a>
 <a href="https://github.com/MarioMang" title="MarioMang">
   <img src="https://avatars.githubusercontent.com/u/3959555?v=4" width="42;" alt="MarioMang"/>
 </a>
@@ -304,9 +307,6 @@ Quick Reference
 </a>
 <a href="https://github.com/itldg" title="老大哥">
   <img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/>
-</a>
-<a href="https://github.com/MackDing" title="Blossom">
-  <img src="https://avatars.githubusercontent.com/u/19878893?v=4" width="42;" alt="Blossom"/>
 </a>
 <a href="https://github.com/Country-If" title="Maylon">
   <img src="https://avatars.githubusercontent.com/u/62837275?v=4" width="42;" alt="Maylon"/>
