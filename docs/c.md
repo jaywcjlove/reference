@@ -443,7 +443,7 @@ int* ptr = &myAge;         // 名为 ptr 的指针变量，用于存储 myAge �
 
 printf("%d\n", myAge);     // 输出 myAge (43) 的值
 
-printf("%p\n", \&myAge);   // 输出 myAge 的内存地址（0x7ffe5367e044）
+printf("%p\n", &myAge);   // 输出 myAge 的内存地址（0x7ffe5367e044）
 
 printf("%p\n", ptr);       // 用指针（0x7ffe5367e044）输出myAge的内存地址
 ```
