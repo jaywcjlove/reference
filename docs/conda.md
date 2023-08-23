@@ -92,7 +92,6 @@ conda clean --all # 清除所有未使用的文件
 conda config --show # 检查conda配置
 ```
 
-
 设置指定环境为默认环境
 
 ```bash
@@ -102,7 +101,6 @@ conda activate ENVNAME  # :wq 保存并关闭
 source ~/.bashrc  # 更新
 conda config --set auto_activate_base false # 禁用auto activate base环境
 ```
-
 
 ### 额外提示
 
