@@ -249,7 +249,7 @@ Quick Reference
 <a href="https://github.com/aixcyi" title="砹小翼">
   <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
 </a>
-<a href="https://github.com/Alex-Programer" title="Alex">
+<a href="https://github.com/Alex-Programmer-Bro" title="Alex">
   <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
 </a>
 <a href="https://github.com/LufsX" title="LufsX">
@@ -321,8 +321,8 @@ Quick Reference
 <a href="https://github.com/Brid9e" title="Joe">
   <img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Joe"/>
 </a>
-<a href="https://github.com/ch3nnn" title="陈通">
-  <img src="https://avatars.githubusercontent.com/u/40114564?v=4" width="42;" alt="陈通"/>
+<a href="https://github.com/ch3nnn" title="chentong">
+  <img src="https://avatars.githubusercontent.com/u/40114564?v=4" width="42;" alt="chentong"/>
 </a>
 <a href="https://github.com/CharlotteZeng" title="hanchZ">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="hanchZ"/>
@@ -338,6 +338,9 @@ Quick Reference
 </a>
 <a href="https://github.com/eeeeeio" title="EEEEE">
   <img src="https://avatars.githubusercontent.com/u/20723545?v=4" width="42;" alt="EEEEE"/>
+</a>
+<a href="https://github.com/sirius-fan" title="Fan">
+  <img src="https://avatars.githubusercontent.com/u/25720015?v=4" width="42;" alt="Fan"/>
 </a>
 <a href="https://github.com/Fuku-L" title="Fuku-L">
   <img src="https://avatars.githubusercontent.com/u/38535911?v=4" width="42;" alt="Fuku-L"/>
