@@ -1528,7 +1528,6 @@ type Age2 = Person["age"];
 ```
 
 ### 范型推导出列表字面量
-<!--rehype:wrap-class=col-span-2-->
 
 ```ts
 const a = <T extends string>(t: T) => t;
@@ -1538,8 +1537,24 @@ const d = a("a");  // const d: 'a'
 const e = a(1);    // const d: 1
 const f = a(true); // const d: true
 
-const g = <T extends string[]>(t: [...T]) => t;  // 这里t的类型用了一个展开运算
-const h = g(["111", "222"]);  // 类型变成["111", "222"]了
+// 这里t的类型用了一个展开运算
+const g = 
+  <T extends string[]>(t: [...T]) => t;
+// 类型变成["111", "222"]了
+const h = g(["111", "222"]);
+```
+
+### Object.keys 类型声明
+<!--rehype:wrap-class=col-span-2-->
+
+```ts
+const keys = Object.keys(options) as (keyof typeof options)[];
+
+keys.forEach(key => {
+  if (options[key] == null) {
+    throw new Error(`Missing option ${key}`);
+  }
+});
 ```
 
 .d.ts 模版
@@ -1994,6 +2009,7 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 <!--rehype:className=wrap-text-->
 
 ### 编译器选项
+<!--rehype:wrap-class=col-span-2-->
 
 :- | --
 :- | --
@@ -2006,7 +2022,7 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 `--project` _string_ | 编译项目给定其配置文件的路径，或带有 'tsconfig.json' 的文件夹
 `--showConfig` _boolean_ | 打印最终配置而不是构建
 `--version` _boolean_ | 打印编译器的版本
-<!--rehype:className=style-list-->
+<!--rehype:className=left-align-->
 
 ### 构建选项
 
@@ -2020,13 +2036,14 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 <!--rehype:className=style-list-->
 
 ### 监听选项
+<!--rehype:wrap-class=col-span-2-->
 
 :- | --
 :- | --
 `--excludeDirectories` _list_ | 从监视进程中删除目录列表
 `--excludeFiles` _list_ | 从监视模式的处理中删除文件列表
 `--fallbackPolling` _fixedinterval_, _priorityinterval_, _dynamicpriority_, _fixedchunksize_ | 指定当系统用完本机文件观察器时观察器应使用的方法
-`--synchronousWatchDirectory` boolean | 在本机不支持递归监视的平台上同步调用回调并更新目录监视程序的状态
+`--synchronousWatchDirectory` _boolean_ | 在本机不支持递归监视的平台上同步调用回调并更新目录监视程序的状态
 `--watch` _boolean_ | 观看输入文件
 `--watchDirectory` _usefsevents_, _fixedpollinginterval_, _dynamicprioritypolling_, _fixedchunksizepolling | 指定在缺少递归文件监视功能的系统上如何监视目录
 `--watchFile` _fixedpollinginterval_, _prioritypollinginterval_, _dynamicprioritypolling_, _fixedchunksizepolling_, _usefsevents_, _usefseventsonparentdirectory_ | 指定 TypeScript 监视模式的工作方式
