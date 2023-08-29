@@ -855,7 +855,7 @@ $ git checkout <branch> -- <file>
 删除本地存在远程不存在的分支
 
 ```shell
-git remote prune origin
+$ git remote prune origin
 ```
 
 ### 获取最近一次提交的 Hash
@@ -1157,10 +1157,28 @@ $ git whatchanged --since='2 weeks ago'
 ### 在 commit log 中查找相关内容
 
 ```bash
-git log --all --grep='<given-text>'
+$ git log --all --grep='<given-text>'
 ```
 
 通过 grep 查找，given-text: 所需要查找的字段
+
+### Git 仓库的大小
+
+```bash
+$ git ls-files | xargs -r du -hs
+```
+
+### Git 仓库的总大小
+
+```bash
+$ git count-objects -vH
+```
+
+### 查询历史体积大的 10 个文件
+
+```bash
+$ git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | awk '/^blob/ {print substr($0,6)}' | sort --numeric-sort --key=2 --reverse | head -n 10 | cut -c 13-
+```
 
 Conventional Commmits
 ----
