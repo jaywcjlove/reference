@@ -354,7 +354,7 @@ jobs:
 <a href="https://github.com/Moeyuuko" title="Moeyuuko">
   <img src="https://avatars.githubusercontent.com/u/14266681?v=4" width="42;" alt="Moeyuuko"/>
 </a>
-<a href="https://github.com/Mo3et" title="Monet Lee">
+<a href="https://github.com/mo3et" title="Monet Lee">
   <img src="https://avatars.githubusercontent.com/u/34803812?v=4" width="42;" alt="Monet Lee"/>
 </a>
 <a href="https://github.com/HanaNoryu" title="Noryu">
