@@ -528,8 +528,8 @@ jobs:
 <a href="https://github.com/qwxingzhe" title="行者">
   <img src="https://avatars.githubusercontent.com/u/7071651?v=4" width="42;" alt="行者"/>
 </a>
-<a href="https://github.com/binscor" title="郑乃斌">
-  <img src="https://avatars.githubusercontent.com/u/37325821?v=4" width="42;" alt="郑乃斌"/>
+<a href="https://github.com/binscor" title="Zheng Nai Bin">
+  <img src="https://avatars.githubusercontent.com/u/37325821?v=4" width="42;" alt="Zheng Nai Bin"/>
 </a>
 <a href="https://github.com/Zeng-qh" title="都一样">
   <img src="https://avatars.githubusercontent.com/u/40046415?v=4" width="42;" alt="都一样"/>
