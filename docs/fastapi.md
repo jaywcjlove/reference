@@ -1,10 +1,11 @@
 FastAPI 备忘清单
 ===
 
-FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示。
+FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示。Python: `3.9.5`   FastAPI: `0.103.1`
 
 入门
 ---
+<!--rehype:body-class=cols-1-->
 
 ### 最小程序
 
@@ -25,10 +26,47 @@ if __name__ == '__main__':
     uvicorn.run(app='main:app', reload=True)
 ```
 
-### 查询参数
-<!--rehype:wrap-class=col-span-2 row-span-2-->
+### 路径参数
 
-带默认值的查询参数
+#### 最基本的路径参数
+
+```python
+# http://127.0.0.1:8000/items/1
+@app.get("/items/{item_id}")
+async def read_item(item_id):
+    return {"item_id": item_id} # item_id自定义
+```
+
+#### 多个路径参数
+
+```python
+# http://127.0.0.1:8000/items/1/2
+@app.get("/items/{item_id}/{user_id}")
+async def read_item(item_id, user_id):
+    return {"item_id": item_id, "user_id": user_id}
+```
+
+#### 有类型的路径参数
+
+```python
+# http://127.0.0.1:8000/items/1
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    return {"item_id": item_id}
+```
+
+#### 文件路径参数
+
+```python
+# http://127.0.0.1:8000/file//home/my/my.txt
+@app.get("/file/{file_path:path}")
+async def read_item(file_path):
+    return {"file_path": file_path}
+```
+
+### 查询参数
+
+#### 带默认值的查询参数
 
 ```python
 # http://127.0.0.1:8000/items/?skip=0&limit=2
@@ -38,7 +76,7 @@ async def read_item(skip: int = 0, limit: int = 10):
     return fake_items_db[skip: skip + limit]
 ```
 
-可选查询参数
+#### 可选查询参数
 
 ```python
 # http://127.0.0.1:8000/items/1?q=admin
@@ -50,7 +88,7 @@ async def read_item(item_id: str, q: Union[str, None] = None):
     return {"item_id": item_id}
 ```
 
-多路径多查询参数
+#### 多路径多查询参数
 
 ```python
 # http://127.0.0.1:8000/users/1/items/2
@@ -70,7 +108,7 @@ async def read_user_item(
     return item
 ```
 
-必需查询参数
+#### 必需查询参数
 
 ```python
 # http://127.0.0.1:8000/items/123?needy=yes
@@ -78,44 +116,6 @@ async def read_user_item(
 async def read_user_item(item_id: str, needy: str):
     item = {"item_id": item_id, "needy": needy}
     return item
-```
-
-### 路径参数
-
-最基本的路径参数
-
-```python
-# <http://127.0.0.1:8000/items/1>
-@app.get("/items/{item_id}")
-async def read_item(item_id):
-    return {"item_id": item_id} # item_id自定义
-```
-
-多个路径参数
-
-```python
-# <http://127.0.0.1:8000/items/1/2>
-@app.get("/items/{item_id}/{user_id}")
-async def read_item(item_id, user_id):
-    return {"item_id": item_id, "user_id": user_id}
-```
-
-有类型的路径参数
-
-```python
-# <http://127.0.0.1:8000/items/1>
-@app.get("/items/{item_id}")
-async def read_item(item_id: int):
-    return {"item_id": item_id}
-```
-
-文件路径参数
-
-```python
-# <http://127.0.0.1:8000/file//home/my/my.txt>
-@app.get("/file/{file_path:path}")
-async def read_item(file_path):
-    return {"file_path": file_path}
 ```
 
 ### 请求体
@@ -150,7 +150,6 @@ curl -X 'POST' \
 ```
 
 ### 查询参数和字符串校验
-<!--rehype:wrap-class=col-span-2-->
 
 ```python
 from fastapi import Query
@@ -173,14 +172,151 @@ async def read_items(q: Union[str, None] = Query(default=None, max_length=50)):
 | alias      | 别名参数     | string        |
 | deprecated | 准备弃用参数 | bool          |
 
-多个相同的查询参数 <http://127.0.0.1:8000/items/?q=foo&q=bar>
+#### 多个相同的查询参数
 
 ```python
+# http://127.0.0.1:8000/items/?q=foo&q=bar
 @app.get("/items/")
 async def read_items(q: Union[List[str], None] = Query(default=None)):
     query_items = {"q": q}
     return query_items
 ```
+
+### 路径参数和数值校验
+
+Path用法基本和Query相同，参考：[FastAPI官方文档](https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/)
+
+#### 导入 Path
+
+```python
+from fastapi import FastAPI, Path, Query
+from typing_extensions import Annotated
+```
+
+#### 声明元数据
+
+```python
+@app.get("/items/{item_id}")
+async def read_items(
+    item_id: Annotated[int, Path(title="The ID of the item to get")],
+    q: Annotated[Union[str, None], Query(alias="item-query")] = None,
+):
+    results = {"item_id": item_id}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+#### 参数列表
+
+| 参数  | 含义                | 类型      |
+| ----- | ------------------- | --------- |
+| ...   | 和Query具有相同参数 | ...       |
+| ge    | 大于等于            | int float |
+| gt    | 大于                | int float |
+| le    | 小于等于            | int float |
+| le    | 小于等于            | int float |
+| title | api文档的标题       | string    |
+
+### 其他参数
+
+都具有Query的参数，max_length、min_length等
+
+#### Cookie参数
+
+```python
+from fastapi import Cookie
+@app.get("/items/")
+async def read_items(ads_id: Annotated[Union[str, None], Cookie()] = None):
+    return {"ads_id": ads_id}
+```
+
+#### Header 参数
+
+```python
+from fastapi import Header
+@app.get("/items/")
+async def read_items(user_agent: Annotated[Union[str, None], Header()] = None,items_id: Annotated[Union[int, None], Header(ge=1)] = None):
+    return {"User-Agent": user_agent, "items_id": items_id}
+```
+
+### 表单数据
+
+接收的不是 JSON，而是表单字段时，要使用 Form。
+
+#### 安装
+
+`pip install python-multipart`
+
+#### HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<form method="post" action="http://127.0.0.1:8000/login">
+    <span>账号：</span><input type="text" name="username">
+    <br>
+    <span>密码：</span><input type="password" name="password">
+    <br>
+    <input type="submit" value="登录">
+</form>
+</body>
+</html>
+```
+
+#### FastAPI
+
+```python
+from fastapi import FastAPI, Form
+import uvicorn
+app = FastAPI()
+@app.post("/login/")
+async def login(username: str = Form(), password: str = Form()):
+    return {"username": username}
+if __name__ == '__main__':
+    uvicorn.run(app='main:app', reload=True)
+```
+
+### 文件上传
+
+```python
+from fastapi import FastAPI, UploadFile
+from fastapi.responses import HTMLResponse
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile):
+    print(file.file.read().decode())
+    return {"filenames": file.filename, "type": str(type(file.file))}
+@app.get("/")
+async def main():
+    content = """<body>
+<form action="/uploadfile/" enctype="multipart/form-data" method="post">
+<input name="file" type="file" multiple>
+<input type="submit">
+</form>
+</body>"""
+    return HTMLResponse(content=content)
+```
+
+#### UploadFile属性
+
+| 属性名       | 含义     | 返回                                    |
+| ------------ | -------- | --------------------------------------- |
+| filename     | 文件名   | 上传的文件名                            |
+| content_type | 内容类型 | MIME 类型                               |
+| file         | 文件     | SpooledTemporaryFile具有read，write方法 |
+
+#### UploadFile async方法
+
+| 方法名       | 含义                                      |
+| ------------ | ----------------------------------------- |
+| write(data)  | 把 `data` 写入文件                        |
+| read(size)   | 按指定数量的字节读取文件内容              |
+| seek(offset) | 移动至文件 `offset` （`int`）字节处的位置 |
+| close()      | 关闭文件                                  |
 
 参考
 ---
