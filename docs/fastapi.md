@@ -1,4 +1,4 @@
-FastAPI备忘清单
+FastAPI 备忘清单
 ===
 
 FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示。
@@ -8,7 +8,7 @@ FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框�
 
 ### 最小程序
 
-下面代码会直接启动http服务，也可以使用uvicorn main:app --reload
+下面代码会直接启动http服务，也可以使用 `uvicorn main:app --reload`
 
 ```python
 from fastapi import FastAPI
@@ -28,18 +28,20 @@ if __name__ == '__main__':
 ### 查询参数
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-带默认值的查询参数 <http://127.0.0.1:8000/items/?skip=0&limit=2>
+带默认值的查询参数
 
 ```python
+# http://127.0.0.1:8000/items/?skip=0&limit=2
 fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
 @app.get("/items/")
 async def read_item(skip: int = 0, limit: int = 10):
     return fake_items_db[skip: skip + limit]
 ```
 
-可选查询参数 <http://127.0.0.1:8000/items/1?q=admin>
+可选查询参数
 
 ```python
+# http://127.0.0.1:8000/items/1?q=admin
 from typing import Union
 @app.get("/items/{item_id}")
 async def read_item(item_id: str, q: Union[str, None] = None):
@@ -48,9 +50,12 @@ async def read_item(item_id: str, q: Union[str, None] = None):
     return {"item_id": item_id}
 ```
 
-多路径多查询参数 <http://127.0.0.1:8000/users/1/items/2> or <http://127.0.0.1:8000/users/1/items/2?q=query&short=true>
+多路径多查询参数
 
 ```python
+# http://127.0.0.1:8000/users/1/items/2
+# or 
+# http://127.0.0.1:8000/users/1/items/2?q=query&short=true
 @app.get("/users/{user_id}/items/{item_id}")
 async def read_user_item(
         user_id: int, item_id: str, q: Union[str, None] = None, short: bool = False
@@ -65,9 +70,10 @@ async def read_user_item(
     return item
 ```
 
-必需查询参数 <http://127.0.0.1:8000/items/123?needy=yes>
+必需查询参数
 
 ```python
+# http://127.0.0.1:8000/items/123?needy=yes
 @app.get("/items/{item_id}")
 async def read_user_item(item_id: str, needy: str):
     item = {"item_id": item_id, "needy": needy}
@@ -76,33 +82,37 @@ async def read_user_item(item_id: str, needy: str):
 
 ### 路径参数
 
-最基本的路径参数 <http://127.0.0.1:8000/items/1>
+最基本的路径参数
 
 ```python
+# <http://127.0.0.1:8000/items/1>
 @app.get("/items/{item_id}")
 async def read_item(item_id):
     return {"item_id": item_id} # item_id自定义
 ```
 
-多个路径参数 <http://127.0.0.1:8000/items/1/2>
+多个路径参数
 
 ```python
+# <http://127.0.0.1:8000/items/1/2>
 @app.get("/items/{item_id}/{user_id}")
 async def read_item(item_id, user_id):
     return {"item_id": item_id, "user_id": user_id}
 ```
 
-有类型的路径参数 <http://127.0.0.1:8000/items/1>
+有类型的路径参数
 
 ```python
+# <http://127.0.0.1:8000/items/1>
 @app.get("/items/{item_id}")
 async def read_item(item_id: int):
     return {"item_id": item_id}
 ```
 
-文件路径参数 <http://127.0.0.1:8000/file//home/my/my.txt>
+文件路径参数
 
 ```python
+# <http://127.0.0.1:8000/file//home/my/my.txt>
 @app.get("/file/{file_path:path}")
 async def read_item(file_path):
     return {"file_path": file_path}
@@ -140,6 +150,7 @@ curl -X 'POST' \
 ```
 
 ### 查询参数和字符串校验
+<!--rehype:wrap-class=col-span-2-->
 
 ```python
 from fastapi import Query
