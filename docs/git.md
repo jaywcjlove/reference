@@ -1100,6 +1100,27 @@ Host github.com
 ```
 <!--rehype:className=wrap-text-->
 
+### Fork仓库同步上游仓库
+
+- 设置上游仓库
+
+  ```shell
+  $ git remote add upstream https://github.com/jaywcjlove/reference.git
+  ```
+  
+- 本地项目操作
+
+  ```shell
+  $ git fetch upstream # 获取上游仓库更新
+  $ git stach # 暂存本地修改(如果有)
+  $ git branch -a # 列出所有远程仓库地址(非必须)
+  $ git rebase remotes/upstream/main # 使用远程仓库的提交记录来重写本地提交记录
+  $ git push -f # 强制推送到远程(github)仓库
+  $ git stach pop # 恢复暂存的本地修改(如果有)
+  ```
+
+<!--rehype:className=style-timeline-->
+
 统计查询
 ---
 
