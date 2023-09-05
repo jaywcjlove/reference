@@ -318,6 +318,171 @@ async def main():
 | seek(offset) | 移动至文件 `offset` （`int`）字节处的位置 |
 | close()      | 关闭文件                                  |
 
+依赖项
+---
+
+<!--rehype:body-class=cols-1-->
+
+### 依赖项使用场景
+
+- 共享业务逻辑（复用相同的代码逻辑）
+- 共享数据库连接
+- 实现安全、验证、角色权限
+- 等……
+
+### 创建依赖项
+
+```python
+from typing import Union
+
+from fastapi import Depends, FastAPI
+
+app = FastAPI()
+
+# read_items和read_users方法依赖common_parameters
+# 白话就是read_items和read_users都需要q，skip，limit查询参数
+async def common_parameters(
+    q: Union[str, None] = None, skip: int = 0, limit: int = 100
+):
+    return {"q": q, "skip": skip, "limit": limit}
+
+
+@app.get("/items/")
+async def read_items(commons: dict = Depends(common_parameters)):
+    return commons
+
+
+@app.get("/users/")
+async def read_users(commons: dict = Depends(common_parameters)):
+    return commons
+```
+
+### 类作为依赖项
+
+```python
+from typing import Union
+
+from fastapi import Depends, FastAPI
+
+app = FastAPI()
+
+
+fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
+
+
+class CommonQueryParams:
+    def __init__(self, q: Union[str, None] = None, skip: int = 0, limit: int = 100):
+        self.q = q
+        self.skip = skip
+        self.limit = limit
+
+# read_itemsx接收一个commons参数，类型是CommonQueryParams
+# CommonQueryParams接收三个参数，这三个参数是调用api的时候传
+@app.get("/items/")
+async def read_items(commons: CommonQueryParams = Depends(CommonQueryParams)):
+    response = {}
+    if commons.q:
+        response.update({"q": commons.q})
+    items = fake_items_db[commons.skip : commons.skip + commons.limit]
+    response.update({"items": items})
+    return response
+```
+
+#### 还可以简写
+
+```python
+@app.get("/items/")
+async def read_items(commons: CommonQueryParams = Depends()): # 这里的Depends没有传参，FastAPI会自动使用CommonQueryParams
+    response = {}
+    if commons.q:
+        response.update({"q": commons.q})
+    items = fake_items_db[commons.skip : commons.skip + commons.limit]
+    response.update({"items": items})
+    return response
+```
+
+### 子依赖项
+
+```python
+from typing import Union
+
+from fastapi import Cookie, Depends, FastAPI
+
+app = FastAPI()
+
+
+def query_extractor(q: Union[str, None] = None):
+    return q
+
+
+def query_or_cookie_extractor(
+    q: str = Depends(query_extractor),
+    last_query: Union[str, None] = Cookie(default=None),
+):
+    if not q:
+        return last_query
+    return q
+
+# read_query函数依赖query_or_cookie_extractor函数
+# query_or_cookie_extractor函数又依赖query_extractor函数
+# 就是说依赖项可以依赖其他依赖项，只要你不晕，可以无数次套娃
+@app.get("/items/")
+async def read_query(query_or_default: str = Depends(query_or_cookie_extractor)):
+    return {"q_or_cookie": query_or_default}
+```
+
+#### 不使用缓存
+
+```python
+# 使用use_cache = False参数不使用缓存数据
+# 不使用use_cache = False,value和value1是一样的
+def result_value():
+    value = randint(1, 99)
+    return value
+
+def get_value(value: int = Depends(result_value, use_cache=False), value1: int = Depends(result_value, use_cache=False)):
+    return value, value1
+
+@app.get('/value/')
+async def needy_dependency(value: tuple = Depends(get_value)):
+    return {"value": value}
+```
+
+### 全局依赖项
+
+```python
+from fastapi import Depends, FastAPI, Header, HTTPException
+
+
+async def verify_token(x_token: str = Header()):
+    if x_token != "fake-super-secret-token":
+        raise HTTPException(status_code=400, detail="X-Token header invalid")
+
+
+async def verify_key(x_key: str = Header()):
+    if x_key != "fake-super-secret-key":
+        raise HTTPException(status_code=400, detail="X-Key header invalid")
+    return x_key
+
+# 全局依赖项很有用，后面的安全性就可以使用全局依赖项
+app = FastAPI(dependencies=[Depends(verify_token), Depends(verify_key)])
+
+
+@app.get("/items/")
+async def read_items():
+    return [{"item": "Portal Gun"}, {"item": "Plumbus"}]
+
+
+@app.get("/users/")
+async def read_users():
+    return [{"username": "Rick"}, {"username": "Morty"}]
+```
+
+安全性
+---
+
+待更新
+
 参考
 ---
 
