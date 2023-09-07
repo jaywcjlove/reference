@@ -1314,18 +1314,41 @@ export const Progress: FC<PropsWithRef<ProgressProps>> = forwardRef<HTMLDivEleme
 ```
 
 ### 组件 'as' 属性
-<!--rehype:wrap-class=col-span-3-->
+<!--rehype:wrap-class=col-span-2-->
 
 ```tsx
 import React, { ElementType, ComponentPropsWithoutRef } from "react";
 
-export const Link = <T extends ElementType<any> = "a">(props: { as?: T; } & ComponentPropsWithoutRef<T>) => {
+export const Link = <T extends ElementType<any> = "a">(
+  props: { as?: T; } & ComponentPropsWithoutRef<T>
+) => {
   const Comp = props.as || "a";
   return <Comp {...props}></Comp>;
 };
+
+
+<Link as="div">文本</Link>;
 ```
 
 允许传入自定义 `React` 组件，或 `div`, `a` 标签
+
+### 组件作为 Props 传递
+
+```tsx
+type RowProps = {
+  element: React.ElementType<{
+    className?: string;
+  }>;
+}
+const Row = (props: RowProps) => {
+  return (
+    <props.element className="h-8 w-8" />
+  );
+};
+ 
+<Row element={"div"} />;
+<Row element={UserIcon} />;
+```
 
 各种各样的技巧
 ---
