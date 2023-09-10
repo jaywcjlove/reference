@@ -18,13 +18,13 @@ int main() {
 }
 ```
 
-使用 `gcc` 编译 `hello.c` 文件
+使用 `gcc` 编译 `hello.c` 源文件
 
 ```bash
 $ gcc -o hello hello.c
 ```
 
-运行编译后的二进制文件(`hello`)
+运行编译后的二进制文件可执行文件(`hello`)
 
 ```bash
 $ ./hello
@@ -37,8 +37,8 @@ $ ./hello
 ```c
 int myNum = 15;
 
-int myNum2; // 不赋值，然后再赋值
-myNum2 = 15;
+int myNum2; // 声明变量 myNum2
+myNum2 = 15; // 变量声明后第一次赋值我们称为初始化,如果 初始化 和 赋值 在同一行,那么我们可以直接称为 定义变量 myNum2
 
 int myNum3 = 15;  // myNum3 值为 15
 myNum3 = 10;      // 现在 myNum3 值为 10
@@ -54,6 +54,8 @@ int x = 5, y = 6, z = 50;
 ```
 
 ### 常量 Constants
+注释
+常量在 C 语言中我们一般理解为不能被改变的值,活用常量与符号常量
 
 ```c
 const int minutesPerHour = 60;
