@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Taskset 备忘清单
+ &#x26;  taskset cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="Taskset 命令用于设置或检索给定pid的运行进程的CPU相关性，或启动具有给定CPU相关性的新命令
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="taskset,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/taskset.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="taskset-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#taskset-备忘清单"><span class="icon icon-link"></span></a>Taskset 备忘清单</h1><div class="wrap-body">
+<p><code>Taskset</code> 命令用于设置或检索给定pid的运行进程的CPU相关性，或启动具有给定CPU相关性的新命令</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用">使用</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#使用-2">使用 #2</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用选项">常用选项</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看cpu相关性">查看CPU相关性</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置-cpu-相关性">设置 CPU 相关性</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#将-cpu-关联性更改为-1">将 CPU 关联性更改为 1</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置多个值的cpu-相关性">设置多个值的CPU 相关性</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将进程的cpu亲和性设置为特定的cpu核心">将进程的CPU亲和性设置为特定的CPU核心</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#获取进程的cpu亲和性">获取进程的CPU亲和性</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#启动一个新进程并将其cpu亲和性设置为特定的cpu核心">启动一个新进程，并将其CPU亲和性设置为特定的CPU核心</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将已运行进程的cpu亲和性移动到特定的cpu核心">将已运行进程的CPU亲和性移动到特定的CPU核心</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#指定进程只能在指定的cpu核心上运行排他性">指定进程只能在指定的CPU核心上运行（排他性）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将所有已运行进程的cpu亲和性设置为特定的cpu核心">将所有已运行进程的CPU亲和性设置为特定的CPU核心</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#在启动新进程时设置cpu亲和性并指定优先级">在启动新进程时设置CPU亲和性，并指定优先级</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#切换已运行进程的cpu亲和性到其他cpu核心">切换已运行进程的CPU亲和性到其他CPU核心</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将已运行进程的cpu亲和性移动到随机选取的可用cpu核心">将已运行进程的CPU亲和性移动到随机选取的可用CPU核心</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用cpu亲和性运行命令并显示其cpu使用情况">使用CPU亲和性运行命令，并显示其CPU使用情况</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#其他">其他</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="使用"><a aria-hidden="true" tabindex="-1" href="#使用"><span class="icon icon-link"></span></a>使用</h3><div class="wrap-body">
+<p>默认行为是使用给定的关联掩码运行新命令</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token punctuation">[</span>mask<span class="token punctuation">]</span> <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>arguments<span class="token punctuation">]</span>
+</span></code></pre>
+<h4 id="使用-2"><a aria-hidden="true" tabindex="-1" href="#使用-2"><span class="icon icon-link"></span></a>使用 #2</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> <span class="token punctuation">[</span>pid<span class="token punctuation">]</span>
+</span></code></pre>
+<hr>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> <span class="token punctuation">[</span>mask<span class="token punctuation">]</span> <span class="token punctuation">[</span>pid<span class="token punctuation">]</span>
+</span></code></pre>
+<p>您还可以检索现有任务的CPU相关性</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="常用选项"><a aria-hidden="true" tabindex="-1" href="#常用选项"><span class="icon icon-link"></span></a>常用选项</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>命令</th><th>候补</th><th>含义</th></tr></thead><tbody><tr><td><code>-a</code></td><td>--all-tasks</td><td>设置或检索给定PID的所有任务（线程）的CPU相关性</td></tr><tr><td><code>-c</code></td><td>--cpu-list</td><td>将掩码解释为处理器的数字列表，而不是位掩码<br>数字用逗号分隔，可能包括范围。例如：<code>0,5,8-11</code></td></tr><tr><td><code>-p</code></td><td>--pid</td><td>对现有PID进行操作，不要启动新任务</td></tr><tr><td><code>-h</code></td><td>--help</td><td>显示帮助文本并退出</td></tr><tr><td><code>-v</code></td><td>--version</td><td>打印版本并退出</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看cpu相关性"><a aria-hidden="true" tabindex="-1" href="#查看cpu相关性"><span class="icon icon-link"></span></a>查看CPU相关性</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-cp</span> <span class="token number">29523</span>
+</span><span class="code-line">pid <span class="token number">29523</span>'s current affinity list: <span class="token number">0</span>-15
+</span></code></pre>
+<p>这意味着 PID <code>29523</code> 的进程在 CPU 范围 <code>[0,1,...,15]</code> 上处于活动状态，这意味着总共 <code>16</code>。</p>
+<p><strong>PID</strong>：进程标识符 - 是赋予每个正在运行的进程的唯一数字标识符，您可以在 <code>top</code> 或 <code>htop</code> 工具中查看进程的PID</p>
+<p><em>如果您运行上述命令但收到消息 <code>错误使用</code>，请尝试使用 PID = 1</em></p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-cp</span> <span class="token number">1</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="设置-cpu-相关性"><a aria-hidden="true" tabindex="-1" href="#设置-cpu-相关性"><span class="icon icon-link"></span></a>设置 CPU 相关性</h3><div class="wrap-body">
+<p>现在让我们尝试将进程设置到指定的CPU。 例如，我们有一个进程 PID = 14846</p>
+<p>我们先看一下该进程的CPU相关性列表：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-cp</span> <span class="token number">14846</span>
+</span><span class="code-line">pid <span class="token number">14846</span>'s current affinity list: <span class="token number">0</span>-15
+</span></code></pre>
+<h4 id="将-cpu-关联性更改为-1"><a aria-hidden="true" tabindex="-1" href="#将-cpu-关联性更改为-1"><span class="icon icon-link"></span></a>将 CPU 关联性更改为 1</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-cp</span> <span class="token number">1</span> <span class="token number">14846</span>
+</span><span class="code-line">pid <span class="token number">14846</span><span class="token string">'s current affinity list: 0-15
+</span></span><span class="code-line"><span class="token string">pid 14846'</span>s new affinity list: <span class="token number">1</span>
+</span></code></pre>
+<p>正如我们所看到的，CPU 相关性发生了变化</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="设置多个值的cpu-相关性"><a aria-hidden="true" tabindex="-1" href="#设置多个值的cpu-相关性"><span class="icon icon-link"></span></a>设置多个值的CPU 相关性</h3><div class="wrap-body">
+<p>这意味着新的CPU关联列表是<code>[0,1,2,3]</code></p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-cp</span> <span class="token number">0</span>-3 <span class="token number">14846</span>
+</span><span class="code-line">pid <span class="token number">14846</span><span class="token string">'s current affinity list: 1
+</span></span><span class="code-line"><span class="token string">pid 14846'</span>s new affinity list: <span class="token number">0</span>-3
+</span></code></pre>
+<p>您可以使用以下命令设置单个CPU：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-cp</span> <span class="token number">5,8</span>,12 <span class="token number">14846</span>
+</span><span class="code-line">pid <span class="token number">14846</span><span class="token string">'s current affinity list: 0-3
+</span></span><span class="code-line"><span class="token string">pid 14846'</span>s new affinity list: <span class="token number">5,8</span>,12
+</span></code></pre>
+<p>这意味着新的CPU关联列表是<code>[5,8,12]</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将进程的cpu亲和性设置为特定的cpu核心"><a aria-hidden="true" tabindex="-1" href="#将进程的cpu亲和性设置为特定的cpu核心"><span class="icon icon-link"></span></a>将进程的CPU亲和性设置为特定的CPU核心</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>cpu_mask<span class="token operator">></span> <span class="token operator">&#x3C;</span>pid<span class="token operator">></span>
+</span></code></pre>
+<p>例如：<code>taskset -p 0x00000001 12345</code> 将进程ID为12345的进程的CPU亲和性设置为CPU核心 0。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="获取进程的cpu亲和性"><a aria-hidden="true" tabindex="-1" href="#获取进程的cpu亲和性"><span class="icon icon-link"></span></a>获取进程的CPU亲和性</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>pid<span class="token operator">></span>
+</span></code></pre>
+<p>例如：<code>taskset -p 12345</code> 将显示进程ID为12345的进程的CPU亲和性。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="启动一个新进程并将其cpu亲和性设置为特定的cpu核心"><a aria-hidden="true" tabindex="-1" href="#启动一个新进程并将其cpu亲和性设置为特定的cpu核心"><span class="icon icon-link"></span></a>启动一个新进程，并将其CPU亲和性设置为特定的CPU核心</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token operator">&#x3C;</span>cpu_mask<span class="token operator">></span> <span class="token operator">&#x3C;</span>command<span class="token operator">></span>
+</span></code></pre>
+<p>例如：<code>taskset 0x00000001 ./my_program</code> 将以CPU核心 0 的亲和性运行 ./my_program。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将已运行进程的cpu亲和性移动到特定的cpu核心"><a aria-hidden="true" tabindex="-1" href="#将已运行进程的cpu亲和性移动到特定的cpu核心"><span class="icon icon-link"></span></a>将已运行进程的CPU亲和性移动到特定的CPU核心</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> <span class="token parameter variable">-c</span> <span class="token operator">&#x3C;</span>cpu_list<span class="token operator">></span> <span class="token operator">&#x3C;</span>pid<span class="token operator">></span>
+</span></code></pre>
+<p>例如：<code>taskset -p -c 0,1 12345</code> 将进程ID为12345的进程的CPU亲和性移动到CPU核心 0 和 1。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="指定进程只能在指定的cpu核心上运行排他性"><a aria-hidden="true" tabindex="-1" href="#指定进程只能在指定的cpu核心上运行排他性"><span class="icon icon-link"></span></a>指定进程只能在指定的CPU核心上运行（排他性）</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> <span class="token parameter variable">--exclusive</span> <span class="token operator">&#x3C;</span>cpu_mask<span class="token operator">></span> <span class="token operator">&#x3C;</span>pid<span class="token operator">></span>
+</span></code></pre>
+<p>例如：<code>taskset -p --exclusive 0x00000001 12345</code> 将进程ID为12345的进程限制在CPU核心 0 上运行。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将所有已运行进程的cpu亲和性设置为特定的cpu核心"><a aria-hidden="true" tabindex="-1" href="#将所有已运行进程的cpu亲和性设置为特定的cpu核心"><span class="icon icon-link"></span></a>将所有已运行进程的CPU亲和性设置为特定的CPU核心</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-a</span> <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>cpu_mask<span class="token operator">></span>
+</span></code></pre>
+<p>例如：<code>taskset -a -p 0x00000001</code> 将所有进程的CPU亲和性设置为CPU核心 0。</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="在启动新进程时设置cpu亲和性并指定优先级"><a aria-hidden="true" tabindex="-1" href="#在启动新进程时设置cpu亲和性并指定优先级"><span class="icon icon-link"></span></a>在启动新进程时设置CPU亲和性，并指定优先级</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-c</span> <span class="token operator">&#x3C;</span>cpu_mask<span class="token operator">></span> <span class="token function">nice</span> <span class="token parameter variable">-n</span> <span class="token operator">&#x3C;</span>priority<span class="token operator">></span> <span class="token operator">&#x3C;</span>command<span class="token operator">></span>
+</span></code></pre>
+<p>例如：<code>taskset -c 0x00000001 nice -n 10 ./my_program</code> 将以 CPU 核心 <code>0</code> 的亲和性和优先级 <code>10</code> 运行 <code>./my_program</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="切换已运行进程的cpu亲和性到其他cpu核心"><a aria-hidden="true" tabindex="-1" href="#切换已运行进程的cpu亲和性到其他cpu核心"><span class="icon icon-link"></span></a>切换已运行进程的CPU亲和性到其他CPU核心</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>cpu_mask<span class="token operator">></span> <span class="token parameter variable">-P</span> <span class="token operator">&#x3C;</span>pid<span class="token operator">></span>
+</span></code></pre>
+<p>例如：<code>taskset -p 0x00000001 -P 12345</code> 将进程ID为12345的进程的CPU亲和性切换到CPU核心 0。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将已运行进程的cpu亲和性移动到随机选取的可用cpu核心"><a aria-hidden="true" tabindex="-1" href="#将已运行进程的cpu亲和性移动到随机选取的可用cpu核心"><span class="icon icon-link"></span></a>将已运行进程的CPU亲和性移动到随机选取的可用CPU核心</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> --cpu-list - <span class="token operator">&#x3C;</span>pid<span class="token operator">></span>
+</span></code></pre>
+<p>例如：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-p</span> --cpu-list - <span class="token number">12345</span>
+</span></code></pre>
+<p>将进程ID为12345的进程的CPU亲和性移动到一个可用的CPU核心。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="使用cpu亲和性运行命令并显示其cpu使用情况"><a aria-hidden="true" tabindex="-1" href="#使用cpu亲和性运行命令并显示其cpu使用情况"><span class="icon icon-link"></span></a>使用CPU亲和性运行命令，并显示其CPU使用情况</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset <span class="token operator">&#x3C;</span>cpu_mask<span class="token operator">></span> <span class="token operator">&#x3C;</span>command<span class="token operator">></span> <span class="token operator">&#x26;</span>
+</span><span class="code-line"><span class="token function">top</span> <span class="token parameter variable">-p</span> <span class="token operator">&#x3C;</span>pid<span class="token operator">></span>
+</span></code></pre>
+<p>例如：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ taskset 0x00000001 ./my_program <span class="token operator">&#x26;</span>
+</span><span class="code-line"><span class="token function">top</span> <span class="token parameter variable">-p</span> <span class="token variable"><span class="token variable">$(</span>pgrep my_program<span class="token variable">)</span></span>
+</span></code></pre>
+<p>将以CPU核心 <code>0</code> 的亲和性运行 <code>./my_program</code>，并显示该进程的CPU使用情况。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="其他"><a aria-hidden="true" tabindex="-1" href="#其他"><span class="icon icon-link"></span></a>其他</h3><div class="wrap-body">
+<p>您可以通过范围设置与其他类似指定CPU的相关性</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-cp</span> <span class="token number">1</span>-3,12 <span class="token number">14846</span>
+</span></code></pre>
+<p>或</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ taskset <span class="token parameter variable">-cp</span> <span class="token number">1</span>-6:2 <span class="token number">14846</span>
+</span></code></pre>
+<p>后缀 <code>:N</code> 指定范围内的步幅，例如 <code>0-10:3</code> 被解释为 <code>0,3,6,9</code> 列表。</p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<p><a href="https://man7.org/linux/man-pages/man1/taskset.1.html">taskset — Linux manual page</a> <em>(man7.org)</em></p>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js?v=1.5.1" defer></script><script src="../js/fuse.min.js?v=1.5.1" defer></script><script src="../js/main.js?v=1.5.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>

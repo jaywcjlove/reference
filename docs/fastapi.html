@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>FastAPI 备忘清单
+ &#x26;  fastapi cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示。Python: 3.9.5   FastAPI: 0.103.1
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="fastapi,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/fastapi.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="fastapi-备忘清单"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M12 0C5.375 0 0 5.375 0 12c0 6.627 5.375 12 12 12 6.626 0 12-5.373 12-12 0-6.625-5.373-12-12-12zm-.624 21.62v-7.528H7.19L13.203 2.38v7.528h4.029L11.376 21.62z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#fastapi-备忘清单"><span class="icon icon-link"></span></a>FastAPI 备忘清单</h1><div class="wrap-body">
+<p>FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示。Python: <code>3.9.5</code>   FastAPI: <code>0.103.1</code></p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#最小程序">最小程序</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#路径参数">路径参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#最基本的路径参数">最基本的路径参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#多个路径参数">多个路径参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#有类型的路径参数">有类型的路径参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#文件路径参数">文件路径参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查询参数">查询参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#带默认值的查询参数">带默认值的查询参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#可选查询参数">可选查询参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#多路径多查询参数">多路径多查询参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#必需查询参数">必需查询参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#请求体">请求体</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#调用">调用</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查询参数和字符串校验">查询参数和字符串校验</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#参数列表">参数列表</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#多个相同的查询参数">多个相同的查询参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#路径参数和数值校验">路径参数和数值校验</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#导入-path">导入 Path</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#声明元数据">声明元数据</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#参数列表-1">参数列表</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#其他参数">其他参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#cookie参数">Cookie参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#header-参数">Header 参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#表单数据">表单数据</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#安装">安装</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#html">HTML</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#fastapi">FastAPI</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件上传">文件上传</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#uploadfile属性">UploadFile属性</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#uploadfile-async方法">UploadFile async方法</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#依赖项">依赖项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#依赖项使用场景">依赖项使用场景</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建依赖项">创建依赖项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#类作为依赖项">类作为依赖项</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#还可以简写">还可以简写</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#子依赖项">子依赖项</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#不使用缓存">不使用缓存</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#全局依赖项">全局依赖项</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#安全性">安全性</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#参考">参考</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+<!--rehype:body-class=cols-1-->
+</div></div><div class="h2wrap-body cols-1"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="最小程序"><a aria-hidden="true" tabindex="-1" href="#最小程序"><span class="icon icon-link"></span></a>最小程序</h3><div class="wrap-body">
+<p>下面代码会直接启动http服务，也可以使用 <code>uvicorn main:app --reload</code></p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI
+</span><span class="code-line"><span class="token keyword">import</span> uvicorn
+</span><span class="code-line">
+</span><span class="code-line">app <span class="token operator">=</span> FastAPI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">root</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"Hello World"</span><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+</span><span class="code-line">    uvicorn<span class="token punctuation">.</span>run<span class="token punctuation">(</span>app<span class="token operator">=</span><span class="token string">'main:app'</span><span class="token punctuation">,</span> <span class="token builtin">reload</span><span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="路径参数"><a aria-hidden="true" tabindex="-1" href="#路径参数"><span class="icon icon-link"></span></a>路径参数</h3><div class="wrap-body">
+<h4 id="最基本的路径参数"><a aria-hidden="true" tabindex="-1" href="#最基本的路径参数"><span class="icon icon-link"></span></a>最基本的路径参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/items/1</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/{item_id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_item</span><span class="token punctuation">(</span>item_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">}</span> <span class="token comment"># item_id自定义</span>
+</span></code></pre>
+<h4 id="多个路径参数"><a aria-hidden="true" tabindex="-1" href="#多个路径参数"><span class="icon icon-link"></span></a>多个路径参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/items/1/2</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/{item_id}/{user_id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_item</span><span class="token punctuation">(</span>item_id<span class="token punctuation">,</span> user_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">,</span> <span class="token string">"user_id"</span><span class="token punctuation">:</span> user_id<span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="有类型的路径参数"><a aria-hidden="true" tabindex="-1" href="#有类型的路径参数"><span class="icon icon-link"></span></a>有类型的路径参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/items/1</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/{item_id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_item</span><span class="token punctuation">(</span>item_id<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="文件路径参数"><a aria-hidden="true" tabindex="-1" href="#文件路径参数"><span class="icon icon-link"></span></a>文件路径参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/file//home/my/my.txt</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/file/{file_path:path}"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_item</span><span class="token punctuation">(</span>file_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"file_path"</span><span class="token punctuation">:</span> file_path<span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="查询参数"><a aria-hidden="true" tabindex="-1" href="#查询参数"><span class="icon icon-link"></span></a>查询参数</h3><div class="wrap-body">
+<h4 id="带默认值的查询参数"><a aria-hidden="true" tabindex="-1" href="#带默认值的查询参数"><span class="icon icon-link"></span></a>带默认值的查询参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/items/?skip=0&#x26;limit=2</span>
+</span><span class="code-line">fake_items_db <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"item_name"</span><span class="token punctuation">:</span> <span class="token string">"Foo"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"item_name"</span><span class="token punctuation">:</span> <span class="token string">"Bar"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"item_name"</span><span class="token punctuation">:</span> <span class="token string">"Baz"</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_item</span><span class="token punctuation">(</span>skip<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> limit<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> fake_items_db<span class="token punctuation">[</span>skip<span class="token punctuation">:</span> skip <span class="token operator">+</span> limit<span class="token punctuation">]</span>
+</span></code></pre>
+<h4 id="可选查询参数"><a aria-hidden="true" tabindex="-1" href="#可选查询参数"><span class="icon icon-link"></span></a>可选查询参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/items/1?q=admin</span>
+</span><span class="code-line"><span class="token keyword">from</span> typing <span class="token keyword">import</span> Union
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/{item_id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_item</span><span class="token punctuation">(</span>item_id<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> q<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> q<span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">,</span> <span class="token string">"q"</span><span class="token punctuation">:</span> q<span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="多路径多查询参数"><a aria-hidden="true" tabindex="-1" href="#多路径多查询参数"><span class="icon icon-link"></span></a>多路径多查询参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/users/1/items/2</span>
+</span><span class="code-line"><span class="token comment"># or </span>
+</span><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/users/1/items/2?q=query&#x26;short=true</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/users/{user_id}/items/{item_id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_user_item</span><span class="token punctuation">(</span>
+</span><span class="code-line">        user_id<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> item_id<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> q<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span> short<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    item <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">,</span> <span class="token string">"owner_id"</span><span class="token punctuation">:</span> user_id<span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">if</span> q<span class="token punctuation">:</span>
+</span><span class="code-line">        item<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"q"</span><span class="token punctuation">:</span> q<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">if</span> <span class="token keyword">not</span> short<span class="token punctuation">:</span>
+</span><span class="code-line">        item<span class="token punctuation">.</span>update<span class="token punctuation">(</span>
+</span><span class="code-line">            <span class="token punctuation">{</span><span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"This is an amazing item that has a long description"</span><span class="token punctuation">}</span>
+</span><span class="code-line">        <span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> item
+</span></code></pre>
+<h4 id="必需查询参数"><a aria-hidden="true" tabindex="-1" href="#必需查询参数"><span class="icon icon-link"></span></a>必需查询参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/items/123?needy=yes</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/{item_id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_user_item</span><span class="token punctuation">(</span>item_id<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> needy<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    item <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">,</span> <span class="token string">"needy"</span><span class="token punctuation">:</span> needy<span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">return</span> item
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="请求体"><a aria-hidden="true" tabindex="-1" href="#请求体"><span class="icon icon-link"></span></a>请求体</h3><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> pydantic <span class="token keyword">import</span> BaseModel
+</span><span class="code-line"><span class="token keyword">from</span> typing <span class="token keyword">import</span> Union
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Item</span><span class="token punctuation">(</span>BaseModel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    name<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">'小明'</span>
+</span><span class="code-line">    description<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+</span><span class="code-line">    price<span class="token punctuation">:</span> <span class="token builtin">float</span>
+</span><span class="code-line">    tax<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">float</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>post</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">create_item</span><span class="token punctuation">(</span>item<span class="token punctuation">:</span> Item<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">print</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> item
+</span></code></pre>
+<h4 id="调用"><a aria-hidden="true" tabindex="-1" href="#调用"><span class="icon icon-link"></span></a>调用</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-X</span> <span class="token string">'POST'</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token string">'http://127.0.0.1:8000/items/'</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-H</span> <span class="token string">'accept: application/json'</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-d</span> <span class="token string">'{
+</span></span><span class="code-line"><span class="token string">  "name": "小明",
+</span></span><span class="code-line"><span class="token string">  "description": "string",
+</span></span><span class="code-line"><span class="token string">  "price": 0,
+</span></span><span class="code-line"><span class="token string">  "tax": 0
+</span></span><span class="code-line"><span class="token string">}'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="查询参数和字符串校验"><a aria-hidden="true" tabindex="-1" href="#查询参数和字符串校验"><span class="icon icon-link"></span></a>查询参数和字符串校验</h3><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> Query
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span>q<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> Query<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    results <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"items"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> <span class="token string">"Foo"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> <span class="token string">"Bar"</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">if</span> q<span class="token punctuation">:</span>
+</span><span class="code-line">        results<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"q"</span><span class="token punctuation">:</span> q<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> results
+</span></code></pre>
+<h4 id="参数列表"><a aria-hidden="true" tabindex="-1" href="#参数列表"><span class="icon icon-link"></span></a>参数列表</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>参数</th><th>含义</th><th>类型</th></tr></thead><tbody><tr><td>default</td><td>默认值</td><td>任意类型或...</td></tr><tr><td>max_length</td><td>最大长度</td><td>int</td></tr><tr><td>min_length</td><td>最小长度</td><td>int</td></tr><tr><td>pattern</td><td>正则匹配</td><td>string</td></tr><tr><td>alias</td><td>别名参数</td><td>string</td></tr><tr><td>deprecated</td><td>准备弃用参数</td><td>bool</td></tr></tbody></table>
+<h4 id="多个相同的查询参数"><a aria-hidden="true" tabindex="-1" href="#多个相同的查询参数"><span class="icon icon-link"></span></a>多个相同的查询参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># http://127.0.0.1:8000/items/?q=foo&#x26;q=bar</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span>q<span class="token punctuation">:</span> Union<span class="token punctuation">[</span>List<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> Query<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    query_items <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"q"</span><span class="token punctuation">:</span> q<span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">return</span> query_items
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="路径参数和数值校验"><a aria-hidden="true" tabindex="-1" href="#路径参数和数值校验"><span class="icon icon-link"></span></a>路径参数和数值校验</h3><div class="wrap-body">
+<p>Path用法基本和Query相同，参考：<a href="https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/">FastAPI官方文档</a></p>
+<h4 id="导入-path"><a aria-hidden="true" tabindex="-1" href="#导入-path"><span class="icon icon-link"></span></a>导入 Path</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI<span class="token punctuation">,</span> Path<span class="token punctuation">,</span> Query
+</span><span class="code-line"><span class="token keyword">from</span> typing_extensions <span class="token keyword">import</span> Annotated
+</span></code></pre>
+<h4 id="声明元数据"><a aria-hidden="true" tabindex="-1" href="#声明元数据"><span class="icon icon-link"></span></a>声明元数据</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/{item_id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span>
+</span><span class="code-line">    item_id<span class="token punctuation">:</span> Annotated<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">,</span> Path<span class="token punctuation">(</span>title<span class="token operator">=</span><span class="token string">"The ID of the item to get"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">    q<span class="token punctuation">:</span> Annotated<span class="token punctuation">[</span>Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Query<span class="token punctuation">(</span>alias<span class="token operator">=</span><span class="token string">"item-query"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    results <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"item_id"</span><span class="token punctuation">:</span> item_id<span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">if</span> q<span class="token punctuation">:</span>
+</span><span class="code-line">        results<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"q"</span><span class="token punctuation">:</span> q<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> results
+</span></code></pre>
+<h4 id="参数列表-1"><a aria-hidden="true" tabindex="-1" href="#参数列表-1"><span class="icon icon-link"></span></a>参数列表</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>参数</th><th>含义</th><th>类型</th></tr></thead><tbody><tr><td>...</td><td>和Query具有相同参数</td><td>...</td></tr><tr><td>ge</td><td>大于等于</td><td>int float</td></tr><tr><td>gt</td><td>大于</td><td>int float</td></tr><tr><td>le</td><td>小于等于</td><td>int float</td></tr><tr><td>le</td><td>小于等于</td><td>int float</td></tr><tr><td>title</td><td>api文档的标题</td><td>string</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="其他参数"><a aria-hidden="true" tabindex="-1" href="#其他参数"><span class="icon icon-link"></span></a>其他参数</h3><div class="wrap-body">
+<p>都具有Query的参数，max_length、min_length等</p>
+<h4 id="cookie参数"><a aria-hidden="true" tabindex="-1" href="#cookie参数"><span class="icon icon-link"></span></a>Cookie参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> Cookie
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span>ads_id<span class="token punctuation">:</span> Annotated<span class="token punctuation">[</span>Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Cookie<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"ads_id"</span><span class="token punctuation">:</span> ads_id<span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="header-参数"><a aria-hidden="true" tabindex="-1" href="#header-参数"><span class="icon icon-link"></span></a>Header 参数</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> Header
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span>user_agent<span class="token punctuation">:</span> Annotated<span class="token punctuation">[</span>Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Header<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>items_id<span class="token punctuation">:</span> Annotated<span class="token punctuation">[</span>Union<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Header<span class="token punctuation">(</span>ge<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"User-Agent"</span><span class="token punctuation">:</span> user_agent<span class="token punctuation">,</span> <span class="token string">"items_id"</span><span class="token punctuation">:</span> items_id<span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="表单数据"><a aria-hidden="true" tabindex="-1" href="#表单数据"><span class="icon icon-link"></span></a>表单数据</h3><div class="wrap-body">
+<p>接收的不是 JSON，而是表单字段时，要使用 Form。</p>
+<h4 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h4>
+<p><code>pip install python-multipart</code></p>
+<h4 id="html"><a aria-hidden="true" tabindex="-1" href="#html"><span class="icon icon-link"></span></a>HTML</h4>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token doctype"><span class="token punctuation">&#x3C;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>head</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>head</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://127.0.0.1:8000/login<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>账号：<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>br</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>密码：<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>br</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>登录<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>html</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<h4 id="fastapi"><a aria-hidden="true" tabindex="-1" href="#fastapi"><span class="icon icon-link"></span></a>FastAPI</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI<span class="token punctuation">,</span> Form
+</span><span class="code-line"><span class="token keyword">import</span> uvicorn
+</span><span class="code-line">app <span class="token operator">=</span> FastAPI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>post</span><span class="token punctuation">(</span><span class="token string">"/login/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">login</span><span class="token punctuation">(</span>username<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Form<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> password<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Form<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"username"</span><span class="token punctuation">:</span> username<span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+</span><span class="code-line">    uvicorn<span class="token punctuation">.</span>run<span class="token punctuation">(</span>app<span class="token operator">=</span><span class="token string">'main:app'</span><span class="token punctuation">,</span> <span class="token builtin">reload</span><span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="文件上传"><a aria-hidden="true" tabindex="-1" href="#文件上传"><span class="icon icon-link"></span></a>文件上传</h3><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI<span class="token punctuation">,</span> UploadFile
+</span><span class="code-line"><span class="token keyword">from</span> fastapi<span class="token punctuation">.</span>responses <span class="token keyword">import</span> HTMLResponse
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>post</span><span class="token punctuation">(</span><span class="token string">"/uploadfile/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">create_upload_file</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">:</span> UploadFile<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">.</span><span class="token builtin">file</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"filenames"</span><span class="token punctuation">:</span> <span class="token builtin">file</span><span class="token punctuation">.</span>filename<span class="token punctuation">,</span> <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">.</span><span class="token builtin">file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    content <span class="token operator">=</span> <span class="token triple-quoted-string string">"""&#x3C;body>
+</span></span><span class="code-line"><span class="token triple-quoted-string string">&#x3C;form action="/uploadfile/" enctype="multipart/form-data" method="post">
+</span></span><span class="code-line"><span class="token triple-quoted-string string">&#x3C;input name="file" type="file" multiple>
+</span></span><span class="code-line"><span class="token triple-quoted-string string">&#x3C;input type="submit">
+</span></span><span class="code-line"><span class="token triple-quoted-string string">&#x3C;/form>
+</span></span><span class="code-line"><span class="token triple-quoted-string string">&#x3C;/body>"""</span>
+</span><span class="code-line">    <span class="token keyword">return</span> HTMLResponse<span class="token punctuation">(</span>content<span class="token operator">=</span>content<span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="uploadfile属性"><a aria-hidden="true" tabindex="-1" href="#uploadfile属性"><span class="icon icon-link"></span></a>UploadFile属性</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>属性名</th><th>含义</th><th>返回</th></tr></thead><tbody><tr><td>filename</td><td>文件名</td><td>上传的文件名</td></tr><tr><td>content_type</td><td>内容类型</td><td>MIME 类型</td></tr><tr><td>file</td><td>文件</td><td>SpooledTemporaryFile具有read，write方法</td></tr></tbody></table>
+<h4 id="uploadfile-async方法"><a aria-hidden="true" tabindex="-1" href="#uploadfile-async方法"><span class="icon icon-link"></span></a>UploadFile async方法</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>方法名</th><th>含义</th></tr></thead><tbody><tr><td>write(data)</td><td>把 <code>data</code> 写入文件</td></tr><tr><td>read(size)</td><td>按指定数量的字节读取文件内容</td></tr><tr><td>seek(offset)</td><td>移动至文件 <code>offset</code> （<code>int</code>）字节处的位置</td></tr><tr><td>close()</td><td>关闭文件</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="依赖项"><a aria-hidden="true" tabindex="-1" href="#依赖项"><span class="icon icon-link"></span></a>依赖项</h2><div class="wrap-body">
+<!--rehype:body-class=cols-1-->
+</div></div><div class="h2wrap-body cols-1"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="依赖项使用场景"><a aria-hidden="true" tabindex="-1" href="#依赖项使用场景"><span class="icon icon-link"></span></a>依赖项使用场景</h3><div class="wrap-body">
+<ul>
+<li>共享业务逻辑（复用相同的代码逻辑）</li>
+<li>共享数据库连接</li>
+<li>实现安全、验证、角色权限</li>
+<li>等……</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="创建依赖项"><a aria-hidden="true" tabindex="-1" href="#创建依赖项"><span class="icon icon-link"></span></a>创建依赖项</h3><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> typing <span class="token keyword">import</span> Union
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> Depends<span class="token punctuation">,</span> FastAPI
+</span><span class="code-line">
+</span><span class="code-line">app <span class="token operator">=</span> FastAPI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># read_items和read_users方法依赖common_parameters</span>
+</span><span class="code-line"><span class="token comment"># 白话就是read_items和read_users都需要q，skip，limit查询参数</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">common_parameters</span><span class="token punctuation">(</span>
+</span><span class="code-line">    q<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span> skip<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> limit<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">100</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"q"</span><span class="token punctuation">:</span> q<span class="token punctuation">,</span> <span class="token string">"skip"</span><span class="token punctuation">:</span> skip<span class="token punctuation">,</span> <span class="token string">"limit"</span><span class="token punctuation">:</span> limit<span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span>commons<span class="token punctuation">:</span> <span class="token builtin">dict</span> <span class="token operator">=</span> Depends<span class="token punctuation">(</span>common_parameters<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> commons
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/users/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_users</span><span class="token punctuation">(</span>commons<span class="token punctuation">:</span> <span class="token builtin">dict</span> <span class="token operator">=</span> Depends<span class="token punctuation">(</span>common_parameters<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> commons
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="类作为依赖项"><a aria-hidden="true" tabindex="-1" href="#类作为依赖项"><span class="icon icon-link"></span></a>类作为依赖项</h3><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> typing <span class="token keyword">import</span> Union
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> Depends<span class="token punctuation">,</span> FastAPI
+</span><span class="code-line">
+</span><span class="code-line">app <span class="token operator">=</span> FastAPI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line">fake_items_db <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"item_name"</span><span class="token punctuation">:</span> <span class="token string">"Foo"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"item_name"</span><span class="token punctuation">:</span> <span class="token string">"Bar"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"item_name"</span><span class="token punctuation">:</span> <span class="token string">"Baz"</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">CommonQueryParams</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> q<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span> skip<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> limit<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">        self<span class="token punctuation">.</span>q <span class="token operator">=</span> q
+</span><span class="code-line">        self<span class="token punctuation">.</span>skip <span class="token operator">=</span> skip
+</span><span class="code-line">        self<span class="token punctuation">.</span>limit <span class="token operator">=</span> limit
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># read_itemsx接收一个commons参数，类型是CommonQueryParams</span>
+</span><span class="code-line"><span class="token comment"># CommonQueryParams接收三个参数，这三个参数是调用api的时候传</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span>commons<span class="token punctuation">:</span> CommonQueryParams <span class="token operator">=</span> Depends<span class="token punctuation">(</span>CommonQueryParams<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    response <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">if</span> commons<span class="token punctuation">.</span>q<span class="token punctuation">:</span>
+</span><span class="code-line">        response<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"q"</span><span class="token punctuation">:</span> commons<span class="token punctuation">.</span>q<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">    items <span class="token operator">=</span> fake_items_db<span class="token punctuation">[</span>commons<span class="token punctuation">.</span>skip <span class="token punctuation">:</span> commons<span class="token punctuation">.</span>skip <span class="token operator">+</span> commons<span class="token punctuation">.</span>limit<span class="token punctuation">]</span>
+</span><span class="code-line">    response<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"items"</span><span class="token punctuation">:</span> items<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> response
+</span></code></pre>
+<h4 id="还可以简写"><a aria-hidden="true" tabindex="-1" href="#还可以简写"><span class="icon icon-link"></span></a>还可以简写</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span>commons<span class="token punctuation">:</span> CommonQueryParams <span class="token operator">=</span> Depends<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># 这里的Depends没有传参，FastAPI会自动使用CommonQueryParams</span>
+</span><span class="code-line">    response <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">if</span> commons<span class="token punctuation">.</span>q<span class="token punctuation">:</span>
+</span><span class="code-line">        response<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"q"</span><span class="token punctuation">:</span> commons<span class="token punctuation">.</span>q<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">    items <span class="token operator">=</span> fake_items_db<span class="token punctuation">[</span>commons<span class="token punctuation">.</span>skip <span class="token punctuation">:</span> commons<span class="token punctuation">.</span>skip <span class="token operator">+</span> commons<span class="token punctuation">.</span>limit<span class="token punctuation">]</span>
+</span><span class="code-line">    response<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"items"</span><span class="token punctuation">:</span> items<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> response
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="子依赖项"><a aria-hidden="true" tabindex="-1" href="#子依赖项"><span class="icon icon-link"></span></a>子依赖项</h3><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> typing <span class="token keyword">import</span> Union
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> Cookie<span class="token punctuation">,</span> Depends<span class="token punctuation">,</span> FastAPI
+</span><span class="code-line">
+</span><span class="code-line">app <span class="token operator">=</span> FastAPI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">query_extractor</span><span class="token punctuation">(</span>q<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> q
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">query_or_cookie_extractor</span><span class="token punctuation">(</span>
+</span><span class="code-line">    q<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Depends<span class="token punctuation">(</span>query_extractor<span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    last_query<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">=</span> Cookie<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> <span class="token keyword">not</span> q<span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">return</span> last_query
+</span><span class="code-line">    <span class="token keyword">return</span> q
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># read_query函数依赖query_or_cookie_extractor函数</span>
+</span><span class="code-line"><span class="token comment"># query_or_cookie_extractor函数又依赖query_extractor函数</span>
+</span><span class="code-line"><span class="token comment"># 就是说依赖项可以依赖其他依赖项，只要你不晕，可以无数次套娃</span>
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_query</span><span class="token punctuation">(</span>query_or_default<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Depends<span class="token punctuation">(</span>query_or_cookie_extractor<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"q_or_cookie"</span><span class="token punctuation">:</span> query_or_default<span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="不使用缓存"><a aria-hidden="true" tabindex="-1" href="#不使用缓存"><span class="icon icon-link"></span></a>不使用缓存</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># 使用use_cache = False参数不使用缓存数据</span>
+</span><span class="code-line"><span class="token comment"># 不使用use_cache = False,value和value1是一样的</span>
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">result_value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    value <span class="token operator">=</span> randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> value
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">get_value</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> Depends<span class="token punctuation">(</span>result_value<span class="token punctuation">,</span> use_cache<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">,</span> value1<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> Depends<span class="token punctuation">(</span>result_value<span class="token punctuation">,</span> use_cache<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> value<span class="token punctuation">,</span> value1
+</span><span class="code-line">
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">'/value/'</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">needy_dependency</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> <span class="token builtin">tuple</span> <span class="token operator">=</span> Depends<span class="token punctuation">(</span>get_value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"value"</span><span class="token punctuation">:</span> value<span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="全局依赖项"><a aria-hidden="true" tabindex="-1" href="#全局依赖项"><span class="icon icon-link"></span></a>全局依赖项</h3><div class="wrap-body">
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> Depends<span class="token punctuation">,</span> FastAPI<span class="token punctuation">,</span> Header<span class="token punctuation">,</span> HTTPException
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">verify_token</span><span class="token punctuation">(</span>x_token<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Header<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> x_token <span class="token operator">!=</span> <span class="token string">"fake-super-secret-token"</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">raise</span> HTTPException<span class="token punctuation">(</span>status_code<span class="token operator">=</span><span class="token number">400</span><span class="token punctuation">,</span> detail<span class="token operator">=</span><span class="token string">"X-Token header invalid"</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">verify_key</span><span class="token punctuation">(</span>x_key<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> Header<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> x_key <span class="token operator">!=</span> <span class="token string">"fake-super-secret-key"</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">raise</span> HTTPException<span class="token punctuation">(</span>status_code<span class="token operator">=</span><span class="token number">400</span><span class="token punctuation">,</span> detail<span class="token operator">=</span><span class="token string">"X-Key header invalid"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">return</span> x_key
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 全局依赖项很有用，后面的安全性就可以使用全局依赖项</span>
+</span><span class="code-line">app <span class="token operator">=</span> FastAPI<span class="token punctuation">(</span>dependencies<span class="token operator">=</span><span class="token punctuation">[</span>Depends<span class="token punctuation">(</span>verify_token<span class="token punctuation">)</span><span class="token punctuation">,</span> Depends<span class="token punctuation">(</span>verify_key<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/items/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_items</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"item"</span><span class="token punctuation">:</span> <span class="token string">"Portal Gun"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"item"</span><span class="token punctuation">:</span> <span class="token string">"Plumbus"</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/users/"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">read_users</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"username"</span><span class="token punctuation">:</span> <span class="token string">"Rick"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"username"</span><span class="token punctuation">:</span> <span class="token string">"Morty"</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="安全性"><a aria-hidden="true" tabindex="-1" href="#安全性"><span class="icon icon-link"></span></a>安全性</h2><div class="wrap-body">
+<p>待更新</p>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="参考"><a aria-hidden="true" tabindex="-1" href="#参考"><span class="icon icon-link"></span></a>参考</h2><div class="wrap-body">
+<ul>
+<li><a href="./python.html">Python 备忘清单</a> <em>(jaywcjlove.github.io)</em></li>
+<li><a href="https://fastapi.tiangolo.com/zh/tutorial/">FastAPI 官方文档</a> <em>(fastapi.tiangolo.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js?v=1.5.1" defer></script><script src="../js/fuse.min.js?v=1.5.1" defer></script><script src="../js/main.js?v=1.5.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Ejs 备忘清单
+ &#x26;  ejs cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="EJS（嵌入式 JavaScript）是一种简单的模板语言，可让您使用纯 JavaScript 生成 HTML 标记
+
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="ejs,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/ejs.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="ejs-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em"><path d="M384.28144981 252.31647403v112.80048696L145.20918813 474.54291854 384.28144981 587.88378965v110.53930269L21.43812835 526.28761486v-100.68590819l362.84332146-173.28714866zm246.90017394 102.1173521c0-28.82050958-26.50183907-46.93105778-47.58641778-32.52080298-21.0845787 14.41025479-21.0845787 50.63135118 0 65.04352199 21.08649586 14.41025479 47.58641778-3.70220942 47.58641778-32.52271901zm-86.46152988 88.55216697c-71.49939257-39.1951269-71.49939257-137.71758023 0-176.91462428 71.50130859-39.1951269 161.36227954 10.06609977 161.36227954 88.45827072s-89.86096981 127.65339648-161.36036352 88.45635356zm382.94102812 229.81099065c0-28.82050958-26.50183907-46.93105778-47.58641778-32.52080298-21.0845787 14.41025479-21.0845787 50.63135118 0 65.04160597 21.08649586 14.41025479 47.58641778-3.69837625 47.58641778-32.51888697zm-86.46152988 88.55216583c-71.49939257-39.1951269-71.49939257-137.71758023 0-176.91462315S1002.56187165 594.50062621 1002.56187165 672.89279602s-89.86096981 127.65339648-161.36036352 88.45635356zm-219.70656598 13.75681195 372.53958429-526.21192306H866.73755363l-378.74825784 526.21192306h133.50181432z"></path></svg><a aria-hidden="true" tabindex="-1" href="#ejs-备忘清单"><span class="icon icon-link"></span></a>Ejs 备忘清单</h1><div class="wrap-body">
+<p><a href="https://www.npmjs.com/package/ejs"><img src="https://img.shields.io/npm/v/ejs.svg?style=flat" alt="NPM version"></a>
+<a href="https://www.npmjs.com/package/ejs"><img src="https://img.shields.io/npm/dm/ejs.svg?style=flat" alt="Downloads"></a>
+<a href="https://github.com/mde/ejs/network/dependents"><img src="https://badgen.net/github/dependents-repo/mde/ejs" alt="Repo Dependents"></a>
+<a href="https://github.com/mde/ejs"><img src="https://badgen.net/badge/icon/Github?icon=github&#x26;label" alt="Github repo"></a></p>
+<p style="padding-top: 12px;">EJS（嵌入式 JavaScript）是一种简单的模板语言，可让您使用纯 JavaScript 生成 HTML 标记</p>
+<!--rehype:style=padding-top: 12px;-->
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hello-world">Hello world</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#安装">安装</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#helloejs">hello.ejs</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#命令-cli">命令 CLI</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用数据渲染">使用数据渲染</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#浏览器支持">浏览器支持</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变量">变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cli">CLI</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#方法">方法</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包括文件">包括文件</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#文档">文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#条件句">条件句</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用循环">使用循环</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自定义分隔符">自定义分隔符</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#缓存">缓存</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#布局">布局</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自定义文件加载器">自定义文件加载器</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#客户端支持">客户端支持</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#例子">例子</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注意事项">注意事项</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#选项">选项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#选项列表">选项列表</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#标签">标签</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#标签列表">标签列表</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#cli-1">Cli</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cli-列表">Cli 列表</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="hello-world"><a aria-hidden="true" tabindex="-1" href="#hello-world"><span class="icon icon-link"></span></a>Hello world</h3><div class="wrap-body">
+<h4 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> ejs
+</span></code></pre>
+<h4 id="helloejs"><a aria-hidden="true" tabindex="-1" href="#helloejs"><span class="icon icon-link"></span></a>hello.ejs</h4>
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token property-access">email</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> </span><span class="token delimiter punctuation">%></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%=</span><span class="token language-javascript"> user<span class="token punctuation">.</span><span class="token property-access">email</span> </span><span class="token delimiter punctuation">%></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token punctuation">}</span> </span><span class="token delimiter punctuation">%></span></span>
+</span></code></pre>
+<h4 id="命令-cli"><a aria-hidden="true" tabindex="-1" href="#命令-cli"><span class="icon icon-link"></span></a>命令 CLI</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ejs hello.ejs <span class="token parameter variable">-o</span> hello.html
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="使用数据渲染"><a aria-hidden="true" tabindex="-1" href="#使用数据渲染"><span class="icon icon-link"></span></a>使用数据渲染</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">let</span> ejs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ejs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">let</span> people <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'geddy'</span><span class="token punctuation">,</span> <span class="token string">'neil'</span><span class="token punctuation">,</span> <span class="token string">'alex'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> tpl <span class="token operator">=</span> <span class="token string">'&#x3C;%= people.join(", "); %>'</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">let</span> html <span class="token operator">=</span> ejs<span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span>tpl<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token literal-property property">people</span><span class="token operator">:</span> people
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>向 <code>EJS</code> 传递模板字符串和一些数据</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="浏览器支持"><a aria-hidden="true" tabindex="-1" href="#浏览器支持"><span class="icon icon-link"></span></a>浏览器支持</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ejs.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token keyword">let</span> people <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'geddy'</span><span class="token punctuation">,</span> <span class="token string">'neil'</span><span class="token punctuation">,</span> <span class="token string">'alex'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token keyword">let</span> html <span class="token operator">=</span> ejs<span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token string">'&#x3C;%= people.join(", "); %>'</span><span class="token punctuation">,</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">    <span class="token punctuation">{</span> <span class="token literal-property property">people</span><span class="token operator">:</span> people <span class="token punctuation">}</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>在脚本标签中使用 <code>ejs</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><code>&#x3C;%= var %></code></td><td>打印变量的值</td></tr><tr><td><code>&#x3C;%- var %></code></td><td>打印时不进行 HTML 转义</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cli"><a aria-hidden="true" tabindex="-1" href="#cli"><span class="icon icon-link"></span></a>CLI</h3><div class="wrap-body">
+<p>渲染并指定输出文件</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ejs hello.ejs <span class="token parameter variable">-o</span> hello.html
+</span></code></pre>
+<p>为其提供模板文件和数据文件</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ejs hello.ejs <span class="token parameter variable">-f</span> data.json <span class="token parameter variable">-o</span> hello.html
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token comment"># 该行将表示一条注释 </span><span class="token delimiter punctuation">%></span></span>
+</span></code></pre>
+<hr>
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token comment"># 这是一个多行 EJS 注释。
+</span></span></span><span class="code-line"><span class="token ejs language-ejs"><span class="token comment">    它可以跨越多行，
+</span></span></span><span class="code-line"><span class="token ejs language-ejs"><span class="token comment">    但不会显示
+</span></span></span><span class="code-line"><span class="token ejs language-ejs"><span class="token comment">    在最终的 HTML 输出中。
+</span></span></span><span class="code-line"><span class="token ejs language-ejs"><span class="token comment"></span><span class="token delimiter punctuation">%></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="方法"><a aria-hidden="true" tabindex="-1" href="#方法"><span class="icon icon-link"></span></a>方法</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">let</span> ejs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ejs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> template <span class="token operator">=</span> ejs<span class="token punctuation">.</span><span class="token method function property-access">compile</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">template</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => 渲染的 HTML 字符串</span>
+</span><span class="code-line">
+</span><span class="code-line">ejs<span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> data<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => 渲染的 HTML 字符串</span>
+</span><span class="code-line">
+</span><span class="code-line">ejs<span class="token punctuation">.</span><span class="token method function property-access">renderFile</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> data<span class="token punctuation">,</span> options<span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> str</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token comment">// str => 渲染的 HTML 字符串</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="包括文件"><a aria-hidden="true" tabindex="-1" href="#包括文件"><span class="icon icon-link"></span></a>包括文件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%-</span><span class="token language-javascript"> <span class="token function">include</span><span class="token punctuation">(</span><span class="token string">'partials/navbar.ejs'</span><span class="token punctuation">)</span> </span><span class="token delimiter punctuation">%></span></span>
+</span></code></pre>
+<p>包含带有数据的模板：</p>
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token function">include</span><span class="token punctuation">(</span><span class="token string">'header'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'My Page'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> </span><span class="token delimiter punctuation">%></span></span>
+</span></code></pre>
+<hr>
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> users<span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">user</span><span class="token punctuation">)</span><span class="token punctuation">{</span> </span><span class="token delimiter punctuation">%></span></span>
+</span><span class="code-line">    <span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%-</span><span class="token language-javascript"> <span class="token function">include</span><span class="token punctuation">(</span><span class="token string">'item'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">user</span><span class="token operator">:</span> user<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span><span class="token delimiter punctuation">%></span></span>
+</span><span class="code-line">  <span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span><span class="token delimiter punctuation">%></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ul</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>要包含模板，需要文件名选项，路径是相对的</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="文档"><a aria-hidden="true" tabindex="-1" href="#文档"><span class="icon icon-link"></span></a>文档</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="条件句"><a aria-hidden="true" tabindex="-1" href="#条件句"><span class="icon icon-link"></span></a>条件句</h3><div class="wrap-body">
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>userLoggedIn<span class="token punctuation">)</span> <span class="token punctuation">{</span> </span><span class="token delimiter punctuation">%></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>Welcome, <span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%=</span><span class="token language-javascript"> username </span><span class="token delimiter punctuation">%></span></span>!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span> </span><span class="token delimiter punctuation">%></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>Please log in.<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token punctuation">}</span> </span><span class="token delimiter punctuation">%></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="使用循环"><a aria-hidden="true" tabindex="-1" href="#使用循环"><span class="icon icon-link"></span></a>使用循环</h3><div class="wrap-body">
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>userLoggedIn<span class="token punctuation">)</span> <span class="token punctuation">{</span> </span><span class="token delimiter punctuation">%></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>Welcome, <span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%=</span><span class="token language-javascript"> username </span><span class="token delimiter punctuation">%></span></span>!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span> </span><span class="token delimiter punctuation">%></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>Please log in.<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%</span><span class="token language-javascript"> <span class="token punctuation">}</span> </span><span class="token delimiter punctuation">%></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="自定义分隔符"><a aria-hidden="true" tabindex="-1" href="#自定义分隔符"><span class="icon icon-link"></span></a>自定义分隔符</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">let</span> ejs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ejs'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    users <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'geddy'</span><span class="token punctuation">,</span> <span class="token string">'neil'</span><span class="token punctuation">,</span> <span class="token string">'alex'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 只需一个模板</span>
+</span><span class="code-line">ejs<span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span><span class="token string">'&#x3C;?= users.join(" | "); ?>'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token literal-property property">users</span><span class="token operator">:</span> users<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token literal-property property">delimiter</span><span class="token operator">:</span> <span class="token string">'?'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => 'geddy | neil | alex'</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// 或全局范围内</span>
+</span><span class="code-line">ejs<span class="token punctuation">.</span><span class="token property-access">delimiter</span> <span class="token operator">=</span> <span class="token string">'$'</span><span class="token punctuation">;</span>
+</span><span class="code-line">ejs<span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span><span class="token string">'&#x3C;$= users.join(" | "); $>'</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token literal-property property">users</span><span class="token operator">:</span> users<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// => 'geddy | neil | alex'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="缓存"><a aria-hidden="true" tabindex="-1" href="#缓存"><span class="icon icon-link"></span></a>缓存</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">let</span> ejs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ejs'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token constant">LRU</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lru-cache'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// LRU 缓存具有 100 项限制</span>
+</span><span class="code-line">ejs<span class="token punctuation">.</span><span class="token property-access">cache</span> <span class="token operator">=</span> <span class="token constant">LRU</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="布局"><a aria-hidden="true" tabindex="-1" href="#布局"><span class="icon icon-link"></span></a>布局</h3><div class="wrap-body">
+<pre class="language-ejs"><code class="language-ejs code-highlight"><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%-</span><span class="token language-javascript"> <span class="token function">include</span><span class="token punctuation">(</span><span class="token string">'header'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span><span class="token delimiter punctuation">-%></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span> Title <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  My page
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&#x3C;%-</span><span class="token language-javascript"> <span class="token function">include</span><span class="token punctuation">(</span><span class="token string">'footer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span><span class="token delimiter punctuation">-%></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="自定义文件加载器"><a aria-hidden="true" tabindex="-1" href="#自定义文件加载器"><span class="icon icon-link"></span></a>自定义文件加载器</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">let</span> ejs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ejs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> <span class="token function-variable function">myFileLoader</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">filePath</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword control-flow">return</span> <span class="token string">'myFileLoader: '</span> <span class="token operator">+</span> fs<span class="token punctuation">.</span><span class="token method function property-access">readFileSync</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">ejs<span class="token punctuation">.</span><span class="token property-access">fileLoader</span> <span class="token operator">=</span> myFileLoader<span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="客户端支持"><a aria-hidden="true" tabindex="-1" href="#客户端支持"><span class="icon icon-link"></span></a>客户端支持</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="例子"><a aria-hidden="true" tabindex="-1" href="#例子"><span class="icon icon-link"></span></a>例子</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>output<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ejs.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token keyword">let</span> people <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'geddy'</span><span class="token punctuation">,</span> <span class="token string">'neil'</span><span class="token punctuation">,</span> <span class="token string">'alex'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">      html <span class="token operator">=</span> ejs<span class="token punctuation">.</span><span class="token method function property-access">render</span><span class="token punctuation">(</span><span class="token string">'&#x3C;%= people.join(", "); %>'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">people</span><span class="token operator">:</span> people<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token comment">// With jQuery:</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#output'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">html</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token comment">// Vanilla JS:</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript">  <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">innerHTML</span> <span class="token operator">=</span> html<span class="token punctuation">;</span>
+</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="注意事项"><a aria-hidden="true" tabindex="-1" href="#注意事项"><span class="icon icon-link"></span></a>注意事项</h3><div class="wrap-body">
+<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">"Hello &#x3C;%= include('file', {person: 'John'}); %>"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      fn <span class="token operator">=</span> ejs<span class="token punctuation">.</span><span class="token method function property-access">compile</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">client</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">fn</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token keyword null nil">null</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">path<span class="token punctuation">,</span> d</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// include callback</span>
+</span><span class="code-line">  <span class="token comment">// path -> 'file'</span>
+</span><span class="code-line">  <span class="token comment">// d -> {person: 'John'}</span>
+</span><span class="code-line">  <span class="token comment">// Put your code here</span>
+</span><span class="code-line">  <span class="token comment">// Return the contents of file as a string</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns rendered string</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="选项"><a aria-hidden="true" tabindex="-1" href="#选项"><span class="icon icon-link"></span></a>选项</h2><div class="wrap-body">
+<!--rehype:body-class=cols-1-->
+</div></div><div class="h2wrap-body cols-1"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="选项列表"><a aria-hidden="true" tabindex="-1" href="#选项列表"><span class="icon icon-link"></span></a>选项列表</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th>描述</th></tr></thead><tbody><tr><td align="left"><code>cache</code></td><td>编译后的函数被缓存，需要文件名</td></tr><tr><td align="left"><code>filename</code></td><td>由缓存用于关键缓存，并用于包含</td></tr><tr><td align="left"><code>root</code></td><td>使用绝对路径（例如 <code>/file.ejs</code>）设置包含项目的根目录。 可以是一个数组来尝试解析来自多个目录的包含。</td></tr><tr><td align="left"><code>views</code></td><td>解析包含相对路径时要使用的路径数组。</td></tr><tr><td align="left"><code>context</code></td><td>函数执行上下文</td></tr><tr><td align="left"><code>compileDebug</code></td><td>当 <code>false</code> 时，不编译任何调试工具</td></tr><tr><td align="left"><code>client</code></td><td>返回独立编译的函数</td></tr><tr><td align="left"><code>delimiter</code></td><td>用于内部分隔符的字符，默认为 <code>%</code></td></tr><tr><td align="left"><code>openDelimiter</code></td><td>用于打开分隔符的字符，默认为 <code>&#x3C;</code></td></tr><tr><td align="left"><code>closeDelimiter</code></td><td>用于结束分隔符的字符，默认为 <code>></code></td></tr><tr><td align="left"><code>debug</code></td><td>输出生成的函数体</td></tr><tr><td align="left"><code>strict</code></td><td>当设置为 <code>true</code> 时，生成的函数处于严格模式</td></tr><tr><td align="left"><code>_with</code></td><td>是否使用 <code>with() {}</code> 构造。 如果为 <code>false</code>，则局部变量将存储在局部变量对象中。 （暗示<code>--strict</code>）</td></tr><tr><td align="left"><code>localsName</code></td><td>不使用时用于存储局部变量的对象的名称 默认为局部变量</td></tr><tr><td align="left"><code>rmWhitespace</code></td><td>删除所有可安全删除的空格，包括前导和尾随空格。 它还为所有 <code>scriptlet</code> 标记启用了更安全版本的 <code>-%></code> 行吸收（它不会在行中间去除新的标记行）</td></tr><tr><td align="left"><code>escape</code></td><td>与 <code>&#x3C;%=</code> 构造一起使用的转义函数。 它用于渲染，并在生成客户端函数时进行 <code>.toString()</code> 处理。 （默认情况下转义 XML）</td></tr><tr><td align="left"><code>outputFunctionName</code></td><td>设置为字符串（例如 <code>echo</code> 或 <code>print</code>），以便函数在 <code>scriptlet</code> 标签内打印输出</td></tr><tr><td align="left"><code>async</code></td><td>当 <code>true</code> 时，EJS 将使用异步函数进行渲染。 （取决于 <code>JS</code> 运行时中的 <code>async</code>/<code>await</code> 支持</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="标签"><a aria-hidden="true" tabindex="-1" href="#标签"><span class="icon icon-link"></span></a>标签</h2><div class="wrap-body">
+<!--rehype:body-class=cols-1-->
+</div></div><div class="h2wrap-body cols-1"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="标签列表"><a aria-hidden="true" tabindex="-1" href="#标签列表"><span class="icon icon-link"></span></a>标签列表</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">标签</th><th>描述</th></tr></thead><tbody><tr><td align="left"><code>&#x3C;%</code></td><td>'Scriptlet' 标签，用于控制流，无输出</td></tr><tr><td align="left"><code>&#x3C;%_</code></td><td>“Whitespace Slurping”Scriptlet 标签，删除其前面的所有空格</td></tr><tr><td align="left"><code>&#x3C;%=</code></td><td>将值输出到模板中（HTML 转义）</td></tr><tr><td align="left"><code>&#x3C;%-</code></td><td>将未转义的值输出到模板中</td></tr><tr><td align="left"><code>&#x3C;%#</code></td><td>注释标签，不执行，不输出</td></tr><tr><td align="left"><code>&#x3C;%%</code></td><td>输出文字 <code>&#x3C;%</code></td></tr><tr><td align="left"><code>%></code></td><td>普通结束标签</td></tr><tr><td align="left"><code>-%></code></td><td>修剪模式（'newline slurp'）标签，修剪换行符后的内容</td></tr><tr><td align="left"><code>_%></code></td><td>“Whitespace Slurping”结束标签，删除其后的所有空格</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="cli-1"><a aria-hidden="true" tabindex="-1" href="#cli-1"><span class="icon icon-link"></span></a>Cli</h2><div class="wrap-body">
+<!--rehype:body-class=cols-1-->
+</div></div><div class="h2wrap-body cols-1"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cli-列表"><a aria-hidden="true" tabindex="-1" href="#cli-列表"><span class="icon icon-link"></span></a>Cli 列表</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th>描述</th></tr></thead><tbody><tr><td align="left"><code>cache</code></td><td>编译后的函数被缓存，需要文件名</td></tr><tr><td align="left"><code>-o / --output-file FILE</code></td><td>将渲染的输出写入 FILE 而不是 stdout。</td></tr><tr><td align="left"><code>-f / --data-file FILE</code></td><td>必须是 JSON 格式。 使用来自 FILE 的解析输入作为渲染数据。</td></tr><tr><td align="left"><code>-i / --data-input STRING</code></td><td>必须采用 JSON 格式和 URI 编码。 使用来自 STRING 的解析输入作为渲染数据。</td></tr><tr><td align="left"><code>-m / --delimiter CHARACTER</code></td><td>使用带有尖括号的 CHARACTER 来表示打开/关闭（默认为 %）。</td></tr><tr><td align="left"><code>-p / --open-delimiter CHARACTER</code></td><td>使用 CHARACTER 而不是左尖括号来打开。</td></tr><tr><td align="left"><code>-c / --close-delimiter CHARACTER</code></td><td>使用 CHARACTER 而不是右尖括号来结束。</td></tr><tr><td align="left"><code>-s / --strict</code></td><td>当设置为 <code>true</code> 时，生成的函数处于严格模式</td></tr><tr><td align="left"><code>-n / --no-with</code></td><td>对变量使用 <code>locals</code> 对象，而不是使用 <code>with</code>（隐含--strict）。</td></tr><tr><td align="left"><code>-l / --locals-name</code></td><td>不使用“with”时用于存储局部变量的对象的名称。</td></tr><tr><td align="left"><code>-w / --rm-whitespace</code></td><td>删除所有可安全删除的空格，包括前导和尾随空格。</td></tr><tr><td align="left"><code>-d / --debug</code></td><td>输出生成的函数体</td></tr><tr><td align="left"><code>-h / --help</code></td><td>显示此帮助消息。</td></tr><tr><td align="left"><code>-V/v / --version</code></td><td>显示 EJS 版本。</td></tr></tbody></table>
+<p>使用示例：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ejs <span class="token parameter variable">-p</span> <span class="token punctuation">[</span> <span class="token parameter variable">-c</span> <span class="token punctuation">]</span> ./template_file.ejs <span class="token parameter variable">-o</span> ./output.html
+</span><span class="code-line">$ ejs ./test/fixtures/user.ejs <span class="token assign-left variable">name</span><span class="token operator">=</span>Lerxst
+</span><span class="code-line">$ ejs <span class="token parameter variable">-n</span> <span class="token parameter variable">-l</span> _ ./some_template.ejs <span class="token parameter variable">-f</span> ./data_file.json
+</span></code></pre>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js?v=1.5.1" defer></script><script src="../js/fuse.min.js?v=1.5.1" defer></script><script src="../js/main.js?v=1.5.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
