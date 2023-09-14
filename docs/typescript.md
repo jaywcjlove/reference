@@ -2075,6 +2075,42 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 TSConfig Ref
 ---
 
+### 可完成 90% 的任务
+<!--rehype:wrap-class=row-span-2-->
+
+```js
+"compilerOptions": {
+  /* 基本选项: */
+  "esModuleInterop": true,
+  "skipLibCheck": true,
+  "target": "es2022",
+  "verbatimModuleSyntax": true,
+  "allowJs": true,
+  "resolveJsonModule": true,
+  "moduleDetection": "force",
+  /* 严格 */
+  "strict": true,
+  "noUncheckedIndexedAccess": true,
+  /* 如果使用 TypeScript 进行转译： */
+  "moduleResolution": "NodeNext",
+  "module": "NodeNext",
+  /* 如果不使用 TypeScript 进行转译: */
+  "moduleResolution": "Bundler",
+  "module": "ESNext",
+  "noEmit": true,
+  /* 如果你的代码在 DOM 中运行: */
+  "lib": ["es2022", "dom", "dom.iterable"],
+  /* 如果你的代码不在 DOM 中运行: */
+  "lib": ["es2022"],
+  /* 如果你正在构建一个库: */
+  "declaration": true,
+  /* 如果您正在 monorepo 中构建库: */
+  "composite": true,
+  "sourceMap": true,
+  "declarationMap": true
+}
+```
+
 ### 顶层配置
 
 :- | --
@@ -2098,7 +2134,7 @@ TSConfig Ref
 ```
 
 ### 类型检查(compilerOptions)
-<!--rehype:wrap-class=row-span-4-->
+<!--rehype:wrap-class=row-span-3-->
 
 :- | --
 :- | --
@@ -2124,7 +2160,7 @@ TSConfig Ref
 <!--rehype:className=style-list-arrow-->
 
 ### 模块(compilerOptions)
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 :- | --
 :- | --
@@ -2143,7 +2179,7 @@ TSConfig Ref
 <!--rehype:className=style-list-arrow-->
 
 ### Emit(compilerOptions)
-<!--rehype:wrap-class=row-span-6-->
+<!--rehype:wrap-class=row-span-5-->
 
 :- | --
 :- | --
@@ -2172,14 +2208,12 @@ TSConfig Ref
 `stripInternal` [#](https://www.typescriptlang.org/zh/tsconfig#stripInternal) | 不要为在其 JSDoc 注释中具有 @internal 注释的代码发出声明
 <!--rehype:className=style-list-arrow-->
 
-### JavaScript 支持(compilerOptions)
+### 完整性(compilerOptions)
 
 :- | --
 :- | --
-`allowJs` [#](https://www.typescriptlang.org/zh/tsconfig#allowJs) | 允许 JavaScript 文件在你的工程中被引入，而不是仅仅允许 .ts 和 .tsx 文件
-`checkJs` [#](https://www.typescriptlang.org/zh/tsconfig#checkJs) | 与 allowJs 配合使用，当 checkJs 被启用时，JavaScript 文件中会报告错误
-`maxNodeModuleJsDepth` [#](https://www.typescriptlang.org/zh/tsconfig#maxNodeModuleJsDepth) | 在 node_modules 下搜索和加载 JavaScript 文件的最大依赖深度
-<!--rehype:className=style-list-arrow-->
+`skipDefaultLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipDefaultLibCheck) | 请改用 `skipLibCheck`
+`skipLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipLibCheck) | 跳过声明文件的类型检查
 
 ### 编辑器支持(compilerOptions)
 
@@ -2187,6 +2221,24 @@ TSConfig Ref
 :- | --
 `disableSizeLimit` [#](https://www.typescriptlang.org/zh/tsconfig#disableSizeLimit) | 分配的内存量有一个上限。打开此标志将删除限制
 `plugins` [#](https://www.typescriptlang.org/zh/tsconfig#plugins) | 可在编辑器内运行的语言服务插件列表
+<!--rehype:className=style-list-arrow-->
+
+### 输出格式(compilerOptions)
+
+:- | --
+:- | --
+`noErrorTruncation` [#](https://www.typescriptlang.org/zh/tsconfig#noErrorTruncation) | 不要截断错误消息
+`preserveWatchOutput` [#](https://www.typescriptlang.org/zh/tsconfig#preserveWatchOutput) | 保留监视输出
+`pretty` [#](https://www.typescriptlang.org/zh/tsconfig#pretty) | 使用颜色和上下文对错误和消息进行样式化，默认情况下启用
+<!--rehype:className=style-list-arrow-->
+
+### JavaScript 支持(compilerOptions)
+
+:- | --
+:- | --
+`allowJs` [#](https://www.typescriptlang.org/zh/tsconfig#allowJs) | 允许 JavaScript 文件在你的工程中被引入，而不是仅仅允许 .ts 和 .tsx 文件
+`checkJs` [#](https://www.typescriptlang.org/zh/tsconfig#checkJs) | 与 allowJs 配合使用，当 checkJs 被启用时，JavaScript 文件中会报告错误
+`maxNodeModuleJsDepth` [#](https://www.typescriptlang.org/zh/tsconfig#maxNodeModuleJsDepth) | 在 node_modules 下搜索和加载 JavaScript 文件的最大依赖深度
 <!--rehype:className=style-list-arrow-->
 
 ### 互操作约束(compilerOptions)
@@ -2200,8 +2252,20 @@ TSConfig Ref
 `preserveSymlinks` [#](https://www.typescriptlang.org/zh/tsconfig#preserveSymlinks) | 保留符号链接
 <!--rehype:className=style-list-arrow-->
 
+### 编译器诊断(compilerOptions)
+
+:- | --
+:- | --
+`diagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#diagnostics) | 用于输出调试信息
+`explainFiles` [#](https://www.typescriptlang.org/zh/tsconfig#explainFiles) | 打印 TypeScript 视为项目一部分的文件的名称以及它们是编译一部分的原因
+`extendedDiagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#extendedDiagnostics) | 您可以使用此标志来发现 TypeScript 在编译时将时间花在哪里
+`generateCpuProfile` [#](https://www.typescriptlang.org/zh/tsconfig#generateCpuProfile) | 此选项使您有机会让 TypeScript 在编译器运行期间发出 v8 CPU 配置文件
+`listEmittedFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listEmittedFiles) | 将编译过程中生成的文件的名称打印到终端
+`listFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listFiles) | 打印编译部分文件的名称
+`traceResolution` [#](https://www.typescriptlang.org/zh/tsconfig#traceResolution) | 当您尝试调试未包含模块的原因时
+<!--rehype:className=style-list-arrow-->
+
 ### 向后兼容性(compilerOptions)
-<!--rehype:wrap-class=row-span-2-->
 
 :- | --
 :- | --
@@ -2213,13 +2277,6 @@ TSConfig Ref
 `suppressExcessPropertyErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressExcessPropertyErrors) | 抑制过多的属性错误
 `suppressImplicitAnyIndexErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressImplicitAnyIndexErrors) | 抑制隐式任何索引错误
 <!--rehype:className=style-list-arrow-->
-
-### 完整性(compilerOptions)
-
-:- | --
-:- | --
-`skipDefaultLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipDefaultLibCheck) | 请改用 `skipLibCheck`
-`skipLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipLibCheck) | 跳过声明文件的类型检查
 
 ### 语言与环境(compilerOptions)
 <!--rehype:wrap-class=row-span-2-->
@@ -2240,15 +2297,6 @@ TSConfig Ref
 `useDefineForClassFields` [#](https://www.typescriptlang.org/zh/tsconfig#useDefineForClassFields) | 为类字段使用定义
 <!--rehype:className=style-list-arrow-->
 
-### 输出格式(compilerOptions)
-
-:- | --
-:- | --
-`noErrorTruncation` [#](https://www.typescriptlang.org/zh/tsconfig#noErrorTruncation) | 不要截断错误消息
-`preserveWatchOutput` [#](https://www.typescriptlang.org/zh/tsconfig#preserveWatchOutput) | 保留监视输出
-`pretty` [#](https://www.typescriptlang.org/zh/tsconfig#pretty) | 使用颜色和上下文对错误和消息进行样式化，默认情况下启用
-<!--rehype:className=style-list-arrow-->
-
 ### 项目(compilerOptions)
 
 :- | --
@@ -2259,19 +2307,6 @@ TSConfig Ref
 `disableSourceOfProjectReferenceRedirect` [#](https://www.typescriptlang.org/zh/tsconfig#disableSourceOfProjectReferenceRedirect) | 禁用源项目引用重定向
 `incremental` [#](https://www.typescriptlang.org/zh/tsconfig#incremental) | 使 TypeScript 将上次编译的工程图信息保存到磁盘上的文件中
 `tsBuildInfoFile` [#](https://www.typescriptlang.org/zh/tsconfig#tsBuildInfoFile) | 这个选项可以让您指定一个文件来存储增量编译信息，以作为复合工程的一部分，从而可以更快的构建更大的 TypeScript 代码库
-<!--rehype:className=style-list-arrow-->
-
-### 编译器诊断(compilerOptions)
-
-:- | --
-:- | --
-`diagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#diagnostics) | 用于输出调试信息
-`explainFiles` [#](https://www.typescriptlang.org/zh/tsconfig#explainFiles) | 打印 TypeScript 视为项目一部分的文件的名称以及它们是编译一部分的原因
-`extendedDiagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#extendedDiagnostics) | 您可以使用此标志来发现 TypeScript 在编译时将时间花在哪里
-`generateCpuProfile` [#](https://www.typescriptlang.org/zh/tsconfig#generateCpuProfile) | 此选项使您有机会让 TypeScript 在编译器运行期间发出 v8 CPU 配置文件
-`listEmittedFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listEmittedFiles) | 将编译过程中生成的文件的名称打印到终端
-`listFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listFiles) | 打印编译部分文件的名称
-`traceResolution` [#](https://www.typescriptlang.org/zh/tsconfig#traceResolution) | 当您尝试调试未包含模块的原因时
 <!--rehype:className=style-list-arrow-->
 
 ### 监听选项(watchOptions)
