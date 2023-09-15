@@ -454,10 +454,10 @@ Enter your name: Tom
 
 ```python
 >>> # 是否以 H 开头
->>> "Hello, world!".endswith("H")
+>>> "Hello, world!".startswith("H")
 True
 >>> # 是否以 h 开头
->>> "Hello, world!".endswith("h")
+>>> "Hello, world!".startswith("h")
 False
 >>> # 是否以 ! 结尾
 >>> "Hello, world!".endswith("!")
