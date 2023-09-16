@@ -217,6 +217,43 @@ Linux 命令速查表
 **`cd /test`** | 将目录更改为/test目录
 <!--rehype:className=style-list-->
 
+快捷键
+---
+
+### 命令行编辑
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**Tab** | 自动补全
+**Ctrl+A** | 移动光标到命令行首
+**Ctrl+E** | 移动光标到命令行尾
+**Ctrl+Left** | 光标左移一个单词
+**Ctrl+Right** | 光标右移一个单词
+**Ctrl+K** | 删除光标之后所有字符
+**Ctrl+U** | 清空当前键入的命令
+**Ctrl+W** | 删除光标前的单词
+**Ctrl+Y** | 粘贴`Ctrl+W`或`Ctrl+K`删除的内容
+**Ctrl+D** | 删除当前光标所在字符 (在没有字符时会关闭终端)
+Ctrl+B (Left) | 光标左移（后退）
+Ctrl+F (Right) | 光标右移（前进）
+Ctrl+H (Backspace) | 删除光标的前一个字符
+
+### 其他
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**Ctrl+L** | 清屏
+**Ctrl+C** | 中断正在执行的程序
+**Ctrl+R** | 按字符串寻找历史命令
+**Ctrl+Z** | 将当前进程放到后台（之后可以用`fg`命令重回到前台）
+**Shift+Insert** | 粘贴
+**Ctrl+PageUp** | 屏幕输出向上翻页
+**Ctrl+PageDown** | 屏幕输出向下翻页
+Ctrl+P (Up) | 上一条命令
+Ctrl+N (Down) | 下一条命令
+
 另见
 ---
 
