@@ -1264,10 +1264,13 @@ CSS 函数
 ### calc()
 
 ```css
-width: calc(100% - 80px);
+div {
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+}
 ```
 
-声明 CSS 属性值时执行一些计算
+[`calc()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/calc) CSS 函数允许您在指定 CSS 属性值时执行计算
 
 ### clamp()
 
@@ -1502,6 +1505,7 @@ br + br {
 html {
   box-sizing: border-box;
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -1529,6 +1533,24 @@ html {
 ```
 
 上面示例设置了当前卡片灰色
+
+### `<textarea>`自动增加其高度
+
+```css
+textarea {
+  form-sizing: normal
+}
+```
+
+### 定义容器的长宽比
+
+```css
+div {
+  aspect-ratio: 1/1 
+}
+```
+
+属性 [aspect-ratio](https://developer.mozilla.org/zh-CN/docs/Web/CSS/aspect-ratio) 可以非常容易的定义一个容器的长宽比
 
 ### 使用 unset 而不是重置所有属性
 
@@ -1604,17 +1626,6 @@ div {
 
 多行文本截断到特定的行数，末尾显示省略号 _(...)_
 
-### 计算函数
-
-```css
-div {
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-}
-```
-
-[`calc()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/calc) CSS 函数允许您在指定 CSS 属性值时执行计算
-
 ### 粘性定位元素
 
 ```css
@@ -1687,16 +1698,6 @@ div {
 <!--rehype:className=wrap-text -->
 
 通过样式来控制一个元素 `div` 是否可以编辑
-
-### 定义容器的长宽比
-
-```css
-div {
-  aspect-ratio: 1/1 
-}
-```
-
-属性 [aspect-ratio](https://developer.mozilla.org/zh-CN/docs/Web/CSS/aspect-ratio) 可以非常容易的定义一个容器的长宽比
 
 ### 等宽表格单元格
 
