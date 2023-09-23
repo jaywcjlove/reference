@@ -291,6 +291,9 @@ jobs:
 <a href="https://github.com/itldg" title="老大哥">
   <img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/>
 </a>
+<a href="https://github.com/wsypower" title="魏">
+  <img src="https://avatars.githubusercontent.com/u/31298317?v=4" width="42;" alt="魏"/>
+</a>
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
 </a>
@@ -545,9 +548,6 @@ jobs:
 </a>
 <a href="https://github.com/Zeng-qh" title="都一样">
   <img src="https://avatars.githubusercontent.com/u/40046415?v=4" width="42;" alt="都一样"/>
-</a>
-<a href="https://github.com/wsypower" title="魏">
-  <img src="https://avatars.githubusercontent.com/u/31298317?v=4" width="42;" alt="魏"/>
 </a><!--GAMFC-END-->
 
 上图贡献者列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 自动生成贡献者图片。
