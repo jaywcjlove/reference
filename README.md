@@ -576,6 +576,9 @@ Quick Reference
 </a>
 <a href="https://github.com/Zeng-qh" title="都一样">
   <img src="https://avatars.githubusercontent.com/u/40046415?v=4" width="42;" alt="都一样"/>
+</a>
+<a href="https://github.com/wsypower" title="魏">
+  <img src="https://avatars.githubusercontent.com/u/31298317?v=4" width="42;" alt="魏"/>
 </a><!--GAMFC-END-->
 
 [贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 根据提交次数的先后顺序自动生成
