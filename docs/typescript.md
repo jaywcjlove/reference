@@ -1557,8 +1557,8 @@ const a = <T extends string>(t: T) => t;
 const b = <T extends number>(t: T) => t;
 const c = <T extends boolean>(t: T) => t;
 const d = a("a");  // const d: 'a'
-const e = a(1);    // const d: 1
-const f = a(true); // const d: true
+const e = b(1);    // const d: 1
+const f = c(true); // const d: true
 
 // 这里t的类型用了一个展开运算
 const g = 
