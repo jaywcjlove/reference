@@ -289,8 +289,8 @@ Quick Reference
 <a href="https://github.com/qyl27" title="秋 雨落">
   <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋 雨落"/>
 </a>
-<a href="https://github.com/heStudio-Network" title="醉、倾城">
-  <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
+<a href="https://github.com/heStudio-Network" title="undefined">
+  <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="undefined"/>
 </a>
 <a href="https://github.com/webeautiful" title="Albert">
   <img src="https://avatars.githubusercontent.com/u/3364316?v=4" width="42;" alt="Albert"/>
@@ -492,6 +492,9 @@ Quick Reference
 </a>
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
+</a>
+<a href="https://github.com/infanx" title="infanx">
+  <img src="https://avatars.githubusercontent.com/u/65985757?v=4" width="42;" alt="infanx"/>
 </a>
 <a href="https://github.com/auroraslot" title="Tang Weize">
   <img src="https://avatars.githubusercontent.com/u/48817882?v=4" width="42;" alt="Tang Weize"/>
