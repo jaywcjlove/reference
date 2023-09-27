@@ -1482,6 +1482,24 @@ input[type="text"]:autofill {
 
 另见: [:autofill](https://developer.mozilla.org/en-US/docs/Web/CSS/:autofill)
 
+### 修改 input type="color" 样式
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```css
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+```
+
 ### 忽略用作间距的换行符 \<br />
 
 ```css
@@ -1590,6 +1608,7 @@ body {
 这样文本元素可以很容易地从 `body` 继承
 
 ### 使用图像作为光标
+<!--rehype:wrap-class=col-span-2-->
 
 ```css
 div {
@@ -1912,16 +1931,6 @@ body {
 }
 ```
 
-### 逗号分隔列表
-
-```css
-ul > li:not(:last-child)::after {
-  content: ",";
-}
-```
-
-使列表项看起来像一个真实的逗号分隔列表，使用 `:not()` 伪类，最后一项不会添加逗号
-
 ### 图片对齐不变形
 
 ```css
@@ -1957,6 +1966,16 @@ img:hover {
   展示多行文本，超过 3 行将被截断，显示省略号...
 </p>
 ```
+
+### 逗号分隔列表
+
+```css
+ul > li:not(:last-child)::after {
+  content: ",";
+}
+```
+
+使列表项看起来像一个真实的逗号分隔列表，使用 `:not()` 伪类，最后一项不会添加逗号
 
 另见
 ---------
