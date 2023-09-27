@@ -340,6 +340,9 @@ Quick Reference
 <a href="https://github.com/CharlotteZeng" title="hanchZ">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="hanchZ"/>
 </a>
+<a href="https://github.com/ohto-ai" title="Choo">
+  <img src="https://avatars.githubusercontent.com/u/46275725?v=4" width="42;" alt="Choo"/>
+</a>
 <a href="https://github.com/Damao2250" title="Damao">
   <img src="https://avatars.githubusercontent.com/u/19251992?v=4" width="42;" alt="Damao"/>
 </a>
