@@ -275,10 +275,10 @@ server {
   listen 80;
   server_name example.com;
   root /path/to/website;
-  # root /www/data/ 示例，如果里面没有'root'，它将寻找 /www/data/index.html
+  # root /path/to/website/ 示例，如果里面没有'root'，它将寻找 /path/to/website/index.html
   location / {
   }
-  location /images/ { # 如果里面没有“root”，它将寻找 /www/data/images/index.html
+  location /images/ { # 如果里面没有“root”，它将寻找 /path/to/website/images/index.html
   }
   location /videos/ { # 由于里面有“root”，它会寻找 /www/media/videos/index.html
       root /www/media;
