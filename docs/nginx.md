@@ -510,7 +510,7 @@ upstream example {
   server 127.0.0.1:82 weight=3;
   server 127.0.0.1:83 weight=3 down;
   server 127.0.0.1:84 weight=3; max_fails=3  fail_timeout=20s;
-  server 127.0.0.1:85 weight=4;;
+  server 127.0.0.1:85 weight=4;
   keepalive 32;
 }
 server {
