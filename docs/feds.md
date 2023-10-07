@@ -89,7 +89,6 @@ CSS 工具
 [Emmet](https://www.emmet.io/)<!--rehype:target=_blank-->
 [est](http://ecomfe.github.io/est/)<!--rehype:target=_blank-->
 [Flex Layout Attribute](https://github.com/StefanKovac/flex-layout-attribute)<!--rehype:target=_blank-->
-[Grid.Guide](http://grid.guide/)<!--rehype:target=_blank-->
 [minireset.css](http://lesscss.org/)<!--rehype:target=_blank-->
 [Normalize.css](http://necolas.github.io/normalize.css/)<!--rehype:target=_blank-->
 [PostCSS](http://postcss.org/)<!--rehype:target=_blank-->

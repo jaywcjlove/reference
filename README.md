@@ -289,8 +289,8 @@ Quick Reference
 <a href="https://github.com/qyl27" title="秋 雨落">
   <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋 雨落"/>
 </a>
-<a href="https://github.com/heStudio-Network" title="醉、倾城">
-  <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="醉、倾城"/>
+<a href="https://github.com/heStudio-Network" title="undefined">
+  <img src="https://avatars.githubusercontent.com/u/119711513?v=4" width="42;" alt="undefined"/>
 </a>
 <a href="https://github.com/webeautiful" title="Albert">
   <img src="https://avatars.githubusercontent.com/u/3364316?v=4" width="42;" alt="Albert"/>
@@ -322,6 +322,9 @@ Quick Reference
 <a href="https://github.com/itldg" title="老大哥">
   <img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/>
 </a>
+<a href="https://github.com/wsypower" title="魏">
+  <img src="https://avatars.githubusercontent.com/u/31298317?v=4" width="42;" alt="魏"/>
+</a>
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
 </a>
@@ -336,6 +339,9 @@ Quick Reference
 </a>
 <a href="https://github.com/CharlotteZeng" title="hanchZ">
   <img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="hanchZ"/>
+</a>
+<a href="https://github.com/ohto-ai" title="Choo">
+  <img src="https://avatars.githubusercontent.com/u/46275725?v=4" width="42;" alt="Choo"/>
 </a>
 <a href="https://github.com/Damao2250" title="Damao">
   <img src="https://avatars.githubusercontent.com/u/19251992?v=4" width="42;" alt="Damao"/>
@@ -448,6 +454,9 @@ Quick Reference
 <a href="https://github.com/Lmmmmmm-bb" title="_lmmmmmm">
   <img src="https://avatars.githubusercontent.com/u/54026110?v=4" width="42;" alt="_lmmmmmm"/>
 </a>
+<a href="https://github.com/mailbaoer" title="baoer">
+  <img src="https://avatars.githubusercontent.com/u/5282978?v=4" width="42;" alt="baoer"/>
+</a>
 <a href="https://github.com/chyok" title="chyok">
   <img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/>
 </a>
@@ -486,6 +495,9 @@ Quick Reference
 </a>
 <a href="https://github.com/hweining" title="hweining">
   <img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/>
+</a>
+<a href="https://github.com/infanx" title="infanx">
+  <img src="https://avatars.githubusercontent.com/u/65985757?v=4" width="42;" alt="infanx"/>
 </a>
 <a href="https://github.com/auroraslot" title="Tang Weize">
   <img src="https://avatars.githubusercontent.com/u/48817882?v=4" width="42;" alt="Tang Weize"/>
@@ -583,6 +595,7 @@ Quick Reference
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站(国内打不开的不再收录)。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/discussions/206#discussion-4625735)
 
+[server.wiki](https://ref.server.wiki)<!--rehype:target=_blank-->
 [nihaosi.com](https://refs.nihaosi.com)<!--rehype:target=_blank-->
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank-->
 [aibk.cn](https://quickref.aibk.cn)<!--rehype:target=_blank-->

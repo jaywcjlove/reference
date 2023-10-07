@@ -1360,7 +1360,7 @@ const Row = (props: RowProps) => {
 type Capitalize<T extends string> = T extends `${infer U}${infer V}`
   ? `${Uppercase<U>}${V}`
   : T
-type capitalized = Capitalize<"hello world"> // Hello World
+type capitalized = Capitalize<"hello world"> // Hello world
 ```
 
 也可以在 infer 中使用条件约束（`extends`）
@@ -1557,8 +1557,8 @@ const a = <T extends string>(t: T) => t;
 const b = <T extends number>(t: T) => t;
 const c = <T extends boolean>(t: T) => t;
 const d = a("a");  // const d: 'a'
-const e = a(1);    // const d: 1
-const f = a(true); // const d: true
+const e = b(1);    // const d: 1
+const f = c(true); // const d: true
 
 // 这里t的类型用了一个展开运算
 const g = 
