@@ -341,10 +341,10 @@
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">root</span> /path/to/website</span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token comment"># root /www/data/ 示例，如果里面没有'root'，它将寻找 /www/data/index.html</span>
+</span><span class="code-line">  <span class="token comment"># root /path/to/website/ 示例，如果里面没有'root'，它将寻找 /path/to/website/index.html</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token punctuation">}</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /images/</span> <span class="token punctuation">{</span> <span class="token comment"># 如果里面没有“root”，它将寻找 /www/data/images/index.html</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /images/</span> <span class="token punctuation">{</span> <span class="token comment"># 如果里面没有“root”，它将寻找 /path/to/website/images/index.html</span>
 </span><span class="code-line">  <span class="token punctuation">}</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /videos/</span> <span class="token punctuation">{</span> <span class="token comment"># 由于里面有“root”，它会寻找 /www/media/videos/index.html</span>
 </span><span class="code-line">      <span class="token directive"><span class="token keyword">root</span> /www/media</span><span class="token punctuation">;</span>
@@ -544,7 +544,7 @@
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:82 weight=3</span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:83 weight=3 down</span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:84 weight=3</span><span class="token punctuation">;</span> <span class="token directive"><span class="token keyword">max_fails=3</span>  fail_timeout=20s</span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:85 weight=4</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">server</span> 127.0.0.1:85 weight=4</span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">keepalive</span> <span class="token number">32</span></span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
