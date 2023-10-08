@@ -277,6 +277,9 @@ Quick Reference
 <a href="https://github.com/LiuYuan-SHU" title="Yuan Liu">
   <img src="https://avatars.githubusercontent.com/u/96400967?v=4" width="42;" alt="Yuan Liu"/>
 </a>
+<a href="https://github.com/mailbaoer" title="baoer">
+  <img src="https://avatars.githubusercontent.com/u/5282978?v=4" width="42;" alt="baoer"/>
+</a>
 <a href="https://github.com/chaos-cn" title="chaos">
   <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
 </a>
@@ -300,9 +303,6 @@ Quick Reference
 </a>
 <a href="https://github.com/XYZscratcher" title="XYZ">
   <img src="https://avatars.githubusercontent.com/u/108533817?v=4" width="42;" alt="XYZ"/>
-</a>
-<a href="https://github.com/mailbaoer" title="baoer">
-  <img src="https://avatars.githubusercontent.com/u/5282978?v=4" width="42;" alt="baoer"/>
 </a>
 <a href="https://github.com/1834423612" title="kjch">
   <img src="https://avatars.githubusercontent.com/u/49981661?v=4" width="42;" alt="kjch"/>
