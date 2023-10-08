@@ -1814,6 +1814,59 @@ finally:                 # 在所有情况下执行
     print("我们可以在这里清理资源")
 ```
 
+### pyenv & pipenv
+<!--rehype:wrap-class=col-span-3-->
+
+pvenv 用于管理python版本，pipenv 用于管理项目包版本
+
+#### pyenv
+
+```shell
+# 安装 pyenv
+curl https://pyenv.run | bash
+```
+
+[更多安装方式](https://github.com/pyenv/pyenv#installation)
+
+```shell
+# 安装 python 版本
+pyenv install 3.10.12
+
+# 设置 python 版本
+pyenv global 3.10.12 # 全局设置
+pyenv shell  3.10.12 # 针对当前 shell session
+pyenv local  3.10.12 # 针对当前目录 
+```
+
+#### pipenv
+
+```shell
+# 安装 pipenv
+pip install pipenv --user  # pip
+brew install pipenv        # homebrew
+
+# 更新 pipenv
+pip install --user --upgrade pipenv # pip
+brew upgrade pipenv                 # homebrew
+```
+
+```shell
+# 安装 package
+pipenv install <package name> # 不指定版本
+pipenv install <package name>==<version>    # 精确指定版本
+pipenv install <package name>~=<version>    # 指定版本范围，例如 1.1则表示安装1.x的最新版本，1.0.1则表示安装1.0.x的最新版本
+pipenv install "<package name>=<version>"   # 大于等于指定版本
+pipenv install "<package name>=<version>"   # 小于等于指定版本
+```
+
+```shell
+# 指定 python 版本
+pipenv --python 3.10.12
+
+# 激活当前目录虚拟环境
+pipenv shell
+```
+
 另见
 ----
 
