@@ -604,7 +604,7 @@ Quick Reference
 [defense.ink](https://ref.defense.ink)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [terryyoung.cn](http://ref.terryyoung.cn/)<!--rehype:target=_blank&class=contributing&data-info=👆每周一三五自动同步-->
 [quickref.binscor.top](https://quickref.binscor.top)<!--rehype:target=_blank&data-info=👆每天自动同步-->
-[fxkjnj.com](https://ref.fxkjnj.com/)<!--rehype:target=_blank&data-info=👆每天自动同步-->
+[srebro.cn](https://ref.srebro.cn)<!--rehype:target=_blank&data-info=👆每天自动同步-->
 [haah.net](https://ref.haah.net)<!--rehype:target=_blank&data-info=👆每天自动同步-->
 [laoleng.vip](http://bbs.laoleng.vip/reference/)<!--rehype:target=_blank-->
 [dbyun.net](https://www.dbyun.net/reference/index.html)<!--rehype:target=_blank-->
