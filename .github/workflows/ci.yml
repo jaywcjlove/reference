@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - run: npm install
       - run: npm run build
@@ -95,7 +95,7 @@ jobs:
           name: ${{ steps.create_tag.outputs.version }}
           tag: ${{ steps.create_tag.outputs.version }}
           body: |
-            Documentation ${{ needs.build.outputs.create_tag_version }}: https://raw.githack.com/jaywcjlove/reference/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
+            Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/reference/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
             Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
 
             ${{ steps.changelog.outputs.changelog }}
