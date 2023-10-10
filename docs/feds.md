@@ -75,7 +75,7 @@ JavaScript 测试工具
 CSS 工具
 ---
 
-[30秒CSS](https://atomiks.github.io/30-seconds-of-css/)<!--rehype:target=_blank-->
+[30秒CSS](https://www.30secondsofcode.org/css/)<!--rehype:target=_blank-->
 [Autoprefixer](https://github.com/postcss/autoprefixer)<!--rehype:target=_blank-->
 [ColorZilla](http://www.colorzilla.com/gradient-editor/)<!--rehype:target=_blank-->
 [CSS Protips](https://github.com/AllThingsSmitty/css-protips)<!--rehype:target=_blank-->
@@ -103,7 +103,7 @@ CSS 工具
 框架类库
 ---
 
-[React](https://facebook.github.io/react/)<!--rehype:target=_blank&style=background: rgb(97 218 251/var(\-\-bg\-opacity));-->
+[React](https://zh-hans.react.dev)<!--rehype:target=_blank&style=background: rgb(97 218 251/var(\-\-bg\-opacity));-->
 [Vue 中文](https://cn.vuejs.org/)<!--rehype:target=_blank&style=background: rgb(66 184 131/var(\-\-bg\-opacity));-->
 [Angular](https://angular.io/)<!--rehype:target=_blank&style=background: rgb(195 8 47/var(\-\-bg\-opacity));-->
 [jQuery](http://www.jquery123.com/)<!--rehype:target=_blank-->
