@@ -623,6 +623,31 @@ $ sudo systemctl restart postgresql
 
 另见：[复制](https://www.postgresql.org/docs/current/sql-copy.html)
 
+### 跨版本升级
+
+pg_upgrade 跨版本升级
+
+```shell
+$ /usr/lib/postgresql/16/bin/pg_upgrade \
+  -b /usr/lib/postgresql/15/bin \
+  -B /usr/lib/postgresql/16/bin \
+  -d /var/lib/postgresql/15/main \
+  -D /var/lib/postgresql/16/main \
+  -o " -c config_file=/etc/postgresql/15/main/postgresql.conf" \
+  -O " -c config_file=/etc/postgresql/16/main/postgresql.conf"
+```
+
+- &nbsp; `-b` &nbsp; 旧版本二进制文件目录
+- &nbsp; `-B` &nbsp; 新版本二进制文件目录
+- &nbsp; `-d` &nbsp; 旧版本数据目录
+- &nbsp; `-D` &nbsp; 新版本数据目录
+- &nbsp; `-o` &nbsp; 旧版本主配置文件
+- &nbsp; `-O` &nbsp; 新版本主配置文件
+- &nbsp; `-c` &nbsp; 仅`check`，不执行升级，可先加`-c`检查是否有报错，没有报错再运行升级
+<!--rehype:className=style-none-->
+
+使用 `pg_upgrade -?` 获取完整的选项列表
+
 另见
 ----
 

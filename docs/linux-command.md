@@ -11,10 +11,10 @@ Linux 命令速查表
 
 :--- | :---
 :--- | :---
-**`uname`** | 显示linux系统信息
+**`uname`** | 显示 linux 系统信息
 **`uname -r`** | 显示内核版本信息
-**`cat /etc/os-release`** | 显示linux系统详细信息
-**`uptime`** | 显示系统运行的时间<br/>(包括平均负载)
+**`cat /etc/os-release`** | 显示 linux 系统详细信息
+**`uptime`** | 显示系统运行的时间(包括平均负载)
 **`hostname`** | 显示系统主机名
 **`hostname -i`** | 显示系统的IP地址
 **`last reboot`** | 显示系统重新启动历史记录
@@ -32,15 +32,16 @@ Linux 命令速查表
 :--- | :---
 :--- | :---
 **`dmesg`** | 显示启动消息
-**`cat /proc/cpuinfo`** | 显示有关CPU的更多信息，例如型号、型号名称、核心、厂商标识
-**`cat /proc/meminfo`** | 显示有关硬件内存的更多信息，例如总内存和可用内存
+**`cat /proc/cpuinfo`** | <pur>**CPU**</pur>: 显示 CPU 的更多信息，例如型号、核心等
+**`cat /proc/meminfo`** | <pur>**内存**</pur>: 显示硬件内存的更多信息
+**`df -h`** | <pur>**磁盘空间**</pur>: 显示磁盘空间大小(单位`G`)
+**`hdparm -i /dev/xda`** | <pur>**磁盘**</pur>: 显示有关磁盘数据的信息
 **`lshw`** | 显示有关系统硬件配置的信息
 **`lsblk`** | 显示块设备相关信息
-**`free -m`** | 显示系统中空闲和使用的内存(-m标志表示内存(MB))
-**`lspci -tv`** | 在树状图中显示PCI设备
-**`lsusb -tv`** | 以树状图的形式显示USB设备
+**`free -m`** | 显示系统中空闲和使用的内存，`-m`(MB)，`-g`(GB)
+**`lspci -tv`** | 在树状图中显示 PCI 设备
+**`lsusb -tv`** | 以树状图的形式显示 USB 设备
 **`dmidecode`** | 显示BIOS中的硬件信息
-**`hdparm -i /dev/xda`** | 显示有关磁盘数据的信息
 **`hdparm -tT /dev/xda <:code>`** | 在设备xda上进行读速度测试
 **`badblocks -s /dev/xda`** | 测试磁盘上不可读的块
 <!--rehype:className=style-list-->
@@ -215,6 +216,43 @@ Linux 命令速查表
 **`cd`** | 将目录更改为$HOME目录
 **`cd /test`** | 将目录更改为/test目录
 <!--rehype:className=style-list-->
+
+快捷键
+---
+
+### 命令行编辑
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**Tab** | 自动补全
+**Ctrl+A** | 移动光标到命令行首
+**Ctrl+E** | 移动光标到命令行尾
+**Ctrl+Left** | 光标左移一个单词
+**Ctrl+Right** | 光标右移一个单词
+**Ctrl+K** | 删除光标之后所有字符
+**Ctrl+U** | 清空当前键入的命令
+**Ctrl+W** | 删除光标前的单词
+**Ctrl+Y** | 粘贴`Ctrl+W`或`Ctrl+K`删除的内容
+**Ctrl+D** | 删除当前光标所在字符 (在没有字符时会关闭终端)
+Ctrl+B (Left) | 光标左移（后退）
+Ctrl+F (Right) | 光标右移（前进）
+Ctrl+H (Backspace) | 删除光标的前一个字符
+
+### 其他
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**Ctrl+L** | 清屏
+**Ctrl+C** | 中断正在执行的程序
+**Ctrl+R** | 按字符串寻找历史命令
+**Ctrl+Z** | 将当前进程放到后台（之后可以用`fg`命令重回到前台）
+**Shift+Insert** | 粘贴
+**Ctrl+PageUp** | 屏幕输出向上翻页
+**Ctrl+PageDown** | 屏幕输出向下翻页
+Ctrl+P (Up) | 上一条命令
+Ctrl+N (Down) | 下一条命令
 
 另见
 ---

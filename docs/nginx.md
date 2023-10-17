@@ -275,10 +275,10 @@ server {
   listen 80;
   server_name example.com;
   root /path/to/website;
-  # root /www/data/ 示例，如果里面没有'root'，它将寻找 /www/data/index.html
+  # root /path/to/website/ 示例，如果里面没有'root'，它将寻找 /path/to/website/index.html
   location / {
   }
-  location /images/ { # 如果里面没有“root”，它将寻找 /www/data/images/index.html
+  location /images/ { # 如果里面没有“root”，它将寻找 /path/to/website/images/index.html
   }
   location /videos/ { # 由于里面有“root”，它会寻找 /www/media/videos/index.html
       root /www/media;
@@ -510,7 +510,7 @@ upstream example {
   server 127.0.0.1:82 weight=3;
   server 127.0.0.1:83 weight=3 down;
   server 127.0.0.1:84 weight=3; max_fails=3  fail_timeout=20s;
-  server 127.0.0.1:85 weight=4;;
+  server 127.0.0.1:85 weight=4;
   keepalive 32;
 }
 server {

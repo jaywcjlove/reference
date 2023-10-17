@@ -389,21 +389,8 @@ $ git mv [existing-path] [new-path]
 $ git log --stat -M
 ```
 
-### git 配置 ssh 代理
-<!--rehype:wrap-class=col-span-2-->
-
-```bash
-$ cat ~/.ssh/config
-Host gitlab.com
-# 直接使用 sh**socks 提供的 socks5 代理端口
-ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
-
-Host github.com
-ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
-```
-<!--rehype:className=wrap-text-->
-
 ### .gitattributes
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```ini
 # 设置默认行为，以防人们没有设置 core.autocrlf
@@ -433,6 +420,362 @@ docs/formatter.rb linguist-documentation=false
 special-vendored-path/* linguist-vendored
 # 将所有 .rb 文件检测为 Java 文件
 *.rb linguist-language=Java
+```
+
+### git 配置 ssh 代理
+
+```bash
+$ cat ~/.ssh/config
+Host gitlab.com
+# 直接使用 sh**socks 提供的 socks5 代理端口
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
+
+Host github.com
+ProxyCommand nc -X 5 -x 127.0.0.1:1080 %h %p
+```
+<!--rehype:className=wrap-text-->
+
+Commit
+---
+
+### 改写历史
+<!--rehype:wrap-class=row-span-2-->
+
+重写最后的提交消息
+
+```shell
+$ git commit --amend -m "new message"
+```
+
+修改最新的提交而不更改提交消息
+
+```shell
+$ git commit --amend --no-edit
+```
+
+### 在 commit log 中显示 GPG 签名
+
+```bash
+$ git log --show-signature
+```
+
+### 修改远程 Commit 记录
+<!--rehype:wrap-class=row-span-5-->
+
+```shell
+$ git rebase -i HEAD~3
+# 表示要修改当前版本的倒数第三次状态
+# 将要更改的记录行首单词 pick 改为 edit
+pick 96dc3f9 提交 commit 描述内容 1
+pick f1cce8a 提交 commit 描述内容 2
+pick 6293516 提交 commit 描述内容 3
+# Rebase eeb03a4..6293516 onto eeb03a4
+#                     (3 commands)
+#
+# Commands:
+# p, pick = 使用提交
+# r, reword = 使用提交，但编辑提交消息
+# e, edit = 使用提交，但停止修改
+# s, squash = 使用提交，但融合到先前的提交中
+# f, fixup = 像 squash，但丢弃此提交的日志消息
+# x, exec = 使用 shell 运行命令(该行的其余部分)
+# d, drop = 删除提交
+```
+
+保存并退出，会弹出下面提示
+
+```shell
+# 您现在可以修改提交，使用
+#
+#   git commit --amend
+#
+# 对更改感到满意后，运行
+#
+#   git rebase --continue
+#
+# 1. 通过这条命令进入编辑更改 commit，保存退出
+$ git commit --amend
+# 2. 保存退出确认修改，继续执行下面命令,
+$ git rebase --continue
+# 如果修改多条记录反复执行上面两条命令直到完成所有修改
+
+# 最后，确保没有人提交进行推送，最好不要加 -f 强制推送
+$ git push -f origin master
+```
+
+### Commit
+
+```shell
+$ git commit -v --amend
+```
+
+重写最后的提交信息
+
+### 撤销远程记录
+
+```shell
+# 撤销一条记录
+$ git reset --hard HEAD~1
+# 强制同步到远程仓库
+$ git push -f origin HEAD:master
+```
+
+### 放弃本地修改内容
+
+```shell
+# 如果有的修改以及加入暂存区的话
+$ git reset --hard
+# 还原所有修改，不会删除新增的文件
+$ git checkout .
+# 下面命令会删除新增的文件
+$ git clean -xdf
+```
+
+### 把 A 分支的某一个 commit，放到 B 分支上
+
+```shell
+# 切换到 B 分支
+$ git checkout <B>
+# 将 A 分支 <hash-id> 的内容 pick 到 B 分支
+$ git cherry-pick <hash-id>
+```
+
+### 重设第一个 commit
+
+```bash
+$ git update-ref -d HEAD
+```
+
+把所有的改动都重新放回工作区，并**清空所有的 commit**，这样就可以重新提交第一个 `commit` 了
+
+### 回到远程仓库的状态
+
+```bash
+$ git fetch --all && git reset --hard origin/master
+```
+<!--rehype:className=wrap-text-->
+
+抛弃本地所有的修改，回到远程仓库的状态
+
+### commit 历史中显示 Branch1 有的但是 Branch2 没有 commit
+
+```bash
+$ git log Branch1 ^Branch2
+```
+
+Git Submodule 子模块
+------
+
+### 添加子模块
+
+```bash
+$ git submodule add <仓库地址> <子模块路径>
+```
+
+### 克隆包含子模块的仓库
+
+```bash
+$ git clone <repository_url> --recursive
+```
+
+### 更新子模块
+
+```bash
+$ git submodule update --remote
+```
+
+### 切换到子模块的特定提交
+
+```bash
+$ cd <path_to_submodule>
+$ git checkout <commit_hash>
+```
+
+### 查看当前仓库中的子模块
+
+```bash
+$ git submodule status
+```
+
+### 初始化子模块
+
+```bash
+$ git submodule init
+```
+
+### 切换到父仓库的特定提交，并更新子模块
+
+```bash
+$ cd ..
+$ git checkout <commit_hash>
+$ git submodule update --remote
+```
+
+### 获取并切换子模块的最新标签
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+$ cd <path_to_submodule>
+$ git fetch --tags
+$ git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+```
+
+### 子模块递归
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+
+```bash
+# 添加所有已存在的子模块
+$ git submodule foreach --recursive git submodule add <repository_url>
+# 更新所有子模块到最新提交
+$ git submodule foreach --recursive git pull origin master
+# 检出特定的子模块路径
+$ git submodule foreach --recursive git checkout <branch_name>
+# 获取仓库中的所有子模块变化
+$ git submodule foreach --recursive git fetch
+# 获取并合并子模块的远程分支
+$ git submodule foreach --recursive git pull origin <branch_name>
+# 将子模块还原到父仓库中的初始提交
+$ git submodule foreach --recursive git checkout .
+# 获取子模块的更新并忽略本地修改
+$ git submodule foreach --recursive git fetch --all
+$ git submodule foreach --recursive git reset --hard origin/master
+```
+
+### 获取子模块的最新提交
+
+```bash
+$ cd <path_to_submodule>
+$ git pull
+```
+
+### 删除子模块
+
+```bash
+$ git submodule deinit <path_to_submodule>
+$ git rm <path_to_submodule>
+```
+
+### 切换子模块的分支
+
+```bash
+$ cd <path_to_submodule>
+$ git checkout <branch_name>
+```
+
+### 初始化并更新所有子模块
+
+```bash
+$ git submodule init
+$ git submodule update
+```
+
+### 切换子模块的特定标签
+
+```bash
+$ cd <path_to_submodule>
+$ git checkout tags/<tag_name>
+```
+
+Config 设置
+---
+
+### 查看配置的信息
+
+```bash
+$ git help config
+```
+
+获取帮助信息，查看修改个人信息的参数
+
+### 忽略文件的权限变化
+
+```shell
+git config core.fileMode false
+```
+
+不再将文件的权限变化视作改动
+
+### 配置自动换行
+
+```bash
+$ git config --global core.autocrlf input
+```
+
+自动转换坑太大，提交到git是自动将换行符转换为 `lf`
+
+### 获取帮助信息
+
+```bash
+$ git config --list
+```
+
+### 中文乱码的解决方案
+
+```shell
+$ git config --global core.quotepath false
+```
+
+### 删除全局设置
+
+```bash
+$ git config --global --unset <entry-name>
+```
+
+### 配置 http 和 socks 代理
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```bash
+# 查看代理
+$ git config --global http.proxy
+$ git config --global https.proxy
+$ git config --global socks.proxy
+
+# 设置代理
+# 适用于 privoxy 将 socks 协议转为 http 协议的 http 端口
+$ git config --global http.proxy http://127.0.0.1:1080
+$ git config --global https.proxy http://127.0.0.1:1080
+$ git config --global socks.proxy 127.0.0.1:1080
+
+# 取消代理
+$ git config --global --unset http.proxy
+$ git config --global --unset https.proxy
+$ git config --global --unset socks.proxy
+
+# 只对 github.com 设置代理
+$ git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+$ git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
+
+# 取消 github.com 代理
+$ git config --global --unset http.https://github.com.proxy
+$ git config --global --unset https.https://github.com.proxy
+```
+
+### Git 别名
+
+```shell
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+```
+
+配置好后，再输入 `git` 命令的时候就不用再输入一大段了，例如我们要查看状态，只需：
+
+```bash
+$ git st
+```
+
+也可以看看：[更多别名](https://gist.github.com/johnpolacek/69604a1f6861129ef088)
+
+### 设置大小写敏感
+
+```shell
+# 查看git 的设置
+$ git config --get core.ignorecase
+# 设置大小写敏感
+$ git config core.ignorecase false
+# 远程有俩相同目录，通过这种方式清除掉，然后提交记录
+$ git rm -r --cached <目录/文件>
 ```
 
 Git 技巧
@@ -512,109 +855,7 @@ $ git checkout <branch> -- <file>
 删除本地存在远程不存在的分支
 
 ```shell
-git remote prune origin
-```
-
-### Commit
-
-```shell
-$ git commit -v --amend
-```
-
-重写最后的提交信息
-
-### 忽略文件的权限变化
-
-```shell
-git config core.fileMode false
-```
-
-不再将文件的权限变化视作改动
-
-### Git 别名
-
-```shell
-$ git config --global alias.co checkout
-$ git config --global alias.br branch
-$ git config --global alias.ci commit
-$ git config --global alias.st status
-```
-
-也可以看看：[更多别名](https://gist.github.com/johnpolacek/69604a1f6861129ef088)
-
-### 设置大小写敏感
-
-```shell
-# 查看git 的设置
-$ git config --get core.ignorecase
-# 设置大小写敏感
-$ git config core.ignorecase false
-# 远程有俩相同目录，通过这种方式清除掉，然后提交记录
-$ git rm -r --cached <目录/文件>
-```
-
-### 修改远程 Commit 记录
-<!--rehype:wrap-class=row-span-4-->
-
-```shell
-$ git rebase -i HEAD~3
-# 表示要修改当前版本的倒数第三次状态
-# 将要更改的记录行首单词 pick 改为 edit
-pick 96dc3f9 提交 commit 描述内容 1
-pick f1cce8a 提交 commit 描述内容 2
-pick 6293516 提交 commit 描述内容 3
-# Rebase eeb03a4..6293516 onto eeb03a4
-#                     (3 commands)
-#
-# Commands:
-# p, pick = 使用提交
-# r, reword = 使用提交，但编辑提交消息
-# e, edit = 使用提交，但停止修改
-# s, squash = 使用提交，但融合到先前的提交中
-# f, fixup = 像 squash，但丢弃此提交的日志消息
-# x, exec = 使用 shell 运行命令(该行的其余部分)
-# d, drop = 删除提交
-```
-
-保存并退出，会弹出下面提示
-
-```shell
-# 您现在可以修改提交，使用
-#
-#   git commit --amend
-#
-# 对更改感到满意后，运行
-#
-#   git rebase --continue
-#
-# 1. 通过这条命令进入编辑更改 commit，保存退出
-$ git commit --amend
-# 2. 保存退出确认修改，继续执行下面命令,
-$ git rebase --continue
-# 如果修改多条记录反复执行上面两条命令直到完成所有修改
-
-# 最后，确保没有人提交进行推送，最好不要加 -f 强制推送
-$ git push -f origin master
-```
-
-### 撤销远程记录
-
-```shell
-# 撤销一条记录
-$ git reset --hard HEAD~1
-# 强制同步到远程仓库
-$ git push -f origin HEAD:master
-```
-
-### 放弃本地修改内容
-
-```shell
-# 如果有的修改以及加入暂存区的话
-$ git reset --hard
-# 还原所有修改，不会删除新增的文件
-$ git checkout .
-# 下面命令会删除新增的文件
-$ git clean -xdf
+$ git remote prune origin
 ```
 
 ### 获取最近一次提交的 Hash
@@ -631,32 +872,6 @@ $ git rev-parse --short HEAD # e10721c
 $ git branch --merged master | grep -v '^\*\|  master' | xargs -n 1 git branch -d
 ```
 <!--rehype:className=wrap-text-->
-
-### 把 A 分支的某一个 commit，放到 B 分支上
-
-```shell
-# 切换到 B 分支
-$ git checkout <B>
-# 将 A 分支 <hash-id> 的内容 pick 到 B 分支
-$ git cherry-pick <hash-id>
-```
-
-### 回到远程仓库的状态
-
-```bash
-$ git fetch --all && git reset --hard origin/master
-```
-<!--rehype:className=wrap-text-->
-
-抛弃本地所有的修改，回到远程仓库的状态
-
-### 重设第一个 commit
-
-```bash
-$ git update-ref -d HEAD
-```
-
-把所有的改动都重新放回工作区，并**清空所有的 commit**，这样就可以重新提交第一个 `commit` 了
 
 ### 查看冲突文件列表
 
@@ -683,12 +898,6 @@ $ git diff <commit-id> <commit-id>
 
 ```bash
 git diff --cached
-```
-
-### 中文乱码的解决方案
-
-```shell
-$ git config --global core.quotepath false
 ```
 
 ### 展示暂存区、工作区和最近版本的不同
@@ -733,26 +942,12 @@ $ git remote show origin
 $ git describe --tags --abbrev=0
 ```
 
-### 查看某段代码是谁写的
-
-```bash
-$ git blame <file-name>
-```
-
-`blame` 的意思为`责怪`，你懂的。
-
 ### 修改作者名
 
 ```bash
 $ git commit --amend --author='Author Name <email@address.com>'
 ```
 <!--rehype:className=wrap-text-->
-
-### 修改远程仓库的 url
-
-```bash
-$ git remote set-url origin <URL>
-```
 
 ### 增加远程仓库
 
@@ -765,12 +960,6 @@ $ git remote add origin <remote-url>
 
 ```bash
 $ git remote -v
-```
-
-### 查看两个星期内的改动
-
-```bash
-$ git whatchanged --since='2 weeks ago'
 ```
 
 ### 从 stash 中拿出某个文件的修改
@@ -846,18 +1035,6 @@ $ git clean -X -f
 $ git status --ignored
 ```
 
-### commit 历史中显示 Branch1 有的但是 Branch2 没有 commit
-
-```bash
-$ git log Branch1 ^Branch2
-```
-
-### 在 commit log 中显示 GPG 签名
-
-```bash
-$ git log --show-signature
-```
-
 ### 新建并切换到新分支上，同时这个分支没有任何 commit
 
 ```bash
@@ -870,35 +1047,6 @@ $ git checkout --orphan <branch-name>
 
 ```bash
 $ git show <branch-name>:<file-name>
-```
-
-### 配置 http 和 socks 代理
-<!--rehype:wrap-class=row-span-4-->
-
-```bash
-# 查看代理
-$ git config --global http.proxy
-$ git config --global https.proxy
-$ git config --global socks.proxy
-
-# 设置代理
-# 适用于 privoxy 将 socks 协议转为 http 协议的 http 端口
-$ git config --global http.proxy http://127.0.0.1:1080
-$ git config --global https.proxy http://127.0.0.1:1080
-$ git config --global socks.proxy 127.0.0.1:1080
-
-# 取消代理
-$ git config --global --unset http.proxy
-$ git config --global --unset https.proxy
-$ git config --global --unset socks.proxy
-
-# 只对 github.com 设置代理
-$ git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
-$ git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
-
-# 取消 github.com 代理
-$ git config --global --unset http.https://github.com.proxy
-$ git config --global --unset https.https://github.com.proxy
 ```
 
 ### clone 最新一次提交
@@ -934,14 +1082,6 @@ git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads
 
 最新的放在最上面
 
-### 在 commit log 中查找相关内容
-
-```bash
-git log --all --grep='<given-text>'
-```
-
-通过 grep 查找，given-text: 所需要查找的字段
-
 ### 把暂存区的指定 file 放到工作区中
 
 ```bash
@@ -960,10 +1100,32 @@ Host github.com
 ```
 <!--rehype:className=wrap-text-->
 
-git 代码统计
+### Fork仓库同步上游仓库
+
+- 设置上游仓库
+
+  ```shell
+  $ git remote add upstream https://github.com/jaywcjlove/reference.git
+  ```
+  
+- 本地项目操作
+
+  ```shell
+  $ git fetch upstream # 获取上游仓库更新
+  $ git stach # 暂存本地修改(如果有)
+  $ git branch -a # 列出所有远程仓库地址(非必须)
+  $ git rebase remotes/upstream/main # 使用远程仓库的提交记录来重写本地提交记录
+  $ git push -f # 强制推送到远程(github)仓库
+  $ git stach pop # 恢复暂存的本地修改(如果有)
+  ```
+
+<!--rehype:className=style-timeline-->
+
+统计查询
 ---
 
 ### 查看 git 上的个人代码量
+<!--rehype:wrap-class=row-span-2-->
 
 - `username` 需要改成自己的
 
@@ -971,8 +1133,10 @@ git 代码统计
 git log --author="username" --pretty=tformat: --numstat | awk \
 '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
 ```
+<!--rehype:className=wrap-text-->
 
 ### 统计每个人增删行数
+<!--rehype:wrap-class=row-span-2-->
 
 ```bash
 git log --format='%aN' | sort -u |\
@@ -980,6 +1144,7 @@ git log --format='%aN' | sort -u |\
   git log --author="$name" --pretty=tformat: --numstat | awk \
   '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
 ```
+<!--rehype:className=wrap-text-->
 
 ### 查看仓库提交者排名
 
@@ -988,11 +1153,52 @@ git log --format='%aN' | sort -u |\
 ```bash
 git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 10
 ```
+<!--rehype:className=wrap-text-->
 
 ### 提交数统计
 
 ```bash
 git log --oneline | wc -l
+```
+
+### 查看某段代码是谁写的
+
+```bash
+$ git blame <file-name>
+```
+
+`blame` 的意思为`责怪`，你懂的。
+
+### 查看两个星期内的改动
+
+```bash
+$ git whatchanged --since='2 weeks ago'
+```
+
+### 在 commit log 中查找相关内容
+
+```bash
+$ git log --all --grep='<given-text>'
+```
+
+通过 grep 查找，given-text: 所需要查找的字段
+
+### Git 仓库的大小
+
+```bash
+$ git ls-files | xargs -r du -hs
+```
+
+### Git 仓库的总大小
+
+```bash
+$ git count-objects -vH
+```
+
+### 查询历史体积大的 10 个文件
+
+```bash
+$ git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | awk '/^blob/ {print substr($0,6)}' | sort --numeric-sort --key=2 --reverse | head -n 10 | cut -c 13-
 ```
 
 Conventional Commmits
