@@ -255,8 +255,8 @@ jobs:
 <a href="https://github.com/MackDing" title="Blossom">
   <img src="https://avatars.githubusercontent.com/u/19878893?v=4" width="42;" alt="Blossom"/>
 </a>
-<a href="https://github.com/MarioMang" title="MarioMang">
-  <img src="https://avatars.githubusercontent.com/u/3959555?v=4" width="42;" alt="MarioMang"/>
+<a href="https://github.com/Darkiiiiiice" title="Darkiiiiiice">
+  <img src="https://avatars.githubusercontent.com/u/3959555?v=4" width="42;" alt="Darkiiiiiice"/>
 </a>
 <a href="https://github.com/qyl27" title="秋 雨落">
   <img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋 雨落"/>
@@ -368,6 +368,9 @@ jobs:
 </a>
 <a href="https://github.com/mo3et" title="Monet Lee">
   <img src="https://avatars.githubusercontent.com/u/34803812?v=4" width="42;" alt="Monet Lee"/>
+</a>
+<a href="https://github.com/HanaNoryu" title="Noryu">
+  <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
 </a>
 <a href="https://github.com/Perzch" title="Perzch">
   <img src="https://avatars.githubusercontent.com/u/67987641?v=4" width="42;" alt="Perzch"/>
