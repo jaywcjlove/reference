@@ -485,9 +485,6 @@ Quick Reference
 <a href="https://github.com/sunny0826" title="Xudong Guo">
   <img src="https://avatars.githubusercontent.com/u/24563928?v=4" width="42;" alt="Xudong Guo"/>
 </a>
-<a href="https://github.com/gzttcydxx" title="gzttcydxx">
-  <img src="https://avatars.githubusercontent.com/u/50025185?v=4" width="42;" alt="gzttcydxx"/>
-</a>
 <a href="https://github.com/hua03" title="hua03">
   <img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/>
 </a>
