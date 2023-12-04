@@ -563,6 +563,34 @@ $ git fetch --all && git reset --hard origin/master
 $ git log Branch1 ^Branch2
 ```
 
+### git 迁移
+
+- 从原地址克隆一份裸版本库
+
+```bash
+$ git clone --bare https://github.com/username/project.git
+```
+
+- 然后新建一个地址，比如一下
+
+```bash
+$ https://gitee.com/username/newproject.git
+```
+
+- 进入project.git这个全裸版本库，以镜像推送的方式上传代码到newproject上。
+
+```
+$ cd project.git
+
+$ git push --mirror https://gitee.com/username/newproject.git
+```
+
+- 使用新地址，直接 Clone 到本地就可以了。
+
+```
+$ git clone https://gitee.com/username/newproject.git
+```
+
 Git Submodule 子模块
 ------
 
