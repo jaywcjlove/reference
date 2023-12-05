@@ -47,7 +47,7 @@ jobs:
           EOF
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: actions/actions-gh-pages@v3
         with:
           commit_message: ${{ github.event.head_commit.message }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
 
       
       - name: Create Release
-        uses: ncipollo/release-action@v1
+        uses: actions/release-action@v1
         if: steps.create_tag.outputs.successful
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
