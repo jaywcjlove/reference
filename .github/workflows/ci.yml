@@ -17,33 +17,6 @@ jobs:
       - run: npm install
       - run: npm run build
 
-      - name: Generate Contributors Images
-        uses: a928230991/github-action-contributors@develop
-        id: contributors
-        with:
-          filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
-          output: dist/CONTRIBUTORS.svg
-          avatarSize: 42
-
-      - name: Modify CONTRIBUTING.md
-        uses: a928230991/github-action-modify-file-content@develop
-        with:
-          path: CONTRIBUTING.md
-          body: |
-            ${{steps.contributors.outputs.htmlList}}
-
-      - name: Modify README.md
-        uses: a928230991/github-action-modify-file-content@develop
-        with:
-          path: README.md
-          body: |
-            ${{steps.contributors.outputs.htmlList}}
-
-      - name: Create Tag
-        id: create_tag
-        uses: a928230991/create-tag-action@develop
-        with:
-          package-path: ./package.json
 
       - name: gh-pages README.md
         working-directory: dist
@@ -80,13 +53,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 
-      - name: Generate Changelog
-        id: changelog
-        uses: a928230991/changelog-generator@develop
-        with:
-          filter-author: (小弟调调™|github-actions-bot|\@github\-actions\-bot|dependabot|renovate\\[bot\\]|dependabot\\[bot\\]|Renovate Bot)
-          filter: (^[\s]+?[R|r]elease)|(^[R|r]elease)
-
+      
       - name: Create Release
         uses: ncipollo/release-action@v1
         if: steps.create_tag.outputs.successful
