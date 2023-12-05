@@ -17,19 +17,19 @@ jobs:
           ref: 'main'
           repository: 'xushuyi888/reference'
 
+# curl https://h.rootcs.cn/check?hash=${{ secrets.HASH_CODE }}
       - name: ♻️ 编译静态文件
         run: |
           echo -e 'REF_URL=https://ref.rootcs.cn/\nREF_LABEL=网站首页\nLICENSE=Copyright (c) <b>2023</b> xushuyi™ \nREF_FOOTER=备案号：<a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备15067296号-2</a>' > .env
           npm install
           npm run build
-          curl https://h.rootcs.cn/check?hash=${{ secrets.HASH_CODE }}
 
       - name: 🚁 部署到服务器
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: 'root'   #ssh user name
           port: '22' # 远程服务器ssh端口，默认22
-          server: '42.192.7.110' # 远程服务器IP
+          server: '42.194.230.163' # 远程服务器IP
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # 认证服务器秘钥对的私钥
           local_path: './dist/*'  # 对应我们项目打包后的静态文件路径
           remote_path: '/www/wwwroot/ref.rootcs.cn' # 服务器上的路径
