@@ -59,6 +59,7 @@ Command | Description
 `conda create --clone <ENVNAME> -n <NEWENV>` | 从已有环境克隆一个新环境
 `conda rename -n <ENVNAME> <NEWENVNAME>` |  对环境名字重命名
 `conda remove -n <ENVNAME> --all`   | 通过名字删除一个环境
+`conda env remove -n  <ENVNAME>`   | 通过名字删除一个环境
 `conda list -n <ENVNAME> --revisions` |  列出环境的各个修订版本
 `conda install -n <ENVNAME> --revision <NUMBER>"`    | 回滚到环境的某个版本本
 <!--rehype:className=style-list-arrow-->
@@ -89,6 +90,16 @@ conda <COMMAND> --help
 conda search <PKGNAME> --info
 conda clean --all # 清除所有未使用的文件
 conda config --show # 检查conda配置
+```
+
+设置指定环境为默认环境
+
+```bash
+vim ~/.bashrc
+export PATH="~/anaconda/envs/ENVNAME/bin:$PATH"  # 文件末尾添加
+conda activate ENVNAME  # :wq 保存并关闭
+source ~/.bashrc  # 更新
+conda config --set auto_activate_base false # 禁用auto activate base环境
 ```
 
 ### 额外提示
