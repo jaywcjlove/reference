@@ -131,6 +131,8 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - run: docker buildx prune
+
       - name: Build and push image:latest
         uses: docker/build-push-action@v3
         with:
