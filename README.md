@@ -510,6 +510,9 @@ Quick Reference
 <a href="https://github.com/joyfully-W" title="joyfully-W">
   <img src="https://avatars.githubusercontent.com/u/32212924?v=4" width="42;" alt="joyfully-W"/>
 </a>
+<a href="https://github.com/jussker" title="jussker">
+  <img src="https://avatars.githubusercontent.com/u/33953356?v=4" width="42;" alt="jussker"/>
+</a>
 <a href="https://github.com/k983551019" title="k983551019">
   <img src="https://avatars.githubusercontent.com/u/48147837?v=4" width="42;" alt="k983551019"/>
 </a>
