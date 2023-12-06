@@ -3,7 +3,7 @@ Github Copilot 备忘清单
 
 这是开始使用 [Github Copilot](https://code.visualstudio.com/docs/editor/github-copilot) 的快速参考指南。
 
-\* 校对、错误请指正。📮邮箱: [jussker@outlook.com](jussker@outlook.com)
+\* 校对、错误请指正。📮邮箱: <a href="mailto:jussker@outlook.com">jussker@outlook.com</a>
 
 一、准备工作
 ----
@@ -385,7 +385,7 @@ dailogs = [
 |- Agent |    指定Agent, 符号为 `@`, 可选
 |- Commands | 指定命令, 符号为 `/`, 可选
 |- 变量 |      引用内容, 符号为 `#`, 可选
-|- 用户输入的内容 |     可选
+|- 用户输入的指令 |     可选
 
 #### 例子
 
@@ -395,6 +395,8 @@ dailogs = [
 @vscode /api 请解释 inlineChat.start 的作用
 
 @workspace /explain def helloworld():...
+
+在每一行代码末尾添加注释进行解释
 ```
 
 #### Agent
@@ -426,6 +428,16 @@ dailogs = [
 |-           |:-|
 /generate    |在此生成, 该命令无法由用户输入
 
+---
+
+> 当然也可以直接选中区域，然后在inline chat中输入指令执行 copilot会对选中区域进行指令操作  
+
+|常用指令|
+| - |
+|在每一行代码末尾添加注释进行解释|
+|使代码满足PEP484要求|
+<!--rehype:className=show-header wrap-text left-align-->
+
 ### Silde Chat 的 Slash Commands
 <!--rehype:wrap-class=col-span-1 row-span-2-->
 
@@ -444,7 +456,7 @@ dailogs = [
 /newNotebook |创建新的Jupyter Notebook  
 /terminal    |解释命令行里的命令
 /tests       |为选中的代码生成单元测试
-/help        |清除会话
+/help        |帮助说明
 /clear       |清除会话
 
 ### `/terminal`特有的变量, 以`#`号开头
@@ -569,7 +581,7 @@ dailogs = [
 END... ENJOY YOURSELF
 ----
 
-> 欢迎大家添加新内容，校对、错误请指正。📮邮箱: [jussker@outlook.com](jussker@outlook.com)
+> 欢迎大家添加新内容，校对、错误请指正。📮邮箱: <a href="mailto:jussker@outlook.com">jussker@outlook.com</a>
 
 参考来源
 ----
