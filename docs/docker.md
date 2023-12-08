@@ -171,6 +171,12 @@ Docker 网络
 
 ### 操作
 
+获取容器连接的网络
+
+```shell
+docker inspect MyContainer | grep Network
+```
+
 删除网络
 
 ```shell
