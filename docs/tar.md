@@ -81,7 +81,7 @@ tar cvzf compressedArchive.tar.gz /home/cyberpunk/testdir
 
 ### 生成压缩率更高的 `tar.bz2` 文件
 
-`tar` 的 `bz2` 压缩，可以创建比 `gzip` 文件小的归档。`Bz2` 模式执行归档压缩和解压所需的时间比 `gzip` 模式多。通常，这个时间差可以忽略不计，但如果文件非常打，或者是文件数量非常多，那么时间差就会非常大。
+`tar` 的 `bz2` 压缩，可以创建比 `gzip` 文件小的归档。`Bz2` 模式执行归档压缩和解压所需的时间比 `gzip` 模式多。通常，这个时间差可以忽略不计，但如果文件非常大，或者是文件数量非常多，那么时间差就会非常大。
 
 ```shell
 tar cvfj Archive.tar.bz2 /home/cyberpunk/testdir
