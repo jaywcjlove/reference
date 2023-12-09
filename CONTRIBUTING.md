@@ -372,6 +372,9 @@ jobs:
 <a href="https://github.com/HanaNoryu" title="Noryu">
   <img src="https://avatars.githubusercontent.com/u/109856546?v=4" width="42;" alt="Noryu"/>
 </a>
+<a href="https://github.com/PILIHU2022" title="PILIHU2022">
+  <img src="https://avatars.githubusercontent.com/u/100511118?v=4" width="42;" alt="PILIHU2022"/>
+</a>
 <a href="https://github.com/Perzch" title="Perzch">
   <img src="https://avatars.githubusercontent.com/u/67987641?v=4" width="42;" alt="Perzch"/>
 </a>
