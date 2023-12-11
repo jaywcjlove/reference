@@ -37,27 +37,28 @@ export HOMEBREW_INSTALL_FROM_API=1
 
 命令 | 说明
 :--- :---
-`brew install git`         | `安装`一个包
-`brew reinstall git`       | 重新`安装`一个包
+`brew install git`         | `安装`一个软件包
+`brew reinstall git`       | 重新`安装`一个软件包
 `brew uninstall git`       | `删除`/`卸载`软件包
-`brew upgrade git`         | 升级包
+`brew upgrade git`         | 升级一个软件包
+`brew upgrade`             | 升级所有可升级的包
 :--- :---
-`brew unlink git`          | `取消`链接
-`brew link git`            | 关联
-`brew switch git 2.5.0`    | 更改版本
+`brew unlink git`          | 取消软件包的链接
+`brew link git`            | 链接已有的软件包
+`brew switch git 2.5.0`    | 切换软件包的版本
 :--- :---
-`brew list --versions git` | 看看你有什么版本
+`brew list --versions git` | 查看安装的软件包及其版本信息
 
 ### 更多包命令
 
 命令 | 说明
 :--- :---
-`brew info git`            | 列出版本、注意事项等
-`brew cleanup git`         | 删除旧版本
-`brew edit git`            | 编辑此软件包
-`brew cat git`             | 打印这个软件包
-`brew home git`            | 打开主页
-`brew search git`          | 搜索公式
+`brew info git`            | 显示软件包的版本、依赖、注意事项等信息
+`brew cleanup git`         | 删除旧版本的软件包及其依赖
+`brew edit git`            | 编辑此软件包的安装脚本
+`brew cat git`             | 打印此软件包的安装脚本
+`brew home git`            | 打开此软件包的主页
+`brew search git`          | 搜索软件包公式并显示相关信息
 
 ### Brew Cask 命令
 
@@ -66,31 +67,34 @@ export HOMEBREW_INSTALL_FROM_API=1
 `brew install --cask firefox` | 安装火狐浏览器
 `brew list --cask`            | 列出已安装应用
 
-Cask 命令用于与图形应用程序交互
+Cask 命令用于与图形界面应用程序交互，可以安装和管理 macOS 上的图形界面应用程序
 
 ### 全局命令
 <!--rehype:wrap-class=row-span-2-->
 
 命令 | 说明
 :--- :---
-`brew update`   | 更新 `brew` 和 `cask`
-`brew upgrade`  | 升级所有软件包
-`brew list`     | 已安装列表
-`brew outdated` | 升级需要什么？
-`brew doctor`   | 诊断冲泡问题
-`brew pin <formula>` | 防止指定软件包升级
-`brew unpin <formula>` | 允许升级指定的软件包
+`brew update`   | 更新 `Homebrew` 和 `Cask`
+`brew upgrade`  | 升级所有可升级的软件包
+`brew list`     | 列出已安装的软件包
+`brew outdated` | 列出需要升级的软件包
+`brew doctor`   | 诊断 Homebrew 是否存在问题
+`brew pin <formula>` | 防止指定软件包被升级
+`brew unpin <formula>` | 允许指定软件包被升级
 
 ### Brew 清理
 
 ```bash
 $ brew cleanup # 删除旧版本的已安装软件包
 $ brew cleanup <formula> # 删除旧版本指定软件包
+$ brew cleanup -s # 删除未安装的软件包
+$ brew cleanup --prune=all # 删除所有 Homebrew 缓存
+$ rm -rf $(brew --cache) # 直接删除 Homebrew 的缓存目录
 # 显示所有将被删除的软件包(试运行)
-$ brew cleanup -n 
+$ brew cleanup -n
 ```
 
-### brew 源码仓库
+### Brew 源码仓库
 
 ```bash
 # 列出所有当前点击的源码仓库（点击）
@@ -111,7 +115,7 @@ $ brew untap <user/repo>
 $ brew list
 # 显示所有本地可用的 brew 配方
 $ brew search
-# 对用于 brew 的软件包名称执行子字符串搜索
+# 搜索包含指定字符的 brew 配方
 $ brew search <text>
 # 显示有关软件包的信息
 $ brew info <formula>
@@ -123,6 +127,27 @@ $ brew info <formula>
 :--- :---
 `brew help` | 打印帮助信息
 `brew help <sub-command>` | 打印子命令的帮助信息
+
+### 依赖
+
+显示`包`的依赖关系。 特定于`包`的其他选项可能是附加到命令
+
+```bash
+# 您还可以看到包和依赖关系图
+$ brew deps --tree --installed
+$ brew deps git # 显示 git 依赖
+```
+
+### 卸载 Homebrew
+
+- 使用官方卸载脚本卸载 Homebrew
+- 验证文件是否已删除
+
+```bash
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+$ sudo rm -rf /opt/homebrew
+```
+<!--rehype:className=wrap-text -->
 
 另见
 ---

@@ -5,16 +5,16 @@ VSCode 备忘清单
 
 ## Windows
 
-### 一般的
+### 通用
 
 | -                           | -                      |
 |-----------------------------|------------------------|
 | `Ctrl` `Shift` `P` _/_ `F1` | 显示命令面板             |
 | `Ctrl` `P`                  | 快速打开，转到文件        |
-| `Ctrl` `Shift` `N`          | 新窗户                  |
-| `Ctrl` `Shift` `W`          | 关闭窗口                |
-| `Ctrl` `,`                  | 用户设置                |
-| `Ctrl` `K` `Ctrl` `S`       | 键盘快捷键               |
+| `Ctrl` `Shift` `N`          | 打开新窗口               |
+| `Ctrl` `Shift` `W`          | 关闭当前窗口             |
+| `Ctrl` `,`                  | 打开用户设置             |
+| `Ctrl` `K` `Ctrl` `S`       | 打开键盘快捷键设置        |
 <!--rehype:className=shortcuts-->
 
 ### 基本编辑
@@ -36,16 +36,16 @@ VSCode 备忘清单
 | `Ctrl` `End`              | 转到文件末尾                         |
 | `Ctrl` `↑` _/_ `↓`        | 向上/向下滚动行                      |
 | `Alt` `PgUp` _/_ `PgDn`   | 向上/向下滚动页面                    |
-| `Ctrl` `Shift` `[`        | 折叠（折叠）区域                     |
-| `Ctrl` `Shift` `]`        | 展开（展开）区域                     |
-| `Ctrl` `K` `Ctrl` `[`     | 折叠（折叠）所有子区域               |
-| `Ctrl` `K` `Ctrl` `]`     | 展开（展开）所有子区域               |
-| `Ctrl` `K` `Ctrl` `0`     | 折叠（折叠）所有区域                 |
-| `Ctrl` `K` `Ctrl` `J`     | 展开（展开）所有区域                 |
+| `Ctrl` `Shift` `[`        | 折叠区域                            |
+| `Ctrl` `Shift` `]`        | 展开区域                            |
+| `Ctrl` `K` `Ctrl` `[`     | 折叠所有子区域                       |
+| `Ctrl` `K` `Ctrl` `]`     | 展开所有子区域                       |
+| `Ctrl` `K` `Ctrl` `0`     | 折叠所有区域                         |
+| `Ctrl` `K` `Ctrl` `J`     | 展开所有区域                         |
 | `Ctrl` `K` `Ctrl` `C`     | 添加行注释                           |
 | `Ctrl` `K` `Ctrl` `U`     | 删除行注释                           |
 | `Ctrl` `/`                | 切换行注释                           |
-| `Shift` `Alt` `A`         | 切换块评论                           |
+| `Shift` `Alt` `A`         | 切换块注释                           |
 | `Alt` `Z`                 | 切换自动换行                         |
 <!--rehype:className=shortcuts-->
 
@@ -54,28 +54,28 @@ VSCode 备忘清单
 | -                    | -                  |
 |----------------------|--------------------|
 | `Ctrl` `T`           | 显示所有符号         |
-| `Ctrl` `G`           | 去线                |
+| `Ctrl` `G`           | 跳转到指定行数       |
 | `Ctrl` `P`           | 转到文件            |
 | `Ctrl` `Shift` `O`   | 转到符号            |
 | `Ctrl` `Shift` `M`   | 显示问题面板         |
 | `F8`                 | 转到下一个错误       |
 | `Shift` `F8`         | 转到上一个错误       |
 | `Ctrl` `Shift` `Tab` | 浏览编辑组历史       |
-| `Alt` `←` _/_ `→`   | 后退/前进           |
-| `Ctrl` `M`           | 切换 Tab 移动焦点   |
+| `Alt` `←` _/_ `→`    | 后退/前进           |
+| `Ctrl` `M`           | 切换按 Tab 移动焦点   |
 <!--rehype:className=shortcuts-->
 
 ### 搜索和替换
 
 | -                         | -                               |
 |---------------------------|---------------------------------|
-| `Ctrl` `F`                | 寻找                             |
-| `Ctrl` `H`                | 代替                             |
+| `Ctrl` `F`                | 查找                             |
+| `Ctrl` `H`                | 替换                             |
 | `F3` _/_ `Shift` `F3`     | 查找下一个/上一个                  |
 | `Alt` `Enter`             | 选择所有出现的查找匹配项            |
-| `Ctrl` `D`                | 将选择添加到下一个查找匹配项         |
-| `Ctrl` `K` `Ctrl` `D`     | 将最后一个选择移动到下一个查找匹配项  |
-| `Alt` `C` _/_ `R` _/_ `W` | 切换区分大小写/正则表达式/整个单词   |
+| `Ctrl` `D`                | 将所选内容设置为查找关键词          |
+| `Ctrl` `K` `Ctrl` `D`     | 将上一个选择移动到下一个查找匹配项   |
+| `Alt` `C` _/_ `R` _/_ `W` | 切换区分大小写/正则表达式/全字匹配   |
 <!--rehype:className=shortcuts-->
 
 ### 多光标和选择
@@ -90,7 +90,7 @@ VSCode 备忘清单
 | `Ctrl` `Shift` `L`                     | 选择当前选择的所有匹配项         |
 | `Ctrl` `F2`                            | 选择当前单词的所有出现           |
 | `Shift` `Alt` `→`                      | 展开选择                      |
-| `Shift` `Alt` `←`                      | 收缩选择                      |
+| `Shift` `Alt` `←`                      | 收起选择                      |
 | `Shift` `Alt` `<Drag>`                 | 列（框）选择                   |
 | `Ctrl` `Shift` `Alt` `<Arrow>`         | 列（框）选择                   |
 | `Ctrl` `Shift` `Alt` `PgUp` _/_ `PgDn` | 列（框）选择页上/下             |
@@ -100,17 +100,17 @@ VSCode 备忘清单
 
 | -                           | -               |
 |-----------------------------|-----------------|
-| `Ctrl` `<Space>` `Ctrl` `I` | 触发建议         |
-| `Ctrl` `Shift` `<Space>`    | 触发参数提示      |
+| `Ctrl` `<Space>` `Ctrl` `I` | 显示建议         |
+| `Ctrl` `Shift` `<Space>`    | 显示参数提示      |
 | `Shift` `Alt` `F`           | 格式化文档       |
-| `Ctrl` `K` `Ctrl` `F`       | 格式选择         |
+| `Ctrl` `K` `Ctrl` `F`       | 格式化所选区域    |
 | `F12`                       | 转到定义         |
-| `Alt` `F12`                 | 窥视定义         |
-| `Ctrl` `K` `F12`            | 打开定义到一边    |
-| `Ctrl` `.`                  | 快速解决         |
-| `Shift` `F12`               | 显示参考         |
+| `Alt` `F12`                 | 速览定义         |
+| `Ctrl` `K` `F12`            | 在侧边栏中打开定义 |
+| `Ctrl` `.`                  | 快速修复         |
+| `Shift` `F12`               | 显示引用         |
 | `F2`                        | 重命名符号       |
-| `Ctrl` `K` `Ctrl` `X`       | 修剪尾随空格      |
+| `Ctrl` `K` `Ctrl` `X`       | 删除尾随空格      |
 | `Ctrl` `K` `M`              | 更改文件语言      |
 <!--rehype:className=shortcuts-->
 
@@ -121,8 +121,8 @@ VSCode 备忘清单
 | `Ctrl` `F4` `Ctrl` `W`           | 关闭编辑器                 |
 | `Ctrl` `K` `F`                   | 关闭文件夹                 |
 | `Ctrl` `\`                       | 拆分编辑器                 |
-| `Ctrl` `1` _/_ `2` _/_ `3`      | 专注于第一、第二或第三编辑组  |
-| `Ctrl` `K` `Ctrl` `←` _/_ `→`    | 专注于上一个/下一个编辑组    |
+| `Ctrl` `1` _/_ `2` _/_ `3`       | 将焦点切换到第一/二/三编辑组  |
+| `Ctrl` `K` `Ctrl` `←` _/_ `→`    | 将焦点切换到上/下一个编辑组    |
 | `Ctrl` `Shift` `PgUp` _/_ `PgDn` | 向左/向右移动编辑器         |
 | `Ctrl` `K` `←` _/_ `→`           | 移动活动编辑器组            |
 <!--rehype:className=shortcuts-->
@@ -137,11 +137,11 @@ VSCode 备忘清单
 | `Ctrl` `Shift` `S`    | 另存为                       |
 | `Ctrl` `K` `S`        | 保存所有                     |
 | `Ctrl` `F4`           | 关闭                        |
-| `Ctrl` `K` `Ctrl` `W` | 关闭松油                     |
+| `Ctrl` `K` `Ctrl` `W` | 关闭所有                     |
 | `Ctrl` `Shift` `T`    | 重新打开关闭的编辑器           |
 | `Ctrl` `K` `Enter`    | 保持预览模式编辑器打开         |
-| `Ctrl` `Tab`          | Open next                   |
-| `Ctrl` `Shift` `Tab`  | Open previous               |
+| `Ctrl` `Tab`          | 打开下一项                   |
+| `Ctrl` `Shift` `Tab`  | 打开上一项                   |
 | `Ctrl` `K` `P`        | 复制活动文件的路径             |
 | `Ctrl` `K` `R`        | 在资源管理器中显示活动文件      |
 | `Ctrl` `K` `O`        | 在新窗口/实例中显示活动文件     |
@@ -175,12 +175,12 @@ VSCode 备忘清单
 | `F9`                           | 切换断点                       |
 | `F5`                           | 开始/继续                      |
 | `Shift` `F5`                   | 停止                          |
-| `Shift` `F11` _/_ `F11`        | 进/出                         |
-| `F10`                          | 跨过去                         |
+| `Shift` `F11` _/_ `F11`        | 单步调试/跳出                  |
+| `F10`                          | 单步跳过                       |
 | `Ctrl` `K` `Ctrl` `I`          | 显示悬停                       |
 | `Ctrl` <code>\`</code>         | 显示综合终端                    |
 | `Ctrl` `Shift` <code>\`</code> | 创建一个新终端                  |
-| `Ctrl` `C`                     | 复制选择                       |
+| `Ctrl` `C`                     | 复制所选内容                    |
 | `Ctrl` `V`                     | 粘贴到活动终端                  |
 | `Ctrl` `↑` _/_ `↓`             | 向上/向下滚动                   |
 | `Shift` `PgUp` _/_ `PgDn`      | 向上/向下滚动页面               |

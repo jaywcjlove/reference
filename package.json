@@ -1,15 +1,16 @@
 {
   "name": "@wcj/reference",
-  "version": "1.21.0",
+  "version": "1.41.0",
   "description": "为开发人员分享快速参考备忘单(主要是方便自己)。",
   "author": "jaywcjlove",
   "license": "MIT",
   "homepage": "https://jaywcjlove.github.io/reference",
+  "funding": "https://jaywcjlove.github.io/#/sponsor",
   "private": false,
   "scripts": {
     "prepare": "husky install",
-    "build": "node scripts/build.mjs",
-    "start": "node scripts/watch.mjs",
+    "build": "refs-cli",
+    "start": "refs-cli --watch",
     "prettier": "prettier --write '**/*.{mjs,css,json,prettierrc,lintstagedrc}'",
     "markdownlint": "npx markdownlint-cli --fix ./docs/*.md"
   },
@@ -21,25 +22,18 @@
     "url": "https://github.com/jaywcjlove/reference/issues"
   },
   "keywords": [],
+  "lint-staged": {
+    "**/*.{mjs,css,json,prettierrc,lintstagedrc}": "prettier --write",
+    "*.md": "markdownlint --fix",
+    "docs/*.md": "markdownlint --fix"
+  },
   "devDependencies": {
-    "@wcj/markdown-to-html": "^2.1.2",
-    "chokidar": "^3.5.3",
-    "fs-extra": "^10.1.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "markdownlint-cli": "^0.32.2",
-    "prettier": "^2.7.1",
-    "recursive-readdir-files": "^2.3.0",
-    "rehype-autolink-headings": "^6.1.1",
-    "rehype-document": "^6.1.0",
-    "rehype-parse": "^8.0.4",
-    "rehype-raw": "^6.1.1",
-    "rehype-rewrite": "^3.0.6",
-    "rehype-slug": "^5.0.1",
-    "remark-gemoji": "^7.0.1",
-    "unified": "^10.1.2",
-    "unist-util-visit": "^4.1.1",
-    "vfile": "^5.3.5"
+    "prettier": "^3.0.0",
+    "refs-cli": "^1.5.1",
+    "markdownlint": "^0.27.0",
+    "markdownlint-cli": "^0.33.0"
   },
   "engines": {
     "node": ">=16.0.0"

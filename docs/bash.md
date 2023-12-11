@@ -4,7 +4,7 @@ Bash 备忘清单
 这是开始使用 linux bash shell 脚本的快速参考备忘单。
 
 入门
----------------
+-----
 
 ### hello.sh
 
@@ -27,9 +27,9 @@ NAME="John"
 echo ${NAME}    # => John (变量)
 echo $NAME      # => John (变量)
 echo "$NAME"    # => John (变量)
-echo '$NAME'    # => $NAME (确切的字符串)
+echo '$NAME'    # => $NAME (字符串原样输出)
 echo "${NAME}!" # => John! (变量)
-NAME = "John"   # => Error (关于空格)
+NAME = "John"   # => Error (注意不能有空格)
 ```
 
 ### 注释
@@ -39,8 +39,8 @@ NAME = "John"   # => Error (关于空格)
 
 : '
 这是一个
-非常整洁的评论
-在 bash
+非常整洁的
+bash 注释
 '
 ```
 
@@ -53,11 +53,11 @@ NAME = "John"   # => Error (关于空格)
 :-|-
 `$1` … `$9` | 参数 1 ... 9
 `$0`        | 脚本本身的名称
-`$1`        | 第一个论点
+`$1`        | 第一个参数
 `${10}`     | 位置参数 10
 `$#`        | 参数数量
 `$$`        | shell 的进程 id
-`$*`        | 所有论据
+`$*`        | 所有参数
 `$@`        | 所有参数，从第一个开始
 `$-`        | 当前选项
 `$_`        | 上一个命令的最后一个参数
@@ -277,8 +277,8 @@ done
 <!--rehype:wrap-class=col-span-2-->
 
 ```bash
-Fruits=("${Fruits[@]}" "Watermelon")         # 推
-Fruits+=('Watermelon')                       # 也推
+Fruits=("${Fruits[@]}" "Watermelon")         # 添加
+Fruits+=('Watermelon')                       # 也是添加
 Fruits=( ${Fruits[@]/Ap*/} )                 # 通过正则表达式匹配删除
 unset Fruits[2]                              # 删除一项
 Fruits=("${Fruits[@]}")                      # 复制
@@ -350,14 +350,14 @@ Bash 条件句
 :- | -
 `[[ NUM -eq NUM ]]` | 等于 <yel>Eq</yel>ual                            |
 `[[ NUM -ne NUM ]]` | 不等于 <yel>N</yel>ot <yel>e</yel>qual             |
-`[[ NUM -lt NUM ]]` | 少于 <yel>L</yel>ess <yel>t</yel>han             |
-`[[ NUM -le NUM ]]` | 小于或等于 <yel>L</yel>ess than or <yel>e</yel>qual    |
+`[[ NUM -lt NUM ]]` | 小于 <yel>L</yel>ess <yel>t</yel>han             |
+`[[ NUM -le NUM ]]` | 小于等于 <yel>L</yel>ess than or <yel>e</yel>qual    |
 `[[ NUM -gt NUM ]]` | 大于 <yel>G</yel>reater <yel>t</yel>han          |
-`[[ NUM -ge NUM ]]` | 大于或等于 <yel>G</yel>reater than or <yel>e</yel>qual |
-`(( NUM < NUM ))`   | 少于
+`[[ NUM -ge NUM ]]` | 大于等于 <yel>G</yel>reater than or <yel>e</yel>qual |
+`(( NUM < NUM ))`   | 小于
 `(( NUM <= NUM ))`  | 小于或等于
-`(( NUM > NUM ))`   | 比...更棒
-`(( NUM >= NUM ))`  | 大于或等于
+`(( NUM > NUM ))`   | 比...更大
+`(( NUM >= NUM ))`  | 大于等于
 
 ### 字符串条件
 
@@ -365,8 +365,8 @@ Bash 条件句
 :- | -
 `[[ -z STR ]]`     | 空字符串
 `[[ -n STR ]]`     | <yel>非</yel>空字符串
-`[[ STR == STR ]]` | 平等的
-`[[ STR = STR ]]`  | 相等（同上）
+`[[ STR == STR ]]` | 相等
+`[[ STR = STR ]]`  | 相等(同上)
 `[[ STR < STR ]]`  | 小于 _(ASCII)_
 `[[ STR > STR ]]`  | 大于 _(ASCII)_
 `[[ STR != STR ]]` | 不相等
@@ -411,7 +411,7 @@ if [[ '1. abc' =~ ([a-z]+) ]]; then
 fi
 ```
 
-#### 更小
+#### 小于
 
 ```bash
 if (( $a < $b )); then
@@ -441,7 +441,7 @@ fi
 `[[ -w FILE ]]`   | 可写
 `[[ -x FILE ]]`   | 可执行文件
 `[[ f1 -nt f2 ]]` | f1 比 f2 新
-`[[ f1 -ot f2 ]]` | f2 早于 f1
+`[[ f1 -ot f2 ]]` | f2 比 f1 新
 `[[ f1 -ef f2 ]]` | 相同的文件
 
 ### 更多条件
@@ -492,7 +492,7 @@ for i in {1..5}; do
 done
 ```
 
-#### 具有步长
+#### 步长
 
 ```bash
 for i in {5..50..5}; do
@@ -510,7 +510,7 @@ while [[ $i -lt 4 ]]; do
 done
 ```
 
-### 自动递增
+### 自动递减
 
 ```bash
 i=3
@@ -554,7 +554,7 @@ until [ $count -gt 10 ]; do
 done
 ```
 
-### 永远
+### 死循环
 
 ```bash
 while true; do
@@ -562,7 +562,7 @@ while true; do
 done
 ```
 
-### 永远（简写）
+### 死循环(简写)
 
 ```bash
 while :; do
@@ -570,7 +570,7 @@ while :; do
 done
 ```
 
-### 正在读取行
+### 读取文件的每一行
 
 ```bash
 cat file.txt | while read line; do
@@ -590,7 +590,7 @@ myfunc() {
 ```
 
 ```bash
-# 同上（替代语法）
+# 同上(替代语法)
 function myfunc() {
   echo "hello $1"
 }
@@ -613,7 +613,7 @@ myfunc() {
 result="$(myfunc)"
 ```
 
-### 正在引发错误
+### 抛出错误
 
 ```bash
 myfunc() {
@@ -711,7 +711,7 @@ Bash 历史
 
 代码 | 描述
 :- | -
-`!!:n`   | 仅扩展最近命令中的第 `n` 个标记（命令为 `0`；第一个参数为 `1`）
+`!!:n`   | 仅扩展最近命令中的第 `n` 个标记(命令为 `0`；第一个参数为 `1`)
 `!^`     | 从最近的命令展开第一个参数
 `!$`     | 从最近的命令中展开最后一个标记
 `!!:n-m` | 从最近的命令扩展令牌范围
@@ -719,7 +719,7 @@ Bash 历史
 
 `!!` 可以替换为任何有效的扩展，即 `!cat`、`!-2`、`!42` 等。
 
-各种各样的
+杂项
 -------------
 
 ### 数值计算
@@ -750,12 +750,12 @@ command -V cd
 <!--rehype:wrap-class=row-span-2 col-span-2-->
 
 ```bash
-python hello.py > output.txt   # 标准输出到（文件）
-python hello.py >> output.txt  # 标准输出到（文件），追加
-python hello.py 2> error.log   # 标准错误到（文件）
+python hello.py > output.txt   # 标准输出到(文件)
+python hello.py >> output.txt  # 标准输出到(文件)，追加
+python hello.py 2> error.log   # 标准错误到(文件)
 python hello.py 2>&1           # 标准错误到标准输出
-python hello.py 2>/dev/null    # 标准错误到（空null）
-python hello.py &>/dev/null    # 标准输出和标准错误到（空null）
+python hello.py 2>/dev/null    # 标准错误到(空null)
+python hello.py &>/dev/null    # 标准输出和标准错误到(空null)
 ```
 
 ```bash
@@ -837,12 +837,78 @@ if [[ "$1" == '--' ]]; then shift; fi
 ```
 
 ### 检查命令的结果
-<!--rehype:wrap-class=col-span-2-->
 
 ```bash
 if ping -c 1 google.com; then
     echo "看来您的互联网连接正常"
 fi
+```
+
+### grep 检查
+
+```bash
+if grep -q 'foo' ~/.bash_history; then
+    echo "您过去似乎输入过“foo”"
+fi
+```
+
+### 写入文件
+<!--rehype:wrap-class=row-span-6-->
+
+:-- | --
+:-- | --
+`cat` | 用于显示文本文件内容，全部输出
+`EOF` | `end of file`，表示文本结束符
+
+---
+
+```bash
+cat > output.txt <<EOF
+this is test eof
+this is test eof2
+EOF
+```
+
+输出 `cat output.txt`
+
+```
+this is test eof
+this is test eof2
+```
+
+追加内容
+
+```bash
+cat >>2.txt <<EOF
+456
+789
+EOF
+```
+
+`$` 等特殊字符时，须利用转义字符 `\`
+
+```bash
+cat > file <<EOF
+export ORACLE_SID=yqpt 
+export PATH=\$PATH:\$ORACLE_HOME/bin  
+EOF
+```
+
+取消变量替换，`EOF` 被加上双引号或者单引号，即可取消变量的替换
+
+```bash
+cat << "EOF" > output.sh
+echo "This is output"
+echo $1
+EOF
+```
+
+所有TAB键将全部忽略[不能是空格]
+
+```bash
+cat << -EOF
+        echo "This is output"
+EOF
 ```
 
 ### 特殊变量
@@ -856,15 +922,6 @@ fi
 `$0`       | shell 脚本的文件名
 
 见[特殊参数](http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables)。
-
-### grep 检查
-<!--rehype:wrap-class=col-span-2-->
-
-```bash
-if grep -q 'foo' ~/.bash_history; then
-    echo "您过去似乎输入过“foo”"
-fi
-```
 
 ### 反斜杠转义
 <!--rehype:wrap-class=row-span-2-->
@@ -953,6 +1010,150 @@ echo "${args[@]}"
 
 将参数放入数组中，然后追加
 
+### 调试模式
+
+启用调试模式，会把脚本中的每条命令的执行情况打印出来。它可以在整个会话或脚本上运行，也可以在脚本内以编程方式启用。
+
+以调试模式运行脚本(整个脚本都会打印调试信息)：
+
+```bash
+$ bash -x myscript.sh
+```
+
+在bash脚本中打开调试(针对部分内容打印调试信息)。
+
+```bash
+#!/bin/bash
+set -x   # Enable debugging
+# some code here
+set +x   # Disable debugging output.
+```
+
+Bash 颜色
+----
+
+### 颜色着色语法示例
+<!--rehype:wrap-class=row-span-2-->
+
+您可以通过为其输出着色来使您的 BASH 脚本更漂亮，使用以下模板编写彩色文本：
+
+```bash
+echo -e "\e[COLORm文字变色了\e[0m"
+```
+
+#### 示例
+
+```bash
+$ echo -e "\e[31m命令行中显示红色文字\e[0m"
+```
+
+<red>命令行中显示红色文字</red>
+
+```
+$ echo -e "\e[42m绿色背景\e[0m"
+```
+
+`绿色背景`<!--rehype:style=background:green;color: black;-->
+
+Option | Description
+:- | --
+`-e` | 启用反斜杠转义的解释
+`\e[` 或 `\x1b[` 或 `\033[` | 开始颜色修改
+`COLORm` | 颜色代码 + `m` 在末尾
+`\e[0m` 或 `\x1b[0m` 或 `\033[0m` | 结束颜色修改
+<!--rehype:className=left-align-->
+
+`0x1b` 字面上称为 `ESC`
+
+#### 示例
+
+```bash
+$ echo -e "\e[3m下划线文本\e[0m"
+```
+
+`下划线文本`<!--rehype:style=text-decoration: underline;color: inherit;-->
+
+```bash
+$ echo -e "\e[1;33;4;44m粗体下划线蓝色背景黄色文字的文本\e[0m"
+```
+<!--rehype:className=wrap-text-->
+
+`粗体下划线蓝色背景黄色文字的文本`<!--rehype:style=text-decoration: underline;color: inherit;font-weight: bold;color: #cdcd00;background: #0000ee;-->
+
+```bash
+\e[         # 启用转义
+1;33;4;44   # 参数 (1;33;4;44)
+m           # 设置图形模式
+```
+
+#### 样式
+
+:- | -- | --
+:- | -- | --
+`0` | 普通字符(复位或正常) | 关闭所有属性
+`1` | **粗体**字
+`2` | 弱化(降低强度) | 未广泛支持
+`3` | 斜体 | 未广泛支持有时为反相显示
+`4` | 下划线
+`5` | 缓慢闪烁
+`6` | 快速闪烁
+`7` | 反显
+`8` | 隐藏 | 未广泛支持。
+`9` | 划除
+<!--rehype:className=left-align-->
+### ANSI — 颜色转义码
+
+颜色 | 前景色 | 背景色 | 示例
+:- | -- | -- | --
+`Black` 黑色 | 30 | 40 | ``<!--rehype:style=background:#000;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Red` 红色 | 31 | 41 | ``<!--rehype:style=background:#c23621;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Green` 绿色 | 32 | 42 | ``<!--rehype:style=background:#25bc26;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Yellow` 黄色 | 33 | 43 | ``<!--rehype:style=background:#cdcd00;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Blue` 蓝色 | 34 | 44 | ``<!--rehype:style=background:#0000ee;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Purple` 紫色 | 35 | 45 | ``<!--rehype:style=background:#cd00cd;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Cyan` 青色 | 36 | 46 | ``<!--rehype:style=background:#00AAAA;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`White` 白色 | 37 | 47 | ``<!--rehype:style=background:#e5e5e5;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+<!--rehype:className=show-header left-align-->
+
+### ANSI — 颜色转义码(亮色)
+
+颜色 | 前景色 | 背景色 | 示例
+:- | -- | -- | --
+`Bright Black(Gray)` 灰色 | 90 | 100 | ``<!--rehype:style=background:#555555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Red` 亮红色 | 91 | 101 | ``<!--rehype:style=background:#FF5555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Green` 亮绿色 | 92 | 102 | ``<!--rehype:style=background:#55FF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Yellow` 亮黄色 | 93 | 103 | ``<!--rehype:style=background:#FFFF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Blue` 亮蓝色 | 94 | 104 | ``<!--rehype:style=background:#5555FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Magenta` 亮紫色 | 95 | 105 | ``<!--rehype:style=background:#FF55FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Cyan` 亮青色 | 96 | 106 | ``<!--rehype:style=background:#55FFFF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright White` 浅灰 | 97 | 107 | ``<!--rehype:style=background:#ffffff;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+<!--rehype:className=show-header left-align-->
+
+### 可用功能
+<!--rehype:wrap-class=col-span-2-->
+
+:- | -- | --
+:- | -- | --
+`n` A | 光标上移 | 光标向指定的方向移动 `n`(默认1)格
+`n` B | 光标下移 | 光标向指定的方向移动 `n`(默认1)格
+`n` C | 光标前移 | 光标向指定的方向移动 `n`(默认1)格
+`n` D | 光标后移 | 光标向指定的方向移动 `n`(默认1)格
+`n` E | 光标移到下一行 | 光标移动到下面第 `n`(默认1)行的开头(非ANSI.SYS)
+`n` F | 光标移到上一行 | 光标移动到上面第 `n`(默认1)行的开头(非ANSI.SYS)
+`n` G | 光标水平绝对 | 光标移动到第 `n`(默认1)列(非ANSI.SYS)
+`n`;`m` H | 光标位置 | 光标移动到第 `n`行、第 `m` 列。值从1开始，且默认为1(左上角)
+`n` J | ED – 擦除显示 | 清除屏幕的部分区域
+`n` K | EL – 擦除行 | 清除行内的部分区域
+`n` S | SU – 向上滚动 | 整页向上滚动 `n`(默认1)行。新行添加到底部 (非ANSI.SYS)
+`n` T | SD – 向下滚动 | 整页向下滚动 `n`(默认1)行。新行添加到顶部 (非ANSI.SYS)
+`n`;`m`f | HVP – 水平垂直位置 | 同CUP
+`n` `m` | SGR – 选择图形再现 | 设置SGR参数，包括文字颜色
+`5i` | 打开辅助端口 | 启用辅助串行端口，通常用于本地串行打印机
+`4i` | 关闭辅助端口 | 禁用辅助串行端口，通常用于本地串行打印机
+`6n` | DSR – 设备状态报告 | 以 `ESC[n;mR` (就像在键盘上输入)向应用程序报告光标位置(CPR)，其中 `n`是行， `m` 是列
+`s` | SCP – 保存光标位置 | 保存光标的当前位置
+`u` | RCP – 恢复光标位置 | 恢复保存的光标位置
+
 另见
 ----
 
@@ -964,3 +1165,4 @@ echo "${args[@]}"
 - [Bash Guide](http://mywiki.wooledge.org/BashGuide) _(mywiki.wooledge.org)_
 - [ShellCheck](https://www.shellcheck.net/) _(shellcheck.net)_
 - [shell - Standard Shell](https://devmanual.gentoo.org/tools-reference/bash/index.html) _(devmanual.gentoo.org)_
+- [ANSI 转义序列](https://zh.wikipedia.org/wiki/ANSI转义序列) _(zh.wikipedia.org)_

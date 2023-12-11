@@ -11,7 +11,7 @@ PHP 备忘清单
 ```php
 <?php // 以 PHP 开放标签开头
 echo "Hello World\n";
-print("Hello quickref.me");
+print("Hello jaywcjlove.github.io");
 ?>
 ```
 
@@ -38,7 +38,7 @@ $str2 = 'Fine, thanks';
 ### 字符串 Strings
 
 ```php
-$url = "quickref.me";
+$url = "jaywcjlove.github.io";
 echo "I'm learning PHP at $url";
 // 连接字符串
 echo "I'm learning PHP at " . $url;
@@ -938,7 +938,7 @@ if (is_null($repo)) {
 ### 常用表达
 
 ```php
-$str = "Visit Quickref.me";
+$str = "Visit jaywcjlove.github.io";
 echo preg_match("/qu/i", $str); # => 1
 ```
 
@@ -969,4 +969,4 @@ echo 'CURRENT_DATE is: ' . CURRENT_DATE;
 ----
 
 - [PHP 官方中文文档](https://www.php.net/manual/zh/index.php) _(php.net)_
-- [Learn X in Y minutes](https://learnxinyminutes.com/docs/php/) _(learnxinyminutes.com)_
+- [Learn X in Y minutes](https://learnxinyminutes.com/docs/zh-cn/php-cn/) _(learnxinyminutes.com)_

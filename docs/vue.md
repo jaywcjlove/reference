@@ -1,7 +1,13 @@
 Vue 3 备忘清单
 ===
 
-渐进式 JavaScript 框架 [Vue 3](https://cn.vuejs.org/) 备忘清单的快速参考列表，包含常用 API 和示例。
+[![NPM version](https://img.shields.io/npm/v/vue.svg?style=flat)](https://npmjs.org/package/vue)
+[![Downloads](https://img.shields.io/npm/dm/vue.svg?style=flat)](https://www.npmjs.com/package/vue)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/vuejs/core)](https://github.com/vuejs/core/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/vuejs/core)
+
+渐进式 JavaScript 框架 [Vue 3](https://cn.vuejs.org/) 备忘清单的快速参考列表，包含常用 API 和示例
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ---
@@ -64,11 +70,14 @@ $ npm run build
 <!--rehype:wrap-class=row-span-2-->
 
 ```js
-import { createApp } from 'vue'
+import { createApp, ref } from 'vue'
 
 const app = createApp({
-  data() {
-    return { count: 0 }
+  setup() {
+    const message = ref("Hello Vue3")
+    return {
+      message
+    }
   }
 })
 app.mount('#app')
@@ -90,11 +99,12 @@ app.mount('#app')
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <div id="app">{{ message }}</div>
 <script>
-  const { createApp } = Vue
+  const { createApp, ref } = Vue
   createApp({
-    data() {
+    setup() {
+      const message = ref("Hello Vue3")
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
@@ -105,13 +115,14 @@ app.mount('#app')
 ### 使用 ES 模块构建版本
 
 ```html
-<div id="app">{{ message }}</div>
+<div id="app">{{ message, ref }}</div>
 <script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   createApp({
-    data() {
+    setup() {
+      const message = ref("Hello Vue3")
       return {
-        message: 'Hello Vue!'
+        message
       }
     }
   }).mount('#app')
@@ -164,21 +175,28 @@ app.mount('#app')
 ### 动态绑定多个值
 <!--rehype:wrap-class=row-span-2-->
 
-```js
-data() {
-  return {
-    objectOfAttrs: {
-      id: 'container',
-      class: 'wrapper'
-    }
-  }
-}
-```
-
 通过不带参数的 `v-bind`，你可以将它们绑定到单个元素上
 
 ```html
-<div v-bind="objectOfAttrs"></div>
+<script setup>
+  import comp from "./Comp.vue"
+  import {ref} from "vue"
+  const a = ref("hello")
+  const b = ref("world")
+</script>
+
+<template>
+  <comp v-bind="{a, b}"></comp>
+</template>
+```
+
+如果你是使用的 `setup` 语法糖。需要使用 `defineprops` 声名（可以直接使用`a`/`b`）
+
+```js
+const props = defineProps({
+  a: String,
+  b: String
+})
 ```
 
 ### 使用 JavaScript 表达式
@@ -229,6 +247,7 @@ data() {
 <!-- 简写 -->
 <a @click="doSomething"> ... </a>
 ```
+<!--rehype:className=wrap-text-->
 
 ### 动态参数
 
@@ -285,7 +304,7 @@ import { defineComponent, reactive } from 'vue';
 
 // `defineComponent`用于IDE推导类型
 export default defineComponent({
-  // `setup` 是一个专门用于组合式 API 的特殊钩子函数
+  // setup 用于组合式 API 的特殊钩子函数
   setup() {
     const state = reactive({ count: 0 });
 
@@ -296,6 +315,7 @@ export default defineComponent({
   },
 });
 ```
+<!--rehype:className=wrap-text-->
 
 ### 声明方法
 
@@ -326,12 +346,12 @@ export default defineComponent({
   },
 })
 ```
+<!--rehype:className=wrap-text-->
 
 ### `<script setup>` setup语法糖
 
 ```html {1}
 <script setup>
-// setup语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
 import { reactive } from 'vue';
 
 const state = reactive({ count: 0 })
@@ -348,30 +368,30 @@ function increment() {
 </template>
 ```
 
+**`setup`** 语法糖用于简化代码，尤其是当需要暴露的状态和方法越来越多时
+
 ### 用 `ref()` 定义响应式变量
+<!--rehype:wrap-class=row-span-2-->
+
+`reactive`只能用于对象、数组和 `Map`、`Set` 这样的集合类型，对 string、number 和 boolean 这样的原始类型则需要使用`ref`
 
 ```js
-// `reactive`只能用于对象、数组和 Map、Set 这样的集合类型，对 string、number 和 boolean 这样的原始类型则需要使用`ref`
 import { ref } from 'vue';
 
 const count = ref(0);
 
 console.log(count); // { value: 0 }
 console.log(count.value); // 0
-
 count.value++;
 console.log(count.value); // 1
-
 const objectRef = ref({ count: 0 });
 
 // 这是响应式的替换
 objectRef.value = { count: 1 };
-
 const obj = {
   foo: ref(1),
   bar: ref(2)
 };
-
 // 该函数接收一个 ref
 // 需要通过 .value 取值
 // 但它会保持响应性
@@ -381,8 +401,9 @@ callSomeFunction(obj.foo);
 const { foo, bar } = obj;
 ```
 
+在 html 模板中不需要带 `.value` 就可以使用
+
 ```html
-<!-- PS: 在html模板中不需要带.value就可以使用 -->
 <script setup>
 import { ref } from 'vue';
 
@@ -397,6 +418,7 @@ const count = ref(0);
 ```
 
 ### 有状态方法
+<!--rehype:wrap-class=col-span-2-->
 
 ```js
 import { reactive, defineComponent, onUnmounted } from 'vue';
@@ -419,7 +441,675 @@ export default defineComponent({
   },
 });
 ```
+
+### 响应式样式
+<!--rehype:wrap-class=col-span-2-->
+
+```html
+<script setup>
+import { ref } from 'vue'
+const open = ref(false);
+</script>
+
+<template>
+  <button @click="open = !open">Toggle</button>
+  <div>Hello Vue!</div>  
+</template>
+
+<style scope>
+  div{
+    transition: height 0.1s linear;
+    overflow: hidden;
+    height: v-bind(open ? '30px' : '0px');
+  }
+</style>
+```
+
+响应式进阶 —— watch 和 computed
+---
+
+### 监听状态
+<!--rehype:wrap-class=row-span-2-->
+
+```html
+<script setup>
+import { ref, watch } from 'vue';
+
+const count = ref(0)
+const isEvent = ref(false)
+
+function increment() {
+  state.count++
+}
+
+watch(count, function() {
+  isEvent.value = count.value % 2 === 0
+})
+</script>
+
+<template>
+  <button @click="increment">
+    {{ count }}
+  </button>
+  <p>
+    is event: {{ isEvent ? 'yes' : 'no' }}
+  </p>
+</template>
+```
+
+### 立即监听状态
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+watch(count, function() {
+  isEvent.value = count.value % 2 === 0
+}, {
+  // 上例中的 watch 不会立即执行，导致 isEvent 状态的初始值不准确。配置立即执行，会在一开始的时候立即执行一次
+  immediate: true
+})
+```
+<!--rehype:className=wrap-text-->
+
+### 计算状态
+<!--rehype:wrap-class=col-span-2-->
+
+```html
+<script setup>
+import { ref, computed } from 'vue';
+
+const text = ref('')
+// computed 的回调函数里，会根据已有并用到的状态计算出新的状态
+const capital = computed(function(){
+  return text.value.toUpperCase();
+})
+</script>
+
+<template>
+  <input v-model="text" />
+  <p>to capital: {{ capital }}</p>
+</template>
+```
+
+组件通信
+---
+
+### defineProps
+
+```html
+<script setup>
+import { defineProps } from 'vue';
+
+// 这里可以将 `username` 解构出来，
+// 但是一旦解构出来再使用，就不具备响应式能力
+defineProps({
+  username: String
+})
+</script>
+
+<template>
+  <p>username: {{ username }}</p>
+</template>
+```
+
+子组件定义需要的参数
+
+```html
+<script setup>
+const username = 'vue'
+</script>
+
+<template>
+  <children :username="username" />
+</template>
+```
+
+父组件参入参数
+
+### defineEmits
+
+```html
+<script setup>
+import { defineEmits, ref } from 'vue';
+
+const emit = defineEmits(['search'])
+const keyword = ref('')
+const onSearch = function() {
+  emit('search', keyword.value)
+}
+</script>
+
+<template>
+  <input v-model="keyword" />
+  <button @click="onSearch">search</button>
+</template>
+```
+
+子组件定义支持 `emit` 的函数
+
+```html
+<script setup>
+const onSearch = function(keyword){
+  console.log(keyword)
+}
+</script>
+
+<template>
+  <children @search="onSearch" />
+</template>
+```
+
+父组件绑定子组件定义的事件
+
+### defineExpose
+
+```html
+<script setup>
+import { defineExpose, ref } from 'vue';
+
+const keyword = ref('')
+const onSearch = function() {
+  console.log(keyword.value)
+}
+
+defineExpose({ onSearch })
+</script>
+
+<template>
+  <input v-model="keyword" />
+</template>
+```
+
+子组件对父组件暴露方法
+
+```html
+<script setup>
+import { ref } from 'vue'  
+
+const childrenRef = ref(null)
+const onSearch = function() {
+  childrenRef.value.onSearch()
+}
+</script>
+
+<template>
+  <children ref='childrenRef' />
+  <button @click="onSearch">search</button>
+</template>
+```
+
+父组件调用子组件的方法
+
+### Provide / Inject
+
+```ts
+import type { InjectionKey, Ref } from 'vue'
+
+export const ProvideKey = Symbol() as InjectionKey<Ref<string>>
+```
+<!--rehype:className=wrap-text-->
+
+在应用中使用 `ProvideKey`
+
+```html
+<script setup lang="ts">
+import { provide, ref } from 'vue'
+import { ProvideKey } from './types'
+
+const text = ref<string>('123')
+provide(ProvideKey, text)
+</script>
+
+<template>
+  <input v-model="text" />
+</template>
+```
+
+父组件为后代组件提供数据
+
+```ts
+<script setup lang="ts">
+import { inject } from 'vue'
+import { ProvideKey } from './types'
+
+const value = inject(ProvideKey)
+</script>
+
+<template>
+  <h4>{{value}}</h4>
+</template>
+```
+
+后代组件注入父组件提供的数据
+
 <!--rehype:className=wrap-text -->
+
+Vue 中使用 TypeScript
+---
+
+### 为组件的 props 标注类型
+<!--rehype:wrap-class=row-span-4-->
+
+当使用 `<script setup>` 时，`defineProps()` 宏函数支持从它的参数中推导类型
+
+```html
+<script setup lang="ts">
+const props = defineProps({
+  foo: { type: String, required: true },
+  bar: Number
+})
+
+props.foo // string
+props.bar // number | undefined
+</script>
+```
+
+对同一个文件中的一个接口或对象类型字面量的引用：
+
+```ts
+interface Props {/* ... */}
+
+defineProps<Props>()
+```
+
+#### Props 解构默认值
+
+```ts
+export interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  msg: 'hello',
+  labels: () => ['one', 'two']
+})
+```
+
+使用目前为实验性的响应性语法糖
+
+```html
+<script setup lang="ts">
+interface Props {
+  name: string
+  count?: number
+}
+
+// 对 defineProps() 的响应性解构
+// 默认值会被编译为等价的运行时选项
+const {
+  name, count = 100
+} = defineProps<Props>()
+</script>
+```
+
+### 为组件的 emits 标注类型
+
+```html
+<script setup lang="ts">
+// 运行时
+const emit = defineEmits(['change', 'update'])
+
+// 基于类型
+const emit = defineEmits<{
+  (e: 'change', id: number): void
+  (e: 'update', value: string): void
+}>()
+</script>
+```
+
+### 为 ref() 标注类型
+
+ref 会根据初始化时的值推导其类型：
+
+```ts
+import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+const year: Ref<string | number> = ref('2020')
+
+year.value = 2020 // 成功！
+```
+
+### 为 reactive() 标注类型
+
+```ts
+import { reactive } from 'vue'
+
+interface Book {
+  title: string
+  year?: number
+}
+
+const book: Book = reactive({
+  title: 'Vue 3 指引'
+})
+```
+
+### 为 computed() 标注类型
+
+你还可以通过泛型参数显式指定类型：
+
+```ts
+const double = computed<number>(() => {
+  // 若返回值不是 number 类型则会报错
+})
+```
+
+### 为事件处理函数标注类型
+<!--rehype:wrap-class=row-span-2-->
+
+```html
+<script setup lang="ts">
+function handleChange(event) {
+  // `event` 隐式地标注为 `any` 类型
+  console.log(event.target.value)
+}
+</script>
+
+<template>
+  <input
+    type="text"
+    @change="handleChange" />
+</template>
+```
+
+显式地为事件处理函数的参数标注类型
+
+```ts
+function handleChange(event: Event) {
+  const target = event.target as HTMLInputElement
+  console.log(target.value)
+}
+```
+
+### 为 provide / inject 标注类型
+
+```ts
+import { provide, inject } from 'vue'
+import type { InjectionKey } from 'vue'
+
+const key = Symbol() as InjectionKey<string>
+// 若提供的是非字符串值会导致错误
+provide(key, 'foo')
+// foo 的类型：string | undefined
+const foo = inject(key)
+```
+
+### 为模板引用标注类型
+
+```html
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
+const el = ref<HTMLInputElement | null>(null)
+
+onMounted(() => {
+  el.value?.focus()
+})
+</script>
+
+<template>
+  <input ref="el" />
+</template>
+```
+
+### 为组件模板引用标注类型
+
+```html
+<!-- MyModal.vue -->
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const isContentShown = ref(false)
+const open = 
+      () => (isContentShown.value = true)
+
+defineExpose({
+  open
+})
+</script>
+```
+
+使用 TypeScript 内置的 `InstanceType` 工具类型来获取其实例类
+
+```html
+<!-- App.vue -->
+<script setup lang="ts">
+import MyModal from './MyModal.vue'
+
+type Modal = InstanceType<typeof MyModal>
+
+const modal = ref<Modal | null>(null)
+
+const openModal = () => {
+  modal.value?.open()
+}
+</script>
+```
+
+### 选项式 API 为组件的 props 标注类型
+<!--rehype:wrap-class=row-span-2-->
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  // 启用了类型推导
+  props: {
+    name: String,
+    id: [Number, String],
+    msg: { type: String, required: true },
+    metadata: null
+  },
+  mounted() {
+    // 类型：string | undefined
+    this.name
+    // 类型：number|string|undefined
+    this.id
+    // 类型：string
+    this.msg
+    // 类型：any
+    this.metadata
+  }
+})
+```
+
+使用 PropType 这个工具类型来标记更复杂的 props 类型
+
+```ts
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
+
+interface Book {
+  title: string
+  author: string
+  year: number
+}
+
+export default defineComponent({
+  props: {
+    book: {
+      // 提供相对 `Object` 更确定的类型
+      type: Object as PropType<Book>,
+      required: true
+    },
+    // 也可以标记函数
+    callback: Function as PropType<(id: number) => void>
+  },
+  mounted() {
+    this.book.title // string
+    this.book.year // number
+
+    // TS Error: argument of type 'string' is not
+    // assignable to parameter of type 'number'
+    this.callback?.('123')
+  }
+})
+```
+
+### 选项式 API 为组件的 emits 标注类型
+
+```ts
+import { defineComponent } from 'vue'
+
+type Payload = { bookName: string }
+
+export default defineComponent({
+  emits: {
+    addBook(payload: Payload) {
+      // 执行运行时校验
+      return payload.bookName.length > 0
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$emit('addBook', {
+        bookName: 123 // 类型错误
+      })
+      // 类型错误
+      this.$emit('non-declared-event')
+    }
+  }
+})
+```
+
+### 选项式 API 为计算属性标记类型
+<!--rehype:wrap-class=row-span-2-->
+
+计算属性会自动根据其返回值来推导其类型：
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  data() {
+    return {
+      message: 'Hello!'
+    }
+  },
+  computed: {
+    greeting() {
+      return this.message + '!'
+    }
+  },
+  mounted() {
+    this.greeting // 类型：string
+  }
+})
+```
+
+在某些场景中，你可能想要显式地标记出计算属性的类型以确保其实现是正确的：
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  data() {
+    return {
+      message: 'Hello!'
+    }
+  },
+  computed: {
+    // 显式标注返回类型
+    greeting(): string {
+      return this.message + '!'
+    },
+
+    // 标注一个可写的计算属性
+    greetingUppercased: {
+      get(): string {
+        return this.greeting.toUpperCase()
+      },
+      set(newValue: string) {
+        this.message = newValue.toUpperCase()
+      }
+    }
+  }
+})
+```
+
+### 选项式 API 为事件处理函数标注类型
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  methods: {
+    handleChange(event: Event) {
+      console.log((event.target as HTMLInputElement).value)
+    }
+  }
+})
+```
+
+### 选项式 API 扩展全局属性
+
+```ts
+import axios from 'axios'
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $http: typeof axios
+    $translate: (key: string) => string
+  }
+}
+```
+
+#### 类型扩展的位置
+
+我们可以将这些类型扩展放在一个 `.ts` 文件，或是一个影响整个项目的 `*.d.ts` 文件中
+
+```ts
+// 不工作，将覆盖原始类型。
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
+---
+
+```ts
+// 正常工作。
+export {}
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
+### 选项式 API 扩展自定义选项
+
+某些插件，比如 vue-router，提供了一些自定义的组件选项，比如 beforeRouteEnter：
+
+```ts
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  beforeRouteEnter(to, from, next) {
+    // ...
+  }
+})
+```
+
+如果没有确切的类型标注，这个钩子函数的参数会隐式地标注为 `any` 类型。我们可以为 `ComponentCustomOptions` 接口扩展自定义的选项来支持：
+
+```ts
+import { Route } from 'vue-router'
+
+declare module 'vue' {
+  interface ComponentCustomOptions {
+    beforeRouteEnter?(
+      to: Route,
+      from: Route,
+      next: () => void
+    ): void
+  }
+}
+```
 
 API 参考
 ---
@@ -446,8 +1136,10 @@ API 参考
 `app.config.compilerOptions` | 配置运行时编译器的选项 [#](https://cn.vuejs.org/api/application.html#app-config-compileroptions)
 `app.config.globalProperties` | 注册全局属性对象 [#](https://cn.vuejs.org/api/application.html#app-config-globalproperties)
 `app.config.optionMergeStrategies` | 定义自定义组件选项的合并策略的对象 [#](https://cn.vuejs.org/api/application.html#app-config-optionmergestrategies)
+<!--rehype:className=style-list-->
 
 ### 全局 API - 通用
+<!--rehype:wrap-class=row-span-2-->
 
 :- | :-
 :- | :-
@@ -455,7 +1147,8 @@ API 参考
 `nextTick()` | 等待下一次 DOM 更新后执行回调 [#](https://cn.vuejs.org/api/general.html#nexttick)
 `defineComponent()` | 在定义 Vue 组件时提供类型推导的辅助函数 [#](https://cn.vuejs.org/api/general.html#definecomponent)
 `defineAsyncComponent()` | 定义一个异步组件 [#](https://cn.vuejs.org/api/general.html#defineasynccomponent)
-`defineCustomElement()` | [#](https://cn.vuejs.org/api/general.html#definecustomelement)
+`defineCustomElement()` | 和 `defineComponent` 接受的参数相同，不同的是会返回一个原生自定义元素类的构造器 [#](https://cn.vuejs.org/api/general.html#definecustomelement)
+<!--rehype:className=style-list-->
 
 ### 组合式 API - setup()
 
@@ -466,20 +1159,14 @@ API 参考
 `Setup 上下文` | [#](https://cn.vuejs.org/api/composition-api-setup.html#setup-context)
 `与渲染函数一起使用` | [#](https://cn.vuejs.org/api/composition-api-setup.html#usage-with-render-functions)
 
-### 组合式 API - 响应式: 工具
+### 组合式 API - 依赖注入
 
 :- | :-
 :- | :-
-`isRef()` | 判断是否为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#isref)
-`unref()` | 是 ref，返回内部值，否则返回参数本身 [#](https://cn.vuejs.org/api/reactivity-utilities.html#unref)
-`toRef()` | 创建一个属性对应的 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#toref)
-`toRefs()` | 将对象上的每一个可枚举属性转换为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#torefs)
-`isProxy()` | 检查一个对象是否是由 `reactive()`、`readonly()`、`shallowReactive()` 或 `shallowReadonly()` 创建的代理 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isproxy)
-`isReactive()` | 检查一个对象是否是由 `reactive()` 或 `shallowReactive()` 创建的代理。  [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreactive)
-`isReadonly()` | 检查传入的值是否为只读对象 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreadonly)
+`provide()` | 提供一个可以被后代组件中注入使用的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#provide)
+`inject()` | 注入一个由祖先组件提供的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject)
 
 ### 组合式 API - 生命周期钩子
-<!--rehype:wrap-class=row-span-3-->
 
 :- | :-
 :- | :-
@@ -497,12 +1184,18 @@ API 参考
 `onServerPrefetch()` | 组件实例在服务器上被渲染之前调用 [#](https://cn.vuejs.org/api/composition-api-lifecycle.html#onserverprefetch)
 <!--rehype:className=style-list-->
 
-### 组合式 API - 依赖注入
+### 组合式 API - 响应式: 工具
 
 :- | :-
 :- | :-
-`provide()` | 提供一个可以被后代组件中注入使用的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#provide)
-`inject()` | 注入一个由祖先组件提供的值 [#](https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject)
+`isRef()` | 判断是否为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#isref)
+`unref()` | 是 ref，返回内部值，否则返回参数本身 [#](https://cn.vuejs.org/api/reactivity-utilities.html#unref)
+`toRef()` | 创建一个属性对应的 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#toref)
+`toRefs()` | 将对象上的每一个可枚举属性转换为 ref [#](https://cn.vuejs.org/api/reactivity-utilities.html#torefs)
+`isProxy()` | 检查一个对象是否是由 `reactive()`、`readonly()`、`shallowReactive()` 或 `shallowReadonly()` 创建的代理 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isproxy)
+`isReactive()` | 检查一个对象是否是由 `reactive()` 或 `shallowReactive()` 创建的代理。  [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreactive)
+`isReadonly()` | 检查传入的值是否为只读对象 [#](https://cn.vuejs.org/api/reactivity-utilities.html#isreadonly)
+<!--rehype:className=style-list-->
 
 ### 组合式 API - 响应式: 核心
 
@@ -516,6 +1209,7 @@ API 参考
 `watchPostEffect()` | `watchEffect()` 使用 `flush: 'post'` 选项时的别名。 [#](https://cn.vuejs.org/api/reactivity-core.html#watchposteffect)
 `watchSyncEffect()` | `watchEffect()` 使用 `flush: 'sync'` 选项时的别名。 [#](https://cn.vuejs.org/api/reactivity-core.html#watchsynceffect)
 `watch()` | 侦听一个或多个响应式数据源 [#](https://cn.vuejs.org/api/reactivity-core.html#watch)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 状态选项
 
@@ -528,9 +1222,10 @@ API 参考
 `watch` | 声明在数据更改时调用的侦听回调 [#](https://cn.vuejs.org/api/options-state.html#watch)
 `emits` | 声明由组件触发的自定义事件 [#](https://cn.vuejs.org/api/options-state.html#emits)
 `expose` | 声明当组件实例被父组件通过模板引用访问时暴露的公共属性 [#](https://cn.vuejs.org/api/options-state.html#expose)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 生命周期选项
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 :- | :-
 :- | :-
@@ -548,6 +1243,7 @@ API 参考
 `activated` | 若组件实例是 <KeepAlive> 缓存树的一部分，当组件被插入到 DOM 中时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#activated)
 `deactivated` | 若组件实例是 <KeepAlive> 缓存树的一部分，当组件从 DOM 中被移除时调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#deactivated)
 `serverPrefetch` _SSR only_ | 组件实例在服务器上被渲染之前调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#serverprefetch)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 其他杂项
 
@@ -557,6 +1253,7 @@ API 参考
 `inheritAttrs` | 是否启用默认的组件 `attribute` 透传行为 [#](https://cn.vuejs.org/api/options-misc.html#inheritattrs)
 `components` | 注册对当前组件实例可用的组件 [#](https://cn.vuejs.org/api/options-misc.html#components)
 `directives` | 注册对当前组件实例可用的指令 [#](https://cn.vuejs.org/api/options-misc.html#directives)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 渲染选项
 
@@ -565,6 +1262,7 @@ API 参考
 `template` | 声明组件的字符串模板 [#](https://cn.vuejs.org/api/options-rendering.html#template)
 `render` | 编程式地创建组件虚拟 DOM 树的函数 [#](https://cn.vuejs.org/api/options-rendering.html#render)
 `compilerOptions` | 配置组件模板的运行时编译器选项 [#](https://cn.vuejs.org/api/options-rendering.html#compileroptions)
+<!--rehype:className=style-list-->
 
 ### 选项式 API - 组件实例
 <!--rehype:wrap-class=row-span-2-->
@@ -614,6 +1312,7 @@ API 参考
 `v-once` | 只渲染元素和组件一次 [#](https://cn.vuejs.org/api/built-in-directives.html#v-once)
 `v-memo` _(3.2+)_ | 缓存一个模板的子树 [#](https://cn.vuejs.org/api/built-in-directives.html#v-memo)
 `v-cloak` | 保持在元素上直到实例结束编译 [#](https://cn.vuejs.org/api/built-in-directives.html#v-cloak)
+`serverPrefetch` _SSR only_ | 组件实例在服务器上被渲染之前调用 [#](https://cn.vuejs.org/api/options-lifecycle.html#serverprefetch)
 
 ### 内置内容 - 组件
 
@@ -624,6 +1323,7 @@ API 参考
 `<KeepAlive>` | 缓存包裹在其中的动态切换组件 [#](https://cn.vuejs.org/api/built-in-components.html#keepalive)
 `<Teleport>` | 将其插槽内容渲染到 DOM 中的另一个位置 [#](https://cn.vuejs.org/api/built-in-components.html#teleport)
 `<Suspense>` _(Experimental)_ | 协调对组件树中嵌套的异步依赖的处理 [#](https://cn.vuejs.org/api/built-in-components.html#suspense)
+<!--rehype:className=style-list-->
 
 ### 内置内容 - 特殊 Attributes
 
@@ -711,6 +1411,7 @@ API 参考
 `ComponentCustomOptions` | 扩展组件选项类型以支持自定义选项 [#](https://cn.vuejs.org/api/utility-types.html#componentcustomoptions)
 `ComponentCustomProps` | 扩展全局可用的 TSX props [#](https://cn.vuejs.org/api/utility-types.html#componentcustomprops)
 `CSSProperties` | 扩展在样式属性绑定上允许的值的类型 [#](https://cn.vuejs.org/api/utility-types.html#cssproperties)
+<!--rehype:className=style-list-->
 
 ### 进阶 API - 自定义渲染
 

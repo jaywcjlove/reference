@@ -84,6 +84,7 @@ $ ffmpeg -i movie.webm movie.mp4
 `-r RATE` | 每秒帧率
 `-s WIDTHxHEIGHT` | 帧大小
 `-vn` | 没有视频
+`-crf` | 指定编码的质量，数值越大压缩越高，一般范围是 18-28
 
 ### 码率设置
 
@@ -581,6 +582,7 @@ $ ffmpeg -f concat -i mylist.txt -c:v copy -c:a flac -strict -2 output.mp4
 
 视频过滤器
 ---
+<!--rehype:body-class=cols-2-->
 
 ### 格式
 
@@ -631,7 +633,6 @@ ffmpeg -i 1.mp4 -b:v 548k -vf delogo=x=10:y=10:w=120:h=45:show=1 output.mp4
 <!--rehype:className=wrap-text -->
 
 ### 创建缩略图
-<!--rehype:wrap-class=row-span-2-->
 
 在 10 秒时创建一个缩略图
 
@@ -686,6 +687,7 @@ $ ffmpeg -i 1.mp4 -i test.mp3 \
 
 音频过滤器
 ---
+<!--rehype:body-class=cols-2-->
 
 ### 调节音量
 
@@ -716,6 +718,32 @@ $ ffmpeg -i test.mp4 -af "loudnorm=I=-5:LRA=1" out.mp4
 ```bash
 # 使左右耳的声音同时出现
 $ ffmpeg -i input.mp3 -af "channelmap=1-0|1-1" output.mp3
+```
+
+流处理
+---
+<!--rehype:body-class=cols-2-->
+
+### 拉流
+
+```bash
+# 拉取rtmp流并存储到本地
+$ ffmpeg -i "rtsp://127.0.0.1/test" test.mp4
+```
+
+### 推流
+
+```bash
+# 推送test.mp4到远程
+$ ffmpeg -re -i test.mp4 -f flv rtmp://127.0.0.1/test
+```
+
+### 转发
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+# 拉取流并转发
+$ ffmpeg -i "rtsp://127.0.0.1/test" -f mpegts -codec:v mpeg1video http://127.0.0.1/demo
 ```
 
 另见

@@ -11,7 +11,7 @@ CSS 备忘清单
 
 CSS 功能丰富，不仅仅是布局页面
 
-#### 外部样式表
+#### 外部样式表 `<link>`
 
 ```html
 <link
@@ -22,7 +22,7 @@ CSS 功能丰富，不仅仅是布局页面
 ```
 <!--rehype:className=wrap-text -->
 
-#### 内部样式表
+#### 内部样式表 `<style>`
 
 ```html
 <style>
@@ -32,7 +32,7 @@ CSS 功能丰富，不仅仅是布局页面
 </style>
 ```
 
-#### 内联样式
+#### 内联样式 `style`
 
 ```html
 <h2 style="text-align: center;">
@@ -1258,8 +1258,208 @@ li::before {
 }
 ```
 
-Css 3 技巧
+CSS 函数
+-----------
+
+### calc()
+
+```css
+div {
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+}
+```
+
+[`calc()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/calc) CSS 函数允许您在指定 CSS 属性值时执行计算
+
+### clamp()
+
+```css
+font-size: clamp(1rem, 10vw, 2rem);
+```
+
+设置随窗口大小改变的字体大小
+
+### attr()
+
+```css
+p:before {
+  content: attr(data-foo) " ";
+}
+```
+
+获取选择到的元素的某一 HTML 属性值
+
+### counter()
+<!--rehype:wrap-class=row-span-2-->
+
+返回一个代表计数器的当前值的字符串
+
+```html
+<ol>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+```
+
+```css
+ol {
+  counter-reset: listCounter;
+}
+li {
+  counter-increment: listCounter;
+}
+li::after {
+  content: "[" counter(listCounter) "] == ["
+    counter(listCounter, upper-roman) "]";
+}
+```
+
+显示
+
+```
+1. [1]==[I]
+2. [2]==[II]
+3. [3]==[III]
+```
+
+### counters()
+
+```css
+ol {
+  counter-reset: count;
+}
+li {
+  counter-increment: count;
+}
+li::marker {
+   content: counters(count, '.', upper-alpha) ') ';
+}
+li::before {
+  content: counters(count, ".", decimal-leading-zero) " == " counters(count, ".", lower-alpha);
+}
+```
+
+嵌套计数器，返回表示指定计数器当前值的连接字符串
+
+### env()
+
+```html
+<meta name="viewport" content="... viewport-fit=cover">
+```
+<!--rehype:className=wrap-text-->
+
+---
+
+```css
+body {
+  padding:
+    env(safe-area-inset-top, 20px)
+    env(safe-area-inset-right, 20px)
+    env(safe-area-inset-bottom, 20px)
+    env(safe-area-inset-left, 20px);
+}
+```
+
+用户代理定义的环境变量值插入你的 CSS 中
+
+### fit-content()
+
+```css
+fit-content(200px)
+fit-content(5cm)
+fit-content(30vw)
+fit-content(100ch)
+```
+
+将给定大小夹紧为可用大小
+
+### max()
+
+从一个逗号分隔的表达式列表中选择最大（正方向）的值作为属性的值
+
+```css
+width: max(10vw, 4em, 80px);
+```
+
+例子中，宽度最小会是 80px，除非视图宽度大于 800px 或者是一个 em 比 20px 宽
+
+### min()
+
+```css
+width: min(1vw, 4em, 80px);
+```
+
+从逗号分隔符表达式中选择一个最小值作为 CSS 的属性值
+
+### minmax()
+
+```css
+minmax(200px, 1fr)
+minmax(400px, 50%)
+minmax(30%, 300px)
+minmax(100px, max-content)
+minmax(min-content, 400px)
+minmax(max-content, auto)
+minmax(auto, 300px)
+minmax(min-content, auto)
+```
+
+### repeat() 轨道列表的重复片段
+
+```css
+repeat(auto-fill, 250px)
+repeat(auto-fit, 250px)
+repeat(4, 1fr)
+repeat(4, [col-start] 250px [col-end])
+repeat(4, [col-start] 60% [col-end])
+```
+
+定义了一个长宽范围的闭区间
+
+### url()
+
+```css
+background: url("topbanner.png") #00D no-repeat fixed;
+list-style: square url(http://www.example.com/redball.png)
+```
+<!--rehype:className=wrap-text-->
+
+### var()
+
+```css
+:root {
+  --main-bg-color: pink;
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
+```
+<!--rehype:className=wrap-text-->
+
+代替元素中任何属性中的值的任何部分
+
+CSS 技巧
 ------------
+
+### 强制不换行
+
+```css
+p {
+  white-space:nowrap;
+}
+```
+
+### 强制换行
+
+```css
+p {
+  word-break:break-all; /* 英文 */
+  white-space:pre-wrap; /* 中文 */
+}
+```
 
 ### 滚动条平滑
 
@@ -1270,6 +1470,35 @@ html {
 ```
 
 [点击我](#入门)页面会平滑滚动到入门
+
+### 修改浏览器自动填充 input 样式
+
+```css
+input[type="text"]:autofill {
+  box-shadow: 0 0 0 1000px #000 inset;
+  -webkit-text-fill-color: white;
+}
+```
+
+另见: [:autofill](https://developer.mozilla.org/en-US/docs/Web/CSS/:autofill)
+
+### 修改 input type="color" 样式
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```css
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+```
 
 ### 忽略用作间距的换行符 \<br />
 
@@ -1288,11 +1517,13 @@ br + br {
 ```
 
 ### CSS 重置
+<!--rehype:wrap-class=row-span-2-->
 
 ```css
 html {
   box-sizing: border-box;
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -1302,7 +1533,82 @@ html {
 
 有助于在不同的浏览器之间强制样式一致性，并为样式元素提供干净的盒子
 
+### 设置光标样式
+
+```css
+body {
+  caret-color: red;
+}
+```
+
+### 设置整个页面灰色
+<!--rehype:wrap-style=-webkit-filter: grayscale(.95);-->
+
+```css
+html {
+  -webkit-filter: grayscale(.95);
+}
+```
+
+上面示例设置了当前卡片灰色
+
+### `<textarea>`自动增加其高度
+
+```css
+textarea {
+  form-sizing: normal
+}
+```
+
+### 定义容器的长宽比
+
+```css
+div {
+  aspect-ratio: 1/1 
+}
+```
+
+属性 [aspect-ratio](https://developer.mozilla.org/zh-CN/docs/Web/CSS/aspect-ratio) 可以非常容易的定义一个容器的长宽比
+
+### 使用 unset 而不是重置所有属性
+
+使用 `all` 速记来指定元素的所有属性。将值设置为 `unset` 会将元素的属性更改为其初始值：
+
+```css
+button {
+  all: unset;
+}
+```
+
+注意：`IE11` 不支持 `all` 和 `unset` 速记
+
+### 超出显示省略号
+
+```css
+p {
+  overflow: hidden;/*超出部分隐藏*/
+  /* 超出部分显示省略号 */
+  text-overflow:ellipsis;
+  /* 规定段落中的文本不进行换行 */
+  white-space: nowrap;
+  width: 250px;/*需要配合宽度来使用*/
+}
+```
+
+### 给正文添加行高
+
+您不需要为每个 `<p>`、`<h*>` 等添加行高。相反，将其添加到正文：
+
+```css
+body {
+  line-height: 1.5;
+}
+```
+
+这样文本元素可以很容易地从 `body` 继承
+
 ### 使用图像作为光标
+<!--rehype:wrap-class=col-span-2-->
 
 ```css
 div {
@@ -1338,17 +1644,6 @@ div {
 ```
 
 多行文本截断到特定的行数，末尾显示省略号 _(...)_
-
-### 计算函数
-
-```css
-div {
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-}
-```
-
-[`calc()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/calc) CSS 函数允许您在指定 CSS 属性值时执行计算
 
 ### 粘性定位元素
 
@@ -1422,6 +1717,265 @@ div {
 <!--rehype:className=wrap-text -->
 
 通过样式来控制一个元素 `div` 是否可以编辑
+
+### 等宽表格单元格
+
+尝试使用 `table-layout: fixed` 以保持单元格宽度相等：
+
+```css
+table {
+  table-layout: fixed;
+}
+```
+
+### 利用属性选择器来选择空链接
+
+当 `<a>` 元素没有文本内容，但有 `href` 属性的时候，显示它的 `href` 属性：
+
+```css
+a[href^="http"]:empty::before {
+  content: attr(href);
+}
+```
+
+### 给 “默认” 链接定义样式
+
+给 “默认” 链接定义样式：
+
+```css
+a[href]:not([class]) {
+  color: #008000;
+  text-decoration: underline;
+}
+```
+
+通常没有 `class` 属性，以上样式可以甄别它们，而且不会影响其它样式
+
+### 用 rem 调整全局大小；用 em 调整局部大小
+<!--rehype:wrap-class=row-span-2-->
+
+在根元素设置基本字体大小后 (`html { font-size: 100%; }`), 使用 em 设置文本元素的字体大小:
+
+```css
+h2 { 
+  font-size: 2em;
+}
+p {
+  font-size: 1em;
+}
+```
+
+然后设置模块的字体大小为 rem:
+
+```css
+article {
+  font-size: 1.25rem;
+}
+aside .module {
+  font-size: .9rem;
+}
+```
+
+现在，每个模块变得独立，更容易、灵活的样式便于维护
+
+### 隐藏没有静音、自动播放的影片
+
+这是一个自定义用户样式表的不错的技巧。避免在加载页面时自动播放。如果没有静音，则不显示视频：
+
+```css
+video[autoplay]:not([muted]) {
+  display: none;
+}
+```
+
+再次，我们利用了 `:not()` 的优点
+
+### 为更好的移动体验，为表单元素设置字体大小
+
+当触发 `<select>` 的下拉列表时，为了避免表单元素在移动浏览器（iOS Safari 和其它）上的缩放，加上font-size：
+
+```css
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  font-size: 16px;
+}
+```
+
+### 使用指针事件来控制鼠标事件
+
+指针事件允许您指定鼠标如何与其触摸的元素进行交互。要禁用按钮上的默认指针事件，例如：
+
+```css
+button:disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+```
+
+就这么简单
+
+### 子元素选中父元素
+
+```css
+div:has(img) {
+  background: black;
+}
+```
+
+设置包含子元素 `img` 的 `div` 元素样式，还可以嵌套：
+
+```css
+div:has(h2):has(ul) {
+  background: black;
+}
+```
+
+### 在用作间距的换行符上设置 `display: none`
+
+用户使用额外的换行符
+
+```css
+br + br {
+  display: none;
+}
+```
+
+### 给 `body` 添加行高
+
+```css
+body {
+  line-height: 1.5;
+}
+```
+
+您不需要为每个 `<p>`、`<h*>` 等分别添加行高。相反，将其添加到正文
+
+### 检查本地是否安装了字体
+<!--rehype:wrap-class=row-span-2-->
+
+```css
+@font-face {
+  font-family: "Dank Mono";
+  src:
+    /* Full name */
+    local("Dank Mono"),
+    /* Postscript name */
+    local("Dank-Mono"),
+    /* 否则，请下载它！ */
+    url("//...a.server/DankMono.woff");
+}
+
+code {
+  font-family: "Dank Mono",
+        system-ui-monospace;
+}
+```
+
+您可以在远程获取字体之前检查是否在本地安装了字体，这也是一个很好的性能提示
+
+### 获取 HTML 元素的属性
+
+```html
+<a href="https://example.com">超链接</a>
+```
+
+attr HTML 元素的属性名。
+
+```css
+a:after {
+  content: " (" attr(href) ")";
+}
+```
+
+### 为表单元素设置 `:focus`
+
+```css
+a:focus, button:focus, input:focus,
+select:focus, textarea:focus {
+  box-shadow: none;
+  outline: #000 dotted 2px;
+  outline-offset: .05em;
+}
+```
+
+有视力的键盘用户依靠焦点来确定键盘事件在页面中的位置。使表单元素的焦点比浏览器的默认实现更加突出和一致
+
+### 垂直居中任何东西
+<!--rehype:wrap-class=row-span-2-->
+
+```css
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+}
+```
+
+...还有 CSS 网格：
+
+```css
+body {
+  display: grid;
+  height: 100vh;
+  margin: 0;
+  place-items: center center;
+}
+```
+
+### 图片对齐不变形
+
+```css
+img {
+  width: 200px;
+  height: 200px;
+  /** 确保图片按原始宽高比例进行缩放 */
+  object-fit: cover;
+  object-position: left top;
+  transition: 1s;
+}
+img:hover {
+  /** 指定图片显示的位置，结合鼠标移动+过渡动画 */
+  object-position: right bottom;
+}
+```
+
+### 多行截断，展示省略号
+
+```css
+.clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+```
+
+`html` 文本超过 3 行将被截断，显示省略号...
+
+```html
+<p class="clamp">
+  展示多行文本，超过 3 行将被截断，显示省略号...
+</p>
+```
+
+### 逗号分隔列表
+
+```css
+ul > li:not(:last-child)::after {
+  content: ",";
+}
+```
+
+使列表项看起来像一个真实的逗号分隔列表，使用 `:not()` 伪类，最后一项不会添加逗号
 
 另见
 ---------

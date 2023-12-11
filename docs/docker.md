@@ -17,14 +17,14 @@ $ docker run -d -p 80:80 docker/getting-started
 
 ----
 
-- `-d` - 以分离模式运行容器
-- `-p 80:80` -  将端口 80 映射到容器中的端口 80
+- `-d` - 以分离（后台）模式运行容器
+- `-p 80:80` -  将端口 80 映射到容器中的端口 80，格式：宿主机端口:容器端口
 - `docker/getting-started` - 要使用的镜像
 
-在前台创建并运行容器
+在前台创建并运行容器（之后如果要退出容器但是不关闭容器，按*Ctrl+P+Q*即可）
 
 ```shell
-$ docker run -it -p --rm 8001:8080 --name my-nginx nginx
+$ docker run -it --rm -p  8001:8080 --name my-nginx nginx
 ```
 
 ----
@@ -41,7 +41,7 @@ $ docker run -it -p --rm 8001:8080 --name my-nginx nginx
 |-------------------------------------|--------------------------------------------------|
 | `docker ps`                         | 列出正在运行的容器                                  |
 | `docker ps -a`                      | 列出所有容器                                  |
-| `docker ps -s`                      | 列出正在运行的容器 _(带 CPU / 内存)_        |
+| `docker ps -s`                      | 列出正在运行的容器 *(带 CPU / 内存)*        |
 | `docker images`                     | 列出所有镜像                                  |
 | `docker exec -it <container>  bash` | 连接到容器                                  |
 | `docker logs <container>`           | 显示容器的控制台日志                                  |
@@ -142,13 +142,14 @@ Docker 镜像
 `docker load --input ubuntu.tar`   | 加载一个 tarred 存储库
 `docker save busybox > ubuntu.tar` | 将镜像保存到 tar 存档
 `docker history`                   | 显示镜像的历史
-`docker commit nginx`              | 将容器另存为镜像。
+`docker commit nginx my_nginx`     | 将容器另存为镜像
 `docker tag nginx eon01/nginx`     | 标记镜像
 `docker push eon01/nginx`          | 推送镜像
 
 ### 构建镜像
 
 ```shell
+# 注意有的最后面是英文 .
 $ docker build .
 $ docker build github.com/creack/docker-firefox
 $ docker build - < Dockerfile
@@ -169,6 +170,12 @@ Docker 网络
 <!--rehype:body-class=cols-2-->
 
 ### 操作
+
+获取容器连接的网络
+
+```shell
+docker inspect MyContainer | grep Network
+```
 
 删除网络
 
@@ -224,6 +231,20 @@ docker network create -d overlay \
   MyOverlayNetwork
 ```
 
+Docker 快捷键
+----
+<!--rehype:body-class=cols-2-->
+
+### 退出
+
+| Docker 快捷键 | 说明 |
+|------------|------|
+`ctrl+c` | 将关闭容器，并删除当前的容器实例
+`ctrl+d` | 将保留容器，并退出到Docker主机的命令行界面
+`ctrl+p+q` | 将容器分离，保留容器，但是不退出
+
+需要特别注意的是，上面的退出快捷键中的删除容器实例只对于使用`docker attach`进入的容器生效，使用`docker exec`进入容器后使用上面的快捷键后将隔离容器且不会删除容器实例。
+
 各种各样的
 ----
 <!--rehype:body-class=cols-2-->
@@ -232,10 +253,10 @@ docker network create -d overlay \
 
 | Docker 语法 | 说明 |
 |------------|------|
-`docker search search_word` | 在 docker hub 中搜索镜像。
-`docker pull user/image` | 从 docker hub 下载镜像。
+`docker search search_word` | 在 docker hub 中搜索镜像
+`docker pull user/image` | 从 docker hub 下载镜像
 `docker login` | 向 docker hub 进行身份验证
-`docker push user/image` | 将镜像上传到 docker hub。
+`docker push user/image` | 将镜像上传到 docker hub
 
 ### 镜像仓库命令
 <!--rehype:wrap-class=row-span-3-->
@@ -281,7 +302,7 @@ $ docker push eon01/nginx localhost:5000/myadmin/nginx
 |---------|---------|
 `docker stop -f $(docker ps -a -q)` | 停止所有容器
 `docker rm -f $(docker ps -a -q)` | 删除所有容器
-`docker rmi -f $(docker images -q)` | 删除所有图像
+`docker rmi -f $(docker images -q)` | 删除所有镜像
 
 ### 卷 volume
 
@@ -307,12 +328,12 @@ $ docker volume prune
 `docker-compose down` | 停止和删除容器、网络、映像和卷
 `docker-compose logs` | 查看容器的输出
 `docker-compose restart` | 重启所有服务
-`docker-compose pull` | 拉取所有图片服务
-`docker-compose build` | 构建所有图像服务
+`docker-compose pull` | 拉取所有服务的镜像
+`docker-compose build` | 构建所有服务的镜像
 `docker-compose config` | 验证并查看 Compose 文件
-`docker-compose scale <service_name>=<replica>` | 规模特殊服务
+`docker-compose scale <service_name>=<replica>` | 为服务指定容器个数
 `docker-compose top` | 显示正在运行的进程
-`docker-compose run -rm -p 2022:22 web bash` | 启动 Web 服务并运行 bash 作为其命令，删除旧容器。
+`docker-compose run -rm -p 2022:22 web bash` | 启动 Web 服务并运行 bash 作为其命令，删除旧容器
 
 ### Docker Services
 
@@ -361,35 +382,35 @@ $ docker volume prune
 :- | :-
 `attach`   | 将本地标准输入、输出和错误流附加到正在运行的容器
 `build`    | 从 Dockerfile 构建镜像
-`commit`   | 从容器的更改创建新图像
+`commit`   | 从容器的更改创建新镜像
 `cp`       | 在容器和本地文件系统之间复制文件/文件夹
 `create`   | 创建一个新容器
 `diff`     | 检查容器文件系统上文件或目录的更改
 `events`   | 从服务器获取实时事件
 `exec`     | 在正在运行的容器中运行命令
 `export`   | 将容器的文件系统导出为 tar 存档
-`history`  | 显示图像的历史
-`images`   | 列出图像
+`history`  | 显示镜像的历史
+`images`   | 列出镜像
 `import`   | 从 tarball 导入内容以创建文件系统映像
 `info`     | 显示系统范围的信息
 `inspect`  | 返回有关 Docker 对象的低级信息
 `kill`     | 杀死一个或多个正在运行的容器
-`load`     | 从 tar 存档或 STDIN 加载图像
+`load`     | 从 tar 存档或 STDIN 加载镜像
 `login`    | 登录到 Docker 注册表
 `logout`   | 从 Docker 注册表中注销
 `logs`     | 获取容器的日志
 `pause`    | 暂停一个或多个容器内的所有进程
 `port`     | 列出容器的端口映射或特定映射
 `ps`       | 列出容器
-`pull`     | 从注册表中提取图像或存储库
-`push`     | 将图像或存储库推送到注册表
+`pull`     | 从注册表中提取镜像或存储库
+`push`     | 将镜像或存储库推送到注册表
 `rename`   | 重命名容器
 `restart`  | 重启一个或多个容器
 `rm`       | 移除一个或多个容器
-`rmi`      | 移除一张或多张图片
+`rmi`      | 移除一张或多张镜像
 `run`      | 在新容器中运行命令
-`save`     | 将一个或多个图像保存到 tar 存档（默认流式传输到 STDOUT）
-`search`   | 在 `Docker Hub` 中搜索图像
+`save`     | 将一个或多个镜像保存到 tar 存档（默认流式传输到 STDOUT）
+`search`   | 在 `Docker Hub` 中搜索镜像
 `start`    | 启动一个或多个停止的容器
 `stats`    | 显示容器资源使用统计的实时流
 `stop`     | 停止一个或多个正在运行的容器
@@ -431,12 +452,12 @@ $ docker volume prune
     --device-read-iops list    # 限制设备的读取速率（每秒 IO）（默认 []）
     --device-write-bps list    # 限制设备的写入速率（每秒字节数）（默认 []）
     --device-write-iops list   # 限制设备的写入速率（每秒 IO）（默认 []）
-    --disable-content-trust    # 跳过图像验证（默认为 true）
+    --disable-content-trust    # 跳过镜像验证（默认为 true）
     --dns list                 # 设置自定义 DNS 服务器
     --dns-option list          # 设置 DNS 选项
     --dns-search list          # 设置自定义 DNS 搜索域
     --domainname string        # 容器 NIS 域名
-    --entrypoint string        # 覆盖图像的默认入口点
+    --entrypoint string        # 覆盖镜像的默认入口点
 -e, --env list                 # 设置环境变量
     --env-file list            # 读入环境变量文件
     --expose list              # 公开一个端口或一系列端口
@@ -480,7 +501,7 @@ $ docker volume prune
     --privileged               # 授予此容器扩展权限
 -p, --publish list             # 将容器的端口发布到主机
 -P, --publish-all              # 将所有暴露的端口发布到随机端口
-    --pull string              # 创建前拉取图像("always"|"missing"|"never")(默认"missing")
+    --pull string              # 创建前拉取镜像("always"|"missing"|"never")(默认"missing")
     --read-only                # 将容器的根文件系统挂载为只读
     --restart string           # 容器退出时应用的重启策略（默认“否”）
     --rm                       # 容器退出时自动移除
@@ -533,7 +554,7 @@ $ docker volume prune
 `docker config`      | 管理 Docker 配置
 `docker container`   | 管理容器
 `docker context`     | 管理上下文
-`docker image`       | 管理图像
+`docker image`       | 管理镜像
 `docker manifest`    | 管理 Docker 镜像清单和清单列表
 `docker network`     | 管理网络
 `docker node`        | 管理 Swarm 节点
@@ -550,12 +571,12 @@ $ docker volume prune
 ### docker images
 
 ```bash
--a, --all             显示所有图像（默认隐藏中间图像）
+-a, --all             显示所有镜像（默认隐藏中间镜像）
     --digests         显示摘要
 -f, --filter filter   根据提供的条件过滤输出
-    --format string   使用 Go 模板打印漂亮的图像
+    --format string   使用 Go 模板打印漂亮的镜像
     --no-trunc        不要截断输出
--q, --quiet           仅显示图像 ID
+-q, --quiet           仅显示镜像 ID
 ```
 
 Docker 示例
@@ -658,6 +679,6 @@ $ docker run -d --name gitlab \
 另见
 ----
 
-- [Dockerfile 备忘清单](./dockerfile.md) _(github.io)_
-- [Docker 官方入门教程](https://docs.docker.com/get-started/) _(docker.com)_
-- [Docker入门学习笔记](https://jaywcjlove.github.io/docker-tutorial) _(github.io)_
+- [Dockerfile 备忘清单](./dockerfile.md) *(github.io)*
+- [Docker 官方入门教程](https://docs.docker.com/get-started/) *(docker.com)*
+- [Docker入门学习笔记](https://jaywcjlove.github.io/docker-tutorial) *(github.io)*

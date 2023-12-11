@@ -37,17 +37,15 @@ npm run start # 监听 md 文件编译输出 HTML
 ├── CONTRIBUTING.md   # 贡献说明
 ├── Dockerfile
 ├── LICENSE
-├── README.md   # Home(首页) 内容
-├── dist        # 编译后的静态资源目录
-├── docs        # Markdown 文档（速查表）
+├── README.md  # 🌐 Home(首页)内容
+├── dist       # 📦 编译后的静态资源目录
+├── docs       # 👈 Markdown 文档(速查表)
 │   ├── bash.md
 │   ├── ....
 │   └── yaml.md
+├── .refsrc.json # refs 配置
 ├── package.json
-└── scripts     # MD 转 HTML 的编译脚本
-    ├── assets  # LOGO 图标文件资源
-    ├── ....
-    └── watch.mjs
+└── assets  # LOGO 图标文件资源
 ```
 
 ### 添加一个备忘清单
@@ -93,7 +91,7 @@ npm run start # 监听 md 文件编译输出 HTML
 ### 首页提示配置
 
 ```markdown
-[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
+[Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
 ```
 <!--rehype:className=wrap-text-->
 
@@ -106,11 +104,139 @@ class=tag&data-info=👆看看还缺点儿什么？
 上面示例将默认提示更改为： `👆看看还缺点儿什么？`
 
 ```markdown
-[Django](./docs/djiango.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=tag&data-lang=Python-->
+[Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=tag&data-lang=Python-->
 ```
 <!--rehype:className=wrap-text-->
 
 添加 `class=tag&data-lang=Python` 类名和参数，会在卡片右上角标记 _`Python`_
+
+### 命令帮助
+
+```bash
+Usage: refs-cli [output-dir] [--help|h]
+
+  显示帮助信息
+
+Options:
+
+  --version, -v 显示版本号
+  --help, -h    显示帮助信息
+  --watch, -w   观看并编译 Markdown 文件
+  --output, -o  输出目录。默认（分布）
+  --force, -f   强制文件重新生成
+
+Example:
+
+  $ npx refs-cli
+  $ refs-cli --watch
+  $ refs-cli --output website
+  $ refs-cli
+
+refs-cli@v0.0.1
+```
+
+### 配置 Config
+
+将 `.refsrc.json` 存放在项目的根目录下
+
+```json
+{
+  "title": "文档网站名称",
+  "description": "{{description}} 网站说明",
+  "keywords": "关键字,refs-cli,refs,cli",
+  "data-info": "👆 需要你的参与",
+  "search": {
+    "label": "搜索",
+    "placeholder": "搜索备忘清单",
+    "cancel": "取消"
+  },
+  "editor": {
+    "label": "编辑"
+  },
+  "github": {
+    "url": "https://<github url>"
+  },
+  "home": {
+    "label": "首页",
+    "url": "https://<你的网站>"
+  },
+  "footer": "<br />备案号：支持HTML字符串",
+  "license": "支持 HTML 字符串"
+}
+```
+
+支持 [JSON](https://www.json.org), [JSONC](https://github.com/microsoft/node-jsonc-parser), [JSON5](https://json5.org/), [YAML](https://yaml.org/), [TOML](https://toml.io), [INI](https://en.wikipedia.org/wiki/INI_file), [CJS](http://www.commonjs.org), [Typescript](https://www.typescriptlang.org/), 和 ESM 配置加载。
+
+### `TOML` 配置示例
+
+将 `.refsrc.toml` 存放在项目的根目录下
+
+```toml
+title = "Refs CLI 文档网站名称"
+description = "{{description}}. 网站说明"
+keywords = "关键字,reference,refs-cli,cli"
+data-info = "👆 需要你的参与"
+
+[search]
+  label = "搜索"
+  placeholder = "搜索备忘清单"
+  cancel = "取消"
+
+[editor]
+  label = "编辑"
+
+[github]
+  url = "<github url>"
+
+[home]
+  label = "首页"
+  url = "https://<你的网站>"
+
+footer = "<br />备案号：支持HTML字符串"
+license = "支持 HTML 字符串"
+```
+
+### 支持更多配置加载
+
+```bash
+.refsrc                .refsrc.json
+.refsrc.json5          .refsrc.jsonc
+.refsrc.yaml           .refsrc.yml
+.refsrc.toml           .refsrc.ini
+.refsrc.js             .refsrc.ts
+.refsrc.cjs            .refsrc.mjs
+.config/refsrc         .config/refsrc.json
+.config/refsrc.json5   .config/refsrc.jsonc
+.config/refsrc.yaml    .config/refsrc.yml
+.config/refsrc.toml    .config/refsrc.ini
+.config/refsrc.js      .config/refsrc.ts
+.config/refsrc.cjs     .config/refsrc.mjs
+refs.config.js         refs.config.ts
+refs.config.cjs        refs.config.mjs
+```
+
+### 环境变量
+
+导航菜单
+
+```ini
+REF_URL=http://ref.ecdata.cn/
+REF_LABEL=网站首页
+```
+
+页脚添加 (支持 HTML 字符串)
+
+```ini
+REF_FOOTER=备案号：沪ICP备20220000000号-1
+```
+
+修改版权信息 (支持 HTML 字符串)
+
+```ini
+LICENSE=Copyright (c) <b>2022</b> 小弟调调™
+```
+
+在项目根目录中创建 <pur>**.env**</pur> 文件
 
 Markdown 语法注释
 ---
@@ -297,7 +423,7 @@ const school = <div>学校</div>;
 :- | -
 :- | -
 `<yel>` | <yel>黄色</yel>
-`<red>` | <yel>红色</yel>
+`<red>` | <red>红色</red>
 `<pur>` | <pur>紫色</pur>
 `<code>` 或 <code>\`\`</code> | <code>绿</code>`色`
 `<del>` 或 `~~删除~~` | <del>~~红色~~</del>
@@ -337,16 +463,16 @@ const school = <div>学校</div>;
 
 类 | 说明
 ---- | ----
-`<!--rehype:className=wrap-text-->` | 强制换行
-`<!--rehype:className=show-header-->` | 展示表格表头
-`<!--rehype:className=shortcuts-->` | 快捷键样式
-`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸自动换行
-`<!--rehype:className=style-list-arrow-->` | 列表箭头样式展示表格
-`<!--rehype:className=style-list-->` | 列表样式展示表格
-`<!--rehype:className=left-align-->` | 表格末尾列左对齐
-`<!--rehype:className=style-none-->` | \<li> 没有标记
-`<!--rehype:className=style-timeline-->` | 时间轴样式
-`<!--rehype:className=style-arrow-->` | 箭头标记
+`<!--rehype:className=wrap-text-->` | 强制`换行`
+`<!--rehype:className=show-header-->` | 展示表格`表头`
+`<!--rehype:className=shortcuts-->` | `快捷键`样式
+`<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸`自动换行`
+`<!--rehype:className=style-list-arrow-->` | 列表`箭头`样式展示表格
+`<!--rehype:className=style-list-->` | `列表`样式展示表格
+`<!--rehype:className=left-align-->` | 表格末尾列`左对齐`
+`<!--rehype:className=style-none-->` | \<li> 没有标记样式
+`<!--rehype:className=style-timeline-->` | `时间轴`样式
+`<!--rehype:className=style-arrow-->` | `箭头`标记
 
 ### KaTeX 数学渲染
 
@@ -433,17 +559,20 @@ H2 部分
 ### 卡片 3 (H3 部分)
 ```
 
-类 | 说明
----- | ----
+---
+
+:-- | --
+:-- | --
+合并 **列** 布局 |
 `col-span-2` | `2` 列占位
 `col-span-3` | `3` 列占位
 `col-span-4` | `4` 列占位
-`col-span-5` | `5` 列占位
+`col-span-{2~10}` | `{2~10}` 列占位
+合并 **行** 布局 |
 `row-span-2` | `2` 行占位
 `row-span-3` | `3` 行占位
 `row-span-4` | `4` 行占位
-`row-span-5` | `5` 行占位
-<!--rehype:className=show-header -->
+`row-span-{2~10}` | `{2~10}` 行占位
 
 ### 卡片合并行布局 1
 
@@ -759,10 +888,20 @@ H2 部分
 
 默认表格末尾列`右对齐`，添加 `<!--rehype:className=left-align-->` 类让其`左对齐`
 
+### 强制 code 不换行
+
+| Command | Description |
+| ---- | ---- |
+| `adb remount`                     | Remounts file system with read/write access |
+| `adb reboot bootloader`           | Reboots the device into fastboot            |
+<!--rehype:className=show-header code-nowrap-->
+
+添加 `<!--rehype:className=code-nowrap-->` 注释
+
 列表
 ---
 
-### 一栏（默认）
+### 一栏(默认)
 
 - Item 1
 - Item 2
@@ -881,7 +1020,7 @@ H3 部分 - 占位效果展示
 <!--rehype:wrap-class=row-span-2-->
 
 ```
-...
+...合并两行
 ```
 
 `<!--rehype:wrap-class=row-span-2-->`
@@ -890,7 +1029,7 @@ H3 部分 - 占位效果展示
 <!--rehype:wrap-class=col-span-2-->
 
 ```
-...
+...合并两列
 ```
 
 `<!--rehype:wrap-class=col-span-2-->`
@@ -899,7 +1038,7 @@ H3 部分 - 占位效果展示
 <!--rehype:style=background:#e91e63;-->
 
 ```
-...
+...红色标题配置
 ```
 
 `<!--rehype:style=background:#e91e63;-->`
@@ -908,7 +1047,7 @@ H3 部分 - 占位效果展示
 <!--rehype:style=background:#d7a100;-->
 
 ```
-...
+...黄色标题配置
 ```
 
 `<!--rehype:style=background:#d7a100;-->`

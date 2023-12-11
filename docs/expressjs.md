@@ -1,7 +1,13 @@
 Express 备忘清单
 ===
 
-这是用于 Node.js 的快速、不拘一格、极简主义的 Web 框架，包含 [Express.js](http://expressjs.com/) 的 API 参考列表和一些示例。
+[![NPM version](https://img.shields.io/npm/v/express.svg?style=flat)](https://npmjs.org/package/express)
+[![Downloads](https://img.shields.io/npm/dm/express.svg?style=flat)](https://www.npmjs.com/package/express)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/expressjs/express)](https://github.com/expressjs/express/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/expressjs/express)
+
+这是用于 Node.js 的快速、不拘一格、极简主义的 Web 框架，包含 [Express.js](http://expressjs.com/) 的 API 参考列表和一些示例
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ---

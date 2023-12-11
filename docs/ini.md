@@ -8,7 +8,7 @@ INI 备忘清单
 
 ### 介绍
 
-INI 是一种固定标准格式的配置文件，INI配置方法来自 MS-DOS 操作系统
+INI 是一种固定标准格式的配置文件，INI 配置方法来自 MS-DOS 操作系统
 
 ```ini
 ; 这里是注释
@@ -37,7 +37,7 @@ file="acme payroll.dat"
 name = value
 ```
 
-与下面👇 JSON 大致相同
+与下面👇 `JSON` 大致相同
 
 ```js
 {

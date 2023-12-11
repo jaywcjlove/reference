@@ -6,12 +6,13 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'jaywcjlove/reference'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - run: npm install
       - run: npm run build
@@ -44,6 +45,34 @@ jobs:
         with:
           package-path: ./package.json
 
+      - name: gh-pages README.md
+        working-directory: dist
+        run: |
+          cat << "EOF" > README.md
+          Website: https://jaywcjlove.github.io/reference
+          ## Docker
+
+          [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor) [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Pulls](https://img.shields.io/docker/pulls/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
+
+          轻松通过 `docker` 部署 `Quick Reference` 网站。
+
+          ```bash
+          docker pull wcjiang/reference
+          ```
+
+          ```bash
+          docker run --name reference --rm -d -p 9667:3000 wcjiang/reference:latest
+          # Or
+          docker run --name reference -itd -p 9667:3000 wcjiang/reference:latest
+          ```
+
+          在浏览器中访问以下 URL
+
+          ```bash
+          http://localhost:9667/
+          ```
+          EOF
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -55,9 +84,8 @@ jobs:
         id: changelog
         uses: jaywcjlove/changelog-generator@main
         with:
-          filter-author: (小弟调调™)
+          filter-author: (小弟调调™|github-actions-bot|\@github\-actions\-bot|dependabot|renovate\\[bot\\]|dependabot\\[bot\\]|Renovate Bot)
           filter: (^[\s]+?[R|r]elease)|(^[R|r]elease)
-
 
       - name: Create Release
         uses: ncipollo/release-action@v1
@@ -67,65 +95,119 @@ jobs:
           name: ${{ steps.create_tag.outputs.version }}
           tag: ${{ steps.create_tag.outputs.version }}
           body: |
-            Documentation ${{ needs.build.outputs.create_tag_version }}: https://raw.githack.com/jaywcjlove/reference/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
-            Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
+            [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor) 
             
+            Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/reference/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
+            Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
+
             ${{ steps.changelog.outputs.changelog }}
 
             ## Docker
             [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference) [![Docker Pulls](https://img.shields.io/docker/pulls/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
 
             轻松通过 `docker` 部署 `Quick Reference` 网站。
-            
+
             ```bash
             docker pull wcjiang/reference
             ```
-            
+
             ```bash
             docker run --name reference --rm -d -p 9667:3000 wcjiang/reference:latest
             # Or
             docker run --name reference -itd -p 9667:3000 wcjiang/reference:latest
             ```
-            
+
             在浏览器中访问以下 URL
-            
+
             ```bash
             http://localhost:9667/
             ```
 
-      # Create Docker Image in Github
-      - name: Login to GitHub registry
-        run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Build docker image
-        run: docker build -t ghcr.io/jaywcjlove/reference:latest .
-
-      - name: Publish to GitHub registry
-        run: docker push ghcr.io/jaywcjlove/reference:latest
-
-      - name: Tag docker image (beta) and publish to GitHub registry
-        if: steps.create_tag.outputs.successful
-        run: |
-          echo "version: v${{ steps.changelog.outputs.version }}"
-          docker tag ghcr.io/jaywcjlove/reference:latest ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
-          docker push ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
-
       # Create Docker Image
-      - name: Docker login
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-        
-      - name: Build reference image
-        run: docker image build -t reference .
+      - uses: docker/setup-buildx-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Tags & Push image(latest)
-        run: |
-          echo "DOCKER_USER: ${{ secrets.DOCKER_USER }}"
-          docker tag reference ${{ secrets.DOCKER_USER }}/reference:latest
-          docker push ${{ secrets.DOCKER_USER }}/reference:latest
+      - run: docker buildx prune
 
-      - name: Tags & Push image
+      - name: Build and push image:latest
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          context: .
+          platforms: linux/amd64,linux/arm64
+          tags: wcjiang/reference:latest
+
+      - name: Build and push image:tags
+        uses: docker/build-push-action@v3
         if: steps.create_tag.outputs.successful
-        run: |
-          echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
-          docker tag reference ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
-          docker push ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
+        with:
+          push: true
+          context: .
+          platforms: linux/amd64,linux/arm64
+          tags: wcjiang/reference:${{steps.changelog.outputs.version}}
+
+      # # Create Docker Image in Github
+      # - name: Login to the GitHub Container Registry
+      #   uses: docker/login-action@v2
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Build and push image:latest
+      #   uses: docker/build-push-action@v3
+      #   with:
+      #     push: true
+      #     context: .
+      #     platforms: linux/amd64,linux/arm64
+      #     tags: ghcr.io/jaywcjlove/reference:latest
+
+      # - name: Build and push image:tags
+      #   uses: docker/build-push-action@v3
+      #   if: steps.create_tag.outputs.successful
+      #   with:
+      #     push: true
+      #     context: .
+      #     platforms: linux/amd64,linux/arm64
+      #     tags: ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+
+      # # Create Docker Image in Github
+      # - name: Login to GitHub registry
+      #   run: echo ${{ github.token }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      # - name: Build docker image
+      #   run: docker build -t ghcr.io/jaywcjlove/reference:latest .
+
+      # - name: Publish to GitHub registry
+      #   run: docker push ghcr.io/jaywcjlove/reference:latest
+
+      # - name: Tag docker image (beta) and publish to GitHub registry
+      #   if: steps.create_tag.outputs.successful
+      #   run: |
+      #     echo "version: v${{ steps.changelog.outputs.version }}"
+      #     docker tag ghcr.io/jaywcjlove/reference:latest ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+      #     docker push ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
+
+      # # Create Docker Image
+      # - name: Docker login
+      #   run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      # - name: Build reference image
+      #   run: docker image build -t reference .
+
+      # - name: Tags & Push image(latest)
+      #   run: |
+      #     echo "DOCKER_USER: ${{ secrets.DOCKER_USER }}"
+      #     docker tag reference ${{ secrets.DOCKER_USER }}/reference:latest
+      #     docker push ${{ secrets.DOCKER_USER }}/reference:latest
+
+      # - name: Tags & Push image
+      #   if: steps.create_tag.outputs.successful
+      #   run: |
+      #     echo "outputs.tag - ${{ steps.changelog.outputs.version }}"
+      #     docker tag reference ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}
+      #     docker push ${{ secrets.DOCKER_USER }}/reference:${{steps.changelog.outputs.version}}

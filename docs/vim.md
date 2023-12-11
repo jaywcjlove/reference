@@ -184,7 +184,7 @@ G gg H M L k j ▶  print("to")
 :- | -
 `v`         | 进入可视化模式
 `V`         | 进入视线模式
-`<C-v>`     | 进入可视化阻挡模式
+`<C-v>`     | 进入可视块模式
 `ggVG`      | 选择所有文本
 `>` _/_ `<` | 向右/向左移动文本
 <!--rehype:className=shortcuts-->

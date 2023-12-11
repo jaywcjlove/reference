@@ -35,7 +35,7 @@ int num = 5;
 float floatNum = 5.99f;
 char letter = 'D';
 boolean bool = true;
-String site = "quickref.me";
+String site = "jaywcjlove.github.io";
 ```
 
 ### 原始数据类型
@@ -89,7 +89,7 @@ boolean[] answers = {true, false};
 
 查看: [Arrays](#java-数组)
 
-### Swap
+### 交换变量 Swap
 
 ```java
 int a = 1;
@@ -101,7 +101,7 @@ b = temp;
 System.out.println(a + " " + b); // 2 1
 ```
 
-### Type Casting
+### 类型转换 Type Casting
 
 ```java
 // Widening
@@ -344,7 +344,7 @@ for (int a: arr) {
 // 输出: a b c 
 ```
 
-### Multidimensional Arrays
+### 二维数组 Multidimensional Arrays
 
 ```java
 int[][] matrix = { {1, 2, 3}, {4, 5} };
@@ -359,7 +359,7 @@ for (int i = 0; i < a.length; ++i) {
 // 输出: 1 2 3 4 5 6 7 
 ```
 
-### Sort
+### 排序 Sort
 
 ```java
 char[] chars = {'b', 'a', 'c'};
@@ -544,13 +544,161 @@ for (int i = 0; i < 5; i++) {
 // 输出: 0123
 ```
 
+Java 多线程
+--------------------
+
+### 创建线程
+
+```java
+// 实现Runnable接口
+public class RunnableThread implements Runnable {
+    @Override
+    public void run() {
+       // todo something
+    }
+}
+
+// 实现Callable接口,T 替换成实际类型
+public class CallableTask implements Callable<T> {
+    @Override
+    public T call() throws Exception {
+        // todo something
+        return null;
+    }
+}
+
+// 继承Thrad类
+public class ExtendsThread extends Thread {
+    @Override
+    public void run() {
+       // todo something
+    }
+}
+
+// 运行线程
+public static void main(String[] args) throws ExecutionException, InterruptedException {
+        new Thread(new RunnableThread()).start();
+        new ExtendsThread2().start();
+        FutureTask<Integer> integerFutureTask = new FutureTask<>(new CallableTask());
+        integerFutureTask.run();
+    }
+
+```
+
+### 线程池
+
+```java
+/**
+ *  corePoolSize: 核心线程数
+ *  maximumPoolSize: 最大线程数
+ *  keepAliveTime: 线程空闲时间
+ *  timeUni: 线程空闲时间单位
+ *  workQueue: 线程等待队列
+ *  threadFactory: 线程创建工厂
+ *  handler: 拒绝策略
+ */
+ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+                2, 5,
+                5, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(10),
+                new DefaultThreadFactory("pollName"),
+                new ThreadPoolExecutor.CallerRunsPolicy());
+
+// 内置的线程池, 不推荐生产使用
+Executors.newCachedThreadPool();
+Executors.newFixedThreadPool(10);
+Executors.newScheduledThreadPool(10);
+Executors.newSingleThreadExecutor();
+```
+
+### synchronized
+
+<!--rehype:wrap-class=row-span-1-->
+
+```java
+// 代码块
+synchronized(obj) {
+   ...
+}
+
+// (静态)方法
+public synchronized (static) void methodName() {
+   ...
+}
+```
+
+### ThreadLocal
+
+```java
+// 使用完之后一定要记得remove, 否则会内存泄露
+ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+threadLocal.set(1);
+threadLocal.get();
+threadLocal.remove();
+```
+
+### 线程等待与唤醒
+
+```java
+// 需要synchronized修饰的代码块才能使用
+wait(); 
+notify();
+notifyAll();
+
+// 使用lock的条件唤醒
+ReentrantLock lock = new ReentrantLock();
+Condition condition= lock.newCondition();
+lock.lock();
+try{
+   // 当前线程唤醒或等待
+    condition.await();
+    condition.signal();
+    condition.signalAll();
+} finally {
+  lock.unlock
+}
+
+// LockSupport,可以先unpark,后续park不会阻塞线程
+LockSupport.park(obj);
+LockSupport.unpark(thread);
+```
+
+### 线程编排
+
+```java
+// CountDownLatch
+CountDownLatch countDownLatch = new CountDownLatch(2);
+new Thread(() -> {
+    try {
+       ...
+    }finally {
+       countDownLatch.countDown();
+    }
+}).start();
+countDownLatch.await();
+
+// CompletableFuture
+CompletableFuture<Void> task1 = CompletableFuture.runAsync(() -> {});
+CompletableFuture<Void> task2 = CompletableFuture.runAsync(() -> {});
+CompletableFuture<Void> task3 = CompletableFuture.runAsync(() -> {});
+CompletableFuture.allOf(task1, task2, task3).get();
+
+// Semaphore
+Semaphore semaphore = new Semaphore(5);
+try {
+    semaphore.acquire();
+} finally {
+    semaphore.release(); 
+}
+```
+
 Java 框架搜集
 --------------------
 
-### Java 搜集
+### Java 集合
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-搜集 | Interface   | 有序 | 已排序 | 线程安全 | 复制 | Nullable
+集合 | Interface   | 有序 | 已排序 | 线程安全 | 复制 | Nullable
 :-|:-|:-|:-|:-|:-|:-
 [ArrayList](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html)                                    | List        | Y       | _N_    | _N_         | Y         | Y
 [Vector](https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html)                                          | List        | Y       | _N_    | Y           | Y         | Y
@@ -595,6 +743,8 @@ nums.remove(0); // 非常慢
 for (Integer value : nums) {
     System.out.println(value);
 }
+// lambda 打印元素
+nums.forEach(e -> System.out.println(e.toString()));
 ```
 
 ### HashMap
@@ -613,6 +763,25 @@ m.forEach((key, value) -> {
     String msg = key + ": " + value;
     System.out.println(msg);
 });
+```
+
+### ConcurrentHashMap
+
+```java
+ConcurrentHashMap<Integer, String> m
+            = new ConcurrentHashMap<>();
+m.put(100, "Hello");
+m.put(101, "Geeks");
+m.put(102, "Geeks");
+// 移除
+m.remove(101, "Geeks");
+
+// 如果不存在，就添加，存在就不变更
+m.putIfAbsent(103, "Hello");
+ 
+// 替换
+m.replace(101, "Hello", "For");
+System.out.println(m);
 ```
 
 ### HashSet
@@ -634,6 +803,7 @@ set.remove("cat");
 for (String element : set) {
     System.out.println(element);
 }
+set.forEach(e -> System.out.println(e.toString()));
 ```
 
 ### ArrayDeque
@@ -771,7 +941,7 @@ text.split(Pattern.quote("|"));
 `Math.toDegrees(rad)` | 以度为单位的角度弧度
 `Math.toRadians(deg)` | 以弧度为单位的角度度
 
-### Try/Catch/Finally
+### 异常 Try/Catch/Finally
 
 ```java
 try {
@@ -816,8 +986,59 @@ method.invoke(classLoader, url);
 - `SecureRandom` 实例用于生成安全的伪随机数流
 - `UUID` 表示一个不可变的通用唯一标识符
 - `Vector` 实现了一个可增长的对象数组
+- `LocalDate` 表示没有时区的日期，只包含年月日，不可变并且线程安全的，java8 及以上版本可用
+- `LocalTime` 表示没有时区的时间，只包含时分秒，不可变并且线程安全的，java8 及以上版本可用
+- `LocalDateTime` 表示没有时区的日期时间，同时包含年月日时分秒，不可变并且线程安全的，java8 及以上版本可用
+
+### IO流
+
+```java
+// 输入流转输出流
+byte[] inputContent = "test".getBytes();
+try (InputStream inputStream = new ByteArrayInputStream(inputContent);
+     OutputStream outputStream = new ByteArrayOutputStream()) {
+    byte[] buffer = new byte[1024];
+    int len;
+    while ((len = inputStream.read(buffer)) != -1) {
+        outputStream.write(buffer, 0, len);
+    }
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
+```
+
+### Collections 工具类
+
+```java
+// 计算出现频率
+List<Integer> list = new ArrayList<>();
+list.add(1);
+list.add(2);
+list.add(2);
+list.add(3);
+list.add(3);
+list.add(3);
+int frequency = Collections.frequency(list, 2); // frequency = 2
+```
+
+### Stream 流
+
+```java
+// 统计词频
+List<Integer> list = new ArrayList<>();
+list.add(1);
+list.add(1);
+list.add(3);
+list.add(2);
+list.add(2);
+list.add(2);
+Map<Integer, Long> frequencyMap = list.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+// 1: 2
+// 2: 3
+// 3: 1
+```
 
 另见
 ---
 
-- [Java 官网](https://www.java.com/zh-CN/) _(java.com)_
+- [Java 官网](https://www.oracle.com/cn/java/) _(oracle.com/cn/java)_

@@ -1,7 +1,13 @@
 Electron 备忘清单
 ====
 
-此快速参考备忘单提供了 Electron v21 API 说明和使用示例。
+[![NPM version](https://img.shields.io/npm/v/electron.svg?style=flat)](https://www.npmjs.com/package/electron)
+[![Downloads](https://img.shields.io/npm/dm/electron.svg?style=flat)](https://www.npmjs.com/package/electron)
+[![Repo Dependents](https://badgen.net/github/dependents-repo/electron/electron)](https://github.com/electron/electron/network/dependents)
+[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/electron/electron)
+
+此快速参考备忘单提供了 Electron v21 API 说明和使用示例
+<!--rehype:style=padding-top: 12px;-->
 
 入门
 ----

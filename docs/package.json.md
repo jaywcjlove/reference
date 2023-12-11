@@ -330,7 +330,7 @@ https://registry.npmjs.org/[包名]/-/[包名]-[version].tgz
 
 字段由模块作者提供，作为 `JavaScript` 包或组件工具的提示，用于打包模块以供客户端使用。 提案就[在这里](https://github.com/defunctzombie/package-browser-field-spec)。
 
-### `exports`
+### exports 导出
 
 ```json
 {

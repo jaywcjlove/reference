@@ -1,7 +1,7 @@
 Julia 备忘清单
 ===
 
-本备忘清单旨在快速理解 [Julia](https://mysql.com) 一份简单而粗略的语言概览，供您参考。
+本备忘清单旨在快速理解 [Julia](https://julialang.org/) 一份简单而粗略的语言概览，供您参考。
 
 入门
 ---
@@ -678,4 +678,5 @@ names(ModuleName, all::Bool, imported::Bool)
 另见
 ---
 
-- [快速入门一份简单而粗略的语言概览](https://cheatsheet.juliadocs.org/zh-cn/)
+- [Julia 官方网站](https://julialang.org/) _(julialang.org)_
+- [快速入门一份简单而粗略的语言概览](https://cheatsheet.juliadocs.org/zh-cn/) _(juliadocs.org)_

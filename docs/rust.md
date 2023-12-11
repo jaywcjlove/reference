@@ -180,7 +180,7 @@ let p = Point { x: 10, y: 11 };
 let px: i32 = p.x;
 ```
 
-#### 元祖结构体
+#### 元组结构体
 
 ```rust
 struct Color (i32, i32, i32);
@@ -222,6 +222,18 @@ fn main(){
     // hello world
 }
 ```
+
+### 区间表达式
+<!--rehype:wrap-class=col-span-2-->
+
+产生式/句法规则         | 句法         | 类型                        | 区间语义
+:-                   | :-           | :-                         | :-
+RangeExpr            | `start..end` | std::ops::Range            | start ≤ x < end
+RangeFromExpr        | `start..`    | std::ops::RangeFrom        | start ≤ x
+RangeToExpr          | `..end`      | std::ops::RangeTo          | x < end
+RangeFullExpr        | `..`         | std::ops::RangeFull        | -
+RangeInclusiveExpr   | `start..=end`| std::ops::RangeInclusive   | start ≤ x ≤ end
+RangeToInclusiveExpr | `..=end`     | std::ops::RangeToInclusive | x ≤ end
 
 Rust 类型
 --------
@@ -354,6 +366,14 @@ rand.capacity()  // => 13
 
 以字节为单位计算字符串的容量
 
+### with_capacity()
+
+```rust
+let s = String::with_capacity(10);
+```
+
+指定一个足够大的容量值,来减少内存拷贝
+
 ### .contains()
 
 ```rust
@@ -483,6 +503,147 @@ let arr = vec![
 `retain(f)`               | 根据给定的函数，保留满足条件的元素
 `drain(range)`            | 删除 `vec` 中指定范围的元素,同时返回一个迭代该范围所有元素的迭代器
 `split_off(index)`        | 切分 `vec`，索引左边的元素保留在原 `vec` 中(含索引)，索引右边的元素(不含索引)在返回的 `vec` 中
+
+Rust HashMap\<K,V>
+--------
+
+### 使用
+
+```rust
+use std::collections::HashMap;
+
+fn main() {
+  let mut map: HashMap<String, i32> = HashMap::new();
+  map.insert(String::from("blue"), 100);
+  // 查询Yellow对应的值，若不存在则插入默认值
+  let v: &mut i32 =
+    map.entry("Yellow".to_string()).or_insert(5);
+  let v: &mut i32 = 
+    map.entry("Yellow".to_string()).or_insert(50); // 不会修改值
+}
+```
+
+### 获取元素
+
+```rust
+let mut scores = HashMap::new();
+
+scores.insert(String::from("Blue"), 10);
+scores.insert(String::from("Yellow"), 50);
+
+let team_name = String::from("Blue");
+let score: Option<&i32> = scores.get(&team_name);
+```
+
+### 遍历
+
+```rust
+let mut scores = HashMap::new();
+
+scores.insert(String::from("Blue"), 10);
+scores.insert(String::from("Yellow"), 50);
+
+for (key, value) in &scores {
+    println!("{}: {}", key, value);
+}
+```
+
+### vec -> HashMap
+
+```rust
+let teams_list = vec![
+    ("中国队".to_string(), 100),
+    ("美国队".to_string(), 10),
+    ("日本队".to_string(), 50),
+];
+let teams_map: HashMap<_,_> =
+  teams_list.into_iter().collect();
+```
+
+----
+
+```rust
+let teams = vec![String::from("blue"),String::from("red")];
+let intial_scores = vec![10,50];
+let scores:HashMap<_,_> =
+  teams.iter().zip(intial_scores.iter()).collect();
+```
+
+Option & Result
+--------
+
+### Option
+
+```rust
+enum Option<T> {
+    Some(T),
+    None,
+}
+```
+
+#### 使用
+
+```rust
+fn main(){
+    let a = Some(5);
+    // 直接获取原始值
+    println!("{}", a.unwrap());
+    // 给出错误信息
+    let x: Option<&str> = None;
+    x.expect("fruits are healthy"); // panics 带有 `fruits are healthy`
+}
+```
+
+### Result
+
+```rust
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
+
+#### 使用
+
+```rust
+use std::fs::File;
+
+fn main() {
+    let f: Result<File,Error> = File::open("hello.txt");
+    let f = match f {
+        Ok(file) => file,
+        Err(error) => {
+            panic!("Problem opening the file: {:?}", error)
+        },
+    };
+}
+```
+
+### 宏 `?`
+
+`?` 只能用于返回结果是 Result 或者 Option 的函数,或者实现了 Try 类型
+
+```rust
+use std::fs::File;
+use std::io::{self, Read};
+
+fn read_username_from_file() -> Result<String, io::Error> {
+    let mut s = String::new();
+    File::open("hello.txt")?.read_to_string(&mut s)?;
+    Ok(s)
+}
+```
+
+----
+
+```rust
+fn first(arr: &[i32]) -> Option<&i32> {
+   let v = arr.get(0)?;
+   Some(v)
+}
+```
+
+<!--rehype:className=wrap-text -->
 
 枚举
 --------
@@ -642,7 +803,7 @@ let left_shift = h << 4;  // => 32
 示例 | 意义
 :- | :-
 `c && d` | 两者都是真的_(AND)_
-`c || d` | 要么是真的_(OR)_
+`c \|\| d` | 要么是真的_(OR)_
 `!c`     | `c` 为假 _(NOT)_
 
 ----
@@ -853,12 +1014,25 @@ let (x, _, y) = (1, 2, 3);
 println!("{x},{y}");
 ```
 
+----
+
+```rust
+fn get_count_item(s: &str) -> (&str, &str) {
+    let mut it = s.split(' ');
+    let (Some(str1),Some(str2)) = (it.next(),it.next()) else {
+        panic!("Can't segment count item pair");
+    };
+    (str1, str2)
+}
+```
+
 ### 函数中的模式匹配
 
 ```rust
 fn add((x, y): (i32, i32)) -> i32 {
     x + y
 }
+
 fn main(){
   let sum = add(1, 2);
   println!("{sum}");
