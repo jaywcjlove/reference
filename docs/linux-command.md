@@ -109,9 +109,6 @@ Linux 命令速查表
 **`kill pid`** | 使用给定的pid终止进程
 **`killall proc`** | 杀死/终止所有名为proc的进程
 **`pkill process-name`** | 向具有其名称的进程发送信号
-**`bg`** | 将一个在后台暂停的命令，变成继续执行
-**`fg`** | 将后台中的命令调至前台继续运行
-**`fg n`** | job n to the foreground
 **`lsof`** | 列出进程打开的文件 [#](./lsof.md)
 **`renice 19 PID`** | 使进程以非常低的优先级运行
 **`pgrep firefox`** | 查找Firefox进程ID
@@ -218,6 +215,82 @@ Linux 命令速查表
 **`cd /test`** | 将目录更改为/test目录
 <!--rehype:className=style-list-->
 
+### 文件描述符
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**`0`** | 标准输入
+**`1`** | 标准输出
+**`2`** | 错误输出
+**`/dev/null`** | Linux的空设备文件，俗称“黑洞”
+
+<!--rehype:className=style-list-->
+
+### 输出重定向
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**`>`** | 覆盖运算符
+**`>>`** | 追加运算符
+**`>&`** | 重定向合并运算符
+**`command > filename`** | 标准输出覆盖写入新文件
+**`command 1> filename`** | 标准输出覆盖写入新文件（同上）
+**`command 2> filename`** | 标准错误覆盖写入新文件
+**`command >> filename`** | 标准输出追加到新文件
+**`command 1>> filename`** | 标准输出追加到新文件（同上）
+**`command 1>> filename`** | 标准错误追加到新文件
+**`2>&1`** | 标准错误重定向到标准输出
+**`1>&2`** | 标准输出重定向到标准错误
+
+<!--rehype:className=style-list-->
+
+前后台
+---
+
+### &（终端关闭，程序也关闭）
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**`command &`** | 使用后台进程模式执行command
+**Ctrl+Z** | 将当前进程放到后台（但程序是Stopped状态）
+**`jobs`** | 查看任务（状态、ID等）
+**`fg n`** | 将jobID为n的任务切到**前台**运行
+**`bg n`** | 将jobID为n的任务切到**后台**运行
+
+<!--rehype:className=style-list-->
+
+### nohup（终端关闭，程序继续运行）
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**`nohup command &`** | 后台执行command，标准输出到nohup.out
+**`nohup command > log_file &`** | 后台执行command，标准输出到log_file
+**`nohup command > log_file 2>&1 &`** | 后台执行command，标准输出和错误输出到log_file
+**`nohup command > log_file 2>err_log &`** | 后台执行command，标准输出到log_file，错误输出到err_log
+**`ps/kill`** | 查看进程/结束进程
+
+<!--rehype:className=style-list-->
+
+### screen（创建独立会话）
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**`screen -S my_session`** | 创建一个名为my_session的会话
+**`screen -ls`** | 列出当前所有的session
+**`screen -r my_session`** | 重新连接my_session这个会话
+**`screen -d my_session`** | 脱离my_session这个会话
+**Ctrl+a+d** | 在screen中，脱离当前会话
+**`exit`** | 在screen中，退出并删除当前screen
+**`screen -X -S my_session quit`** | 删除my_session这个会话
+**`screen -wipe`** | 删除所有已经失效的会话
+
+<!--rehype:className=style-list-->
+
 快捷键
 ---
 
@@ -248,7 +321,7 @@ Ctrl+H (Backspace) | 删除光标的前一个字符
 **Ctrl+L** | 清屏
 **Ctrl+C** | 中断正在执行的程序
 **Ctrl+R** | 按字符串寻找历史命令
-**Ctrl+Z** | 将当前进程放到后台（之后可以用`fg`命令重回到前台）
+**Ctrl+Z** | 将当前进程放到后台（但程序是Stopped状态）
 **Shift+Insert** | 粘贴
 **Ctrl+PageUp** | 屏幕输出向上翻页
 **Ctrl+PageDown** | 屏幕输出向下翻页
