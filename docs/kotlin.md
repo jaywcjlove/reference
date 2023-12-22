@@ -17,6 +17,7 @@ fun main() {
 main() 函数是每个 Kotlin 程序的起点，在执行之前必须包含在代码中
 
 ### 打印声明
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 println("Greetings, earthling!")
@@ -31,6 +32,7 @@ Take me to your leader.
 ```
 
 ### 注释
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 // 这是单行注释
@@ -109,7 +111,7 @@ println(monument.length)
 ```
 
 ### 字符转义序列
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 ```kotlin
 print("\"Excellent!\" I cried. \"Elementary,\" said he.") 
@@ -149,6 +151,7 @@ print("\"Excellent!\" I cried. \"Elementary,\" said he.")
 ```
 
 ### 增强赋值运算符
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 var batteryPercentage = 80
@@ -267,6 +270,7 @@ println(shorts && sunny)  // false
 ```
 
 ### 或运算符：||
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 var late = true
@@ -295,6 +299,7 @@ println(!full) //  true
 ```
 
 ### 评估顺序
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 !true && (false || true) // false
@@ -309,6 +314,16 @@ println(!full) //  true
 然后评估 true && true，返回 true。
 那么，真|| 评估 false 最终返回 true
 */
+```
+
+### 等式运算符
+
+```kotlin
+var myAge = 22
+var sisterAge = 21
+
+myAge == sisterAge // false
+myAge !== sisterAge // true
 ```
 
 ### 嵌套条件
@@ -355,16 +370,6 @@ if (height in 1..53) {
 // Prints: 抱歉，您必须至少 54 英寸才能乘坐过山车
 ```
 <!--rehype:className=wrap-text-->
-
-### 等式运算符
-
-```kotlin
-var myAge = 22
-var sisterAge = 21
-
-myAge == sisterAge // false
-myAge !== sisterAge // true
-```
 
 Collections
 ---
@@ -608,10 +613,11 @@ fun main() {
 
 ### 简单的高阶函数
 <!--rehype:wrap-class=col-span-2-->
+
 ```kotlin
-//注意啦，这里的num1AndNum2有个operation，它是接收了一个函数作为形参
+// 注意啦，这里的 num1AndNum2 有个 operation，它是接收了一个函数作为形参
 fun num1AndNum2(num1: Int, num2: Int, operation: (Int, Int) -> Int): Int {
-    //让我们试着向operation传入参数
+    // 让我们试着向 operation 传入参数
     return operation(num1, num2)
 }
 
@@ -622,14 +628,11 @@ fun plus(num1: Int, num2: Int): Int {
 fun main(args: Array<String>) {
     val total = num1AndNum2(100, 200, ::plus)
     println(total)//300
-    //怎么样？我们利用传入一个函数来充当另一个函数的参数
+    // 怎么样？我们利用传入一个函数来充当另一个函数的参数
 }
-
 ```
 
-还记得我们怎么在Java中用接口吗？
-
-试着用函数参数简化它
+还记得我们怎么在 Java 中用接口吗？试着用函数参数简化它
 
 <!--rehype:className=wrap-text-->
 
@@ -678,20 +681,6 @@ fun main(args: Array<String>) {
 类
 ---
 
-### 类示例
-
-```kotlin
-// 具有包含默认值的属性的类
-class Student {
-  var name = "Lucia"
-  var semester = "Fall"
-  var gpa = 3.95
-}
-
-// 没有类体的简写语法
-class Student 
-```
-
 ### 类实例
 
 ```kotlin
@@ -715,6 +704,7 @@ fun main() {
 ```
 
 ### 主构造函数
+<!--rehype:wrap-class=col-span-2-->
 
 ```kotlin
 class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) 
@@ -733,24 +723,22 @@ fun main() {
 ```
 <!--rehype:className=wrap-text-->
 
-### 初始化块
+### 类示例
 
 ```kotlin
-class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
-  init {
-    println("$name has ${estimatedGraduationYear - 2020} years left in college.")
-  }
+// 具有包含默认值的属性的类
+class Student {
+  var name = "Lucia"
+  var semester = "Fall"
+  var gpa = 3.95
 }
 
-fun main() {
-  var student = Student("Lucia", 3.95, "Fall", 2022)
-  // Prints: Lucia has 2 years left in college. 
-}
+// 没有类体的简写语法
+class Student 
 ```
-<!--rehype:className=wrap-text-->
 
 ### 成员函数
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```kotlin
 class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
@@ -777,6 +765,22 @@ fun main() {
   // Prints: Lucia has 2 years left in college. 
   println("${student.name}'s letter grade is ${student.calculateLetterGrade()}.") 
   // Prints: Lucia's letter grade is A. 
+}
+```
+<!--rehype:className=wrap-text-->
+
+### 初始化块
+
+```kotlin
+class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
+  init {
+    println("$name has ${estimatedGraduationYear - 2020} years left in college.")
+  }
+}
+
+fun main() {
+  var student = Student("Lucia", 3.95, "Fall", 2022)
+  // Prints: Lucia has 2 years left in college. 
 }
 ```
 <!--rehype:className=wrap-text-->
