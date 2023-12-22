@@ -98,7 +98,7 @@ Linux 命令速查表
 <!--rehype:className=style-list-->
 
 ### 进程
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-2-->
 
 :--- | :---
 :--- | :---
@@ -216,7 +216,7 @@ Linux 命令速查表
 <!--rehype:className=style-list-->
 
 ### 文件描述符
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-1-->
 
 :--- | :---
 :--- | :---
@@ -228,7 +228,7 @@ Linux 命令速查表
 <!--rehype:className=style-list-->
 
 ### 输出重定向
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 :--- | :---
 :--- | :---
@@ -243,8 +243,7 @@ Linux 命令速查表
 **`command 1>> filename`** | 标准错误追加到新文件
 **`2>&1`** | 标准错误重定向到标准输出
 **`1>&2`** | 标准输出重定向到标准错误
-
-<!--rehype:className=style-list-->
+<!--rehype:className=left-align-->
 
 前后台
 ---
@@ -254,8 +253,8 @@ Linux 命令速查表
 
 :--- | :---
 :--- | :---
-**`command &`** | 使用后台进程模式执行command
-**Ctrl+Z** | 将当前进程放到后台（但程序是Stopped状态）
+**`command &`** | 使用后台进程模式执行 command
+**`Ctrl+Z`** | 将当前进程放到后台（但程序是Stopped状态）
 **`jobs`** | 查看任务（状态、ID等）
 **`fg n`** | 将jobID为n的任务切到**前台**运行
 **`bg n`** | 将jobID为n的任务切到**后台**运行
@@ -267,10 +266,10 @@ Linux 命令速查表
 
 :--- | :---
 :--- | :---
-**`nohup command &`** | 后台执行command，标准输出到nohup.out
-**`nohup command > log_file &`** | 后台执行command，标准输出到log_file
-**`nohup command > log_file 2>&1 &`** | 后台执行command，标准输出和错误输出到log_file
-**`nohup command > log_file 2>err_log &`** | 后台执行command，标准输出到log_file，错误输出到err_log
+**`nohup command &`** | 后台执行 command，标准输出到 nohup.out
+**`nohup command > log_file &`** | 后台执行 command，标准输出到 log_file
+**`nohup command > log_file 2>&1 &`** | 后台执行 command，标准输出和错误输出到 log_file
+**`nohup command > log_file 2>err_log &`** | 后台执行 command，标准输出到 log_file，错误输出到 err_log
 **`ps/kill`** | 查看进程/结束进程
 
 <!--rehype:className=style-list-->
@@ -280,13 +279,13 @@ Linux 命令速查表
 
 :--- | :---
 :--- | :---
-**`screen -S my_session`** | 创建一个名为my_session的会话
-**`screen -ls`** | 列出当前所有的session
-**`screen -r my_session`** | 重新连接my_session这个会话
-**`screen -d my_session`** | 脱离my_session这个会话
-**Ctrl+a+d** | 在screen中，脱离当前会话
-**`exit`** | 在screen中，退出并删除当前screen
-**`screen -X -S my_session quit`** | 删除my_session这个会话
+**`screen -S my_session`** | 创建一个名为 my_session 的会话
+**`screen -ls`** | 列出当前所有的 session
+**`screen -r my_session`** | 重新连接 my_session 这个会话
+**`screen -d my_session`** | 脱离 my_session 这个会话
+**`Ctrl+a+d`** | 在 screen 中，脱离当前会话
+**`exit`** | 在 screen 中，退出并删除当前 screen
+**`-X -S my_session quit`** | 删除 my_session 这个会话
 **`screen -wipe`** | 删除所有已经失效的会话
 
 <!--rehype:className=style-list-->
@@ -295,38 +294,40 @@ Linux 命令速查表
 ---
 
 ### 命令行编辑
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 :--- | :---
 :--- | :---
-**Tab** | 自动补全
-**Ctrl+A** | 移动光标到命令行首
-**Ctrl+E** | 移动光标到命令行尾
-**Ctrl+Left** | 光标左移一个单词
-**Ctrl+Right** | 光标右移一个单词
-**Ctrl+K** | 删除光标之后所有字符
-**Ctrl+U** | 清空当前键入的命令
-**Ctrl+W** | 删除光标前的单词
-**Ctrl+Y** | 粘贴`Ctrl+W`或`Ctrl+K`删除的内容
-**Ctrl+D** | 删除当前光标所在字符 (在没有字符时会关闭终端)
-Ctrl+B (Left) | 光标左移（后退）
-Ctrl+F (Right) | 光标右移（前进）
-Ctrl+H (Backspace) | 删除光标的前一个字符
+`Tab` | 自动补全
+`Ctrl`+`A` | 移动光标到命令行首
+`Ctrl`+`E` | 移动光标到命令行尾
+`Ctrl`+`Left` | 光标左移一个单词
+`Ctrl`+`Right` | 光标右移一个单词
+`Ctrl`+`K` | 删除光标之后所有字符
+`Ctrl`+`U` | 清空当前键入的命令
+`Ctrl`+`W` | 删除光标前的单词
+`Ctrl`+`Y` | 粘贴 `Ctrl` + `W` 或 `Ctrl` + `K` 删除的内容
+`Ctrl`+`D` | 删除当前光标所在字符 (在没有字符时会关闭终端)
+`Ctrl`+`B` (Left) | 光标左移（后退）
+`Ctrl`+`F` (Right) | 光标右移（前进）
+`Ctrl`+`H` (Backspace) | 删除光标的前一个字符
+<!--rehype:className=left-align shortcuts-->
 
 ### 其他
 <!--rehype:wrap-class=row-span-2-->
 
 :--- | :---
 :--- | :---
-**Ctrl+L** | 清屏
-**Ctrl+C** | 中断正在执行的程序
-**Ctrl+R** | 按字符串寻找历史命令
-**Ctrl+Z** | 将当前进程放到后台（但程序是Stopped状态）
-**Shift+Insert** | 粘贴
-**Ctrl+PageUp** | 屏幕输出向上翻页
-**Ctrl+PageDown** | 屏幕输出向下翻页
-Ctrl+P (Up) | 上一条命令
-Ctrl+N (Down) | 下一条命令
+`Ctrl`+`L` | 清屏
+`Ctrl`+`C` | 中断正在执行的程序
+`Ctrl`+`R` | 按字符串寻找历史命令
+`Ctrl`+`Z` | 将当前进程放到后台（但程序是Stopped状态）
+`Shift`+`Insert` | 粘贴
+`Ctrl`+`PageUp` | 屏幕输出向上翻页
+`Ctrl`+`PageDown` | 屏幕输出向下翻页
+`Ctrl`+`P` (Up) | 上一条命令
+`Ctrl`+`N` (Down) | 下一条命令
+<!--rehype:className=left-align shortcuts-->
 
 另见
 ---
