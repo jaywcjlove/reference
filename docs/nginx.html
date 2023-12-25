@@ -46,6 +46,19 @@
 </span><span class="code-line">nginx <span class="token parameter variable">-s</span> quit   <span class="token comment"># 平滑关闭nginx</span>
 </span><span class="code-line">nginx <span class="token parameter variable">-V</span>        <span class="token comment"># 查看nginx的安装状态，</span>
 </span></code></pre>
+<p>systemctl 管理的 ulimit 不继承系统设置的问题</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 执行 status 命令，看到 Loaded: loaded (/lib/systemd/system/nginx.service;...) 这一行的nginx.service 文件位置</span>
+</span><span class="code-line"><span class="token function">sudo</span> <span class="token function">service</span> nginx status
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 打开上一步中的 service 文件</span>
+</span><span class="code-line"><span class="token function">sudo</span> <span class="token function">vim</span> /lib/systemd/system/nginx.service
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 找到[Service]部分，将 `LimitNOFILE=65535`添加到该部分</span>
+</span><span class="code-line"><span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">..</span>.
+</span><span class="code-line"><span class="token assign-left variable">LimitNOFILE</span><span class="token operator">=</span><span class="token number">65535</span>
+</span><span class="code-line"><span class="token punctuation">..</span>.
+</span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="docker-安装"><a aria-hidden="true" tabindex="-1" href="#docker-安装"><span class="icon icon-link"></span></a>Docker 安装</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">docker</span> run <span class="token parameter variable">--name</span> some-nginx <span class="token parameter variable">-v</span> /some/content:/usr/share/nginx/html:ro <span class="token parameter variable">-d</span> nginx
