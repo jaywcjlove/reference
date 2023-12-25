@@ -25,9 +25,10 @@ nginx -V        # 查看nginx的安装状态，
 systemctl 管理的 ulimit 不继承系统设置的问题
 
 ```bash
-# 找到 nginx service 文件，执行 status 命令，看到 Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled) 这一行的nginx.service 文件
+# 执行 status 命令，看到 Loaded: loaded (/lib/systemd/system/nginx.service;...) 这一行的nginx.service 文件位置
 sudo service nginx status
 
+# 打开上一步中的 service 文件
 sudo vim /lib/systemd/system/nginx.service
 
 # 找到[Service]部分，将 `LimitNOFILE=65535`添加到该部分
