@@ -22,22 +22,6 @@ nginx -s quit   # 平滑关闭nginx
 nginx -V        # 查看nginx的安装状态，
 ```
 
-systemctl 管理的 ulimit 不继承系统设置的问题
-
-```bash
-# 执行 status 命令，看到 Loaded: loaded (/lib/systemd/system/nginx.service;...) 这一行的nginx.service 文件位置
-sudo service nginx status
-
-# 打开上一步中的 service 文件
-sudo vim /lib/systemd/system/nginx.service
-
-# 找到[Service]部分，将 `LimitNOFILE=65535`添加到该部分
-[Service]
-...
-LimitNOFILE=65535
-...
-```
-
 ### Docker 安装
 <!--rehype:wrap-class=col-span-2-->
 
@@ -827,27 +811,38 @@ location ~ \/public\/(css|js|img)\/.*\.(js|css|gif|jpg|jpeg|png|bmp|swf) {
 }
 ```
 
-### 阻止常见攻击
+### ulimit 不继承系统设置的问题
 <!--rehype:wrap-class=col-span-2-->
 
-#### base64编码的网址
+- 执行 status 命令
 
-```nginx
-location ~* "(base64_encode)(.*)(\()" {
-    deny all;
-}
-```
+  ```bash
+  sudo service nginx status
+  ```
 
-#### javascript eval() url
+  执行 status 命令，看到 Loaded: loaded (/lib/systemd/system/nginx.service;...) 这一行的nginx.service 文件位置
 
-```nginx
-location ~* "(eval\()" {
-    deny all;
-}
-```
+- 打开 service 文件
+
+  ```bash
+  sudo vim /lib/systemd/system/nginx.service
+  ```
+
+- 修改 service 中的配置
+  找到 `[Service]` 部分，将 `LimitNOFILE=65535` 添加到该部分
+
+  ```bash
+  [Service]
+  ...
+  LimitNOFILE=65535
+  ...
+  ```
+<!--rehype:className=style-timeline-->
+
+解决 `systemctl` 管理的 ulimit 不继承系统设置的问题
 
 ### Gzip 配置
-<!--rehype:wrap-class=col-span-4 row-span-2-->
+<!--rehype:wrap-class=col-span-4-->
 
 ```nginx
 gzip  on;
@@ -867,8 +862,27 @@ gzip_types
 gzip_disable  "msie6";
 ```
 
+### 阻止常见攻击
+<!--rehype:wrap-class=col-span-3-->
+
+#### base64编码的网址
+
+```nginx
+location ~* "(base64_encode)(.*)(\()" {
+    deny all;
+}
+```
+
+#### javascript eval() url
+
+```nginx
+location ~* "(eval\()" {
+    deny all;
+}
+```
+
 ### 使网站不可索引
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-3-->
 
 ```nginx
 add_header X-Robots-Tag "noindex";
