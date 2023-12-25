@@ -234,6 +234,9 @@ jobs:
 <a href="https://github.com/LufsX" title="LufsX">
   <img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/>
 </a>
+<a href="https://github.com/mailbaoer" title="baoer">
+  <img src="https://avatars.githubusercontent.com/u/5282978?v=4" width="42;" alt="baoer"/>
+</a>
 <a href="https://github.com/expoli" title="expoli">
   <img src="https://avatars.githubusercontent.com/u/31023767?v=4" width="42;" alt="expoli"/>
 </a>
@@ -245,9 +248,6 @@ jobs:
 </a>
 <a href="https://github.com/LiuYuan-SHU" title="Yuan Liu">
   <img src="https://avatars.githubusercontent.com/u/96400967?v=4" width="42;" alt="Yuan Liu"/>
-</a>
-<a href="https://github.com/mailbaoer" title="baoer">
-  <img src="https://avatars.githubusercontent.com/u/5282978?v=4" width="42;" alt="baoer"/>
 </a>
 <a href="https://github.com/chaos-cn" title="chaos">
   <img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/>
