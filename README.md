@@ -303,6 +303,9 @@ Quick Reference
 <a href="https://github.com/dadatom" title="Da Da">
   <img src="https://avatars.githubusercontent.com/u/33886943?v=4" width="42;" alt="Da Da"/>
 </a>
+<a href="https://github.com/ljq" title="Jack Liu">
+  <img src="https://avatars.githubusercontent.com/u/7278286?v=4" width="42;" alt="Jack Liu"/>
+</a>
 <a href="https://github.com/XYZscratcher" title="XYZ">
   <img src="https://avatars.githubusercontent.com/u/108533817?v=4" width="42;" alt="XYZ"/>
 </a>
@@ -377,9 +380,6 @@ Quick Reference
 </a>
 <a href="https://github.com/Ding-Kyoma" title="HooinKyoma">
   <img src="https://avatars.githubusercontent.com/u/44542198?v=4" width="42;" alt="HooinKyoma"/>
-</a>
-<a href="https://github.com/ljq" title="Jack Liu">
-  <img src="https://avatars.githubusercontent.com/u/7278286?v=4" width="42;" alt="Jack Liu"/>
 </a>
 <a href="https://github.com/jasnzhuang" title="Jason Zhuang">
   <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
