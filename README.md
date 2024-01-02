@@ -676,5 +676,5 @@ Quick Reference
 <!--rehype:ignore:start-->
 ## License
 
-MIT © [Kenny Wong](https://github.com/jaywcjlove)
+MIT © [Wen](https://github.com/jaywcjlove)
 <!--rehype:ignore:end-->
