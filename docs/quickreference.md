@@ -473,6 +473,7 @@ const school = <div>学校</div>;
 `<!--rehype:className=style-none-->` | \<li> 没有标记样式
 `<!--rehype:className=style-timeline-->` | `时间轴`样式
 `<!--rehype:className=style-arrow-->` | `箭头`标记
+<!--rehype:className=left-align-->
 
 ### KaTeX 数学渲染
 
