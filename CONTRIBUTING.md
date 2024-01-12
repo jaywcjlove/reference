@@ -147,7 +147,7 @@ REF_LABEL=网站首页
 - [linzhe.top](https://linzhe.top/)
 - [xushanxiang.com](https://xushanxiang.com/ref/)
 - [winnerzr01.github.io](https://winnerzr01.github.io/Quick-Reference/index.html)
-- [hestudio.org](https://quickref.hestudio.org)
+- [quickref.hestudio.net](https://quickref.hestudio.net)
 - [surcode.cn](https://ref.surcode.cn)
 - [cms.im](https://quickref.cms.im/)
 - [nuomiphp.com](https://reference.tool.nuomiphp.com/)
