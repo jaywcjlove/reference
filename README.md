@@ -37,6 +37,7 @@ Quick Reference
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->  
 [Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->  
 [Github Copilot](./docs/github-copilot.md)<!--rehype:style=background: rgb(125 45 220);&class=tag contributing&data-lang=AI&data-info=👆看看还缺点儿什么？-->
+[Chown](./docs/chown.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -146,6 +147,7 @@ Quick Reference
 [Cargo](./docs/cargo.md)<!--rehype:style=background: rgb(71 71 71);&class=tag&data-lang=Rust-->  
 [Curl](./docs/curl.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Chmod](./docs/chmod.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[Chown](./docs/chown.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->
 [Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68);-->  
 [CMake](./docs/cmake.md)<!--rehype:style=background: rgb(92 107 192);&class=contributing-->  
 [Make](./docs/make.md)<!--rehype:style=background: rgb(99 99 99);&class=contributing-->  
