@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Chown 备忘清单
+ &#x26;  chown cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这份快速参考备忘单提供了改变文件或目录的所有者的简要概述，以及 chown 命令的操作
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="chown,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/chown.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.2"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="chown-备忘清单"><svg viewBox="0 0 1024 1024" version="1.1" fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em"><path d="M912.9 130.6c-26.1 4.5-52.8 6.9-80.2 6.9-115.4 0-221.1-41.9-302.6-111.2-10.6-9-26.2-9-36.8 0-81.5 69.4-187.2 111.2-302.6 111.2-27 0-53.5-2.3-79.2-6.7-17.2-2.9-32.9 10.4-33 27.9-0.2 109.1-0.4 238.1-0.4 242.5 0 471 394.5 592.7 431 603 1.8 0.5 3.6 0.5 5.4 0C550.9 994 943 873 945.5 405.7l0.4-247c0-17.6-15.8-31.1-33-28.1zM546 568.9v154.5c0 18.8-15.2 34-34 34s-34-15.2-34-34V568.9c-68.2-15.5-119.1-76.4-119.1-149.3 0-84.5 68.5-153.1 153.1-153.1S665.1 335 665.1 419.6c0 72.9-50.9 133.9-119.1 149.3z"></path></svg><a aria-hidden="true" tabindex="-1" href="#chown-备忘清单"><span class="icon icon-link"></span></a>Chown 备忘清单</h1><div class="wrap-body">
+<p>这份快速参考备忘单提供了改变文件或目录的所有者的简要概述，以及 chown 命令的操作</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#选项">选项</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#示例-1">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更改文件所有者">更改文件所有者</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#仅更改所有者">仅更改所有者</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#递归更改目录及其内容的所有者">递归更改目录及其内容的所有者</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更改所有者为当前用户">更改所有者为当前用户</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#递归并且不显示错误信息">递归并且不显示错误信息</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#仅更改组">仅更改组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变更符号链接的所有者">变更符号链接的所有者</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更改所有者为根用户">更改所有者为根用户</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#递归更改所有者为当前用户">递归更改所有者为当前用户</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将文件所有者更改为其他用户但保留组">将文件所有者更改为其他用户，但保留组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将文件所有者更改为其他用户同时更改组">将文件所有者更改为其他用户，同时更改组</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>Linux/Unix 系统中的一个命令，全称为 <code>change owner</code>，用于改变文件或目录的所有者</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">chown</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> <span class="token punctuation">[</span>所有者<span class="token punctuation">]</span><span class="token punctuation">[</span>:<span class="token punctuation">[</span>组<span class="token punctuation">]</span><span class="token punctuation">]</span> 文件或目录名
+</span></code></pre>
+<p>命令可以更改某个文件或目录的属主（owner），也可以同时更改其属组（group）</p>
+<h4 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> :groupname file1.txt
+</span><span class="code-line">$ <span class="token function">chown</span> <span class="token parameter variable">-R</span> username:groupname *
+</span><span class="code-line">$ <span class="token function">chown</span> <span class="token environment constant">$USER</span> file.txt
+</span></code></pre>
+<p><code>注意</code> 只有超级用户(root)才有权限改变文件或目录的所有者</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="选项"><a aria-hidden="true" tabindex="-1" href="#选项"><span class="icon icon-link"></span></a>选项</h3><div class="wrap-body">
+<ul>
+<li><code>-c</code> : 显示更改的部分的信息</li>
+<li><code>-f</code> : 忽略错误信息</li>
+<li><code>-h</code> :修复符号链接</li>
+<li><code>-v</code> : 显示详细的处理信息</li>
+<li><code>-R</code> : 处理指定目录以及其子目录下的所有文件</li>
+<li><code>--help</code> : 显示辅助说明</li>
+<li><code>--version</code> : 显示版本</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="示例-1"><a aria-hidden="true" tabindex="-1" href="#示例-1"><span class="icon icon-link"></span></a>示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="更改文件所有者"><a aria-hidden="true" tabindex="-1" href="#更改文件所有者"><span class="icon icon-link"></span></a>更改文件所有者</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> root /var/run/httpd.pid
+</span></code></pre>
+<p>把 <code>/var/run/httpd.pid</code> 的所有者设为 <code>root</code></p>
+<h4 id="仅更改所有者"><a aria-hidden="true" tabindex="-1" href="#仅更改所有者"><span class="icon icon-link"></span></a>仅更改所有者</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">chown</span> new_owner file.txt
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="递归更改目录及其内容的所有者"><a aria-hidden="true" tabindex="-1" href="#递归更改目录及其内容的所有者"><span class="icon icon-link"></span></a>递归更改目录及其内容的所有者</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">chown</span> <span class="token parameter variable">-R</span> new_owner:new_group directory/
+</span></code></pre>
+<p>将文件夹 <code>directory</code> 的拥有者设为 <code>new_owner</code> ，群体的使用者设为 <code>new_group</code></p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> username:groupname file1.txt
+</span></code></pre>
+<p>将文件 file1.txt 的拥有者设为 <code>username</code> ，群体的使用者设为 <code>groupname</code></p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token parameter variable">-R</span> username:groupname *
+</span></code></pre>
+<p>将当前目录以及子目录的所有文件的拥有者设为 <code>username</code> ，群体的使用者设为 <code>groupname</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="更改所有者为当前用户"><a aria-hidden="true" tabindex="-1" href="#更改所有者为当前用户"><span class="icon icon-link"></span></a>更改所有者为当前用户</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token environment constant">$USER</span> file.txt
+</span></code></pre>
+<p>递归更改目录及其内容的所有者为当前用户</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token environment constant">$USER</span> directory/
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="递归并且不显示错误信息"><a aria-hidden="true" tabindex="-1" href="#递归并且不显示错误信息"><span class="icon icon-link"></span></a>递归并且不显示错误信息</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token parameter variable">-f</span> new_owner:new_group directory/
+</span></code></pre>
+<p>更改目录及其内容的所有者和组为 <code>alice</code></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">chown</span> <span class="token parameter variable">-R</span> alice: directory/
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="仅更改组"><a aria-hidden="true" tabindex="-1" href="#仅更改组"><span class="icon icon-link"></span></a>仅更改组</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> :groupname file1.txt
+</span></code></pre>
+<p>不修改文件 <code>file1.txt</code> 的拥有者，将文件使用群体改为 <code>groupname</code></p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="变更符号链接的所有者"><a aria-hidden="true" tabindex="-1" href="#变更符号链接的所有者"><span class="icon icon-link"></span></a>变更符号链接的所有者</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token parameter variable">-h</span> new_owner:new_group symlink
+</span></code></pre>
+<p>变更符号链接的所有者而不是链接指向的文件</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token parameter variable">-h</span> manager symlink
+</span></code></pre>
+<p>更改符号链接的所有者为"manager"</p>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="更改所有者为根用户"><a aria-hidden="true" tabindex="-1" href="#更改所有者为根用户"><span class="icon icon-link"></span></a>更改所有者为根用户</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">chown</span> root:root file.txt
+</span></code></pre>
+<h4 id="递归更改所有者为当前用户"><a aria-hidden="true" tabindex="-1" href="#递归更改所有者为当前用户"><span class="icon icon-link"></span></a>递归更改所有者为当前用户</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token environment constant">$USER</span> directory/
+</span><span class="code-line"><span class="token comment"># 更改目录及其内容的所有者和组为"alice":</span>
+</span><span class="code-line"><span class="token function">chown</span> <span class="token parameter variable">-R</span> alice: directory/
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将文件所有者更改为其他用户但保留组"><a aria-hidden="true" tabindex="-1" href="#将文件所有者更改为其他用户但保留组"><span class="icon icon-link"></span></a>将文件所有者更改为其他用户，但保留组</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">chown</span> new_owner file.txt
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将文件所有者更改为其他用户同时更改组"><a aria-hidden="true" tabindex="-1" href="#将文件所有者更改为其他用户同时更改组"><span class="icon icon-link"></span></a>将文件所有者更改为其他用户，同时更改组</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">chown</span> new_owner:new_group file.txt
+</span></code></pre>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js?v=1.5.2" defer></script><script src="../js/fuse.min.js?v=1.5.2" defer></script><script src="../js/main.js?v=1.5.2" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>

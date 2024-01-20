@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Github Copilot 备忘清单
+ &#x26;  github-copilot cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这是开始使用 Github Copilot 的快速参考指南。
+
+\ 校对、错误请指正。📮邮箱: <a href=&#x22;mailto:jussker@outlook.com&#x22;>jussker@outlook.com</a>
+
+一、准备工作，为开发人员分享快速参考备忘单。">
+<meta keywords="github-copilot,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/github-copilot.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.2"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="github-copilot-备忘清单"><svg width="1em" height="1em" viewBox="0 0 600 528" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path d="M300.05 526.091C129.331 526.091 5.42623 417.044 0.748474 385.796V312.898C3.92935 289.397 26.0832 249.805 60.1747 235.622C60.6612 233.002 61.0728 230.27 61.5219 227.464C62.6071 220.615 63.7672 213.094 66.237 204.561C58.7152 185.551 56.7318 163.996 56.7318 142.59C56.7318 110.033 61.5219 76.3908 82.6653 49.6341C104.333 22.2037 138.574 7.57172 184.603 2.4449C229.734 -2.56966 269.252 3.71724 294.773 31.0728C296.645 33.0561 298.366 35.1143 299.975 37.2474C301.622 35.1143 303.493 33.0561 305.326 31.0728C330.848 3.71724 370.366 -2.56966 415.497 2.4449C461.526 7.57172 495.767 22.2037 517.435 49.6341C538.615 76.3908 543.368 110.033 543.368 142.59C543.368 163.996 541.385 185.551 533.863 204.561C536.333 213.094 537.53 220.615 538.578 227.464C539.027 230.308 539.476 233.002 539.963 235.622C574.541 250.029 596.919 290.669 599.501 314.021V384.075C599.501 412.74 474.1 526.091 300.05 526.091ZM300.05 470.52C385.372 470.52 471.593 428.981 487.235 416.894V257.663L486.374 253.322C468.037 261.181 446.146 264.212 421.746 264.212C378.861 264.212 344.694 251.975 320.333 227.127C312.303 218.871 305.498 209.508 300.125 199.322C294.697 209.512 287.842 218.875 279.767 227.127C255.443 251.975 221.277 264.212 178.353 264.212C153.954 264.212 132.1 261.181 113.726 253.322L112.865 257.663V416.894C128.545 428.981 214.728 470.52 300.05 470.52ZM253.796 69.3555C246.574 61.6466 229.958 53.9002 190.852 58.2412C152.719 62.4698 135.505 73.3597 126.748 84.4366C117.505 96.1123 112.94 113.963 112.94 142.59C112.94 172.266 117.767 186.412 124.466 193.896C130.528 200.669 143.888 208.079 178.428 208.079C210.349 208.079 228.536 199.285 239.726 187.871C251.514 175.821 259.447 156.923 262.815 129.755C267.193 94.7651 261.43 77.5509 253.796 69.3555ZM409.285 58.2412C370.216 53.9002 353.601 61.6466 346.378 69.3555C338.744 77.5509 332.944 94.7651 337.322 129.755C340.728 156.923 348.661 175.821 360.449 187.871C371.638 199.285 389.788 208.079 421.746 208.079C456.25 208.079 469.647 200.669 475.709 193.896C482.408 186.412 487.235 172.266 487.235 142.59C487.235 113.963 482.632 96.1123 473.389 84.4366C464.669 73.3597 447.455 62.4698 409.285 58.2412Z"></path>
+<path d="M234.636 301.634C242.08 301.634 249.219 304.591 254.482 309.855C259.746 315.118 262.703 322.257 262.703 329.701V385.871C262.703 393.315 259.746 400.454 254.482 405.717C249.219 410.981 242.08 413.938 234.636 413.938C227.193 413.938 220.054 410.981 214.79 405.717C209.527 400.454 206.57 393.315 206.57 385.871V329.701C206.57 322.257 209.527 315.118 214.79 309.855C220.054 304.591 227.193 301.634 234.636 301.634ZM393.68 329.701V385.871C393.68 393.315 390.723 400.454 385.459 405.717C380.196 410.981 373.057 413.938 365.613 413.938C358.17 413.938 351.031 410.981 345.767 405.717C340.504 400.454 337.547 393.315 337.547 385.871V329.701C337.547 322.257 340.504 315.118 345.767 309.855C351.031 304.591 358.17 301.634 365.613 301.634C373.057 301.634 380.196 304.591 385.459 309.855C390.723 315.118 393.68 322.257 393.68 329.701Z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#github-copilot-备忘清单"><span class="icon icon-link"></span></a>Github Copilot 备忘清单</h1><div class="wrap-body">
+<p>这是开始使用 <a href="https://code.visualstudio.com/docs/editor/github-copilot">Github Copilot</a> 的快速参考指南。</p>
+<p>* 校对、错误请指正。📮邮箱: <a href="mailto:jussker@outlook.com"></a><a href="mailto:jussker@outlook.com">jussker@outlook.com</a></p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#一准备工作">一、准备工作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#1账号注册">1、账号注册</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#2安装vscode插件">2、安装Vscode插件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#3vscode-中登陆-github-账号">3、Vscode 中登陆 Github 账号</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#4copilot-订阅方案">4、Copilot 订阅方案</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#5copilot-使用入口">5、Copilot 使用入口</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#二提示技巧">二、提示技巧</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#提示之禅">提示之禅</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#提示技巧">提示技巧</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#实战教程">实战教程</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文信息的种类">上下文信息的种类</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文文件">上下文：文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文-注释-顶部注释">上下文: 注释: 顶部注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文-注释-行内注释">上下文: 注释: 行内注释</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文-注释-docstring">上下文: 注释: Docstring</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文-注释-提问">上下文: 注释: 提问</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文-注释-todo">上下文: 注释: Todo</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文-命名">上下文: 命名</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#bad-case">bad case</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#good-case">good case</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文-代码-代码示例">上下文: 代码: 代码示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文-代码-数据示例">上下文: 代码: 数据示例</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#三快捷键">三、快捷键</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#github-copilot">Github Copilot</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-中-inline-suggestions-相关命令">Copilot 中 Inline Suggestions 相关命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-中-completions-panel-相关命令">Copilot 中 Completions Panel 相关命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-中-其他命令">Copilot 中 其他命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#github-copilot-chat">Github Copilot Chat</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-chat-中-chat-相关命令">Copilot Chat 中 Chat 相关命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-chat-中-inline-chat-相关命令">Copilot Chat 中 Inline Chat 相关命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-chat-中-quick-chat-相关命令">Copilot Chat 中 Quick Chat 相关命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-chat-中-editor-chat-相关命令">Copilot Chat 中 Editor Chat 相关命令</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-chat-其他命令">Copilot Chat 其他命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#四copilot-chat-的-slash-commands-使用技巧">四、Copilot Chat 的 Slash Commands 使用技巧</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#slash-commands-示例">Slash Commands 示例</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#slash-commands-由四部分构成">Slash Commands 由四部分构成</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#例子">例子</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#agent">Agent</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#inline-chat-的-slash-commands">Inline Chat 的 Slash Commands</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#silde-chat-的-slash-commands">Silde Chat 的 Slash Commands</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#slash-commands">Slash Commands</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#terminal特有的变量-以号开头">/terminal特有的变量, 以#号开头</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#的-slash-commands">的 Slash Commands</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#五参数设置">五、参数设置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#完整配置参考">完整配置参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#参数说明">参数说明</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#代理参数">代理参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-chat-参数">Copilot Chat 参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-基本参数">Copilot 基本参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#设置-copilot-生效的文件类型">设置 Copilot 生效的文件类型</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#copilot-高级参数">Copilot 高级参数</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#end-enjoy-yourself">END... ENJOY YOURSELF</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#参考来源">参考来源</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="一准备工作"><a aria-hidden="true" tabindex="-1" href="#一准备工作"><span class="icon icon-link"></span></a>一、准备工作</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="1账号注册"><a aria-hidden="true" tabindex="-1" href="#1账号注册"><span class="icon icon-link"></span></a>1、账号注册</h3><div class="wrap-body">
+<blockquote>
+<p>需要先拥有一个Github账号，并订阅Copilot。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">事项</th><th>说明</th></tr></thead><tbody><tr><td align="left">Github 账号</td><td><a href="https://github.com/signup">注册地址</a></td></tr><tr><td align="left">订阅 Github Copilot</td><td><a href="https://github.com/features/copilot">订阅地址</a></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-1 row-span-1"><div class="wrap-header h3wrap"><h3 id="2安装vscode插件"><a aria-hidden="true" tabindex="-1" href="#2安装vscode插件"><span class="icon icon-link"></span></a>2、安装Vscode插件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-1-->
+<blockquote>
+<p>在扩展商店中搜索安装下面插件</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">插件名称</th><th>功能</th></tr></thead><tbody><tr><td align="left"><code>GitHub Copilot</code></td><td>编辑器中进行代码补全提示</td></tr><tr><td align="left"><code>GitHub Copilot Chat</code></td><td>插件栏可以与copilot对话</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-1 row-span-1"><div class="wrap-header h3wrap"><h3 id="3vscode-中登陆-github-账号"><a aria-hidden="true" tabindex="-1" href="#3vscode-中登陆-github-账号"><span class="icon icon-link"></span></a>3、Vscode 中登陆 Github 账号</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-1-->
+<ul>
+<li>安装后，点击右下角的 <code>GitHub Copilot</code> 插件图标，然后点击 <code>Sign in to GitHub</code> 登陆。</li>
+<li>或者，点击工具栏中的 <code>Accounts</code> 图标，然后点击 <code>使用 Github 登陆以使用Github Copilot</code> 进行登陆。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-1"><div class="wrap-header h3wrap"><h3 id="4copilot-订阅方案"><a aria-hidden="true" tabindex="-1" href="#4copilot-订阅方案"><span class="icon icon-link"></span></a>4、Copilot 订阅方案</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-1-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header left-align"><thead><tr><th align="left">方案</th><th>价格</th><th>特性</th></tr></thead><tbody><tr><td align="left">Copilot Individual</td><td>10美元/人/月 <br> (学生, 教师, 开源项目贡献者 免费)</td><td>代码补全, 聊天机器人</td></tr><tr><td align="left">Copilot Business</td><td>19美元/人/月</td><td>代码补全, 聊天机器人, 命令行工具, 安全漏洞筛查, 代码参考, 公共代码筛查, 知识产权, 企业安全与隐私保障</td></tr><tr><td align="left">Copilot Enterprise</td><td>39美元/人/月</td><td>Business 特性 + 私有代码库的个性化聊天 + 文档搜索总结 + Git Pull Request 摘要 + 代码审查 + 模型微调</td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+</div></div></div><div class="wrap h3body-not-exist col-span-1 row-span-1"><div class="wrap-header h3wrap"><h3 id="5copilot-使用入口"><a aria-hidden="true" tabindex="-1" href="#5copilot-使用入口"><span class="icon icon-link"></span></a>5、Copilot 使用入口</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-1-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>名称</th><th>描述</th></tr></thead><tbody><tr><td>Inline Suggestions</td><td>在编辑器中紧邻光标所在位置显示建议</td></tr><tr><td>Completions Panel</td><td>在编辑器中展示完整的建议列表</td></tr><tr><td>Inline Chat</td><td>在编辑器中紧邻光标所在位置发起对话</td></tr><tr><td>Editor Chat</td><td>在编辑器中打开完整的对话界面</td></tr><tr><td>Silde Chat</td><td>在编辑器的侧边栏打开对话界面</td></tr><tr><td>Quick Chat</td><td>在顶部唤起对话界面</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="二提示技巧"><a aria-hidden="true" tabindex="-1" href="#二提示技巧"><span class="icon icon-link"></span></a>二、提示技巧</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-1 row-span-1"><div class="wrap-header h3wrap"><h3 id="提示之禅"><a aria-hidden="true" tabindex="-1" href="#提示之禅"><span class="icon icon-link"></span></a>提示之禅</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-1-->
+<blockquote>
+<p>你与 <code>copilot</code> 之间的关系，就是作家和插画师的关系。<br>
+你只有尽可能的全面、干练、清晰的描述你的故事(即 <code>上下文</code>)。<br>
+<code>copilot</code> 才能根据你的故事画出精美的插画 (即 <code>代码</code> )。</p>
+</blockquote>
+</div></div></div><div class="wrap h3body-not-exist col-span-1 row-span-1"><div class="wrap-header h3wrap"><h3 id="提示技巧"><a aria-hidden="true" tabindex="-1" href="#提示技巧"><span class="icon icon-link"></span></a>提示技巧</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-1-->
+<ul>
+<li>1⃣️ 提供上下文信息</li>
+<li>2⃣️ 上下文可被预测</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="实战教程"><a aria-hidden="true" tabindex="-1" href="#实战教程"><span class="icon icon-link"></span></a>实战教程</h3><div class="wrap-body">
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLj6YeMhvp2S5_hvBl2SE-7YCHYlLQ0bPt">Youtube GitHub Copilot Series</a></li>
+<li><a href="https://www.youtube.com/watch?v=CwAzIpc4AnA">Pragmatic techniques to get the most out of GitHub Copilot</a></li>
+<li><a href="https://github.blog/2023-05-12-how-i-used-github-copilot-to-build-a-browser-extension/">How I used GitHub Copilot to build a browser extension</a></li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-1"><div class="wrap-header h3wrap"><h3 id="上下文信息的种类"><a aria-hidden="true" tabindex="-1" href="#上下文信息的种类"><span class="icon icon-link"></span></a>上下文信息的种类</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-1-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header left-align"><thead><tr><th>类型</th><th>说明</th></tr></thead><tbody><tr><td>文件</td><td>Copilot会查看编辑器中当前和紧邻打开的文件。</td></tr><tr><td>注释</td><td>Copilot会根据紧邻的注释，为你的代码提供帮助和建议。如 docstring, 块注释, 行注释之类。</td></tr><tr><td>命名</td><td>良好的命名能帮助Copilot更好地理解你的代码，如函数名, 变量名, 文件名等</td></tr><tr><td>代码</td><td>Copilot会查看你的代码和它附近的代码，以生成帮助你的建议。</td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上下文文件"><a aria-hidden="true" tabindex="-1" href="#上下文文件"><span class="icon icon-link"></span></a>上下文：文件</h3><div class="wrap-body">
+<blockquote>
+<p>Copilot会查看编辑器中当前和紧邻打开的文件，以分析上下文并提供适当的建议。</p>
+</blockquote>
+<hr>
+<blockquote>
+<ul>
+<li>1、避免打开过多的文件，以便Copilot能够更好地理解你的代码。</li>
+<li>2、打开的文件尽量相关且有共性。</li>
+<li>3、如果是新项目，可以打开一些模版代码、数据文件以及参考文档等相关示例文件。以便Copilot能够更好地理解你的期望。等已经开发了一些代码后，这些示例文件就可以删除了。</li>
+</ul>
+</blockquote>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上下文-注释-顶部注释"><a aria-hidden="true" tabindex="-1" href="#上下文-注释-顶部注释"><span class="icon icon-link"></span></a>上下文: 注释: 顶部注释</h3><div class="wrap-body">
+<p>创建一个新文件时，在文件顶部添加注释，描述你的需求。这对 Copilot 很有帮助。</p>
+<p>* 下面说明将使用<code>...</code>表示copilot开始生成的位置</p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># Download file from an URL and analyze its content</span>
+</span><span class="code-line"><span class="token comment"># Details: </span>
+</span><span class="code-line"><span class="token comment"># * Download the file from an URL</span>
+</span><span class="code-line"><span class="token comment"># * Save the downloaded files into `./download` folder</span>
+</span><span class="code-line"><span class="token comment"># * Use `filetype` of the file to specify how to parse</span>
+</span><span class="code-line"><span class="token comment"># * Filetype can be `.pdf`, `.html`, `.epub`, `.md` and `.txt`</span>
+</span><span class="code-line"><span class="token comment"># * Use NLP or OCR to get the file content</span>
+</span><span class="code-line"><span class="token comment"># * Tokenize the file content and get the statistics result</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span>  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上下文-注释-行内注释"><a aria-hidden="true" tabindex="-1" href="#上下文-注释-行内注释"><span class="icon icon-link"></span></a>上下文: 注释: 行内注释</h3><div class="wrap-body">
+<p>在每个函数上面或重要代码块的上面添加注释，以帮助 Copilot 了解你代码中的一些意图或问题。</p>
+<p>* 下面说明将使用<code>...</code>表示copilot开始生成的位置</p>
+<p>函数上方添加注释说明</p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># parse the JSON string into User object</span>
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+<hr>
+<p>代码添加注释说明</p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># ...</span>
+</span><span class="code-line">api_sever <span class="token operator">=</span> FastApi<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># starting the API Sever, enable ssl, bind to 8443 port</span>
+</span><span class="code-line"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-1 row-span-2"><div class="wrap-header h3wrap"><h3 id="上下文-注释-docstring"><a aria-hidden="true" tabindex="-1" href="#上下文-注释-docstring"><span class="icon icon-link"></span></a>上下文: 注释: Docstring</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-2-->
+<p>有时候当你已经拥有详细设计文档，但未编写功能代码时，可以直接使用 docstring 中的描述来让 copilot 生成代码。</p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">def</span> <span class="token function">send_email</span><span class="token punctuation">(</span>to_address<span class="token punctuation">:</span> Email<span class="token punctuation">,</span> subject<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> content<span class="token punctuation">:</span> HTML<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token operator">></span> StatusCode<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token triple-quoted-string string">"""
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    Send email to specified address
+</span></span><span class="code-line"><span class="token triple-quoted-string string">
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    Parameters
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    ----------
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    to_address : Email
+</span></span><span class="code-line"><span class="token triple-quoted-string string">        The email address to send to
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    subject : str
+</span></span><span class="code-line"><span class="token triple-quoted-string string">        The email subject
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    content : HTML
+</span></span><span class="code-line"><span class="token triple-quoted-string string">        The email content
+</span></span><span class="code-line"><span class="token triple-quoted-string string">
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    Returns
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    -------
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    StatusCode
+</span></span><span class="code-line"><span class="token triple-quoted-string string">        The sending result
+</span></span><span class="code-line"><span class="token triple-quoted-string string">    """</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上下文-注释-提问"><a aria-hidden="true" tabindex="-1" href="#上下文-注释-提问"><span class="icon icon-link"></span></a>上下文: 注释: 提问</h3><div class="wrap-body">
+<blockquote>
+<p>如果你不想切换到 copilot chat 时，注释也可以用于提问。</p>
+</blockquote>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># Q: What is the difference between `os.path.join` and `pathlib.PurePath`?</span>
+</span><span class="code-line"><span class="token comment"># A: ...</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上下文-注释-todo"><a aria-hidden="true" tabindex="-1" href="#上下文-注释-todo"><span class="icon icon-link"></span></a>上下文: 注释: Todo</h3><div class="wrap-body">
+<blockquote>
+<p>你也可以让 copilot 为你生成 <code>todo</code> 列表来评估工作量。</p>
+</blockquote>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># Parse the json file into a Talks object</span>
+</span><span class="code-line"><span class="token comment"># TODO:</span>
+</span><span class="code-line"><span class="token comment"># -[ ] 1. ...</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="上下文-命名"><a aria-hidden="true" tabindex="-1" href="#上下文-命名"><span class="icon icon-link"></span></a>上下文: 命名</h3><div class="wrap-body">
+<blockquote>
+<p>你的命名应该足够明确以便于 Copilot 理解你的意图</p>
+</blockquote>
+<h4 id="bad-case"><a aria-hidden="true" tabindex="-1" href="#bad-case"><span class="icon icon-link"></span></a>bad case</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line">a <span class="token operator">=</span> <span class="token number">60</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token builtin">dict</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">data</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+<h4 id="good-case"><a aria-hidden="true" tabindex="-1" href="#good-case"><span class="icon icon-link"></span></a>good case</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line">timeout <span class="token operator">=</span> <span class="token number">60</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">def</span> <span class="token function">send_email</span><span class="token punctuation">(</span>to_address<span class="token punctuation">:</span> Email<span class="token punctuation">,</span> subject<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> content<span class="token punctuation">:</span> HTML<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token operator">></span> StatusCode<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Email</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上下文-代码-代码示例"><a aria-hidden="true" tabindex="-1" href="#上下文-代码-代码示例"><span class="icon icon-link"></span></a>上下文: 代码: 代码示例</h3><div class="wrap-body">
+<blockquote>
+<p>提供片段代码示例，以帮助 Copilot 更好地开始新的开发任务。</p>
+<ul>
+<li>使用的框架与库</li>
+<li>代码风格</li>
+<li>算法逻辑</li>
+</ul>
+</blockquote>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> typing <span class="token keyword">import</span> List
+</span><span class="code-line"><span class="token keyword">from</span> typing <span class="token keyword">import</span> Optional
+</span><span class="code-line"><span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> ForeignKey
+</span><span class="code-line"><span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> String
+</span><span class="code-line"><span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>orm <span class="token keyword">import</span> DeclarativeBase
+</span><span class="code-line"><span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>orm <span class="token keyword">import</span> Mapped
+</span><span class="code-line"><span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>orm <span class="token keyword">import</span> mapped_column
+</span><span class="code-line"><span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>orm <span class="token keyword">import</span> relationship
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">Base</span><span class="token punctuation">(</span>DeclarativeBase<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">pass</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line">    __tablename__ <span class="token operator">=</span> <span class="token string">"user_account"</span>
+</span><span class="code-line">    <span class="token builtin">id</span><span class="token punctuation">:</span> Mapped<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span> <span class="token operator">=</span> mapped_column<span class="token punctuation">(</span>primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</span><span class="code-line">    name<span class="token punctuation">:</span> Mapped<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> mapped_column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">    fullname<span class="token punctuation">:</span> Mapped<span class="token punctuation">[</span>Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+</span><span class="code-line">    addresses<span class="token punctuation">:</span> Mapped<span class="token punctuation">[</span>List<span class="token punctuation">[</span><span class="token string">"Address"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> relationship<span class="token punctuation">(</span>
+</span><span class="code-line">        back_populates<span class="token operator">=</span><span class="token string">"user"</span><span class="token punctuation">,</span> cascade<span class="token operator">=</span><span class="token string">"all, delete-orphan"</span>
+</span><span class="code-line">    <span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"User(id=</span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span><span class="token builtin">id</span><span class="token conversion-option punctuation">!r</span><span class="token punctuation">}</span></span><span class="token string">, name=</span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>name<span class="token conversion-option punctuation">!r</span><span class="token punctuation">}</span></span><span class="token string">, fullname=</span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>fullname<span class="token conversion-option punctuation">!r</span><span class="token punctuation">}</span></span><span class="token string">)"</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Email Address</span>
+</span><span class="code-line"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上下文-代码-数据示例"><a aria-hidden="true" tabindex="-1" href="#上下文-代码-数据示例"><span class="icon icon-link"></span></a>上下文: 代码: 数据示例</h3><div class="wrap-body">
+<blockquote>
+<p>提供片段数据示例，以帮助 Copilot 更好地开始新的开发任务。</p>
+<ul>
+<li>数据结构与类型</li>
+<li>命名</li>
+<li>值处理逻辑</li>
+</ul>
+</blockquote>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line">
+</span><span class="code-line">dailogs <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token string">"timestamp"</span><span class="token punctuation">:</span> <span class="token string">"May 1, 2023 11:00:00"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"text"</span><span class="token punctuation">:</span> <span class="token string">"Hello, World!"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"speaker"</span><span class="token punctuation">:</span> <span class="token string">"Jack"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token string">"timestamp"</span><span class="token punctuation">:</span> <span class="token string">"May 1, 2023 11:01:00"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"text"</span><span class="token punctuation">:</span> <span class="token string">"Hello, Copilot!"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"speaker"</span><span class="token punctuation">:</span> <span class="token string">"Copilot"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Parse the json object into `Dialog` object</span>
+</span><span class="code-line"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="三快捷键"><a aria-hidden="true" tabindex="-1" href="#三快捷键"><span class="icon icon-link"></span></a>三、快捷键</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+<p>对于mac用户建议修改alt相关的快捷键，因为mac上的alt+字母键有可能被输入法使用了。若有自定义过输入法<code>keylayout</code>，则忽略这句话。</p>
+<p>另外没有快捷键的命令，可以唤起<code>命令面板</code>后输入查询关键字筛选后执行。</p>
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-exist col-span-2 row-span-1"><div class="wrap-header h3wrap"><h3 id="github-copilot"><a aria-hidden="true" tabindex="-1" href="#github-copilot"><span class="icon icon-link"></span></a>Github Copilot</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-1-->
+<h4 id="copilot-中-inline-suggestions-相关命令"><a aria-hidden="true" tabindex="-1" href="#copilot-中-inline-suggestions-相关命令"><span class="icon icon-link"></span></a>Copilot 中 Inline Suggestions 相关命令</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>命令</th><th align="left">说明</th><th align="left">快捷键</th><th align="left">Mac 快捷键</th></tr></thead><tbody><tr><td><code>editor.action.inlineSuggest.trigger</code></td><td align="left">触发内联建议</td><td align="left"><code>alt+\</code></td><td align="left"><code>alt+\</code></td></tr><tr><td><code>editor.action.inlineSuggest.showPrevious</code></td><td align="left">显示上一个内联建议</td><td align="left"><code>alt+[</code></td><td align="left"><code>alt+[</code></td></tr><tr><td><code>editor.action.inlineSuggest.showNext</code></td><td align="left">显示下一个内联建议</td><td align="left"><code>alt+]</code></td><td align="left"><code>alt+]</code></td></tr><tr><td><code>editor.action.inlineSuggest.acceptNextWord</code></td><td align="left">接受内联建议的下一个字</td><td align="left"><code>ctl+right</code></td><td align="left"><code>cmd+right</code></td></tr><tr><td><code>editor.action.inlineSuggest.commit</code></td><td align="left">接受内联建议</td><td align="left"><code>Tab</code></td><td align="left"><code>Tab</code></td></tr><tr><td><code>editor.action.inlineSuggest.hide</code></td><td align="left">隐藏内联建议</td><td align="left"><code>Esc</code></td><td align="left"><code>Esc</code></td></tr><tr><td><code>editor.action.inlineSuggest.acceptNextLine</code></td><td align="left">接受内联建议的下一行</td><td align="left">-</td><td align="left">-</td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+<h4 id="copilot-中-completions-panel-相关命令"><a aria-hidden="true" tabindex="-1" href="#copilot-中-completions-panel-相关命令"><span class="icon icon-link"></span></a>Copilot 中 Completions Panel 相关命令</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>命令</th><th align="left">说明</th><th align="left">快捷键</th><th align="left">Mac 快捷键</th></tr></thead><tbody><tr><td><code>github.copilot.generate</code></td><td align="left">打开 <code>Completions Panel</code></td><td align="left"><code>ctrl+enter</code></td><td align="left"><code>ctrl+enter</code></td></tr><tr><td><code>github.copilot.acceptCursorPanelSolution</code></td><td align="left">接受<code>Completions Panel</code>光标所在的建议</td><td align="left"><code>ctrl+/</code></td><td align="left"><code>ctrl+/</code></td></tr><tr><td><code>github.copilot.previousPanelSolution</code></td><td align="left">查看上一个建议</td><td align="left"><code>alt+[</code></td><td align="left"><code>alt+[</code></td></tr><tr><td><code>github.copilot.nextPanelSolution</code></td><td align="left">查看下一个建议</td><td align="left"><code>alt+]</code></td><td align="left"><code>alt+]</code></td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+<h4 id="copilot-中-其他命令"><a aria-hidden="true" tabindex="-1" href="#copilot-中-其他命令"><span class="icon icon-link"></span></a>Copilot 中 其他命令</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>命令</th><th align="left">说明</th><th align="left">快捷键</th><th align="left">Mac 快捷键</th></tr></thead><tbody><tr><td><code>github.copilot.toggleCopilot</code></td><td align="left">启用/禁用 Copilot 补全提示</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.collectDiagnostics</code></td><td align="left">收集诊断信息</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.openLogs</code></td><td align="left">打开日志窗口</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.sendFeedback</code></td><td align="left">打开社区网站</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.signIn</code></td><td align="left">登陆</td><td align="left">-</td><td align="left">-</td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+</div></div></div><div class="wrap h3body-exist col-span-2 row-span-1"><div class="wrap-header h3wrap"><h3 id="github-copilot-chat"><a aria-hidden="true" tabindex="-1" href="#github-copilot-chat"><span class="icon icon-link"></span></a>Github Copilot Chat</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-1-->
+<h4 id="copilot-chat-中-chat-相关命令"><a aria-hidden="true" tabindex="-1" href="#copilot-chat-中-chat-相关命令"><span class="icon icon-link"></span></a>Copilot Chat 中 Chat 相关命令</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>命令</th><th align="left">说明</th><th align="left">快捷键</th><th align="left">Mac 快捷键</th></tr></thead><tbody><tr><td><code>github.copilot.interactiveEditor.explain</code></td><td align="left">进行解释（选中内容或光标所在的文件)</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.terminal.explainTerminalSelection</code></td><td align="left">对此进行解释(需要在终端中使用)</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.terminal.explainTerminalSelectionContextMenu</code></td><td align="left">Copilot: 对此进行解释(需要在终端中使用)</td><td align="left">鼠标右键菜单</td><td align="left">鼠标右键菜单</td></tr><tr><td><code>github.copilot.terminal.explainTerminalLastCommand</code></td><td align="left">对终端中最后一个命令进行解释(需要在终端中使用)</td><td align="left">-</td><td align="left">-</td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+<h4 id="copilot-chat-中-inline-chat-相关命令"><a aria-hidden="true" tabindex="-1" href="#copilot-chat-中-inline-chat-相关命令"><span class="icon icon-link"></span></a>Copilot Chat 中 Inline Chat 相关命令</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>命令</th><th align="left">说明</th><th align="left">快捷键</th><th align="left">Mac 快捷键</th></tr></thead><tbody><tr><td><code>inlineChat.start</code></td><td align="left">代码内聊天</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.interactiveEditor.generate</code></td><td align="left">在此生成(在光标所在位置唤起inline chat的<code>/generate</code>功能)</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.interactiveEditor.generateDocs</code></td><td align="left">生成文档</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.interactiveEditor.generateTests</code></td><td align="left">生成测试</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.interactiveEditor.fix</code></td><td align="left">修复此</td><td align="left">-</td><td align="left">-</td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+<h4 id="copilot-chat-中-quick-chat-相关命令"><a aria-hidden="true" tabindex="-1" href="#copilot-chat-中-quick-chat-相关命令"><span class="icon icon-link"></span></a>Copilot Chat 中 Quick Chat 相关命令</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>命令</th><th align="left">说明</th><th align="left">快捷键</th><th align="left">Mac 快捷键</th></tr></thead><tbody><tr><td><code>workbench.action.quickchat.toggle</code></td><td align="left">开启/关闭 Quick Chat</td><td align="left"><code>shift+cmd+i</code></td><td align="left"><code>shift+cmd+i</code></td></tr><tr><td><code>github.copilot.terminal.suggestCommand</code></td><td align="left">建议终端命令</td><td align="left"><code>ctrl+i</code>(仅在终端起作用)</td><td align="left"><code>cmd+i</code></td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+<h4 id="copilot-chat-中-editor-chat-相关命令"><a aria-hidden="true" tabindex="-1" href="#copilot-chat-中-editor-chat-相关命令"><span class="icon icon-link"></span></a>Copilot Chat 中 Editor Chat 相关命令</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>命令</th><th align="left">说明</th><th align="left">快捷键</th><th align="left">Mac 快捷键</th></tr></thead><tbody><tr><td><code>workbench.action.openChat.copilot</code></td><td align="left">打开编辑器聊天</td><td align="left">-</td><td align="left">-</td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+<h4 id="copilot-chat-其他命令"><a aria-hidden="true" tabindex="-1" href="#copilot-chat-其他命令"><span class="icon icon-link"></span></a>Copilot Chat 其他命令</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>命令</th><th align="left">说明</th><th align="left">快捷键</th><th align="left">Mac 快捷键</th></tr></thead><tbody><tr><td><code>github.copilot.interactiveSession.feedback</code></td><td align="left">打开github Issues</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.debug.workbenchState</code></td><td align="left">日志工作台状态</td><td align="left">-</td><td align="left">-</td></tr><tr><td><code>github.copilot.ghpr.applySuggestion</code></td><td align="left">为Github Pull Request提供代码建议</td><td align="left">-</td><td align="left">-</td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="四copilot-chat-的-slash-commands-使用技巧"><a aria-hidden="true" tabindex="-1" href="#四copilot-chat-的-slash-commands-使用技巧"><span class="icon icon-link"></span></a>四、Copilot Chat 的 Slash Commands 使用技巧</h2><div class="wrap-body">
+<blockquote>
+<p>在聊天对话框中可以通过<code>/</code>开头的命令来与Copilot Chat进行交互。</p>
+</blockquote>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist col-span-1 row-span-1"><div class="wrap-header h3wrap"><h3 id="slash-commands-示例"><a aria-hidden="true" tabindex="-1" href="#slash-commands-示例"><span class="icon icon-link"></span></a>Slash Commands 示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-1-->
+<h4 id="slash-commands-由四部分构成"><a aria-hidden="true" tabindex="-1" href="#slash-commands-由四部分构成"><span class="icon icon-link"></span></a>Slash Commands 由四部分构成</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>元素</th><th>说明</th></tr></thead><tbody><tr><td>- Agent</td><td>指定Agent, 符号为 <code>@</code>, 可选</td></tr><tr><td>- Commands</td><td>指定命令, 符号为 <code>/</code>, 可选</td></tr><tr><td>- 变量</td><td>引用内容, 符号为 <code>#</code>, 可选</td></tr><tr><td>- 用户输入的指令</td><td>可选</td></tr></tbody></table>
+<h4 id="例子"><a aria-hidden="true" tabindex="-1" href="#例子"><span class="icon icon-link"></span></a>例子</h4>
+<pre><code class="code-highlight"><span class="code-line">/explain def helloworld():...
+</span><span class="code-line">
+</span><span class="code-line">@vscode /api 请解释 inlineChat.start 的作用
+</span><span class="code-line">
+</span><span class="code-line">@workspace /explain def helloworld():...
+</span><span class="code-line">
+</span><span class="code-line">在每一行代码末尾添加注释进行解释
+</span></code></pre>
+<h4 id="agent"><a aria-hidden="true" tabindex="-1" href="#agent"><span class="icon icon-link"></span></a>Agent</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Agent</th><th align="left">说明</th></tr></thead><tbody><tr><td>@vscode</td><td align="left">vscode命令与插件的问题</td></tr><tr><td>@workspace</td><td align="left">项目workspace相关的问题</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-1 row-span-1"><div class="wrap-header h3wrap"><h3 id="inline-chat-的-slash-commands"><a aria-hidden="true" tabindex="-1" href="#inline-chat-的-slash-commands"><span class="icon icon-link"></span></a>Inline Chat 的 Slash Commands</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-1-->
+<hr>
+<blockquote>
+<p>通过命令 <code>inlineChat.start</code> 触发 <code>inline chat</code> 后使用</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th align="left">说明</th></tr></thead><tbody><tr><td>/doc</td><td align="left">在此添加文档注释</td></tr><tr><td>/explain</td><td align="left">对选中的代码进行解释</td></tr><tr><td>/fix</td><td align="left">修复此选中的代码</td></tr><tr><td>/tests</td><td align="left">为选中的代码生成单元测试</td></tr></tbody></table>
+<hr>
+<blockquote>
+<p>通过命令 <code>github.copilot.interactiveEditor.generate</code> 触发</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th align="left">说明</th></tr></thead><tbody><tr><td>/generate</td><td align="left">在此生成, 该命令无法由用户输入</td></tr></tbody></table>
+<hr>
+<blockquote>
+<p>当然也可以直接选中区域，然后在inline chat中输入指令执行 copilot会对选中区域进行指令操作</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header wrap-text left-align"><thead><tr><th>常用指令</th></tr></thead><tbody><tr><td>在每一行代码末尾添加注释进行解释</td></tr><tr><td>使代码满足PEP484要求</td></tr></tbody></table>
+<!--rehype:className=show-header wrap-text left-align-->
+</div></div></div><div class="wrap h3body-exist col-span-1 row-span-2"><div class="wrap-header h3wrap"><h3 id="silde-chat-的-slash-commands"><a aria-hidden="true" tabindex="-1" href="#silde-chat-的-slash-commands"><span class="icon icon-link"></span></a>Silde Chat 的 Slash Commands</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-2-->
+<blockquote>
+<p>通过命令 <code>workbench.action.chat.openInSidebar</code> 触发 <code>chat</code> 后使用<br>
+或点击侧边栏上的Copilot聊天按钮<br>
+在Chat输入框中还允许指定Agent(即环境)</p>
+</blockquote>
+<h4 id="slash-commands"><a aria-hidden="true" tabindex="-1" href="#slash-commands"><span class="icon icon-link"></span></a>Slash Commands</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th align="left">说明</th></tr></thead><tbody><tr><td>/api</td><td align="left">回答vscode扩展插件开发的问题</td></tr><tr><td>/explain</td><td align="left">对选中的代码进行解释</td></tr><tr><td>/fix</td><td align="left">修复此选中的代码</td></tr><tr><td>/new</td><td align="left">创建新项目workspace</td></tr><tr><td>/newNotebook</td><td align="left">创建新的Jupyter Notebook</td></tr><tr><td>/terminal</td><td align="left">解释命令行里的命令</td></tr><tr><td>/tests</td><td align="left">为选中的代码生成单元测试</td></tr><tr><td>/help</td><td align="left">帮助说明</td></tr><tr><td>/clear</td><td align="left">清除会话</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="terminal特有的变量-以号开头"><a aria-hidden="true" tabindex="-1" href="#terminal特有的变量-以号开头"><span class="icon icon-link"></span></a><code>/terminal</code>特有的变量, 以<code>#</code>号开头</h3><div class="wrap-body">
+<blockquote>
+<p>仅在<code>/terminal</code>命令中可用</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>变量</th><th align="left">说明</th></tr></thead><tbody><tr><td><code>#terminalLastCommand</code></td><td align="left">最后一次执行的终端命令</td></tr><tr><td><code>#terminalSelection</code></td><td align="left">选中的终端命令</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-1 row-span-1"><div class="wrap-header h3wrap"><h3 id="的-slash-commands"><a aria-hidden="true" tabindex="-1" href="#的-slash-commands"><span class="icon icon-link"></span></a>的 Slash Commands</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-1 row-span-1-->
+<ul>
+<li>Quick Chat 与 Chat 的 Slash Commands相同</li>
+<li>Editor Chat 与 Chat 的 Slash Commands相同</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="五参数设置"><a aria-hidden="true" tabindex="-1" href="#五参数设置"><span class="icon icon-link"></span></a>五、参数设置</h2><div class="wrap-body">
+<p>打开vscode 命令面板, 输入<code>Preferences:Open Settings</code> 打开配置文件，在文件模式下配置相关参数.</p>
+<p>完整参数说明可以查看 <code>copilot</code> 与 <code>copilot chat</code> 两个<a href="https://code.visualstudio.com/docs/editor/extension-marketplace#_where-are-extensions-installed">插件目录</a>下的 <code>package.json</code> 文件获知。</p>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="完整配置参考"><a aria-hidden="true" tabindex="-1" href="#完整配置参考"><span class="icon icon-link"></span></a>完整配置参考</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token comment">// settings.json</span>
+</span><span class="code-line"><span class="token punctuation">{</span>   
+</span><span class="code-line">    <span class="token comment">// ...</span>
+</span><span class="code-line">    <span class="token property">"github.copilot.chat.welcomeMessage"</span><span class="token operator">:</span> <span class="token string">"always"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"github.copilot.chat.localeOverride"</span><span class="token operator">:</span> <span class="token string">"zh-CN"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"github.copilot.editor.enableCodeActions"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"github.copilot.editor.iterativeFixing"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"github.copilot.editor.enableAutoCompletions"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"github.copilot.enable"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"plaintext"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"ini"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"markdown"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"*"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"github.copilot.advanced"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"length"</span><span class="token operator">:</span> <span class="token number">4000</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"inlineSuggestCount"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"top_p"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"temperature"</span><span class="token operator">:</span> <span class="token string">"0.8"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"listCount"</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"stops"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">            <span class="token property">"*"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">                <span class="token string">"\n\n\n"</span>
+</span><span class="code-line">            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"python"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">                <span class="token string">"\ndef "</span><span class="token punctuation">,</span>
+</span><span class="code-line">                <span class="token string">"\nclass "</span><span class="token punctuation">,</span>
+</span><span class="code-line">                <span class="token string">"\nif "</span><span class="token punctuation">,</span>
+</span><span class="code-line">                <span class="token string">"\n\n#"</span>
+</span><span class="code-line">            <span class="token punctuation">]</span>
+</span><span class="code-line">        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"debug.showScores"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"indentationMode"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">            <span class="token property">"python"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"javascript"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"javascriptreact"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"jsx"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"typescript"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"typescriptreact"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"go"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"ruby"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">            <span class="token property">"*"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">        <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token comment">// ...</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist col-span-2 row-span-1"><div class="wrap-header h3wrap"><h3 id="参数说明"><a aria-hidden="true" tabindex="-1" href="#参数说明"><span class="icon icon-link"></span></a>参数说明</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-1-->
+<h4 id="代理参数"><a aria-hidden="true" tabindex="-1" href="#代理参数"><span class="icon icon-link"></span></a>代理参数</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">设置参数</th><th align="left">值类型</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>"http.proxy"</code></td><td align="left">string</td><td align="left">配置网络代理地址</td></tr></tbody></table>
+<h4 id="copilot-chat-参数"><a aria-hidden="true" tabindex="-1" href="#copilot-chat-参数"><span class="icon icon-link"></span></a>Copilot Chat 参数</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">设置参数</th><th align="left">值类型</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>"github.copilot.chat.localeOverride"</code></td><td align="left">string</td><td align="left">设置Copilot本地语言</td></tr><tr><td align="left"><code>"github.copilot.chat.welcomeMessage"</code></td><td align="left">string</td><td align="left">Copilot Chat 是否显示欢迎语<br><code>first</code>: 仅第一次启动时, <code>always</code>: 总是, <code>never</code>: 从不</td></tr></tbody></table>
+<h4 id="copilot-基本参数"><a aria-hidden="true" tabindex="-1" href="#copilot-基本参数"><span class="icon icon-link"></span></a>Copilot 基本参数</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">设置参数</th><th align="left">值类型</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>"editor.inlineSuggest.enabled"</code></td><td align="left">boolean</td><td align="left">启用内联建议</td></tr><tr><td align="left"><code>"github.copilot.editor.iterativeFixing"</code></td><td align="left">boolean</td><td align="left">允许 Copilot 提供迭代修复建议</td></tr><tr><td align="left"><code>"github.copilot.editor.enableAutoCompletions"</code></td><td align="left">boolean</td><td align="left">允许 Copilot 提供自动补全</td></tr><tr><td align="left"><code>"github.copilot.editor.enableCodeActions"</code></td><td align="left">boolean</td><td align="left">允许 Copilot 代码操作建议,这些操作可能包括重构代码、优化代码结构、修复可错误等</td></tr></tbody></table>
+<h4 id="设置-copilot-生效的文件类型"><a aria-hidden="true" tabindex="-1" href="#设置-copilot-生效的文件类型"><span class="icon icon-link"></span></a>设置 Copilot 生效的文件类型</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">设置参数</th><th align="left">值类型</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>"github.copilot.enable"</code></td><td align="left">json</td><td align="left">请将 <code>"*": true</code> 放到末尾 <br><a href="https://code.visualstudio.com/docs/languages/identifiers">语言</a>后设置 <code>false</code> 表示禁用copilot, 设置 <code>true</code> 表示启用</td></tr></tbody></table>
+<h4 id="copilot-高级参数"><a aria-hidden="true" tabindex="-1" href="#copilot-高级参数"><span class="icon icon-link"></span></a>Copilot 高级参数</h4>
+<blockquote>
+<p>github.copilot.advanced 可以控制模型参数，最终影响到代码生成. 其值为json</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="wrap-text "><thead><tr><th align="left">设置参数</th><th align="left">值类型</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>"length"</code></td><td align="left">integer</td><td align="left">生成的代码字数, 默认为 <code>500</code></td></tr><tr><td align="left"><code>"top_p"</code></td><td align="left">number</td><td align="left">控制模型候选范围，默认值为 <code>1</code>，值范围为<code>0.0~1.0</code></td></tr><tr><td align="left"><code>"temperature"</code></td><td align="left">string</td><td align="left">控制模型的创造性，默认值为 <code>""</code>，值越大越不可预测，值范围为<code>0.0~1.0</code></td></tr><tr><td align="left"><code>"inlineSuggestCount"</code></td><td align="left">integer</td><td align="left">内联提示的个数, 默认为<code>3</code></td></tr><tr><td align="left"><code>"listCount"</code></td><td align="left">integer</td><td align="left">控制<code>Completions Panel</code>中建议个数，默认为 <code>10</code></td></tr><tr><td align="left"><code>"stops"</code></td><td align="left">json</td><td align="left">控制模型代码生成时停止的标志，可以按<a href="https://code.visualstudio.com/docs/languages/identifiers">语言</a>来控制</td></tr><tr><td align="left"><code>"indentationMode"</code></td><td align="left">json</td><td align="left">指定<a href="https://code.visualstudio.com/docs/languages/identifiers">语言</a>是否采用该语言的缩近模式，由此可能会与stops冲突，比如采用<code>\{\}</code>缩近时，设置该参数时需要综合考虑</td></tr><tr><td align="left"><code>"debug.showScores"</code></td><td align="left">boolean</td><td align="left">在代码建议列表中显示每个建议的分数</td></tr></tbody></table>
+<!--rehype:className=wrap-text -->
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="end-enjoy-yourself"><a aria-hidden="true" tabindex="-1" href="#end-enjoy-yourself"><span class="icon icon-link"></span></a>END... ENJOY YOURSELF</h2><div class="wrap-body">
+<blockquote>
+<p>欢迎大家添加新内容，校对、错误请指正。📮邮箱: <a href="mailto:jussker@outlook.com"></a><a href="mailto:jussker@outlook.com">jussker@outlook.com</a></p>
+</blockquote>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="参考来源"><a aria-hidden="true" tabindex="-1" href="#参考来源"><span class="icon icon-link"></span></a>参考来源</h2><div class="wrap-body">
+<p>[1]: <a href="https://code.visualstudio.com/docs/editor/github-copilot">GitHub Copilot in VS Code</a><br>
+[2]: <a href="https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/">How to use GitHub Copilot: Prompts, tips, and use cases</a><br>
+[3]: <a href="https://github.com/features/copilot">GitHub Copilot Official Website</a><br>
+[4]: <a href="https://www.youtube.com/playlist?list=PLj6YeMhvp2S5_hvBl2SE-7YCHYlLQ0bPt">GitHub Copilot Series (Youtube)</a><br>
+[5]: <a href="https://www.youtube.com/watch?v=CwAzIpc4AnA">Pragmatic techniques to get the most out of GitHub Copilot  (Youtube)</a><br>
+[6]: <a href="https://github.blog/2023-05-12-how-i-used-github-copilot-to-build-a-browser-extension">How I used GitHub Copilot to build a browser extension</a><br>
+[7]: <a href="https://code.visualstudio.com/docs/editor/extension-marketplace#_where-are-extensions-installed">Visual Studio Code, Where are extensions installed?</a><br>
+[8]: <a href="https://code.visualstudio.com/docs/languages/identifiers">Visual Studio Code, Language Identifiers</a></p>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 Kenny Wang.</footer></footer><script src="../data.js?v=1.5.2" defer></script><script src="../js/fuse.min.js?v=1.5.2" defer></script><script src="../js/main.js?v=1.5.2" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
