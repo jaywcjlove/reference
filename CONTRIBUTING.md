@@ -228,7 +228,7 @@ jobs:
 <a href="https://github.com/aixcyi" title="砹小翼">
   <img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/>
 </a>
-<a href="https://github.com/Alex-Programmer-Bro" title="Alex">
+<a href="https://github.com/Alex20180512" title="Alex">
   <img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/>
 </a>
 <a href="https://github.com/undefined-hestudio" title="undefined">
@@ -330,8 +330,8 @@ jobs:
 <a href="https://github.com/kdxcxs" title="kdxcxs">
   <img src="https://avatars.githubusercontent.com/u/18746192?v=4" width="42;" alt="kdxcxs"/>
 </a>
-<a href="https://github.com/genius-kim" title="kim">
-  <img src="https://avatars.githubusercontent.com/u/119488561?v=4" width="42;" alt="kim"/>
+<a href="https://github.com/genius-kim" title="Kim同学">
+  <img src="https://avatars.githubusercontent.com/u/119488561?v=4" width="42;" alt="Kim同学"/>
 </a>
 <a href="https://github.com/kubeme" title="kubernetes for me">
   <img src="https://avatars.githubusercontent.com/u/16346220?v=4" width="42;" alt="kubernetes for me"/>
@@ -513,8 +513,8 @@ jobs:
 <a href="https://github.com/Leaderzhangyi" title="ZinkCas">
   <img src="https://avatars.githubusercontent.com/u/46915666?v=4" width="42;" alt="ZinkCas"/>
 </a>
-<a href="https://github.com/zhu0629" title="cc">
-  <img src="https://avatars.githubusercontent.com/u/13188450?v=4" width="42;" alt="cc"/>
+<a href="https://github.com/zhu0629" title="zhucong">
+  <img src="https://avatars.githubusercontent.com/u/13188450?v=4" width="42;" alt="zhucong"/>
 </a>
 <a href="https://github.com/yikuaibro" title="yikuaibro">
   <img src="https://avatars.githubusercontent.com/u/44493045?v=4" width="42;" alt="yikuaibro"/>
