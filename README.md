@@ -676,6 +676,8 @@ Quick Reference
 [wdft.com](https://ref.wdft.com)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [xuyiyang.vip](https://reference.xuyiyang.vip/)<!--rehype:target=_blank-->
 [zsccodelnc.cn](https://zsccodelnc.cn/coderef/)<!--rehype:target=_blank-->
+[chanlun.pro](https://ref.chanlun.pro)<!--rehype:target=_blank-->
+[likui.info](https://r.likui.info)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
