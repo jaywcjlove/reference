@@ -240,7 +240,7 @@ Linux 命令速查表
 **`command 2> filename`** | 标准错误覆盖写入新文件
 **`command >> filename`** | 标准输出追加到新文件
 **`command 1>> filename`** | 标准输出追加到新文件（同上）
-**`command 1>> filename`** | 标准错误追加到新文件
+**`command 2>> filename`** | 标准错误追加到新文件
 **`2>&1`** | 标准错误重定向到标准输出
 **`1>&2`** | 标准输出重定向到标准错误
 <!--rehype:className=left-align-->
