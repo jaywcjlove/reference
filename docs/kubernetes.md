@@ -205,8 +205,9 @@ $ kubectl taint [node_name] [taint_name]
 ### 标签
 
 ```bash
-$ kubectl label [node_name] disktype=ssd 
-$ kubectl label [pod_name] env=prod
+$ kubectl label nodes <node-name> <label-key>=<label-value>  #增加
+$ kubectl label nodes <node-name> <label-key>- #删除
+$ kubectl label nodes <node-name> <label-key>=<label-value> --overwrite #修改
 ```
 
 ### 维护/可调度

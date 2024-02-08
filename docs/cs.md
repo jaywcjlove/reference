@@ -26,33 +26,34 @@ $ dotnet run
 Hello, world!
 ```
 
-### 变量
+### 命名空间
 
 ```cs
-int intNum = 9;
-long longNum = 9999999;
-float floatNum = 9.99F;
-double doubleNum = 99.999;
-decimal decimalNum = 99.9999M;
-char letter = 'D';
-bool @bool = true;
-string site = "jaywcjlove.github.io";
-var num = 999;
-var str = "999";
-var bo = false;
+//使用时 using 命名名称
+using Test;
+//创建：
+namespace Test{
+  class Test_className{
+    // main方法是程序的主入口
+    public void Myclass() {
+      console.writeline("Test")
+    }
+  }
+}
 ```
 
-### 注释
+### 访问修饰符
+<!--rehype:wrap-class=row-span-2-->
 
-```cs
-// 单行注释
-/* 多行
-   注释 */
-// TODO：向 Visual Studio 中的任务列表添加注释
-/// 用于文档的单行注释
-/** 多行 注释 
-    用于文档 **/
-```
+| 声明的可访问性     | 含义     |
+|-----|----------------------|
+| `public`             | 访问不受限制 |
+| `protected`          | 访问限于包含类或派生自包含类的类型 (该类内部和继承类中可以访问)   |
+| `internal`           | 访问限于当前程序集          |
+| `protected internal` | 访问限于当前程序集或派生自包含类的类型         |
+| `private`            | 访问限于包含类              |
+| `private protected`  | 访问限于包含类或当前程序集中派生自包含类的类型,自 C# 7.2 之后可用 |
+<!--rehype:className=style-list-->
 
 ### 字符串
 
@@ -75,6 +76,42 @@ if(int.TryParse(Console.ReadLine(),out int input))
   // 输入验证
   Console.WriteLine($"You entered {input}");
 }
+```
+
+### 变量
+
+```cs
+int intNum = 9;
+long longNum = 9999999;
+float floatNum = 9.99F;
+double doubleNum = 99.999;
+decimal decimalNum = 99.9999M;
+char letter = 'D';
+bool @bool = true;
+string site = "jaywcjlove.github.io";
+var num = 999;
+var str = "999";
+var bo = false;
+```
+
+### 注释
+
+```cs
+// 单行注释
+
+/* 
+ * 多行
+ * 注释 
+ */
+
+// TODO：向IDE中的任务列表添加注释（VS、Rider都支持）
+
+/// XML 单行注释，用于文档
+
+/**
+ * XML 多行注释，
+ *  用于文档 
+ */
 ```
 
 ### 条件判断
@@ -118,37 +155,55 @@ foreach(int num in numbers) {
 }
 ```
 
+---
+
+```cs
+while(true)
+{
+   Console.WriteLine("只要给定的条件为真，while 循环语句会重复执行");
+}
+```
+
+---
+
+```cs
+do
+{
+   Console.WriteLine("与 while 类似，do...while 会确保至少执行一次循环。");
+} while( true );
+```
+
 C# 数据类型
 ---------------------
 
 ### 原始数据类型
 <!--rehype:wrap-class=col-span-2-->
 
-| 关键字 | 名称         | System 别名 | 占用空间   | 数据范围                                 |
+| 关键字 | 名称         | System 别名 | 占用空间（Byte） | 数据范围                                 |
 | ------ | ------------ | ----------- | ---------- | ---------------------------------------- |
-| bool   | 布尔型       | Boolean     | 1          | true/false                               |
-| sbyte  | 有符号字节型 | SByte       | 1          | -128 ~ 127                               |
-| byte   | 字节型       | Byte        | 1          | 0 ~ 255                                  |
-| short  | 短整型       | Int16       | 2          | -32,768 ~ 32,767                         |
-| ushort | 无符号短整型 | UInt16      | 2          | 0 ~ 65,535                               |
-| int    | 整型         | Int32       | 4          | -2,147,483,648 ~ 2,147,483,647           |
-| uint   | 无符号整型   | UInt32      | 4          | 0 ~ 4,294,967,295                        |
-| long   | 长整型       | Int64       | 8          | -2^63 ~ 2^63-1                           |
-| ulong  | 无符号长整型 | UInt64      | 8          | 0 ~ 2^64-1                               |
-| char   | 字符型       | Char        | 8          | UTF-16 所编码的字符                      |
-| float  | 单精度浮点型 | Single      | 4          | ±1.5x10^45 ~ ±3.4x10^38                  |
-| double | 双精度浮点型 | Double      | 8          | ±5.0x10^-324 ~ ±1.7x10^308               |
-| N/A    | 指针型       | IntPtr      | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
-| N/A    | 无符号指针型 | UIntPtr     | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
+| `bool`   | 布尔型       | `Boolean`     | 1          | true/false                               |
+| `sbyte`  | 有符号字节型 | `SByte`       | 1          | -128 ~ 127                               |
+| `byte`   | 字节型       | `Byte`        | 1          | 0 ~ 255                                  |
+| `short`  | 短整型       | `Int16`       | 2          | -32,768 ~ 32,767                         |
+| `ushort` | 无符号短整型 | `UInt16`      | 2          | 0 ~ 65,535                               |
+| `int`    | 整型         | `Int32`       | 4          | -2,147,483,648 ~ 2,147,483,647           |
+| `uint`   | 无符号整型   | `UInt32`      | 4          | 0 ~ 4,294,967,295                        |
+| `long`   | 长整型       | `Int64`       | 8          | -2^63 ~ 2^63-1                           |
+| `ulong`  | 无符号长整型 | `UInt64`      | 8          | 0 ~ 2^64-1                               |
+| `char`   | 字符型       | `Char`        | 8          | UTF-16 所编码的字符                      |
+| `float`  | 单精度浮点型 | `Single`      | 4          | ±1.5x10^45 ~ ±3.4x10^38                  |
+| `double` | 双精度浮点型 | `Double`      | 8          | ±5.0x10^-324 ~ ±1.7x10^308               |
+| `nint`   | 指针型       | `IntPtr`      | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
+| `nuint` | 无符号指针型 | `UIntPtr`     | 与指针相同 | 与指针相同（受操作系统和处理器位宽影响） |
 <!--rehype:className=show-header-->
 
 ### 基本数据类型
 
-| 关键字                           | 名称         | System 别名 | 说明                                                               |
-| -------------------------------- | ------------ | ----------- | ------------------------------------------------------------------ |
-| （除指针型外的全部原始数据类型） |              |             | 原始数据类型都是值类型，基本数据类型包含部分本质上是引用的数据类型 |
-| string                           | 字符串       | String      | 可变长度                                                           |
-| decimal                          | 十进制浮点数 | Decimal     | 适合处理货币等计算，16字节长，不遵循 IEEE 754 关于浮点数的规则     |
+关键字 | 名称 | System 别名 | 说明
+:------ | ------ | ------ | ------
+(除指针型外的全部原始数据类型) | - | - | 原始数据类型都是值类型，基本数据类型包含部分本质上是引用的数据类型
+`string` | 字符串 | `String` | 可变长度
+`decimal` | 十进制浮点数 | `Decimal`     | 适合处理货币等计算，16字节长，不遵循 IEEE 754 关于浮点数的规则
 <!--rehype:className=show-header-->
 
 C# 字符串
@@ -234,8 +289,9 @@ Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
 
 ### 字符串操作
 
+#### 字符串分割
+
 ```cs
-//字符串分割
 string Name = "字A符A串A分A割";
 string[] Names=Name.Split(new char[] { 'A' });
 //会以A为媒介把字符串分成若干份
@@ -243,14 +299,20 @@ for (int i = 0; i < Names.Length; i++)
 {
     Console.Write(Names[i]);
 }
-//-----------------------------------
-//字符串截取
+```
+
+#### 字符串截取
+
+```cs
 string Str = "字符串截取";
 Str = Str.Substring(2, 1);
 Console.WriteLine(Str);
 //输出结果“串”，意为从第二个下标开始截取一位字符
-//-----------------------------------
-//字符串替换
+```
+
+#### 字符串替换
+
+```cs
 string Rep = "字符1替换";
 Rep = Rep.Replace("1", "串");
 Console.WriteLine(Rep);
@@ -284,7 +346,7 @@ bool Xor = A ^ B;
 
 C# 中的逻辑运算支持可空布尔类型运算. 注意条件逻辑运算不支持可空布尔类型.
 
-x |  y |  x&y |  x\|y | x^y | !x
+x |  y | x & y | x \| y | x ^ y | ! x
 :- | - | --- | --- | --- | --
 true | true | true | true | false | false
 true | false | false | true | true | false
@@ -295,6 +357,64 @@ false | null | false | null | null | true
 null | true | null | true | null | null
 null | false | false | null | null | null
 null | null | null | null | null | null
+<!--rehype:className=show-header-->
+
+### 算术运算符
+<!--rehype:wrap-class=col-span-1-->
+
+C# 支持下表中的所有算术运算符。假设变量 A 的值为 10，变量 B 的值为 20，则：
+
+| 运算符 | 描述                             | 实例              |
+| :----- | -------------------------------- | ----------------- |
+| +      | 把两个操作数相加                 | A + B 将得到 30   |
+| -      | 从第一个操作数中减去第二个操作数 | A - B 将得到 -10  |
+| \*     | 把两个操作数相乘                 | A \* B 将得到 200 |
+| /      | 分子除以分母                     | B / A 将得到 2    |
+| %      | 取模运算符，整除后的余数         | B % A 将得到 0    |
+| ++     | 自增运算符，整数值增加 1         | A++ 将得到 11     |
+| --     | 自减运算符，整数值减少 1         | A-- 将得到 9      |
+<!--rehype:className=show-header-->
+
+### 关系运算符
+<!--rehype:wrap-class=col-span-2-->
+
+C# 支持下表中的所有关系运算符。假设变量 A 的值为 1，变量 B 的值为 2，则：
+
+| 运算符 | 描述                                                           | 实例              |
+| :----- | -------------------------------------------------------------- | ----------------- |
+| ==     | 检查两个操作数的值是否相等，如果相等则条件为真。               | (A == B) 不为真。 |
+| !=     | 检查两个操作数的值是否相等，如果不相等则条件为真。             | (A != B) 为真。   |
+| >      | 检查左操作数的值是否大于右操作数的值，如果是则条件为真。       | (A > B) 不为真。  |
+| <      | 检查左操作数的值是否小于右操作数的值，如果是则条件为真。       | (A < B) 为真。    |
+| >=     | 检查左操作数的值是否大于或等于右操作数的值，如果是则条件为真。 | (A >= B) 不为真。 |
+| <=     | 检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。 | (A <= B) 为真。   |
+<!--rehype:className=show-header-->
+
+### 运算符优先级
+<!--rehype:wrap-class=col-span-3-->
+
+运算符的优先级确定表达式中项的组合。这会影响到一个表达式如何计算。某些运算符比其他运算符有更高的优先级，例如，乘除运算符具有比加减运算符更高的优先级。
+
+下表将按运算符优先级从高到低列出各个运算符，具有较高优先级的运算符出现在表格的上面，具有较低优先级的运算符出现在表格的下面。在表达式中，较高优先级的运算符会优先被计算。
+
+| 类别       | 运算符                             | 结合性   |
+| :--------- | ---------------------------------- | -------- |
+| 后缀       | () [] -> . ++ - -                  | 从左到右 |
+| 一元       | + - ! ~ ++ - - (type)\* & sizeof   | 从右到左 |
+| 乘除       | \* / %                             | 从左到右 |
+| 加减       | + -                                | 从左到右 |
+| 移位       | << >>                              | 从左到右 |
+| 关系       | < <= > >=                          | 从左到右 |
+| 相等       | == !=                              | 从左到右 |
+| 位与 AND   | &                                  | 从左到右 |
+| 位异或 XOR | ^                                  | 从左到右 |
+| 位或 OR    | \|                                 | 从左到右 |
+| 逻辑与 AND | &&                                 | 从左到右 |
+| 逻辑或 OR  | \|\|                               | 从左到右 |
+| 条件       | ?:                                 | 从右到左 |
+| 赋值       | = += -= \*= /= %=>>= <<= &= ^= \|= | 从右到左 |
+| 逗号       | ,                                  | 从左到右 |
+<!--rehype:className=show-header-->
 
 杂项
 -----------
@@ -304,8 +424,8 @@ null | null | null | null | null | null
 
 概念 | 中文名 | 定义
 :- | -|--
-Runtime | 运行时 | 执行给定的已编译代码单元所需的服务集合
-Common Language Runtime (CLR) | 通用语言运行库 | 主要定位、加载和托管 .NET 对象。<br/>CLR 还处理内存管理、应用程序托管、线程协调、执行安全检查和其他低级细节
-Managed code | 托管代码 | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
-Unmanaged code | 非托管代码 | 直接编译为机器代码且不能由 .NET 运行时直接托管的代码。<br/>不包含空闲内存管理、垃圾收集等。从 C/C++ 创建的 DLL 就是示例
+`Runtime` | 运行时 | 执行给定的已编译代码单元所需的服务集合
+`Common Language Runtime (CLR)` | 通用语言运行库 | 主要定位、加载和托管 .NET 对象。<br/>CLR 还处理内存管理、应用程序托管、线程协调、执行安全检查和其他低级细节
+`Managed code` | 托管代码 | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
+`Unmanaged code` | 非托管代码 | 直接编译为机器代码且不能由 .NET 运行时直接托管的代码。<br/>不包含空闲内存管理、垃圾收集等。从 C/C++ 创建的 DLL 就是示例
 <!--rehype:className=show-header-->

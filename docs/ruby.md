@@ -83,6 +83,12 @@ gem 'rspec', :require => 'spec'
 $ bundle install
 ```
 
+解决开发用 mac，生产用 linux 出现的 Gemfile.lock 不一致问题
+
+```bash
+bundle lock --add-platform x86_64-linux
+```
+
 ### 安装特定 ruby gem 的特定版本
 
 ```bash

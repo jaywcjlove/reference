@@ -97,7 +97,9 @@ local html = [[
 <html>
 <head></head>
 <body>
-    <a href="https://www.twle.cn/">简单编程</a>
+  <a href="https://www.twle.cn/">
+    简单编程
+  </a>
 </body>
 </html>
 ]]
@@ -211,6 +213,7 @@ print(x, y) -- 3, 1
 
 ```lua
 local tab = {}
+
 tab.one = 2
 tab.two = 1
 
@@ -243,13 +246,13 @@ print(tab.one, tab.two) -- 1    2
 
 :-   | :-
 :-   | :-
-\+   | 加法
-\-   | 减法
-\*   | 乘法
-\/   | 除法
-\%   | 取余，求出除法的余数
-\^   | 乘幂，计算次方
-\-   | 负号，取负值
+`+`   | 加法
+`-`   | 减法
+`*`   | 乘法
+`/`   | 除法
+`%`   | 取余，求出除法的余数
+`^`   | 乘幂，计算次方
+`-`   | 负号，取负值
 
 ```lua
 local a, b = 4, 3
@@ -287,7 +290,27 @@ print(a ^ b) -- 64.0
    print(type(tonumber("12"))) -- number
    ```
 <!--rehype:className=style-round-->
-<!--rehype:className=wrap-text -->
+
+### goto 语法
+<!--rehype:wrap-class=col-span-2-->
+
+```lua
+local function isValidNumber(num)
+    if type(num) ~= "number" then
+        goto invalidNumber   -- 无条件地跳转到代码中的标签 `::invalidNumber::`
+    end
+
+    print("Valid number:", num)
+    return true
+
+    ::invalidNumber::
+    print("Invalid number:", num)
+    return false
+end
+
+isValidNumber(123)    -- 输出: Valid number: 123
+isValidNumber("abc")  -- 输出: Invalid number: abc
+```
 
 条件语句
 ---

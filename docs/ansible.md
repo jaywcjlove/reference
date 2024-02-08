@@ -19,6 +19,7 @@ Ansible 备忘清单
 - [Ansible 官方文档](https://docs.ansible.com)
 
 ### 配置位置
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 文件路径 | 说明
 :-|-
@@ -26,13 +27,27 @@ Ansible 备忘清单
 `~/ansible.cfg`             | 用户特定的配置
 `$pwd/ansible.cfg`          | 当前目录下的配置
 
+配置文件优先级
+
+- 如果没有任何其他配置文件，默认使用 `/etc/ansible/ansible.cfg`
+- `~/.ansible.cfg` `家`目录下的 `.ansible.cfg`
+- 当前目录下的 `ansible.cfg`，即在同一目录下 `ansible.cfg` 优先级高于 `~/.ansible.cfg`
+- 环境变量 `exoport ANSIBLE_CONFIG=/$DIR/ansible.cfg`
+<!--rehype:className=style-timeline-->
+
+查看正在使用的 `ansible` 配置文件：
+
+```bash
+ansible --version | grep "config file"
+```
+
 ### Inventory文件(hosts列表)
 
 #### 静态Inventory
 
 `/etc/ansible/hosts`
 
-```INI
+```ini
 mail.example.com
 
 [webservers]
@@ -42,7 +57,7 @@ bar.example.com
 
 ### Inventory 主机组使用多个IP和域名
 
-```
+```ini
 [web]
 172.18.12.5[1:4]
 [webservers]

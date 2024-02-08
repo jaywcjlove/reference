@@ -28,8 +28,8 @@ FROM [--platform=<platform>] <image> [AS <name>]
 示例
 
 ```dockerfile
-FROM ruby:2.2.2
-FROM golang:1.19-alpine3.16 AS build-env
+FROM ruby:3.2.2
+FROM golang:1.20-alpine3.16 AS build-env
 ```
 
 ### 变量 ENV

@@ -27,7 +27,7 @@ Google Chrome 键盘快捷键备忘清单
 `Alt` `Space` `N`  | 最小化当前窗口
 `Alt` `Space` `X`  | 最大化当前窗口
 `Alt` `F4`  | 关闭当前窗口
-`Ctrl` `Shift` `Q`  | 相当谷歌浏览器
+`Ctrl` `Shift` `Q`  | 退出谷歌浏览器
 <!--rehype:className=shortcuts-->
 
 ### 谷歌浏览器功能

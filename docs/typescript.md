@@ -617,7 +617,10 @@ const stringBox = new Box("a package")
 
 ```ts
 class Location {
-  constructor(public x: number, public y: number) {}
+  constructor(
+    public x: number,
+    public y: number
+  ) {}
 }
 const loc = new Location(20, 40);
 
@@ -633,19 +636,23 @@ TypeScript 特定于类的扩展，可自动将实例字段设置为输入参数
 abstract class Animal {
   abstract getName(): string;
   printName() {
-    console.log("Hello, " + this.getName());
+   console.log("Hello, " + this.getName());
   }
 }
-class Dog extends Animal { getName(): { ... } }
+class Dog extends Animal {
+  getName(): { ... }
+}
 ```
 
 一个类可以被声明为不可实现，但可以在类型系统中被子类化。 class 成员也可以。
 
 ### 装饰器和属性
-<!--rehype:wrap-class=col-span-2-->
 
 ```ts
-import { Syncable, triggersSync, preferCache, required } from "mylib"
+import {
+  Syncable, triggersSync, preferCache,
+  required
+} from "mylib"
 
 @Syncable
 class User {
@@ -653,7 +660,9 @@ class User {
   save() { ... }
   @preferCache(false)
   get displayName() { ... }
-  update(@required info: Partial<User>) { ... }
+  update(@required info: Partial<User>) {
+    //...
+  }
 }
 ```
 
@@ -675,6 +684,21 @@ class MyClass {
 ```
 
 类可以声明索引签名，与其他对象类型的索引签名相同。
+
+### 在 forwardRef 上面声明泛型
+
+```ts
+export const Wrapper = forwardRef(
+  <T extends object>
+(
+  props: RootNodeProps<T>,
+  ref: React.LegacyRef<HTMLDivElement>
+) => {
+  return (
+    <div ref={ref}></div>
+  );
+}
+```
 
 实用程序类型
 ----
@@ -1185,17 +1209,17 @@ function Dog(prop:CeProps): JSX.Element {
 <!--rehype:wrap-class=col-span-2-->
 
 ```tsx
-interface MenuProps extends React.LiHTMLAttributes<HTMLUListElement> { ... }
-const InternalMenu = (props: MenuProps, ref?: React.ForwardedRef<HTMLUListElement>) => (
+interface MenuProps extends React.LiHTMLAttributes<HTMLUListElement> { ... };
+const InternalMenu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) => (
   <ul {...props} ref={ref} />
-);
-type MenuComponent = React.FC<React.PropsWithRef<MenuProps>> & {
+));
+
+type MenuComponent = typeof InternalMenu & {
   Item: typeof MenuItem;    // MenuItem 函数组件
   SubMenu: typeof SubMenu;  // SubMenu 函数组件
 };
-const Menu: MenuComponent = React.forwardRef<HTMLUListElement>(
-  InternalMenu
-) as unknown as MenuComponent;
+
+const Menu: MenuComponent = InternalMenu as unknown as MenuComponent;
 
 Menu.Item = MenuItem;
 Menu.SubMenu = SubMenu;
@@ -1289,6 +1313,43 @@ export interface ProgressProps extends React.DetailedHTMLProps<React.HTMLAttribu
 export const Progress: FC<PropsWithRef<ProgressProps>> = forwardRef<HTMLDivElement>(InternalProgress)
 ```
 
+### 组件 'as' 属性
+<!--rehype:wrap-class=col-span-2-->
+
+```tsx
+import React, { ElementType, ComponentPropsWithoutRef } from "react";
+
+export const Link = <T extends ElementType<any> = "a">(
+  props: { as?: T; } & ComponentPropsWithoutRef<T>
+) => {
+  const Comp = props.as || "a";
+  return <Comp {...props}></Comp>;
+};
+
+
+<Link as="div">文本</Link>;
+```
+
+允许传入自定义 `React` 组件，或 `div`, `a` 标签
+
+### 组件作为 Props 传递
+
+```tsx
+type RowProps = {
+  element: React.ElementType<{
+    className?: string;
+  }>;
+}
+const Row = (props: RowProps) => {
+  return (
+    <props.element className="h-8 w-8" />
+  );
+};
+ 
+<Row element={"div"} />;
+<Row element={UserIcon} />;
+```
+
 各种各样的技巧
 ---
 
@@ -1299,7 +1360,7 @@ export const Progress: FC<PropsWithRef<ProgressProps>> = forwardRef<HTMLDivEleme
 type Capitalize<T extends string> = T extends `${infer U}${infer V}`
   ? `${Uppercase<U>}${V}`
   : T
-type capitalized = Capitalize<"hello world"> // Hello World
+type capitalized = Capitalize<"hello world"> // Hello world
 ```
 
 也可以在 infer 中使用条件约束（`extends`）
@@ -1312,13 +1373,32 @@ type SomeBigInt = "100" extends `${infer U extends bigint}` ? U : never;
 ### keyof 取 interface 的键
 
 ```ts
-interface Point {
-    x: number;
-    y: number;
-}
+interface Point { x: number; y: number; }
  
 // type keys = "x" | "y"
 type keys = keyof Point;
+
+type Arrayish = {
+    [n: number]: unknown;
+};
+type A = keyof Arrayish; 
+// type A = number
+```
+
+### 两个数组合并成一个新类型
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```ts
+const named = ["aqua", "aquamarine", "azure"] as const;
+const hex = ["#00FFFF", "#7FFFD4", "#F0FFFF"] as const;
+
+type Colors = {
+  [key in (typeof named)[number]]: (typeof hex)[number];
+};
+// Colors = {
+//   aqua: "#00FFFF" | "#7FFFD4" | "#F0FFFF"; 
+//   .... 
+// }
 ```
 
 ### 索引签名
@@ -1329,6 +1409,13 @@ interface NumberOrString {
   length: number;
   name: string;
 }
+```
+
+### 只读元组类型
+
+```ts
+const point = [3, 4] as const
+// type 'readonly [3, 4]'
 ```
 
 ### 从数组中提取类型
@@ -1342,15 +1429,8 @@ type PointDetail = Data[number];
 ```
 <!--rehype:className=wrap-text-->
 
-### 只读元组类型
-
-```ts
-const point = [3, 4] as const
-// type 'readonly [3, 4]'
-```
-
 ### satisfies
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 `satisfies` 允许将验证表达式的类型与某种类型匹配，而无需更改该表达式的结果类型。
 
@@ -1389,12 +1469,13 @@ const redComponent = palette.red.at(0)
 <!--rehype:className=wrap-text-->
 
 ### 范型实例化表达式
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 不使用的情况下：
 
 ```ts
-const errorMap: Map<string, Error> = new Map()
+const errorMap: Map<string, Error> 
+        = new Map()
 // 或者使用 type 定义别名
 type ErrorMapType = Map<string, Error>
 ```
@@ -1423,7 +1504,8 @@ function makeHammerBox(hammer: Hammer) {
   return makeBox(hammer);
 }
 // or...
-const makeWrenchBox: (wrench: Wrench) => Box<Wrench> = makeBox;
+const makeWrenchBox: (wrench: Wrench) 
+    => Box<Wrench> = makeBox;
 ```
 
 使用：
@@ -1444,6 +1526,58 @@ declare global {
 export interface FancyOption {
   fancinessLevel: number;
 }
+```
+
+### 获取数组元素的类型
+
+```ts
+const MyArray = [
+  { name: "Alice", age: 15 },
+  { name: "Bob", age: 23 },
+  { name: "Eve", age: 38 },
+];
+ 
+type Person = typeof MyArray[number];
+// type Person = {
+//   name: string;
+//   age: number;
+// }
+
+type Age = typeof MyArray[number]["age"];
+// type Age = number
+
+type Age2 = Person["age"];
+// type Age2 = number
+```
+
+### 范型推导出列表字面量
+
+```ts
+const a = <T extends string>(t: T) => t;
+const b = <T extends number>(t: T) => t;
+const c = <T extends boolean>(t: T) => t;
+const d = a("a");  // const d: 'a'
+const e = b(1);    // const d: 1
+const f = c(true); // const d: true
+
+// 这里t的类型用了一个展开运算
+const g = 
+  <T extends string[]>(t: [...T]) => t;
+// 类型变成["111", "222"]了
+const h = g(["111", "222"]);
+```
+
+### Object.keys 类型声明
+<!--rehype:wrap-class=col-span-2-->
+
+```ts
+const keys = Object.keys(options) as (keyof typeof options)[];
+
+keys.forEach(key => {
+  if (options[key] == null) {
+    throw new Error(`Missing option ${key}`);
+  }
+});
 ```
 
 .d.ts 模版
@@ -1898,6 +2032,7 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 <!--rehype:className=wrap-text-->
 
 ### 编译器选项
+<!--rehype:wrap-class=col-span-2-->
 
 :- | --
 :- | --
@@ -1910,7 +2045,7 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 `--project` _string_ | 编译项目给定其配置文件的路径，或带有 'tsconfig.json' 的文件夹
 `--showConfig` _boolean_ | 打印最终配置而不是构建
 `--version` _boolean_ | 打印编译器的版本
-<!--rehype:className=style-list-->
+<!--rehype:className=left-align-->
 
 ### 构建选项
 
@@ -1924,13 +2059,14 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 <!--rehype:className=style-list-->
 
 ### 监听选项
+<!--rehype:wrap-class=col-span-2-->
 
 :- | --
 :- | --
 `--excludeDirectories` _list_ | 从监视进程中删除目录列表
 `--excludeFiles` _list_ | 从监视模式的处理中删除文件列表
 `--fallbackPolling` _fixedinterval_, _priorityinterval_, _dynamicpriority_, _fixedchunksize_ | 指定当系统用完本机文件观察器时观察器应使用的方法
-`--synchronousWatchDirectory` boolean | 在本机不支持递归监视的平台上同步调用回调并更新目录监视程序的状态
+`--synchronousWatchDirectory` _boolean_ | 在本机不支持递归监视的平台上同步调用回调并更新目录监视程序的状态
 `--watch` _boolean_ | 观看输入文件
 `--watchDirectory` _usefsevents_, _fixedpollinginterval_, _dynamicprioritypolling_, _fixedchunksizepolling | 指定在缺少递归文件监视功能的系统上如何监视目录
 `--watchFile` _fixedpollinginterval_, _prioritypollinginterval_, _dynamicprioritypolling_, _fixedchunksizepolling_, _usefsevents_, _usefseventsonparentdirectory_ | 指定 TypeScript 监视模式的工作方式
@@ -1938,6 +2074,42 @@ $ tsc app.ts util.ts --target esnext --outfile index.js
 
 TSConfig Ref
 ---
+
+### 可完成 90% 的任务
+<!--rehype:wrap-class=row-span-2-->
+
+```js
+"compilerOptions": {
+  /* 基本选项: */
+  "esModuleInterop": true,
+  "skipLibCheck": true,
+  "target": "es2022",
+  "verbatimModuleSyntax": true,
+  "allowJs": true,
+  "resolveJsonModule": true,
+  "moduleDetection": "force",
+  /* 严格 */
+  "strict": true,
+  "noUncheckedIndexedAccess": true,
+  /* 如果使用 TypeScript 进行转译： */
+  "moduleResolution": "NodeNext",
+  "module": "NodeNext",
+  /* 如果不使用 TypeScript 进行转译: */
+  "moduleResolution": "Bundler",
+  "module": "ESNext",
+  "noEmit": true,
+  /* 如果你的代码在 DOM 中运行: */
+  "lib": ["es2022", "dom", "dom.iterable"],
+  /* 如果你的代码不在 DOM 中运行: */
+  "lib": ["es2022"],
+  /* 如果你正在构建一个库: */
+  "declaration": true,
+  /* 如果您正在 monorepo 中构建库: */
+  "composite": true,
+  "sourceMap": true,
+  "declarationMap": true
+}
+```
 
 ### 顶层配置
 
@@ -1962,7 +2134,7 @@ TSConfig Ref
 ```
 
 ### 类型检查(compilerOptions)
-<!--rehype:wrap-class=row-span-4-->
+<!--rehype:wrap-class=row-span-3-->
 
 :- | --
 :- | --
@@ -1988,7 +2160,7 @@ TSConfig Ref
 <!--rehype:className=style-list-arrow-->
 
 ### 模块(compilerOptions)
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 :- | --
 :- | --
@@ -2007,7 +2179,7 @@ TSConfig Ref
 <!--rehype:className=style-list-arrow-->
 
 ### Emit(compilerOptions)
-<!--rehype:wrap-class=row-span-6-->
+<!--rehype:wrap-class=row-span-5-->
 
 :- | --
 :- | --
@@ -2036,14 +2208,12 @@ TSConfig Ref
 `stripInternal` [#](https://www.typescriptlang.org/zh/tsconfig#stripInternal) | 不要为在其 JSDoc 注释中具有 @internal 注释的代码发出声明
 <!--rehype:className=style-list-arrow-->
 
-### JavaScript 支持(compilerOptions)
+### 完整性(compilerOptions)
 
 :- | --
 :- | --
-`allowJs` [#](https://www.typescriptlang.org/zh/tsconfig#allowJs) | 允许 JavaScript 文件在你的工程中被引入，而不是仅仅允许 .ts 和 .tsx 文件
-`checkJs` [#](https://www.typescriptlang.org/zh/tsconfig#checkJs) | 与 allowJs 配合使用，当 checkJs 被启用时，JavaScript 文件中会报告错误
-`maxNodeModuleJsDepth` [#](https://www.typescriptlang.org/zh/tsconfig#maxNodeModuleJsDepth) | 在 node_modules 下搜索和加载 JavaScript 文件的最大依赖深度
-<!--rehype:className=style-list-arrow-->
+`skipDefaultLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipDefaultLibCheck) | 请改用 `skipLibCheck`
+`skipLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipLibCheck) | 跳过声明文件的类型检查
 
 ### 编辑器支持(compilerOptions)
 
@@ -2051,6 +2221,24 @@ TSConfig Ref
 :- | --
 `disableSizeLimit` [#](https://www.typescriptlang.org/zh/tsconfig#disableSizeLimit) | 分配的内存量有一个上限。打开此标志将删除限制
 `plugins` [#](https://www.typescriptlang.org/zh/tsconfig#plugins) | 可在编辑器内运行的语言服务插件列表
+<!--rehype:className=style-list-arrow-->
+
+### 输出格式(compilerOptions)
+
+:- | --
+:- | --
+`noErrorTruncation` [#](https://www.typescriptlang.org/zh/tsconfig#noErrorTruncation) | 不要截断错误消息
+`preserveWatchOutput` [#](https://www.typescriptlang.org/zh/tsconfig#preserveWatchOutput) | 保留监视输出
+`pretty` [#](https://www.typescriptlang.org/zh/tsconfig#pretty) | 使用颜色和上下文对错误和消息进行样式化，默认情况下启用
+<!--rehype:className=style-list-arrow-->
+
+### JavaScript 支持(compilerOptions)
+
+:- | --
+:- | --
+`allowJs` [#](https://www.typescriptlang.org/zh/tsconfig#allowJs) | 允许 JavaScript 文件在你的工程中被引入，而不是仅仅允许 .ts 和 .tsx 文件
+`checkJs` [#](https://www.typescriptlang.org/zh/tsconfig#checkJs) | 与 allowJs 配合使用，当 checkJs 被启用时，JavaScript 文件中会报告错误
+`maxNodeModuleJsDepth` [#](https://www.typescriptlang.org/zh/tsconfig#maxNodeModuleJsDepth) | 在 node_modules 下搜索和加载 JavaScript 文件的最大依赖深度
 <!--rehype:className=style-list-arrow-->
 
 ### 互操作约束(compilerOptions)
@@ -2064,8 +2252,20 @@ TSConfig Ref
 `preserveSymlinks` [#](https://www.typescriptlang.org/zh/tsconfig#preserveSymlinks) | 保留符号链接
 <!--rehype:className=style-list-arrow-->
 
+### 编译器诊断(compilerOptions)
+
+:- | --
+:- | --
+`diagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#diagnostics) | 用于输出调试信息
+`explainFiles` [#](https://www.typescriptlang.org/zh/tsconfig#explainFiles) | 打印 TypeScript 视为项目一部分的文件的名称以及它们是编译一部分的原因
+`extendedDiagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#extendedDiagnostics) | 您可以使用此标志来发现 TypeScript 在编译时将时间花在哪里
+`generateCpuProfile` [#](https://www.typescriptlang.org/zh/tsconfig#generateCpuProfile) | 此选项使您有机会让 TypeScript 在编译器运行期间发出 v8 CPU 配置文件
+`listEmittedFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listEmittedFiles) | 将编译过程中生成的文件的名称打印到终端
+`listFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listFiles) | 打印编译部分文件的名称
+`traceResolution` [#](https://www.typescriptlang.org/zh/tsconfig#traceResolution) | 当您尝试调试未包含模块的原因时
+<!--rehype:className=style-list-arrow-->
+
 ### 向后兼容性(compilerOptions)
-<!--rehype:wrap-class=row-span-2-->
 
 :- | --
 :- | --
@@ -2077,13 +2277,6 @@ TSConfig Ref
 `suppressExcessPropertyErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressExcessPropertyErrors) | 抑制过多的属性错误
 `suppressImplicitAnyIndexErrors` [#](https://www.typescriptlang.org/zh/tsconfig#suppressImplicitAnyIndexErrors) | 抑制隐式任何索引错误
 <!--rehype:className=style-list-arrow-->
-
-### 完整性(compilerOptions)
-
-:- | --
-:- | --
-`skipDefaultLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipDefaultLibCheck) | 请改用 `skipLibCheck`
-`skipLibCheck` [#](https://www.typescriptlang.org/zh/tsconfig#skipLibCheck) | 跳过声明文件的类型检查
 
 ### 语言与环境(compilerOptions)
 <!--rehype:wrap-class=row-span-2-->
@@ -2104,15 +2297,6 @@ TSConfig Ref
 `useDefineForClassFields` [#](https://www.typescriptlang.org/zh/tsconfig#useDefineForClassFields) | 为类字段使用定义
 <!--rehype:className=style-list-arrow-->
 
-### 输出格式(compilerOptions)
-
-:- | --
-:- | --
-`noErrorTruncation` [#](https://www.typescriptlang.org/zh/tsconfig#noErrorTruncation) | 不要截断错误消息
-`preserveWatchOutput` [#](https://www.typescriptlang.org/zh/tsconfig#preserveWatchOutput) | 保留监视输出
-`pretty` [#](https://www.typescriptlang.org/zh/tsconfig#pretty) | 使用颜色和上下文对错误和消息进行样式化，默认情况下启用
-<!--rehype:className=style-list-arrow-->
-
 ### 项目(compilerOptions)
 
 :- | --
@@ -2123,19 +2307,6 @@ TSConfig Ref
 `disableSourceOfProjectReferenceRedirect` [#](https://www.typescriptlang.org/zh/tsconfig#disableSourceOfProjectReferenceRedirect) | 禁用源项目引用重定向
 `incremental` [#](https://www.typescriptlang.org/zh/tsconfig#incremental) | 使 TypeScript 将上次编译的工程图信息保存到磁盘上的文件中
 `tsBuildInfoFile` [#](https://www.typescriptlang.org/zh/tsconfig#tsBuildInfoFile) | 这个选项可以让您指定一个文件来存储增量编译信息，以作为复合工程的一部分，从而可以更快的构建更大的 TypeScript 代码库
-<!--rehype:className=style-list-arrow-->
-
-### 编译器诊断(compilerOptions)
-
-:- | --
-:- | --
-`diagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#diagnostics) | 用于输出调试信息
-`explainFiles` [#](https://www.typescriptlang.org/zh/tsconfig#explainFiles) | 打印 TypeScript 视为项目一部分的文件的名称以及它们是编译一部分的原因
-`extendedDiagnostics` [#](https://www.typescriptlang.org/zh/tsconfig#extendedDiagnostics) | 您可以使用此标志来发现 TypeScript 在编译时将时间花在哪里
-`generateCpuProfile` [#](https://www.typescriptlang.org/zh/tsconfig#generateCpuProfile) | 此选项使您有机会让 TypeScript 在编译器运行期间发出 v8 CPU 配置文件
-`listEmittedFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listEmittedFiles) | 将编译过程中生成的文件的名称打印到终端
-`listFiles` [#](https://www.typescriptlang.org/zh/tsconfig#listFiles) | 打印编译部分文件的名称
-`traceResolution` [#](https://www.typescriptlang.org/zh/tsconfig#traceResolution) | 当您尝试调试未包含模块的原因时
 <!--rehype:className=style-list-arrow-->
 
 ### 监听选项(watchOptions)
