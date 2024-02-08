@@ -616,10 +616,10 @@ Flex 的用法与 `Row` 或 `Column` 类似，但只需要额外传入 `directio
 ```dart
 Flex(
   direction: Axis.vertiacl,
-  children；[
-    Fluterlogo(),
-    Fluterlogo(),
-    Fluterlogo(),
+  children: [
+    FlutterLogo(),
+    FlutterLogo(),
+    FlutterLogo(),
   ],
 ),
 ```
@@ -628,11 +628,11 @@ Flex(
 
 ```dart
 Flex(
-  dirction: Axis.horizontal,
+  direction: Axis.horizontal,
   children: [
-    Flutterlogo(),
-    Flutterlogo(),
-    Flutterlogo(),
+    FlutterLogo(),
+    FlutterLogo(),
+    FlutterLogo(),
   ],
 ),
 ```

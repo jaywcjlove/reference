@@ -96,7 +96,8 @@ bootstrap()
 │   ├── app.controller.ts      # 单个路由的基本控制器
 │   ├── app.service.ts         # 具有单一方法的基本服务
 │   └── main.ts # 应用程序的入口文件
-│               # 它使用核心函数 NestFactory 来创建 Nest 应用程序的实例
+│               # 它使用核心函数 NestFactory 
+│               # 来创建 Nest 应用程序的实例
 └── test      # 测试目录
     ├── app.e2e-spec.ts
     └── jest-e2e.json
@@ -115,7 +116,7 @@ $ npm run start
 ```
 <!--rehype:className=wrap-text-->
 
-需要[注意]((https://docs.nestjs.com/first-steps#language))的一点是，`JavaScript`的版本是需要`Babel`的
+需要[注意](<https://docs.nestjs.com/first-steps#language>)的一点是，`JavaScript` 的版本是需要 `Babel` 的
 
 另见
 ---

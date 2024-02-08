@@ -206,14 +206,14 @@ def getImg():
 ```py
 from flask import Blueprint, abort, jsonify
 
-# 定义Bp2，并定义url前缀为/vedio
-Bp2 = Blueprint('vedioBlue', __name__, template_folder='templates', url_prefix='/vedio')
+# 定义Bp2，并定义url前缀为/video
+Bp2 = Blueprint('videoBlue', __name__, template_folder='templates', url_prefix='/video')
 
 
-@Bp2.route('/getvedio')
-def getVedio():
+@Bp2.route('/getvideo')
+def getvideo():
     try:
-        return jsonify(name="vedio", size="100GB")
+        return jsonify(name="video", size="100GB")
     except Exception as e:
         abort(e)
 ```
@@ -223,7 +223,7 @@ def getVedio():
 ```py
 from flask import Flask, jsonify
 from lantu.img import Bp1
-from lantu.vedio import Bp2
+from lantu.video import Bp2
 
 app = Flask(__name__)
 
@@ -250,6 +250,6 @@ curl http://127.0.0.1:5000/
 curl http://127.0.0.1:5000/img/getimg
 >> {"name": "img", "size": "100KB"}
 
-curl http://127.0.0.1:5000/vedio/getvedio
->> {"name": "vedio", "size": "100GB"}
+curl http://127.0.0.1:5000/video/getvideo
+>> {"name": "video", "size": "100GB"}
 ```

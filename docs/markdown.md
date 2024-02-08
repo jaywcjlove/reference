@@ -131,13 +131,11 @@ ___
 
 ### 代码
 
-```markdown
-
+````markdown
 ```javascript
 console.log("This is a block code")
 ```
-
-```
+````
 
 ```markdown
 ~~~css

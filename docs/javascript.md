@@ -11,7 +11,7 @@ JavaScript 备忘清单
 JavaScript 是一种轻量级的解释型编程语言。
 
 - [JSON 备忘清单](json.md)
-- [JavaScript 中的正则表达式](/regex#regex-in-javascript)
+- [JavaScript 中的正则表达式](./regex.md#javascript-中的正则表达式)
 - [TypeScript 备忘清单](./typescript.md)
 
 ### 打印调试

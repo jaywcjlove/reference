@@ -1204,4 +1204,4 @@ struct SheetDetail: Identifiable {
 
 - [SwiftUI 2.0 Cheat Sheet](https://github.com/SimpleBoilerplates/SwiftUI-Cheat-Sheet) _(github.com)_
 - [SwiftUI 2.0 备忘清单](https://wangchujiang.com/swiftui-example/cheat-sheet.html) _(swiftui-example)_
-- [Swift 备忘清单](./swift.mdl) _(jaywcjlove.github.io)_
+- [Swift 备忘清单](./swift.md) _(jaywcjlove.github.io)_

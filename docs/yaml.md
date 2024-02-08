@@ -520,7 +520,7 @@ YAML 参考
 ---
 
 - [YAML Reference Card](https://yaml.org/refcard.html) _(yaml.org)_
-- [Learn X in Y minutes](https://learnxinyminutes.com/docs/yaml/) _(learnxinyminutes.com)_
+- [Learn X in Y minutes](https://learnxinyminutes.com/docs/zh-cn/yaml-cn/) _(learnxinyminutes.com)_
 - [YAML lint online](http://www.yamllint.com/) _(yamllint.com)_
 - [INI 格式配置文件备忘清单](./ini.md) _(jaywcjlove.github.io)_
 - [TOML 格式配置文件备忘清单](./toml.md) _(jaywcjlove.github.io)_

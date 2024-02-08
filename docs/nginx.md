@@ -275,10 +275,10 @@ server {
   listen 80;
   server_name example.com;
   root /path/to/website;
-  # root /www/data/ 示例，如果里面没有'root'，它将寻找 /www/data/index.html
+  # root /path/to/website/ 示例，如果里面没有'root'，它将寻找 /path/to/website/index.html
   location / {
   }
-  location /images/ { # 如果里面没有“root”，它将寻找 /www/data/images/index.html
+  location /images/ { # 如果里面没有“root”，它将寻找 /path/to/website/images/index.html
   }
   location /videos/ { # 由于里面有“root”，它会寻找 /www/media/videos/index.html
       root /www/media;
@@ -510,7 +510,7 @@ upstream example {
   server 127.0.0.1:82 weight=3;
   server 127.0.0.1:83 weight=3 down;
   server 127.0.0.1:84 weight=3; max_fails=3  fail_timeout=20s;
-  server 127.0.0.1:85 weight=4;;
+  server 127.0.0.1:85 weight=4;
   keepalive 32;
 }
 server {
@@ -811,27 +811,38 @@ location ~ \/public\/(css|js|img)\/.*\.(js|css|gif|jpg|jpeg|png|bmp|swf) {
 }
 ```
 
-### 阻止常见攻击
+### ulimit 不继承系统设置的问题
 <!--rehype:wrap-class=col-span-2-->
 
-#### base64编码的网址
+- 执行 status 命令
 
-```nginx
-location ~* "(base64_encode)(.*)(\()" {
-    deny all;
-}
-```
+  ```bash
+  sudo service nginx status
+  ```
 
-#### javascript eval() url
+  执行 status 命令，看到 Loaded: loaded (/lib/systemd/system/nginx.service;...) 这一行的nginx.service 文件位置
 
-```nginx
-location ~* "(eval\()" {
-    deny all;
-}
-```
+- 打开 service 文件
+
+  ```bash
+  sudo vim /lib/systemd/system/nginx.service
+  ```
+
+- 修改 service 中的配置
+  找到 `[Service]` 部分，将 `LimitNOFILE=65535` 添加到该部分
+
+  ```bash
+  [Service]
+  ...
+  LimitNOFILE=65535
+  ...
+  ```
+<!--rehype:className=style-timeline-->
+
+解决 `systemctl` 管理的 ulimit 不继承系统设置的问题
 
 ### Gzip 配置
-<!--rehype:wrap-class=col-span-4 row-span-2-->
+<!--rehype:wrap-class=col-span-4-->
 
 ```nginx
 gzip  on;
@@ -851,8 +862,27 @@ gzip_types
 gzip_disable  "msie6";
 ```
 
+### 阻止常见攻击
+<!--rehype:wrap-class=col-span-3-->
+
+#### base64编码的网址
+
+```nginx
+location ~* "(base64_encode)(.*)(\()" {
+    deny all;
+}
+```
+
+#### javascript eval() url
+
+```nginx
+location ~* "(eval\()" {
+    deny all;
+}
+```
+
 ### 使网站不可索引
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-3-->
 
 ```nginx
 add_header X-Robots-Tag "noindex";

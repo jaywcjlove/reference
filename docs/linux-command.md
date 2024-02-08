@@ -11,9 +11,10 @@ Linux 命令速查表
 
 :--- | :---
 :--- | :---
-**`uname`** | 显示linux系统信息
+**`uname`** | 显示 linux 系统信息
 **`uname -r`** | 显示内核版本信息
-**`uptime`** | 显示系统运行的时间<br/>(包括平均负载)
+**`cat /etc/os-release`** | 显示 linux 系统详细信息
+**`uptime`** | 显示系统运行的时间(包括平均负载)
 **`hostname`** | 显示系统主机名
 **`hostname -i`** | 显示系统的IP地址
 **`last reboot`** | 显示系统重新启动历史记录
@@ -31,15 +32,16 @@ Linux 命令速查表
 :--- | :---
 :--- | :---
 **`dmesg`** | 显示启动消息
-**`cat /proc/cpuinfo`** | 显示有关CPU的更多信息，例如型号、型号名称、核心、厂商标识
-**`cat /proc/meminfo`** | 显示有关硬件内存的更多信息，例如总内存和可用内存
+**`cat /proc/cpuinfo`** | <pur>**CPU**</pur>: 显示 CPU 的更多信息，例如型号、核心等
+**`cat /proc/meminfo`** | <pur>**内存**</pur>: 显示硬件内存的更多信息
+**`df -h`** | <pur>**磁盘空间**</pur>: 显示磁盘空间大小(单位`G`)
+**`hdparm -i /dev/xda`** | <pur>**磁盘**</pur>: 显示有关磁盘数据的信息
 **`lshw`** | 显示有关系统硬件配置的信息
 **`lsblk`** | 显示块设备相关信息
-**`free -m`** | 显示系统中空闲和使用的内存(-m标志表示内存(MB))
-**`lspci -tv`** | 在树状图中显示PCI设备
-**`lsusb -tv`** | 以树状图的形式显示USB设备
+**`free -m`** | 显示系统中空闲和使用的内存，`-m`(MB)，`-g`(GB)
+**`lspci -tv`** | 在树状图中显示 PCI 设备
+**`lsusb -tv`** | 以树状图的形式显示 USB 设备
 **`dmidecode`** | 显示BIOS中的硬件信息
-**`hdparm -i /dev/xda`** | 显示有关磁盘数据的信息
 **`hdparm -tT /dev/xda <:code>`** | 在设备xda上进行读速度测试
 **`badblocks -s /dev/xda`** | 测试磁盘上不可读的块
 <!--rehype:className=style-list-->
@@ -73,6 +75,7 @@ Linux 命令速查表
 :--- | :---
 :--- | :---
 **`ls -al`** | 列出文件-包括常规文件和隐藏文件以及它们的权限
+**`tree`** | 以树形结构列出文件，常用参数有：`-d`查看目录，`-L num`查看num层文件，`-a`查看隐藏文件
 **`pwd`** | 显示当前目录文件路径
 **`mkdir 'directory_name'`** | 创建一个新目录
 **`rm file_name`** | 删除一个文件
@@ -95,7 +98,7 @@ Linux 命令速查表
 <!--rehype:className=style-list-->
 
 ### 进程
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-2-->
 
 :--- | :---
 :--- | :---
@@ -106,9 +109,6 @@ Linux 命令速查表
 **`kill pid`** | 使用给定的pid终止进程
 **`killall proc`** | 杀死/终止所有名为proc的进程
 **`pkill process-name`** | 向具有其名称的进程发送信号
-**`bg`** | 将一个在后台暂停的命令，变成继续执行
-**`fg`** | 将后台中的命令调至前台继续运行
-**`fg n`** | job n to the foreground
 **`lsof`** | 列出进程打开的文件 [#](./lsof.md)
 **`renice 19 PID`** | 使进程以非常低的优先级运行
 **`pgrep firefox`** | 查找Firefox进程ID
@@ -214,6 +214,120 @@ Linux 命令速查表
 **`cd`** | 将目录更改为$HOME目录
 **`cd /test`** | 将目录更改为/test目录
 <!--rehype:className=style-list-->
+
+### 文件描述符
+<!--rehype:wrap-class=row-span-1-->
+
+:--- | :---
+:--- | :---
+**`0`** | 标准输入
+**`1`** | 标准输出
+**`2`** | 错误输出
+**`/dev/null`** | Linux的空设备文件，俗称“黑洞”
+
+<!--rehype:className=style-list-->
+
+### 输出重定向
+<!--rehype:wrap-class=row-span-2 col-span-2-->
+
+:--- | :---
+:--- | :---
+**`>`** | 覆盖运算符
+**`>>`** | 追加运算符
+**`>&`** | 重定向合并运算符
+**`command > filename`** | 标准输出覆盖写入新文件
+**`command 1> filename`** | 标准输出覆盖写入新文件（同上）
+**`command 2> filename`** | 标准错误覆盖写入新文件
+**`command >> filename`** | 标准输出追加到新文件
+**`command 1>> filename`** | 标准输出追加到新文件（同上）
+**`command 2>> filename`** | 标准错误追加到新文件
+**`2>&1`** | 标准错误重定向到标准输出
+**`1>&2`** | 标准输出重定向到标准错误
+<!--rehype:className=left-align-->
+
+前后台
+---
+
+### &（终端关闭，程序也关闭）
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**`command &`** | 使用后台进程模式执行 command
+**`Ctrl+Z`** | 将当前进程放到后台（但程序是Stopped状态）
+**`jobs`** | 查看任务（状态、ID等）
+**`fg n`** | 将jobID为n的任务切到**前台**运行
+**`bg n`** | 将jobID为n的任务切到**后台**运行
+
+<!--rehype:className=style-list-->
+
+### nohup（终端关闭，程序继续运行）
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**`nohup command &`** | 后台执行 command，标准输出到 nohup.out
+**`nohup command > log_file &`** | 后台执行 command，标准输出到 log_file
+**`nohup command > log_file 2>&1 &`** | 后台执行 command，标准输出和错误输出到 log_file
+**`nohup command > log_file 2>err_log &`** | 后台执行 command，标准输出到 log_file，错误输出到 err_log
+**`ps/kill`** | 查看进程/结束进程
+
+<!--rehype:className=style-list-->
+
+### screen（创建独立会话）
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+**`screen -S my_session`** | 创建一个名为 my_session 的会话
+**`screen -ls`** | 列出当前所有的 session
+**`screen -r my_session`** | 重新连接 my_session 这个会话
+**`screen -d my_session`** | 脱离 my_session 这个会话
+**`Ctrl+a+d`** | 在 screen 中，脱离当前会话
+**`exit`** | 在 screen 中，退出并删除当前 screen
+**`-X -S my_session quit`** | 删除 my_session 这个会话
+**`screen -wipe`** | 删除所有已经失效的会话
+
+<!--rehype:className=style-list-->
+
+快捷键
+---
+
+### 命令行编辑
+<!--rehype:wrap-class=row-span-2 col-span-2-->
+
+:--- | :---
+:--- | :---
+`Tab` | 自动补全
+`Ctrl`+`A` | 移动光标到命令行首
+`Ctrl`+`E` | 移动光标到命令行尾
+`Ctrl`+`Left` | 光标左移一个单词
+`Ctrl`+`Right` | 光标右移一个单词
+`Ctrl`+`K` | 删除光标之后所有字符
+`Ctrl`+`U` | 清空当前键入的命令
+`Ctrl`+`W` | 删除光标前的单词
+`Ctrl`+`Y` | 粘贴 `Ctrl` + `W` 或 `Ctrl` + `K` 删除的内容
+`Ctrl`+`D` | 删除当前光标所在字符 (在没有字符时会关闭终端)
+`Ctrl`+`B` (Left) | 光标左移（后退）
+`Ctrl`+`F` (Right) | 光标右移（前进）
+`Ctrl`+`H` (Backspace) | 删除光标的前一个字符
+<!--rehype:className=left-align shortcuts-->
+
+### 其他
+<!--rehype:wrap-class=row-span-2-->
+
+:--- | :---
+:--- | :---
+`Ctrl`+`L` | 清屏
+`Ctrl`+`C` | 中断正在执行的程序
+`Ctrl`+`R` | 按字符串寻找历史命令
+`Ctrl`+`Z` | 将当前进程放到后台（但程序是Stopped状态）
+`Shift`+`Insert` | 粘贴
+`Ctrl`+`PageUp` | 屏幕输出向上翻页
+`Ctrl`+`PageDown` | 屏幕输出向下翻页
+`Ctrl`+`P` (Up) | 上一条命令
+`Ctrl`+`N` (Down) | 下一条命令
+<!--rehype:className=left-align shortcuts-->
 
 另见
 ---
