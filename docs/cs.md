@@ -289,6 +289,17 @@ Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
 
 ### 字符串操作
 
+#### 字符串判空
+
+```cs
+string name; //空引用
+string gender = ""; //空值
+
+// 使用 string.IsNullOrEmpty(字符串) 方法，返回 bool 型
+Console.WriteLine(string.IsNullOrEmpty(name)); //输出 true
+Console.WriteLine(string.IsNullOrEmpty(gender)); // 输出 true
+```
+
 #### 字符串分割
 
 ```cs

@@ -270,6 +270,9 @@ jobs:
 <a href="https://github.com/wsypower" title="魏">
   <img src="https://avatars.githubusercontent.com/u/31298317?v=4" width="42;" alt="魏"/>
 </a>
+<a href="https://github.com/1250422131" title="萌新杰少">
+  <img src="https://avatars.githubusercontent.com/u/52126790?v=4" width="42;" alt="萌新杰少"/>
+</a>
 <a href="https://github.com/itldg" title="老大哥">
   <img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/>
 </a>
@@ -381,9 +384,6 @@ jobs:
 <a href="https://github.com/qwxingzhe" title="行者">
   <img src="https://avatars.githubusercontent.com/u/7071651?v=4" width="42;" alt="行者"/>
 </a>
-<a href="https://github.com/1250422131" title="萌新杰少">
-  <img src="https://avatars.githubusercontent.com/u/52126790?v=4" width="42;" alt="萌新杰少"/>
-</a>
 <a href="https://github.com/HuaChan233" title="花开花落">
   <img src="https://avatars.githubusercontent.com/u/75212820?v=4" width="42;" alt="花开花落"/>
 </a>
@@ -419,6 +419,9 @@ jobs:
 </a>
 <a href="https://github.com/swift-fs" title="swift">
   <img src="https://avatars.githubusercontent.com/u/77133741?v=4" width="42;" alt="swift"/>
+</a>
+<a href="https://github.com/suyangzuo" title="suyangzuo">
+  <img src="https://avatars.githubusercontent.com/u/50766353?v=4" width="42;" alt="suyangzuo"/>
 </a>
 <a href="https://github.com/Mowmowj" title="nexo">
   <img src="https://avatars.githubusercontent.com/u/24759562?v=4" width="42;" alt="nexo"/>

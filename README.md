@@ -305,6 +305,9 @@ Quick Reference
 <a href="https://github.com/wsypower" title="魏">
   <img src="https://avatars.githubusercontent.com/u/31298317?v=4" width="42;" alt="魏"/>
 </a>
+<a href="https://github.com/1250422131" title="萌新杰少">
+  <img src="https://avatars.githubusercontent.com/u/52126790?v=4" width="42;" alt="萌新杰少"/>
+</a>
 <a href="https://github.com/itldg" title="老大哥">
   <img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/>
 </a>
@@ -416,9 +419,6 @@ Quick Reference
 <a href="https://github.com/qwxingzhe" title="行者">
   <img src="https://avatars.githubusercontent.com/u/7071651?v=4" width="42;" alt="行者"/>
 </a>
-<a href="https://github.com/1250422131" title="萌新杰少">
-  <img src="https://avatars.githubusercontent.com/u/52126790?v=4" width="42;" alt="萌新杰少"/>
-</a>
 <a href="https://github.com/HuaChan233" title="花开花落">
   <img src="https://avatars.githubusercontent.com/u/75212820?v=4" width="42;" alt="花开花落"/>
 </a>
@@ -454,6 +454,9 @@ Quick Reference
 </a>
 <a href="https://github.com/swift-fs" title="swift">
   <img src="https://avatars.githubusercontent.com/u/77133741?v=4" width="42;" alt="swift"/>
+</a>
+<a href="https://github.com/suyangzuo" title="suyangzuo">
+  <img src="https://avatars.githubusercontent.com/u/50766353?v=4" width="42;" alt="suyangzuo"/>
 </a>
 <a href="https://github.com/Mowmowj" title="nexo">
   <img src="https://avatars.githubusercontent.com/u/24759562?v=4" width="42;" alt="nexo"/>
@@ -678,6 +681,7 @@ Quick Reference
 [zsccodelnc.cn](https://zsccodelnc.cn/coderef/)<!--rehype:target=_blank-->
 [chanlun.pro](https://ref.chanlun.pro)<!--rehype:target=_blank-->
 [likui.info](https://r.likui.info)<!--rehype:target=_blank-->
+[ruiange.work](https://code.ruiange.work/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
