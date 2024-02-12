@@ -320,7 +320,7 @@ int sum = add(2,3); // 回报：5
 int totalSum = add(2, add(2,3)); // 返回：7
 ```
 
-### 箭头语法 (=>)
+### 箭头函数 (=>)
 
 ```dart
 // 只包含一个表达式的函数，您可以使用简写语法
@@ -345,6 +345,63 @@ list.forEach(
 // 打印: 0: apples 1: bananas 2: oranges
 ```
 <!--rehype:className=wrap-text-->
+
+### 扩展函数 (Extension)
+
+```dart
+//extension 定义扩展名称 on 扩展类
+extension StringExtension on String {
+  //扩展方法
+  String capitalize() {
+    if (isEmpty) {
+      return this;
+    }
+    // 将字符串的首字母大写
+    String topStr = this[0].toUpperCase();
+
+    return '${topStr}${substring(1)}';
+  }
+}
+
+void main(List<String> args) {
+  print("apple".capitalize());
+  // Print: Apple
+  print("苹果apple".capitalize());
+  // Print: 苹果apple
+}
+
+```
+
+在不修改 String 类的前提下为其新增了 capitalize 方法
+<!--rehype:className=wrap-text-->
+
+### 运算符重载 (Extension)
+<!--rehype:wrap-class=col-span-2-->
+```dart
+class Money {
+  final num amount;
+  Money({required this.amount});
+}
+
+// 利用扩展函数特性 
+extension MoneyOperatorExtension<T> on Money {
+  // operator 重载运算符
+  Money operator +(Money elements) {
+    Money newMoney = Money(amount: this.amount + elements.amount);
+    return newMoney;
+  }
+}
+
+void main(List<String> args) {
+  // 怎么样？两个类加起来了
+  Money appleMoney = Money(amount: 10.0);
+  Money cardMoney = Money(amount: 6.0);
+  Money allMoney = cardMoney + appleMoney;
+  print(allMoney.amount);
+  //Print: 16.0
+}
+
+```
 
 类和对象
 ----------
@@ -745,6 +802,21 @@ var user = User()
 var list = [1, 2, 3];
 var list2 = [0, ...list];
 print(list2.length); // 打印: 4
+```
+
+### 延迟初始化
+
+```dart
+// token 类型非空，但是不用立即赋值
+late String token;
+
+void main(List<String> args) {
+  /// print(token);
+  /// Field 'token' has not been initialized
+  /// 在初始化前调用就会报错
+  token = "tokenContent";
+  print(token);
+}
 ```
 
 另见
