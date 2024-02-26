@@ -38,12 +38,13 @@ Quick Reference
 [Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->  
 [Github Copilot](./docs/github-copilot.md)<!--rehype:style=background: rgb(125 45 220);&class=tag contributing&data-lang=AI&data-info=👆看看还缺点儿什么？-->  
 [Chown](./docs/chown.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->  
+[R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=tag contributing&data-lang=AI&data-info=👆看看还缺点儿什么？-->  
 <!--rehype:class=home-card-->
 
 ## 编程
 
 [Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223);-->  
-[C](./docs/c.md)<!--rehype:style=background: rgb(92 107 192);-->  
+[C 语言](./docs/c.md)<!--rehype:style=background: rgb(92 107 192);-->  
 [C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->  
 [C++](./docs/cpp.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->  
 [Dart](./docs/dart.md)<!--rehype:style=background: rgb(64 196 255);-->  
@@ -65,6 +66,7 @@ Quick Reference
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->  
 [PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147);-->  
 [Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132);-->  
+[R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);-->  
 [Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45);-->  
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71);-->  
 [Scala](./docs/scala.md)<!--rehype:style=background: rgb(34 82 94);-->  
