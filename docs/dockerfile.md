@@ -28,7 +28,7 @@ FROM [--platform=<platform>] <image> [AS <name>]
 示例
 
 ```dockerfile
-FROM ruby:3.2.2
+FROM ruby:3.3.0
 FROM golang:1.20-alpine3.16 AS build-env
 ```
 
