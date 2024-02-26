@@ -1,9 +1,7 @@
 Github Copilot 备忘清单
 ===
 
-这是开始使用 [Github Copilot](https://code.visualstudio.com/docs/editor/github-copilot) 的快速参考指南。
-
-\* 校对、错误请指正。📮邮箱: <a href="mailto:jussker@outlook.com">jussker@outlook.com</a>
+这是开始使用 [Github Copilot](https://code.visualstudio.com/docs/editor/github-copilot) 的快速参考指南
 
 一、准备工作
 ----

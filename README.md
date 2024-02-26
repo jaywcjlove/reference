@@ -150,7 +150,7 @@ Quick Reference
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9);&class=contributing-->  
 [Gdb](./docs/gdb.md)<!--rehype:style=background: rgb(215 89 62);-->  
-[Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62);-->  
+[Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=版本控制-->  
 [Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [iptables](./docs/iptables.md)<!--rehype:style=background: rgb(32 74 135);-->  
@@ -162,16 +162,17 @@ Quick Reference
 [Netcat](./docs/netcat.md)<!--rehype:style=background: rgb(4 92 135);-->  
 [OpenSSL](./docs/openssl.md)<!--rehype:style=background: rgb(114 20 18);-->  
 [ps](./docs/ps.md)<!--rehype:style=background: rgb(99 99 99);-->  
+[Pandoc](./docs/pandoc.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=文档转换器-->  
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Systemd](./docs/systemd.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [SSH](./docs/ssh.md)<!--rehype:style=background: rgb(99 99 99);-->  
-[Subversion (SVN)](./docs/subversion.md)<!--rehype:style=background: rgb(99 99 99);-->  
+[Subversion (SVN)](./docs/subversion.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=版本控制-->  
 [Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [Sysdig](./docs/sysdig.md)<!--rehype:style=background: rgb(1 171 199);-->  
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [Taskset](./docs/taskset.md)<!--rehype:style=background: rgb(99 99 99);-->  
-[tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);-->  
-[Zip](./docs/zip.md)<!--rehype:style=background: rgb(99 99 99);-->  
+[tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=解压缩-->  
+[Zip](./docs/zip.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=解压缩-->  
 <!--rehype:class=home-card-->
 
 ## 工具箱
@@ -184,7 +185,7 @@ Quick Reference
 [Homebrew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87);&class=tag&data-lang=macOS-->  
 [Linux Command](./docs/linux-command.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=命令速查-->  
 [Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135);-->  
-[pacman](./docs/pacman.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=archlinux&class=contributing-->  
+[Pacman](./docs/pacman.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=archlinux&class=contributing-->  
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123);-->  
 <!--rehype:class=home-card-->
 
