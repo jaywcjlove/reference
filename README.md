@@ -206,7 +206,7 @@ Quick Reference
 [Android Studio](./docs/android-studio.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Blender](./docs/blender.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Firefox](./docs/firefox.md)<!--rehype:style=background: rgb(253 53 76);-->  
-[Finder](./docs/finder.md)<!--rehype:style=background: rgb(253 53 76);-->  
+[Finder](./docs/finder.md)<!--rehype:style=background: rgb(253 53 76);&class=tag&data-lang=macOS-->  
 [Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54);-->  
 [Gitlab](./docs/gitlab.md)<!--rehype:style=background: rgb(226 67 41);-->  
 [Google Chrome](./docs/google-chrome.md)<!--rehype:style=background: rgb(29 116 232);-->  
