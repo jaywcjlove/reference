@@ -38,7 +38,7 @@ Quick Reference
 [Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->  
 [Github Copilot](./docs/github-copilot.md)<!--rehype:style=background: rgb(125 45 220);&class=tag contributing&data-lang=AI&data-info=👆看看还缺点儿什么？-->  
 [Chown](./docs/chown.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->  
-[R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=tag contributing&data-lang=AI&data-info=👆看看还缺点儿什么？-->  
+[R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=contributing-->  
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -66,7 +66,7 @@ Quick Reference
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->  
 [PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147);-->  
 [Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132);-->  
-[R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);-->  
+[R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=contributing&data-info-->  
 [Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45);-->  
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71);-->  
 [Scala](./docs/scala.md)<!--rehype:style=background: rgb(34 82 94);-->  
@@ -691,6 +691,7 @@ Quick Reference
 [likui.info](https://r.likui.info)<!--rehype:target=_blank-->
 [ruiange.work](https://code.ruiange.work/)<!--rehype:target=_blank-->
 [denganliang.com](https://ref.denganliang.com)<!--rehype:target=_blank-->
+[coderjia.cn](https://refer.coderjia.cn)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
