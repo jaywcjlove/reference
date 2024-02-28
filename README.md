@@ -699,23 +699,6 @@ Quick Reference
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
 
-或者在Linux服务执行 ` git-down-pages.sh` （请把脚本放在/opt/cron/ 目录下）
-
-```bash
-定时任务
- 注意：请把脚本放在/opt/cron/ 目录下
- crontab  -e 
- */10 * * * *  /opt/cron/git-down-pages.sh >>  /opt/cron/git-down.log 2>&1
- 
- 
-NGINX 配置：
-    listen 80;
-	listen 443 ssl http2;
-    server_name xxx.xxx.top; #配置你的域名
-    index index.php index.html index.htm default.php default.htm default.html;
-    root /data/reference;  # 文件存放的位置
-```
-
 
 
 <!--rehype:ignore:start-->
