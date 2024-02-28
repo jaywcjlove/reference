@@ -641,6 +641,9 @@ Quick Reference
 [srebro.cn](https://ref.srebro.cn)<!--rehype:target=_blank&data-info=👆每天自动同步-->
 [haah.net](https://ref.haah.net)<!--rehype:target=_blank&data-info=👆每天自动同步-->
 [xiechengqi.top](https://ref.xiechengqi.top)<!--rehype:target=_blank&data-info=👆每天自动同步-->
+
+[ownit.top](https://memo.ownit.top)<!--rehype:target=_blank&data-info=👆每十分钟自动同步-->
+
 [laoleng.vip](http://bbs.laoleng.vip/reference/)<!--rehype:target=_blank-->
 [dbyun.net](https://www.dbyun.net/reference/index.html)<!--rehype:target=_blank-->
 [if010.com](https://quickref.if010.com/)<!--rehype:target=_blank-->
@@ -695,6 +698,25 @@ Quick Reference
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
+
+或者在Linux服务执行 ` git-down-pages.sh` （请把脚本放在/opt/cron/ 目录下）
+
+```bash
+定时任务
+ 注意：请把脚本放在/opt/cron/ 目录下
+ crontab  -e 
+ */10 * * * *  /opt/cron/git-down-pages.sh >>  /opt/cron/git-down.log 2>&1
+ 
+ 
+NGINX 配置：
+    listen 80;
+	listen 443 ssl http2;
+    server_name xxx.xxx.top; #配置你的域名
+    index index.php index.html index.htm default.php default.htm default.html;
+    root /data/reference;  # 文件存放的位置
+```
+
+
 
 <!--rehype:ignore:start-->
 ## License
