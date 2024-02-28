@@ -248,6 +248,7 @@ $  ansible <host-pattern> [options] # 标准使用方式
 
 | :-               | -                                                | -                                                            |
 | ---------------- | ------------------------------------------------ | ------------------------------------------------------------ |
+
 | ping             | 检查指定节点机器是否还能连通                     | `ansible all -m ping`                                        |
 | command          | 用于在各受控端节点运行指定的命令                 | `ansible all -m command -a 'hostname'`                       |
 | shell            | shell模块可以特殊字符，而command是不支持         | `ansible all -m shell -a 'hostname && date'`                 |
