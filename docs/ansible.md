@@ -233,6 +233,43 @@ $ ansible-galaxy init --offline <ROLE>
 ```
 <!--rehype:className=wrap-text-->
 
+
+
+### ansible常用模块
+
+ ansible的模块已经高达3000+之多。但是个人在日常工作中，比较常见的大约20多个 
+
+```bash
+$  ansible-doc --list  #查询所有模块
+$  ansible <host-pattern> [options] # 标准使用方式
+```
+
+---
+
+| :-               | -                                                | -                                                            |
+| ---------------- | ------------------------------------------------ | ------------------------------------------------------------ |
+| ping             | 检查指定节点机器是否还能连通                     | ansible all -m ping                                          |
+| command          | 用于在各受控端节点运行指定的命令                 | ansible all -m command -a 'hostname'                         |
+| shell            | shell模块可以特殊字符，而command是不支持         | ansible all -m shell -a 'hostname && date'                   |
+| hostname         | 修改远程受控节点的主机名的模块                   | ansible -i /opt/hosts xx -m hostname -a 'name=ansible-client-199' |
+| copy             | 在远程主机执行复制操作文件                       | ansible all -m copy -a 'src=/etc/hosts dest=/opt/hosts backup=yes' |
+| fetch            | 从远程主机获取文件到管理节点，但是不支持目录操作 | ansible all -m fetch -a "src=/etc/yum.repos.d/epel.repo dest=/usr/local/src" |
+| script           | 管理端一个脚本，然后在远程服务器上执行           | ansible all  -m script -a '/root/time.sh'                    |
+| file             | 主要用于远程主机上的文件和目录操作               | ansible all -m file -a "path=/root/rsync.password mode=600 state=touch" |
+| cron             | 管理执行任务计划模块（增删改查）                 | ansible all -m cron -a "name='test a job' user=root job='/bin/sh /server/scripts/test.sh' minute=* hour=* day=* month=* weekday=*" |
+| yum              | RedHat和CentOS的软件包安装和管理                 | 安装<br />ansible all -m yum -a "name=httpd state=present"<br/>ansible all -m yum -a "name=httpd state=installed"<br />卸载<br />ansible all -m yum -a "name=httpd state=absent"<br/>ansible all -m yum -a "name=httpd state=removed" |
+| service和systemd | 用于管理远程主机的服务                           | ansible all -m systemd -a "name=httpd state=started enabled=yes"<br />ansible all -m systemd -a "name=httpd state=restarted" |
+| user             | useradd, userdel, usermod                        | ansible all -m user -a 'name=haha remove=no state=absent'    |
+| group            | groupadd, groupdel, groupmod                     | ansible all -m group -a 'name=mygroup state=absent'          |
+| setup            | 可收集远程主机的facts变量的信息                  | ansible all -m setup -a 'filter=ansible_default_ipv4'        |
+| authorized_key   | 为特定的用户账号添加或删除 SSH authorized keys   | ansible all -m authorized_key -a "user=root key='{{lookup('file','/root/.ssh/id_rsa.pub')}}' path=/root/.ssh/authorized_keys manage_dir=no" |
+| replace          | 和 sed 命令比较类似，用于正则匹配和替换          | ansible all -m replace -a "path=/etc/fstab regexp=^(UUID.*) replace='#\1'" |
+| lineinfile       | 正则匹配，更改某个关键参数值                     | ansible all -m lineinfile -a "path=/etc/selinux/config regexp='^SELINUX=' line='SELINUX=disabled'" |
+
+<!--rehype:className=style-list-->
+
+
+
 ### ansible-doc
 
 在本地访问文档
