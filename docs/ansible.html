@@ -414,94 +414,24 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="style-list"><thead><tr><th>:-</th><th>-</th><th>-</th></tr></thead><tbody><tr><td>ping</td><td>检查指定节点机器是否还能连通</td><td>ansible all -m ping</td></tr><tr><td>command</td><td>用于在各受控端节点运行指定的命令</td><td>ansible all -m command -a 'hostname'</td></tr><tr><td>shell</td><td>shell模块可以特殊字符，而command是不支持</td><td>ansible all -m shell -a 'hostname &#x26;&#x26; date'</td></tr><tr><td>hostname</td><td>修改远程受控节点的主机名的模块</td><td>ansible -i /opt/hosts xx -m hostname -a 'name=ansible-client-199'</td></tr><tr><td>copy</td><td>在远程主机执行复制操作文件</td><td>ansible all -m copy -a 'src=/etc/hosts dest=/opt/hosts backup=yes'</td></tr><tr><td>fetch</td><td>从远程主机获取文件到管理节点，但是不支持目录操作</td><td>ansible all -m fetch -a "src=/etc/yum.repos.d/epel.repo dest=/usr/local/src"</td></tr><tr><td>script</td><td>管理端一个脚本，然后在远程服务器上执行</td><td>ansible all  -m script -a '/root/time.sh'</td></tr><tr><td>file</td><td>主要用于远程主机上的文件和目录操作</td><td>ansible all -m file -a "path=/root/rsync.password mode=600 state=touch"</td></tr><tr><td>cron</td><td>管理执行任务计划模块（增删改查）</td><td>ansible all -m cron -a "name='test a job' user=root job='/bin/sh /server/scripts/test.sh' minute=* hour=* day=* month=* weekday=*"</td></tr><tr><td>yum</td><td>RedHat和CentOS的软件包安装和管理</td><td>安装<br>ansible all -m yum -a "name=httpd state=present"<br>ansible all -m yum -a "name=httpd state=installed"<br>卸载<br>ansible all -m yum -a "name=httpd state=absent"<br>ansible all -m yum -a "name=httpd state=removed"</td></tr><tr><td>service和systemd</td><td>用于管理远程主机的服务</td><td>ansible all -m systemd -a "name=httpd state=started enabled=yes"<br>ansible all -m systemd -a "name=httpd state=restarted"</td></tr><tr><td>user</td><td>useradd, userdel, usermod</td><td>ansible all -m user -a 'name=haha remove=no state=absent'</td></tr><tr><td>group</td><td>groupadd, groupdel, groupmod</td><td>ansible all -m group -a 'name=mygroup state=absent'</td></tr><tr><td>setup</td><td>可收集远程主机的facts变量的信息</td><td>ansible all -m setup -a 'filter=ansible_default_ipv4'</td></tr><tr><td>authorized_key</td><td>为特定的用户账号添加或删除 SSH authorized keys</td><td>ansible all -m authorized_key -a "user=root key='{{lookup('file','/root/.ssh/id_rsa.pub')}}' path=/root/.ssh/authorized_keys manage_dir=no"</td></tr><tr><td>replace</td><td>和 sed 命令比较类似，用于正则匹配和替换</td><td>ansible all -m replace -a "path=/etc/fstab regexp=^(UUID.*) replace='#\1'"</td></tr><tr><td>lineinfile</td><td>正则匹配，更改某个关键参数值</td><td>ansible all -m lineinfile -a "path=/etc/selinux/config regexp='^SELINUX=' line='SELINUX=disabled'"</td></tr></tbody></table>
+<table><thead><tr><th>:-</th><th>-</th><th>-</th></tr></thead></table>
+<p class="style-list">| ping             | 检查指定节点机器是否还能连通                     | <code>ansible all -m ping</code>                                        |
+| command          | 用于在各受控端节点运行指定的命令                 | <code>ansible all -m command -a 'hostname'</code>                       |
+| shell            | shell模块可以特殊字符，而command是不支持         | <code>ansible all -m shell -a 'hostname &#x26;&#x26; date'</code>                 |
+| hostname         | 修改远程受控节点的主机名的模块                   | <code>ansible -i /opt/hosts xx -m hostname -a 'name=ansible-client-199'</code> |
+| copy             | 在远程主机执行复制操作文件                       | <code>ansible all -m copy -a 'src=/etc/hosts dest=/opt/hosts backup=yes'</code> |
+| fetch            | 从远程主机获取文件到管理节点，但是不支持目录操作 | <code>ansible all -m fetch -a "src=/etc/yum.repos.d/epel.repo dest=/usr/local/src"</code> |
+| script           | 管理端一个脚本，然后在远程服务器上执行           | <code>ansible all  -m script -a '/root/time.sh'</code>                  |
+| file             | 主要用于远程主机上的文件和目录操作               | <code>ansible all -m file -a "path=/root/rsync.password mode=600 state=touch"</code> |
+| cron             | 管理执行任务计划模块（增删改查）                 | <code>ansible all -m cron -a "name='test a job' user=root job='/bin/sh /server/scripts/test.sh' minute=* hour=* day=* month=* weekday=*"</code> |
+| yum              | RedHat和CentOS的软件包安装和管理                 | <code>安装&#x3C;br />ansible all -m yum -a "name=httpd state=present"&#x3C;br/>ansible all -m yum -a "name=httpd state=installed"&#x3C;br />卸载&#x3C;br />ansible all -m yum -a "name=httpd state=absent"&#x3C;br/>ansible all -m yum -a "name=httpd state=removed"</code> |
+| service和systemd | 用于管理远程主机的服务                           | <code>ansible all -m systemd -a "name=httpd state=started enabled=yes"&#x3C;br />ansible all -m systemd -a "name=httpd state=restarted"</code> |
+| user             | useradd, userdel, usermod                        | <code>ansible all -m user -a 'name=haha remove=no state=absent'</code>  |
+| group            | groupadd, groupdel, groupmod                     | <code>ansible all -m group -a 'name=mygroup state=absent'</code>        |
+| setup            | 可收集远程主机的facts变量的信息                  | <code>ansible all -m setup -a 'filter=ansible_default_ipv4'</code>      |
+| authorized_key   | 为特定的用户账号添加或删除 SSH authorized keys   | <code>ansible all -m authorized_key -a "user=root key='{{lookup('file','/root/.ssh/id_rsa.pub')}}' path=/root/.ssh/authorized_keys manage_dir=no"</code> |
+| replace          | 和 sed 命令比较类似，用于正则匹配和替换          | <code>ansible all -m replace -a "path=/etc/fstab regexp=^(UUID.*) replace='#\1'"</code> |
+| lineinfile       | 正则匹配，更改某个关键参数值                     | <code>ansible all -m lineinfile -a "path=/etc/selinux/config regexp='^SELINUX=' line='SELINUX=disabled'"</code> |</p>
 <!--rehype:className=style-list-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ansible-doc"><a aria-hidden="true" tabindex="-1" href="#ansible-doc"><span class="icon icon-link"></span></a>ansible-doc</h3><div class="wrap-body">
 <p>在本地访问文档</p>
