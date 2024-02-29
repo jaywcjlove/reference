@@ -140,6 +140,8 @@ remove_old_backups() {
 # 函数：拉取最新代码
 clone_latest_code() {
     echo "拉取最新代码..."
+    # 进入 /data 目录
+    cd $DATA_DIR
     git clone $REPO_URL -b $BRANCH
     if [ $? -eq 0 ]; then
         echo "拉取最新代码完成。"
@@ -201,7 +203,7 @@ crontab  -e
 
 */10 * * * *  /opt/cron/git-down-pages.sh >>  /opt/cron/git-down.log 2>&1
 ```
- 
+
 **添加 NGINX 配置：**
 
 ```nginx
