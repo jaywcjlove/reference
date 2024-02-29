@@ -201,7 +201,7 @@ crontab  -e
 
 */10 * * * *  /opt/cron/git-down-pages.sh >>  /opt/cron/git-down.log 2>&1
 ```
-
+ 
 **添加 NGINX 配置：**
 
 ```nginx
