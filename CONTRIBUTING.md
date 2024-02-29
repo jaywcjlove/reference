@@ -98,7 +98,7 @@ $ npm run start  # 监听 md 文件编译输出 HTML
 $ git clone https://github.com/jaywcjlove/reference.git -b gh-pages
 ```
 
-**定时更新** ：
+**定时更新**
 
 在 Linux 服务执行创建 `git-down-pages.sh` 脚本，将脚本放置在 `/opt/cron/` 目录下
 
@@ -107,8 +107,6 @@ $ git clone https://github.com/jaywcjlove/reference.git -b gh-pages
 下面是脚本 `git-down-pages.sh` 的源码
 
 ```bash
-vim git-down-pages.sh
-
 #!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
@@ -194,11 +192,11 @@ echo "★[$endDate] Successful"
 echo "----------------------------------------------------------------------------"
 ```
 
- **创建定时任务** 
+**创建定时任务**
 
 注意：请把脚本放在 `/opt/cron/` 目录下 (时间可以根据自己需求设定)，下面案例：每十分钟同步线上的 `pages` 的内容
 
-```
+```shell
 crontab  -e 
 
 */10 * * * *  /opt/cron/git-down-pages.sh >>  /opt/cron/git-down.log 2>&1
@@ -206,7 +204,7 @@ crontab  -e
 
 **添加 NGINX 配置：**
 
-```
+```nginx
 listen 80;
 listen 443 ssl http2;
 server_name xxx.xxx.top; #配置你的域名
