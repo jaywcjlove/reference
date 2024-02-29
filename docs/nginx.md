@@ -316,7 +316,7 @@ server {
 ### 重定向(301永久)
 <!--rehype:wrap-class=row-span-2-->
 
-将 www.example.com 重定向到 example.com
+将 <www.example.com> 重定向到 example.com
 
 ```nginx
 server {

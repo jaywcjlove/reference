@@ -1027,5 +1027,5 @@ origin 函数用于告诉这个变量的从何而来
 ---
 
 * [make 中文教程](https://seisman.github.io/how-to-write-makefile/overview.html) _(seisman.github.io)_
-* [make 手册](https://www.gnu.org/software/make/manual/make.html#toc-Overview-of-make) _(www.gnu.org)_
-* [make 官网](https://www.gnu.org/software/make/) _www.gnu.org_
+* [make 手册](https://www.gnu.org/software/make/manual/make.html#toc-Overview-of-make) _(<www.gnu.org>)_
+* [make 官网](https://www.gnu.org/software/make/) _<www.gnu.org>_
