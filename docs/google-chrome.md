@@ -59,7 +59,7 @@ Google Chrome 键盘快捷键备忘清单
 :- | -
 `(type)` `Enter`  | 使用您的默认搜索引擎进行搜索
 `(type)` `Tab`  | 使用不同的搜索引擎搜索
-`Ctrl` `Enter`  | 添加 www. 和 .com 到站点名称，并在当前选项卡中打开
+`Ctrl` `Enter`  | 添加 <www>. 和 .com 到站点名称，并在当前选项卡中打开
 `Alt` `Enter`  | 打开新标签页并执行 Google 搜索
 `Ctrl` `L`  | 跳转到地址栏
 `Ctrl` `K`  | 从页面上的任何位置搜索
