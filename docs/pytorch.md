@@ -174,6 +174,30 @@ tensor([2., 2., 2., 2., 2.], dtype=torch.float64)
 
 注意: 所有在CPU上的Tensors, 除了CharTensor, 都可以转换为Numpy array并可以反向转换.
 
+### squeeze函数
+
+```python
+>>> x = torch.rand(1, 2, 1, 28, 1)
+>>> x.squeeze().shape                   # squeeze不加参数，默认去除所有为1的维度
+torch.Size([2, 28])
+>>> x.squeeze(dim=0).shape              # squeeze加参数，去除指定为1的维度
+torch.Size([2, 1, 28, 1])
+>>> x.squeeze(1).shape                  # squeeze加参数，如果不为1，则不变
+torch.Size([1, 2, 1, 28, 1])
+>>> torch.squeeze(x,-1).shape           # 既可以是函数，也可以是方法
+torch.Size([1, 2, 1, 28])
+```
+
+### unsqueeze函数
+
+```python
+>>> x = torch.rand(2, 28)
+>>> x.unsqueeze(0).shape                # unsqueeze必须加参数，    _ 2 _ 28 _
+torch.Size([1, 2, 28])                  # 参数代表在哪里添加维度    0   1    2
+>>> torch.unsqueeze(x, -1).shape        # 既可以是函数，也可以是方法
+torch.Size([2, 28, 1])
+```
+
 导入 Imports
 ---
 
