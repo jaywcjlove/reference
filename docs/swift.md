@@ -385,9 +385,11 @@ switch secondaryColor {
   case "orange":
     print("红色和黄色的混合")
   case "purple":
-    print("红色和蓝色的混合") 
-  default: 
-    print("这可能不是辅助颜色") 
+    print("红色和蓝色的混合")
+  case "green":
+    print("蓝色和黄色的混合")
+  default:
+    print("这可能不是辅助颜色")
 }
 // 打印: 蓝色和黄色的混合
 ```
