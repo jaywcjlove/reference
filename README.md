@@ -490,8 +490,8 @@ Quick Reference
 <a href="https://github.com/larry-xue" title="larry">
   <img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="larry"/>
 </a>
-<a href="https://github.com/Moeyuuko" title="Moeyuuko">
-  <img src="https://avatars.githubusercontent.com/u/14266681?v=4" width="42;" alt="Moeyuuko"/>
+<a href="https://github.com/y52y" title="Zyj">
+  <img src="https://avatars.githubusercontent.com/u/51304324?v=4" width="42;" alt="Zyj"/>
 </a>
 <a href="https://github.com/malcolmyu" title="Minghao Yu">
   <img src="https://avatars.githubusercontent.com/u/3203962?v=4" width="42;" alt="Minghao Yu"/>
@@ -510,6 +510,9 @@ Quick Reference
 </a>
 <a href="https://github.com/JetSquirrel" title="JetSquirrel">
   <img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/>
+</a>
+<a href="https://github.com/JavaZeroo" title="JavaZero">
+  <img src="https://avatars.githubusercontent.com/u/71128095?v=4" width="42;" alt="JavaZero"/>
 </a>
 <a href="https://github.com/jasnzhuang" title="Jason Zhuang">
   <img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/>
@@ -555,9 +558,6 @@ Quick Reference
 </a>
 <a href="https://github.com/13812700839" title="花殇">
   <img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/>
-</a>
-<a href="https://github.com/y52y" title="Zyj">
-  <img src="https://avatars.githubusercontent.com/u/51304324?v=4" width="42;" alt="Zyj"/>
 </a>
 <a href="https://github.com/Leaderzhangyi" title="ZinkCas">
   <img src="https://avatars.githubusercontent.com/u/46915666?v=4" width="42;" alt="ZinkCas"/>
@@ -621,6 +621,9 @@ Quick Reference
 </a>
 <a href="https://github.com/mo3et" title="Monet Lee">
   <img src="https://avatars.githubusercontent.com/u/34803812?v=4" width="42;" alt="Monet Lee"/>
+</a>
+<a href="https://github.com/Moeyuuko" title="Moeyuuko">
+  <img src="https://avatars.githubusercontent.com/u/14266681?v=4" width="42;" alt="Moeyuuko"/>
 </a><!--GAMFC-END-->
 
 [贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 根据提交次数的先后顺序自动生成
