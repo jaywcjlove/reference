@@ -1707,18 +1707,23 @@ extension Person: SomeProtocol {
 }
 ```
 
-### 扩展方法
+### 扩展构造器
+
+<!--rehype:wrap-class=col-span-2-->
 
 ```swift
-extension String {
-    func deletingPrefix(_ prefix: String) -> String {
-        guard self.hasPrefix(prefix) else {
-          return self 
-        }
-        return String(self.dropFirst(prefix.count))
+// 给CGRect结构体提供允许center和size的构造器
+extension CGRect {
+    init(center: CGPoint, size: CGSize) {
+        let x: CGFloat = center.x - size.width * 0.5
+        let y: CGFloat = center.y - size.height * 0.5
+        self.init(origin: CGPoint(x: x, y: y), 
+                  size: size)
     }
 }
-print("Hello World".deletingPrefix("He"))
+let frame = CGRect(center: CGPoint(x: 100, y: 100), 
+                   size: CGSize(width: 50, height: 50))
+print("Origin is \(frame.origin)")
 ```
 
 ### 扩展可变实例方法
@@ -1732,6 +1737,22 @@ extension Double {
 var boxCube: Double = 2.0
 boxCube.cube()
 print(boxCube)
+```
+
+### 扩展方法
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else {
+          return self 
+        }
+        return String(self.dropFirst(prefix.count))
+    }
+}
+print("Hello World".deletingPrefix("He"))
 ```
 
 ### 扩展计算属性
@@ -1766,25 +1787,6 @@ extension UIColor {
         }
     }
 }
-```
-
-### 扩展构造器
-
-<!--rehype:wrap-class=col-span-2-->
-
-```swift
-// 给CGRect结构体提供允许center和size的构造器
-extension CGRect {
-    init(center: CGPoint, size: CGSize) {
-        let x: CGFloat = center.x - size.width * 0.5
-        let y: CGFloat = center.y - size.height * 0.5
-        self.init(origin: CGPoint(x: x, y: y), 
-                  size: size)
-    }
-}
-let frame = CGRect(center: CGPoint(x: 100, y: 100), 
-                   size: CGSize(width: 50, height: 50))
-print("Origin is \(frame.origin)")
 ```
 
 另见
