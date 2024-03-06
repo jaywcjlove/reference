@@ -1597,7 +1597,7 @@ let order: Dessert = .cake(flavor: "红色")
 ```swift
 enum Content {
   case empty
-  case text(Strig)
+  case text(String)
   case number(Int)
 }
 ```
@@ -1606,13 +1606,17 @@ enum Content {
 
 ```swift
 let content = Content.text("Hello")
-swithc content {
+switch content {
   case .empty:
     print("Value is empty")
   case .text(let value):
     print("Value is \(value)")
   case .number(_): //不调用时，可以省略
     print("Value is a number")
+}
+// 或者
+if case .text(let value) = content {
+    print("Value is \(value)")
 }
 ```
 
