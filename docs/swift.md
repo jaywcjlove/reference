@@ -1688,6 +1688,105 @@ currentTraffic.reportAccident()
 
 实例方法改变了枚举的值，则需要将其标记为 `mutating`
 
+扩展
+---
+
+### 声明扩展
+
+```swift
+struct Person {
+    var name: String
+    var age: Int
+    func eat() {}
+}
+extension Person {
+    // 添加新功能
+}
+extension Person: SomeProtocol {
+     // 实现协议方法、属性
+}
+```
+
+### 扩展方法
+
+```swift
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else {
+          return self 
+        }
+        return String(self.dropFirst(prefix.count))
+    }
+}
+print("Hello World".deletingPrefix("He"))
+```
+
+### 扩展可变实例方法
+
+```swift
+extension Double {
+    mutating func cube() {
+        self = self * self * self
+    }
+}
+var boxCube: Double = 2.0
+boxCube.cube()
+print(boxCube)
+```
+
+### 扩展计算属性
+
+```swift
+// 扩展可以添加计算属性，不能添加存储属性
+extension Double {
+    var km: Double { self * 1000 }
+    var m: Double { self }
+    var cm: Double { self / 100.0 }
+    var mm: Double { self / 1000.0 }
+}
+let metric: Double = 30.48.cm
+print("1 metric is \(metric.m) meter")
+print("1 metric is \(metric.km) kilometer")
+```
+
+### 扩展存储属性
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+// 但可以通过 objc_getAssociatedObject/objc_setAssociatedObject 实现添加存储属性 
+private var fuchsiaKey = "fuchsiaKey"
+extension UIColor {
+    var fuchsia: UIColor? {
+        get {
+            return objc_getAssociatedObject(self, &fuchsiaKey) as? UIColor
+        }
+        set {
+            objc_setAssociatedObject(self, &fuchsiaKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
+```
+
+### 扩展构造器
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+// 给CGRect结构体提供允许center和size的构造器
+extension CGRect {
+    init(center: CGPoint, size: CGSize) {
+        let x: CGFloat = center.x - size.width * 0.5
+        let y: CGFloat = center.y - size.height * 0.5
+        self.init(origin: CGPoint(x: x, y: y), 
+                  size: size)
+    }
+}
+let frame = CGRect(center: CGPoint(x: 100, y: 100), 
+                   size: CGSize(width: 50, height: 50))
+print("Origin is \(frame.origin)")
+```
+
 另见
 ----
 
