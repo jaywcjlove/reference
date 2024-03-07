@@ -712,7 +712,7 @@ Quick Reference
 [clf.lol](https://ref.clf.lol/)<!--rehype:target=_blank-->
 [zishu.me](https://ref.zishu.me/)<!--rehype:target=_blank-->
 [sucan2233.cn](http://reference.sucan2233.cn)<!--rehype:target=_blank-->
-[reference-bk9.pages.dev](https://reference-bk9.pages.dev/)<!--rehype:target=_blank-->
+[reference-bk9.pages.dev](https://reference-bk9.pages.dev/)<!--rehype:target=_blank&class=contributing&data-info=👆自动实时同步-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
