@@ -1199,6 +1199,172 @@ struct SheetDetail: Identifiable {
 
 文档 - [ActionSheet](https://developer.apple.com/documentation/swiftui/actionsheet)
 
+SwiftData
+---
+
+### SwiftData声明
+
+```swift
+import SwiftData
+// 通过@Model宏来定义模型schema
+// 支持基础值类型String、Int、CGFloat等
+// 支持复杂类型Struct、Enum、Codable、集合等
+@Model
+class Person {
+    var id: String
+    var name: String
+    var age: Int
+    init(name: String, age: Int) {
+        self.id = UUID().uuidString
+        self.name = name
+        self.age = age
+    }
+}
+```
+
+### 声明@Attribute
+
+```swift
+@Model
+class Person {
+    // @Attribute(.unique)为id添加唯一约束
+    @Attribute(.unique) var id: String
+    var name: String
+    var age: Int
+    init(name: String, age: Int) {
+        self.id = UUID().uuidString
+        self.name = name
+        self.age = age
+    }
+}
+```
+
+### 声明@Relationship
+
+```swift
+@Model
+class Person {
+    @Attribute(.unique) 
+    var id: String
+    var name: String
+    var age: Int
+    // @Relationship(deleteRule: .cascade) 
+    // 使得Person在数据库里被删除时
+    // 删除掉所有关联的students
+    @Relationship(deleteRule: .cascade)
+    var students: [Student]? = []
+    init(name: String, age: Int) {
+        self.id = UUID().uuidString
+        self.name = name
+        self.age = age
+    }
+}
+```
+
+### 声明Transient
+
+```swift
+@Model
+class Person {
+    @Attribute(.unique) 
+    var id: String
+    var name: String
+    // @Transient表示不要持久化这个属性
+    // 需要提供一个默认值
+    @Transient
+    var age: Int = 0
+    init(name: String) {
+        self.id = UUID().uuidString
+        self.name = name
+    }
+}
+```
+
+### @Query
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+struct ContentView: View  {
+    // Query 可以高效地查询大型数据集，并自定义返回内容的方式，如排序、过滤
+    @Query(sort: \.age, order: .reverse) var persons: [Person]
+    @Environment(\.modelContext) var modelContext
+    var body: some View {
+       NavigationStack() {
+          List {
+             ForEach(trips) { trip in 
+                 // ...
+             }
+          }
+       }
+    }
+}
+```
+
+### 构建ModelContainer
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+// 用 Schema 进行初始化
+let container = try ModelContainer(for: Person.self)
+// 用配置（ModelConfiguration）初始化
+let container = try ModelContainer(
+    for: Person.self,
+    configurations: ModelConfiguration(url: URL("path"))
+)
+// 通过View 和 Scene 的修饰器来快速关联一个 ModelContainer
+struct SwiftDataDemoApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .modelContainer(for: Person.self)
+    }
+}
+```
+
+### 构建ModelContext
+
+```swift
+// 在配置Model Container完成后
+// 通过Environment 来访问到 modelContext
+struct ContextView : View {
+    @Environment(\.modelContext) 
+    private var context
+}
+// 或者直接获取共享的主Actor context
+let context = container.mainContext
+// 或者直接初始化一个新的Context
+let context = ModelContext(container)
+```
+
+### 增、删、改
+
+```swift
+let person = Person(name: "Lily", age: 10)
+// Insert a new person
+context.insert(person)
+// Delete an existing person
+context.delete(person)
+// Manually save changes to the context
+try context.save()
+```
+
+### 查询
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+let personPredicate = #Predicate<Person> {
+    $0.name == "Lily" &&
+    $0.age == 10
+}
+
+let descriptor = FetchDescriptor<Person>(predicate: personPredicate)
+let persons = try? context.fetch(descriptor)
+```
+
 另见
 ---
 
