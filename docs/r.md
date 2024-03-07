@@ -274,6 +274,7 @@ plot(x, y, type = "l", main = "Line Plot", xlab = "X-axis", ylab = "Y-axis")
 另见
 ---
 
+- [全面了解Base R](https://blanket58.github.io/books/study-notes-of-R/) _(github.io)_
 - [R 语言官网](https://www.r-project.org/) _(r-project.org)_
 - [数据科学 R](https://r4ds.hadley.nz/) _(hadley.nz)_
 - [使用 R 进行整洁的建模](https://www.tmwr.org/) _(tmwr.org)_
