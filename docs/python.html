@@ -1934,7 +1934,13 @@
 </span><span class="code-line">pip <span class="token function">install</span> <span class="token parameter variable">--user</span> <span class="token parameter variable">--upgrade</span> pipenv <span class="token comment"># pip</span>
 </span><span class="code-line">brew upgrade pipenv                 <span class="token comment"># homebrew</span>
 </span></code></pre>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 安装 package</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 将 pipenv 命令加入到系统环境变量 $PATH 中 (Unix and MacOS)</span>
+</span><span class="code-line"><span class="token assign-left variable">dir</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>python <span class="token parameter variable">-c</span> <span class="token string">'import site; print(site.USER_BASE + "/bin")'</span><span class="token variable">)</span></span> <span class="token comment"># 打印 python site-packages bin 路径</span>
+</span><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">'export PATH="'</span><span class="token variable">$dir</span><span class="token string">':$PATH"'</span> <span class="token operator">>></span> ~/.zshrc <span class="token comment"># 将 dir 路径加入到 PATH 中</span>
+</span><span class="code-line"><span class="token builtin class-name">source</span> ~/.zshrc
+</span><span class="code-line">
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 安装 package</span>
 </span><span class="code-line">pipenv <span class="token function">install</span> <span class="token operator">&#x3C;</span>package name<span class="token operator">></span> <span class="token comment"># 不指定版本</span>
 </span><span class="code-line">pipenv <span class="token function">install</span> <span class="token operator">&#x3C;</span>package name<span class="token operator">>=</span><span class="token operator">=</span><span class="token operator">&#x3C;</span>version<span class="token operator">></span>    <span class="token comment"># 精确指定版本</span>
 </span><span class="code-line">pipenv <span class="token function">install</span> <span class="token operator">&#x3C;</span>package name<span class="token operator">></span>~<span class="token operator">=</span><span class="token operator">&#x3C;</span>version<span class="token operator">></span>    <span class="token comment"># 指定版本范围，例如 1.1则表示安装1.x的最新版本，1.0.1则表示安装1.0.x的最新版本</span>
