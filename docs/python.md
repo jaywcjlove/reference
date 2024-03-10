@@ -1851,6 +1851,12 @@ brew upgrade pipenv                 # homebrew
 ```
 
 ```shell
+# 将 pipenv 命令加入到系统环境变量 $PATH 中 (Unix and MacOS)
+dir=$(python -c 'import site; print(site.USER_BASE + "/bin")') # 打印 python site-packages bin 路径
+echo 'export PATH="'$dir':$PATH"' >> ~/.zshrc # 将 dir 路径加入到 PATH 中
+source ~/.zshrc
+
+
 # 安装 package
 pipenv install <package name> # 不指定版本
 pipenv install <package name>==<version>    # 精确指定版本
