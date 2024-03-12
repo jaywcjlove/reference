@@ -303,6 +303,11 @@ $ docker push eon01/nginx localhost:5000/myadmin/nginx
 `docker stop -f $(docker ps -a -q)` | 停止所有容器
 `docker rm -f $(docker ps -a -q)` | 删除所有容器
 `docker rmi -f $(docker images -q)` | 删除所有镜像
+`docker volume prune` | 删除所有未使用的Docker Volume
+`docker network prune` | 删除所有未使用的Docker网络
+`docker system prune` | 清理所有空闲或与任何Docker容器无关的资源
+`docker image prune` | 删除悬空的Docker镜像
+`docker container prune` | 删除所有未使用的Docker 容器
 
 ### 卷 volume
 
