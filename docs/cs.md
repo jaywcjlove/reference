@@ -101,17 +101,12 @@ var bo = false;
 
 /* 
  * 多行
- * 注释 
+ * 注释 - 用于文档 
  */
 
-// TODO：向IDE中的任务列表添加注释（VS、Rider都支持）
-
+// TODO：
+// 向IDE中的任务列表添加注释（VS、Rider都支持）
 /// XML 单行注释，用于文档
-
-/**
- * XML 多行注释，
- *  用于文档 
- */
 ```
 
 ### 条件判断
@@ -139,6 +134,7 @@ bool[] answers = {true, false};
 ```
 
 ### 循环
+<!--rehype:wrap-class=col-span-2-->
 
 ```cs
 int[] numbers = {1, 2, 3, 4, 5};
@@ -287,9 +283,8 @@ string multiLine = """
 Console.WriteLine(multiLine); // => Content begin "Hello World!" /\n<>"" end.
 ```
 
-### 字符串操作
-
-#### 字符串判空
+### 字符串判空
+<!--rehype:wrap-class=col-span-2-->
 
 ```cs
 string name; //空引用
@@ -300,40 +295,42 @@ Console.WriteLine(string.IsNullOrEmpty(name)); //输出 true
 Console.WriteLine(string.IsNullOrEmpty(gender)); // 输出 true
 ```
 
-#### 字符串分割
+### 字符串截取
+
+```cs
+string Str = "字符串截取";
+Str = Str.Substring(2, 1);
+Console.WriteLine(Str);
+// 输出结果“串”，意为从第二个下标开始截取一位字符
+```
+
+### 字符串分割
+<!--rehype:wrap-class=col-span-2-->
 
 ```cs
 string Name = "字A符A串A分A割";
 string[] Names=Name.Split(new char[] { 'A' });
-//会以A为媒介把字符串分成若干份
+// 会以A为媒介把字符串分成若干份
 for (int i = 0; i < Names.Length; i++)
 {
     Console.Write(Names[i]);
 }
 ```
 
-#### 字符串截取
-
-```cs
-string Str = "字符串截取";
-Str = Str.Substring(2, 1);
-Console.WriteLine(Str);
-//输出结果“串”，意为从第二个下标开始截取一位字符
-```
-
-#### 字符串替换
+### 字符串替换
 
 ```cs
 string Rep = "字符1替换";
 Rep = Rep.Replace("1", "串");
 Console.WriteLine(Rep);
-//会把字符中的 “1”替换成“串”
+// 会把字符中的 “1”替换成“串”
 ```
 
 运算符和表达式
 --------
 
 ### 逻辑运算
+<!--rehype:wrap-class=row-span-2-->
 
 ```cs
 //或运算, 与运算, 非运算
@@ -361,31 +358,15 @@ C# 中的逻辑运算支持可空布尔类型运算. 注意条件逻辑运算不
 
 x |  y | x & y | x \| y | x ^ y | ! x
 :- | - | --- | --- | --- | --
-true | true | true | true | false | false
-true | false | false | true | true | false
-true | null | null | true | null | false
-false | true | false | true | true | true
-false | false | false | false | false | true
-false | null | false | null | null | true
-null | true | null | true | null | null
-null | false | false | null | null | null
-null | null | null | null | null | null
-<!--rehype:className=show-header-->
-
-### 算术运算符
-<!--rehype:wrap-class=col-span-1-->
-
-C# 支持下表中的所有算术运算符。假设变量 A 的值为 10，变量 B 的值为 20，则：
-
-| 运算符 | 描述                             | 实例              |
-| :----- | -------------------------------- | ----------------- |
-| +      | 把两个操作数相加                 | A + B 将得到 30   |
-| -      | 从第一个操作数中减去第二个操作数 | A - B 将得到 -10  |
-| \*     | 把两个操作数相乘                 | A \* B 将得到 200 |
-| /      | 分子除以分母                     | B / A 将得到 2    |
-| %      | 取模运算符，整除后的余数         | B % A 将得到 0    |
-| ++     | 自增运算符，整数值增加 1         | A++ 将得到 11     |
-| --     | 自减运算符，整数值减少 1         | A-- 将得到 9      |
+<code>true</code> | <code>true</code> | <code>true</code> | <code>true</code> | false | false
+<code>true</code> | false | false | <code>true</code> | <code>true</code> | false
+<code>true</code> | <pur>null</pur> | <pur>null</pur> | <code>true</code> | <pur>null</pur> | false
+false | <code>true</code> | false | <code>true</code> | <code>true</code> | <code>true</code>
+false | false | false | false | false | <code>true</code>
+false | <pur>null</pur> | false | <pur>null</pur> | <pur>null</pur> | <code>true</code>
+<pur>null</pur> | <code>true</code> | <pur>null</pur> | <code>true</code> | <pur>null</pur> | <pur>null</pur>
+<pur>null</pur> | false | false | <pur>null</pur> | <pur>null</pur> | <pur>null</pur>
+<pur>null</pur> | <pur>null</pur> | <pur>null</pur> | <pur>null</pur> | <pur>null</pur> | <pur>null</pur>
 <!--rehype:className=show-header-->
 
 ### 关系运算符
@@ -403,10 +384,24 @@ C# 支持下表中的所有关系运算符。假设变量 A 的值为 1，变量
 | <=     | 检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。 | (A <= B) 为真。   |
 <!--rehype:className=show-header-->
 
-### 运算符优先级
-<!--rehype:wrap-class=col-span-3-->
+### 算术运算符
+<!--rehype:wrap-class=col-span-2-->
 
-运算符的优先级确定表达式中项的组合。这会影响到一个表达式如何计算。某些运算符比其他运算符有更高的优先级，例如，乘除运算符具有比加减运算符更高的优先级。
+C# 支持下表中的所有算术运算符。假设变量 A 的值为 10，变量 B 的值为 20，则：
+
+| 运算符 | 描述                             | 实例              |
+| :----- | -------------------------------- | ----------------- |
+| +      | 把两个操作数相加                 | A + B 将得到 30   |
+| -      | 从第一个操作数中减去第二个操作数 | A - B 将得到 -10  |
+| \*     | 把两个操作数相乘                 | A \* B 将得到 200 |
+| /      | 分子除以分母                     | B / A 将得到 2    |
+| %      | 取模运算符，整除后的余数         | B % A 将得到 0    |
+| ++     | 自增运算符，整数值增加 1         | A++ 将得到 11     |
+| --     | 自减运算符，整数值减少 1         | A-- 将得到 9      |
+<!--rehype:className=show-header-->
+
+### 运算符优先级
+<!--rehype:wrap-class=col-span-2 row-span-3-->
 
 下表将按运算符优先级从高到低列出各个运算符，具有较高优先级的运算符出现在表格的上面，具有较低优先级的运算符出现在表格的下面。在表达式中，较高优先级的运算符会优先被计算。
 
@@ -428,6 +423,111 @@ C# 支持下表中的所有关系运算符。假设变量 A 的值为 1，变量
 | 赋值       | = += -= \*= /= %=>>= <<= &= ^= \|= | 从右到左 |
 | 逗号       | ,                                  | 从左到右 |
 <!--rehype:className=show-header-->
+
+运算符的优先级确定表达式中项的组合。这会影响到一个表达式如何计算。某些运算符比其他运算符有更高的优先级，例如，乘除运算符具有比加减运算符更高的优先级。
+
+### 逻辑非运算符
+
+```cs
+bool passed = false;
+Console.WriteLine(!passed); // 输出: True
+Console.WriteLine(!true);   // 输出: False
+```
+
+### 逻辑“与”运算符 &
+
+```cs
+bool SecondOperand()
+{
+    Console.WriteLine("计算第二个操作数");
+    return true;
+}
+
+bool a = false & SecondOperand();
+Console.WriteLine(a);
+// 输出:
+// 计算第二个操作数
+// False
+
+bool b = true & SecondOperand();
+Console.WriteLine(b);
+// 输出:
+// 计算第二个操作数
+// True
+```
+
+### 逻辑异或运算符 ^
+
+```cs
+Console.WriteLine(true ^ true);  // 输出: False
+Console.WriteLine(true ^ false); // 输出: True
+Console.WriteLine(false ^ true); // 输出: True
+Console.WriteLine(false ^ false);// 输出: False
+```
+
+### 逻辑或运算符 |
+
+```cs
+bool SecondOperand()
+{
+    Console.WriteLine("计算第二个操作数");
+    return true;
+}
+
+bool a = true | SecondOperand();
+Console.WriteLine(a);
+// 输出:
+// 计算第二个操作数
+// True
+
+bool b = false | SecondOperand();
+Console.WriteLine(b);
+// 输出:
+// 计算第二个操作数
+// True
+```
+
+### 条件逻辑“与”运算符 &&
+
+```cs
+bool SecondOperand()
+{
+    Console.WriteLine("计算第二个操作数");
+    return true;
+}
+
+bool a = false && SecondOperand();
+Console.WriteLine(a);
+// 输出:
+// False
+
+bool b = true && SecondOperand();
+Console.WriteLine(b);
+// 输出:
+// 计算第二个操作数
+// True
+```
+
+### 条件逻辑或运算符 ||
+
+```cs
+bool SecondOperand()
+{
+    Console.WriteLine("计算第二个操作数");
+    return true;
+}
+
+bool a = true || SecondOperand();
+Console.WriteLine(a);
+// 输出:
+// True
+
+bool b = false || SecondOperand();
+Console.WriteLine(b);
+// 输出:
+// 计算第二个操作数
+// True
+```
 
 杂项
 -----------
