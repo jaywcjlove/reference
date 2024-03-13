@@ -330,8 +330,10 @@ Console.WriteLine(Rep);
 //会把字符中的 “1”替换成“串”
 ```
 
+运算符和表达式
+--------
+
 ### 逻辑运算
-<!--rehype:wrap-class=col-span-2-->
 
 ```cs
 //或运算, 与运算, 非运算
