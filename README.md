@@ -126,7 +126,7 @@ Quick Reference
 [PM2](./docs/pm2.md)<!--rehype:style=background: rgb(73 117 241);&class=contributing-->  
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132);-->  
 [Yarn](./docs/yarn.md)<!--rehype:style=background: rgb(33 136 182);-->  
-[nvm windows](./docs/nvm-windows.md)<!--rehype:style=background: rgb(132 132 132);-->  
+[nvm](./docs/nvm.md)<!--rehype:style=background: rgb(132 132 132);-->  
 <!--rehype:class=home-card-->
 
 ## 工具
