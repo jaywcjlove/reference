@@ -17,6 +17,7 @@ fun main() {
 main() 函数是每个 Kotlin 程序的起点，在执行之前必须包含在代码中
 
 ### 打印声明
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 println("Greetings, earthling!")
@@ -31,6 +32,7 @@ Take me to your leader.
 ```
 
 ### 注释
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 // 这是单行注释
@@ -109,7 +111,7 @@ println(monument.length)
 ```
 
 ### 字符转义序列
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 ```kotlin
 print("\"Excellent!\" I cried. \"Elementary,\" said he.") 
@@ -149,6 +151,7 @@ print("\"Excellent!\" I cried. \"Elementary,\" said he.")
 ```
 
 ### 增强赋值运算符
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 var batteryPercentage = 80
@@ -267,6 +270,7 @@ println(shorts && sunny)  // false
 ```
 
 ### 或运算符：||
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 var late = true
@@ -295,6 +299,7 @@ println(!full) //  true
 ```
 
 ### 评估顺序
+<!--rehype:wrap-class=row-span-2-->
 
 ```kotlin
 !true && (false || true) // false
@@ -309,6 +314,16 @@ println(!full) //  true
 然后评估 true && true，返回 true。
 那么，真|| 评估 false 最终返回 true
 */
+```
+
+### 等式运算符
+
+```kotlin
+var myAge = 22
+var sisterAge = 21
+
+myAge == sisterAge // false
+myAge !== sisterAge // true
 ```
 
 ### 嵌套条件
@@ -355,16 +370,6 @@ if (height in 1..53) {
 // Prints: 抱歉，您必须至少 54 英寸才能乘坐过山车
 ```
 <!--rehype:className=wrap-text-->
-
-### 等式运算符
-
-```kotlin
-var myAge = 22
-var sisterAge = 21
-
-myAge == sisterAge // false
-myAge !== sisterAge // true
-```
 
 Collections
 ---
@@ -523,7 +528,7 @@ fun main() {
 ### 默认参数
 
 ```kotlin
-fun favoriteLanguage(name, language = "Kotlin") {
+fun favoriteLanguage(name: String, language: String = "Kotlin") {
   println("Hello, $name. Your favorite programming language is $language")  
 }
 
@@ -608,10 +613,11 @@ fun main() {
 
 ### 简单的高阶函数
 <!--rehype:wrap-class=col-span-2-->
+
 ```kotlin
-//注意啦，这里的num1AndNum2有个operation，它是接收了一个函数作为形参
+// 注意啦，这里的 num1AndNum2 有个 operation，它是接收了一个函数作为形参
 fun num1AndNum2(num1: Int, num2: Int, operation: (Int, Int) -> Int): Int {
-    //让我们试着向operation传入参数
+    // 让我们试着向 operation 传入参数
     return operation(num1, num2)
 }
 
@@ -622,14 +628,11 @@ fun plus(num1: Int, num2: Int): Int {
 fun main(args: Array<String>) {
     val total = num1AndNum2(100, 200, ::plus)
     println(total)//300
-    //怎么样？我们利用传入一个函数来充当另一个函数的参数
+    // 怎么样？我们利用传入一个函数来充当另一个函数的参数
 }
-
 ```
 
-还记得我们怎么在Java中用接口吗？
-
-试着用函数参数简化它
+还记得我们怎么在 Java 中用接口吗？试着用函数参数简化它
 
 <!--rehype:className=wrap-text-->
 
@@ -675,22 +678,80 @@ fun main(args: Array<String>) {
 这里之所以可以把lambda写在外部，是因为operation是最后一个参数。
 <!--rehype:className=wrap-text-->
 
-类
----
-
-### 类示例
+### 扩展函数
 
 ```kotlin
-// 具有包含默认值的属性的类
-class Student {
-  var name = "Lucia"
-  var semester = "Fall"
-  var gpa = 3.95
+// Kotlin File
+fun String.lettersCount(): Int {
+    var count = 0
+    // this 相当于我们下面写的字符串具体的内容
+    // for 可以用 forEach 代替
+    for (char in this) {
+        // 判断是不是字母（包括中文）
+        if (char.isLetter()) {
+            count++
+        }
+    }
+    return count
 }
 
-// 没有类体的简写语法
-class Student 
+fun main() {
+    //不修改 String 类的情况下新增方法
+    println("123demo".lettersCount())
+    // Print: 4
+}
 ```
+
+### 运算符重载
+
+```kotlin
+class Money(var amount: Double)
+
+// 配合扩展函数，重载运算符 + 即 plus
+operator fun Money.plus(money: Money): Money {
+    // 把金额相加返回一个新的 Money对象
+    return Money(this.amount + money.amount)
+}
+
+fun main() {
+    val appleMoney = Money(10.0)
+    val eggMoney = Money(6.0)
+    // 你没有看错，我们将两个类对象相加了
+    val allMoney = appleMoney + eggMoney
+    println(allMoney.amount)
+    // Print: 16.0
+}
+
+```
+
+这里的 **运算符重载** 依赖于 **扩展函数**
+<!--rehype:className=wrap-text-->
+
+### 中缀表达式
+
+```kotlin
+// infix 定义一个中缀表达式，类似扩展函数那样
+infix fun LocalDate.formatBy(pattern:String):String{
+    val formatter =  DateTimeFormatter.ofPattern(pattern)
+    return this.format(formatter)
+
+}
+
+fun main() {
+    val currentDate = LocalDate.now()
+    println(currentDate formatBy "yyyy-MM-dd")
+    // Print: 2024-02-08
+
+    (1 until  100).forEach { 
+        println(it)
+        // Print 1 至 99
+    }
+}
+
+```
+
+类
+---
 
 ### 类实例
 
@@ -715,42 +776,73 @@ fun main() {
 ```
 
 ### 主构造函数
+<!--rehype:wrap-class=col-span-2-->
 
 ```kotlin
-class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) 
+class Student(
+    val name: String,
+    val gpa: Double,
+    val semester: String,
+    val estimatedGraduationYear: Int
+)
 
 fun main() {
-  var student = Student("Lucia", 3.95, "Fall", 2022) 
-  println(student.name)     
-  // Prints: Lucia
-  println(student.gpa)      
-  // Prints: 3.95
-  println(student.semester) 
-  // Prints: Fall
-  println(student.estimatedGraduationYear) 
-  // Prints: 2022
+    val student = Student("Lucia", 3.95, "Fall", 2022)
+    println(student.name)
+    // Prints: Lucia
+    println(student.gpa)
+    // Prints: 3.95
+    println(student.semester)
+    // Prints: Fall
+    println(student.estimatedGraduationYear)
+    // Prints: 2022
 }
-```
-<!--rehype:className=wrap-text-->
 
-### 初始化块
+```
+
+### 次构造函数
+<!--rehype:wrap-class=col-span-2-->
 
 ```kotlin
-class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
-  init {
-    println("$name has ${estimatedGraduationYear - 2020} years left in college.")
-  }
+class Student(
+    val name: String,
+    val gpa: Double,
+    val semester: String,
+    val estimatedGraduationYear: Int
+) {
+    constructor(name: String, gpa: Double) : this(name, gpa, "Fall", 2024)
 }
 
 fun main() {
-  var student = Student("Lucia", 3.95, "Fall", 2022)
-  // Prints: Lucia has 2 years left in college. 
+    val student = Student("Lucia", 3.95)
+    println(student.name)
+    // Prints: Lucia
+    println(student.semester)
+    // Prints: Fall
+    println(student.estimatedGraduationYear)
+    // Prints: 2024
 }
+
 ```
+
 <!--rehype:className=wrap-text-->
+
+### 类示例
+
+```kotlin
+// 具有包含默认值的属性的类
+class Student {
+  var name = "Lucia"
+  var semester = "Fall"
+  var gpa = 3.95
+}
+
+// 没有类体的简写语法
+class Student 
+```
 
 ### 成员函数
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```kotlin
 class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
@@ -779,6 +871,109 @@ fun main() {
   // Prints: Lucia's letter grade is A. 
 }
 ```
+<!--rehype:className=wrap-text-->
+
+### 初始化块
+
+```kotlin
+class Student(val name: String, val gpa: Double, val semester: String, val estimatedGraduationYear: Int) {
+  init {
+    println("$name has ${estimatedGraduationYear - 2020} years left in college.")
+  }
+}
+
+fun main() {
+  var student = Student("Lucia", 3.95, "Fall", 2022)
+  // Prints: Lucia has 2 years left in college. 
+}
+```
+<!--rehype:className=wrap-text-->
+
+### Data数据类
+
+```kotlin
+// 默认实现 getter/setter 和 toString 这些方法
+data class UserInfo(
+    val name: String,
+    val age: Int
+)
+
+fun main() {
+
+    val userInfo = UserInfo("张三", 20)
+    println(userInfo.name)
+    // 张三
+    println(userInfo.toString())
+    // UserInfo(name=张三, age=20)
+}
+```
+
+### 伴生对象
+
+```kotlin
+// 私有化构造方法
+class User private constructor(val name: String) {
+    // 伴生对象，相当于一个静态类
+    companion object {
+        fun createUser(name: String): User {
+            return User(name)
+        }
+    }
+}
+
+fun main() {
+    // 就像是调用静态方法
+    val user = User.createUser("张三")
+    println(user.name)
+    //Print: 张三
+}
+
+```
+
+### 内部类
+
+```kotlin
+class Outer {
+    val outStr: String = "Outer"
+    // inner 可以让内部类访问外部类
+    inner class Inner {
+        fun printOutStr(){
+            println(outStr)
+        }
+    }
+}
+
+fun main() {
+    val outer = Outer()
+    outer.Inner().printOutStr()
+    // Print: Outer
+}
+```
+
+如果不用inner修饰，会导致Inner类无法使用outStr
+<!--rehype:className=wrap-text-->
+
+### object单例类
+
+```kotlin
+object HttpUtils {
+
+    const val baseUrl = "https://xxxx.com"
+
+    fun getRequest(url: String): String {
+        // 示例代码....
+        return "Result"
+    }
+}
+
+fun main() {
+    println(HttpUtils.baseUrl)
+    // Print: "https://xxxx.com"
+    HttpUtils.getRequest("xxxxx")
+}
+```
+
+object类中定义的函数和属性都可以用类名直接引用
 <!--rehype:className=wrap-text-->
 
 另见

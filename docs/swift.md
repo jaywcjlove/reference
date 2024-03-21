@@ -385,9 +385,11 @@ switch secondaryColor {
   case "orange":
     print("红色和黄色的混合")
   case "purple":
-    print("红色和蓝色的混合") 
-  default: 
-    print("这可能不是辅助颜色") 
+    print("红色和蓝色的混合")
+  case "green":
+    print("蓝色和黄色的混合")
+  default:
+    print("这可能不是辅助颜色")
 }
 // 打印: 蓝色和黄色的混合
 ```
@@ -522,8 +524,8 @@ let zeroToThree = 0...3
 ### stride() 函数
 
 ```swift
-for oddNum in stride(from: 1, to: 5, by: 2) {
-  print(oddNum)
+for num in stride(from: 1, to: 5, by: 2) {
+  print(num)
 }
 // 打印: 1
 // 打印: 3
@@ -542,6 +544,7 @@ for char in "hehe" {
 ```
 
 ### continue 关键字
+<!--rehype:wrap-class=row-span-2-->
 
 ```swift
 for num in 0...5 {
@@ -558,6 +561,7 @@ for num in 0...5 {
 `continue` 关键字将强制循环继续进行下一次迭代
 
 ### break 关键字
+<!--rehype:wrap-class=row-span-2-->
 
 ```swift
 for char in "supercalifragilistice" {
@@ -584,20 +588,57 @@ for _ in 1...3 {
 // 打印: Olé
 ```
 
+### 遍历指定范围
+
+```swift
+for i in 0...10 {
+  print(i) //0 到 10
+}
+```
+
+封闭指定范围操作符（...）
+
 ### while 循环
 
 ```swift
 var counter = 1
 var stopNum = Int.random(in: 1...10)
 
+// 循环打印，直到满足停止条件
 while counter < stopNum {
   print(counter)
   counter += 1
 }
-// 循环打印，直到满足停止条件
 ```
 
 `while` 循环接受一个条件，并在所提供的条件为 `true` 时持续执行其主体代码。如果条件从不为假，则循环将继续运行，程序将陷入`无限循环`
+
+### repeate while
+
+```swift
+var counter = 1
+
+repeat {
+  print(counter)
+  counter += 1
+} while counter <= 5
+```
+
+至少执行一次
+
+### 遍历字典对象
+
+```swift
+// 创建一个字典
+var myDictionary = [
+  "name": "John", "age": 25
+]
+
+// 使用for-in循环遍历字典
+for (key, value) in myDictionary {
+    print("\(key): \(value)")
+}
+```
 
 数组和集合
 ----
@@ -727,7 +768,7 @@ oddNumbers.remove(2)
 oddNumbers.removeAll()
 ```
 
-### .contains()
+### .contains() 检测数组中的值
 
 ```swift
 var names: Set = ["Rosa", "Doug", "Waldo"]
@@ -1001,6 +1042,8 @@ func washCar() -> Void {
 }
 ```
 
+返回值为空的函数（void）
+
 ### 调用函数
 
 ```swift
@@ -1103,7 +1146,7 @@ greet(person: "Aliya") // Hello Aliya
 ```swift
 var currentSeason = "冬天" 
 
-func season(month: Int, name: inout String) {
+func season(month:Int, name:inout String) {
   switch month {
     case 1...2:
       name = "冬天 ⛄️" 
@@ -1142,8 +1185,66 @@ func getFirstInitial(from name: String?) -> String? {
   return name?.first
 }
 ```
+<!--rehype:className=wrap-text-->
 
 函数可以接受可选类型并返回可选类型。当一个函数不能返回请求类型的合理实例时，它应该返回 `nil`
+
+### 省略 return 关键字
+
+```swift
+func multiply(x: Int, y: Int) -> Int {
+  x * y
+}
+```
+
+### 额外指定参数命名标签
+<!--rehype:wrap-class=row-span-2-->
+
+```swift
+func calculate(of numbers: Int...) -> Int {
+  var sum = 0
+
+  for number in numbers {
+      sum += number
+  }
+
+  return sum
+}
+
+// 调用函数时，使用外部参数名
+let result = calculate(of: 1, 2, 3, 4, 5)
+print("Sum: \(result)")
+```
+
+### 函数作为参数
+<!--rehype:wrap-class=row-span-2-->
+
+```swift
+func doMath(
+  operation: (Int, Int) -> Int,
+  a: Int, b: Int
+) -> Int {
+    return operation(a, b)
+}
+// 定义一些可以作为参数传递的函数
+func add(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+// 使用 doMath 函数，并将 add 函数作为参数传递
+let result = doMath(5, 3, operation: add)
+print("Addition Result: \(result)")
+```
+
+### 闭包
+
+```swift
+let add: (Int, Int) -> Int = { (a, b) in
+    return a + b
+}
+// 调用闭包
+let result = add(3, 5)
+print("Sum: \(result)")
+```
 
 结构
 ----
@@ -1401,6 +1502,17 @@ let resolution = Resolution(width: 1920)
 let someVideoMode = VideoMode()
 ```
 
+### 类的扩展
+
+```swift
+extension String {
+  var boolValue: Bool {
+    return self == "1"
+  }
+}
+let isTure = "0".boolValue
+```
+
 枚举
 ----
 
@@ -1429,8 +1541,8 @@ enum Dessert {
   case brownie
 }
 
-let customerOrder: Dessert = .cake(flavor: "红色天鹅绒")
-switch customerOrder {
+let custom: Dessert = .cake(flavor: "红色")
+switch custom {
   case let .cake(flavor):
     print("你点了一个 \(flavor) 蛋糕")
   case .brownie: 
@@ -1476,29 +1588,37 @@ enum Dessert {
   case brownie
 }
 
-let order: Dessert = .cake(flavor: "红色天鹅绒")
+let order: Dessert = .cake(flavor: "红色")
 ```
 
-### 实例方法
+### 枚举的可赋值性
 <!--rehype:wrap-class=row-span-2-->
 
 ```swift
-enum Traffic {
-  case light
-  case heavy
-
-  mutating func reportAccident() {
-    self = .heavy
-  }
+enum Content {
+  case empty
+  case text(String)
+  case number(Int)
 }
-
-var currentTraffic: Traffic = .light
-
-currentTraffic.reportAccident()
-// currentTraffic 现在是 .heavy
 ```
 
-就像类和结构一样，枚举也可以有实例方法。如果实例方法改变了枚举的值，则需要将其标记为 `mutating`
+使用 switch 处理可赋值枚举
+
+```swift
+let content = Content.text("Hello")
+switch content {
+  case .empty:
+    print("Value is empty")
+  case .text(let value):
+    print("Value is \(value)")
+  case .number(_): //不调用时，可以省略
+    print("Value is a number")
+}
+// 或者
+if case .text(let value) = content {
+    print("Value is \(value)")
+}
+```
 
 ### 从原始值初始化
 
@@ -1525,6 +1645,147 @@ enum ShirtSize: String {
   var description: String {
     return "这件衬衫尺码是 \(self.rawValue)"
   }
+}
+```
+
+### 遍历字符串
+
+```swift
+enum Currency: String {
+  case euro = "EUR"
+  case dollar = "USD"
+  case pound = "GBP"
+}
+```
+
+输出枚举的原始值
+
+```swift
+let euroSymbol = Currency.euro.rawValue
+print("欧元的货币符号是 \(euroSymbol)")
+```
+
+### 实例方法
+
+```swift
+enum Traffic {
+  case light
+  case heavy
+
+  mutating func reportAccident() {
+    self = .heavy
+  }
+}
+```
+
+枚举也可以有实例方法
+
+```swift
+var currentTraffic: Traffic = .light
+currentTraffic.reportAccident()
+// currentTraffic 现在是 .heavy
+```
+
+实例方法改变了枚举的值，则需要将其标记为 `mutating`
+
+扩展
+---
+
+### 声明扩展
+
+```swift
+struct Person {
+    var name: String
+    var age: Int
+    func eat() {}
+}
+extension Person {
+    // 添加新功能
+}
+extension Person: SomeProtocol {
+     // 实现协议方法、属性
+}
+```
+
+### 扩展构造器
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+// 给CGRect结构体提供允许center和size的构造器
+extension CGRect {
+    init(center: CGPoint, size: CGSize) {
+        let x: CGFloat = center.x - size.width * 0.5
+        let y: CGFloat = center.y - size.height * 0.5
+        self.init(origin: CGPoint(x: x, y: y), 
+                  size: size)
+    }
+}
+let frame = CGRect(center: CGPoint(x: 100, y: 100), 
+                   size: CGSize(width: 50, height: 50))
+print("Origin is \(frame.origin)")
+```
+
+### 扩展可变实例方法
+
+```swift
+extension Double {
+    mutating func cube() {
+        self = self * self * self
+    }
+}
+var boxCube: Double = 2.0
+boxCube.cube()
+print(boxCube)
+```
+
+### 扩展方法
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else {
+          return self 
+        }
+        return String(self.dropFirst(prefix.count))
+    }
+}
+print("Hello World".deletingPrefix("He"))
+```
+
+### 扩展计算属性
+
+```swift
+// 扩展可以添加计算属性，不能添加存储属性
+extension Double {
+    var km: Double { self * 1000 }
+    var m: Double { self }
+    var cm: Double { self / 100.0 }
+    var mm: Double { self / 1000.0 }
+}
+let metric: Double = 30.48.cm
+print("1 metric is \(metric.m) meter")
+print("1 metric is \(metric.km) kilometer")
+```
+
+### 扩展存储属性
+
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+// 但可以通过 objc_getAssociatedObject/objc_setAssociatedObject 实现添加存储属性 
+private var fuchsiaKey = "fuchsiaKey"
+extension UIColor {
+    var fuchsia: UIColor? {
+        get {
+            return objc_getAssociatedObject(self, &fuchsiaKey) as? UIColor
+        }
+        set {
+            objc_setAssociatedObject(self, &fuchsiaKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
 }
 ```
 

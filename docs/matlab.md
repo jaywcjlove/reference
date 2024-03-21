@@ -198,8 +198,8 @@ c = 2×2 complex
 
 ### 输入命令
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [ans](https://ww2.mathworks.cn/help/matlab/ref/ans.html) | 最近计算的答案
 [clc](https://ww2.mathworks.cn/help/matlab/ref/clc.html) | 清空命令行窗口
 [diary](https://ww2.mathworks.cn/help/matlab/ref/diary.html) | 将命令行窗口文本记录到日志文件中
@@ -221,8 +221,8 @@ c = 2×2 complex
 
 创建和合并数组
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [zeros](https://ww2.mathworks.cn/help/matlab/ref/zeros.html) | 创建全零数组
 [ones](https://ww2.mathworks.cn/help/matlab/ref/ones.html) | 创建全部为 1 的数组
 [rand](https://ww2.mathworks.cn/help/matlab/ref/rand.html) | 均匀分布的随机数
@@ -239,8 +239,8 @@ c = 2×2 complex
 
 创建网格
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [linspace](https://ww2.mathworks.cn/help/matlab/ref/linspace.html) | 生成线性间距向量
 [logspace](https://ww2.mathworks.cn/help/matlab/ref/logspace.html) | 生成对数间距向量
 [freqspace](https://ww2.mathworks.cn/help/matlab/ref/freqspace.html) | 频率响应的频率间距
@@ -249,8 +249,8 @@ c = 2×2 complex
 
 确定大小、形状和排序
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [length](https://ww2.mathworks.cn/help/matlab/ref/length.html) | 最大数组维度的长度
 [size](https://ww2.mathworks.cn/help/matlab/ref/size.html) | 数组大小
 [ndims](https://ww2.mathworks.cn/help/matlab/ref/double.ndims.html) | 数组维度数目
@@ -266,8 +266,8 @@ c = 2×2 complex
 
 重构和重新排列
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [sort](https://ww2.mathworks.cn/help/matlab/ref/sort.html) | 对数组元素排序
 [sortrows](https://ww2.mathworks.cn/help/matlab/ref/double.sortrows.html) | 对矩阵行或表行进行排序
 [flip](https://ww2.mathworks.cn/help/matlab/ref/flip.html) | 翻转元素顺序
@@ -285,8 +285,8 @@ c = 2×2 complex
 
 索引
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [colon](https://ww2.mathworks.cn/help/matlab/ref/colon.html) | 向量创建、数组下标和 <code class="literal">for</code> 循环迭代
 [end](https://ww2.mathworks.cn/help/matlab/ref/end.html) | 终止代码块或指示最大数组索引
 [ind2sub](https://ww2.mathworks.cn/help/matlab/ref/ind2sub.html) | 将线性索引转换为下标
@@ -297,8 +297,8 @@ c = 2×2 complex
 
 创建数值变量
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [double](https://ww2.mathworks.cn/help/matlab/ref/double.html) | 双精度数组
 [single](https://ww2.mathworks.cn/help/matlab/ref/single.html) | 单精度数组
 [int8](https://ww2.mathworks.cn/help/matlab/ref/int8.html) | 8 位有符号整数数组
@@ -312,15 +312,15 @@ c = 2×2 complex
 
 在数值类型之间转换
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [cast](https://ww2.mathworks.cn/help/matlab/ref/cast.html) | 将变量转换为不同的数据类型
 [typecast](https://ww2.mathworks.cn/help/matlab/ref/typecast.html) | 在不更改基础数据的情况下转换数据类型
 
 查询类型和值
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [allfinite](https://ww2.mathworks.cn/help/matlab/ref/allfinite.html") | Determine if all array elements are finite
 [anynan](https://ww2.mathworks.cn/help/matlab/ref/anynan.html") | Determine if any array element is NaN
 [isinteger](https://ww2.mathworks.cn/help/matlab/ref/isinteger.html) | 确定输入是否为整数数组
@@ -333,8 +333,8 @@ c = 2×2 complex
 
 数值范围
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [eps](https://ww2.mathworks.cn/help/matlab/ref/eps.html) | 浮点相对精度
 [flintmax](https://ww2.mathworks.cn/help/matlab/ref/flintmax.html) | 浮点格式的最大连续整数
 [Inf](https://ww2.mathworks.cn/help/matlab/ref/inf.html) | 创建所有值均为 `Inf` 的数组
@@ -363,8 +363,8 @@ c = 2×2 complex
 
 ### 字符串数组
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [string](https://ww2.mathworks.cn/help/matlab/ref/string.html) | 字符串数组
 [strings](https://ww2.mathworks.cn/help/matlab/ref/strings.html) | 创建不包含字符的字符串数组
 [join](https://ww2.mathworks.cn/help/matlab/ref/join.html) | 合并字符串
@@ -372,8 +372,8 @@ c = 2×2 complex
 
 ### 字符数组
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [char](https://ww2.mathworks.cn/help/matlab/ref/char.html) | 字符数组
 [cellstr](https://ww2.mathworks.cn/help/matlab/ref/cellstr.html) | 转换为字符向量元胞数组
 [blanks](https://ww2.mathworks.cn/help/matlab/ref/blanks.html) | 创建空白字符数组
@@ -381,8 +381,8 @@ c = 2×2 complex
 
 ### 字符或字符串数组
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [compose](https://ww2.mathworks.cn/help/matlab/ref/compose.html) | 将数据格式化为多个字符串
 [sprintf](https://ww2.mathworks.cn/help/matlab/ref/sprintf.html) | 将数据格式化为字符串或字符向量
 [strcat](https://ww2.mathworks.cn/help/matlab/ref/strcat.html) | 水平串联字符串
@@ -399,8 +399,8 @@ c = 2×2 complex
 
 ### 字符或字符串 - 在数值和字符串之间转换
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [double](https://ww2.mathworks.cn/help/matlab/ref/double.html) | 双精度数组
 [string](https://ww2.mathworks.cn/help/matlab/ref/string.html) | 字符串数组
 [str2double](https://ww2.mathworks.cn/help/matlab/ref/str2double.html) | 将字符串转换为双精度值
@@ -411,8 +411,8 @@ c = 2×2 complex
 
 数据类型
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [ischar](https://ww2.mathworks.cn/help/matlab/ref/ischar.html) | 确定输入是否为字符数组
 [iscellstr](https://ww2.mathworks.cn/help/matlab/ref/iscellstr.html) | 确定输入是否为字符向量元胞数组
 [isstring](https://ww2.mathworks.cn/help/matlab/ref/isstring.html) | 确定输入是否为字符串数组
@@ -420,8 +420,8 @@ c = 2×2 complex
 
 文本属性
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [strlength](https://ww2.mathworks.cn/help/matlab/ref/strlength.html) | 字符串长度
 [isstrprop](https://ww2.mathworks.cn/help/matlab/ref/isstrprop.html) | 确定输入字符串中的哪些字符属于指定类别
 [isletter](https://ww2.mathworks.cn/help/matlab/ref/isletter.html) | 确定哪些字符为字母
@@ -432,8 +432,8 @@ c = 2×2 complex
 
 查找
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [contains](https://ww2.mathworks.cn/help/matlab/ref/contains.html) | 确定字符串中是否有模式
 [matches](https://ww2.mathworks.cn/help/matlab/ref/matches.html) | 确定模式是否与字符串匹配
 [count](https://ww2.mathworks.cn/help/matlab/ref/count.html) | 计算字符串中模式的出现次数
@@ -444,22 +444,22 @@ c = 2×2 complex
 
 替换
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [replace](https://ww2.mathworks.cn/help/matlab/ref/replace.html) | 查找并替换一个或多个子字符串
 [replaceBetween](https://ww2.mathworks.cn/help/matlab/ref/replacebetween.html) | 替换起点和终点之间的子字符串
 [strrep](https://ww2.mathworks.cn/help/matlab/ref/strrep.html) | 查找并替换子字符串
 
 ### 字符串匹配模式 - 构建模式
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [pattern](https://ww2.mathworks.cn/help/matlab/ref/pattern.html) | 用于搜索和匹配文本的模式
 
 ### 字符串匹配模式 - 字符匹配模式
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [alphanumericsPattern](https://ww2.mathworks.cn/help/matlab/ref/alphanumericspattern.html) | 匹配字母和数字字符
 [characterListPattern](https://ww2.mathworks.cn/help/matlab/ref/characterlistpattern.html) | 匹配列表中的字符
 [digitsPattern](https://ww2.mathworks.cn/help/matlab/ref/digitspattern.html) |  匹配数字字符
@@ -469,8 +469,8 @@ c = 2×2 complex
 
 ### 字符串匹配模式 - 模式搜索规则
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [optionalPattern](https://ww2.mathworks.cn/help/matlab/ref/optionalpattern.html) | 使模式匹配可选
 [possessivePattern](https://ww2.mathworks.cn/help/matlab/ref/possessivepattern.html) | 匹配模式而不回溯
 [caseSensitivePattern](https://ww2.mathworks.cn/help/matlab/ref/casesensitivepattern.html) | 以区分大小写的方式匹配模式
@@ -495,15 +495,15 @@ c = 2×2 complex
 
 ### 字符串匹配模式 - 自定义模式显示
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [maskedPattern](https://ww2.mathworks.cn/help/matlab/ref/maskedpattern.html) | 具有指定显示名称的模式
 [namedPattern](https://ww2.mathworks.cn/help/matlab/ref/namedpattern.html) | 指定命名模式
 
 ### 字符串匹配模式 - 正则表达式
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [regexp](https://ww2.mathworks.cn/help/matlab/ref/regexp.html) | 匹配正则表达式（区分大小写）
 [regexpi](https://ww2.mathworks.cn/help/matlab/ref/regexpi.html) | 匹配正则表达式（不区分大小写）
 [regexprep](https://ww2.mathworks.cn/help/matlab/ref/regexprep.html) | 使用正则表达式替换文本
@@ -512,8 +512,8 @@ c = 2×2 complex
 
 ### 字符串匹配模式 - 联接和拆分
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [join](https://ww2.mathworks.cn/help/matlab/ref/join.html) | 合并字符串
 [plus](https://ww2.mathworks.cn/help/matlab/ref/plus.html) | 添加数字，追加字符串
 [split](https://ww2.mathworks.cn/help/matlab/ref/split.html) | 在分隔符处拆分字符串
@@ -529,8 +529,8 @@ c = 2×2 complex
 ### 字符串编辑
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [erase](https://ww2.mathworks.cn/help/matlab/ref/erase.html) | 删除字符串内的子字符串
 [eraseBetween](https://ww2.mathworks.cn/help/matlab/ref/erasebetween.html) | 删除起点和终点之间的子字符串
 [extract](https://ww2.mathworks.cn/help/matlab/ref/extract.html) | 从字符串中提取子字符串
@@ -550,8 +550,8 @@ c = 2×2 complex
 
 ### 字符串比较
 
-:- | :- | :-
-:- | :- | :-
+:- | :-
+:- | :-
 [matches](https://ww2.mathworks.cn/help/matlab/ref/matches.html) | 确定模式是否与字符串匹配
 [strcmp](https://ww2.mathworks.cn/help/matlab/ref/strcmp.html) | 比较字符串
 [strcmpi](https://ww2.mathworks.cn/help/matlab/ref/strcmpi.html) | 比较字符串（不区分大小写）

@@ -171,6 +171,12 @@ Docker 网络
 
 ### 操作
 
+获取容器连接的网络
+
+```shell
+docker inspect MyContainer | grep Network
+```
+
 删除网络
 
 ```shell
@@ -297,6 +303,11 @@ $ docker push eon01/nginx localhost:5000/myadmin/nginx
 `docker stop -f $(docker ps -a -q)` | 停止所有容器
 `docker rm -f $(docker ps -a -q)` | 删除所有容器
 `docker rmi -f $(docker images -q)` | 删除所有镜像
+`docker volume prune` | 删除所有未使用的Docker Volume
+`docker network prune` | 删除所有未使用的Docker网络
+`docker system prune` | 清理所有空闲或与任何Docker容器无关的资源
+`docker image prune` | 删除悬空的Docker镜像
+`docker container prune` | 删除所有未使用的Docker 容器
 
 ### 卷 volume
 
@@ -339,6 +350,7 @@ $ docker volume prune
 `docker service ps`                                   | 列出服务的任务
 `docker service scale <service_name>=<replica>`       | 规模特殊服务
 `docker service update <options> <service_name>`      | 更新服务选项
+<!--rehype:className=left-align-->
 
 ### Docker Stack
 
@@ -349,6 +361,7 @@ $ docker volume prune
 `docker stack services <appname>`                 | 列出与应用关联的服务
 `docker stack ps <appname>`                       | 列出与应用关联的正在运行的容器
 `docker stack rm <appname>`                       | 拆掉一个应用程序
+<!--rehype:className=left-align-->
 
 ### Docker Machine
 <!--rehype:wrap-class=col-span-2-->
@@ -369,6 +382,7 @@ $ docker volume prune
 `docker-machine rm $(docker-machine ls -q)`                                 | 删除所有虚拟机及其磁盘映像
 `docker-machine scp docker-compose.yml myvm1:~`                             | 将文件复制到节点的主目录
 `docker-machine ssh myvm1 "docker stack deploy -c <file> <app>"`            | 部署应用
+<!--rehype:className=left-align-->
 
 ### docker 主要命令
 
@@ -414,6 +428,7 @@ $ docker volume prune
 `update`   | 更新一个或多个容器的配置
 `version`  | 显示 Docker 版本信息
 `wait`     | 阻塞直到一个或多个容器停止，然后打印它们的退出代码
+<!--rehype:className=left-align-->
 
 ### docker run/create
 <!--rehype:wrap-class=row-span-3-->

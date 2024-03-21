@@ -78,9 +78,9 @@ $ emacs
 :- | :-
 :- | :-
 `C-g`                       | 中止部分键入或执行的命令
-`M-x` 恢复会话               | 恢复因系统崩溃而丢失的文件
+`M-x` recover-session       | 恢复因系统崩溃而丢失的文件
 `C-x` `u` `C-_` `C-/`       | 撤消不需要的更改
-`M-x` 恢复缓冲器              | 将缓冲区恢复到其原始内容
+`M-x` revert-buffer         | 将缓冲区恢复到其原始内容
 `C-l`                       | 重绘垃圾屏幕
 <!--rehype:className=shortcuts-->
 
@@ -293,9 +293,9 @@ $ emacs
 :- | :-
 `M-.`                    | 查找标签（定义）
 `C-u` `M-.`              | 查找标签的下一个出现
-`M-x` 访问标签表           | 指定一个新的标签文件
-`M-x` 标签搜索            | 正则表达式搜索标签表中的所有文件
-`M-x` 标签查询替换         | 对所有文件运行查询替换
+`M-x` visit-tags-table   | 指定一个新的标签文件
+`M-x` tags-search        | 正则表达式搜索标签表中的所有文件
+`M-x` tags-query-replace | 对所有文件运行查询替换
 `M-,`                    | 继续最后一个标签搜索或查询替换
 <!--rehype:className=shortcuts-->
 
@@ -494,9 +494,9 @@ Emacs 搜索
 :- | :-
 :- | :-
 `M-$`               | 检查当前单词的拼写
-`M-x` ispell 地区   | 检查区域内所有单词的拼写
-`M-x` ispell 缓冲区 | 检查整个缓冲区的拼写
-`M-x` flyspell 模式 | 切换即时拼写检查
+`M-x` ispell-region | 检查区域内所有单词的拼写
+`M-x` ispell-buffer | 检查整个缓冲区的拼写
+`M-x` flyspell-mode | 切换即时拼写检查
 <!--rehype:className=shortcuts-->
 
 ### 编写命令
