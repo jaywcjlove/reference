@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>nvm 备忘清单
+ &#x26;  nvm cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="nvm 是一个用于管理电脑上多个 node.js 版本的程序
+
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="nvm,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/nvm.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.3"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="nvm-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" fill="currentColor" height="1em" width="1em">
+  <g>
+    <path d="M499.8 990c-12.6 0-25.2-3.4-36.4-10.1l-115.9-71c-17.3-10-8.8-13.6-3.2-15.6 23.1-8.3 30-12.4 54.6-26.9 2.6-1.5 6-.9 8.7.7l86.9 51.4c3.2 1.9 7.8 1.9 10.8 0l339.5-201.8c3.2-1.9 5.3-5.8 5.3-9.7V298.5c0-4-2.1-7.9-5.4-9.9L505.3 81.5c-3.2-2-7.5-2-10.7 0L155.5 288.6c-3.4 2-5.5 5.9-5.5 9.8V707c0 4 2.1 7.7 5.4 9.6l87.3 52.4c51.6 26.7 82.2-.4 82.2-32V335.3c0-5.8 4.5-10.3 10.1-10.3h49.9c5.5 0 10.1 4.5 10.1 10.3v401.8c0 71.2-42.3 112.1-107.6 112.1-20 0-35.9 0-80-22.5l-91-54.2C93.9 759.1 80 734 80 707.1V292.6c0-26.9 13.9-52 36.5-65.4L463.6 19.6c21.9-12.9 51.1-12.9 72.9 0l347 207.5c22.5 13.5 36.5 38.6 36.5 65.4V707c0 26.9-13.9 52-36.5 65.5l-347 207.3c-11.1 6.6-23.7 10.1-36.5 10.1l-.2.1z"></path>
+    <path d="M607.1 710c-141.3 0-183.8-69.1-183.8-129.7 0-5.8 4.5-10.3 10-10.3h44.9c5 0 9.2 3.7 10 8.8 6.7 47.3 36.6 68.1 118.8 68.1 73.1 0 103-22.6 103-62.7 0-23.2-7.6-40.3-121.2-51.8-95-9.7-153.8-31.4-153.8-110 0-72.5 59.1-114.8 158-114.8 100.9 0 167.3 30.6 173.2 111.2.2 2.9-.8 5.8-2.7 8-1.9 2.1-4.5 3.3-7.3 3.3h-45c-4.7 0-8.8-3.4-9.8-8.1-9.6-37.1-37.1-51.2-108.4-51.2-79.8 0-89.1 27.9-89.1 49.5 0 26.2 11 33.8 118.8 48.5C729.3 483.2 780 503.9 780 581.4c0 78.3-63.1 128.6-172.9 128.6z"></path>
+  </g>
+</svg><a aria-hidden="true" tabindex="-1" href="#nvm-备忘清单"><span class="icon icon-link"></span></a>nvm 备忘清单</h1><div class="wrap-body">
+<p style="padding-top: 12px;">nvm 是一个用于管理电脑上多个 node.js 版本的程序</p>
+<!--rehype:style=padding-top: 12px;-->
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#windows">Windows</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#macoslinux">macOS/Linux</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#快速使用">快速使用</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#展示当前使用版本">展示当前使用版本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装指定版本的-node-程序">安装指定版本的 node 程序</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#切换使用指定版本">切换使用指定版本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#列出-nodejs-已安版本">列出 node.js 已安版本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#卸载指定版本">卸载指定版本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-node-运行模式">查看 node 运行模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#检查-nvm4w-进程已知问题">检查 NVM4W 进程已知问题</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#启用关闭-nodejs-版本管理">启用/关闭 node.js 版本管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置下载代理">设置下载代理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置版本存储目录">设置版本存储目录</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#展示当前-nvm-使用版本">展示当前 nvm 使用版本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#指定-node-镜像">指定 node 镜像</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#指定-npm-镜像">指定 npm 镜像</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-5"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-5-->
+<p>Node Version Manager 用于管理多个活动的 Node.js 版本</p>
+<ul>
+<li><a href="https://github.com/coreybutler/nvm-windows/releases">Windows 版本</a> <em>(github.io)</em></li>
+<li><a href="https://github.com/nvm-sh/nvm?tab=readme-ov-file">Posix 兼容的 Shell 版本</a> <em>(github.io)</em></li>
+</ul>
+<h4 id="windows"><a aria-hidden="true" tabindex="-1" href="#windows"><span class="icon icon-link"></span></a>Windows</h4>
+<p>最新的 windows 版本通过 <a href="https://github.com/coreybutler/nvm-windows/releases">nvm-windows发行版下载</a> 地址下载安装程序
+双击 <code>setup</code> 程序按照提示操作即可完成安装。</p>
+<h4 id="macoslinux"><a aria-hidden="true" tabindex="-1" href="#macoslinux"><span class="icon icon-link"></span></a>macOS/Linux</h4>
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">wget</span> -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<h4 id="快速使用"><a aria-hidden="true" tabindex="-1" href="#快速使用"><span class="icon icon-link"></span></a>快速使用</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 下载并安装 Node.js 20 版本</span>
+</span><span class="code-line">nvm <span class="token function">install</span> <span class="token number">20</span>
+</span><span class="code-line"><span class="token comment"># 验证环境中的 Node.js 版本是否正确</span>
+</span><span class="code-line"><span class="token function">node</span> <span class="token parameter variable">--version</span> <span class="token comment"># 应该打印“v20.11.1”</span>
+</span><span class="code-line"><span class="token comment"># 验证环境中是否存在正确的 NPM 版本</span>
+</span><span class="code-line"><span class="token function">npm</span> <span class="token parameter variable">--version</span> <span class="token comment"># 应该打印“10.2.4”</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="展示当前使用版本"><a aria-hidden="true" tabindex="-1" href="#展示当前使用版本"><span class="icon icon-link"></span></a>展示当前使用版本</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm current
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装指定版本的-node-程序"><a aria-hidden="true" tabindex="-1" href="#安装指定版本的-node-程序"><span class="icon icon-link"></span></a>安装指定版本的 node 程序</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>version 设置为 <code>latest</code> 安装最新版本或者设置为 "lts" 安装最近的 LTS（长期支持）版本。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm <span class="token function">install</span> <span class="token operator">&#x3C;</span>version<span class="token operator">></span> <span class="token punctuation">[</span>arch<span class="token punctuation">]</span>
+</span></code></pre>
+<p><code>arch</code> 可以指定 <code>32</code> 或者 <code>64</code> 位版本（默认跟随系统），设置为 <code>all</code> 同时安装 32 和 64 位版本。在命令最后添加 <code>--insecure</code> 将跳过远程下载服务器的 SSL 验证。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="切换使用指定版本"><a aria-hidden="true" tabindex="-1" href="#切换使用指定版本"><span class="icon icon-link"></span></a>切换使用指定版本</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm use <span class="token operator">&#x3C;</span>version<span class="token operator">></span> <span class="token punctuation">[</span>arch<span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="列出-nodejs-已安版本"><a aria-hidden="true" tabindex="-1" href="#列出-nodejs-已安版本"><span class="icon icon-link"></span></a>列出 node.js 已安版本</h3><div class="wrap-body">
+<p>可选输入 available 显示可获取的版本下载列表。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm list <span class="token punctuation">[</span>available<span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="卸载指定版本"><a aria-hidden="true" tabindex="-1" href="#卸载指定版本"><span class="icon icon-link"></span></a>卸载指定版本</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># &#x3C;version> 可选设置 latest/lts/newest</span>
+</span><span class="code-line">nvm uninstall <span class="token operator">&#x3C;</span>version<span class="token operator">></span> 
+</span></code></pre>
+<p>启用 <code>newest</code> 指定最近安装版本。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm use <span class="token operator">&#x3C;</span>arch<span class="token operator">></span> <span class="token comment"># 可选指定32/64位架构</span>
+</span></code></pre>
+<p>将继续使用当前版本，但是将切换为指定架构程序。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看-node-运行模式"><a aria-hidden="true" tabindex="-1" href="#查看-node-运行模式"><span class="icon icon-link"></span></a>查看 node 运行模式</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm arch <span class="token punctuation">[</span><span class="token number">32</span><span class="token operator">|</span><span class="token number">64</span><span class="token punctuation">]</span>
+</span></code></pre>
+<p>查看 node 程序是运行在 <code>32</code> 位还是 <code>64</code> 位模式下，指定 <code>32</code> 或者 <code>64</code> 覆盖默认运行架构模式</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="检查-nvm4w-进程已知问题"><a aria-hidden="true" tabindex="-1" href="#检查-nvm4w-进程已知问题"><span class="icon icon-link"></span></a>检查 NVM4W 进程已知问题</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm check
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="启用关闭-nodejs-版本管理"><a aria-hidden="true" tabindex="-1" href="#启用关闭-nodejs-版本管理"><span class="icon icon-link"></span></a>启用/关闭 node.js 版本管理</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm on  <span class="token comment"># 启用</span>
+</span><span class="code-line">nvm off <span class="token comment"># 关闭 - 不会执行任何卸载操作</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="设置下载代理"><a aria-hidden="true" tabindex="-1" href="#设置下载代理"><span class="icon icon-link"></span></a>设置下载代理</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm proxy <span class="token punctuation">[</span>url<span class="token punctuation">]</span>
+</span></code></pre>
+<p>可选 url 留空查看当前使用代理，设置为 "none" 移除代理设置。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="设置版本存储目录"><a aria-hidden="true" tabindex="-1" href="#设置版本存储目录"><span class="icon icon-link"></span></a>设置版本存储目录</h3><div class="wrap-body">
+<p>设置 nvm 储存不同版本的 node.js 的目录。如果未设置path，将展示当前存储目录。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm root <span class="token operator">&#x3C;</span>path<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="展示当前-nvm-使用版本"><a aria-hidden="true" tabindex="-1" href="#展示当前-nvm-使用版本"><span class="icon icon-link"></span></a>展示当前 nvm 使用版本</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm version
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="指定-node-镜像"><a aria-hidden="true" tabindex="-1" href="#指定-node-镜像"><span class="icon icon-link"></span></a>指定 node 镜像</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm node_mirror <span class="token operator">&#x3C;</span>node_mirror_url<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="指定-npm-镜像"><a aria-hidden="true" tabindex="-1" href="#指定-npm-镜像"><span class="icon icon-link"></span></a>指定 npm 镜像</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">nvm npm_mirror <span class="token operator">&#x3C;</span>npm_mirror_url<span class="token operator">></span>
+</span></code></pre>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.5.3" defer></script><script src="../js/fuse.min.js?v=1.5.3" defer></script><script src="../js/main.js?v=1.5.3" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
