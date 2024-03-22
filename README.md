@@ -235,7 +235,8 @@ Quick Reference
 [Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=CSS-->  
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=HTML-->  
-[ISO 639-1 Language Code](./docs/iso-639-1.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[ISO-3166 国家代码](./docs/iso-3166-1.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[ISO-639 语言代码](./docs/iso-639-1.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Emoji](./docs/emoji.md)<!--rehype:style=\-\-bg\-opacity: 0.75;background-image: linear-gradient(to left, rgba(74 222 128 / var(\-\-bg\-opacity)), rgba(59 130 246 / var(\-\-bg\-opacity)));-->  
 [MIME types](./docs/mime.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Resolutions](./docs/resolutions.md)<!--rehype:style=background: rgb(16 185 129);-->  
