@@ -7,6 +7,15 @@ Docker 备忘清单
 ----
 <!--rehype:body-class=cols-2-->
 
+### 安装
+
+```shell
+curl -sSL https://get.docker.com/ | sh
+```
+```shell
+sudo chmod 777 /var/run/docker.sock
+```
+
 ### 入门
 
 在后台创建和运行容器
@@ -691,3 +700,4 @@ $ docker run -d --name gitlab \
 - [Dockerfile 备忘清单](./dockerfile.md) *(github.io)*
 - [Docker 官方入门教程](https://docs.docker.com/get-started/) *(docker.com)*
 - [Docker入门学习笔记](https://jaywcjlove.github.io/docker-tutorial) *(github.io)*
+- [快速安装Docker及配置及Docker配置、Docker常用命令](https://www.loganjin.cn/article/docker-install/)
