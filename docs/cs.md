@@ -529,53 +529,116 @@ Console.WriteLine(b);
 // True
 ```
 
-## 类
+类
+---
 
-### 默认情况(默认情况即为内部类)
+### 成员变量
 
-```
-//下面两个类相同，默认情况下，类声明为内部类，即只能在当前项目中的代码才能访问它
-class MyClass
-{
-...
-}
-internal class MyCalss
-{
-...
-}
-```
-
-### 公共类
-
-```
+```cs
 public class MyClass
 {
-...
+    // 私有变量
+    private int myVariable;
+    // 公有属性
+    public string MyProperty { get; set; }
+}
+
+```
+
+### 构造函数
+
+```cs
+public class MyClass
+{
+    // 默认构造函数
+    public MyClass() 
+    {
+        // 初始化代码
+    }
+    // 自定义构造函数
+    public MyClass(int value) 
+    {
+        // 使用传入的值初始化
+    }
 }
 ```
 
-### 抽象类与密封类
+### 方法
 
-```
-//抽象类（abstract）与密封类（sealed）为互斥关系，抽象类不能实例化，允许继承，可以有抽象成员，密封类不允许继承
-//抽象类与密封类都可以声明为公共类（public）和内部类（internal）
-public abstract class MyClass
+```cs
+public class MyClass
 {
-...
+    // 无返回值方法
+    public void MyMethod()
+    {
+        // 方法体
+    }
+    // 有返回值方法
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
 }
-public sealed class MyClass
+```
+
+### 属性
+
+```cs
+public class MyClass
 {
-...
+    private string myField;
+    
+    public string MyProperty
+    {
+        get { return myField; }
+        set { myField = value; }
+    }
+}
+```
+
+### 接口
+
+```cs
+public interface IMyInterface
+{
+    void MyMethod(); // 接口方法声明
+}
+
+public class MyClass : IMyInterface
+{
+    public void MyMethod() // 实现接口方法
+    {
+        // 实现代码
+    }
+}
+```
+
+### 静态成员
+
+```cs
+public class MyClass
+{
+    public static int StaticVariable = 10;
+    public static void StaticMethod()
+    {
+        // 静态方法体
+    }
 }
 ```
 
 ### 继承
+<!--rehype:wrap-class=row-span-4-->
 
-```
-/*
-注意，在C#的类定义中，只能有一个基类。如果继承了一个抽象类，就必须实现所继承的所有抽象成员(除非派生类也是抽象的)。
-编译器不允许派生类的可访问性高于基类。也就是说，内部类可以继承于一个公共基类，但公共类不能继承于一个内部基类。因此，下述代码是合法的：
-*/
+注意
+
+- 在类定义中，只能有一个基类
+- 继承了一个抽象类，必须实现所继承的所有抽象成员(除非派生类也是抽象的)
+- 编译器不允许派生类的可访问性高于基类
+- 内部类可以继承于一个公共基类，但公共类不能继承于一个内部基类
+
+因此，下述代码是合法的：
+
+```cs
 public class MyBase
 {
     // Class members.
@@ -584,7 +647,11 @@ internal class MyClass : MyBase
 {
     // Class members.
 }
-//但下述代码不能编译:
+```
+
+下述代码不能编译:
+
+```cs
 internal class MyBase
 {
     // Class members.
@@ -593,12 +660,92 @@ public class MyClass : MyBase
 {
     // Class members.
 }
-/*
-如果没有使用基类，被定义的类就只继承于基类 System.Object(它在 C#中的别名是 object)。毕竟，在继承层次结构中，所有类的根都是 System.Object。
-*/
 ```
 
+如果没有使用基类，被定义的类就只继承于基类 System.Object(它在 C# 中的别名是 object)。在继承层次结构中，所有类的根都是 `System.Object`
 
+### 访问修饰符
+<!--rehype:wrap-class=row-span-2-->
+
+:-- | :--
+:-- | :--
+public | 公有，可从任何位置访问
+private | 私有，只能在当前类中访问
+protected | 受保护，只能在当前类和派生类中访问
+internal | 内部，只能在同一程序集中访问
+protected internal | 受保护的内部，可以在同一程序集中的任何地方访问，以及派生类中
+private protected | 私有保护，只能在同一程序集中的派生类中访问
+
+### 公共类
+
+```cs
+public class MyClass
+{
+  ...
+}
+```
+
+添加 `public` 声明为公共类
+
+### 私有类
+
+```cs
+private class MyClass
+{
+  ...
+}
+```
+
+添加 `public` 声明为公共类
+
+### 命名约定
+
+- 类名使用 PascalCase 格式
+- 成员变量和方法名使用 camelCase 格式
+- 公有成员和类型名应该使用有意义的名字
+
+### 默认情况(默认情况即为内部类)
+<!--rehype:wrap-class=row-span-2-->
+
+```cs
+class MyClass 
+{
+  ...
+}
+internal class MyCalss
+{
+  ...
+}
+```
+
+上面两个类相同，声明为内部（`internal`）类，只能在当前项目中的代码才能访问它
+
+---
+
+- 抽象类与密封类为互斥关系
+- 抽象类不能实例化，允许继承
+- 可以有抽象成员，密封类不允许继承
+- 都可以声明为公共类（public）和内部类（internal）
+
+### 抽象类与密封类
+
+#### 抽象类（abstract）
+
+```cs
+public abstract class MyClass
+{
+  ...
+}
+```
+
+#### 密封类（sealed
+
+```cs
+public sealed class MyClass
+{
+  ...
+}
+```
 
 杂项
 -----------
