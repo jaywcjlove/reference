@@ -67,7 +67,23 @@ Console.WriteLine(name); // => John Doe
 
 查看: [C#字符串](#c-字符串)
 
+### 注释
+
+```cs
+// 单行注释
+
+/* 
+ * 多行
+ * 注释 - 用于文档 
+ */
+
+// TODO：
+// 向IDE中的任务列表添加注释（VS、Rider都支持）
+/// XML 单行注释，用于文档
+```
+
 ### 用户输入
+<!--rehype:wrap-class=col-span-2-->
 
 ```cs showLineNumbers
 Console.WriteLine("Enter number:");
@@ -75,6 +91,19 @@ if(int.TryParse(Console.ReadLine(),out int input))
 {
   // 输入验证
   Console.WriteLine($"You entered {input}");
+}
+```
+
+### 条件判断
+
+```cs
+int j = 10;
+if (j == 10) {
+  Console.WriteLine("I get printed");
+} else if (j > 10) {
+  Console.WriteLine("I don't");
+} else {
+  Console.WriteLine("I also don't");
 }
 ```
 
@@ -94,47 +123,8 @@ var str = "999";
 var bo = false;
 ```
 
-### 注释
-
-```cs
-// 单行注释
-
-/* 
- * 多行
- * 注释 - 用于文档 
- */
-
-// TODO：
-// 向IDE中的任务列表添加注释（VS、Rider都支持）
-/// XML 单行注释，用于文档
-```
-
-### 条件判断
-
-```cs
-int j = 10;
-if (j == 10) {
-  Console.WriteLine("I get printed");
-} else if (j > 10) {
-  Console.WriteLine("I don't");
-} else {
-  Console.WriteLine("I also don't");
-}
-```
-
-### 数组
-
-```cs
-char[] chars = new char[10];
-chars[0] = 'a';
-chars[1] = 'b';
-string[] letters = {"A", "B", "C"};
-int[] mylist = {100, 200};
-bool[] answers = {true, false};
-```
-
 ### 循环
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```cs
 int[] numbers = {1, 2, 3, 4, 5};
@@ -167,6 +157,17 @@ do
 {
    Console.WriteLine("与 while 类似，do...while 会确保至少执行一次循环。");
 } while( true );
+```
+
+### 数组
+
+```cs
+char[] chars = new char[10];
+chars[0] = 'a';
+chars[1] = 'b';
+string[] letters = {"A", "B", "C"};
+int[] mylist = {100, 200};
+bool[] answers = {true, false};
 ```
 
 C# 数据类型
