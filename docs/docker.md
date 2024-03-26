@@ -7,15 +7,14 @@ Docker 备忘清单
 ----
 <!--rehype:body-class=cols-2-->
 
-### 安装
+### 入门
+
+#### 安装
 
 ```shell
 curl -sSL https://get.docker.com/ | sh
 sudo chmod 777 /var/run/docker.sock
 ```
-
-### 入门
-<!--rehype:wrap-class=row-span-2-->
 
 在后台创建和运行容器
 
@@ -177,55 +176,16 @@ Docker 网络
 ----
 <!--rehype:body-class=cols-2-->
 
-### 操作
-
-获取容器连接的网络
-
-```shell
-docker inspect MyContainer | grep Network
-```
-
-删除网络
-
-```shell
-docker network rm MyOverlayNetwork
-```
-
-列出网络
-
-```shell
-docker network ls
-```
-
-获取有关网络的信息
-
-```shell
-docker network inspect MyOverlayNetwork
-```
-
-将正在运行的容器连接到网络
-
-```shell
-docker network connect MyOverlayNetwork nginx
-```
-
-启动时将容器连接到网络
-
-```shell
-docker run -it -d --network=MyOverlayNetwork nginx
-```
-
-断开容器与网络的连接
-
-```shell
-docker network disconnect MyOverlayNetwork nginx
-```
-
 ### 创建网络
 
 ```shell
 docker network create -d overlay MyOverlayNetwork
 docker network create -d bridge MyBridgeNetwork
+```
+
+自定义网络子网和网关
+
+```shell
 docker network create -d overlay \
   --subnet=192.168.0.0/16 \
   --subnet=192.170.0.0/16 \
@@ -237,6 +197,51 @@ docker network create -d overlay \
   --aux-address="my-printer=192.170.1.5" \
   --aux-address="my-nas=192.170.1.6" \
   MyOverlayNetwork
+```
+
+### 操作
+<!--rehype:wrap-class=row-span-3-->
+
+获取容器连接的网络
+
+```shell
+docker inspect MyContainer | grep Network
+```
+
+获取有关网络的信息
+
+```shell
+docker network inspect <network_name>
+```
+
+将正在运行的容器连接到网络
+
+```shell
+docker network connect <network_name> <container_name>
+```
+
+启动时将容器连接到网络
+
+```shell
+docker run -it -d --network=<network_name> <container_name>
+```
+
+断开容器与网络的连接
+
+```shell
+docker network disconnect <network_name> <container_name>
+```
+
+### 删除网络
+
+```bash
+docker network rm <network_name>
+```
+
+### 列出网络
+
+```shell
+docker network ls
 ```
 
 Docker 快捷键
