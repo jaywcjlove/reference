@@ -529,6 +529,77 @@ Console.WriteLine(b);
 // True
 ```
 
+## 类
+
+### 默认情况(默认情况即为内部类)
+
+```
+//下面两个类相同，默认情况下，类声明为内部类，即只能在当前项目中的代码才能访问它
+class MyClass
+{
+...
+}
+internal class MyCalss
+{
+...
+}
+```
+
+### 公共类
+
+```
+public class MyClass
+{
+...
+}
+```
+
+### 抽象类与密封类
+
+```
+//抽象类（abstract）与密封类（sealed）为互斥关系，抽象类不能实例化，允许继承，可以有抽象成员，密封类不允许继承
+//抽象类与密封类都可以声明为公共类（public）和内部类（internal）
+public abstract class MyClass
+{
+...
+}
+public sealed class MyClass
+{
+...
+}
+```
+
+### 继承
+
+```
+/*
+注意，在C#的类定义中，只能有一个基类。如果继承了一个抽象类，就必须实现所继承的所有抽象成员(除非派生类也是抽象的)。
+编译器不允许派生类的可访问性高于基类。也就是说，内部类可以继承于一个公共基类，但公共类不能继承于一个内部基类。因此，下述代码是合法的：
+*/
+public class MyBase
+{
+    // Class members.
+}
+internal class MyClass : MyBase
+{
+    // Class members.
+}
+//但下述代码不能编译:
+internal class MyBase
+{
+    // Class members.
+}
+public class MyClass : MyBase
+{
+    // Class members.
+}
+/*
+如果没有使用基类，被定义的类就只继承于基类 System.Object(它在 C#中的别名是 object)。毕竟，在继承层次结构中，所有类的根都是 System.Object。
+*/
+```
+
+
+
 杂项
 -----------
 
