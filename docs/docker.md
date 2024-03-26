@@ -15,6 +15,7 @@ sudo chmod 777 /var/run/docker.sock
 ```
 
 ### 入门
+<!--rehype:wrap-class=row-span-2-->
 
 在后台创建和运行容器
 
