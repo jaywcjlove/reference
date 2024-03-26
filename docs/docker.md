@@ -11,8 +11,6 @@ Docker 备忘清单
 
 ```shell
 curl -sSL https://get.docker.com/ | sh
-```
-```shell
 sudo chmod 777 /var/run/docker.sock
 ```
 
