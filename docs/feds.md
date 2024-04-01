@@ -150,7 +150,6 @@ CDN
 
 [cdnjs](https://cdnjs.com/)<!--rehype:target=_blank&style=background: rgb(106 106 106/var(\-\-bg\-opacity));-->
 [jsDelivr](https://www.jsdelivr.com/)<!--rehype:target=_blank&style=background: rgb(106 106 106/var(\-\-bg\-opacity));-->
-[前端静态资源库](https://cdn.baomitu.com/)<!--rehype:target=_blank&style=background: rgb(106 106 106/var(\-\-bg\-opacity));-->
 [UNPKG](https://unpkg.com/)<!--rehype:target=_blank&style=background: rgb(106 106 106/var(\-\-bg\-opacity));-->
 [Statically](https://statically.io/)<!--rehype:target=_blank&style=background: rgb(106 106 106/var(\-\-bg\-opacity));-->
 [raw.githack.com](http://raw.githack.com/)<!--rehype:target=_blank&style=background: rgb(106 106 106/var(\-\-bg\-opacity));-->
