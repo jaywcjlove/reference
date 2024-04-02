@@ -1,3 +1,5 @@
+
+
 C# 备忘清单
 ===
 
@@ -561,6 +563,11 @@ public class MyClass
     {
         // 使用传入的值初始化
     }
+    // 析构函数
+    ~MyClass() {
+        // Destructor body.
+    }
+
 }
 ```
 
@@ -677,6 +684,27 @@ internal | 内部，只能在同一程序集中访问
 protected internal | 受保护的内部，可以在同一程序集中的任何地方访问，以及派生类中
 private protected | 私有保护，只能在同一程序集中的派生类中访问
 
+### 字段的特殊修饰符
+
+| :--      | :--                                                          |
+| -------- | ------------------------------------------------------------ |
+| readonly | 表示这个字段只能在执行构造函数的过程中赋值，或由初始化赋值语句赋值 |
+| static   | 静态字段，必须通过类名来访问，例如：Class.staticField        |
+| const    | 常量字段，但同时也是静态字段，自带static                     |
+
+### 方法的特殊修饰符
+
+| :--      | :--                                                          |
+| -------- | ------------------------------------------------------------ |
+| static   | 静态方法，只能通过类名来调用方法                             |
+| virtual  | 方法可以被重写                                               |
+| abstract | 抽象方法，只用于抽象类                                       |
+| override | 方法重写了基类的一个方法（如果方法被重写，就必须使用该关键字）。 |
+| extern   | 方法定义放在其他地方，可以在项目外部提供方法的实际实现代码   |
+| sealed   | 如果使用了 `override` ，也可以使用 `sealed` 来指定在派生类中不能再对这个方法进行进一步的修改，即这个方法不能被派生类重写 |
+
+
+
 ### 公共类
 
 ```cs
@@ -735,7 +763,14 @@ internal class MyCalss
 ```cs
 public abstract class MyClass
 {
-  ...
+    //普通公共字段
+    public string id;
+    //抽象字段
+  	public abstract string Name { get; }
+    //常量字段
+  	public const  string Description = "const string";
+    //静态字段
+  	public static  string Order = "static string";
 }
 ```
 
@@ -747,6 +782,236 @@ public sealed class MyClass
   ...
 }
 ```
+
+## 元组
+
+### 基本使用
+
+```
+// 不带名称的基本元组创建
+(int, string, bool) tuple1 = (1, "Hello", true);
+Console.WriteLine($"Item1: {tuple1.Item1}, Item2: {tuple1.Item2}, Item3: {tuple1.Item3}");
+
+// 带名称的元组创建（C# 7.0及以上版本）
+(string FirstName, string LastName, int Age) person = ("Alice", "Smith", 30);
+Console.WriteLine($"First Name: {person.FirstName}, Last Name: {person.LastName}, Age: {person.Age}");
+```
+
+### 方法调用与接收
+
+```
+public (int Id, string Name, double Score) GetStudentInfo()
+{
+    return (123, "John Doe", 95.5);
+}
+
+// 使用
+(var id, var name, var score) = GetStudentInfo();
+Console.WriteLine($"Id: {id}, Name: {name}, Score: {score}");
+```
+
+### 类中使用元组
+
+```
+public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public double GPA { get; set; }
+
+    public void Deconstruct(out int id, out string name, out double gpa)
+    {
+        id = this.Id;
+        name = this.Name;
+        gpa = this.GPA;
+    }
+}
+
+// 使用Deconstruct方法创建元组
+Student student = new Student { Id = 1, Name = "Jane", GPA = 3.8 };
+(int id, string name, double gpa) = student;
+Console.WriteLine($"Student Id: {id}, Name: {name}, GPA: {gpa}");
+```
+
+## 集合
+
+### c#集合
+
+| 集合                                                         | 有序 | 已排序 | 线程安全 | 允许空值 |
+| :----------------------------------------------------------- | :--- | :----- | :------- | :------- |
+| [List](https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1) | Y    | *N*    | *N*      | 是       |
+| [ArrayList](https://docs.microsoft.com/dotnet/api/system.collections.arraylist) (非泛型) | Y    | *N*    | *N*      | 是       |
+| [Vector](https://docs.microsoft.com/dotnet/api/system.collections.vector) (非泛型) | N    | *N*    | Y        | 是       |
+| [LinkedList](https://docs.microsoft.com/dotnet/api/system.collections.generic.linkedlist-1) | Y    | *N*    | *N*      | 是       |
+| [ConcurrentBag](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentbag-1) | *N*  | *N*    | Y        | 是       |
+| [HashSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.hashset-1) | *N*  | *N*    | *N*      | 是       |
+| [SortedSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.sortedset-1) | Y    | Y      | *N*      | 是       |
+| [ConcurrentDictionary](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2) | Y    | *N*    | Y        | 是       |
+| [Dictionary](https://docs.microsoft.com/dotnet/api/system.collections.generic.dictionary-2) | *N*  | *N*    | *N*      | 是       |
+| [SortedDictionary](https://docs.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2) | Y    | Y      | *N*      | 是       |
+| [Stack](https://docs.microsoft.com/dotnet/api/system.collections.generic.stack-1) | *N*  | *N*    | *N*      | 是       |
+| [Queue](https://docs.microsoft.com/dotnet/api/system.collections.generic.queue-1) | *N*  | *N*    | *N*      | 是       |
+| [ConcurrentQueue](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentqueue-1) | *N*  | *N*    | Y        | 是       |
+| [ConcurrentStack](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentstack-1) | *N*  | *N*    | Y        | 是       |
+| [HashTable](https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.hashtable?view=net-6.0) | N    | Y      | Y        | 否       |
+
+### List
+
+```c#
+// 创建一个整数类型的List
+List<int> numbers = new List<int>();
+
+// 增加（Add）
+numbers.Add(10);
+numbers.Add(20);
+//增加30，40两个元素
+numbers.AddRange(new[] { 30, 40 });
+
+// 删除（Remove）
+if (numbers.Contains(20))
+{
+    numbers.Remove(20);
+}
+
+// 修改（更改特定索引处的元素）
+numbers[0] = 50; // 直接替换元素
+
+// 查询（Find/Contains）
+bool isPresent = numbers.Contains(50);
+
+// 查找索引
+int index = numbers.IndexOf(40);
+if (index != -1)
+{
+    numbers[index] = 45; // 修改找到的元素
+}
+```
+
+### HashSet
+
+```c#
+// 创建一个字符串类型的HashSet
+HashSet<string> words = new HashSet<string> { "apple", "banana" };
+
+// 增加（Add）
+words.Add("cherry");
+bool wasAdded = words.Add("apple"); // 返回false，因为"apple"已存在
+
+// 删除（Remove）
+words.Remove("banana");
+
+// 修改（HashSet不允许直接修改元素，需删除后重新添加）
+if (words.Contains("cherry"))
+{
+    words.Remove("cherry");
+    words.Add("cherries");
+}
+
+// 查询（Contains）
+bool containsCherries = words.Contains("cherries");
+```
+
+### ConcurrentBag
+
+```c#
+// 创建一个并发安全的整数集合
+ConcurrentBag<int> concurrentNumbers = new ConcurrentBag<int>();
+
+// 增加（Add）
+concurrentNumbers.Add(1);
+concurrentNumbers.Add(2);
+
+// 删除（由于ConcurrentBag没有直接的Remove方法，只能通过迭代并尝试移除）
+foreach (var number in concurrentNumbers.ToArray())
+{
+    concurrentNumbers.TryTake(out _number); // 并发安全地移除一个元素
+}
+
+// 修改（无法直接修改，同样需先移除再添加，但由于并发特性，不能保证一定能修改目标元素）
+// 在并发环境下尤其复杂，此处省略示例
+
+// 查询（Contains）
+bool hasOne = concurrentNumbers.Contains(1);
+```
+
+### Dictionary
+
+```c#
+// 创建一个键值对字典
+Dictionary<string, int> scores = new Dictionary<string, int>
+{
+    { "Alice", 85 },
+    { "Bob", 90 }
+};
+
+// 增加（Add）
+scores.Add("Charlie", 88);
+
+// 删除（Remove）
+scores.Remove("Bob");
+
+// 修改（Update）
+if (scores.ContainsKey("Alice"))
+{
+    scores["Alice"] = 90; // 直接替换值
+}
+
+// 查询（ContainsKey / GetValueOrDefault）
+bool aliceExists = scores.ContainsKey("Alice");
+int charlieScore = scores.GetValueOrDefault("Charlie", 0);
+```
+
+### Stack
+
+```c#
+// 创建一个整数栈
+Stack<int> stack = new Stack<int>();
+stack.Push(1);
+stack.Push(2);
+
+// 增加（Push）
+stack.Push(3);
+
+// 删除（Pop）
+int topNumber = stack.Pop(); // 删除并返回栈顶元素
+
+// 修改（Stack不支持直接修改元素，需先Pop再Push）
+int poppedValue = stack.Pop();
+stack.Push(poppedValue * 2); // 替换刚弹出的值
+
+// 查询（Peek / Contains）
+int peekedValue = stack.Peek(); // 查看但不移除栈顶元素
+bool hasTwo = stack.Contains(2);
+```
+
+### Hashtable
+
+```c#
+// 创建一个哈希表
+Hashtable hashTable = new Hashtable();
+hashTable.Add("key1", "value1");
+hashTable.Add("key2", "value2");
+
+// 增加（Add）
+hashTable.Add("key3", "value3");
+
+// 删除（Remove）
+hashTable.Remove("key1");
+
+// 修改（Replace）
+object oldValue;
+if (hashTable.ContainsKey("key2"))
+{
+    oldValue = hashTable["key2"];
+    hashTable["key2"] = "new_value2";
+}
+
+// 查询（Contains / GetValue）
+bool hasKey2 = hashTable.ContainsKey("key2");
+string valueOfKey2 = (string)hashTable["key2"];
+```
+
+
 
 杂项
 -----------
@@ -761,3 +1026,4 @@ public sealed class MyClass
 `Managed code` | 托管代码 | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
 `Unmanaged code` | 非托管代码 | 直接编译为机器代码且不能由 .NET 运行时直接托管的代码。<br/>不包含空闲内存管理、垃圾收集等。从 C/C++ 创建的 DLL 就是示例
 <!--rehype:className=show-header-->
+
