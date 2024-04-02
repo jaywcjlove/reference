@@ -555,24 +555,138 @@ end
 函数
 ------
 
+### 函数定义
+
+```elixir
+def function_name(param1, param2) do
+  # 函数体
+end
+```
+
+示例：
+
+```elixir
+def sum(a, b) do
+  a + b
+end
+```
+
+### 模式匹配的多个函数定义
+<!--rehype:wrap-class=row-span-2-->
+
+```elixir
+def fun_name(:atom) do
+  # 对于 :atom 的处理
+end
+
+def fun_name("string") do
+  # 对于 "string" 的处理
+end
+
+def fun_name(number) when is_integer(number) do
+  # 对于整数的处理
+end
+```
+
+示例：
+
+```elixir
+def is_positive(number) when number > 0 do
+  true
+end
+
+def is_positive(_), do: false
+```
+
+### 函数调用
+
+```elixir
+module_name.function_name(arg1, arg2)
+```
+
+示例：
+
+```elixir
+Enum.map([1, 2, 3], &(&1 * 2))
+```
+
+### 函数参数默认值
+
+```elixir
+def function_name(parameter \\ 默认值) do
+  # 函数体
+end
+```
+
+示例：
+
+```elixir
+def greet(name \\ "World") do
+  "Hello, #{name}!"
+end
+```
+
+### 可变参数数量
+
+```elixir
+def function_name(param1, param2 \\ []) do
+  # 函数体
+end
+```
+
+示例：
+
+```elixir
+def sum(numbers) do
+  Enum.sum(numbers)
+end
+```
+
+### 函数文档注释
+
+```elixir
+@doc """
+这是函数的文档。
+"""
+```
+
+示例：
+
+```elixir
+@doc """
+Adds two numbers together.
+
+## 示例
+
+    iex> MyModule.add(1, 2)
+    3
+"""
+def add(a, b) do
+  a + b
+end
+```
+
+这些是 Elixir 函数语法的基本要点，可以帮助你开始编写函数。
+
 ### 匿名函数
->
-> 使用 fn 和 end 关键字来定义匿名函数，在这两者之间，可以定义任意数量的参数和函数体，它们用 -> 分隔开。
 
 ```elixir
 iex> sum = fn (a, b) -> a + b end
 iex> sum.(2, 3)
 5
+```
 
-# 可以使用 & 语法来简化匿名函数的定义：
+可以使用 & 语法来简化匿名函数的定义：
+
+```elixir
 iex> sum = &(&1 + &2)
 iex> sum.(2, 3)
 5
 ```
 
 ### 闭包
->
-> 匿名函数去引用外部的变量，这通常被称为闭包。
+
+匿名函数去引用外部的变量，这通常被称为闭包。
 
 ```elixir
 iex> double = fn a -> add.(a, a) end
@@ -581,7 +695,7 @@ double.(2)
 4
 ```
 
-> 闭包与守卫
+闭包与守卫
 
 ```elixir
 iex> f = fn
@@ -596,8 +710,8 @@ iex> f.(-1, 3)
 ```
 
 ### 命名函数
->
-> 命名函数是通过 def 关键字定义在某个模块中
+
+命名函数是通过 def 关键字定义在某个模块中
 
 ```elixir
 defmodule Greeter do
@@ -608,20 +722,27 @@ end
 
 iex> Greeter.hello("Sean")
 "Hello, Sean"
+```
 
-# 简写为一行：
+简写为一行：
+
+```elixir
 defmodule Greeter do
   def hello(name), do: "Hello, " <> name
 end
+```
 
-# 私有函数
+私有函数
+
+```elixir
 defmodule Greeter do
   def hello(name), do: phrase <> name
-  defp phrase, do: "Hello, " # 使用defp来定义私有函数
+  # 使用defp来定义私有函数
+  defp phrase, do: "Hello, " 
 end
 ```
 
-> 函数的默认参数：使用`\\`来定义默认参数
+函数的默认参数：使用 `\\` 来定义默认参数
 
 ```elixir
 defmodule Greeter do
