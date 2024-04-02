@@ -1,5 +1,4 @@
 
-
 C# 备忘清单
 ===
 
@@ -545,10 +544,23 @@ public class MyClass
     // 公有属性
     public string MyProperty { get; set; }
 }
+```
 
+### 静态成员
+
+```cs
+public class MyClass
+{
+    public static int StaticVariable = 10;
+    public static void StaticMethod()
+    {
+        // 静态方法体
+    }
+}
 ```
 
 ### 构造函数
+<!--rehype:wrap-class=row-span-2-->
 
 ```cs
 public class MyClass
@@ -558,11 +570,13 @@ public class MyClass
     {
         // 初始化代码
     }
+
     // 自定义构造函数
     public MyClass(int value) 
     {
         // 使用传入的值初始化
     }
+
     // 析构函数
     ~MyClass() {
         // Destructor body.
@@ -621,21 +635,8 @@ public class MyClass : IMyInterface
 }
 ```
 
-### 静态成员
-
-```cs
-public class MyClass
-{
-    public static int StaticVariable = 10;
-    public static void StaticMethod()
-    {
-        // 静态方法体
-    }
-}
-```
-
 ### 继承
-<!--rehype:wrap-class=row-span-4-->
+<!--rehype:wrap-class=row-span-3-->
 
 注意
 
@@ -677,33 +678,35 @@ public class MyClass : MyBase
 
 :-- | :--
 :-- | :--
-public | 公有，可从任何位置访问
-private | 私有，只能在当前类中访问
-protected | 受保护，只能在当前类和派生类中访问
-internal | 内部，只能在同一程序集中访问
-protected internal | 受保护的内部，可以在同一程序集中的任何地方访问，以及派生类中
-private protected | 私有保护，只能在同一程序集中的派生类中访问
+`public` | 公有，可从任何位置访问
+`private` | 私有，只能在当前类中访问
+`protected` | 受保护，只能在当前类和派生类中访问
+`internal` | 内部，只能在同一程序集中访问
+`protected internal` | 受保护的内部，可以在同一程序集中的任何地方访问，以及派生类中
+`private protected` | 私有保护，只能在同一程序集中的派生类中访问
+<!--rehype:className=style-list-->
 
 ### 字段的特殊修饰符
 
 | :--      | :--                                                          |
 | -------- | ------------------------------------------------------------ |
-| readonly | 表示这个字段只能在执行构造函数的过程中赋值，或由初始化赋值语句赋值 |
-| static   | 静态字段，必须通过类名来访问，例如：Class.staticField        |
-| const    | 常量字段，但同时也是静态字段，自带static                     |
+| `readonly` | 表示这个字段只能在执行构造函数的过程中赋值，或由初始化赋值语句赋值 |
+| `static`   | 静态字段，必须通过类名来访问，例如：Class.staticField        |
+| `const`    | 常量字段，但同时也是静态字段，自带static                     |
+<!--rehype:className=left-align-->
 
 ### 方法的特殊修饰符
+<!--rehype:wrap-class=row-span-2-->
 
 | :--      | :--                                                          |
 | -------- | ------------------------------------------------------------ |
-| static   | 静态方法，只能通过类名来调用方法                             |
-| virtual  | 方法可以被重写                                               |
-| abstract | 抽象方法，只用于抽象类                                       |
-| override | 方法重写了基类的一个方法（如果方法被重写，就必须使用该关键字）。 |
-| extern   | 方法定义放在其他地方，可以在项目外部提供方法的实际实现代码   |
-| sealed   | 如果使用了 `override` ，也可以使用 `sealed` 来指定在派生类中不能再对这个方法进行进一步的修改，即这个方法不能被派生类重写 |
-
-
+| `static`   | 静态方法，只能通过类名来调用方法                             |
+| `virtual`  | 方法可以被重写                                               |
+| `abstract` | 抽象方法，只用于抽象类                                       |
+| `override` | 方法重写了基类的一个方法（如果方法被重写，就必须使用该关键字）。 |
+| `extern`   | 方法定义放在其他地方，可以在项目外部提供方法的实际实现代码   |
+| `sealed`   | 如果使用了 `override` ，也可以使用 `sealed` 来指定在派生类中不能再对这个方法进行进一步的修改，即这个方法不能被派生类重写 |
+<!--rehype:className=left-align-->
 
 ### 公共类
 
@@ -734,7 +737,6 @@ private class MyClass
 - 公有成员和类型名应该使用有意义的名字
 
 ### 默认情况(默认情况即为内部类)
-<!--rehype:wrap-class=row-span-2-->
 
 ```cs
 class MyClass 
@@ -763,14 +765,14 @@ internal class MyCalss
 ```cs
 public abstract class MyClass
 {
-    //普通公共字段
-    public string id;
-    //抽象字段
-  	public abstract string Name { get; }
-    //常量字段
-  	public const  string Description = "const string";
-    //静态字段
-  	public static  string Order = "static string";
+  // 普通公共字段
+  public string id;
+  // 抽象字段
+  public abstract string Name { get; }
+  // 常量字段
+  public const string Description = "常量";
+  // 静态字段
+  public static string Order = "静态";
 }
 ```
 
@@ -787,32 +789,66 @@ public sealed class MyClass
 
 ### 基本使用
 
-```
-// 不带名称的基本元组创建
-(int, string, bool) tuple1 = (1, "Hello", true);
-Console.WriteLine($"Item1: {tuple1.Item1}, Item2: {tuple1.Item2}, Item3: {tuple1.Item3}");
+不带名称的基本元组创建
 
-// 带名称的元组创建（C# 7.0及以上版本）
-(string FirstName, string LastName, int Age) person = ("Alice", "Smith", 30);
-Console.WriteLine($"First Name: {person.FirstName}, Last Name: {person.LastName}, Age: {person.Age}");
+```cs
+(
+    int item1,
+    string item2,
+    bool item3
+) tuple1 = (1, "Hello", true);
+
+Console.WriteLine(
+    $"Item1: {tuple1.Item1}, " +
+    $"Item2: {tuple1.Item2}, " +
+    $"Item3: {tuple1.Item3}"
+);
+```
+
+带名称的元组创建（C# 7.0及以上版本）
+
+```cs
+(
+    string FirstName,
+    string LastName,
+    int Age
+) person = ("Alice", "Smith", 30);
+
+Console.WriteLine(
+    $"First Name: {person.FirstName}, " +
+    $"Last Name: {person.LastName}, " +
+    $"Age: {person.Age}"
+);
 ```
 
 ### 方法调用与接收
 
-```
+```cs
 public (int Id, string Name, double Score) GetStudentInfo()
 {
     return (123, "John Doe", 95.5);
 }
+```
 
-// 使用
-(var id, var name, var score) = GetStudentInfo();
-Console.WriteLine($"Id: {id}, Name: {name}, Score: {score}");
+使用
+
+```cs
+(
+    var id,
+    var name,
+    var score
+) = GetStudentInfo();
+
+Console.WriteLine(
+    $"Id: {id}, " +
+    $"Name: {name}, " +
+    $"Score: {score}"
+);
 ```
 
 ### 类中使用元组
 
-```
+```cs
 public class Student
 {
     public int Id { get; set; }
@@ -826,9 +862,18 @@ public class Student
         gpa = this.GPA;
     }
 }
+```
 
-// 使用Deconstruct方法创建元组
-Student student = new Student { Id = 1, Name = "Jane", GPA = 3.8 };
+使用Deconstruct方法创建元组
+
+```cs
+Student student = new Student
+{
+    Id = 1,
+    Name = "Jane",
+    GPA = 3.8
+};
+
 (int id, string name, double gpa) = student;
 Console.WriteLine($"Student Id: {id}, Name: {name}, GPA: {gpa}");
 ```
@@ -857,7 +902,7 @@ Console.WriteLine($"Student Id: {id}, Name: {name}, GPA: {gpa}");
 
 ### List
 
-```c#
+```cs
 // 创建一个整数类型的List
 List<int> numbers = new List<int>();
 
@@ -889,18 +934,21 @@ if (index != -1)
 
 ### HashSet
 
-```c#
+```cs
 // 创建一个字符串类型的HashSet
 HashSet<string> words = new HashSet<string> { "apple", "banana" };
 
 // 增加（Add）
 words.Add("cherry");
-bool wasAdded = words.Add("apple"); // 返回false，因为"apple"已存在
+
+// 返回 false，因为"apple"已存在
+bool wasAdded = words.Add("apple"); 
 
 // 删除（Remove）
 words.Remove("banana");
 
-// 修改（HashSet不允许直接修改元素，需删除后重新添加）
+// 修改 - HashSet不允许直接修改元素
+// 需删除后重新添加
 if (words.Contains("cherry"))
 {
     words.Remove("cherry");
@@ -910,10 +958,11 @@ if (words.Contains("cherry"))
 // 查询（Contains）
 bool containsCherries = words.Contains("cherries");
 ```
+<!--rehype:className=wrap-text-->
 
 ### ConcurrentBag
 
-```c#
+```cs
 // 创建一个并发安全的整数集合
 ConcurrentBag<int> concurrentNumbers = new ConcurrentBag<int>();
 
@@ -936,7 +985,7 @@ bool hasOne = concurrentNumbers.Contains(1);
 
 ### Dictionary
 
-```c#
+```cs
 // 创建一个键值对字典
 Dictionary<string, int> scores = new Dictionary<string, int>
 {
@@ -963,7 +1012,7 @@ int charlieScore = scores.GetValueOrDefault("Charlie", 0);
 
 ### Stack
 
-```c#
+```cs
 // 创建一个整数栈
 Stack<int> stack = new Stack<int>();
 stack.Push(1);
@@ -972,21 +1021,22 @@ stack.Push(2);
 // 增加（Push）
 stack.Push(3);
 
-// 删除（Pop）
-int topNumber = stack.Pop(); // 删除并返回栈顶元素
+// 删除（Pop）并返回栈顶元素
+int topNumber = stack.Pop();
 
 // 修改（Stack不支持直接修改元素，需先Pop再Push）
 int poppedValue = stack.Pop();
-stack.Push(poppedValue * 2); // 替换刚弹出的值
+// 替换刚弹出的值
+stack.Push(poppedValue * 2); 
 
-// 查询（Peek / Contains）
-int peekedValue = stack.Peek(); // 查看但不移除栈顶元素
+// 查询（Peek / Contains） 但不移除栈顶元素
+int peekedValue = stack.Peek();
 bool hasTwo = stack.Contains(2);
 ```
 
 ### Hashtable
 
-```c#
+```cs
 // 创建一个哈希表
 Hashtable hashTable = new Hashtable();
 hashTable.Add("key1", "value1");
@@ -1011,8 +1061,6 @@ bool hasKey2 = hashTable.ContainsKey("key2");
 string valueOfKey2 = (string)hashTable["key2"];
 ```
 
-
-
 杂项
 -----------
 
@@ -1026,4 +1074,3 @@ string valueOfKey2 = (string)hashTable["key2"];
 `Managed code` | 托管代码 | 在 `.NET` 运行时编译和运行的代码。 C#/F#/VB 就是例子
 `Unmanaged code` | 非托管代码 | 直接编译为机器代码且不能由 .NET 运行时直接托管的代码。<br/>不包含空闲内存管理、垃圾收集等。从 C/C++ 创建的 DLL 就是示例
 <!--rehype:className=show-header-->
-
