@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Elixir 备忘清单
+ &#x26;  elixir cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="提供基本语法和方法的 Elixir 快速参考备忘单。
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="elixir,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/elixir.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.3"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="elixir-备忘清单"><!--?xml version="1.0" standalone="no"?--><svg t="1711950965872" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4680" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em"><path d="M519.381333 967.722667c-164.693333 0-298.24-155.306667-298.24-346.88 0-156.928 118.314667-348.672 209.749334-465.493334 43.264-55.296 125.013333-99.072 125.013333-99.072s-41.898667 223.530667 71.808 312.277334c100.949333 78.805333 175.189333 181.333333 175.189333 271.488 0 180.565333-118.784 327.68-283.52 327.68z" fill="currentColor" p-id="4681"></path></svg><a aria-hidden="true" tabindex="-1" href="#elixir-备忘清单"><span class="icon icon-link"></span></a>Elixir 备忘清单</h1><div class="wrap-body">
+<p>提供基本语法和方法的 Elixir 快速参考备忘单。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装elixir">安装Elixir</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#helloexs">hello.exs</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基本类型">基本类型</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基本算术">基本算术</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#布尔算术">布尔算术</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#比较运算符">比较运算符</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串插值与拼接">字符串插值与拼接</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#集合">集合</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#列表list">列表（List）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#元组tuple">元组（Tuple）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#关键字列表keyword-list">关键字列表（Keyword List）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#映射map">映射（Map）</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#模式匹配">模式匹配</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#匹配操作符">匹配操作符</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pin操作符">Pin操作符</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#控制语句">控制语句</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#case">case</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cond">cond</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ifunless">if/unless</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#函数">函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#匿名函数">匿名函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#闭包">闭包</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命名函数">命名函数</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#enumerables-与-streams">Enumerables 与 Streams</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#enum">Enum</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#stream">Stream</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装elixir"><a aria-hidden="true" tabindex="-1" href="#安装elixir"><span class="icon icon-link"></span></a>安装Elixir</h3><div class="wrap-body">
+<blockquote>
+<p>每个操作系统的安装说明可以在 elixir-lang.org 网站上 <a href="http://elixir-lang.org/install.html">Installing Elixir</a> 部分找到。<br>
+Elixir 自带了<code>iex</code>这样一个交互 shell，可以随时计算 Elixir 表达式的值,运行<code>iex</code>命令，继续输入几个简单的表达式试试：</p>
+</blockquote>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">iex <span class="token number">2</span>+3
+</span><span class="code-line"><span class="token number">5</span>
+</span><span class="code-line">iex <span class="token number">2</span>+3 <span class="token operator">==</span> <span class="token number">5</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span><span class="code-line">iex String.length<span class="token punctuation">(</span><span class="token string">"The quick brown fox jumps over the lazy dog"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">43</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="helloexs"><a aria-hidden="true" tabindex="-1" href="#helloexs"><span class="icon icon-link"></span></a>hello.exs</h3><div class="wrap-body">
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line"><span class="token module class-name">IO</span><span class="token punctuation">.</span><span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Hello world from Elixir"</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>Elixir 运行命令</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ elixir hello.exs
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="基本类型"><a aria-hidden="true" tabindex="-1" href="#基本类型"><span class="icon icon-link"></span></a>基本类型</h3><div class="wrap-body">
+<blockquote>
+<p>Elixir 支持多种基本类型：整数、浮点、布尔值、原子和字符串。其他数据类型，如列表和元组</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token number">1</span>          <span class="token comment"># integer</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">0x1F</span>       <span class="token comment"># integer（支持二进制、八进制和十六进制的整数）</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">1.0</span>        <span class="token comment"># float</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token boolean">true</span>       <span class="token comment"># boolean</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token atom symbol">:atom</span>      <span class="token comment"># atom / symbol</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token string">"elixir"</span>   <span class="token comment"># string</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>  <span class="token comment"># list</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span>  <span class="token comment"># tuple</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="基本算术"><a aria-hidden="true" tabindex="-1" href="#基本算术"><span class="icon icon-link"></span></a>基本算术</h3><div class="wrap-body">
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token number">3</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">5</span> <span class="token operator">*</span> <span class="token number">5</span>
+</span><span class="code-line"><span class="token number">25</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">10</span> <span class="token operator">/</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token number">5.0</span>
+</span></code></pre>
+<blockquote>
+<p>运算符<code>/</code>总是返回一个float。如果你想做整数除法或得到除法余数，你可以调用div和rem函数:</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token function">div</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">5</span>
+</span><span class="code-line">iex<span class="token operator">></span> div <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token comment"># Elixir允许在调用需要一个或多个参数的函数时删除括号</span>
+</span><span class="code-line"><span class="token number">5</span>
+</span><span class="code-line">iex<span class="token operator">></span> rem <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">3</span>
+</span><span class="code-line"><span class="token number">1</span>
+</span></code></pre>
+<blockquote>
+<p>可以调用round函数来获取与给定浮点数最接近的整数，或者调用trunc函数来获取浮点数的整数部分</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token function">round</span><span class="token punctuation">(</span><span class="token number">3.58</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">4</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token function">trunc</span><span class="token punctuation">(</span><span class="token number">3.58</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">3</span>
+</span></code></pre>
+<blockquote>
+<p>可以使用is_integer、is_float或is_number分别检查参数是否为integer、float或number类型</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token function">is_integer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token function">is_float</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token function">is_number</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token boolean">false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="布尔算术"><a aria-hidden="true" tabindex="-1" href="#布尔算术"><span class="icon icon-link"></span></a>布尔算术</h3><div class="wrap-body">
+<blockquote>
+<p>Elixir 提供了 <code>||</code>、<code>&#x26;&#x26;</code> 和 <code>!</code> 布尔操作符，它们支持任何类型的操作：</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token operator">-</span><span class="token number">20</span> <span class="token operator">||</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token operator">-</span><span class="token number">20</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token boolean">false</span> <span class="token operator">||</span> <span class="token number">42</span>
+</span><span class="code-line"><span class="token number">42</span>
+</span><span class="code-line">
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">42</span> <span class="token operator">&#x26;&#x26;</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">42</span> <span class="token operator">&#x26;&#x26;</span> <span class="token boolean">nil</span>
+</span><span class="code-line"><span class="token boolean">nil</span>
+</span><span class="code-line">
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token operator">!</span><span class="token number">42</span>
+</span><span class="code-line"><span class="token boolean">false</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token operator">!</span><span class="token boolean">false</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span></code></pre>
+<blockquote>
+<p>还有三个操作符（and、or、not），它们的第一个参数<strong>必须是布尔类型</strong>（true 和 false）:</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token boolean">true</span> <span class="token keyword">and</span> <span class="token number">42</span>
+</span><span class="code-line"><span class="token number">42</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token boolean">false</span> <span class="token keyword">or</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">not</span> <span class="token boolean">false</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">42</span> <span class="token keyword">and</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token operator">*</span><span class="token operator">*</span> <span class="token punctuation">(</span><span class="token module class-name">ArgumentError</span><span class="token punctuation">)</span> argument <span class="token attr-name">error:</span> <span class="token number">42</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">not</span> <span class="token number">42</span>
+</span><span class="code-line"><span class="token operator">*</span><span class="token operator">*</span> <span class="token punctuation">(</span><span class="token module class-name">ArgumentError</span><span class="token punctuation">)</span> argument error
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="比较运算符"><a aria-hidden="true" tabindex="-1" href="#比较运算符"><span class="icon icon-link"></span></a>比较运算符</h3><div class="wrap-body">
+<blockquote>
+<p>比较运算符 ：<code>==</code>, <code>!=</code>, <code>===</code>, <code>!==</code>, <code>&#x3C;=</code>, <code>>=</code>, <code>&#x3C;</code> 和 <code>></code></p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token number">1</span> <span class="token operator">></span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token boolean">false</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">1</span> <span class="token operator">!=</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">2</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token number">2</span> <span class="token operator">&#x3C;=</span> <span class="token number">3</span>
+</span><span class="code-line"><span class="token boolean">true</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串插值与拼接"><a aria-hidden="true" tabindex="-1" href="#字符串插值与拼接"><span class="icon icon-link"></span></a>字符串插值与拼接</h3><div class="wrap-body">
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> name <span class="token operator">=</span> <span class="token string">"Sean"</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token string">"Hello <span class="token interpolation"><span class="token delimiter punctuation">#{</span>name<span class="token delimiter punctuation">}</span></span>"</span>
+</span><span class="code-line"><span class="token string">"Hello Sean"</span>
+</span><span class="code-line">
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token string">"Hello "</span> <span class="token operator">&#x3C;></span> <span class="token string">"world!"</span>
+</span><span class="code-line"><span class="token string">"Hello world!"</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="集合"><a aria-hidden="true" tabindex="-1" href="#集合"><span class="icon icon-link"></span></a>集合</h2><div class="wrap-body">
+<blockquote>
+<p>列表（list）、元组（tuple）、关键字列表（keyword list）、映射（map）。</p>
+</blockquote>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="列表list"><a aria-hidden="true" tabindex="-1" href="#列表list"><span class="icon icon-link"></span></a>列表（List）</h3><div class="wrap-body">
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line">iex<span class="token operator">></span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">]</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">]</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"π"</span> <span class="token operator">|</span> list<span class="token punctuation">]</span> <span class="token comment"># 列表的开头添加元素</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token string">"π"</span><span class="token punctuation">,</span> <span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">]</span>
+</span><span class="code-line">iex<span class="token operator">></span> list <span class="token operator">++</span> <span class="token punctuation">[</span><span class="token string">"Cherry"</span><span class="token punctuation">]</span> <span class="token comment"># 列表的尾部添加元素/列表拼接</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">,</span> <span class="token string">"Cherry"</span><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line">iex<span class="token operator">></span> hd <span class="token punctuation">[</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">]</span> <span class="token comment"># 获取列表的头部元素</span>
+</span><span class="code-line"><span class="token number">3.14</span>
+</span><span class="code-line">iex<span class="token operator">></span> tl <span class="token punctuation">[</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">]</span> <span class="token comment"># 获取列表的尾部元素</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="元组tuple"><a aria-hidden="true" tabindex="-1" href="#元组tuple"><span class="icon icon-link"></span></a>元组（Tuple）</h3><div class="wrap-body">
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">{</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token atom symbol">:pie</span><span class="token punctuation">,</span> <span class="token string">"Apple"</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="关键字列表keyword-list"><a aria-hidden="true" tabindex="-1" href="#关键字列表keyword-list"><span class="icon icon-link"></span></a>关键字列表（Keyword List）</h3><div class="wrap-body">
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span><span class="token attr-name">foo:</span> <span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token attr-name">hello:</span> <span class="token string">"world"</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token attr-name">foo:</span> <span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token attr-name">hello:</span> <span class="token string">"world"</span><span class="token punctuation">]</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token atom symbol">:foo</span><span class="token punctuation">,</span> <span class="token string">"bar"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token atom symbol">:hello</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token attr-name">foo:</span> <span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token attr-name">hello:</span> <span class="token string">"world"</span><span class="token punctuation">]</span>
+</span></code></pre>
+<blockquote>
+<p>关键字列表非常重要，它有以下的特性：</p>
+</blockquote>
+<ul>
+<li>键（key）都是原子（atom）</li>
+<li>键（key）是有序的（定义后，顺序不会改变）</li>
+<li>键（key）不必是唯一的</li>
+</ul>
+<blockquote>
+<p>因为这些原因，关键字列表最常见的用法是作为参数传递给函数。</p>
+</blockquote>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="映射map"><a aria-hidden="true" tabindex="-1" href="#映射map"><span class="icon icon-link"></span></a>映射（Map）</h3><div class="wrap-body">
+<blockquote>
+<p>Elixir 的映射（maps）是键值对结构的第一选择，和关键字列表（keywords）不同，映射允许任意类型的数据作为键，而且数据并不严格排序。 你可以使用 %{} 来定义映射：</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> map <span class="token operator">=</span> <span class="token punctuation">%</span><span class="token punctuation">{</span><span class="token atom symbol">:foo</span> <span class="token operator">=></span> <span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token string">"hello"</span> <span class="token operator">=></span> <span class="token atom symbol">:world</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">%</span><span class="token punctuation">{</span><span class="token atom symbol">:foo</span> <span class="token operator">=></span> <span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token string">"hello"</span> <span class="token operator">=></span> <span class="token atom symbol">:world</span><span class="token punctuation">}</span>
+</span><span class="code-line">iex<span class="token operator">></span> map<span class="token punctuation">[</span><span class="token atom symbol">:foo</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token string">"bar"</span>
+</span><span class="code-line">iex<span class="token operator">></span> map<span class="token punctuation">[</span><span class="token string">"hello"</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token atom symbol">:world</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="模式匹配"><a aria-hidden="true" tabindex="-1" href="#模式匹配"><span class="icon icon-link"></span></a>模式匹配</h2><div class="wrap-body">
+<blockquote>
+<p>模式匹配是 Elixir 很强大的特性，它允许我们匹配简单值、数据结构、甚至函数。</p>
+</blockquote>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="匹配操作符"><a aria-hidden="true" tabindex="-1" href="#匹配操作符"><span class="icon icon-link"></span></a>匹配操作符</h3><div class="wrap-body">
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line"><span class="token comment"># 匹配元组</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token atom symbol">:hello</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token atom symbol">:hello</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">}</span>
+</span><span class="code-line">iex<span class="token operator">></span> a
+</span><span class="code-line"><span class="token atom symbol">:hello</span>
+</span><span class="code-line">iex<span class="token operator">></span> b
+</span><span class="code-line"><span class="token string">"world"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 匹配列表</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line">iex<span class="token operator">></span> a
+</span><span class="code-line"><span class="token number">1</span>
+</span><span class="code-line"><span class="token comment"># 匹配列表的头部元素</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span>head <span class="token operator">|</span> tail<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line">iex<span class="token operator">></span> head
+</span><span class="code-line"><span class="token number">1</span>
+</span><span class="code-line">iex<span class="token operator">></span> tail
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pin操作符"><a aria-hidden="true" tabindex="-1" href="#pin操作符"><span class="icon icon-link"></span></a>Pin操作符</h3><div class="wrap-body">
+<blockquote>
+<p>pin 操作符，就是用已经绑定的值去匹配，而不是重新绑定一个新值。</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">{</span>x<span class="token punctuation">,</span> <span class="token operator">^</span>x<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">}</span>
+</span><span class="code-line">iex<span class="token operator">></span> x
+</span><span class="code-line"><span class="token number">2</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 使用下划线_忽略匹配的值</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token punctuation">[</span>head <span class="token operator">|</span> _<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</span><span class="code-line">iex<span class="token operator">></span> head
+</span><span class="code-line"><span class="token number">1</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="控制语句"><a aria-hidden="true" tabindex="-1" href="#控制语句"><span class="icon icon-link"></span></a>控制语句</h2><div class="wrap-body">
+<blockquote>
+<p>case, cond, and if</p>
+</blockquote>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="case"><a aria-hidden="true" tabindex="-1" href="#case"><span class="icon icon-link"></span></a>case</h3><div class="wrap-body">
+<blockquote>
+<p>case允许我们将一个值与许多模式进行比较，直到找到匹配的模式：</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">case</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"This clause won't match"</span>
+</span><span class="code-line">  <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"This clause will match and bind x to 2 in this clause"</span>
+</span><span class="code-line">  _ <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"This clause would match any value"</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token string">"This clause will match and bind x to 2 in this clause"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 还可以使用when指定额外的条件</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">case</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span> <span class="token keyword">when</span> x <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"Will match"</span>
+</span><span class="code-line">  _ <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"Would match, if guard condition were not satisfied"</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token string">"Will match"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cond"><a aria-hidden="true" tabindex="-1" href="#cond"><span class="icon icon-link"></span></a>cond</h3><div class="wrap-body">
+<blockquote>
+<p>当我们需要匹配条件而不是值的时候，可以使用 cond，这和其他语言的 else if 或者 elsif 相似</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">cond</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">5</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"This will not be true"</span>
+</span><span class="code-line">  <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">3</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"Nor this"</span>
+</span><span class="code-line">  <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"But this will"</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token string">"But this will"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 如果所有的条件都返回nil或false，则会引发一个错误（CondClauseError）。因此，需要添加一个final条件，等于true，它将始终匹配：</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">cond</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">5</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"This is never true"</span>
+</span><span class="code-line">  <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">3</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"Nor this"</span>
+</span><span class="code-line">  <span class="token boolean">true</span> <span class="token operator">-></span>
+</span><span class="code-line">    <span class="token string">"This is always true (equivalent to else)"</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token string">"This is always true (equivalent to else)"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ifunless"><a aria-hidden="true" tabindex="-1" href="#ifunless"><span class="icon icon-link"></span></a>if/unless</h3><div class="wrap-body">
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">if</span> <span class="token boolean">true</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token string">"This works!"</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token string">"This works!"</span>
+</span><span class="code-line">
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">unless</span> <span class="token boolean">true</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token string">"This will never be seen"</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token boolean">nil</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># if...else...</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token keyword">if</span> <span class="token boolean">nil</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token string">"This won't be seen"</span>
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">  <span class="token string">"This will"</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token string">"This will"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 关于Elixir中变量的作用域：如果在if、case和类似的构造中声明或更改了任何变量，则声明和更改将只在构造中可见。</span>
+</span><span class="code-line">iex<span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">if</span> <span class="token boolean">true</span> <span class="token keyword">do</span>
+</span><span class="code-line">  x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token number">2</span>
+</span><span class="code-line">iex<span class="token operator">></span> x
+</span><span class="code-line"><span class="token number">1</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 如果要更改值，则必须从if返回值：</span>
+</span><span class="code-line">iex<span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token number">1</span>
+</span><span class="code-line">iex<span class="token operator">></span> x <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token boolean">true</span> <span class="token keyword">do</span>
+</span><span class="code-line">  x <span class="token operator">+</span> <span class="token number">1</span>
+</span><span class="code-line"><span class="token keyword">else</span>
+</span><span class="code-line">  x
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line"><span class="token number">2</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="匿名函数"><a aria-hidden="true" tabindex="-1" href="#匿名函数"><span class="icon icon-link"></span></a>匿名函数</h3><div class="wrap-body">
+<blockquote>
+<p>使用 fn 和 end 关键字来定义匿名函数，在这两者之间，可以定义任意数量的参数和函数体，它们用 -> 分隔开。</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> sum <span class="token operator">=</span> <span class="token function">fn</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> a <span class="token operator">+</span> b <span class="token keyword">end</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token function">sum</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">5</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 可以使用 &#x26; 语法来简化匿名函数的定义：</span>
+</span><span class="code-line">iex<span class="token operator">></span> sum <span class="token operator">=</span> <span class="token operator">&#x26;</span><span class="token punctuation">(</span><span class="token argument variable">&#x26;1</span> <span class="token operator">+</span> <span class="token argument variable">&#x26;2</span><span class="token punctuation">)</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token function">sum</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">5</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="闭包"><a aria-hidden="true" tabindex="-1" href="#闭包"><span class="icon icon-link"></span></a>闭包</h3><div class="wrap-body">
+<blockquote>
+<p>匿名函数去引用外部的变量，这通常被称为闭包。</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> double <span class="token operator">=</span> <span class="token keyword">fn</span> a <span class="token operator">-></span> <span class="token function">add</span><span class="token punctuation">.</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> a<span class="token punctuation">)</span> <span class="token keyword">end</span>
+</span><span class="code-line"><span class="token comment">#Function&#x3C;6.71889879/1 in :erl_eval.expr/5></span>
+</span><span class="code-line"><span class="token function">double</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">4</span>
+</span></code></pre>
+<blockquote>
+<p>闭包与守卫</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> f <span class="token operator">=</span> <span class="token keyword">fn</span>
+</span><span class="code-line">  x<span class="token punctuation">,</span> y <span class="token keyword">when</span> x <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">-></span> x <span class="token operator">+</span> y
+</span><span class="code-line">  x<span class="token punctuation">,</span> y <span class="token operator">-></span> x <span class="token operator">*</span> y
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token function">f</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">4</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token function">f</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token operator">-</span><span class="token number">3</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="命名函数"><a aria-hidden="true" tabindex="-1" href="#命名函数"><span class="icon icon-link"></span></a>命名函数</h3><div class="wrap-body">
+<blockquote>
+<p>命名函数是通过 def 关键字定义在某个模块中</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line"><span class="token keyword">defmodule</span> <span class="token module class-name">Greeter</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token string">"Hello, "</span> <span class="token operator">&#x3C;></span> name
+</span><span class="code-line">  <span class="token keyword">end</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token module class-name">Greeter</span><span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token string">"Sean"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token string">"Hello, Sean"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 简写为一行：</span>
+</span><span class="code-line"><span class="token keyword">defmodule</span> <span class="token module class-name">Greeter</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token attr-name">do:</span> <span class="token string">"Hello, "</span> <span class="token operator">&#x3C;></span> name
+</span><span class="code-line"><span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 私有函数</span>
+</span><span class="code-line"><span class="token keyword">defmodule</span> <span class="token module class-name">Greeter</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token attr-name">do:</span> phrase <span class="token operator">&#x3C;></span> name
+</span><span class="code-line">  <span class="token keyword">defp</span> phrase<span class="token punctuation">,</span> <span class="token attr-name">do:</span> <span class="token string">"Hello, "</span> <span class="token comment"># 使用defp来定义私有函数</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+<blockquote>
+<p>函数的默认参数：使用<code>\\</code>来定义默认参数</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line"><span class="token keyword">defmodule</span> <span class="token module class-name">Greeter</span> <span class="token keyword">do</span>
+</span><span class="code-line">  <span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> language_code <span class="token operator">\\</span> <span class="token string">"en"</span><span class="token punctuation">)</span> <span class="token keyword">do</span>
+</span><span class="code-line">    <span class="token function">phrase</span><span class="token punctuation">(</span>language_code<span class="token punctuation">)</span> <span class="token operator">&#x3C;></span> name
+</span><span class="code-line">  <span class="token keyword">end</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token keyword">defp</span> <span class="token function">phrase</span><span class="token punctuation">(</span><span class="token string">"en"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token attr-name">do:</span> <span class="token string">"Hello, "</span>
+</span><span class="code-line">  <span class="token keyword">defp</span> <span class="token function">phrase</span><span class="token punctuation">(</span><span class="token string">"es"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token attr-name">do:</span> <span class="token string">"Hola, "</span>
+</span><span class="code-line"><span class="token keyword">end</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="enumerables-与-streams"><a aria-hidden="true" tabindex="-1" href="#enumerables-与-streams"><span class="icon icon-link"></span></a>Enumerables 与 Streams</h2><div class="wrap-body">
+<blockquote>
+<p>Elixir 提供了 Enum 和 Stream 两个模块，用于处理集合。</p>
+</blockquote>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="enum"><a aria-hidden="true" tabindex="-1" href="#enum"><span class="icon icon-link"></span></a>Enum</h3><div class="wrap-body">
+<blockquote>
+<p>Enum 模块提供了对集合的常用操作，如 map、filter、reduce、sort、chunk、join、into 等。</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token module class-name">Enum</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">fn</span> x <span class="token operator">-></span> x <span class="token operator">*</span> <span class="token number">2</span> <span class="token keyword">end</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+</span><span class="code-line">iex<span class="token operator">></span> <span class="token module class-name">Enum</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">%</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token operator">=></span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token operator">=></span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">fn</span> <span class="token punctuation">{</span>k<span class="token punctuation">,</span> v<span class="token punctuation">}</span> <span class="token operator">-></span> k <span class="token operator">*</span> v <span class="token keyword">end</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="stream"><a aria-hidden="true" tabindex="-1" href="#stream"><span class="icon icon-link"></span></a>Stream</h3><div class="wrap-body">
+<blockquote>
+<p>作为Enum的替代品，Elixir提供了支持懒惰操作的Stream模块</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> <span class="token number">1</span><span class="token operator">..</span><span class="token number">100_000</span> <span class="token operator">|></span> <span class="token module class-name">Stream</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">&#x26;</span><span class="token punctuation">(</span><span class="token argument variable">&#x26;1</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">|></span> <span class="token module class-name">Stream</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>odd?<span class="token punctuation">)</span> <span class="token operator">|></span> <span class="token module class-name">Enum</span><span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token number">7500000000</span>
+</span></code></pre>
+<blockquote>
+<p>流文件操作</p>
+</blockquote>
+<pre class="language-elixir"><code class="language-elixir code-highlight"><span class="code-line">iex<span class="token operator">></span> stream <span class="token operator">=</span> <span class="token module class-name">File</span><span class="token punctuation">.</span><span class="token function">stream!</span><span class="token punctuation">(</span><span class="token string">"path/to/file"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">%</span><span class="token module class-name">File</span><span class="token punctuation">.</span><span class="token module class-name">Stream</span><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token attr-name">line_or_bytes:</span> <span class="token atom symbol">:line</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token attr-name">modes:</span> <span class="token punctuation">[</span><span class="token atom symbol">:raw</span><span class="token punctuation">,</span> <span class="token atom symbol">:read_ahead</span><span class="token punctuation">,</span> <span class="token atom symbol">:binary</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token attr-name">path:</span> <span class="token string">"path/to/file"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token attr-name">raw:</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token module class-name">Enum</span><span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span>stream<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 上面的例子将提取所选文件的前10行。这意味着流对于处理大型文件甚至是网络资源等慢速资源非常有用。</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://elixir-lang.org/">Elixir 官方</a> <em>(elixir-lang.org)</em></li>
+<li><a href="https://elixirschool.com/">Elixir School</a> <em>(elixirschool.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.5.3" defer></script><script src="../js/fuse.min.js?v=1.5.3" defer></script><script src="../js/main.js?v=1.5.3" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
