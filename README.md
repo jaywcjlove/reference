@@ -192,6 +192,7 @@ Quick Reference
 [Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135);-->  
 [Pacman](./docs/pacman.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=archlinux&class=contributing-->  
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123);-->  
+[SDKMAN](./docs/sdkman.md)<!--rehype:style=background: rgb(0 118 198);-->  
 <!--rehype:class=home-card-->
 
 ## 数据库
