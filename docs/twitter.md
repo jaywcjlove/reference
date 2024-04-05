@@ -84,7 +84,7 @@ Twitter 上的 26 个键盘快捷键和高级搜索参考备忘清单
 `puppy url:amazon` | 包含“puppy”，且包含一个内容包括"amazon”的Url链接
 <!--rehype:className=style-list-->
 
-### 时间筛选
+### 导航
 
 - [Twitter 官网](https://twitter.com)<!--rehype:target=__blank-->
 - [Twitter 的高级搜索](https://twitter.com/search-advanced)<!--rehype:target=__blank-->
