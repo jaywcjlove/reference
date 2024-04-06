@@ -1,7 +1,7 @@
 Contributing 贡献
 ====
 
-感谢您对**备忘清单**贡献的兴趣👍👍，是像您这样的人使 [`Quick Reference`](https://jaywcjlove.github.io/reference) 成为如此出色的网站 🎉🎉。随时提交问题和增强请求。
+感谢您对**备忘清单**贡献的兴趣👍👍，是像您这样的人使 [`Quick Reference`](https://jaywcjlove.github.io/reference) 成为如此出色的网站 🎉🎉。随时提交问题和增强请求，还提供一个[在线说明排版说明]( https://wangchujiang.com/reference/docs/quickreference.html)，所以各种使用技巧，都在这个排版说明中有预览和实现代码。
 
 `docs/{filename}.md` 文件将被处理成备忘清单，让我们创建或编辑一个 `markdown` 文件：
 
