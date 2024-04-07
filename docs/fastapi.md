@@ -1,11 +1,39 @@
 FastAPI 备忘清单
 ===
 
-FastAPI 是一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示。Python: `3.9.5`   FastAPI: `0.103.1`
+一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示
 
 入门
 ---
 <!--rehype:body-class=cols-2-->
+
+### 安装 FastAPI
+
+```shell
+$ pip install "fastapi[all]"
+```
+
+#### 可以分开来安装
+
+假如你想将应用程序部署到生产环境，你可能要执行以下操作：
+
+```shell
+$ pip install fastapi
+```
+
+并且安装 `uvicorn` 来作为服务器：
+
+```shell
+$ pip install "uvicorn[standard]"
+```
+
+#### 运行代码
+
+```shell
+$ uvicorn main:app --reload
+```
+
+Python: `3.9.5` FastAPI: `0.103.1`
 
 ### 最小程序
 
@@ -133,11 +161,13 @@ async def read_user_item(item_id: str, needy: str):
 ```python
 from pydantic import BaseModel
 from typing import Union
+
 class Item(BaseModel):
     name: str = '小明'
     description: Union[str, None] = None
     price: float
     tax: Union[float, None] = None
+
 @app.post("/items/")
 async def create_item(item: Item):
     print(item.name)
@@ -163,6 +193,7 @@ curl -X 'POST' \
 
 ```python
 from fastapi import Query
+
 @app.get("/items/")
 async def read_items(
     q: Union[str, None] = Query(default=None, max_length=50)
@@ -177,12 +208,12 @@ async def read_items(
 
 | 参数       | 含义         | 类型          |
 | ---------- | ------------ | ------------- |
-| default    | 默认值       | 任意类型或... |
-| max_length | 最大长度     | int           |
-| min_length | 最小长度     | int           |
-| pattern    | 正则匹配     | string        |
-| alias      | 别名参数     | string        |
-| deprecated | 准备弃用参数 | bool          |
+| `default`    | 默认值       | 任意类型或... |
+| `max_length` | 最大长度     | `int`           |
+| `min_length` | 最小长度     | `int`           |
+| `pattern`    | 正则匹配     | `string`        |
+| `alias`      | 别名参数     | `string`        |
+| `deprecated` | 准备弃用参数 | `bool`          |
 
 #### 多个相同的查询参数
 
@@ -225,21 +256,22 @@ async def read_items(
 
 | 参数  | 含义                | 类型      |
 | ----- | ------------------- | --------- |
-| ...   | 和Query具有相同参数 | ...       |
-| ge    | 大于等于            | int float |
-| gt    | 大于                | int float |
-| le    | 小于等于            | int float |
-| le    | 小于等于            | int float |
-| title | api文档的标题       | string    |
+| `...`   | 和 Query 具有相同参数 | ...       |
+| `ge`    | 大于等于            | `int float` |
+| `gt`    | 大于                | `int float` |
+| `le`    | 小于等于            | `int float` |
+| `le`    | 小于等于            | `int float` |
+| `title` | api文档的标题       | `string`    |
 
 ### 其他参数
 
-都具有 Query 的参数，max_length、min_length等
+都具有 `Query` 的参数，`max_length`、`min_length` 等
 
 #### Cookie参数
 
 ```python
 from fastapi import Cookie
+
 @app.get("/items/")
 async def read_items(
     ads_id: Annotated[Union[str, None], Cookie()] = None
@@ -251,6 +283,7 @@ async def read_items(
 
 ```python
 from fastapi import Header
+
 @app.get("/items/")
 async def read_items(
     user_agent: Annotated[Union[str, None], Header()] = None,
@@ -265,7 +298,9 @@ async def read_items(
 
 #### 安装
 
-`pip install python-multipart`
+```shell
+$ pip install python-multipart
+```
 
 #### HTML
 
@@ -301,14 +336,17 @@ if __name__ == '__main__':
 ```
 
 ### 文件上传
+<!--rehype:wrap-class=col-span-2-->
 
 ```python
 from fastapi import FastAPI, UploadFile
 from fastapi.responses import HTMLResponse
+
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile):
     print(file.file.read().decode())
     return {"filenames": file.filename, "type": str(type(file.file))}
+
 @app.get("/")
 async def main():
     content = """<body>
@@ -320,22 +358,24 @@ async def main():
     return HTMLResponse(content=content)
 ```
 
-#### UploadFile属性
+#### UploadFile 属性
 
 | 属性名       | 含义     | 返回                                    |
 | ------------ | -------- | --------------------------------------- |
-| filename     | 文件名   | 上传的文件名                            |
-| content_type | 内容类型 | MIME 类型                               |
-| file         | 文件     | SpooledTemporaryFile具有read，write方法 |
+| `filename`     | 文件名   | 上传的文件名                            |
+| `content_type` | 内容类型 | `MIME` 类型                               |
+| `file`         | 文件     | SpooledTemporaryFile 具有 `read`，`write` 方法 |
+<!--rehype:className=left-align-->
 
-#### UploadFile async方法
+#### UploadFile async 方法
 
 | 方法名       | 含义                                      |
 | ------------ | ----------------------------------------- |
-| write(data)  | 把 `data` 写入文件                        |
-| read(size)   | 按指定数量的字节读取文件内容              |
-| seek(offset) | 移动至文件 `offset` （`int`）字节处的位置 |
-| close()      | 关闭文件                                  |
+| `write(data)`  | 把 `data` 写入文件                        |
+| `read(size)`   | 按指定数量的字节读取文件内容              |
+| `seek(offset)` | 移动至文件 `offset` （`int`）字节处的位置 |
+| `close()`     | 关闭文件                                  |
+<!--rehype:className=left-align-->
 
 依赖项
 ---
