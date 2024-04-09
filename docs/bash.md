@@ -964,11 +964,11 @@ END
 ### 转到上一个目录
 
 ```bash
-pwd # /home/user/foo
+pwd     # /home/user/foo
 cd bar/
-pwd # /home/user/foo/bar
+pwd     # /home/user/foo/bar
 cd -
-pwd # /home/user/foo
+pwd     # /home/user/foo
 ```
 
 ### 读取输入
@@ -1020,7 +1020,7 @@ echo "${args[@]}"
 $ bash -x myscript.sh
 ```
 
-在bash脚本中打开调试(针对部分内容打印调试信息)。
+在 bash 脚本中打开调试(针对部分内容打印调试信息)
 
 ```bash
 #!/bin/bash
@@ -1036,10 +1036,6 @@ Bash 颜色
 <!--rehype:wrap-class=row-span-2-->
 
 您可以通过为其输出着色来使您的 BASH 脚本更漂亮，使用以下模板编写彩色文本：
-
-```bash
-echo -e "\e[COLORm文字变色了\e[0m"
-```
 
 #### 示例
 
@@ -1098,36 +1094,36 @@ m           # 设置图形模式
 `5` | 缓慢闪烁
 `6` | 快速闪烁
 `7` | 反显
-`8` | 隐藏 | 未广泛支持。
+`8` | 隐藏 | 未广泛支持
 `9` | 划除
 <!--rehype:className=left-align-->
 
 ### ANSI — 颜色转义码
 
-颜色 | 前景色 | 背景色 | 示例
-:- | -- | -- | --
-`Black` 黑色 | 30 | 40 | ``<!--rehype:style=background:#000;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Red` 红色 | 31 | 41 | ``<!--rehype:style=background:#c23621;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Green` 绿色 | 32 | 42 | ``<!--rehype:style=background:#25bc26;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Yellow` 黄色 | 33 | 43 | ``<!--rehype:style=background:#cdcd00;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Blue` 蓝色 | 34 | 44 | ``<!--rehype:style=background:#0000ee;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Purple` 紫色 | 35 | 45 | ``<!--rehype:style=background:#cd00cd;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Cyan` 青色 | 36 | 46 | ``<!--rehype:style=background:#00AAAA;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`White` 白色 | 37 | 47 | ``<!--rehype:style=background:#e5e5e5;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+颜色 | 名称 | 前景色 | 背景色 | 示例
+:- | --| -- | -- | --
+`Black` | 黑色 | 30 | 40 | `黑`<!--rehype:style=background:#000;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Red` | 红色 | 31 | 41 | `红`<!--rehype:style=background:#c23621;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Green` | 绿色 | 32 | 42 | `绿`<!--rehype:style=background:#25bc26;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Yellow` | 黄色 | 33 | 43 | `黄`<!--rehype:style=background:#cdcd00;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Blue` | 蓝色 | 34 | 44 | `蓝`<!--rehype:style=background:#0000ee;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Purple` | 紫色 | 35 | 45 | `紫`<!--rehype:style=background:#cd00cd;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Cyan` | 青色 | 36 | 46 | `青`<!--rehype:style=background:#00AAAA;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`White` | 白色 | 37 | 47 | `白`<!--rehype:style=background:#e5e5e5;padding:0.2rem 1.2rem;border: 1px solid #333;-->
 <!--rehype:className=show-header left-align-->
 
 ### ANSI — 颜色转义码(亮色)
 
-颜色 | 前景色 | 背景色 | 示例
+颜色 | 前色 | 背色 | 示例
 :- | -- | -- | --
-`Bright Black(Gray)` 灰色 | 90 | 100 | ``<!--rehype:style=background:#555555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Red` 亮红色 | 91 | 101 | ``<!--rehype:style=background:#FF5555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Green` 亮绿色 | 92 | 102 | ``<!--rehype:style=background:#55FF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Yellow` 亮黄色 | 93 | 103 | ``<!--rehype:style=background:#FFFF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Blue` 亮蓝色 | 94 | 104 | ``<!--rehype:style=background:#5555FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Magenta` 亮紫色 | 95 | 105 | ``<!--rehype:style=background:#FF55FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Cyan` 亮青色 | 96 | 106 | ``<!--rehype:style=background:#55FFFF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright White` 浅灰 | 97 | 107 | ``<!--rehype:style=background:#ffffff;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`BrightBlack(Gray)` 灰色 | 90 | 100 | `90`<!--rehype:style=background:#555555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Red` 亮红色 | 91 | 101 | `91`<!--rehype:style=background:#FF5555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Green` 亮绿色 | 92 | 102 | `92`<!--rehype:style=background:#55FF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Yellow` 亮黄色 | 93 | 103 | `93`<!--rehype:style=background:#FFFF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Blue` 亮蓝色 | 94 | 104 | `94`<!--rehype:style=background:#5555FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Magenta` 亮紫色 | 95 | 105 | `95`<!--rehype:style=background:#FF55FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Cyan` 亮青色 | 96 | 106 | `96`<!--rehype:style=background:#55FFFF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright White` 浅灰 | 97 | 107 | `97`<!--rehype:style=background:#ffffff;padding:0.2rem 1.2rem;border: 1px solid #333;-->
 <!--rehype:className=show-header left-align-->
 
 ### 可用功能
