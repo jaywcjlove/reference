@@ -178,6 +178,7 @@ Quick Reference
 [Taskset](./docs/taskset.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=解压缩-->  
 [Zip](./docs/zip.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=解压缩-->  
+[FTP](./docs/ftp.md)<!--rehype:style=background: rgb(99 99 99);-->  
 <!--rehype:class=home-card-->
 
 ## 工具箱
