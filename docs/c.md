@@ -38,7 +38,10 @@ $ ./hello
 int myNum = 15;
 
 int myNum2; // 声明变量 myNum2
-myNum2 = 15; // 变量声明后第一次赋值我们称为初始化,如果 初始化 和 赋值 在同一行,那么我们可以直接称为 定义变量 myNum2
+// 变量声明后第一次赋值我们称为初始化
+// 如果 初始化 和 赋值 在同一行
+// 那么我们可以直接称为 定义变量 myNum2
+myNum2 = 15; 
 
 int myNum3 = 15;  // myNum3 值为 15
 myNum3 = 10;      // 现在 myNum3 值为 10
@@ -749,7 +752,8 @@ Carole 和 Debra: 我们爱你！
 ```c
 #include <stdio.h>
 
-#define tokenpaster(n) printf ("token" #n " = %d", token##n)
+#define tokenpaster(n) \
+    printf ("token" #n " = %d", token##n)
 
 int main(void){
   int token34 = 40;
@@ -768,8 +772,9 @@ int main(void){
 #endif
 
 int main(void) {
-  printf("Here is the message: %s\n", MESSAGE);  
-  return 0;
+    printf("信息如下: %s\n", \
+        MESSAGE);  
+    return 0;
 }
 ```
 
@@ -794,8 +799,9 @@ int square(int x) {
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 
 int main(void) {
-   printf("Max between 20 and 10 is %d\n", MAX(10, 20));  
-   return 0;
+    printf("20 到 10 之间的最大值是 %d\n", \
+        MAX(10, 20));  
+    return 0;
 }
 ```
 
