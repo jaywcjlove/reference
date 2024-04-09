@@ -108,7 +108,7 @@ System.out.println(a + " " + b); // 2 1
 // byte<short<int<long<float<double
 int i = 10;
 long l = i;               // 10
-// Narrowing 
+// Narrowing
 double d = 10.02;
 long l = (long)d;         // 10
 String.valueOf(10);       // "10"
@@ -147,7 +147,7 @@ Java 字符串
 ### 基本的
 
 ```java
-String str1 = "value"; 
+String str1 = "value";
 String str2 = new String("value");
 String str3 = String.valueOf(123);
 ```
@@ -242,8 +242,8 @@ sb.append("!");
 ### 比较
 
 ```java
-String s1 = new String("QuickRef"); 
-String s2 = new String("QuickRef"); 
+String s1 = new String("QuickRef");
+String s2 = new String("QuickRef");
 s1 == s2          // false
 s1.equals(s2)     // true
 "AB".equalsIgnoreCase("ab")  // true
@@ -341,7 +341,7 @@ String[] arr = {"a", "b", "c"};
 for (int a: arr) {
     System.out.print(a + " ");
 }
-// 输出: a b c 
+// 输出: a b c
 ```
 
 ### 二维数组 Multidimensional Arrays
@@ -356,7 +356,7 @@ for (int i = 0; i < a.length; ++i) {
     System.out.println(a[i][j]);
   }
 }
-// 输出: 1 2 3 4 5 6 7 
+// 输出: 1 2 3 4 5 6 7
 ```
 
 ### 排序 Sort
@@ -641,7 +641,7 @@ threadLocal.remove();
 
 ```java
 // 需要synchronized修饰的代码块才能使用
-wait(); 
+wait();
 notify();
 notifyAll();
 
@@ -688,7 +688,7 @@ Semaphore semaphore = new Semaphore(5);
 try {
     semaphore.acquire();
 } finally {
-    semaphore.release(); 
+    semaphore.release();
 }
 ```
 
@@ -778,7 +778,7 @@ m.remove(101, "Geeks");
 
 // 如果不存在，就添加，存在就不变更
 m.putIfAbsent(103, "Hello");
- 
+
 // 替换
 m.replace(101, "Hello", "For");
 System.out.println(m);
@@ -855,7 +855,7 @@ text.split(Pattern.quote("|"));
 
 ```java
 // 我是单行注释！
- 
+
 /*
 而我是一个
 多行注释！
@@ -1036,6 +1036,40 @@ Map<Integer, Long> frequencyMap = list.stream().collect(Collectors.groupingBy(x 
 // 1: 2
 // 2: 3
 // 3: 1
+```
+
+`Stream`是`JAVA 8`添加的新特性，类似于一种管道。
+
+```java
+// Create the stream
+List<String> test = Arrays.asList("123", "456", "789");
+Stream<String> stram = test.stream();
+// some intermediate operations
+
+// fillter
+// The original operation
+List<TestDO> resultList = new ArrayList<>();
+for(TestDO test: testList){
+  if(test.getTest().equals(Boolean.TRUE){
+    resultList.add(test);
+  }
+}
+// The stream operation
+List<TestDO> resultList = testList.stream().fillter(test -> test.getTest().equals(Boolean.TRUE)).collect(Collectors.toList());
+
+//distinct
+List<String> test = Arrays.asList("123", "456", "789", "123");
+test.stream().distinct().forEach(System.out::println);
+
+//map
+List<String> test = Arrays.asList("123", "456", "789", "123");
+test.stream().map(i -> i + "hh").forEach(System.out::println);
+
+// sorted
+List<Integer> numbers = Arrays.asList(3, 2, 1);
+numbers.stream().sorted().forEach(System.out::println);
+
+
 ```
 
 另见
