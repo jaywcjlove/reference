@@ -417,7 +417,7 @@ jobs:
 <a href="https://github.com/kubeme" title="kubernetes for me"><img src="https://avatars.githubusercontent.com/u/16346220?v=4" width="42;" alt="kubernetes for me"/></a>
 <a href="https://github.com/genius-kim" title="Kim同学"><img src="https://avatars.githubusercontent.com/u/119488561?v=4" width="42;" alt="Kim同学"/></a>
 <a href="https://github.com/mariuszmichalowski" title="Mariusz Michalowski"><img src="https://avatars.githubusercontent.com/u/92091891?v=4" width="42;" alt="Mariusz Michalowski"/></a>
-<a href="https://github.com/likeshop-github" title="LikeShop技术社区"><img src="https://avatars.githubusercontent.com/u/77180968?v=4" width="42;" alt="LikeShop技术社区"/></a>
+<a href="https://github.com/likeshop-github" title="likeshop技术社区"><img src="https://avatars.githubusercontent.com/u/77180968?v=4" width="42;" alt="likeshop技术社区"/></a>
 <a href="https://github.com/Lihuagreek" title="Lihuagreek"><img src="https://avatars.githubusercontent.com/u/51040740?v=4" width="42;" alt="Lihuagreek"/></a>
 <a href="https://github.com/LightQuanta" title="Light_Quanta"><img src="https://avatars.githubusercontent.com/u/18213217?v=4" width="42;" alt="Light_Quanta"/></a>
 <a href="https://github.com/JetSquirrel" title="JetSquirrel"><img src="https://avatars.githubusercontent.com/u/20291255?v=4" width="42;" alt="JetSquirrel"/></a>
