@@ -25,8 +25,8 @@ Quick Reference
 [C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->  
 [Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python-->  
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9);&class=contributing-->  
-[Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->
-[FastAPI](./docs/fastapi.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->
+[Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->  
+[FastAPI](./docs/fastapi.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->  
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->  
 [Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->  
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128);&class=contributing-->  
@@ -119,7 +119,7 @@ Quick Reference
 ## Nodejs
 
 [Express.js](./docs/expressjs.md)<!--rehype:style=background: rgb(95 151 206);-->  
-[Ejs](./docs/ejs.md)<!--rehype:style=background: rgb(169 30 80);&class=tag&data-lang=JavaScript--> 
+[Ejs](./docs/ejs.md)<!--rehype:style=background: rgb(169 30 80);&class=tag&data-lang=JavaScript-->  
 [Jest](./docs/jest.md)<!--rehype:style=background: rgb(153 66 91);-->  
 [Koa.js](./docs/koajs.md)<!--rehype:style=background: rgb(95 151 206);-->  
 [Lerna](./docs/lerna.md)<!--rehype:style=background: rgb(192 132 252);-->  
