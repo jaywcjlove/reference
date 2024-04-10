@@ -556,7 +556,7 @@ ON t(c3,c4)
 删除索引
 
 ```sql
-DROP INDEX idx_name;
+DROP INDEX idx_name ON t;
 ```
 
 MySQL 数据类型
