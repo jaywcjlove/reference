@@ -1070,21 +1070,15 @@ string valueOfKey2 = (string)hashTable["key2"];
 
 
 
-### 对象判空
+### 对象判空及赋值
 
-```c#
+```cs
 // 判断对象是否为空，为空抛出异常
 if(obj == null) throw new NullReferenceException();
 
 // 简化的语法糖
 obj ?? throw new NullReferenceException();
-```
 
-
-
-### 对象为空赋值
-
-```c#
 // 判断 对象为空 的情况下再赋新值
 //     对象不为空 不进行赋值
 if(obj == null)
@@ -1098,9 +1092,9 @@ obj ??= new object();
 
 
 
-### 可空类型判空并赋值
+### 可空类型判空及赋值
 
-```c#
+```cs
 // 可空类型
 int? nums = null;
 
@@ -1122,7 +1116,7 @@ int result = nums ?? -1;
 
 ### 减少空引用
 
-```c#
+```cs
 // 判断数组或list不能null且有元素
 if(list != null && list.Count > 0)
 
@@ -1137,18 +1131,42 @@ string text = obj?.text;
 
 ### 判断参数类型并转换类型+校验
 
-```c#
-// 判断value是否为 string 类型，如果value是 string 类型
-// 那么将value转换为 string 类型，并赋值给 stringValue
-// 再判断 stringValue是否不为Null或空
+```cs
+// 1.判断value是否为 string 类型，如果value是 string 类型
+
+// 2.那么将value转换为 string 类型，并赋值给 stringValue
+
+// 3.再判断 stringValue是否不为Null或空
+
 if(value is string stringValue && !string.IsNullOrEmpty(stringValue))
+```
+
+
+
+### Switch
+
+```cs
+public string GetNums(int num)
+{
+	// 使用这种方式的switch时，要求返回类型统一
+	string str = num switch
+	{
+		1 => "num的值是1",
+		2 => "num的值是2",
+		3 => "num的值是3",
+		4 => "num的值是4",
+		_ => "其他"
+	};
+
+	return str;
+}
 ```
 
 
 
 ### 切片操作
 
-```c#
+```cs
 // **以下所有[]中的数字都代表索引**
 // **如果是范围索引，且声明结束索引，那么都将不包含结束索引的值**
 
@@ -1175,27 +1193,6 @@ string[] strs3 = arr[3..7];
 // 指定获取 反向 某一段元素
 // 倒数第4个元素开始 到 倒数第2个元素(不包含)：["70","80"]
 string[] strs4 = arr[^4..^2];
-```
-
-
-
-### Switch
-
-```c#
-public string GetNums(int num)
-{
-	// 使用这种方式的switch时，要求返回类型统一
-	string str = num switch
-	{
-		1 => "num的值是1",
-		2 => "num的值是2",
-		3 => "num的值是3",
-		4 => "num的值是4",
-		_ => "其他"
-	};
-
-	return str;
-}
 ```
 
 
