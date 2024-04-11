@@ -1072,6 +1072,8 @@ string valueOfKey2 = (string)hashTable["key2"];
 
 ### 对象判空及赋值
 
+<!--rehype:wrap-class=col-span-2-->
+
 ```cs
 // 判断对象是否为空，为空抛出异常
 if(obj == null) throw new NullReferenceException();
@@ -1089,7 +1091,6 @@ if(obj == null)
 // 简化的语法糖
 obj ??= new object();
 ```
-
 
 
 ### 可空类型判空及赋值
@@ -1126,7 +1127,7 @@ if(list?.Count > 0)
 // 同样可运用在赋值时，如果obj为null，将不会取obj.text的值，而是将会为text赋值null
 string text = obj?.text;
 ```
-
+<!--rehype:className=wrap-text-->
 
 
 ### 判断参数类型并转换类型+校验
@@ -1140,7 +1141,7 @@ string text = obj?.text;
 
 if(value is string stringValue && !string.IsNullOrEmpty(stringValue))
 ```
-
+<!--rehype:className=wrap-text-->
 
 
 ### Switch
@@ -1165,6 +1166,8 @@ public string GetNums(int num)
 
 
 ### 切片操作
+
+<!--rehype:wrap-class=col-span-2-->
 
 ```cs
 // **以下所有[]中的数字都代表索引**
@@ -1194,7 +1197,6 @@ string[] strs3 = arr[3..7];
 // 倒数第4个元素开始 到 倒数第2个元素(不包含)：["70","80"]
 string[] strs4 = arr[^4..^2];
 ```
-
 
 
 杂项
