@@ -1513,9 +1513,9 @@ C# 备忘清单
 </span><span class="code-line">
 </span><span class="code-line"><span class="token comment">// 使用SELECT创建一个新的匿名类，并输出为集合，一般配合Where使用</span>
 </span><span class="code-line"><span class="token class-name"><span class="token keyword">var</span></span> result1 <span class="token operator">=</span> students<span class="token punctuation">.</span><span class="token function">Select</span><span class="token punctuation">(</span>student <span class="token operator">=></span> 
-</span><span class="code-line">	<span class="token keyword">new</span> 
+</span><span class="code-line">  <span class="token keyword">new</span> 
 </span><span class="code-line">    <span class="token punctuation">{</span>
-</span><span class="code-line">    	student<span class="token punctuation">.</span>Name<span class="token punctuation">,</span>
+</span><span class="code-line">      student<span class="token punctuation">.</span>Name<span class="token punctuation">,</span>
 </span><span class="code-line">        student<span class="token punctuation">.</span>Age
 </span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line">
@@ -1551,40 +1551,41 @@ C# 备忘清单
 <!--rehype:className=wrap-text-->
 </div></div></div><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="join"><a aria-hidden="true" tabindex="-1" href="#join"><span class="icon icon-link"></span></a>JOIN</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-3-->
-<blockquote>
-<p><code>Join</code>：用于执行内连接操作，它会返回两个数据源中满足连接条件的元素的交集</p>
-<p><code>GroupJoin</code>：用于执行左外连接（left outer join）操作，它会返回左边数据源的所有元素，以及每个元素所匹配的右边数据源的元素组成的集合。(嵌套)</p>
-</blockquote>
-<pre class="language-cs"><code class="language-cs code-highlight"><span class="code-line"><span class="token comment">// 示例数据源</span>
-</span><span class="code-line"><span class="token class-name">List<span class="token punctuation">&#x3C;</span>Department<span class="token punctuation">></span></span> departments <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&#x3C;</span>Department<span class="token punctuation">></span></span>
+<ul>
+<li><code>Join</code>：用于执行内连接操作，它会返回两个数据源中满足连接条件的元素的交集</li>
+<li><code>GroupJoin</code>：用于执行左外连接（left outer join）操作，它会返回左边数据源的所有元素，以及每个元素所匹配的右边数据源的元素组成的集合。(嵌套)</li>
+</ul>
+<p>示例数据源</p>
+<pre class="language-cs"><code class="language-cs code-highlight"><span class="code-line"><span class="token class-name">List<span class="token punctuation">&#x3C;</span>Department<span class="token punctuation">></span></span> departments <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&#x3C;</span>Department<span class="token punctuation">></span></span>
 </span><span class="code-line"><span class="token punctuation">{</span>
 </span><span class="code-line">    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Department</span> <span class="token punctuation">{</span> ID <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">"HR"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </span><span class="code-line">    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Department</span> <span class="token punctuation">{</span> ID <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">"IT"</span> <span class="token punctuation">}</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</span><span class="code-line"><span class="token comment">// 示例数据源</span>
-</span><span class="code-line"><span class="token class-name">List<span class="token punctuation">&#x3C;</span>Employee<span class="token punctuation">></span></span> employees <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&#x3C;</span>Employee<span class="token punctuation">></span></span>
+</span></code></pre>
+<p>示例数据源</p>
+<pre class="language-cs"><code class="language-cs code-highlight"><span class="code-line"><span class="token class-name">List<span class="token punctuation">&#x3C;</span>Employee<span class="token punctuation">></span></span> employees <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&#x3C;</span>Employee<span class="token punctuation">></span></span>
 </span><span class="code-line"><span class="token punctuation">{</span>
 </span><span class="code-line">    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Employee</span> <span class="token punctuation">{</span> DepartmentID <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">"Alice"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </span><span class="code-line">    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Employee</span> <span class="token punctuation">{</span> DepartmentID <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">"Bob"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </span><span class="code-line">    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Employee</span> <span class="token punctuation">{</span> DepartmentID <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">"Charlie"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </span><span class="code-line">    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Employee</span> <span class="token punctuation">{</span> DepartmentID <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">"David"</span> <span class="token punctuation">}</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment">// 使用Join，将部门和员工相结合，获取部门名称和员工名称的集合</span>
-</span><span class="code-line"><span class="token class-name"><span class="token keyword">var</span></span> joinQuery <span class="token operator">=</span> departments<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>employees<span class="token punctuation">,</span> 
-</span><span class="code-line">        department <span class="token operator">=></span> department<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> employee <span class="token operator">=></span> employee<span class="token punctuation">.</span>DepartmentID<span class="token punctuation">,</span> 
-</span><span class="code-line">        <span class="token punctuation">(</span>department<span class="token punctuation">,</span> employee<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">new</span> <span class="token punctuation">{</span> Department <span class="token operator">=</span> department<span class="token punctuation">.</span>Name<span class="token punctuation">,</span> Employee <span class="token operator">=</span> employee<span class="token punctuation">.</span>Name <span class="token punctuation">}</span>
-</span><span class="code-line">    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment">// 使用GroupJoin，将部门和员工相结合，返回所有的部门，并返回每个部门相关联的员工集合(嵌套)</span>
-</span><span class="code-line"><span class="token class-name"><span class="token keyword">var</span></span> groupJoinQuery <span class="token operator">=</span> departments<span class="token punctuation">.</span><span class="token function">GroupJoin</span><span class="token punctuation">(</span>employees<span class="token punctuation">,</span> 
-</span><span class="code-line">        department <span class="token operator">=></span> department<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> employee <span class="token operator">=></span> employee<span class="token punctuation">.</span>DepartmentID<span class="token punctuation">,</span> 
-</span><span class="code-line">        <span class="token punctuation">(</span>department<span class="token punctuation">,</span> employeeGroup<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">new</span> 
-</span><span class="code-line">            <span class="token punctuation">{</span> 
-</span><span class="code-line">                Department <span class="token operator">=</span> department<span class="token punctuation">.</span>Name<span class="token punctuation">,</span> 
-</span><span class="code-line">                Employees <span class="token operator">=</span> employeeGroup<span class="token punctuation">.</span><span class="token function">Select</span><span class="token punctuation">(</span>e <span class="token operator">=></span> e<span class="token punctuation">.</span>Name<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
-</span><span class="code-line">            <span class="token punctuation">}</span>
-</span><span class="code-line">    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>使用 <code>Join</code>，将部门和员工相结合，获取部门名称和员工名称的集合</p>
+<pre class="language-cs"><code class="language-cs code-highlight"><span class="code-line"><span class="token class-name"><span class="token keyword">var</span></span> joinQuery <span class="token operator">=</span> departments<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>employees<span class="token punctuation">,</span> 
+</span><span class="code-line">    department <span class="token operator">=></span> department<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> employee <span class="token operator">=></span> employee<span class="token punctuation">.</span>DepartmentID<span class="token punctuation">,</span> 
+</span><span class="code-line">    <span class="token punctuation">(</span>department<span class="token punctuation">,</span> employee<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">new</span> <span class="token punctuation">{</span> Department <span class="token operator">=</span> department<span class="token punctuation">.</span>Name<span class="token punctuation">,</span> Employee <span class="token operator">=</span> employee<span class="token punctuation">.</span>Name <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>使用 <code>GroupJoin</code>，将部门和员工相结合，返回所有的部门，并返回每个部门相关联的员工集合(嵌套)</p>
+<pre class="language-cs"><code class="language-cs code-highlight"><span class="code-line"><span class="token class-name"><span class="token keyword">var</span></span> groupJoinQuery <span class="token operator">=</span> departments<span class="token punctuation">.</span><span class="token function">GroupJoin</span><span class="token punctuation">(</span>employees<span class="token punctuation">,</span> 
+</span><span class="code-line">    department <span class="token operator">=></span> department<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> employee <span class="token operator">=></span> employee<span class="token punctuation">.</span>DepartmentID<span class="token punctuation">,</span> 
+</span><span class="code-line">    <span class="token punctuation">(</span>department<span class="token punctuation">,</span> employeeGroup<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">new</span> 
+</span><span class="code-line">        <span class="token punctuation">{</span> 
+</span><span class="code-line">            Department <span class="token operator">=</span> department<span class="token punctuation">.</span>Name<span class="token punctuation">,</span> 
+</span><span class="code-line">            Employees <span class="token operator">=</span> employeeGroup<span class="token punctuation">.</span><span class="token function">Select</span><span class="token punctuation">(</span>e <span class="token operator">=></span> e<span class="token punctuation">.</span>Name<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+</span><span class="code-line">        <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 style="background:#e91e63;" id="结果转换"><a aria-hidden="true" tabindex="-1" href="#结果转换"><span class="icon icon-link"></span></a>结果转换</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2&style=background:#e91e63;-->
@@ -1624,9 +1625,7 @@ C# 备忘清单
 <!--rehype:className=wrap-text-->
 </div></div></div><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 style="background:#e91e63;" id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-3&style=background:#e91e63;-->
-<blockquote>
 <p>假设有一个包含学生信息的列表，每个学生有姓名、年龄和成绩。使用LINQ查询来选择年龄大于20岁的学生，然后按照他们的成绩进行分组，并选择每个分组中年龄最小的学生的姓名。</p>
-</blockquote>
 <pre class="language-cs"><code class="language-cs code-highlight"><span class="code-line"><span class="token comment">// 示例数据源</span>
 </span><span class="code-line"><span class="token class-name">List<span class="token punctuation">&#x3C;</span>Student<span class="token punctuation">></span></span> students <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&#x3C;</span>Student<span class="token punctuation">></span></span>
 </span><span class="code-line"><span class="token punctuation">{</span>
@@ -1638,16 +1637,16 @@ C# 备忘清单
 </span><span class="code-line">    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Student</span> <span class="token punctuation">{</span> Name <span class="token operator">=</span> <span class="token string">"Damon"</span><span class="token punctuation">,</span> Age <span class="token operator">=</span> <span class="token number">28</span><span class="token punctuation">,</span> Grade <span class="token operator">=</span> <span class="token string">"B"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </span><span class="code-line">    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Student</span> <span class="token punctuation">{</span> Name <span class="token operator">=</span> <span class="token string">"Echo"</span><span class="token punctuation">,</span> Age <span class="token operator">=</span> <span class="token number">18</span><span class="token punctuation">,</span> Grade <span class="token operator">=</span> <span class="token string">"C"</span> <span class="token punctuation">}</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment">// 使用LINQ进行查询</span>
-</span><span class="code-line"><span class="token class-name"><span class="token keyword">var</span></span> result <span class="token operator">=</span> students
+</span></code></pre>
+<p>使用 <code>LINQ</code> 进行查询</p>
+<pre class="language-cs"><code class="language-cs code-highlight"><span class="code-line"><span class="token class-name"><span class="token keyword">var</span></span> result <span class="token operator">=</span> students
 </span><span class="code-line">    <span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span>student <span class="token operator">=></span> student<span class="token punctuation">.</span>Age <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token comment">// WHERE: 选择年龄大于20的学生</span>
 </span><span class="code-line">    <span class="token punctuation">.</span><span class="token function">GroupBy</span><span class="token punctuation">(</span>student <span class="token operator">=></span> student<span class="token punctuation">.</span>Grade<span class="token punctuation">)</span>  <span class="token comment">// GROUP BY: 按成绩分组</span>
 </span><span class="code-line">    <span class="token punctuation">.</span><span class="token function">Select</span><span class="token punctuation">(</span><span class="token keyword">group</span> <span class="token operator">=></span> <span class="token keyword">group</span><span class="token punctuation">.</span><span class="token function">OrderBy</span><span class="token punctuation">(</span>student <span class="token operator">=></span> student<span class="token punctuation">.</span>Age<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">First</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Name<span class="token punctuation">)</span> <span class="token comment">// SELECT: 选择每个分组中年龄最小的学生的姓名</span>
 </span><span class="code-line">    <span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//转换为List&#x3C;Student>()</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment">//输出结果</span>
-</span><span class="code-line"><span class="token punctuation">[</span><span class="token string">"Charlie"</span><span class="token punctuation">,</span><span class="token string">"Damon"</span><span class="token punctuation">,</span><span class="token string">"David"</span><span class="token punctuation">]</span>
+</span></code></pre>
+<p>输出结果</p>
+<pre class="language-cs"><code class="language-cs code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token string">"Charlie"</span><span class="token punctuation">,</span><span class="token string">"Damon"</span><span class="token punctuation">,</span><span class="token string">"David"</span><span class="token punctuation">]</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="语法糖"><a aria-hidden="true" tabindex="-1" href="#语法糖"><span class="icon icon-link"></span></a>语法糖</h2><div class="wrap-body">
 <blockquote>
