@@ -1065,6 +1065,267 @@ bool hasKey2 = hashTable.ContainsKey("key2");
 string valueOfKey2 = (string)hashTable["key2"];
 ```
 
+
+
+LINQ
+--------
+
+> C#语言中的LINQ（Language-Integrated Query）是一种强大的查询语言，它提供了一种统一的编程模型，使得数据查询变得更加直观和简洁。
+
+
+
+### FROM
+
+<!--rehype:wrap-class=col-span-3-->
+
+> 任何数据源，包括对象集合、数据库、XML等。
+
+
+
+### WHERE
+
+<!--rehype:wrap-class=col-span-2&style=background:#e91e63;-->
+
+> 条件查询
+
+```cs
+// 示例数据源
+List<Student> students = new List<Student>
+{
+    new Student { Name = "Alice", Age = 25, Grade = "A" },
+    new Student { Name = "Bob", Age = 30, Grade = "B" },
+    new Student { Name = "Barry", Age = 35, Grade = "C" },
+    new Student { Name = "Charlie", Age = 22, Grade = "A" },
+    new Student { Name = "David", Age = 21, Grade = "C" },
+    new Student { Name = "Damon", Age = 28, Grade = "B" },
+    new Student { Name = "Echo", Age = 18, Grade = "C" }
+};
+
+// 使用WHERE筛选出成绩为A的学生
+var result1 = students.Where(student => student.Grade = "A");
+
+// 使用WHERE筛选出年龄大于20的学生
+var result2 = students.Where(student => student.Age > 20);
+
+// 使用WHERE筛选出名字包含'D'的学生
+var result3 = students.Where(student => student.Name.Contains("D"));
+
+// 使用WHERE筛选出名字为'Bob'和'Echo'的学生
+List<string> nameList = new() { "Bob", "Echo" };
+var result4 = students.Where(student => nameList.Contains(student.Name));
+```
+
+
+
+### GROUPBY
+
+> 分组查询
+
+```cs
+// 示例数据源
+List<Student> students = new List<Student>
+{
+    new Student { Name = "Alice", Age = 25, Grade = "A" },
+    new Student { Name = "Bob", Age = 30, Grade = "B" },
+    new Student { Name = "Barry", Age = 35, Grade = "C" },
+    new Student { Name = "Charlie", Age = 22, Grade = "A" },
+    new Student { Name = "David", Age = 21, Grade = "C" },
+    new Student { Name = "Damon", Age = 28, Grade = "B" },
+    new Student { Name = "Echo", Age = 18, Grade = "C" }
+};
+
+// 使用GROUP BY按成绩进行分组查询
+var groupedByGrade = students.GroupBy(student => student.Grade);
+```
+
+<!--rehype:className=wrap-text-->
+
+
+
+### SELECT
+
+<!--rehype:wrap-class=col-span-2&style=background:#e91e63;-->
+
+> 结果查询
+
+```cs
+// 示例数据源
+List<Student> students = new List<Student>
+{
+    new Student { Name = "Alice", Age = 25, Grade = "A" },
+    new Student { Name = "Bob", Age = 30, Grade = "B" },
+    new Student { Name = "Barry", Age = 35, Grade = "C" },
+    new Student { Name = "Charlie", Age = 22, Grade = "A" },
+    new Student { Name = "David", Age = 21, Grade = "C" },
+    new Student { Name = "Damon", Age = 28, Grade = "B" },
+    new Student { Name = "Echo", Age = 18, Grade = "C" }
+};
+
+// 使用SELECT创建一个新的匿名类，并输出为集合，一般配合Where使用
+var result1 = students.Select(student => 
+	new 
+    {
+    	student.Name,
+        student.Age
+    });
+
+// 使用SELECT创建一个新的指定类，并输出为集合
+var result2 = students.Select(student => new StudentDto()
+    {
+        StudentName = student.Name,
+        StudentAge = student.Age
+    });
+```
+
+
+
+### ORDERBY
+
+> 排序
+
+```cs
+// 示例数据源
+List<Student> students = new List<Student>
+{
+    new Student { Name = "Alice", Age = 25, Grade = "A" },
+    new Student { Name = "Bob", Age = 30, Grade = "B" },
+    new Student { Name = "Barry", Age = 35, Grade = "C" },
+    new Student { Name = "Charlie", Age = 22, Grade = "A" },
+    new Student { Name = "David", Age = 21, Grade = "C" },
+    new Student { Name = "Damon", Age = 28, Grade = "B" },
+    new Student { Name = "Echo", Age = 18, Grade = "C" }
+};
+
+// 使用LINQ的OrderBy进行排序
+var result1 = students.OrderBy(student => student.Age);
+
+// 使用LINQ的OrderByDescending进行降序排序
+var result2 = students.OrderByDescending(student => student.Age);
+```
+
+<!--rehype:className=wrap-text-->
+
+
+
+### JOIN
+
+<!--rehype:wrap-class=col-span-3-->
+
+> `Join`：用于执行内连接操作，它会返回两个数据源中满足连接条件的元素的交集
+>
+> `GroupJoin`：用于执行左外连接（left outer join）操作，它会返回左边数据源的所有元素，以及每个元素所匹配的右边数据源的元素组成的集合。(嵌套)
+
+```cs
+// 示例数据源
+List<Department> departments = new List<Department>
+{
+    new Department { ID = 1, Name = "HR" },
+    new Department { ID = 2, Name = "IT" }
+};
+// 示例数据源
+List<Employee> employees = new List<Employee>
+{
+    new Employee { DepartmentID = 1, Name = "Alice" },
+    new Employee { DepartmentID = 2, Name = "Bob" },
+    new Employee { DepartmentID = 1, Name = "Charlie" },
+    new Employee { DepartmentID = 3, Name = "David" }
+};
+
+// 使用Join，将部门和员工相结合，获取部门名称和员工名称的集合
+var joinQuery = departments.Join(employees, 
+        department => department.ID, employee => employee.DepartmentID, 
+        (department, employee) => new { Department = department.Name, Employee = employee.Name }
+    );
+
+// 使用GroupJoin，将部门和员工相结合，返回所有的部门，并返回每个部门相关联的员工集合(嵌套)
+var groupJoinQuery = departments.GroupJoin(employees, 
+        department => department.ID, employee => employee.DepartmentID, 
+        (department, employeeGroup) => new 
+            { 
+                Department = department.Name, 
+                Employees = employeeGroup.Select(e => e.Name).ToList() 
+            }
+    );
+```
+
+
+
+### 结果转换
+
+<!--rehype:wrap-class=col-span-2&style=background:#e91e63;-->
+
+```cs
+// ToList(): 将结果转换为List集合。
+List<Student> resultList = result.ToList();
+
+// ToDictionary(): 将结果转换为Dictionary字典。
+Dictionary<string, int> resultDictionary = students
+    .ToDictionary(student => student.Name, student => student.Age);
+
+// ToArray(): 将结果转换为数组。
+Student[] resultArray = result.ToArray();
+
+// First(): 获取结果中的第一个元素。
+Student firstStudent = result.First();
+
+// FirstOrDefault(): 获取结果中的第一个元素，如果结果为空则返回默认值。
+Student firstStudent = result.FirstOrDefault();
+```
+
+
+
+### 自定义扩展方法
+
+```cs
+public static class CustomExtensions
+{
+    public static IEnumerable<T> CustomFilter<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+    {
+        foreach (var item in source)
+        {
+            if (predicate(item))
+            {
+                yield return item;
+            }
+        }
+    }
+}
+// 使用自定义扩展方法
+var filteredData = students.CustomFilter(s => s.Age > 20);
+```
+
+<!--rehype:className=wrap-text-->
+
+### 示例
+
+<!--rehype:wrap-class=col-span-3&style=background:#e91e63;-->
+
+> 假设有一个包含学生信息的列表，每个学生有姓名、年龄和成绩。使用LINQ查询来选择年龄大于20岁的学生，然后按照他们的成绩进行分组，并选择每个分组中年龄最小的学生的姓名。
+
+```cs
+// 示例数据源
+List<Student> students = new List<Student>
+{
+    new Student { Name = "Alice", Age = 25, Grade = "A" },
+    new Student { Name = "Bob", Age = 30, Grade = "B" },
+    new Student { Name = "Barry", Age = 35, Grade = "C" },
+    new Student { Name = "Charlie", Age = 22, Grade = "A" },
+    new Student { Name = "David", Age = 21, Grade = "C" },
+    new Student { Name = "Damon", Age = 28, Grade = "B" },
+    new Student { Name = "Echo", Age = 18, Grade = "C" }
+};
+
+// 使用LINQ进行查询
+var result = students
+    .Where(student => student.Age > 20) // WHERE: 选择年龄大于20的学生
+    .GroupBy(student => student.Grade)  // GROUP BY: 按成绩分组
+    .Select(group => group.OrderBy(student => student.Age).First().Name) // SELECT: 选择每个分组中年龄最小的学生的姓名
+    .ToList(); //转换为List<Student>()
+
+//输出结果
+["Charlie","Damon","David"]
+```
+
 语法糖
 ----
 
