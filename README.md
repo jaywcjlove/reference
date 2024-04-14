@@ -40,7 +40,7 @@ Quick Reference
 [Chown](./docs/chown.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->  
 [R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=contributing-->  
 [Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir-->   
-[Tauri](./docs/tauri.md)
+[Tauri](./docs/tauri.md)<!--rehype:style=background: rgb(103 214 237);&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -102,6 +102,7 @@ Quick Reference
 [React Native](./docs/react-native.md)<!--rehype:style=background: rgb(34 143 173);&class=tag&data-lang=React-->  
 [RegEx 正则表达式](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155);-->  
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198);-->  
+[Tauri](./docs/tauri.md)<!--rehype:style=background: rgb(103 214 237);&class=contributing-->  
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131);-->  
 [Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->  
 [</> htmx](./docs/htmx.md)<!--rehype:style=background: rgb(52 101 164);&class=contributing-->  
