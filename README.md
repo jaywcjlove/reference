@@ -39,7 +39,8 @@ Quick Reference
 [Github Copilot](./docs/github-copilot.md)<!--rehype:style=background: rgb(125 45 220);&class=tag contributing&data-lang=AI&data-info=👆看看还缺点儿什么？-->  
 [Chown](./docs/chown.md)<!--rehype:style=background: rgb(12 75 51/var(\-\-bg\-opacity));&class=contributing-->  
 [R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=contributing-->  
-[Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir--> 
+[Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir-->   
+[Tauri](./docs/tauri.md)
 <!--rehype:class=home-card-->
 
 ## 编程
