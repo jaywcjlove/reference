@@ -61,6 +61,7 @@ bash 注释
 `$@`        | 所有参数，从第一个开始
 `$-`        | 当前选项
 `$_`        | 上一个命令的最后一个参数
+<!--rehype:className=left-align-->
 
 见：[特殊参数](http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables)
 
@@ -152,6 +153,7 @@ Bash 参数扩展
 `${FOO:=val}`     | 如果未设置，则将 `$FOO` 设置为 `val`
 `${FOO:+val}`     | `val` 如果设置了`$FOO`
 `${FOO:?message}` | 如果 `$FOO` 未设置，则显示消息并退出
+<!--rehype:className=code-nowrap left-align-->
 
 ### 替代 Substitution
 
@@ -195,15 +197,21 @@ echo ${name:0:length}  # => Jo
 SRC="/path/to/foo.cpp"
 ```
 
+---
+
 ```bash
 BASEPATH=${SRC##*/}   
 echo $BASEPATH  # => "foo.cpp"
+```
 
+---
+
+```bash
 DIRPATH=${SRC%$BASEPATH}
 echo $DIRPATH   # => "/path/to/"
 ```
 
-### Transform
+### 转换
 
 ```bash
 STR="HELLO WORLD!"
@@ -265,7 +273,7 @@ for e in "${Fruits[@]}"; do
 done
 ```
 
-#### With index
+#### 有索引
 
 ```bash
 for i in "${!Fruits[@]}"; do
@@ -348,12 +356,12 @@ Bash 条件句
 
 条件 | 描述
 :- | -
-`[[ NUM -eq NUM ]]` | 等于 <yel>Eq</yel>ual                            |
-`[[ NUM -ne NUM ]]` | 不等于 <yel>N</yel>ot <yel>e</yel>qual             |
-`[[ NUM -lt NUM ]]` | 小于 <yel>L</yel>ess <yel>t</yel>han             |
-`[[ NUM -le NUM ]]` | 小于等于 <yel>L</yel>ess than or <yel>e</yel>qual    |
-`[[ NUM -gt NUM ]]` | 大于 <yel>G</yel>reater <yel>t</yel>han          |
-`[[ NUM -ge NUM ]]` | 大于等于 <yel>G</yel>reater than or <yel>e</yel>qual |
+`[[ NUM -eq NUM ]]` | 等于 <yel>Eq</yel>ual
+`[[ NUM -ne NUM ]]` | 不等于 <yel>N</yel>ot <yel>e</yel>qual
+`[[ NUM -lt NUM ]]` | 小于 <yel>L</yel>ess <yel>t</yel>han
+`[[ NUM -le NUM ]]` | 小于等于 <yel>L</yel>ess than or <yel>e</yel>qual
+`[[ NUM -gt NUM ]]` | 大于 <yel>G</yel>reater <yel>t</yel>han
+`[[ NUM -ge NUM ]]` | 大于等于 <yel>G</yel>reater than or <yel>e</yel>qual
 `(( NUM < NUM ))`   | 小于
 `(( NUM <= NUM ))`  | 小于或等于
 `(( NUM > NUM ))`   | 比...更大
@@ -448,10 +456,10 @@ fi
 
 条件 | 描述
 :- | -
-`[[ -o noclobber ]]` | 如果启用 OPTION
-`[[ ! EXPR ]]`       | 不是 Not
-`[[ X && Y ]]`       | 和 And
-`[[ X \|\| Y ]]`     | 或者 Or
+`[[ -o noclobber ]]` | 如果启用 <pur>OPTION</pur>
+`[[ ! EXPR ]]`       | 不是 <pur>Not</pur>
+`[[ X && Y ]]`       | 和 <pur>And</pur>
+`[[ X \|\| Y ]]`     | 或者 <pur>Or</pur>
 
 ### 逻辑和，或
 
@@ -536,10 +544,10 @@ done
 ```bash
 for number in $(seq 1 3); do
     if [[ $number == 2 ]]; then
-        # Skip entire rest of loop.
+        # 跳过整个循环的其余部分。
         break;
     fi
-    # This will only print 1
+    # 这只会打印 1
     echo "$number"
 done
 ```
@@ -558,7 +566,7 @@ done
 
 ```bash
 while true; do
-    # here is some code.
+    # 下面是一些代码
 done
 ```
 
@@ -566,7 +574,7 @@ done
 
 ```bash
 while :; do
-    # here is some code.
+    # 下面是一些代码
 done
 ```
 
@@ -589,8 +597,9 @@ myfunc() {
 }
 ```
 
+同上(替代语法)
+
 ```bash
-# 同上(替代语法)
 function myfunc() {
   echo "hello $1"
 }
@@ -635,42 +644,61 @@ Bash 选项
 
 ### 选项
 
+避免覆盖文件
+
 ```bash
-# 避免覆盖文件
 # (echo "hi" > foo)
 set -o noclobber
+```
 
-# 用于出错时退出
-# 避免级联错误
+用于出错时退出，避免级联错误
+
+```bash
 set -o errexit   
+```
 
-# 揭示隐藏的失败
+揭示隐藏的失败
+
+```bash
 set -o pipefail  
+```
 
-# 公开未设置的变量
+公开未设置的变量
+
+```bash
 set -o nounset
 ```
 
 ### 全局选项
 
+不匹配的 glob 被删除
+
 ```bash
-# 不匹配的 glob 被删除
-# ('*.foo' => '')
-shopt -s nullglob   
+shopt -s nullglob   # ('*.foo' => '')
+```
 
-# 不匹配的 glob 抛出错误
+不匹配的 glob 抛出错误
+
+```bash
 shopt -s failglob  
+```
 
-# 不区分大小写的球体
+不区分大小写的球体
+
+```bash
 shopt -s nocaseglob 
+```
 
-# 通配符匹配点文件
-# ("*.sh" => ".foo.sh")
-shopt -s dotglob    
+通配符匹配点文件
 
-# 允许 ** 进行递归匹配
-# ('lib/**/*.rb' => 'lib/a/b/c.rb')
-shopt -s globstar   
+```bash
+shopt -s dotglob    # ("*.sh" => ".foo.sh")
+```
+
+允许 ** 进行递归匹配
+
+```bash
+shopt -s globstar   # ('lib/**/*.rb' => 'lib/a/b/c.rb')
 ```
 
 Bash 历史
@@ -682,8 +710,9 @@ Bash 历史
 命令 | 描述
 :- | -
 `history`             | 显示历史
-`sudo !!`             | 使用 sudo 运行上一个命令
+`sudo !!`             | 使用 `sudo` 运行上一个命令
 `shopt -s histverify` | 不要立即执行扩展结果
+<!--rehype:className=left-align-->
 
 ### 表达式
 
@@ -694,6 +723,7 @@ Bash 历史
 `!-n`        | 展开第 `n` 个最近的命令
 `!n`         | 展开历史中的第 `n` 个命令
 `!<command>` | 展开最近调用的命令 `<command>`
+<!--rehype:className=left-align-->
 
 ### 操作
 
@@ -704,6 +734,7 @@ Bash 历史
 `!!:gs/<FROM>/<TO>/` | 在最近的命令中将所有出现的 `<FROM>` 替换为 `<TO>`
 `!$:t`               | 仅从最近命令的最后一个参数扩展基本名称
 `!$:h`               | 仅从最近命令的最后一个参数展开目录
+<!--rehype:className=left-align-->
 
 `!!` 和 `!$` 可以替换为任何有效的扩展。
 
@@ -716,34 +747,35 @@ Bash 历史
 `!$`     | 从最近的命令中展开最后一个标记
 `!!:n-m` | 从最近的命令扩展令牌范围
 `!!:n-$` | 从最近的命令中将第 `n` 个标记展开到最后
+<!--rehype:className=left-align-->
 
 `!!` 可以替换为任何有效的扩展，即 `!cat`、`!-2`、`!42` 等。
 
 杂项
--------------
+---
 
 ### 数值计算
 
 ```bash
-$((a + 200))      # Add 200 to $a
+$((a + 200))      # $a 加 200
 ```
 
 ```bash
-$(($RANDOM%200))  # Random number 0..199
+$(($RANDOM%200))  # 随机数 0..199
 ```
 
 ### 子 shell
 
 ```bash
 (cd somedir; echo "I'm now in $PWD")
-pwd # still in first directory
+pwd # 仍然在第一个目录
 ```
 
 ### 检查命令
 
 ```bash
 command -V cd
-#=> "cd is a function/alias/whatever"
+#=> "cd 是一个函数/别名/其他"
 ```
 
 ### 重定向
@@ -964,11 +996,11 @@ END
 ### 转到上一个目录
 
 ```bash
-pwd # /home/user/foo
+pwd     # /home/user/foo
 cd bar/
-pwd # /home/user/foo/bar
+pwd     # /home/user/foo/bar
 cd -
-pwd # /home/user/foo
+pwd     # /home/user/foo
 ```
 
 ### 读取输入
@@ -1020,7 +1052,7 @@ echo "${args[@]}"
 $ bash -x myscript.sh
 ```
 
-在bash脚本中打开调试(针对部分内容打印调试信息)。
+在 bash 脚本中打开调试(针对部分内容打印调试信息)
 
 ```bash
 #!/bin/bash
@@ -1036,10 +1068,6 @@ Bash 颜色
 <!--rehype:wrap-class=row-span-2-->
 
 您可以通过为其输出着色来使您的 BASH 脚本更漂亮，使用以下模板编写彩色文本：
-
-```bash
-echo -e "\e[COLORm文字变色了\e[0m"
-```
 
 #### 示例
 
@@ -1098,35 +1126,36 @@ m           # 设置图形模式
 `5` | 缓慢闪烁
 `6` | 快速闪烁
 `7` | 反显
-`8` | 隐藏 | 未广泛支持。
+`8` | 隐藏 | 未广泛支持
 `9` | 划除
 <!--rehype:className=left-align-->
+
 ### ANSI — 颜色转义码
 
-颜色 | 前景色 | 背景色 | 示例
-:- | -- | -- | --
-`Black` 黑色 | 30 | 40 | ``<!--rehype:style=background:#000;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Red` 红色 | 31 | 41 | ``<!--rehype:style=background:#c23621;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Green` 绿色 | 32 | 42 | ``<!--rehype:style=background:#25bc26;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Yellow` 黄色 | 33 | 43 | ``<!--rehype:style=background:#cdcd00;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Blue` 蓝色 | 34 | 44 | ``<!--rehype:style=background:#0000ee;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Purple` 紫色 | 35 | 45 | ``<!--rehype:style=background:#cd00cd;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Cyan` 青色 | 36 | 46 | ``<!--rehype:style=background:#00AAAA;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`White` 白色 | 37 | 47 | ``<!--rehype:style=background:#e5e5e5;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+颜色 | 名称 | 前景色 | 背景色 | 示例
+:- | --| -- | -- | --
+`Black` | 黑色 | 30 | 40 | `黑`<!--rehype:style=background:#000;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Red` | 红色 | 31 | 41 | `红`<!--rehype:style=background:#c23621;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Green` | 绿色 | 32 | 42 | `绿`<!--rehype:style=background:#25bc26;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Yellow` | 黄色 | 33 | 43 | `黄`<!--rehype:style=background:#cdcd00;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Blue` | 蓝色 | 34 | 44 | `蓝`<!--rehype:style=background:#0000ee;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Purple` | 紫色 | 35 | 45 | `紫`<!--rehype:style=background:#cd00cd;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Cyan` | 青色 | 36 | 46 | `青`<!--rehype:style=background:#00AAAA;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`White` | 白色 | 37 | 47 | `白`<!--rehype:style=background:#e5e5e5;padding:0.2rem 1.2rem;border: 1px solid #333;-->
 <!--rehype:className=show-header left-align-->
 
 ### ANSI — 颜色转义码(亮色)
 
-颜色 | 前景色 | 背景色 | 示例
+颜色 | 前色 | 背色 | 示例
 :- | -- | -- | --
-`Bright Black(Gray)` 灰色 | 90 | 100 | ``<!--rehype:style=background:#555555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Red` 亮红色 | 91 | 101 | ``<!--rehype:style=background:#FF5555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Green` 亮绿色 | 92 | 102 | ``<!--rehype:style=background:#55FF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Yellow` 亮黄色 | 93 | 103 | ``<!--rehype:style=background:#FFFF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Blue` 亮蓝色 | 94 | 104 | ``<!--rehype:style=background:#5555FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Magenta` 亮紫色 | 95 | 105 | ``<!--rehype:style=background:#FF55FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright Cyan` 亮青色 | 96 | 106 | ``<!--rehype:style=background:#55FFFF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
-`Bright White` 浅灰 | 97 | 107 | ``<!--rehype:style=background:#ffffff;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`BrightBlack(Gray)` 灰色 | 90 | 100 | `90`<!--rehype:style=background:#555555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Red` 亮红色 | 91 | 101 | `91`<!--rehype:style=background:#FF5555;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Green` 亮绿色 | 92 | 102 | `92`<!--rehype:style=background:#55FF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Yellow` 亮黄色 | 93 | 103 | `93`<!--rehype:style=background:#FFFF55;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Blue` 亮蓝色 | 94 | 104 | `94`<!--rehype:style=background:#5555FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Magenta` 亮紫色 | 95 | 105 | `95`<!--rehype:style=background:#FF55FF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright Cyan` 亮青色 | 96 | 106 | `96`<!--rehype:style=background:#55FFFF;padding:0.2rem 1.2rem;border: 1px solid #333;-->
+`Bright White` 浅灰 | 97 | 107 | `97`<!--rehype:style=background:#ffffff;padding:0.2rem 1.2rem;border: 1px solid #333;-->
 <!--rehype:className=show-header left-align-->
 
 ### 可用功能
@@ -1153,6 +1182,7 @@ m           # 设置图形模式
 `6n` | DSR – 设备状态报告 | 以 `ESC[n;mR` (就像在键盘上输入)向应用程序报告光标位置(CPR)，其中 `n`是行， `m` 是列
 `s` | SCP – 保存光标位置 | 保存光标的当前位置
 `u` | RCP – 恢复光标位置 | 恢复保存的光标位置
+<!--rehype:className=left-align-->
 
 另见
 ----

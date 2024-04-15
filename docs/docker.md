@@ -9,6 +9,13 @@ Docker 备忘清单
 
 ### 入门
 
+#### 安装
+
+```shell
+curl -sSL https://get.docker.com/ | sh
+sudo chmod 777 /var/run/docker.sock
+```
+
 在后台创建和运行容器
 
 ```shell
@@ -169,55 +176,16 @@ Docker 网络
 ----
 <!--rehype:body-class=cols-2-->
 
-### 操作
-
-获取容器连接的网络
-
-```shell
-docker inspect MyContainer | grep Network
-```
-
-删除网络
-
-```shell
-docker network rm MyOverlayNetwork
-```
-
-列出网络
-
-```shell
-docker network ls
-```
-
-获取有关网络的信息
-
-```shell
-docker network inspect MyOverlayNetwork
-```
-
-将正在运行的容器连接到网络
-
-```shell
-docker network connect MyOverlayNetwork nginx
-```
-
-启动时将容器连接到网络
-
-```shell
-docker run -it -d --network=MyOverlayNetwork nginx
-```
-
-断开容器与网络的连接
-
-```shell
-docker network disconnect MyOverlayNetwork nginx
-```
-
 ### 创建网络
 
 ```shell
 docker network create -d overlay MyOverlayNetwork
 docker network create -d bridge MyBridgeNetwork
+```
+
+自定义网络子网和网关
+
+```shell
 docker network create -d overlay \
   --subnet=192.168.0.0/16 \
   --subnet=192.170.0.0/16 \
@@ -231,19 +199,82 @@ docker network create -d overlay \
   MyOverlayNetwork
 ```
 
+### 操作
+<!--rehype:wrap-class=row-span-3-->
+
+获取容器连接的网络
+
+```shell
+docker inspect MyContainer | grep Network
+```
+
+获取有关网络的信息
+
+```shell
+docker network inspect <network_name>
+```
+
+将正在运行的容器连接到网络
+
+```shell
+docker network connect <network_name> <container_name>
+```
+
+启动时将容器连接到网络
+
+```shell
+docker run -it -d --network=<network_name> <container_name>
+```
+
+断开容器与网络的连接
+
+```shell
+docker network disconnect <network_name> <container_name>
+```
+
+### 删除网络
+
+```bash
+docker network rm <network_name>
+```
+
+### 列出网络
+
+```shell
+docker network ls
+```
+
 Docker 快捷键
 ----
-<!--rehype:body-class=cols-2-->
 
-### 退出
+需要特别注意的是，退出快捷键中的删除容器实例，只对于使用 `docker attach` 进入的容器生效，使用 `docker exec` 进入容器后，使用上面的快捷键后将隔离容器，且不会删除容器实例。
+
+### 退出 - 关闭容器
 
 | Docker 快捷键 | 说明 |
 |------------|------|
-`ctrl+c` | 将关闭容器，并删除当前的容器实例
-`ctrl+d` | 将保留容器，并退出到Docker主机的命令行界面
-`ctrl+p+q` | 将容器分离，保留容器，但是不退出
+`ctrl` `c` | 将关闭容器
+<!--rehype:className=shortcuts-->
 
-需要特别注意的是，上面的退出快捷键中的删除容器实例只对于使用`docker attach`进入的容器生效，使用`docker exec`进入容器后使用上面的快捷键后将隔离容器且不会删除容器实例。
+将关闭容器, 并删除当前的容器实例
+
+### 退出 - 保留容器
+
+| Docker 快捷键 | 说明 |
+|------------|------|
+`ctrl` `d` | 保留容器
+<!--rehype:className=shortcuts-->
+
+将保留容器，并退出到Docker主机的命令行界面
+
+### 退出 - 容器分离
+
+| Docker 快捷键 | 说明 |
+|------------|------|
+`ctrl` `p` `q` | 容器分离
+<!--rehype:className=shortcuts-->
+
+将容器分离，保留容器，但是不退出
 
 各种各样的
 ----
@@ -251,15 +282,15 @@ Docker 快捷键
 
 ### Docker Hub
 
-| Docker 语法 | 说明 |
-|------------|------|
-`docker search search_word` | 在 docker hub 中搜索镜像
-`docker pull user/image` | 从 docker hub 下载镜像
-`docker login` | 向 docker hub 进行身份验证
-`docker push user/image` | 将镜像上传到 docker hub
+```bash
+$ docker search search_word  # 在 docker hub 中搜索镜像
+$ docker pull user/image     # 从 docker hub 下载镜像
+$ docker login               # 向 docker hub 进行身份验证
+$ docker push user/image     # 将镜像上传到 docker hub
+```
 
 ### 镜像仓库命令
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-2-->
 
 登录到镜像仓库
 
@@ -308,23 +339,17 @@ $ docker push eon01/nginx localhost:5000/myadmin/nginx
 `docker system prune` | 清理所有空闲或与任何Docker容器无关的资源
 `docker image prune` | 删除悬空的Docker镜像
 `docker container prune` | 删除所有未使用的Docker 容器
+<!--rehype:className=left-align-->
 
 ### 卷 volume
 
-检查卷
-
 ```shell
-$ docker volume ls
-```
-
-清理未使用的卷
-
-```shell
-$ docker volume prune
+$ docker volume ls    # 检查卷
+$ docker volume prune # 清理未使用的卷
 ```
 
 ### Docker Compose
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 :- | :-
 :- | :-
@@ -339,6 +364,7 @@ $ docker volume prune
 `docker-compose scale <service_name>=<replica>` | 为服务指定容器个数
 `docker-compose top` | 显示正在运行的进程
 `docker-compose run -rm -p 2022:22 web bash` | 启动 Web 服务并运行 bash 作为其命令，删除旧容器
+<!--rehype:className=left-align-->
 
 ### Docker Services
 
@@ -353,6 +379,7 @@ $ docker volume prune
 <!--rehype:className=left-align-->
 
 ### Docker Stack
+<!--rehype:wrap-class=col-span-2-->
 
 :- | :-
 :- | :-
@@ -385,6 +412,7 @@ $ docker volume prune
 <!--rehype:className=left-align-->
 
 ### docker 主要命令
+<!--rehype:wrap-class=row-span-3-->
 
 :- | :-
 :- | :-
@@ -430,8 +458,66 @@ $ docker volume prune
 `wait`     | 阻塞直到一个或多个容器停止，然后打印它们的退出代码
 <!--rehype:className=left-align-->
 
+### docker 管理命令
+
+:- | :-
+:- | :-
+`docker builder`     | 管理构建
+`docker buildx*`     | Docker Buildx（Docker Inc.，v0.7.1）
+`docker compose*`    | Docker Compose（Docker Inc.，v2.2.3）
+`docker config`      | 管理 Docker 配置
+`docker container`   | 管理容器
+`docker context`     | 管理上下文
+`docker image`       | 管理镜像
+`docker manifest`    | 管理 Docker 镜像清单和清单列表
+`docker network`     | 管理网络
+`docker node`        | 管理 Swarm 节点
+`docker plugin`      | 管理插件
+`docker scan*`       | Docker 扫描（Docker Inc.，v0.16.0）
+`docker secret`      | 管理 Docker 机密
+`docker service`     | 管理服务
+`docker stack`       | 管理 Docker 堆栈
+`docker swarm`       | 管理群
+`docker system`      | 管理 Docker
+`docker trust`       | 管理对 Docker 映像的信任
+`docker volume`      | 管理卷
+<!--rehype:className=left-align-->
+
+### docker 全局参数
+
+```bash
+    --config string     # 客户端配置文件的位置（默认“~/.docker”）
+-c, --context string    # 用于连接到守护程序的上下文的名称（
+                        # 覆盖 DOCKER_HOST 环境变量和使用
+                        # “docker context use” 设置的默认上下文）
+-D, --debug             # 启用调试模式
+-H, --host list         # 要连接的守护进程套接字
+-l, --log-level string  # 设置日志级别
+        # （默认“info”） ("debug"|"info"|"warn"|"error"|"fatal") 
+    --tls               # 使用 TLS； 由 --tlsverify 暗示
+    --tlscacert string  # 仅由该 CA 签署的信任证书
+        #（默认为“~/.docker/ca.pem”）
+    --tlscert string    # TLS证书文件路径
+        #（默认“~/.docker/cert.pem”）
+    --tlskey string     # TLS 密钥文件的路径
+        #（默认为“~/.docker/key.pem”）
+    --tlsverify         # 使用 TLS 并验证远程
+-v, --version           # 打印版本信息并退出
+```
+
+### docker images
+
+```bash
+-a, --all             显示所有镜像（默认隐藏中间镜像）
+    --digests         显示摘要
+-f, --filter filter   根据提供的条件过滤输出
+    --format string   使用 Go 模板打印漂亮的镜像
+    --no-trunc        不要截断输出
+-q, --quiet           仅显示镜像 ID
+```
+
 ### docker run/create
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
     --add-host list            # 添加自定义主机到 IP 映射 (host:ip)
@@ -441,11 +527,11 @@ $ docker volume prune
     --cap-add list             # 添加 Linux 功能
     --cap-drop list            # 放弃 Linux 功能
     --cgroup-parent string     # 容器的可选父 cgroup
-    --cgroupns string   # 要使用的 Cgroup 命名空间（主机|私有）
-                        #  'host':    在 Docker 主机的 cgroup 命名空间中运行容器
-                        #  'private': 在自己的私有 cgroup 命名空间中运行容器
-                        #  '':        使用由守护进程上的 
-                        #        default-cgroupns-mode 选项配置的 cgroup 命名空间（默认）
+    --cgroupns string          # 要使用的 Cgroup 命名空间（主机|私有）
+                               #  'host':    在 Docker 主机的 cgroup 命名空间中运行容器
+                               #  'private': 在自己的私有 cgroup 命名空间中运行容器
+                               #  '':        使用由守护进程上的 
+                               #        default-cgroupns-mode 选项配置的 cgroup 命名空间（默认）
     --cidfile string           # 将容器 ID 写入文件
     --cpu-period int           # 限制 CPU CFS（完全公平调度器）周期
     --cpu-quota int            # 限制 CPU CFS（完全公平调度器）配额
@@ -534,59 +620,6 @@ $ docker volume prune
 ```
 
 `run`/`create` 大部分参数一致
-
-### docker 全局参数
-
-```bash
-    --config string     # 客户端配置文件的位置（默认“~/.docker”）
--c, --context string    # 用于连接到守护程序的上下文的名称（
-                        # 覆盖 DOCKER_HOST 环境变量和使用“docker context use”设置的默认上下文）
--D, --debug             # 启用调试模式
--H, --host list         # 要连接的守护进程套接字
--l, --log-level string  # 设置日志级别("debug"\|"info"\|"warn"\|"error"\|"fatal") （默认“info”）
-    --tls               # 使用 TLS； 由 --tlsverify 暗示
-    --tlscacert string  # 仅由该 CA 签署的信任证书（默认为“~/.docker/ca.pem”）
-    --tlscert string    # TLS证书文件路径（默认“~/.docker/cert.pem”）
-    --tlskey string     # TLS 密钥文件的路径（默认为“~/.docker/key.pem”）
-    --tlsverify         # 使用 TLS 并验证远程
--v, --version           # 打印版本信息并退出
-```
-
-### docker 管理命令
-<!--rehype:wrap-class=row-span-2-->
-
-:- | :-
-:- | :-
-`docker builder`     | 管理构建
-`docker buildx*`     | Docker Buildx（Docker Inc.，v0.7.1）
-`docker compose*`    | Docker Compose（Docker Inc.，v2.2.3）
-`docker config`      | 管理 Docker 配置
-`docker container`   | 管理容器
-`docker context`     | 管理上下文
-`docker image`       | 管理镜像
-`docker manifest`    | 管理 Docker 镜像清单和清单列表
-`docker network`     | 管理网络
-`docker node`        | 管理 Swarm 节点
-`docker plugin`      | 管理插件
-`docker scan*`       | Docker 扫描（Docker Inc.，v0.16.0）
-`docker secret`      | 管理 Docker 机密
-`docker service`     | 管理服务
-`docker stack`       | 管理 Docker 堆栈
-`docker swarm`       | 管理群
-`docker system`      | 管理 Docker
-`docker trust`       | 管理对 Docker 映像的信任
-`docker volume`      | 管理卷
-
-### docker images
-
-```bash
--a, --all             显示所有镜像（默认隐藏中间镜像）
-    --digests         显示摘要
--f, --filter filter   根据提供的条件过滤输出
-    --format string   使用 Go 模板打印漂亮的镜像
-    --no-trunc        不要截断输出
--q, --quiet           仅显示镜像 ID
-```
 
 Docker 示例
 ---
@@ -691,3 +724,4 @@ $ docker run -d --name gitlab \
 - [Dockerfile 备忘清单](./dockerfile.md) *(github.io)*
 - [Docker 官方入门教程](https://docs.docker.com/get-started/) *(docker.com)*
 - [Docker入门学习笔记](https://jaywcjlove.github.io/docker-tutorial) *(github.io)*
+- [快速安装Docker及配置及Docker配置、Docker常用命令](https://www.loganjin.cn/article/docker-install/)

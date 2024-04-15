@@ -10,24 +10,29 @@ Kubernetes 备忘清单
 
 ```bash
 $ kubectl get no          # 显示所有节点信息
-$ kubectl get no -o wide  # 显示所有节点的更多信息
+# 显示所有节点的更多信息
+$ kubectl get no -o wide  
 $ kubectl describe no     # 显示节点详情
-$ kubectl get no -o yaml  # 以yaml格式，显示节点详情
-$ kubectl get node --selector=[label_name] # 筛选指定标签的节点
+# 以yaml格式，显示节点详情
+$ kubectl get no -o yaml  
+# 筛选指定标签的节点
+$ kubectl get node --selector=[label_name] 
+# 输出 jsonpath 表达式定义的字段信息
 $ kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="ExternalIP")].address}'
-# 输出jsonpath表达式定义的字段信息
-$ kubectl top node [node_name] # 显示节点(CPU/内存/存储)使用情况
+# 显示节点(CPU/内存/存储)使用情况
+$ kubectl top node [node_name]
 ```
 
 ### 容器组
+<!--rehype:wrap-class=col-span-2-->
 
 资源名称: pods, 缩写: po
 
 ```bash
-$ kubectl get po         # 显示所有容器组信息
+$ kubectl get po              # 显示所有容器组信息
 $ kubectl get po -o wide
 $ kubectl describe po
-$ kubectl get po --show-labels   # 查看容器组的labels
+$ kubectl get po --show-labels # 查看容器组的labels
 $ kubectl get po -l app=nginx
 $ kubectl get po -o yaml
 $ kubectl get pod [pod_name] -o yaml --export
@@ -39,7 +44,7 @@ $ kubectl get pods --field-selector status.phase=Running
 
 ### 命名空间
 
-资源名称: namespaces, 缩写: ns
+资源名称: `namespaces`, 缩写: `ns`
 
 ```bash
 $ kubectl get ns
@@ -49,7 +54,7 @@ $ kubectl describe ns
 
 ### 无状态
 
-资源名称: deployments, 缩写: deploy
+资源名称: `deployments`, 缩写: `deploy`
 
 ```bash
 $ kubectl get deploy
@@ -60,7 +65,7 @@ $ kubectl get deploy -o yaml
 
 ### 服务
 
-资源名称: services, 缩写: svc
+资源名称: `services`, 缩写: `svc`
 
 ```bash
 $ kubectl get svc
@@ -71,8 +76,9 @@ $ kubectl get svc --show-labels
 ```
 
 ### 守护进程集
+<!--rehype:wrap-class=col-span-2-->
 
-资源名称: daemonsets, 缩写: ds
+资源名称: `daemonsets`, 缩写: `ds`
 
 ```bash
 $ kubectl get ds
@@ -83,12 +89,24 @@ $ kubectl get ds [ds_name] -n [ns_name] -o yaml
 
 ### 事件
 
-资源名称: events, 缩写: ev
+资源名称: `events`, 缩写: `ev`
 
 ```bash
 $ kubectl get events 
 $ kubectl get events -n kube-system
 $ kubectl get events -w
+```
+
+### 服务帐户
+<!--rehype:wrap-class=col-span-2-->
+
+资源名称: `serviceaccounts`, 缩写: `sa`
+
+```bash
+$ kubectl get sa
+$ kubectl get sa -o yaml
+$ kubectl get serviceaccounts default -o yaml >./sa.yaml
+$ kubectl replace serviceaccount default -f ./sa.yaml
 ```
 
 ### 日志
@@ -97,19 +115,9 @@ $ kubectl get events -w
 $ kubectl logs [pod_name]
 $ kubectl logs --since=1h [pod_name]
 $ kubectl logs --tail=20 [pod_name]
-$ kubectl logs -f -c [container_name] [pod_name]
+$ kubectl logs \
+      -f -c [container_name] [pod_name]
 $ kubectl logs [pod_name] > pod.log
-```
-
-### 服务帐户
-
-资源名称: serviceaccounts, 缩写: sa
-
-```bash
-$ kubectl get sa
-$ kubectl get sa -o yaml
-$ kubectl get serviceaccounts default -o yaml >./sa.yaml
-$ kubectl replace serviceaccount default -f ./sa.yaml
 ```
 
 ### 副本集
@@ -127,7 +135,13 @@ $ kubectl get rs -o yaml
 
 ```bash
 $ kubectl get roles --all-namespaces
-$ kubectl get roles --all-namespaces -o yaml
+```
+
+---
+
+```
+$ kubectl get roles \
+      --all-namespaces -o yaml
 ```
 
 ### 保密字典
@@ -203,6 +217,7 @@ $ kubectl taint [node_name] [taint_name]
 ```
 
 ### 标签
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
 $ kubectl label nodes <node-name> <label-key>=<label-value>  #增加
@@ -233,6 +248,7 @@ $ kubectl edit pod [pod_name]
 ```
 
 ### 无状态/命名空间
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```bash
 $ kubectl edit deploy [deploy_name]
@@ -265,6 +281,7 @@ $ kubectl delete sa [sa_name]
 ```
 
 ### 注释
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
 $ kubectl annotatepo [pod_name] [annotation]
@@ -275,6 +292,7 @@ $ kubectl annotateno [node_name]
 ---
 
 ### 创建容器组
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
 $ kubectl create -f [name_of_file] 
@@ -287,7 +305,8 @@ $ kubectl run [pod_name] --image=nginx --restart=Never
 ### 创建服务
 
 ```bash
-$ kubectl create svc nodeport [svc_name] --tcp=8080:80
+$ kubectl create svc nodeport [svc_name] \
+      --tcp=8080:80
 ```
 
 ### 创建无状态应用
@@ -295,21 +314,25 @@ $ kubectl create svc nodeport [svc_name] --tcp=8080:80
 ```bash
 $ kubectl create -f [name_of_file] 
 $ kubectl apply -f [name_of_file]
-$ kubectl create deploy [deploy_name] --image=nginx
-```
-
-### 容器交互
-
-```bash
-$ kubectl run [pod_name] --image=busybox --rm -it --restart=Never -- sh
+$ kubectl create deploy [deploy_name] \
+      --image=nginx
 ```
 
 ### 输出YAML文件
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
 $ kubectl create deploy [deploy_name] --image=nginx --dry-run -o yaml > deploy.yaml
 $ kubectl get po [pod_name] -o yaml --export > pod.yaml
 $ kubectl run nginx --image=nginx:alpine --dry-run -o -yaml > deploy.yaml
+```
+
+### 容器交互
+
+```bash
+$ kubectl run [pod_name] \
+        --image=busybox --rm -it \
+        --restart=Never -- sh
 ```
 
 ### 获取帮助

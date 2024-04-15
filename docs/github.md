@@ -27,6 +27,18 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 `G` `W`  | 转到 `Wiki` 选项卡
 <!--rehype:className=shortcuts-->
 
+### 源码浏览
+
+快捷键 | 说明
+:- | -
+`T`  | 激活文件查找器
+`L`  | 跳转到代码中的一行
+`W`  | 切换到新的分支或标签
+`Y`  | 将 URL 扩展为其规范形式
+`I`  | 显示或隐藏对差异的评论
+`B`  | 打开责备视图
+<!--rehype:className=shortcuts-->
+
 ### 源代码编辑
 
 快捷键 | 说明
@@ -39,18 +51,6 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 `Alt` `G`  | 跳转到行
 `Ctrl` `Z`  | 撤消
 `Ctrl` `Y`  | 重做
-<!--rehype:className=shortcuts-->
-
-### 源码浏览
-
-快捷键 | 说明
-:- | -
-`T`  | 激活文件查找器
-`L`  | 跳转到代码中的一行
-`W`  | 切换到新的分支或标签
-`Y`  | 将 URL 扩展为其规范形式
-`I`  | 显示或隐藏对差异的评论
-`B`  | 打开责备视图
 <!--rehype:className=shortcuts-->
 
 ### 注释
@@ -67,43 +67,8 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 `R`  | 在回复中引用所选文字
 <!--rehype:className=shortcuts-->
 
-### 问题和拉取请求列表
-
-快捷键 | 说明
-:- | -
-`C`  | 创建问题
-`Ctrl` `/`  | 将光标聚焦在问题或拉取请求搜索栏上
-`U`  | 按作者过滤
-`L`  | 按标签过滤或编辑标签
-`M`  | 按里程碑过滤或编辑里程碑
-`A`  | 按受让人过滤或编辑受让人
-`O`  | 打开问题
-<!--rehype:className=shortcuts-->
-
-### 问题和拉取请求
-
-快捷键 | 说明
-:- | -
-`Q`  | 请求审稿人
-`M`  | 设定一个里程碑
-`L`  | 应用标签
-`A`  | 设置受让人
-<!--rehype:className=shortcuts-->
-
-### 拉取请求的变化
-
-快捷键 | 说明
-:- | -
-`C`  | 打开拉取请求中的提交列表
-`T`  | 打开拉取请求中已更改文件的列表
-`J`  | 在列表中向下移动选择
-`K`  | 在列表中向上移动选择
-`Ctrl` `Shift` `Enter`  | 在拉取请求差异上添加单个评论
-`Alt` `(click)`  | 在拉取请求中折叠和展开所有过时的审阅评论之间切换
-<!--rehype:className=shortcuts-->
-
 ### 项目板
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-4-->
 
 快捷键 | 说明
 :- | -
@@ -131,12 +96,48 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 `Ctrl` `Shift` `Right/L`  | 将卡片移至最右侧列的顶部
 <!--rehype:className=shortcuts-->
 
+### 问题和拉取请求列表
+<!--rehype:wrap-class=row-span-2-->
+
+快捷键 | 说明
+:- | -
+`C`  | 创建问题
+`Ctrl` `/`  | 将光标聚焦在问题或拉取请求搜索栏上
+`U`  | 按作者过滤
+`L`  | 按标签过滤或编辑标签
+`M`  | 按里程碑过滤或编辑里程碑
+`A`  | 按受让人过滤或编辑受让人
+`O`  | 打开问题
+<!--rehype:className=shortcuts-->
+
+### 问题和拉取请求
+
+快捷键 | 说明
+:- | -
+`Q`  | 请求审稿人
+`M`  | 设定一个里程碑
+`L`  | 应用标签
+`A`  | 设置受让人
+<!--rehype:className=shortcuts-->
+
 ### 通知
 
 快捷键 | 说明
 :- | -
 `E/L/Y`  | 标记为已读
 `Shift` `M`  | 静音线程
+<!--rehype:className=shortcuts-->
+
+### 拉取请求的变化
+
+快捷键 | 说明
+:- | -
+`C`  | 打开拉取请求中的提交列表
+`T`  | 打开拉取请求中已更改文件的列表
+`J`  | 在列表中向下移动选择
+`K`  | 在列表中向上移动选择
+`Ctrl` `Shift` `Enter`  | 在拉取请求差异上添加单个评论
+`Alt` `(click)`  | 在拉取请求中折叠和展开所有过时的审阅评论之间切换
 <!--rehype:className=shortcuts-->
 
 ### 网络图
@@ -175,6 +176,7 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 `path:__init__.py` | 文件为 <pur>`__init__.py`</pur> 里面的内容搜索
 `path:/.*shrc$/` | 文件路径包含 <pur>`.*shrc`</pur> 结尾的文件中搜索内容
 `path:/src/*.js` | <pur>`src`</pur> 目录中的 <pur>`.js`</pur> 后缀的文件中搜索内容
+`path:/(^\|\/)README\.md$/` | 使用正则，仅匹配特定文件名(而不是路径的一部分)
 <!--rehype:className=style-list-->
 
 ### 完全符合
@@ -192,6 +194,7 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 <!--rehype:className=style-list-->
 
 ### 基于仓库的条件
+<!--rehype:wrap-class=row-span-2-->
 
 :-- | --
 :-- | --
@@ -204,6 +207,7 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 <!--rehype:className=style-list-->
 
 ### 基于 issue 的条件
+<!--rehype:wrap-class=row-span-2-->
 
 :-- | --
 :-- | --
@@ -224,6 +228,59 @@ Github.com 上 80 个键盘快捷键和一些搜索技巧的备忘清单
 `location:China` | 位置 <pur>China</pur>
 `followers:20..50 followers:>200 followers:<2` | 追随者
 `repos:0 repos:<40 repos:>5` | 仓库数量
+<!--rehype:className=style-list-->
+
+### Symbol 限定符
+
+搜索 `go` 语言中的 `WithContext` 符号
+
+```
+language:go symbol:WithContext
+```
+
+查询将查找在 `Rust` 中实现的 `String` 类型转换：
+
+```
+language:rust symbol:/^String::to_.*/
+```
+
+### 使用布尔运算
+<!--rehype:wrap-class=col-span-2-->
+
+查询将匹配包含 `sparse` 或 `index` 的文档
+
+```js
+sparse OR index
+```
+
+排除 `__testing__` 目录中的文件，您可以搜索：
+
+```js
+"fatal error" NOT path:__testing__
+```
+
+您可以使用括号来表达更复杂的布尔表达式
+
+```js
+(language:ruby OR language:python) AND NOT path:"/tests/"
+```
+
+使用运算符 `AND`、`OR` 和 `NOT` 来组合搜索词
+
+### is 限定符
+
+- `archived`: 限制搜索`已存档`的版本库
+- `fork`: 限制搜索已`分叉`的版本库
+- `vendored`: 限制搜索被检测为 vendored 的内容
+- `generated`: 限制搜索检测为`已生成`的内容
+
+示例
+
+:-- | --
+:-- | --
+`path:/^MIT.txt$/ is:archived` | 已归档存储库，中包含名为 <pur>MIT.txt</pur> 的文件
+`log4j NOT is:archived` | 限定符 <pur>is:</pur> 可以与 <pur>NOT</pur> 运算符反转
+`log4j NOT is:fork` | 从结果中排除<pur>分叉</pur>
 <!--rehype:className=style-list-->
 
 另见

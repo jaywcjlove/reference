@@ -108,7 +108,7 @@ System.out.println(a + " " + b); // 2 1
 // byte<short<int<long<float<double
 int i = 10;
 long l = i;               // 10
-// Narrowing 
+// Narrowing
 double d = 10.02;
 long l = (long)d;         // 10
 String.valueOf(10);       // "10"
@@ -147,7 +147,7 @@ Java 字符串
 ### 基本的
 
 ```java
-String str1 = "value"; 
+String str1 = "value";
 String str2 = new String("value");
 String str3 = String.valueOf(123);
 ```
@@ -242,8 +242,8 @@ sb.append("!");
 ### 比较
 
 ```java
-String s1 = new String("QuickRef"); 
-String s2 = new String("QuickRef"); 
+String s1 = new String("QuickRef");
+String s2 = new String("QuickRef");
 s1 == s2          // false
 s1.equals(s2)     // true
 "AB".equalsIgnoreCase("ab")  // true
@@ -341,7 +341,7 @@ String[] arr = {"a", "b", "c"};
 for (int a: arr) {
     System.out.print(a + " ");
 }
-// 输出: a b c 
+// 输出: a b c
 ```
 
 ### 二维数组 Multidimensional Arrays
@@ -356,7 +356,7 @@ for (int i = 0; i < a.length; ++i) {
     System.out.println(a[i][j]);
   }
 }
-// 输出: 1 2 3 4 5 6 7 
+// 输出: 1 2 3 4 5 6 7
 ```
 
 ### 排序 Sort
@@ -465,6 +465,47 @@ int max = (a > b) ? a : b;
 System.out.println(max);
 ```
 
+### 逻辑运算符
+
+```java
+// 与运算
+if (condition1 && condition2) {
+  // 如果 condition1 和 condition2 都成立
+  // 则执行此处的代码
+}
+
+// 或运算
+if (condition1 || condition2) {
+  // 如果condition1或condition2任意一个成立
+  // 则执行此处的代码
+}
+
+// 非运算
+if (!condition) {
+  // 如果条件不成立，则执行此处的代码
+}
+```
+
+### 比较运算
+
+```java
+// 等于
+if (a == b) {
+    // 如果a等于b，则执行此处的代码
+}
+
+// 不等于
+if (a != b) {
+    // 如果a不等于b，则执行此处的代码
+}
+
+// 大于、大于等于、小于、小于等于
+if (a > b) {}
+if (a >= b) {}
+if (a < b) {}
+if (a <= b) {}
+```
+
 Java 循环
 ----
 
@@ -545,9 +586,10 @@ for (int i = 0; i < 5; i++) {
 ```
 
 Java 多线程
---------------------
+---
 
 ### 创建线程
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 ```java
 // 实现Runnable接口
@@ -557,8 +599,11 @@ public class RunnableThread implements Runnable {
        // todo something
     }
 }
+```
 
-// 实现Callable接口,T 替换成实际类型
+实现Callable接口,T 替换成实际类型
+
+```java
 public class CallableTask implements Callable<T> {
     @Override
     public T call() throws Exception {
@@ -566,43 +611,50 @@ public class CallableTask implements Callable<T> {
         return null;
     }
 }
+```
 
-// 继承Thrad类
+继承Thrad类
+
+```java
 public class ExtendsThread extends Thread {
     @Override
     public void run() {
        // todo something
     }
 }
+```
 
-// 运行线程
+运行线程
+
+```java
 public static void main(String[] args) throws ExecutionException, InterruptedException {
-        new Thread(new RunnableThread()).start();
-        new ExtendsThread2().start();
-        FutureTask<Integer> integerFutureTask = new FutureTask<>(new CallableTask());
-        integerFutureTask.run();
-    }
+    new Thread(new RunnableThread()).start();
+    new ExtendsThread2().start();
+    FutureTask<Integer> integerFutureTask = new FutureTask<>(new CallableTask());
+    integerFutureTask.run();
+}
 
 ```
 
 ### 线程池
 
+- corePoolSize: 核心线程数
+- maximumPoolSize: 最大线程数
+- keepAliveTime: 线程空闲时间
+- timeUni: 线程空闲时间单位
+- workQueue: 线程等待队列
+- threadFactory: 线程创建工厂
+- handler: 拒绝策略
+
 ```java
-/**
- *  corePoolSize: 核心线程数
- *  maximumPoolSize: 最大线程数
- *  keepAliveTime: 线程空闲时间
- *  timeUni: 线程空闲时间单位
- *  workQueue: 线程等待队列
- *  threadFactory: 线程创建工厂
- *  handler: 拒绝策略
- */
-ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
-                2, 5,
-                5, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(10),
-                new DefaultThreadFactory("pollName"),
-                new ThreadPoolExecutor.CallerRunsPolicy());
+ThreadPoolExecutor threadPoolExecutor 
+  = new ThreadPoolExecutor(
+  2, 5,
+  5, TimeUnit.SECONDS,
+  new ArrayBlockingQueue<>(10),
+  new DefaultThreadFactory("pollName"),
+  new ThreadPoolExecutor.CallerRunsPolicy()
+);
 
 // 内置的线程池, 不推荐生产使用
 Executors.newCachedThreadPool();
@@ -613,8 +665,6 @@ Executors.newSingleThreadExecutor();
 
 ### synchronized
 
-<!--rehype:wrap-class=row-span-1-->
-
 ```java
 // 代码块
 synchronized(obj) {
@@ -622,16 +672,58 @@ synchronized(obj) {
 }
 
 // (静态)方法
-public synchronized (static) void methodName() {
+public synchronized 
+  (static) void methodName() {
    ...
+}
+```
+
+### 线程编排
+<!--rehype:wrap-class=row-span-2 col-span-2-->
+
+```java
+// CountDownLatch
+CountDownLatch countDownLatch = new CountDownLatch(2);
+new Thread(() -> {
+    try {
+       ...
+    }finally {
+       countDownLatch.countDown();
+    }
+}).start();
+countDownLatch.await();
+```
+
+CompletableFuture
+
+```java
+CompletableFuture<Void> task1 = CompletableFuture.runAsync(() -> {});
+CompletableFuture<Void> task2 = CompletableFuture.runAsync(() -> {});
+CompletableFuture<Void> task3 = CompletableFuture.runAsync(() -> {});
+CompletableFuture.allOf(task1, task2, task3).get();
+```
+
+Semaphore
+
+```java
+Semaphore semaphore = new Semaphore(5);
+try {
+    semaphore.acquire();
+} finally {
+    semaphore.release();
 }
 ```
 
 ### ThreadLocal
 
 ```java
-// 使用完之后一定要记得remove, 否则会内存泄露
-ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
+ThreadLocal<Integer> threadLocal 
+    = new ThreadLocal<>();
+```
+
+使用完之后一定要记得 `remove`, 否则会内存泄露
+
+```java
 threadLocal.set(1);
 threadLocal.get();
 threadLocal.remove();
@@ -641,7 +733,7 @@ threadLocal.remove();
 
 ```java
 // 需要synchronized修饰的代码块才能使用
-wait(); 
+wait();
 notify();
 notifyAll();
 
@@ -663,37 +755,8 @@ LockSupport.park(obj);
 LockSupport.unpark(thread);
 ```
 
-### 线程编排
-
-```java
-// CountDownLatch
-CountDownLatch countDownLatch = new CountDownLatch(2);
-new Thread(() -> {
-    try {
-       ...
-    }finally {
-       countDownLatch.countDown();
-    }
-}).start();
-countDownLatch.await();
-
-// CompletableFuture
-CompletableFuture<Void> task1 = CompletableFuture.runAsync(() -> {});
-CompletableFuture<Void> task2 = CompletableFuture.runAsync(() -> {});
-CompletableFuture<Void> task3 = CompletableFuture.runAsync(() -> {});
-CompletableFuture.allOf(task1, task2, task3).get();
-
-// Semaphore
-Semaphore semaphore = new Semaphore(5);
-try {
-    semaphore.acquire();
-} finally {
-    semaphore.release(); 
-}
-```
-
 Java 框架搜集
---------------------
+---
 
 ### Java 集合
 <!--rehype:wrap-class=col-span-2 row-span-2-->
@@ -744,7 +807,9 @@ for (Integer value : nums) {
     System.out.println(value);
 }
 // lambda 打印元素
-nums.forEach(e -> System.out.println(e.toString()));
+nums.forEach(
+  e -> System.out.println(e.toString())
+);
 ```
 
 ### HashMap
@@ -778,7 +843,7 @@ m.remove(101, "Geeks");
 
 // 如果不存在，就添加，存在就不变更
 m.putIfAbsent(103, "Hello");
- 
+
 // 替换
 m.replace(101, "Hello", "For");
 System.out.println(m);
@@ -803,7 +868,9 @@ set.remove("cat");
 for (String element : set) {
     System.out.println(element);
 }
-set.forEach(e -> System.out.println(e.toString()));
+set.forEach(
+  e -> System.out.println(e.toString())
+);
 ```
 
 ### ArrayDeque
@@ -822,6 +889,422 @@ System.out.println(a);
 System.out.println(a.peek());
 // 移除元素
 System.out.println(a.pop());
+```
+
+Java I/O流
+---
+
+### 常见的类和操作
+<!--rehype:wrap-class=row-span-5-->
+
+字节流
+
+- `InputStream` 字节输入流的抽象基类
+- `FileInputStream` 从文件中读取字节的输入流
+- `ByteArrayInputStream` 从字节数组中读取字节的输入流
+- `OutputStream` 字节输出流的抽象基类
+- `FileOutputStream` 向文件中写入字节的输出流
+- `ByteArrayOutputStream` 将字节写入到字节数组的输出流
+
+字符流
+
+- `Reader` 字符输入流的抽象基类
+- `FileReader` 从文件中读取字符的输入流
+- `BufferedReader` 带缓冲区的字符输入流
+- `InputStreamReader` 字节流到字符流的桥接器
+- `Writer` 字符输出流的抽象基类
+- `FileWriter` 向文件中写入字符的输出流
+- `BufferedWriter` 带缓冲区的字符输出流
+- `OutputStreamWriter` 字符流到字节流的桥接器
+
+对象流
+
+- `ObjectInputStream` 从输入流中读取Java对象的流
+- `ObjectOutputStream` 将Java对象写入输出流的流
+
+缓冲流
+
+- `BufferedInputStream` 带缓冲区的字节输入流
+- `BufferedOutputStream` 带缓冲区的字节输出流
+- `BufferedReader` 带缓冲区的字符输入流
+- `BufferedWriter` 带缓冲区的字符输出流
+
+数据流
+
+- `DataInputStream` 从输入流中读取基本数据类型的数据
+- `DataOutputStream` 将基本数据类型数据写入输出流
+
+文件类
+
+- `File` 文件和目录路径名的抽象表示
+- `FileReader` 从文件中读取字符的输入流
+- `FileWriter` 向文件中写入字符的输出流
+
+输入输出异常处理
+
+- `IOException` Java I/O操作中的通用异常
+- `FileNotFoundException` 当试图打开指定文件失败时抛出
+- `EOFException` 在尝试读取流的末尾时抛出
+
+其他流
+
+- `PrintStream` 打印格式化表示的对象的输出流
+- `PrintWriter` 格式化的文本输出流
+- `RandomAccessFile` 随机访问文件的类，支持读取和写入操作
+
+### 字节流
+
+```java
+// 文件输入流
+InputStream inputStream
+  = new FileInputStream("input.txt");
+
+// 文件输出流
+OutputStream outputStream
+  = new FileOutputStream("output.txt");
+
+// 缓冲字节输入流
+InputStream bufferedInputStream
+  = new BufferedInputStream(inputStream);
+
+// 缓冲字节输出流
+OutputStream bufferedOutputStream
+  = new BufferedOutputStream(outputStream);
+```
+
+### 字符流
+
+```java
+// 文件字符输入流
+Reader fileReader
+  = new FileReader("input.txt");
+
+// 文件字符输出流
+Writer fileWriter
+  = new FileWriter("output.txt");
+
+// 缓冲字符输入流
+Reader bufferedFileReader
+  = new BufferedReader(
+    new FileReader("input.txt")
+  );
+
+// 缓冲字符输出流
+Writer bufferedFileWriter 
+  = new BufferedWriter(
+    new FileWriter("output.txt")
+  );
+```
+
+### 数据流
+
+```java
+// 数据输入流
+DataInputStream dataInputStream 
+  = new DataInputStream(inputStream);
+
+// 数据输出流
+DataOutputStream dataOutputStream 
+  = new DataOutputStream(outputStream);
+```
+
+### 对象流
+
+```java
+// 对象输入流
+ObjectInputStream objectInputStream 
+  = new ObjectInputStream(inputStream);
+
+// 对象输出流
+ObjectOutputStream objectOutputStream 
+  = new ObjectOutputStream(outputStream);
+```
+
+### 序列化与反序列化
+<!--rehype:wrap-class=col-span-2-->
+
+序列化对象到文件
+
+```java
+try (
+  ObjectOutputStream objectOutputStream 
+    = new ObjectOutputStream(new FileOutputStream("object.dat"))
+) {
+    objectOutputStream.writeObject(object);
+}
+```
+
+从文件反序列化对象
+
+```java
+try (
+  ObjectInputStream objectInputStream 
+    = new ObjectInputStream(new FileInputStream("object.dat"))
+) {
+    Object object = objectInputStream.readObject();
+}
+```
+
+### 标准输入输出流
+
+标准输入流
+
+```java
+InputStream standardInputStream
+      = System.in;
+```
+
+标准输出流
+
+```java
+PrintStream standardOutputStream
+      = System.out;
+```
+
+### 基本操作
+<!--rehype:wrap-class=row-span-2-->
+
+```java
+// 读取字节数据
+int byteData = inputStream.read();
+
+// 写入字节数据
+outputStream.write(byteData);
+
+// 读取字符数据
+int charData = reader.read();
+
+// 写入字符数据
+writer.write(charData);
+```
+
+### 关闭流
+
+```java
+// 关闭输入流
+inputStream.close();
+
+// 关闭输出流
+outputStream.close();
+```
+
+Java Stream 流
+---
+<!--rehype:body-class=cols-2-->
+
+### 创建流
+
+从集合创建流
+
+```java
+List<String> list = Arrays.asList("a", "b", "c");
+Stream<String> streamFromList = list.stream();
+```
+
+从数组创建流
+
+```java
+String[] array = {"d", "e", "f"};
+Stream<String> streamFromArray = Arrays.stream(array);
+```
+
+创建空流
+
+```java
+Stream<String> emptyStream = Stream.empty();
+```
+
+创建无限流
+
+```java
+Stream<Integer> infiniteStream = Stream.iterate(0, n -> n + 2);
+```
+
+### 中间操作
+
+```java
+// 过滤
+Stream<String> filteredStream = list.stream().filter(
+  s -> s.startsWith("a")
+);
+
+// 映射
+Stream<Integer> mappedStream = list.stream().map(String::length);
+
+// 排序
+Stream<String> sortedStream = list.stream().sorted();
+
+// 去重
+Stream<String> distinctStream = list.stream().distinct();
+
+// 截断
+Stream<String> limitedStream = list.stream().limit(2);
+
+// 跳过
+Stream<String> skippedStream = list.stream().skip(1);
+```
+
+### 终端操作
+
+```java
+// 聚合操作
+Optional<String> anyElement = list.stream().findAny();
+Optional<String> firstElement = list.stream().findFirst();
+long count = list.stream().count();
+Optional<String> maxElement = list.stream()
+    .max(Comparator.naturalOrder());
+Optional<String> minElement = list.stream()
+    .min(Comparator.naturalOrder());
+
+// 检查匹配
+boolean anyMatch = list.stream().anyMatch(s -> s.contains("a"));
+boolean allMatch = list.stream().allMatch(s -> s.length() == 1);
+boolean noneMatch = list.stream().noneMatch(s -> s.contains("z"));
+
+// 归约
+Optional<String> reducedString = list.stream()
+  .reduce((s1, s2) -> s1 + s2);
+String reducedStringWithIdentity = list.stream()
+  .reduce("Start:", (s1, s2) -> s1 + s2);
+
+// 收集
+List<String> collectedList = list.stream()
+    .collect(Collectors.toList());
+Set<String> collectedSet = list.stream()
+    .collect(Collectors.toSet());
+Map<Integer, String> collectedMap = list.stream()
+    .collect(
+        Collectors.toMap(String::length, Function.identity())
+    );
+```
+
+### 并行流
+
+```java
+List<String> list = Arrays.asList("a", "b", "c", "d", "e");
+List<String> upperCaseList = list.parallelStream()
+    .map(String::toUpperCase)
+    .collect(Collectors.toList());
+```
+
+反射
+---
+
+这些是使用 Java 反射时常见的操作。使用反射需要注意性能和安全性问题，尽量避免在性能要求高的地方过度使用。
+
+### 获取 Class 对象
+<!--rehype:wrap-class=col-span-2-->
+
+```java
+// 通过类名获取Class对象
+Class<?> clazz1 = MyClass.class;
+
+// 通过对象获取Class对象
+MyClass obj = new MyClass();
+Class<?> clazz2 = obj.getClass();
+
+// 通过完整类名字符串获取Class对象
+Class<?> clazz3 = Class.forName("com.example.MyClass");
+```
+
+### 获取类的信息
+<!--rehype:wrap-class=row-span-2-->
+
+获取类的名称
+
+```java
+String className = clazz.getName();
+```
+
+获取类的修饰符
+
+```java
+int modifiers = clazz.getModifiers();
+```
+
+获取类的包信息
+
+```java
+Package pkg = clazz.getPackage();
+```
+
+获取类的父类
+
+```java
+Class<?> superClass = clazz.getSuperclass();
+```
+
+获取类实现的接口
+
+```java
+Class<?>[] interfaces = clazz.getInterfaces();
+```
+
+### 创建对象实例
+<!--rehype:wrap-class=col-span-2-->
+
+```java
+// 使用默认构造函数创建对象
+MyClass instance = (MyClass) clazz.newInstance();
+
+// 使用带参数的构造函数创建对象
+Constructor<?> constructor = clazz.getConstructor(String.class, int.class);
+MyClass instanceWithArgs = (MyClass) constructor.newInstance("example", 123);
+```
+
+### 获取和设置字段值
+<!--rehype:wrap-class=col-span-2-->
+
+```java
+// 获取字段值
+Field field = clazz.getDeclaredField("fieldName");
+field.setAccessible(true); // 如果字段是私有的，需要设置可访问
+Object value = field.get(instance);
+
+// 设置字段值
+field.set(instance, newValue);
+```
+
+### 处理泛型
+
+```java
+// 获取泛型信息
+Type genericType = field.getGenericType();
+```
+
+### 调用方法
+<!--rehype:wrap-class=col-span-2-->
+
+```java
+// 获取方法
+Method method = clazz.getDeclaredMethod("methodName", parameterTypes);
+method.setAccessible(true); // 如果方法是私有的，需要设置可访问
+
+// 调用方法
+Object result = method.invoke(instance, args);
+```
+
+### 其他常用操作
+<!--rehype:wrap-class=row-span-2-->
+
+```java
+// 判断是否是数组、枚举、注解等
+boolean isArray = clazz.isArray();
+boolean isEnum = clazz.isEnum();
+boolean isAnnotation = clazz.isAnnotation();
+
+// 获取构造函数、字段、方法等
+Constructor<?>[] constructors = clazz.getConstructors();
+Field[] fields = clazz.getDeclaredFields();
+Method[] methods = clazz.getDeclaredMethods();
+```
+
+### 处理注解
+<!--rehype:wrap-class=col-span-2-->
+
+```java
+// 获取注解信息
+Annotation annotation = field.getAnnotation(MyAnnotation.class);
 ```
 
 杂项 Misc
@@ -855,7 +1338,7 @@ text.split(Pattern.quote("|"));
 
 ```java
 // 我是单行注释！
- 
+
 /*
 而我是一个
 多行注释！
@@ -924,6 +1407,7 @@ text.split(Pattern.quote("|"));
 <!--rehype:className=cols-7 style-none-->
 
 ### 数学方法
+<!--rehype:wrap-class=row-span-2-->
 
 方法 | 说明
 :-|:-
@@ -953,59 +1437,23 @@ try {
 }
 ```
 
-### 反射
-
-```java
-/**
-* 利用反射动态加载依赖库
-* java9及以上版本可用
-* @param jar jar文件
-*/
-Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
-method.setAccessible(true);
-MethodHandle addURL = lookup.unreflect(method);
-URL url = jar.toURI().toURL();
-URLClassLoader urlClassLoader = new URLClassLoader(new URL[] {url});
-addURL.invoke(urlClassLoader, url);
-//java8
-Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
-method.setAccessible(true);
-method.invoke(classLoader, url);
-```
-
 ### util工具类
+<!--rehype:wrap-class=row-span-2-->
 
-- `ArrayDeque` 提供 resizable-array 并实现 Deque 接
-- `Arrays` 包含一个静态工厂，允许将数组视为列表
-- `Collections` 包含对集合进行操作或返回集合的静态方法
-- `Date` 表示特定的时间瞬间，精度为毫秒
-- `Dictionary` 是任何类的抽象父类，例如 Hashtable，它将键映射到值
-- `EnumMap` 一个专门用于枚举键的 Map 实现
-- `EnumSet` 一个专门用于枚举键的 Set 实现
-- `Formatter` 提供对布局对齐和对齐、数字、字符串和日期/时间数据的常用格式以及特定于语言环境的输出的支持
-- `SecureRandom` 实例用于生成安全的伪随机数流
-- `UUID` 表示一个不可变的通用唯一标识符
-- `Vector` 实现了一个可增长的对象数组
-- `LocalDate` 表示没有时区的日期，只包含年月日，不可变并且线程安全的，java8 及以上版本可用
-- `LocalTime` 表示没有时区的时间，只包含时分秒，不可变并且线程安全的，java8 及以上版本可用
-- `LocalDateTime` 表示没有时区的日期时间，同时包含年月日时分秒，不可变并且线程安全的，java8 及以上版本可用
-
-### IO流
-
-```java
-// 输入流转输出流
-byte[] inputContent = "test".getBytes();
-try (InputStream inputStream = new ByteArrayInputStream(inputContent);
-     OutputStream outputStream = new ByteArrayOutputStream()) {
-    byte[] buffer = new byte[1024];
-    int len;
-    while ((len = inputStream.read(buffer)) != -1) {
-        outputStream.write(buffer, 0, len);
-    }
-} catch (IOException e) {
-    throw new RuntimeException(e);
-}
-```
+- `ArrayDeque`: 可调整大小的数组双端队列，实现了Deque接口
+- `Arrays`: 提供静态工厂，允许将数组视为列表
+- `Collections`: 包含操作集合或返回集合的静态方法
+- `Date`: 表示特定时间瞬间，精度为毫秒
+- `Dictionary`: 抽象父类，可用于键值对映射，例如Hashtable
+- `EnumMap`: 专门用于枚举键的Map实现
+- `EnumSet`: 专门用于枚举键的Set实现
+- `Formatter`: 提供对布局、对齐、数字、字符串和日期/时间数据的格式化支持，以及特定于语言环境的输出
+- `SecureRandom`: 生成安全的伪随机数流的实例
+- `UUID`: 表示不可变的通用唯一标识符
+- `Vector`: 实现了可增长的对象数组
+- `LocalDate`: 表示无时区的日期，仅包含年月日，不可变且线程安全，适用于Java 8及更高版本
+- `LocalTime`: 表示无时区的时间，仅包含时分秒，不可变且线程安全，适用于Java 8及更高版本
+- `LocalDateTime`: 表示无时区的日期时间，包含年月日时分秒，不可变且线程安全，适用于Java 8及更高版本
 
 ### Collections 工具类
 
@@ -1018,24 +1466,8 @@ list.add(2);
 list.add(3);
 list.add(3);
 list.add(3);
-int frequency = Collections.frequency(list, 2); // frequency = 2
-```
-
-### Stream 流
-
-```java
-// 统计词频
-List<Integer> list = new ArrayList<>();
-list.add(1);
-list.add(1);
-list.add(3);
-list.add(2);
-list.add(2);
-list.add(2);
-Map<Integer, Long> frequencyMap = list.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
-// 1: 2
-// 2: 3
-// 3: 1
+int frequency = Collections
+      .frequency(list, 2); // frequency = 2
 ```
 
 另见
