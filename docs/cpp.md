@@ -73,6 +73,11 @@ int a = 5, b = 10;
 std::swap(a, b);
 // 输出: a=10, b=5
 std::cout << "a=" << a << ", b=" << b;
+
+// 整数交换的奇技淫巧
+(x ^= y), (y ^= x), (x ^= y);
+// 注意！ 以下操作会造成  undefined behavior
+x ^= y ^= x ^= y;
 ```
 
 ### 注释
@@ -108,13 +113,13 @@ for (int i = 0; i < 10; i++) {
 
 ```cpp
 #include <iostream>
- 
+
 void hello();   // 声明
- 
+
 int main() {    // 主函数
     hello();    // 执行函数
 }
- 
+
 void hello() { // 定义
   std::cout << "Hello Quick Reference!\n";
 }
@@ -155,7 +160,7 @@ using namespace ns1;
 using namespace std;
 int main()
 {
-    cout << val(); 
+    cout << val();
 }
 ```
 
@@ -237,7 +242,7 @@ for (int i = 0; i < 2; ++i) {
         std::cout << x[i][j] << " ";
     }
 }
-// 输出: 1 2 3 4 5 6 6 5 4 3 2 1 
+// 输出: 1 2 3 4 5 6 6 5 4 3 2 1
 ```
 
 C++ 条件
@@ -475,7 +480,7 @@ for (char c: hello)
 {
     std::cout << c << " ";
 }
-// 输出: Q u i c k R e f . M E 
+// 输出: Q u i c k R e f . M E
 ```
 
 ### 中断语句
@@ -502,6 +507,15 @@ for (int i = 0, j = 2; i < 3; i++, j--){
 // 输出: i=0,j=2;i=1,j=1;i=2,j=0;
 ```
 
+### auto
+```cpp
+std:: string s = "hello world";
+for(auto c: s){
+    std:: cout << c << " ";
+}
+// 输出: h e l l o   w o r l d
+```
+
 C++ 函数
 ------------
 
@@ -510,10 +524,10 @@ C++ 函数
 ```cpp
 #include <iostream>
 int add(int a, int b) {
-    return a + b;  
+    return a + b;
 }
 int main() {
-    std::cout << add(10, 20); 
+    std::cout << add(10, 20);
 }
 ```
 
@@ -538,7 +552,7 @@ void fun(int a) {
 ```cpp
 #include <iostream>
 #include <cmath> // 导入库
- 
+
 int main() {
     // sqrt() 来自 cmath
     std::cout << sqrt(9);
@@ -599,16 +613,16 @@ auto func = []() -> return_type { };
       ```cpp
       int val1 = 123, val2 = 456;
       string str1("123"), str2(456);
-      
+
       auto func1 = [=, &str1]() -> int
           {
-              return   val1 == std::stoi(str1) 
+              return   val1 == std::stoi(str1)
                     ? val1 : val2;
           };
-          
+
       auto func2 = [&, val1]() -> int
           {
-              return   str1 == std::to_string(val1) 
+              return   str1 == std::to_string(val1)
                     ? str1 : str2;
           };
       ```
@@ -622,11 +636,11 @@ auto func = []() -> return_type { };
 
 ```cpp
 // vec中包含1, 2, 3, 4, 5
-std::vector<int> vec({1, 2, 3, 4, 5});  
-std::for_each(vec.begin(), vec.end(), 
+std::vector<int> vec({1, 2, 3, 4, 5});
+std::for_each(vec.begin(), vec.end(),
               [](int& ele) -> void
           {
-              std::cout << ele 
+              std::cout << ele
                           << " ";
           });
 ```
@@ -665,17 +679,17 @@ class Entry
 
 Entry entry;
 // 调用operator()()
-std::thread my_thread_1(entry);  
+std::thread my_thread_1(entry);
 // 调用Entry::entry_function
-std::thread my_thread_2(&Entry::entry_function, &entry);  
+std::thread my_thread_2(&Entry::entry_function, &entry);
 ```
 
 以lambda表达式作为线程入口函数：
 
 ```cpp
-std::thread my_thread([]() -> void 
+std::thread my_thread([]() -> void
       {
-         // ... 
+         // ...
       });
 ```
 
@@ -693,13 +707,13 @@ my_thread.detach();
 
 ```cpp
 // 获取当前线程ID
-std::this_thread::get_id();  
+std::this_thread::get_id();
 // 使当前线程休眠一段指定时间
-std::this_thread::sleep_for();  
+std::this_thread::sleep_for();
 // 使当前线程休眠到指定时间
 std::this_thread::sleep_until();
 // 暂停当前线程的执行，让别的线程执行
-std::this_thread::yield();    
+std::this_thread::yield();
 ```
 
 ### 锁
@@ -753,7 +767,7 @@ std::lock_guard<std::mutex> lock(m);
 ```cpp
 // 手动上锁
 m.lock();
-std::lock_guard<mutex> lock(m, 
+std::lock_guard<mutex> lock(m,
     std::adopt_lock);
 ```
 
@@ -773,7 +787,7 @@ std::unique_lock<mutex> lock(m);
 ```cpp
 // 手动上锁
 m.lock();
-std::unique_lock<mutex> lock(m, 
+std::unique_lock<mutex> lock(m,
     std::adopt_lock);
 ```
 
@@ -782,7 +796,7 @@ std::unique_lock<mutex> lock(m,
 尝试上锁，可以通过`std::unique_lock<Mutex>::owns_lock()`查看状态
 
 ```cpp
-std::unique_lock<mutex> lock(m, 
+std::unique_lock<mutex> lock(m,
     std::try_to_lock);
 if (lock.owns_lock())
 {
@@ -867,12 +881,12 @@ cond.wait(lock, predicate);
 #### 创建异步任务
 
 ```cpp
-double func(int val); 
+double func(int val);
 
 // 使用std::async创建异步任务
 // 使用std::future获取结果
 // future模板中存放返回值类型
-std::future<double> result = 
+std::future<double> result =
     std::async(func, 5);
 ```
 
@@ -910,7 +924,7 @@ int val = result.get();
 ```cpp
 extern double foo(int val) {}
 
-std::future<double> result = 
+std::future<double> result =
     async(foo, 5);
 
 //返回值类型
@@ -930,10 +944,10 @@ status = result.wait_for(
 
 ```cpp
 // 返回值已经准备好
-if (status == 
+if (status ==
      std::future_status::ready)
 {
-    
+
 }
 // 超时：尚未准备好
 else if (status ==
