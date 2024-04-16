@@ -104,6 +104,26 @@ on:
     types: [published]
 ```
 
+### 定时触发
+可以使用 cron 表达式配置周期性任务，定时执行
+
+```yaml
+name: schedule task
+
+# 要注意时差，最好手动指定时区
+env:
+  TZ: Asia/Shanghai
+
+on:
+  # push 到 main 分支时执行任务
+  push:
+    branches:
+      - main
+  # 每隔两小时自动执行任务
+  schedule:
+   - cron: '0 0/2 * * *'
+```
+
 ### 多项任务
 
 ```yml
