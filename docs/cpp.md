@@ -508,6 +508,7 @@ for (int i = 0, j = 2; i < 3; i++, j--){
 ```
 
 ### auto
+
 ```cpp
 std:: string s = "hello world";
 for(auto c: s){
