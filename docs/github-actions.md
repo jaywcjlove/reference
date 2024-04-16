@@ -104,26 +104,6 @@ on:
     types: [published]
 ```
 
-### 定时触发
-可以使用 cron 表达式配置周期性任务，定时执行
-
-```yaml
-name: schedule task
-
-# 要注意时差，最好手动指定时区
-env:
-  TZ: Asia/Shanghai
-
-on:
-  # push 到 main 分支时执行任务
-  push:
-    branches:
-      - main
-  # 每隔两小时自动执行任务
-  schedule:
-   - cron: '0 0/2 * * *'
-```
-
 ### 多项任务
 
 ```yml
@@ -173,6 +153,27 @@ jobs:
     needs: job1
     steps:
       - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+```
+
+### 定时触发
+
+可以使用 cron 表达式配置周期性任务，定时执行
+
+```yaml
+name: schedule task
+
+# 要注意时差，最好手动指定时区
+env:
+  TZ: Asia/Shanghai
+
+on:
+  # push 到 main 分支时执行任务
+  push:
+    branches:
+      - main
+  # 每隔两小时自动执行任务
+  schedule:
+   - cron: '0 0/2 * * *'
 ```
 
 ### 指定每项任务的虚拟机环境
@@ -294,7 +295,7 @@ env:
 <!--rehype:className=cols-2 style-none-->
 
 ### Github 上下文
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-3-->
 
 属性名称 | 类型 | 描述
 ---- | ---- | ----
@@ -320,7 +321,49 @@ env:
 
 [Github 上下文](https://help.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions)是访问有关工作流运行、运行器环境、作业和步骤的信息的一种方式
 
+### 直接常量
+
+作为表达式的一部分，可以使用 `boolean`, `null`, `number` 或 `string`数据类型
+
+```yml
+env:
+  myNull: ${{ null }}
+  myBoolean: ${{ false }}
+  myIntegerNumber: ${{ 711 }}
+  myFloatNumber: ${{ -9.2 }}
+  myHexNumber: ${{ 0xff }}
+  myExponentialNumber: ${{ -2.99e-2 }}
+  myString: Mona the Octocat
+  myStringInBraces: ${{ 'It''s source!' }}
+```
+
+### 函数 contains
+
+使用字符串的示例
+
+```js
+contains('Hello world', 'llo') // 返回 true
+```
+
+使用对象过滤器的示例返回 true
+
+```js
+contains(github.event.issue.labels.*.name, 'bug')
+```
+<!--rehype:className=wrap-text -->
+
+另见: [函数 contains](https://docs.github.com/cn/actions/learn-github-actions/expressions#contains)
+
+### 函数 startsWith
+
+```js
+startsWith('Hello world', 'He') // 返回 true
+```
+
+另见: [函数 startsWith](https://docs.github.com/cn/actions/learn-github-actions/expressions#startswith)，此函数不区分大小写
+
 ### 默认环境变量
+<!--rehype:wrap-class=row-span-8 col-span-2-->
 
 环境变量 | 描述
 ---- | ----
@@ -346,49 +389,6 @@ env:
 
 另见: [默认环境变量](https://docs.github.com/cn/actions/learn-github-actions/environment-variables#default-environment-variables)
 
-### 直接常量
-<!--rehype:wrap-class=row-span-2-->
-
-作为表达式的一部分，可以使用 `boolean`, `null`, `number` 或 `string`数据类型
-
-```yml
-env:
-  myNull: ${{ null }}
-  myBoolean: ${{ false }}
-  myIntegerNumber: ${{ 711 }}
-  myFloatNumber: ${{ -9.2 }}
-  myHexNumber: ${{ 0xff }}
-  myExponentialNumber: ${{ -2.99e-2 }}
-  myString: Mona the Octocat
-  myStringInBraces: ${{ 'It''s source!' }}
-```
-
-### 函数 contains
-<!--rehype:wrap-class=row-span-2-->
-
-使用字符串的示例
-
-```js
-contains('Hello world', 'llo') // 返回 true
-```
-
-使用对象过滤器的示例返回 true
-
-```js
-contains(github.event.issue.labels.*.name, 'bug')
-```
-<!--rehype:className=wrap-text -->
-
-另见: [函数 contains](https://docs.github.com/cn/actions/learn-github-actions/expressions#contains)
-
-### 函数 startsWith
-
-```js
-startsWith('Hello world', 'He') // 返回 true
-```
-
-另见: [函数 startsWith](https://docs.github.com/cn/actions/learn-github-actions/expressions#startswith)，此函数不区分大小写
-
 ### 函数 format
 
 ```js
@@ -402,7 +402,7 @@ format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat')
 ### 函数 join
 
 ```js
-join(github.event.issue.labels.*.name, ', ')
+join(github.event.issue.labels.*.name,', ')
 // 也许返回 'bug, help wanted'.
 ```
 
@@ -603,14 +603,15 @@ npm token revoke <id|token> # 撤销
 
 Artifacts 是 GitHub Actions 为您提供持久文件并在运行完成后使用它们或在作业（文档）之间共享的一种方式。
 
-要创建工件并使用它，您将需要不同的操作：上传和下载。
+- 要创建工件并使用它，您将需要不同的操作：上传和下载
+
 要上传文件或目录，您只需像这样使用它：
 
 ```yml
 steps:
   - uses: actions/checkout@v2
   - run: mkdir -p path/to/artifact
-  - run: echo hello > path/to/artifact/a.txt
+  - run: echo hello > path/to/file/a.txt
   - uses: actions/upload-artifact@v2
     with:
       name: my-artifact
