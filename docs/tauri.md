@@ -43,7 +43,8 @@ $ bunx create-tauri-app
 :- |:-
 [rust](https://www.rust-lang.org/tools/install)| rust安装
 [nodejs](https://nodejs.org/en)| nodejs安装
-[Build Tools](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)| Microsoft C++ 生成工具 (for windows)
+[Windows Build Tools](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)| Microsoft C++ 生成工具 (for windows)
+[Android Studio](https://developer.android.google.cn/studio?hl=zh-cn)|安卓开发工具
 
 ### 启动 Tauri 开发窗口
 
@@ -152,6 +153,40 @@ tauri = { version = "...", features = ["...", "devtools"] }
 
 在文件 `src-tauri/Cargo.toml` 中启用 `devtools Cargo` 功能
 
+安卓开发
+---
+### 环境变量
+<!--rehype:wrap-class=col-span-2-->
+`JAVA_HOME`
+
+`ANDROID_HOME`
+
+`NDK_HOME`
+### 准备目标
+<!--rehype:wrap-class=col-span-2-->
+
+```bash
+$ npm install @tauri-apps/cli@next @tauri-apps/api@next
+$ npm run tauri migrate
+$ rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+$ rm -r src-tauri/gen
+$ npm run tauri android init
+$ npm run tauri icon
+```
+修改应用名：%app_path%\src-tauri\gen\android\app\src\main\res\values\strings.xml
+### 编译
+<!--rehype:wrap-class=col-span-2-->
+```bash
+$ npm run tauri android dev
+$ npm run tauri android build
+```
+### 签名
+<!--rehype:wrap-class=col-span-2-->
+```bash
+$ keytool -genkey -alias android.keystore -keyalg RSA -validity 20000 -keystore android.keystore
+$ zipalign -p -f -v 4 unsigned.apk release.apk
+$ apksigner sign --ks android.keystore release.apk
+```
 配置
 ---
 
