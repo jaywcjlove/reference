@@ -641,6 +641,56 @@ ALTER USER username IDENTIFIED BY password;
 ALTER USER brian IDENTIFIED BY brianpassword;
 ```
 
+### 查看表空间的名称以及大小
+```sql
+select t.tablespace_name, round(sum(bytes/(1024*1024)),0) ts_size from dba_tablespaces t, dba_data_files d where t.tablespace_name = d.tablespace_name group by t.tablespace_name;
+```
+
+### 查看还没提交的事务
+```sql
+select * from v$locked_object;
+select * from v$transaction;
+```
+
+### 查看数据库库对象
+```sql
+select owner, object_type, status, count(*) count# from all_objects group by owner, object_type, OJIB status;
+```
+
+### 查看数据库的版本
+```sql
+Select version FROM Product_component_version where SUBSTR(PRODUCT,1,6) = 'Oracle';
+```
+
+### 查看数据库的创建日期和归档方式
+```sql
+select created, Log_Mode, Log_Mode From v$Database;
+```
+
+### 查看控制文件
+```sql
+select name from v$controlfile;
+```
+
+### 查看日志文件
+```sql
+select member from v$logfile;
+```
+
+### 查看表空间的使用情況
+```sql
+select sum (bytes)/(1024*1024) as free_space, tablespace_name from dba_free_space group by tablespace_name;
+```
+
+### 捕捉运行很久的SOL
+```sql
+column username format a12
+column opname format a16
+column progress format a8
+
+select username,sid,opname,round(sofar* 100 / totalwork,0) || '%' as progress,time_remaining,sqL_text from v$session_longops,v$sql where time_remaining <> 0 and sql_address = address and sql_hash_value = hash_value
+```
+
 另见
 ---
 
