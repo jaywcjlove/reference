@@ -205,6 +205,7 @@ Quick Reference
 [Oracle](./docs/oracle.md)<!--rehype:style=background: rgb(255 0 0);&class=tag&data-lang=SQL-->  
 [PostgreSQL](./docs/postgres.md)<!--rehype:style=background: rgb(43 109 163);&class=tag&data-lang=SQL-->  
 [Redis](./docs/redis.md)<!--rehype:style=background: rgb(198 47 44);-->  
+[Elasticsearch](./docs/elasticsearch.md)<!--rehype:style=background: rgb(36 187 177);-->  
 <!--rehype:class=home-card-->
 
 ## 快捷键
