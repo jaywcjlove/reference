@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Elasticsearch 备忘清单
+ &#x26;  elasticsearch cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这是 Elasticsearch 的官方文档。 你可以在这里找到 elasticsearch 的所有文档。
+
+Elasticsearch是一个基于Lucene库的搜索引擎。它提供了一个分布式、支持多租户的全文搜索引擎，具有HTTP Web接口和无模式JSON文档。Elasticsearch是用Java开发的，并作为看源软件发布。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="elasticsearch,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/elasticsearch.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.3"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="elasticsearch-备忘清单"><svg viewBox="0 0 256 288" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" height="1em" width="1em">
+  <path d="M0 143.82c0 12.44 1.744 24.441 4.71 35.956h175.067c19.856 0 35.955-16.1 35.955-35.956 0-19.865-16.1-35.955-35.955-35.955H4.71C1.744 119.371 0 131.38 0 143.82" fill="#343741"></path>
+  <path d="M242.013 68.863c5.025-4.629 9.7-9.6 13.987-14.93C229.636 21.079 189.213 0 143.82 0 87 0 38.101 33.052 14.775 80.9h196.559c11.38 0 22.319-4.324 30.678-12.037" fill="#FEC514"></path>
+  <path d="M211.334 206.742H14.774c23.336 47.839 72.226 80.9 129.045 80.9 45.393 0 85.816-21.088 112.18-53.933a136.604 136.604 0 0 0-13.987-14.94c-8.36-7.721-19.299-12.027-30.678-12.027" fill="#00BFB3"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#elasticsearch-备忘清单"><span class="icon icon-link"></span></a>Elasticsearch 备忘清单</h1><div class="wrap-body">
+<p>这是 <a href="https://www.elastic.co/guide/index.html">Elasticsearch</a> 的官方文档。 你可以在这里找到 elasticsearch 的所有文档。</p>
+<p>Elasticsearch是一个基于Lucene库的搜索引擎。它提供了一个分布式、支持多租户的全文搜索引擎，具有HTTP Web接口和无模式JSON文档。Elasticsearch是用Java开发的，并作为看源软件发布。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是Apache Solr，也是基于Lucene。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#入门-1">入门</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#安装介绍">安装介绍</a><a aria-hidden="true" class="leve5 tocs-link" data-num="5" href="#下载">下载</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#启动">启动</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#elasticsearch-和-rdms-的对比">elasticsearch 和 RDMS 的对比</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#操作">操作</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#基础语法规则">基础语法规则</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#创建索引">创建索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#删除索引">删除索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#判断索引是否存在">判断索引是否存在</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#开启关闭索引">开启/关闭索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#索引的别名">索引的别名</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#mapping-操作">mapping 操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-mapping">查看 mapping</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#新增-mapping">新增 mapping</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#添加文档">添加文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#查询指定索引的所有文档">查询指定索引的所有文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#通过-id-查询文档">通过 id 查询文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#通过条件查询文档">通过条件查询文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#精确查找">精确查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模糊查找">模糊查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#范围查找">范围查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#limit-查找">limit 查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#limit-offset-查找">limit offset 查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#and-查询">and 查询</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#or-查询">or 查询</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#删除文档">删除文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除指定-id">删除指定 id</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除指定条件">删除指定条件</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="入门-1"><a aria-hidden="true" tabindex="-1" href="#入门-1"><span class="icon icon-link"></span></a>入门</h3><div class="wrap-body">
+<h4 id="安装介绍"><a aria-hidden="true" tabindex="-1" href="#安装介绍"><span class="icon icon-link"></span></a>安装介绍</h4>
+<h5 id="下载"><a aria-hidden="true" tabindex="-1" href="#下载"><span class="icon icon-link"></span></a>下载</h5>
+<ul>
+<li>
+<p>注意</p>
+<p>version 需替换为指定版本</p>
+<p>官方包有的功能只能试用，完整功能需要付费，请仔细阅读官网文档。</p>
+</li>
+<li>
+<p>windows</p>
+<p>下载地址:</p>
+<p><a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$%7BVERSION%7D-windows-x86_64.zip">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}-windows-x86_64.zip</a></p>
+</li>
+<li>
+<p>linux</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">wget</span> https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<span class="token variable">${VERSION}</span>-linux-x86_64.tar.gz
+</span><span class="code-line"><span class="token function">wget</span> https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<span class="token variable">${VERSION}</span>-linux-x86_64.tar.gz.sha512
+</span><span class="code-line">shasum <span class="token parameter variable">-a</span> <span class="token number">512</span> <span class="token parameter variable">-c</span> elasticsearch-<span class="token variable">${VERSION}</span>-linux-x86_64.tar.gz.sha512 
+</span><span class="code-line"><span class="token function">tar</span> <span class="token parameter variable">-xzf</span> elasticsearch-<span class="token variable">${VERSION}</span>-linux-x86_64.tar.gz
+</span><span class="code-line"><span class="token builtin class-name">cd</span> elasticsearch-<span class="token variable">${VERSION}</span>/
+</span></code></pre>
+</li>
+<li>
+<p>macos</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-O</span> https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<span class="token variable">${VERSION}</span>-darwin-x86_64.tar.gz
+</span><span class="code-line"><span class="token function">curl</span> https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<span class="token variable">${VERSION}</span>-darwin-x86_64.tar.gz.sha512 <span class="token operator">|</span> shasum <span class="token parameter variable">-a</span> <span class="token number">512</span> <span class="token parameter variable">-c</span> - 
+</span><span class="code-line"><span class="token function">tar</span> <span class="token parameter variable">-xzf</span> elasticsearch-<span class="token variable">${VERSION}</span>-darwin-x86_64.tar.gz
+</span><span class="code-line"><span class="token builtin class-name">cd</span> elasticsearch-<span class="token variable">${VERSION}</span>/ 
+</span></code></pre>
+</li>
+</ul>
+<h4 id="启动"><a aria-hidden="true" tabindex="-1" href="#启动"><span class="icon icon-link"></span></a>启动</h4>
+<ul>
+<li>
+<p>启动 Elasticsearch</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ./bin/elasticsearch
+</span></code></pre>
+</li>
+<li>
+<p>设置密码</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token builtin class-name">export</span> <span class="token assign-left variable">ELASTIC_PASSWORD</span><span class="token operator">=</span><span class="token string">"your_password"</span>
+</span></code></pre>
+</li>
+<li>
+<p>测试是否启动成功</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">--cacert</span> <span class="token variable">$ES_HOME</span>/config/certs/http_ca.crt <span class="token parameter variable">-u</span> elastic:<span class="token variable">$ELASTIC_PASSWORD</span> https://localhost:9200 
+</span></code></pre>
+<p>成功则返回样例如下:</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"name"</span> <span class="token operator">:</span> <span class="token string">"Cp8oag6"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"cluster_name"</span> <span class="token operator">:</span> <span class="token string">"elasticsearch"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"cluster_uuid"</span> <span class="token operator">:</span> <span class="token string">"AT69_T_DTp-1qgIJlatQqA"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"version"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"number"</span> <span class="token operator">:</span> <span class="token string">"${VERSION}"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"build_type"</span> <span class="token operator">:</span> <span class="token string">"tar"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"build_hash"</span> <span class="token operator">:</span> <span class="token string">"f27399d"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"build_flavor"</span> <span class="token operator">:</span> <span class="token string">"default"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"build_date"</span> <span class="token operator">:</span> <span class="token string">"2016-03-30T09:51:41.449Z"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"build_snapshot"</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"lucene_version"</span> <span class="token operator">:</span> <span class="token string">"9.10.0"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"minimum_wire_compatibility_version"</span> <span class="token operator">:</span> <span class="token string">"1.2.3"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"minimum_index_compatibility_version"</span> <span class="token operator">:</span> <span class="token string">"1.2.3"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"tagline"</span> <span class="token operator">:</span> <span class="token string">"You Know, for Search"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="elasticsearch-和-rdms-的对比"><a aria-hidden="true" tabindex="-1" href="#elasticsearch-和-rdms-的对比"><span class="icon icon-link"></span></a>elasticsearch 和 RDMS 的对比</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>RDMS</th><th>elasticsearch</th></tr></thead><tbody><tr><td>数据库(database)</td><td>索引(index)</td></tr><tr><td>表(table)</td><td>类型(type)</td></tr><tr><td>行(row)</td><td>文档(document)</td></tr><tr><td>列(column)</td><td>字段(field)</td></tr><tr><td>表结构</td><td>映射</td></tr><tr><td>索引</td><td>全文索引</td></tr><tr><td>SQL</td><td>查询DSL</td></tr><tr><td>SELECT * FROM tablename</td><td>GET http://...</td></tr><tr><td>UPDATE table SET</td><td>PUT http://...</td></tr><tr><td>DELETE</td><td>DELETE http://...</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="操作"><a aria-hidden="true" tabindex="-1" href="#操作"><span class="icon icon-link"></span></a>操作</h2><div class="wrap-body">
+<p>说明:</p>
+<pre><code class="code-highlight"><span class="code-line">1. 以 user_info 为索引名称，类比数据库，
+</span><span class="code-line">2. 字段有 id,username,password,nickname,age,info,remark 为例进行演示。
+</span></code></pre>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="dsl语法"><svg viewBox="0 0 256 288" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" height="1em" width="1em">
+  <path d="M0 143.82c0 12.44 1.744 24.441 4.71 35.956h175.067c19.856 0 35.955-16.1 35.955-35.956 0-19.865-16.1-35.955-35.955-35.955H4.71C1.744 119.371 0 131.38 0 143.82" fill="#343741"></path>
+  <path d="M242.013 68.863c5.025-4.629 9.7-9.6 13.987-14.93C229.636 21.079 189.213 0 143.82 0 87 0 38.101 33.052 14.775 80.9h196.559c11.38 0 22.319-4.324 30.678-12.037" fill="#FEC514"></path>
+  <path d="M211.334 206.742H14.774c23.336 47.839 72.226 80.9 129.045 80.9 45.393 0 85.816-21.088 112.18-53.933a136.604 136.604 0 0 0-13.987-14.94c-8.36-7.721-19.299-12.027-30.678-12.027" fill="#00BFB3"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#dsl语法"><span class="icon icon-link"></span></a>DSL语法</h1><div class="wrap-body">
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#入门-1">入门</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#安装介绍">安装介绍</a><a aria-hidden="true" class="leve5 tocs-link" data-num="5" href="#下载">下载</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#启动">启动</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#elasticsearch-和-rdms-的对比">elasticsearch 和 RDMS 的对比</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#操作">操作</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#基础语法规则">基础语法规则</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#创建索引">创建索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#删除索引">删除索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#判断索引是否存在">判断索引是否存在</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#开启关闭索引">开启/关闭索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#索引的别名">索引的别名</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#mapping-操作">mapping 操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-mapping">查看 mapping</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#新增-mapping">新增 mapping</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#添加文档">添加文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#查询指定索引的所有文档">查询指定索引的所有文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#通过-id-查询文档">通过 id 查询文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#通过条件查询文档">通过条件查询文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#精确查找">精确查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模糊查找">模糊查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#范围查找">范围查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#limit-查找">limit 查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#limit-offset-查找">limit offset 查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#and-查询">and 查询</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#or-查询">or 查询</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#删除文档">删除文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除指定-id">删除指定 id</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除指定条件">删除指定条件</a></div></div><div class="h1wrap-body"><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="基础语法规则"><a aria-hidden="true" tabindex="-1" href="#基础语法规则"><span class="icon icon-link"></span></a>基础语法规则</h2><div class="wrap-body">
+<p><code>curl -X&#x3C;VERB> '&#x3C;PROTOCOL>://&#x3C;HOST>:&#x3C;PORT>/&#x3C;PATH>?&#x3C;QUERY_STRING>' -d '&#x3C;BODY>'</code></p>
+<ul>
+<li>
+<p>VERB HTTP 方法：GET, POST, PUT, HEAD, DELETE</p>
+</li>
+<li>
+<p>PROTOCOL：http 或者 https 协议（只有在 Elasticsearch 前面有 https 代理的时候可用）</p>
+</li>
+<li>
+<p>HOST：Elasticsearch 集群中的任何一个节点的主机名，如果是在本地的节点，那么就叫 localhost</p>
+</li>
+<li>
+<p>PORT：Elasticsearch HTTP 服务所在的端口，默认为 9200</p>
+</li>
+<li>
+<p>PATH API 路径（例如_count 将返回集群中文档的数量），PATH：可以包含多个组件，例如_cluster/stats 或者_nodes/stats/jvm</p>
+</li>
+<li>
+<p>QUERY_STRING：一些可选的查询请求参数，例如?pretty 参数将使请求返回更加美观易读的 JSON 数据</p>
+</li>
+<li>
+<p>BODY：一个 JSON 格式的请求主体（如果请求需要的话）</p>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="索引的操作"><svg viewBox="0 0 256 288" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" height="1em" width="1em">
+  <path d="M0 143.82c0 12.44 1.744 24.441 4.71 35.956h175.067c19.856 0 35.955-16.1 35.955-35.956 0-19.865-16.1-35.955-35.955-35.955H4.71C1.744 119.371 0 131.38 0 143.82" fill="#343741"></path>
+  <path d="M242.013 68.863c5.025-4.629 9.7-9.6 13.987-14.93C229.636 21.079 189.213 0 143.82 0 87 0 38.101 33.052 14.775 80.9h196.559c11.38 0 22.319-4.324 30.678-12.037" fill="#FEC514"></path>
+  <path d="M211.334 206.742H14.774c23.336 47.839 72.226 80.9 129.045 80.9 45.393 0 85.816-21.088 112.18-53.933a136.604 136.604 0 0 0-13.987-14.94c-8.36-7.721-19.299-12.027-30.678-12.027" fill="#00BFB3"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#索引的操作"><span class="icon icon-link"></span></a>索引的操作</h1><div class="wrap-body">
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#入门-1">入门</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#安装介绍">安装介绍</a><a aria-hidden="true" class="leve5 tocs-link" data-num="5" href="#下载">下载</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#启动">启动</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#elasticsearch-和-rdms-的对比">elasticsearch 和 RDMS 的对比</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#操作">操作</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#基础语法规则">基础语法规则</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#创建索引">创建索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#删除索引">删除索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#判断索引是否存在">判断索引是否存在</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#开启关闭索引">开启/关闭索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#索引的别名">索引的别名</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#mapping-操作">mapping 操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-mapping">查看 mapping</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#新增-mapping">新增 mapping</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#添加文档">添加文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#查询指定索引的所有文档">查询指定索引的所有文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#通过-id-查询文档">通过 id 查询文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#通过条件查询文档">通过条件查询文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#精确查找">精确查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模糊查找">模糊查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#范围查找">范围查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#limit-查找">limit 查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#limit-offset-查找">limit offset 查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#and-查询">and 查询</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#or-查询">or 查询</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#删除文档">删除文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除指定-id">删除指定 id</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除指定条件">删除指定条件</a></div></div><div class="h1wrap-body"><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="创建索引"><a aria-hidden="true" tabindex="-1" href="#创建索引"><span class="icon icon-link"></span></a>创建索引</h2><div class="wrap-body">
+<ul>
+<li>
+<p>统一请求 api 前缀</p>
+<p><a href="http://localhost:9200/">http://localhost:9200/</a></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">PUT /user_info
+</span><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token string">"settings"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token string">"number_of_replicas"</span><span class="token builtin class-name">:</span> <span class="token number">1</span>,
+</span><span class="code-line">        <span class="token string">"number_of_shards"</span><span class="token builtin class-name">:</span> <span class="token number">1</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>,
+</span><span class="code-line">    <span class="token string">"mappings"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token string">"properties"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">            <span class="token string">"id"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"long"</span>,
+</span><span class="code-line">                <span class="token string">"index"</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>,
+</span><span class="code-line">            <span class="token string">"username"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"keyword"</span>,
+</span><span class="code-line">                <span class="token string">"index"</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>,
+</span><span class="code-line">            <span class="token string">"nickname"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"keyword"</span>,
+</span><span class="code-line">                <span class="token string">"index"</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>,
+</span><span class="code-line">            <span class="token string">"password"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"keyword"</span>,
+</span><span class="code-line">                <span class="token string">"index"</span><span class="token builtin class-name">:</span> <span class="token boolean">false</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>,
+</span><span class="code-line">            <span class="token string">"age"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"integer"</span>,
+</span><span class="code-line">                <span class="token string">"index"</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>,
+</span><span class="code-line">            <span class="token string">"info"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"text"</span>,
+</span><span class="code-line">                <span class="token string">"index"</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>,
+</span><span class="code-line">            <span class="token string">"remark"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"text"</span>,
+</span><span class="code-line">                <span class="token string">"index"</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>
+</span><span class="code-line">        <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XPUT</span> <span class="token string">"http://localhost:9200/user_info"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "settings": { "number_of_replicas": 1, "number_of_shards": 1 }, "mappings": { "properties": { "id": { "type": "long", "index": true }, "username": { "type": "keyword", "index": true }, "nickname": { "type": "keyword", "index": true }, "password": { "type": "keyword", "index": false }, "age": { "type": "integer", "index": true }, "info": { "type": "text", "index": true }, "remark": { "type": "text", "index": true } } } }'</span>
+</span></code></pre>
+</li>
+<li>
+<p>参数说明：</p>
+<p>settings：索引信息设置</p>
+<p>number_of_shards：每个索引的主分片数，这个配置在索引创建后不能修改</p>
+<p>number_of_replicas：每个主分片的副本数，这个配置可以随时修改。</p>
+<p>mappings：索引映射定义</p>
+<p>properties：字段定义 properties里是json配置，key为字段名称（自定义名称），value是个嵌套json，type是指定字段的类型。</p>
+<p>-- 其他参数很多，请参考官网资料</p>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="删除索引"><a aria-hidden="true" tabindex="-1" href="#删除索引"><span class="icon icon-link"></span></a>删除索引</h2><div class="wrap-body">
+<ul>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line">DELETE /user_info
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XDELETE</span> <span class="token string">"http://localhost:9200/user_info"</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="判断索引是否存在"><a aria-hidden="true" tabindex="-1" href="#判断索引是否存在"><span class="icon icon-link"></span></a>判断索引是否存在</h2><div class="wrap-body">
+<ul>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 查看索引是否存在
+</span><span class="code-line">HEAD /user_info
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 查看索引是否存在</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XHEAD</span> <span class="token string">"http://localhost:9200/user_info"</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="开启关闭索引"><a aria-hidden="true" tabindex="-1" href="#开启关闭索引"><span class="icon icon-link"></span></a>开启/关闭索引</h2><div class="wrap-body">
+<ul>
+<li>
+<p>开启DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 开启索引
+</span><span class="code-line">POST /user_info/_open
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 开启索引</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XPOST</span> <span class="token string">"http://localhost:9200/user_info/_open"</span>
+</span></code></pre>
+</li>
+<li>
+<p>关闭DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 关闭索引
+</span><span class="code-line">POST /user_info/_close
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 关闭索引</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XPOST</span> <span class="token string">"http://localhost:9200/user_info/_close"</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="索引的别名"><a aria-hidden="true" tabindex="-1" href="#索引的别名"><span class="icon icon-link"></span></a>索引的别名</h2><div class="wrap-body">
+<ul>
+<li>
+<p>添加别名DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 添加别名
+</span><span class="code-line">POST /user_info/_alias/user1
+</span></code></pre>
+</li>
+<li>
+<p>添加别名curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 添加别名</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XPOST</span> <span class="token string">"http://localhost:9200/user_info/_alias/user1"</span>
+</span></code></pre>
+</li>
+<li>
+<p>删除别名DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 删除别名
+</span><span class="code-line">DELETE /user_info/_alias/user1
+</span></code></pre>
+</li>
+<li>
+<p>删除别名curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 删除别名</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XDELETE</span> <span class="token string">"http://localhost:9200/user_info/_alias/user1"</span>
+</span></code></pre>
+</li>
+<li>
+<p>查看别名DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 查看别名
+</span><span class="code-line">GET /_alias/user1
+</span></code></pre>
+</li>
+<li>
+<p>查看别名curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 查看别名</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/_alias/useraa"</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="mapping-操作"><a aria-hidden="true" tabindex="-1" href="#mapping-操作"><span class="icon icon-link"></span></a>mapping 操作</h2><div class="wrap-body">
+<p>类似修改数据库中列的操作</p>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看-mapping"><a aria-hidden="true" tabindex="-1" href="#查看-mapping"><span class="icon icon-link"></span></a>查看 mapping</h3><div class="wrap-body">
+<ul>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 查看mapping
+</span><span class="code-line">GET /user_info/_mapping
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 查看mapping</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_mapping"</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="新增-mapping"><a aria-hidden="true" tabindex="-1" href="#新增-mapping"><span class="icon icon-link"></span></a>新增 mapping</h3><div class="wrap-body">
+<ul>
+<li>
+<p>注意</p>
+<p><strong>需要注意的是字段映射只能增加，不能更改删除</strong></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 新增mapping 
+</span><span class="code-line">PUT /user_info/_mapping
+</span><span class="code-line">{
+</span><span class="code-line">    "properties":{
+</span><span class="code-line">        "sex":{
+</span><span class="code-line">            "type":"keyword"
+</span><span class="code-line">        }
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 新增mapping </span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XPUT</span> <span class="token string">"http://localhost:9200/user_info/_mapping"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "properties":{ "sex":{ "type":"keyword" } } }'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="文档的操作"><svg viewBox="0 0 256 288" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" height="1em" width="1em">
+  <path d="M0 143.82c0 12.44 1.744 24.441 4.71 35.956h175.067c19.856 0 35.955-16.1 35.955-35.956 0-19.865-16.1-35.955-35.955-35.955H4.71C1.744 119.371 0 131.38 0 143.82" fill="#343741"></path>
+  <path d="M242.013 68.863c5.025-4.629 9.7-9.6 13.987-14.93C229.636 21.079 189.213 0 143.82 0 87 0 38.101 33.052 14.775 80.9h196.559c11.38 0 22.319-4.324 30.678-12.037" fill="#FEC514"></path>
+  <path d="M211.334 206.742H14.774c23.336 47.839 72.226 80.9 129.045 80.9 45.393 0 85.816-21.088 112.18-53.933a136.604 136.604 0 0 0-13.987-14.94c-8.36-7.721-19.299-12.027-30.678-12.027" fill="#00BFB3"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#文档的操作"><span class="icon icon-link"></span></a>文档的操作</h1><div class="wrap-body">
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#入门-1">入门</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#安装介绍">安装介绍</a><a aria-hidden="true" class="leve5 tocs-link" data-num="5" href="#下载">下载</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#启动">启动</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#elasticsearch-和-rdms-的对比">elasticsearch 和 RDMS 的对比</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#操作">操作</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#基础语法规则">基础语法规则</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#创建索引">创建索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#删除索引">删除索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#判断索引是否存在">判断索引是否存在</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#开启关闭索引">开启/关闭索引</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#索引的别名">索引的别名</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#mapping-操作">mapping 操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-mapping">查看 mapping</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#新增-mapping">新增 mapping</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#添加文档">添加文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#查询指定索引的所有文档">查询指定索引的所有文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#通过-id-查询文档">通过 id 查询文档</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#通过条件查询文档">通过条件查询文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#精确查找">精确查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模糊查找">模糊查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#范围查找">范围查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#limit-查找">limit 查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#limit-offset-查找">limit offset 查找</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#and-查询">and 查询</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#or-查询">or 查询</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#删除文档">删除文档</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除指定-id">删除指定 id</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除指定条件">删除指定条件</a></div></div><div class="h1wrap-body"><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="添加文档"><a aria-hidden="true" tabindex="-1" href="#添加文档"><span class="icon icon-link"></span></a>添加文档</h2><div class="wrap-body">
+<ul>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 新增一条数据
+</span><span class="code-line">POST /user_info/_doc/1
+</span><span class="code-line">{
+</span><span class="code-line">    "id":1,
+</span><span class="code-line">    "username":"username",
+</span><span class="code-line">    "password":"123456",
+</span><span class="code-line">    "nickname":"nickname",
+</span><span class="code-line">    "age":18,
+</span><span class="code-line">    "info":"一些个人相关的介绍",
+</span><span class="code-line">    "remark":"备注信息",
+</span><span class="code-line">    "sex":"男"
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 新增一条数据</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XPOST</span> <span class="token string">"http://localhost:9200/user_info/_doc/1"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "id":1, "username":"username", "password":"123456", "nickname":"nickname", "age":18, "info":"一些个人相关的介绍", "remark":"备注信息", "sex":"男" }'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="查询指定索引的所有文档"><a aria-hidden="true" tabindex="-1" href="#查询指定索引的所有文档"><span class="icon icon-link"></span></a>查询指定索引的所有文档</h2><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 <code>select * from user_info;</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line">GET /user_info/_search
+</span><span class="code-line">{
+</span><span class="code-line">    "query": {
+</span><span class="code-line">        "match_all": {}
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_search"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "query": { "match_all": {} } }'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="通过-id-查询文档"><a aria-hidden="true" tabindex="-1" href="#通过-id-查询文档"><span class="icon icon-link"></span></a>通过 id 查询文档</h2><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 <code>select * from user_info where id = 1;</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 通过id查询
+</span><span class="code-line">GET /user_info/_doc/1
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 通过id查询</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_doc/1"</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="通过条件查询文档"><a aria-hidden="true" tabindex="-1" href="#通过条件查询文档"><span class="icon icon-link"></span></a>通过条件查询文档</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="精确查找"><a aria-hidden="true" tabindex="-1" href="#精确查找"><span class="icon icon-link"></span></a>精确查找</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 <code>select * from user_info where username = 'username';</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 通过条件查询
+</span><span class="code-line">GET /user_info/_search
+</span><span class="code-line">{
+</span><span class="code-line">    "query": {
+</span><span class="code-line">        "bool": {
+</span><span class="code-line">            "must": [
+</span><span class="code-line">                { "term": { "username": "username" } }
+</span><span class="code-line">            ]
+</span><span class="code-line">        }
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 通过条件查询</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_search"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "query": { "bool": { "must": [ { "term": { "username": "username" } } ] } } }'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="模糊查找"><a aria-hidden="true" tabindex="-1" href="#模糊查找"><span class="icon icon-link"></span></a>模糊查找</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的模糊查询 <code>select * from user_info where info like '%人%';</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 模糊查找
+</span><span class="code-line">GET /user_info/_search
+</span><span class="code-line">{
+</span><span class="code-line">    "query": {
+</span><span class="code-line">        "match": {
+</span><span class="code-line">        "info": "人"
+</span><span class="code-line">        }
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="范围查找"><a aria-hidden="true" tabindex="-1" href="#范围查找"><span class="icon icon-link"></span></a>范围查找</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的范围查询 <code>select * from user_info where age between 18 and 30;</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line">GET /user_info/_search
+</span><span class="code-line">{
+</span><span class="code-line">    "query": {
+</span><span class="code-line">        "range": {
+</span><span class="code-line">            "age": {
+</span><span class="code-line">                "gt": 18,
+</span><span class="code-line">                "lt": 30
+</span><span class="code-line">            }
+</span><span class="code-line">        }
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_search"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "query": { "range": { "age": { "gt": 18, "lt": 30 } } } }'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="limit-查找"><a aria-hidden="true" tabindex="-1" href="#limit-查找"><span class="icon icon-link"></span></a>limit 查找</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 limit 查询 <code>select * from user_info limit 10;</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line">GET /user_info/_search  
+</span><span class="code-line">{  
+</span><span class="code-line">    "size": 10,  
+</span><span class="code-line">    "query": {  
+</span><span class="code-line">        "match_all": {}     
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_search"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "size": 1, "query": { "match_all": {} } }'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="limit-offset-查找"><a aria-hidden="true" tabindex="-1" href="#limit-offset-查找"><span class="icon icon-link"></span></a>limit offset 查找</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 limit 查询 <code>select * from user_info limit 0,10;</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line">GET /user_info/_search  
+</span><span class="code-line">{  
+</span><span class="code-line">    "size": 2,  
+</span><span class="code-line">    "from": 1,  
+</span><span class="code-line">    "query": {  
+</span><span class="code-line">        "match_all": {}  
+</span><span class="code-line">    }  
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_search"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "size": 2, "from": 1, "query": { "match_all": {} } }'</span>
+</span></code></pre>
+</li>
+<li>
+<p>参数说明</p>
+<ul>
+<li>"size": 10表示我们想要返回的结果数量是10条。</li>
+<li>"from": 20表示我们想要从结果集中的第21条记录开始返回（因为偏移是从0开始的）。</li>
+<li>"query": <code>{"match_all": {}}</code> 是一个匹配所有文档的查询，因为我们没有特定的查询条件，只是想要分页结果。</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="and-查询"><a aria-hidden="true" tabindex="-1" href="#and-查询"><span class="icon icon-link"></span></a>and 查询</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 and 查询 <code>select * from user_info where age > 18 and sex = '男';</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line">GET /user_info/_search  
+</span><span class="code-line">{  
+</span><span class="code-line">    "query": {
+</span><span class="code-line">        "bool": {
+</span><span class="code-line">            "must": [
+</span><span class="code-line">                { "range": { "age": { "gt": 18 } } },
+</span><span class="code-line">                { "term": { "sex": "男" } }
+</span><span class="code-line">            ]   
+</span><span class="code-line">        }
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_search"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "query": { "bool": { "must": [ { "range": { "age": { "gt": 17 } } }, { "term": { "sex": "男" } } ] } } }'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="or-查询"><a aria-hidden="true" tabindex="-1" href="#or-查询"><span class="icon icon-link"></span></a>or 查询</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 or 查询 <code>select * from user_info where age > 18 or sex = '男';</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line">GET /user_info/_search
+</span><span class="code-line">{
+</span><span class="code-line">    "query": {
+</span><span class="code-line">        "bool": {
+</span><span class="code-line">        "should": [
+</span><span class="code-line">            {
+</span><span class="code-line">                "range": {
+</span><span class="code-line">                    "age": {
+</span><span class="code-line">                        "gt": 18
+</span><span class="code-line">                    }
+</span><span class="code-line">                }
+</span><span class="code-line">            },
+</span><span class="code-line">            {
+</span><span class="code-line">                "term": {
+</span><span class="code-line">                    "sex": "男"
+</span><span class="code-line">                }
+</span><span class="code-line">            }
+</span><span class="code-line">        ]
+</span><span class="code-line">        }
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XGET</span> <span class="token string">"http://localhost:9200/user_info/_search"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{ "query": { "bool": { "should": [ { "range": { "age": { "gt": 18 } } }, { "term": { "sex": "男" } } ] } } }'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="删除文档"><a aria-hidden="true" tabindex="-1" href="#删除文档"><span class="icon icon-link"></span></a>删除文档</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="删除指定-id"><a aria-hidden="true" tabindex="-1" href="#删除指定-id"><span class="icon icon-link"></span></a>删除指定 id</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 delete 查询 <code>delete from user_info where id = 3;</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line"># 删除文档
+</span><span class="code-line">DELETE /user_info/_doc/3
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 删除文档</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XDELETE</span> <span class="token string">"http://localhost:9200/user_info/_doc/3"</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="删除指定条件"><a aria-hidden="true" tabindex="-1" href="#删除指定条件"><span class="icon icon-link"></span></a>删除指定条件</h3><div class="wrap-body">
+<ul>
+<li>
+<p>类似数据库中的 delete 查询 <code>delete from user_info where age > 18;</code></p>
+</li>
+<li>
+<p>DSL语法</p>
+<pre class="language-http"><code class="language-http code-highlight"><span class="code-line">POST /user_info/_delete_by_query
+</span><span class="code-line">{
+</span><span class="code-line">    "query": {
+</span><span class="code-line">        "range": {
+</span><span class="code-line">            "age": {
+</span><span class="code-line">                "gt": 18
+</span><span class="code-line">            }
+</span><span class="code-line">        }
+</span><span class="code-line">    }
+</span><span class="code-line">}
+</span></code></pre>
+</li>
+<li>
+<p>curl</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-XPOST</span> <span class="token string">"http://localhost:9200/user_info/_delete_by_query"</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'{"query":{"range":{"age":{"gt":18}}}}'</span>
+</span></code></pre>
+</li>
+</ul>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.5.3" defer></script><script src="../js/fuse.min.js?v=1.5.3" defer></script><script src="../js/main.js?v=1.5.3" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
