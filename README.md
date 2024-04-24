@@ -129,6 +129,12 @@ Quick Reference
 [nvm](./docs/nvm.md)<!--rehype:style=background: rgb(132 132 132);-->  
 <!--rehype:class=home-card-->
 
+## PHP
+
+[ThinkPHP](./docs/thinkphp.md)<!--rehype:style=background: rgb(239 68 68/var(\-\-bg\-opacity));-->
+<!--rehype:class=home-card-->
+
+
 ## 工具
 
 [Emacs](./docs/emacs.md)<!--rehype:style=background: rgb(98 36 134);-->  
