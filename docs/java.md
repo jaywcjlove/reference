@@ -647,7 +647,7 @@ public static void main(String[] args) throws ExecutionException, InterruptedExc
 - handler: 拒绝策略
 
 ```java
-ThreadPoolExecutor threadPoolExecutor 
+ThreadPoolExecutor threadPoolExecutor
   = new ThreadPoolExecutor(
   2, 5,
   5, TimeUnit.SECONDS,
@@ -672,7 +672,7 @@ synchronized(obj) {
 }
 
 // (静态)方法
-public synchronized 
+public synchronized
   (static) void methodName() {
    ...
 }
@@ -717,7 +717,7 @@ try {
 ### ThreadLocal
 
 ```java
-ThreadLocal<Integer> threadLocal 
+ThreadLocal<Integer> threadLocal
     = new ThreadLocal<>();
 ```
 
@@ -990,7 +990,7 @@ Reader bufferedFileReader
   );
 
 // 缓冲字符输出流
-Writer bufferedFileWriter 
+Writer bufferedFileWriter
   = new BufferedWriter(
     new FileWriter("output.txt")
   );
@@ -1000,11 +1000,11 @@ Writer bufferedFileWriter
 
 ```java
 // 数据输入流
-DataInputStream dataInputStream 
+DataInputStream dataInputStream
   = new DataInputStream(inputStream);
 
 // 数据输出流
-DataOutputStream dataOutputStream 
+DataOutputStream dataOutputStream
   = new DataOutputStream(outputStream);
 ```
 
@@ -1012,11 +1012,11 @@ DataOutputStream dataOutputStream
 
 ```java
 // 对象输入流
-ObjectInputStream objectInputStream 
+ObjectInputStream objectInputStream
   = new ObjectInputStream(inputStream);
 
 // 对象输出流
-ObjectOutputStream objectOutputStream 
+ObjectOutputStream objectOutputStream
   = new ObjectOutputStream(outputStream);
 ```
 
@@ -1027,7 +1027,7 @@ ObjectOutputStream objectOutputStream
 
 ```java
 try (
-  ObjectOutputStream objectOutputStream 
+  ObjectOutputStream objectOutputStream
     = new ObjectOutputStream(new FileOutputStream("object.dat"))
 ) {
     objectOutputStream.writeObject(object);
@@ -1038,7 +1038,7 @@ try (
 
 ```java
 try (
-  ObjectInputStream objectInputStream 
+  ObjectInputStream objectInputStream
     = new ObjectInputStream(new FileInputStream("object.dat"))
 ) {
     Object object = objectInputStream.readObject();
@@ -1468,6 +1468,71 @@ list.add(3);
 list.add(3);
 int frequency = Collections
       .frequency(list, 2); // frequency = 2
+```
+
+### 方法引用
+<!--rehype:wrap-class=col-span-2-->
+有一种函数式接口叫做`Consumer`，里面有个抽象方法`accept`能够接受一个参数但是没有返回值，加入我想实现这个方法，让他打印我传入的参数，那么我可以这样:
+
+```java
+Consumer<String> test = new Consumer<String>() {
+    @Override
+    public void accept(String s) {
+      System.out.println(s);
+    }
+  };
+test.accept("test");
+```
+
+更简单的，我们可以直接传入Lambda表达式
+
+```java
+Consumer<String> test = System.out::println;
+```
+
+这就是方法引用，方法引用通过方法的名字来指向一个方法，让语言的构造更紧凑简洁，减少冗余代码。
+
+#### 使用方式
+
+- 引用方法
+- 引用构造方法
+- 引用数组
+
+#### 引用方式
+
+- 实例对象::实例方法名
+
+```java
+Consumer<String> myConsumer = System.out::println;
+myConsumer.accept("test");
+```
+
+- 类名::静态方法名
+
+```java
+Function<Long, Long> myFunction = Math::abs(x);
+Long result = myFunction.apply("-2L");
+```
+
+- 类名::实例方法名
+
+```java
+BiPredicate<String, String> myBiPredicate = String::equals;
+System.out.println(myBiPredicate.test("test", "test"));
+```
+
+- 引用构造器
+
+```java
+Function<Integer, String> myFunction = StringBuffer::new;
+StringBuffer sb = myFunction.apply(10);
+```
+
+- 引用数组
+
+```java
+Function<Integer, int[]> myFunction = int[]::new;
+int []arr = myFunction.apply(123);
 ```
 
 另见
