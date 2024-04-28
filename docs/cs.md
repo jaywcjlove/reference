@@ -881,25 +881,25 @@ Console.WriteLine($"Student Id: {id}, Name: {name}, GPA: {gpa}");
 ## 集合
 
 ### c#集合
-
-| 集合                                                         | 有序 | 已排序 | 线程安全 | 允许空值 |
-| :----------------------------------------------------------- | :--- | :----- | :------- | :------- |
-| [List](https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1) | Y    | *N*    | *N*      | 是       |
-| [ArrayList](https://docs.microsoft.com/dotnet/api/system.collections.arraylist) (非泛型) | Y    | *N*    | *N*      | 是       |
-| [Vector](https://docs.microsoft.com/dotnet/api/system.collections.vector) (非泛型) | N    | *N*    | Y        | 是       |
-| [LinkedList](https://docs.microsoft.com/dotnet/api/system.collections.generic.linkedlist-1) | Y    | *N*    | *N*      | 是       |
-| [ConcurrentBag](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentbag-1) | *N*  | *N*    | Y        | 是       |
-| [HashSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.hashset-1) | *N*  | *N*    | *N*      | 是       |
-| [SortedSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.sortedset-1) | Y    | Y      | *N*      | 是       |
-| [ConcurrentDictionary](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2) | Y    | *N*    | Y        | 是       |
-| [Dictionary](https://docs.microsoft.com/dotnet/api/system.collections.generic.dictionary-2) | *N*  | *N*    | *N*      | 是       |
-| [SortedDictionary](https://docs.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2) | Y    | Y      | *N*      | 是       |
-| [Stack](https://docs.microsoft.com/dotnet/api/system.collections.generic.stack-1) | *N*  | *N*    | *N*      | 是       |
-| [Queue](https://docs.microsoft.com/dotnet/api/system.collections.generic.queue-1) | *N*  | *N*    | *N*      | 是       |
-| [ConcurrentQueue](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentqueue-1) | *N*  | *N*    | Y        | 是       |
-| [ConcurrentStack](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentstack-1) | *N*  | *N*    | Y        | 是       |
-| [HashTable](https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.hashtable?view=net-6.0) | N    | Y      | Y        | 否       |
-
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+| 集合                                                         | 有序  | 已排序 | 线程安全 | 允许空值 |
+| :----------------------------------------------------------- |:----| :----- | :------- | :------- |
+| [List](https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1) | Y   | *N*    | *N*      | 是       |
+| [ArrayList](https://docs.microsoft.com/dotnet/api/system.collections.arraylist) (非泛型) | Y   | *N*    | *N*      | 是       |
+| [Vector](https://docs.microsoft.com/dotnet/api/system.collections.vector) (非泛型) | *N*   | *N*    | Y        | 是       |
+| [LinkedList](https://docs.microsoft.com/dotnet/api/system.collections.generic.linkedlist-1) | Y   | *N*    | *N*      | 是       |
+| [ConcurrentBag](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentbag-1) | *N* | *N*    | Y        | 是       |
+| [HashSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.hashset-1) | *N* | *N*    | *N*      | 是       |
+| [SortedSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.sortedset-1) |  *N*   | Y      | *N*      | 是       |
+| [ConcurrentDictionary](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2) | Y   | *N*    | Y        | 是       |
+| [Dictionary](https://docs.microsoft.com/dotnet/api/system.collections.generic.dictionary-2) | *N* | *N*    | *N*      | 是       |
+| [SortedDictionary](https://docs.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2) | Y   | Y      | *N*      | 是       |
+| [Stack](https://docs.microsoft.com/dotnet/api/system.collections.generic.stack-1) | *N* | *N*    | *N*      | 是       |
+| [Queue](https://docs.microsoft.com/dotnet/api/system.collections.generic.queue-1) | *N* | *N*    | *N*      | 是       |
+| [ConcurrentQueue](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentqueue-1) | *N* | *N*    | Y        | 是       |
+| [ConcurrentStack](https://docs.microsoft.com/dotnet/api/system.collections.concurrent.concurrentstack-1) | *N* | *N*    | Y        | 是       |
+| [HashTable](https://learn.microsoft.com/zh-cn/dotnet/api/system.collections.hashtable?view=net-6.0) | N   | Y      | Y        | 否       |
+<!--rehype:className=show-header-->
 ### List
 
 ```cs
