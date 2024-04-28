@@ -8,14 +8,21 @@ Oracle 备忘清单
 ### SELECT 语句
 
 ```sql
-SELECT * FROM beverages WHERE field1 = 'Kona' AND field2 = 'coffee' AND field3 = 122;
+SELECT * 
+FROM beverages 
+WHERE field1 = 'Kona' 
+  AND field2 = 'coffee' 
+  AND field3 = 122;
 ```
 <!--rehype:className=wrap-text-->
 
 ### SELECT INTO 语句
 
 ```sql
-SELECT name,address,phone_number INTO v_employee_name,v_employee_address,v_employee_phone_number FROM employee WHERE employee_id = 6;
+SELECT name, address, phone_number 
+INTO v_employee_name, v_employee_address, v_employee_phone_number 
+FROM employee 
+WHERE employee_id = 6;
 ```
 <!--rehype:className=wrap-text-->
 
@@ -25,24 +32,35 @@ SELECT name,address,phone_number INTO v_employee_name,v_employee_address,v_emplo
 使用 VALUES 关键字插入
 
 ```sql
-INSERT INTO table_name VALUES ('Value1', 'Value2', ... );
-INSERT INTO table_name(Column1, Column2, ... ) VALUES ( 'Value1', 'Value2', ... );
+INSERT INTO table_name 
+VALUES ('Value1', 'Value2', ... );
+
+INSERT INTO table_name (Column1, Column2, ... ) 
+VALUES ( 'Value1', 'Value2', ... );
 ```
 <!--rehype:className=wrap-text-->
 
 使用 SELECT 语句插入
 
 ```sql
-INSERT INTO table_name(SELECT Value1, Value2, ... from table_name );
-INSERT INTO table_name(Column1, Column2, ... ) ( SELECT Value1, Value2, ... from table_name );
+INSERT INTO table_name
+SELECT Value1, Value2, ...
+FROM table_name;
+
+INSERT INTO table_name (Column1, Column2, ...)
+SELECT Value1, Value2, ...
+FROM table_name;
 ```
 <!--rehype:className=wrap-text-->
 
 ### DELETE 语句
 
 ```sql
-DELETE FROM table_name WHERE some_column=some_value
-DELETE FROM customer WHERE sold = 0;
+DELETE FROM table_name 
+WHERE some_column = some_value;
+
+DELETE FROM customer 
+WHERE sold = 0;
 ```
 
 ### UPDATE 语句
@@ -384,7 +402,8 @@ CREATE TABLE table_name
     column1 datatype null/not null,
     column2 datatype null/not null,
     ...
-    CONSTRAINT constraint_name CHECK (column_name condition) [DISABLE]
+    CONSTRAINT constraint_name
+    CHECK (column_name condition) [DISABLE]
 );
 ```
 
@@ -410,7 +429,8 @@ CREATE TABLE table_name
     column1 datatype null/not null,
     column2 datatype null/not null,
     ...
-    CONSTRAINT constraint_name UNIQUE (column1, column2, column_n)
+    CONSTRAINT constraint_name 
+    UNIQUE (column1, column2, column_n)
 );
 ```
 
@@ -421,7 +441,8 @@ CREATE TABLE customer
 (
     id   integer not null,
     name varchar2(20),
-    CONSTRAINT customer_id_constraint UNIQUE (id)
+    CONSTRAINT customer_id_constraint
+    UNIQUE (id)
 );
 ```
 
@@ -431,14 +452,18 @@ CREATE TABLE customer
 
 ```sql
 ALTER TABLE [table name]
-    ADD CONSTRAINT [constraint name] UNIQUE( [column name] ) USING INDEX [index name];
+    ADD CONSTRAINT [constraint name] 
+    UNIQUE([column name]) 
+    USING INDEX [index name];
 ```
 
 例如：
 
 ```sql
 ALTER TABLE employee
-    ADD CONSTRAINT uniqueEmployeeId UNIQUE(employeeId) USING INDEX ourcompanyIndx_tbs;
+    ADD CONSTRAINT uniqueEmployeeId 
+    UNIQUE(employeeId) 
+    USING INDEX ourcompanyIndx_tbs;
 ```
 
 ### 添加外部约束
@@ -447,14 +472,19 @@ foregin 约束的语法是：
 
 ```sql
 ALTER TABLE [table name]
-    ADD CONSTRAINT [constraint name] FOREIGN KEY (column,...) REFERENCES table [(column,...)] [ON DELETE {CASCADE | SET NULL}]
+    ADD CONSTRAINT [constraint name] 
+    FOREIGN KEY (column,...) 
+    REFERENCES table [(column,...)] 
+    [ON DELETE {CASCADE | SET NULL}];
 ```
 
 例如：
 
 ```sql
 ALTER TABLE employee
-    ADD CONSTRAINT fk_departament FOREIGN KEY (departmentId) REFERENCES departments(Id);
+    ADD CONSTRAINT fk_departament 
+    FOREIGN KEY (departmentId) 
+    REFERENCES departments(Id);
 ```
 
 ### 删除约束
@@ -482,13 +512,17 @@ INDEXES
 
 ```sql
 CREATE [UNIQUE] INDEX index_name
-    ON table_name (column1, column2, . column_n)
+    ON table_name (
+        column1,
+        column2,
+        . 
+        column_n
+    )
     [ COMPUTE STATISTICS ];
 ```
 
-`UNIQUE` 表示索引列中值的组合必须是唯一的
-
-`COMPUTE STATISTICS` 告诉 Oracle 在创建索引期间收集统计信息。 然后优化器使用这些统计信息来选择执行语句时的最佳执行计划。例如：
+- `UNIQUE` 表示索引列中值的组合必须是唯一的
+- `COMPUTE STATISTICS` 告诉 Oracle 在创建索引期间收集统计信息。然后优化器使用这些统计信息来选择执行语句时的最佳执行计划。例如：
 
 ```sql
 CREATE INDEX customer_idx
@@ -604,7 +638,8 @@ DBA 相关
 创建用户的语法是：
 
 ```sql
-CREATE USER username IDENTIFIED BY password;
+CREATE USER username
+    IDENTIFIED BY password;
 ```
 
 例如：
@@ -639,6 +674,90 @@ ALTER USER username IDENTIFIED BY password;
 
 ```sql
 ALTER USER brian IDENTIFIED BY brianpassword;
+```
+
+### 查看表空间的名称以及大小
+<!--rehype:wrap-class=col-span-2-->
+
+```sql
+SELECT t.table_name,
+       ROUND(SUM(bytes / (1024 * 1024)), 0) AS ts_size
+FROM dba_tablespaces t,
+     dba_data_files d
+WHERE t.table_name = d.table_name
+GROUP BY t.table_name;
+```
+
+### 查看还没提交的事务
+
+```sql
+select * from v$locked_object;
+select * from v$transaction;
+```
+
+### 查看数据库库对象
+<!--rehype:wrap-class=col-span-2-->
+
+```sql
+SELECT owner, object_type, status, COUNT(*) AS count#
+FROM all_objects
+GROUP BY owner, object_type, status;
+```
+
+### 查看数据库的版本
+
+```sql
+SELECT version
+FROM Product_component_version
+WHERE SUBSTR(PRODUCT, 1, 6) = 'Oracle';
+```
+
+### 查看数据库的创建日期和归档方式
+
+```sql
+SELECT created, Log_Mode, Log_Mode 
+FROM v$Database;
+```
+
+### 查看控制文件
+
+```sql
+select name from v$controlfile;
+```
+
+### 查看日志文件
+
+```sql
+select member from v$logfile;
+```
+
+### 查看表空间的使用情況
+<!--rehype:wrap-class=col-span-2-->
+
+```sql
+SELECT SUM(bytes)/(1024*1024) AS free_space,
+       tablespace_name
+FROM dba_free_space
+GROUP BY tablespace_name;
+```
+
+### 捕捉运行很久的SOL
+
+```sql
+COLUMN username FORMAT A12
+COLUMN opname FORMAT A16
+COLUMN progress FORMAT A8
+
+SELECT username,
+       sid,
+       opname,
+       ROUND(sofar * 100 / totalwork, 0) || '%' AS progress,
+       time_remaining,
+       sql_text
+FROM v$session_longops, v$sql
+WHERE time_remaining <> 0
+  AND sql_address = address
+  AND sql_hash_value = hash_value;
 ```
 
 另见

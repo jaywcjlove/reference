@@ -127,10 +127,10 @@ $ adb pull /sdcard/test.txt pulledTest.txt
 `/data/data/<package>/shared_prefs/` | 共享偏好设置
 `/data/app` | 用户安装的 APK
 `/system/app` | 系统预装的 APK 文件
-`/mmt/asec` | 加密的应用程序（App2SD）
-`/mmt/emmc` | 内部 SD 卡
-`/mmt/adcard` | 外部/内部 SD 卡
-`/mmt/adcard/external_sd` | 外置 SD 卡
+`/mnt/asec` | 加密的应用程序（App2SD）
+`/mnt/emmc` | 内部 SD 卡
+`/mnt/sdcard` | 外部/内部 SD 卡
+`/mnt/sdcard/external_sd` | 外置 SD 卡
 <!--rehype:className=style-list-arrow-->
 
 ---
