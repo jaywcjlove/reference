@@ -505,6 +505,7 @@ Quick Reference
 [cizai.io](https://reference.cizai.io)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [docs.willxup.top](https://docs.willxup.top)<!--rehype:target=_blank-->
 [wangchunfei.com](https://ref.wangchunfei.com/)<!--rehype:target=_blank-->
+[object.cool](https://r.object.cool)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
