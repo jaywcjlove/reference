@@ -560,7 +560,9 @@ async def read_users():
 
 安全性
 ---
-### 基于Token的认证
+
+### 基于 Token 的认证
+<!--rehype:wrap-class=col-span-2-->
 
 ```python
 from fastapi import FastAPI, Depends, HTTPException
@@ -568,11 +570,17 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
 
 app = FastAPI()
+```
 
-# 使用 OAuth2PasswordBearer 创建一个 token 依赖
+使用 OAuth2PasswordBearer 创建一个 token 依赖
+
+```python
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+```
 
-# 假设这是你的用户数据库
+假设这是你的用户数据库
+
+```python
 fake_users_db = {
     "johndoe": {
         "username": "johndoe",
@@ -582,15 +590,21 @@ fake_users_db = {
         "disabled": False,
     }
 }
+```
 
-# 创建一个用户模型
+创建一个用户模型
+
+```python
 class User(BaseModel):
     username: str
     email: str
     full_name: str
     disabled: bool
+```
 
-# 创建一个简单的认证函数
+创建一个简单的认证函数
+
+```python
 def fake_hash_password(password: str):
     return "fakehashed" + password
 
@@ -603,8 +617,11 @@ def fake_decode_token(token: str):
     # 这个函数应该验证 token 并返回用户信息
     # 这里我们只是简单地返回了用户名
     return get_user(fake_users_db, token)
+```
 
-# 创建一个依赖，用于从请求中获取 token 并验证用户
+创建一个依赖，用于从请求中获取 token 并验证用户
+
+```python
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     user = fake_decode_token(token)
     if not user:
@@ -636,20 +653,22 @@ async def read_users_me(current_user: User = Depends(get_current_user)):
 from fastapi import FastAPI
 
 app = FastAPI()
+```
 
-# 在生产环境中，你应该使用一个真正的证书和私钥
-# 你可以从像 Let's Encrypt 这样的证书颁发机构获得免费的证书
-# 或者使用 OpenSSL 生成自签名证书
+在生产环境中，你应该使用一个真正的证书和私钥，你可以从像 Let's Encrypt 这样的证书颁发机构获得免费的证书，或者使用 OpenSSL 生成自签名证书
+
+```python
 @app.get("/https")
 async def read_https():
     return {"message": "Hello, HTTPS!"}
-
 ```
+
 启动服务器时，使用以下命令来指定证书和私钥：
+
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 443 --ssl-keyfile /path/to/your/key.pem --ssl-certfile /path/to/your/cert.pem
-
 ```
+
 FastAPI 默认支持 HTTPS，你只需要提供证书和私钥即可。
 
 待更新
