@@ -193,8 +193,53 @@ DELETE n
 MATCH (alice:Person {name: 'Alice'})-[:FRIENDS]->()-[:FRIENDS]->(fof)
 RETURN fof
 
-// 查找共同朋友
+// 查找共同朋友，这里的“,”相当于 AND 条件
 MATCH (alice:Person {name: 'Alice'})-[:FRIENDS]->(friend),
       (bob:Person {name: 'Bob'})-[:FRIENDS]->(friend)
 RETURN friend
+```
+
+通过观察`John的朋友`看过的电影为`John`推荐电影，并且不再推荐`John`他自己已经看过的电影。
+
+```cypher
+MATCH (tom:Person {name: "John Johnson"})-[:IS_FRIEND_OF]->(user)-[:HAS_SEEN]->(movie)
+WHERE NOT tom-[:HAS_SEEN]->(movie) RETURN movie.name;
+```
+
+找出所有标题以`Apollo`开头且发行年份早于`1996`年的电影节点
+
+```cypher
+MATCH (node:Movie)
+WHERE node.title =~ 'Apollo.*' AND node.released < 1996
+RETURN node
+```
+
+### 排序&分页
+
+以电影名字排序，每一网页只显示10部电影，下面的查询返回了第三页（21~30项）。
+
+```cypher
+match (alice:Person {name: 'Alice'})-[HAS_SEEN]->(movie) 
+return movie 
+order by movie.name 
+skip 20 
+limit 10
+```
+
+### 聚合函数
+
+计算每一部电影被观看的数量，按数量排序
+
+```cypher
+ match (node:Movie)-[:HAS_BEEN_SEEN]->() 
+return node,count(*) 
+ order by count(*) desc;
+```
+
+要求`John`所有朋友的平均年龄，可以使用以下查询
+
+```cypher
+match (node:users{name: "John Johnson"})-[:IS_FRIEND_OF]-(friend) 
+where HAS(friend.yearOfBirth) 
+return avg(2014-friend.yearOfBirth);
 ```
