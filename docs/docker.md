@@ -621,7 +621,51 @@ $ docker volume prune # 清理未使用的卷
 
 `run`/`create` 大部分参数一致
 
-Docker 示例
+### 修改Docker镜像拉取地址
+
+您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
+
+```bash
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://1ojaslt1.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+```
+
+### 修改Docker数据存储路径
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+# 1、停止 Docker 服务
+sudo systemctl stop docker
+
+# 2、将现有的 Docker 数据移动到新的目录
+sudo mv /var/lib/docker /new/path/docker
+
+# 3、更新 Docker 的配置文件 /etc/docker/daemon.json，添加或修改 data-root 选项
+{
+  "data-root": "/new/path/docker"
+}
+
+# 4、重新启动 Docker 服务
+sudo systemctl start docker
+```
+
+⚠️注意：这样做可能会导致现有的容器和镜像无法正常工作,因为它们的路径指向旧的位置,你需要重新启动这些容器，或者重新创建它们以确保它们的配置指向新的volume路径，推荐在一开始部署Docker时操作 ！
+
+### Docker降级版本的方法
+
+```bash
+# ${version}指定要降级的版本。
+yum downgrade --setopt=obsoletes=0 -y docker-ce-${version} docker-ce-selinux-${version}
+```
+
+Docker 常用示例
 ---
 <!--rehype:body-class=cols-2-->
 
@@ -637,6 +681,359 @@ $ docker run -d --name portainer \
     portainer/portainer-ee:latest
 ```
 
+### Nginx
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+docker run -itd -p 80:80 --restart=always --name Nginx \
+-v $HOME/Nginx_data/html:/usr/share/nginx/html \
+-v $HOME/Nginx_data/conf:/etc/nginx/conf.d \
+-v $HOME/Nginx_data/nginx.conf:/etc/nginx/nginx.conf \
+nginx
+
+# 参数解释
+# -itd: 表示以后台运行的方式启动容器,并分配一个伪终端（pseudo-TTY）和保持 STDIN 打开
+# -p 80:80: 将主机的端口映射到容器的端口，这里是将主机的 80 端口映射到容器的 80 端口，用于访问 Nginx 站点页面
+# --name Nginx: 为容器指定一个名称，这里是 "Nginx"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+
+# 持久化解释
+# -v $HOME/Nginx_data/html:/usr/share/nginx/html
+# 将到容器中的 "/usr/share/nginx/html" 路径映射挂载到 宿主机中的"$HOME/Nginx_data/html"目录下,这样做的目的是将 Nginx 的 站点页面 路径映射到本地
+# -v $HOME/Nginx_data/conf:/etc/nginx/conf.d (需提前准备好文件，否则可能会启动失败)
+# 将到容器中的 "/etc/nginx/conf.d" 路径映射挂载到 宿主机中的"$HOME/Nginx_data/conf"目录下,这样做的目的是将 Nginx 的 虚拟主机配置文件 路径映射到本地
+# -v $HOME/Nginx_data/nginx.conf:/etc/nginx/nginx.conf (需提前准备好文件，否则可能会启动失败)
+# 将到容器中的 "/etc/nginx/nginx.conf" 路径映射挂载到 宿主机中的"$HOME/Nginx_data/nginx.conf"目录下,这样做的目的是将 Nginx 的 主配置文件 路径映射到本地
+```
+
+### Tomcat
+
+```bash
+docker run -itd -p 8080:8080 --restart=always --name Tomcat \
+-v $HOME/Tomcat_data/webapps:/usr/local/tomcat/webapps/ROOT \
+tomcat
+
+# 参数解释
+# -itd: 表示以后台运行的方式启动容器,并分配一个伪终端（pseudo-TTY）和保持 STDIN 打开
+# -p 8080:8080: 将主机的端口映射到容器的端口，这里是将主机的 8080 端口映射到容器的 8080 端口，用于访问 Tomcat 站点页面
+# --name Tomcat: 为容器指定一个名称，这里是 "Tomcat"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+
+# 持久化解释
+# -v $HOME/Tomcat_data/webapps:/usr/local/tomcat/webapps/ROOT
+# 将到容器中的 "/usr/local/tomcat/webapps/ROOT" 路径映射挂载到 宿主机中的"$HOME/Tomcat_data/webapps"目录下,这样做的目的是将 Tomcat 的 站点页面 路径映射到本地
+```
+
+### Weblogic
+
+```bash
+docker run -itd -p 7001:7001 -p 7002:7002 -p 5556:5556 \
+--restart=always --name Weblogic \
+ismaleiva90/weblogic12
+
+# 注意：ismaleiva90/weblogic12 是非官方或认证的Docker镜像！
+
+# 参数解释
+# -itd: 表示以后台运行的方式启动容器,并分配一个伪终端（pseudo-TTY）和保持 STDIN 打开
+# -p 7001:7001: 将主机的端口映射到容器的端口，这里是将主机的 7001 端口映射到容器的 7001 端口，用于访问 Weblogic 控制台页面
+# -p 7002:7002: 将主机的端口映射到容器的端口，这里是将主机的 7002 端口映射到容器的 7002 端口，用于访问 Weblogic 站点页面
+# -p 5556:5556: 将主机的端口映射到容器的端口，这里是将主机的 5556 端口映射到容器的 5556 端口，用于访问 Weblogic 站点页面
+# --name Weblogic: 为容器指定一个名称，这里是 "Weblogic"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+```
+
+### MySQL
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+docker run -d -it -p 3306:3306 --name MySQL --restart=always \
+-v $HOME/MySQL_Data/data:/var/lib/mysql \
+-v $HOME/MySQL_Data/conf:/etc/mysql/conf.d \
+--privileged=true \
+-e MYSQL_DATABASE='test_db' \
+-e MYSQL_ROOT_PASSWORD='abc$123' \
+-e MYSQL_USER='testuser' -e MYSQL_PASSWORD='abc$123' \
+mysql:8.0.31 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+# 参数解释
+# -d: 表示以后台运行的方式启动容器
+# -it: 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+# -p 3306:3306: 将主机的端口映射到容器的端口，这里是将主机的 3306 端口映射到容器的 3306 端口，用于访问 MySQL 数据库
+# --name MySQL: 为容器指定一个名称，这里是 "MySQL"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+# --privileged=true: 若不加字段--privileged=true可能会报权限错误
+# --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci: 这两个选项参数是改变所有表的默认编码和排序规则以使用 UTF-8 (utf8mb4)
+
+# 持久化解释
+# -v $HOME/MySQL_Data/data:/var/lib/mysql
+# 将到容器中的 "/var/lib/mysql" 路径映射挂载到 宿主机中的"$HOME/MySQL_Data/data"目录下,这样做的目的是将 MySQL 数据库的数据存储在本地中，以便数据在容器重启时得以保留
+# -v $HOME/MySQL_Data/conf:/etc/mysql/conf.d (需提前准备好文件，否则可能会启动失败)
+# 将到容器中的 "/etc/mysql/conf.d" 路径映射挂载到 宿主机中的"$HOME/MySQL_Data/conf"目录下,这样做的目的是自定义配置文件的路径
+
+# 环境变量解释
+# MYSQL_ROOT_PASSWORD【必选】
+# 该变量是必需的，指定将为 MySQL 的 root 超级用户帐户设置的密码,MYSQL_RANDOM_ROOT_PASSWORD=yes这个变量也是设置root用户密码的，不同的是他是随机生成一个密码,生成的 root 密码将打印到 stdout ( GENERATED ROOT PASSWORD: .....)。
+# MYSQL_USER【可选】
+# 这些变量是可选的，结合使用来创建新用户。该用户将被授予变量指定的数据库的超级用户权限。创建用户需要同时设置`MYSQL_PASSWORD`变量。
+# 请注意，无需使用此机制来创建 root 超级用户，默认情况下会使用变量指定的密码创建该用户MYSQL_ROOT_PASSWORD
+# MYSQL_PASSWORD【可选】
+# 这些变量是可选的，结合使用来创建新用户并设置该用户的密码。该用户将被授予变量指定的数据库的超级用户权限。创建用户需要这两个变量。
+# 请注意，无需使用此机制来创建 root 超级用户，默认情况下会使用变量指定的密码创建该用户MYSQL_ROOT_PASSWORD
+# MYSQL_DATABASE【可选】
+# 该变量是可选的，允许您指定要在映像启动时创建的数据库的名称。如果提供了MYSQL_USER、MYSQL_PASSWORD这两个变量，则该变量设置的用户将被授予对此数据库的超级用户访问权限
+```
+
+### Oracle
+
+```bash
+docker run -d -it -p 1521:1521 --name Oracle_11g --restart=always \
+--mount source=oracle_vol,target=/home/oracle/app/oracle/oradata \
+registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
+
+# 注意：registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g 是非官方或认证的Docker镜像！
+
+# 参数解释
+# -d: 表示以后台运行的方式启动容器
+# -it: 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+# -p 1521:1521: 将主机的端口映射到容器的端口，这里是将主机的 1521 端口映射到容器的 1521 端口，用于访问 Oracle 数据库
+# --name Oracle_11g: 为容器指定一个名称，这里是 "Oracle_11g"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+
+# 持久化解释
+# --mount source=oracle_vol,target=/home/oracle/app/oracle/oradata 将名为 "oracle_vol" 的 Docker 卷挂载到容器中的 "/home/oracle/app/oracle/oradata" 路径。这样做的目的是将 Oracle 数据库的数据存储在持久化的卷中，以便数据在容器重启时得以保留
+```
+
+### PostgreSQL
+
+```bash
+docker run -d -p 5432:5432 --restart=always --name PostgreSQL \
+-e POSTGRES_USER='postgres' \
+-e POSTGRES_PASSWORD='abc$123' \
+-e POSTGRES_DB='test' \
+-e PGDATA=/var/lib/postgresql/data/pgdata \
+-v $HOME/Postgres_Data:/var/lib/postgresql/data \
+-d postgres
+
+# 参数解释
+# -d: 表示以后台运行的方式启动容器
+# -it: 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+# -p 5432:5432: 将主机的端口映射到容器的端口，这里是将主机的 5432 端口映射到容器的 5432 端口，用于访问 Postgre 数据库
+# --name PostgreSQL: 为容器指定一个名称，这里是 "PostgreSQL"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+
+
+# 持久化解释
+# -v $HOME/Postgres_Data:/var/lib/postgresql/data
+# 将到容器中的 "/var/lib/postgresql/data" 路径映射挂载到 宿主机中的 ”$HOME/Postgres_Data“目录下,这样做的目的是将 Postgre 数据库的数据存储在本地中，以便数据在容器重启时得以保留
+
+# 环境变量解释
+# POSTGRES_PASSWORD【必选】
+# 您需要使用此环境变量才能使用 PostgreSQL 映像。它不能为空或未定义。该环境变量设置 PostgreSQL 的超级用户密码。默认超级用户由环境变量定义POSTGRES_USER
+# POSTGRES_USER【可选】
+# 此可选环境变量与设置用户及其密码结合使用。该变量将创建具有超级用户权限的指定用户和同名的数据库。如果未指定，则将使用默认用户"postgres"
+# POSTGRES_DB【可选】
+# 此可选环境变量可用于为首次启动映像时创建的默认数据库定义不同的名称。如果未指定，则将使用POSTGRES_USER设定的值，如果POSTGRES_USER没有设定则默认为"postgres"。
+# PGDATA【可选】
+# 默认为/var/lib/postgresql/data 如果您使用的数据卷是文件系统挂载点（如 GCE 持久磁盘），或无法被用户 chowned 的远程文件夹postgres（如某些 NFS 挂载），或包含文件夹/文件（例如lost+found），则 Postgresinitdb需要一个子目录在安装点内创建以包含数据。
+```
+
+### 达梦
+
+```bash
+docker run -d -p 5236:5236 --restart=always --name DaMengDB --privileged=true \
+-e PAGE_SIZE=16 \
+-e LD_LIBRARY_PATH=/opt/dmdbms/bin \
+-e EXTENT_SIZE=32 \
+-e BLANK_PAD_MODE=1 \
+-e LOG_SIZE=1024 \
+-e UNICODE_FLAG=1 \
+-e LENGTH_IN_CHAR=1 \
+-e INSTANCE_NAME=dm8_test \
+-v $HOME/DaMeng_Data:/opt/dmdbms/data \
+if010/dameng
+
+# 注意：if010/dameng 是从官网下载上传至 Docker Hub 的镜像！
+
+# 参数解释
+# -d: 表示以后台运行的方式启动容器
+# -it: 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+# -p 5236:5236: 将主机的端口映射到容器的端口，这里是将主机的 5236 端口映射到容器的 5236 端口，用于访问达梦数据库
+# --name DaMengDB: 为容器指定一个名称，这里是 "DaMengDB"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+
+# 持久化解释
+# -v $HOME/DaMeng_Data:/opt/dmdbms/data
+# 将到容器中的 "/opt/dmdbms/data" 路径映射挂载到 宿主机中的 ”$HOME/DaMeng_Data“目录下,这样做的目的是将 达梦 数据库的数据存储在本地中，以便数据在容器重启时得以保留留
+```
+
+### 人大金仓
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+docker run -idt -p 5432:54321 --restart=always --name Kingbase --privileged=true \
+-e DB_MODE=oracle \
+-e NEED_START=yes \
+-e DB_USER=kingbase \
+-e DB_PASSWORD=abc123 \
+-e ENABLE_CI=yes \
+-v $HOME/Kingbase_Data:/home/kingbase/userdata \
+if010/kingbase:v009r001c001b0025 /usr/sbin/init
+
+# 注意：if010/kingbase:v009r001c001b0025 是从官网下载上传至 Docker Hub 的镜像，官网提供了两个下载版本，一个是v008r006c008b0014，另一个是v009r001c001b0025，可以拉取对应的tag镜像进行测试使用！
+
+# 参数解释
+# -itd: 表示以后台运行的方式启动容器,并分配一个伪终端（pseudo-TTY）和保持 STDIN 打开
+# -p 5432:54321: 将主机的端口映射到容器的端口，这里是将主机的 5432 端口映射到容器的 5432 端口，用于访问 人大金仓 数据库
+# --name Kingbase: 为容器指定一个名称，这里是 "Kingbase"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+
+# 持久化解释
+# -v $HOME/Kingbase_Data:/home/kingbase/userdata
+# 将到容器中的 "/home/kingbase/userdata" 路径映射挂载到 宿主机中的 ”$HOME/Kingbase_Data“目录下,这样做的目的是将 人大金仓 数据库的数据存储在本地中，以便数据在容器重启时得以保留留
+
+# 环境变量解释
+# DB_USER【可选】
+# 此可选环境变量与设置用户及其密码结合使用。如果未指定，则将使用默认用户"system"
+# DB_PASSWORD【可选】
+# 此可选环境变量与设置用户及其密码结合使用。如果未指定，则将使用默认用户"123456"
+# DB_MODE【可选】
+# 此可选环境变量是设置数据库模式，数据库模式支持oracle、pg、mysql
+# NEED_START【可选】
+# 此可选环境变量是设置进入容器后是否启动数据库，yes(默认 启动数据库)/ no（不启动数据库）
+# ENABLE_CI【可选】
+# 此可选环境变量是设置是否需要配置大小写敏感，yes(默认 大小写不敏感)/no 大小写敏感
+```
+
+### Redis
+
+```bash
+docker run -d -p 6379:6379 --restart=always --name Redis \
+-v $HOME/Redis_Data/conf:/usr/local/etc/redis \
+-v $HOME/Redis_Data/data:/data \
+redis redis-server /usr/local/etc/redis/redis.conf
+
+# 参数解释
+# -d: 表示以后台运行的方式启动容器
+# -it: 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+# -p 6379:6379: 将主机的端口映射到容器的端口，这里是将主机的 6379 端口映射到容器的 6379 端口，用于访问 Redis 数据库
+# --name Redis: 为容器指定一个名称，这里是 "Redis"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+
+# 持久化解释
+# -v $HOME/Redis_Data/conf:/usr/local/etc/redis (需提前准备好文件，否则可能会启动失败)
+# 将到容器中的 "/usr/local/etc/redis" 路径映射挂载到 宿主机中的"$HOME/Redis_Data/conf"目录下,这样子做的目的是可以自定义Redis的配置文件
+# -v $HOME/Redis_Data/data:/data
+# 将到容器中的 "/data" 路径映射挂载到 宿主机中的"$HOME/Redis_Data/data"目录下,这样做的目的是将 Redis 数据库的数据存储在本地中，以便数据在容器重启时得以保留
+
+# 关于启动命令
+# redis-server /usr/local/etc/redis/redis.conf
+# 容器内部执行该命令是为了按照我们自定义的配置文件启动，这个不是必须的！！！
+```
+
+### Memcache
+
+```bash
+docker run -d -p 11211:11211 --name Memcached --restart=always memcached memcached -m 64
+
+# 参数解释
+# -d: 表示以后台运行的方式启动容器
+# -it: 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+# -p 11211:11211: 将主机的端口映射到容器的端口，这里是将主机的 11211 端口映射到容器的 11211 端口，用于访问 Memcached 消息队列的web管理界面
+# --name Memcached: 为容器指定一个名称，这里是 "Memcached"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+
+# 命令执行解释
+# memcached -m 64
+# 这会将 Memcached 服务器设置为使用 64 MB 进行存储
+```
+
+### MongoDB
+
+```bash
+docker run -d -p 27017:27017 --restart=always --name MongoDB \
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+-e MONGO_INITDB_ROOT_PASSWORD=abc123 \
+-v $HOME/MongoDB_Data/data:/data/db \
+-v $HOME/MongoDB_Data/conf:/etc/mongo \
+mongo --config /etc/mongo/mongod.conf --wiredTigerCacheSizeGB 1.5
+
+# 参数解释
+# -d: 表示以后台运行的方式启动容器
+# -it: 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+# -p 27017:27017: 将主机的端口映射到容器的端口，这里是将主机的 27017 端口映射到容器的 27017 端口，用于访问 MongoDB 数据库
+# --name MongoDB: 为容器指定一个名称，这里是 "MongoDB"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+# --config /etc/mongo/mongod.conf: 指定配置文件路径 (这个不是必须的，设置此选项之前需准备好mongod.conf文件映射到Docker内部)
+# --wiredTigerCacheSizeGB 1.5: 设置WiredTiger缓存大小限制为1.5G
+
+# 持久化解释
+# -v $HOME/MongoDB_Data/conf:/etc/mongo (需提前准备好文件，否则可能会启动失败)
+# 将到容器中的 "/etc/mongo" 路径映射挂载到 宿主机中的"$HOME/MongoDB_Data/conf"目录下,这样子做的目的是可以自定义MongoDB的配置文件
+# -v $HOME/Redis_Data/data:/data
+# 将到容器中的 "/data/db" 路径映射挂载到 宿主机中的"$HOME/MongoDB_Data/data"目录下,这样做的目的是将 MongoDB 数据库的数据存储在本地中，以便数据在容器重启时得以保留
+
+# 环境变量解释
+# MONGO_INITDB_ROOT_USERNAME【可选】
+# 该变量是创建管理员用户,该用户是在admin身份验证数据库中创建的,并被赋予角色root,这是一个"超级用户"角色。
+# MONGO_INITDB_ROOT_PASSWORD【可选】
+# 该变量是为创建管理员用户设置密码,需配合MONGO_INITDB_ROOT_USERNAME变量参数使用
+```
+
+### RabbitMQ
+
+```bash
+docker run -itd -p 15672:15672 --name RabbitMQ \
+--hostname rmq-test \
+-e RABBITMQ_DEFAULT_VHOST=rmq-test \
+-e RABBITMQ_DEFAULT_USER=admin \
+-e RABBITMQ_DEFAULT_PASS=abc123 \
+rabbitmq:3-management 
+
+# 参数解释
+# -itd: 表示以后台运行的方式启动容器,并分配一个伪终端（pseudo-TTY）和保持 STDIN 打开
+# -p 15672:15672: 将主机的端口映射到容器的端口，这里是将主机的 15672 端口映射到容器的 15672 端口，用于访问 RabbitMQ 控制台页面，内部除了该端口外，还开了4369/tcp、5671-5672/tcp、15671/tcp、15691-15692/tcp、25672/tcp
+# --name RabbitMQ: 为容器指定一个名称，这里是 "RabbitMQ"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+# --hostname: 设置容器主机名称
+
+# 环境变量解释
+# RABBITMQ_DEFAULT_VHOST【可选】
+# 该变量是可选的，是设置 RabbitMQ 的主机名称
+# RABBITMQ_DEFAULT_USER【可选】
+# 该变量是可选的，是设置 RabbitMQ 的账户
+# RABBITMQ_DEFAULT_PASS【可选】
+# 该变量是可选的，是设置 RabbitMQ 的密码
+```
+
+### 远程协助工具 Guacd
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+docker run -d -p 4822:4822 --privileged=true --restart=always --name Guacd \
+-e LANG=zh_CN.UTF-8 \
+-v /docker_data/Guacd/rdp-rec:/rdp-rec \
+-v /docker_data/Guacd/rdp-file:/rdp-file \
+guacamole/guacd
+
+# 参数解释
+# -d: 表示以后台运行的方式启动容器
+# -it: 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+# -p 4822:4822: 将主机的端口映射到容器的端口，这里是将主机的 4822 端口映射到容器的 4822 端口，用于访问 Guacd远程的API接口
+# --name Guacd: 为容器指定一个名称，这里是 "Guacd"
+# --restart=always: 表示当容器退出时，总是重新启动容器
+# --privileged=true: 若不加字段--privileged=true可能会报权限错误
+
+# 持久化解释
+# -v /docker_data/Guacd/rdp-rec:/rdp-rec
+# 代码内固定配置，guacd服务rdp录屏文件存放路径
+# -v /docker_data/Guacd/rdp-file:/rdp-file
+# 代码内固定配置，guacd服务rdp远程磁盘文件存放路
+
+# 环境变量解释
+# LANG
+# 设置字符编码格式
+```
+
 ### 在线代码编辑器 Code Server
 
 ```bash
@@ -648,47 +1045,6 @@ $ docker run -it --name code-server  \
   -u "$(id -u):$(id -g)" \
   -e "DOCKER_USER=$USER" \
     codercom/code-server:latest
-```
-
-### MySQL
-
-```bash
-$ docker run --name mysql \
-  -p 3306:3306 \
-  -v $HOME/mysql/conf.d:/etc/mysql/conf.d \
-  -v $HOME/mysql/data:/var/lib/mysql \
-  -v /etc/localtime:/etc/localtime:ro \
-  -e MYSQL_ROOT_PASSWORD=123456 \
-  -d mysql:5.7.23
-```
-
-### Redis
-
-```bash
-$ docker run -d --name myredis \
-  -v $HOME/redis/conf:/usr/local/etc/redis \
-  -v /etc/localtime:/etc/localtime:ro \
-    redis redis-server /usr/local/etc/redis/redis.conf
-```
-
-### Nginx
-
-```bash
-$ docker run --name my-nginx \ 
-  -v "$HOME/nginx/nginx.conf:/etc/nginx/nginx.conf:ro" \
-  -v "$HOME/nginx/html:/usr/share/nginx/html:ro" \
-  -p 8080:80 \
-  -d nginx
-```
-
-### PostgreSQL
-
-```bash
-$ docker run --name my-postgres \
-  -e POSTGRES_PASSWORD=mysecretpassword \
-  -e PGDATA=/var/lib/postgresql/data/pgdata \
-  -v $HOME/nginx/mount:/var/lib/postgresql/data \
-  -d postgres
 ```
 
 ### 媒体管理工具 Dim
