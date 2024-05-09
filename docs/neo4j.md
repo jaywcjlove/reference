@@ -1079,216 +1079,1081 @@ distance(point({latitude: $y1, longitude: $x1}), point({latitude: $y2, longitude
 
 返回两点之间的大地距离，单位为米。它也可以用于三维地理点。
 
-Neo4j 示例
+Neo4j 函数
 ---
 
-### 创建
-
-创建多个节点
-
-```cypher
-CREATE (n:Person {name:'Sally'}) RETURN n;
-CREATE (n:Person {name:'Steve'}) RETURN n;
-```
-
-创建 `FRIENDS` 关系
-
-```cypher
-MATCH (a:Person {name:'Sally'}), 
-      (b:Person {name:'Steve'}) 
-MERGE (a)-[:FRIENDS]->(b)
-```
-
-创建节点的时候就建好 `FRIENDS` 关系
-
-```cypher
-CREATE (a:Person {name:'Todd'})-[r:FRIENDS]->(b:Person {name:'Carlos'})
-```
-
-为创建完成的关系增加 `since` 属性
-
-```cypher
-MATCH (a:Person {name:'Sally'}), 
-      (b:Person {name:'Steve'}) 
-MERGE (a)-[:FRIENDS {since:2001}]->(b)
-```
-
-### 删除
-<!--rehype:wrap-class=col-span-2-->
-
-删除所有节点
-
-```cypher
-MATCH (n) DETACH DELETE n
-```
-
-删除 `Person`中 `name`为 `Mike`节点的 `test`属性
-
-```cypher
-MATCH (a:Person {name:'Mike'}) SET a.test='test'
-MATCH (a:Person {name:'Mike'}) REMOVE a.test
-```
-
-删除 `Location` 中 `city` 为 `Portland` 的节点
-
-```cypher
-MATCH (a:Location {city:'Portland'}) DELETE a
-```
-
-删除有关系的节点（此处rel是写死的，指的是所有关系）
-
-```cypher
-MATCH (a:Person {name:'Todd'})-[rel]-(b:Person) DELETE a,b,rel
-```
-
-### 查询
-<!--rehype:wrap-class=row-span-3-->
-
-查询所有在 `Boston` 出生的人物
-
-```cypher
-MATCH (a:Person)-[:BORN_IN]->(b:Location {city:'Boston'}) RETURN a,b
-```
-
-查询所有对外有关系的节点
-
-```cypher
-MATCH (a)-->() RETURN a
-```
-
- 查询所有有关系的节点
-
-```cypher
-MATCH (a)--() RETURN a
-```
-
-查询所有对外有关系的节点，以及关系类型
-
-```cypher
-MATCH (a)-[r]->() RETURN a.name, type(r)
-```
-
-查询所有有结婚关系的节点
-
-```cypher
-MATCH (n)-[:MARRIED]-() RETURN n
-```
-
-查找某人的朋友的朋友
-
-```cypher
-MATCH (a:Person {name:'Mike'})-[r1:FRIENDS]-()-[r2:FRIENDS]-(friend_of_a_friend) RETURN friend_of_a_friend.name AS fofName
-```
-
-### 创建节点和关系
-<!--rehype:wrap-class=col-span-2-->
-
-```cypher
-// 创建节点
-CREATE (n:Person {name: 'Alice', age: 30})
-CREATE (n:Person {name: 'Bob', age: 25})
-
-// 创建关系
-MATCH (alice:Person {name: 'Alice'}), (bob:Person {name: 'Bob'})
-CREATE (alice)-[:FRIENDS]->(bob)
-```
-
-### 增加/修改节点的属性
-
-```cypher
-MATCH (a:Person {name:'Liz'}) SET a.age=34
-MATCH (a:Person {name:'Shaw'}) SET a.age=32
-MATCH (a:Person {name:'John'}) SET a.age=44
-MATCH (a:Person {name:'Mike'}) SET a.age=25
-```
-
-### 查询节点和关系
+### 时间函数
 <!--rehype:wrap-class=row-span-2-->
 
 ```cypher
-// 查询所有节点和关系
-MATCH (n)
-RETURN n
-
-// 查询特定节点
-MATCH (n:Person)
-WHERE n.name = 'Alice'
-RETURN n
-
-// 查询节点的关系
-MATCH (n:Person)-[r]->()
-WHERE n.name = 'Alice'
-RETURN r
+date("2018-04-05")
 ```
 
-### 更新节点和关系
+从字符串解析并返回日期。
 
 ```cypher
-// 更新节点属性
-MATCH (n:Person {name: 'Alice'})
-SET n.age = 31
-RETURN n
-
-// 删除节点
-MATCH (n:Person {name: 'Bob'})
-DELETE n
+localtime("12:45:30.25")
 ```
 
-### 更复杂的查询
-<!--rehype:wrap-class=col-span-2 row-span-2-->
+返回一个没有时区的时间。
 
 ```cypher
-// 查找 Alice 的朋友的朋友
-MATCH (alice:Person {name: 'Alice'})-[:FRIENDS]->()-[:FRIENDS]->(fof)
-RETURN fof
-
-// 查找共同朋友，这里的“,”相当于 AND 条件
-MATCH (alice:Person {name: 'Alice'})-[:FRIENDS]->(friend),
-      (bob:Person {name: 'Bob'})-[:FRIENDS]->(friend)
-RETURN friend
+time("12:45:30.25+01:00")
 ```
 
-通过观察`John的朋友`看过的电影为`John`推荐电影，并且不再推荐`John`他自己已经看过的电影。
+返回指定时区的时间。
 
 ```cypher
-MATCH (tom:Person {name: "John Johnson"})-[:IS_FRIEND_OF]->(user)-[:HAS_SEEN]->(movie)
-WHERE NOT tom-[:HAS_SEEN]->(movie) RETURN movie.name;
+localdatetime("2018-04-05T12:34:00")
 ```
 
-找出所有标题以`Apollo`开头且发行年份早于`1996`年的电影节点
+返回一个没有时区的日期时间。
 
 ```cypher
-MATCH (node:Movie)
-WHERE node.title =~ 'Apollo.*' AND node.released < 1996
-RETURN node
+datetime("2018-04-05T12:34:00[Europe/Berlin]")
 ```
 
-### 排序&分页
-
-以电影名字排序，每一网页只显示10部电影，下面的查询返回了第三页（21~30项）。
+返回指定时区的日期时间。
 
 ```cypher
-match (alice:Person {name: 'Alice'})-[HAS_SEEN]->(movie) 
-return movie 
-order by movie.name 
-skip 20 
-limit 10
+datetime({epochMillis: 3360000})
 ```
+
+将 3360000 作为 UNIX Epoch 时间转换为普通日期时间。
+
+```cypher
+date({year: $year, month: $month, day: $day})
+```
+
+所有的时间函数也可以接受命名组件的映射。这个例子从年、月和日组件返回一个日期。每个函数支持不同的可能组件集。
+
+```cypher
+datetime({date: $date, time: $time})
+```
+
+可以通过组合其他类型来创建时间类型。这个例子从日期和时间创建一个日期时间。
+
+```cypher
+date({date: $datetime, day: 5})
+```
+
+可以通过选择更复杂的类型来创建时间类型，也可以覆盖单个组件。这个例子从日期时间中选择，同时覆盖了天组件，创建了一个日期。
+
+```cypher
+WITH date("2018-04-05") AS d
+RETURN d.year, d.month, d.day, d.week, d.dayOfWeek
+```
+
+访问器允许提取时间类型的组件。
+
+### 时长函数
+
+```cypher
+duration("P1Y2M10DT12H45M30.25S")
+```
+
+返回 1 年、2 个月、10 天、12 小时、45 分钟和 30.25 秒的持续时间。
+
+```cypher
+duration.between($date1,$date2)
+```
+
+返回两个时间实例之间的持续时间。
+
+```cypher
+WITH duration("P1Y2M10DT12H45M") AS d
+RETURN d.years, d.months, d.days, d.hours, d.minutes
+```
+
+返回 1 年、14 个月、10 天、12 小时和 765 分钟。
+
+```cypher
+WITH duration("P1Y2M10DT12H45M") AS d
+RETURN d.years, d.monthsOfYear, d.days, d.hours, d.minutesOfHour
+```
+
+返回 1 年、2 个月、10 天、12 小时和 45 分钟。
+
+```cypher
+date("2015-01-01") + duration("P1Y1M1D")
+```
+
+返回 2016-02-02 的日期。也可以从时间实例中减去持续时间。
+
+```cypher
+duration("PT30S") * 10
+```
+
+返回 5 分钟的持续时间。也可以将持续时间除以一个数字。
+
+### 数学函数
+<!--rehype:wrap-class=row-span-2-->
+
+```cypher
+abs($expr)
+```
+
+绝对值。
+
+```cypher
+rand()
+```
+
+返回范围从 0（包含）到 1（不包含）的随机数，[0,1)。每次调用都会返回一个新值。也可用于选择子集或随机排序。
+
+```cypher
+round($expr)
+```
+
+四舍五入到最近的整数；ceil() 和 floor() 分别向上或向下找到下一个整数。
+
+```cypher
+sqrt($expr)
+```
+
+平方根。
+
+```cypher
+sign($expr)
+```
+
+如果为零，则为 0；如果为负，则为 -1；如果为正，则为 1。
+
+```cypher
+sin($expr)
+```
+
+三角函数还包括 cos()、tan()、cot()、asin()、acos()、atan()、atan2() 和 haversin()。如果没有另外指定，三角函数的所有参数都应该以弧度为单位。
+
+```cypher
+degrees($expr), radians($expr), pi()
+```
+
+将弧度转换为度；使用 radians() 进行反向转换，使用 pi() 表示 π。
+
+```cypher
+log10($expr), log($expr), exp($expr), e()
+```
+
+以 10 为底的对数、自然对数、e 的参数次幂，以及 e 的值。
+
+### 关系函数
+
+```cypher
+type(a_relationship)
+```
+
+关系类型的字符串表示。
+
+```cypher
+startNode(a_relationship)
+```
+
+关系的起始节点。
+
+```cypher
+endNode(a_relationship)
+```
+
+关系的结束节点。
+
+```cypher
+id(a_relationship)
+```
+
+关系的内部ID
+
+### 字符串函数
+
+```cypher
+toString($expression)
+```
+
+表达式的字符串表示。
+
+```cypher
+replace($original, $search, $replacement)
+```
+
+用 replacement 替换所有出现的 search。所有参数都必须是表达式。
+
+```cypher
+substring($original, $begin, $subLength)
+```
+
+获取字符串的部分。subLength 参数是可选的。
+
+```cypher
+left($original, $subLength),
+  right($original, $subLength)
+```
+
+字符串的前部分。字符串的后部分。
+
+```cypher
+trim($original), lTrim($original),
+  rTrim($original)
+```
+
+修剪所有空格，或在左侧或右侧。
+
+```cypher
+toUpper($original), toLower($original)
+```
+
+大写和小写。
+
+```cypher
+split($original, $delimiter)
+```
+
+将字符串拆分为字符串列表。
+
+```cypher
+reverse($original)
+```
+
+反转字符串。
+
+```cypher
+size($string)
+```
+
+计算字符串中的字符数。
 
 ### 聚合函数
 
-计算每一部电影被观看的数量，按数量排序
-
 ```cypher
-match (node:Movie)-[:HAS_BEEN_SEEN]->() 
-return node,count(*) 
-order by count(*) desc;
+count(*)
 ```
 
-要求`John`所有朋友的平均年龄，可以使用以下查询
+匹配行的数量。
 
 ```cypher
-match (node:users{name: "John Johnson"})-[:IS_FRIEND_OF]-(friend) 
-where HAS(friend.yearOfBirth) 
-return avg(2014-friend.yearOfBirth);
+count(variable)
 ```
+
+非空值的数量。
+
+```cypher
+count(DISTINCT variable)
+```
+
+所有聚合函数也接受 DISTINCT 运算符，它从值中去除重复项。
+
+```cypher
+collect(n.property)
+```
+
+从值中创建列表，忽略 null 值。
+
+```cypher
+sum(n.property)
+```
+
+求数值的总和。类似的函数有 avg()、min()、max()。
+
+```cypher
+percentileDisc(n.property, $percentile)
+```
+
+离散百分位数。连续百分位数是 percentileCont()。百分位数参数范围从 0.0 到 1.0。
+
+```cypher
+stDev(n.property)
+```
+
+样本标准差。对于整个总体，请使用 stDevP()。
+
+Neo4j 模式操作
+------
+
+### 索引
+<!--rehype:wrap-class=col-span-3-->
+
+```cypher
+CREATE INDEX FOR (p:Person) ON (p.name)
+```
+
+在具有标签 Person 和属性 name 的节点上创建索引。
+
+```cypher
+CREATE INDEX index_name FOR ()-[k:KNOWS]-() ON (k.since)
+```
+
+在具有类型 KNOWS 和属性 since 的关系上创建索引，并命名为 index_name。
+
+```cypher
+CREATE INDEX FOR (p:Person) ON (p.surname)
+OPTIONS {indexProvider: 'native-btree-1.0', indexConfig: {`spatial.cartesian.min`: [-100.0, -100.0], `spatial.cartesian.max`: [100.0, 100.0]}}
+```
+
+在具有标签 Person 和属性 surname 的节点上创建索引，使用本地 btree 索引提供程序，以及给定的空间笛卡尔设置。其他索引设置将使用它们的默认值。
+
+```cypher
+CREATE INDEX FOR (p:Person) ON (p.name, p.age)
+```
+
+在具有标签 Person 和属性 name 和 age 的节点上创建复合索引，如果索引已存在则抛出错误。
+
+```cypher
+CREATE INDEX IF NOT EXISTS FOR (p:Person) ON (p.name, p.age)
+```
+
+在具有标签 Person 和属性 name 和 age 的节点上创建复合索引，如果尚不存在则创建，如果已存在则不执行任何操作。
+
+```cypher
+CREATE LOOKUP INDEX lookup_index_name FOR (n) ON EACH labels(n)
+```
+
+在具有任何标签的节点上创建一个名为 lookup_index_name 的令牌查找索引。
+
+```cypher
+CREATE LOOKUP INDEX FOR ()-[r]-() ON EACH type(r)
+```
+
+在具有任何关系类型的关系上创建一个令牌查找索引。
+
+```cypher
+CREATE FULLTEXT INDEX node_fulltext_index_name FOR (n:Friend) ON EACH [n.name]
+OPTIONS {indexConfig: {`fulltext.analyzer`: 'swedish'}}
+```
+
+在具有名称 node_fulltext_index_name 和分析器为 swedish 的节点上创建全文索引。节点上的全文索引只能由存储过程 db.index.fulltext.queryNodes 使用。其他索引设置将使用它们的默认值。
+
+```cypher
+CREATE FULLTEXT INDEX rel_fulltext_index_name FOR ()-[r:HAS_PET|BROUGHT_PET]-() ON EACH [r.since, r.price]
+```
+
+在具有名称 rel_fulltext_index_name 的关系上创建全文索引。关系上的全文索引只能由存储过程 db.index.fulltext.queryRelationships 使用。
+
+```cypher
+SHOW INDEXES
+```
+
+列出所有索引。
+
+```cypher
+MATCH (n:Person) WHERE n.name = $value
+```
+
+索引可以自动用于相等比较。请注意，例如 toLower(n.name) = $value 将不会使用索引。
+
+```cypher
+MATCH (n:Person)
+WHERE n.name IN [$value]
+```
+
+索引可以自动用于 IN 列表检查。
+
+```cypher
+MATCH (n:Person)
+WHERE n.name = $value and n.age = $value2
+```
+
+复合索引可以自动用于两个属性的相等比较。请注意，必须对复合索引的所有属性进行谓词处理才能使用该索引。
+
+```cypher
+MATCH (n:Person)
+USING INDEX n:Person(name)
+WHERE n.name = $value
+```
+
+在 Cypher 使用了次优索引或应该使用多个索引时，可以强制使用索引。
+
+```cypher
+DROP INDEX index_name
+```
+
+删除名为 index_name 的索引，如果索引不存在则抛出错误。
+
+```cypher
+DROP INDEX index_name IF EXISTS
+```
+
+如果存在则删除名为 index_name 的索引，如果不存在则不执行任何操作。
+
+### 约束
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```cypher
+CREATE CONSTRAINT ON (p:Person)
+       ASSERT p.name IS UNIQUE
+```
+
+在标签为 Person 且属性为 name 的节点上创建唯一属性约束。如果更新或创建具有相同名称的该标签的任何其他节点，则写入操作将失败。此约束将创建一个相应的索引。
+
+```cypher
+CREATE CONSTRAINT uniqueness ON (p:Person)
+       ASSERT p.age IS UNIQUE
+```
+
+在标签为 Person 且属性为 age 的节点上创建唯一属性约束，命名为 uniqueness。如果更新或创建具有相同年龄的该标签的任何其他节点，则写入操作将失败。此约束将创建一个相应的索引。
+
+```cypher
+CREATE CONSTRAINT ON (p:Person)
+       ASSERT p.surname IS UNIQUE
+       OPTIONS {indexProvider: 'native-btree-1.0'}
+```
+
+在标签为 Person 且属性为 surname 的节点上创建唯一属性约束，并使用 indexProvider native-btree-1.0 创建相应的索引。
+
+```cypher
+CREATE CONSTRAINT ON (p:Person)
+       ASSERT p.name IS NOT NULL
+```
+
+(★) 在标签为 Person 且属性为 name 的节点上创建节点属性存在约束。如果该约束已存在，则抛出错误。如果创建具有该标签但没有 name 的节点，或者从具有 Person 标签的现有节点中删除 name 属性，则写入操作将失败。
+
+```cypher
+CREATE CONSTRAINT node_exists IF NOT EXISTS ON (p:Person)
+       ASSERT p.name IS NOT NULL
+```
+
+(★) 如果标签为 Person 且属性为 name 的节点存在节点属性存在约束，或者名为 node_exists 的约束已存在，则不执行任何操作。如果不存在此类约束，则将创建该约束。
+
+```cypher
+CREATE CONSTRAINT ON ()-[l:LIKED]-()
+       ASSERT l.when IS NOT NULL
+```
+
+(★) 在关系类型为 LIKED 且属性为 when 的关系上创建关系属性存在约束。如果创建具有此类型但没有 when 的关系，或者从具有 LIKED 类型的现有关系中删除 when 属性，则写入操作将失败。
+
+```cypher
+CREATE CONSTRAINT relationship_exists ON ()-[l:LIKED]-()
+       ASSERT l.since IS NOT NULL
+```
+
+(★) 在关系类型为 LIKED 且属性为 since 的关系上创建关系属性存在约束，并命名为 relationship_exists。如果创建具有此类型但没有 since 的关系，或者从具有 LIKED 类型的现有关系中删除 since 属性，则写入操作将失败。
+
+```cypher
+SHOW UNIQUE CONSTRAINTS YIELD *
+```
+
+列出所有唯一约束。
+
+```cypher
+CREATE CONSTRAINT ON (p:Person)
+      ASSERT (p.firstname, p.surname) IS NODE KEY
+```
+
+(★) 在标签为 Person 且属性为 firstname 和 surname 的节点上创建节点键约束。如果创建具有此标签但没有 firstname 和 surname 的节点，或者如果两者的组合不是唯一的，或者如果修改具有 Person 标签的现有节点上的 firstname 和/或 surname 属性以违反这些约束，则写入操作将失败。
+
+```cypher
+CREATE CONSTRAINT node_key ON (p:Person)
+      ASSERT (p.name, p.surname) IS NODE KEY
+```
+
+(★) 在标签为 Person 且属性为 name 和 surname 的节点上创建节点键约束，并命名为 node_key。如果创建具有此标签但没有 name 和 surname 的节点，或者如果两者的组合不是唯一的，或者如果修改具有 Person 标签的现有节点上的 name 和/或 surname 属性以违反这些约束，则写入操作将失败。
+
+```cypher
+CREATE CONSTRAINT node_key_with_config ON (p:Person)
+      ASSERT (p.name, p.age) IS NODE KEY
+      OPTIONS {indexConfig: {`spatial.wgs-84.min`: [-100.0, -100.0], `spatial.wgs-84.max`: [100.0, 100.0]}}
+```
+
+(★) 在标签为 Person 且属性为 name 和 age 的节点上创建节点键约束，并命名为 node_key_with_config，以及给定的 spatial.wgs-84 设置以创建相应的索引。其他索引设置将使用它们的默认值。
+
+```cypher
+DROP CONSTRAINT uniqueness
+```
+
+删除名为 uniqueness 的约束，如果约束不存在则抛出错误。
+
+```cypher
+DROP CONSTRAINT uniqueness IF EXISTS
+```
+
+如果名为 uniqueness 的约束存在，则删除它，如果不存在则不执行任何操作。
+
+### 性能
+
+- 尽可能使用参数而不是文字常量。这样可以让 Cypher 重用你的查询，而不必解析和构建新的执行计划。
+- 始终为你的变长模式设置一个上限。有可能一个查询会因为错误而无限制地访问图中的所有节点。
+- 只返回你需要的数据。避免返回整个节点和关系，而是选择你需要的数据并只返回那部分。
+- 使用 `PROFILE` / `EXPLAIN` 来分析你的查询性能。查看[查询调优](https://neo4j.com/docs/cypher-manual/4.3/query-tuning)了解更多关于这些以及其他主题的信息。
+
+### Neo4j 多数据库管理
+
+```cypher
+CREATE OR REPLACE DATABASE myDatabase
+```
+
+(★) 创建一个名为 myDatabase 的数据库。如果已存在同名数据库，则删除现有数据库并创建一个新的。
+
+```cypher
+STOP DATABASE myDatabase
+```
+
+(★) 停止名为 myDatabase 的数据库。
+
+```cypher
+START DATABASE myDatabase
+```
+
+(★) 启动名为 myDatabase 的数据库。
+
+```cypher
+SHOW DATABASES
+```
+
+列出系统中所有数据库及其相关信息。
+
+```cypher
+SHOW DATABASES
+YIELD name, currentStatus
+WHERE name CONTAINS 'my' AND currentStatus = 'online'
+```
+
+列出数据库的信息，根据名称和在线状态进行筛选，并进一步根据这些条件进行细分。
+
+```cypher
+SHOW DATABASE myDatabase
+```
+
+显示有关数据库 myDatabase 的信息。
+
+```cypher
+SHOW DEFAULT DATABASE
+```
+
+显示默认数据库的信息。
+
+```cypher
+SHOW HOME DATABASE
+```
+
+显示当前用户的主数据库的信息。
+
+```cypher
+DROP DATABASE myDatabase IF EXISTS
+```
+
+(★) 删除数据库 myDatabase，如果存在的话。
+
+Neo4j安全性
+---
+
+### 用户管理
+<!--rehype:wrap-class=row-span-2-->
+
+```cypher
+CREATE USER alice SET PASSWORD $password
+```
+
+创建一个新用户和密码。这个密码在第一次登录时必须更改。
+
+```cypher
+ALTER USER alice SET PASSWORD $password CHANGE NOT REQUIRED
+```
+
+为用户设置一个新密码。该用户将不需要在下次登录时更改密码。
+
+```cypher
+ALTER USER alice IF EXISTS SET PASSWORD CHANGE REQUIRED
+```
+
+如果指定的用户存在，则强制该用户在下次登录时更改其密码。
+
+```cypher
+ALTER USER alice SET STATUS SUSPENDED
+```
+
+(★) 将用户状态更改为已暂停。使用 SET STATUS ACTIVE 来重新激活用户。
+
+```cypher
+ALTER USER alice SET HOME DATABASE otherDb
+```
+
+(★) 将用户的主数据库更改为 otherDb。使用 REMOVE HOME DATABASE 来取消用户的主数据库设置，并回退到默认数据库。
+
+```cypher
+ALTER CURRENT USER SET PASSWORD FROM $old TO $new
+```
+
+更改当前登录用户的密码。用户不需要在下次登录时更改此密码。
+
+```cypher
+SHOW CURRENT USER
+```
+
+列出当前登录用户、他们的状态、角色以及是否需要更改他们的密码。
+(★) 状态和角色仅适用于企业版。
+
+```cypher
+SHOW USERS
+```
+
+列出系统中的所有用户、他们的状态、角色以及是否需要更改他们的密码。
+(★) 状态和角色仅适用于企业版。
+
+```cypher
+SHOW USERS
+YIELD user, suspended
+WHERE suspended = true
+```
+
+列出系统中的用户，根据他们的名称和状态进行过滤，并进一步根据他们是否被暂停进行筛选。
+(★) 状态仅适用于企业版。
+
+```cypher
+RENAME USER alice TO alice_delete
+```
+
+将用户 alice 重命名为 alice_delete。
+
+```cypher
+DROP USER alice_delete
+```
+
+删除用户
+
+### (★) 图读取权限
+<!--rehype:wrap-class=col-span-2-->
+
+```cypher
+GRANT TRAVERSE ON GRAPH * NODES * TO my_role
+```
+
+将遍历权限授予角色对所有节点和所有图。
+
+```cypher
+DENY READ {prop} ON GRAPH foo RELATIONSHIP Type TO my_role
+```
+
+拒绝角色对指定图中具有指定类型的所有关系的特定属性的读取权限。
+
+```cypher
+GRANT MATCH {*} ON HOME GRAPH ELEMENTS Label TO my_role
+```
+
+将读取权限和遍历权限授予角色对主图中具有指定标签的所有节点和关系。这里，两种权限都适用于图中具有指定标签/类型的所有节点和关系。
+
+### (★) 角色管理
+
+```cypher
+CREATE ROLE my_role
+```
+
+创建一个角色。
+
+```cypher
+CREATE ROLE my_second_role IF NOT EXISTS AS COPY OF my_role
+```
+
+创建一个名为 my_second_role 的角色，除非它已经存在，作为现有 my_role 的副本。
+
+```cypher
+RENAME ROLE my_second_role TO my_other_role
+```
+
+将名为 my_second_role 的角色重命名为 my_other_role。
+
+```cypher
+GRANT ROLE my_role, my_other_role TO alice
+```
+
+将角色分配给用户。
+
+```cypher
+REVOKE ROLE my_other_role FROM alice
+```
+
+从用户中删除指定的角色。
+
+```cypher
+SHOW ROLES
+```
+
+列出系统中的所有角色。
+
+```cypher
+SHOW ROLES
+YIELD role
+WHERE role CONTAINS 'my'
+```
+
+列出角色，根据角色名称进行过滤，并进一步根据名称是否包含 'my' 进行筛选。
+
+```cypher
+SHOW POPULATED ROLES WITH USERS
+```
+
+列出系统中至少分配给一个用户的所有角色，以及分配给这些角色的用户。
+
+```cypher
+DROP ROLE my_role
+```
+
+删除一个角色。
+
+### (★) 图写入权限
+
+```cypher
+GRANT CREATE ON GRAPH * NODES Label TO my_role
+```
+
+将创建权限授予角色对所有图中具有指定标签的所有节点。
+
+```cypher
+DENY DELETE ON GRAPH neo4j TO my_role
+```
+
+拒绝角色对指定图中的所有节点和关系的删除权限。
+
+```cypher
+REVOKE SET LABEL Label ON GRAPH * FROM my_role
+```
+
+撤销对角色在所有图中设置指定标签的权限。
+
+```cypher
+GRANT REMOVE LABEL * ON GRAPH foo TO my_role
+```
+
+将删除标签权限授予角色对指定图中的所有标签。
+
+```cypher
+DENY SET PROPERTY {prop} ON GRAPH foo RELATIONSHIPS Type TO my_role
+```
+
+拒绝角色对指定图中具有指定类型的所有关系的特定属性的设置权限。
+
+```cypher
+GRANT MERGE {*} ON GRAPH * NODES Label TO my_role
+```
+
+将合并权限授予角色对所有图中具有指定标签的所有节点的所有属性。
+
+```cypher
+REVOKE WRITE ON GRAPH * FROM my_role
+```
+
+撤销对角色在所有图中的写入权限。
+
+```cypher
+DENY ALL GRAPH PRIVILEGES ON GRAPH foo TO my_role
+```
+
+拒绝角色对指定图的所有图权限。
+
+### (★) 显示权限
+
+```cypher
+SHOW PRIVILEGES AS COMMANDS
+```
+
+以Cypher命令的形式列出系统中的所有权限。
+
+```cypher
+SHOW PRIVILEGES
+```
+
+列出系统中的所有权限，以及它们所分配的角色。
+
+```cypher
+SHOW PRIVILEGES
+YIELD role, action, access
+WHERE role = 'my_role'
+```
+
+列出关于权限的信息，根据角色、操作和访问进行筛选，并进一步根据角色名称进行细化。
+
+```cypher
+SHOW ROLE my_role PRIVILEGES AS COMMANDS
+```
+
+以Cypher命令的形式列出分配给角色的所有权限。
+
+```cypher
+SHOW ROLE my_role, my_second_role PRIVILEGES AS COMMANDS
+```
+
+以Cypher命令的形式列出分配给多个角色的所有权限。
+
+```cypher
+SHOW USER alice PRIVILEGES AS COMMANDS
+```
+
+以Cypher命令的形式列出用户的所有权限，以及他们所分配的角色。
+
+```cypher
+SHOW USER PRIVILEGES AS COMMANDS
+```
+
+以Cypher命令的形式列出当前登录用户的所有权限，以及他们所分配的角色。
+
+### (★) 数据库权限
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```cypher
+GRANT ACCESS ON DATABASE * TO my_role
+```
+
+将访问权限授予角色，以便对所有数据库进行访问和运行查询。
+
+```cypher
+GRANT START ON DATABASE * TO my_role
+```
+
+将启动权限授予角色，以便启动所有数据库。
+
+```cypher
+GRANT STOP ON DATABASE * TO my_role
+```
+
+将停止权限授予角色，以便停止所有数据库。
+
+```cypher
+GRANT CREATE INDEX ON DATABASE foo TO my_role
+```
+
+将在指定数据库上创建索引的权限授予角色。
+
+```cypher
+GRANT DROP INDEX ON DATABASE foo TO my_role
+```
+
+将在指定数据库上删除索引的权限授予角色。
+
+```cypher
+GRANT SHOW INDEX ON DATABASE * TO my_role
+```
+
+将显示所有数据库上的索引的权限授予角色。
+
+```cypher
+DENY INDEX MANAGEMENT ON DATABASE bar TO my_role
+```
+
+拒绝在指定数据库上创建和删除索引的权限授予角色。
+
+```cypher
+GRANT CREATE CONSTRAINT ON DATABASE * TO my_role
+```
+
+将在所有数据库上创建约束的权限授予角色。
+
+```cypher
+DENY DROP CONSTRAINT ON DATABASE * TO my_role
+```
+
+拒绝在所有数据库上删除约束的权限授予角色。
+
+```cypher
+DENY SHOW CONSTRAINT ON DATABASE foo TO my_role
+```
+
+拒绝在指定数据库上显示约束的权限授予角色。
+
+```cypher
+REVOKE CONSTRAINT ON DATABASE * FROM my_role
+```
+
+撤销授予和拒绝在所有数据库上创建和删除约束的权限授予角色。
+
+```cypher
+GRANT CREATE NEW LABELS ON DATABASE * TO my_role
+```
+
+将在所有数据库上创建新标签的权限授予角色。
+
+```cypher
+DENY CREATE NEW TYPES ON DATABASE foo TO my_role
+```
+
+拒绝在指定数据库上创建新关系类型的权限授予角色。
+
+```cypher
+REVOKE GRANT CREATE NEW PROPERTY NAMES ON DATABASE bar FROM my_role
+```
+
+从角色撤销在指定数据库上创建新属性名称的权限。
+
+```cypher
+GRANT NAME MANAGEMENT ON HOME DATABASE TO my_role
+```
+
+将在主数据库上创建标签、关系类型和属性名称的权限授予角色。
+
+```cypher
+GRANT ALL ON DATABASE baz TO my_role
+```
+
+将对指定数据库的访问、创建和删除索引和约束、创建新标签、类型和属性名称的权限授予角色。
+
+```cypher
+GRANT SHOW TRANSACTION (*) ON DATABASE foo TO my_role
+```
+
+将列出在指定数据库上所有用户的事务和查询的权限授予角色。
+
+```cypher
+DENY TERMINATE TRANSACTION (user1, user2) ON DATABASES * TO my_role
+```
+
+拒绝在所有数据库上终止来自用户1和用户2的事务和查询的权限授予角色。
+
+```cypher
+REVOKE GRANT TRANSACTION MANAGEMENT ON HOME DATABASE FROM my_role
+```
+
+从角色撤销在主数据库上列出和终止所有用户的事务和查询的权限授予
+
+### (★) 角色管理权限
+
+```cypher
+GRANT CREATE ROLE ON DBMS TO my_role
+```
+
+将创建角色的权限授予角色。
+
+```cypher
+GRANT RENAME ROLE ON DBMS TO my_role
+```
+
+将重命名角色的权限授予角色。
+
+```cypher
+GRANT DROP ROLE ON DBMS TO my_role
+```
+
+将删除角色的权限授予角色。
+
+```cypher
+DENY ASSIGN ROLE ON DBMS TO my_role
+```
+
+拒绝将角色分配给用户的权限授予角色。
+
+```cypher
+DENY REMOVE ROLE ON DBMS TO my_role
+```
+
+拒绝从用户中删除角色的权限授予角色。
+
+```cypher
+REVOKE DENY SHOW ROLE ON DBMS FROM my_role
+```
+
+从角色撤销对显示角色的权限的拒绝。
+
+```cypher
+GRANT ROLE MANAGEMENT ON DBMS TO my_role
+```
+
+将管理角色的所有权限授予角色。
+
+### (★) 用户管理权限
+<!--rehype:wrap-class=row-span-3-->
+
+```cypher
+GRANT CREATE USER ON DBMS TO my_role
+```
+
+将创建用户的权限授予角色。
+
+```cypher
+GRANT RENAME USER ON DBMS TO my_role
+```
+
+将重命名用户的权限授予角色。
+
+```cypher
+DENY ALTER USER ON DBMS TO my_role
+```
+
+拒绝更改用户的权限授予角色。
+
+```cypher
+REVOKE SET PASSWORDS ON DBMS FROM my_role
+```
+
+从角色撤销对更改用户密码的授权和拒绝。
+
+```cypher
+REVOKE GRANT SET USER STATUS ON DBMS FROM my_role
+```
+
+从角色撤销对更改用户帐户状态的授权。
+
+```cypher
+GRANT SET USER HOME DATABASE ON DBMS TO my_role
+```
+
+将更改用户主数据库的权限授予角色。
+
+```cypher
+GRANT DROP USER ON DBMS TO my_role
+```
+
+将删除用户的权限授予角色。
+
+```cypher
+REVOKE DENY SHOW USER ON DBMS FROM my_role
+```
+
+从角色撤销对显示用户的权限的拒绝。
+
+```cypher
+GRANT USER MANAGEMENT ON DBMS TO my_role
+```
+
+将管理用户的所有权限授予角色。
+
+### (★) 数据库管理权限
+<!--rehype:wrap-class=col-span-2-->
+
+```cypher
+GRANT CREATE DATABASE ON DBMS TO my_role
+```
+
+将创建数据库的权限授予角色。
+
+```cypher
+REVOKE DENY DROP DATABASE ON DBMS FROM my_role
+```
+
+从角色撤销对删除数据库的拒绝权限。
+
+```cypher
+DENY DATABASE MANAGEMENT ON DBMS TO my_role
+```
+
+拒绝所有管理数据库的权限授予角色。
+
+### (★) 权限管理权限
+<!--rehype:wrap-class=col-span-2-->
+
+```cypher
+GRANT SHOW PRIVILEGE ON DBMS TO my_role
+```
+
+将显示权限的权限授予角色。
+
+```cypher
+DENY ASSIGN PRIVILEGE ON DBMS TO my_role
+```
+
+拒绝将权限分配给角色的权限授予角色。
+
+```cypher
+REVOKE GRANT REMOVE PRIVILEGE ON DBMS FROM my_role
+```
+
+从角色撤销对从角色中删除权限的授权权限。
+
+```cypher
+REVOKE PRIVILEGE MANAGEMENT ON DBMS FROM my_role
+```
+
+从角色撤销管理权限的所有授予和拒绝。
+
+### (★) DBMS权限
+<!--rehype:wrap-class=col-span-2-->
+
+```cypher
+GRANT ALL ON DBMS TO my_role
+```
+
+将执行所有角色管理、用户管理、数据库管理和权限管理的权限授予角色。
