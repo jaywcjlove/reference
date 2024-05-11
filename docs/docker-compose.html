@@ -2,10 +2,12 @@
 <html lang="en" data-color-mode="dark">
 <head>
 <meta charset="utf-8">
-<title>docker-compose 备忘清单
+<title>Docker Compose 备忘清单
  &#x26;  docker-compose cheatsheet &#x26;  Quick Reference</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta description="这是 docker-compose 的官方文档。 你可以在这里找到最常见的 docker-compose 使用方式。，为开发人员分享快速参考备忘单。">
+<meta description="这是 docker-compose 的快速参考备忘单。你可以在这里找到最常见的 Docker Compose 使用方式。
+
+入门，为开发人员分享快速参考备忘单。">
 <meta keywords="docker-compose,reference,Quick,Reference,cheatsheet,cheat,sheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
 <link rel="stylesheet" href="../style/style.css">
@@ -27,101 +29,93 @@
 </button><script src="../js/dark.js?v=1.5.3"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="docker-compose-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 640 512" height="1em" width="1em">
   <path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"></path>
 </svg>
-<a aria-hidden="true" tabindex="-1" href="#docker-compose-备忘清单"><span class="icon icon-link"></span></a>docker-compose 备忘清单</h1><div class="wrap-body">
-<p>这是 <a href="https://docs.docker.com/compose/">docker-compose</a> 的官方文档。 你可以在这里找到最常见的 docker-compose 使用方式。</p>
-<hr>
+<a aria-hidden="true" tabindex="-1" href="#docker-compose-备忘清单"><span class="icon icon-link"></span></a>Docker Compose 备忘清单</h1><div class="wrap-body">
+<p>这是 <a href="https://docs.docker.com/compose/">docker-compose</a> 的快速参考备忘单。你可以在这里找到最常见的 Docker Compose 使用方式。</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#安装-docker-compose--需要安装docker-desktop">安装 docker-compose  需要安装（docker desktop）</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#介绍">介绍</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#命令">命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#配置模板">配置模板</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
-<!--rehype:body-class=cols-2-->
-</div></div><div class="h2wrap-body cols-2"><h4 id="安装-docker-compose--需要安装docker-desktop"><a aria-hidden="true" tabindex="-1" href="#安装-docker-compose--需要安装docker-desktop"><span class="icon icon-link"></span></a>安装 docker-compose  需要安装（docker desktop）</h4>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#docker-compose-是什么">Docker Compose 是什么？</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基本概念">基本概念</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#docker-compose-文件结构">Docker-Compose 文件结构</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#独立安装-compose">独立安装 Compose</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更新-compose">更新 Compose</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#卸载-docker-compose">卸载 Docker Compose</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#检查-compose-的安装位置">检查 Compose 的安装位置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用命令">常用命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#docker-compose-配置">Docker Compose 配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例配置文件">示例配置文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用环境变量">使用环境变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#额外的信息">额外的信息</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="docker-compose-是什么"><a aria-hidden="true" tabindex="-1" href="#docker-compose-是什么"><span class="icon icon-link"></span></a>Docker Compose 是什么？</h3><div class="wrap-body">
 <ul>
-<li>
-<p>windows 安装</p>
-<ul>
-<li>官网地址:<a href="https://docs.docker.com/desktop/install/windows-install/">https://docs.docker.com/desktop/install/windows-install/</a></li>
+<li><code>Docker-compsoe</code> 是一个开源项目，用于定义和运行多容器 <code>Docker</code> 应用程序的工具。由 <code>Docker</code> 社区维护。</li>
+<li>通过一个 <code>YAML</code> 文件来配置应用程序的服务，以便可以使用一个命令启动、停止和重启整个应用程序。</li>
+<li><a href="https://github.com/docker/compose">Docker Compose 开源地址</a></li>
+<li><a href="https://github.com/docker/compose/releases">Docker Compose 发行地址</a> <em>github.com</em></li>
 </ul>
-</li>
-<li>
-<p>linux 版本安装</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="基本概念"><a aria-hidden="true" tabindex="-1" href="#基本概念"><span class="icon icon-link"></span></a>基本概念</h3><div class="wrap-body">
 <ul>
-<li>官网地址:<a href="https://docs.docker.com/desktop/install/linux-install/">https://docs.docker.com/desktop/install/linux-install/</a></li>
+<li><strong>服务 (services):</strong> 一个服务指的是一个容器，即一个应用程序的一个实例。</li>
+<li><strong>容器 (container):</strong> <code>Docker</code> 容器，其中运行着应用程序的一个实例。</li>
+<li><strong>镜像 (image):</strong> <code>Docker</code> 镜像，用于创建容器的模板。</li>
+<li><strong>Docker-Compose 文件：</strong> 一个 <code>YAML</code> 文件，描述了应用程序的各个服务以及它们之间的关系、配置等信息。</li>
 </ul>
-</li>
-<li>
-<p>mac 版本安装</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="docker-compose-文件结构"><a aria-hidden="true" tabindex="-1" href="#docker-compose-文件结构"><span class="icon icon-link"></span></a>Docker-Compose 文件结构</h3><div class="wrap-body">
 <ul>
-<li>官网地址:<a href="https://docs.docker.com/desktop/install/mac-install/">https://docs.docker.com/desktop/install/mac-install/</a></li>
+<li><code>version</code>: <em>Docker-Compose</em> 文件的版本。</li>
+<li><code>services</code>: 定义了各个服务，每个服务都有自己的配置项，如镜像、端口映射、依赖等。</li>
+<li><code>networks</code>: 定义了应用程序使用的网络，可以自定义网络以控制服务之间的通信。</li>
+<li><code>volumes</code>: 定义了应用程序使用的卷，用于持久化数据或与主机共享文件。</li>
 </ul>
-</li>
-<li>
-<p>可以通过 releases 下载安装 releases 地址：<a href="https://github.com/docker/compose/releases">https://github.com/docker/compose/releases</a></p>
-</li>
-<li>
-<p>安装成功</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>对于 Ubuntu 和 Debian，运行：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+</span><span class="code-line"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> docker-compose-plugin
+</span></code></pre>
+<p>对于基于 RPM 的发行版，运行：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> yum update
+</span><span class="code-line"><span class="token function">sudo</span> yum <span class="token function">install</span> docker-compose-plugin
+</span></code></pre>
+<p>通过检查版本来验证 Docker Compose 是否正确安装</p>
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">docker</span> compose version
-</span><span class="code-line">Docker Compose version v2.17.3
+</span><span class="code-line"><span class="token comment"># Docker Compose version v2.17.3</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token function">docker</span> <span class="token parameter variable">--version</span>
-</span><span class="code-line">Docker version <span class="token number">23.0</span>.5, build bc4487a
+</span><span class="code-line"><span class="token comment"># Docker version 23.0.5, build bc4487a</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token function">docker</span> version
-</span><span class="code-line">Client: Docker Engine - Community
-</span><span class="code-line">Cloud integration: v1.0.31
-</span><span class="code-line">Version:           <span class="token number">23.0</span>.5
-</span><span class="code-line">API version:       <span class="token number">1.42</span>
-</span><span class="code-line"><span class="token operator">&#x3C;</span><span class="token punctuation">..</span>.<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># Client: Docker Engine - Community</span>
+</span><span class="code-line"><span class="token comment"># Cloud integration: v1.0.31</span>
+</span><span class="code-line"><span class="token comment"># Version:           23.0.5</span>
+</span><span class="code-line"><span class="token comment"># API version:       1.42</span>
+</span><span class="code-line"><span class="token comment"># &#x3C;...></span>
 </span></code></pre>
-</li>
-</ul>
-</div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h2><div class="wrap-body">
-<p><strong>Docker-Compose 是什么？</strong></p>
-<ul>
-<li>
-<p><code>Docker-compsoe</code> 是一个开源项目，用于定义和运行多容器 <code>Docker</code> 应用程序的工具。由 <code>Docker</code> 社区维护。</p>
-</li>
-<li>
-<p>通过一个 <code>YAML</code> 文件来配置应用程序的服务，以便可以使用一个命令启动、停止和重启整个应用程序。</p>
-</li>
-<li>
-<p>开源地址：<a href="https://github.com/docker/compose">https://github.com/docker/compose</a></p>
-</li>
-<li>
-<p>releases 地址：<a href="https://github.com/docker/compose/releases">https://github.com/docker/compose/releases</a></p>
-</li>
-</ul>
-<p><strong>基本概念：</strong></p>
-<ul>
-<li>
-<p><strong>服务 (services):</strong> 一个服务指的是一个容器，即一个应用程序的一个实例。</p>
-</li>
-<li>
-<p><strong>容器 (container):</strong> <code>Docker</code> 容器，其中运行着应用程序的一个实例。</p>
-</li>
-<li>
-<p><strong>镜像 (image):</strong> <code>Docker</code> 镜像，用于创建容器的模板。</p>
-</li>
-<li>
-<p><strong>Docker-Compose 文件：</strong> 一个 <code>YAML</code> 文件，描述了应用程序的各个服务以及它们之间的关系、配置等信息。</p>
-</li>
-</ul>
-<p><strong>Docker-Compose 文件结构：</strong></p>
-<ul>
-<li>
-<p><code>version</code>: <code>Docker-Compose</code> 文件的版本。</p>
-</li>
-<li>
-<p><code>services</code>: 定义了各个服务，每个服务都有自己的配置项，如镜像、端口映射、依赖等。</p>
-</li>
-<li>
-<p><code>networks</code>: 定义了应用程序使用的网络，可以自定义网络以控制服务之间的通信。</p>
-</li>
-<li>
-<p><code>volumes</code>: 定义了应用程序使用的卷，用于持久化数据或与主机共享文件。</p>
-</li>
-</ul>
-</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="命令"><a aria-hidden="true" tabindex="-1" href="#命令"><span class="icon icon-link"></span></a>命令</h2><div class="wrap-body">
-<p><strong>常用命令：</strong></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="独立安装-compose"><a aria-hidden="true" tabindex="-1" href="#独立安装-compose"><span class="icon icon-link"></span></a>独立安装 Compose</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-SL</span> https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 <span class="token parameter variable">-o</span> /usr/local/bin/docker-compose
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>如果命令 <code>docker-compose</code> 安装失败，请检查你的路径。你也可以创建一个符号链接，指向 <code>/usr/bin</code> 或路径中的任何其他目录。例如</p>
+<pre class="wrap-text"><code class="language-sh code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">ln</span> <span class="token parameter variable">-s</span> /usr/local/bin/docker-compose /usr/bin/docker-compose
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="更新-compose"><a aria-hidden="true" tabindex="-1" href="#更新-compose"><span class="icon icon-link"></span></a>更新 Compose</h3><div class="wrap-body">
+<p>对于 Ubuntu 和 Debian，运行：</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+</span><span class="code-line"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> docker-compose-plugin
+</span></code></pre>
+<p>对于基于 RPM 的发行版，运行：</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">sudo</span> yum update
+</span><span class="code-line"><span class="token function">sudo</span> yum <span class="token function">install</span> docker-compose-plugin
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="卸载-docker-compose"><a aria-hidden="true" tabindex="-1" href="#卸载-docker-compose"><span class="icon icon-link"></span></a>卸载 Docker Compose</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>Ubuntu, Debian:</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">apt-get</span> remove docker-compose-plugin
+</span></code></pre>
+<p>基于 RPM 的发行版</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">sudo</span> yum remove docker-compose-plugin
+</span></code></pre>
+<p>如果您使用curl安装Compose CLI插件，要卸载它，请运行：</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">rm</span> <span class="token variable">$DOCKER_CONFIG</span>/cli-plugins/docker-compose
+</span></code></pre>
+<p>为所有用户删除，或者，如果您已为所有用户安装 Compose，请运行：</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">rm</span> /usr/local/lib/docker/cli-plugins/docker-compose
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="检查-compose-的安装位置"><a aria-hidden="true" tabindex="-1" href="#检查-compose-的安装位置"><span class="icon icon-link"></span></a>检查 Compose 的安装位置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">docker</span> info <span class="token parameter variable">--format</span> <span class="token string">'{{range .ClientInfo.Plugins}}{{if eq .Name "compose"}}{{.Path}}{{end}}{{end}}'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="常用命令"><a aria-hidden="true" tabindex="-1" href="#常用命令"><span class="icon icon-link"></span></a>常用命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
 
 
 
@@ -212,62 +206,104 @@
 
 
 
-<table><thead><tr><th>docker compose命令</th><th>说明</th><th>常见参数说明</th></tr></thead><tbody><tr><td><code>docker compose up</code></td><td>启动容器</td><td><code>-d</code> 后台运行容器</td></tr><tr><td><code>docker compose down</code></td><td>停止容器</td><td><code>-v</code> 删除容器和卷</td></tr><tr><td><code>docker compose ps</code></td><td>查看容器状态</td><td></td></tr><tr><td><code>docker compose logs</code></td><td>查看容器日志</td><td><code>-f</code> 跟随日志输出</td></tr><tr><td><code>docker compose exec</code></td><td>进入容器</td><td><code>-it</code> 启动交互式终端</td></tr><tr><td><code>docker compose build</code></td><td>构建镜像</td><td></td></tr><tr><td><code>docker compose rm</code></td><td>删除容器</td><td></td></tr><tr><td><code>docker compose stop</code></td><td>停止容器</td><td></td></tr><tr><td><code>docker compose start</code></td><td>启动容器</td><td></td></tr><tr><td><code>docker compose restart</code></td><td>重启容器</td><td></td></tr><tr><td><code>docker compose pull</code></td><td>拉取镜像</td><td></td></tr><tr><td><code>docker compose run</code></td><td>运行一个临时容器</td><td></td></tr><tr><td><code>docker compose config</code></td><td>显示配置信息</td><td></td></tr><tr><td><code>docker compose images</code></td><td>列出镜像</td><td></td></tr><tr><td><code>docker compose push</code></td><td>推送镜像</td><td></td></tr><tr><td><code>docker compose version</code></td><td>查看版本信息</td><td></td></tr></tbody></table>
-</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="配置模板"><a aria-hidden="true" tabindex="-1" href="#配置模板"><span class="icon icon-link"></span></a>配置模板</h2><div class="wrap-body">
-<p><strong>示例 Docker-Compose 文件：</strong></p>
-<p><code>docker-compsoe</code> 的配置文件是一个 <code>YAML</code> 文件，用于定义和运行多容器 Docker 应用程序。它使用 一个单一的 YAML 文件（通常命名为 <code>docker-compose.yml</code>）来定义多个容器的集合，以及它们之间的依赖关系和服务。</p>
-<p>以下是一份 <code>docker-compose.yml</code> 文件的配置模板，包含了常用配置项和解释：</p>
-<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>  <span class="token comment"># 指定使用的Docker Compose文件格式版本，目前推荐使用3.x或更高</span>
+<table class="left-align"><thead><tr><th>docker compose命令</th><th>说明</th><th>常见参数说明</th></tr></thead><tbody><tr><td><code>docker compose up</code></td><td>启动容器</td><td><code>-d</code> 后台运行容器</td></tr><tr><td><code>docker compose down</code></td><td>停止容器</td><td><code>-v</code> 删除容器和卷</td></tr><tr><td><code>docker compose ps</code></td><td>查看容器状态</td><td></td></tr><tr><td><code>docker compose logs</code></td><td>查看容器日志</td><td><code>-f</code> 跟随日志输出</td></tr><tr><td><code>docker compose exec</code></td><td>进入容器</td><td><code>-it</code> 启动交互式终端</td></tr><tr><td><code>docker compose build</code></td><td>构建镜像</td><td></td></tr><tr><td><code>docker compose rm</code></td><td>删除容器</td><td></td></tr><tr><td><code>docker compose stop</code></td><td>停止容器</td><td></td></tr><tr><td><code>docker compose start</code></td><td>启动容器</td><td></td></tr><tr><td><code>docker compose restart</code></td><td>重启容器</td><td></td></tr><tr><td><code>docker compose pull</code></td><td>拉取镜像</td><td></td></tr><tr><td><code>docker compose run</code></td><td>运行一个临时容器</td><td></td></tr><tr><td><code>docker compose config</code></td><td>显示配置信息</td><td></td></tr><tr><td><code>docker compose images</code></td><td>列出镜像</td><td></td></tr><tr><td><code>docker compose push</code></td><td>推送镜像</td><td></td></tr><tr><td><code>docker compose version</code></td><td>查看版本信息</td><td></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="docker-compose-配置"><a aria-hidden="true" tabindex="-1" href="#docker-compose-配置"><span class="icon icon-link"></span></a>Docker Compose 配置</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="示例配置文件"><a aria-hidden="true" tabindex="-1" href="#示例配置文件"><span class="icon icon-link"></span></a>示例配置文件</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p><code>docker-compose</code> 的配置文件是一个 <code>YAML</code> 文件，用于定义和运行多容器 Docker 应用程序。通常命名为 <code>docker-compose.yml</code>，它使用单一的 YAML 文件来定义多个容器的集合，以及它们之间的依赖关系和服务。以下是一份 <code>docker-compose.yml</code> 文件的配置模板，包含了常用配置项和解释：</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>  <span class="token comment"># 指定使用的 Docker Compose 文件格式版本，目前推荐使用 3.x 或更高</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token key atrule">services</span><span class="token punctuation">:</span>  <span class="token comment"># 定义一个或多个服务</span>
 </span><span class="code-line">  <span class="token key atrule">service1</span><span class="token punctuation">:</span>  <span class="token comment"># 服务名称</span>
-</span><span class="code-line">    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest  <span class="token comment"># 使用的Docker镜像，这里是Nginx的最新版本</span>
-</span><span class="code-line">    <span class="token comment"># 或者使用构建指令来从Dockerfile构建镜像</span>
+</span><span class="code-line">    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest  <span class="token comment"># 使用的 Docker 镜像，这里是 Nginx 的最新版本</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment"># 或者使用构建指令来从 Dockerfile 构建镜像</span>
 </span><span class="code-line">    <span class="token key atrule">build</span><span class="token punctuation">:</span>
-</span><span class="code-line">      <span class="token key atrule">context</span><span class="token punctuation">:</span> ./path/to/Dockerfile  <span class="token comment"># Dockerfile所在的目录</span>
-</span><span class="code-line">      <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> Dockerfile<span class="token punctuation">-</span>alternative  <span class="token comment"># 可选的Dockerfile名称，默认是Dockerfile</span>
+</span><span class="code-line">      <span class="token key atrule">context</span><span class="token punctuation">:</span> ./path/to/Dockerfile  <span class="token comment"># Dockerfile 所在的目录</span>
+</span><span class="code-line">      <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> Dockerfile<span class="token punctuation">-</span>alternative  <span class="token comment"># 可选的 Dockerfile 名称，默认是 Dockerfile</span>
 </span><span class="code-line">
 </span><span class="code-line">    <span class="token comment"># 容器启动时执行的命令，覆盖默认的命令</span>
-</span><span class="code-line">    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"nginx"</span><span class="token punctuation">,</span> <span class="token string">"-g"</span><span class="token punctuation">,</span> <span class="token string">"daemon off;"</span><span class="token punctuation">]</span>  <span class="token comment"># 以数组形式指定，防止shell解析</span>
+</span><span class="code-line">    <span class="token key atrule">command</span><span class="token punctuation">:</span> 
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">"nginx"</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">"-g"</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">"daemon off;"</span>  <span class="token comment"># 以数组形式指定，防止 shell 解析</span>
 </span><span class="code-line">
 </span><span class="code-line">    <span class="token key atrule">ports</span><span class="token punctuation">:</span>  <span class="token comment"># 容器端口与主机端口映射</span>
-</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">"80:80"</span>  <span class="token comment"># 主机80端口映射到容器的80端口</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> <span class="token string">"80:80"</span>  <span class="token comment"># 主机 80 端口映射到容器的 80 端口</span>
 </span><span class="code-line">
 </span><span class="code-line">    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>  <span class="token comment"># 数据卷挂载</span>
-</span><span class="code-line">      <span class="token punctuation">-</span> ./nginx.conf<span class="token punctuation">:</span>/etc/nginx/nginx.conf<span class="token punctuation">:</span>ro  <span class="token comment"># 将主机上的nginx.conf挂载到容器的/etc/nginx/nginx.conf，只读</span>
-</span><span class="code-line">      <span class="token punctuation">-</span> ./logs<span class="token punctuation">:</span>/var/log/nginx  <span class="token comment"># 将logs目录挂载到容器的/var/log/nginx</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> ./nginx.conf<span class="token punctuation">:</span>/etc/nginx/nginx.conf<span class="token punctuation">:</span>ro  <span class="token comment"># 将主机上的 nginx.conf 挂载到容器的 /etc/nginx/nginx.conf，只读</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> ./logs<span class="token punctuation">:</span>/var/log/nginx  <span class="token comment"># 将 logs 目录挂载到容器的 /var/log/nginx</span>
 </span><span class="code-line">
 </span><span class="code-line">    <span class="token key atrule">environment</span><span class="token punctuation">:</span>  <span class="token comment"># 设置环境变量</span>
-</span><span class="code-line">      <span class="token punctuation">-</span> MYSQL_HOST=database  <span class="token comment"># 可以引用其他服务，这里假设有一个名为database的服务</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> MYSQL_HOST=database  <span class="token comment"># 可以引用其他服务，这里假设有一个名为 database 的服务</span>
 </span><span class="code-line">      <span class="token punctuation">-</span> MYSQL_PORT=3306
 </span><span class="code-line">
-</span><span class="code-line">    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>  <span class="token comment"># 服务启动顺序，这里表明service1依赖于database服务</span>
+</span><span class="code-line">    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>  <span class="token comment"># 服务启动顺序，这里表明 service1 依赖于 database 服务</span>
 </span><span class="code-line">      <span class="token punctuation">-</span> database
 </span><span class="code-line">
 </span><span class="code-line">    <span class="token key atrule">networks</span><span class="token punctuation">:</span>  <span class="token comment"># 定义网络</span>
-</span><span class="code-line">      <span class="token punctuation">-</span> my_network  <span class="token comment"># 参与名为my_network的网络</span>
+</span><span class="code-line">      <span class="token punctuation">-</span> my_network  <span class="token comment"># 参与名为 my_network 的网络</span>
 </span><span class="code-line">
 </span><span class="code-line">  <span class="token key atrule">service2</span><span class="token punctuation">:</span>  <span class="token comment"># 另一个服务示例</span>
 </span><span class="code-line">    <span class="token comment"># ... 类似地定义其他服务</span>
 </span><span class="code-line">
-</span><span class="code-line"><span class="token key atrule">networks</span><span class="token punctuation">:</span>  <span class="token comment"># 定义网络</span>
+</span><span class="code-line"><span class="token key atrule">networks</span><span class="token punctuation">:</span>       <span class="token comment"># 定义网络</span>
 </span><span class="code-line">  <span class="token key atrule">my_network</span><span class="token punctuation">:</span>  <span class="token comment"># 网络名称</span>
-</span><span class="code-line">    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge  <span class="token comment"># 网络驱动，通常是bridge模式</span>
+</span><span class="code-line">    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge  <span class="token comment"># 网络驱动，通常是 bridge 模式</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token key atrule">volumes</span><span class="token punctuation">:</span>  <span class="token comment"># 定义数据卷</span>
 </span><span class="code-line">  <span class="token key atrule">nginx_logs</span><span class="token punctuation">:</span>  <span class="token comment"># 卷名称</span>
+</span><span class="code-line">
 </span></code></pre>
-<p><strong>备忘录事项</strong></p>
+<p>备忘录事项</p>
 <ul>
+<li>使用 Docker-Compose 可以简化多容器应用程序的部署和管理，但需要注意容器之间的依赖关系和通信。</li>
 <li>配置文件中的缩进必须使用空格，不能使用制表符。</li>
 <li>可以使用环境变量来动态设置配置项，如数据库密码。</li>
-<li>使用 <code>Docker-Compose</code> 可以简化多容器应用程序的部署和管理，但需要注意容器之间的依赖关系和通信。</li>
 <li>当你修改了 <code>docker-compose.yml</code> 文件后，需要重新运行 <code>docker-compose up</code> 来使改动生效。</li>
 <li>使用 <code>docker-compose build</code> 仅重建镜像，而不启动容器。</li>
 <li>使用 <code>docker-compose restart</code> 重启容器。</li>
 <li>记得清理不再需要的容器和镜像，以避免磁盘空间不足。</li>
 </ul>
-</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.5.3" defer></script><script src="../js/fuse.min.js?v=1.5.3" defer></script><script src="../js/main.js?v=1.5.3" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="使用环境变量"><a aria-hidden="true" tabindex="-1" href="#使用环境变量"><span class="icon icon-link"></span></a>使用环境变量</h3><div class="wrap-body">
+<p>与 <code>docker run -e VARIABLE=VALUE ...</code> 相同</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">web</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> DEBUG=1
+</span></code></pre>
+<p>您可以选择不设置值并将环境变量从 shell 直接传递到容器。它的工作方式与 <code>docker run -e VARIABLE ...</code> 相同：</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">web</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> DEBUG
+</span><span class="code-line"><span class="token key atrule">web</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> DEBUG=$<span class="token punctuation">{</span>DEBUG<span class="token punctuation">}</span>
+</span></code></pre>
+<p><code>env_file</code> 属性允许您在 Compose 应用程序中使用多个 <code>.env</code> 文件。
+它的工作方式与 <code>docker run --env-file=FILE ...</code> 相同。</p>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">web</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">env_file</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token punctuation">-</span> web<span class="token punctuation">-</span>variables.env
+</span></code></pre>
+<h4 id="额外的信息"><a aria-hidden="true" tabindex="-1" href="#额外的信息"><span class="icon icon-link"></span></a>额外的信息</h4>
+<pre class="language-yml"><code class="language-yml code-highlight"><span class="code-line"><span class="token key atrule">env_file</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> ./default.env
+</span><span class="code-line">    <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># default</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> ./override.env
+</span><span class="code-line">    <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+</span></code></pre>
+<ul>
+<li>如果指定了多个文件，则它们将按顺序进行评估，可以覆盖先前文件中设置的值。</li>
+<li>在 <code>.env</code> 文件中声明的环境变量不能在 Compose 文件中单独再次引用。</li>
+<li>如果同时使用 <code>env_file</code> 和 <code>environment</code> 属性，则由 <code>environment</code> 设置的环境变量优先级更高。</li>
+<li>在 <code>env_file</code> 属性中指定的 <code>.env</code> 文件的路径是相对于 compose.yml 文件的位置的。</li>
+<li><code>.env</code> 文件中的值可以通过使用 <code>docker compose run -e</code> 命令行来从命令行覆盖。</li>
+<li>如果使用 <code>--env-file</code> 替换了另一个 <code>.env</code>，则您的 <code>.env</code> 文件可以被另一个 <code>.env</code> 文件覆盖。</li>
+<li>从 Docker Compose 版本 2.24.0 开始，您可以通过使用 <code>required</code> 字段将 <code>.env</code> 文件设置为可选项。当 <code>required</code> 设置为 <code>false</code> 且 <code>.env</code> 文件丢失时，Compose 将静默忽略该条目</li>
+</ul>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.5.3" defer></script><script src="../js/fuse.min.js?v=1.5.3" defer></script><script src="../js/main.js?v=1.5.3" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
   <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
 </svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
 </html>
