@@ -102,7 +102,9 @@ docker-compose 备忘清单
 
 **示例 Docker-Compose 文件：**
 
-Docker Compose是一个用于定义和运行多容器 Docker 应用程序的工具。它允许您通过一个单一的 YAML 文件（通常命名为 `docker-compose.yml`）来定义多个容器的集合，以及它们之间的依赖关系和服务。以下是一份 Docker Compose 的备忘录，包含了常用命令和概念：
+`docker-compsoe` 的配置文件是一个 `YAML` 文件，用于定义和运行多容器 Docker 应用程序。它使用 一个单一的 YAML 文件（通常命名为 `docker-compose.yml`）来定义多个容器的集合，以及它们之间的依赖关系和服务。
+
+以下是一份 `docker-compose.yml` 文件的配置模板，包含了常用配置项和解释：
 
 ```yaml
 version: '3'  # 指定使用的Docker Compose文件格式版本，目前推荐使用3.x或更高
