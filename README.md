@@ -41,6 +41,7 @@ Quick Reference
 [R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=contributing-->  
 [Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir-->   
 [Tauri](./docs/tauri.md)<!--rehype:style=background: rgb(103 214 237);&class=contributing-->
+[Docker Compose](./docs/docker-compose.md)<!--rehype:style=background: rgb(72 143 223);&class=contributing tag&data-lang=Docker-->  
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -51,7 +52,7 @@ Quick Reference
 [C++](./docs/cpp.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->  
 [Dart](./docs/dart.md)<!--rehype:style=background: rgb(64 196 255);-->  
 [Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223);-->  
-[Docker-Compose](./docs/docker-compose.md)<!--rehype:style=background: rgb(72 143 223);&class=tag&data-lang=Docker-->  
+[Docker-Compose](./docs/docker-compose.md)<!--rehype:style=background: rgb(72 143 223);&class=contributing tag&data-lang=Docker-->  
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->  
 [Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python-->  
 [Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir-->   
