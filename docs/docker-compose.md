@@ -621,7 +621,11 @@ devices:
   - "/dev/sda:/dev/xvda:rwm"
 ```
 
-以 `HOST_PATH:CONTAINER_PATH[:CGROUP_PERMISSIONS]` 的形式定义已创建容器的设备映射列表。
+定义已创建容器的设备映射列表
+
+```sh
+HOST_PATH:CONTAINER_PATH[:CGROUP_PERMISSIONS]
+```
 
 ### dns
 
