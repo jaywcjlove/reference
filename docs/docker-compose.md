@@ -142,7 +142,7 @@ docker info --format '{{range .ClientInfo.Plugins}}{{if eq .Name "compose"}}{{.P
 | `docker compose version` | 查看版本信息     |                      |
 <!--rehype:className=left-align-->
 
-### 常用命令
+### 常用运维命令
 
 | docker compose命令       | 说明             |
 | ------------------------ | ---------------- |
