@@ -622,3 +622,35 @@ devices:
 ```
 
 以 `HOST_PATH:CONTAINER_PATH[:CGROUP_PERMISSIONS]` 的形式定义已创建容器的设备映射列表。
+
+### dns
+
+```yml
+dns: 8.8.8.8
+dns:
+  - 8.8.8.8
+  - 9.9.9.9
+```
+
+定义在容器网络接口配置上设置的自定义 DNS 服务器。它可以是单个值或列表。
+
+### dns_opt
+
+```yml
+dns_opt:
+  - use-vc
+  - no-tld-query
+```
+
+列出要传递给容器的 DNS 解析器（Linux 上的 /etc/resolv.conf 文件）的自定义 DNS 选项。
+
+### dns_search
+
+```yml
+dns_search: example.com
+dns_search:
+  - dc1.example.com
+  - dc2.example.com
+```
+
+定义在容器网络接口配置上设置的自定义 DNS 搜索域。它可以是单个值或列表。
