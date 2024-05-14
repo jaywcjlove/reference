@@ -72,7 +72,7 @@ Supported Functions
 ``KaTeX:\\\`{a}`` <pur><code>\\&#96;{a}</code></pur> | `KaTeX:\={a}` <pur>`\={a}`</pur> |
 `KaTeX:\"{a}` <pur>`\"{a}`</pur> | `KaTeX:\v{a}` <pur>`\v{a}`</pur> |
 `KaTeX:\^{a}` <pur>`\^{a}`</pur> | `KaTeX:\u{a}` <pur>`\u{a}`</pur> |
-`KaTeX:\r{a}` <pur>`\r{a}`</pur> |
+`KaTeX:\r{a}` <pur>`\r{a}`</pur> | `KaTeX:\mathbf{a}` <pur>`\mathbf{a}`</pur> |
 
 ### Delimiter Sizing
 
