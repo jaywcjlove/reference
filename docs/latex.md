@@ -908,15 +908,17 @@ x = \begin{cases}
 列表表示
 ---
 
-'\begin{itemize}
+```latex
+\begin{itemize}
     \item First item
     \item Second item
-\end{itemize}'
+\end{itemize}
   
-'\begin{description}
+```latex
+\begin{description}
     \item Definition
     \item Explanation
-\end{description}'
+\end{description}
 
 另见
 ----
