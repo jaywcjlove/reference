@@ -911,22 +911,22 @@ x = \begin{cases}
 ### 列表
 
 ```latex
-   - First item
-   - Second item
+|   - First item  |
+|   - Second item |
 \begin{enumerate}
   \item First item
   \item Second item
 \end{enumerate}
 
-   1. First item
-   2. Second item
+|   1. First item  |
+|   2. Second item |
 \begin{itemize}
     \item First item
     \item Second item
 \end{itemize}
   
-First item
-Second item
+|First item  |
+|Second item |
 \begin{description}
     \item First item
     \item Second item
@@ -956,7 +956,7 @@ Second item
         \caption{First subfigure}
         \label{fig:sub1}
     \end{subfigure}
-    \hfill  % Adds horizontal space between the subfigures
+    \hfill  % 在子图之间添加水平间距
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{path/to/your/image2.jpg}
@@ -972,13 +972,13 @@ Second item
 
 ```latex
 \begin{table}[hbpt]
-   \centering  % Centers the table
+   \centering  % 居中表格
    \caption{Example Table}
    \label{tab:example}
-   \begin{tabular}{|c|l|r|}  % Aligns columns: center, left, right
-      \hline  % Inserts a horizontal line
+   \begin{tabular}{|c|l|r|}  % 对齐列：居中、居左、居右
+      \hline  % 插入一条水平线
       \textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\ \hline
-      Data 1 & Data 2 & Data 3 \\  % Row of data
+      Data 1 & Data 2 & Data 3 \\  % 数据
       Data 4 & Data 5 & Data 6 \\ \hline
    \end{tabular}
 \end{table}
@@ -992,7 +992,45 @@ LaTex排版
 ```latex
 \usepackage[left=3cm, right=3cm, top=2cm, bottom=2cm]{geometry} or \geometry{left=3cm, right=3cm, top=2cm, bottom=2cm}
 
-\usepackage[a4paper]{geometry} % a5paper, b5paper, letterpaper, etc.
+\usepackage[a4paper]{geometry} % 另有a5paper, b5paper, letterpaper等格式
+```
+
+### 页面分割和布局
+
+```latex
+\quad % 添加空格
+\qquad % 双空格
+\vspace{} % 添加空行
+\newpage % 开始新的一页。
+\clearpage % 清除当前页，并处理所有未处理的浮动体。
+\vfill % 在当前页面的剩余空间中插入垂直空白。
+```
+
+### 页面页眉和页脚
+
+```latex
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}  % 清除所有页眉和页脚字段
+\fancyhead[L]{Left header} % 左页眉
+\fancyhead[C]{Center header} % 中页眉
+\fancyhead[R]{Right header} % 右页眉
+\fancyfoot[L]{Left footer} % 左页脚
+\fancyfoot[C]{\thepage}  % 页脚中央的页码
+\fancyfoot[R]{Right footer} % 右页脚
+```
+
+文献管理
+----
+
+### bib文献管理
+
+```latex
+\cite{example} % 引用
+
+\bibliographystyle{plain} % 设定引用格式
+\bibliography{references} % 假设.bib文件名为 'references.bib'
 ```
 
 另见
