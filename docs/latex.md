@@ -903,7 +903,7 @@ x = \begin{cases}
 `KaTex:\scriptstyle x` | <pur>\scriptstyle x</pur> | `KaTex:\scriptscriptstyle x` | <pur>\scriptscriptstyle x</pur>
 `KaTex:\lim\limits_x` | <pur>\lim\limits_x</pur> | `KaTex:\lim\nolimits_x` | <pur>\lim\nolimits_x</pur>
 `KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur> | `KaTeX:\mathbf{a}` <pur>`\textbf{a}`</pur> |
-`KaTeX:\mathit{a}` <pur>`\textit{a}`</pur>
+`KaTeX:\mathit{a}` <pur>`\textit{a}`</pur> | `KaTeX:\textup{a}` <pur>`\textup{a}`</pur> | `KaTeX:\textsl{a}` <pur>`\textsl{a}`</pur> | `KaTeX:\textsc{a}` <pur>`\textsc{a}`</pur> | `KaTeX:\underline{a}` <pur>`\underline{a}`</pur>
 
 另见
 ----
