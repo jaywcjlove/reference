@@ -1022,7 +1022,7 @@ LaTex排版
 \fancyfoot[R]{Right footer} % 右页脚
 ```
 
-文献管理
+其他
 ----
 
 ### bib文献管理
@@ -1034,9 +1034,6 @@ LaTex排版
 \bibliography{references} % 假设.bib文件名为 'references.bib'
 ```
 
-其他
-----
-
 ### URL
 
 ```latex
@@ -1044,6 +1041,15 @@ LaTex排版
 
 \href{URL}{text} % 创建一个指向 URL 的超链接。
 \url{URL} % 显示 URL 并作为链接。
+```
+
+### 颜色和盒子
+
+```latex
+\usepackage{color} 使用 color 包来给文本添加颜色。
+
+\color{color} 设置文本颜色。
+\fbox{content} 在内容周围创建一个边框。
 ```
 
 另见
