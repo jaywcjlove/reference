@@ -72,7 +72,7 @@ Supported Functions
 ``KaTeX:\\\`{a}`` <pur><code>\\&#96;{a}</code></pur> | `KaTeX:\={a}` <pur>`\={a}`</pur> |
 `KaTeX:\"{a}` <pur>`\"{a}`</pur> | `KaTeX:\v{a}` <pur>`\v{a}`</pur> |
 `KaTeX:\^{a}` <pur>`\^{a}`</pur> | `KaTeX:\u{a}` <pur>`\u{a}`</pur> |
-`KaTeX:\r{a}` <pur>`\r{a}`</pur> | `KaTeX:\mathbf{a}` <pur>`\mathbf{a}`</pur> |
+`KaTeX:\r{a}` <pur>`\r{a}`</pur>
 
 ### Delimiter Sizing
 
@@ -202,6 +202,7 @@ Supported Functions
 | `KaTex:f'`                | <pur>`f'`</pur>                   | `KaTex:\underline{abc}`    | <pur>`\underline{abc}`</pur>     | `KaTex:\overleftarrow{abc}`      | <pur>`\overleftarrow{abc}`</pur>       |
 | `KaTex:\sqrt{abc}`        | <pur>`\sqrt{abc}`</pur>           | `KaTex:\widehat{abc}`      | <pur>`\widehat{abc}`</pur>       | `KaTex:\overbrace{abc}`          | <pur>`\overbrace{abc}`</pur>           |
 | `KaTex:\sqrt[n]{abc}`     | <pur>`\sqrt[n]{abc}`</pur>        | `KaTex:\widetilde{abc}`    | <pur>`\widetilde{abc}`</pur>     | `KaTex:\underbrace{abc}`         | <pur>`\underbrace{abc}`</pur>          |
+|`KaTex:\frac{d^n y}{d x^n}`| <pur>`\frac{d^n y}{d x^n}`</pur>  | `KaTex:\int_{b}^{a}  \,dx` | <pur>`\int_{b}^{a}  \,dx`</pur>  | `KaTex:\lim_{x \to \infty}`      | <pur>`\lim_{x \to \infty}`</pur>       |
 
 ### 分隔符 Delimiters
 <!--rehype:wrap-class=col-span-3-->
@@ -891,6 +892,7 @@ x = \begin{cases}
 `KaTex:\LARGE AB` | <pur>`\LARGE AB`</pur> | `KaTex:\LARGE AB` | <pur>`\LARGE AB`</pur> | `KaTex:\footnotesize AB` | <pur>\footnotesize AB</pur>
 `KaTex:\Large AB` | <pur>`\Large AB`</pur> | `KaTex:\Large AB` | <pur>`\Large AB`</pur> | `KaTex:\scriptsize AB` | <pur>\scriptsize AB</pur>
 `KaTex:\large AB` | <pur>`\large AB`</pur> | `KaTex:\large AB` | <pur>`\large AB`</pur> | `KaTex:\tiny AB` | <pur>\tiny AB</pur>
+`KaTex:\mathcal{AB}` | <pur>`\mathcal{AB}`</pur> | `KaTex:\mathak{AB}` | <pur>`\mathak{AB}`</pur> | `KaTex:\mathbb{AB}` | <pur>`\mathbb{AB}`</pur> | `KaTex:\mathsf{AB}` | <pur>`\mathsf{AB}`</pur>
 
 ### Style 样式
 <!--rehype:wrap-class=col-span-3-->
@@ -900,7 +902,8 @@ x = \begin{cases}
 `KaTex:\displaystyle\sum_{i=1}^n` | <pur>\displaystyle\sum_{i=1}^n</pur> | `KaTex:\textstyle\sum_{i=1}^n` | <pur>\textstyle\sum_{i=1}^n</pur>
 `KaTex:\scriptstyle x` | <pur>\scriptstyle x</pur> | `KaTex:\scriptscriptstyle x` | <pur>\scriptscriptstyle x</pur>
 `KaTex:\lim\limits_x` | <pur>\lim\limits_x</pur> | `KaTex:\lim\nolimits_x` | <pur>\lim\nolimits_x</pur>
-`KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur>
+`KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur> | `KaTeX:\mathbf{a}` <pur>`\textbf{a}`</pur> |
+`KaTeX:\mathit{a}` <pur>`\textit{a}`</pur>
 
 另见
 ----
