@@ -905,9 +905,10 @@ x = \begin{cases}
 `KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur> | `KaTeX:\mathbf{a}` <pur>`\textbf{a}`</pur> |
 `KaTeX:\mathit{a}` <pur>`\textit{a}`</pur> | `KaTeX:\textup{a}` <pur>`\textup{a}`</pur> | `KaTeX:\textsl{a}` <pur>`\textsl{a}`</pur> | `KaTeX:\textsc{a}` <pur>`\textsc{a}`</pur> | `KaTeX:\underline{a}` <pur>`\underline{a}`</pur>
 
-```latex
-列表表示
+列表，图片，表格表示
 ---
+
+### 列表
 
 ```latex
    - First item
@@ -930,10 +931,11 @@ Second item
     \item First item
     \item Second item
 \end{description}
+```
 
-图片和表格展示
----
+### 图片
 
+```latex
 % 展示单张图像
 \usepackage{graphicx}
 \begin{figure}[htbp]
@@ -964,9 +966,12 @@ Second item
     \caption{Caption for the entire figure}
     \label{fig:mainfig}
 \end{figure}
+```
 
-% 表格示例
-\begin{table}[ht]
+### 表格
+
+```latex
+\begin{table}[hbpt]
    \centering  % Centers the table
    \caption{Example Table}
    \label{tab:example}
@@ -977,6 +982,17 @@ Second item
       Data 4 & Data 5 & Data 6 \\ \hline
    \end{tabular}
 \end{table}
+```
+
+LaTex排版
+----
+
+### 调整页边距和页面类型
+
+```latex
+\usepackage[left=3cm, right=3cm, top=2cm, bottom=2cm]{geometry} or \geometry{left=3cm, right=3cm, top=2cm, bottom=2cm}
+
+\usepackage[a4paper]{geometry} % a5paper, b5paper, letterpaper, etc.
 ```
 
 另见
