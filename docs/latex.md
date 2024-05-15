@@ -999,12 +999,13 @@ LaTex排版
 ### 页面分割和布局
 
 ```latex
-\quad % 添加空格
-\qquad % 双空格
-\vspace{} % 添加空行
-\newpage % 开始新的一页。
-\clearpage % 清除当前页，并处理所有未处理的浮动体。
-\vfill % 在当前页面的剩余空间中插入垂直空白。
+\quad          |  添加空格
+\qquad         |  双空格
+\vspace{}      |  增加纵向间距
+\hspace{}      |  增加横向间距
+\newpage       |  开始新的一页。
+\clearpage     |  清除当前页，并处理所有未处理的浮动体。
+\vfill         |  在当前页面的剩余空间中插入垂直空白。
 ```
 
 ### 页面页眉和页脚
@@ -1013,13 +1014,13 @@ LaTex排版
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
-\fancyhf{}  % 清除所有页眉和页脚字段
-\fancyhead[L]{Left header} % 左页眉
-\fancyhead[C]{Center header} % 中页眉
-\fancyhead[R]{Right header} % 右页眉
-\fancyfoot[L]{Left footer} % 左页脚
-\fancyfoot[C]{\thepage}  % 页脚中央的页码
-\fancyfoot[R]{Right footer} % 右页脚
+\fancyhf{}                       |  清除所有页眉和页脚字段
+\fancyhead[L]{Left header}       |  左页眉
+\fancyhead[C]{Center header}     |  中页眉
+\fancyhead[R]{Right header}      |  右页眉
+\fancyfoot[L]{Left footer}       |  左页脚
+\fancyfoot[C]{\thepage}          |  页脚中央的页码
+\fancyfoot[R]{Right footer}      |  右页脚
 ```
 
 其他
@@ -1028,28 +1029,28 @@ LaTex排版
 ### bib文献管理
 
 ```latex
-\cite{example} % 引用
+\cite{example}                |  在文本中引用
 
-\bibliographystyle{plain} % 设定引用格式
-\bibliography{references} % 假设.bib文件名为 'references.bib'
+\bibliographystyle{plain}     |  设定引用格式
+\bibliography{references}     |  假设.bib文件名为 'references.bib'
 ```
 
 ### URL
 
 ```latex
-\usepackage{hyperref} % 加载 hyperref 包以增强 PDF 文档的交互性，如添加超链接和书签。
+\usepackage{hyperref}   |  加载 hyperref 包以增强 PDF 文档的交互性，如添加超链接和书签。
 
-\href{URL}{text} % 创建一个指向 URL 的超链接。
-\url{URL} % 显示 URL 并作为链接。
+\href{URL}{text}        |  创建一个指向 URL 的超链接。
+\url{URL}               |  显示 URL 并作为链接。
 ```
 
 ### 颜色和盒子
 
 ```latex
-\usepackage{color} 使用 color 包来给文本添加颜色。
+\usepackage{color}   |  使用 color 包来给文本添加颜色。
 
-\color{color} 设置文本颜色。
-\fbox{content} 在内容周围创建一个边框。
+\color{color}        |  设置文本颜色。
+\fbox{content}       |  在内容周围创建一个边框。
 ```
 
 另见
