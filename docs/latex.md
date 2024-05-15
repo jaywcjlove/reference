@@ -1053,6 +1053,16 @@ LaTex排版
 \fbox{content}       |  在内容周围创建一个边框。
 ```
 
+### 多栏布局
+
+```latex
+\usepackage{multicol}                           |  使用 multicol 包创建多栏文本。
+
+\begin{multicols}{num} ... \end{multicols}      |  开始一个多栏环境，其中 num 指定列数。
+\onecolumn                                      |  文档从当前位置开始变为单列格式
+\twocolumn                                      |  文档从当前位置开始变为双列格式
+```
+
 另见
 ----
 
