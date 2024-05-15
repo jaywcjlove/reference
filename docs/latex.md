@@ -156,6 +156,7 @@ Supported Functions
 `KaTex:\sout{abc}` | <pur>`\sout{abc}`</pur> | `KaTex:\boxed{\pi=\frac c d}` | <pur>`\boxed{\pi=\frac c d}`</pur>
 `KaTex:\$a_{\angl n}` _<red>MD语法冲突</red>_ | <pur>`$a_{\angl n}`</pur> | `KaTex:a_\angln` | <pur>`a_\angln`</pur>
 `KaTex:\phase{-78^\circ}` | <pur>`\phase{-78^\circ}`</pur>
+`KaTex:\overset{a}{B}` | <pur>`\overset{a}{B}`</pur> | `KaTex:\underset{a}{B}` | <pur>`\underset{a}{B}`</pur>
 
 <pur>\tag{hi} x+y^{2x}</pur>
 
@@ -1031,6 +1032,18 @@ LaTex排版
 
 \bibliographystyle{plain} % 设定引用格式
 \bibliography{references} % 假设.bib文件名为 'references.bib'
+```
+
+其他
+----
+
+### URL
+
+```latex
+\usepackage{hyperref} % 加载 hyperref 包以增强 PDF 文档的交互性，如添加超链接和书签。
+
+\href{URL}{text} % 创建一个指向 URL 的超链接。
+\url{URL} % 显示 URL 并作为链接。
 ```
 
 另见
