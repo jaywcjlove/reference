@@ -972,7 +972,7 @@ x = \begin{cases}
 ### 表格
 
 ```latex
-\begin{table}[hbpt]
+\begin{table}[hbpt]  % 使用 longtable 包创建可以跨页的表格
    \centering  % 居中表格
    \caption{Example Table}
    \label{tab:example}
@@ -1003,9 +1003,9 @@ LaTex排版
 \qquad         |  双空格
 \vspace{}      |  增加纵向间距
 \hspace{}      |  增加横向间距
-\newpage       |  开始新的一页。
-\clearpage     |  清除当前页，并处理所有未处理的浮动体。
-\vfill         |  在当前页面的剩余空间中插入垂直空白。
+\newpage       |  开始新的一页
+\clearpage     |  清除当前页，并处理所有未处理的浮动体
+\vfill         |  在当前页面的剩余空间中插入垂直空白
 ```
 
 ### 页面页眉和页脚
@@ -1038,27 +1038,27 @@ LaTex排版
 ### URL
 
 ```latex
-\usepackage{hyperref}   |  加载 hyperref 包以增强 PDF 文档的交互性，如添加超链接和书签。
+\usepackage{hyperref}   |  加载 hyperref 包以增强 PDF 文档的交互性，如添加超链接和书签
 
-\href{URL}{text}        |  创建一个指向 URL 的超链接。
-\url{URL}               |  显示 URL 并作为链接。
+\href{URL}{text}        |  创建一个指向 URL 的超链接
+\url{URL}               |  显示 URL 并作为链接
 ```
 
 ### 颜色和盒子
 
 ```latex
-\usepackage{color}   |  使用 color 包来给文本添加颜色。
+\usepackage{color}   |  使用 color 包来给文本添加颜色
 
-\color{color}        |  设置文本颜色。
-\fbox{content}       |  在内容周围创建一个边框。
+\color{color}        |  设置文本颜色
+\fbox{content}       |  在内容周围创建一个边框
 ```
 
 ### 多栏布局
 
 ```latex
-\usepackage{multicol}                           |  使用 multicol 包创建多栏文本。
+\usepackage{multicol}                           |  使用 multicol 包创建多栏文本
 
-\begin{multicols}{num} ... \end{multicols}      |  开始一个多栏环境，其中 num 指定列数。
+\begin{multicols}{num} ... \end{multicols}      |  开始一个多栏环境，其中 num 指定列数
 \onecolumn                                      |  文档从当前位置开始变为单列格式
 \twocolumn                                      |  文档从当前位置开始变为双列格式
 ```
