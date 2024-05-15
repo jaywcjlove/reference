@@ -909,30 +909,29 @@ x = \begin{cases}
 列表表示
 ---
 
-| Markdown                      | LaTeX                          |
-|-------------------------------|--------------------------------|
-| `1. First item`<br>`2. Second item` | `\begin{enumerate}`<br>`\item First item`<br>`\item Second item`<br>`\end{enumerate}` |
-| `- First item`<br>`- Second item`  | `\begin{itemize}`<br>`\item First item`<br>`\item Second item`<br>`\end{itemize}` |
-| `**First item**`<br>`**Second item**`  | `\begin{description}`<br>`\item First item`<br>`\item Second item`<br>`\end{description}` |
-% ```latex
-% \begin{enumerate}
-%   \item First item
-%   \item Second item
-% \end{enumerate}
+```latex
+   - First item
+   - Second item
+\begin{enumerate}
+  \item First item
+  \item Second item
+\end{enumerate}
 
-
-% \begin{itemize}
-%     \item First item
-%     \item Second item
-% \end{itemize}
+   1. First item
+   2. Second item
+\begin{itemize}
+    \item First item
+    \item Second item
+\end{itemize}
   
+First item
+Second item
+\begin{description}
+    \item First item
+    \item Second item
+\end{description}
 
-% \begin{description}
-%     \item First item
-%     \item Second item
-% \end{description}
-
-图片展示
+图片和表格展示
 ---
 
 % 展示单张图像
@@ -965,6 +964,19 @@ x = \begin{cases}
     \caption{Caption for the entire figure}
     \label{fig:mainfig}
 \end{figure}
+
+% 表格示例
+\begin{table}[ht]
+   \centering  % Centers the table
+   \caption{Example Table}
+   \label{tab:example}
+   \begin{tabular}{|c|l|r|}  % Aligns columns: center, left, right
+      \hline  % Inserts a horizontal line
+      \textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\ \hline
+      Data 1 & Data 2 & Data 3 \\  % Row of data
+      Data 4 & Data 5 & Data 6 \\ \hline
+   \end{tabular}
+\end{table}
 ```
 
 另见
