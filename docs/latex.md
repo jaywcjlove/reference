@@ -905,6 +905,19 @@ x = \begin{cases}
 `KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur> | `KaTeX:\mathbf{a}` <pur>`\textbf{a}`</pur> |
 `KaTeX:\mathit{a}` <pur>`\textit{a}`</pur> | `KaTeX:\textup{a}` <pur>`\textup{a}`</pur> | `KaTeX:\textsl{a}` <pur>`\textsl{a}`</pur> | `KaTeX:\textsc{a}` <pur>`\textsc{a}`</pur> | `KaTeX:\underline{a}` <pur>`\underline{a}`</pur>
 
+列表表示
+---
+
+'\begin{itemize}
+    \item First item
+    \item Second item
+\end{itemize}'
+  
+'\begin{description}
+    \item Definition
+    \item Explanation
+\end{description}'
+
 另见
 ----
 
