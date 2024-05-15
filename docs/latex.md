@@ -905,20 +905,67 @@ x = \begin{cases}
 `KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur> | `KaTeX:\mathbf{a}` <pur>`\textbf{a}`</pur> |
 `KaTeX:\mathit{a}` <pur>`\textit{a}`</pur> | `KaTeX:\textup{a}` <pur>`\textup{a}`</pur> | `KaTeX:\textsl{a}` <pur>`\textsl{a}`</pur> | `KaTeX:\textsc{a}` <pur>`\textsc{a}`</pur> | `KaTeX:\underline{a}` <pur>`\underline{a}`</pur>
 
+```latex
 列表表示
 ---
 
-```latex
-\begin{itemize}
-    \item First item
-    \item Second item
-\end{itemize}
+| Markdown                      | LaTeX                          |
+|-------------------------------|--------------------------------|
+| `1. First item`<br>`2. Second item` | `\begin{enumerate}`<br>`\item First item`<br>`\item Second item`<br>`\end{enumerate}` |
+| `- First item`<br>`- Second item`  | `\begin{itemize}`<br>`\item First item`<br>`\item Second item`<br>`\end{itemize}` |
+| `**First item**`<br>`**Second item**`  | `\begin{description}`<br>`\item First item`<br>`\item Second item`<br>`\end{description}` |
+% ```latex
+% \begin{enumerate}
+%   \item First item
+%   \item Second item
+% \end{enumerate}
+
+
+% \begin{itemize}
+%     \item First item
+%     \item Second item
+% \end{itemize}
   
-```latex
-\begin{description}
-    \item Definition
-    \item Explanation
-\end{description}
+
+% \begin{description}
+%     \item First item
+%     \item Second item
+% \end{description}
+
+图片展示
+---
+
+% 展示单张图像
+\usepackage{graphicx}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{path/to/your/image.jpg}
+    \caption{Caption for the single figure.}
+    \label{fig:singlefig}
+\end{figure}
+  
+% 展示多张图像
+\usepackage{graphicx}
+\usepackage{subcaption}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{path/to/your/image1.jpg}
+        \caption{First subfigure}
+        \label{fig:sub1}
+    \end{subfigure}
+    \hfill  % Adds horizontal space between the subfigures
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{path/to/your/image2.jpg}
+        \caption{Second subfigure}
+        \label{fig:sub2}
+    \end{subfigure}
+    \caption{Caption for the entire figure}
+    \label{fig:mainfig}
+\end{figure}
+```
 
 另见
 ----
