@@ -718,7 +718,7 @@ std::this_thread::yield();
 ```
 
 ### 锁
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-5-->
 
 > `#include <mutex>`
 
@@ -875,7 +875,7 @@ cond.wait(lock, predicate);
 唤醒所有调用 `wait` 的线程。
 
 ### 获取线程的运行结果
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-5-->
 
 > `#include <future>`
 
@@ -962,13 +962,105 @@ else if (status ==
 
 #### 多个返回值
 
+如果要多次获取结果，可以使用`std::shared_future`，其会返回结果的一个**拷贝**。
+
 ```cpp
 std::shared_future<T> result;
 ```
 
-如果要多次获取结果，可以使用`std::shared_future`，其会返回结果的一个**拷贝**。
-
 对于不可拷贝对象，可以在`std::shared_future`中存储对象的指针，而非指针本身。
+
+### 创建线程
+
+```cpp
+void threadFunction() {
+  // 线程函数体
+  std::cout << "From thread" << std::endl;
+}
+
+int main() {
+  // 创建线程并开始执行线程函数
+  std::thread t(threadFunction);
+  
+  // 等待线程执行完毕
+  t.join();
+  
+  return 0;
+}
+```
+
+### 传递参数给线程函数
+
+```cpp
+void threadFunction(int value) {
+  // 线程函数体
+  std::cout << "Received value: " << value << std::endl;
+}
+
+int main() {
+  int data = 42;
+  std::thread t(threadFunction, data);
+  t.join();
+  return 0;
+}
+```
+
+### 使用Lambda表达式创建线程
+
+```cpp
+int main() {
+  int data = 42;
+  std::thread t([data]() {
+      // Lambda 表达式作为线程函数
+      std::cout << "Received value: " << data << std::endl;
+  });
+  t.join();
+  return 0;
+}
+```
+
+### **处理线程间的同步：**
+
+```cpp
+#include <mutex>
+
+std::mutex mtx;
+
+void threadFunction() {
+  std::lock_guard<std::mutex> lock(mtx);
+  std::cout << "Thread safe output." << std::endl;
+}
+
+int main() {
+  std::thread t1(threadFunction);
+  std::thread t2(threadFunction);
+  t1.join();
+  t2.join();
+  return 0;
+}
+```
+
+### **使用`std::async`启动异步任务：**
+
+```cpp
+#include <future>
+
+int taskFunction() {
+  // 异步任务
+  return 42;
+}
+
+int main() {
+  // 启动异步任务
+  std::future<int> fut = std::async(std::launch::async, taskFunction);
+  
+  // 获取异步任务的结果
+  int result = fut.get();
+  
+  std::cout << "Result: " << result << std::endl;
+  return 0;
+}
+```
 
 C++ 预处理器
 ------------

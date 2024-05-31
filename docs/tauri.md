@@ -155,6 +155,7 @@ tauri = { version = "...", features = ["...", "devtools"] }
 
 安卓开发
 ---
+
 ### 环境变量
 <!--rehype:wrap-class=col-span-2-->
 `JAVA_HOME`
@@ -162,6 +163,7 @@ tauri = { version = "...", features = ["...", "devtools"] }
 `ANDROID_HOME`
 
 `NDK_HOME`
+
 ### 准备目标
 <!--rehype:wrap-class=col-span-2-->
 
@@ -173,13 +175,16 @@ $ rm -r src-tauri/gen
 $ npm run tauri android init
 $ npm run tauri icon
 ```
+
 修改应用名：%app_path%\src-tauri\gen\android\app\src\main\res\values\strings.xml
+
 ### 编译
 <!--rehype:wrap-class=col-span-2-->
 ```bash
 $ npm run tauri android dev
 $ npm run tauri android build
 ```
+
 ### 签名
 <!--rehype:wrap-class=col-span-2-->
 ```bash
@@ -187,6 +192,7 @@ $ keytool -genkey -alias android.keystore -keyalg RSA -validity 20000 -keystore 
 $ zipalign -p -f -v 4 unsigned.apk release.apk
 $ apksigner sign --ks android.keystore release.apk
 ```
+
 配置
 ---
 

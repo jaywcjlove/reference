@@ -647,7 +647,7 @@ public static void main(String[] args) throws ExecutionException, InterruptedExc
 - handler: 拒绝策略
 
 ```java
-ThreadPoolExecutor threadPoolExecutor 
+ThreadPoolExecutor threadPoolExecutor
   = new ThreadPoolExecutor(
   2, 5,
   5, TimeUnit.SECONDS,
@@ -672,7 +672,7 @@ synchronized(obj) {
 }
 
 // (静态)方法
-public synchronized 
+public synchronized
   (static) void methodName() {
    ...
 }
@@ -717,7 +717,7 @@ try {
 ### ThreadLocal
 
 ```java
-ThreadLocal<Integer> threadLocal 
+ThreadLocal<Integer> threadLocal
     = new ThreadLocal<>();
 ```
 
@@ -990,7 +990,7 @@ Reader bufferedFileReader
   );
 
 // 缓冲字符输出流
-Writer bufferedFileWriter 
+Writer bufferedFileWriter
   = new BufferedWriter(
     new FileWriter("output.txt")
   );
@@ -1000,11 +1000,11 @@ Writer bufferedFileWriter
 
 ```java
 // 数据输入流
-DataInputStream dataInputStream 
+DataInputStream dataInputStream
   = new DataInputStream(inputStream);
 
 // 数据输出流
-DataOutputStream dataOutputStream 
+DataOutputStream dataOutputStream
   = new DataOutputStream(outputStream);
 ```
 
@@ -1012,11 +1012,11 @@ DataOutputStream dataOutputStream
 
 ```java
 // 对象输入流
-ObjectInputStream objectInputStream 
+ObjectInputStream objectInputStream
   = new ObjectInputStream(inputStream);
 
 // 对象输出流
-ObjectOutputStream objectOutputStream 
+ObjectOutputStream objectOutputStream
   = new ObjectOutputStream(outputStream);
 ```
 
@@ -1027,7 +1027,7 @@ ObjectOutputStream objectOutputStream
 
 ```java
 try (
-  ObjectOutputStream objectOutputStream 
+  ObjectOutputStream objectOutputStream
     = new ObjectOutputStream(new FileOutputStream("object.dat"))
 ) {
     objectOutputStream.writeObject(object);
@@ -1038,7 +1038,7 @@ try (
 
 ```java
 try (
-  ObjectInputStream objectInputStream 
+  ObjectInputStream objectInputStream
     = new ObjectInputStream(new FileInputStream("object.dat"))
 ) {
     Object object = objectInputStream.readObject();
@@ -1305,6 +1305,94 @@ Method[] methods = clazz.getDeclaredMethods();
 ```java
 // 获取注解信息
 Annotation annotation = field.getAnnotation(MyAnnotation.class);
+```
+
+方法引用
+---
+
+### 方法引用
+<!--rehype:wrap-class=row-span-3-->
+
+Java 的 `Consumer` 接口里的 `accept` 方法接受参数但不返回值。要让它打印传入的参数，可以这样做：
+
+```java
+Consumer<String> test = new Consumer<String>() {
+    @Override
+    public void accept(String s) {
+      System.out.println(s);
+    }
+  };
+test.accept("test");
+```
+
+更简单的，我们可以直接传入Lambda表达式
+
+```java
+Consumer<String> test = System.out::println;
+```
+
+方法引用通过方法的名字指向一个方法，使语言构造更简洁，减少冗余代码。
+
+#### 使用方式
+
+- 引用方法
+- 引用构造方法
+- 引用数组
+
+### 静态方法引用
+
+```java
+Comparator<Integer> comparator = Math::max;
+
+int result = comparator.compare(1, 2); 
+// 返回 2
+```
+
+### 实例方法引用
+
+```java
+String str = "HELLO";
+
+String lowerCase = str::toLowerCase; 
+// 返回 "hello"
+```
+
+### 构造方法引用
+
+```java
+Supplier<String> supplier = String::new;
+
+String str = supplier.get(); 
+// 返回一个空字符串
+```
+
+### 数组构造方法引用
+
+```java
+Function<Integer, String[]> function = String[]::new;
+
+
+String[] array = function.apply(5); 
+// 返回 5 个空字符串的数组
+```
+<!--rehype:className=wrap-text-->
+
+### 对象中的方法引用
+
+```java
+String someStr = "HELLO";
+
+String lowerCase = someStr::toLowerCase; 
+// 返回 "hello"
+```
+
+### 对象中的静态方法引用
+
+```java
+SomeClass someObject = new SomeClass();
+
+int result = someObject::staticMethod; 
+// 调用静态方法
 ```
 
 杂项 Misc

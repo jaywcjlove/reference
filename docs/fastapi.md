@@ -561,6 +561,116 @@ async def read_users():
 安全性
 ---
 
+### 基于 Token 的认证
+<!--rehype:wrap-class=col-span-2-->
+
+```python
+from fastapi import FastAPI, Depends, HTTPException
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from pydantic import BaseModel
+
+app = FastAPI()
+```
+
+使用 OAuth2PasswordBearer 创建一个 token 依赖
+
+```python
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+```
+
+假设这是你的用户数据库
+
+```python
+fake_users_db = {
+    "johndoe": {
+        "username": "johndoe",
+        "full_name": "John Doe",
+        "email": "johndoe@example.com",
+        "hashed_password": "fakehashedsecret",
+        "disabled": False,
+    }
+}
+```
+
+创建一个用户模型
+
+```python
+class User(BaseModel):
+    username: str
+    email: str
+    full_name: str
+    disabled: bool
+```
+
+创建一个简单的认证函数
+
+```python
+def fake_hash_password(password: str):
+    return "fakehashed" + password
+
+def get_user(db, username: str):
+    if username in db:
+        user_dict = db[username]
+        return User(**user_dict)
+
+def fake_decode_token(token: str):
+    # 这个函数应该验证 token 并返回用户信息
+    # 这里我们只是简单地返回了用户名
+    return get_user(fake_users_db, token)
+```
+
+创建一个依赖，用于从请求中获取 token 并验证用户
+
+```python
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    user = fake_decode_token(token)
+    if not user:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid authentication credentials",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    return user
+
+@app.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    user = get_user(fake_users_db, form_data.username)
+    if not user or user.hashed_password != fake_hash_password(form_data.password):
+        raise HTTPException(status_code=400, detail="Incorrect username or password")
+    return {"access_token": user.username, "token_type": "bearer"}
+
+@app.get("/users/me")
+async def read_users_me(current_user: User = Depends(get_current_user)):
+    return current_user
+
+```
+
+使用 OAuth2PasswordBearer 来创建一个简单的 token 认证流程。
+
+### HTTPS 和证书
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+```
+
+在生产环境中，你应该使用一个真正的证书和私钥，你可以从像 Let's Encrypt 这样的证书颁发机构获得免费的证书，或者使用 OpenSSL 生成自签名证书
+
+```python
+@app.get("/https")
+async def read_https():
+    return {"message": "Hello, HTTPS!"}
+```
+
+启动服务器时，使用以下命令来指定证书和私钥：
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port 443 --ssl-keyfile /path/to/your/key.pem --ssl-certfile /path/to/your/cert.pem
+```
+
+FastAPI 默认支持 HTTPS，你只需要提供证书和私钥即可。
+
 待更新
 
 参考

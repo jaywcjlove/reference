@@ -74,7 +74,7 @@ jobs:
           EOF
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           commit_message: ${{ github.event.head_commit.message }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -134,7 +134,7 @@ jobs:
       - run: docker buildx prune
 
       - name: Build and push image:latest
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           push: true
           context: .
@@ -142,7 +142,7 @@ jobs:
           tags: wcjiang/reference:latest
 
       - name: Build and push image:tags
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         if: steps.create_tag.outputs.successful
         with:
           push: true
