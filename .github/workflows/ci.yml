@@ -88,12 +88,14 @@ jobs:
           filter: (^[\s]+?[R|r]elease)|(^[R|r]elease)
 
       - name: Create Release
-        uses: ncipollo/release-action@v1
+        uses: jaywcjlove/create-tag-action@main
         if: steps.create_tag.outputs.successful
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ steps.create_tag.outputs.version }}
-          tag: ${{ steps.create_tag.outputs.version }}
+          package-path: ./package.json
+          version: ${{steps.create_tag.outputs.version}}
+          release: true
+          prerelease: false
+          draft: false
           body: |
             [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor) 
             
