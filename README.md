@@ -160,6 +160,7 @@ Quick Reference
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9);&class=contributing-->  
 [Gdb](./docs/gdb.md)<!--rehype:style=background: rgb(215 89 62);-->  
 [Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=版本控制-->  
+[Glances](./docs/glances.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [iptables](./docs/iptables.md)<!--rehype:style=background: rgb(32 74 135);-->  
