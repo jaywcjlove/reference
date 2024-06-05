@@ -124,6 +124,112 @@ glances --export json  # JSON 输出
 glances --export csv   # CSV 输出
 ```
 
+命令行选项
+---
+
+### 命令行选项
+
+:- | :-
+:- | :-
+`-h`, `--help` | 显示此帮助信息并退出
+`-V`, `--version` | 显示程序版本号并退出
+`-d`, `--debug` | 启用调试模式
+`-C CONF_FILE`, `--config CONF_FILE` | 配置文件的路径
+`--modules-list` | 显示模块（插件和导出）列表并退出
+`--stdout PLUGINS_STATS` | 显示插件统计信息到标准输出（用逗号分隔的插件/插件属性列表）
+<!--rehype:className=style-list-->
+
+### 禁用启用选项
+<!--rehype:wrap-class=row-span-2-->
+
+:- | :-
+:- | :-
+`--disable-plugin PLUGIN` | 禁用插件（用逗号分隔的列表）
+`--enable-plugin PLUGIN` | 启用插件（用逗号分隔的列表）
+`--disable-process` | 禁用进程模块（减少Glances的CPU消耗）
+`--disable-webui` | 禁用Web界面（仅响应RESTful API）
+`--enable-history` | 启用历史模式
+`--disable-bold` | 禁用终端中的粗体模式
+`--disable-bg` | 禁用终端中的背景颜色
+`--enable-process-extended` | 启用顶级进程的扩展统计
+`--disable-check-update` | 禁用在线Glances版本检查
+`--disable-autodiscover` | 禁用自动发现功能
+`--light`, `--enable-light` | Curses UI的轻量模式（仅启用顶部菜单）
+`-q`, `--quiet` | 不显示 curses 界面
+<!--rehype:className=style-list-->
+
+### SNMP
+
+:- | :-
+:- | :-
+`--snmp-community SNMP_COMMUNITY` | SNMP社区
+`--snmp-port SNMP_PORT` | SNMP端口
+`--snmp-version SNMP_VERSION` | SNMP版本（1, 2c 或 3）
+`--snmp-user SNMP_USER` | SNMP用户名（仅适用于SNMPv3）
+`--snmp-auth SNMP_AUTH` | SNMP认证密钥（仅适用于SNMPv3）
+`--snmp-force` | 强制SNMP模式
+<!--rehype:className=style-list-->
+
+### 命令行选项
+
+:- | :-
+:- | :-
+`--export EXPORT`| 启用导出模块（用逗号分隔的列表）
+`--export-csv-file EXPORT_CSV_FILE` | CSV导出文件路径
+`--export-json-file EXPORT_JSON_FILE`| JSON导出文件路径
+<!--rehype:className=style-list-->
+
+### 命令行选项
+
+:- | :-
+:- | :-
+`-0`, `--disable-irix` | 任务的CPU使用率将按CPU总数进行划分
+`-1`, `--percpu` | 以每个CPU模式启动Glances
+`-2`, `--disable-left-sidebar` | 禁用网络、磁盘I/O、文件系统和传感器模块
+`-3`, `--disable-quicklook` | 禁用快速查看模块
+`-4`, `--full-quicklook` | 仅启用快速查看和负载模块
+`-5`, `--disable-top` | 禁用顶部菜单（快速查看、CPU、内存、交换区和负载）
+`-6`, `--meangpu` | 以平均GPU模式启动Glances
+<!--rehype:className=style-list-->
+
+### 命令行选项
+
+:- | :-
+:- | :-
+`-c CLIENT`, `--client CLIENT` | 通过IPv4/IPv6地址、主机名或主机名:端口连接到Glances服务器
+`-s`, `--server` | 以服务器模式运行Glances
+`--browser` | 启动客户端浏览器（服务器列表）
+`-p PORT`, `--port PORT` | 定义客户端/服务器TCP端口 \[默认：61209]
+`-B BIND_ADDRESS`, `--bind BIND_ADDRESS` | 将服务器绑定到给定的IPv4/IPv6地址或主机名
+`--username` | 定义客户端/服务器用户名
+`--password` | 定义客户端/服务器密码
+<!--rehype:className=style-list-->
+
+### 命令行选项
+
+:- | :-
+:- | :-
+`-t TIME`, `--time TIME` | 设置刷新时间（秒）\[默认：3秒]
+`-w`, `--webserver` |  以Web服务器模式运行Glances（需要bottle库）
+`--cached-time CACHED_TIME` | 设置服务器缓存时间 \[默认：1秒]
+`--open-web-browser` |  尝试在默认的 Web 浏览器中打开Web界面
+`-f PROCESS_FILTER`, `--process-filter PROCESS_FILTER` | 设置进程过滤模式（正则表达式）
+`--process-short-name` | 强制使用进程名称的短名称
+`--hide-kernel-threads` |  在进程列表中隐藏内核线程（Windows不可用）
+<!--rehype:className=style-list-->
+
+### 命令行选项
+
+:- | :-
+:- | :-
+`-b`, `--byte` | 以每秒字节数显示网络速率
+`--diskio-show-ramfs` | 在 DiskIO 插件中显示RAM文件系统
+`--diskio-iops` | 在 DiskIO 插件中显示每秒I/O操作数
+`--fahrenheit` | 以华氏度显示温度（默认是摄氏度）
+`--fs-free-space` | 显示文件系统的可用空间而非已用空间
+`--theme-white` | 优化显示颜色以适应白色背景
+<!--rehype:className=style-list-->
+
 键盘快捷键
 ---
 
@@ -205,6 +311,502 @@ glances --export csv   # CSV 输出
 | `DOWN` |  在服务器列表中向下 |
 | `q\|ESC` | 退出Glances |
 <!--rehype:className=shortcuts left-align-->
+
+配置
+---
+
+### 位置
+<!--rehype:wrap-class=col-span-2-->
+
+您可以将自己的 `glances.conf` 文件放在以下位置：
+
+:-- | -- | --
+:-- | -- | --
+`Linux`, `SunOS` | ~/.config/glances/, /etc/glances/, /usr/share/docs/glances/ |
+`*BSD` |~/.config/glances/, /usr/local/etc/glances/, /usr/share/docs/glances/ |
+`macOS` | ~/Library/Application Support/glances/, /usr/local/etc/glances/, /usr/share/docs/glances/ |
+`Windows` | %APPDATA%\glances\glances.conf |
+
+---
+
+- 在 Windows XP 上，%APPDATA% 为：`C:\Documents and Settings\<USERNAME>\Application Data`
+- 在 Windows Vista 及更高版本上：`C:\Users\<用户名>\AppData\Roaming`
+
+### 语法
+
+```ini
+[global]
+# 刷新率（默认为至少 2 秒）
+# 可以通过 -t <sec> 选项覆盖
+# 也可以在每个插件部分覆盖它
+refresh=2
+# Glances 是否应该检查 PyPI 上是否有更新的版本？
+check_update=false
+# 历史大小（最大值数）
+# 默认值为28800：1天，每3秒1分
+history_size=28800
+```
+
+### CPU 插件的示例
+
+```ini
+[cpu]
+disable=False
+refresh=3
+user_careful=50
+user_warning=70
+user_critical=90
+iowait_careful=50
+iowait_warning=70
+iowait_critical=90
+system_careful=50
+system_warning=70
+system_critical=90
+steal_careful=50
+steal_warning=70
+steal_critical=90
+```
+
+### InfluxDB 导出模块
+
+```ini
+[influxdb]
+# 配置 --export influxdb 选项
+# https://influxdb.com/
+host=localhost
+port=8086
+user=root
+password=root
+db=glances
+prefix=localhost
+#tags=foo:bar,spam:eggs
+```
+
+### Nginx AMP
+
+```ini
+[amp_nginx]
+# 应启用 Nginx 状态页面 
+# https://easyengine.io/tutorials/nginx/status-page/
+
+enable=true
+regex=\/usr\/sbin\/nginx
+refresh=60
+one_line=false
+status_url=http://localhost/nginx_status
+```
+<!--rehype:className=wrap-text-->
+
+导出统计服务
+---
+
+### CSV
+
+```sh
+$ glances --export csv \
+   --export-csv-file /tmp/glances.csv \
+   --quiet
+```
+
+可以将统计数据导出到 CSV 文件
+
+### JSON
+
+```sh
+$ glances --export json \
+   --export-json-file /tmp/glances.json
+```
+
+可以将统计信息导出到 JSON 文件
+
+### Cassandra
+<!--rehype:wrap-class=row-span-2-->
+
+您可以将统计数据导出到 Cassandra 或 Scylla 服务器
+
+```ini
+[cassandra]
+host=localhost
+port=9042
+protocol_version=3
+keyspace=glances
+replication_factor=2
+table=localhost
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export cassandra
+```
+
+数据模型如下：
+
+```sql
+CREATE TABLE <table> (plugin text, time timeuuid, stat map<text,float>, PRIMARY KEY (plugin, time))
+```
+
+### Graph
+<!--rehype:wrap-class=col-span-2-->
+
+```ini
+[graph]
+# --export graph 选项的配置
+# 设置创建图形（.svg 文件）的路径
+# 可以通过 --graph-path 命令行选项覆盖
+path=/tmp
+# 可以通过设置自动生成图表
+# generate_every 为一个非零值，对应于之间的秒数
+# 两代。将其设置为 0 以禁用图形自动生成。
+generate_every=60
+# 请参阅 Pygal lib 文档中的以下配置键定义
+# http://pygal.org/en/stable/documentation/index.html
+width=800
+height=600
+style=DarkStyle
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export graph \
+      --export-graph-path /tmp
+```
+
+### CouchDB
+
+您可以将统计数据导出到 CouchDB 服务器
+
+```ini
+[mongodb]
+host=localhost
+port=27017
+db=glances
+user=root
+password=example
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export mongodb
+```
+
+### InfluxDB
+<!--rehype:wrap-class=col-span-2 row-span-4-->
+
+您可以将统计数据导出到 InfluxDB 服务器（时间序列服务器）
+
+测量 | 字段 | 标签
+:-- | -- | --
+cpu | user system iowait… |  hostname
+network | read_bytes write_bytes time_since_update…  | hostname disk_name
+diskio | rx tx time_since_update…  | hostname interface_name
+docker | cpu_percent memory_usage…  | hostname name
+gpu | proc mem temperature…  | hostname gpu_id
+<!--rehype:className=show-header-->
+
+#### InfluxDB （最高版本 1.7.x）
+
+```ini
+[influxdb]
+host=localhost
+port=8086
+protocol=http
+user=root
+password=root
+db=glances
+# 所有测量名称都会添加前缀
+# Ex: prefix=foo
+#     => foo.cpu
+#     => foo.mem
+# 您还可以使用动态值
+#prefix=foo
+# 将为所有测量添加以下标签
+# 您还可以使用动态值
+# 注意：主机名始终作为标签添加
+#tags=foo:bar,spam:eggs,domain:`domainname`
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export influxdb
+```
+
+#### InfluxDB v2（来自 InfluxDB v1.8.x/Flux 和 InfluxDB v2.x）
+
+```ini
+[influxdb2]
+host=localhost
+port=8086
+protocol=http
+org=nicolargo
+bucket=glances
+token=EjFUTWe8U-MIseEAkaVIgVnej_TrUpDy==
+# 设置两个导出之间的间隔（以秒为单位）
+# 如果时间间隔设置为 0，
+# 则使用 Glances 刷新时间（默认行为）
+#interval=0
+# 将为所有测量名称添加前缀
+# Ex: prefix=foo
+#     => foo.cpu
+#     => foo.mem
+# 您还可以使用动态值
+#prefix=foo
+# 将为所有测量添加以下标签
+# 您还可以使用动态值.
+# 注意：主机名始终作为标签添加
+#tags=foo:bar,spam:eggs,domain:`domainname`
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export influxdb2
+```
+
+### Elasticsearch
+
+可以将统计数据导出到 Elasticsearch 服务器
+
+```ini
+[elasticsearch]
+host=localhost
+port=9200
+index=glances
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export elasticsearch
+```
+
+### MQTT
+
+您可以将统计信息导出到 `MQTT` 服务器
+
+```ini
+[mqtt]
+host=localhost
+port=883
+tls=true
+user=glances
+password=glances
+topic=glances
+topic_structure=per-metric
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export mqtt
+```
+
+### MongoDB
+
+```ini
+[couchdb]
+host=localhost
+port=
+user=root
+password=example
+db=glances
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export couchdb
+```
+
+### OpenTSDB
+
+```ini
+[opentsdb]
+host=localhost
+port=4242
+prefix=glances
+tags=foo:bar,spam:eggs
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export opentsdb
+```
+
+### Kafka
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+
+您可以将统计信息导出到 Kafka 服务器
+
+```ini
+[kafka]
+host=localhost
+port=9092
+topic=glances
+#compression=gzip
+# Tags will be added for all events
+#tags=foo:bar,spam:eggs
+# You can also use dynamic values
+#tags=hostname:`hostname -f`
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export kafka
+```
+
+内存插件的记录示例：
+
+```py
+ConsumerRecord(topic=u'glances', partition=0, offset=1305, timestamp=1490460592248, timestamp_type=0, key='mem', value=u'{"available": 2094710784, "used": 5777428480, "cached": 2513543168, "mem_careful": 50.0, "percent": 73.4, "free": 2094710784, "mem_critical": 90.0, "inactive": 2361626624, "shared": 475504640, "history_size": 28800.0, "mem_warning": 70.0, "total": 7872139264, "active": 4834361344, "buffers": 160112640}', checksum=214895201, serialized_key_size=3, serialized_value_size=303)
+```
+<!--rehype:className=wrap-text-->
+
+使用 Kafka Glances 插件的 Python 代码示例：
+
+```py
+from kafka import KafkaConsumer
+import json
+
+consumer = KafkaConsumer('glances', value_deserializer=json.loads)
+for s in consumer:
+  print(s)
+```
+
+### Prometheus
+
+```ini
+[prometheus]
+host=localhost
+port=9091
+prefix=glances
+labels=src:glances
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export prometheus
+```
+
+### RabbitMQ
+
+```ini
+[rabbitmq]
+host=localhost
+port=5672
+user=glances
+password=glances
+queue=glances_queue
+#protocol=amqps
+```
+
+并运行 Glances：
+
+```sh
+$ glances --export rabbitmq
+```
+
+### RESTful
+<!--rehype:wrap-class=row-span-2-->
+
+```ini
+[restful]
+# --export-restful 选项的配置
+# 例如，导出到 http://localhost:6789/
+host=localhost
+port=6789
+protocol=http
+path=/
+```
+
+URL语法
+
+```
+http://localhost:6789/
+|      |         |   |
+|      |         |   path
+|      |         port
+|      host
+protocol
+```
+
+并运行 Glances
+
+```sh
+$ glances --export restful
+```
+
+### ZeroMQ
+<!--rehype:wrap-class=row-span-2-->
+
+```ini
+[zeromq]
+host=127.0.0.1
+port=5678
+prefix=G
+```
+
+并运行 Glances
+
+```sh
+$ glances --export zeromq
+```
+
+以下是订阅 Glances 统计数据的简单 Python 客户端：
+
+```py
+import json
+import zmq
+
+context = zmq.Context()
+
+subscriber = context.socket(zmq.SUB)
+subscriber.setsockopt(zmq.SUBSCRIBE, 'G')
+subscriber.connect("tcp://127.0.0.1:5678")
+
+while True:
+    _, plugin, data_raw = subscriber.recv_multipart()
+    data = json.loads(data_raw)
+    print('{} => {}'.format(plugin, data))
+
+subscriber.close()
+context.term()
+```
+
+### Riemann
+
+```ini
+[riemann]
+host=localhost
+port=5555
+```
+
+并运行 Glances
+
+```sh
+$ glances --export riemann
+```
+
+### StatsD
+
+```ini
+[statsd]
+host=localhost
+port=8125
+prefix=glances
+```
+
+并运行 Glances
+
+```sh
+$ glances --export statsd
+```
 
 另见
 ----
