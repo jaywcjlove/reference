@@ -80,9 +80,9 @@ npm run start # 监听 md 文件编译输出 HTML
 <!--rehype:class=home-card-->
 ```
 
-首页导航图标存放在 `scripts/assets` 目录中，如果你的备忘清单定义为 `docs/cron.md`，那么你的图标就定义为 `cron.svg` 存放到 `scripts/assets` 目录中，重新编译首页当行菜单就拥有了图标。
+首页导航图标存放在 `/assets` 目录中，如果你的备忘清单定义为 `docs/cron.md`，那么你的图标就定义为 `cron.svg` 存放到 `/assets` 目录中，重新编译首页当行菜单就拥有了图标。
 
-- 图标存放在 [`scripts/assets`](https://github.com/jaywcjlove/reference/blob/main/scripts/assets) 目录中
+- 图标存放在 [`/assets`](https://github.com/jaywcjlove/reference/tree/main/assets) 目录中
 - 图片名称与清单名称保持一致 `cron.md` -> `cron.svg` (注意大小写)
 - SVG 图标尺寸 `<svg height="1em" width="1em"`
 - SVG 图标颜色使用继承颜色值 `<svg fill="currentColor"`
@@ -197,23 +197,37 @@ license = "支持 HTML 字符串"
 ```
 
 ### 支持更多配置加载
+<!--rehype:wrap-class=col-span-2-->
 
-```bash
-.refsrc                .refsrc.json
-.refsrc.json5          .refsrc.jsonc
-.refsrc.yaml           .refsrc.yml
-.refsrc.toml           .refsrc.ini
-.refsrc.js             .refsrc.ts
-.refsrc.cjs            .refsrc.mjs
-.config/refsrc         .config/refsrc.json
-.config/refsrc.json5   .config/refsrc.jsonc
-.config/refsrc.yaml    .config/refsrc.yml
-.config/refsrc.toml    .config/refsrc.ini
-.config/refsrc.js      .config/refsrc.ts
-.config/refsrc.cjs     .config/refsrc.mjs
-refs.config.js         refs.config.ts
-refs.config.cjs        refs.config.mjs
-```
+- `.refsrc`
+- `.refsrc.json`
+- `.refsrc.json5`
+- `.refsrc.jsonc`
+- `.refsrc.yaml`
+- `.refsrc.yml`
+- `.refsrc.toml`
+- `.refsrc.ini`
+- `.refsrc.js`
+- `.refsrc.ts`
+- `.refsrc.cjs`
+- `.refsrc.mjs`
+- `.config/refsrc`
+- `.config/refsrc.json`
+- `.config/refsrc.json5`
+- `.config/refsrc.jsonc`
+- `.config/refsrc.yaml`
+- `.config/refsrc.yml`
+- `.config/refsrc.toml`
+- `.config/refsrc.ini`
+- `.config/refsrc.js`
+- `.config/refsrc.ts`
+- `.config/refsrc.cjs`
+- `.config/refsrc.mjs`
+- `refs.config.js`
+- `refs.config.ts`
+- `refs.config.cjs`
+- `refs.config.mjs`
+<!--rehype:className=cols-3 style-none-->
 
 ### 环境变量
 
@@ -798,7 +812,7 @@ H2 部分
 ### Title 6
 ```
 
-在 `Title 1` 标题添加 `col-span-2` 和 `row-span-2` 占位类，使用 `空格` 间隔。
+[#](https://github.com/jaywcjlove/reference/blob/8fad19506946ae84139002ff367e2f2bca9b0696/docs/quickreference.md?plain=1#L774-L775)<!--rehype:target=__blank--> 在 `Title 1` 标题添加 `col-span-2` 和 `row-span-2` 占位类，使用 `空格` 间隔。
 
 表格
 ---
@@ -813,14 +827,14 @@ H2 部分
 `%A, %B %e, %Y` | Sunday, June 5, 2013
 `%b %e %a` | Jun 5 Sun
 
-#### Time
+#### Time (H4)
 
 :- | :-
 :- | :-
 `%H:%M` | 23:05
 `%I:%M %p` | 11:05 PM
 
-标题为 `H4` 的基本表格。
+[#](https://github.com/jaywcjlove/reference/blob/8fad19506946ae84139002ff367e2f2bca9b0696/docs/quickreference.md?plain=1#L806-L823)<!--rehype:target=__blank--> 标题为 `H4` 的基本表格。
 
 ### 快捷键
 
@@ -835,7 +849,7 @@ H2 部分
 `U` | Rounded
 <!--rehype:className=shortcuts-->
 
-[#](https://github.com/jaywcjlove/reference/blob/ee03850619440e3700ed68ccc2ed21d3591a1490/docs/quickreference.md?plain=1#L839-L844)<!--rehype:target=__blank--> `<!--rehype:className=shortcuts-->`
+[#](https://github.com/jaywcjlove/reference/blob/8fad19506946ae84139002ff367e2f2bca9b0696/docs/quickreference.md?plain=1#L827-L836)<!--rehype:target=__blank--> `<!--rehype:className=shortcuts-->`
 
 ### 展示标题
 
