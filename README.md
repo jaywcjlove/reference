@@ -232,7 +232,7 @@ Quick Reference
 [Sublime Text](./docs/sublime-text.md)<!--rehype:style=background: rgb(223 148 0);-->  
 [Vimium](./docs/vimium.md)<!--rehype:style=background: rgb(49 168 255);&class=contributing&class=tag&data-lang=浏览器插件-->
 [VSCode](./docs/vscode.md)<!--rehype:style=background: rgb(91 163 230);-->  
-[Twitter](./docs/twitter.md)<!--rehype:style=background: rgb(91 163 230);-->  
+[Twitter(X)](./docs/twitter.md)<!--rehype:style=background: rgb(91 163 230);-->  
 [WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220);-->  
 [Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233);&class=tag&data-lang=macOS-->  
 <!--rehype:class=home-card-->

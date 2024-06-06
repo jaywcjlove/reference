@@ -1,7 +1,7 @@
-Twitter
+Twitter(X)
 ===
 
-Twitter 上的 26 个键盘快捷键和高级搜索参考备忘清单
+[Twitter](https://x.com) 上的 26 个键盘快捷键和高级搜索参考备忘清单
 
 键盘快捷键
 ----
