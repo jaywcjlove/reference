@@ -222,7 +222,7 @@
 
 
 
-<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell &#x3C;command></code></td><td>在设备上运行指定的命令（大多数 Unix 命令在这里工作）</td></tr><tr><td align="left"><code>adb shell wm size</code></td><td>显示当前屏幕分辨率</td></tr><tr><td align="left"><code>adb shell wm size WxH</code></td><td>将分辨率设置为 WxH</td></tr><tr><td align="left"><code>adb shell pm list packages</code></td><td>列出所有已安装的应用包</td></tr><tr><td align="left"><code>adb shell pm list packages -3</code></td><td>列出所有已安装的第三方的应用包</td></tr><tr><td align="left"><code>adb shell monkey -p app.package.name</code></td><td>启动指定包名的应用程序</td></tr></tbody></table>
+<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell &#x3C;command></code></td><td>在设备上运行指定的命令（大多数 Unix 命令在这里工作）</td></tr><tr><td align="left"><code>adb shell wm size</code></td><td>显示当前屏幕分辨率</td></tr><tr><td align="left"><code>adb shell wm size WxH</code></td><td>将分辨率设置为 WxH</td></tr><tr><td align="left"><code>adb shell pm list packages</code></td><td>列出所有已安装的应用包</td></tr><tr><td align="left"><code>adb shell pm list packages -3</code></td><td>列出所有已安装的第三方的应用包</td></tr><tr><td align="left"><code>adb shell monkey -p app.package.name &#x3C;count></code></td><td>启动指定包名的应用程序, 并执行测试</td></tr></tbody></table>
 <!--rehype:className=style-list-arrow-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="包安装"><a aria-hidden="true" tabindex="-1" href="#包安装"><span class="icon icon-link"></span></a>包安装</h3><div class="wrap-body">
 
@@ -250,7 +250,7 @@
 
 
 
-<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell install &#x3C;apk></code></td><td>安装应用程序</td></tr><tr><td align="left"><code>adb shell install &#x3C;path></code></td><td>从手机路径安装应用</td></tr><tr><td align="left"><code>adb shell install -r &#x3C;path></code></td><td>从手机路径安装应用（允许覆盖安装）</td></tr><tr><td align="left"><code>adb shell uninstall &#x3C;name></code></td><td>卸载应用程序</td></tr></tbody></table>
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb install &#x3C;apk></code></td><td>安装应用程序</td></tr><tr><td align="left"><code>adb install &#x3C;path></code></td><td>从手机路径安装应用</td></tr><tr><td align="left"><code>adb install -r &#x3C;path></code></td><td>从手机路径安装应用（允许覆盖安装）</td></tr><tr><td align="left"><code>adb uninstall &#x3C;name></code></td><td>卸载应用程序</td></tr></tbody></table>
 <!--rehype:className=left-align code-nowrap-->
 </div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="paths"><a aria-hidden="true" tabindex="-1" href="#paths"><span class="icon icon-link"></span></a>Paths</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
@@ -424,7 +424,19 @@
 
 
 
-<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell list packages</code></td><td>列出包名称</td></tr><tr><td align="left"><code>adb shell list packages -r</code></td><td>列出包名 + apks 的路径</td></tr><tr><td align="left"><code>adb shell list packages -3</code></td><td>列出第三方包名称</td></tr><tr><td align="left"><code>adb shell list packages -s</code></td><td>仅列出系统包</td></tr><tr><td align="left"><code>adb shell list packages -u</code></td><td>列出包名称 + 已卸载</td></tr><tr><td align="left"><code>adb shell dumpsys package packages</code></td><td>列出所有应用程序的信息</td></tr><tr><td align="left"><code>adb shell dump &#x3C;name></code></td><td>列出一个包的信息</td></tr><tr><td align="left"><code>adb shell path &#x3C;package></code></td><td>列出 APK 文件的路径</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>adb shell pm list packages</code></td><td>列出包名称</td></tr><tr><td align="left"><code>adb shell pm list packages -f</code></td><td>列出包名 + apks 的路径</td></tr><tr><td align="left"><code>adb shell pm list packages -3</code></td><td>列出第三方包名称</td></tr><tr><td align="left"><code>adb shell pm list packages -s</code></td><td>仅列出系统包</td></tr><tr><td align="left"><code>adb shell pm list packages -u</code></td><td>列出出包和未安装包</td></tr><tr><td align="left"><code>adb shell pm list packages -i</code></td><td>列出包名称 + 安装来源</td></tr><tr><td align="left"><code>adb shell pm list packages -e</code></td><td>列出启用的包</td></tr><tr><td align="left"><code>adb shell pm list packages -d</code></td><td>列出禁用的包</td></tr><tr><td align="left"><code>adb shell dumpsys package packages</code></td><td>列出所有应用程序的信息</td></tr><tr><td align="left"><code>adb shell dumpsys package &#x3C;name></code></td><td>列出一个包的信息</td></tr><tr><td align="left"><code>adb shell pm path &#x3C;package></code></td><td>列出 APK 文件的路径</td></tr></tbody></table>
 <!--rehype:className=style-list-arrow-->
 </div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="设备相关命令"><a aria-hidden="true" tabindex="-1" href="#设备相关命令"><span class="icon icon-link"></span></a>设备相关命令</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2 row-span-2-->
@@ -530,10 +542,10 @@
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb pull /sdcard/Download/example.apk
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从主机安装-apk-到-android-设备"><a aria-hidden="true" tabindex="-1" href="#从主机安装-apk-到-android-设备"><span class="icon icon-link"></span></a>从主机安装 APK 到 Android 设备</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell <span class="token function">install</span> example.apk
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb <span class="token function">install</span> example.apk
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从-android-设备存储安装-apk"><a aria-hidden="true" tabindex="-1" href="#从-android-设备存储安装-apk"><span class="icon icon-link"></span></a>从 Android 设备存储安装 APK</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell <span class="token function">install</span> /sdcard/Download/example.apk
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb <span class="token function">install</span> /sdcard/Download/example.apk
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="设置网络代理"><a aria-hidden="true" tabindex="-1" href="#设置网络代理"><span class="icon icon-link"></span></a>设置网络代理</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell settings put global http_proxy <span class="token operator">&#x3C;</span>address<span class="token operator">></span>:<span class="token operator">&#x3C;</span>port<span class="token operator">></span>
@@ -583,7 +595,7 @@
 </span></code></pre>
 <p>将 <code>com.example.myapp</code> 替换为您自己的应用程序包名称</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通过名称查找应用的包名"><a aria-hidden="true" tabindex="-1" href="#通过名称查找应用的包名"><span class="icon icon-link"></span></a>通过名称查找应用的包名</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell pm list package <span class="token operator">|</span> <span class="token function">grep</span> app_name
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb shell pm list packages <span class="token operator">|</span> <span class="token function">grep</span> app_name
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="从设备提取-apk-到您的计算机"><a aria-hidden="true" tabindex="-1" href="#从设备提取-apk-到您的计算机"><span class="icon icon-link"></span></a>从设备提取 APK 到您的计算机</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ adb pull /data/app/com.example.myapp.apk ./
