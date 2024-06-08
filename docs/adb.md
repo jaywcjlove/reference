@@ -105,17 +105,17 @@ $ adb pull /sdcard/test.txt pulledTest.txt
 `adb shell wm size WxH`                | 将分辨率设置为 WxH
 `adb shell pm list packages`           | 列出所有已安装的应用包
 `adb shell pm list packages -3`        | 列出所有已安装的第三方的应用包
-`adb shell monkey -p app.package.name` | 启动指定包名的应用程序
+`adb shell monkey -p app.package.name <count>` | 启动指定包名的应用程序, 并执行测试
 <!--rehype:className=style-list-arrow-->
 
 ### 包安装
 
 :-- | --
 :-- | --
-`adb shell install <apk>`          | 安装应用程序
-`adb shell install <path>`         | 从手机路径安装应用
-`adb shell install -r <path>`      | 从手机路径安装应用（允许覆盖安装）
-`adb shell uninstall <name>`       | 卸载应用程序
+`adb install <apk>`          | 安装应用程序
+`adb install <path>`         | 从手机路径安装应用
+`adb install -r <path>`      | 从手机路径安装应用（允许覆盖安装）
+`adb uninstall <name>`       | 卸载应用程序
 <!--rehype:className=left-align code-nowrap-->
 
 ### Paths
@@ -165,14 +165,17 @@ $ adb pull /sdcard/test.txt pulledTest.txt
 
 :-- | --
 :-- | --
-`adb shell list packages` | 列出包名称
-`adb shell list packages -r` | 列出包名 + apks 的路径
-`adb shell list packages -3` | 列出第三方包名称
-`adb shell list packages -s` | 仅列出系统包
-`adb shell list packages -u` | 列出包名称 + 已卸载
+`adb shell pm list packages` | 列出包名称
+`adb shell pm list packages -f` | 列出包名 + apks 的路径
+`adb shell pm list packages -3` | 列出第三方包名称
+`adb shell pm list packages -s` | 仅列出系统包
+`adb shell pm list packages -u` | 列出出包和未安装包
+`adb shell pm list packages -i` | 列出包名称 + 安装来源
+`adb shell pm list packages -e` | 列出启用的包
+`adb shell pm list packages -d` | 列出禁用的包
 `adb shell dumpsys package packages` | 列出所有应用程序的信息
-`adb shell dump <name>` | 列出一个包的信息
-`adb shell path <package>` | 列出 APK 文件的路径
+`adb shell dumpsys package <name>` | 列出一个包的信息
+`adb shell pm path <package>` | 列出 APK 文件的路径
 <!--rehype:className=style-list-arrow-->
 
 ### 设备相关命令
@@ -232,13 +235,13 @@ $ adb pull /sdcard/Download/example.apk
 ### 从主机安装 APK 到 Android 设备
 
 ```bash
-$ adb shell install example.apk
+$ adb install example.apk
 ```
 
 ### 从 Android 设备存储安装 APK
 
 ```bash
-$ adb shell install /sdcard/Download/example.apk
+$ adb install /sdcard/Download/example.apk
 ```
 
 ### 设置网络代理
@@ -330,7 +333,7 @@ $ adb shell pm path com.example.myapp
 ### 通过名称查找应用的包名
 
 ```bash
-$ adb shell pm list package | grep app_name
+$ adb shell pm list packages | grep app_name
 ```
 
 ### 从设备提取 APK 到您的计算机
