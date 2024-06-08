@@ -489,7 +489,7 @@ Quick Reference
 [jeffjade.com](https://codehelp.jeffjade.com)<!--rehype:target=_blank-->
 [okhk.net](https://ref.okhk.net)<!--rehype:target=_blank-->
 [wdft.com](https://ref.wdft.com)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
-[xuyiyang.vip](https://reference.xuyiyang.vip/)<!--rehype:target=_blank-->
+[xiaopa.cc](https://reference.xiaopa.cc)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [zsccodelnc.cn](https://zsccodelnc.cn/coderef/)<!--rehype:target=_blank-->
 [chanlun.pro](https://ref.chanlun.pro)<!--rehype:target=_blank-->
 [likui.info](https://r.likui.info)<!--rehype:target=_blank-->
