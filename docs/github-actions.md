@@ -857,7 +857,7 @@ steps:
 <!--rehype:className=style-list-->
 
 ### 在 Github 中创建 Docker 镜像
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 ```yml
 - name: Set up Docker Buildx
@@ -887,8 +887,19 @@ steps:
     tags: ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
 ```
 
+### 生成贡献者头像列表
+
+```yml
+- name: Generate Contributors Images
+  uses: jaywcjlove/github-action-contributors@main
+  id: contributors
+  with:
+    output: dist/CONTRIBUTORS.svg
+    avatarSize: 42
+```
+
 ### 在 Docker Hub 中创建 Docker 镜像
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-3 col-span-2-->
 
 ```yml
 - name: Set up Docker Buildx
@@ -926,27 +937,26 @@ steps:
     node-version: 16
 ```
 
-### 生成贡献者头像列表
-
-```yml
-- name: Generate Contributors Images
-  uses: jaywcjlove/github-action-contributors@main
-  id: contributors
-  with:
-    output: dist/CONTRIBUTORS.svg
-    avatarSize: 42
-```
-
 ### 忽略失败
 
 ```yml
 - run: npm publish
   continue-on-error: true
   env:
-    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 ```
 
 当 `npm` 推送包失败不影响整个流程，可用于自动发包
+
+### 安装 yarn
+
+```yml
+- name: Setup Yarn
+  uses: threeal/setup-yarn-action@v2.0.0
+  with:
+    cache: false
+    version: 1.22.21
+```
 
 GitLab CI/CD 迁移到 GitHub Actions
 ---
