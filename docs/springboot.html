@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>
+# Spring Boot 备忘清单
+
+ &#x26;  springboot cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="此快速参考备忘单提供了使用 springboot 的用法
+
+注：开发 springboot 需要要基本的 java 基础和 maven 基础。，为开发人员分享快速参考备忘单。">
+<meta keywords="springboot,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/springboot.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.5"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="spring-boot-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="1em" width="1em">
+    <path d="M20.205 16.392c-2.469 3.289-7.741 2.179-11.122 2.338 0 0-.599.034-1.201.133 0 0 .228-.097.519-.198 2.374-.821 3.496-.986 4.939-1.727 2.71-1.388 5.408-4.413 5.957-7.555-1.032 3.022-4.17 5.623-7.027 6.679-1.955.722-5.492 1.424-5.493 1.424a5.28 5.28 0 0 1-.143-.076c-2.405-1.17-2.475-6.38 1.894-8.059 1.916-.736 3.747-.332 5.818-.825 2.208-.525 4.766-2.18 5.805-4.344 1.165 3.458 2.565 8.866.054 12.21zm.042-13.28a9.212 9.212 0 0 1-1.065 1.89 9.982 9.982 0 0 0-7.167-3.031C6.492 1.971 2 6.463 2 11.985a9.983 9.983 0 0 0 3.205 7.334l.22.194a.856.856 0 1 1 .001.001l.149.132A9.96 9.96 0 0 0 12.015 22c5.278 0 9.613-4.108 9.984-9.292.274-2.539-.476-5.763-1.752-9.596"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#spring-boot-备忘清单"><span class="icon icon-link"></span></a>Spring Boot 备忘清单</h1><div class="wrap-body">
+<p>====</p>
+<p>此快速参考备忘单提供了使用 springboot 的用法</p>
+<p>注：开发 springboot 需要要基本的 java 基础和 maven 基础。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#介绍">介绍</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#项目创建与配置">项目创建与配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置文件说明">配置文件说明</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#1-应用程序配置">1. 应用程序配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#2-服务器端口配置">2. 服务器端口配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#3-数据源配置">3. 数据源配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#4-jpa-配置">4. JPA 配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#5-日志配置">5. 日志配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#6-spring-security-配置">6. Spring Security 配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#7-actuator-配置">7. Actuator 配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#8-多环境配置">8. 多环境配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#9-自定义属性配置">9. 自定义属性配置</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#依赖管理">依赖管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#1-starter依赖项">1. Starter依赖项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#2-自动依赖解析和版本管理">2. 自动依赖解析和版本管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#3-自定义依赖管理">3. 自定义依赖管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#4-排除和冲突解决">4. 排除和冲突解决</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#spring-boot-核心功能">Spring Boot 核心功能</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#1-依赖注入dependency-injection">1. 依赖注入（Dependency Injection）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#2-面向切面编程aspect-oriented-programming">2. 面向切面编程（Aspect-Oriented Programming）</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#web-开发">Web 开发</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#1-创建一个新的-spring-boot-项目">1. 创建一个新的 Spring Boot 项目</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#2-将项目导入到你的-ide-中">2. 将项目导入到你的 IDE 中</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#3-实现-hello-world-controller">3. 实现 Hello World Controller</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#4-运行应用程序">4. 运行应用程序</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#5-访问-hello-world-页面">5. 访问 Hello World 页面</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#数据访问">数据访问</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#1创建过程和-web-项目示例一样">1.创建过程和 web 项目示例一样</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#2-配置数据库连接">2. 配置数据库连接</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#3--创建实体类-user">3.  创建实体类 User</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#4-创建-userrepository-接口">4. 创建 UserRepository 接口</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#5-创建一个简单的控制器来测试">5. 创建一个简单的控制器来测试</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#6-运行应用程序并测试">6. 运行应用程序并测试</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#测试">测试</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#1-创建一个简单的项目-创建过程同-web-项目创建">1. 创建一个简单的项目 创建过程同 web 项目创建</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#2-编写测试类">2. 编写测试类</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#3-解释测试类的关键点">3. 解释测试类的关键点</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#4-运行测试">4. 运行测试</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#部署与扩展">部署与扩展</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#1-打包方式">1. 打包方式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#2-打包工具">2. 打包工具</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#3-打包过程概述">3. 打包过程概述</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#4-示例">4. 示例</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#常见问题与解决方案">常见问题与解决方案</a></div></div><div class="h1wrap-body"><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h2><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">Spring Boot 是一个用于简化 Spring 应用程序开发的框架。它提供了一种简单的方式来创建、运行和部署 Spring 应用程序，并简化了配置和依赖管理。  
+</span></code></pre>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="项目创建与配置"><a aria-hidden="true" tabindex="-1" href="#项目创建与配置"><span class="icon icon-link"></span></a><strong>项目创建与配置</strong></h2><div class="wrap-body">
+<ul>
+<li>使用<code>Spring Initializr</code>（<a href="https://start.spring.io%EF%BC%89">https://start.spring.io）</a> 创建项目。</li>
+<li>国内可以使用阿里云的 <code>Spring Initializr</code> (<a href="https://start.aliyun.com/">https://start.aliyun.com/</a>) 创建项目，选择依赖项（如Web、JPA、Security）和Spring Boot版本。</li>
+<li>添加所需的依赖项到<code>pom.xml</code>（Maven）或<code>build.gradle</code>（Gradle）文件中。</li>
+<li>在<code>src/main/resources</code>目录下创建<code>application.properties</code>或<code>application.yml</code>文件，配置应用程序属性，例如数据库连接信息、端口号等。</li>
+</ul>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="配置文件说明"><a aria-hidden="true" tabindex="-1" href="#配置文件说明"><span class="icon icon-link"></span></a>配置文件说明</h3><div class="wrap-body">
+<p>在Spring Boot应用程序中，通常使用YAML格式（<code>.yml</code>文件）来配置应用程序的属性和设置。YAML格式相比于传统的<code>.properties</code>文件更加清晰和易读，支持层级结构和列表等复杂数据类型。以下是一些常用的Spring Boot YAML配置字段及其说明和介绍：</p>
+<h4 id="1-应用程序配置"><a aria-hidden="true" tabindex="-1" href="#1-应用程序配置"><span class="icon icon-link"></span></a>1. <strong>应用程序配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>application
+</span></code></pre>
+<ul>
+<li><strong><code>spring.application.name</code></strong>: 应用程序的名称。在集成服务发现和配置管理时特别有用，也会影响Actuator端点的路径。</li>
+</ul>
+<h4 id="2-服务器端口配置"><a aria-hidden="true" tabindex="-1" href="#2-服务器端口配置"><span class="icon icon-link"></span></a>2. <strong>服务器端口配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+</span></code></pre>
+<ul>
+<li><strong><code>server.port</code></strong>: 应用程序监听的HTTP端口号。默认为8080，可以根据需要进行配置。</li>
+</ul>
+<h4 id="3-数据源配置"><a aria-hidden="true" tabindex="-1" href="#3-数据源配置"><span class="icon icon-link"></span></a>3. <strong>数据源配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>3306/mydatabase
+</span><span class="code-line">    <span class="token key atrule">username</span><span class="token punctuation">:</span> root
+</span><span class="code-line">    <span class="token key atrule">password</span><span class="token punctuation">:</span> password
+</span><span class="code-line">    <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> com.mysql.cj.jdbc.Driver
+</span></code></pre>
+<ul>
+<li><strong><code>spring.datasource.url</code></strong>: 数据库连接URL。</li>
+<li><strong><code>spring.datasource.username</code></strong> 和 <strong><code>spring.datasource.password</code></strong>: 数据库的用户名和密码。</li>
+<li><strong><code>spring.datasource.driver-class-name</code></strong>: 数据库驱动类名。</li>
+</ul>
+<h4 id="4-jpa-配置"><a aria-hidden="true" tabindex="-1" href="#4-jpa-配置"><span class="icon icon-link"></span></a>4. <strong>JPA 配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">jpa</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">show-sql</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</span><span class="code-line">    <span class="token key atrule">hibernate</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">ddl-auto</span><span class="token punctuation">:</span> update
+</span></code></pre>
+<ul>
+<li><strong><code>spring.jpa.show-sql</code></strong>: 是否在控制台显示SQL语句。</li>
+<li><strong><code>spring.jpa.hibernate.ddl-auto</code></strong>: Hibernate自动建表策略，如<code>update</code>、<code>create</code>、<code>validate</code>等。</li>
+</ul>
+<h4 id="5-日志配置"><a aria-hidden="true" tabindex="-1" href="#5-日志配置"><span class="icon icon-link"></span></a>5. <strong>日志配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">logging</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">level</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">org.springframework</span><span class="token punctuation">:</span> INFO
+</span><span class="code-line">    <span class="token key atrule">com.example</span><span class="token punctuation">:</span> DEBUG
+</span></code></pre>
+<ul>
+<li><strong><code>logging.level</code></strong>: 日志级别配置，可以针对不同的包或类设置不同的日志级别。</li>
+</ul>
+<h4 id="6-spring-security-配置"><a aria-hidden="true" tabindex="-1" href="#6-spring-security-配置"><span class="icon icon-link"></span></a>6. <strong>Spring Security 配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">security</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">user</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">name</span><span class="token punctuation">:</span> user
+</span><span class="code-line">      <span class="token key atrule">password</span><span class="token punctuation">:</span> password
+</span><span class="code-line">    <span class="token key atrule">basic</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</span></code></pre>
+<ul>
+<li><strong><code>spring.security.user.name</code></strong> 和 <strong><code>spring.security.user.password</code></strong>: 基本认证的用户名和密码。</li>
+<li><strong><code>spring.security.basic.enabled</code></strong>: 是否启用基本认证。</li>
+</ul>
+<h4 id="7-actuator-配置"><a aria-hidden="true" tabindex="-1" href="#7-actuator-配置"><span class="icon icon-link"></span></a>7. <strong>Actuator 配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">management</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">endpoints</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">web</span><span class="token punctuation">:</span>
+</span><span class="code-line">      <span class="token key atrule">exposure</span><span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token key atrule">include</span><span class="token punctuation">:</span> health<span class="token punctuation">,</span> info
+</span></code></pre>
+<ul>
+<li><strong><code>management.endpoints.web.exposure.include</code></strong>: 暴露给外部的Actuator端点，可以设置为<code>*</code>来暴露所有端点。</li>
+</ul>
+<h4 id="8-多环境配置"><a aria-hidden="true" tabindex="-1" href="#8-多环境配置"><span class="icon icon-link"></span></a>8. <strong>多环境配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">profiles</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">active</span><span class="token punctuation">:</span> dev
+</span></code></pre>
+<ul>
+<li><strong><code>spring.profiles.active</code></strong>: 指定当前激活的环境配置文件，可以根据需要选择<code>dev</code>、<code>prod</code>等不同的配置文件。</li>
+</ul>
+<h4 id="9-自定义属性配置"><a aria-hidden="true" tabindex="-1" href="#9-自定义属性配置"><span class="icon icon-link"></span></a>9. <strong>自定义属性配置</strong></h4>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">myapp</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token key atrule">custom</span><span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token key atrule">property</span><span class="token punctuation">:</span> value
+</span></code></pre>
+<ul>
+<li>自定义应用程序属性，可以在应用程序中通过<code>@Value</code>注解或<code>Environment</code>对象访问。</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="依赖管理"><a aria-hidden="true" tabindex="-1" href="#依赖管理"><span class="icon icon-link"></span></a><strong>依赖管理</strong></h2><div class="wrap-body">
+<p>在Spring Boot中，依赖管理是非常重要的一部分，它通过简化依赖项的引入和版本管理，大大简化了项目的构建和维护过程。Spring Boot采用了Starter依赖项的概念，通过提供预配置的依赖项集合来简化项目的初始化和配置。</p>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="1-starter依赖项"><a aria-hidden="true" tabindex="-1" href="#1-starter依赖项"><span class="icon icon-link"></span></a>1. Starter依赖项</h3><div class="wrap-body">
+<p>Spring Boot的Starter依赖项是预先配置的一组依赖项集合，它们以<code>spring-boot-starter-*</code>的命名格式提供。这些Starter依赖项可以按照功能领域进行分类，例如：</p>
+<ul>
+<li><code>spring-boot-starter-web</code>: 支持构建Web应用程序，包括Spring MVC和内嵌的Servlet容器（如Tomcat）。</li>
+<li><code>spring-boot-starter-data-jpa</code>: 支持使用Spring Data JPA访问数据库，包括Hibernate和JPA实现。</li>
+<li><code>spring-boot-starter-security</code>: 支持Spring Security，用于身份验证和授权。</li>
+<li><code>spring-boot-starter-test</code>: 支持单元测试和集成测试，包括JUnit、Mockito等。</li>
+<li><code>spring-boot-starter-actuator</code>: 支持集成Actuator，用于监控和管理应用程序。</li>
+</ul>
+<p>通过引入这些Starter依赖项，你可以快速地添加特定功能的支持，并且Spring Boot会自动配置这些依赖项所需的组件和设置，从而减少了手动配置的工作量。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="2-自动依赖解析和版本管理"><a aria-hidden="true" tabindex="-1" href="#2-自动依赖解析和版本管理"><span class="icon icon-link"></span></a>2. 自动依赖解析和版本管理</h3><div class="wrap-body">
+<p>Spring Boot提供了一个称为Spring Boot BOM（Bill of Materials，依赖项清单）的文件，它集中管理了各个Starter依赖项的版本。通过在项目的<code>pom.xml</code>（Maven项目）或<code>build.gradle</code>（Gradle项目）中引入Spring Boot BOM，可以简化依赖项版本的管理。例如，在Maven项目中：</p>
+<pre class="language-xml"><code class="language-xml code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>dependencyManagement</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>dependencies</span><span class="token punctuation">></span></span>
+</span><span class="code-line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>dependency</span><span class="token punctuation">></span></span>
+</span><span class="code-line">            <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>groupId</span><span class="token punctuation">></span></span>
+</span><span class="code-line">            <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>artifactId</span><span class="token punctuation">></span></span>
+</span><span class="code-line">            <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>version</span><span class="token punctuation">></span></span>2.6.0<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>version</span><span class="token punctuation">></span></span>
+</span><span class="code-line">            <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>type</span><span class="token punctuation">></span></span>pom<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>type</span><span class="token punctuation">></span></span>
+</span><span class="code-line">            <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>scope</span><span class="token punctuation">></span></span>import<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>scope</span><span class="token punctuation">></span></span>
+</span><span class="code-line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>dependency</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>dependencies</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>dependencyManagement</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>这样一来，当你在项目中引入Spring Boot的Starter依赖项时，不需要显式声明版本号，Maven会自动使用BOM中指定的版本。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="3-自定义依赖管理"><a aria-hidden="true" tabindex="-1" href="#3-自定义依赖管理"><span class="icon icon-link"></span></a>3. 自定义依赖管理</h3><div class="wrap-body">
+<p>尽管Spring Boot提供了丰富的Starter依赖项和依赖管理功能，但有时你可能需要自定义特定的依赖项或版本。在这种情况下，你可以在<code>pom.xml</code>或<code>build.gradle</code>中显式声明所需的依赖项，而不使用Starter依赖项。</p>
+<p>例如，在Maven项目中，你可以这样声明一个依赖项：</p>
+<pre class="language-xml"><code class="language-xml code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>dependency</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>groupId</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>artifactId</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>version</span><span class="token punctuation">></span></span>2.6.0<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>version</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>dependency</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>这样做可以覆盖Spring Boot BOM中指定的版本，允许你使用特定版本的依赖项。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="4-排除和冲突解决"><a aria-hidden="true" tabindex="-1" href="#4-排除和冲突解决"><span class="icon icon-link"></span></a>4. 排除和冲突解决</h3><div class="wrap-body">
+<p>在实际项目中，可能会遇到依赖项之间的冲突或不兼容性问题。Spring Boot允许你通过<code>&#x3C;exclusions></code>标签来排除Starter依赖项中的某些传递性依赖，以解决冲突问题。</p>
+<p>例如，在Maven项目中排除传递性依赖：</p>
+<pre class="language-xml"><code class="language-xml code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>dependency</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>groupId</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>artifactId</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>exclusions</span><span class="token punctuation">></span></span>
+</span><span class="code-line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>exclusion</span><span class="token punctuation">></span></span>
+</span><span class="code-line">            <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>groupId</span><span class="token punctuation">></span></span>
+</span><span class="code-line">            <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-tomcat<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>artifactId</span><span class="token punctuation">></span></span>
+</span><span class="code-line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>exclusion</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>exclusions</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>dependency</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>这种排除机制使得你可以更精确地控制项目中依赖项的版本和组合，以避免不必要的冲突。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="spring-boot-核心功能"><a aria-hidden="true" tabindex="-1" href="#spring-boot-核心功能"><span class="icon icon-link"></span></a><strong>Spring Boot 核心功能</strong></h2><div class="wrap-body">
+<p>在Spring Boot中，核心自动配置主要涉及到依赖注入（DI，Dependency Injection）和面向切面编程（AOP，Aspect-Oriented Programming），这两者是Spring框架的关键特性之一，通过自动配置使得它们能够无缝集成和使用。</p>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="1-依赖注入dependency-injection"><a aria-hidden="true" tabindex="-1" href="#1-依赖注入dependency-injection"><span class="icon icon-link"></span></a>1. 依赖注入（Dependency Injection）</h3><div class="wrap-body">
+<p>依赖注入是Spring框架的核心概念之一，它通过控制反转（IoC，Inversion of Control）的方式管理对象之间的依赖关系，从而实现松耦合、可测试和可维护的代码结构。Spring Boot通过自动配置的方式支持依赖注入，以下是一些关键点：</p>
+<ul>
+<li>
+<p><strong>自动装配（Auto-configuration）</strong>: Spring Boot根据类路径中的依赖项自动配置应用程序上下文。这包括自动扫描和注册带有特定注解（如<code>@Component</code>、<code>@Service</code>、<code>@Repository</code>等）的Bean，以及自动解析和注入这些Bean之间的依赖关系。</p>
+</li>
+<li>
+<p><strong>Bean的声明和管理</strong>: 开发者可以使用<code>@Autowired</code>注解在需要依赖注入的地方注入其他Bean，Spring Boot会自动解析和注入所需的依赖。例如：</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token annotation punctuation">@RestController</span>
+</span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyController</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">MyService</span> myService<span class="token punctuation">;</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token annotation punctuation">@Autowired</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token class-name">MyController</span><span class="token punctuation">(</span><span class="token class-name">MyService</span> myService<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">this</span><span class="token punctuation">.</span>myService <span class="token operator">=</span> myService<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment">// Controller methods</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>在上面的例子中，<code>MyController</code>中的<code>MyService</code>依赖通过构造函数注入。</p>
+</li>
+<li>
+<p><strong>条件化注入</strong>: Spring Boot支持根据条件选择性地注入Bean。例如，可以使用<code>@Conditional</code>注解或<code>@ConditionalOnProperty</code>注解根据特定的条件决定是否创建和注入Bean。</p>
+</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="2-面向切面编程aspect-oriented-programming"><a aria-hidden="true" tabindex="-1" href="#2-面向切面编程aspect-oriented-programming"><span class="icon icon-link"></span></a>2. 面向切面编程（Aspect-Oriented Programming）</h3><div class="wrap-body">
+<p>面向切面编程是一种软件开发方法，用于分离横切关注点（cross-cutting concerns），例如日志、事务管理、安全性等，以便更好地模块化和管理应用程序。Spring Boot通过整合Spring AOP框架支持面向切面编程，以下是相关的说明：</p>
+<ul>
+<li>
+<p><strong>切面（Aspect）</strong>: 切面是一个模块化的类，它包含了横切关注点的逻辑。在Spring Boot中，可以使用<code>@Aspect</code>注解标记一个类作为切面，并通过<code>@Before</code>、<code>@After</code>、<code>@Around</code>等注解定义切面的具体行为。</p>
+</li>
+<li>
+<p><strong>切点（Pointcut）</strong>: 切点定义了在应用程序中哪些位置应用切面逻辑。切点表达式使用<code>execution</code>关键字指定要拦截的方法调用。例如：</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token annotation punctuation">@Aspect</span>
+</span><span class="code-line"><span class="token annotation punctuation">@Component</span>
+</span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoggingAspect</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"execution(* com.example.service.*.*(..))"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">beforeServiceMethods</span><span class="token punctuation">(</span><span class="token class-name">JoinPoint</span> joinPoint<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token comment">// Advice logic before service method execution</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment">// Other advices (e.g., @After, @Around) can be defined similarly</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>通知（Advice）</strong>: 通知是在切点处执行的具体逻辑，包括<code>@Before</code>、<code>@AfterReturning</code>、<code>@AfterThrowing</code>、<code>@Around</code>等。例如，在上面的例子中，<code>beforeServiceMethods</code>方法就是一个<code>@Before</code>通知，它在目标方法执行之前执行。</p>
+</li>
+<li>
+<p><strong>配置和启用</strong>: Spring Boot通过自动配置和注解扫描使得使用AOP变得非常简单。通常情况下，只需在切面类上加上<code>@Aspect</code>注解，并确保它被Spring Boot的组件扫描机制扫描到即可。</p>
+</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="web-开发"><a aria-hidden="true" tabindex="-1" href="#web-开发"><span class="icon icon-link"></span></a><strong>Web 开发</strong></h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="1-创建一个新的-spring-boot-项目"><a aria-hidden="true" tabindex="-1" href="#1-创建一个新的-spring-boot-项目"><span class="icon icon-link"></span></a>1. 创建一个新的 Spring Boot 项目</h3><div class="wrap-body">
+<p>你可以使用 Spring Initializr 创建一个新的 Spring Boot 项目。访问 <a href="https://start.spring.io/">start.spring.io</a> 并按照以下配置创建项目：</p>
+<ul>
+<li><strong>Project</strong>: Maven 或 Gradle（选择你的构建工具）</li>
+<li><strong>Language</strong>: Java</li>
+<li><strong>Spring Boot</strong>: 选择最新的稳定版本</li>
+<li><strong>Project Metadata</strong>:
+<ul>
+<li><strong>Group</strong>: com.example（或者你喜欢的 Group ID）</li>
+<li><strong>Artifact</strong>: helloworld（或者你喜欢的 Artifact ID）</li>
+<li><strong>Dependencies</strong>: 选择 "Spring Web"</li>
+</ul>
+</li>
+</ul>
+<p>点击 "Generate" 下载项目的 zip 文件。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="2-将项目导入到你的-ide-中"><a aria-hidden="true" tabindex="-1" href="#2-将项目导入到你的-ide-中"><span class="icon icon-link"></span></a>2. 将项目导入到你的 IDE 中</h3><div class="wrap-body">
+<p>解压下载的文件并导入到你喜欢的 IDE 中（如 IntelliJ IDEA、Eclipse 等）。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="3-实现-hello-world-controller"><a aria-hidden="true" tabindex="-1" href="#3-实现-hello-world-controller"><span class="icon icon-link"></span></a>3. 实现 Hello World Controller</h3><div class="wrap-body">
+<p>在 IDE 中打开你的项目，导航到 <code>src/main/java/com/example/helloworld</code>。你会看到一个名为 <code>HelloworldApplication.java</code> 的类文件，这是 Spring Boot 应用程序的入口类。</p>
+<p>在这个类的同级目录下创建一个新的 Java 类文件，例如 <code>HelloController.java</code>，并添加以下内容：</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>helloworld</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">GetMapping</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RestController</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token annotation punctuation">@RestController</span>
+</span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloController</span> <span class="token punctuation">{</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">return</span> <span class="token string">"Hello, World!"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="4-运行应用程序"><a aria-hidden="true" tabindex="-1" href="#4-运行应用程序"><span class="icon icon-link"></span></a>4. 运行应用程序</h3><div class="wrap-body">
+<p>使用 Maven 或 Gradle 构建项目并启动应用程序。可以通过 IDE 的运行功能或者命令行执行以下命令：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">mvn spring-boot:run
+</span></code></pre>
+<p>或者</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">./gradlew bootRun
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="5-访问-hello-world-页面"><a aria-hidden="true" tabindex="-1" href="#5-访问-hello-world-页面"><span class="icon icon-link"></span></a>5. 访问 Hello World 页面</h3><div class="wrap-body">
+<p>在浏览器中访问 <code>http://localhost:8080/</code>，你应该能够看到显示 "Hello, World!" 的页面。</p>
+<p>这样，你就成功创建了一个简单的 Spring Boot Web 应用程序，并实现了一个基本的 "Hello, World!" 示例。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="数据访问"><a aria-hidden="true" tabindex="-1" href="#数据访问"><span class="icon icon-link"></span></a><strong>数据访问</strong></h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="1创建过程和-web-项目示例一样"><a aria-hidden="true" tabindex="-1" href="#1创建过程和-web-项目示例一样"><span class="icon icon-link"></span></a>1.创建过程和 web 项目示例一样</h3><div class="wrap-body">
+<p>注意：需要选择 jpa 和对应数据库的驱动</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="2-配置数据库连接"><a aria-hidden="true" tabindex="-1" href="#2-配置数据库连接"><span class="icon icon-link"></span></a>2. 配置数据库连接</h3><div class="wrap-body">
+<p>默认情况下，Spring Boot 使用 H2 Database 作为内嵌数据库。如果你想使用其他数据库，可以在 <code>application.properties</code>（或 <code>application.yml</code>）文件中配置数据库连接信息。</p>
+<p>例如，使用 H2 Database 的默认配置：</p>
+<pre class="language-properties"><code class="language-properties code-highlight"><span class="code-line"><span class="token comment"># application.properties</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token key attr-name">spring.datasource.url</span><span class="token punctuation">=</span><span class="token value attr-value">jdbc:h2:mem:testdb</span>
+</span><span class="code-line"><span class="token key attr-name">spring.datasource.driverClassName</span><span class="token punctuation">=</span><span class="token value attr-value">org.h2.Driver</span>
+</span><span class="code-line"><span class="token key attr-name">spring.datasource.username</span><span class="token punctuation">=</span><span class="token value attr-value">username</span>
+</span><span class="code-line"><span class="token key attr-name">spring.datasource.password</span><span class="token punctuation">=</span><span class="token value attr-value">password</span>
+</span><span class="code-line"><span class="token key attr-name">spring.jpa.database-platform</span><span class="token punctuation">=</span><span class="token value attr-value">org.hibernate.dialect.H2Dialect</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Hibernate ddl auto (create, create-drop, validate, update)</span>
+</span><span class="code-line"><span class="token key attr-name">spring.jpa.hibernate.ddl-auto</span><span class="token punctuation">=</span><span class="token value attr-value">update</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="3--创建实体类-user"><a aria-hidden="true" tabindex="-1" href="#3--创建实体类-user"><span class="icon icon-link"></span></a>3.  创建实体类 <code>User</code></h3><div class="wrap-body">
+<p>在 <code>src/main/java/com/example/userdemo</code> 目录下创建一个名为 <code>User</code> 的实体类：</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>userdemo</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span></span><span class="token class-name">Entity</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span></span><span class="token class-name">GeneratedValue</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span></span><span class="token class-name">GenerationType</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span></span><span class="token class-name">Id</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token annotation punctuation">@Entity</span>
+</span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token annotation punctuation">@Id</span>
+</span><span class="code-line">    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span><span class="token constant">IDENTITY</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">private</span> <span class="token class-name">Long</span> userId<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">private</span> <span class="token class-name">String</span> username<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">private</span> <span class="token class-name">String</span> sex<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment">// Constructors, getters, and setters 省略</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="4-创建-userrepository-接口"><a aria-hidden="true" tabindex="-1" href="#4-创建-userrepository-接口"><span class="icon icon-link"></span></a>4. 创建 UserRepository 接口</h3><div class="wrap-body">
+<p>在同样的目录下创建一个接口 <code>UserRepository</code>，继承自 <code>JpaRepository&#x3C;User, Long></code>，这样 Spring Data JPA 将会自动实现一些基本的数据库操作方法。</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>userdemo</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>repository<span class="token punctuation">.</span></span><span class="token class-name">JpaRepository</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">User</span><span class="token punctuation">,</span> <span class="token class-name">Long</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="5-创建一个简单的控制器来测试"><a aria-hidden="true" tabindex="-1" href="#5-创建一个简单的控制器来测试"><span class="icon icon-link"></span></a>5. 创建一个简单的控制器来测试</h3><div class="wrap-body">
+<p>创建一个简单的控制器 <code>UserController</code>，用来处理 HTTP 请求，并操作 <code>UserRepository</code> 来访问数据库。</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>userdemo</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token annotation punctuation">@RestController</span>
+</span><span class="code-line"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token annotation punctuation">@Autowired</span>
+</span><span class="code-line">    <span class="token keyword">private</span> <span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment">//  获取所有用户</span>
+</span><span class="code-line">    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getAllUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment">// 通过 id 获取用户</span>
+</span><span class="code-line">    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token class-name">User</span> <span class="token function">getUserById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> <span class="token class-name">Long</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment">// POST 创建新用户</span>
+</span><span class="code-line">    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token class-name">User</span> <span class="token function">addUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">User</span> user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment">// PUT 更新用户</span>
+</span><span class="code-line">    <span class="token annotation punctuation">@PutMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token class-name">User</span> <span class="token function">updateUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> <span class="token class-name">Long</span> id<span class="token punctuation">,</span> <span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">User</span> userDetails<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token class-name">User</span> user <span class="token operator">=</span> userRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>user <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">            user<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span>userDetails<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">            user<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span>userDetails<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">            user<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span>userDetails<span class="token punctuation">.</span><span class="token function">getSex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">            <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token punctuation">}</span>
+</span><span class="code-line">        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token comment">// DELETE 删除用户 </span>
+</span><span class="code-line">    <span class="token annotation punctuation">@DeleteMapping</span><span class="token punctuation">(</span><span class="token string">"/{id}"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> <span class="token class-name">Long</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        userRepository<span class="token punctuation">.</span><span class="token function">deleteById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="6-运行应用程序并测试"><a aria-hidden="true" tabindex="-1" href="#6-运行应用程序并测试"><span class="icon icon-link"></span></a>6. 运行应用程序并测试</h3><div class="wrap-body">
+<p>使用 Maven 或 Gradle 构建并运行你的应用程序。然后，可以使用 Postman 或浏览器访问以下 API 来测试你的应用程序：</p>
+<ul>
+<li><strong>GET</strong> <code>http://localhost:8080/users/</code> 获取所有用户</li>
+<li><strong>GET</strong> <code>http://localhost:8080/users/{id}</code> 根据用户ID获取用户信息</li>
+<li><strong>POST</strong> <code>http://localhost:8080/users/</code> 添加新用户（Body 中包含 JSON 数据）</li>
+<li><strong>PUT</strong> <code>http://localhost:8080/users/{id}</code> 更新用户信息（Body 中包含 JSON 数据）</li>
+<li><strong>DELETE</strong> <code>http://localhost:8080/users/{id}</code> 删除用户</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="测试"><a aria-hidden="true" tabindex="-1" href="#测试"><span class="icon icon-link"></span></a><strong>测试</strong></h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="1-创建一个简单的项目-创建过程同-web-项目创建"><a aria-hidden="true" tabindex="-1" href="#1-创建一个简单的项目-创建过程同-web-项目创建"><span class="icon icon-link"></span></a>1. 创建一个简单的项目 创建过程同 web 项目创建</h3><div class="wrap-body">
+<p>在 <code>src/main/java/com/example/demo</code> 目录下创建一个名为 <code>HelloController.java</code> 的类：</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">GetMapping</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RestController</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token annotation punctuation">@RestController</span>
+</span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloController</span> <span class="token punctuation">{</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/hello"</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">return</span> <span class="token string">"Hello, World!"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="2-编写测试类"><a aria-hidden="true" tabindex="-1" href="#2-编写测试类"><span class="icon icon-link"></span></a>2. 编写测试类</h3><div class="wrap-body">
+<p>在 <code>src/test/java/com/example/demo</code> 目录下创建一个名为 <code>HelloControllerTest.java</code> 的测试类：</p>
+<pre class="language-java"><code class="language-java code-highlight"><span class="code-line"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>jupiter<span class="token punctuation">.</span>api<span class="token punctuation">.</span></span><span class="token class-name">Test</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>test<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">AutoConfigureMockMvc</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>test<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">SpringBootTest</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>test<span class="token punctuation">.</span>context<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>jupiter<span class="token punctuation">.</span>web<span class="token punctuation">.</span></span><span class="token class-name">SpringJUnitWebConfig</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>test<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">MockMvc</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>test<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>request<span class="token punctuation">.</span></span><span class="token class-name">MockMvcRequestBuilders</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>test<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>result<span class="token punctuation">.</span></span><span class="token class-name">MockMvcResultMatchers</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token import static"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>test<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>result<span class="token punctuation">.</span></span><span class="token class-name">MockMvcResultHandlers</span><span class="token punctuation">.</span><span class="token static">print</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token annotation punctuation">@SpringBootTest</span>
+</span><span class="code-line"><span class="token annotation punctuation">@AutoConfigureMockMvc</span>
+</span><span class="code-line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloControllerTest</span> <span class="token punctuation">{</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token annotation punctuation">@Autowired</span>
+</span><span class="code-line">    <span class="token keyword">private</span> <span class="token class-name">MockMvc</span> mockMvc<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token annotation punctuation">@Test</span>
+</span><span class="code-line">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">helloTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        mockMvc<span class="token punctuation">.</span><span class="token function">perform</span><span class="token punctuation">(</span><span class="token class-name">MockMvcRequestBuilders</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/hello"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">                <span class="token punctuation">.</span><span class="token function">andExpect</span><span class="token punctuation">(</span><span class="token class-name">MockMvcResultMatchers</span><span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isOk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">                <span class="token punctuation">.</span><span class="token function">andExpect</span><span class="token punctuation">(</span><span class="token class-name">MockMvcResultMatchers</span><span class="token punctuation">.</span><span class="token function">content</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">                <span class="token punctuation">.</span><span class="token function">andDo</span><span class="token punctuation">(</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="3-解释测试类的关键点"><a aria-hidden="true" tabindex="-1" href="#3-解释测试类的关键点"><span class="icon icon-link"></span></a>3. 解释测试类的关键点</h3><div class="wrap-body">
+<ul>
+<li><strong>@SpringBootTest</strong>: 这个注解告诉 Spring Boot 在测试时启动整个 Spring 应用程序上下文。</li>
+<li><strong>@AutoConfigureMockMvc</strong>: 这个注解确保在测试中自动配置 MockMvc 实例，用于模拟 HTTP 请求。</li>
+<li><strong>@Autowired private MockMvc mockMvc</strong>: 注入 MockMvc 实例，用于执行 HTTP 请求并验证响应。</li>
+<li><strong>@Test public void helloTest()</strong>: 这是一个 JUnit 测试方法，用来测试 <code>HelloController</code> 中的 <code>hello()</code> 方法。</li>
+<li><strong>mockMvc.perform(...)</strong>: 执行一个 GET 请求到 <code>/hello</code> 接口。</li>
+<li><strong>andExpect(MockMvcResultMatchers.status().isOk())</strong>: 预期响应的状态码是 200 OK。</li>
+<li><strong>andExpect(MockMvcResultMatchers.content().string("Hello, World!"))</strong>: 预期响应的内容是 "Hello, World!"。</li>
+<li><strong>andDo(print())</strong>: 打印请求和响应的详细信息，方便调试。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="4-运行测试"><a aria-hidden="true" tabindex="-1" href="#4-运行测试"><span class="icon icon-link"></span></a>4. 运行测试</h3><div class="wrap-body">
+<p>运行测试，确保程序正确.</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="部署与扩展"><a aria-hidden="true" tabindex="-1" href="#部署与扩展"><span class="icon icon-link"></span></a><strong>部署与扩展</strong></h2><div class="wrap-body">
+<p>Spring Boot 应用程序的打包过程通常涉及将应用程序及其依赖项打包成一个可执行的 JAR 文件或者 WAR 文件。下面我将简要介绍一下 Spring Boot 应用程序的打包过程。</p>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="1-打包方式"><a aria-hidden="true" tabindex="-1" href="#1-打包方式"><span class="icon icon-link"></span></a>1. 打包方式</h3><div class="wrap-body">
+<p>Spring Boot 应用程序可以打包为以下几种方式之一：</p>
+<ol>
+<li>
+<p><strong>可执行 JAR 文件</strong>：</p>
+<ul>
+<li>最常见的方式是将 Spring Boot 应用程序打包成一个可执行的 JAR 文件（Java Archive）。</li>
+<li>JAR 文件中包含了所有的依赖项，可以通过 <code>java -jar</code> 命令来运行。</li>
+</ul>
+</li>
+<li>
+<p><strong>WAR 文件</strong>：</p>
+<ul>
+<li>如果你需要将 Spring Boot 应用程序部署到外部的 Servlet 容器（如 Tomcat、Jetty 等），你可以将应用程序打包成一个 WAR 文件（Web Application Archive）。</li>
+<li>WAR 文件适合传统的 Java Web 应用程序部署方式。</li>
+</ul>
+</li>
+</ol>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="2-打包工具"><a aria-hidden="true" tabindex="-1" href="#2-打包工具"><span class="icon icon-link"></span></a>2. 打包工具</h3><div class="wrap-body">
+<p>通常使用以下两种构建工具来打包 Spring Boot 应用程序：</p>
+<ul>
+<li><strong>Maven</strong>：使用 Maven 的 <code>mvn package</code> 命令可以将应用程序打包为 JAR 或 WAR 文件。在 <code>pom.xml</code> 文件中，Spring Boot 应用程序通常会依赖于 <code>spring-boot-starter-parent</code> 父项目，这简化了 Maven 配置和依赖管理。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="3-打包过程概述"><a aria-hidden="true" tabindex="-1" href="#3-打包过程概述"><span class="icon icon-link"></span></a>3. 打包过程概述</h3><div class="wrap-body">
+<p>在你的 Spring Boot 项目中，通常有一个入口类（如 <code>Application.java</code> 或者根据你的项目命名）。这个类使用 <code>@SpringBootApplication</code> 注解标记，它包含了 <code>main</code> 方法用来启动应用程序。</p>
+<p>当你运行 Maven 的构建命令时，它们会执行以下几个主要步骤来打包你的应用程序：</p>
+<ol>
+<li>
+<p><strong>依赖项解析和下载</strong>：构建工具会检查你项目中的依赖项，下载缺失的依赖并构建整个依赖树。</p>
+</li>
+<li>
+<p><strong>编译代码</strong>：构建工具会编译你的 Java 代码、资源文件等。</p>
+</li>
+<li>
+<p><strong>运行测试</strong>：通常会执行单元测试和集成测试，确保代码质量和功能正确性。</p>
+</li>
+<li>
+<p><strong>打包应用程序</strong>：</p>
+<ul>
+<li>对于可执行 JAR 文件：构建工具会将编译后的类文件、资源文件和依赖项打包到一个 JAR 文件中。同时，它会生成一个 MANIFEST.MF 文件，指定应用程序的入口点（main class）。</li>
+<li>对于 WAR 文件：构建工具会将编译后的类文件、资源文件和依赖项打包成一个 WAR 文件，包括 WEB-INF 目录和其他必要的内容。</li>
+</ul>
+</li>
+<li>
+<p><strong>输出结果</strong>：构建工具会在指定的目录下生成打包好的 JAR 或 WAR 文件，通常位于 <code>target</code> 目录下（Maven）。</p>
+</li>
+</ol>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="4-示例"><a aria-hidden="true" tabindex="-1" href="#4-示例"><span class="icon icon-link"></span></a>4. 示例</h3><div class="wrap-body">
+<p>假设你有一个简单的 Spring Boot 应用程序，并且已经配置好了 Maven 或 Gradle。运行以下命令即可进行打包：</p>
+<ul>
+<li><strong>Maven</strong>：<code>mvn clean package</code></li>
+</ul>
+<p>构建工具会执行以上步骤，生成可执行的 JAR 文件或 WAR 文件，你可以根据需要进行部署和运行。</p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="常见问题与解决方案"><a aria-hidden="true" tabindex="-1" href="#常见问题与解决方案"><span class="icon icon-link"></span></a><strong>常见问题与解决方案</strong></h2><div class="wrap-body">
+<ul>
+<li>处理依赖冲突和版本问题，了解如何排除和解决依赖冲突。</li>
+<li>调优和性能优化建议，如何优化数据库查询、减少资源消耗。</li>
+<li>处理常见的错误和异常，如数据库连接问题、服务器端错误等的调试和解决策略。</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.5.5" defer></script><script src="../js/fuse.min.js?v=1.5.5" defer></script><script src="../js/main.js?v=1.5.5" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
