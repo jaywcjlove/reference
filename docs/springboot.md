@@ -397,50 +397,8 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-### 3.  创建实体类 `User`
-
-在 `src/main/java/com/example/userdemo` 目录下创建一个名为 `User` 的实体类：
-
-```java
-package com.example.userdemo;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-
-    private String username;
-
-    private Integer age;
-
-    private String sex;
-
-    // Constructors, getters, and setters 省略
-
-}
-```
-
-### 4. 创建 UserRepository 接口
-
-在同样的目录下创建一个接口 `UserRepository`，继承自 `JpaRepository<User, Long>`，这样 Spring Data JPA 将会自动实现一些基本的数据库操作方法。
-
-```java
-package com.example.userdemo;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface UserRepository extends JpaRepository<User, Long> {
-}
-```
-
 ### 5. 创建一个简单的控制器来测试
+<!--rehype:wrap-class=row-span-3-->
 
 创建一个简单的控制器 `UserController`，用来处理 HTTP 请求，并操作 `UserRepository` 来访问数据库。
 
@@ -498,19 +456,62 @@ public class UserController {
 }
 ```
 
+### 4. 创建 UserRepository 接口
+<!--rehype:wrap-class=col-span-2-->
+
+在同样的目录下创建一个接口 `UserRepository`，继承自 `JpaRepository<User, Long>`，这样 Spring Data JPA 将会自动实现一些基本的数据库操作方法。
+
+```java
+package com.example.userdemo;
+import org.springframework.data.jpa.repository.JpaRepository;
+public interface UserRepository extends JpaRepository<User, Long> {
+}
+```
+
+### 3.  创建实体类 `User`
+
+在 `src/main/java/com/example/userdemo` 目录下创建一个名为 `User` 的实体类：
+
+```java
+package com.example.userdemo;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
+    private String username;
+    private Integer age;
+    private String sex;
+    // Constructors, getters, and setters 省略
+}
+```
+
 ### 6. 运行应用程序并测试
 
 使用 Maven 或 Gradle 构建并运行你的应用程序。然后，可以使用 Postman 或浏览器访问以下 API 来测试你的应用程序：
 
-- **GET** `http://localhost:8080/users/` 获取所有用户
-- **GET** `http://localhost:8080/users/{id}` 根据用户ID获取用户信息
-- **POST** `http://localhost:8080/users/` 添加新用户（Body 中包含 JSON 数据）
-- **PUT** `http://localhost:8080/users/{id}` 更新用户信息（Body 中包含 JSON 数据）
-- **DELETE** `http://localhost:8080/users/{id}` 删除用户
+- **GET** `http://localhost:8080/users/`
+  获取所有用户
+- **GET** `http://localhost:8080/users/{id}`  
+  根据用户ID获取用户信息
+- **POST** `http://localhost:8080/users/`  
+  添加新用户（Body 中包含 JSON 数据）
+- **PUT** `http://localhost:8080/users/{id}`  
+  更新用户信息（Body 中包含 JSON 数据）
+- **DELETE** `http://localhost:8080/users/{id}`  
+  删除用户
 
-## **测试**
+测试
+---
 
-### 1. 创建一个简单的项目 创建过程同 web 项目创建
+### 1. 创建一个简单的项目
 
 在 `src/main/java/com/example/demo` 目录下创建一个名为 `HelloController.java` 的类：
 
@@ -522,15 +523,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello, World!";
-    }
+  @GetMapping("/hello")
+  public String hello() {
+      return "Hello, World!";
+  }
 }
 ```
 
+创建过程同 web 项目创建
+
 ### 2. 编写测试类
+<!--rehype:wrap-class=col-span-2-->
 
 在 `src/test/java/com/example/demo` 目录下创建一个名为 `HelloControllerTest.java` 的测试类：
 
@@ -566,59 +569,63 @@ public class HelloControllerTest {
 ```
 
 ### 3. 解释测试类的关键点
+<!--rehype:wrap-class=col-span-2-->
 
-- **@SpringBootTest**: 这个注解告诉 Spring Boot 在测试时启动整个 Spring 应用程序上下文。
-- **@AutoConfigureMockMvc**: 这个注解确保在测试中自动配置 MockMvc 实例，用于模拟 HTTP 请求。
-- **@Autowired private MockMvc mockMvc**: 注入 MockMvc 实例，用于执行 HTTP 请求并验证响应。
-- **@Test public void helloTest()**: 这是一个 JUnit 测试方法，用来测试 `HelloController` 中的 `hello()` 方法。
-- **mockMvc.perform(...)**: 执行一个 GET 请求到 `/hello` 接口。
-- **andExpect(MockMvcResultMatchers.status().isOk())**: 预期响应的状态码是 200 OK。
-- **andExpect(MockMvcResultMatchers.content().string("Hello, World!"))**: 预期响应的内容是 "Hello, World!"。
-- **andDo(print())**: 打印请求和响应的详细信息，方便调试。
+- `@SpringBootTest`: 这个注解告诉 Spring Boot 在测试时启动整个 Spring 应用程序上下文。
+- `@AutoConfigureMockMvc`: 这个注解确保在测试中自动配置 MockMvc 实例，用于模拟 HTTP 请求。
+- `@Autowired private MockMvc mockMvc`: 注入 MockMvc 实例，用于执行 HTTP 请求并验证响应。
+- `@Test public void helloTest()`: 这是一个 JUnit 测试方法，用来测试 `HelloController` 中的 `hello()` 方法。
+- `mockMvc.perform(...)`: 执行一个 GET 请求到 `/hello` 接口。
+- `andExpect(MockMvcResultMatchers.status().isOk())`: 预期响应的状态码是 200 OK。
+- `andExpect(MockMvcResultMatchers.content().string("Hello, World!"))`: 预期响应的内容是 "Hello, World!"。
+- `andDo(print())`: 打印请求和响应的详细信息，方便调试。
 
 ### 4. 运行测试
 
 运行测试，确保程序正确.
 
-## **部署与扩展**
-
-Spring Boot 应用程序的打包过程通常涉及将应用程序及其依赖项打包成一个可执行的 JAR 文件或者 WAR 文件。下面我将简要介绍一下 Spring Boot 应用程序的打包过程。
+部署与扩展
+---
 
 ### 1. 打包方式
+<!--rehype:wrap-class=col-span-2-->
 
 Spring Boot 应用程序可以打包为以下几种方式之一：
 
-1. **可执行 JAR 文件**：
-   - 最常见的方式是将 Spring Boot 应用程序打包成一个可执行的 JAR 文件（Java Archive）。
-   - JAR 文件中包含了所有的依赖项，可以通过 `java -jar` 命令来运行。
+#### 可执行 JAR 文件
 
-2. **WAR 文件**：
-   - 如果你需要将 Spring Boot 应用程序部署到外部的 Servlet 容器（如 Tomcat、Jetty 等），你可以将应用程序打包成一个 WAR 文件（Web Application Archive）。
-   - WAR 文件适合传统的 Java Web 应用程序部署方式。
+- 最常见的方式是将 Spring Boot 应用程序打包成一个可执行的 JAR 文件（Java Archive）。
+- JAR 文件中包含了所有的依赖项，可以通过 `java -jar` 命令来运行。
+
+#### WAR 文件
+
+- 如果你需要将 Spring Boot 应用程序部署到外部的 Servlet 容器（如 Tomcat、Jetty 等），你可以将应用程序打包成一个 WAR 文件（Web Application Archive）。
+- WAR 文件适合传统的 Java Web 应用程序部署方式。
+
+### 3. 打包过程概述
+<!--rehype:wrap-class=row-span-2-->
+
+当你运行 Maven 的构建命令时，它们会执行以下几个主要步骤来打包你的应用程序：
+
+- `依赖项解析和下载`：构建工具会检查你项目中的依赖项，下载缺失的依赖并构建整个依赖树。
+- `编译代码`：构建工具会编译你的 Java 代码、资源文件等。
+- `运行测试`：通常会执行单元测试和集成测试，确保代码质量和功能正确性。
+- `打包应用程序`：
+  - 对于可执行 JAR 文件：构建工具会将编译后的类文件、资源文件和依赖项打包到一个 JAR 文件中。同时，它会生成一个 MANIFEST.MF 文件，指定应用程序的入口点（main class）。
+  - 对于 WAR 文件：构建工具会将编译后的类文件、资源文件和依赖项打包成一个 WAR 文件，包括 WEB-INF 目录和其他必要的内容。
+- `输出结果`：构建工具会在指定的目录下生成打包好的 JAR 或 WAR 文件，通常位于 `target` 目录下（Maven）。
+<!--rehype:className=style-timeline-->
+
+在你的 Spring Boot 项目中，通常有一个入口类（如 `Application.java` 或者根据你的项目命名）。这个类使用 `@SpringBootApplication` 注解标记，它包含了 `main` 方法用来启动应用程序。
 
 ### 2. 打包工具
 
 通常使用以下两种构建工具来打包 Spring Boot 应用程序：
 
-- **Maven**：使用 Maven 的 `mvn package` 命令可以将应用程序打包为 JAR 或 WAR 文件。在 `pom.xml` 文件中，Spring Boot 应用程序通常会依赖于 `spring-boot-starter-parent` 父项目，这简化了 Maven 配置和依赖管理。
+#### **Maven**
 
-### 3. 打包过程概述
-
-在你的 Spring Boot 项目中，通常有一个入口类（如 `Application.java` 或者根据你的项目命名）。这个类使用 `@SpringBootApplication` 注解标记，它包含了 `main` 方法用来启动应用程序。
-
-当你运行 Maven 的构建命令时，它们会执行以下几个主要步骤来打包你的应用程序：
-
-1. **依赖项解析和下载**：构建工具会检查你项目中的依赖项，下载缺失的依赖并构建整个依赖树。
-
-2. **编译代码**：构建工具会编译你的 Java 代码、资源文件等。
-
-3. **运行测试**：通常会执行单元测试和集成测试，确保代码质量和功能正确性。
-
-4. **打包应用程序**：
-   - 对于可执行 JAR 文件：构建工具会将编译后的类文件、资源文件和依赖项打包到一个 JAR 文件中。同时，它会生成一个 MANIFEST.MF 文件，指定应用程序的入口点（main class）。
-   - 对于 WAR 文件：构建工具会将编译后的类文件、资源文件和依赖项打包成一个 WAR 文件，包括 WEB-INF 目录和其他必要的内容。
-
-5. **输出结果**：构建工具会在指定的目录下生成打包好的 JAR 或 WAR 文件，通常位于 `target` 目录下（Maven）。
+- 使用 Maven 的 `mvn package` 命令可以将应用程序打包为 JAR 或 WAR 文件。
+- 在 `pom.xml` 文件中，Spring Boot 应用程序通常会依赖于 `spring-boot-starter-parent` 父项目，这简化了 Maven 配置和依赖管理。
 
 ### 4. 示例
 
@@ -627,9 +634,3 @@ Spring Boot 应用程序可以打包为以下几种方式之一：
 - **Maven**：`mvn clean package`
 
 构建工具会执行以上步骤，生成可执行的 JAR 文件或 WAR 文件，你可以根据需要进行部署和运行。
-
-## **常见问题与解决方案**
-
-- 处理依赖冲突和版本问题，了解如何排除和解决依赖冲突。
-- 调优和性能优化建议，如何优化数据库查询、减少资源消耗。
-- 处理常见的错误和异常，如数据库连接问题、服务器端错误等的调试和解决策略。
