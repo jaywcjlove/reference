@@ -77,7 +77,7 @@ Quick Reference
 [Scala](./docs/scala.md)<!--rehype:style=background: rgb(34 82 94);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->  
-[Springboot](./docs/springboot.md)<!--rehype:style=background: rgb(0 255 0);&class=tag&data-lang=Java-->  
+[Spring Boot](./docs/springboot.md)<!--rehype:style=background: rgb(0 255 0);&class=tag&data-lang=Java-->  
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->  
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->  
 <!--rehype:class=home-card-->
