@@ -1,44 +1,63 @@
+Spring Boot 备忘清单
+===
 
-# Spring Boot 备忘清单
-
-====
-
-此快速参考备忘单提供了使用 springboot 的用法
+此快速参考备忘单提供了使用 Spring Boot 的用法
 
 注：开发 springboot 需要要基本的 java 基础和 maven 基础。
 
-## 介绍
+入门
+---
 
-    Spring Boot 是一个用于简化 Spring 应用程序开发的框架。它提供了一种简单的方式来创建、运行和部署 Spring 应用程序，并简化了配置和依赖管理。  
+### 介绍
 
-## **项目创建与配置**
-   - 使用`Spring Initializr`（https://start.spring.io） 创建项目。
-   - 国内可以使用阿里云的 `Spring Initializr` (https://start.aliyun.com/) 创建项目，选择依赖项（如Web、JPA、Security）和Spring Boot版本。
-   - 添加所需的依赖项到`pom.xml`（Maven）或`build.gradle`（Gradle）文件中。
-   - 在`src/main/resources`目录下创建`application.properties`或`application.yml`文件，配置应用程序属性，例如数据库连接信息、端口号等。
+Spring Boot 是一个用于简化 Spring 应用程序开发的框架。它提供了一种简单的方式来创建、运行和部署 Spring 应用程序，并简化了配置和依赖管理。  
+
+### 项目创建与配置
+<!--rehype:wrap-class=col-span-2-->
+
+- 使用 [`Spring Initializr`](https://start.spring.io) 创建项目
+- 国内可以使用阿里云的 [`Spring Initializr`](https://start.aliyun.com/) 创建项目，选择依赖项（如Web、JPA、Security）和 Spring Boot 版本
+- 添加所需的依赖项到 `pom.xml`(Maven) 或 `build.gradle`(Gradle) 文件中
+- 在 `src/main/resources` 目录下创建 `application.properties`或`application.yml` 文件，配置应用程序属性，例如数据库连接信息、端口号等
+
+配置
+---
 
 ### 配置文件说明
+<!--rehype:wrap-class=row-span-2-->
 
-在Spring Boot应用程序中，通常使用YAML格式（`.yml`文件）来配置应用程序的属性和设置。YAML格式相比于传统的`.properties`文件更加清晰和易读，支持层级结构和列表等复杂数据类型。以下是一些常用的Spring Boot YAML配置字段及其说明和介绍：
+在Spring Boot应用程序中，通常使用YAML格式（`.yml`文件）来配置应用程序的属性和设置。相比于传统的`.properties`文件，YAML格式更加清晰易读，并且支持层级结构和列表等复杂数据类型。以下是一些常用的Spring Boot YAML配置字段及其说明：
 
-#### 1. **应用程序配置**
+- `server.port`: 配置应用程序的端口号。
+- `spring.application.name`: 配置应用程序的名称。
+- `spring.datasource.url`: 配置数据库连接的URL。
+- `spring.datasource.username`: 配置数据库连接的用户名。
+- `spring.datasource.password`: 配置数据库连接的密码。
+- `logging.level`: 配置日志记录的级别，如`DEBUG`、`INFO`、`WARN`、`ERROR`等。
+- `management.endpoints.web.exposure.include`: 配置哪些管理端点（如`health`、`info`）可以通过Web访问。
+- `spring.jpa.hibernate.ddl-auto`: 配置Hibernate的DDL模式，如`update`、`create`、`create-drop`等。
+
+### 1. 应用程序配置
 
 ```yaml
 spring:
   application:
     name: my-application
 ```
-- **`spring.application.name`**: 应用程序的名称。在集成服务发现和配置管理时特别有用，也会影响Actuator端点的路径。
 
-#### 2. **服务器端口配置**
+`spring.application.name`: 应用程序的名称。在集成服务发现和配置管理时特别有用，也会影响Actuator端点的路径。
+
+### 2. 服务器端口配置
 
 ```yaml
 server:
   port: 8080
 ```
-- **`server.port`**: 应用程序监听的HTTP端口号。默认为8080，可以根据需要进行配置。
 
-#### 3. **数据源配置**
+`server.port`: 应用程序监听的HTTP端口号。默认为8080，可以根据需要进行配置。
+
+### 3. 数据源配置
+<!--rehype:wrap-class=col-span-2-->
 
 ```yaml
 spring:
@@ -48,11 +67,14 @@ spring:
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
 ```
-- **`spring.datasource.url`**: 数据库连接URL。
-- **`spring.datasource.username`** 和 **`spring.datasource.password`**: 数据库的用户名和密码。
-- **`spring.datasource.driver-class-name`**: 数据库驱动类名。
 
-#### 4. **JPA 配置**
+#### 说明
+
+- `spring.datasource.url`: 数据库连接URL。
+- `spring.datasource.username` 和 `spring.datasource.password`: 数据库的用户名和密码。
+- `spring.datasource.driver-class-name`: 数据库驱动类名。
+
+### 4. **JPA 配置**
 
 ```yaml
 spring:
@@ -61,10 +83,13 @@ spring:
     hibernate:
       ddl-auto: update
 ```
-- **`spring.jpa.show-sql`**: 是否在控制台显示SQL语句。
-- **`spring.jpa.hibernate.ddl-auto`**: Hibernate自动建表策略，如`update`、`create`、`validate`等。
 
-#### 5. **日志配置**
+#### 说明
+
+- `spring.jpa.show-sql`: 是否在控制台显示SQL语句。
+- `spring.jpa.hibernate.ddl-auto`: Hibernate自动建表策略，如`update`、`create`、`validate`等。
+
+### 5. 日志配置
 
 ```yaml
 logging:
@@ -72,9 +97,12 @@ logging:
     org.springframework: INFO
     com.example: DEBUG
 ```
-- **`logging.level`**: 日志级别配置，可以针对不同的包或类设置不同的日志级别。
 
-#### 6. **Spring Security 配置**
+#### 说明
+
+- `logging.level`: 日志级别配置，可以针对不同的包或类设置不同的日志级别。
+
+### 6. Spring Security 配置
 
 ```yaml
 spring:
@@ -85,10 +113,13 @@ spring:
     basic:
       enabled: true
 ```
-- **`spring.security.user.name`** 和 **`spring.security.user.password`**: 基本认证的用户名和密码。
-- **`spring.security.basic.enabled`**: 是否启用基本认证。
 
-#### 7. **Actuator 配置**
+#### 说明
+
+- `spring.security.user.name` 和 `spring.security.user.password`: 基本认证的用户名和密码。
+- `spring.security.basic.enabled`: 是否启用基本认证。
+
+### 7. Actuator 配置
 
 ```yaml
 management:
@@ -97,34 +128,48 @@ management:
       exposure:
         include: health, info
 ```
-- **`management.endpoints.web.exposure.include`**: 暴露给外部的Actuator端点，可以设置为`*`来暴露所有端点。
 
-#### 8. **多环境配置**
+#### 说明
+
+- `management.endpoints.web.exposure.include`: 暴露给外部的Actuator端点，可以设置为`*`来暴露所有端点。
+
+### 8. 多环境配置
 
 ```yaml
 spring:
   profiles:
     active: dev
 ```
-- **`spring.profiles.active`**: 指定当前激活的环境配置文件，可以根据需要选择`dev`、`prod`等不同的配置文件。
 
-#### 9. **自定义属性配置**
+#### 说明
+
+- `spring.profiles.active`: 指定当前激活的环境配置文件，可以根据需要选择`dev`、`prod`等不同的配置文件。
+
+### 9. **自定义属性配置**
 
 ```yaml
 myapp:
   custom:
     property: value
 ```
+
+#### 说明
+
 - 自定义应用程序属性，可以在应用程序中通过`@Value`注解或`Environment`对象访问。
 
+依赖管理
+---
 
-## **依赖管理**
+### 依赖管理介绍
 
-在Spring Boot中，依赖管理是非常重要的一部分，它通过简化依赖项的引入和版本管理，大大简化了项目的构建和维护过程。Spring Boot采用了Starter依赖项的概念，通过提供预配置的依赖项集合来简化项目的初始化和配置。
+- 在 Spring Boot 中，依赖管理是非常重要的一部分。
+- 它通过简化依赖项的引入和版本管理，大大简化了项目的构建和维护过程。
+- Spring Boot采用了 Starter 依赖项的概念，通过提供预配置的依赖项集合来简化项目的初始化和配置。
 
-### 1. Starter依赖项
+### Starter 依赖项
+<!--rehype:wrap-class=row-span-2  col-span-2-->
 
-Spring Boot的Starter依赖项是预先配置的一组依赖项集合，它们以`spring-boot-starter-*`的命名格式提供。这些Starter依赖项可以按照功能领域进行分类，例如：
+Spring Boot 的 Starter 依赖项是预先配置的一组依赖项集合，它们以 `spring-boot-starter-*` 的命名格式提供。这些 Starter 依赖项可以按照功能领域进行分类，例如：
 
 - `spring-boot-starter-web`: 支持构建Web应用程序，包括Spring MVC和内嵌的Servlet容器（如Tomcat）。
 - `spring-boot-starter-data-jpa`: 支持使用Spring Data JPA访问数据库，包括Hibernate和JPA实现。
@@ -132,29 +177,30 @@ Spring Boot的Starter依赖项是预先配置的一组依赖项集合，它们�
 - `spring-boot-starter-test`: 支持单元测试和集成测试，包括JUnit、Mockito等。
 - `spring-boot-starter-actuator`: 支持集成Actuator，用于监控和管理应用程序。
 
-通过引入这些Starter依赖项，你可以快速地添加特定功能的支持，并且Spring Boot会自动配置这些依赖项所需的组件和设置，从而减少了手动配置的工作量。
+引入Starter依赖项可以快速添加特定功能，Spring Boot会自动配置所需的组件和设置，减少手动配置工作量。
 
-### 2. 自动依赖解析和版本管理
+### 自动依赖解析和版本管理
+<!--rehype:wrap-class=row-span-2-->
 
-Spring Boot提供了一个称为Spring Boot BOM（Bill of Materials，依赖项清单）的文件，它集中管理了各个Starter依赖项的版本。通过在项目的`pom.xml`（Maven项目）或`build.gradle`（Gradle项目）中引入Spring Boot BOM，可以简化依赖项版本的管理。例如，在Maven项目中：
+Spring Boot的BOM（Bill of Materials）集中管理各个 Starter 依赖项的版本，通过在`pom.xml`（Maven）或 `build.gradle`（Gradle）中引入 BOM，可以简化依赖项版本管理。例如，在 Maven 项目中：
 
 ```xml
 <dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>2.6.0</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-dependencies</artifactId>
+      <version>2.6.0</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
 </dependencyManagement>
 ```
 
-这样一来，当你在项目中引入Spring Boot的Starter依赖项时，不需要显式声明版本号，Maven会自动使用BOM中指定的版本。
+这样一来，当你在项目中引入 Spring Boot 的 Starter 依赖项时，不需要显式声明版本号，Maven 会自动使用 BOM 中指定的版本。
 
-### 3. 自定义依赖管理
+### 自定义依赖管理
 
 尽管Spring Boot提供了丰富的Starter依赖项和依赖管理功能，但有时你可能需要自定义特定的依赖项或版本。在这种情况下，你可以在`pom.xml`或`build.gradle`中显式声明所需的依赖项，而不使用Starter依赖项。
 
@@ -162,15 +208,15 @@ Spring Boot提供了一个称为Spring Boot BOM（Bill of Materials，依赖项�
 
 ```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-    <version>2.6.0</version>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+  <version>2.6.0</version>
 </dependency>
 ```
 
 这样做可以覆盖Spring Boot BOM中指定的版本，允许你使用特定版本的依赖项。
 
-### 4. 排除和冲突解决
+### 排除和冲突解决
 
 在实际项目中，可能会遇到依赖项之间的冲突或不兼容性问题。Spring Boot允许你通过`<exclusions>`标签来排除Starter依赖项中的某些传递性依赖，以解决冲突问题。
 
@@ -178,82 +224,97 @@ Spring Boot提供了一个称为Spring Boot BOM（Bill of Materials，依赖项�
 
 ```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-    <exclusions>
-        <exclusion>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
-    </exclusions>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+  <exclusions>
+    <exclusion>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+    </exclusion>
+  </exclusions>
 </dependency>
 ```
 
 这种排除机制使得你可以更精确地控制项目中依赖项的版本和组合，以避免不必要的冲突。
 
+Spring Boot 核心功能
+---
+<!--rehype:body-class=cols-2-->
 
-## **Spring Boot 核心功能**
-
-在Spring Boot中，核心自动配置主要涉及到依赖注入（DI，Dependency Injection）和面向切面编程（AOP，Aspect-Oriented Programming），这两者是Spring框架的关键特性之一，通过自动配置使得它们能够无缝集成和使用。
-
-### 1. 依赖注入（Dependency Injection）
+### 依赖注入（Dependency Injection）
 
 依赖注入是Spring框架的核心概念之一，它通过控制反转（IoC，Inversion of Control）的方式管理对象之间的依赖关系，从而实现松耦合、可测试和可维护的代码结构。Spring Boot通过自动配置的方式支持依赖注入，以下是一些关键点：
 
-- **自动装配（Auto-configuration）**: Spring Boot根据类路径中的依赖项自动配置应用程序上下文。这包括自动扫描和注册带有特定注解（如`@Component`、`@Service`、`@Repository`等）的Bean，以及自动解析和注入这些Bean之间的依赖关系。
+#### 自动装配（Auto-configuration）
 
-- **Bean的声明和管理**: 开发者可以使用`@Autowired`注解在需要依赖注入的地方注入其他Bean，Spring Boot会自动解析和注入所需的依赖。例如：
+Spring Boot根据类路径中的依赖项自动配置应用程序上下文。这包括自动扫描和注册带有特定注解（如`@Component`、`@Service`、`@Repository`等）的Bean，以及自动解析和注入这些Bean之间的依赖关系。
 
-  ```java
-  @RestController
-  public class MyController {
-      
-      private final MyService myService;
-      
-      @Autowired
-      public MyController(MyService myService) {
-          this.myService = myService;
-      }
-      
-      // Controller methods
+#### Bean的声明和管理
+
+开发者可以使用`@Autowired`注解在需要依赖注入的地方注入其他Bean，Spring Boot会自动解析和注入所需的依赖。例如：
+
+```java
+@RestController
+public class MyContr {
+  private final MyService myService;
+  
+  @Autowired
+  public MyContr(MyService myService) {
+      this.myService = myService;
   }
-  ```
+  
+  // Controller methods
+}
+```
 
-  在上面的例子中，`MyController`中的`MyService`依赖通过构造函数注入。
+在上面的例子中，`MyController`中的`MyService`依赖通过构造函数注入。
 
-- **条件化注入**: Spring Boot支持根据条件选择性地注入Bean。例如，可以使用`@Conditional`注解或`@ConditionalOnProperty`注解根据特定的条件决定是否创建和注入Bean。
+#### 条件化注入
 
-### 2. 面向切面编程（Aspect-Oriented Programming）
+Spring Boot支持根据条件选择性地注入Bean。例如，可以使用 `@Conditional` 注解或 `@ConditionalOnProperty` 注解根据特定的条件决定是否创建和注入Bean。
+
+### 面向切面编程（Aspect-Oriented Programming）
 
 面向切面编程是一种软件开发方法，用于分离横切关注点（cross-cutting concerns），例如日志、事务管理、安全性等，以便更好地模块化和管理应用程序。Spring Boot通过整合Spring AOP框架支持面向切面编程，以下是相关的说明：
 
-- **切面（Aspect）**: 切面是一个模块化的类，它包含了横切关注点的逻辑。在Spring Boot中，可以使用`@Aspect`注解标记一个类作为切面，并通过`@Before`、`@After`、`@Around`等注解定义切面的具体行为。
+#### 切面（Aspect）
 
-- **切点（Pointcut）**: 切点定义了在应用程序中哪些位置应用切面逻辑。切点表达式使用`execution`关键字指定要拦截的方法调用。例如：
+切面是一个模块化的类，它包含了横切关注点的逻辑。在Spring Boot中，可以使用`@Aspect`注解标记一个类作为切面，并通过`@Before`、`@After`、`@Around`等注解定义切面的具体行为。
 
-  ```java
-  @Aspect
-  @Component
-  public class LoggingAspect {
-      
-      @Before("execution(* com.example.service.*.*(..))")
-      public void beforeServiceMethods(JoinPoint joinPoint) {
-          // Advice logic before service method execution
-      }
-      
-      // Other advices (e.g., @After, @Around) can be defined similarly
-  }
-  ```
+#### 切点（Pointcut）
 
-- **通知（Advice）**: 通知是在切点处执行的具体逻辑，包括`@Before`、`@AfterReturning`、`@AfterThrowing`、`@Around`等。例如，在上面的例子中，`beforeServiceMethods`方法就是一个`@Before`通知，它在目标方法执行之前执行。
+切点定义了在应用程序中哪些位置应用切面逻辑。切点表达式使用`execution`关键字指定要拦截的方法调用。例如：
 
-- **配置和启用**: Spring Boot通过自动配置和注解扫描使得使用AOP变得非常简单。通常情况下，只需在切面类上加上`@Aspect`注解，并确保它被Spring Boot的组件扫描机制扫描到即可。
+```java
+@Aspect
+@Component
+public class LoggingAspect {
+    
+    @Before("execution(* com.example.service.*.*(..))")
+    public void beforeServiceMethods(JoinPoint joinPoint) {
+        // Advice logic before service method execution
+    }
+    
+    // Other advices (e.g., @After, @Around) can be defined similarly
+}
+```
 
-## **Web 开发**
+#### 通知（Advice）
+
+通知是在切点处执行的具体逻辑，包括`@Before`、`@AfterReturning`、`@AfterThrowing`、`@Around`等。例如，在上面的例子中，`beforeServiceMethods`方法就是一个`@Before`通知，它在目标方法执行之前执行。
+
+#### 配置和启用
+
+Spring Boot通过自动配置和注解扫描使得使用AOP变得非常简单。通常情况下，只需在切面类上加上`@Aspect`注解，并确保它被Spring Boot的组件扫描机制扫描到即可。
+
+Web 开发
+---
 
 ### 1. 创建一个新的 Spring Boot 项目
+<!--rehype:wrap-class=row-span-3-->
 
 你可以使用 Spring Initializr 创建一个新的 Spring Boot 项目。访问 [start.spring.io](https://start.spring.io/) 并按照以下配置创建项目：
+
 - **Project**: Maven 或 Gradle（选择你的构建工具）
 - **Language**: Java
 - **Spring Boot**: 选择最新的稳定版本
@@ -269,6 +330,7 @@ Spring Boot提供了一个称为Spring Boot BOM（Bill of Materials，依赖项�
 解压下载的文件并导入到你喜欢的 IDE 中（如 IntelliJ IDEA、Eclipse 等）。
 
 ### 3. 实现 Hello World Controller
+<!--rehype:wrap-class=row-span-3-->
 
 在 IDE 中打开你的项目，导航到 `src/main/java/com/example/helloworld`。你会看到一个名为 `HelloworldApplication.java` 的类文件，这是 Spring Boot 应用程序的入口类。
 
@@ -308,12 +370,14 @@ mvn spring-boot:run
 
 在浏览器中访问 `http://localhost:8080/`，你应该能够看到显示 "Hello, World!" 的页面。
 
-这样，你就成功创建了一个简单的 Spring Boot Web 应用程序，并实现了一个基本的 "Hello, World!" 示例。 
+这样，你就成功创建了一个简单的 Spring Boot Web 应用程序，并实现了一个基本的 "Hello, World!" 示例。
 
 ## **数据访问**
 
 ### 1.创建过程和 web 项目示例一样
+
 注意：需要选择 jpa 和对应数据库的驱动
+
 ### 2. 配置数据库连接
 
 默认情况下，Spring Boot 使用 H2 Database 作为内嵌数据库。如果你想使用其他数据库，可以在 `application.properties`（或 `application.yml`）文件中配置数据库连接信息。
@@ -446,7 +510,6 @@ public class UserController {
 
 ## **测试**
 
-
 ### 1. 创建一个简单的项目 创建过程同 web 项目创建
 
 在 `src/main/java/com/example/demo` 目录下创建一个名为 `HelloController.java` 的类：
@@ -518,6 +581,7 @@ public class HelloControllerTest {
 运行测试，确保程序正确.
 
 ## **部署与扩展**
+
 Spring Boot 应用程序的打包过程通常涉及将应用程序及其依赖项打包成一个可执行的 JAR 文件或者 WAR 文件。下面我将简要介绍一下 Spring Boot 应用程序的打包过程。
 
 ### 1. 打包方式
@@ -565,6 +629,7 @@ Spring Boot 应用程序可以打包为以下几种方式之一：
 构建工具会执行以上步骤，生成可执行的 JAR 文件或 WAR 文件，你可以根据需要进行部署和运行。
 
 ## **常见问题与解决方案**
-   - 处理依赖冲突和版本问题，了解如何排除和解决依赖冲突。
-   - 调优和性能优化建议，如何优化数据库查询、减少资源消耗。
-   - 处理常见的错误和异常，如数据库连接问题、服务器端错误等的调试和解决策略。
+
+- 处理依赖冲突和版本问题，了解如何排除和解决依赖冲突。
+- 调优和性能优化建议，如何优化数据库查询、减少资源消耗。
+- 处理常见的错误和异常，如数据库连接问题、服务器端错误等的调试和解决策略。
