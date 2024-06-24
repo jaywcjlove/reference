@@ -314,6 +314,7 @@ $ npx create-react-app my-app --template typescript
 `~/.npmrc` | 每个用户的配置文件
 `$PREFIX/etc/npmrc` | 全局配置文件
 `/path/to/npm/npmrc` | npm 内置配置文件
+<!--rehype:className=left-align-->
 
 ### 配置内容
 
@@ -336,6 +337,7 @@ $ npx create-react-app my-app --template typescript
 `cnpm` | <https://r.cnpmjs.org/>
 `taobao` | <https://registry.npmmirror.com/>
 `npmMirror` | <https://skimdb.npmjs.com/registry/>
+<!--rehype:className=left-align-->
 
 ### `.npmignore`
 
