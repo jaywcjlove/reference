@@ -365,4 +365,4 @@ describe('Counter Store', () => {
 - [Pinia 官方文档](https://pinia.vuejs.org/)
 - [Pinia GitHub 仓库](https://github.com/vuejs/pinia)
 - [Pinia 快速上手](https://pinia.vuejs.org/getting-started.html)
-- [Pinia Plugin Persist](https://seb-l.github.io/pinia-plugin-persist/basic-usage.html)
+- [pinia-plugin-persist 官方文档](https://seb-l.github.io/pinia-plugin-persist/basic-usage.html)
