@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>pnpm 备忘清单
+ &#x26;  pnpm cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="这是一份 pnpm 软件包管理器备忘单，其中列出了 pnpm 常用命令使用清单。
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="pnpm,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/pnpm.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.5"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="pnpm-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3 17h4v4h-4z"></path>
+  <path d="M10 17h4v4h-4z"></path>
+  <path d="M17 17h4v4h-4z"></path>
+  <path d="M17 10h4v4h-4z"></path>
+  <path d="M17 3h4v4h-4z"></path>
+  <path d="M10 10h4v4h-4z"></path>
+  <path d="M10 3h4v4h-4z"></path>
+  <path d="M3 3h4v4h-4z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#pnpm-备忘清单"><span class="icon icon-link"></span></a>pnpm 备忘清单</h1><div class="wrap-body">
+<p>这是一份 <a href="https://pnpm.io/"><code>pnpm</code></a> 软件包管理器备忘单，其中列出了 <code>pnpm</code> 常用命令使用清单。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pnpm-与-npm-命令比较">pnpm 与 npm 命令比较</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pnpm-install">pnpm install</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pnpm-add">pnpm add</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pnpm-remove">pnpm remove</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pnpm-update">pnpm update</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pnpm-list">pnpm list</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pnpm-cache">pnpm cache</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pnpm-why">pnpm why</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装包">安装包</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#移除包">移除包</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看包">查看包</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清除">清除</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#信息">信息</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清理缓存">清理缓存</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#monorepo">Monorepo</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建-monorepo-工作区">创建 Monorepo 工作区</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#添加包到-monorepo-工作区">添加包到 Monorepo 工作区</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#运行脚本">运行脚本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#添加工作区范围的依赖">添加工作区范围的依赖</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建新的包">创建新的包</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#链接本地包">链接本地包</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#高级用法">高级用法</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#工作区">工作区</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#链接">链接</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#运行脚本-1">运行脚本</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pnpm-与-npm-命令比较"><a aria-hidden="true" tabindex="-1" href="#pnpm-与-npm-命令比较"><span class="icon icon-link"></span></a>pnpm 与 npm 命令比较</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">npm</th><th align="left">pnpm</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>npm install</code></td><td align="left"><code>pnpm install</code></td><td align="left">安装依赖</td></tr><tr><td align="left"><code>npm init</code></td><td align="left"><code>pnpm init</code></td><td align="left">创建 <code>package.json</code> 文件</td></tr><tr><td align="left"><code>npm install &#x3C;package></code></td><td align="left"><code>pnpm add &#x3C;package></code></td><td align="left">安装包</td></tr><tr><td align="left"><code>npm install -g &#x3C;package></code></td><td align="left"><code>pnpm add -g &#x3C;package></code></td><td align="left">全局安装包</td></tr><tr><td align="left"><code>npm update</code></td><td align="left"><code>pnpm update</code></td><td align="left">更新包</td></tr><tr><td align="left"><code>npm cache clean</code></td><td align="left"><code>pnpm cache clean</code></td><td align="left">清理缓存</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pnpm-install"><a aria-hidden="true" tabindex="-1" href="#pnpm-install"><span class="icon icon-link"></span></a>pnpm install</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">--no-lockfile <span class="token comment"># 不生成 pnpm-lock.yaml 锁定文件</span>
+</span><span class="code-line"><span class="token parameter variable">--force</span> <span class="token comment"># 强制覆盖现有的 node_modules</span>
+</span><span class="code-line">--frozen-lockfile <span class="token comment"># 忽略 pnpm-lock.yaml 中的更改</span>
+</span><span class="code-line"><span class="token parameter variable">--offline</span> <span class="token comment"># 离线模式，不尝试从远程仓库安装包</span>
+</span><span class="code-line">--shamefully-hoist <span class="token comment"># 类似于 npm 的 hoist 行为</span>
+</span><span class="code-line">--strict-peer-dependencies <span class="token comment"># 严格检查 peer dependencies</span>
+</span></code></pre>
+<p>这些选项可用于 <code>pnpm install</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pnpm-add"><a aria-hidden="true" tabindex="-1" href="#pnpm-add"><span class="icon icon-link"></span></a>pnpm add</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token parameter variable">--save</span> <span class="token comment"># 将包添加到 dependencies</span>
+</span><span class="code-line">--save-dev <span class="token comment"># 将包添加到 devDependencies</span>
+</span><span class="code-line"><span class="token parameter variable">--global</span> <span class="token comment"># 全局安装包</span>
+</span><span class="code-line"><span class="token parameter variable">--exact</span> <span class="token comment"># 安装精确版本号的包</span>
+</span><span class="code-line">--shamefully-hoist <span class="token comment"># 类似于 npm 的 hoist 行为</span>
+</span><span class="code-line">--strict-peer-dependencies <span class="token comment"># 严格检查 peer dependencies</span>
+</span></code></pre>
+<p>这些选项可用于 <code>pnpm add</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pnpm-remove"><a aria-hidden="true" tabindex="-1" href="#pnpm-remove"><span class="icon icon-link"></span></a>pnpm remove</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 从依赖中删除包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> remove <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pnpm-update"><a aria-hidden="true" tabindex="-1" href="#pnpm-update"><span class="icon icon-link"></span></a>pnpm update</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 更新所有包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> update
+</span><span class="code-line"><span class="token comment"># 更新特定包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> update <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 更新到最新版本（包括 major 版本）</span>
+</span><span class="code-line"><span class="token function">pnpm</span> update <span class="token parameter variable">--latest</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pnpm-list"><a aria-hidden="true" tabindex="-1" href="#pnpm-list"><span class="icon icon-link"></span></a>pnpm list</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 列出所有已安装的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> list
+</span><span class="code-line"><span class="token comment"># 列出全局安装的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> list <span class="token parameter variable">-g</span>
+</span><span class="code-line"><span class="token comment"># 查找过时的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> outdated
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pnpm-cache"><a aria-hidden="true" tabindex="-1" href="#pnpm-cache"><span class="icon icon-link"></span></a>pnpm cache</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 清理 pnpm 缓存</span>
+</span><span class="code-line"><span class="token function">pnpm</span> cache clean
+</span><span class="code-line"><span class="token comment"># 查看缓存中所有的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> cache list
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pnpm-why"><a aria-hidden="true" tabindex="-1" href="#pnpm-why"><span class="icon icon-link"></span></a>pnpm why</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 显示为什么安装了某个包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> why <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装包"><a aria-hidden="true" tabindex="-1" href="#安装包"><span class="icon icon-link"></span></a>安装包</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 将包添加到“dependencies”</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 将包添加到“devDependencies”</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 将包作为精确版本添加</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token parameter variable">--exact</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 在全局范围内安装包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token parameter variable">-g</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 安装特定版本的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>@<span class="token operator">&#x3C;</span>version<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="移除包"><a aria-hidden="true" tabindex="-1" href="#移除包"><span class="icon icon-link"></span></a>移除包</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">pnpm</span> remove <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看包"><a aria-hidden="true" tabindex="-1" href="#查看包"><span class="icon icon-link"></span></a>查看包</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出已安装的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> list
+</span><span class="code-line"><span class="token comment"># 列出顶级安装的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> list <span class="token parameter variable">--depth</span> <span class="token number">0</span>
+</span><span class="code-line"><span class="token comment"># 列出全局安装的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> list <span class="token parameter variable">-g</span>
+</span><span class="code-line"><span class="token comment"># 根据模式和深度列出包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> list <span class="token parameter variable">--pattern</span> <span class="token string">"lodash"</span> <span class="token parameter variable">--depth</span> <span class="token number">1</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="清除"><a aria-hidden="true" tabindex="-1" href="#清除"><span class="icon icon-link"></span></a>清除</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 清理 node_modules 并删除不必要的文件</span>
+</span><span class="code-line"><span class="token function">pnpm</span> prune
+</span><span class="code-line"><span class="token comment"># 检查过时的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> outdated
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="信息"><a aria-hidden="true" tabindex="-1" href="#信息"><span class="icon icon-link"></span></a>信息</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 显示关于安装包的原因的信息</span>
+</span><span class="code-line"><span class="token function">pnpm</span> why <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="清理缓存"><a aria-hidden="true" tabindex="-1" href="#清理缓存"><span class="icon icon-link"></span></a>清理缓存</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 清除 pnpm 的全局缓存</span>
+</span><span class="code-line"><span class="token function">pnpm</span> cache clean
+</span></code></pre>
+<p>此外，您可以指定一个或多个要清理的包。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="monorepo"><a aria-hidden="true" tabindex="-1" href="#monorepo"><span class="icon icon-link"></span></a>Monorepo</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="创建-monorepo-工作区"><a aria-hidden="true" tabindex="-1" href="#创建-monorepo-工作区"><span class="icon icon-link"></span></a>创建 Monorepo 工作区</h3><div class="wrap-body">
+<ol>
+<li>创建一个新的 pnpm 工作区：</li>
+</ol>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">pnpm</span> init <span class="token parameter variable">-w</span>
+</span></code></pre>
+<p>这将在项目的根目录中创建一个 <code>pnpm-workspace.yaml</code> 文件，内容如下：</p>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">packages</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token string">'packages/**'</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token string">'apps/**'</span>
+</span></code></pre>
+<ol start="2">
+<li>在 <code>pnpm-workspace.yaml</code> 中定义您的工作区结构：</li>
+</ol>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token key atrule">packages</span><span class="token punctuation">:</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token string">'packages/*'</span>
+</span><span class="code-line">  <span class="token punctuation">-</span> <span class="token string">'apps/*'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加包到-monorepo-工作区"><a aria-hidden="true" tabindex="-1" href="#添加包到-monorepo-工作区"><span class="icon icon-link"></span></a>添加包到 Monorepo 工作区</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 在工作区中添加包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span> <span class="token parameter variable">-w</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="运行脚本"><a aria-hidden="true" tabindex="-1" href="#运行脚本"><span class="icon icon-link"></span></a>运行脚本</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 在所有包中运行脚本</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token parameter variable">-r</span> run <span class="token operator">&#x3C;</span>script<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 仅在某个包中运行脚本</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token parameter variable">--filter</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span> run <span class="token operator">&#x3C;</span>script<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 在某个包及其依赖中运行脚本</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token parameter variable">--filter</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span><span class="token punctuation">..</span>. run <span class="token operator">&#x3C;</span>script<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加工作区范围的依赖"><a aria-hidden="true" tabindex="-1" href="#添加工作区范围的依赖"><span class="icon icon-link"></span></a>添加工作区范围的依赖</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 添加依赖到工作区根目录</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span> <span class="token parameter variable">-w</span>
+</span><span class="code-line"><span class="token comment"># 添加开发依赖到工作区根目录</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span> <span class="token parameter variable">-w</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="创建新的包"><a aria-hidden="true" tabindex="-1" href="#创建新的包"><span class="icon icon-link"></span></a>创建新的包</h3><div class="wrap-body">
+<p>在 <code>packages</code> 目录中创建新的包，例如：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">mkdir</span> packages/new-package
+</span><span class="code-line"><span class="token builtin class-name">cd</span> packages/new-package
+</span><span class="code-line"><span class="token function">pnpm</span> init
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="链接本地包"><a aria-hidden="true" tabindex="-1" href="#链接本地包"><span class="icon icon-link"></span></a>链接本地包</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 将本地包链接到当前工作区</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">link</span> <span class="token operator">&#x3C;</span>local-package-path<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 链接工作区中的包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token operator">&#x3C;</span>local-package-name<span class="token operator">></span> <span class="token parameter variable">--workspace</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="高级用法"><a aria-hidden="true" tabindex="-1" href="#高级用法"><span class="icon icon-link"></span></a>高级用法</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="工作区"><a aria-hidden="true" tabindex="-1" href="#工作区"><span class="icon icon-link"></span></a>工作区</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 创建工作区</span>
+</span><span class="code-line"><span class="token function">pnpm</span> init <span class="token parameter variable">-w</span>
+</span><span class="code-line"><span class="token comment"># 在工作区中添加包</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">add</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span> <span class="token parameter variable">-w</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="链接"><a aria-hidden="true" tabindex="-1" href="#链接"><span class="icon icon-link"></span></a>链接</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 链接一个全局包到当前项目</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">link</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 链接本地包到全局</span>
+</span><span class="code-line"><span class="token function">pnpm</span> <span class="token function">link</span> <span class="token parameter variable">--global</span> <span class="token operator">&#x3C;</span>package<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="运行脚本-1"><a aria-hidden="true" tabindex="-1" href="#运行脚本-1"><span class="icon icon-link"></span></a>运行脚本</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 运行 package.json 中的脚本</span>
+</span><span class="code-line"><span class="token function">pnpm</span> run <span class="token operator">&#x3C;</span>script<span class="token operator">></span>
+</span><span class="code-line"><span class="token comment"># 运行根目录中的包的脚本</span>
+</span><span class="code-line"><span class="token function">pnpm</span> run <span class="token parameter variable">-w</span> <span class="token operator">&#x3C;</span>script<span class="token operator">></span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://pnpm.io/">pnpm 官方文档网站</a></li>
+<li><a href="https://pnpm.io/motivation">pnpm 常见问题解答</a></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.5.5" defer></script><script src="../js/fuse.min.js?v=1.5.5" defer></script><script src="../js/main.js?v=1.5.5" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
