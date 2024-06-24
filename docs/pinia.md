@@ -16,25 +16,10 @@ yarn add pinia
 pnpm add pinia
 ```
 
-### 创建 Pinia 实例
-
-在你的 Vue 应用中创建一个 Pinia 实例并将其传递给 Vue：
-
-```javascript
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-
-const app = createApp(App)
-const pinia = createPinia()
-
-app.use(pinia)
-app.mount('#app')
-```
-
 ### 定义 Store
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
-创建一个 store 文件（例如 `src/stores/counter.js`），并定义 store：
+创建一个 store 文件（例如 `src/stores/counter.js`），并定义 `store`
 
 ```javascript
 import { defineStore } from 'pinia'
@@ -54,9 +39,36 @@ export const useCounterStore = defineStore('counter', {
 })
 ```
 
-### 使用 Store
+### 创建 Pinia 实例
 
-在组件中使用 store：
+```javascript
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+
+const app = createApp(App)
+const pinia = createPinia()
+
+app.use(pinia)
+app.mount('#app')
+```
+
+在你的 [Vue](./vue.md) 应用中创建一个 Pinia 实例并将其传递给 [Vue](./vue.md)
+
+### 热重载 Store
+
+使用 Vite 时，你可以启用热重载功能：
+
+```javascript
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useCounterStore, import.meta.hot))
+}
+```
+
+### 使用 Store
+<!--rehype:wrap-class=row-span-2-->
+
+在组件中使用 `store`
 
 ```javascript
 <template>
@@ -82,17 +94,8 @@ export default {
 </script>
 ```
 
-### 热重载 Store
-
-使用 Vite 时，你可以启用热重载功能：
-
-```javascript
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useCounterStore, import.meta.hot))
-}
-```
-
 ### Modules 模式
+<!--rehype:wrap-class=row-span-2-->
 
 Pinia 不使用传统的 Vuex 模块模式。相反，推荐使用独立的 store 文件：
 
@@ -160,6 +163,7 @@ export function useCounter() {
 ```
 
 ### 插件
+<!--rehype:wrap-class=col-span-2-->
 
 Pinia 支持插件。你可以编写插件来扩展 Pinia 的功能：
 
@@ -179,37 +183,22 @@ const pinia = createPinia()
 pinia.use(piniaPlugin)
 ```
 
-### SSR 支持
-
-Pinia 支持服务端渲染 (SSR)。在你的 SSR 入口文件中创建 Pinia 实例：
-
-```javascript
-import { createPinia } from 'pinia'
-
-export function createApp() {
-  const app = createSSRApp(App)
-  const pinia = createPinia()
-
-  app.use(pinia)
-  return { app, pinia }
-}
-```
-
-明白了，让我们来结合 `pinia-plugin-persist` 插件完善 Pinia 备忘清单。
-
 ### 持久化状态
+<!--rehype:wrap-class=row-span-4 col-span-2-->
 
 #### 1. 安装  `pinia-plugin-persist`
+<!--rehype:style=color:#228e6c;font-weight: bold;text-align: left;-->
 
 ```bash
 npm  pinia-plugin-persist
 ```
 
 #### 2. 配置 Pinia 和 `pinia-plugin-persist`
+<!--rehype:style=color:#228e6c;font-weight: bold;text-align: left;-->
 
 在你的入口文件中配置 Pinia 和 `pinia-plugin-persist`。
 
-**Vue 2 项目：**
+**⚠️ Vue 2 项目**
 
 ```javascript
 import Vue from 'vue'
@@ -247,6 +236,7 @@ createApp(App)
 ```
 
 #### 3. 创建 Store 并启用持久化
+<!--rehype:style=color:#228e6c;font-weight: bold;text-align: left;-->
 
 创建一个 Pinia store，并启用持久化存储。
 
@@ -278,6 +268,7 @@ export const useUserStore = defineStore('userStore', {
 ```
 
 #### 4. 使用 Store
+<!--rehype:style=color:#228e6c;font-weight: bold;text-align: left;-->
 
 在组件中使用创建好的 store。
 
@@ -303,6 +294,23 @@ export default {
 </script>
 ```
 
+### SSR 支持
+
+Pinia 支持服务端渲染 (SSR)。在你的 SSR 入口文件中创建 Pinia 实例：
+
+```javascript
+import { createPinia } from 'pinia'
+
+export function createApp() {
+  const app = createSSRApp(App)
+  const pinia = createPinia()
+
+  app.use(pinia)
+  return { app, pinia }
+}
+```
+
+明白了，让我们来结合 `pinia-plugin-persist` 插件完善 Pinia 备忘清单。
 
 ### 使用 Vue Devtools
 
