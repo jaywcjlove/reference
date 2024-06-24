@@ -134,7 +134,7 @@ Quick Reference
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132);-->  
 [Yarn](./docs/yarn.md)<!--rehype:style=background: rgb(33 136 182);-->  
 [nvm](./docs/nvm.md)<!--rehype:style=background: rgb(132 132 132);-->  
-[pnpm](./docs/pnpm.md)<!--rehype:style=background: rgb(33 136 182);-->  
+[pnpm](./docs/pnpm.md)<!--rehype:style=background: rgb(191 133 0);-->  
 <!--rehype:class=home-card-->
 
 ## 工具

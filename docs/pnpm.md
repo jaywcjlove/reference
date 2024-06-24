@@ -7,6 +7,7 @@ pnpm 备忘清单
 ---
 
 ### pnpm 与 npm 命令比较
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 npm | pnpm | 说明
 :- | :- | :-
@@ -17,49 +18,7 @@ npm | pnpm | 说明
 `npm update` | `pnpm update` | 更新包
 `npm cache clean` | `pnpm cache clean` | 清理缓存
 
-### pnpm install
-
-```shell
---no-lockfile # 不生成 pnpm-lock.yaml 锁定文件
---force # 强制覆盖现有的 node_modules
---frozen-lockfile # 忽略 pnpm-lock.yaml 中的更改
---offline # 离线模式，不尝试从远程仓库安装包
---shamefully-hoist # 类似于 npm 的 hoist 行为
---strict-peer-dependencies # 严格检查 peer dependencies
-```
-
-这些选项可用于 `pnpm install`。
-
-### pnpm add
-
-```shell
---save # 将包添加到 dependencies
---save-dev # 将包添加到 devDependencies
---global # 全局安装包
---exact # 安装精确版本号的包
---shamefully-hoist # 类似于 npm 的 hoist 行为
---strict-peer-dependencies # 严格检查 peer dependencies
-```
-
-这些选项可用于 `pnpm add`。
-
-### pnpm remove
-
-```shell
-# 从依赖中删除包
-pnpm remove <package>
-```
-
-### pnpm update
-
-```shell
-# 更新所有包
-pnpm update
-# 更新特定包
-pnpm update <package>
-# 更新到最新版本（包括 major 版本）
-pnpm update --latest
-```
+参考 [npm](./npm.md) 备忘清单
 
 ### pnpm list
 
@@ -72,6 +31,65 @@ pnpm list -g
 pnpm outdated
 ```
 
+### pnpm why
+
+```shell
+# 显示为什么安装了某个包
+pnpm why <package>
+```
+
+### pnpm install
+<!--rehype:wrap-class=row-span-3-->
+
+pnpm | 说明
+:- | :-
+`--no-lockfile` | 不生成 pnpm-lock.yaml 锁定文件
+`--force` | 强制覆盖现有的 node_modules
+`--frozen-lockfile` | 忽略 pnpm-lock.yaml 中的更改
+`--offline` | 离线模式，不尝试从远程仓库安装包
+`--shamefully-hoist` | 类似于 npm 的 hoist 行为
+`--strict-peer-dependencies` | 严格检查 peer dependencies
+<!--rehype:className=style-list-arrow-->
+
+这些选项可用于 `pnpm install`。
+
+### pnpm add
+<!--rehype:wrap-class=row-span-3-->
+
+pnpm | 说明
+:- | :-
+`--save` | 将包添加到 dependencies
+`--save-dev` | 将包添加到 devDependencies
+`--global` | 全局安装包
+`--exact` | 安装精确版本号的包
+`--shamefully-hoist` | 类似于 npm 的 hoist 行为
+`--strict-peer-dependencies` | 严格检查 peer dependencies
+<!--rehype:className=style-list-arrow-->
+
+这些选项可用于 `pnpm add`。
+
+### pnpm update
+
+```shell
+# 更新所有包
+pnpm update
+# 更新特定包
+pnpm update <package>
+# 更新到最新版本（包括 major 版本）
+pnpm update --latest
+```
+
+### pnpm remove
+
+```shell
+# 从依赖中删除包
+pnpm remove <package>
+# 删除全局依赖包
+pnpm remove -g create-react-app
+# 删除特定版本的依赖包
+pnpm remove lodash@4.17.21
+```
+
 ### pnpm cache
 
 ```shell
@@ -79,13 +97,6 @@ pnpm outdated
 pnpm cache clean
 # 查看缓存中所有的包
 pnpm cache list
-```
-
-### pnpm why
-
-```shell
-# 显示为什么安装了某个包
-pnpm why <package>
 ```
 
 示例
@@ -110,6 +121,12 @@ pnpm add <package>@<version>
 
 ```bash
 pnpm remove <package>
+# 删除多个依赖包
+pnpm remove lodash express
+# 删除全局依赖包
+pnpm remove -g create-react-app
+# 删除特定版本的依赖包
+pnpm remove lodash@4.17.21
 ```
 
 ### 查看包
@@ -154,37 +171,39 @@ Monorepo
 ---
 
 ### 创建 Monorepo 工作区
+<!--rehype:wrap-class=row-span-3-->
 
-1. 创建一个新的 pnpm 工作区：
+- 创建一个新的 pnpm 工作区：
 
-```bash
-pnpm init -w
-```
+  ```bash
+  pnpm init -w
+  ```
+  
+- 将在项目的根目录中创建一个 `pnpm-workspace.yaml` 文件，内容如下：
 
-这将在项目的根目录中创建一个 `pnpm-workspace.yaml` 文件，内容如下：
+  ```yaml
+  packages:
+    - 'packages/**'
+    - 'apps/**'
+  ```
 
-```yaml
-packages:
-  - 'packages/**'
-  - 'apps/**'
-```
+- 在 `pnpm-workspace.yaml` 中定义您的工作区结构：
 
-2. 在 `pnpm-workspace.yaml` 中定义您的工作区结构：
-
-```yaml
-packages:
-  - 'packages/*'
-  - 'apps/*'
-```
+  ```yaml
+  packages:
+    - 'packages/*'
+    - 'apps/*'
+  ```
+<!--rehype:className=style-timeline-->
 
 ### 添加包到 Monorepo 工作区
 
 ```bash
-# 在工作区中添加包
-pnpm add <package> -w
+pnpm add <package> -w # 在工作区中添加包
 ```
 
 ### 运行脚本
+<!--rehype:wrap-class=row-span-2-->
 
 ```bash
 # 在所有包中运行脚本
