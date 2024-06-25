@@ -184,6 +184,79 @@ print(3 >= 3); // 打印: true - 大于或等于
 print(2 <= 3); // 打印: true - 小于或等于
 ```
 
+### 运算符优先级示例
+
+```dart
+// 括号可以提高可读性。
+if ((n % i == 0) && (d % i == 0)) ...
+// 虽然难以阅读，但等效。
+if (n % i == 0 && d % i == 0) ...
+```
+
+### 位运算符和移位运算符
+
+操作符 | 含义
+:-|-
+`&` | 与（AND）
+`\|` | 或（OR）
+`^` | 异或（XOR）
+`~expr` | 一元位补码<br>_(0 变为 1；1 变为 0)_
+`<<` | 左移
+`>>` | 右移
+`>>>` | 无符号右移
+<!--rehype:className=left-align-->
+
+----
+
+```dart
+final value = 0x22;
+final bitmask = 0x0f;
+
+// 与（AND）
+assert((value & bitmask) == 0x02);
+// 非与（AND NOT）
+assert((value & ~bitmask) == 0x20);
+// 或（OR）
+assert((value | bitmask) == 0x2f);
+// 异或（XOR）
+assert((value ^ bitmask) == 0x2d);
+
+assert((value << 4) == 0x220); // 左移
+assert((value >> 4) == 0x02);  // 右移
+```
+
+### 级联表示法
+
+级联 (.., ?..) 允许您对同一对象进行一系列操作。除了访问实例成员之外，您还可以调用同一对象的实例方法。这通常可以节省您创建临时变量的步骤，并允许您编写更流畅的代码。考虑以下代码：
+
+```dart
+var paint = Paint()
+  ..color = Colors.black
+  ..strokeCap = StrokeCap.round
+  ..strokeWidth = 5.0;
+```
+
+示例相当于以下代码：
+
+```dart
+var paint = Paint();
+paint.color = Colors.black;
+paint.strokeCap = StrokeCap.round;
+paint.strokeWidth = 5.0;
+```
+
+以 `?...`开头可确保不会对该空对象进行任何级联操作。
+
+```dart
+querySelector('#confirm') // 获取一个对象
+  ?..text = 'Confirm' // 使用它的成员
+  ..classes.add('important')
+  ..onClick.listen((e) => {
+    window.alert('Confirmed!')
+  })
+  ..scrollIntoView();
+```
+
 控制流：条件
 ------
 
@@ -206,7 +279,7 @@ if(age < 18){
 ```dart
 enum Pet {dog, cat}
 Pet myPet = Pet.dog;
-switch(myPet){
+switch(myPet) {
     case Pet.dog:
         print('My Pet is Dog.');
         break;
