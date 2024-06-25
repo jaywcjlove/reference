@@ -447,4 +447,4 @@ erl -eval "eunit:test(module_name)" -s init stop
 ---
 
 - [Erlang 官方文档](https://www.erlang.org/docs)
-- [Erlang 编程书籍](https://www.erlang.org/books)
+- [Erlang 编程书籍](https://learnyousomeerlang.com/content)
