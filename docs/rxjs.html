@@ -66,7 +66,7 @@
 </span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Clicked </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token operator">++</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> times</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></code></pre>
-<p>使用 RxJS 可以隔离状态。</p>
+<p>使用 <code>RxJS</code> 可以隔离状态。</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> fromEvent<span class="token punctuation">,</span> scan <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'rxjs'</span><span class="token punctuation">;</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token function">fromEvent</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">,</span> <span class="token string">'click'</span><span class="token punctuation">)</span>
@@ -78,7 +78,7 @@
 <p>扫描操作符的工作原理与数组的 <code>reduce</code> 类似。它接受一个暴露给回调函数的值。回调的返回值将成为下次回调运行时公开的下一个值。</p>
 </div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="流"><a aria-hidden="true" tabindex="-1" href="#流"><span class="icon icon-link"></span></a>流</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
-<p>RxJS 拥有一整套运算符，可以帮助您控制事件如何流经您的可观察对象。这是使用纯 JavaScript 每秒最多允许一次点击的方式：</p>
+<p><code>RxJS</code> 拥有一整套运算符，可以帮助您控制事件如何流经您的可观察对象。这是使用纯 JavaScript 每秒最多允许一次点击的方式：</p>
 <pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token keyword">let</span> rate <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token keyword">let</span> lastClick <span class="token operator">=</span> <span class="token known-class-name class-name">Date</span><span class="token punctuation">.</span><span class="token method function property-access">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> rate<span class="token punctuation">;</span>
@@ -130,19 +130,19 @@
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 输出: 1 2 3</span>
 </span></code></pre>
-<p>创建一个立即发送指定值并完成的 Observable</p>
+<p>创建一个立即发送指定值并完成的 <code>Observable</code></p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="from"><a aria-hidden="true" tabindex="-1" href="#from"><span class="icon icon-link"></span></a>from</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token keyword module">from</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 输出: 1 2 3</span>
 </span></code></pre>
-<p>从 Promise、数组、可迭代对象创建 Observable</p>
+<p>从 Promise、数组、可迭代对象创建 <code>Observable</code></p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="interval"><a aria-hidden="true" tabindex="-1" href="#interval"><span class="icon icon-link"></span></a>interval</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token function">interval</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 每秒输出一次递增的数字</span>
 </span></code></pre>
-<p>创建一个定时发送递增整数的 Observable</p>
+<p>创建一个定时发送递增整数的 <code>Observable</code></p>
 </div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="fromevent"><a aria-hidden="true" tabindex="-1" href="#fromevent"><span class="icon icon-link"></span></a>fromEvent</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> button <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">querySelector</span><span class="token punctuation">(</span><span class="token string">'button'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -151,7 +151,7 @@
 </span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Button clicked!'</span><span class="token punctuation">,</span> event<span class="token punctuation">)</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></code></pre>
-<p>从 DOM 事件创建 Observable</p>
+<p>从 DOM 事件创建 <code>Observable</code></p>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="操作符"><a aria-hidden="true" tabindex="-1" href="#操作符"><span class="icon icon-link"></span></a>操作符</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="map"><a aria-hidden="true" tabindex="-1" href="#map"><span class="icon icon-link"></span></a>map</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span>
@@ -160,7 +160,7 @@
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 输出: 2 4 6</span>
 </span></code></pre>
-<p>对 Observable 发出的每个值应用一个函数</p>
+<p>对 <code>Observable</code> 发出的每个值应用一个函数</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="filter"><a aria-hidden="true" tabindex="-1" href="#filter"><span class="icon icon-link"></span></a>filter</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span>
 </span><span class="code-line">  <span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token arrow operator">=></span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span>
@@ -168,7 +168,7 @@
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 输出: 2</span>
 </span></code></pre>
-<p>过滤 Observable 发出的值</p>
+<p>过滤 <code>Observable</code> 发出的值</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="switchmap"><a aria-hidden="true" tabindex="-1" href="#switchmap"><span class="icon icon-link"></span></a>switchMap</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token function">interval</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span>
 </span><span class="code-line">  <span class="token function">switchMap</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -177,7 +177,7 @@
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 每秒输出一次 "Hello"</span>
 </span></code></pre>
-<p>将 Observable 每个值映射成 Observable 并订阅，前一个订阅将被取消</p>
+<p>将 <code>Observable</code> 每个值映射成 <code>Observable</code> 并订阅，前一个订阅将被取消</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="mergemap"><a aria-hidden="true" tabindex="-1" href="#mergemap"><span class="icon icon-link"></span></a>mergeMap</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token function">interval</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span>
 </span><span class="code-line">  <span class="token function">mergeMap</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -186,7 +186,7 @@
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 每秒输出一次 "Hello"</span>
 </span></code></pre>
-<p>类似 switchMap，但允许多个内部 Observable 并发执行</p>
+<p>类似 <code>switchMap</code>，但允许多个内部 <code>Observable</code> 并发执行</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="catcherror"><a aria-hidden="true" tabindex="-1" href="#catcherror"><span class="icon icon-link"></span></a>catchError</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span>
 </span><span class="code-line">  <span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
@@ -198,7 +198,7 @@
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 输出: 1 发现一个错误：Error!</span>
 </span></code></pre>
-<p>捕获 Observable 链中的错误</p>
+<p>捕获 <code>Observable</code> 链中的错误</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="debouncetime"><a aria-hidden="true" tabindex="-1" href="#debouncetime"><span class="icon icon-link"></span></a>debounceTime</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token function">fromEvent</span><span class="token punctuation">(</span><span class="token dom variable">document</span><span class="token punctuation">,</span><span class="token string">'mousemove'</span><span class="token punctuation">)</span>
 </span><span class="code-line">    <span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span><span class="token function">debounceTime</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -207,7 +207,7 @@
 </span><span class="code-line">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Mouse moved!'</span><span class="token punctuation">,</span> event<span class="token punctuation">)</span>
 </span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></code></pre>
-<p>延迟处理，直到源 Observable 停止发出数据一定时间</p>
+<p>延迟处理，直到源 <code>Observable</code> 停止发出数据一定时间</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="distinctuntilchanged"><a aria-hidden="true" tabindex="-1" href="#distinctuntilchanged"><span class="icon icon-link"></span></a>distinctUntilChanged</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span>
 </span><span class="code-line">  <span class="token function">distinctUntilChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -235,7 +235,7 @@
 </span><span class="code-line">combined<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 每秒输出一次两个 observables 的最新值</span>
 </span></code></pre>
-<p>当两个 Observable 都发出新的值时，发出它们的组合</p>
+<p>当两个 <code>Observable</code> 都发出新的值时，发出它们的组合</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="concat"><a aria-hidden="true" tabindex="-1" href="#concat"><span class="icon icon-link"></span></a>concat</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs1 <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token keyword">const</span> obs2 <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -243,7 +243,7 @@
 </span><span class="code-line">combined<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 输出: 1 2 3 4 5 6</span>
 </span></code></pre>
-<p>按顺序连接多个 Observable</p>
+<p>按顺序连接多个 <code>Observable</code></p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="merge"><a aria-hidden="true" tabindex="-1" href="#merge"><span class="icon icon-link"></span></a>merge</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs1 <span class="token operator">=</span> <span class="token function">interval</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span>
 </span><span class="code-line">    <span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token arrow operator">=></span> <span class="token string">'A'</span> <span class="token operator">+</span> x<span class="token punctuation">)</span>
@@ -255,7 +255,7 @@
 </span><span class="code-line">combined<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 每秒输出 "A" 和 "B" 开头的递增数字</span>
 </span></code></pre>
-<p>将多个 Observable 合并为一个</p>
+<p>将多个 <code>Observable</code> 合并为一个</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="forkjoin"><a aria-hidden="true" tabindex="-1" href="#forkjoin"><span class="icon icon-link"></span></a>forkJoin</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs1 <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token keyword">const</span> obs2 <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -263,7 +263,7 @@
 </span><span class="code-line">combined<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 输出: [3, 'C']</span>
 </span></code></pre>
-<p>等待所有 Observable 完成，然后发出它们的最后一个值的数组</p>
+<p>等待所有 <code>Observable</code> 完成，然后发出它们的最后一个值的数组</p>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="错误处理"><a aria-hidden="true" tabindex="-1" href="#错误处理"><span class="icon icon-link"></span></a>错误处理</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="retrywhen"><a aria-hidden="true" tabindex="-1" href="#retrywhen"><span class="icon icon-link"></span></a>retryWhen</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
@@ -276,7 +276,7 @@
 </span><span class="code-line">obs<span class="token punctuation">.</span><span class="token method function property-access">subscribe</span><span class="token punctuation">(</span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">log</span><span class="token punctuation">,</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token property-access">error</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 输出: 出了些问题！ (每秒重试一次)</span>
 </span></code></pre>
-<p>在 Observable 发出错误时重试</p>
+<p>在 <code>Observable</code> 发出错误时重试</p>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="实用操作符"><a aria-hidden="true" tabindex="-1" href="#实用操作符"><span class="icon icon-link"></span></a>实用操作符</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="tap"><a aria-hidden="true" tabindex="-1" href="#tap"><span class="icon icon-link"></span></a>tap</h3><div class="wrap-body">
 <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword">const</span> obs <span class="token operator">=</span> <span class="token keyword">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">pipe</span><span class="token punctuation">(</span>
