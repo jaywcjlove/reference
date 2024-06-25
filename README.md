@@ -122,7 +122,8 @@ Quick Reference
 [Stylus](./docs/stylus.md)<!--rehype:style=background: rgb(109 161 63);&class=tag&data-lang=CSS-->  
 [Sass](./docs/sass.md)<!--rehype:style=background: rgb(207 100 154);&class=tag&data-lang=CSS-->  
 [Less.js](./docs/lessjs.md)<!--rehype:style=background: rgb(29 54 93);&class=tag&data-lang=CSS-->  
-[Tailwind CSS](./docs/tailwindcss.md)<!--rehype:style=background: rgb(49 120 198);-->  
+[Tailwind CSS](./docs/tailwindcss.md)<!--rehype:style=background: rgb(49 120 198);&class=tag&data-lang=CSS-->  
+[StyleX](./docs/stylex.md)<!--rehype:style=background: rgb(91 79 163);&class=tag&data-lang=CSS-->  
 <!--rehype:class=home-card-->
 
 ## Nodejs
