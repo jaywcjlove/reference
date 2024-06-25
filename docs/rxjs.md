@@ -23,7 +23,7 @@ document.addEventListener('click', () => {
 });
 ```
 
-使用 RxJS 可以隔离状态。
+使用 `RxJS` 可以隔离状态。
 
 ```js
 import { fromEvent, scan } from 'rxjs';
@@ -40,7 +40,7 @@ fromEvent(document, 'click')
 ### 流
 <!--rehype:wrap-class=row-span-2-->
 
-RxJS 拥有一整套运算符，可以帮助您控制事件如何流经您的可观察对象。这是使用纯 JavaScript 每秒最多允许一次点击的方式：
+`RxJS` 拥有一整套运算符，可以帮助您控制事件如何流经您的可观察对象。这是使用纯 JavaScript 每秒最多允许一次点击的方式：
 
 ```js
 let count = 0;
@@ -112,7 +112,7 @@ obs.subscribe(console.log);
 // 输出: 1 2 3
 ```
 
-创建一个立即发送指定值并完成的 Observable
+创建一个立即发送指定值并完成的 `Observable`
 
 ### from
 
@@ -122,7 +122,7 @@ obs.subscribe(console.log);
 // 输出: 1 2 3
 ```
 
-从 Promise、数组、可迭代对象创建 Observable
+从 Promise、数组、可迭代对象创建 `Observable`
 
 ### interval
 
@@ -132,7 +132,7 @@ obs.subscribe(console.log);
 // 每秒输出一次递增的数字
 ```
 
-创建一个定时发送递增整数的 Observable
+创建一个定时发送递增整数的 `Observable`
 
 ### fromEvent
 <!--rehype:wrap-class=col-span-2-->
@@ -145,7 +145,7 @@ obs.subscribe(event => {
 });
 ```
 
-从 DOM 事件创建 Observable
+从 DOM 事件创建 `Observable`
 
 ## 操作符
 
@@ -159,7 +159,7 @@ obs.subscribe(console.log);
 // 输出: 2 4 6
 ```
 
-对 Observable 发出的每个值应用一个函数
+对 `Observable` 发出的每个值应用一个函数
 
 ### filter
 
@@ -171,7 +171,7 @@ obs.subscribe(console.log);
 // 输出: 2
 ```
 
-过滤 Observable 发出的值
+过滤 `Observable` 发出的值
 
 ### switchMap
 
@@ -184,7 +184,7 @@ obs.subscribe(console.log);
 // 每秒输出一次 "Hello"
 ```
 
-将 Observable 每个值映射成 Observable 并订阅，前一个订阅将被取消
+将 `Observable` 每个值映射成 `Observable` 并订阅，前一个订阅将被取消
 
 ### mergeMap
 
@@ -197,7 +197,7 @@ obs.subscribe(console.log);
 // 每秒输出一次 "Hello"
 ```
 
-类似 switchMap，但允许多个内部 Observable 并发执行
+类似 `switchMap`，但允许多个内部 `Observable` 并发执行
 
 ### catchError
 
@@ -213,7 +213,7 @@ obs.subscribe(console.log);
 // 输出: 1 发现一个错误：Error!
 ```
 
-捕获 Observable 链中的错误
+捕获 `Observable` 链中的错误
 
 ### debounceTime
 
@@ -226,7 +226,7 @@ obs.subscribe(event => {
 });
 ```
 
-延迟处理，直到源 Observable 停止发出数据一定时间
+延迟处理，直到源 `Observable` 停止发出数据一定时间
 
 ### distinctUntilChanged
 
@@ -267,7 +267,7 @@ combined.subscribe(console.log);
 // 每秒输出一次两个 observables 的最新值
 ```
 
-当两个 Observable 都发出新的值时，发出它们的组合
+当两个 `Observable` 都发出新的值时，发出它们的组合
 
 ### concat
 
@@ -279,7 +279,7 @@ combined.subscribe(console.log);
 // 输出: 1 2 3 4 5 6
 ```
 
-按顺序连接多个 Observable
+按顺序连接多个 `Observable`
 
 ### merge
 
@@ -295,7 +295,7 @@ combined.subscribe(console.log);
 // 每秒输出 "A" 和 "B" 开头的递增数字
 ```
 
-将多个 Observable 合并为一个
+将多个 `Observable` 合并为一个
 
 ### forkJoin
 
@@ -307,7 +307,7 @@ combined.subscribe(console.log);
 // 输出: [3, 'C']
 ```
 
-等待所有 Observable 完成，然后发出它们的最后一个值的数组
+等待所有 `Observable` 完成，然后发出它们的最后一个值的数组
 
 ## 错误处理
 
@@ -325,7 +325,7 @@ obs.subscribe(console.log, console.error);
 // 输出: 出了些问题！ (每秒重试一次)
 ```
 
-在 Observable 发出错误时重试
+在 `Observable` 发出错误时重试
 
 ## 实用操作符
 
