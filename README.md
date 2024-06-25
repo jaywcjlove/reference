@@ -56,6 +56,7 @@ Quick Reference
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->  
 [Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python-->  
 [Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir-->   
+[Erlang](./docs/erlang.md)<!--rehype:style=background: rgb(206 55 97);&class=contributing-->   
 [Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->  
 [FastAPI](./docs/fastapi.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->  
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->  
@@ -77,7 +78,7 @@ Quick Reference
 [Scala](./docs/scala.md)<!--rehype:style=background: rgb(34 82 94);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->  
-[Spring Boot](./docs/springboot.md)<!--rehype:style=background: rgb(0 255 0);&class=tag&data-lang=Java-->  
+[Spring Boot](./docs/springboot.md)<!--rehype:style=background: rgb(0 149 0);&class=tag&data-lang=Java-->  
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->  
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->  
 <!--rehype:class=home-card-->
@@ -100,6 +101,7 @@ Quick Reference
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [jQuery](./docs/jquery.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [Next.js](./docs/nextjs.md)<!--rehype:style=background: rgb(0 0 0);&class=tag&data-lang=React-->  
+[RxJS](./docs/rxjs.md)<!--rehype:style=background: rgb(151 0 81);-->  
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173);-->  
 [React Router](./docs/reactrouter.md)<!--rehype:style=background: rgb(244 66 79);&class=tag&data-lang=React-->  
 [React Native](./docs/react-native.md)<!--rehype:style=background: rgb(34 143 173);&class=tag&data-lang=React-->  
@@ -284,6 +286,7 @@ Quick Reference
 <a href="https://github.com/LesterChang0987" title="Steve Hartwell"><img src="https://avatars.githubusercontent.com/u/114913921?v=4" width="42;" alt="Steve Hartwell"/></a>
 <a href="https://github.com/nangongchengfeng" title="南宫乘风"><img src="https://avatars.githubusercontent.com/u/46562911?v=4" width="42;" alt="南宫乘风"/></a>
 <a href="https://github.com/aixcyi" title="砹小翼"><img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/></a>
+<a href="https://github.com/h7ml" title="h7ml"><img src="https://avatars.githubusercontent.com/u/55233292?v=4" width="42;" alt="h7ml"/></a>
 <a href="https://github.com/Alex20180512" title="Alex"><img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/></a>
 <a href="https://github.com/LufsX" title="LufsX"><img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/></a>
 <a href="https://github.com/mailbaoer" title="baoer"><img src="https://avatars.githubusercontent.com/u/5282978?v=4" width="42;" alt="baoer"/></a>
@@ -296,7 +299,6 @@ Quick Reference
 <a href="https://github.com/qyl27" title="秋 雨落"><img src="https://avatars.githubusercontent.com/u/53731501?v=4" width="42;" alt="秋 雨落"/></a>
 <a href="https://github.com/MackDing" title="Blossom"><img src="https://avatars.githubusercontent.com/u/19878893?v=4" width="42;" alt="Blossom"/></a>
 <a href="https://github.com/1250422131" title="萌新杰少"><img src="https://avatars.githubusercontent.com/u/52126790?v=4" width="42;" alt="萌新杰少"/></a>
-<a href="https://github.com/h7ml" title="h7ml"><img src="https://avatars.githubusercontent.com/u/55233292?v=4" width="42;" alt="h7ml"/></a>
 <a href="https://github.com/chaos-cn" title="chaos"><img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/></a>
 <a href="https://github.com/xia0ne" title="YuRuiH"><img src="https://avatars.githubusercontent.com/u/32591223?v=4" width="42;" alt="YuRuiH"/></a>
 <a href="https://github.com/Willxup" title="Willxup"><img src="https://avatars.githubusercontent.com/u/51990395?v=4" width="42;" alt="Willxup"/></a>
