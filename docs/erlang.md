@@ -1,7 +1,11 @@
 Erlang 备忘清单
 ===
 
+<<<<<<< HEAD
 Erlang 是一种用于构建并发、分布式和容错系统的编程语言。以下是一些常用的命令和操作。
+=======
+[Erlang](https://www.erlang.org/) 是一种用于构建并发、分布式和容错系统的编程语言。以下是一些常用的命令和操作。
+>>>>>>> main
 
 入门
 ---
@@ -13,6 +17,10 @@ erl
 ```
 
 ### 编译代码
+<<<<<<< HEAD
+=======
+<!--rehype:wrap-class=row-span-2-->
+>>>>>>> main
 
 ```shell
 # 在 Erlang Shell 中编译
@@ -22,6 +30,10 @@ erlc module.erl
 ```
 
 ### 运行代码
+<<<<<<< HEAD
+=======
+<!--rehype:wrap-class=row-span-2-->
+>>>>>>> main
 
 ```shell
 # 在 Erlang Shell 中运行
@@ -60,6 +72,151 @@ function_name(Args) ->
 
 ```erlang
 % 单行注释
+<<<<<<< HEAD
+=======
+% 这是一个注释
+```
+
+### 变量
+
+```erlang
+VarName = Value. % 变量名必须以大写字母开头
+Age = 25.
+Name = "Alice".
+```
+
+数据类型
+---
+
+### 原子
+
+```erlang
+atom.       % 例子：atom, 'Atom with spaces'
+```
+
+### 数字
+
+```erlang
+123.        % 整数
+3.14.       % 浮点数
+```
+
+### 布尔值
+
+```erlang
+true.
+false.
+```
+
+### 字符串
+
+```erlang
+"Hello, World!".
+```
+
+### 元组
+
+```erlang
+{ok, "Success"}.
+```
+
+### 列表
+
+```erlang
+[1, 2, 3].
+[H|T] = [1, 2, 3]. % H = 1, T = [2, 3]
+```
+
+### 字典 (Map)
+
+```erlang
+#{key1 => value1, key2 => value2}.
+```
+
+控制结构
+---
+
+### 条件语句
+
+```erlang
+if
+    Condition1 -> Expression1;
+    Condition2 -> Expression2;
+    true -> DefaultExpression
+end.
+```
+
+### case 表达式
+
+```erlang
+case Expression of
+    Pattern1 -> Expression1;
+    Pattern2 -> Expression2;
+    _ -> DefaultExpression
+end.
+```
+
+### 函数定义
+
+```erlang
+% 无参函数
+my_function() ->
+    ok.
+
+% 有参函数
+add(A, B) ->
+    A + B.
+```
+
+列表操作
+---
+
+### 列表生成
+
+```erlang
+% 生成 1 到 10 的列表
+[ X || X <- lists:seq(1, 10)].
+
+% 生成 1 到 10 中的偶数
+[ X || X <- lists:seq(1, 10), X rem 2 == 0].
+```
+
+并发
+---
+
+### 启动进程
+
+```erlang
+spawn(Module, Function, Args).
+
+% 示例
+Pid = spawn(fun() -> io:format("Hello from process~n") end).
+```
+
+### 发送消息
+
+```erlang
+Pid ! Message.
+
+% 示例
+Pid ! {hello, self()}.
+```
+
+### 接收消息
+
+```erlang
+receive
+    Pattern1 -> Expression1;
+    Pattern2 -> Expression2;
+    after Timeout -> TimeoutExpression
+end.
+```
+
+### 模式匹配
+
+```erlang
+{ok, Value} = {ok, 42}.
+>>>>>>> main
 ```
 
 常用内置函数 (BIFs)
@@ -98,6 +255,54 @@ file:write_file(Filename, Data).
 file:delete(Filename).
 ```
 
+<<<<<<< HEAD
+=======
+### 列表操作
+
+```erlang
+lists:map(fun(X) -> X * 2 end, [1, 2, 3]).
+lists:filter(fun(X) -> X rem 2 == 0 end, [1, 2, 3, 4]).
+```
+
+### 字符串操作
+
+```erlang
+string:len("Hello").
+string:upper("hello").
+```
+
+### 文件操作
+
+```erlang
+{ok, File} = file:open("test.txt", [write]).
+file:write(File, "Hello, file!").
+file:close(File).
+```
+
+### 示例：简单的服务器
+
+```erlang
+-module(server).
+-export([start/0, loop/0]).
+
+start() ->
+    spawn(fun loop/0).
+
+loop() ->
+    receive
+        {echo, Msg} ->
+            io:format("Echo: ~p~n", [Msg]),
+            loop();
+        stop ->
+            io:format("Server stopping~n"),
+            ok;
+        _ ->
+            io:format("Unknown message~n"),
+            loop()
+    end.
+```
+
+>>>>>>> main
 并发编程
 ---
 
@@ -156,6 +361,19 @@ end.
 - `error`
 - `exit`
 
+<<<<<<< HEAD
+=======
+### 错误处理
+
+```erlang
+try Expression of
+    Pattern -> Result
+catch
+    Type:Reason -> ErrorHandlingExpression
+end.
+```
+
+>>>>>>> main
 分布式编程
 ---
 
