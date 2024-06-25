@@ -78,7 +78,7 @@ Quick Reference
 [Scala](./docs/scala.md)<!--rehype:style=background: rgb(34 82 94);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->  
-[Spring Boot](./docs/springboot.md)<!--rehype:style=background: rgb(0 255 0);&class=tag&data-lang=Java-->  
+[Spring Boot](./docs/springboot.md)<!--rehype:style=background: rgb(0 149 0);&class=tag&data-lang=Java-->  
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->  
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->  
 <!--rehype:class=home-card-->
@@ -101,6 +101,7 @@ Quick Reference
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [jQuery](./docs/jquery.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [Next.js](./docs/nextjs.md)<!--rehype:style=background: rgb(0 0 0);&class=tag&data-lang=React-->  
+[RxJS](./docs/rxjs.md)<!--rehype:style=background: rgb(151 0 81);-->  
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173);-->  
 [React Router](./docs/reactrouter.md)<!--rehype:style=background: rgb(244 66 79);&class=tag&data-lang=React-->  
 [React Native](./docs/react-native.md)<!--rehype:style=background: rgb(34 143 173);&class=tag&data-lang=React-->  
