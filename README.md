@@ -56,6 +56,7 @@ Quick Reference
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->  
 [Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python-->  
 [Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir-->   
+[Erlang](./docs/erlang.md)<!--rehype:style=background: rgb(206 55 97);&class=contributing-->   
 [Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->  
 [FastAPI](./docs/fastapi.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->  
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->  
