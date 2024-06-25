@@ -188,6 +188,7 @@ print(2 <= 3); // 打印: true - 小于或等于
 ------
 
 ### if 和 else if
+<!--rehype:wrap-class=row-span-2-->
 
 ```dart
 if(age < 18){
@@ -200,6 +201,7 @@ if(age < 18){
 ```
 
 ### switch case
+<!--rehype:wrap-class=row-span-2-->
 
 ```dart
 enum Pet {dog, cat}
@@ -215,6 +217,25 @@ switch(myPet){
         print('I don\'t have a Pet');
 }
 // 打印: My Pet is Dog.
+```
+
+### 三元操作符
+
+```dart
+int age = 20;
+String message = age >= 18 ? "成人" : "儿童";
+print("年龄类别: $message");
+// 输出: 年龄类别: 成人
+```
+
+### 三元操作符嵌套使用
+
+```dart
+int x = 10;
+int y = 5;
+int result = x > y ? x : y > 0 ? y : 0;
+print("Result: $result");
+// 输出: Result: 10
 ```
 
 控制流：循环
@@ -778,8 +799,50 @@ userObject?.userName?.toString()
 // 如果 userObject 或 userObject.userName 为 null，则前面的代码返回 null 并且从不调用 toString()
 ```
 
+### 扩展运算符 (...)
+
+```dart
+// 将多个值插入到集合中
+var list = [1, 2, 3];
+var list2 = [0, ...list];
+print(list2.length); // 打印: 4
+```
+
+### enum
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+定义：enum（"enumeration"的缩写）是一种特殊的数据类型，可使变量成为一组预定义的常量。枚举用于定义只能从一小组可能值中选择一个的变量。通过为这些值集提供有意义的名称，枚举有助于提高代码的可读性，减少出错率。
+
+```dart
+// 定义枚举类型
+enum TrafficLight {
+  red,
+  yellow,
+  green
+}
+// 根据交通灯状态打印消息的函数
+void printTrafficLightMessage(TrafficLight light) {
+  switch (light) {
+    case TrafficLight.red:
+      print('Stop!');
+      break;
+    case TrafficLight.yellow:
+      print('Get ready...');
+      break;
+    case TrafficLight.green:
+      print('Go!');
+      break;
+  }
+}
+void main() {
+  // 枚举类型的示例用法
+  TrafficLight currentLight = TrafficLight.green;
+  // 打印当前交通灯状态的消息
+  printTrafficLightMessage(currentLight);
+}
+```
+
 ### 级联符号 (..)
-<!--rehype:wrap-class=row-span-2-->
 
 ```dart
 // 允许您对同一对象进行一系列操作
@@ -795,15 +858,6 @@ var user = User()
   ..age = 24;
 ```
 
-### 扩展运算符 (...)
-
-```dart
-// 将多个值插入到集合中
-var list = [1, 2, 3];
-var list2 = [0, ...list];
-print(list2.length); // 打印: 4
-```
-
 ### 延迟初始化
 
 ```dart
@@ -812,7 +866,7 @@ late String token;
 
 void main(List<String> args) {
   /// print(token);
-  /// Field 'token' has not been initialized
+  /// 字段 "token "尚未初始化
   /// 在初始化前调用就会报错
   token = "tokenContent";
   print(token);
