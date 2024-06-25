@@ -1,11 +1,7 @@
 Erlang 备忘清单
 ===
 
-<<<<<<< HEAD
-Erlang 是一种用于构建并发、分布式和容错系统的编程语言。以下是一些常用的命令和操作。
-=======
 [Erlang](https://www.erlang.org/) 是一种用于构建并发、分布式和容错系统的编程语言。以下是一些常用的命令和操作。
->>>>>>> main
 
 入门
 ---
@@ -17,10 +13,7 @@ erl
 ```
 
 ### 编译代码
-<<<<<<< HEAD
-=======
 <!--rehype:wrap-class=row-span-2-->
->>>>>>> main
 
 ```shell
 # 在 Erlang Shell 中编译
@@ -30,10 +23,7 @@ erlc module.erl
 ```
 
 ### 运行代码
-<<<<<<< HEAD
-=======
 <!--rehype:wrap-class=row-span-2-->
->>>>>>> main
 
 ```shell
 # 在 Erlang Shell 中运行
@@ -72,8 +62,6 @@ function_name(Args) ->
 
 ```erlang
 % 单行注释
-<<<<<<< HEAD
-=======
 % 这是一个注释
 ```
 
@@ -216,7 +204,6 @@ end.
 
 ```erlang
 {ok, Value} = {ok, 42}.
->>>>>>> main
 ```
 
 常用内置函数 (BIFs)
@@ -255,8 +242,6 @@ file:write_file(Filename, Data).
 file:delete(Filename).
 ```
 
-<<<<<<< HEAD
-=======
 ### 列表操作
 
 ```erlang
@@ -302,7 +287,6 @@ loop() ->
     end.
 ```
 
->>>>>>> main
 并发编程
 ---
 
@@ -361,8 +345,6 @@ end.
 - `error`
 - `exit`
 
-<<<<<<< HEAD
-=======
 ### 错误处理
 
 ```erlang
@@ -373,7 +355,6 @@ catch
 end.
 ```
 
->>>>>>> main
 分布式编程
 ---
 
@@ -466,4 +447,4 @@ erl -eval "eunit:test(module_name)" -s init stop
 ---
 
 - [Erlang 官方文档](https://www.erlang.org/docs)
-- [Erlang 编程书籍](https://www.erlang.org/books)
+- [Erlang 编程书籍](https://learnyousomeerlang.com/content)
