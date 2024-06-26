@@ -925,7 +925,7 @@ const styles = stylex.create({
 TypeScript 类型
 ---
 
-### 样式 props 类型
+### StyleXStyles 样式 props 类型
 
 ```ts
 import type {StyleXStyles} from '@stylexjs/stylex';
@@ -953,7 +953,7 @@ function MyComponent(
 ```
 <!--rehype:className=wrap-text-->
 
-### 禁止属性
+### StyleXStylesWithout 禁止属性
 <!--rehype:wrap-class=col-span-2 row-span-3-->
 
 ```ts
@@ -1044,3 +1044,60 @@ type Props = {
 };
 ```
 <!--rehype:className=wrap-text-->
+
+### VarGroup
+
+```ts
+import * as stylex from '@stylexjs/stylex';
+
+export const vars = stylex.defineVars({
+  color: 'red',
+  backgroundColor: 'blue',
+});
+
+export type Vars = typeof vars;
+/*
+  Vars = VarGroup<{
+    color: string,
+    backgroundColor: string,
+  }>
+*/
+```
+
+VarGroup 是调用 `stylex.defineVars` 生成的对象的类型。它将键映射到 CSS 自定义属性的引用
+
+### StaticStyles
+
+```ts
+import type {StaticStyles} from '@stylexjs/stylex';
+
+type Props = {
+  // ...
+  style?: StaticStyles<{
+    color?: 'red' | 'blue' | 'green';
+    padding?: 0 | 4 | 8 | 16 | 32;
+    backgroundColor?: string;
+    borderColor?: string;
+    borderTopColor?: string;
+    borderEndColor?: string;
+    borderBottomColor?: string;
+    borderStartColor?: string;
+  }>;
+};
+```
+
+不允许使用函数定义的动态样式
+
+### Theme
+
+```ts
+import type {VarGroup} from '@stylexjs/stylex';
+import * as stylex from '@stylexjs/stylex';
+
+import {vars} from './vars.stylex';
+
+export const theme: Theme<typeof vars> = stylex.createTheme(vars, {
+  color: 'red', // OK
+  backgroundColor: 'blue', // OK
+});
+```
