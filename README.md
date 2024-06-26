@@ -56,11 +56,13 @@ Quick Reference
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->  
 [Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python-->  
 [Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir-->   
+[Erlang](./docs/erlang.md)<!--rehype:style=background: rgb(206 55 97);&class=contributing-->   
 [Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->  
 [FastAPI](./docs/fastapi.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->  
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->  
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193);-->  
 [GraphQL](./docs/graphql.md)<!--rehype:style=background: rgb(214 66 146);-->  
+[Hook](./docs/hook.md)<!--rehype:style=background: rgb(211 55 49);-->  
 [Java](./docs/java.md)<!--rehype:style=background: rgb(211 55 49);&class=contributing&data-info=👆看看还缺点儿什么？-->  
 [Julia](./docs/julia.md)<!--rehype:style=background: rgb(26 188 156);&class=contributing&data-info=👆看看还缺点儿什么？-->  
 [Kotlin](./docs/kotlin.md)<!--rehype:style=background: rgb(211 55 49);&class=contributing&data-info=👆看看还缺点儿什么？-->  
@@ -77,6 +79,7 @@ Quick Reference
 [Scala](./docs/scala.md)<!--rehype:style=background: rgb(34 82 94);-->  
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->  
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->  
+[Spring Boot](./docs/springboot.md)<!--rehype:style=background: rgb(0 149 0);&class=tag&data-lang=Java-->  
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->  
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->  
 <!--rehype:class=home-card-->
@@ -99,15 +102,17 @@ Quick Reference
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [jQuery](./docs/jquery.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [Next.js](./docs/nextjs.md)<!--rehype:style=background: rgb(0 0 0);&class=tag&data-lang=React-->  
+[RxJS](./docs/rxjs.md)<!--rehype:style=background: rgb(151 0 81);-->  
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173);-->  
 [React Router](./docs/reactrouter.md)<!--rehype:style=background: rgb(244 66 79);&class=tag&data-lang=React-->  
 [React Native](./docs/react-native.md)<!--rehype:style=background: rgb(34 143 173);&class=tag&data-lang=React-->  
 [RegEx 正则表达式](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155);-->  
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198);-->  
 [Tauri](./docs/tauri.md)<!--rehype:style=background: rgb(103 214 237);&class=contributing-->  
-[Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131);-->  
-[Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=contributing-->  
+[Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131);&class=tag&data-lang=Vue-->  
+[Vue 3](./docs/vue.md)<!--rehype:style=background: rgb(64 184 131);&class=tag&class=contributing tag&data-lang=Vue-->  
 [</> htmx](./docs/htmx.md)<!--rehype:style=background: rgb(52 101 164);&class=contributing-->  
+[Pinia](./docs/pinia.md)<!--rehype:style=background: rgb(44 136 50);&class=tag&data-lang=Vue-->  
 <!--rehype:class=home-card-->
 
 ## CSS
@@ -117,7 +122,8 @@ Quick Reference
 [Stylus](./docs/stylus.md)<!--rehype:style=background: rgb(109 161 63);&class=tag&data-lang=CSS-->  
 [Sass](./docs/sass.md)<!--rehype:style=background: rgb(207 100 154);&class=tag&data-lang=CSS-->  
 [Less.js](./docs/lessjs.md)<!--rehype:style=background: rgb(29 54 93);&class=tag&data-lang=CSS-->  
-[Tailwind CSS](./docs/tailwindcss.md)<!--rehype:style=background: rgb(49 120 198);-->  
+[Tailwind CSS](./docs/tailwindcss.md)<!--rehype:style=background: rgb(49 120 198);&class=tag&data-lang=CSS-->  
+[StyleX](./docs/stylex.md)<!--rehype:style=background: rgb(91 79 163);&class=tag&data-lang=CSS-->  
 <!--rehype:class=home-card-->
 
 ## Nodejs
@@ -133,6 +139,8 @@ Quick Reference
 [package.json](./docs/package.json.md)<!--rehype:style=background: rgb(132 132 132);-->  
 [Yarn](./docs/yarn.md)<!--rehype:style=background: rgb(33 136 182);-->  
 [nvm](./docs/nvm.md)<!--rehype:style=background: rgb(132 132 132);-->  
+[pnpm](./docs/pnpm.md)<!--rehype:style=background: rgb(191 133 0);-->  
+[Bun](./docs/bun.md)<!--rehype:style=background: rgb(157 49 81);-->  
 <!--rehype:class=home-card-->
 
 ## 工具
@@ -253,6 +261,7 @@ Quick Reference
 [Emoji](./docs/emoji.md)<!--rehype:style=\-\-bg\-opacity: 0.75;background-image: linear-gradient(to left, rgba(74 222 128 / var(\-\-bg\-opacity)), rgba(59 130 246 / var(\-\-bg\-opacity)));-->  
 [MIME types](./docs/mime.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Resolutions](./docs/resolutions.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[ChatGPT](./docs/chatgpt.md)<!--rehype:style=background: rgb(74, 161, 129);&class=tag&data-lang=ai-->
 <!--rehype:class=home-card-->
 
 ## 看到缺少什么了吗？
@@ -274,11 +283,12 @@ Quick Reference
 <a href="https://github.com/fwqaaq" title="fwqaaq"><img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fwqaaq"/></a>
 <a href="https://github.com/mofelee" title="mofelee"><img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/></a>
 <a href="https://github.com/Country-If" title="Maylon"><img src="https://avatars.githubusercontent.com/u/62837275?v=4" width="42;" alt="Maylon"/></a>
-<a href="https://github.com/JeffersonHuang" title="Jefferson Huang"><img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson Huang"/></a>
-<a href="https://github.com/LesterChang0987" title="Steve Hartwell"><img src="https://avatars.githubusercontent.com/u/114913921?v=4" width="42;" alt="Steve Hartwell"/></a>
-<a href="https://github.com/nangongchengfeng" title="南宫乘风"><img src="https://avatars.githubusercontent.com/u/46562911?v=4" width="42;" alt="南宫乘风"/></a>
-<a href="https://github.com/aixcyi" title="砹小翼"><img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/></a>
 <a href="https://github.com/zhangymPerson" title="zhangym"><img src="https://avatars.githubusercontent.com/u/40376181?v=4" width="42;" alt="zhangym"/></a>
+<a href="https://github.com/aixcyi" title="砹小翼"><img src="https://avatars.githubusercontent.com/u/75880483?v=4" width="42;" alt="砹小翼"/></a>
+<a href="https://github.com/nangongchengfeng" title="南宫乘风"><img src="https://avatars.githubusercontent.com/u/46562911?v=4" width="42;" alt="南宫乘风"/></a>
+<a href="https://github.com/h7ml" title="h7ml"><img src="https://avatars.githubusercontent.com/u/55233292?v=4" width="42;" alt="h7ml"/></a>
+<a href="https://github.com/LesterChang0987" title="Steve Hartwell"><img src="https://avatars.githubusercontent.com/u/114913921?v=4" width="42;" alt="Steve Hartwell"/></a>
+<a href="https://github.com/JeffersonHuang" title="Jefferson Huang"><img src="https://avatars.githubusercontent.com/u/47512530?v=4" width="42;" alt="Jefferson Huang"/></a>
 <a href="https://github.com/Alex20180512" title="Alex"><img src="https://avatars.githubusercontent.com/u/115539090?v=4" width="42;" alt="Alex"/></a>
 <a href="https://github.com/LufsX" title="LufsX"><img src="https://avatars.githubusercontent.com/u/33221883?v=4" width="42;" alt="LufsX"/></a>
 <a href="https://github.com/mailbaoer" title="baoer"><img src="https://avatars.githubusercontent.com/u/5282978?v=4" width="42;" alt="baoer"/></a>

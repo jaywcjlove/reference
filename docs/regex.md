@@ -10,12 +10,18 @@ RegEX 备忘清单
 
 这是开始使用正则表达式(Regex)的快速备忘单。
 
-- [Python 中的 Regex](#python-中的正则表达式) _(Quick Reference)_
-- [JavaScript 中的 Regex](#javascript-中的正则表达式) _(Quick Reference)_
-- [PHP 中的 Regex](#php中的正则表达式) _(Quick Reference)_
-- [Java 中的 Regex](#java-中的正则表达式) _(Quick Reference)_
-- [MySQL 中的 Regex](#mysql中的正则表达式) _(Quick Reference)_
-- [Vim 中的 Regex](./vim#vim-搜索和替换) _(Quick Reference)_
+- [Python 中的 Regex](#python-中的正则表达式)  
+    _(速查手册)_
+- [JavaScript 中的 Regex](#javascript-中的正则表达式)  
+    _(速查手册)_
+- [PHP 中的 Regex](#php中的正则表达式)  
+    _(速查手册)_
+- [Java 中的 Regex](#java-中的正则表达式)  
+    _(速查手册)_
+- [MySQL 中的 Regex](#mysql中的正则表达式)  
+    _(速查手册)_
+- [Vim 中的 Regex](./vim#vim-搜索和替换)  
+    _(速查手册)_
 - [在线 Regex 测试器](https://regex101.com/) _(regex101.com)_
 - [轻松学习 Regex](https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md) _(github.com)_
 - [正则表达式实例搜集](https://jaywcjlove.github.io/regexp-example) _(jaywcjlove.github.io)_
@@ -32,6 +38,7 @@ RegEX 备忘清单
 `[0-9]`       | 范围内的数字：`0-9`
 `[a-zA-Z]`    | 范围内的字符：<br>`a-z` 或 `A-Z`
 `[a-zA-Z0-9]` | 范围内的字符：<br>`a-z`、`A-Z` 或 `0-9`
+<!--rehype:className=left-align-->
 
 ### 量词
 
@@ -47,24 +54,27 @@ RegEX 备忘清单
 `a*`      | 贪心量词
 `a*?`     | 惰性量词
 `a*+`     | 占有量词
+<!--rehype:className=left-align-->
 
 ### 常用元字符
 
-- \^
-- \{
-- \+
-- \<
-- \[
-- \*
-- \)
-- \>
-- \.
-- \(
-- \|
-- \$
-- \\
-- \?
-<!--rehype:className=cols-3 style-none-->
+模式 | 描述
+:-|-
+`^`      | 匹配字符串的开头
+`{`      | 开始一个数量限定符，指定出现次数
+`+`      | 匹配前面的元素一次或多次
+`<`      | 非标准的正则表达式元字符（在 HTML 中常用）
+`[`      | 开始一个字符类
+`*`      | 匹配前面的元素零次或多次
+`)`      | 结束捕获组
+`>`      | 非标准的正则表达式元字符（在 HTML 中常用）
+`.`      | 匹配除换行符之外的任意字符
+`(`      | 开始一个捕获组
+`\|`      | 在正则表达式模式中作为逻辑或操作
+`$`      | 匹配字符串的结尾
+`\`      | 转义元字符，使其具有字面意义
+`?`      | 匹配前面的元素零次或一次
+<!--rehype:className=left-align-->
 
 使用 `\` 转义这些特殊字符
 
@@ -126,6 +136,7 @@ RegEX 备忘清单
 `\z`    | 字符串的绝对结尾
 `\b`    | 一个词的边界
 `\B`    | 非单词边界
+<!--rehype:className=left-align-->
 
 ### 替代
 
@@ -144,6 +155,7 @@ RegEX 备忘清单
 `\U`       | 大写转换
 `\L`       | 小写转换
 `\E`       | 终止任何转换
+<!--rehype:className=left-align-->
 
 ### 组构造
 
@@ -160,6 +172,7 @@ RegEX 备忘清单
 `(?P<name>...)`   | 命名捕获组
 `(?imsxXU)`       | 内联修饰符
 `(?(DEFINE)...)`  | 在使用它们之前预定义模式
+<!--rehype:className=left-align-->
 
 ### 断言
 
@@ -368,6 +381,7 @@ RegEX 备忘清单
 :-|-
 `(in\|out)put` | 匹配 <yel>input</yel> 或 <yel>output</yel>
 `\d{5}(-\d{4})?` | 美国邮政编码 _(“+ 4”可选)_
+<!--rehype:className=left-align-->
 
 如果组后匹配失败，解析器会尝试每个替代方案。
 <br>
@@ -395,9 +409,12 @@ RegEX 备忘清单
 :-|-
 `(?>red\|green\|blue)` | 比非捕获更快
 `(?>id\|identity)\b`   | 匹配 <yel>id</yel>，但不匹配 <yel>id</yel>entity
+<!--rehype:className=left-align-->
 
-"id" 匹配，但 `\b` 在原子组之后失败，
+<yel>id</yel> 匹配，但 `\b` 在原子组之后失败，
 解析器不会回溯到组以重试“身份”
+
+---
 
 如果替代品重叠，请从长到短命令。
 
@@ -648,7 +665,7 @@ M(?(?=.*?\bher\b)s|r)\.
 <!--rehype:className=show-header-->
 
 Python 中的正则表达式
----------------
+---
 
 ### 入门
 
@@ -662,6 +679,7 @@ import re
 <!--rehype:wrap-class=col-span-2 row-span-3-->
 
 #### re.search()
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
 
 ```python
 >>> sentence = 'This is a sample string'
@@ -672,6 +690,7 @@ False
 ```
 
 #### re.findall()
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
 
 ```python
 >>> re.findall(r'\bs?pare?\b', 'par spar apparent spare part pare')
@@ -681,6 +700,7 @@ False
 ```
 
 #### re.finditer()
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
 
 ```python
 >>> m_iter = re.finditer(r'[0-9]+', '45 349 651 593 4 204')
@@ -689,6 +709,7 @@ False
 ```
 
 #### re.split()
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
 
 ```python
 >>> re.split(r'\d+', 'Sample123string42with777numbers')
@@ -696,6 +717,7 @@ False
 ```
 
 #### re.sub()
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
 
 ```python
 >>> ip_lines = "catapults\nconcatenate\ncat"
@@ -706,6 +728,7 @@ False
 ```
 
 #### re.compile()
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
 
 ```python
 >>> pet = re.compile(r'dog')
