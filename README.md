@@ -531,6 +531,16 @@ Quick Reference
 - [Quick Reference for VSCode](https://marketplace.visualstudio.com/items?itemName=jackiotyu.quick-reference) 由 [jackiotyu](https://github.com/jackiotyu/vscode-quick-reference) 提供
 
 <!--rehype:ignore:start-->
+## 开发
+
+```sh
+# 克隆仓库
+$ git clone https://github.com/jaywcjlove/reference.git
+$ npm install          # 安装依赖
+$ npm start            # 启动监听，实时生成 HTML
+$ open dist/index.html # 在浏览器打开生成 HTML
+```
+
 ## License
 
 MIT © [Kenny Wong](https://github.com/jaywcjlove)
