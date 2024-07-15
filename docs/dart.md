@@ -9,6 +9,8 @@ Dart 备忘清单
 ### 安装 Dart
 <!--rehype:wrap-class=row-span-2-->
 
+> 完整教程请参阅 Dart 中文社区 [https://dart.cn/get-dart/](https://dart.cn/get-dart/)
+
 #### Windows
 
 ```bash
@@ -950,3 +952,4 @@ void main(List<String> args) {
 ----
 
 - [Dart 官方文档](https://dart.dev/) _(dart.dev)_
+- [Dart 中文社区官方文档](https://dart.cn/) _(dart.cn)_
