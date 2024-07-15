@@ -8,6 +8,8 @@ Flutter 备忘清单
 
 ### macOS 操作系统上安装和配置
 
+> 完整教程请参阅 Flutter 中文社区的 [安装和环境配置](https://docs.flutter.cn/get-started/install)
+
 ```bash
 $ sudo softwareupdate --install-rosetta --agree-to-license
 ```
@@ -18,15 +20,15 @@ $ sudo softwareupdate --install-rosetta --agree-to-license
 #### 获取 Flutter SDK
 
 - 安装包来获取最新的 stable Flutter SDK：
-  - Intel [`flutter_macos_3.3.8-stable.zip`](https://storage.flutter-io.cn/flutter_infra_release/releases/stable/macos/flutter_macos_3.3.8-stable.zip)
-  - Apple 芯片 [`flutter_macos_arm64_3.3.8-stable.zip`](https://storage.flutter-io.cn/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.3.8-stable.zip)  
+  - Intel [`flutter_macos_3.22.2-stable.zip`](https://storage.flutter-io.cn/flutter_infra_release/releases/stable/macos/flutter_macos_3.22.2-stable.zip)
+  - Apple 芯片 [`flutter_macos_arm64_3.22.2-stable.zip`](https://storage.flutter-io.cn/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.22.2-stable.zip)  
 
-    想要获取到其他版本的安装包，请参阅 [SDK 版本列表](https://flutter.cn/docs/development/tools/sdk/releases) 页面
+    想要获取到其他版本的安装包，请参阅 [SDK 版本列表](https://docs.flutter.cn/release/archive) 页面
 - 将文件解压到目标路径, 比如:
 
     ```bash
     $ cd ~/development
-    $ unzip ~/Downloads/flutter_macos_3.3.8-stable.zip
+    $ unzip ~/Downloads/flutter_macos_3.22.2-stable.zip
     ```
     <!--rehype:className=wrap-text-->
 - 配置 `flutter` 的 PATH 环境变量：
@@ -40,9 +42,11 @@ $ sudo softwareupdate --install-rosetta --agree-to-license
 
 ### Windows 操作系统上安装和配置
 
+> 完整教程请参阅 Flutter 中文社区的 [安装和环境配置](https://docs.flutter.cn/get-started/install)
+
 - 点击下方的安装包，获取 stable 发行通道的 Flutter SDK 最新版本：
-  - [flutter_windows_3.3.8-stable.zip](https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.3.8-stable.zip)
-  - 要查看其他发行通道和以往的版本，请参阅 [SDK 版本列表](https://flutter.cn/docs/development/tools/sdk/releases) 页面
+  - [flutter_windows_3.22.2-stable.zip](https://storage.flutter-io.cn/flutter_infra_release/releases/stable/windows/flutter_windows_3.22.2-stable.zip)
+  - 要查看其他发行通道和以往的版本，请参阅 [SDK 版本列表](https://docs.flutter.cn/release/archive) 页面
 - 将压缩包解压，然后把其中的 `flutter` 目录整个放在你想放置 `Flutter SDK` 的路径中（例如 `C:\src\flutter`）
 - 更新 `path` 环境变量，在开始菜单的搜索功能键入`「env」`，然后选择 `编辑系统环境变量`。在 **`用户变量`** 一栏中，检查是否有 **`Path`** 这个条目：
   - 如果存在这个条目，以 `;` 分隔已有的内容，加入 `flutter\bin` 目录的完整路径。
@@ -894,4 +898,5 @@ PageView.builder(
 
 - [Dart 备忘清单](./dart.md) _(jaywcjlove.github.io)_
 - [flutter 官网](https://flutter.dev) _(flutter.dev)_
+- [flutter 中文社区官网](https://flutter.cn) _(flutter.cn)_
 - [flutter 中文开发者社区](https://flutterchina.club/) _(flutterchina.club)_
