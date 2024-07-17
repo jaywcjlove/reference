@@ -279,13 +279,26 @@ u := uint(i)
 s := string(i)
 ```
 
-#### 如何获取int字符串？
+#### 字符串与其他类型的相互转换
 
 ```go
-i := 90
-// 需要导入“strconv”
-s := strconv.Itoa(i)
-fmt.Println(s) // Outputs: 90
+// 字符串转其他类型
+str := "90"
+// 整数类型
+i, err := strconv.Atoi(str)
+if err != nil {
+    fmt.Println("转换错误:", err)
+} else {
+    fmt.Println(i)
+}
+// 浮点类型
+f, err := strconv.ParseFloat(str, 64)
+// []byte 类型
+bytes := []byte(str)
+// 其他类型转字符串
+str = strconv.Itoa(i)
+str = strconv.FormatFloat(f, 'f', 2, 64)
+str = string(bytes[:])
 ```
 
 Golang 字符串
