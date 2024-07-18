@@ -167,6 +167,12 @@ $ git checkout -b new_branch
 $ git branch -d my_branch
 ```
 
+删除本地存在远程不存在的分支
+
+```shell
+$ git remote prune origin
+```
+
 将分支 `A` 合并到分支 `B`
 
 ```shell
@@ -564,6 +570,7 @@ $ git log Branch1 ^Branch2
 ```
 
 ### git 迁移
+<!--rehype:wrap-class=col-span-2-->
 
 - 从原地址克隆一份裸版本库
 
@@ -1129,6 +1136,7 @@ Host github.com
 <!--rehype:className=wrap-text-->
 
 ### Fork仓库同步上游仓库
+<!--rehype:wrap-class=col-span-2-->
 
 - 设置上游仓库
 
