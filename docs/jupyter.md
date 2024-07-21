@@ -129,6 +129,8 @@ Jupyter Notebook 快捷键
 
 `Jupyter Notebook` 支持一系列以 `%` 或 `%%`开头的魔法命令，这些命令可以提供特殊功能。例如，`%matplotlib inline` 可以在 `Notebook` 中内嵌绘图；`%%time` 可以测量代码执行时间。
 
+调用 `python` 文件，可以使用 `%run` 命令来调用 `python` 文件。例如，`%run my_script.py` 可以运行当前目录下名为 `my_script.py` 的 python 文件。
+
 ### 环境管理
 
 `Jupyter Notebook` 支持使用虚拟环境来隔离不同的项目依赖。你可以使用 `conda` 或 `venv`（`Python 3` 自带的虚拟环境管理工具）来创建和管理虚拟环境，并在 `Notebook` 中选择使用哪个环境。
