@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Jupyter 备忘清单
+ &#x26;  jupyter cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="Jupyter 备忘清单是 Jupyter 编程工具的单页参考表
+
+Jupyter 简介
+
+Jupyter（/ˈdʒuːpɪtər/）是一个非营利组织，旨在“为数十种编程语言的交互式计算开发开源软件，开放标准和服务”。2014年由 Fernando Pérez 从 IPython 中衍生出来，Jupyter 支持几十种语言的执行环境。Jupyter 项目开发并支持交互式计算产品 Jupyter Notebook（文件格式是 .ipynb 文件）、JupyterHub 和 JupyterLab。
+
+基础操作，为开发人员分享快速参考备忘单。">
+<meta keywords="jupyter,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/jupyter.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.5.5"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="jupyter-备忘清单"><svg viewBox="0 0 256 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" height="1em" width="1em">
+    <path d="M10.584 156.41v-32.753h7.136v35.256a21.302 21.302 0 0 1-4.686 15.976A18.213 18.213 0 0 1 .89 179.31l-.745-5.325a11.61 11.61 0 0 0 7.775-2.982c1.917-2.237 2.663-5.273 2.663-14.592Zm53.22-4.201c0 3.994 0 7.562.32 10.651h-6.338l-.426-6.337a14.752 14.752 0 0 1-12.941 7.242c-6.178 0-13.527-3.355-13.527-17.041v-22.74h7.136v21.302c0 7.402 2.29 12.355 8.734 12.355a9.958 9.958 0 0 0 10.065-10.065v-23.859h7.136v28.279l-.16.213Zm13.527-15.555c0-4.953 0-9-.32-12.675h6.39l.32 6.657a15.445 15.445 0 0 1 13.953-7.562c9.48 0 16.616 7.935 16.616 19.757 0 13.953-8.574 20.877-17.84 20.877a13.794 13.794 0 0 1-12.09-6.125v21.302h-7.03v-42.231Zm7.03 10.385c.019.966.126 1.928.319 2.875a10.97 10.97 0 0 0 10.651 8.255c7.509 0 11.93-6.124 11.93-15.018 0-7.775-4.155-14.432-11.664-14.432a12.249 12.249 0 0 0-11.237 11.663v6.657Zm42.644-23.095 8.574 22.953a132.673 132.673 0 0 1 2.503 7.935c.745-2.344 1.544-5.326 2.503-8.095l7.775-22.793h7.509l-10.651 27.692c-5.326 13.314-8.574 20.184-13.474 24.338a19.385 19.385 0 0 1-8.734 4.58l-1.757-5.965a18.906 18.906 0 0 0 6.23-3.461 21.302 21.302 0 0 0 6.019-7.882c.29-.53.488-1.107.585-1.704a6.125 6.125 0 0 0-.479-1.864l-14.485-35.84h7.775l.107.106Zm47.809-11.173v11.183h10.225v5.326h-10.225v20.983c0 4.793 1.384 7.562 5.325 7.562 1.4.023 2.796-.138 4.154-.48l.32 5.326a17.575 17.575 0 0 1-6.338.959 9.906 9.906 0 0 1-7.722-2.983 14.326 14.326 0 0 1-2.77-10.118v-21.302h-6.07V123.9h6.177v-9.48l6.924-1.65Zm23.37 31.877a12.516 12.516 0 0 0 13.474 13.473 25.988 25.988 0 0 0 10.651-2.024l1.225 5.326a31.953 31.953 0 0 1-13.048 2.396 18.106 18.106 0 0 1-19.278-19.598c0-11.716 6.976-20.982 18.373-20.982 12.781 0 15.977 11.183 15.977 18.32.068 1.1.068 2.202 0 3.302h-27.533l.16-.213Zm20.877-5.326a10.064 10.064 0 0 0-9.906-11.503 11.77 11.77 0 0 0-10.917 11.503h20.823Zm17.324-3.269c0-4.58 0-8.52-.32-12.142h6.391v7.616h.32a11.77 11.77 0 0 1 10.651-8.521 7.775 7.775 0 0 1 2.024 0v6.657a10.645 10.645 0 0 0-2.45 0 9.958 9.958 0 0 0-9.533 9.053 19.772 19.772 0 0 0-.32 3.302v20.716h-7.029v-26.627l.266-.054Z" fill="#4E4E4E"></path>
+    <path d="M233.258 16.962a18.053 18.053 0 1 1-18.8-16.935 17.84 17.84 0 0 1 18.8 16.935Z" fill="#767677"></path>
+    <path d="M127.953 225.541c-47.93 0-90.055-17.201-111.836-42.604a119.239 119.239 0 0 0 223.672 0c-21.728 25.403-63.693 42.604-111.836 42.604Zm0-165.187c47.93 0 90.055 17.202 111.836 42.604a119.243 119.243 0 0 0-111.836-77.88 119.239 119.239 0 0 0-111.836 77.88c21.781-25.455 63.694-42.604 111.836-42.604Z" fill="#F37726"></path>
+    <path d="M61.972 274.975a22.74 22.74 0 1 1-23.699-21.302 22.527 22.527 0 0 1 23.699 21.302Z" fill="#9E9E9E"></path>
+    <path d="M21.564 54.565a13.102 13.102 0 1 1 12.728-13.633 13.26 13.26 0 0 1-12.728 13.633Z" fill="#616262"></path>
+  </svg>
+  <a aria-hidden="true" tabindex="-1" href="#jupyter-备忘清单"><span class="icon icon-link"></span></a>Jupyter 备忘清单</h1><div class="wrap-body">
+<p>Jupyter 备忘清单是 <a href="http://jupyter.org">Jupyter</a> 编程工具的单页参考表</p>
+<p>Jupyter 简介</p>
+<p>Jupyter（/ˈdʒuːpɪtər/）是一个非营利组织，旨在“为数十种编程语言的交互式计算开发开源软件，开放标准和服务”。2014年由 Fernando Pérez 从 <code>IPython</code> 中衍生出来，<code>Jupyter</code> 支持几十种语言的执行环境。<code>Jupyter</code> 项目开发并支持交互式计算产品 <code>Jupyter Notebook</code>（文件格式是 <code>.ipynb</code> 文件）、<code>JupyterHub</code> 和 <code>JupyterLab。</code></p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#基础操作">基础操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装-jupyter">安装 Jupyter</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#启动-jupyter-notebook">启动 Jupyter Notebook</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建新的notebook">创建新的Notebook</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#关闭-notebook">关闭 Notebook</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#jupyter-notebook-快捷键">Jupyter Notebook 快捷键</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命令模式-按键-esc-开启">命令模式 (按键 Esc 开启)</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#编辑模式--enter-键启动">编辑模式 ( Enter 键启动)</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#高级功能">高级功能</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#魔法命令">魔法命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#环境管理">环境管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#扩展插件">扩展插件</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#jupyter-资源">Jupyter 资源</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#参考资料">参考资料</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="基础操作"><a aria-hidden="true" tabindex="-1" href="#基础操作"><span class="icon icon-link"></span></a>基础操作</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装-jupyter"><a aria-hidden="true" tabindex="-1" href="#安装-jupyter"><span class="icon icon-link"></span></a>安装 Jupyter</h3><div class="wrap-body">
+<p>安装 Jupyter 可以通过 pip 或 conda 来完成。</p>
+<p><code>pip install jupyter</code> or <code>conda install jupyter</code></p>
+<p>mamba 安装</p>
+<p><code>mamba install -c conda-forge jupyterlab</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="启动-jupyter-notebook"><a aria-hidden="true" tabindex="-1" href="#启动-jupyter-notebook"><span class="icon icon-link"></span></a>启动 Jupyter Notebook</h3><div class="wrap-body">
+<p>在命令行中输入</p>
+<p><code>jupyter notebook</code></p>
+<p><code>jupyter lab</code>  （如果使用 <code>Jupyter Lab</code>）来启动服务。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="创建新的notebook"><a aria-hidden="true" tabindex="-1" href="#创建新的notebook"><span class="icon icon-link"></span></a>创建新的Notebook</h3><div class="wrap-body">
+<p>打开浏览器，访问本地服务器地址（通常是 <a href="http://localhost:8888/tree">http://localhost:8888/tree</a> or <a href="http://localhost:8888/lab/tree">http://localhost:8888/lab/tree</a> ）</p>
+<p>右击文件夹，选择 <code>New</code> -> <code>Python 3</code> (或你安装的其他内核)。
+保存 <code>Notebook</code></p>
+<p>使用菜单栏中的 <code>File</code> -> <code>Save and Checkpoint</code> 或者按快捷键 Ctrl+S (Cmd+S on Mac)。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="关闭-notebook"><a aria-hidden="true" tabindex="-1" href="#关闭-notebook"><span class="icon icon-link"></span></a>关闭 Notebook</h3><div class="wrap-body">
+<p>使用菜单栏中的 <code>File</code> -> <code>Close and Halt</code>。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="jupyter-notebook-快捷键"><a aria-hidden="true" tabindex="-1" href="#jupyter-notebook-快捷键"><span class="icon icon-link"></span></a>Jupyter Notebook 快捷键</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="命令模式-按键-esc-开启"><a aria-hidden="true" tabindex="-1" href="#命令模式-按键-esc-开启"><span class="icon icon-link"></span></a>命令模式 (按键 Esc 开启)</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>按键</th><th>操作</th></tr></thead><tbody><tr><td>Enter</td><td>转入编辑模式</td></tr><tr><td>Shift-Enter</td><td>运行本单元，选中下个单元</td></tr><tr><td>Ctrl-Enter</td><td>运行本单元</td></tr><tr><td>Alt-Enter</td><td>运行本单元，在其下插入新单元</td></tr><tr><td>y</td><td>单元转入代码状态</td></tr><tr><td>m</td><td>单元转入markdown状态</td></tr><tr><td>R</td><td>单元转入raw状态</td></tr><tr><td>1</td><td>设定 1 级标题</td></tr><tr><td>2</td><td>设定 2 级标题</td></tr><tr><td>3</td><td>设定 3 级标题</td></tr><tr><td>4</td><td>设定 4 级标题</td></tr><tr><td>5</td><td>设定 5 级标题</td></tr><tr><td>6</td><td>设定 6 级标题</td></tr><tr><td>Up</td><td>选中上方单元</td></tr><tr><td>k</td><td>选中上方单元</td></tr><tr><td>Down</td><td>选中下方单元</td></tr><tr><td>j</td><td>选中下方单元</td></tr><tr><td>Shift-K</td><td>扩大选中上方单元</td></tr><tr><td>Shift-J</td><td>扩大选中下方单元</td></tr><tr><td>a</td><td>在上方插入新单元</td></tr><tr><td>b</td><td>在下方插入新单元</td></tr><tr><td>x</td><td>剪切选中的单元</td></tr><tr><td>c</td><td>复制选中的单元</td></tr><tr><td>Shift-V</td><td>粘贴到上方单元</td></tr><tr><td>zz</td><td>恢复删除的最后一个单元</td></tr><tr><td>dd</td><td>删除选中的单元</td></tr><tr><td>Shift-M</td><td>合并选中的单元</td></tr><tr><td>Ctrl-S</td><td>文件存盘</td></tr><tr><td>L</td><td>转换行号</td></tr><tr><td>O</td><td>转换输出</td></tr><tr><td>Shift-O</td><td>转换输出滚动</td></tr><tr><td>Esc</td><td>关闭页面</td></tr><tr><td>Q</td><td>关闭页面</td></tr><tr><td>H</td><td>显示快捷键帮助</td></tr><tr><td>0,0</td><td>重启Notebook内核</td></tr><tr><td>I,I</td><td>中断Notebook内核</td></tr><tr><td>Shift</td><td>忽略</td></tr><tr><td>Shift-Space</td><td>向上滚动</td></tr><tr><td>Space</td><td>向下滚动</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="编辑模式--enter-键启动"><a aria-hidden="true" tabindex="-1" href="#编辑模式--enter-键启动"><span class="icon icon-link"></span></a>编辑模式 ( Enter 键启动)</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>按键</th><th>操作</th></tr></thead><tbody><tr><td>Tab</td><td>代码补全或缩进</td></tr><tr><td>Shift-Tab</td><td>提示</td></tr><tr><td>Ctrl-]</td><td>缩进</td></tr><tr><td>Ctrl-[</td><td>解除缩进</td></tr><tr><td>Ctrl-A</td><td>全选</td></tr><tr><td>Ctrl-Z</td><td>复原</td></tr><tr><td>Ctrl-Shift-Z</td><td>再做</td></tr><tr><td>Ctrl-Y</td><td>再做</td></tr><tr><td>Ctrl-Home</td><td>跳到单元开头</td></tr><tr><td>Ctrl-Up</td><td>跳到单元开头</td></tr><tr><td>Ctrl-End</td><td>跳到单元末尾</td></tr><tr><td>Ctrl-Down</td><td>跳到单元末尾</td></tr><tr><td>Ctrl-Left</td><td>跳到左边一个字首</td></tr><tr><td>Ctrl-Right</td><td>跳到右边一个字首</td></tr><tr><td>Ctrl-Backspace</td><td>删除前面一个字</td></tr><tr><td>Ctrl-Delete</td><td>删除后面一个字</td></tr><tr><td>Esc</td><td>进入命令模式</td></tr><tr><td>Ctrl-M</td><td>进入命令模式</td></tr><tr><td>Shift-Enter</td><td>运行本单元，选中下一单元</td></tr><tr><td>Ctrl-Enter</td><td>运行本单元</td></tr><tr><td>Alt-Enter</td><td>运行本单元，在下面插入一单元</td></tr><tr><td>Ctrl-Shift--</td><td>分割单元</td></tr><tr><td>Ctrl-Shift-Subtract</td><td>分割单元</td></tr><tr><td>Ctrl-S</td><td>文件存盘</td></tr><tr><td>Shift</td><td>忽略</td></tr><tr><td>Up</td><td>光标上移或转入上一单元</td></tr><tr><td>Down</td><td>光标下移或转入下一单元</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="高级功能"><a aria-hidden="true" tabindex="-1" href="#高级功能"><span class="icon icon-link"></span></a>高级功能</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="魔法命令"><a aria-hidden="true" tabindex="-1" href="#魔法命令"><span class="icon icon-link"></span></a>魔法命令</h3><div class="wrap-body">
+<p><code>Jupyter Notebook</code> 支持一系列以 <code>%</code> 或 <code>%%</code>开头的魔法命令，这些命令可以提供特殊功能。例如，<code>%matplotlib inline</code> 可以在 <code>Notebook</code> 中内嵌绘图；<code>%%time</code> 可以测量代码执行时间。</p>
+<p>调用 <code>python</code> 文件，可以使用 <code>%run</code> 命令来调用 <code>python</code> 文件。例如，<code>%run my_script.py</code> 可以运行当前目录下名为 <code>my_script.py</code> 的 python 文件。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="环境管理"><a aria-hidden="true" tabindex="-1" href="#环境管理"><span class="icon icon-link"></span></a>环境管理</h3><div class="wrap-body">
+<p><code>Jupyter Notebook</code> 支持使用虚拟环境来隔离不同的项目依赖。你可以使用 <code>conda</code> 或 <code>venv</code>（<code>Python 3</code> 自带的虚拟环境管理工具）来创建和管理虚拟环境，并在 <code>Notebook</code> 中选择使用哪个环境。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="扩展插件"><a aria-hidden="true" tabindex="-1" href="#扩展插件"><span class="icon icon-link"></span></a>扩展插件</h3><div class="wrap-body">
+<p><code>JupyterLab</code> 支持通过安装扩展插件来增强功能。你可以通过 <code>JupyterLab</code> 的扩展管理器搜索和安装扩展插件，例如代码格式化、主题更改、<code>Git</code> 集成等。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="jupyter-资源"><a aria-hidden="true" tabindex="-1" href="#jupyter-资源"><span class="icon icon-link"></span></a>Jupyter 资源</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="参考资料"><a aria-hidden="true" tabindex="-1" href="#参考资料"><span class="icon icon-link"></span></a>参考资料</h3><div class="wrap-body">
+<ul>
+<li><a href="https://docs.jupyter.org/">Jupyter 官方文档</a></li>
+<li><a href="https://jupyter.org/">Jupyter 社区</a></li>
+<li><a href="https://github.com/jupyter/jupyter">Jupyter github</a></li>
+<li><a href="https://github.com/jupyterlab/jupyterlab">Jupyterlab github</a></li>
+</ul>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.5.5" defer></script><script src="../js/fuse.min.js?v=1.5.5" defer></script><script src="../js/main.js?v=1.5.5" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
