@@ -381,7 +381,7 @@ const constantCities = const ["New York", "Mumbai", "Tokyo"];
 ```dart
 // 映射是关联键和值的对象
 var person = Map<String, String>();
-// 要初始化地图，请执行以下操作：
+// 要初始化映射，请执行以下操作：
 person['firstName'] = 'Nicola';
 person['lastName'] = 'Tesla';
 print(person);
@@ -406,7 +406,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 // 创建一个空集
 var names = <String>{};
 Set<String> names = {}; // 这也有效
-//var names = {}; // 创建地图，而不是集合
+//var names = {}; // 创建映射，而不是集合
 ```
 
 函数
