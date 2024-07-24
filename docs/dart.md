@@ -90,8 +90,8 @@ double height = 1.85;
 // 您还可以将变量声明为 num
 // x 可以同时具有 int 和 double 值
 num x = 1;
-num += 2.5;
-print(num); // 打印: 3.5
+x += 2.5;
+print(x); // 打印: 3.5
 
 String name = "Nicola";
 bool isFavourite = true;
