@@ -93,8 +93,8 @@
 </span><span class="code-line"><span class="token comment">// 您还可以将变量声明为 num</span>
 </span><span class="code-line"><span class="token comment">// x 可以同时具有 int 和 double 值</span>
 </span><span class="code-line">num x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-</span><span class="code-line">num <span class="token operator">+=</span> <span class="token number">2.5</span><span class="token punctuation">;</span>
-</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: 3.5</span>
+</span><span class="code-line">x <span class="token operator">+=</span> <span class="token number">2.5</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印: 3.5</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token class-name">String</span> name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Nicola"</span></span><span class="token punctuation">;</span>
 </span><span class="code-line">bool isFavourite <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
@@ -126,6 +126,15 @@
 </span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:test/test.dart'</span></span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token comment">// 导入文件</span>
 </span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'path/to/my_other_file.dart'</span></span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 指定前缀</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:lib/lib.dart'</span></span> <span class="token operator">as</span> lib<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token class-name"><span class="token namespace">lib<span class="token punctuation">.</span></span>Element</span> element <span class="token operator">=</span> <span class="token class-name"><span class="token namespace">lib<span class="token punctuation">.</span></span>Element</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 仅导入 foo</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:lib1/lib1.dart'</span></span> <span class="token keyword">show</span> foo<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 不导入 foo</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:lib2/lib2.dart'</span></span> <span class="token keyword">hide</span> foo<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 延迟导入，仅在需要时导入</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:greetings/hello.dart'</span></span> <span class="token keyword">deferred</span> <span class="token operator">as</span> hello<span class="token punctuation">;</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="操作符"><a aria-hidden="true" tabindex="-1" href="#操作符"><span class="icon icon-link"></span></a>操作符</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="算术运算符"><a aria-hidden="true" tabindex="-1" href="#算术运算符"><span class="icon icon-link"></span></a>算术运算符</h3><div class="wrap-body">
@@ -328,7 +337,7 @@
 <!--rehype:wrap-class=row-span-2-->
 <pre class="language-dart"><code class="language-dart code-highlight"><span class="code-line"><span class="token comment">// 映射是关联键和值的对象</span>
 </span><span class="code-line"><span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</span><span class="code-line"><span class="token comment">// 要初始化地图，请执行以下操作：</span>
+</span><span class="code-line"><span class="token comment">// 要初始化映射，请执行以下操作：</span>
 </span><span class="code-line">person<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'firstName'</span></span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'Nicola'</span></span><span class="token punctuation">;</span>
 </span><span class="code-line">person<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'lastName'</span></span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'Tesla'</span></span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token function">print</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -350,7 +359,7 @@
 </span><span class="code-line"><span class="token comment">// 创建一个空集</span>
 </span><span class="code-line"><span class="token keyword">var</span> names <span class="token operator">=</span> <span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&#x3C;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> names <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 这也有效</span>
-</span><span class="code-line"><span class="token comment">//var names = {}; // 创建地图，而不是集合</span>
+</span><span class="code-line"><span class="token comment">//var names = {}; // 创建映射，而不是集合</span>
 </span></code></pre>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数示例"><a aria-hidden="true" tabindex="-1" href="#函数示例"><span class="icon icon-link"></span></a>函数示例</h3><div class="wrap-body">
