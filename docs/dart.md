@@ -132,6 +132,15 @@ import 'dart:math';
 import 'package:test/test.dart';
 // 导入文件
 import 'path/to/my_other_file.dart';
+// 指定前缀
+import 'package:lib/lib.dart' as lib;
+lib.Element element = lib.Element();
+// 仅导入 foo
+import 'package:lib1/lib1.dart' show foo;
+// 不导入 foo
+import 'package:lib2/lib2.dart' hide foo;
+// 延迟导入，仅在需要时导入
+import 'package:greetings/hello.dart' deferred as hello;
 ```
 
 操作符
