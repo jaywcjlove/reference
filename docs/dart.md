@@ -90,8 +90,8 @@ double height = 1.85;
 // 您还可以将变量声明为 num
 // x 可以同时具有 int 和 double 值
 num x = 1;
-num += 2.5;
-print(num); // 打印: 3.5
+x += 2.5;
+print(x); // 打印: 3.5
 
 String name = "Nicola";
 bool isFavourite = true;
@@ -132,6 +132,15 @@ import 'dart:math';
 import 'package:test/test.dart';
 // 导入文件
 import 'path/to/my_other_file.dart';
+// 指定前缀
+import 'package:lib/lib.dart' as lib;
+lib.Element element = lib.Element();
+// 仅导入 foo
+import 'package:lib1/lib1.dart' show foo;
+// 不导入 foo
+import 'package:lib2/lib2.dart' hide foo;
+// 延迟导入，仅在需要时导入
+import 'package:greetings/hello.dart' deferred as hello;
 ```
 
 操作符
@@ -372,7 +381,7 @@ const constantCities = const ["New York", "Mumbai", "Tokyo"];
 ```dart
 // 映射是关联键和值的对象
 var person = Map<String, String>();
-// 要初始化地图，请执行以下操作：
+// 要初始化映射，请执行以下操作：
 person['firstName'] = 'Nicola';
 person['lastName'] = 'Tesla';
 print(person);
@@ -397,7 +406,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 // 创建一个空集
 var names = <String>{};
 Set<String> names = {}; // 这也有效
-//var names = {}; // 创建地图，而不是集合
+//var names = {}; // 创建映射，而不是集合
 ```
 
 函数
