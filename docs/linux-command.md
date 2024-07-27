@@ -154,6 +154,9 @@ Linux 命令速查表
 **`tar -xf files.tar`** | 解压档案文件"files.tar"
 **`tar -zcvf home.tar.gz source-folder`** | 从源文件夹创建压缩的tar存档文件
 **`gzip file`** | 压缩扩展名为.gz的文件
+**`zip -r compressed.zip folder/`** | 递归压缩目录`folder`为压缩文件`compressed.zip`
+**`unzip compressed.zip -d folder/`** | 在目录`folder`下解压文件
+**`unzip -v compressed.zip`** | 查看但不解压文件
 <!--rehype:className=style-list-->
 
 ### 搜索
