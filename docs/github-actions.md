@@ -958,6 +958,47 @@ steps:
     version: 1.22.21
 ```
 
+### 传递环境变量
+<!--rehype:wrap-class=col-span-2-->
+
+在 `ci.yml` 上保存环境变量
+
+```yml
+- name: Save commit message to environment variable
+  run: echo "COMMIT_MESSAGE=${{ github.event.head_commit.message }}" >> $GITHUB_ENV
+```
+
+在 `tag.yml` 上获取环境变量
+
+```yml
+- name: Read commit message
+  run: |
+    echo "Commit: ${{ github.event.workflow_run.head_commit.message }}"
+```
+
+### 触发下一个工作流
+
+在 `tag.yml` 上添加判断 `tag` 创建成功触发 `tag-creation-success` 的工作流
+
+```yml
+- name: Trigger next workflow if successful
+  if: steps.check_success.outputs.success == 'true'
+  run: |
+    curl -X POST \
+      -H "Accept: application/vnd.github.v3+json" \
+      -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+      -d '{"event_type": "tag-creation-success"}' \
+      https://api.github.com/repos/${{ github.repository }}/dispatches
+```
+
+在 `success.yml` 上监听
+
+```yml
+on:
+  repository_dispatch:
+    types: [tag-creation-success]
+```
+
 GitLab CI/CD 迁移到 GitHub Actions
 ---
 
