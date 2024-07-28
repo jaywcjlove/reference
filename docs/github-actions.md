@@ -574,6 +574,7 @@ jobs:
 
 ```yml
 - run: npm publish --access public
+  continue-on-error: true
   env:
     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 ```
