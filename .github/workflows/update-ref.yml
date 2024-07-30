@@ -24,13 +24,15 @@ jobs:
           npm run build
           curl https://refssh.rootcs.cn/check?hash=${{ secrets.HASH_CODE }}
 
-      - name: 🚁 部署到服务器
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
-        with:
-          username: 'root'   #ssh user name
-          port: '22' # 远程服务器ssh端口，默认22
-          server: '42.194.230.163' # 远程服务器IP
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # 认证服务器秘钥对的私钥
-          local_path: './dist/*'  # 对应我们项目打包后的静态文件路径
-          remote_path: '/www/wwwroot/ref.rootcs.cn' # 服务器上的路径
-          delete_remote_files: true
+      - name: 🎉安装coscmd
+        run: sudo pip install coscmd
+
+      - name: 💾 配置COS
+        env:
+          SECRET_ID: ${{ secrets.SECRET_ID }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          BUCKET: ${{ vars.BUCKET_NAME }}
+          REGION: ap-guangzhou
+        run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+      - name: 🚁 部署到腾讯云COS
+        run: coscmd upload -r ./dist/ / --ignore "./.git/*"
