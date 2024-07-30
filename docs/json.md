@@ -27,8 +27,8 @@ JSON 备忘清单
   "salary": 70000,
   "married": true,
   "children": [
-    {"name": "Tom", "age": 9, "gender":"M"},
-    {"name": "Ava", "age": 7, "gender":"F"}
+    {"name": "Tom", "age": 9},
+    {"name": "Ava", "age": 7}
   ]
 }
 ```
@@ -66,7 +66,7 @@ JSON 备忘清单
 {
   "url": "https://jaywcjlove.github.io",
   "msg" : "Hi,\n\"Quick Reference\"",
-  "intro": "Share quick reference and cheat sheet for developers."
+  "intro": "为开发人员分享快速参考和备忘单"
 }
 ```
 
@@ -196,6 +196,124 @@ Have to be delimited by double quotes
     }
   }
 }
+```
+
+JSON 5
+----
+
+### Objects
+
+对象键可以是 ECMAScript 5.1 [IdentifierName](https://www.ecma-international.org/ecma-262/5.1/#sec-7.6)
+
+```json
+{
+    width: 1920,
+    height: 1080,
+}
+```
+
+数组可以有一个尾随逗号
+
+```json
+[
+    1,
+    true,
+    'three',
+]
+```
+
+### 允许单行和多行注释
+
+```js
+{
+  // 一行注释
+  "name": "Kenny"
+}
+```
+
+多行注释
+
+```js
+{
+/* 这是一个
+   多行注释 */
+  "name": "Kenny"
+}
+```
+
+### 允许附加空白字符
+
+代码点 | 描述
+:-- | ---
+`U+0009` | 水平制表符
+`U+000A` | 换行符
+`U+000B` | 垂直制表符
+`U+000C` | 换页符
+`U+000D` | 回车符
+`U+0020` | 空格
+`U+00A0` | 不间断空格
+`U+2028` | 行分隔符
+`U+2029` | 段落分隔符
+`U+FEFF` | 字节顺序标记
+Unicode Zs 类别 | 空格分隔符 Unicode 类别中的任何其他字符
+<!--rehype:className=left-align-->
+
+### 数字
+
+数字可能有前导或尾随小数点
+
+```json
+{
+    integer: 123,
+    withFractionPart: 123.456,
+    onlyFractionPart: .456,
+    withExponent: 123e-456,
+}
+```
+
+数字可以是十六进制
+
+```json
+{
+    positiveHex: 0xdecaf,
+    negativeHex: -0xC0FFEE,
+}
+```
+
+数字可以是正无穷大、负无穷大和 NaN。
+
+```json
+{
+    positiveInfinity: Infinity,
+    negativeInfinity: -Infinity,
+    notANumber: NaN,
+}
+```
+
+数字可以以明确的加号开头
+
+### 字符串
+<!--rehype:wrap-class=col-span-2-->
+
+```js
+'Lorem ipsum dolor sit amet, \
+consectetur adipiscing elit.'
+```
+
+以下是代表相同的意思
+
+```js
+'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+```
+
+```json
+'\A\C\/\D\C'
+```
+
+以下是代表相同的意思
+
+```json
+'AC/DC'
 ```
 
 在 JavaScript 中访问 JSON

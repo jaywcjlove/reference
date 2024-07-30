@@ -549,8 +549,8 @@ string.lower("STR") -- str
 
 -- 指定替换的字符串个数, 最后一个参数可选，默认是全部替换
 string.gsub("aaaa", "a", "b", 3) -- bbba  3
-string.gsub("Today is 29/01/2019", "%d%d/%d%d/%d%d%d%d", "good day.")
--- Today is a good day. 1
+string.gsub("Today is 29/01/2019", "%d%d/%d%d/%d%d%d%d", "a good day.")
+-- Today is a good day.
 
 -- 查找第一个匹配的字符串，第三个参数可以提供开始查找的位置，默认从 1 开始
 -- 如果未找到，则返回 nil

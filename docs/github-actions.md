@@ -574,6 +574,7 @@ jobs:
 
 ```yml
 - run: npm publish --access public
+  continue-on-error: true
   env:
     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 ```
@@ -857,7 +858,7 @@ steps:
 <!--rehype:className=style-list-->
 
 ### 在 Github 中创建 Docker 镜像
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 ```yml
 - name: Set up Docker Buildx
@@ -887,8 +888,19 @@ steps:
     tags: ghcr.io/jaywcjlove/reference:${{steps.changelog.outputs.version}}
 ```
 
+### 生成贡献者头像列表
+
+```yml
+- name: Generate Contributors Images
+  uses: jaywcjlove/github-action-contributors@main
+  id: contributors
+  with:
+    output: dist/CONTRIBUTORS.svg
+    avatarSize: 42
+```
+
 ### 在 Docker Hub 中创建 Docker 镜像
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-3 col-span-2-->
 
 ```yml
 - name: Set up Docker Buildx
@@ -926,27 +938,67 @@ steps:
     node-version: 16
 ```
 
-### 生成贡献者头像列表
-
-```yml
-- name: Generate Contributors Images
-  uses: jaywcjlove/github-action-contributors@main
-  id: contributors
-  with:
-    output: dist/CONTRIBUTORS.svg
-    avatarSize: 42
-```
-
 ### 忽略失败
 
 ```yml
 - run: npm publish
   continue-on-error: true
   env:
-    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 ```
 
 当 `npm` 推送包失败不影响整个流程，可用于自动发包
+
+### 安装 yarn
+
+```yml
+- name: Setup Yarn
+  uses: threeal/setup-yarn-action@v2.0.0
+  with:
+    cache: false
+    version: 1.22.21
+```
+
+### 传递环境变量
+<!--rehype:wrap-class=col-span-2-->
+
+在 `ci.yml` 上保存环境变量
+
+```yml
+- name: Save commit message to environment variable
+  run: echo "COMMIT_MESSAGE=${{ github.event.head_commit.message }}" >> $GITHUB_ENV
+```
+
+在 `tag.yml` 上获取环境变量
+
+```yml
+- name: Read commit message
+  run: |
+    echo "Commit: ${{ github.event.workflow_run.head_commit.message }}"
+```
+
+### 触发下一个工作流
+
+在 `tag.yml` 上添加判断 `tag` 创建成功触发 `tag-creation-success` 的工作流
+
+```yml
+- name: Trigger next workflow if successful
+  if: steps.check_success.outputs.success == 'true'
+  run: |
+    curl -X POST \
+      -H "Accept: application/vnd.github.v3+json" \
+      -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+      -d '{"event_type": "tag-creation-success"}' \
+      https://api.github.com/repos/${{ github.repository }}/dispatches
+```
+
+在 `success.yml` 上监听
+
+```yml
+on:
+  repository_dispatch:
+    types: [tag-creation-success]
+```
 
 GitLab CI/CD 迁移到 GitHub Actions
 ---
