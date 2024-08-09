@@ -1495,6 +1495,18 @@ function makeBox<T>(value: T) {
 }
 ```
 
+### 保留一段时间字符串常量类型
+
+```ts
+type Color = "primary" | "secondary" | string;
+```
+
+修改成下面代码，有代码下拉提示
+
+```ts
+type Color = "primary" | "secondary" | (string & {});
+```
+
 ---
 
 不使用：
