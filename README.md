@@ -84,6 +84,7 @@ Quick Reference
 [Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->  
 [Jupyter](./docs/jupyter.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Python-->
 <!--rehype:class=home-card-->
+[Minio](./docs/minio.md)<!--rehype:style=background: rgb(199 44 72));&class=tag-->
 
 ## 配置
 
