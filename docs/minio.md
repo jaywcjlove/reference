@@ -104,4 +104,4 @@ MinIO 快速参考
 
 ### 扩展阅读
 - [MinIO官方文档](https://min.io/docs/minio/kubernetes/upstream/)
-- [MinIO社区论坛](https://github.com/minio/minio)
+- [MinIO github 源码](https://github.com/minio/minio)
