@@ -842,7 +842,8 @@ Future<String> login() {
 // 异步
 main() async {
   print('Authenticating please wait...');
-  print(await userName());
+  String result = await login();
+  print(result);
 }
 ```
 
