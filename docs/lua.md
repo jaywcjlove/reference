@@ -652,7 +652,7 @@ local g = math.max(1, 2, 3) -- 3
 local h = math.min(1, 2, 3) -- 1
 
 -- 返回参数的平方根
-local r = math.sqrt(3) -- 9
+local r = math.sqrt(9) -- 3
 ```
 
 ### 工具方法
