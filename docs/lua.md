@@ -652,7 +652,7 @@ local g = math.max(1, 2, 3) -- 3
 local h = math.min(1, 2, 3) -- 1
 
 -- 返回参数的平方根
-local r = math.sqrt(3) -- 9
+local r = math.sqrt(9) -- 3
 ```
 
 ### 工具方法
@@ -701,10 +701,10 @@ math.cos(math.pi) -- -1.0
 math.tan(math.pi / 4) -- 1.0
 
 -- 反正弦方法（以下皆是以弧度表示）
-math.acos(1.0) -- 0.0
+math.asin(1.0) -- 1.5707963267949
 -- 反余弦方法
-math.acos(1.0) -- 1.5707963267949
--- 反正弦方法
+math.acos(1.0) -- 0.0
+-- 反正切方法
 math.atan(1.0) -- 0.78539816339745
 
 -- 角度转换为弧度
