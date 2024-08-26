@@ -360,7 +360,7 @@ jobs:
 <a href="https://github.com/itldg" title="老大哥"><img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/></a>
 <a href="https://github.com/catcto" title="小武Alan"><img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="小武Alan"/></a>
 <a href="https://github.com/ryanhex53" title="ryanhex53"><img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/></a>
-<a href="https://github.com/partoneplay" title="partoneplay"><img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="partoneplay"/></a>
+<a href="https://github.com/partoneplay" title="oneplay"><img src="https://avatars.githubusercontent.com/u/5189132?v=4" width="42;" alt="oneplay"/></a>
 <a href="https://github.com/pangxiaoli" title="pangxiaoli"><img src="https://avatars.githubusercontent.com/u/54620953?v=4" width="42;" alt="pangxiaoli"/></a>
 <a href="https://github.com/mancuoj" title="mancuoj"><img src="https://avatars.githubusercontent.com/u/45707684?v=4" width="42;" alt="mancuoj"/></a>
 <a href="https://github.com/1834423612" title="kjch"><img src="https://avatars.githubusercontent.com/u/49981661?v=4" width="42;" alt="kjch"/></a>
