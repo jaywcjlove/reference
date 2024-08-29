@@ -164,6 +164,8 @@ $ docker build - < context.tar.gz
 $ docker build -t eon/nginx-server .
 $ docker build -f myOtherDockerfile .
 $ curl example.com/remote/Dockerfile | docker build -f - .
+$ docker save -o <保存路径>/myimage.tar myimage:latest # 导出
+$ docker load -i <路径>/myimage.tar # 导入
 ```
 
 ### 删除 \<none> 镜像
