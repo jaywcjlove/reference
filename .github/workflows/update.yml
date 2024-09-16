@@ -15,8 +15,13 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Fetch install.sh from docker/docker-install
-      run: git pull && git update
+    - name: update
+      run: |          
+          git remote add upstream https://github.com/jaywcjlove/reference.git
+          git fetch upstream
+          git checkout main  # 如果你的主分支不是main，改为对应分支
+          git merge upstream/main --allow-unrelated-histories
+          git push origin main
       
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
