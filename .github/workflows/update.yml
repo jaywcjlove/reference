@@ -1,0 +1,22 @@
+name: Update dockerinstall.sh
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天执行一次，时间为UTC 00:00
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  update-dockerinstall:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Fetch install.sh from docker/docker-install
+      run: git pull && git update
+      
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
