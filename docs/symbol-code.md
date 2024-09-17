@@ -15,7 +15,7 @@ Symbol 特殊符号
 <!--rehype:className=wrap-text-->
 
 ### 特殊符号
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-4-->
 
 #### 国际象棋符号列表视图
 
@@ -87,6 +87,25 @@ Symbol 特殊符号
 ```
 <!--rehype:className=wrap-text&style=font-size: 28px;-->
 
+### 键盘符号
+<!--rehype:wrap-class=row-span-2-->
+
+- `⌘` command
+- `⌥` otptin
+- `⎋` escap
+- `⌫` backspace
+- `⌦` delete
+- `↑` up
+- `→` right
+- `←` left
+- `↓` down
+- `⇥` tab
+- `⇧` shift
+- `⇪` capslock
+- `⌃` control
+- `⏎` reternkey
+<!--rehype:className=cols-2 shortcuts style-none-->
+
 ### 爱心符号
 
 ```
@@ -95,7 +114,7 @@ Symbol 特殊符号
 <!--rehype:className=wrap-text&style=font-size: 28px;-->
 
 ### 动物符号
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-4-->
 
 ```
 𓃥 𓃠 𓃰 𓃱 𓃯 𓃭 𓃸 𓃵 𓃗 𓃘 𓃙 𓃟 𓄀 𓄁 𓄂 𓄃 𓃚 𓃛 𓃜 𓃝 𓃞 𓃒 𓃓 𓃔 𓃕 𓃖 𓃡 𓃢 𓃦 𓃩 𓃫 𓃬 𓃮 𓃲 𓃴 𓃶 𓃷 𓃹 𓃻 𓃽 𓃾 𓃿 𓄄 𓄅 𓄆 𓄇 𓆇 𓆈 𓆉 𓆌 𓆏 𓆗 𓆘 𓆙 𓆚 𓆐 𓆑 𓆒 𓆓 𓆔 𓆕 𓆖 𓆊 𓆍 𓆣 𓆤 𓆥 𓆦 𓆧 𓆨 𓆛 𓆜 𓆝 𓆞 𓆟 𓆠 𓆡 𓆢 𓄿 𓅀 𓅁 𓅂 𓅃 𓅄 𓅅 𓅆 𓅇 𓅈 𓅉 𓅊 𓅋 𓅌 𓅍 𓅎 𓅏𓅐 𓅑 𓅒 𓅓 𓅔 𓅕𓅖 𓅗 𓅘 𓅙𓅚 𓅛 𓅜 𓅝 𓅞 𓅟 𓅠 𓅡 𓅢 𓅣 𓅤 𓅥 𓅦 𓅧 𓅨 𓅩 𓅪 𓅫 𓅬 𓅭 𓅮 𓅯 𓅰 𓅱 𓅲 𓅳 𓅴 𓅵 𓅶 𓅷 𓅸 𓅹 𓅺 𓅻 𓅼 𓅽 𓅾 𓅿 𓆀 𓆁 𓆂 𓆃 𓆆
@@ -118,13 +137,6 @@ Symbol 特殊符号
 ```
 <!--rehype:className=wrap-text&style=font-size: 28px;-->
 
-#### 花卉符号
-
-```
-✻ ✼ ✾ ✿ ❀ ❁ ❃ ❇ ❈ ❉ ❊ ✢ ✣ ✤ ✥ ꕥ 𓇬 ⚘ 𓆸 𓆹 𓆼 𓇊 𓇚 𓇕 𓇗 𓋇 𓁙 𓁋 ֍ ֎ 𓆭 𓆰 𓆱 𓇋𓇑 𓇛 𓇟 𓇣꧁ ꧂ 
-```
-<!--rehype:className=wrap-text&style=font-size: 28px;-->
-
 ### 箭头符号
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
@@ -134,9 +146,17 @@ Symbol 特殊符号
 <!--rehype:className=wrap-text&style=font-size: 28px;-->
 
 ### 货币符号
+<!--rehype:wrap-class=col-span-3-->
 
 ```
 $ ¢ € £ ¥ ₩ ₽ ₹ ¤ ₱ ₦ ƒ ₮ ৲ ৳ ₨ ௹ ฿ ៛ ₪ ₫ ₭ ₲ ₴ ₵ ﷼ ≋ ₿ Ł Ð ₳
+```
+<!--rehype:className=wrap-text&style=font-size: 28px;-->
+
+#### 花卉符号
+
+```
+✻ ✼ ✾ ✿ ❀ ❁ ❃ ❇ ❈ ❉ ❊ ✢ ✣ ✤ ✥ ꕥ 𓇬 ⚘ 𓆸 𓆹 𓆼 𓇊 𓇚 𓇕 𓇗 𓋇 𓁙 𓁋 ֍ ֎ 𓆭 𓆰 𓆱 𓇋𓇑 𓇛 𓇟 𓇣꧁ ꧂ 
 ```
 <!--rehype:className=wrap-text&style=font-size: 28px;-->
 
