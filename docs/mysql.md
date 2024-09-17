@@ -167,10 +167,11 @@ ALTER TABLE t DROP constraint;
 ALTER TABLE t1 RENAME TO t2;
 ```
 
-将列c1重命名为c2
+将列 c1 重命名为 c2
 
 ```sql
-ALTER TABLE t1 RENAME c1 TO c2 ;
+ALTER TABLE t1 CHANGE c1 c2 datatype;
+ALTER TABLE table_name RENAME COLUMN c1 TO c2;
 ```
 
 将列c1的数据类型改为datatype
