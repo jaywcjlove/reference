@@ -892,6 +892,162 @@ PageView.builder(
   ),
 ),
 ```
+### flutter动画组件
+
+#### AnimatedContainer
+> 使用AnimatedContainer组件，配置curve曲线过渡和duration过渡时间
+
+```dart
+class HomeState extends StatefulWidget{
+  const HomeState({Key? key}) : super(key:key);
+
+  @override
+  State<HomeState> createState()=>_HomeState();
+}
+
+class _HomeState extends State<HomeState>{
+  bool press = false;   //设置动画触发的条件
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            floatingActionButton:FloatingActionButton(onPressed: (){
+              setState(() {
+                  press = true; //点击FloatingActionButton进行动画效果
+                });
+              }
+            ,child: const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body: Center(
+              child: AnimatedContainer(
+                curve: Curves.ease, //曲线
+                duration: const Duration(seconds: 1), //延时
+                width: press ? 200 : 300,
+                height: 200,
+                color:Colors.yellow,
+                  transform: press ? Matrix4.translationValues(0, 0, 0) : 
+                                    Matrix4.translationValues(100, 100, 0)
+              ),
+            )
+        )
+    );
+  }
+}
+```
+
+#### AnimatedPadding
+> 通过配置padding值的改变，引起组件的动画效果,同样支持curve和duration的配置
+
+```dart
+class _HomeState extends State<HomeState>{
+  bool press = false;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            floatingActionButton:FloatingActionButton(onPressed: (){
+              setState(() {
+                press = true;
+              });
+            }
+              ,child: const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body: Center(
+              child: AnimatedPadding(
+                padding: EdgeInsets.fromLTRB(10, press ? 10 : 400, 0, 0), //配置边距值
+                  curve: Curves.ease, //曲线
+                  duration: const Duration(seconds: 1), //延时
+                  child: Container(
+                      width: 200,
+                      height: 200,
+                      color:Colors.yellow,
+                  ),
+              ),
+            )
+        )
+    );
+  }
+}
+```
+
+#### AnimatedAlign
+> 通过配置alignment值的改变，引起组件的动画效果,同样支持curve和duration的配置
+
+```dart
+class _HomeState extends State<HomeState>{
+  bool press = false;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            floatingActionButton:FloatingActionButton(onPressed: (){
+              setState(() {
+                press = true;
+              });
+            }
+              ,child: const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body: Center(
+              child: AnimatedAlign(
+                alignment: press ? Alignment.center : Alignment.topCenter,
+                curve: Curves.ease, //曲线
+                duration: const Duration(seconds: 1), //延时
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color:Colors.yellow,
+                ),
+              ),
+            )
+        )
+    );
+  }
+}
+```
+
+#### AnimatedOpacity
+
+>通过配置opacity值的改变，引起组件的动画效果,同样支持curve和duration的配置
+
+```dart
+class _HomeState extends State<HomeState>{
+  bool press = false;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            floatingActionButton:FloatingActionButton(onPressed: (){
+              setState(() {
+                press = true;
+              });
+            }
+              ,child: const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body: Center(
+              child: AnimatedOpacity(
+                opacity: press ? 1 : 0.1,
+                curve: Curves.ease, //曲线
+                duration: const Duration(seconds: 1), //延时
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color:Colors.yellow,
+                ),
+              ),
+            )
+        )
+    );
+  }
+}
+```
 
 另见
 ---
