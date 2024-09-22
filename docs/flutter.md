@@ -892,7 +892,11 @@ PageView.builder(
   ),
 ),
 ```
-### flutter动画组件
+## flutter动画组件
+
+### 1.隐式动画
+
+> 在动画组件内，直接配置curve和duration属性
 
 #### AnimatedContainer
 > 使用AnimatedContainer组件，配置curve曲线过渡和duration过渡时间
@@ -938,7 +942,7 @@ class _HomeState extends State<HomeState>{
 ```
 
 #### AnimatedPadding
-> 通过配置padding值的改变，引起组件的动画效果,同样支持curve和duration的配置
+> 通过配置padding值的改变，引起组件的移动动画效果,同样支持curve和duration的配置
 
 ```dart
 class _HomeState extends State<HomeState>{
@@ -975,7 +979,7 @@ class _HomeState extends State<HomeState>{
 ```
 
 #### AnimatedAlign
-> 通过配置alignment值的改变，引起组件的动画效果,同样支持curve和duration的配置
+> 通过配置alignment值的改变，引起组件的对齐动画效果,同样支持curve和duration的配置
 
 ```dart
 class _HomeState extends State<HomeState>{
@@ -1013,7 +1017,7 @@ class _HomeState extends State<HomeState>{
 
 #### AnimatedOpacity
 
->通过配置opacity值的改变，引起组件的动画效果,同样支持curve和duration的配置
+>通过配置opacity值的改变，引起组件的透明度变化动画效果,同样支持curve和duration的配置
 
 ```dart
 class _HomeState extends State<HomeState>{
@@ -1042,6 +1046,219 @@ class _HomeState extends State<HomeState>{
                   color:Colors.yellow,
                 ),
               ),
+            )
+        )
+    );
+  }
+}
+```
+#### AnimatedPositioned
+
+> 通过配置top,left,right,bottom值的改变，引起组件的距离变化动画效果,同样支持curve和duration的配置
+
+```dart
+class _HomeState extends State<HomeState>{
+  bool press = false;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            floatingActionButton:FloatingActionButton(onPressed: (){
+              setState(() {
+                press = true;
+              });
+            }
+              ,child: const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body:Stack(
+              children: [
+                AnimatedPositioned(
+                  top: press ? 0 : 100,
+                  left:press ? 0 : 100,
+                  curve: Curves.ease, //曲线
+                  duration: const Duration(seconds: 1), //延时
+                  child: Container(
+                    width: 200,
+                    height: 200,
+                    color:Colors.yellow,
+                  ),
+                ),
+              ],
+            )
+        )
+    );
+  }
+}
+```
+
+### 2.显示动画
+
+> 使用显示动画,定义AnimationController,在组件上with  SingleTickerProviderStateMixin
+
+#### RotationTransition
+
+>RotationTransition实现旋转动画,turns为AnimationController,可以在initState初始化的时候设置vsync,duration来让程序和手机的刷新频率统一,使用..联级操作调用repeat函数让动画重复运动
+
+```dart
+class _Boxed extends State<Boxed> with SingleTickerProviderStateMixin{
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+        vsync: this,
+        duration: const Duration(seconds: 1)
+    )..repeat(); //让程序和手机的刷新频率统一
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+          height: 100,
+          width: 100,
+          child: RotationTransition(turns: _controller,
+            child: const FlutterLogo(size: 60),
+          )
+    );
+  }
+}
+```
+
+#### AnimationController
+
+> controller的播放方式
+>
+> repeat 重复 
+>
+> forward 播放一次
+>
+> reverse 倒序播放
+>
+> stop 停止
+>
+> reset 重置
+
+```dart
+class _HomeState extends State<HomeState> with SingleTickerProviderStateMixin {
+
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+    AnimationController(vsync: this, duration: const Duration(seconds: 1));//让程序和手机的刷新频率统一
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+          floatingActionButton:FloatingActionButton(onPressed: (){
+            _controller.repeat(); //重复播放
+          },child:const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body: Center(
+                child: Column(
+                    children: [RotationTransition(
+                      turns: _controller,
+                      child: const FlutterLogo(size: 60),
+                    ),
+                    ElevatedButton(onPressed: (){
+                      _controller.forward(); //播放一次
+                    }, child:const Icon(Icons.refresh)),
+                      ElevatedButton(onPressed: (){
+                        _controller.reverse(); //倒序播放
+                      }, child:const Icon(Icons.refresh)),
+                      ElevatedButton(onPressed: (){
+                        _controller.stop(); //停止
+                      }, child:const Icon(Icons.refresh)),
+                      ElevatedButton(onPressed: (){
+                        _controller.reset(); //重置
+                      }, child:const Icon(Icons.refresh)),
+                    ]
+                )
+            )
+        )
+    );
+  }
+}
+```
+
+#### FadeTransition
+
+>RotationTransition实现透明度变化动画,opacity为AnimationController,可以在initState初始化的时候设置vsync,duration来让程序和手机的刷新频率统一,同时controller为0-1的值,因此opacity会发生从透明到实体的过程,如果要实现实体逐渐到透明可以使用reverse()倒序播放
+
+```dart
+class _HomeState extends State<HomeState> with SingleTickerProviderStateMixin {
+
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));//让程序和手机的刷新频率统一
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            floatingActionButton:FloatingActionButton(onPressed: (){
+              _controller.repeat(); //重复播放
+            },child:const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body: Center(
+              child: FadeTransition(opacity: _controller,
+                child: const FlutterLogo(size: 60,),
+              )
+            )
+        )
+    );
+  }
+}
+```
+
+> 也可以通过lowerBound和upperBound来配置controller的最低和最高值
+
+#### ScaleTransition
+
+> ScaleTransition实现放大缩小动画,scale为AnimationController,可以在initState初始化的时候设置vsync,duration来让程序和手机的刷新频率统一,同时controller为0-1的值,因此scale会发生从小到大的过程,如果要实现大逐渐到小可以使用reverse()倒序播放
+
+```dart
+class _HomeState extends State<HomeState> with SingleTickerProviderStateMixin {
+
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));//让程序和手机的刷新频率统一
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            floatingActionButton:FloatingActionButton(onPressed: (){
+              _controller.repeat(); //重复播放
+            },child:const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body: Center(
+                child: ScaleTransition(scale: _controller,
+                  child: const FlutterLogo(size: 60,),
+                )
             )
         )
     );
