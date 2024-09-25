@@ -1266,6 +1266,47 @@ class _HomeState extends State<HomeState> with SingleTickerProviderStateMixin {
 }
 ```
 
+#### AnimatedPositioned
+>通过配置icon和size以及progress来实现icon图标的动画。icon为图标，类型为AnimatedIconData，size为图标的大小，
+progress则为controller，控制动画的生成
+
+```dart
+class _HomeState extends State<HomeState> with SingleTickerProviderStateMixin {
+
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 0,milliseconds: 1),
+            lowerBound: 0.5,
+            upperBound: 1
+        );//让程序和手机的刷新频率统一
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            floatingActionButton:FloatingActionButton(onPressed: (){
+              _controller.forward(); //播放一次
+            },child:const Icon(Icons.add),) ,
+            appBar: AppBar(
+              title: const Text("测试"),
+            ),
+            body: Center(
+                child: AnimatedIcon(icon:AnimatedIcons.close_menu,
+                  progress: _controller,
+                  size: 60,
+                )
+            )
+        )
+    );
+  }
+}
+```
+
 另见
 ---
 
