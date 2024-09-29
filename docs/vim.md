@@ -53,52 +53,52 @@ G gg H M L k j ▶  print("to")
 
 快捷方式 | 说明
 :- | -
-`h` \| `j` \| `k` \| `l`       | 方向键
-`<C-u>` _/_ `<C-d>`            | 上/下半页
-`<C-b>` _/_ `<C-f>`            | 向上/向下翻页
-<!--rehype:className=shortcuts-->
+方向键 | `h` \| `j` \| `k` \| `l`
+上/下半页 | `<C-u>` _/_ `<C-d>`
+向上/向下翻页 | `<C-b>` _/_ `<C-f>`
+<!--rehype:className=shortcuts-last-->
 
 #### 字(词)
 
 快捷方式 | 说明
 :- | -
-`b` _/_ `w`  | 上一个/下一个单词
-`ge` _/_ `e` | 上一个/下一个词尾
-<!--rehype:className=shortcuts-->
+上一个/下一个单词 | `b` _/_ `w`
+上一个/下一个词尾 | `ge` _/_ `e`
+<!--rehype:className=shortcuts-last-->
 
 #### 行
 
 快捷方式 | 说明
 :- | -
-`0` _(zero)_ _/_ `$` | 行的开始/结束
-`^`                  | 行开头 _(非空白)_
-<!--rehype:className=shortcuts-->
+行的开始/结束 | `0` _(zero)_ _/_ `$`
+行开头 _(非空白)_ | `^`
+<!--rehype:className=shortcuts-last-->
 
 #### 字符串
 
 快捷方式 | 说明
 :- | -
-`Fe` _/_ `fe`  | 移动到上一个/下一个`e`
-`To` _/_ `to`  | 在上一个/下一个`o`之前/之后移动
-`\|` _/_ `n\|` | 转到第一个/`n`列
-<!--rehype:className=shortcuts-->
+移动到上一个/下一个`e` | `Fe` _/_ `fe`
+在上一个/下一个`o`之前/之后移动 | `To` _/_ `to`
+转到第一个/`n`列 | `\|` _/_ `n\|`
+<!--rehype:className=shortcuts-last-->
 
 #### 文档
 
 快捷方式 | 说明
 :- | -
-`gg` _/_ `G`   | 第一行/最后一行
-`:n` \| `nG`   | 转到第 `n` 行
-`}` _/_ `{`    | 下一个/上一个空行
-<!--rehype:className=shortcuts-->
+第一行/最后一行   | `gg` _/_ `G`
+转到第 `n` 行    | `:n` \| `nG`
+下一个/上一个空行 | `}` _/_ `{`
+<!--rehype:className=shortcuts-last-->
 
 #### 窗口
 
 快捷方式 | 说明
 :- | -
-`H` _/_ `M` _/_ `L`     | 上/中/下屏幕
-`zt` _/_ `zz` _/_  `zb` | 上/中/下这条线
-<!--rehype:className=shortcuts-->
+上/中/下屏幕 | `H` _/_ `M` _/_ `L`
+上/中/下这条线 | `zt` _/_ `zz` _/_  `zb`
+<!--rehype:className=shortcuts-last-->
 
 ### 插入模式
 
@@ -117,17 +117,17 @@ G gg H M L k j ▶  print("to")
 
 快捷方式 | 说明
 :- | -
-`:w`                      | 保存
-`:q`                      | 关闭文件
-`:wq` \| `:x` \| `ZZ`     | 保存并退出
-`:wqa`                    | 保存并退出所有文件
-`:q!` \| `ZQ`             | 强制退出
-`:qa`                     | 关闭所有文件
-`:qa!`                    | 强制退出所有文件
-`:w` new.txt              | 写入`new.txt`
-`:sav` new.txt            | 保存并编辑`new.txt`
-`:w` !sudo tee %          | 写入只读文件
-<!--rehype:className=shortcuts-->
+保存 | `:w`
+关闭文件 | `:q`
+保存并退出 | `:wq` \| `:x` \| `ZZ`
+保存并退出所有文件 | `:wqa`
+强制退出 | `:q!` \| `ZQ`
+关闭所有文件 | `:qa`
+强制退出所有文件 | `:qa!`
+写入`new.txt` | `:w` new.txt
+保存并编辑`new.txt` | `:sav` new.txt
+写入只读文件 | `:w` !sudo tee %
+<!--rehype:className=shortcuts-last-->
 
 ### 正常模式
 

@@ -404,7 +404,15 @@ export const Student = (
 | `快捷键` | 说明    |
 <!--rehype:className=shortcuts-->
 
-列表添加 `<!--rehype:className=shortcuts-->` 样式类，展示快捷键样式。
+首列添加 `<!--rehype:className=shortcuts-->` 样式类，展示快捷键样式。
+
+| Key | value |
+| ---- | ---- |
+| 说明    | `快捷键` |
+| 说明    | `快捷键` |
+<!--rehype:className=shortcuts-last-->
+
+列尾添加 `<!--rehype:className=shortcuts-last-->` 样式类，展示快捷键样式。
 
 ### 代码行号
 
@@ -479,7 +487,8 @@ const school = <div>学校</div>;
 ---- | ----
 `<!--rehype:className=wrap-text-->` | 强制`换行`
 `<!--rehype:className=show-header-->` | 展示表格`表头`
-`<!--rehype:className=shortcuts-->` | `快捷键`样式
+`<!--rehype:className=shortcuts-->` | 首列`快捷键`样式
+`<!--rehype:className=shortcuts-last-->` | 尾列`快捷键`样式
 `<!--rehype:className=auto-wrap-->` | 隐藏表头强制小尺寸`自动换行`
 `<!--rehype:className=style-list-arrow-->` | 列表`箭头`样式展示表格
 `<!--rehype:className=style-list-->` | `列表`样式展示表格
