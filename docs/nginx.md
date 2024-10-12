@@ -975,44 +975,6 @@ server {
 }
 ```
 
-### 流量镜像配置
-<!--rehype:wrap-class=col-span-3-->
-
-```nginx
-server {
-    listen       80;
-    server_name 192.168.1.1;
-
-    location = /mirror1 {
-        internal;
-        #### address1 ####
-        proxy_set_header Host mirror1.com;
-        proxy_pass http://127.0.0.1:8008/api/service/list;
-    }
-
-    location = /mirror2 {
-        internal;
-        #### address2 ####
-        proxy_set_header Host mirror2.com;
-        proxy_pass http://127.0.0.1:8009/api/service/list;
-    }
-
-    # 只转发这个接口
-    location /api/service/list {
-        access_log /data/logs/nginx/json_test_to_mirror.log json;
-        mirror /mirror1;
-        mirror /mirror2;
-        proxy_pass http://127.0.0.1:8007;
-    }
-
-    location / {
-        access_log /data/logs/nginx/json_test.log json;
-        proxy_pass http://192.168.1.1:8007;
-    }
-
-}
-```
-
 另见
 ---
 
