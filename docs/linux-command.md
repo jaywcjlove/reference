@@ -24,6 +24,7 @@ Linux 命令速查表
 **`w`** | 显示系统中当前登录的用户
 **`whoami`** | 显示您的登录身份
 **`finger username`** | 显示有关用户的信息
+**`sed -ri 's/.*swap.*/#&/' /etc/fstab && swapoff -a`** | 关闭swap
 <!--rehype:className=style-list-->
 
 ### 硬件
@@ -331,6 +332,23 @@ Linux 命令速查表
 `Ctrl`+`P` (Up) | 上一条命令
 `Ctrl`+`N` (Down) | 下一条命令
 <!--rehype:className=left-align shortcuts-->
+
+技巧
+---
+
+### linux技巧
+<!--rehype:wrap-class=row-span-2 col-span-2-->
+
+ :---                                          | :---
+:----------------------------------------------| :---
+ **`du -h / \| sort -rh \| head -20`**         | 最大20个文件
+ **`grep -Ev '^\s*($\|#\|;)' example.conf`**   | 查看去掉注释和空行
+ **`echo <passwd> \| passwd root --stdin`**    | 单行改密码
+ **`find /data/app/tmp -mtime +30 -name "*.flv" -exec rm -Rf {} \;`**  | 删除30天前文件
+ **`for file in $(ls); do sed -i 's/nmg/sz/g' "$file"; done`**         | 当前目录修改字符串
+ **`ssh -NfR remote_port:localhost:local_port user@remote_server`**    | ssh代理
+ **`find . -wholename "*.sh" -exec dos2unix {} \;`**     | 修复脚本格式错误
+ <!--rehype:className=left-align shortcuts-->  
 
 另见
 ---
