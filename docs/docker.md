@@ -919,7 +919,7 @@ if010/dameng
 ### 人大金仓
 
 ```bash
-docker run -idt -p 5432:54321 --restart=always \
+docker run -idt -p 54321:54321 --restart=always \
 --name Kingbase --privileged=true \
 -e DB_MODE=oracle \
 -e NEED_START=yes \
@@ -937,7 +937,7 @@ if010/kingbase:v009r001c001b0025 /usr/sbin/init
 -- | --
 :-- | --
 `-itd` | 以后台方式启动容器，保持 STDIN 打开
-`-p 5432:54321` | 将主机的 5432 端口映射到容器的 5432 端口，访问数据库
+`-p 54321:54321` | 将主机的 54321 端口映射到容器的 54321 端口，访问数据库
 `--name Kingbase` | 给容器指定名称为 "Kingbase"
 `--restart=always` | 容器退出时，总是重新启动容器
 <!--rehype:className=auto-wrap left-align-->
