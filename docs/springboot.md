@@ -65,7 +65,7 @@ spring:
     url: jdbc:mysql://localhost:3306/mydatabase
     username: root
     password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver # 这里是 MySQL8.0 版本配置，5.0 则是 com.mysql.jdbc.Driver 
 ```
 
 #### 说明
