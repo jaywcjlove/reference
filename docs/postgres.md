@@ -177,7 +177,7 @@ SELECT table_schema,table_name FROM information_schema.tables ORDER BY table_sch
 SELECT * FROM pg_catalog.pg_tables
 ```
 
-列表表架构
+列出表结构
 
 ```sql
 \d <table_name>
