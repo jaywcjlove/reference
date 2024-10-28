@@ -177,7 +177,7 @@ marks[0] = 92;
 marks[1] = 97;
 marks[2] = 98;
 // 定义和初始化
-std::array<int, 3> = {92, 97, 98};
+std::array<int, 3> marks = {92, 97, 98};
 // 有空成员
 std::array<int, 3> marks = {92, 97};
 std::cout << marks[2]; // 输出: 0
