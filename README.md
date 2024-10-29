@@ -102,6 +102,7 @@ Quick Reference
 [Emmet](./docs/emmet.md)<!--rehype:style=background: rgb(122 203 23);-->  
 [ES 6](./docs/es6.md)<!--rehype:style=background: rgb(122 203 23);&class=tag&data-lang=JS-->  
 [HTML](./docs/html.md)<!--rehype:style=background: rgb(228 77 39);-->  
+[HTML Canvas](./docs/canvas.md)<!--rehype:style=background: rgb(228 77 39);-->  
 [JavaScript](./docs/javascript.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [jQuery](./docs/jquery.md)<!--rehype:style=background: rgb(203 183 31);-->  
 [Next.js](./docs/nextjs.md)<!--rehype:style=background: rgb(0 0 0);&class=tag&data-lang=React-->  
