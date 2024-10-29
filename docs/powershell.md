@@ -7,6 +7,7 @@ PowerShell 备忘清单
 ---
 
 ### 辅助命令
+<!--rehype:wrap-class=row-span-2-->
 
 **_PowerShell 的命令遵循动词-名词格式_** 一些常见的动词:
 
@@ -57,6 +58,7 @@ Get-Process | Get-Member
 ```
 
 ### 对象操作
+<!--rehype:wrap-class=col-span-2-->
 
 **Select-Object:** 选择对象的特定属性或自定义其显示
 
@@ -103,6 +105,7 @@ Get-Process | Format-List -Property Name, CPU  # fl alias
 ```
 
 ### 文件系统
+<!--rehype:wrap-class=col-span-2-->
 
 ```PowerShell
 New-Item -path file.txt -type 'file' -value 'contents'
@@ -143,14 +146,26 @@ Get-CimInstance -ClassName Win32_VideoController
 
 ### 命名空间 & 类
 
+列出所有类名
+
 ```PowerShell
-# 列出所有类名
 Get-CimClass | Select-Object -ExpandProperty CimClassName
-# 探索 root\cimv2 命名空间中的各种 WMI 类
+```
+<!--rehype:className=wrap-text-->
+
+探索 root\cimv2 命名空间中的各种 WMI 类
+
+```PowerShell
 Get-CimClass -Namespace root\cimv2
-# 探索 root\cimv2 命名空间下的子 WMI 命名空间
+```
+<!--rehype:className=wrap-text-->
+
+探索 root\cimv2 命名空间下的子 WMI 命名空间
+
+```PowerShell
 Get-CimInstance -Namespace root -ClassName __NAMESPACE
 ```
+<!--rehype:className=wrap-text-->
 
 ### 网络管理
 
@@ -169,7 +184,6 @@ Get-NetRoute
 
 # 测试远程主机上的端口是否开放
 Test-NetConnection google.com -Port 80
-
 ```
 
 ### 用户和组管理
@@ -193,13 +207,18 @@ Add-LocalGroupMember -Group Administrators -Member UserToAdd
 
 ### 安全性和权限
 
-```PowerShell
-# 获取文件/目录的访问控制列表
-Get-Acl C:\Path\To\File.txt
+获取文件/目录的访问控制列表
 
-# 设置文件/目录的访问控制列表
+```PowerShell
+Get-Acl C:\Path\To\File.txt
+```
+
+设置文件/目录的访问控制列表
+
+```PowerShell
 Set-Acl -Path C:\Path\To\File.txt -AclObject $aclObject
 ```
+<!--rehype:className=wrap-text-->
 
 ### 注册表管理
 
