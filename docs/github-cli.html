@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Github CLI
+ &#x26;  github-cli cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="GitHub CLI 的快速参考，这是一个开源命令行工具，可在终端上启用 GitHub 功能。
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="github-cli,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/github-cli.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.8.0"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="github-cli"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 1984 2048" height="1em" width="1em">
+  <path d="M663.6 1589.6c0 8-9.2 14.4-20.8 14.4-13.2 1.2-22.4-5.2-22.4-14.4 0-8 9.2-14.4 20.8-14.4 12-1.2 22.4 5.2 22.4 14.4zm-124.4-18c-2.8 8 5.2 17.2 17.2 19.6 10.4 4 22.4 0 24.8-8s-5.2-17.2-17.2-20.8c-10.4-2.8-22 1.2-24.8 9.2zm176.8-6.8c-11.6 2.8-19.6 10.4-18.4 19.6 1.2 8 11.6 13.2 23.6 10.4 11.6-2.8 19.6-10.4 18.4-18.4-1.2-7.6-12-12.8-23.6-11.6zM979.2 32C424.4 32 0 453.2 0 1008c0 443.6 279.2 823.2 678 956.8 51.2 9.2 69.2-22.4 69.2-48.4 0-24.8-1.2-161.6-1.2-245.6 0 0-280 60-338.8-119.2 0 0-45.6-116.4-111.2-146.4 0 0-91.6-62.8 6.4-61.6 0 0 99.6 8 154.4 103.2 87.6 154.4 234.4 110 291.6 83.6 9.2-64 35.2-108.4 64-134.8-223.6-24.8-449.2-57.2-449.2-442 0-110 30.4-165.2 94.4-235.6-10.4-26-44.4-133.2 10.4-271.6 83.6-26 276 108 276 108 80-22.4 166-34 251.2-34s171.2 11.6 251.2 34c0 0 192.4-134.4 276-108 54.8 138.8 20.8 245.6 10.4 271.6 64 70.8 103.2 126 103.2 235.6 0 386-235.6 416.8-459.2 442 36.8 31.6 68 91.6 68 185.6 0 134.8-1.2 301.6-1.2 334.4 0 26 18.4 57.6 69.2 48.4 400-132.8 671.2-512.4 671.2-956 0-554.8-450-976-1004.8-976zM388.8 1411.6c-5.2 4-4 13.2 2.8 20.8 6.4 6.4 15.6 9.2 20.8 4 5.2-4 4-13.2-2.8-20.8-6.4-6.4-15.6-9.2-20.8-4zm-43.2-32.4c-2.8 5.2 1.2 11.6 9.2 15.6 6.4 4 14.4 2.8 17.2-2.8 2.8-5.2-1.2-11.6-9.2-15.6-8-2.4-14.4-1.2-17.2 2.8zm129.6 142.4c-6.4 5.2-4 17.2 5.2 24.8 9.2 9.2 20.8 10.4 26 4 5.2-5.2 2.8-17.2-5.2-24.8-8.8-9.2-20.8-10.4-26-4zm-45.6-58.8c-6.4 4-6.4 14.4 0 23.6 6.4 9.2 17.2 13.2 22.4 9.2 6.4-5.2 6.4-15.6 0-24.8-5.6-9.2-16-13.2-22.4-8z"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#github-cli"><span class="icon icon-link"></span></a>Github CLI</h1><div class="wrap-body">
+<p>GitHub CLI 的快速参考，这是一个开源命令行工具，可在终端上启用 GitHub 功能。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#windows">Windows</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#mac-os">Mac OS</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#linux">Linux</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基本用法">基本用法</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#帮助和文档">帮助和文档</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#认证">认证</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#仓库管理">仓库管理</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#常规">常规</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#目标">目标</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#问题">问题</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#搜索问题">搜索问题</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#拉取请求">拉取请求</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#github-actions">GitHub Actions</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#别名">别名</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#发布">发布</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置">配置</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<h4 style="text-align: left;" id="windows"><a aria-hidden="true" tabindex="-1" href="#windows"><span class="icon icon-link"></span></a>Windows</h4>
+<!--rehype:style=text-align: left;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header left-align"><thead><tr><th align="left">工具</th><th align="left">安装</th><th align="left">升级</th></tr></thead><tbody><tr><td align="left">WinGet</td><td align="left"><code>winget install --id Github.cli</code></td><td align="left"><code>winget upgrade --id GitHub.cli</code></td></tr><tr><td align="left">Scoop</td><td align="left"><code>scoop install gh</code></td><td align="left"><code>scoop update gh</code></td></tr><tr><td align="left">Choco</td><td align="left"><code>choco install gh</code></td><td align="left"><code>choco upgrade gh</code></td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+<h4 style="text-align: left;" id="mac-os"><a aria-hidden="true" tabindex="-1" href="#mac-os"><span class="icon icon-link"></span></a>Mac OS</h4>
+<!--rehype:style=text-align: left;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header left-align"><thead><tr><th align="left">工具</th><th align="left">安装</th><th align="left">升级</th></tr></thead><tbody><tr><td align="left">Brew</td><td align="left"><code>brew install gh</code></td><td align="left"><code>brew upgrade gh</code></td></tr><tr><td align="left">MacPorts</td><td align="left"><code>sudo port install gh</code></td><td align="left"><code>sudo port selfupdate &#x26;&#x26; sudo port upgrade gh</code></td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+<h4 style="text-align: left;" id="linux"><a aria-hidden="true" tabindex="-1" href="#linux"><span class="icon icon-link"></span></a>Linux</h4>
+<!--rehype:style=text-align: left;-->
+<p>请参见 <a href="https://github.com/cli/cli/blob/trunk/docs/install_linux.md">安装说明</a> 以获取其他 Linux 发行版的信息。安装脚本：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">type</span> <span class="token parameter variable">-p</span> <span class="token function">curl</span> <span class="token operator">></span>/dev/null <span class="token operator">||</span> <span class="token punctuation">(</span>sudo <span class="token function">apt</span> update <span class="token operator">&#x26;&#x26;</span> <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">curl</span> -y<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://cli.github.com/packages/githubcli-archive-keyring.gpg <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">dd</span> <span class="token assign-left variable">of</span><span class="token operator">=</span>/usr/share/keyrings/githubcli-archive-keyring.gpg <span class="token punctuation">\</span>
+</span><span class="code-line"><span class="token operator">&#x26;&#x26;</span> <span class="token function">sudo</span> <span class="token function">chmod</span> go+r /usr/share/keyrings/githubcli-archive-keyring.gpg <span class="token punctuation">\</span>
+</span><span class="code-line"><span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">echo</span> <span class="token string">"deb [arch=<span class="token variable"><span class="token variable">$(</span>dpkg --print-architecture<span class="token variable">)</span></span> signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/apt/sources.list.d/github-cli.list <span class="token operator">></span> /dev/null <span class="token punctuation">\</span>
+</span><span class="code-line"><span class="token operator">&#x26;&#x26;</span> <span class="token function">sudo</span> <span class="token function">apt</span> update <span class="token punctuation">\</span>
+</span><span class="code-line"><span class="token operator">&#x26;&#x26;</span> <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gh <span class="token parameter variable">-y</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="基本用法"><a aria-hidden="true" tabindex="-1" href="#基本用法"><span class="icon icon-link"></span></a>基本用法</h3><div class="wrap-body">
+<h4 style="text-align: left;" id="帮助和文档"><a aria-hidden="true" tabindex="-1" href="#帮助和文档"><span class="icon icon-link"></span></a>帮助和文档</h4>
+<!--rehype:style=text-align: left;-->
+<p>显示命令选项：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh help [command]</code></td><td align="left">帮助提供应用程序中任何命令的帮助。只需键入 <code>gh help [命令路径]</code> 以获取完整详细信息。</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+<h4 style="text-align: left;" id="认证"><a aria-hidden="true" tabindex="-1" href="#认证"><span class="icon icon-link"></span></a>认证</h4>
+<!--rehype:style=text-align: left;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh auth login</code></td><td align="left">默认通过基于网页的浏览器进行身份验证</td></tr><tr><td align="left"><code>gh auth logout</code></td><td align="left">移除主机的身份验证配置</td></tr><tr><td align="left"><code>gh auth refresh</code></td><td align="left">扩展或修复存储凭据的权限范围</td></tr><tr><td align="left"><code>gh auth setup-git</code></td><td align="left">配置 Git 使用 GitHub CLI 作为凭据助手</td></tr><tr><td align="left"><code>gh auth status</code></td><td align="left">验证并显示有关您身份验证状态的信息</td></tr><tr><td align="left"><code>gh auth token</code></td><td align="left">打印 <code>gh</code> 配置使用的身份验证令牌</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+<p>使用 GitHub 令牌：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ gh auth --with-token <span class="token operator">&#x3C;</span> token.txt
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="仓库管理"><a aria-hidden="true" tabindex="-1" href="#仓库管理"><span class="icon icon-link"></span></a>仓库管理</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<h4 style="text-align: left;" id="常规"><a aria-hidden="true" tabindex="-1" href="#常规"><span class="icon icon-link"></span></a>常规</h4>
+<!--rehype:style=text-align: left;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="code-nowrap left-align"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh repo create</code></td><td align="left">创建一个新的 GitHub 仓库</td></tr><tr><td align="left"><code>gh repo list [target]</code></td><td align="left">列出某个用户或组织拥有的仓库</td></tr></tbody></table>
+<!--rehype:className=code-nowrap left-align-->
+<h4 style="text-align: left;" id="目标"><a aria-hidden="true" tabindex="-1" href="#目标"><span class="icon icon-link"></span></a>目标</h4>
+<!--rehype:style=text-align: left;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="code-nowrap left-align"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh repo archive [repo]</code></td><td align="left">存档一个 GitHub 仓库</td></tr><tr><td align="left"><code>gh repo clone [dir]</code></td><td align="left">在本地克隆一个 GitHub 仓库</td></tr><tr><td align="left"><code>gh repo delete [repo]</code></td><td align="left">删除一个 GitHub 仓库</td></tr><tr><td align="left"><code>gh repo deploy-key</code></td><td align="left">管理仓库中的部署密钥</td></tr><tr><td align="left"><code>gh repo edit [repo]</code></td><td align="left">编辑仓库设置</td></tr><tr><td align="left"><code>gh repo fork [repo]</code></td><td align="left">创建一个仓库的分叉</td></tr><tr><td align="left"><code>gh repo rename [name]</code></td><td align="left">重命名一个 GitHub 仓库</td></tr><tr><td align="left"><code>gh repo set-default [repo]</code></td><td align="left">设置默认的远程仓库</td></tr><tr><td align="left"><code>gh repo sync [dest-repo]</code></td><td align="left">从源仓库同步到目标仓库</td></tr><tr><td align="left"><code>gh repo view [repo]</code></td><td align="left">显示一个 GitHub 仓库的描述和 README</td></tr></tbody></table>
+<!--rehype:className=code-nowrap left-align-->
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="问题"><a aria-hidden="true" tabindex="-1" href="#问题"><span class="icon icon-link"></span></a>问题</h3><div class="wrap-body">
+<h4 style="text-align: left;" id="搜索问题"><a aria-hidden="true" tabindex="-1" href="#搜索问题"><span class="icon icon-link"></span></a>搜索问题</h4>
+<!--rehype:style=text-align: left;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh search issues [query]</code></td><td align="left">在 GitHub 上搜索问题</td></tr></tbody></table>
+<h4 style="text-align: left;" id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h4>
+<!--rehype:style=text-align: left;-->
+<p>搜索匹配关键词 "readme" 和 "typo" 的问题</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ gh search issues readme typo
+</span></code></pre>
+<p>搜索匹配短语 "broken feature" 的问题</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ gh search issues <span class="token string">"broken feature"</span>
+</span></code></pre>
+<p>搜索 cli 组织中的问题和拉取请求</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ gh search issues --include-prs <span class="token parameter variable">--owner</span><span class="token operator">=</span>cli
+</span></code></pre>
+<p>搜索分配给自己的开放问题</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ gh search issues <span class="token parameter variable">--assignee</span><span class="token operator">=</span>@me <span class="token parameter variable">--state</span><span class="token operator">=</span>open
+</span></code></pre>
+<p>搜索评论数超过 100 的问题</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ gh search issues <span class="token parameter variable">--comments</span><span class="token operator">=</span><span class="token string">">100"</span>
+</span></code></pre>
+<p>搜索没有标签 "bug" 的问题</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ gh search issues -- <span class="token parameter variable">-label:bug</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="拉取请求"><a aria-hidden="true" tabindex="-1" href="#拉取请求"><span class="icon icon-link"></span></a>拉取请求</h3><div class="wrap-body">
+<p><strong>拉取请求操作</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh pr create</code></td><td align="left">在 GitHub 上创建拉取请求</td></tr><tr><td align="left"><code>gh pr list</code></td><td align="left">列出 GitHub 仓库中的拉取请求</td></tr><tr><td align="left"><code>gh pr status</code></td><td align="left">显示相关拉取请求的状态</td></tr></tbody></table>
+<p><strong>示例</strong></p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ gh <span class="token function">pr</span> status
+</span></code></pre>
+<p>示例输出：</p>
+<pre><code class="code-highlight"><span class="code-line">Current branch
+</span><span class="code-line">  #12 Remove the test feature [user:patch-2]
+</span><span class="code-line">   - All checks failing - Review required
+</span><span class="code-line">
+</span><span class="code-line">Created by you
+</span><span class="code-line">  You have no open pull requests
+</span><span class="code-line">
+</span><span class="code-line">Requesting a code review from you
+</span><span class="code-line">  #13 Fix tests [branch]
+</span><span class="code-line">  - 3/4 checks failing - Review required
+</span><span class="code-line">  #15 New feature [branch]
+</span><span class="code-line">   - Checks passing - Approved
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="github-actions"><a aria-hidden="true" tabindex="-1" href="#github-actions"><span class="icon icon-link"></span></a>GitHub Actions</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p><strong>常规操作</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh workflow disable</code></td><td align="left">禁用工作流，防止其运行或在列出工作流时显示</td></tr><tr><td align="left"><code>gh workflow enable</code></td><td align="left">启用工作流，允许其运行并在列出工作流时显示</td></tr><tr><td align="left"><code>gh workflow list</code></td><td align="left">列出工作流文件，默认隐藏禁用的工作流</td></tr><tr><td align="left"><code>gh workflow run</code></td><td align="left">为给定的工作流创建一个 <code>workflow_dispatch</code> 事件</td></tr><tr><td align="left"><code>gh workflow view</code></td><td align="left">查看工作流的摘要</td></tr></tbody></table>
+<p><strong>运行操作</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh run cancel</code></td><td align="left">取消一个工作流运行</td></tr><tr><td align="left"><code>gh run delete</code></td><td align="left">删除一个工作流运行</td></tr><tr><td align="left"><code>gh run download</code></td><td align="left">下载由 GitHub Actions 工作流运行生成的工件</td></tr><tr><td align="left"><code>gh run list</code></td><td align="left">列出最近的工作流运行</td></tr><tr><td align="left"><code>gh run rerun</code></td><td align="left">重新运行整个运行、仅失败的作业或运行中的特定作业</td></tr><tr><td align="left"><code>gh run view</code></td><td align="left">查看工作流运行的摘要</td></tr><tr><td align="left"><code>gh run watch</code></td><td align="left">观看一个运行直到其完成，显示其进度</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="别名"><a aria-hidden="true" tabindex="-1" href="#别名"><span class="icon icon-link"></span></a>别名</h3><div class="wrap-body">
+<p><strong>常规别名设置</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh alias delete</code></td><td align="left">删除设置的别名</td></tr><tr><td align="left"><code>gh alias import</code></td><td align="left">从 YAML 文件的内容中导入别名</td></tr><tr><td align="left"><code>gh alias list</code></td><td align="left">打印出所有已配置的别名</td></tr><tr><td align="left"><code>gh alias set</code></td><td align="left">定义一个单词，当调用时会展开为完整的 <code>gh</code> 命令</td></tr></tbody></table>
+<!--rehype:className=style-list-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="发布"><a aria-hidden="true" tabindex="-1" href="#发布"><span class="icon icon-link"></span></a>发布</h3><div class="wrap-body">
+<p><strong>常规操作</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="code-nowrap"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh release create</code></td><td align="left">为一个仓库创建新的 GitHub 发布</td></tr><tr><td align="left"><code>gh release list</code></td><td align="left">列出一个仓库中的发布</td></tr></tbody></table>
+<!--rehype:className=code-nowrap-->
+<p><strong>目标命令</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="code-nowrap"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh release delete</code></td><td align="left">删除一个发布</td></tr><tr><td align="left"><code>gh release delete-asset</code></td><td align="left">从一个发布中删除一个资产</td></tr><tr><td align="left"><code>gh release download</code></td><td align="left">从 GitHub 发布中下载资产</td></tr><tr><td align="left"><code>gh release edit</code></td><td align="left">编辑一个发布</td></tr><tr><td align="left"><code>gh release upload</code></td><td align="left">上传资产文件到一个 GitHub 发布</td></tr><tr><td align="left"><code>gh release view</code></td><td align="left">查看有关一个 GitHub 发布的信息</td></tr></tbody></table>
+<!--rehype:className=code-nowrap-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置"><a aria-hidden="true" tabindex="-1" href="#配置"><span class="icon icon-link"></span></a>配置</h3><div class="wrap-body">
+<p><strong>目标设置</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left"><code>gh config clear-cache</code></td><td align="left">清除 CLI 缓存</td></tr><tr><td align="left"><code>gh config get</code></td><td align="left">打印给定配置键的值</td></tr><tr><td align="left"><code>gh config list</code></td><td align="left">打印配置键及其值的列表</td></tr><tr><td align="left"><code>gh config set</code></td><td align="left">用给定键的值更新配置</td></tr></tbody></table>
+<!--rehype:className=style-list-->
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.8.0" defer></script><script src="../js/fuse.min.js?v=1.8.0" defer></script><script src="../js/main.js?v=1.8.0" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
