@@ -109,7 +109,6 @@ Quick Reference
 [React](./docs/react.md)<!--rehype:style=background: rgb(34 143 173);-->  
 [React Router](./docs/reactrouter.md)<!--rehype:style=background: rgb(244 66 79);&class=tag&data-lang=React-->  
 [React Native](./docs/react-native.md)<!--rehype:style=background: rgb(34 143 173);&class=tag&data-lang=React-->  
-[RegEx 正则表达式](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155);-->  
 [TypeScript](./docs/typescript.md)<!--rehype:style=background: rgb(49 120 198);-->  
 [Tauri](./docs/tauri.md)<!--rehype:style=background: rgb(103 214 237);&class=contributing-->  
 [Vue 2](./docs/vue2.md)<!--rehype:style=background: rgb(64 184 131);&class=tag&data-lang=Vue-->  
@@ -144,16 +143,6 @@ Quick Reference
 [nvm](./docs/nvm.md)<!--rehype:style=background: rgb(132 132 132);-->  
 [pnpm](./docs/pnpm.md)<!--rehype:style=background: rgb(191 133 0);-->  
 [Bun](./docs/bun.md)<!--rehype:style=background: rgb(157 49 81);-->  
-<!--rehype:class=home-card-->
-
-## 工具
-
-[Emacs](./docs/emacs.md)<!--rehype:style=background: rgb(98 36 134);-->  
-[Github](./docs/github.md)<!--rehype:style=background: rgb(36 41 47);-->  
-[nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 153 0);-->  
-[Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141);-->  
-[Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8);-->  
-[XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230);-->  
 <!--rehype:class=home-card-->
 
 ## 命令
@@ -197,7 +186,21 @@ Quick Reference
 [FTP](./docs/ftp.md)<!--rehype:style=background: rgb(99 99 99);-->  
 <!--rehype:class=home-card-->
 
-## 工具箱
+## 工具
+
+[ChatGPT](./docs/chatgpt.md)<!--rehype:style=background: rgb(74, 161, 129);&class=tag&data-lang=ai-->
+[Emacs](./docs/emacs.md)<!--rehype:style=background: rgb(98 36 134);-->  
+[Github](./docs/github.md)<!--rehype:style=background: rgb(36 41 47);-->  
+[Linux Command](./docs/linux-command.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=命令速查-->  
+[Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135);-->  
+[nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 153 0);-->  
+[RegEx 正则表达式](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155);-->  
+[Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141);-->  
+[Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8);-->  
+[XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230);-->  
+<!--rehype:class=home-card-->
+
+## 软件包管理器
 
 [APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255);-->  
 [Conan](./docs/conan.md)<!--rehype:style=background: rgb(0 193 9);&class=tag&data-lang=C/C++-->  
@@ -205,8 +208,6 @@ Quick Reference
 [CocoaPods](./docs/cocoapods.md)<!--rehype:style=background: rgb(251 0 6);&class=tag&data-lang=C/C++-->  
 [Cargo](./docs/cargo.md)<!--rehype:style=background: rgb(71 71 71);&class=tag&data-lang=Rust-->  
 [Homebrew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87);&class=tag&data-lang=macOS-->  
-[Linux Command](./docs/linux-command.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=命令速查-->  
-[Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135);-->  
 [Pacman](./docs/pacman.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=archlinux&class=contributing-->  
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123);-->  
 [SDKMAN](./docs/sdkman.md)<!--rehype:style=background: rgb(0 118 198);-->  
@@ -264,7 +265,6 @@ Quick Reference
 [Emoji](./docs/emoji.md)<!--rehype:style=\-\-bg\-opacity: 0.75;background-image: linear-gradient(to left, rgba(74 222 128 / var(\-\-bg\-opacity)), rgba(59 130 246 / var(\-\-bg\-opacity)));-->  
 [MIME types](./docs/mime.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Resolutions](./docs/resolutions.md)<!--rehype:style=background: rgb(16 185 129);-->  
-[ChatGPT](./docs/chatgpt.md)<!--rehype:style=background: rgb(74, 161, 129);&class=tag&data-lang=ai-->
 <!--rehype:class=home-card-->
 
 ## 看到缺少什么了吗？
