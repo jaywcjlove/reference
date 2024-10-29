@@ -44,12 +44,13 @@ Copilot Enterprise| 39美元/人/月 | Business 特性 + 私有代码库的个�
 <!--rehype:wrap-class=col-span-1 row-span-1-->
 |名称 | 描述 |
 |-|-|
-Inline Suggestions| 在编辑器中紧邻光标所在位置显示建议
-Completions Panel| 在编辑器中展示完整的建议列表
-Inline Chat| 在编辑器中紧邻光标所在位置发起对话
-Editor Chat| 在编辑器中打开完整的对话界面
-Silde Chat| 在编辑器的侧边栏打开对话界面  
-Quick Chat| 在顶部唤起对话界面
+`Inline Suggestions` | 在编辑器中紧邻光标所在位置显示建议
+`Completions Panel` | 在编辑器中展示完整的建议列表
+`Inline Chat` | 在编辑器中紧邻光标所在位置发起对话
+`Editor Chat` | 在编辑器中打开完整的对话界面
+`Silde Chat` | 在编辑器的侧边栏打开对话界面  
+`Quick Chat` | 在顶部唤起对话界面
+<!--rehype:className=left-align-->
 
 提示技巧
 ----
@@ -57,9 +58,9 @@ Quick Chat| 在顶部唤起对话界面
 ### 提示之禅
 <!--rehype:wrap-class=col-span-1 row-span-1-->
 
-> 你与 `copilot` 之间的关系，就是作家和插画师的关系。  
-> 你只有尽可能的全面、干练、清晰的描述你的故事(即 `上下文`)。  
-> `copilot` 才能根据你的故事画出精美的插画 (即 `代码` )。  
+- 你的关系与 `copilot` 的关系，就像作家与插画师的关系。  
+- 为了让 `copilot` 能够绘制出精美的插画（即代码），你需要尽可能全面、干练、清晰地描述你的故事（即上下文）。
+<!--rehype:className=style-round-->
 
 ### 提示技巧
 <!--rehype:wrap-class=col-span-1 row-span-1-->
@@ -69,9 +70,9 @@ Quick Chat| 在顶部唤起对话界面
 
 ### 实战教程
 
-- [Youtube GitHub Copilot Series](https://www.youtube.com/playlist?list=PLj6YeMhvp2S5_hvBl2SE-7YCHYlLQ0bPt)
-- [Pragmatic techniques to get the most out of GitHub Copilot](https://www.youtube.com/watch?v=CwAzIpc4AnA)
-- [How I used GitHub Copilot to build a browser extension](https://github.blog/2023-05-12-how-i-used-github-copilot-to-build-a-browser-extension/)
+- [Youtube GitHub Copilot 系列](https://www.youtube.com/playlist?list=PLj6YeMhvp2S5_hvBl2SE-7YCHYlLQ0bPt)
+- [实用技巧：充分利用 GitHub Copilot](https://www.youtube.com/watch?v=CwAzIpc4AnA)
+- [我如何使用 GitHub Copilot 构建浏览器扩展](https://github.blog/2023-05-12-how-i-used-github-copilot-to-build-a-browser-extension/)
 
 ### 上下文信息的种类
 <!--rehype:wrap-class=col-span-2 row-span-1-->
@@ -86,13 +87,13 @@ Quick Chat| 在顶部唤起对话界面
 
 ### 上下文：文件
 
-> Copilot会查看编辑器中当前和紧邻打开的文件，以分析上下文并提供适当的建议。
+Copilot会查看编辑器中当前和紧邻打开的文件，以分析上下文并提供适当的建议。
 
 ---
 
-> - 1、避免打开过多的文件，以便Copilot能够更好地理解你的代码。
-> - 2、打开的文件尽量相关且有共性。
-> - 3、如果是新项目，可以打开一些模版代码、数据文件以及参考文档等相关示例文件。以便Copilot能够更好地理解你的期望。等已经开发了一些代码后，这些示例文件就可以删除了。
+- 1、避免打开过多的文件，以便Copilot能够更好地理解你的代码。
+- 2、打开的文件尽量相关且有共性。
+- 3、如果是新项目，可以打开一些模版代码、数据文件以及参考文档等相关示例文件。以便Copilot能够更好地理解你的期望。等已经开发了一些代码后，这些示例文件就可以删除了。
 
 ### 上下文: 注释: 顶部注释
 
