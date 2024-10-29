@@ -159,7 +159,6 @@ Quick Reference
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9);&class=contributing-->  
 [Gdb](./docs/gdb.md)<!--rehype:style=background: rgb(215 89 62);-->  
-[Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=版本控制-->  
 [Glances](./docs/glances.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Htop](./docs/htop.md)<!--rehype:style=background: rgb(16 185 129);-->  
@@ -176,7 +175,6 @@ Quick Reference
 [Sed](./docs/sed.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Systemd](./docs/systemd.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [SSH](./docs/ssh.md)<!--rehype:style=background: rgb(99 99 99);-->  
-[Subversion (SVN)](./docs/subversion.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=版本控制-->  
 [Screen](./docs/screen.md)<!--rehype:style=background: rgb(99 99 99);-->  
 [Sysdig](./docs/sysdig.md)<!--rehype:style=background: rgb(1 171 199);-->  
 [Tmux](./docs/tmux.md)<!--rehype:style=background: rgb(99 99 99);-->  
@@ -189,14 +187,12 @@ Quick Reference
 ## 工具
 
 [ChatGPT](./docs/chatgpt.md)<!--rehype:style=background: rgb(74, 161, 129);&class=tag&data-lang=AI-->
-[Github Copilot](./docs/github-copilot.md)<!--rehype:style=background: rgb(125 45 220);&class=tag contributing&data-lang=AI&data-info=👆看看还缺点儿什么？-->  
 [Emacs](./docs/emacs.md)<!--rehype:style=background: rgb(98 36 134);-->  
-[Github](./docs/github.md)<!--rehype:style=background: rgb(36 41 47);-->  
 [Linux Command](./docs/linux-command.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=命令速查-->  
 [Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background: rgb(4 92 135);-->  
 [nginx](./docs/nginx.md)<!--rehype:style=background: rgb(0 153 0);-->  
 [RegEx 正则表达式](./docs/regex.md)<!--rehype:style=background: rgb(149 36 155);-->  
-[Semver](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141);-->  
+[Semver 语义化版本](./docs/semver.md)<!--rehype:style=background: rgb(106 111 141);-->  
 [Vim](./docs/vim.md)<!--rehype:style=background: rgb(9 150 8);-->  
 [XPath](./docs/xpath.md)<!--rehype:style=background: rgb(91 163 230);-->  
 <!--rehype:class=home-card-->
@@ -212,6 +208,17 @@ Quick Reference
 [Pacman](./docs/pacman.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=archlinux&class=contributing-->  
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123);-->  
 [SDKMAN](./docs/sdkman.md)<!--rehype:style=background: rgb(0 118 198);-->  
+<!--rehype:class=home-card-->
+
+## Git 版本控制
+
+[Git](./docs/git.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=版本控制-->  
+[Github](./docs/github.md)<!--rehype:style=background: rgb(36 41 47);-->  
+[Github Copilot](./docs/github-copilot.md)<!--rehype:style=background: rgb(125 45 220);&class=tag contributing&data-lang=AI&data-info=👆看看还缺点儿什么？-->  
+[Github CLI](./docs/github-cli.md)<!--rehype:style=background: rgb(36 41 47);-->  
+[Github Actions](./docs/github-actions.md)<!--rehype:style=background: rgb(121 184 255);-->  
+[Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->  
+[Subversion (SVN)](./docs/subversion.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=版本控制-->  
 <!--rehype:class=home-card-->
 
 ## 数据库
@@ -256,8 +263,6 @@ Quick Reference
 [Aspect Ratio](./docs/aspect-ratio.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [ASCII Code](./docs/ascii-code.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Symbol Code](./docs/symbol-code.md)<!--rehype:style=background: rgb(16 185 129);-->  
-[Github Actions](./docs/github-actions.md)<!--rehype:style=background: rgb(121 184 255);-->  
-[Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background: rgb(226 67 41);&class=contributing-->  
 [Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=CSS-->  
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=HTML-->  
