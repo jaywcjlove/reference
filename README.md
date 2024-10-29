@@ -47,6 +47,7 @@ Quick Reference
 ## 编程
 
 [Bash](./docs/bash.md)<!--rehype:style=background: rgb(72 143 223);-->  
+[Powershell](./docs/powershell.md)<!--rehype:style=background: rgb(1 36 86);-->  
 [C 语言](./docs/c.md)<!--rehype:style=background: rgb(92 107 192);-->  
 [C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->  
 [C++](./docs/cpp.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->  
