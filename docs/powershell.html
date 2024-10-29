@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>## 基本命令
+
+### 辅助命令
+
+**_Powershell 的命令遵循动词-名词格式_**
+
+一些常见的动词:
+
+| 动词    | 描述                     |
+| ------- | ------------------------ |
+| Get     | 用于检索信息             |
+| Set     | 用于配置或更改设置       |
+| New     | 用于创建新对象实例       |
+| Remove  | 用于删除或移除项目       |
+| Invoke  | 用于执行特定的操作或动作 |
+| Start   | 用于启动进程或操作       |
+| Stop    | 用于停止或终止进程或操作 |
+| Enable  | 用于激活或启用功能       |
+| Disable | 用于停用或禁用功能       |
+| Test    | 用于执行测试或检查       |
+| Update  | 用于更新或刷新数据或配置 |
+
+列出可用模块
+
+```powershell
+Get-Module --ListAvailable
+```
+
+列出可用的 cmdlet 和函数
+
+```powershell
+Get-Command -Module ActiveDirectory
+```
+
+获取帮助
+
+```powershell
+Get-Help &#x3C;cmd>
+Get-Help &#x3C;cmd> -Examples
+Get-Help -Name Get-Process -Parameter Id
+```
+
+列出别名及其对应的 cmdlet 名称
+
+
+```powershell
+Get-Alias | Select-Object Name, Definition
+```
+
+**Get-Member:** 显示对象的属性和方法
+
+```powershell
+Get-Process | Get-Member
+```
+
+### 对象操作
+
+**Select-Object:** 选择对象的特定属性或自定义其显示
+
+```powershell
+Get-Process | Select-Object Name, CPU
+```
+
+**Where-Object:** 根据指定条件过滤对象
+
+```powershell
+Get-Service | Where-Object { $PSItem.Status -eq 'Running' }
+#OR
+Get-Service | ? { $_.Status -eq 'Running' }
+```
+
+**Measure-Object:** 计算对象属性的统计信息，如总和、平均值和计数
+
+```powershell
+Get-Process | Measure-Object -Property WorkingSet -Sum
+```
+
+**ForEach-Object:** 对集合中的每个对象执行操作（注意：以下命令将为当前目录中的文件/文件夹添加前缀）
+
+```powershell
+Get-ChildItem | ForEach-Object { Rename-Item $_ -NewName "Prefix_$_" }
+```
+
+**Sort-Object:** 按指定属性对对象进行排序
+
+```powershell
+Get-ChildItem | Sort-Object Length -Descending
+```
+
+**Format-Table:** 将输出格式化为带有指定列的表格
+
+```powershell
+Get-Service | Format-Table -AutoSize  # ft alias
+```
+
+**Format-List:** 将输出格式化为属性和值的列表
+
+```powershell
+Get-Process | Format-List -Property Name, CPU  # fl alias
+```
+
+### 文件系统 
+
+```powershell
+New-Item -path file.txt -type 'file' -value 'contents'
+New-Item -path file.txt -type 'dir'
+Copy-Item &#x3C;src> -destination &#x3C;dest>
+Move-Item -path  &#x3C;src> -destination &#x3C;dest>
+Remove-Item &#x3C;file>
+Test-Path &#x3C;path>
+Rename-Item -path &#x3C;path> -newname &#x3C;newname>
+
+# using .NET Base Class Library
+[System.IO.File]::WriteAllText('test.txt', '')
+[System.IO.File]::Delete('test.txt')
+
+Get-Content -Path "test.txt"
+Get-Process | Out-File -FilePath "processes.txt"# 输出到文件
+Get-Process | Export-Csv -Path "processes.csv"  # 输出到 CSV
+$data  &#x26;  powershell cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="，为开发人员分享快速参考备忘单。">
+<meta keywords="powershell,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/powershell.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.8.0"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="基本命令"><a aria-hidden="true" tabindex="-1" href="#基本命令"><span class="icon icon-link"></span></a>基本命令</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="辅助命令"><a aria-hidden="true" tabindex="-1" href="#辅助命令"><span class="icon icon-link"></span></a>辅助命令</h3><div class="wrap-body">
+<p><strong><em>Powershell 的命令遵循动词-名词格式</em></strong></p>
+<p>一些常见的动词:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>动词</th><th>描述</th></tr></thead><tbody><tr><td>Get</td><td>用于检索信息</td></tr><tr><td>Set</td><td>用于配置或更改设置</td></tr><tr><td>New</td><td>用于创建新对象实例</td></tr><tr><td>Remove</td><td>用于删除或移除项目</td></tr><tr><td>Invoke</td><td>用于执行特定的操作或动作</td></tr><tr><td>Start</td><td>用于启动进程或操作</td></tr><tr><td>Stop</td><td>用于停止或终止进程或操作</td></tr><tr><td>Enable</td><td>用于激活或启用功能</td></tr><tr><td>Disable</td><td>用于停用或禁用功能</td></tr><tr><td>Test</td><td>用于执行测试或检查</td></tr><tr><td>Update</td><td>用于更新或刷新数据或配置</td></tr></tbody></table>
+<p>列出可用模块</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Module</span> <span class="token operator">--</span>ListAvailable
+</span></code></pre>
+<p>列出可用的 cmdlet 和函数</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Command</span> <span class="token operator">-</span>Module ActiveDirectory
+</span></code></pre>
+<p>获取帮助</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Help</span> &#x3C;cmd>
+</span><span class="code-line"><span class="token function">Get-Help</span> &#x3C;cmd> <span class="token operator">-</span>Examples
+</span><span class="code-line"><span class="token function">Get-Help</span> <span class="token operator">-</span>Name <span class="token function">Get-Process</span> <span class="token operator">-</span>Parameter Id
+</span></code></pre>
+<p>列出别名及其对应的 cmdlet 名称</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Alias</span> <span class="token punctuation">|</span> <span class="token function">Select-Object</span> Name<span class="token punctuation">,</span> Definition
+</span></code></pre>
+<p><strong>Get-Member:</strong> 显示对象的属性和方法</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Process</span> <span class="token punctuation">|</span> <span class="token function">Get-Member</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="对象操作"><a aria-hidden="true" tabindex="-1" href="#对象操作"><span class="icon icon-link"></span></a>对象操作</h3><div class="wrap-body">
+<p><strong>Select-Object:</strong> 选择对象的特定属性或自定义其显示</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Process</span> <span class="token punctuation">|</span> <span class="token function">Select-Object</span> Name<span class="token punctuation">,</span> CPU
+</span></code></pre>
+<p><strong>Where-Object:</strong> 根据指定条件过滤对象</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Service</span> <span class="token punctuation">|</span> <span class="token function">Where-Object</span> <span class="token punctuation">{</span> <span class="token variable">$PSItem</span><span class="token punctuation">.</span>Status <span class="token operator">-eq</span> <span class="token string">'Running'</span> <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">#OR</span>
+</span><span class="code-line"><span class="token function">Get-Service</span> <span class="token punctuation">|</span> ? <span class="token punctuation">{</span> <span class="token variable">$_</span><span class="token punctuation">.</span>Status <span class="token operator">-eq</span> <span class="token string">'Running'</span> <span class="token punctuation">}</span>
+</span></code></pre>
+<p><strong>Measure-Object:</strong> 计算对象属性的统计信息，如总和、平均值和计数</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Process</span> <span class="token punctuation">|</span> <span class="token function">Measure-Object</span> <span class="token operator">-</span>Property WorkingSet <span class="token operator">-</span>Sum
+</span></code></pre>
+<p><strong>ForEach-Object:</strong> 对集合中的每个对象执行操作（注意：以下命令将为当前目录中的文件/文件夹添加前缀）</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-ChildItem</span> <span class="token punctuation">|</span> <span class="token function">ForEach-Object</span> <span class="token punctuation">{</span> <span class="token function">Rename-Item</span> <span class="token variable">$_</span> <span class="token operator">-</span>NewName <span class="token string">"Prefix_<span class="token variable">$_</span>"</span> <span class="token punctuation">}</span>
+</span></code></pre>
+<p><strong>Sort-Object:</strong> 按指定属性对对象进行排序</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-ChildItem</span> <span class="token punctuation">|</span> <span class="token function">Sort-Object</span> Length <span class="token operator">-</span>Descending
+</span></code></pre>
+<p><strong>Format-Table:</strong> 将输出格式化为带有指定列的表格</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Service</span> <span class="token punctuation">|</span> <span class="token function">Format-Table</span> <span class="token operator">-</span>AutoSize  <span class="token comment"># ft alias</span>
+</span></code></pre>
+<p><strong>Format-List:</strong> 将输出格式化为属性和值的列表</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">Get-Process</span> <span class="token punctuation">|</span> <span class="token function">Format-List</span> <span class="token operator">-</span>Property Name<span class="token punctuation">,</span> CPU  <span class="token comment"># fl alias</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="文件系统"><a aria-hidden="true" tabindex="-1" href="#文件系统"><span class="icon icon-link"></span></a>文件系统</h3><div class="wrap-body">
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">New-Item</span> <span class="token operator">-</span>path file<span class="token punctuation">.</span>txt <span class="token operator">-</span><span class="token function">type</span> <span class="token string">'file'</span> <span class="token operator">-</span>value <span class="token string">'contents'</span>
+</span><span class="code-line"><span class="token function">New-Item</span> <span class="token operator">-</span>path file<span class="token punctuation">.</span>txt <span class="token operator">-</span><span class="token function">type</span> <span class="token string">'dir'</span>
+</span><span class="code-line"><span class="token function">Copy-Item</span> &#x3C;src> <span class="token operator">-</span>destination &#x3C;dest>
+</span><span class="code-line"><span class="token function">Move-Item</span> <span class="token operator">-</span>path  &#x3C;src> <span class="token operator">-</span>destination &#x3C;dest>
+</span><span class="code-line"><span class="token function">Remove-Item</span> &#x3C;file>
+</span><span class="code-line"><span class="token function">Test-Path</span> &#x3C;path>
+</span><span class="code-line"><span class="token function">Rename-Item</span> <span class="token operator">-</span>path &#x3C;path> <span class="token operator">-</span>newname &#x3C;newname>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># using .NET Base Class Library</span>
+</span><span class="code-line"><span class="token namespace">[System.IO.File]</span>::WriteAllText<span class="token punctuation">(</span><span class="token string">'test.txt'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token namespace">[System.IO.File]</span>::Delete<span class="token punctuation">(</span><span class="token string">'test.txt'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">Get-Content</span> <span class="token operator">-</span>Path <span class="token string">"test.txt"</span>
+</span><span class="code-line"><span class="token function">Get-Process</span> <span class="token punctuation">|</span> <span class="token function">Out-File</span> <span class="token operator">-</span>FilePath <span class="token string">"processes.txt"</span><span class="token comment"># 输出到文件</span>
+</span><span class="code-line"><span class="token function">Get-Process</span> <span class="token punctuation">|</span> <span class="token function">Export-Csv</span> <span class="token operator">-</span>Path <span class="token string">"processes.csv"</span>  <span class="token comment"># 输出到 CSV</span>
+</span><span class="code-line"><span class="token variable">$data</span> = <span class="token function">Import-Csv</span> <span class="token operator">-</span>Path <span class="token string">"data.csv"</span>             <span class="token comment"># 从 CSV 导入</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="系统管理"><a aria-hidden="true" tabindex="-1" href="#系统管理"><span class="icon icon-link"></span></a>系统管理</h2><div class="wrap-body">
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token comment"># 获取 BIOS 信息</span>
+</span><span class="code-line"><span class="token function">Get-CimInstance</span> <span class="token operator">-</span>ClassName Win32_BIOS
+</span><span class="code-line"><span class="token comment"># 获取本地连接的物理磁盘设备信息</span>
+</span><span class="code-line"><span class="token function">Get-CimInstance</span> <span class="token operator">-</span>ClassName Win32_DiskDrive
+</span><span class="code-line"><span class="token comment"># 获取安装的物理内存（RAM）信息</span>
+</span><span class="code-line"><span class="token function">Get-CimInstance</span> <span class="token operator">-</span>ClassName Win32_PhysicalMemory
+</span><span class="code-line"><span class="token comment"># 获取安装的网络适配器（物理 + 虚拟）信息</span>
+</span><span class="code-line"><span class="token function">Get-CimInstance</span> <span class="token operator">-</span>ClassName Win32_NetworkAdapter
+</span><span class="code-line"><span class="token comment"># 获取安装的图形/显卡（GPU）信息</span>
+</span><span class="code-line"><span class="token function">Get-CimInstance</span> <span class="token operator">-</span>ClassName Win32_VideoController
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出所有类名</span>
+</span><span class="code-line"><span class="token function">Get-CimClass</span> <span class="token punctuation">|</span> <span class="token function">Select-Object</span> <span class="token operator">-</span>ExpandProperty CimClassName
+</span><span class="code-line"><span class="token comment"># 探索 root\cimv2 命名空间中的各种 WMI 类</span>
+</span><span class="code-line"><span class="token function">Get-CimClass</span> <span class="token operator">-</span>Namespace root\cimv2
+</span><span class="code-line"><span class="token comment"># 探索 root\cimv2 命名空间下的子 WMI 命名空间</span>
+</span><span class="code-line"><span class="token function">Get-CimInstance</span> <span class="token operator">-</span>Namespace root <span class="token operator">-</span>ClassName __NAMESPACE
+</span></code></pre>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="网络管理"><a aria-hidden="true" tabindex="-1" href="#网络管理"><span class="icon icon-link"></span></a>网络管理</h3><div class="wrap-body">
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token comment"># 测试与远程主机的网络连接</span>
+</span><span class="code-line"><span class="token function">Test-Connection</span> <span class="token operator">-</span>ComputerName google<span class="token punctuation">.</span>com
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 获取网络适配器信息</span>
+</span><span class="code-line"><span class="token function">Get-NetAdapter</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 获取 IP 地址信息</span>
+</span><span class="code-line"><span class="token function">Get-NetIPAddress</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 获取路由表信息</span>
+</span><span class="code-line"><span class="token function">Get-NetRoute</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 测试远程主机上的端口是否开放</span>
+</span><span class="code-line"><span class="token function">Test-NetConnection</span> google<span class="token punctuation">.</span>com <span class="token operator">-</span>Port 80
+</span><span class="code-line">
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="用户和组管理"><a aria-hidden="true" tabindex="-1" href="#用户和组管理"><span class="icon icon-link"></span></a>用户和组管理</h3><div class="wrap-body">
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token comment"># 获取本地用户账户信息</span>
+</span><span class="code-line"><span class="token function">Get-LocalUser</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 创建新的本地用户账户</span>
+</span><span class="code-line"><span class="token function">New-LocalUser</span> <span class="token operator">-</span>Name NewUser <span class="token operator">-</span>Password <span class="token punctuation">(</span><span class="token function">ConvertTo-SecureString</span> <span class="token string">"Password123"</span> <span class="token operator">-</span>AsPlainText <span class="token operator">-</span>Force<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 删除本地用户账户</span>
+</span><span class="code-line"><span class="token function">Remove-LocalUser</span> <span class="token operator">-</span>Name UserToRemove
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 获取本地组信息</span>
+</span><span class="code-line"><span class="token function">Get-LocalGroup</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 将成员添加到本地组</span>
+</span><span class="code-line"><span class="token function">Add-LocalGroupMember</span> <span class="token operator">-</span><span class="token function">Group</span> Administrators <span class="token operator">-</span>Member UserToAdd
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安全性和权限"><a aria-hidden="true" tabindex="-1" href="#安全性和权限"><span class="icon icon-link"></span></a>安全性和权限</h3><div class="wrap-body">
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token comment"># 获取文件/目录的访问控制列表</span>
+</span><span class="code-line"><span class="token function">Get-Acl</span> C:\Path\To\File<span class="token punctuation">.</span>txt
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 设置文件/目录的访问控制列表</span>
+</span><span class="code-line"><span class="token function">Set-Acl</span> <span class="token operator">-</span>Path C:\Path\To\File<span class="token punctuation">.</span>txt <span class="token operator">-</span>AclObject <span class="token variable">$aclObject</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="注册表管理"><a aria-hidden="true" tabindex="-1" href="#注册表管理"><span class="icon icon-link"></span></a>注册表管理</h3><div class="wrap-body">
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token comment"># 获取注册表键值</span>
+</span><span class="code-line"><span class="token function">Get-ItemProperty</span> <span class="token operator">-</span>Path <span class="token string">"HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"</span> <span class="token punctuation">|</span> <span class="token function">Select</span> DisplayName<span class="token punctuation">,</span> DisplayVersion
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 设置注册表键值</span>
+</span><span class="code-line"><span class="token function">Set-ItemProperty</span> <span class="token operator">-</span>Path <span class="token string">"HKLM:\Software\MyApp"</span> <span class="token operator">-</span>Name <span class="token string">"SettingName"</span> <span class="token operator">-</span>Value <span class="token string">"NewValue"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 创建新的注册表键值</span>
+</span><span class="code-line"><span class="token function">New-ItemProperty</span> <span class="token operator">-</span>Path <span class="token string">"HKCU:\Software\MyApp"</span> <span class="token operator">-</span>Name <span class="token string">"NewSetting"</span> <span class="token operator">-</span>Value <span class="token string">"NewValue"</span> <span class="token operator">-</span>PropertyType String
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 删除注册表键值</span>
+</span><span class="code-line"><span class="token function">Remove-ItemProperty</span> <span class="token operator">-</span>Path <span class="token string">"HKCU:\Software\MyApp"</span> <span class="token operator">-</span>Name <span class="token string">"SettingToRemove"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 检查注册表键是否存在</span>
+</span><span class="code-line"><span class="token function">Test-Path</span> <span class="token string">"HKLM:\Software\MyApp"</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="脚本"><a aria-hidden="true" tabindex="-1" href="#脚本"><span class="icon icon-link"></span></a>脚本</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="变量"><a aria-hidden="true" tabindex="-1" href="#变量"><span class="icon icon-link"></span></a>变量</h3><div class="wrap-body">
+<p>初始化变量，指定或不指定类型：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token variable">$var</span> = 0
+</span><span class="code-line"><span class="token namespace">[int]</span> <span class="token variable">$var</span> = <span class="token string">'Trevor'</span>         <span class="token comment"># (抛出异常)</span>
+</span><span class="code-line"><span class="token namespace">[string]</span> <span class="token variable">$var</span> = <span class="token string">'Trevor'</span>      <span class="token comment"># (不会抛出异常)</span>
+</span><span class="code-line"><span class="token variable">$var</span><span class="token punctuation">.</span>GetType<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 多重赋值</span>
+</span><span class="code-line"><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token variable">$b</span><span class="token punctuation">,</span><span class="token variable">$c</span> = <span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c'</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 创建数组</span>
+</span><span class="code-line"><span class="token variable">$arrayvar</span> = @<span class="token punctuation">(</span><span class="token string">'va1'</span><span class="token punctuation">,</span><span class="token string">'va2'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 创建字典</span>
+</span><span class="code-line"><span class="token variable">$dict</span> = @<span class="token punctuation">{</span>k1 = <span class="token string">'test'</span><span class="token punctuation">;</span> k2 = <span class="token string">'best'</span><span class="token punctuation">}</span>
+</span></code></pre>
+<p>变量命令</p>
+<pre class="language-powershell"><code class="language-Powershell code-highlight"><span class="code-line"><span class="token function">New-Variable</span> <span class="token operator">-</span>Name FirstName <span class="token operator">-</span>Value Trevor
+</span><span class="code-line"><span class="token function">New-Variable</span> FirstName <span class="token operator">-</span>Value Trevor <span class="token operator">-</span>Option &#x3C;ReadOnly/Constant>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">Get-Variable</span>
+</span><span class="code-line"><span class="token function">Get-Variable</span> <span class="token punctuation">|</span> ? <span class="token punctuation">{</span> <span class="token variable">$PSItem</span><span class="token punctuation">.</span>Options <span class="token operator">-contains</span> <span class="token string">'constant'</span> <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token function">Get-Variable</span> <span class="token punctuation">|</span> ? <span class="token punctuation">{</span> <span class="token variable">$PSItem</span><span class="token punctuation">.</span>Options <span class="token operator">-contains</span> <span class="token string">'readonly'</span> <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">Remove-Variable</span> <span class="token operator">-</span>Name firstname
+</span><span class="code-line"><span class="token comment"># 删除只读变量</span>
+</span><span class="code-line"><span class="token function">Remove-Variable</span> <span class="token operator">-</span>Name firstname <span class="token operator">-</span>Force
+</span></code></pre>
+<p>变量类型：int32, int64, string, bool</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="运算符"><a aria-hidden="true" tabindex="-1" href="#运算符"><span class="icon icon-link"></span></a>运算符</h3><div class="wrap-body">
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token comment"># 运算符</span>
+</span><span class="code-line"><span class="token comment"># (a &#x3C;op> b)</span>
+</span><span class="code-line">
+</span><span class="code-line">= <span class="token punctuation">,</span> <span class="token operator">+=</span> <span class="token operator">/</span> <span class="token operator">-=</span> <span class="token punctuation">,</span> <span class="token operator">++</span> <span class="token operator">/</span> <span class="token operator">--</span>
+</span><span class="code-line"><span class="token operator">-eq</span> <span class="token operator">/</span> <span class="token operator">-ne</span> <span class="token punctuation">,</span> <span class="token operator">-lt</span> <span class="token operator">/</span> <span class="token operator">-gt</span> <span class="token punctuation">,</span> <span class="token operator">-le</span> <span class="token operator">/</span> <span class="token operator">-ge</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token variable">$FirstName</span> = <span class="token string">'Trevor'</span>
+</span><span class="code-line"><span class="token variable">$FirstName</span> <span class="token operator">-like</span> <span class="token string">'T*'</span>
+</span><span class="code-line"><span class="token boolean">$true</span><span class="token punctuation">;</span> <span class="token boolean">$false</span> <span class="token comment"># 布尔值 true/false</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 三元运算符</span>
+</span><span class="code-line"><span class="token variable">$FoodToEat</span> = <span class="token variable">$BaconIsYummy</span> ? <span class="token string">'bacon'</span> : <span class="token string">'beets'</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># -notin 或 -in</span>
+</span><span class="code-line"><span class="token string">'Celery'</span> <span class="token operator">-in</span> @<span class="token punctuation">(</span><span class="token string">'Bacon'</span><span class="token punctuation">,</span> <span class="token string">'Sausage'</span><span class="token punctuation">,</span> <span class="token string">'Steak'</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 输出: True</span>
+</span><span class="code-line">5 <span class="token operator">-is</span> <span class="token namespace">[int32]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 正则表达式匹配，可以使用数组</span>
+</span><span class="code-line"><span class="token string">'Trevor'</span> <span class="token operator">-match</span> <span class="token string">'^T\w*'</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 查找多个匹配项</span>
+</span><span class="code-line"><span class="token variable">$regex</span> = <span class="token namespace">[regex]</span><span class="token string">'(\w*)'</span>
+</span><span class="code-line"><span class="token variable">$regex</span><span class="token punctuation">.</span>Matches<span class="token punctuation">(</span><span class="token string">'this is test'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Value
+</span><span class="code-line">
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="structure"><a aria-hidden="true" tabindex="-1" href="#structure"><span class="icon icon-link"></span></a>Structure</h3><div class="wrap-body">
+<h4 id="输入输出操作"><a aria-hidden="true" tabindex="-1" href="#输入输出操作"><span class="icon icon-link"></span></a>输入输出操作</h4>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token string">"This displays a string"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">Write-Host</span> <span class="token string">"color"</span> <span class="token operator">-</span>ForegroundColor Red
+</span><span class="code-line">
+</span><span class="code-line"><span class="token variable">$age</span> = <span class="token function">Read-host</span> <span class="token string">"Enter age"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token variable">$pwd</span> = <span class="token function">Read-host</span> <span class="token string">"password"</span> <span class="token operator">-</span>asSecureString
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">Clear-Host</span>
+</span></code></pre>
+<h4 id="流控制"><a aria-hidden="true" tabindex="-1" href="#流控制"><span class="icon icon-link"></span></a>流控制</h4>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token keyword">IF</span><span class="token punctuation">(</span><span class="token comment">&#x3C;#Condition#></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line"><span class="token comment">&#x3C;#Commands#></span><span class="token punctuation">}</span><span class="token keyword">ELSEIF</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">ELSE</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">Switch</span><span class="token punctuation">(</span><span class="token variable">$var</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line">	<span class="token string">"val1"</span><span class="token punctuation">{</span><span class="token comment">&#x3C;#Commands#></span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token string">"val2"</span><span class="token punctuation">{</span><span class="token comment">&#x3C;#Commands#></span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">For</span><span class="token punctuation">(</span><span class="token variable">$ct</span>=0<span class="token punctuation">;</span><span class="token variable">$ct</span> <span class="token operator">-le</span> 3<span class="token punctuation">;</span><span class="token variable">$ct</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">ForEach</span><span class="token punctuation">(</span><span class="token variable">$var</span> in <span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token variable">$var</span> <span class="token operator">-ne</span> 0<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">Do</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">While</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="函数--模块"><a aria-hidden="true" tabindex="-1" href="#函数--模块"><span class="icon icon-link"></span></a>函数 / 模块</h3><div class="wrap-body">
+<h4 id="示例-1"><a aria-hidden="true" tabindex="-1" href="#示例-1"><span class="icon icon-link"></span></a>示例 1</h4>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token keyword">function</span> funcname<span class="token punctuation">{</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token namespace">[CmdletBinding()]</span>
+</span><span class="code-line">	<span class="token keyword">param</span><span class="token punctuation">(</span>
+</span><span class="code-line">		<span class="token namespace">[Parameter(Mandatory)]</span>
+</span><span class="code-line">		<span class="token namespace">[String]</span><span class="token variable">$user</span>
+</span><span class="code-line">	<span class="token punctuation">)</span>
+</span><span class="code-line">	<span class="token function">Write-Host</span> <span class="token string">"welcome "</span> <span class="token variable">$user</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token string">"value"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token variable">$var</span> = funcname <span class="token operator">-</span>user pcb
+</span></code></pre>
+<h4 id="示例-2"><a aria-hidden="true" tabindex="-1" href="#示例-2"><span class="icon icon-link"></span></a>示例 2</h4>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token keyword">function</span> <span class="token function">Get-EvenNumbers</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token namespace">[CmdletBinding()]</span>
+</span><span class="code-line">    <span class="token keyword">param</span> <span class="token punctuation">(</span>
+</span><span class="code-line">        <span class="token namespace">[Parameter(ValueFromPipeline = $true)]</span>
+</span><span class="code-line">        <span class="token namespace">[int]</span> <span class="token variable">$Number</span>
+</span><span class="code-line">    <span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token keyword">begin</span> <span class="token punctuation">{</span><span class="token comment">&#x3C;#command#></span><span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">process</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$Number</span> <span class="token operator">%</span> 2 <span class="token operator">-eq</span> 0<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">            <span class="token function">Write-Output</span> <span class="token variable">$Number</span>
+</span><span class="code-line">        <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">end</span> <span class="token punctuation">{</span><span class="token comment">&#x3C;#command#></span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">1<span class="token punctuation">.</span><span class="token punctuation">.</span>10 <span class="token punctuation">|</span> <span class="token function">Get-EvenNumbers</span>
+</span><span class="code-line">
+</span></code></pre>
+<h4 id="模块"><a aria-hidden="true" tabindex="-1" href="#模块"><span class="icon icon-link"></span></a>模块</h4>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line"><span class="token comment"># PowerShell 在路径中查找模块</span>
+</span><span class="code-line"><span class="token variable">$env</span>:PSModulePath
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出系统上安装的所有模块</span>
+</span><span class="code-line"><span class="token function">Get-Module</span> <span class="token operator">-</span>ListAvailable
+</span><span class="code-line"><span class="token comment"># 列出当前会话中导入的模块</span>
+</span><span class="code-line"><span class="token function">Get-Module</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">Import-Module</span> &#x3C;moduleName>
+</span><span class="code-line"><span class="token function">Remove-Module</span> &#x3C;moduleName>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">Find-Module</span> <span class="token operator">-</span>Tag cloud
+</span><span class="code-line"><span class="token function">Find-Module</span> <span class="token operator">-</span>Name <span class="token function">ps</span><span class="token operator">*</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 创建一个内存中的 PowerShell 模块</span>
+</span><span class="code-line"><span class="token function">New-Module</span> <span class="token operator">-</span>Name trevor <span class="token operator">-</span>ScriptBlock <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">function</span> Add<span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token variable">$b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token variable">$a</span> <span class="token operator">+</span> <span class="token variable">$b</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="注意"><a aria-hidden="true" tabindex="-1" href="#注意"><span class="icon icon-link"></span></a>注意</h3><div class="wrap-body">
+<ul>
+<li>在大多数语言中，转义字符是反斜杠 <strong>\</strong>，而在 PowerShell 中是反引号 <strong>`</strong></li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="参考"><a aria-hidden="true" tabindex="-1" href="#参考"><span class="icon icon-link"></span></a>参考</h2><div class="wrap-body">
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/scripting/samples/sample-scripts-for-administration?view=powershell-7.3">Microsoft Powershell</a> <em>(learn.microsoft.com)</em></li>
+<li><a href="https://cheatsheets.zip/powershell">cheatsheets</a></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.8.0" defer></script><script src="../js/fuse.min.js?v=1.8.0" defer></script><script src="../js/main.js?v=1.8.0" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
