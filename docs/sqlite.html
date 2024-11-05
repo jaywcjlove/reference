@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>SQLite 备忘清单
+ &#x26;  sqlite cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="本备忘单旨在快速理解 SQLite 所涉及的主要概念，提供了最常用的SQL语句，供您参考。
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="sqlite,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/sqlite.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.8.0"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="sqlite-备忘清单"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <g clip-path="url(#a)">
+    <path d="M60 0C26.863 0 0 26.863 0 60v136c0 33.137 26.863 60 60 60h108.46c-1.779-5.243-3.172-13.546-3.956-23.023-.675-8.152-.899-17.171-.525-25.87-.101-1.286-.162-2.122-.162-2.122s-1.874-12.61-4.571-22.969c-1.194-4.598-2.553-8.756-3.98-11.166-.735-1.243.08-6.351 2.131-13.916 1.2 2.071 6.263 10.932 7.28 13.788 1.145 3.228 1.385 4.153 1.385 4.153s-2.777-14.272-7.333-22.6a303.417 303.417 0 0 1 3.542-11.066c1.578 2.767 5.165 9.121 6.461 12.132.12.279.228.541.307.757.184.522.339.965.478 1.371.731 2.118.909 2.792.909 2.792s-.271-1.386-.775-3.524c-.213-.903-.478-1.965-.773-3.096-1.148-4.409-2.892-10.181-5.125-14.704 5.732-29.794 24.181-68.807 44.057-89.868 1.713-1.814 3.434-3.511 5.158-5.041 11.619-10.3 23.392-13.78 33.115-5.118 7.034 6.267 9.912 14.925 9.917 24.89V60c0-33.137-26.863-60-60-60H60Z" fill="#D9D9D9"></path>
+    <path d="M60 0C26.863 0 0 26.863 0 60v136c0 33.137 26.863 60 60 60h108.46c-1.779-5.243-3.172-13.546-3.956-23.023-.675-8.152-.899-17.171-.525-25.87-.101-1.286-.162-2.122-.162-2.122s-1.874-12.61-4.571-22.969c-1.194-4.598-2.553-8.756-3.98-11.166-.735-1.243.08-6.351 2.131-13.916 1.2 2.071 6.263 10.932 7.28 13.788 1.145 3.228 1.385 4.153 1.385 4.153s-2.777-14.272-7.333-22.6a303.417 303.417 0 0 1 3.542-11.066c1.578 2.767 5.165 9.121 6.461 12.132.12.279.228.541.307.757.184.522.339.965.478 1.371.731 2.118.909 2.792.909 2.792s-.271-1.386-.775-3.524c-.213-.903-.478-1.965-.773-3.096-1.148-4.409-2.892-10.181-5.125-14.704 5.732-29.794 24.181-68.807 44.057-89.868 1.713-1.814 3.434-3.511 5.158-5.041 11.619-10.3 23.392-13.78 33.115-5.118 7.034 6.267 9.912 14.925 9.917 24.89V60c0-33.137-26.863-60-60-60H60Z" fill="url(#b)"></path>
+    <path d="M246.083 36.91c-9.723-8.662-21.496-5.183-33.115 5.118-1.724 1.53-3.445 3.227-5.158 5.04-19.876 21.063-38.325 60.075-44.057 89.869 2.233 4.523 3.977 10.295 5.125 14.704.295 1.131.56 2.193.773 3.096.504 2.138.775 3.524.775 3.524s-.178-.674-.909-2.792c-.139-.406-.294-.849-.478-1.371a15.467 15.467 0 0 0-.307-.757c-1.296-3.011-4.883-9.365-6.461-12.132a303.417 303.417 0 0 0-3.542 11.066c4.556 8.328 7.333 22.6 7.333 22.6s-.24-.925-1.385-4.153c-1.017-2.856-6.08-11.717-7.28-13.788-2.051 7.565-2.866 12.673-2.131 13.916 1.427 2.41 2.786 6.568 3.98 11.166 2.697 10.359 4.571 22.969 4.571 22.969s.061.836.162 2.122c-.374 8.699-.15 17.718.525 25.87.893 10.791 2.575 20.062 4.719 25.023l1.455-.793c-3.148-9.774-4.427-22.584-3.867-37.358.847-22.581 6.05-49.813 15.662-78.196 16.24-42.847 38.772-77.224 59.394-93.642-18.796 16.956-44.235 71.839-51.85 92.163-8.526 22.759-14.569 44.117-18.21 64.579 6.283-19.183 26.598-27.429 26.598-27.429s9.964-12.274 21.608-29.81c-6.975 1.589-18.428 4.309-22.265 5.919-5.658 2.371-7.183 3.18-7.183 3.18s18.33-11.15 34.056-16.198c21.628-34.025 45.19-82.362 21.462-103.505M28.52 49c-3.063 0-5.554.895-7.463 2.683-1.91 1.79-2.878 4.137-2.878 7.012 0 1.49.24 2.848.714 4.093.474 1.247 1.212 2.403 2.203 3.447.992 1.045 2.977 2.465 5.936 4.27 3.63 2.186 6.005 3.96 7.145 5.346 1.141 1.385 1.707 2.836 1.707 4.348 0 2.026-.675 3.642-2.064 4.858-1.391 1.215-3.251 1.82-5.558 1.82-2.433 0-4.552-.845-6.372-2.526-1.82-1.682-2.738-3.908-2.759-6.698H18V87.78h1.131c.346-.959.824-1.45 1.45-1.45.3 0 1.005.205 2.104.588 2.671.938 4.865 1.39 6.59 1.39 2.971 0 5.508-1.026 7.622-3.114 2.11-2.086 3.176-4.602 3.176-7.54 0-2.278-.704-4.305-2.084-6.071-1.381-1.769-4.066-3.826-8.08-6.19-3.452-2.046-5.694-3.713-6.728-5.013-1.036-1.298-1.568-2.733-1.568-4.309 0-1.704.634-3.072 1.885-4.093 1.252-1.022 2.891-1.528 4.943-1.528 2.309 0 4.233.676 5.756 2.037 1.521 1.363 2.401 3.252 2.66 5.68h1.132v-8.774h-1.053c-.128.447-.247.733-.357.861-.106.128-.311.196-.615.196-.366 0-1.019-.152-1.945-.45-1.985-.66-3.816-.999-5.499-.999Zm36.98 0c-3.733 0-7.121.868-10.183 2.605-3.066 1.734-5.493 4.14-7.285 7.207-1.79 3.066-2.68 6.323-2.68 9.793 0 4.662 1.547 8.816 4.665 12.456 3.12 3.638 6.858 5.905 11.195 6.777.992.51 2.41 1.826 4.268 3.956 2.093 2.404 3.864 4.138 5.32 5.17a16.074 16.074 0 0 0 4.684 2.292c1.661.499 3.457.744 5.4.744 2.351 0 4.457-.403 6.311-1.234l-.416-1.018a10.184 10.184 0 0 1-3.434.568c-1.642 0-3.3-.534-4.963-1.606-1.66-1.075-3.736-3.125-6.213-6.15-1.164-1.45-1.967-2.364-2.421-2.722 4.745-.915 8.648-3.184 11.691-6.816 3.043-3.63 4.565-7.774 4.565-12.417 0-5.514-1.988-10.147-5.935-13.925C76.12 50.9 71.262 49 65.5 49Zm23.085 0 .06 1.195c2.484 0 3.876.722 4.188 2.174.115.52.169 1.478.178 2.86l-.02 26.42c-.02 1.973-.305 3.233-.853 3.78-.549.543-1.476.882-2.819 1.018l-.06 1.195h24.773l.635-5.993h-1.131c-.323 1.632-1.064 2.802-2.243 3.466-1.183.67-3.273 1-6.293 1h-2.342c-2.717 0-4.289-.97-4.704-2.92a6.011 6.011 0 0 1-.12-1.253l.1-26.714c0-1.97.252-3.29.774-3.937.528-.643 1.48-1.004 2.858-1.096L101.507 49H88.585Zm-22.688 1.45c4.21 0 7.647 1.635 10.302 4.935 2.654 3.3 3.97 7.824 3.97 13.553 0 5.428-1.335 9.774-4.01 13.044-2.675 3.268-6.235 4.896-10.66 4.896-4.25 0-7.696-1.679-10.34-5.053-2.643-3.374-3.95-7.755-3.95-13.142 0-5.535 1.323-9.967 3.989-13.279 2.665-3.308 6.233-4.955 10.699-4.955Zm56.968 5.679c-.604 0-1.065.201-1.409.607-.353.404-.461.894-.338 1.489.119.576.449 1.082.973 1.508.521.425 1.083.646 1.687.646.584 0 1.03-.221 1.35-.646.32-.426.417-.931.298-1.508-.124-.595-.442-1.085-.933-1.489-.497-.406-1.044-.607-1.628-.607Zm16.336 4.054c-1.027 3.897-3.252 6.006-6.669 6.346l.039 1.116h3.99l-.079 13.2c.006 2.258.076 3.76.238 4.525.393 1.83 1.605 2.761 3.632 2.761 2.934 0 6.012-1.763 9.23-5.288l-.972-.822c-2.324 2.32-4.379 3.486-6.173 3.486-1.103 0-1.787-.626-2.045-1.86a4.658 4.658 0 0 1-.099-1.058l.04-14.944h6.093l-.059-1.782h-6.015v-5.68h-1.151Zm23.561 4.975c-3.408 0-6.181 1.632-8.336 4.877-2.145 3.25-2.809 6.85-1.965 10.81.496 2.32 1.484 4.12 2.997 5.387 1.51 1.267 3.426 1.9 5.716 1.9 2.133 0 5.103-.534 6.352-1.607 1.253-1.072 2.408-2.81 3.474-5.19l-.854-.881c-1.7 3.087-5.133 4.642-7.721 4.642-3.559 0-5.738-1.927-6.55-5.758a13.745 13.745 0 0 1-.239-1.567c4.234-.662 7.442-1.833 9.608-3.526 2.163-1.693 4.336-3.489 3.93-5.386-.242-1.127-.835-2.013-1.747-2.683-.924-.67-3.324-1.018-4.665-1.018Zm-37.257.137-7.344 1.665v1.292l2.54-.313c1.231 0 1.955.55 2.184 1.645.077.367.125.881.139 1.528l-.08 11.849c-.02 1.64-.205 2.593-.575 2.879-.374.287-1.36.43-2.958.43l-.04 1.117h11.652l-.02-1.116c-1.619 0-2.668-.126-3.136-.372-.46-.245-.776-.69-.913-1.371-.106-.492-.152-1.338-.159-2.507l.04-16.726h-1.33Zm35.392 2.194c.709 0 1.394.27 2.084.802.68.531 1.095 1.122 1.23 1.763.665 3.15-2.166 5.328-8.535 6.542-.182-2.297.222-4.383 1.251-6.268 1.021-1.883 2.351-2.84 3.97-2.84Z" fill="#003B57"></path>
+  </g>
+  <defs>
+    <linearGradient id="b" x1="147.614" y1="5.239" x2="147.614" y2="241.763" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#97D9F6"></stop>
+      <stop offset=".92" stop-color="#0F80CC"></stop>
+      <stop offset="1" stop-color="#0F80CC"></stop>
+    </linearGradient>
+    <clipPath id="a">
+      <rect width="256" height="256" rx="60" fill="#fff"></rect>
+    </clipPath>
+  </defs>
+</svg>
+  <a aria-hidden="true" tabindex="-1" href="#sqlite-备忘清单"><span class="icon icon-link"></span></a>SQLite 备忘清单</h1><div class="wrap-body">
+<p>本备忘单旨在快速理解 <a href="https://sqlite.com/">SQLite</a> 所涉及的主要概念，提供了最常用的SQL语句，供您参考。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装方式">安装方式</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#操作">操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#连接数据库">连接数据库</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#数据库操作">数据库操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#数据表操作">数据表操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#输出模式设置">输出模式设置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#支持-sql">支持 sql</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#事务支持">事务支持</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命令行">命令行</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#参考资料">参考资料</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<p>SQLite 是遵守ACID的关系数据库管理系统，它包含在一个相对小的C程序库中。与许多其它数据库管理系统不同，SQLite不是一个客户端/服务器结构的数据库引擎，而是被集成在用户程序中。</p>
+<p>SQLite遵守ACID，实现了大多数SQL标准。它使用动态的、弱类型的SQL语法。它作为嵌入式数据库，是应用程序，如网页浏览器，在本地/客户端存储数据的常见选择。它可能是最广泛部署的数据库引擎，因为它正在被一些流行的浏览器、操作系统、嵌入式系统所使用。同时，它有许多程序设计语言的语言绑定。</p>
+<hr>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装方式"><a aria-hidden="true" tabindex="-1" href="#安装方式"><span class="icon icon-link"></span></a>安装方式</h3><div class="wrap-body">
+<ul>
+<li>
+<p>windows</p>
+<p>从 <a href="https://www.sqlite.org/download.html">SQLite</a> 下载</p>
+<p>您需要下载 <code>sqlite-tools-win32-*.zip</code> 和 <code>sqlite-dll-win32-*.zip</code> 压缩文件。</p>
+<p>创建文件夹 <code>C:\sqlite</code>，并在此文件夹下解压上面两个压缩文件，将得到 <code>sqlite3.def、sqlite3.dll</code> 和 <code>sqlite3.exe</code> 文件。</p>
+<p>添加 <code>C:\sqlite</code> 到 <code>PATH</code> 环境变量。</p>
+</li>
+<li>
+<p>linux</p>
+<p>linux 自带 <code>sqlite3</code>，或者通过 <code>apt-get/yum/brew</code> 等安装。</p>
+</li>
+<li>
+<p>macOS</p>
+<p><code>brew install sqlite</code> 安装</p>
+</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="操作"><a aria-hidden="true" tabindex="-1" href="#操作"><span class="icon icon-link"></span></a>操作</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="连接数据库"><a aria-hidden="true" tabindex="-1" href="#连接数据库"><span class="icon icon-link"></span></a>连接数据库</h3><div class="wrap-body">
+<p><strong><code>SQLite</code> 通常不需要复杂的配置。创建数据库时，如果文件不存在，SQLite 会自动创建它。</strong></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 不存在则新建</span>
+</span><span class="code-line"><span class="token operator">></span>sqlite3 mydatabase.db
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数据库操作"><a aria-hidden="true" tabindex="-1" href="#数据库操作"><span class="icon icon-link"></span></a>数据库操作</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 显示数据库名称及对应文件</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .databases
+</span><span class="code-line">main: /home/user/sqlite/database.db r/w
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 显示已经设置的值</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .show 
+</span><span class="code-line">        echo: off
+</span><span class="code-line">         eqp: off
+</span><span class="code-line">     explain: auto
+</span><span class="code-line">     headers: off
+</span><span class="code-line">        mode: list
+</span><span class="code-line">   nullvalue: <span class="token string">""</span>
+</span><span class="code-line">      output: stdout
+</span><span class="code-line">colseparator: <span class="token string">"|"</span>
+</span><span class="code-line">rowseparator: <span class="token string">"<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line">       stats: off
+</span><span class="code-line">       width:
+</span><span class="code-line">    filename: api.db
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 以 sql 的形式 dump 数据库</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .dump
+</span><span class="code-line">PRAGMA <span class="token assign-left variable">foreign_keys</span><span class="token operator">=</span>OFF<span class="token punctuation">;</span>
+</span><span class="code-line">BEGIN TRANSACTION<span class="token punctuation">;</span>
+</span><span class="code-line">CREATE TABLE api <span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token function">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,
+</span><span class="code-line">    <span class="token function">host</span> TEXT NOT NULL,
+</span><span class="code-line">    port INTEGER NOT NULL,
+</span><span class="code-line">    path TEXT NOT NULL
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">INSERT INTO api VALUES<span class="token punctuation">(</span><span class="token number">1</span>,<span class="token string">'example.com'</span>,8080,<span class="token string">'/api/v1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 备份数据库</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .backup back
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 备份单张表</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .dump user
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 退出</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .exit
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数据表操作"><a aria-hidden="true" tabindex="-1" href="#数据表操作"><span class="icon icon-link"></span></a>数据表操作</h3><div class="wrap-body">
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 创建表</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> create table user<span class="token punctuation">(</span>id integer primary key, name text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 查看所有表</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .tables
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 查看表结构</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .schema user
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 导入文件到表中</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .import user.csv user
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 设置查询显示列名称</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .head on
+</span><span class="code-line">
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="输出模式设置"><a aria-hidden="true" tabindex="-1" href="#输出模式设置"><span class="icon icon-link"></span></a>输出模式设置</h3><div class="wrap-body">
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 设置输出模式为 csv</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> .mode csv
+</span><span class="code-line">sqlite<span class="token operator">></span> <span class="token keyword">select</span> * from api<span class="token punctuation">;</span>
+</span><span class="code-line">id,host,port,path
+</span><span class="code-line"><span class="token number">1</span>,example.com,8080,/api/v1
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 输出为 markdown</span>
+</span><span class="code-line">sqlite<span class="token operator">></span> <span class="token keyword">select</span> * from api<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token operator">|</span> <span class="token function">id</span> <span class="token operator">|</span>      <span class="token function">host</span>       <span class="token operator">|</span> port <span class="token operator">|</span>  path   <span class="token operator">|</span>
+</span><span class="code-line"><span class="token operator">|</span>----<span class="token operator">|</span>-----------------<span class="token operator">|</span>------<span class="token operator">|</span>---------<span class="token operator">|</span>
+</span><span class="code-line"><span class="token operator">|</span> <span class="token number">1</span>  <span class="token operator">|</span> example.com     <span class="token operator">|</span> <span class="token number">8080</span> <span class="token operator">|</span> /api/v1 <span class="token operator">|</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 支持 ascii box column csv html insert json line list markdown qbox quote table tabs tcl 类型，省略展示</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="支持-sql"><a aria-hidden="true" tabindex="-1" href="#支持-sql"><span class="icon icon-link"></span></a>支持 sql</h3><div class="wrap-body">
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token comment">-- 常用 sql</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">-- 创建表</span>
+</span><span class="code-line"><span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token keyword">user</span><span class="token punctuation">(</span>id <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span> name <span class="token keyword">text</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">-- 删除表</span>
+</span><span class="code-line"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">-- 重命名表</span>
+</span><span class="code-line"><span class="token keyword">alter</span> <span class="token keyword">table</span> <span class="token keyword">user</span> <span class="token keyword">rename</span> <span class="token keyword">to</span> user_new<span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">-- 插入</span>
+</span><span class="code-line"><span class="token comment">-- 单条</span>
+</span><span class="code-line"><span class="token keyword">insert</span> <span class="token keyword">into</span> <span class="token keyword">user</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 多条</span>
+</span><span class="code-line"><span class="token keyword">insert</span> <span class="token keyword">into</span> <span class="token keyword">user</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'test1'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'test2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">-- 查询</span>
+</span><span class="code-line"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 去重查询</span>
+</span><span class="code-line"><span class="token keyword">select</span> <span class="token keyword">distinct</span> name <span class="token keyword">from</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 统计</span>
+</span><span class="code-line"><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- limit</span>
+</span><span class="code-line"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token keyword">user</span> <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 条件查询</span>
+</span><span class="code-line"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token keyword">user</span> <span class="token keyword">where</span> id <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 模糊查询</span>
+</span><span class="code-line"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token keyword">user</span> <span class="token keyword">where</span> name <span class="token operator">like</span> <span class="token string">'%test%'</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- group by</span>
+</span><span class="code-line"><span class="token keyword">select</span> name<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> <span class="token keyword">user</span> <span class="token keyword">group</span> <span class="token keyword">by</span> name<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 排序</span>
+</span><span class="code-line"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token keyword">user</span> <span class="token keyword">order</span> <span class="token keyword">by</span> id <span class="token keyword">desc</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 聚合函数</span>
+</span><span class="code-line"><span class="token keyword">select</span> <span class="token function">max</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">-- 更新</span>
+</span><span class="code-line"><span class="token keyword">update</span> <span class="token keyword">user</span> <span class="token keyword">set</span> name<span class="token operator">=</span><span class="token string">'test3'</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">-- 删除</span>
+</span><span class="code-line"><span class="token keyword">delete</span> <span class="token keyword">from</span> <span class="token keyword">user</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="事务支持"><a aria-hidden="true" tabindex="-1" href="#事务支持"><span class="icon icon-link"></span></a>事务支持</h3><div class="wrap-body">
+<p><strong>事务</strong>具有原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持久性(Durability)四个标准属性，缩写为 ACID。</p>
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token comment">-- 开始事务</span>
+</span><span class="code-line"><span class="token keyword">begin</span> <span class="token keyword">transaction</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 操作</span>
+</span><span class="code-line"><span class="token keyword">update</span> <span class="token keyword">user</span> <span class="token keyword">set</span> name<span class="token operator">=</span><span class="token string">'test4'</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 回滚</span>
+</span><span class="code-line"><span class="token keyword">rollback</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">-- 提交</span>
+</span><span class="code-line"><span class="token keyword">commit</span><span class="token punctuation">;</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="命令行"><a aria-hidden="true" tabindex="-1" href="#命令行"><span class="icon icon-link"></span></a>命令行</h3><div class="wrap-body">
+<p><code>.help</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">.backup ?DB? FILE</td><td align="left">备份 DB 数据库（默认是 "main"）到 FILE 文件。</td></tr><tr><td align="left">.bail ON|OFF</td><td align="left">发生错误后停止。默认为 OFF。</td></tr><tr><td align="left">.databases</td><td align="left">列出数据库的名称及其所依附的文件。</td></tr><tr><td align="left">.dump ?TABLE?</td><td align="left">以 SQL 文本格式转储数据库。如果指定了 TABLE 表，则只转储匹配 LIKE 模式的 TABLE 表。</td></tr><tr><td align="left">.echo ON|OFF</td><td align="left">开启或关闭 echo 命令。</td></tr><tr><td align="left">.exit</td><td align="left">退出 SQLite 提示符。</td></tr><tr><td align="left">.explain ON|OFF</td><td align="left">开启或关闭适合于 EXPLAIN 的输出模式。如果没有带参数，则为 EXPLAIN on，即开启 EXPLAIN。</td></tr><tr><td align="left">.header(s) ON|OFF</td><td align="left">开启或关闭头部显示。</td></tr><tr><td align="left">.help</td><td align="left">显示消息。</td></tr><tr><td align="left">.import FILE TABLE</td><td align="left">导入来自 FILE 文件的数据到 TABLE 表中。</td></tr><tr><td align="left">.indices ?TABLE?</td><td align="left">显示所有索引的名称。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表的索引。</td></tr><tr><td align="left">.load FILE ?ENTRY?</td><td align="left">加载一个扩展库。</td></tr><tr><td align="left">.log FILE|off</td><td align="left">开启或关闭日志。FILE 文件可以是 stderr（标准错误）/stdout（标准输出）。</td></tr><tr><td align="left">.nullvalue STRING</td><td align="left">在 NULL 值的地方输出 STRING 字符串。</td></tr><tr><td align="left">.output FILENAME</td><td align="left">发送输出到 FILENAME 文件。</td></tr><tr><td align="left">.output stdout</td><td align="left">发送输出到屏幕。</td></tr><tr><td align="left">.print STRING...</td><td align="left">逐字地输出 STRING 字符串。</td></tr><tr><td align="left">.prompt MAIN CONTINUE</td><td align="left">替换标准提示符。</td></tr><tr><td align="left">.quit</td><td align="left">退出 SQLite 提示符。</td></tr><tr><td align="left">.read FILENAME</td><td align="left">执行 FILENAME 文件中的 SQL。</td></tr><tr><td align="left">.schema ?TABLE?</td><td align="left">显示 CREATE 语句。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表。</td></tr><tr><td align="left">.separator STRING</td><td align="left">改变输出模式和 .import 所使用的分隔符。</td></tr><tr><td align="left">.show</td><td align="left">显示各种设置的当前值。</td></tr><tr><td align="left">.stats ON|OFF</td><td align="left">开启或关闭统计。</td></tr><tr><td align="left">.tables ?PATTERN?</td><td align="left">列出匹配 LIKE 模式的表的名称。</td></tr><tr><td align="left">.timeout MS</td><td align="left">尝试打开锁定的表 MS 毫秒。</td></tr><tr><td align="left">.width NUM</td><td align="left">NUM	为 "column" 模式设置列宽度。</td></tr><tr><td align="left">.timer ON|OFF</td><td align="left">开启或关闭 CPU 定时器。</td></tr><tr><td align="left">.mode MODE</td><td align="left">设置输出模式，MODE 可以是下列之一:csv 逗号分隔的值 <br>column 左对齐的列 <br>html HTML 的 &#x3C;table> 代码 <br>insert TABLE 表的 SQL 插入（insert）语句 <br>line 每行一个值 <br>list 由 .separator 字符串分隔的值 <br>tabs 由 Tab 分隔的值 <br> tcl TCL 列表元素<br></td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="参考资料"><a aria-hidden="true" tabindex="-1" href="#参考资料"><span class="icon icon-link"></span></a>参考资料</h2><div class="wrap-body">
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/SQLite">百科</a></li>
+<li><a href="https://www.sqlite.org/">SQLite</a></li>
+<li><a href="https://www.runoob.com/sqlite/sqlite-tutorial.html">菜鸟教程</a></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.8.0" defer></script><script src="../js/fuse.min.js?v=1.8.0" defer></script><script src="../js/main.js?v=1.8.0" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
