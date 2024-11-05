@@ -231,6 +231,7 @@ Quick Reference
 [Redis](./docs/redis.md)<!--rehype:style=background: rgb(198 47 44);-->  
 [Elasticsearch](./docs/elasticsearch.md)<!--rehype:style=background: rgb(36 187 177);-->  
 [Neo4j](./docs/neo4j.md)<!--rehype:style=background: rgb(86 86 123);-->
+[SQLite](./docs/sqlite.md)<!--rehype:style=background: rgb(0 59 90);-->
 <!--rehype:class=home-card-->
 
 ## 快捷键
