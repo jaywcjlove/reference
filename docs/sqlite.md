@@ -7,57 +7,58 @@ SQLite 备忘清单
 ---
 
 ### 介绍
-<!--rehype:wrap-class=row-span-3-->
 
-SQLite 是遵守ACID的关系数据库管理系统，它包含在一个相对小的C程序库中。与许多其它数据库管理系统不同，SQLite不是一个客户端/服务器结构的数据库引擎，而是被集成在用户程序中。
+SQLite 是一个轻量级的嵌入式关系数据库管理系统，遵循 ACID 原则，广泛用于浏览器、操作系统等应用中，实现本地数据存储。
 
-SQLite遵守ACID，实现了大多数SQL标准。它使用动态的、弱类型的SQL语法。它作为嵌入式数据库，是应用程序，如网页浏览器，在本地/客户端存储数据的常见选择。它可能是最广泛部署的数据库引擎，因为它正在被一些流行的浏览器、操作系统、嵌入式系统所使用。同时，它有许多程序设计语言的语言绑定。
+### 安装
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
-----
+#### windows
 
-安装
+- 从 [SQLite](https://www.sqlite.org/download.html) 下载两个压缩文件：`sqlite-tools-win32-*.zip`、`sqlite-dll-win32-*.zip`
+- 创建文件夹 `C:\sqlite`，将这两个压缩文件解压到该文件夹下。
+- 解压后，您将看到 3 个文件： `sqlite3.def`、 `sqlite3.dll`、 `sqlite3.exe`
+- 将 C:\sqlite 添加到 PATH 环境变量中，以便在命令行中使用 SQLite。
+<!--rehype:className=style-timeline-->
+
+#### linux
+
+linux 自带 `sqlite3`，或者通过 `apt-get/yum/brew` 等安装。
+
+#### macOS
+
+`brew install sqlite` 安装
+
+### 连接 SQLite 数据库
+
+SQLite 通常无需复杂配置，当指定的数据库文件不存在时，它会自动创建一个新文件。
+
+```bash
+sqlite3 mydatabase.db
+```
+
+若数据库文件不存在则会自动创建
+
+数据库操作
 ---
 
-### 安装方式
-
-- windows
-  
-    从 [SQLite](https://www.sqlite.org/download.html) 下载
-    
-    您需要下载 `sqlite-tools-win32-*.zip` 和 `sqlite-dll-win32-*.zip` 压缩文件。
-    
-    创建文件夹 `C:\sqlite`，并在此文件夹下解压上面两个压缩文件，将得到 `sqlite3.def、sqlite3.dll` 和 `sqlite3.exe` 文件。
-
-    添加 `C:\sqlite` 到 `PATH` 环境变量。
-
-- linux 
-  
-  linux 自带 `sqlite3`，或者通过 `apt-get/yum/brew` 等安装。
-
-- macOS
-  
-  `brew install sqlite` 安装
-
-操作
----
-
-### 连接数据库
-
-  **`SQLite` 通常不需要复杂的配置。创建数据库时，如果文件不存在，SQLite 会自动创建它。**
-
-  ```bash
-  # 不存在则新建
-  >sqlite3 mydatabase.db
-  ```
-
-### 数据库操作
+### 显示数据库名称及对应文件
 
 ```shell
-# 显示数据库名称及对应文件
 sqlite> .databases
 main: /home/user/sqlite/database.db r/w
+```
 
-# 显示已经设置的值
+### 备份数据库
+
+```shell
+sqlite> .backup back
+```
+
+### 显示已经设置的值
+<!--rehype:wrap-class=row-span-3-->
+
+```shell
 sqlite> .show 
         echo: off
          eqp: off
@@ -71,8 +72,24 @@ rowseparator: "\n"
        stats: off
        width:
     filename: api.db
+```
 
-# 以 sql 的形式 dump 数据库
+### 备份单张表
+
+```shell
+sqlite> .dump user
+```
+
+### 退出
+
+```shell
+sqlite> .exit
+```
+
+### 以 sql 的形式 dump 数据库
+<!--rehype:wrap-class=col-span-2-->
+
+```shell
 sqlite> .dump
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
@@ -83,60 +100,92 @@ CREATE TABLE api (
     path TEXT NOT NULL
 );
 INSERT INTO api VALUES(1,'example.com',8080,'/api/v1');
-
-# 备份数据库
-sqlite> .backup back
-
-# 备份单张表
-sqlite> .dump user
-
-# 退出
-sqlite> .exit
 ```
 
-### 数据表操作
+### 导入与导出数据库
 
-```sh
-# 创建表
-sqlite> create table user(id integer primary key, name text);
+#### 导出数据库
+<!--rehype:style=text-align: left;-->
 
-# 查看所有表
-sqlite> .tables
+```bash
+sqlite3 mydatabase.db .dump > backup.sql
+```
 
-# 查看表结构
-sqlite> .schema user
+#### 导入数据库
+<!--rehype:style=text-align: left;-->
 
-# 导入文件到表中
-sqlite> .import user.csv user
-
-# 设置查询显示列名称
-sqlite> .head on
-
+```bash
+sqlite3 mydatabase.db < backup.sql
 ```
 
 ### 输出模式设置
+<!--rehype:wrap-class=col-span-2-->
+
+#### 设置输出模式为 csv
 
 ```sh
-# 设置输出模式为 csv
 sqlite> .mode csv
 sqlite> select * from api;
 id,host,port,path
 1,example.com,8080,/api/v1
+```
 
-# 输出为 markdown
+#### 输出为 markdown
+
+```sh
 sqlite> select * from api;
 | id |      host       | port |  path   |
 |----|-----------------|------|---------|
 | 1  | example.com     | 8080 | /api/v1 |
-
-# 支持 ascii box column csv html insert json line list markdown qbox quote table tabs tcl 类型，省略展示
 ```
 
-### 支持 sql
+支持 ascii box column csv html insert json line list markdown qbox quote table tabs tcl 等类型
+
+数据表操作
+---
+
+### 常用表操作
+
+#### 创建表
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+
+```sh
+sqlite> create table user(id integer primary key, name text);
+```
+<!--rehype:className=wrap-text-->
+
+#### 查看所有表
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+
+```sh
+sqlite> .tables
+```
+
+#### 查看表结构
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+
+```sh
+sqlite> .schema user
+```
+
+#### 导入文件到表中
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+
+```sh
+sqlite> .import user.csv user
+```
+
+#### 设置查询显示列名称
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+
+```sh
+sqlite> .head on
+```
+
+### 常用 SQL
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 ```sql
--- 常用 sql
-
 -- 创建表
 create table user(id integer primary key, name text);
 
@@ -193,45 +242,47 @@ rollback;
 commit;
 ```
 
-### 命令行
-
-`.help`
+### 命令行帮助
+<!--rehype:wrap-class=col-span-3-->
 
 |命令|描述|
 |:---|:---|
-|.backup ?DB? FILE	 |备份 DB 数据库（默认是 "main"）到 FILE 文件。|
-|.bail ON\|OFF	     |发生错误后停止。默认为 OFF。|
-|.databases	         |列出数据库的名称及其所依附的文件。
-|.dump ?TABLE?	     |以 SQL 文本格式转储数据库。如果指定了 TABLE 表，则只转储匹配 LIKE 模式的 TABLE 表。
-|.echo ON\|OFF	     |开启或关闭 echo 命令。
-|.exit	             |退出 SQLite 提示符。
-|.explain ON\|OFF	   |开启或关闭适合于 EXPLAIN 的输出模式。如果没有带参数，则为 EXPLAIN on，即开启 EXPLAIN。
-|.header(s) ON\|OFF	 |开启或关闭头部显示。
-|.help	             |显示消息。
-|.import FILE TABLE	 |导入来自 FILE 文件的数据到 TABLE 表中。
-|.indices ?TABLE?	   |显示所有索引的名称。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表的索引。
-|.load FILE ?ENTRY?	 |加载一个扩展库。
-|.log FILE\|off	     |开启或关闭日志。FILE 文件可以是 stderr（标准错误）/stdout（标准输出）。
-|.nullvalue STRING	 |在 NULL 值的地方输出 STRING 字符串。
-|.output FILENAME	   |发送输出到 FILENAME 文件。
-|.output stdout	     |发送输出到屏幕。
-|.print STRING...	   |逐字地输出 STRING 字符串。
-|.prompt MAIN CONTINUE	|替换标准提示符。
-|.quit	             |退出 SQLite 提示符。
-|.read FILENAME	     |执行 FILENAME 文件中的 SQL。
-|.schema ?TABLE?	   |显示 CREATE 语句。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表。
-|.separator STRING	 |改变输出模式和 .import 所使用的分隔符。
-|.show	             |显示各种设置的当前值。
-|.stats ON\|OFF	     |开启或关闭统计。
-|.tables ?PATTERN?	 |列出匹配 LIKE 模式的表的名称。
-|.timeout MS	       |尝试打开锁定的表 MS 毫秒。
-|.width NUM          |NUM	为 "column" 模式设置列宽度。
-|.timer ON\|OFF	     |开启或关闭 CPU 定时器。
-|.mode MODE	         | 设置输出模式，MODE 可以是下列之一:csv 逗号分隔的值 <br/>column 左对齐的列 <br/>html HTML 的 \<table\> 代码 <br/>insert TABLE 表的 SQL 插入（insert）语句 <br/>line 每行一个值 <br/>list 由 .separator 字符串分隔的值 <br/>tabs 由 Tab 分隔的值 <br/> tcl TCL 列表元素<br/>
+|.backup ?DB? FILE   |备份 DB 数据库（默认是 "main"）到 FILE 文件。|
+|.bail ON\|OFF       |发生错误后停止。默认为 OFF。|
+|.databases           |列出数据库的名称及其所依附的文件。
+|.dump ?TABLE?       |以 SQL 文本格式转储数据库。如果指定了 TABLE 表，则只转储匹配 LIKE 模式的 TABLE 表。
+|.echo ON\|OFF       |开启或关闭 echo 命令。
+|.exit               |退出 SQLite 提示符。
+|.explain ON\|OFF     |开启或关闭适合于 EXPLAIN 的输出模式。如果没有带参数，则为 EXPLAIN on，即开启 EXPLAIN。
+|.header(s) ON\|OFF   |开启或关闭头部显示。
+|.help               |显示消息。
+|.import FILE TABLE   |导入来自 FILE 文件的数据到 TABLE 表中。
+|.indices ?TABLE?     |显示所有索引的名称。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表的索引。
+|.load FILE ?ENTRY?   |加载一个扩展库。
+|.log FILE\|off       |开启或关闭日志。FILE 文件可以是 stderr（标准错误）/stdout（标准输出）。
+|.nullvalue STRING   |在 NULL 值的地方输出 STRING 字符串。
+|.output FILENAME     |发送输出到 FILENAME 文件。
+|.output stdout       |发送输出到屏幕。
+|.print STRING...     |逐字地输出 STRING 字符串。
+|.prompt MAIN CONTINUE  |替换标准提示符。
+|.quit               |退出 SQLite 提示符。
+|.read FILENAME       |执行 FILENAME 文件中的 SQL。
+|.schema ?TABLE?     |显示 CREATE 语句。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表。
+|.separator STRING   |改变输出模式和 .import 所使用的分隔符。
+|.show               |显示各种设置的当前值。
+|.stats ON\|OFF       |开启或关闭统计。
+|.tables ?PATTERN?   |列出匹配 LIKE 模式的表的名称。
+|.timeout MS         |尝试打开锁定的表 MS 毫秒。
+|.width NUM          |NUM  为 "column" 模式设置列宽度。
+|.timer ON\|OFF       |开启或关闭 CPU 定时器。
+|.mode MODE           | 设置输出模式，MODE 可以是下列之一 `:csv` 逗号分隔的值 <br/>column 左对齐的列 <br/>html HTML 的 \<table\> 代码 <br/>insert TABLE 表的 SQL 插入（insert）语句 <br/>line 每行一个值 <br/>list 由 .separator 字符串分隔的值 <br/>tabs 由 Tab 分隔的值 <br/> tcl TCL 列表元素<br/>
+<!--rehype:className=left-align-->
 
+在命令行中通过 `.help` 命令显示帮助文档
 
-参考资料
----
+另见
+--------
+
 - [百科](https://zh.wikipedia.org/wiki/SQLite)
 - [SQLite](https://www.sqlite.org/)
 - [菜鸟教程](https://www.runoob.com/sqlite/sqlite-tutorial.html)
