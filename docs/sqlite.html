@@ -55,44 +55,39 @@
 <p>本备忘单旨在快速理解 <a href="https://sqlite.com/">SQLite</a> 所涉及的主要概念，提供了最常用的SQL语句，供您参考。</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装方式">安装方式</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#操作">操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#连接数据库">连接数据库</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#数据库操作">数据库操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#数据表操作">数据表操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#输出模式设置">输出模式设置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#支持-sql">支持 sql</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#事务支持">事务支持</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命令行">命令行</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#参考资料">参考资料</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
-<!--rehype:wrap-class=row-span-3-->
-<p>SQLite 是遵守ACID的关系数据库管理系统，它包含在一个相对小的C程序库中。与许多其它数据库管理系统不同，SQLite不是一个客户端/服务器结构的数据库引擎，而是被集成在用户程序中。</p>
-<p>SQLite遵守ACID，实现了大多数SQL标准。它使用动态的、弱类型的SQL语法。它作为嵌入式数据库，是应用程序，如网页浏览器，在本地/客户端存储数据的常见选择。它可能是最广泛部署的数据库引擎，因为它正在被一些流行的浏览器、操作系统、嵌入式系统所使用。同时，它有许多程序设计语言的语言绑定。</p>
-<hr>
-</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装方式"><a aria-hidden="true" tabindex="-1" href="#安装方式"><span class="icon icon-link"></span></a>安装方式</h3><div class="wrap-body">
-<ul>
-<li>
-<p>windows</p>
-<p>从 <a href="https://www.sqlite.org/download.html">SQLite</a> 下载</p>
-<p>您需要下载 <code>sqlite-tools-win32-*.zip</code> 和 <code>sqlite-dll-win32-*.zip</code> 压缩文件。</p>
-<p>创建文件夹 <code>C:\sqlite</code>，并在此文件夹下解压上面两个压缩文件，将得到 <code>sqlite3.def、sqlite3.dll</code> 和 <code>sqlite3.exe</code> 文件。</p>
-<p>添加 <code>C:\sqlite</code> 到 <code>PATH</code> 环境变量。</p>
-</li>
-<li>
-<p>linux</p>
-<p>linux 自带 <code>sqlite3</code>，或者通过 <code>apt-get/yum/brew</code> 等安装。</p>
-</li>
-<li>
-<p>macOS</p>
-<p><code>brew install sqlite</code> 安装</p>
-</li>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#windows">windows</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#linux">linux</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#macos">macOS</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#连接-sqlite-数据库">连接 SQLite 数据库</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#数据库操作">数据库操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#显示数据库名称及对应文件">显示数据库名称及对应文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#备份数据库">备份数据库</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#显示已经设置的值">显示已经设置的值</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#备份单张表">备份单张表</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#退出">退出</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#以-sql-的形式-dump-数据库">以 sql 的形式 dump 数据库</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#导入与导出数据库">导入与导出数据库</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#导出数据库">导出数据库</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#导入数据库">导入数据库</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#输出模式设置">输出模式设置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#设置输出模式为-csv">设置输出模式为 csv</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#输出为-markdown">输出为 markdown</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#数据表操作">数据表操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用表操作">常用表操作</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#创建表">创建表</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#查看所有表">查看所有表</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#查看表结构">查看表结构</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#导入文件到表中">导入文件到表中</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#设置查询显示列名称">设置查询显示列名称</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用-sql">常用 SQL</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#事务支持">事务支持</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命令行帮助">命令行帮助</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
+<p>SQLite 是一个轻量级的嵌入式关系数据库管理系统，遵循 ACID 原则，广泛用于浏览器、操作系统等应用中，实现本地数据存储。</p>
+</div></div></div><div class="wrap h3body-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<h4 id="windows"><a aria-hidden="true" tabindex="-1" href="#windows"><span class="icon icon-link"></span></a>windows</h4>
+<ul class="style-timeline">
+<li>从 <a href="https://www.sqlite.org/download.html">SQLite</a> 下载两个压缩文件：<code>sqlite-tools-win32-*.zip</code>、<code>sqlite-dll-win32-*.zip</code></li>
+<li>创建文件夹 <code>C:\sqlite</code>，将这两个压缩文件解压到该文件夹下。</li>
+<li>解压后，您将看到 3 个文件： <code>sqlite3.def</code>、 <code>sqlite3.dll</code>、 <code>sqlite3.exe</code></li>
+<li>将 C:\sqlite 添加到 PATH 环境变量中，以便在命令行中使用 SQLite。</li>
 </ul>
-</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="操作"><a aria-hidden="true" tabindex="-1" href="#操作"><span class="icon icon-link"></span></a>操作</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="连接数据库"><a aria-hidden="true" tabindex="-1" href="#连接数据库"><span class="icon icon-link"></span></a>连接数据库</h3><div class="wrap-body">
-<p><strong><code>SQLite</code> 通常不需要复杂的配置。创建数据库时，如果文件不存在，SQLite 会自动创建它。</strong></p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 不存在则新建</span>
-</span><span class="code-line"><span class="token operator">></span>sqlite3 mydatabase.db
+<!--rehype:className=style-timeline-->
+<h4 id="linux"><a aria-hidden="true" tabindex="-1" href="#linux"><span class="icon icon-link"></span></a>linux</h4>
+<p>linux 自带 <code>sqlite3</code>，或者通过 <code>apt-get/yum/brew</code> 等安装。</p>
+<h4 id="macos"><a aria-hidden="true" tabindex="-1" href="#macos"><span class="icon icon-link"></span></a>macOS</h4>
+<p><code>brew install sqlite</code> 安装</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="连接-sqlite-数据库"><a aria-hidden="true" tabindex="-1" href="#连接-sqlite-数据库"><span class="icon icon-link"></span></a>连接 SQLite 数据库</h3><div class="wrap-body">
+<p>SQLite 通常无需复杂配置，当指定的数据库文件不存在时，它会自动创建一个新文件。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">sqlite3 mydatabase.db
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数据库操作"><a aria-hidden="true" tabindex="-1" href="#数据库操作"><span class="icon icon-link"></span></a>数据库操作</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 显示数据库名称及对应文件</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .databases
+<p>若数据库文件不存在则会自动创建</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="数据库操作"><a aria-hidden="true" tabindex="-1" href="#数据库操作"><span class="icon icon-link"></span></a>数据库操作</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="显示数据库名称及对应文件"><a aria-hidden="true" tabindex="-1" href="#显示数据库名称及对应文件"><span class="icon icon-link"></span></a>显示数据库名称及对应文件</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .databases
 </span><span class="code-line">main: /home/user/sqlite/database.db r/w
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 显示已经设置的值</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .show 
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="备份数据库"><a aria-hidden="true" tabindex="-1" href="#备份数据库"><span class="icon icon-link"></span></a>备份数据库</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .backup back
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="显示已经设置的值"><a aria-hidden="true" tabindex="-1" href="#显示已经设置的值"><span class="icon icon-link"></span></a>显示已经设置的值</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .show 
 </span><span class="code-line">        echo: off
 </span><span class="code-line">         eqp: off
 </span><span class="code-line">     explain: auto
@@ -105,9 +100,16 @@
 </span><span class="code-line">       stats: off
 </span><span class="code-line">       width:
 </span><span class="code-line">    filename: api.db
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 以 sql 的形式 dump 数据库</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .dump
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="备份单张表"><a aria-hidden="true" tabindex="-1" href="#备份单张表"><span class="icon icon-link"></span></a>备份单张表</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .dump user
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="退出"><a aria-hidden="true" tabindex="-1" href="#退出"><span class="icon icon-link"></span></a>退出</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .exit
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="以-sql-的形式-dump-数据库"><a aria-hidden="true" tabindex="-1" href="#以-sql-的形式-dump-数据库"><span class="icon icon-link"></span></a>以 sql 的形式 dump 数据库</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .dump
 </span><span class="code-line">PRAGMA <span class="token assign-left variable">foreign_keys</span><span class="token operator">=</span>OFF<span class="token punctuation">;</span>
 </span><span class="code-line">BEGIN TRANSACTION<span class="token punctuation">;</span>
 </span><span class="code-line">CREATE TABLE api <span class="token punctuation">(</span>
@@ -117,52 +119,57 @@
 </span><span class="code-line">    path TEXT NOT NULL
 </span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line">INSERT INTO api VALUES<span class="token punctuation">(</span><span class="token number">1</span>,<span class="token string">'example.com'</span>,8080,<span class="token string">'/api/v1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 备份数据库</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .backup back
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 备份单张表</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .dump user
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 退出</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .exit
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数据表操作"><a aria-hidden="true" tabindex="-1" href="#数据表操作"><span class="icon icon-link"></span></a>数据表操作</h3><div class="wrap-body">
-<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 创建表</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> create table user<span class="token punctuation">(</span>id integer primary key, name text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 查看所有表</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .tables
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 查看表结构</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .schema user
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 导入文件到表中</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .import user.csv user
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 设置查询显示列名称</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .head on
-</span><span class="code-line">
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="导入与导出数据库"><a aria-hidden="true" tabindex="-1" href="#导入与导出数据库"><span class="icon icon-link"></span></a>导入与导出数据库</h3><div class="wrap-body">
+<h4 style="text-align: left;" id="导出数据库"><a aria-hidden="true" tabindex="-1" href="#导出数据库"><span class="icon icon-link"></span></a>导出数据库</h4>
+<!--rehype:style=text-align: left;-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">sqlite3 mydatabase.db .dump <span class="token operator">></span> backup.sql
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="输出模式设置"><a aria-hidden="true" tabindex="-1" href="#输出模式设置"><span class="icon icon-link"></span></a>输出模式设置</h3><div class="wrap-body">
-<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 设置输出模式为 csv</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> .mode csv
+<h4 style="text-align: left;" id="导入数据库"><a aria-hidden="true" tabindex="-1" href="#导入数据库"><span class="icon icon-link"></span></a>导入数据库</h4>
+<!--rehype:style=text-align: left;-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">sqlite3 mydatabase.db <span class="token operator">&#x3C;</span> backup.sql
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="输出模式设置"><a aria-hidden="true" tabindex="-1" href="#输出模式设置"><span class="icon icon-link"></span></a>输出模式设置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<h4 id="设置输出模式为-csv"><a aria-hidden="true" tabindex="-1" href="#设置输出模式为-csv"><span class="icon icon-link"></span></a>设置输出模式为 csv</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .mode csv
 </span><span class="code-line">sqlite<span class="token operator">></span> <span class="token keyword">select</span> * from api<span class="token punctuation">;</span>
 </span><span class="code-line">id,host,port,path
 </span><span class="code-line"><span class="token number">1</span>,example.com,8080,/api/v1
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 输出为 markdown</span>
-</span><span class="code-line">sqlite<span class="token operator">></span> <span class="token keyword">select</span> * from api<span class="token punctuation">;</span>
+</span></code></pre>
+<h4 id="输出为-markdown"><a aria-hidden="true" tabindex="-1" href="#输出为-markdown"><span class="icon icon-link"></span></a>输出为 markdown</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">sqlite<span class="token operator">></span> <span class="token keyword">select</span> * from api<span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token operator">|</span> <span class="token function">id</span> <span class="token operator">|</span>      <span class="token function">host</span>       <span class="token operator">|</span> port <span class="token operator">|</span>  path   <span class="token operator">|</span>
 </span><span class="code-line"><span class="token operator">|</span>----<span class="token operator">|</span>-----------------<span class="token operator">|</span>------<span class="token operator">|</span>---------<span class="token operator">|</span>
 </span><span class="code-line"><span class="token operator">|</span> <span class="token number">1</span>  <span class="token operator">|</span> example.com     <span class="token operator">|</span> <span class="token number">8080</span> <span class="token operator">|</span> /api/v1 <span class="token operator">|</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 支持 ascii box column csv html insert json line list markdown qbox quote table tabs tcl 类型，省略展示</span>
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="支持-sql"><a aria-hidden="true" tabindex="-1" href="#支持-sql"><span class="icon icon-link"></span></a>支持 sql</h3><div class="wrap-body">
-<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token comment">-- 常用 sql</span>
-</span><span class="code-line">
-</span><span class="code-line"><span class="token comment">-- 创建表</span>
+<p>支持 ascii box column csv html insert json line list markdown qbox quote table tabs tcl 等类型</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="数据表操作"><a aria-hidden="true" tabindex="-1" href="#数据表操作"><span class="icon icon-link"></span></a>数据表操作</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="常用表操作"><a aria-hidden="true" tabindex="-1" href="#常用表操作"><span class="icon icon-link"></span></a>常用表操作</h3><div class="wrap-body">
+<h4 style="text-align: left;color: var(--primary-color);" id="创建表"><a aria-hidden="true" tabindex="-1" href="#创建表"><span class="icon icon-link"></span></a>创建表</h4>
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+<pre class="wrap-text"><code class="language-sh code-highlight"><span class="code-line">sqlite<span class="token operator">></span> create table user<span class="token punctuation">(</span>id integer primary key, name text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<h4 style="text-align: left;color: var(--primary-color);" id="查看所有表"><a aria-hidden="true" tabindex="-1" href="#查看所有表"><span class="icon icon-link"></span></a>查看所有表</h4>
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .tables
+</span></code></pre>
+<h4 style="text-align: left;color: var(--primary-color);" id="查看表结构"><a aria-hidden="true" tabindex="-1" href="#查看表结构"><span class="icon icon-link"></span></a>查看表结构</h4>
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .schema user
+</span></code></pre>
+<h4 style="text-align: left;color: var(--primary-color);" id="导入文件到表中"><a aria-hidden="true" tabindex="-1" href="#导入文件到表中"><span class="icon icon-link"></span></a>导入文件到表中</h4>
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .import user.csv user
+</span></code></pre>
+<h4 style="text-align: left;color: var(--primary-color);" id="设置查询显示列名称"><a aria-hidden="true" tabindex="-1" href="#设置查询显示列名称"><span class="icon icon-link"></span></a>设置查询显示列名称</h4>
+<!--rehype:style=text-align: left;color: var(--primary-color);-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">sqlite<span class="token operator">></span> .head on
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="常用-sql"><a aria-hidden="true" tabindex="-1" href="#常用-sql"><span class="icon icon-link"></span></a>常用 SQL</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-sql"><code class="language-sql code-highlight"><span class="code-line"><span class="token comment">-- 创建表</span>
 </span><span class="code-line"><span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token keyword">user</span><span class="token punctuation">(</span>id <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span> name <span class="token keyword">text</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token comment">-- 删除表</span>
@@ -213,8 +220,8 @@
 </span><span class="code-line"><span class="token comment">-- 提交</span>
 </span><span class="code-line"><span class="token keyword">commit</span><span class="token punctuation">;</span>
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="命令行"><a aria-hidden="true" tabindex="-1" href="#命令行"><span class="icon icon-link"></span></a>命令行</h3><div class="wrap-body">
-<p><code>.help</code></p>
+</div></div></div><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="命令行帮助"><a aria-hidden="true" tabindex="-1" href="#命令行帮助"><span class="icon icon-link"></span></a>命令行帮助</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
 
 
 
@@ -340,8 +347,10 @@
 
 
 
-<table><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">.backup ?DB? FILE</td><td align="left">备份 DB 数据库（默认是 "main"）到 FILE 文件。</td></tr><tr><td align="left">.bail ON|OFF</td><td align="left">发生错误后停止。默认为 OFF。</td></tr><tr><td align="left">.databases</td><td align="left">列出数据库的名称及其所依附的文件。</td></tr><tr><td align="left">.dump ?TABLE?</td><td align="left">以 SQL 文本格式转储数据库。如果指定了 TABLE 表，则只转储匹配 LIKE 模式的 TABLE 表。</td></tr><tr><td align="left">.echo ON|OFF</td><td align="left">开启或关闭 echo 命令。</td></tr><tr><td align="left">.exit</td><td align="left">退出 SQLite 提示符。</td></tr><tr><td align="left">.explain ON|OFF</td><td align="left">开启或关闭适合于 EXPLAIN 的输出模式。如果没有带参数，则为 EXPLAIN on，即开启 EXPLAIN。</td></tr><tr><td align="left">.header(s) ON|OFF</td><td align="left">开启或关闭头部显示。</td></tr><tr><td align="left">.help</td><td align="left">显示消息。</td></tr><tr><td align="left">.import FILE TABLE</td><td align="left">导入来自 FILE 文件的数据到 TABLE 表中。</td></tr><tr><td align="left">.indices ?TABLE?</td><td align="left">显示所有索引的名称。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表的索引。</td></tr><tr><td align="left">.load FILE ?ENTRY?</td><td align="left">加载一个扩展库。</td></tr><tr><td align="left">.log FILE|off</td><td align="left">开启或关闭日志。FILE 文件可以是 stderr（标准错误）/stdout（标准输出）。</td></tr><tr><td align="left">.nullvalue STRING</td><td align="left">在 NULL 值的地方输出 STRING 字符串。</td></tr><tr><td align="left">.output FILENAME</td><td align="left">发送输出到 FILENAME 文件。</td></tr><tr><td align="left">.output stdout</td><td align="left">发送输出到屏幕。</td></tr><tr><td align="left">.print STRING...</td><td align="left">逐字地输出 STRING 字符串。</td></tr><tr><td align="left">.prompt MAIN CONTINUE</td><td align="left">替换标准提示符。</td></tr><tr><td align="left">.quit</td><td align="left">退出 SQLite 提示符。</td></tr><tr><td align="left">.read FILENAME</td><td align="left">执行 FILENAME 文件中的 SQL。</td></tr><tr><td align="left">.schema ?TABLE?</td><td align="left">显示 CREATE 语句。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表。</td></tr><tr><td align="left">.separator STRING</td><td align="left">改变输出模式和 .import 所使用的分隔符。</td></tr><tr><td align="left">.show</td><td align="left">显示各种设置的当前值。</td></tr><tr><td align="left">.stats ON|OFF</td><td align="left">开启或关闭统计。</td></tr><tr><td align="left">.tables ?PATTERN?</td><td align="left">列出匹配 LIKE 模式的表的名称。</td></tr><tr><td align="left">.timeout MS</td><td align="left">尝试打开锁定的表 MS 毫秒。</td></tr><tr><td align="left">.width NUM</td><td align="left">NUM	为 "column" 模式设置列宽度。</td></tr><tr><td align="left">.timer ON|OFF</td><td align="left">开启或关闭 CPU 定时器。</td></tr><tr><td align="left">.mode MODE</td><td align="left">设置输出模式，MODE 可以是下列之一:csv 逗号分隔的值 <br>column 左对齐的列 <br>html HTML 的 &#x3C;table> 代码 <br>insert TABLE 表的 SQL 插入（insert）语句 <br>line 每行一个值 <br>list 由 .separator 字符串分隔的值 <br>tabs 由 Tab 分隔的值 <br> tcl TCL 列表元素<br></td></tr></tbody></table>
-</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="参考资料"><a aria-hidden="true" tabindex="-1" href="#参考资料"><span class="icon icon-link"></span></a>参考资料</h2><div class="wrap-body">
+<table class="left-align"><thead><tr><th align="left">命令</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">.backup ?DB? FILE</td><td align="left">备份 DB 数据库（默认是 "main"）到 FILE 文件。</td></tr><tr><td align="left">.bail ON|OFF</td><td align="left">发生错误后停止。默认为 OFF。</td></tr><tr><td align="left">.databases</td><td align="left">列出数据库的名称及其所依附的文件。</td></tr><tr><td align="left">.dump ?TABLE?</td><td align="left">以 SQL 文本格式转储数据库。如果指定了 TABLE 表，则只转储匹配 LIKE 模式的 TABLE 表。</td></tr><tr><td align="left">.echo ON|OFF</td><td align="left">开启或关闭 echo 命令。</td></tr><tr><td align="left">.exit</td><td align="left">退出 SQLite 提示符。</td></tr><tr><td align="left">.explain ON|OFF</td><td align="left">开启或关闭适合于 EXPLAIN 的输出模式。如果没有带参数，则为 EXPLAIN on，即开启 EXPLAIN。</td></tr><tr><td align="left">.header(s) ON|OFF</td><td align="left">开启或关闭头部显示。</td></tr><tr><td align="left">.help</td><td align="left">显示消息。</td></tr><tr><td align="left">.import FILE TABLE</td><td align="left">导入来自 FILE 文件的数据到 TABLE 表中。</td></tr><tr><td align="left">.indices ?TABLE?</td><td align="left">显示所有索引的名称。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表的索引。</td></tr><tr><td align="left">.load FILE ?ENTRY?</td><td align="left">加载一个扩展库。</td></tr><tr><td align="left">.log FILE|off</td><td align="left">开启或关闭日志。FILE 文件可以是 stderr（标准错误）/stdout（标准输出）。</td></tr><tr><td align="left">.nullvalue STRING</td><td align="left">在 NULL 值的地方输出 STRING 字符串。</td></tr><tr><td align="left">.output FILENAME</td><td align="left">发送输出到 FILENAME 文件。</td></tr><tr><td align="left">.output stdout</td><td align="left">发送输出到屏幕。</td></tr><tr><td align="left">.print STRING...</td><td align="left">逐字地输出 STRING 字符串。</td></tr><tr><td align="left">.prompt MAIN CONTINUE</td><td align="left">替换标准提示符。</td></tr><tr><td align="left">.quit</td><td align="left">退出 SQLite 提示符。</td></tr><tr><td align="left">.read FILENAME</td><td align="left">执行 FILENAME 文件中的 SQL。</td></tr><tr><td align="left">.schema ?TABLE?</td><td align="left">显示 CREATE 语句。如果指定了 TABLE 表，则只显示匹配 LIKE 模式的 TABLE 表。</td></tr><tr><td align="left">.separator STRING</td><td align="left">改变输出模式和 .import 所使用的分隔符。</td></tr><tr><td align="left">.show</td><td align="left">显示各种设置的当前值。</td></tr><tr><td align="left">.stats ON|OFF</td><td align="left">开启或关闭统计。</td></tr><tr><td align="left">.tables ?PATTERN?</td><td align="left">列出匹配 LIKE 模式的表的名称。</td></tr><tr><td align="left">.timeout MS</td><td align="left">尝试打开锁定的表 MS 毫秒。</td></tr><tr><td align="left">.width NUM</td><td align="left">NUM  为 "column" 模式设置列宽度。</td></tr><tr><td align="left">.timer ON|OFF</td><td align="left">开启或关闭 CPU 定时器。</td></tr><tr><td align="left">.mode MODE</td><td align="left">设置输出模式，MODE 可以是下列之一 <code>:csv</code> 逗号分隔的值 <br>column 左对齐的列 <br>html HTML 的 &#x3C;table> 代码 <br>insert TABLE 表的 SQL 插入（insert）语句 <br>line 每行一个值 <br>list 由 .separator 字符串分隔的值 <br>tabs 由 Tab 分隔的值 <br> tcl TCL 列表元素<br></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p>在命令行中通过 <code>.help</code> 命令显示帮助文档</p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
 <li><a href="https://zh.wikipedia.org/wiki/SQLite">百科</a></li>
 <li><a href="https://www.sqlite.org/">SQLite</a></li>
