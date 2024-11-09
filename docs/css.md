@@ -155,7 +155,7 @@ div {
 
 ```css
 #container {
-  display: ;
+  display: grid;
   grid: repeat(2, 60px) / auto-flow 80px;
 }
 #container > div {
