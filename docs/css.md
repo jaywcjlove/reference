@@ -155,8 +155,8 @@ div {
 
 ```css
 #container {
-  display: grid;
-s  grid: repeat(2, 60px) / auto-flow 80px;
+  display: ;
+  grid: repeat(2, 60px) / auto-flow 80px;
 }
 #container > div {
   background-color: #8ca0ff;
