@@ -521,6 +521,10 @@ let zeroToThree = 0...3
 // zeroToThree: 0, 1, 2, 3
 ```
 
+- `a...b` 闭区间 (Closed Range) 包括a和b
+- `a..<b` 半开区间 (Half-Open Range) 包括a，不包括b
+- `...b`  单侧区间 (One-Sided Range) 包括b
+
 ### stride() 函数
 
 ```swift
@@ -581,11 +585,11 @@ for char in "supercalifragilistice" {
 
 ```swift
 for _ in 1...3 {
-  print("Olé")
+  print("Ole")
 }
-// 打印: Olé
-// 打印: Olé
-// 打印: Olé
+// 打印: Ole
+// 打印: Ole
+// 打印: Ole
 ```
 
 ### 遍历指定范围
@@ -682,6 +686,16 @@ print(vowels[4])  // 打印: u
 var snowfall = [2.4, 3.6, 3.4, 1.8, 0.0]
 // 明确类型：
 var temp: [Int] = [33, 31, 30, 38, 44]
+```
+
+### 用默认值初始化
+
+```swift
+var teams = [Int](repeating: 0, count: 3)
+print(teams) // 打印: [0, 0, 0]
+// 或者Array类型
+var sizes = Array<Int>(repeating: 0, count: 3)
+print(sizes) // 打印: [0, 0, 0]
 ```
 
 ### .append() 方法和 += 运算符
@@ -1077,7 +1091,7 @@ func convertFracToDec(numerator: Double, denominator: Double) -> Double {
 } 
 
 let decimal = convertFracToDec(numerator: 1.0, denominator: 2.0) 
-print(decimal) // Prints:  0.5 
+print(decimal) // 打印:  0.5 
 ```
 
 ### 省略参数标签
@@ -1691,6 +1705,22 @@ currentTraffic.reportAccident()
 扩展
 ---
 
+### 什么是扩展
+
+扩展是向现有的类、结构体、枚举或协议类型添加新功能的方法。包括添加新的方法、属性、初始化方法等。
+
+### 为什么要使用扩展
+
+扩展让开发者可以以一种非侵入的方式来增强类型的功能，当我们无法直接修改原始类或结构体时（例如，系统库的类），扩展允许我们在不改变原始源代码的情况下添加新功能。
+
+### 基础语法
+
+```swift
+extension SomeType {
+    // 添加新功能
+}
+```
+
 ### 声明扩展
 
 ```swift
@@ -1705,6 +1735,34 @@ extension Person {
 extension Person: SomeProtocol {
      // 实现协议方法、属性
 }
+```
+
+### 扩展计算属性
+
+```swift
+// 扩展可以添加计算属性，不能添加存储属性
+extension Double {
+    var km: Double { self * 1000 }
+    var m: Double { self }
+    var cm: Double { self / 100.0 }
+    var mm: Double { self / 1000.0 }
+}
+let metric: Double = 30.48.cm
+print("1 metric is \(metric.m) meter")
+print("1 metric is \(metric.km) kilometer")
+```
+
+### 扩展可变实例方法
+
+```swift
+extension Double {
+    mutating func cube() {
+        self = self * self * self
+    }
+}
+var boxCube: Double = 2.0
+boxCube.cube()
+print(boxCube)
 ```
 
 ### 扩展构造器
@@ -1726,18 +1784,49 @@ let frame = CGRect(center: CGPoint(x: 100, y: 100),
 print("Origin is \(frame.origin)")
 ```
 
-### 扩展可变实例方法
+### 扩展协议
+
+<!--rehype:wrap-class=row-span-3-->
+
+它的工作方式与抽象类类似，适用于在所有实现某种协议的类中提供某些功能的情况（而不需要从一个公共的基类继承）。
 
 ```swift
-extension Double {
-    mutating func cube() {
-        self = self * self * self
+// 定义协议
+protocol Drawable {
+    func draw()
+}
+
+// 使用协议扩展为 draw 方法提供默认实现
+extension Drawable {
+    func draw() {
+        print("绘制形状")
     }
 }
-var boxCube: Double = 2.0
-boxCube.cube()
-print(boxCube)
+
+// 定义一个符合 Drawable 协议的类 Circle
+class Circle: Drawable {
+    // Circle 可以使用默认的 draw 实现
+    // 或者覆盖它
+}
+
+// 定义另一个符合 Drawable 协议的类 Square
+class Square: Drawable {
+    // 重写 draw 方法以提供自定义实现
+    func draw() {
+        print("画一个正方形")
+    }
+}
+
+// 使用示例
+let circle = Circle()
+circle.draw()  // 打印: 绘制形状
+
+let square = Square()
+square.draw()  // 打印: 画一个正方形
+
 ```
+
+你可以使用协议扩展来给协议的任意方法或者计算属性要求提供默认实现。如果遵循类型给这个协议的要求提供了它自己的实现，那么它就会替代扩展中提供的默认实现。
 
 ### 扩展方法
 
@@ -1753,21 +1842,6 @@ extension String {
     }
 }
 print("Hello World".deletingPrefix("He"))
-```
-
-### 扩展计算属性
-
-```swift
-// 扩展可以添加计算属性，不能添加存储属性
-extension Double {
-    var km: Double { self * 1000 }
-    var m: Double { self }
-    var cm: Double { self / 100.0 }
-    var mm: Double { self / 1000.0 }
-}
-let metric: Double = 30.48.cm
-print("1 metric is \(metric.m) meter")
-print("1 metric is \(metric.km) kilometer")
 ```
 
 ### 扩展存储属性
@@ -1787,6 +1861,152 @@ extension UIColor {
         }
     }
 }
+```
+
+泛型
+---
+
+### 什么是泛型
+
+在Swift中，泛型是一个允许我们创建可以使用任何数据类型的函数、类、结构和协议的特性。
+
+### 为什么使用泛型
+
+泛型使我们能够编写清晰简洁的代码，并能够与任何数据类型一起工作。通过使用占位符（如 `T`），可以减少引入错误的风险。
+
+### 泛型函数
+<!--rehype:wrap-class=row-span-2-->
+
+```swift
+// 接受两个类型相同的参数并交换它们
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+    let temp = a
+    a = b
+    b = temp
+}
+
+var a = 10
+var b = 20
+swapTwoValues(&a, &b)
+print(a) // 打印: 20
+print(b) // 打印: 10
+
+var c = "Hello"
+var d = "World"
+swapTwoValues(&c, &d)
+print(c) // 打印: "World"
+print(d) // 打印: "Hello"
+```
+
+### 基础用法
+
+```swift
+func foo<T, U>(a: T, b: U) {
+  // ...
+}
+
+struct Foo<T, U> {
+  var a: T
+  // ...
+}
+```
+
+在这个例子中，`T`和`U`是一个类型占位符，它表示任何类型，写在尖括号内（如`<T>`）
+
+### 泛型结构体
+
+```swift
+// 定义一个泛型结构体 Box
+// 它有一个名为 value 的泛型属性
+struct Box<T> {
+    var value: T
+}
+
+let intBox = Box(value: 10)
+let stringBox = Box(value: "Hello")
+
+print(intBox.value) // 打印: 10
+print(stringBox.value) // 打印: "Hello"
+```
+
+### 泛型约束
+
+有时我们希望限制泛型的类型范围，可以使用泛型约束。比如，限制泛型类型必须是遵循某个协议的类型
+
+```swift
+struct Box<T: Numeric> {
+    var value: T
+
+    // 计算 value 的平方函数
+    func square() -> T {
+        return value * value
+    }
+}
+
+let intBox = Box(value: 10)
+print(intBox.square()) // 输出 100
+
+let floatBox = Box(value: 5.0)
+print(floatBox.square()) // 输出 25.0
+
+// 以下代码会报错，因为String不遵循Numeric协议
+// let stringBox = Box(value: "Hello")
+```
+
+### 泛型类型别名
+
+<!--rehype:wrap-class=col-span-2-->
+
+为泛型类型创建别名`typealias`，这样可以给泛型类型起一个更具体的名字，使得代码更加清晰易懂
+
+- 示例1
+
+```swift
+// 定义一个泛型类型别名 'IntBox'
+typealias IntBox = Box<Int>
+
+// 使用类型别名创建一个存储 Int 类型值的 Box 实例
+let intBox = IntBox(value: 42)
+print(intBox.value) // 输出 42
+
+```
+
+- 示例2
+
+```swift
+// 定义一个泛型类型别名 'StringBox'，其中 T 被约束为 String
+typealias StringBox<T> = Box<T> where T: StringProtocol
+
+// 使用类型别名创建一个存储 String 类型值的 Box 实例
+let stringBox = StringBox(value: "Hello, world!")
+print(stringBox.value) // 输出 "Hello, world!"
+```
+
+### 泛型协议
+
+```swift
+protocol Storage {
+    associatedtype Item
+    func store(item: Item)
+    func retrieve() -> Item?
+}
+
+class SimpleStorage<T>: Storage {
+    private var items: [T] = []
+
+    func store(item: T) {
+        items.append(item)
+    }
+
+    func retrieve() -> T? {
+        return items.isEmpty ? nil : items.removeLast()
+    }
+}
+
+let intStorage = SimpleStorage<Int>()
+intStorage.store(item: 42)
+print(intStorage.retrieve() ?? "Empty")  
+// 打印: 42
 ```
 
 另见
