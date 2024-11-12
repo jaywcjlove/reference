@@ -11,7 +11,7 @@ Swift 备忘清单
 
 ```swift
 var score = 0 // 变量
-let pi = 3.14 // 常数
+let pi = 3.14 // 常量
 
 var greeting = "Hello"
 var numberOfToys = 8
@@ -169,7 +169,7 @@ numberOfToys += 1
 print(numberOfToys) // 打印“9”
 ```
 
-### 常数
+### 常量声明
 
 常量用 `let` 声明：
 
@@ -187,7 +187,7 @@ let numberOfToys: Int = 8
 let isMorning: Bool = true
 ```
 
-常量是不可变的。它们的值不能改变：
+常量 `let` 一旦设定，在程序运行时就无法改变其值:
 
 ```swift
 let numberOfToys: Int = 8
@@ -195,7 +195,7 @@ numberOfToys += 1
 // ❌ 错误：numberOfToys 不可变
 ```
 
-### 计算变量（get 和 set）
+### 计算属性（get 和 set）
 <!--rehype:wrap-class=row-span-3-->
 
 ```swift
@@ -580,6 +580,8 @@ for char in "supercalifragilistice" {
 // 打印: e
 // 打印: r
 ```
+
+`break` 关键字中断当前循环
 
 ### 使用下划线
 
