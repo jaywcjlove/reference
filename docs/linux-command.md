@@ -348,6 +348,7 @@ Linux 命令速查表
  **`for file in $(ls); do sed -i 's/nmg/sz/g' "$file"; done`**         | 当前目录修改字符串
  **`ssh -NfR remote_port:localhost:local_port user@remote_server`**    | ssh代理
  **`find . -wholename "*.sh" -exec dos2unix {} \;`**     | 修复脚本格式错误
+ **`rsync -avz /source/ user@remote:/destination/`**     | 同步文件和目录到远程服务器，支持压缩和增量传输
  <!--rehype:className=left-align shortcuts-->  
 
 另见
