@@ -242,10 +242,12 @@ sb.append("!");
 ### 比较
 
 ```java
-String s1 = new String("QuickRef");
+String s1 = "QuickRef";
 String s2 = new String("QuickRef");
-s1 == s2          // false
-s1.equals(s2)     // true
+s1 == s2                     // false
+s1.equals(s2)                // true
+// intern 方法获得字符串常量池中的惟一引用
+s1 == s2.intern()            // true
 "AB".equalsIgnoreCase("ab")  // true
 ```
 
@@ -310,7 +312,7 @@ int[] a3 = new int[]{1, 2, 3};
 int[] a4 = new int[3];
 a4[0] = 1;
 a4[2] = 2;
-a4[3] = 3;
+a4[3] = 3; // 会出现索引越界异常
 ```
 
 ### 修改 Modify
