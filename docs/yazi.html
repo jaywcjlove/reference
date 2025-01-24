@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Yazi 备忘清单
+ &#x26;  yazi cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="这份快速参考备忘单提供了Yazi 快速的终端文件管理的简要概述，以及 Yazi的基本操作
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="yazi,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/yazi.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.8.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="yazi-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#yazi-备忘清单"><span class="icon icon-link"></span></a>Yazi 备忘清单</h1><div class="wrap-body">
+<p>这份快速参考备忘单提供了Yazi 快速的终端文件管理的简要概述，以及 Yazi的基本操作</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#功能特点">功能特点</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用方法">使用方法</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#启动">启动</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#帮助">帮助</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#基本操作">基本操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#导航">导航</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件操作">文件操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#搜索与过滤">搜索与过滤</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#视图操作">视图操作</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#自定义配置">自定义配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自定义配置-1">自定义配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置文件示例yazitoml">配置文件示例：yazi.toml</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#keymaptoml-配置示例">keymap.toml 配置示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#themetoml-配置示例">theme.toml 配置示例</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="功能特点"><a aria-hidden="true" tabindex="-1" href="#功能特点"><span class="icon icon-link"></span></a>功能特点</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<ul>
+<li>跨平台支持</li>
+</ul>
+<p><code>Yazi</code> 支持多种操作系统，包括 Linux、macOS 和 Windows。这使得用户可以在不同的平台上获得一致的体验。</p>
+<ul>
+<li>轻量级和快速</li>
+</ul>
+<p>Yazi 是一个设计简洁、执行效率高的终端文件管理器。它的轻量级特性确保了在启动和操作过程中都能保持高速度和低资源消耗。</p>
+<ul>
+<li>插件支持</li>
+</ul>
+<p>Yazi 支持插件，用户可以根据需要安装和配置插件，以扩展文件管理器的功能</p>
+<ul>
+<li>丰富的文件操作</li>
+</ul>
+<p>Yazi 提供了一系列丰富的文件操作功能，包括复制、剪切、粘贴、删除、重命名等。此外，还支持批量操作和多选功能，极大提高了文件管理的效率。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>系统</th><th>安装方法</th></tr></thead><tbody><tr><td><strong>使用 Cargo 安装</strong></td><td>cargo install yazi</td></tr><tr><td><strong>Arch Linux</strong></td><td>yay -S yazi</td></tr><tr><td><strong>Debian/Ubuntu</strong></td><td>可以使用 Cargo 进行安装</td></tr><tr><td><strong>macOS (使用 Homebrew)</strong></td><td>brew install yazi</td></tr><tr><td><strong>Windows (使用 Carg)</strong></td><td>cargo install yazi</td></tr><tr><td><strong>Windows (使用 Scoop)</strong></td><td>scoop install yazi</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="使用方法"><a aria-hidden="true" tabindex="-1" href="#使用方法"><span class="icon icon-link"></span></a>使用方法</h3><div class="wrap-body">
+<h4 id="启动"><a aria-hidden="true" tabindex="-1" href="#启动"><span class="icon icon-link"></span></a>启动</h4>
+<p>你可以在终端中通过以下命令启动 Yazi</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">yazi
+</span></code></pre>
+<h4 id="帮助"><a aria-hidden="true" tabindex="-1" href="#帮助"><span class="icon icon-link"></span></a>帮助</h4>
+<p>你可以通过以下命令查看 Yazi 的帮助文档</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">yazi <span class="token parameter variable">--help</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="基本操作"><a aria-hidden="true" tabindex="-1" href="#基本操作"><span class="icon icon-link"></span></a>基本操作</h2><div class="wrap-body">
+<p>Yazi 文件管理器主要通过键盘快捷键进行操作。以下是一些常用的快捷键：</p>
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="导航"><a aria-hidden="true" tabindex="-1" href="#导航"><span class="icon icon-link"></span></a>导航</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>h</code></td><td align="left">返回上一级目录</td></tr><tr><td align="left"><code>j</code></td><td align="left">向下移动选中项</td></tr><tr><td align="left"><code>k</code></td><td align="left">向上移动选中项</td></tr><tr><td align="left"><code>l</code></td><td align="left">进入选中的目录或打开文件</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="文件操作"><a aria-hidden="true" tabindex="-1" href="#文件操作"><span class="icon icon-link"></span></a>文件操作</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>y</code></td><td align="left">复制选中的文件或目录</td></tr><tr><td align="left"><code>d</code></td><td align="left">剪切选中的文件或目录</td></tr><tr><td align="left"><code>p</code></td><td align="left">粘贴文件或目录</td></tr><tr><td align="left"><code>x</code></td><td align="left">删除选中的文件或目录</td></tr><tr><td align="left"><code>r</code></td><td align="left">重命名选中的文件或目录</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="搜索与过滤"><a aria-hidden="true" tabindex="-1" href="#搜索与过滤"><span class="icon icon-link"></span></a>搜索与过滤</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>/</code></td><td align="left">开始搜索模式</td></tr><tr><td align="left"><code>n</code></td><td align="left">在搜索模式中跳到下一个匹配项</td></tr><tr><td align="left"><code>N</code></td><td align="left">在搜索模式中跳到上一个匹配项</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="视图操作"><a aria-hidden="true" tabindex="-1" href="#视图操作"><span class="icon icon-link"></span></a>视图操作</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th align="left">:-</th><th align="left">:-</th></tr></thead><tbody><tr><td align="left"><code>gg</code></td><td align="left">跳到列表的顶部</td></tr><tr><td align="left"><code>G</code></td><td align="left">跳到列表的底部</td></tr><tr><td align="left"><code>Ctrl+f</code></td><td align="left">向下滚动一页</td></tr><tr><td align="left"><code>Ctrl+b</code></td><td align="left">向上滚动一页</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="自定义配置"><a aria-hidden="true" tabindex="-1" href="#自定义配置"><span class="icon icon-link"></span></a>自定义配置</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="自定义配置-1"><a aria-hidden="true" tabindex="-1" href="#自定义配置-1"><span class="icon icon-link"></span></a>自定义配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<p>你可以通过编辑配置文件来自定义 Yazi。配置文件通常位于 <code>$HOME/.config/yazi/xxx.toml</code><br>
+你可以在该文件中修改一些默认设置，例如快捷键绑定、主题颜色等。</p>
+<ul>
+<li>yazi.toml - 常规配置。</li>
+<li>keymap.toml - 按键绑定配置。</li>
+<li>theme.toml - 配色方案配置。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置文件示例yazitoml"><a aria-hidden="true" tabindex="-1" href="#配置文件示例yazitoml"><span class="icon icon-link"></span></a>配置文件示例：yazi.toml</h3><div class="wrap-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">general</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 设置主界面主题为 dark 或 light</span>
+</span><span class="code-line"><span class="token key property">theme</span> <span class="token punctuation">=</span> <span class="token string">"dark"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 启动时的默认路径</span>
+</span><span class="code-line"><span class="token key property">default_path</span> <span class="token punctuation">=</span> <span class="token string">"~"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 是否启用自动保存配置</span>
+</span><span class="code-line"><span class="token key property">auto_save_config</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">keybindings</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 自定义快捷键绑定</span>
+</span><span class="code-line"><span class="token key property">quit</span> <span class="token punctuation">=</span> <span class="token string">"q"</span>        <span class="token comment"># 退出</span>
+</span><span class="code-line"><span class="token key property">copy</span> <span class="token punctuation">=</span> <span class="token string">"y"</span>        <span class="token comment"># 复制文件</span>
+</span><span class="code-line"><span class="token key property">paste</span> <span class="token punctuation">=</span> <span class="token string">"p"</span>       <span class="token comment"># 粘贴文件</span>
+</span><span class="code-line"><span class="token key property">delete</span> <span class="token punctuation">=</span> <span class="token string">"d"</span>      <span class="token comment"># 删除文件</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">ui</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 界面相关配置</span>
+</span><span class="code-line"><span class="token key property">preview_enabled</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>        <span class="token comment"># 是否启用文件预览</span>
+</span><span class="code-line"><span class="token key property">show_hidden_files</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>      <span class="token comment"># 显示隐藏文件</span>
+</span><span class="code-line"><span class="token key property">columns</span> <span class="token punctuation">=</span> <span class="token number">2</span>                   <span class="token comment"># 文件列表列数</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">search</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 搜索行为配置</span>
+</span><span class="code-line"><span class="token key property">case_sensitive</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>        <span class="token comment"># 搜索是否区分大小写</span>
+</span><span class="code-line"><span class="token key property">search_timeout</span> <span class="token punctuation">=</span> <span class="token number">30</span>           <span class="token comment"># 搜索超时时间（秒）</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">sorting</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 排序规则配置</span>
+</span><span class="code-line"><span class="token key property">sort_by</span> <span class="token punctuation">=</span> <span class="token string">"name"</span>              <span class="token comment"># 排序方式: name, size, date</span>
+</span><span class="code-line"><span class="token key property">reverse_sort</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>          <span class="token comment"># 是否反向排序</span>
+</span><span class="code-line">
+</span><span class="code-line"> <span class="token punctuation">[</span><span class="token table class-name">plugins</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 插件加载配置</span>
+</span><span class="code-line"><span class="token key property">enabled_plugins</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"git"</span><span class="token punctuation">,</span> <span class="token string">"archive"</span><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="keymaptoml-配置示例"><a aria-hidden="true" tabindex="-1" href="#keymaptoml-配置示例"><span class="icon icon-link"></span></a>keymap.toml 配置示例</h3><div class="wrap-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token comment"># 全局快捷键配置</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">global</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 全局退出应用程序</span>
+</span><span class="code-line"><span class="token key property">quit</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+Q"</span>
+</span><span class="code-line"><span class="token comment"># 打开文件或目录</span>
+</span><span class="code-line"><span class="token key property">open</span> <span class="token punctuation">=</span> <span class="token string">"Enter"</span>
+</span><span class="code-line"><span class="token comment"># 返回上级目录</span>
+</span><span class="code-line"><span class="token key property">back</span> <span class="token punctuation">=</span> <span class="token string">"Backspace"</span>
+</span><span class="code-line"><span class="token comment"># 搜索功能触发</span>
+</span><span class="code-line"><span class="token key property">search</span> <span class="token punctuation">=</span> <span class="token string">"/"</span>
+</span><span class="code-line"><span class="token comment"># 复制路径</span>
+</span><span class="code-line"><span class="token key property">copy_path</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+C"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 窗口控制快捷键</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">window</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 切换窗口</span>
+</span><span class="code-line"><span class="token key property">switch_window</span> <span class="token punctuation">=</span> <span class="token string">"Tab"</span>
+</span><span class="code-line"><span class="token comment"># 新建窗口</span>
+</span><span class="code-line"><span class="token key property">new_window</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+N"</span>
+</span><span class="code-line"><span class="token comment"># 关闭窗口</span>
+</span><span class="code-line"><span class="token key property">close_window</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+W"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 文件操作快捷键</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">file</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 删除文件</span>
+</span><span class="code-line"><span class="token key property">delete_file</span> <span class="token punctuation">=</span> <span class="token string">"D"</span>
+</span><span class="code-line"><span class="token comment"># 重命名文件</span>
+</span><span class="code-line"><span class="token key property">rename_file</span> <span class="token punctuation">=</span> <span class="token string">"R"</span>
+</span><span class="code-line"><span class="token comment"># 复制文件</span>
+</span><span class="code-line"><span class="token key property">copy_file</span> <span class="token punctuation">=</span> <span class="token string">"Y"</span>
+</span><span class="code-line"><span class="token comment"># 粘贴文件</span>
+</span><span class="code-line"><span class="token key property">paste_file</span> <span class="token punctuation">=</span> <span class="token string">"P"</span>
+</span><span class="code-line"><span class="token comment"># 移动文件</span>
+</span><span class="code-line"><span class="token key property">move_file</span> <span class="token punctuation">=</span> <span class="token string">"M"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 文件选择快捷键</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">selection</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 全选</span>
+</span><span class="code-line"><span class="token key property">select_all</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+A"</span>
+</span><span class="code-line"><span class="token comment"># 取消所有选择</span>
+</span><span class="code-line"><span class="token key property">deselect_all</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+D"</span>
+</span><span class="code-line"><span class="token comment"># 反选</span>
+</span><span class="code-line"><span class="token key property">invert_selection</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+I"</span>
+</span><span class="code-line"><span class="token comment"># 选择当前文件/目录</span>
+</span><span class="code-line"><span class="token key property">select_item</span> <span class="token punctuation">=</span> <span class="token string">"Space"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 页面导航快捷键</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">navigation</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 向上移动光标</span>
+</span><span class="code-line"><span class="token key property">move_up</span> <span class="token punctuation">=</span> <span class="token string">"K"</span>
+</span><span class="code-line"><span class="token comment"># 向下移动光标</span>
+</span><span class="code-line"><span class="token key property">move_down</span> <span class="token punctuation">=</span> <span class="token string">"J"</span>
+</span><span class="code-line"><span class="token comment"># 向左切换标签</span>
+</span><span class="code-line"><span class="token key property">move_left</span> <span class="token punctuation">=</span> <span class="token string">"H"</span>
+</span><span class="code-line"><span class="token comment"># 向右切换标签</span>
+</span><span class="code-line"><span class="token key property">move_right</span> <span class="token punctuation">=</span> <span class="token string">"L"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 自定义命令触发键</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">custom</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 触发自定义功能</span>
+</span><span class="code-line"><span class="token key property">custom_action_1</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+1"</span>
+</span><span class="code-line"><span class="token key property">custom_action_2</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+2"</span>
+</span><span class="code-line"><span class="token key property">custom_action_3</span> <span class="token punctuation">=</span> <span class="token string">"Ctrl+3"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="themetoml-配置示例"><a aria-hidden="true" tabindex="-1" href="#themetoml-配置示例"><span class="icon icon-link"></span></a>theme.toml 配置示例</h3><div class="wrap-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">general</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 设置主界面配色方案</span>
+</span><span class="code-line"><span class="token key property">background_color</span> <span class="token punctuation">=</span> <span class="token string">"#1e1e2e"</span>  <span class="token comment"># 背景颜色</span>
+</span><span class="code-line"><span class="token key property">foreground_color</span> <span class="token punctuation">=</span> <span class="token string">"#cdd6f4"</span>  <span class="token comment"># 文本颜色</span>
+</span><span class="code-line"><span class="token key property">cursor_color</span> <span class="token punctuation">=</span> <span class="token string">"#89dceb"</span>      <span class="token comment"># 光标颜色</span>
+</span><span class="code-line"><span class="token key property">selection_color</span> <span class="token punctuation">=</span> <span class="token string">"#585b70"</span>   <span class="token comment"># 选中项背景颜色</span>
+</span><span class="code-line"><span class="token key property">highlight_color</span> <span class="token punctuation">=</span> <span class="token string">"#fab387"</span>   <span class="token comment"># 高亮颜色</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 字体设置</span>
+</span><span class="code-line"><span class="token key property">font_family</span> <span class="token punctuation">=</span> <span class="token string">"FiraCode"</span>      <span class="token comment"># 字体名称</span>
+</span><span class="code-line"><span class="token key property">font_size</span> <span class="token punctuation">=</span> <span class="token number">14</span>                <span class="token comment"># 字体大小</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">ui</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 界面边框与间距</span>
+</span><span class="code-line"><span class="token key property">border_color</span> <span class="token punctuation">=</span> <span class="token string">"#45475a"</span>      <span class="token comment"># 边框颜色</span>
+</span><span class="code-line"><span class="token key property">padding</span> <span class="token punctuation">=</span> <span class="token number">4</span>                   <span class="token comment"># 界面内容的内边距</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">file_browser</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 文件浏览器颜色配置</span>
+</span><span class="code-line"><span class="token key property">directory_color</span> <span class="token punctuation">=</span> <span class="token string">"#89b4fa"</span>   <span class="token comment"># 目录名称颜色</span>
+</span><span class="code-line"><span class="token key property">file_color</span> <span class="token punctuation">=</span> <span class="token string">"#cdd6f4"</span>        <span class="token comment"># 普通文件颜色</span>
+</span><span class="code-line"><span class="token key property">symlink_color</span> <span class="token punctuation">=</span> <span class="token string">"#f5c2e7"</span>     <span class="token comment"># 符号链接颜色</span>
+</span><span class="code-line"><span class="token key property">hidden_file_color</span> <span class="token punctuation">=</span> <span class="token string">"#6c7086"</span> <span class="token comment"># 隐藏文件颜色</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">status_bar</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 状态栏颜色</span>
+</span><span class="code-line"><span class="token key property">background_color</span> <span class="token punctuation">=</span> <span class="token string">"#313244"</span>  <span class="token comment"># 状态栏背景</span>
+</span><span class="code-line"><span class="token key property">foreground_color</span> <span class="token punctuation">=</span> <span class="token string">"#a6adc8"</span>  <span class="token comment"># 状态栏文字</span>
+</span><span class="code-line"><span class="token key property">error_color</span> <span class="token punctuation">=</span> <span class="token string">"#f38ba8"</span>       <span class="token comment"># 状态栏错误信息</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">search</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 搜索结果配色</span>
+</span><span class="code-line"><span class="token key property">match_color</span> <span class="token punctuation">=</span> <span class="token string">"#a6e3a1"</span>       <span class="token comment"># 搜索结果的匹配高亮</span>
+</span><span class="code-line"><span class="token key property">current_match_color</span> <span class="token punctuation">=</span> <span class="token string">"#fab387"</span>  <span class="token comment"># 当前匹配项的高亮</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">progress_bar</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token comment"># 进度条的配色</span>
+</span><span class="code-line"><span class="token key property">filled_color</span> <span class="token punctuation">=</span> <span class="token string">"#89dceb"</span>      <span class="token comment"># 已填充部分</span>
+</span><span class="code-line"><span class="token key property">empty_color</span> <span class="token punctuation">=</span> <span class="token string">"#313244"</span>       <span class="token comment"># 未填充部分</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://yazi-rs.github.io/">Yazi 官方文档</a> <em>(yazi-rs.github.io)</em></li>
+<li><a href="https://github.com/sxyazi/yazi">Yazi Github</a> <em>(github.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.8.1" defer></script><script src="../js/fuse.min.js?v=1.8.1" defer></script><script src="../js/main.js?v=1.8.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
