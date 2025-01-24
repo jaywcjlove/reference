@@ -5,57 +5,41 @@ Yazi 备忘清单
 
 入门
 ----
-<!--rehype:body-class=cols-2-->
+
 ### 功能特点
-<!--rehype:wrap-class=row-span-2-->
-- 跨平台支持
 
- `Yazi` 支持多种操作系统，包括 Linux、macOS 和 Windows。这使得用户可以在不同的平台上获得一致的体验。
-
-- 轻量级和快速
-
-Yazi 是一个设计简洁、执行效率高的终端文件管理器。它的轻量级特性确保了在启动和操作过程中都能保持高速度和低资源消耗。
-
-- 插件支持
-
-Yazi 支持插件，用户可以根据需要安装和配置插件，以扩展文件管理器的功能
-
-- 丰富的文件操作
-
-Yazi 提供了一系列丰富的文件操作功能，包括复制、剪切、粘贴、删除、重命名等。此外，还支持批量操作和多选功能，极大提高了文件管理的效率。
+- <code>**跨平台支持**</code>：Yazi 支持 Linux、macOS 和 Windows，提供一致的跨平台体验
+- <code>**轻量高效**</code>：简洁设计，启动和操作快速，资源消耗低
+- <code>**插件扩展**</code>：支持插件安装，灵活扩展功能
+- <code>**文件操作**</code>：支持复制、剪切、粘贴、删除、重命名等操作，且支持批量和多选功能，提升效率
 
 ### 安装
 
 | 系统 | 安装方法 |
 | ----- | ----- |
-| **使用 Cargo 安装** | cargo install yazi |
-| **Arch Linux** | yay -S yazi |
-| **Debian/Ubuntu** | 可以使用 Cargo 进行安装 |
-| **macOS (使用 Homebrew)** | brew install yazi |
-| **Windows (使用 Carg)** | cargo install yazi |
-| **Windows (使用 Scoop)** | scoop install yazi |
+| 使用 Cargo 安装 | `cargo install yazi` |
+| Arch Linux | `yay -S yazi` |
+| Debian/Ubuntu | 可以使用 `Cargo` 进行安装 |
+| macOS (使用 Homebrew) | `brew install yazi` |
+| Windows (使用 Carg) | `cargo install yazi` |
+| Windows (使用 Scoop) | `scoop install yazi` |
 
 ### 使用方法
 
-#### 启动
-
-你可以在终端中通过以下命令启动 Yazi
+#### 命令启动 Yazi
 
 ```sh
 yazi
 ```
 
-#### 帮助
-
-你可以通过以下命令查看 Yazi 的帮助文档
+#### 查看 Yazi 的帮助文档
 
 ```sh
 yazi --help
 ```
 
-## 基本操作
-
-Yazi 文件管理器主要通过键盘快捷键进行操作。以下是一些常用的快捷键：
+## 常用的快捷键
+<!--rehype:body-class=cols-2-->
 
 ### 导航
 
@@ -100,15 +84,15 @@ Yazi 文件管理器主要通过键盘快捷键进行操作。以下是一些常
 ## 自定义配置
 
 ### 自定义配置
-<!--rehype:wrap-class=col-span-3-->
-你可以通过编辑配置文件来自定义 Yazi。配置文件通常位于 `$HOME/.config/yazi/xxx.toml`  
-你可以在该文件中修改一些默认设置，例如快捷键绑定、主题颜色等。
 
-- yazi.toml - 常规配置。
-- keymap.toml - 按键绑定配置。
-- theme.toml - 配色方案配置。
+通过编辑配置文件来自定义 `Yazi`，配置文件通常位于 `$HOME/.config/yazi/xxx.toml`，可修改默认设置如快捷键、主题等。
+
+- `yazi.toml` - 常规配置
+- `keymap.toml` - 快捷键绑定
+- `theme.toml` - 主题配置
 
 ### 配置文件示例：yazi.toml
+<!--rehype:wrap-class=row-span-2-->
 
 ```toml
 [general]
@@ -130,26 +114,27 @@ delete = "d"      # 删除文件
 
 [ui]
 # 界面相关配置
-preview_enabled = true        # 是否启用文件预览
-show_hidden_files = true      # 显示隐藏文件
-columns = 2                   # 文件列表列数
+preview_enabled = true     # 是否启用文件预览
+show_hidden_files = true   # 显示隐藏文件
+columns = 2                # 文件列表列数
 
 [search]
 # 搜索行为配置
-case_sensitive = false        # 搜索是否区分大小写
-search_timeout = 30           # 搜索超时时间（秒）
+case_sensitive = false  # 搜索是否区分大小写
+search_timeout = 30     # 搜索超时时间（秒）
 
 [sorting]
 # 排序规则配置
-sort_by = "name"              # 排序方式: name, size, date
-reverse_sort = false          # 是否反向排序
+sort_by = "name" # 排序方式: name,size,date
+reverse_sort = false  # 是否反向排序
 
- [plugins]
+[plugins]
 # 插件加载配置
 enabled_plugins = ["git", "archive"]
 ```
 
 ### keymap.toml 配置示例
+<!--rehype:wrap-class=row-span-2-->
 
 ```toml
 # 全局快捷键配置
