@@ -274,6 +274,7 @@ Quick Reference
 [Emoji](./docs/emoji.md)<!--rehype:style=\-\-bg\-opacity: 0.75;background-image: linear-gradient(to left, rgba(74 222 128 / var(\-\-bg\-opacity)), rgba(59 130 246 / var(\-\-bg\-opacity)));-->  
 [MIME types](./docs/mime.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [Resolutions](./docs/resolutions.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[时区列表](./docs/time-zones.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [常见端口对照](./docs/ports.md)<!--rehype:style=background: rgb(16 185 129);-->  
 <!--rehype:class=home-card-->
 
