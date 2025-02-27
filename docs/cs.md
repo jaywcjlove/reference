@@ -1320,59 +1320,18 @@ var result = students
 ```cs
 ["Charlie","Damon","David"]
 ```
+
 事件和委托
 ----
 
-> 在 .NET 中委托提供后期绑定机制。 后期绑定意味着调用方在你所创建的算法中至少提供一个方法来实现算法的一部分, 而不是在创建委托时提供完整的算法。 委托的这种特性使得 .NET 成为一种灵活、可扩展的编程环境。
+### 介绍
 
-### 定义委托类型
-
-```cs
-// 使用 delegate 关键字定义委托
-public delegate void MyDelegate(int x, string y);
-
-// 上述委托对应的函数实现应该类似:
-public void MyMethod(int x, string y);
-```
-
-### 创建委托实例
-
-```cs
-// 创建委托实例
-MyDelegate myDelegate = new MyDelegate(MyMethod);
-```
-
-### 调用委托
-
-```cs
-// 调用委托,传入对应类型的参数
-myDelegate(10, "Hello");
-```
-
-### 委托作为参数
-<!--rehype:wrap-class=col-span-2-->
-
-```cs
-// 定义另一个委托类型
-public delegate int MyDelegate2(int x, int y);
-
-// 定义一个方法，接收委托作为参数
-public int MyMethod2(int x, int y, MyDelegate2 myDelegate)
-{
-    return myDelegate(x, y);
-}
-
-// 创建委托实例
-MyDelegate2 myDelegate2 = new MyDelegate2(Add);
-
-// 调用 MyMethod2 方法，并传入委托作为参数
-int result = MyMethod2(10, 20, myDelegate2);
-```
+在 .NET 中，委托支持后期绑定，允许调用方在运行时提供方法的一部分，而不是在创建委托时定义完整算法，从而增强了灵活性和扩展性。
 
 ### 多播委托
-<!--rehype:wrap-class=col-span-3-->
+<!--rehype:wrap-class=col-span-2 row-span-6-->
 
-> 我们预先提供这些可用的方法
+我们预先提供这些可用的方法
 
 ```cs
 public void Sub(int x, int y)
@@ -1386,61 +1345,149 @@ public void Mul(int x, int y)
 }
 ```
 
+定义一个委托类型
+
 ```cs
-// 定义一个委托类型
 public delegate void MyDelegate3(int x, int y);
-// 定义一个方法，接收委托作为参数
+```
+
+定义一个方法，接收委托作为参数
+
+```cs
 public void MyMethod3(int x, int y, MyDelegate3 myDelegate)
 {
     myDelegate(x, y);
 }
+```
 
-// 定义另一个委托类型
+定义另一个委托类型
+
+```cs
 public delegate void MyDelegate4(int x, int y);
-// 定义一个方法，接收委托作为参数
+```
+
+定义一个方法，接收委托作为参数
+
+```cs
 public void MyMethod4(int x, int y, MyDelegate4 myDelegate)
 {
     myDelegate(x, y);
 }
+```
 
-// 定义一个方法，接收委托作为参数
+定义一个方法，接收委托作为参数
+
+```cs
 public void MyMethod5(int x, int y, MyDelegate3 myDelegate, MyDelegate4 myDelegate2)
 {
     myDelegate(x, y);
     myDelegate2(x, y);
 }
+```
 
-// 多播委托
+#### 多播委托
+
+```cs
 MyDelegate3 myDelegate31 = new MyDelegate3(Sub);
 MyDelegate4 myDelegate41 = new MyDelegate4(Mul);
+```
 
-// 调用 MyMethod3 方法，并传入委托作为参数
-// output:
-// x-y=5
+调用 MyMethod3 方法，并传入委托作为参数
+
+```cs
 MyMethod3(10, 5, myDelegate31);
+// output:
+// x-y=5
+```
 
-// 调用 MyMethod4 方法，并传入委托作为参数
+调用 MyMethod4 方法，并传入委托作为参数
+
+```cs
+MyMethod4(10, 5, myDelegate41);
 // output:
 // x*y=50
-MyMethod4(10, 5, myDelegate41);
+```
 
-// 调用 MyMethod5 方法，并传入委托作为参数
+调用 MyMethod5 方法，并传入委托作为参数
+
+```cs
+MyMethod5(10, 5, myDelegate31, myDelegate41);
 // output:
 // x-y=5
 // x*y=50
-MyMethod5(10, 5, myDelegate31, myDelegate41);
+```
+
+### 定义委托类型
+
+使用 `delegate` 关键字定义委托
+
+```cs
+public delegate void MyDelegate(
+    int x, string y
+);
+```
+
+上述委托对应的函数实现应该类似:
+
+```cs
+public void MyMethod(int x, string y);
+```
+
+### 创建委托实例
+
+```cs
+// 创建委托实例
+MyDelegate myDelegate = new MyDelegate(
+    MyMethod
+);
+```
+
+### 调用委托
+
+```cs
+// 调用委托,传入对应类型的参数
+myDelegate(10, "Hello");
+```
+
+### 委托作为参数
+
+```cs
+// 定义另一个委托类型
+public delegate int MyDelegate2(
+    int x, int y
+);
+
+// 定义一个方法，接收委托作为参数
+public int MyMethod2(
+   int x, int y, MyDelegate2 myDelegate
+)
+{
+    return myDelegate(x, y);
+}
+
+// 创建委托实例
+MyDelegate2 myDelegate2 = new MyDelegate2(
+    Add
+);
+
+// 调用 MyMethod2 方法，并传入委托作为参数
+int result = MyMethod2(
+    10, 20, myDelegate2
+);
 ```
 
 ### Action 委托
 
-> Action 委托的变体可包含最多16个参数，返回类型为 `void`
+Action 委托的变体最多可包含 16 个参数，且返回类型为 `void`
 
 ```cs
 // 创建一个Action
 public Action<int, string> myAction;
 
 // 给Action赋值
-myAction = (x, y) => Console.WriteLine("x+y=" + (x + y));
+myAction = (x, y) => Console.WriteLine(
+    "x+y=" + (x + y)
+);
 
 // 直接调用Action
 myAction(10, "Hello");
@@ -1450,8 +1497,9 @@ myAction?.Invoke(10, "Hello");
 ```
 
 ### Func 委托
+<!--rehype:wrap-class=row-span-2-->
 
-> Func 委托的变体可包含最多16个参数，返回类型可以是任意类型 T
+Func 委托的变体可包含最多16个参数，返回类型可以是任意类型 T
 
 ```cs
 // 创建一个Func,最后一个参数是返回类型
@@ -1467,9 +1515,10 @@ string result = myFunc(10, 20);
 string result2 = myFunc?.Invoke(10, 20);
 ```
 
-> 和委托类似，事件是后期绑定机制。 实际上，事件是建立在对委托的语言支持之上的。事件是c#内部对委托的一种封装，它提供一种更加面向对象的编程模型和观察者模式的实现。
+事件与委托类似，都是后期绑定机制。实际上，事件是建立在委托基础上的一种语言支持，它是 C# 对委托的封装，提供了更面向对象的编程模型，并实现了观察者模式。
 
 ### 事件定义
+<!--rehype:wrap-class=col-span-2-->
 
 ```cs
 // 使用 event 关键字定义事件
@@ -1477,8 +1526,9 @@ public event EventHandler<EventArgs> MyEvent;
 ```
 
 ### 事件订阅
+<!--rehype:wrap-class=col-span-2-->
 
-> 我们实现定义一个方法作为事件处理器，并订阅事件
+我们实现定义一个方法作为事件处理器，并订阅事件
 
 ```cs
 public void MyEventHandler(object sender, EventArgs e)
@@ -1504,7 +1554,6 @@ MyEvent?.Invoke(this, new EventArgs());
 ```
 
 ### 事件参数
-
 <!--rehype:wrap-class=col-span-2-->
 
 ```cs
