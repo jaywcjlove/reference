@@ -11,9 +11,10 @@ LaTeX 备忘清单
 [LaTeX](https://www.latex-project.org/) 基于 TEX 的排版系统，适用于生成高印刷质量的科技和数学、物理文档。
 
 - [LaTeX 官网](https://www.latex-project.org/) _(latex-project.org)_
-- [KaTeX 官网](https://katex.org/) _(katex.org)_
 
 而 [KaTeX](https://katex.org/) 只处理 LaTeX 的数学符号的一个更小的子集，用于 web 上展示
+
+- [KaTeX 官网](https://katex.org/) _(katex.org)_
 
 ### 示例
 
