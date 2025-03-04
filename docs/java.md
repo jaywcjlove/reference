@@ -349,16 +349,16 @@ for (int a: arr) {
 ### 二维数组 Multidimensional Arrays
 
 ```java
-int[][] matrix = { {1, 2, 3}, {4, 5} };
+int[][] matrix = {{1, 2, 3}, {4, 5}, {6}};
 int x = matrix[1][0];  // 4
-// [[1, 2, 3], [4, 5]]
-Arrays.deepToString(matrix)
-for (int i = 0; i < a.length; ++i) {
-  for(int j = 0; j < a[i].length; ++j) {
-    System.out.println(a[i][j]);
-  }
+System.out.Println(Arrays.deepToString(matrix));
+// 输出: [[1, 2, 3], [4, 5], [6]]
+for (int i = 0; i < matrix.length; ++i) {
+    for(int j = 0; j < matrix[i].length; ++j) {
+        System.out.println(matrix[i][j]);
+    }
 }
-// 输出: 1 2 3 4 5 6 7
+// 输出: 1 2 3 4 5 6
 ```
 
 ### 排序 Sort
