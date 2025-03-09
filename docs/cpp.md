@@ -30,7 +30,7 @@ Hello Quick Reference
 int number = 5;       // 整数
 float f = 0.95;       // 浮点数
 double PI = 3.14159;  // 浮点数
-char yes = 'Y';       // 特点
+char yes = 'Y';       // 字符
 std::string s = "ME"; // 字符串（文本）
 bool isRight = true;  // 布尔值
 // 常量
@@ -327,14 +327,14 @@ else
 
 #### 位运算符
 
-| Operator | Description             |
-|----------|-------------------------|
-| `a & b`  | Binary AND              |
-| `a | b`  | Binary OR               |
-| `a ^ b`  | Binary XOR              |
-| `a ~ b`  | Binary One's Complement |
-| `a << b` | Binary Shift Left       |
-| `a >> b` | Binary Shift Right      |
+| 运算符 | 描述 |
+|--------|------|
+| `a & b`  | 按位与 |
+| <code>a &#124; b</code>  | 按位或 |
+| `a ^ b`  | 按位异或 |
+| `~a`     | 按位取反 |
+| `a << b` | 左移 |
+| `a >> b` | 右移 |
 
 ### 三元运算符
 
@@ -621,7 +621,7 @@ auto func = []() -> return_type { };
                     ? val1 : val2;
           };
 
-      auto func2 = [&, val1]() -> int
+      auto func2 = [&, val1]() -> string
           {
               return   str1 == std::to_string(val1)
                     ? str1 : str2;
@@ -926,7 +926,7 @@ int val = result.get();
 extern double foo(int val) {}
 
 std::future<double> result =
-    async(foo, 5);
+    std::async(foo, 5);
 
 //返回值类型
 std::future_status status;
