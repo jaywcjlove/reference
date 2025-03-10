@@ -56,7 +56,7 @@
 <pre class="language-cpp"><code class="language-cpp code-highlight"><span class="code-line"><span class="token keyword">int</span> number <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>       <span class="token comment">// 整数</span>
 </span><span class="code-line"><span class="token keyword">float</span> f <span class="token operator">=</span> <span class="token number">0.95</span><span class="token punctuation">;</span>       <span class="token comment">// 浮点数</span>
 </span><span class="code-line"><span class="token keyword">double</span> PI <span class="token operator">=</span> <span class="token number">3.14159</span><span class="token punctuation">;</span>  <span class="token comment">// 浮点数</span>
-</span><span class="code-line"><span class="token keyword">char</span> yes <span class="token operator">=</span> <span class="token char">'Y'</span><span class="token punctuation">;</span>       <span class="token comment">// 特点</span>
+</span><span class="code-line"><span class="token keyword">char</span> yes <span class="token operator">=</span> <span class="token char">'Y'</span><span class="token punctuation">;</span>       <span class="token comment">// 字符</span>
 </span><span class="code-line">std<span class="token double-colon punctuation">::</span>string s <span class="token operator">=</span> <span class="token string">"ME"</span><span class="token punctuation">;</span> <span class="token comment">// 字符串（文本）</span>
 </span><span class="code-line"><span class="token keyword">bool</span> isRight <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>  <span class="token comment">// 布尔值</span>
 </span><span class="code-line"><span class="token comment">// 常量</span>
@@ -412,7 +412,7 @@
 
 
 
-<table><thead><tr><th>Operator</th><th>Description</th></tr></thead><tbody><tr><td><code>a &#x26; b</code></td><td>Binary AND</td></tr><tr><td>`a</td><td>b`</td></tr><tr><td><code>a ^ b</code></td><td>Binary XOR</td></tr><tr><td><code>a ~ b</code></td><td>Binary One's Complement</td></tr><tr><td><code>a &#x3C;&#x3C; b</code></td><td>Binary Shift Left</td></tr><tr><td><code>a >> b</code></td><td>Binary Shift Right</td></tr></tbody></table>
+<table><thead><tr><th>运算符</th><th>描述</th></tr></thead><tbody><tr><td><code>a &#x26; b</code></td><td>按位与</td></tr><tr><td><code>a | b</code></td><td>按位或</td></tr><tr><td><code>a ^ b</code></td><td>按位异或</td></tr><tr><td><code>~a</code></td><td>按位取反</td></tr><tr><td><code>a &#x3C;&#x3C; b</code></td><td>左移</td></tr><tr><td><code>a >> b</code></td><td>右移</td></tr></tbody></table>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="三元运算符"><a aria-hidden="true" tabindex="-1" href="#三元运算符"><span class="icon icon-link"></span></a>三元运算符</h3><div class="wrap-body">
 <pre><code class="code-highlight"><span class="code-line">           ┌── True ──┐
 </span><span class="code-line">Result = Condition ? Exp1 : Exp2;
@@ -634,7 +634,7 @@
 </span><span class="code-line">              <span class="token operator">?</span> val1 <span class="token operator">:</span> val2<span class="token punctuation">;</span>
 </span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </span><span class="code-line">
-</span><span class="code-line"><span class="token keyword">auto</span> func2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">&#x26;</span><span class="token punctuation">,</span> val1<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">int</span>
+</span><span class="code-line"><span class="token keyword">auto</span> func2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">&#x26;</span><span class="token punctuation">,</span> val1<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> string
 </span><span class="code-line">    <span class="token punctuation">{</span>
 </span><span class="code-line">        <span class="token keyword">return</span>   str1 <span class="token operator">==</span> std<span class="token double-colon punctuation">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>val1<span class="token punctuation">)</span>
 </span><span class="code-line">              <span class="token operator">?</span> str1 <span class="token operator">:</span> str2<span class="token punctuation">;</span>
@@ -862,7 +862,7 @@
 <pre class="language-cpp"><code class="language-cpp code-highlight"><span class="code-line"><span class="token keyword">extern</span> <span class="token keyword">double</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 </span><span class="code-line">
 </span><span class="code-line">std<span class="token double-colon punctuation">::</span>future<span class="token operator">&#x3C;</span><span class="token keyword">double</span><span class="token operator">></span> result <span class="token operator">=</span>
-</span><span class="code-line">    <span class="token function">async</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    std<span class="token double-colon punctuation">::</span><span class="token function">async</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="code-line">
 </span><span class="code-line"><span class="token comment">//返回值类型</span>
 </span><span class="code-line">std<span class="token double-colon punctuation">::</span>future_status status<span class="token punctuation">;</span>
