@@ -115,6 +115,17 @@ mysqldump -u user -p db_name --no-data=true --add-drop-table=false > db.sql
 mysql -u user -p db_name < db.sql
 ```
 
+### 错误处理 Error Handling
+
+| 语句                     | 描述                           |
+| :----------------------- | :----------------------------- |
+| `SHOW ERRORS;`           | 显示最近的错误信息             |
+| `SHOW WARNINGS;`         | 显示最近的警告信息             |
+| `SHOW COUNT(*) ERRORS;`  | 返回最近语句的错误数量         |
+| `SHOW COUNT(*) WARNINGS;`| 返回最近语句的警告数量         |
+| `EXPLAIN`                | 分析 SQL 查询的执行计划，排查问题 |
+| `SHOW ENGINE INNODB STATUS;` | 显示 InnoDB 引擎状态，包括死锁等错误信息 |
+
 MySQL 示例
 ------
 
@@ -613,6 +624,7 @@ MySQL 数据类型
 | `COUNT()` | 计算行数，可选择性地忽略NULL值 |
 | `MAX()`   | 找出一列的最大值               |
 | `MIN()`   | 找出一列的最小值               |
+| `GROUP_CONCAT()` | 将一组值连接成单一字符串，可指定分隔符，常用于分组。|
 
 ### 数学函数
 
