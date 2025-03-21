@@ -1532,6 +1532,156 @@ declare module 'vue' {
   }
 }
 ```
+## 性能优化
+
+性能优化是构建高效 Vue 应用的关键。以下是一些特殊的优化策略，结合 Vue 的特性，可以大幅减少渲染开销、提升加载速度和用户体验。这些方法不仅限于单一 API，而是从整体架构和开发实践出发，提供通用的性能提升思路。
+
+### 条件渲染与缓存结合
+通过结合 `v-if` 和 `<KeepAlive>`，可以避免频繁销毁和重建组件，尤其是在切换视图或路由时。搭配 `defineAsyncComponent` 实现懒加载，进一步减少初次加载的开销。
+
+```vue
+<template>
+  <div>
+    <button @click="toggle">Toggle View</button>
+    <keep-alive>
+      <component :is="currentView" />
+    </keep-alive>
+  </div>
+</template>
+
+<script setup>
+import { ref, defineAsyncComponent } from 'vue';
+
+const currentView = ref('ViewA');
+const toggle = () => {
+  currentView.value = currentView.value === 'ViewA' ? 'ViewB' : 'ViewA';
+};
+
+const ViewA = defineAsyncComponent(() => import('./ViewA.vue'));
+const ViewB = defineAsyncComponent(() => import('./ViewB.vue'));
+</script>
+//<KeepAlive> 缓存动态组件，防止重复创建和销毁。
+//defineAsyncComponent 实现组件懒加载，仅在需要时加载模块。
+//效果：减少 DOM 操作和组件初始化的性能消耗，特别适合复杂组件切换或路由场景。
+```
+### 路由前置优化（beforeRouteEnter）
+
+在路由进入前执行数据预取或条件检查，可以避免不必要的渲染和请求，提升页面加载效率。
+
+```vue
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'Profile',
+  beforeRouteEnter(to, from, next) {
+    // 模拟数据预取
+    fetchUserData(to.params.id).then((user) => {
+      next((vm) => {
+        vm.user = user; // 将数据传递给组件实例
+      });
+    }).catch(() => {
+      next(false); // 阻止路由进入
+    });
+  },
+  data() {
+    return {
+      user: null,
+    };
+  },
+});
+</script>
+
+<template>
+  <div v-if="user">
+    <h1>{{ user.name }}</h1>
+  </div>
+</template>
+```
+### 响应式对象的精简
+
+避免将大型对象直接用 reactive 包裹，而是按需拆分，使用 ref 或 toRef 精细控制响应式范围，减少依赖追踪的开销。
+
+```vue
+<script setup>
+import { ref, toRef, reactive } from 'vue';
+
+const largeData = {
+  user: { name: 'Alice', age: 25 },
+  settings: { theme: 'dark', fontSize: 16 },
+  items: Array(1000).fill({ id: 0, value: 'test' }),
+};
+
+// 仅将需要的部分设为响应式
+const userName = ref(largeData.user.name);
+const settings = reactive(largeData.settings);
+const firstItem = toRef(largeData.items[0], 'value');
+</script>
+
+<template>
+  <div>
+    <input v-model="userName" />
+    <p>Theme: {{ settings.theme }}</p>
+    <p>First Item: {{ firstItem }}</p>
+  </div>
+</template>
+```
+### 计算属性的延迟执行
+
+通过封装计算属性并结合 watchEffect，实现按需计算，避免不必要的开销。
+
+```vuw
+<script setup>
+import { ref, computed, watchEffect } from 'vue';
+
+const items = ref([]);
+const filterText = ref('');
+const filteredItems = computed(() => {
+  return items.value.filter((item) => item.includes(filterText.value));
+});
+
+watchEffect(() => {
+  if (filterText.value) {
+    // 仅在 filterText 不为空时触发计算
+    filteredItems.value;
+  }
+});
+</script>
+
+<template>
+  <div>
+    <input v-model="filterText" placeholder="Filter items" />
+    <ul>
+      <li v-for="item in filteredItems" :key="item">{{ item }}</li>
+    </ul>
+  </div>
+</template>
+```
+### v-memo 缓存子树
+
+v-memo 用于缓存模板子树，仅在依赖项变化时更新，常用于优化列表或静态内容。
+
+```vue
+<template>
+  <div v-for="item in items" :key="item.id" v-memo="[item.updated]">
+    {{ item.name }} - {{ expensiveComputation(item) }}
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const items = ref([
+  { id: 1, name: 'Item 1', updated: false },
+  { id: 2, name: 'Item 2', updated: false },
+]);
+
+const expensiveComputation = (item) => {
+  return item.name.toUpperCase(); // 模拟复杂计算
+};
+</script>
+```
+
 
 API 参考
 ---
