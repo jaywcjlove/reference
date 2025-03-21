@@ -1529,14 +1529,18 @@ declare module 'vue' {
       from: Route,
       next: () => void
     ): void
-  }
+  
 }
 ```
+
 ## 性能优化
+
+### 介绍
 
 性能优化是构建高效 Vue 应用的关键。以下是一些特殊的优化策略，结合 Vue 的特性，可以大幅减少渲染开销、提升加载速度和用户体验。这些方法不仅限于单一 API，而是从整体架构和开发实践出发，提供通用的性能提升思路。
 
 ### 条件渲染与缓存结合
+
 通过结合 `v-if` 和 `<KeepAlive>`，可以避免频繁销毁和重建组件，尤其是在切换视图或路由时。搭配 `defineAsyncComponent` 实现懒加载，进一步减少初次加载的开销。
 
 ```vue
@@ -1564,6 +1568,7 @@ const ViewB = defineAsyncComponent(() => import('./ViewB.vue'));
 //defineAsyncComponent 实现组件懒加载，仅在需要时加载模块。
 //效果：减少 DOM 操作和组件初始化的性能消耗，特别适合复杂组件切换或路由场景。
 ```
+
 ### 路由前置优化（beforeRouteEnter）
 
 在路由进入前执行数据预取或条件检查，可以避免不必要的渲染和请求，提升页面加载效率。
@@ -1598,6 +1603,7 @@ export default defineComponent({
   </div>
 </template>
 ```
+
 ### 响应式对象的精简
 
 避免将大型对象直接用 reactive 包裹，而是按需拆分，使用 ref 或 toRef 精细控制响应式范围，减少依赖追踪的开销。
@@ -1626,6 +1632,7 @@ const firstItem = toRef(largeData.items[0], 'value');
   </div>
 </template>
 ```
+
 ### 计算属性的延迟执行
 
 通过封装计算属性并结合 watchEffect，实现按需计算，避免不必要的开销。
@@ -1657,6 +1664,7 @@ watchEffect(() => {
   </div>
 </template>
 ```
+
 ### v-memo 缓存子树
 
 v-memo 用于缓存模板子树，仅在依赖项变化时更新，常用于优化列表或静态内容。
@@ -1681,7 +1689,6 @@ const expensiveComputation = (item) => {
 };
 </script>
 ```
-
 
 API 参考
 ---
