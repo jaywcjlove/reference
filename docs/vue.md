@@ -1690,6 +1690,195 @@ const expensiveComputation = (item) => {
 </script>
 ```
 
+### 事件节流与防抖
+
+通过在事件处理中引入节流（throttle）或防抖（debounce），减少高频事件的触发频率。
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { debounce } from 'lodash-es';
+
+const searchText = ref('');
+const search = debounce((value) => {
+  console.log('Search:', value); // 模拟搜索请求
+}, 300);
+
+const handleInput = (e) => {
+  searchText.value = e.target.value;
+  search(searchText.value);
+};
+</script>
+
+<template>
+  <input
+    :value="searchText"
+    @input="handleInput"
+    placeholder="Type to search"
+  />
+</template>
+```
+
+### 虚拟列表（Virtual Scrolling）
+
+对于长列表（如包含数千条数据的列表），可以使用虚拟列表技术，只渲染可视区域内的元素，减少 DOM 节点数量。
+
+```vue
+<template>
+  <div class="list-container" ref="list">
+    <div class="list-viewport" :style="{ height: totalHeight + 'px' }">
+      <div
+        class="list-content"
+        :style="{ transform: `translateY(${scrollTop}px)` }"
+      >
+        <div
+          v-for="item in visibleItems"
+          :key="item.id"
+          class="list-item"
+        >
+          {{ item.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+
+const items = ref(
+  Array.from({ length: 10000 }, (_, i) => ({
+    id: i,
+    name: `Item ${i}`,
+  }))
+);
+const itemHeight = 40; // 每项高度
+const viewportHeight = 400; // 视口高度
+const totalHeight = computed(() => items.value.length * itemHeight);
+const scrollTop = ref(0);
+const visibleCount = Math.ceil(viewportHeight / itemHeight) + 2; // 多渲染2项作为缓冲
+
+const visibleItems = computed(() => {
+  const start = Math.floor(scrollTop.value / itemHeight);
+  const end = Math.min(start + visibleCount, items.value.length);
+  return items.value.slice(start, end);
+});
+
+const list = ref(null);
+const onScroll = () => {
+  scrollTop.value = list.value.scrollTop;
+};
+
+onMounted(() => {
+  list.value.addEventListener('scroll', onScroll);
+});
+onUnmounted(() => {
+  list.value.removeEventListener('scroll', onScroll);
+});
+</script>
+
+<style>
+.list-container {
+  height: 400px;
+  overflow-y: auto;
+}
+.list-item {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+
+```
+
+### 按需加载资源（Lazy Loading Resources）
+
+通过动态导入（Dynamic Import）按需加载非关键资源（如图片、第三方库），可以减少初次加载的开销，提升首屏渲染速度。
+
+```vue
+<template>
+  <div>
+    <button @click="loadChart">Load Chart</button>
+    <div v-if="ChartComponent">
+      <ChartComponent :data="chartData" />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const ChartComponent = ref(null);
+const chartData = ref([10, 20, 30, 40]);
+
+const loadChart = async () => {
+  // 动态导入第三方库（如 Chart.js）
+  const { default: Chart } = await import('chart.js/auto');
+  // 模拟动态加载的图表组件
+  ChartComponent.value = {
+    props: ['data'],
+    template: `<canvas ref="chart"></canvas>`,
+    mounted() {
+      new Chart(this.$refs.chart, {
+        type: 'bar',
+        data: {
+          labels: ['A', 'B', 'C', 'D'],
+          datasets: [{ data: this.data }],
+        },
+      });
+    },
+  };
+};
+</script>
+```
+
+### 优化事件监听（Event Delegation）
+
+通过事件委托（Event Delegation）将事件监听器绑定到父元素，减少直接绑定到每个子元素的事件监听器数量，适合动态列表或大量元素场景。
+
+```vue
+<template>
+  <div class="item-list" @click="handleItemClick">
+    <div
+      v-for="item in items"
+      :key="item.id"
+      :data-id="item.id"
+      class="item"
+    >
+      {{ item.name }}
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const items = ref([
+  { id: 1, name: 'Item 1' },
+  { id: 2, name: 'Item 2' },
+  { id: 3, name: 'Item 3' },
+]);
+
+const handleItemClick = (event) => {
+  const itemId = event.target.dataset.id;
+  if (itemId) {
+    console.log(`Clicked item with ID: ${itemId}`);
+  }
+};
+</script>
+
+<style>
+.item-list {
+  padding: 10px;
+}
+.item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+</style>
+```
+
 API 参考
 ---
 
