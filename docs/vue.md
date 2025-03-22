@@ -1529,8 +1529,354 @@ declare module 'vue' {
       from: Route,
       next: () => void
     ): void
-  }
+  
 }
+```
+
+## 性能优化
+
+### 介绍
+
+性能优化是构建高效 Vue 应用的关键。以下是一些特殊的优化策略，结合 Vue 的特性，可以大幅减少渲染开销、提升加载速度和用户体验。这些方法不仅限于单一 API，而是从整体架构和开发实践出发，提供通用的性能提升思路。
+
+### 条件渲染与缓存结合
+
+通过结合 `v-if` 和 `<KeepAlive>`，可以避免频繁销毁和重建组件，尤其是在切换视图或路由时。搭配 `defineAsyncComponent` 实现懒加载，进一步减少初次加载的开销。
+
+```vue
+<template>
+  <div>
+    <button @click="toggle">Toggle View</button>
+    <keep-alive>
+      <component :is="currentView" />
+    </keep-alive>
+  </div>
+</template>
+
+<script setup>
+import { ref, defineAsyncComponent } from 'vue';
+
+const currentView = ref('ViewA');
+const toggle = () => {
+  currentView.value = currentView.value === 'ViewA' ? 'ViewB' : 'ViewA';
+};
+
+const ViewA = defineAsyncComponent(() => import('./ViewA.vue'));
+const ViewB = defineAsyncComponent(() => import('./ViewB.vue'));
+</script>
+//<KeepAlive> 缓存动态组件，防止重复创建和销毁。
+//defineAsyncComponent 实现组件懒加载，仅在需要时加载模块。
+//效果：减少 DOM 操作和组件初始化的性能消耗，特别适合复杂组件切换或路由场景。
+```
+
+### 路由前置优化（beforeRouteEnter）
+
+在路由进入前执行数据预取或条件检查，可以避免不必要的渲染和请求，提升页面加载效率。
+
+```vue
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'Profile',
+  beforeRouteEnter(to, from, next) {
+    // 模拟数据预取
+    fetchUserData(to.params.id).then((user) => {
+      next((vm) => {
+        vm.user = user; // 将数据传递给组件实例
+      });
+    }).catch(() => {
+      next(false); // 阻止路由进入
+    });
+  },
+  data() {
+    return {
+      user: null,
+    };
+  },
+});
+</script>
+
+<template>
+  <div v-if="user">
+    <h1>{{ user.name }}</h1>
+  </div>
+</template>
+```
+
+### 响应式对象的精简
+
+避免将大型对象直接用 reactive 包裹，而是按需拆分，使用 ref 或 toRef 精细控制响应式范围，减少依赖追踪的开销。
+
+```vue
+<script setup>
+import { ref, toRef, reactive } from 'vue';
+
+const largeData = {
+  user: { name: 'Alice', age: 25 },
+  settings: { theme: 'dark', fontSize: 16 },
+  items: Array(1000).fill({ id: 0, value: 'test' }),
+};
+
+// 仅将需要的部分设为响应式
+const userName = ref(largeData.user.name);
+const settings = reactive(largeData.settings);
+const firstItem = toRef(largeData.items[0], 'value');
+</script>
+
+<template>
+  <div>
+    <input v-model="userName" />
+    <p>Theme: {{ settings.theme }}</p>
+    <p>First Item: {{ firstItem }}</p>
+  </div>
+</template>
+```
+
+### 计算属性的延迟执行
+
+通过封装计算属性并结合 watchEffect，实现按需计算，避免不必要的开销。
+
+```vuw
+<script setup>
+import { ref, computed, watchEffect } from 'vue';
+
+const items = ref([]);
+const filterText = ref('');
+const filteredItems = computed(() => {
+  return items.value.filter((item) => item.includes(filterText.value));
+});
+
+watchEffect(() => {
+  if (filterText.value) {
+    // 仅在 filterText 不为空时触发计算
+    filteredItems.value;
+  }
+});
+</script>
+
+<template>
+  <div>
+    <input v-model="filterText" placeholder="Filter items" />
+    <ul>
+      <li v-for="item in filteredItems" :key="item">{{ item }}</li>
+    </ul>
+  </div>
+</template>
+```
+
+### v-memo 缓存子树
+
+v-memo 用于缓存模板子树，仅在依赖项变化时更新，常用于优化列表或静态内容。
+
+```vue
+<template>
+  <div v-for="item in items" :key="item.id" v-memo="[item.updated]">
+    {{ item.name }} - {{ expensiveComputation(item) }}
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const items = ref([
+  { id: 1, name: 'Item 1', updated: false },
+  { id: 2, name: 'Item 2', updated: false },
+]);
+
+const expensiveComputation = (item) => {
+  return item.name.toUpperCase(); // 模拟复杂计算
+};
+</script>
+```
+
+### 事件节流与防抖
+
+通过在事件处理中引入节流（throttle）或防抖（debounce），减少高频事件的触发频率。
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { debounce } from 'lodash-es';
+
+const searchText = ref('');
+const search = debounce((value) => {
+  console.log('Search:', value); // 模拟搜索请求
+}, 300);
+
+const handleInput = (e) => {
+  searchText.value = e.target.value;
+  search(searchText.value);
+};
+</script>
+
+<template>
+  <input
+    :value="searchText"
+    @input="handleInput"
+    placeholder="Type to search"
+  />
+</template>
+```
+
+### 虚拟列表（Virtual Scrolling）
+
+对于长列表（如包含数千条数据的列表），可以使用虚拟列表技术，只渲染可视区域内的元素，减少 DOM 节点数量。
+
+```vue
+<template>
+  <div class="list-container" ref="list">
+    <div class="list-viewport" :style="{ height: totalHeight + 'px' }">
+      <div
+        class="list-content"
+        :style="{ transform: `translateY(${scrollTop}px)` }"
+      >
+        <div
+          v-for="item in visibleItems"
+          :key="item.id"
+          class="list-item"
+        >
+          {{ item.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+
+const items = ref(
+  Array.from({ length: 10000 }, (_, i) => ({
+    id: i,
+    name: `Item ${i}`,
+  }))
+);
+const itemHeight = 40; // 每项高度
+const viewportHeight = 400; // 视口高度
+const totalHeight = computed(() => items.value.length * itemHeight);
+const scrollTop = ref(0);
+const visibleCount = Math.ceil(viewportHeight / itemHeight) + 2; // 多渲染2项作为缓冲
+
+const visibleItems = computed(() => {
+  const start = Math.floor(scrollTop.value / itemHeight);
+  const end = Math.min(start + visibleCount, items.value.length);
+  return items.value.slice(start, end);
+});
+
+const list = ref(null);
+const onScroll = () => {
+  scrollTop.value = list.value.scrollTop;
+};
+
+onMounted(() => {
+  list.value.addEventListener('scroll', onScroll);
+});
+onUnmounted(() => {
+  list.value.removeEventListener('scroll', onScroll);
+});
+</script>
+
+<style>
+.list-container {
+  height: 400px;
+  overflow-y: auto;
+}
+.list-item {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+
+```
+
+### 按需加载资源（Lazy Loading Resources）
+
+通过动态导入（Dynamic Import）按需加载非关键资源（如图片、第三方库），可以减少初次加载的开销，提升首屏渲染速度。
+
+```vue
+<template>
+  <div>
+    <button @click="loadChart">Load Chart</button>
+    <div v-if="ChartComponent">
+      <ChartComponent :data="chartData" />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const ChartComponent = ref(null);
+const chartData = ref([10, 20, 30, 40]);
+
+const loadChart = async () => {
+  // 动态导入第三方库（如 Chart.js）
+  const { default: Chart } = await import('chart.js/auto');
+  // 模拟动态加载的图表组件
+  ChartComponent.value = {
+    props: ['data'],
+    template: `<canvas ref="chart"></canvas>`,
+    mounted() {
+      new Chart(this.$refs.chart, {
+        type: 'bar',
+        data: {
+          labels: ['A', 'B', 'C', 'D'],
+          datasets: [{ data: this.data }],
+        },
+      });
+    },
+  };
+};
+</script>
+```
+
+### 优化事件监听（Event Delegation）
+
+通过事件委托（Event Delegation）将事件监听器绑定到父元素，减少直接绑定到每个子元素的事件监听器数量，适合动态列表或大量元素场景。
+
+```vue
+<template>
+  <div class="item-list" @click="handleItemClick">
+    <div
+      v-for="item in items"
+      :key="item.id"
+      :data-id="item.id"
+      class="item"
+    >
+      {{ item.name }}
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const items = ref([
+  { id: 1, name: 'Item 1' },
+  { id: 2, name: 'Item 2' },
+  { id: 3, name: 'Item 3' },
+]);
+
+const handleItemClick = (event) => {
+  const itemId = event.target.dataset.id;
+  if (itemId) {
+    console.log(`Clicked item with ID: ${itemId}`);
+  }
+};
+</script>
+
+<style>
+.item-list {
+  padding: 10px;
+}
+.item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+</style>
 ```
 
 API 参考
