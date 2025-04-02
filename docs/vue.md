@@ -1543,7 +1543,7 @@ declare module 'vue' {
 
 通过结合 `v-if` 和 `<KeepAlive>`，可以避免频繁销毁和重建组件，尤其是在切换视图或路由时。搭配 `defineAsyncComponent` 实现懒加载，进一步减少初次加载的开销。
 
-```vue
+```html
 <template>
   <div>
     <button @click="toggle">Toggle View</button>
@@ -1573,7 +1573,7 @@ const ViewB = defineAsyncComponent(() => import('./ViewB.vue'));
 
 在路由进入前执行数据预取或条件检查，可以避免不必要的渲染和请求，提升页面加载效率。
 
-```vue
+```html
 <script>
 import { defineComponent } from 'vue';
 
@@ -1608,7 +1608,7 @@ export default defineComponent({
 
 避免将大型对象直接用 reactive 包裹，而是按需拆分，使用 ref 或 toRef 精细控制响应式范围，减少依赖追踪的开销。
 
-```vue
+```html
 <script setup>
 import { ref, toRef, reactive } from 'vue';
 
@@ -1637,7 +1637,7 @@ const firstItem = toRef(largeData.items[0], 'value');
 
 通过封装计算属性并结合 watchEffect，实现按需计算，避免不必要的开销。
 
-```vuw
+```html
 <script setup>
 import { ref, computed, watchEffect } from 'vue';
 
@@ -1669,7 +1669,7 @@ watchEffect(() => {
 
 v-memo 用于缓存模板子树，仅在依赖项变化时更新，常用于优化列表或静态内容。
 
-```vue
+```html
 <template>
   <div v-for="item in items" :key="item.id" v-memo="[item.updated]">
     {{ item.name }} - {{ expensiveComputation(item) }}
@@ -1694,7 +1694,7 @@ const expensiveComputation = (item) => {
 
 通过在事件处理中引入节流（throttle）或防抖（debounce），减少高频事件的触发频率。
 
-```vue
+```html
 <script setup>
 import { ref } from 'vue';
 import { debounce } from 'lodash-es';
@@ -1723,7 +1723,7 @@ const handleInput = (e) => {
 
 对于长列表（如包含数千条数据的列表），可以使用虚拟列表技术，只渲染可视区域内的元素，减少 DOM 节点数量。
 
-```vue
+```html
 <template>
   <div class="list-container" ref="list">
     <div class="list-viewport" :style="{ height: totalHeight + 'px' }">
@@ -1795,7 +1795,7 @@ onUnmounted(() => {
 
 通过动态导入（Dynamic Import）按需加载非关键资源（如图片、第三方库），可以减少初次加载的开销，提升首屏渲染速度。
 
-```vue
+```html
 <template>
   <div>
     <button @click="loadChart">Load Chart</button>
@@ -1836,7 +1836,7 @@ const loadChart = async () => {
 
 通过事件委托（Event Delegation）将事件监听器绑定到父元素，减少直接绑定到每个子元素的事件监听器数量，适合动态列表或大量元素场景。
 
-```vue
+```html
 <template>
   <div class="item-list" @click="handleItemClick">
     <div
