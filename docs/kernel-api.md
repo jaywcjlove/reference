@@ -4,7 +4,38 @@ linux kernel api 备忘清单
 列表管理函数（List Management Functions）
 ----
 
-TODO
+### 初始化 `list_head` 结构体
+
+**API**
+
+```
+void INIT_LIST_HEAD(struct list_head *list)
+```
+
+**参数**
+
+- `struct list_head *list` 需要初始化的 `list_head` 结构体
+
+**描述**
+
+将 `list_head` 结构体初始化，使其指向自身。如果 `list` 作为链表的头节点（即表头），那么初始化后的结果是一个空链表。
+
+### 添加新节点
+
+**API**
+
+```
+void list_add(struct list_head *new, struct list_head *head)
+```
+
+**参数**
+
+- `struct list_head *new` 要插入的新节点
+- `struct list_head *head` 作为基准的链表节点，新节点将插入到其后
+
+**描述**
+
+在指定的 head 之后插入一个新节点 new，用于维护双向链表结构。这在实现链表管理时非常有用，例如构建栈或队列等数据结构。
 
 基础C库函数（Basic C Library Functions）
 ----
@@ -20,7 +51,6 @@ CRC 和数学函数（CRC and Math Functions in Linux）
 ----
 
 TODO
-
 
 IPC 功能（Kernel IPC facilities）
 ----
