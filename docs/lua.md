@@ -763,7 +763,7 @@ table["sex"] = "boy"
 
 -- 获取 table 的长度
 
-print(#table) -- 3
+print(#table) -- 0
 
 -- 如果想要删除一个 table，那么可以使用 nil 赋值
 table = nil
