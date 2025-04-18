@@ -167,7 +167,11 @@
 </span></code></pre>
 <hr>
 <pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token comment">-- 给多个变量赋值</span>
-</span><span class="code-line">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">*</span>a  <span class="token comment">--> a=10; b=20</span>
+</span><span class="code-line"><span class="token comment">-- 情况1：a 未定义过</span>
+</span><span class="code-line">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">*</span>a  <span class="token comment">-- 报错：a 是 nil</span>
+</span><span class="code-line"><span class="token comment">-- 情况2：a 已定义（比如 a=5）</span>
+</span><span class="code-line">a <span class="token operator">=</span> <span class="token number">5</span>
+</span><span class="code-line">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">*</span>a  <span class="token comment">-- 右侧的 a=5，结果 a=10, b=10（不会报错）</span>
 </span></code></pre>
 <h4 id="交换变量"><a aria-hidden="true" tabindex="-1" href="#交换变量"><span class="icon icon-link"></span></a>交换变量</h4>
 <pre class="language-lua"><code class="language-lua code-highlight"><span class="code-line"><span class="token keyword">local</span> x<span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span>
