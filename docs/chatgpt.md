@@ -616,3 +616,4 @@ Facebook 受众建议
 - [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts)
 - [原始资料](https://github.com/Fechin/reference/blob/main/source/_posts/chatgpt.md)
 - [ChatGPT](https://chatgpt.com/)
+- [Comprehensive Cheatsheet](https://github.com/bg-write/chatGPT-cheatsheet)
