@@ -258,6 +258,7 @@ Quick Reference
 [Twitter(X)](./docs/twitter.md)<!--rehype:style=background: rgb(91 163 230);-->  
 [WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220);-->  
 [Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233);&class=tag&data-lang=macOS-->  
+[Zed](./docs/zed.md)<!--rehype:style=background: rgb(71 71 71);-->  
 <!--rehype:class=home-card-->
 
 ## 其它
