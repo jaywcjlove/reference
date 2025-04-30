@@ -26,7 +26,7 @@ Zed 文本编辑器中 50 个快捷键的视觉备忘单
 | `Ctrl` `Shift` `S`      | 另存为...               |
 | `Ctrl` `Alt` `S`        | 保存所有文件            |
 | `Ctrl` `Shift` `W`      | 关闭窗口                |
-<!--rehype:className=shortcuts-->
+<!--rehype:className=shortcuts left-align-->
 
 ### 编辑
 
@@ -54,8 +54,7 @@ Zed 文本编辑器中 50 个快捷键的视觉备忘单
 | `Alt` `Up`               | 上移一行                 |
 | `Alt` `Down`             | 下移一行                 |
 | `Ctrl` `Shift` `D`       | 复制选中的内容           |
-
-{.shortcuts}
+<!--rehype:className=shortcuts left-align-->
 
 ### 视图
 
@@ -74,7 +73,7 @@ Zed 文本编辑器中 50 个快捷键的视觉备忘单
 | `Ctrl` `Shift` `C`   | 协作面板                |
 | `Ctrl` ``` ` ```     | 终端面板                |
 | `Ctrl` `Shift` `M`   | 调试面板                |
-<!--rehype:className=shortcuts-->
+<!--rehype:className=shortcuts -->
 
 ### 跳转
 
@@ -90,7 +89,7 @@ Zed 文本编辑器中 50 个快捷键的视觉备忘单
 | `Alt` `Shift` `F12`   | 查找所有引用               |
 | `F8`                  | 下一个问题                 |
 | `Shift` `F8`          | 上一个问题                 |
-<!--rehype:className=shortcuts-->
+<!--rehype:className=shortcuts left-align-->
 
 ## 相关链接
 
