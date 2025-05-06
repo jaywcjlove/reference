@@ -258,6 +258,7 @@ Quick Reference
 [Twitter(X)](./docs/twitter.md)<!--rehype:style=background: rgb(91 163 230);-->  
 [WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220);-->  
 [Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233);&class=tag&data-lang=macOS-->  
+[Zed](./docs/zed.md)<!--rehype:style=background: rgb(71 71 71);-->  
 <!--rehype:class=home-card-->
 
 ## 其它
@@ -354,7 +355,7 @@ Quick Reference
 <a href="https://github.com/joyfully-W" title="joyfully-W"><img src="https://avatars.githubusercontent.com/u/32212924?v=4" width="42;" alt="joyfully-W"/></a>
 <a href="https://github.com/jqzhao7" title="jqzhao"><img src="https://avatars.githubusercontent.com/u/54694535?v=4" width="42;" alt="jqzhao"/></a>
 <a href="https://github.com/jussker" title="jussker"><img src="https://avatars.githubusercontent.com/u/33953356?v=4" width="42;" alt="jussker"/></a>
-<a href="https://github.com/k983551019" title="Evan-k"><img src="https://avatars.githubusercontent.com/u/48147837?v=4" width="42;" alt="Evan-k"/></a>
+<a href="https://github.com/kcmeven" title="Evan-k"><img src="https://avatars.githubusercontent.com/u/48147837?v=4" width="42;" alt="Evan-k"/></a>
 <a href="https://github.com/kdxcxs" title="kdxcxs"><img src="https://avatars.githubusercontent.com/u/18746192?v=4" width="42;" alt="kdxcxs"/></a>
 <a href="https://github.com/kubeme" title="kubernetes for me"><img src="https://avatars.githubusercontent.com/u/16346220?v=4" width="42;" alt="kubernetes for me"/></a>
 <a href="https://github.com/larry-xue" title="yujian(larry) xue"><img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="yujian(larry) xue"/></a>
@@ -368,7 +369,7 @@ Quick Reference
 <a href="https://github.com/gzttcydxx" title="gzttcydxx"><img src="https://avatars.githubusercontent.com/u/50025185?v=4" width="42;" alt="gzttcydxx"/></a>
 <a href="https://github.com/sunny0826" title="Xudong Guo"><img src="https://avatars.githubusercontent.com/u/24563928?v=4" width="42;" alt="Xudong Guo"/></a>
 <a href="https://github.com/nodjoy" title="gowshwah"><img src="https://avatars.githubusercontent.com/u/145280043?v=4" width="42;" alt="gowshwah"/></a>
-<a href="https://github.com/godotc" title="godot42"><img src="https://avatars.githubusercontent.com/u/79260851?v=4" width="42;" alt="godot42"/></a>
+<a href="https://github.com/godot42x" title="godot42"><img src="https://avatars.githubusercontent.com/u/79260851?v=4" width="42;" alt="godot42"/></a>
 <a href="https://github.com/gi-b716" title="Gavin"><img src="https://avatars.githubusercontent.com/u/78394473?v=4" width="42;" alt="Gavin"/></a>
 <a href="https://github.com/fjqz177" title="fjqz177"><img src="https://avatars.githubusercontent.com/u/83070583?v=4" width="42;" alt="fjqz177"/></a>
 <a href="https://github.com/fakevn" title="fakevn"><img src="https://avatars.githubusercontent.com/u/11464386?v=4" width="42;" alt="fakevn"/></a>
@@ -377,7 +378,7 @@ Quick Reference
 <a href="https://github.com/gaoxiaoduan" title="Coder Duan"><img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="Coder Duan"/></a>
 <a href="https://github.com/lijc210" title="cizai"><img src="https://avatars.githubusercontent.com/u/10651081?v=4" width="42;" alt="cizai"/></a>
 <a href="https://github.com/chyok" title="chyok"><img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/></a>
-<a href="https://github.com/binscor" title="Zheng Nai Bin"><img src="https://avatars.githubusercontent.com/u/37325821?v=4" width="42;" alt="Zheng Nai Bin"/></a>
+<a href="https://github.com/binscor" title="binscor"><img src="https://avatars.githubusercontent.com/u/37325821?v=4" width="42;" alt="binscor"/></a>
 <a href="https://github.com/qwxingzhe" title="行者"><img src="https://avatars.githubusercontent.com/u/7071651?v=4" width="42;" alt="行者"/></a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶"><img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/></a>
 <a href="https://github.com/rainbowatcher" title="rainbowatcher"><img src="https://avatars.githubusercontent.com/u/42316353?v=4" width="42;" alt="rainbowatcher"/></a>
@@ -600,6 +601,7 @@ Quick Reference
 非常感谢那些一直支持我开源工作的朋友们。如果您对我的工作感到满意，可以选择在[这里进行赞助](https://wangchujiang.com/#/sponsor)<!--rehype:target=_blank-->。也可以通过下载并使用我开发的 [macOS 应用](https://wangchujiang.com/#/app)<!--rehype:target=_blank-->来支持我。以下是我个人开发的 macOS 应用：
   
 <p style="display: inline-block">
+  <a target="_blank" href="https://wangchujiang.com/audioer/" title="Audioer for macOS"><img align="center" alt="Audioer" height="52" width="52" src="./appicon/audioer.png"></a>
   <a target="_blank" href="https://wangchujiang.com/file-sentinel/" title="FileSentinel for macOS"><img align="center" alt="FileSentinel" height="52" width="52" src="./appicon/file-sentinel.png"></a>
   <a target="_blank" href="https://wangchujiang.com/focus-cursor/" title="FocusCursor for macOS"><img align="center" alt="FocusCursor" height="52" width="52" src="./appicon/focus-cursor.png"></a>
   <a target="_blank" href="https://wangchujiang.com/videoer/" title="Videoer for macOS"><img align="center" alt="Videoer" height="52" width="52" src="./appicon/videoer.png"></a>
