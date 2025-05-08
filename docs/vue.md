@@ -841,51 +841,13 @@ export default router
 ### 3.路由的query
 
 ```html
-<template>
-  <div>
-    <ul class="list">
-        <!-- to的对象写法 -->
-        <li v-for="item of data" :key="item.id">
-            <router-link 
-                class="link" 
-                :to="{
-                    path:'/home/message/mes',
-                    query: { id:item.id, title:item.mes }
-                }"
-            >{{item.mes}}</router-link>
-        </li>
-    </ul>
-    <hr>
-    <router-view></router-view>
-  </div>
-</template>
-
-<script>
-export default {
-    name:'HomeChild1',
-    data() {
-      return {
-        data:[
-            {id:1,mes:"消息1"},
-            {id:2,mes:"消息2"},
-            {id:3,mes:"消息3"}
-        ]
-      }
-    },
-}
+<script setup>
+import { useRoute } from 'vue-router';
+const route = useRoute();
 </script>
-
-<style scoped>
-  .list { margin-left:80px; }
-  .link{
-    color: orange;
-    text-decoration: none;
-    background-color: skyblue;
-  }
-</style>
 ```
 
-> 接收参数 `{{$route.query.id}}`
+> 接收参数 `{{route.query.id}}`
 
 #### 跳转路由并携带参数
 
