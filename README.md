@@ -480,11 +480,10 @@ Quick Reference
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站(国内打不开的不再收录)。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/discussions/206#discussion-4625735)
 
-[dev.bi](https://dev.bi)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[zone.id](https://cyref.zone.id/)<!--rehype:target=_blank-->
 [docflow.cn](https://ref.docflow.cn)<!--rehype:target=_blank-->
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank-->
 [aibk.cn](https://quickref.aibk.cn)<!--rehype:target=_blank-->
-[ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank-->
 [quickref.hestudio.net](https://quickref.hestudio.net)<!--rehype:target=_blank&class=contributing&data-info=👆整点自动同步-->
 [qiubit.cc](http://ref.qiubit.cc)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [guoxudong.io](https://reference.guoxudong.io/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
@@ -586,6 +585,8 @@ Quick Reference
 [pusukeji.com](https://reference.pusukeji.com/)<!--rehype:target=_blank-->
 [songbaixin.xin](https://home.songbaixin.xin:26009/)<!--rehype:target=_blank-->
 [78888889.xyz](https://reference.78888889.xyz)<!--rehype:target=_blank-->
+[dev.bi](https://dev.bi)<!--rehype:target=_blank-->
+[ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
