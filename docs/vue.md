@@ -510,15 +510,53 @@ watch(count, function() {
 ```
 <!--rehype:className=wrap-text-->
 
+### 监听多个值
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```html
+<template>
+  <h1> {{ count1 }} </h1>
+  <h1> {{ count2 }} </h1>
+  <button @click="count1++">count1</button>
+  <button @click="count2++">count2</button>
+</template>
+
+<script setup>
+  import { watch, ref } from 'vue';
+  
+  const count1 = ref(0)
+  const count2 = ref(0)
+  
+  watch(
+    // 监听的表达式或函数
+    () => ({
+      count1: count1.value,
+      count2: count2.value
+    }),
+    // 回调函数
+    (newValue, oldValue) => {
+      // 在这里执行需要的逻辑
+      console.log('count1 或 count2 变化了：', newValue);
+    },
+    // immediate: true 表示在初始渲染时立即执行一次回调函数，以便处理初始的状态。
+    // deep: true 表示深度监听，即对 newValue 和 oldValue 进行深层比较，而不是简单的引用比较。
+    { immediate: true, deep: true }
+  );
+</script>
+
+<style scoped>
+</style>
+```
+
 ### 计算状态
-<!--rehype:wrap-class=col-span-2-->
 
 ```html
 <script setup>
 import { ref, computed } from 'vue';
 
 const text = ref('')
-// computed 的回调函数里，会根据已有并用到的状态计算出新的状态
+// computed 的回调函数里
+// 会根据已有并用到的状态计算出新的状态
 const capital = computed(function(){
   return text.value.toUpperCase();
 })
@@ -682,6 +720,352 @@ const value = inject(ProvideKey)
 后代组件注入父组件提供的数据
 
 <!--rehype:className=wrap-text -->
+
+## 路由
+
+### 1. 路由的基本使用
+
+#### 开启命名空间后，组件中读取state数据
+
+方式一：自己直接读取
+
+```javascript
+this.$store.state.personAbout.list
+```
+
+方式二：借助 mapState 读取：
+
+```js
+...mapState('countAbout',[
+  'sum','school','subject'
+]),
+```
+
+#### 开启命名空间后，组件中读取getters数据
+
+方式一：自己直接读取
+
+```javascript
+this.$store.getters[
+  'personAbout/firstPersonName'
+]
+```
+
+方式二：借助 mapGetters 读取：
+
+```js
+...mapGetters('countAbout',['bigSum'])
+```
+
+#### 开启命名空间后，组件中调用dispatch
+
+方式一：自己直接 dispatch
+
+```javascript
+this.$store.dispatch(
+  'personAbout/addPersonWang', person
+)
+```
+
+方式二：借助mapActions:
+
+```js
+...mapActions('countAbout',{
+  incrementOdd:'jia0dd',
+  incrementWait:'jiaWait'
+})
+```
+
+#### 开启命名空间后，组件中调用commit
+
+方式一：自己直接 commit
+
+```javascript
+this.$store.commit(
+  'personAbout/ADD_PERSON', person
+)
+```
+
+方式二：借助 mapMutations:
+
+```js
+...mapMutations('countAbout', {
+  increment:'JIA',decrement:'JIAN'
+}),
+```
+
+### 2. 路由的使用
+
+```javascript
+import VueRouter from 'vue-router'
+// 引入Luyou 组件
+import About from '../components/About'
+import Home from '../components/Home'
+// 创建router实例对象，去管理一组一组的路由规则
+const router = new VueRouter({
+  routes: [
+    path: '/about',
+    component: About
+    path: '/home',
+    component: Home
+  ]
+})
+// 暴露 router
+export default router
+```
+
+实现切换（active-class可配置高亮样式）
+
+```html
+<router-link
+  active-class="active"
+  to="/about">
+  About
+</router-link>
+```
+
+指定展示位置
+
+```html
+<router-diew></router-view>
+```
+
+几个注意点
+
+- 路由组件通常存放在pages文件夹，一般组件通常存放在components文件夹。
+- 通过切换，“隐藏”了的路由组件，默认是被销毁掉的，需要的时候再去挂载。
+- 每个组件都有自己的$route属性，里面存储着自己的路由信息。
+- 整个应用只有一个router，可以通过组件的srouter 属性获取到。
+<!--rehype:className=style-list-arrow-->
+
+### 3.路由的query
+
+```html
+<script setup>
+import { useRoute } from 'vue-router';
+const route = useRoute();
+</script>
+```
+
+> 接收参数 `{{route.query.id}}`
+
+#### 跳转路由并携带参数
+
+```html
+<li v-for="item of data" :key="item.id">
+    <router-link 
+        class="link" 
+        :to="`/home/message/mes?id=${item.id}&title=${item.mes}`"
+    >
+      {{item.mes}}
+    </router-link>
+</li>
+```
+
+### 4. 命名路由
+
+```javascript
+routes:[
+    { path:'/about', component:AboutBody },
+    {
+        path:'/home',
+        component:HomeBody,
+        children:[
+            { path:'news', component:HomeChild },
+            { 
+              path:'message',
+              component:HomeChild1,
+              //多级路由
+              children:[
+                  { name:'richu', path:'mes', component:HomeMessage }
+              ]
+            }
+        ]
+    }
+]
+```
+
+使用
+
+```html
+<router-link :to="{ 
+  name:'',
+  path:'/home/message/mes',
+​  query:{ id:item.id,title:item.mes }
+}">
+```  
+
+### 5.params参数的使用
+
+#### 1. 声明接收
+
+```javascript
+children:[
+    {
+        name:'richu',
+        path:'mes/:id/:title',
+        component:HomeMessage
+    }
+]
+```
+
+#### 2. 传递
+
+```html
+<li v-for="item of data" :key="item.id">
+    <router-link 
+      class="link" 
+      :to="`/home/message/mes/${item.id}/${item.mes}`"
+      >{{item.mes}}
+    </router-link>
+</li>
+```
+
+#### 3. 接收
+
+```html
+<li>编号{{$route.params.id}}</li>
+<li>标题{{$route.params.title}}</li>
+```
+
+### 6.props的使用
+
+路由的props配置
+
+```js
+{
+  name: 'xiangqing',
+  path:'detail/:id',
+  component:Detail
+}
+```
+
+作用：让路由组件更方便的收到参数
+
+```javascript
+//第一种写法：props值为对象，该对象中所有的key-value的组合最终都会通过props传给Detai1组件
+// props:{a:900]
+//第二种写法：props值为布尔值，布尔值为true，则把路由收到的所有params参数通过props传给Detai1组件
+// props:true
+//第三种写法：props值为函数，该函数返回的对象中每一组key-value都会通过props传给Detail组件
+props(route){
+  return {
+    id:route.query.id,
+    title:route.query.title
+  }
+}
+```
+
+\<router-link> 的 replace 属性
+
+1. 作用：控制路由跳转时操作浏览器历史记录的模式
+2. 浏览器的历史记录有两种写入方式：分别为 push和replace,默认为push
+3. 如何开启replace 模式： `push` 是追加历史记录,`replace` 是替换当前记录[路由跳转时候 `<router-link replace>News\</router-link>`]
+
+### 7. 编程式路由导航
+
+作用：不借助router-link实现路由跳转，让跳转更加灵活
+
+```javascript
+this.$router.push({
+    name:'xiangqing',
+    params:{
+        id: xxx,
+        title: xxx
+        // 实现路由跳转，让路由跳转更加灵活
+    }
+})
+this.$router.replace({
+    name:'xiangqing',
+    params:{
+        id:xxx,
+        title:xxx
+    }
+})
+this.$router.forward();
+this.$router.back();
+this.$router.go(3);
+```
+
+### 8.缓存路由组件
+
+让不展示的路由组件保持挂载，不被销毁，示例：
+
+```html
+<keep-alive include="news">
+    <router-view></router-view>
+</keep-alive>
+```
+
+- `include` 里面写模块名,用于保存指定的模块
+
+### 9.新生命周期钩子
+
+> 作用：路由组件独有的，用于捕获路由组件的激活状态
+
+- `activated` 路由组件被激活时触发
+- `deactivated` 路由组件失活时触发
+
+## 路由守卫
+
+### 1.前置路由守卫
+
+```javascript
+route.beforeEach((from,to,next)=>{
+    if (to.meta.isAuth){
+        alert("1");
+        next();
+    }else{
+        next();
+    }
+})
+```
+
+前置路由
+
+### 2.后置路由守卫
+
+```javascript
+route.afterEach((from,to)=>{
+    console.log(to);
+    document.title=from.meta.title;
+})
+```
+
+后置路由
+
+### 3.独享路由守卫
+
+```javascript
+{
+    path:'news',
+    component:HomeChild,
+    meta:{title:"新闻"},
+        beforeEnter: (from,to,next)=>{
+
+        }
+},
+```
+
+独享路由守卫只有前置路由守卫没有后置路由守卫
+
+### 4.组件内路由守卫
+
+通过路由规则，进入该组件时被调用
+
+```javascript
+beforeRouteEnter (to, from, next) {
+    // ...
+}
+```
+
+通过路由规则，离开组件时被调用
+
+```js
+beforeRouteLeave (to, from, next) {
+    // ...
+}
+```
 
 Vue 中使用 TypeScript
 ---
@@ -1107,8 +1491,354 @@ declare module 'vue' {
       from: Route,
       next: () => void
     ): void
-  }
+  
 }
+```
+
+## 性能优化
+
+### 介绍
+
+性能优化是构建高效 Vue 应用的关键。以下是一些特殊的优化策略，结合 Vue 的特性，可以大幅减少渲染开销、提升加载速度和用户体验。这些方法不仅限于单一 API，而是从整体架构和开发实践出发，提供通用的性能提升思路。
+
+### 条件渲染与缓存结合
+
+通过结合 `v-if` 和 `<KeepAlive>`，可以避免频繁销毁和重建组件，尤其是在切换视图或路由时。搭配 `defineAsyncComponent` 实现懒加载，进一步减少初次加载的开销。
+
+```html
+<template>
+  <div>
+    <button @click="toggle">Toggle View</button>
+    <keep-alive>
+      <component :is="currentView" />
+    </keep-alive>
+  </div>
+</template>
+
+<script setup>
+import { ref, defineAsyncComponent } from 'vue';
+
+const currentView = ref('ViewA');
+const toggle = () => {
+  currentView.value = currentView.value === 'ViewA' ? 'ViewB' : 'ViewA';
+};
+
+const ViewA = defineAsyncComponent(() => import('./ViewA.vue'));
+const ViewB = defineAsyncComponent(() => import('./ViewB.vue'));
+</script>
+//<KeepAlive> 缓存动态组件，防止重复创建和销毁。
+//defineAsyncComponent 实现组件懒加载，仅在需要时加载模块。
+//效果：减少 DOM 操作和组件初始化的性能消耗，特别适合复杂组件切换或路由场景。
+```
+
+### 路由前置优化（beforeRouteEnter）
+
+在路由进入前执行数据预取或条件检查，可以避免不必要的渲染和请求，提升页面加载效率。
+
+```html
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'Profile',
+  beforeRouteEnter(to, from, next) {
+    // 模拟数据预取
+    fetchUserData(to.params.id).then((user) => {
+      next((vm) => {
+        vm.user = user; // 将数据传递给组件实例
+      });
+    }).catch(() => {
+      next(false); // 阻止路由进入
+    });
+  },
+  data() {
+    return {
+      user: null,
+    };
+  },
+});
+</script>
+
+<template>
+  <div v-if="user">
+    <h1>{{ user.name }}</h1>
+  </div>
+</template>
+```
+
+### 响应式对象的精简
+
+避免将大型对象直接用 reactive 包裹，而是按需拆分，使用 ref 或 toRef 精细控制响应式范围，减少依赖追踪的开销。
+
+```html
+<script setup>
+import { ref, toRef, reactive } from 'vue';
+
+const largeData = {
+  user: { name: 'Alice', age: 25 },
+  settings: { theme: 'dark', fontSize: 16 },
+  items: Array(1000).fill({ id: 0, value: 'test' }),
+};
+
+// 仅将需要的部分设为响应式
+const userName = ref(largeData.user.name);
+const settings = reactive(largeData.settings);
+const firstItem = toRef(largeData.items[0], 'value');
+</script>
+
+<template>
+  <div>
+    <input v-model="userName" />
+    <p>Theme: {{ settings.theme }}</p>
+    <p>First Item: {{ firstItem }}</p>
+  </div>
+</template>
+```
+
+### 计算属性的延迟执行
+
+通过封装计算属性并结合 watchEffect，实现按需计算，避免不必要的开销。
+
+```html
+<script setup>
+import { ref, computed, watchEffect } from 'vue';
+
+const items = ref([]);
+const filterText = ref('');
+const filteredItems = computed(() => {
+  return items.value.filter((item) => item.includes(filterText.value));
+});
+
+watchEffect(() => {
+  if (filterText.value) {
+    // 仅在 filterText 不为空时触发计算
+    filteredItems.value;
+  }
+});
+</script>
+
+<template>
+  <div>
+    <input v-model="filterText" placeholder="Filter items" />
+    <ul>
+      <li v-for="item in filteredItems" :key="item">{{ item }}</li>
+    </ul>
+  </div>
+</template>
+```
+
+### v-memo 缓存子树
+
+v-memo 用于缓存模板子树，仅在依赖项变化时更新，常用于优化列表或静态内容。
+
+```html
+<template>
+  <div v-for="item in items" :key="item.id" v-memo="[item.updated]">
+    {{ item.name }} - {{ expensiveComputation(item) }}
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const items = ref([
+  { id: 1, name: 'Item 1', updated: false },
+  { id: 2, name: 'Item 2', updated: false },
+]);
+
+const expensiveComputation = (item) => {
+  return item.name.toUpperCase(); // 模拟复杂计算
+};
+</script>
+```
+
+### 事件节流与防抖
+
+通过在事件处理中引入节流（throttle）或防抖（debounce），减少高频事件的触发频率。
+
+```html
+<script setup>
+import { ref } from 'vue';
+import { debounce } from 'lodash-es';
+
+const searchText = ref('');
+const search = debounce((value) => {
+  console.log('Search:', value); // 模拟搜索请求
+}, 300);
+
+const handleInput = (e) => {
+  searchText.value = e.target.value;
+  search(searchText.value);
+};
+</script>
+
+<template>
+  <input
+    :value="searchText"
+    @input="handleInput"
+    placeholder="Type to search"
+  />
+</template>
+```
+
+### 虚拟列表（Virtual Scrolling）
+
+对于长列表（如包含数千条数据的列表），可以使用虚拟列表技术，只渲染可视区域内的元素，减少 DOM 节点数量。
+
+```html
+<template>
+  <div class="list-container" ref="list">
+    <div class="list-viewport" :style="{ height: totalHeight + 'px' }">
+      <div
+        class="list-content"
+        :style="{ transform: `translateY(${scrollTop}px)` }"
+      >
+        <div
+          v-for="item in visibleItems"
+          :key="item.id"
+          class="list-item"
+        >
+          {{ item.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+
+const items = ref(
+  Array.from({ length: 10000 }, (_, i) => ({
+    id: i,
+    name: `Item ${i}`,
+  }))
+);
+const itemHeight = 40; // 每项高度
+const viewportHeight = 400; // 视口高度
+const totalHeight = computed(() => items.value.length * itemHeight);
+const scrollTop = ref(0);
+const visibleCount = Math.ceil(viewportHeight / itemHeight) + 2; // 多渲染2项作为缓冲
+
+const visibleItems = computed(() => {
+  const start = Math.floor(scrollTop.value / itemHeight);
+  const end = Math.min(start + visibleCount, items.value.length);
+  return items.value.slice(start, end);
+});
+
+const list = ref(null);
+const onScroll = () => {
+  scrollTop.value = list.value.scrollTop;
+};
+
+onMounted(() => {
+  list.value.addEventListener('scroll', onScroll);
+});
+onUnmounted(() => {
+  list.value.removeEventListener('scroll', onScroll);
+});
+</script>
+
+<style>
+.list-container {
+  height: 400px;
+  overflow-y: auto;
+}
+.list-item {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+
+```
+
+### 按需加载资源（Lazy Loading Resources）
+
+通过动态导入（Dynamic Import）按需加载非关键资源（如图片、第三方库），可以减少初次加载的开销，提升首屏渲染速度。
+
+```html
+<template>
+  <div>
+    <button @click="loadChart">Load Chart</button>
+    <div v-if="ChartComponent">
+      <ChartComponent :data="chartData" />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const ChartComponent = ref(null);
+const chartData = ref([10, 20, 30, 40]);
+
+const loadChart = async () => {
+  // 动态导入第三方库（如 Chart.js）
+  const { default: Chart } = await import('chart.js/auto');
+  // 模拟动态加载的图表组件
+  ChartComponent.value = {
+    props: ['data'],
+    template: `<canvas ref="chart"></canvas>`,
+    mounted() {
+      new Chart(this.$refs.chart, {
+        type: 'bar',
+        data: {
+          labels: ['A', 'B', 'C', 'D'],
+          datasets: [{ data: this.data }],
+        },
+      });
+    },
+  };
+};
+</script>
+```
+
+### 优化事件监听（Event Delegation）
+
+通过事件委托（Event Delegation）将事件监听器绑定到父元素，减少直接绑定到每个子元素的事件监听器数量，适合动态列表或大量元素场景。
+
+```html
+<template>
+  <div class="item-list" @click="handleItemClick">
+    <div
+      v-for="item in items"
+      :key="item.id"
+      :data-id="item.id"
+      class="item"
+    >
+      {{ item.name }}
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const items = ref([
+  { id: 1, name: 'Item 1' },
+  { id: 2, name: 'Item 2' },
+  { id: 3, name: 'Item 3' },
+]);
+
+const handleItemClick = (event) => {
+  const itemId = event.target.dataset.id;
+  if (itemId) {
+    console.log(`Clicked item with ID: ${itemId}`);
+  }
+};
+</script>
+
+<style>
+.item-list {
+  padding: 10px;
+}
+.item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+</style>
 ```
 
 API 参考

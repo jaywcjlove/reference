@@ -24,6 +24,7 @@ Linux 命令速查表
 **`w`** | 显示系统中当前登录的用户
 **`whoami`** | 显示您的登录身份
 **`finger username`** | 显示有关用户的信息
+**`sed -ri 's/.*swap.*/#&/' /etc/fstab && swapoff -a`** | 关闭swap
 <!--rehype:className=style-list-->
 
 ### 硬件
@@ -154,6 +155,9 @@ Linux 命令速查表
 **`tar -xf files.tar`** | 解压档案文件"files.tar"
 **`tar -zcvf home.tar.gz source-folder`** | 从源文件夹创建压缩的tar存档文件
 **`gzip file`** | 压缩扩展名为.gz的文件
+**`zip -r compressed.zip folder/`** | 递归压缩目录`folder`为压缩文件`compressed.zip`
+**`unzip compressed.zip -d folder/`** | 在目录`folder`下解压文件
+**`unzip -v compressed.zip`** | 查看但不解压文件
 <!--rehype:className=style-list-->
 
 ### 搜索
@@ -328,6 +332,24 @@ Linux 命令速查表
 `Ctrl`+`P` (Up) | 上一条命令
 `Ctrl`+`N` (Down) | 下一条命令
 <!--rehype:className=left-align shortcuts-->
+
+技巧
+---
+
+### linux技巧
+<!--rehype:wrap-class=row-span-2 col-span-2-->
+
+ :---                                          | :---
+:----------------------------------------------| :---
+ **`du -h / \| sort -rh \| head -20`**         | 最大20个文件
+ **`grep -Ev '^\s*($\|#\|;)' example.conf`**   | 查看去掉注释和空行
+ **`echo <passwd> \| passwd root --stdin`**    | 单行改密码
+ **`find /data/app/tmp -mtime +30 -name "*.flv" -exec rm -Rf {} \;`**  | 删除30天前文件
+ **`for file in $(ls); do sed -i 's/nmg/sz/g' "$file"; done`**         | 当前目录修改字符串
+ **`ssh -NfR remote_port:localhost:local_port user@remote_server`**    | ssh代理
+ **`find . -wholename "*.sh" -exec dos2unix {} \;`**     | 修复脚本格式错误
+ **`rsync -avz /source/ user@remote:/destination/`**     | 同步文件和目录到远程服务器，支持压缩和增量传输
+ <!--rehype:className=left-align shortcuts-->  
 
 另见
 ---

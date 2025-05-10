@@ -1551,6 +1551,7 @@ type Age2 = Person["age"];
 ```
 
 ### 范型推导出列表字面量
+<!--rehype:wrap-class=row-span-2-->
 
 ```ts
 const a = <T extends string>(t: T) => t;
@@ -1559,11 +1560,18 @@ const c = <T extends boolean>(t: T) => t;
 const d = a("a");  // const d: 'a'
 const e = b(1);    // const d: 1
 const f = c(true); // const d: true
+```
 
-// 这里t的类型用了一个展开运算
+这里t的类型用了一个展开运算
+
+```ts
 const g = 
-  <T extends string[]>(t: [...T]) => t;
-// 类型变成["111", "222"]了
+      <T extends string[]>(t: [...T]) => t;
+```
+
+类型变成["111", "222"]了
+
+```ts
 const h = g(["111", "222"]);
 ```
 
@@ -1578,6 +1586,19 @@ keys.forEach(key => {
     throw new Error(`Missing option ${key}`);
   }
 });
+```
+
+### 保留一段时间字符串常量类型
+<!--rehype:wrap-class=col-span-2-->
+
+```ts
+type Color = "primary" | "secondary" | string;
+```
+
+修改成下面代码，有代码下拉提示
+
+```ts
+type Color = "primary" | "secondary" | (string & {});
 ```
 
 .d.ts 模版

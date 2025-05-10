@@ -9,6 +9,13 @@ Docker 备忘清单
 
 ### 入门
 
+#### 安装
+
+```shell
+curl -sSL https://get.docker.com/ | sh
+sudo chmod 777 /var/run/docker.sock
+```
+
 在后台创建和运行容器
 
 ```shell
@@ -156,7 +163,10 @@ $ docker build - < Dockerfile
 $ docker build - < context.tar.gz
 $ docker build -t eon/nginx-server .
 $ docker build -f myOtherDockerfile .
+$ docker build --build-arg https_proxy=127.0.0.1:8088 # 使用http代理构建
 $ curl example.com/remote/Dockerfile | docker build -f - .
+$ docker save -o <保存路径>/myimage.tar myimage:latest # 导出
+$ docker load -i <路径>/myimage.tar # 导入
 ```
 
 ### 删除 \<none> 镜像
@@ -169,55 +179,16 @@ Docker 网络
 ----
 <!--rehype:body-class=cols-2-->
 
-### 操作
-
-获取容器连接的网络
-
-```shell
-docker inspect MyContainer | grep Network
-```
-
-删除网络
-
-```shell
-docker network rm MyOverlayNetwork
-```
-
-列出网络
-
-```shell
-docker network ls
-```
-
-获取有关网络的信息
-
-```shell
-docker network inspect MyOverlayNetwork
-```
-
-将正在运行的容器连接到网络
-
-```shell
-docker network connect MyOverlayNetwork nginx
-```
-
-启动时将容器连接到网络
-
-```shell
-docker run -it -d --network=MyOverlayNetwork nginx
-```
-
-断开容器与网络的连接
-
-```shell
-docker network disconnect MyOverlayNetwork nginx
-```
-
 ### 创建网络
 
 ```shell
 docker network create -d overlay MyOverlayNetwork
 docker network create -d bridge MyBridgeNetwork
+```
+
+自定义网络子网和网关
+
+```shell
 docker network create -d overlay \
   --subnet=192.168.0.0/16 \
   --subnet=192.170.0.0/16 \
@@ -231,19 +202,82 @@ docker network create -d overlay \
   MyOverlayNetwork
 ```
 
+### 操作
+<!--rehype:wrap-class=row-span-3-->
+
+获取容器连接的网络
+
+```shell
+docker inspect MyContainer | grep Network
+```
+
+获取有关网络的信息
+
+```shell
+docker network inspect <network_name>
+```
+
+将正在运行的容器连接到网络
+
+```shell
+docker network connect <network_name> <container_name>
+```
+
+启动时将容器连接到网络
+
+```shell
+docker run -it -d --network=<network_name> <container_name>
+```
+
+断开容器与网络的连接
+
+```shell
+docker network disconnect <network_name> <container_name>
+```
+
+### 删除网络
+
+```bash
+docker network rm <network_name>
+```
+
+### 列出网络
+
+```shell
+docker network ls
+```
+
 Docker 快捷键
 ----
-<!--rehype:body-class=cols-2-->
 
-### 退出
+需要特别注意的是，退出快捷键中的删除容器实例，只对于使用 `docker attach` 进入的容器生效，使用 `docker exec` 进入容器后，使用上面的快捷键后将隔离容器，且不会删除容器实例。
+
+### 退出 - 关闭容器
 
 | Docker 快捷键 | 说明 |
 |------------|------|
-`ctrl+c` | 将关闭容器，并删除当前的容器实例
-`ctrl+d` | 将保留容器，并退出到Docker主机的命令行界面
-`ctrl+p+q` | 将容器分离，保留容器，但是不退出
+`ctrl` `c` | 将关闭容器
+<!--rehype:className=shortcuts-->
 
-需要特别注意的是，上面的退出快捷键中的删除容器实例只对于使用`docker attach`进入的容器生效，使用`docker exec`进入容器后使用上面的快捷键后将隔离容器且不会删除容器实例。
+将关闭容器, 并删除当前的容器实例
+
+### 退出 - 保留容器
+
+| Docker 快捷键 | 说明 |
+|------------|------|
+`ctrl` `d` | 保留容器
+<!--rehype:className=shortcuts-->
+
+将保留容器，并退出到Docker主机的命令行界面
+
+### 退出 - 容器分离
+
+| Docker 快捷键 | 说明 |
+|------------|------|
+`ctrl` `p` `q` | 容器分离
+<!--rehype:className=shortcuts-->
+
+将容器分离，保留容器，但是不退出
 
 各种各样的
 ----
@@ -251,15 +285,15 @@ Docker 快捷键
 
 ### Docker Hub
 
-| Docker 语法 | 说明 |
-|------------|------|
-`docker search search_word` | 在 docker hub 中搜索镜像
-`docker pull user/image` | 从 docker hub 下载镜像
-`docker login` | 向 docker hub 进行身份验证
-`docker push user/image` | 将镜像上传到 docker hub
+```bash
+$ docker search search_word  # 在 docker hub 中搜索镜像
+$ docker pull user/image     # 从 docker hub 下载镜像
+$ docker login               # 向 docker hub 进行身份验证
+$ docker push user/image     # 将镜像上传到 docker hub
+```
 
 ### 镜像仓库命令
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-2-->
 
 登录到镜像仓库
 
@@ -308,23 +342,17 @@ $ docker push eon01/nginx localhost:5000/myadmin/nginx
 `docker system prune` | 清理所有空闲或与任何Docker容器无关的资源
 `docker image prune` | 删除悬空的Docker镜像
 `docker container prune` | 删除所有未使用的Docker 容器
+<!--rehype:className=left-align-->
 
 ### 卷 volume
 
-检查卷
-
 ```shell
-$ docker volume ls
-```
-
-清理未使用的卷
-
-```shell
-$ docker volume prune
+$ docker volume ls    # 检查卷
+$ docker volume prune # 清理未使用的卷
 ```
 
 ### Docker Compose
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=row-span-2-->
 
 :- | :-
 :- | :-
@@ -339,6 +367,7 @@ $ docker volume prune
 `docker-compose scale <service_name>=<replica>` | 为服务指定容器个数
 `docker-compose top` | 显示正在运行的进程
 `docker-compose run -rm -p 2022:22 web bash` | 启动 Web 服务并运行 bash 作为其命令，删除旧容器
+<!--rehype:className=left-align-->
 
 ### Docker Services
 
@@ -353,6 +382,7 @@ $ docker volume prune
 <!--rehype:className=left-align-->
 
 ### Docker Stack
+<!--rehype:wrap-class=col-span-2-->
 
 :- | :-
 :- | :-
@@ -385,6 +415,7 @@ $ docker volume prune
 <!--rehype:className=left-align-->
 
 ### docker 主要命令
+<!--rehype:wrap-class=row-span-3-->
 
 :- | :-
 :- | :-
@@ -430,8 +461,66 @@ $ docker volume prune
 `wait`     | 阻塞直到一个或多个容器停止，然后打印它们的退出代码
 <!--rehype:className=left-align-->
 
+### docker 管理命令
+
+:- | :-
+:- | :-
+`docker builder`     | 管理构建
+`docker buildx*`     | Docker Buildx（Docker Inc.，v0.7.1）
+`docker compose*`    | Docker Compose（Docker Inc.，v2.2.3）
+`docker config`      | 管理 Docker 配置
+`docker container`   | 管理容器
+`docker context`     | 管理上下文
+`docker image`       | 管理镜像
+`docker manifest`    | 管理 Docker 镜像清单和清单列表
+`docker network`     | 管理网络
+`docker node`        | 管理 Swarm 节点
+`docker plugin`      | 管理插件
+`docker scan*`       | Docker 扫描（Docker Inc.，v0.16.0）
+`docker secret`      | 管理 Docker 机密
+`docker service`     | 管理服务
+`docker stack`       | 管理 Docker 堆栈
+`docker swarm`       | 管理群
+`docker system`      | 管理 Docker
+`docker trust`       | 管理对 Docker 映像的信任
+`docker volume`      | 管理卷
+<!--rehype:className=left-align-->
+
+### docker 全局参数
+
+```bash
+    --config string     # 客户端配置文件的位置（默认“~/.docker”）
+-c, --context string    # 用于连接到守护程序的上下文的名称（
+                        # 覆盖 DOCKER_HOST 环境变量和使用
+                        # “docker context use” 设置的默认上下文）
+-D, --debug             # 启用调试模式
+-H, --host list         # 要连接的守护进程套接字
+-l, --log-level string  # 设置日志级别
+        # （默认“info”） ("debug"|"info"|"warn"|"error"|"fatal") 
+    --tls               # 使用 TLS； 由 --tlsverify 暗示
+    --tlscacert string  # 仅由该 CA 签署的信任证书
+        #（默认为“~/.docker/ca.pem”）
+    --tlscert string    # TLS证书文件路径
+        #（默认“~/.docker/cert.pem”）
+    --tlskey string     # TLS 密钥文件的路径
+        #（默认为“~/.docker/key.pem”）
+    --tlsverify         # 使用 TLS 并验证远程
+-v, --version           # 打印版本信息并退出
+```
+
+### docker images
+
+```bash
+-a, --all             显示所有镜像（默认隐藏中间镜像）
+    --digests         显示摘要
+-f, --filter filter   根据提供的条件过滤输出
+    --format string   使用 Go 模板打印漂亮的镜像
+    --no-trunc        不要截断输出
+-q, --quiet           仅显示镜像 ID
+```
+
 ### docker run/create
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=col-span-2-->
 
 ```bash
     --add-host list            # 添加自定义主机到 IP 映射 (host:ip)
@@ -441,11 +530,11 @@ $ docker volume prune
     --cap-add list             # 添加 Linux 功能
     --cap-drop list            # 放弃 Linux 功能
     --cgroup-parent string     # 容器的可选父 cgroup
-    --cgroupns string   # 要使用的 Cgroup 命名空间（主机|私有）
-                        #  'host':    在 Docker 主机的 cgroup 命名空间中运行容器
-                        #  'private': 在自己的私有 cgroup 命名空间中运行容器
-                        #  '':        使用由守护进程上的 
-                        #        default-cgroupns-mode 选项配置的 cgroup 命名空间（默认）
+    --cgroupns string          # 要使用的 Cgroup 命名空间（主机|私有）
+                               #  'host':    在 Docker 主机的 cgroup 命名空间中运行容器
+                               #  'private': 在自己的私有 cgroup 命名空间中运行容器
+                               #  '':        使用由守护进程上的 
+                               #        default-cgroupns-mode 选项配置的 cgroup 命名空间（默认）
     --cidfile string           # 将容器 ID 写入文件
     --cpu-period int           # 限制 CPU CFS（完全公平调度器）周期
     --cpu-quota int            # 限制 CPU CFS（完全公平调度器）配额
@@ -535,60 +624,62 @@ $ docker volume prune
 
 `run`/`create` 大部分参数一致
 
-### docker 全局参数
+### 修改Docker镜像拉取地址
+
+您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
 
 ```bash
-    --config string     # 客户端配置文件的位置（默认“~/.docker”）
--c, --context string    # 用于连接到守护程序的上下文的名称（
-                        # 覆盖 DOCKER_HOST 环境变量和使用“docker context use”设置的默认上下文）
--D, --debug             # 启用调试模式
--H, --host list         # 要连接的守护进程套接字
--l, --log-level string  # 设置日志级别("debug"\|"info"\|"warn"\|"error"\|"fatal") （默认“info”）
-    --tls               # 使用 TLS； 由 --tlsverify 暗示
-    --tlscacert string  # 仅由该 CA 签署的信任证书（默认为“~/.docker/ca.pem”）
-    --tlscert string    # TLS证书文件路径（默认“~/.docker/cert.pem”）
-    --tlskey string     # TLS 密钥文件的路径（默认为“~/.docker/key.pem”）
-    --tlsverify         # 使用 TLS 并验证远程
--v, --version           # 打印版本信息并退出
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://1ojaslt1.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
 ```
 
-### docker 管理命令
+### 修改 Docker 数据存储路径
 <!--rehype:wrap-class=row-span-2-->
 
-:- | :-
-:- | :-
-`docker builder`     | 管理构建
-`docker buildx*`     | Docker Buildx（Docker Inc.，v0.7.1）
-`docker compose*`    | Docker Compose（Docker Inc.，v2.2.3）
-`docker config`      | 管理 Docker 配置
-`docker container`   | 管理容器
-`docker context`     | 管理上下文
-`docker image`       | 管理镜像
-`docker manifest`    | 管理 Docker 镜像清单和清单列表
-`docker network`     | 管理网络
-`docker node`        | 管理 Swarm 节点
-`docker plugin`      | 管理插件
-`docker scan*`       | Docker 扫描（Docker Inc.，v0.16.0）
-`docker secret`      | 管理 Docker 机密
-`docker service`     | 管理服务
-`docker stack`       | 管理 Docker 堆栈
-`docker swarm`       | 管理群
-`docker system`      | 管理 Docker
-`docker trust`       | 管理对 Docker 映像的信任
-`docker volume`      | 管理卷
+- 停止 Docker 服务：
 
-### docker images
+    ```bash
+    sudo systemctl stop docker
+    ```
+
+- 将现有的 Docker 数据移动到新的目录：
+
+    ```bash
+    sudo mv /var/lib/docker /new/path/docker
+    ```
+
+- 更新 Docker 的配置文件 `/etc/docker/daemon.json`，添加或修改 `data-root` 选项：
+
+    ```json
+    { "data-root": "/new/path/docker" }
+    ```
+
+- 重新启动 Docker 服务：
+
+    ```bash
+    sudo systemctl start docker
+    ```
+<!--rehype:className=style-timeline-->
+
+⚠️注意：当你执行此操作时，旧的容器和镜像可能无法正常工作，因为它们的路径已更改。建议在部署 Docker 时执行此操作，以避免这些问题。如有必要，重新启动容器或重新创建它们，以确保它们的配置指向新的路径。
+
+### Docker降级版本的方法
 
 ```bash
--a, --all             显示所有镜像（默认隐藏中间镜像）
-    --digests         显示摘要
--f, --filter filter   根据提供的条件过滤输出
-    --format string   使用 Go 模板打印漂亮的镜像
-    --no-trunc        不要截断输出
--q, --quiet           仅显示镜像 ID
+yum downgrade --setopt=obsoletes=0 \
+    -y docker-ce-${version} docker-ce-selinux-${version}
 ```
 
-Docker 示例
+`${version}` 指定要降级的版本
+
+Docker 常用示例
 ---
 <!--rehype:body-class=cols-2-->
 
@@ -604,6 +695,433 @@ $ docker run -d --name portainer \
     portainer/portainer-ee:latest
 ```
 
+### Nginx
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+docker run -itd -p 80:80 --restart=always --name Nginx \
+-v $HOME/nginx_data/html:/usr/share/nginx/html \
+-v $HOME/nginx_data/conf:/etc/nginx/conf.d \
+-v $HOME/nginx_data/nginx.conf:/etc/nginx/nginx.conf \
+nginx
+```
+
+#### 参数解释
+
+- `-itd`: 启动容器并保持后台运行
+- `-p 80:80`: 将主机的 80 端口映射到容器的 80 端口，用于访问 Nginx 站点页面
+- `--name Nginx`: 给容器指定一个名称为 "Nginx"
+- `--restart=always`: 在容器退出时，总是重新启动容器
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`-v $HOME/nginx_data/html:/usr/share/nginx/html`| 将容器中的 Nginx 站点页面路径映射到本地
+`-v $HOME/nginx_data/conf:/etc/nginx/conf.d`| 将容器中的 Nginx 虚拟主机配置文件路径映射到本地 *(需要提前准备好文件)*
+`-v $HOME/nginx_data/nginx.conf:/etc/nginx/nginx.conf`| 将容器中的 Nginx 主配置文件路径映射到本地 *(需要提前准备好文件)*
+<!--rehype:className=style-list-arrow-->
+
+### Tomcat
+
+```bash
+docker run -itd -p 8080:8080 --restart=always \
+--name Tomcat \
+-v $HOME/Tomcat_data/webapps:/usr/local/tomcat/webapps/ROOT \
+tomcat
+```
+
+#### 参数解释
+
+- `-itd`: 以后台运行的方式启动容器，并分配一个伪终端（pseudo-TTY）和保持 STDIN 打开
+- `-p 8080:8080`: 将主机的端口 8080 映射到容器的 8080 端口，用于访问 Tomcat 站点页面
+- `--name Tomcat`: 为容器指定名称为 "Tomcat"
+- `--restart=always`: 当容器退出时，总是重新启动容器
+
+#### 持久化解释
+
+将容器中的 `/usr/local/tomcat/webapps/ROOT` 路径挂载到宿主机中的 `$HOME/Tomcat_data/webapps` 目录下。
+
+### Weblogic
+<!--rehype:style=background:#d7a100;-->
+
+```bash
+docker run -itd \
+-p 7001:7001 \
+-p 7002:7002 \
+-p 5556:5556 \
+--restart=always --name Weblogic ismaleiva90/weblogic12
+```
+
+注意：`ismaleiva90/weblogic12` 是非官方或认证的 `Docker` 镜像！
+
+#### 参数解释
+
+- `-itd`: 后台运行容器，保持 STDIN 打开
+- `-p 7001:7001`: 映射主机 7001 端口到容器 7001 端口，访问 Weblogic 控制台页面
+- `-p 7002:7002`: 映射主机 7002 端口到容器 7002 端口，访问 Weblogic 站点页面
+- `-p 5556:5556`: 映射主机 5556 端口到容器 5556 端口，访问 Weblogic 站点页面
+- `--name Weblogic`: 容器名称为 "Weblogic"
+- `--restart=always`: 容器退出时，总是重新启动容器
+
+### MySQL
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+docker run -d -it -p 3306:3306 --name MySQL --restart=always \
+-v $HOME/MySQL_Data/data:/var/lib/mysql \
+-v $HOME/MySQL_Data/conf:/etc/mysql/conf.d \
+--privileged=true \
+-e MYSQL_DATABASE='test_db' \
+-e MYSQL_ROOT_PASSWORD='abc$123' \
+-e MYSQL_USER='testuser' -e MYSQL_PASSWORD='abc$123' \
+mysql:8.0.31 \
+    --character-set-server=utf8mb4 \
+    --collation-server=utf8mb4_unicode_ci
+```
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-d` | 表示以后台运行的方式启动容器
+`-it` | 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+`-p 3306:3306` | 将主机的端口映射到容器的端口，这里是将主机的 3306 端口映射到容器的 3306 端口，用于访问 MySQL 数据库
+`--name MySQL` | 为容器指定一个名称，这里是 "MySQL"
+`--restart=always` | 表示当容器退出时，总是重新启动容器
+`--privileged=true` | 若不加字段--privileged=true可能会报权限错误
+`--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci` | 这两个选项参数是改变所有表的默认编码和排序规则以使用 UTF-8 (utf8mb4)
+<!--rehype:className=style-list-arrow-->
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`-v $HOME/MySQL_Data/data:/var/lib/mysql` | 将容器中的 MySQL 数据库数据存储到本地，以确保在容器重启时数据得以保留。
+`-v $HOME/MySQL_Data/conf:/etc/mysql/conf.d` | 将容器中的 MySQL 自定义配置文件路径映射到本地，以方便自定义配置。*请确保提前准备好文件，否则可能会启动失败*。
+<!--rehype:className=style-list-arrow-->
+
+#### 环境变量解释
+
+-- | --
+:-- | --
+`MYSQL_ROOT_PASSWORD` *【必填】* | 必需的变量，用于指定 MySQL 的 root 超级用户帐户的密码。如果设置了 *`MYSQL_RANDOM_ROOT_PASSWORD=yes`* ，则会随机生成一个密码，并打印到 stdout。
+`MYSQL_USER` *【可选】* | 可选变量，用于创建新用户。此用户将被授予指定数据库的超级用户权限。需要同时设置 `MYSQL_PASSWORD` 变量。
+`MYSQL_PASSWORD` *【可选】* | 可选变量，用于创建新用户并设置密码。此用户将被授予指定数据库的超级用户权限。需要同时设置 `MYSQL_USER` 变量。
+`MYSQL_DATABASE` *【可选】* | 可选变量，允许在容器启动时指定要创建的数据库的名称。如果设置了 `MYSQL_USER` 和 `MYSQL_PASSWORD`，则该用户将被授予对此数据库的超级用户访问权限。
+<!--rehype:className=style-list-arrow-->
+
+### Oracle
+
+```bash
+docker run -d -it -p 1521:1521 --name Oracle_11g --restart=always \
+--mount source=oracle_vol,target=/home/oracle/app/oracle/oradata \
+registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
+```
+
+注意：registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g 是非官方或认证的Docker镜像！
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-d` | 表示以后台运行的方式启动容器
+`-it` | 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+`-p 1521:1521` | 将主机的端口映射到容器的端口，这里是将主机的 1521 端口映射到容器的 1521 端口，用于访问 Oracle 数据库
+`--name Oracle_11g` | 为容器指定一个名称，这里是 "Oracle_11g"
+`--restart=always` | 表示当容器退出时，总是重新启动容器
+<!--rehype:className=style-list-arrow-->
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`--mount source=oracle_vol,target=/home/oracle/app/oracle/oradata` | 将名为 "oracle_vol" 的 Docker 卷挂载到容器中的 "/home/oracle/app/oracle/oradata" 路径。这样做的目的是将 Oracle 数据库的数据存储在持久化的卷中，以便数据在容器重启时得以保留
+<!--rehype:className=style-list-arrow-->
+
+### PostgreSQL
+
+```bash
+docker run -d -p 5432:5432 --restart=always --name PostgreSQL \
+-e POSTGRES_USER='postgres' \
+-e POSTGRES_PASSWORD='abc$123' \
+-e POSTGRES_DB='test' \
+-e PGDATA=/var/lib/postgresql/data/pgdata \
+-v $HOME/Postgres_Data:/var/lib/postgresql/data \
+-d postgres
+```
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-d` | 表示以后台运行的方式启动容器
+`-it` | 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+`-p 5432:5432` | 将主机的端口映射到容器的端口，这里是将主机的 5432 端口映射到容器的 5432 端口，用于访问 Postgre 数据库
+`--name PostgreSQL` | 为容器指定一个名称，这里是 "PostgreSQL"
+`--restart=always` | 表示当容器退出时，总是重新启动容器
+<!--rehype:className=auto-wrap left-align-->
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`-v $HOME/Postgres_Data:/var/lib/postgresql/data` | 将到容器中的 "/var/lib/postgresql/data" 路径映射挂载到 宿主机中的 ”$HOME/Postgres_Data“目录下,这样做的目的是将 Postgre 数据库的数据存储在本地中，以便数据在容器重启时得以保留
+<!--rehype:className=style-list-arrow-->
+
+#### 环境变量解释
+
+-- | --
+:-- | --
+`POSTGRES_PASSWORD` *【必填】* | PostgreSQL 映像所需的环境变量。设置 PostgreSQL 超级用户的密码。不能为空或未定义。
+`POSTGRES_USER` *【可选】* | 可选环境变量，用于创建用户及其密码。创建具有超级用户权限的指定用户和同名的数据库。默认用户是 "postgres"。
+`POSTGRES_DB` *【可选】* | 可选环境变量，用于定义首次启动映像时创建的默认数据库的名称。默认值是 `POSTGRES_USER` 的值，如果未设置，则默认为 "postgres"。
+`PGDATA` *【可选】* | 默认为 `/var/lib/postgresql/data`。如果使用的数据卷是文件系统挂载点或无法被用户 chowned 的远程文件夹，则需要设置此环境变量以包含数据。
+<!--rehype:className=style-list-arrow-->
+
+### 达梦
+
+```bash
+docker run -d -p 5236:5236 --restart=always --name DaMengDB \
+--privileged=true \
+-e PAGE_SIZE=16 \
+-e LD_LIBRARY_PATH=/opt/dmdbms/bin \
+-e EXTENT_SIZE=32 \
+-e BLANK_PAD_MODE=1 \
+-e LOG_SIZE=1024 \
+-e UNICODE_FLAG=1 \
+-e LENGTH_IN_CHAR=1 \
+-e INSTANCE_NAME=dm8_test \
+-v $HOME/DaMeng_Data:/opt/dmdbms/data \
+if010/dameng
+```
+
+注意：if010/dameng 是从官网下载上传至 Docker Hub 的镜像！
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-d` | 表示以后台运行的方式启动容器
+`-it` | 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+`-p 5236:5236` | 将主机的端口映射到容器的端口，这里是将主机的 5236 端口映射到容器的 5236 端口，用于访问达梦数据库
+`--name DaMengDB` | 为容器指定一个名称，这里是 "DaMengDB"
+`--restart=always` | 表示当容器退出时，总是重新启动容器
+<!--rehype:className=auto-wrap left-align-->
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`-v $HOME/DaMeng_Data:/opt/dmdbms/data` | 将容器中的达梦数据库数据存储路径 "/opt/dmdbms/data" 映射到本地主机的 "$HOME/DaMeng_Data" 目录，以确保在容器重启时数据得以保留
+<!--rehype:className=style-list-arrow-->
+
+### 人大金仓
+
+```bash
+docker run -idt -p 54321:54321 --restart=always \
+--name Kingbase --privileged=true \
+-e DB_MODE=oracle \
+-e NEED_START=yes \
+-e DB_USER=kingbase \
+-e DB_PASSWORD=abc123 \
+-e ENABLE_CI=yes \
+-v $HOME/Kingbase_Data:/home/kingbase/userdata \
+if010/kingbase:v009r001c001b0025 /usr/sbin/init
+```
+
+注意：`if010/kingbase:v009r001c001b0025` 是从官网下载上传至 Docker Hub 的镜像，官网提供了两个下载版本，一个是 `v008r006c008b0014`，另一个是 `v009r001c001b0025`，可以拉取对应的 `tag` 镜像进行测试使用！
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-itd` | 以后台方式启动容器，保持 STDIN 打开
+`-p 54321:54321` | 将主机的 54321 端口映射到容器的 54321 端口，访问数据库
+`--name Kingbase` | 给容器指定名称为 "Kingbase"
+`--restart=always` | 容器退出时，总是重新启动容器
+<!--rehype:className=auto-wrap left-align-->
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`-v $HOME/Kingbase_Data:/home/kingbase/userdata` | 将容器中的人大金仓数据库数据存储路径 "/home/kingbase/userdata" 映射到本地主机的 "$HOME/Kingbase_Data" 目录，以确保在容器重启时数据得以保留
+<!--rehype:className=style-list-arrow-->
+
+#### 环境变量解释
+
+-- | --
+:-- | --
+`DB_USER` *【可选】* | 设置用户及其密码，默认为 "system"
+`DB_PASSWORD` *【可选】* | 设置用户密码，默认为 "123456"
+`DB_MODE` *【可选】* | 设置数据库模式，支持的模式有 oracle、pg、mysql
+`NEED_START` *【可选】* | 设置进入容器后是否启动数据库，默认为 "yes"
+`ENABLE_CI` *【可选】* | 设置是否需要配置大小写敏感，默认为 "yes"
+<!--rehype:className=auto-wrap left-align-->
+
+### Redis
+
+```bash
+docker run -d -p 6379:6379 --restart=always --name Redis \
+-v $HOME/Redis_Data/conf:/usr/local/etc/redis \
+-v $HOME/Redis_Data/data:/data \
+redis redis-server /usr/local/etc/redis/redis.conf
+```
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-d` | 表示以后台运行的方式启动容器
+`-it` | 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+`-p 6379:6379` | 将主机的端口映射到容器的端口，这里是将主机的 6379 端口映射到容器的 6379 端口，用于访问 Redis 数据库
+`--name Redis` | 为容器指定一个名称，这里是 "Redis"
+`--restart=always` | 表示当容器退出时，总是重新启动容器
+<!--rehype:className=style-list-arrow-->
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`-v $HOME/Redis_Data/conf:/usr/local/etc/redis` | *(需提前准备好文件，否则可能会启动失败)* 将到容器中的 "/usr/local/etc/redis" 路径映射挂载到 宿主机中的"$HOME/Redis_Data/conf"目录下,这样子做的目的是可以自定义Redis的配置文件
+`-v $HOME/Redis_Data/data:/data` | 将到容器中的 "/data" 路径映射挂载到 宿主机中的"$HOME/Redis_Data/data"目录下,这样做的目的是将 Redis 数据库的数据存储在本地中，以便数据在容器重启时得以保留
+<!--rehype:className=style-list-arrow-->
+
+#### 关于启动命令
+
+-- | --
+:-- | --
+`redis-server /usr/local/etc/redis/redis.conf` | 容器内部执行该命令是为了按照我们自定义的配置文件启动，这个不是必须的！！！
+<!--rehype:className=style-list-arrow-->
+
+### Memcache
+
+```bash
+docker run -d -p 11211:11211 --name Memcached \
+    --restart=always memcached memcached -m 64
+```
+
+#### 参数解释
+
+- `-d`: 以后台方式启动容器。
+- `-it`: 分配一个伪终端（pseudo-TTY）并保持 STDIN 打开。
+- `-p 11211:11211`: 将主机的 11211 端口映射到容器的 11211 端口，用于访问 Memcached 消息队列的 web 管理界面。
+- `--name Memcached`: 容器的名称为 "Memcached"。
+- `--restart=always`: 容器退出时，总是重新启动容器。
+
+#### 命令执行解释
+
+- `memcached -m 64` 这会将 Memcached 服务器设置为使用 64 MB 进行存储
+
+### MongoDB
+<!--rehype:wrap-class=row-span-2-->
+
+```bash
+docker run -d -p 27017:27017 --restart=always --name MongoDB \
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+-e MONGO_INITDB_ROOT_PASSWORD=abc123 \
+-v $HOME/MongoDB_Data/data:/data/db \
+-v $HOME/MongoDB_Data/conf:/etc/mongo \
+mongo --config /etc/mongo/mongod.conf --wiredTigerCacheSizeGB 1.5
+```
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-d` | 表示以后台运行的方式启动容器
+`-it` | 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+`-p 27017:27017` | 将主机的端口映射到容器的端口，这里是将主机的 27017 端口映射到容器的 27017 端口，用于访问 MongoDB 数据库
+`--name MongoDB` | 为容器指定一个名称，这里是 "MongoDB"
+`--restart=always` | 表示当容器退出时，总是重新启动容器
+`--config /etc/mongo/mongod.conf` | 指定配置文件路径 (这个不是必须的，设置此选项之前需准备好mongod.conf文件映射到Docker内部)
+`--wiredTigerCacheSizeGB 1.5` | 设置WiredTiger缓存大小限制为1.5G
+<!--rehype:className=style-list-arrow-->
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`-v $HOME/MongoDB_Data/conf:/etc/mongo` | 将到容器中的 "/etc/mongo" 路径映射挂载到 宿主机中的"$HOME/MongoDB_Data/conf"目录下,这样子做的目的是可以自定义MongoDB的配置文件 *(需提前准备好文件，否则可能会启动失败)*
+`-v $HOME/Redis_Data/data:/data` | 将到容器中的 "/data/db" 路径映射挂载到 宿主机中的"$HOME/MongoDB_Data/data"目录下,这样做的目的是将 MongoDB 数据库的数据存储在本地中，以便数据在容器重启时得以保留
+<!--rehype:className=style-list-arrow-->
+
+#### 环境变量解释
+
+-- | --
+:-- | --
+`MONGO_INITDB_ROOT_USERNAME` *【可选】* | 该变量是创建管理员用户，该用户是在 admin 身份验证数据库中创建的，并被赋予角色 root，这是一个"超级用户"角色。
+`MONGO_INITDB_ROOT_PASSWORD` *【可选】* | 该变量是为创建管理员用户设置密码，需配合 `MONGO_INITDB_ROOT_USERNAME` 变量参数使用
+<!--rehype:className=style-list-arrow-->
+
+### RabbitMQ
+
+```bash
+docker run -itd -p 15672:15672 --name RabbitMQ \
+--hostname rmq-test \
+-e RABBITMQ_DEFAULT_VHOST=rmq-test \
+-e RABBITMQ_DEFAULT_USER=admin \
+-e RABBITMQ_DEFAULT_PASS=abc123 \
+rabbitmq:3-management 
+```
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-itd` | 表示以后台运行的方式启动容器,并分配一个伪终端（pseudo-TTY）和保持 STDIN 打开
+`-p 15672:15672` | 将主机的端口映射到容器的端口，这里是将主机的 15672 端口映射到容器的 15672 端口，用于访问 RabbitMQ 控制台页面，内部除了该端口外，还开了4369/tcp、5671-5672/tcp、15671/tcp、15691-15692/tcp、25672/tcp
+`--name RabbitMQ` | 为容器指定一个名称，这里是 "RabbitMQ"
+`--restart=always` | 表示当容器退出时，总是重新启动容器
+`--hostname` | 设置容器主机名称
+<!--rehype:className=style-list-arrow-->
+
+#### 环境变量解释
+
+-- | --
+:-- | --
+`RABBITMQ_DEFAULT_VHOST` *【可选】* | 该变量是可选的，是设置 RabbitMQ 的主机名称
+`RABBITMQ_DEFAULT_USER` *【可选】* | 该变量是可选的，是设置 RabbitMQ 的账户
+`RABBITMQ_DEFAULT_PASS` *【可选】* | 该变量是可选的，是设置 RabbitMQ 的密码
+<!--rehype:className=auto-wrap left-align-->
+
+### 远程协助工具 Guacd
+<!--rehype:wrap-class=row-span-3-->
+
+```bash
+docker run -d -p 4822:4822 --privileged=true \
+    --restart=always --name Guacd \
+    -e LANG=zh_CN.UTF-8 \
+    -v /docker_data/Guacd/rdp-rec:/rdp-rec \
+    -v /docker_data/Guacd/rdp-file:/rdp-file \
+    guacamole/guacd
+```
+
+#### 参数解释
+
+-- | --
+:-- | --
+`-d` | 表示以后台运行的方式启动容器
+`-it` | 分别表示分配一个伪终端（pseudo-TTY）并保持 STDIN 打开
+`-p 4822:4822` | 将主机的端口映射到容器的端口，这里是将主机的 4822 端口映射到容器的 4822 端口，用于访问 Guacd远程的API接口
+`--name Guacd` | 为容器指定一个名称，这里是 "Guacd"
+`--restart=always` | 表示当容器退出时，总是重新启动容器
+`--privileged=true` | 若不加字段--privileged=true可能会报权限错误
+<!--rehype:className=style-list-arrow-->
+
+#### 持久化解释
+
+-- | --
+:-- | --
+`-v /docker_data/Guacd/rdp-rec:/rdp-rec` | 代码内固定配置，guacd服务rdp录屏文件存放路径
+`-v /docker_data/Guacd/rdp-file:/rdp-file` | 代码内固定配置，guacd服务rdp远程磁盘文件存放路
+<!--rehype:className=style-list-arrow-->
+
+#### 环境变量解释
+
+- `LANG` 设置字符编码格式
+
 ### 在线代码编辑器 Code Server
 
 ```bash
@@ -615,47 +1133,6 @@ $ docker run -it --name code-server  \
   -u "$(id -u):$(id -g)" \
   -e "DOCKER_USER=$USER" \
     codercom/code-server:latest
-```
-
-### MySQL
-
-```bash
-$ docker run --name mysql \
-  -p 3306:3306 \
-  -v $HOME/mysql/conf.d:/etc/mysql/conf.d \
-  -v $HOME/mysql/data:/var/lib/mysql \
-  -v /etc/localtime:/etc/localtime:ro \
-  -e MYSQL_ROOT_PASSWORD=123456 \
-  -d mysql:5.7.23
-```
-
-### Redis
-
-```bash
-$ docker run -d --name myredis \
-  -v $HOME/redis/conf:/usr/local/etc/redis \
-  -v /etc/localtime:/etc/localtime:ro \
-    redis redis-server /usr/local/etc/redis/redis.conf
-```
-
-### Nginx
-
-```bash
-$ docker run --name my-nginx \ 
-  -v "$HOME/nginx/nginx.conf:/etc/nginx/nginx.conf:ro" \
-  -v "$HOME/nginx/html:/usr/share/nginx/html:ro" \
-  -p 8080:80 \
-  -d nginx
-```
-
-### PostgreSQL
-
-```bash
-$ docker run --name my-postgres \
-  -e POSTGRES_PASSWORD=mysecretpassword \
-  -e PGDATA=/var/lib/postgresql/data/pgdata \
-  -v $HOME/nginx/mount:/var/lib/postgresql/data \
-  -d postgres
 ```
 
 ### 媒体管理工具 Dim
@@ -691,3 +1168,4 @@ $ docker run -d --name gitlab \
 - [Dockerfile 备忘清单](./dockerfile.md) *(github.io)*
 - [Docker 官方入门教程](https://docs.docker.com/get-started/) *(docker.com)*
 - [Docker入门学习笔记](https://jaywcjlove.github.io/docker-tutorial) *(github.io)*
+- [快速安装Docker及配置及Docker配置、Docker常用命令](https://www.loganjin.cn/article/docker-install/)

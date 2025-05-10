@@ -985,6 +985,7 @@ Github emoji 图标标记
 --------
 
 - [Emoji searcher](https://emoji.muan.co/) _(muan.co)_
+- [Share Emojis-With Your 🥺Fiends With An Great Way And Unique✅ |copy & download|](https://emoji-share.com/) _(emoji-share.com)_
 - [Get Emoji — All Emojis to ✂️ Copy and 📋 Paste](https://getemoji.com/) _(getemoji.com)_
 - [Emoji Guide – 🔥 The Ultimate Emoji Guide: 🌈 Meanings, 🍎 Platforms, 🆘 Codes and 😍 More](https://emojiguide.com/) _(emojiguide.com)_
 - [Full Emoji List, v15.0](https://unicode.org/emoji/charts/full-emoji-list.html) _(unicode.org)_

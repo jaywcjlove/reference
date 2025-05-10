@@ -9,6 +9,8 @@ Dart 备忘清单
 ### 安装 Dart
 <!--rehype:wrap-class=row-span-2-->
 
+> 完整教程请参阅 Dart 中文社区 [https://dart.cn/get-dart/](https://dart.cn/get-dart/)
+
 #### Windows
 
 ```bash
@@ -88,8 +90,8 @@ double height = 1.85;
 // 您还可以将变量声明为 num
 // x 可以同时具有 int 和 double 值
 num x = 1;
-num += 2.5;
-print(num); // 打印: 3.5
+x += 2.5;
+print(x); // 打印: 3.5
 
 String name = "Nicola";
 bool isFavourite = true;
@@ -130,6 +132,15 @@ import 'dart:math';
 import 'package:test/test.dart';
 // 导入文件
 import 'path/to/my_other_file.dart';
+// 指定前缀
+import 'package:lib/lib.dart' as lib;
+lib.Element element = lib.Element();
+// 仅导入 foo
+import 'package:lib1/lib1.dart' show foo;
+// 不导入 foo
+import 'package:lib2/lib2.dart' hide foo;
+// 延迟导入，仅在需要时导入
+import 'package:greetings/hello.dart' deferred as hello;
 ```
 
 操作符
@@ -184,10 +195,84 @@ print(3 >= 3); // 打印: true - 大于或等于
 print(2 <= 3); // 打印: true - 小于或等于
 ```
 
+### 运算符优先级示例
+
+```dart
+// 括号可以提高可读性。
+if ((n % i == 0) && (d % i == 0)) ...
+// 虽然难以阅读，但等效。
+if (n % i == 0 && d % i == 0) ...
+```
+
+### 位运算符和移位运算符
+
+操作符 | 含义
+:-|-
+`&` | 与（AND）
+`\|` | 或（OR）
+`^` | 异或（XOR）
+`~expr` | 一元位补码<br>_(0 变为 1；1 变为 0)_
+`<<` | 左移
+`>>` | 右移
+`>>>` | 无符号右移
+<!--rehype:className=left-align-->
+
+----
+
+```dart
+final value = 0x22;
+final bitmask = 0x0f;
+
+// 与（AND）
+assert((value & bitmask) == 0x02);
+// 非与（AND NOT）
+assert((value & ~bitmask) == 0x20);
+// 或（OR）
+assert((value | bitmask) == 0x2f);
+// 异或（XOR）
+assert((value ^ bitmask) == 0x2d);
+
+assert((value << 4) == 0x220); // 左移
+assert((value >> 4) == 0x02);  // 右移
+```
+
+### 级联表示法
+
+级联 (.., ?..) 允许您对同一对象进行一系列操作。除了访问实例成员之外，您还可以调用同一对象的实例方法。这通常可以节省您创建临时变量的步骤，并允许您编写更流畅的代码。考虑以下代码：
+
+```dart
+var paint = Paint()
+  ..color = Colors.black
+  ..strokeCap = StrokeCap.round
+  ..strokeWidth = 5.0;
+```
+
+示例相当于以下代码：
+
+```dart
+var paint = Paint();
+paint.color = Colors.black;
+paint.strokeCap = StrokeCap.round;
+paint.strokeWidth = 5.0;
+```
+
+以 `?...`开头可确保不会对该空对象进行任何级联操作。
+
+```dart
+querySelector('#confirm') // 获取一个对象
+  ?..text = 'Confirm' // 使用它的成员
+  ..classes.add('important')
+  ..onClick.listen((e) => {
+    window.alert('Confirmed!')
+  })
+  ..scrollIntoView();
+```
+
 控制流：条件
 ------
 
 ### if 和 else if
+<!--rehype:wrap-class=row-span-2-->
 
 ```dart
 if(age < 18){
@@ -200,11 +285,12 @@ if(age < 18){
 ```
 
 ### switch case
+<!--rehype:wrap-class=row-span-2-->
 
 ```dart
 enum Pet {dog, cat}
 Pet myPet = Pet.dog;
-switch(myPet){
+switch(myPet) {
     case Pet.dog:
         print('My Pet is Dog.');
         break;
@@ -215,6 +301,25 @@ switch(myPet){
         print('I don\'t have a Pet');
 }
 // 打印: My Pet is Dog.
+```
+
+### 三元操作符
+
+```dart
+int age = 20;
+String message = age >= 18 ? "成人" : "儿童";
+print("年龄类别: $message");
+// 输出: 年龄类别: 成人
+```
+
+### 三元操作符嵌套使用
+
+```dart
+int x = 10;
+int y = 5;
+int result = x > y ? x : y > 0 ? y : 0;
+print("Result: $result");
+// 输出: Result: 10
 ```
 
 控制流：循环
@@ -276,7 +381,7 @@ const constantCities = const ["New York", "Mumbai", "Tokyo"];
 ```dart
 // 映射是关联键和值的对象
 var person = Map<String, String>();
-// 要初始化地图，请执行以下操作：
+// 要初始化映射，请执行以下操作：
 person['firstName'] = 'Nicola';
 person['lastName'] = 'Tesla';
 print(person);
@@ -301,7 +406,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 // 创建一个空集
 var names = <String>{};
 Set<String> names = {}; // 这也有效
-//var names = {}; // 创建地图，而不是集合
+//var names = {}; // 创建映射，而不是集合
 ```
 
 函数
@@ -737,7 +842,8 @@ Future<String> login() {
 // 异步
 main() async {
   print('Authenticating please wait...');
-  print(await userName());
+  String result = await login();
+  print(result);
 }
 ```
 
@@ -778,8 +884,50 @@ userObject?.userName?.toString()
 // 如果 userObject 或 userObject.userName 为 null，则前面的代码返回 null 并且从不调用 toString()
 ```
 
+### 扩展运算符 (...)
+
+```dart
+// 将多个值插入到集合中
+var list = [1, 2, 3];
+var list2 = [0, ...list];
+print(list2.length); // 打印: 4
+```
+
+### enum
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+定义：enum（"enumeration"的缩写）是一种特殊的数据类型，可使变量成为一组预定义的常量。枚举用于定义只能从一小组可能值中选择一个的变量。通过为这些值集提供有意义的名称，枚举有助于提高代码的可读性，减少出错率。
+
+```dart
+// 定义枚举类型
+enum TrafficLight {
+  red,
+  yellow,
+  green
+}
+// 根据交通灯状态打印消息的函数
+void printTrafficLightMessage(TrafficLight light) {
+  switch (light) {
+    case TrafficLight.red:
+      print('Stop!');
+      break;
+    case TrafficLight.yellow:
+      print('Get ready...');
+      break;
+    case TrafficLight.green:
+      print('Go!');
+      break;
+  }
+}
+void main() {
+  // 枚举类型的示例用法
+  TrafficLight currentLight = TrafficLight.green;
+  // 打印当前交通灯状态的消息
+  printTrafficLightMessage(currentLight);
+}
+```
+
 ### 级联符号 (..)
-<!--rehype:wrap-class=row-span-2-->
 
 ```dart
 // 允许您对同一对象进行一系列操作
@@ -795,15 +943,6 @@ var user = User()
   ..age = 24;
 ```
 
-### 扩展运算符 (...)
-
-```dart
-// 将多个值插入到集合中
-var list = [1, 2, 3];
-var list2 = [0, ...list];
-print(list2.length); // 打印: 4
-```
-
 ### 延迟初始化
 
 ```dart
@@ -812,7 +951,7 @@ late String token;
 
 void main(List<String> args) {
   /// print(token);
-  /// Field 'token' has not been initialized
+  /// 字段 "token "尚未初始化
   /// 在初始化前调用就会报错
   token = "tokenContent";
   print(token);
@@ -823,3 +962,4 @@ void main(List<String> args) {
 ----
 
 - [Dart 官方文档](https://dart.dev/) _(dart.dev)_
+- [Dart 中文社区官方文档](https://dart.cn/) _(dart.cn)_

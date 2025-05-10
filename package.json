@@ -1,6 +1,6 @@
 {
   "name": "@wcj/reference",
-  "version": "1.42.0",
+  "version": "1.46.0",
   "description": "为开发人员分享快速参考备忘单(主要是方便自己)。",
   "author": "jaywcjlove",
   "license": "MIT",
@@ -9,8 +9,10 @@
   "private": false,
   "scripts": {
     "prepare": "husky",
-    "build": "refs-cli",
+    "postinstall": "npm run cpy",
+    "build": "refs-cli && npm run cpy",
     "start": "refs-cli --watch",
+    "cpy": "cpy 'appicon/*.png' dist/appicon",
     "prettier": "prettier --write '**/*.{mjs,css,json,prettierrc,lintstagedrc}'",
     "markdownlint": "npx markdownlint-cli --fix ./docs/*.md"
   },
@@ -28,12 +30,13 @@
     "docs/*.md": "markdownlint --fix"
   },
   "devDependencies": {
+    "cpy-cli": "^5.0.0",
     "husky": "^9.0.0",
     "lint-staged": "^15.0.0",
-    "prettier": "^3.0.0",
-    "refs-cli": "^1.5.1",
     "markdownlint": "^0.33.0",
-    "markdownlint-cli": "^0.39.0"
+    "markdownlint-cli": "^0.39.0",
+    "prettier": "^3.0.0",
+    "refs-cli": "^1.8.0"
   },
   "engines": {
     "node": ">=16.0.0"

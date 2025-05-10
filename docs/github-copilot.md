@@ -3,12 +3,12 @@ Github Copilot 备忘清单
 
 这是开始使用 [Github Copilot](https://code.visualstudio.com/docs/editor/github-copilot) 的快速参考指南
 
-一、准备工作
+入门
 ----
 
 ### 1、账号注册
 
-> 需要先拥有一个Github账号，并订阅Copilot。
+需要先拥有一个Github账号，并订阅Copilot。
 
 事项 | 说明
 :-|-
@@ -18,7 +18,7 @@ Github 账号 | [注册地址](https://github.com/signup)
 ### 2、安装Vscode插件
 <!--rehype:wrap-class=col-span-1 row-span-1-->
 
-> 在扩展商店中搜索安装下面插件
+在扩展商店中搜索安装下面插件
 
 插件名称 | 功能
 :-|-
@@ -44,22 +44,23 @@ Copilot Enterprise| 39美元/人/月 | Business 特性 + 私有代码库的个�
 <!--rehype:wrap-class=col-span-1 row-span-1-->
 |名称 | 描述 |
 |-|-|
-Inline Suggestions| 在编辑器中紧邻光标所在位置显示建议
-Completions Panel| 在编辑器中展示完整的建议列表
-Inline Chat| 在编辑器中紧邻光标所在位置发起对话
-Editor Chat| 在编辑器中打开完整的对话界面
-Silde Chat| 在编辑器的侧边栏打开对话界面  
-Quick Chat| 在顶部唤起对话界面
+`Inline Suggestions` | 在编辑器中紧邻光标所在位置显示建议
+`Completions Panel` | 在编辑器中展示完整的建议列表
+`Inline Chat` | 在编辑器中紧邻光标所在位置发起对话
+`Editor Chat` | 在编辑器中打开完整的对话界面
+`Silde Chat` | 在编辑器的侧边栏打开对话界面  
+`Quick Chat` | 在顶部唤起对话界面
+<!--rehype:className=left-align-->
 
-二、提示技巧
+提示技巧
 ----
 
 ### 提示之禅
 <!--rehype:wrap-class=col-span-1 row-span-1-->
 
-> 你与 `copilot` 之间的关系，就是作家和插画师的关系。  
-> 你只有尽可能的全面、干练、清晰的描述你的故事(即 `上下文`)。  
-> `copilot` 才能根据你的故事画出精美的插画 (即 `代码` )。  
+- 你的关系与 `copilot` 的关系，就像作家与插画师的关系。  
+- 为了让 `copilot` 能够绘制出精美的插画（即代码），你需要尽可能全面、干练、清晰地描述你的故事（即上下文）。
+<!--rehype:className=style-round-->
 
 ### 提示技巧
 <!--rehype:wrap-class=col-span-1 row-span-1-->
@@ -69,9 +70,9 @@ Quick Chat| 在顶部唤起对话界面
 
 ### 实战教程
 
-- [Youtube GitHub Copilot Series](https://www.youtube.com/playlist?list=PLj6YeMhvp2S5_hvBl2SE-7YCHYlLQ0bPt)
-- [Pragmatic techniques to get the most out of GitHub Copilot](https://www.youtube.com/watch?v=CwAzIpc4AnA)
-- [How I used GitHub Copilot to build a browser extension](https://github.blog/2023-05-12-how-i-used-github-copilot-to-build-a-browser-extension/)
+- [Youtube GitHub Copilot 系列](https://www.youtube.com/playlist?list=PLj6YeMhvp2S5_hvBl2SE-7YCHYlLQ0bPt)
+- [实用技巧：充分利用 GitHub Copilot](https://www.youtube.com/watch?v=CwAzIpc4AnA)
+- [我如何使用 GitHub Copilot 构建浏览器扩展](https://github.blog/2023-05-12-how-i-used-github-copilot-to-build-a-browser-extension/)
 
 ### 上下文信息的种类
 <!--rehype:wrap-class=col-span-2 row-span-1-->
@@ -86,13 +87,13 @@ Quick Chat| 在顶部唤起对话界面
 
 ### 上下文：文件
 
-> Copilot会查看编辑器中当前和紧邻打开的文件，以分析上下文并提供适当的建议。
+Copilot会查看编辑器中当前和紧邻打开的文件，以分析上下文并提供适当的建议。
 
 ---
 
-> - 1、避免打开过多的文件，以便Copilot能够更好地理解你的代码。
-> - 2、打开的文件尽量相关且有共性。
-> - 3、如果是新项目，可以打开一些模版代码、数据文件以及参考文档等相关示例文件。以便Copilot能够更好地理解你的期望。等已经开发了一些代码后，这些示例文件就可以删除了。
+- 1、避免打开过多的文件，以便Copilot能够更好地理解你的代码。
+- 2、打开的文件尽量相关且有共性。
+- 3、如果是新项目，可以打开一些模版代码、数据文件以及参考文档等相关示例文件。以便Copilot能够更好地理解你的期望。等已经开发了一些代码后，这些示例文件就可以删除了。
 
 ### 上下文: 注释: 顶部注释
 
@@ -275,7 +276,7 @@ dailogs = [
 ...
 ```
 
-三、快捷键
+快捷键
 ----
 <!--rehype:body-class=cols-2-->
 
@@ -287,6 +288,7 @@ dailogs = [
 <!--rehype:wrap-class=col-span-2 row-span-1-->
 
 #### Copilot 中 Inline Suggestions 相关命令
+<!--rehype:style=text-align: left;-->
 
 | 命令 |说明 | 快捷键 | Mac 快捷键 |
 |-|:-|:-|:-|
@@ -300,6 +302,7 @@ dailogs = [
 <!--rehype:className=show-header wrap-text left-align-->
 
 #### Copilot 中 Completions Panel 相关命令
+<!--rehype:style=text-align: left;-->
 
 | 命令 |说明 | 快捷键 | Mac 快捷键 |
 |-|:-|:-|:-|
@@ -310,6 +313,7 @@ dailogs = [
 <!--rehype:className=show-header wrap-text left-align-->
 
 #### Copilot 中 其他命令
+<!--rehype:style=text-align: left;-->
 
 | 命令 |说明 | 快捷键 | Mac 快捷键 |
 |-|:-|:-|:-|
@@ -324,6 +328,7 @@ dailogs = [
 <!--rehype:wrap-class=col-span-2 row-span-1-->
 
 #### Copilot Chat 中 Chat 相关命令
+<!--rehype:style=text-align: left;-->
 
 | 命令 |说明 | 快捷键 | Mac 快捷键 |
 |-|:-|:-|:-|
@@ -334,6 +339,7 @@ dailogs = [
 <!--rehype:className=show-header wrap-text left-align-->
 
 #### Copilot Chat 中 Inline Chat 相关命令
+<!--rehype:style=text-align: left;-->
 
 | 命令 |说明 | 快捷键 | Mac 快捷键 |
 |-|:-|:-|:-|
@@ -345,6 +351,7 @@ dailogs = [
 <!--rehype:className=show-header wrap-text left-align-->
 
 #### Copilot Chat 中 Quick Chat 相关命令
+<!--rehype:style=text-align: left;-->
 
 | 命令 |说明 | 快捷键 | Mac 快捷键 |
 |-|:-|:-|:-|
@@ -353,6 +360,7 @@ dailogs = [
 <!--rehype:className=show-header wrap-text left-align-->
 
 #### Copilot Chat 中 Editor Chat 相关命令
+<!--rehype:style=text-align: left;-->
 
 | 命令 |说明 | 快捷键 | Mac 快捷键 |
 |-|:-|:-|:-|
@@ -360,6 +368,7 @@ dailogs = [
 <!--rehype:className=show-header wrap-text left-align-->
 
 #### Copilot Chat 其他命令
+<!--rehype:style=text-align: left;-->
 
 | 命令 |说明 | 快捷键 | Mac 快捷键 |
 |-|:-|:-|:-|
@@ -368,10 +377,10 @@ dailogs = [
 `github.copilot.ghpr.applySuggestion`|为Github Pull Request提供代码建议|-|-
 <!--rehype:className=show-header wrap-text left-align-->
 
-四、Copilot Chat 的 Slash Commands 使用技巧
+Copilot Chat 的 Slash Commands 使用技巧
 ----
 
-> 在聊天对话框中可以通过`/`开头的命令来与Copilot Chat进行交互。
+在聊天对话框中可以通过`/`开头的命令来与Copilot Chat进行交互。
 
 ### Slash Commands 示例
 <!--rehype:wrap-class=col-span-1 row-span-1-->
@@ -393,9 +402,9 @@ dailogs = [
 @vscode /api 请解释 inlineChat.start 的作用
 
 @workspace /explain def helloworld():...
+```
 
 在每一行代码末尾添加注释进行解释
-```
 
 #### Agent
 
@@ -420,7 +429,7 @@ dailogs = [
 
 ---
 
-> 通过命令 `github.copilot.interactiveEditor.generate` 触发
+通过命令 "github.copilot.interactiveEditor.generate" 触发
 
 |命令         |说明 |
 |-           |:-|
@@ -430,32 +439,34 @@ dailogs = [
 
 > 当然也可以直接选中区域，然后在inline chat中输入指令执行 copilot会对选中区域进行指令操作  
 
-|常用指令|
-| - |
-|在每一行代码末尾添加注释进行解释|
-|使代码满足PEP484要求|
-<!--rehype:className=show-header wrap-text left-align-->
+#### 常用指令
+
+- 在每一行代码末尾添加注释进行解释
+- 使代码满足PEP484要求
+<!--rehype:className=style-round-->
 
 ### Silde Chat 的 Slash Commands
 <!--rehype:wrap-class=col-span-1 row-span-2-->
 
-> 通过命令 `workbench.action.chat.openInSidebar` 触发 `chat` 后使用  
-> 或点击侧边栏上的Copilot聊天按钮  
-> 在Chat输入框中还允许指定Agent(即环境)  
+- 通过命令 `workbench.action.chat.openInSidebar` 触发 `chat` 后使用  
+- 或点击侧边栏上的Copilot聊天按钮  
+- 在Chat输入框中还允许指定Agent(即环境)  
+<!--rehype:className=style-round-->
 
 #### Slash Commands
 
 |命令         |说明 |
 |-           |:-|
-/api         |回答vscode扩展插件开发的问题  
-/explain     |对选中的代码进行解释
-/fix         |修复此选中的代码
-/new         |创建新项目workspace
-/newNotebook |创建新的Jupyter Notebook  
-/terminal    |解释命令行里的命令
-/tests       |为选中的代码生成单元测试
-/help        |帮助说明
-/clear       |清除会话
+`/api`         |回答vscode扩展插件开发的问题  
+`/explain`     |对选中的代码进行解释
+`/fix`         |修复此选中的代码
+`/new`         |创建新项目workspace
+`/newNotebook` |创建新的Jupyter Notebook  
+`/terminal`    |解释命令行里的命令
+`/tests`       |为选中的代码生成单元测试
+`/help`        |帮助说明
+`/clear`       |清除会话
+<!--rehype:className=left-align-->
 
 ### `/terminal`特有的变量, 以`#`号开头
 
@@ -471,13 +482,12 @@ dailogs = [
 
 - Quick Chat 与 Chat 的 Slash Commands相同
 - Editor Chat 与 Chat 的 Slash Commands相同
+<!--rehype:className=style-round-->
 
-五、参数设置
+参数设置
 ----
 
-打开vscode 命令面板, 输入`Preferences:Open Settings` 打开配置文件，在文件模式下配置相关参数.
-
-完整参数说明可以查看 `copilot` 与 `copilot chat` 两个[插件目录](https://code.visualstudio.com/docs/editor/extension-marketplace#_where-are-extensions-installed)下的 `package.json` 文件获知。
+打开 VSCode 命令面板，输入 `Preferences: Open Settings` 来打开配置文件。在文件模式下，您可以配置相关参数。要获取完整的参数说明，请查看 `copilot` 和 `copilot chat` 两个插件目录下的 `package.json` 文件，具体位置可以参考 [VSCode 扩展市场](https://code.visualstudio.com/docs/editor/extension-marketplace#_where-are-extensions-installed)。
 
 ### 完整配置参考
 
@@ -532,49 +542,59 @@ dailogs = [
 
 ### 参数说明
 <!--rehype:wrap-class=col-span-2 row-span-1-->
+
 #### 代理参数
+<!--rehype:style=text-align: left;-->
 
 |设置参数 |值类型|说明 |
 |:--|:--|:--|
 `"http.proxy"`| string |配置网络代理地址
+<!--rehype:className=left-align-->
 
 #### Copilot Chat 参数
+<!--rehype:style=text-align: left;-->
 
 |设置参数 |值类型|说明 |
 |:--|:--|:--|
 `"github.copilot.chat.localeOverride"`| string | 设置Copilot本地语言
 `"github.copilot.chat.welcomeMessage"`| string |Copilot Chat 是否显示欢迎语<br>`first`: 仅第一次启动时, `always`: 总是, `never`: 从不
+<!--rehype:className=left-align-->
 
 #### Copilot 基本参数
+<!--rehype:style=text-align: left;-->
 
 |设置参数 |值类型|说明 |
 |:--|:--|:--|
-`"editor.inlineSuggest.enabled"`| boolean |启用内联建议
-`"github.copilot.editor.iterativeFixing"`| boolean| 允许 Copilot 提供迭代修复建议
-`"github.copilot.editor.enableAutoCompletions"`| boolean |允许 Copilot 提供自动补全
-`"github.copilot.editor.enableCodeActions"`| boolean|允许 Copilot 代码操作建议,这些操作可能包括重构代码、优化代码结构、修复可错误等
+| `"editor.inlineSuggest.enabled"` | boolean | 启用内联建议 |
+| `"github.copilot.editor.iterativeFixing"`     | boolean | 允许 Copilot 提供迭代修复建议  |
+| `"github.copilot.editor.enableAutoCompletions"` | boolean | 允许 Copilot 提供自动补全      |
+| `"github.copilot.editor.enableCodeActions"`    | boolean | 允许 Copilot 提供代码操作建议，包括重构和优化代码结构、修复错误等 |
+<!--rehype:className=left-align-->
 
 #### 设置 Copilot 生效的文件类型
+<!--rehype:style=text-align: left;-->
 
 |设置参数 |值类型|说明 |
 |:--|:--|:--|
 `"github.copilot.enable"`| json |请将 `"*": true` 放到末尾 <br>[语言](https://code.visualstudio.com/docs/languages/identifiers)后设置 `false` 表示禁用copilot, 设置 `true` 表示启用
+<!--rehype:className=left-align-->
 
 #### Copilot 高级参数
+<!--rehype:style=text-align: left;-->
 
-> github.copilot.advanced 可以控制模型参数，最终影响到代码生成. 其值为json
+`github.copilot.advanced` 可以控制模型参数，最终影响到代码生成。其值为json
 
-|设置参数 |值类型|说明 |
-|:--|:--|:--|
-`"length"`| integer | 生成的代码字数, 默认为 `500`
-`"top_p"`| number | 控制模型候选范围，默认值为 `1`，值范围为`0.0~1.0`
-`"temperature"`| string | 控制模型的创造性，默认值为 `""`，值越大越不可预测，值范围为`0.0~1.0`
-`"inlineSuggestCount"`| integer | 内联提示的个数, 默认为`3`
-`"listCount"`| integer | 控制`Completions Panel`中建议个数，默认为 `10`
-`"stops"`| json | 控制模型代码生成时停止的标志，可以按[语言](https://code.visualstudio.com/docs/languages/identifiers)来控制
-`"indentationMode"`| json | 指定[语言](https://code.visualstudio.com/docs/languages/identifiers)是否采用该语言的缩近模式，由此可能会与stops冲突，比如采用`\{\}`缩近时，设置该参数时需要综合考虑
-`"debug.showScores"`| boolean | 在代码建议列表中显示每个建议的分数
-<!--rehype:className=wrap-text -->
+| 设置参数 | 值类型 | 说明 |
+|----------|----------|----------|
+| `"length"`                 | 整数 integer     | 生成代码的字数，默认为 `500`                    |
+| `"top_p"`                  | 数字 number     | 控制模型候选范围，默认值为 `1`，范围为 `0.0~1.0` |
+| `"temperature"`            | 字符串 string   | 控制模型创造性，默认值为空，值越大越不可预测，范围为 `0.0~1.0` |
+| `"inlineSuggestCount"`     | 整数 integer     | 内联提示的个数，默认为 `3`                      |
+| `"listCount"`              | 整数 integer     | `Completions Panel` 中建议的个数，默认为 `10`  |
+| `"stops"`                  | JSON     | 控制模型代码生成时的停止标志，可按[语言](https://code.visualstudio.com/docs/languages/identifiers)控制 |
+| `"indentationMode"`        | JSON     | 指定[语言](https://code.visualstudio.com/docs/languages/identifiers)是否使用该语言的缩进模式，可能与 stops 冲突 |
+| `"debug.showScores"`       | 布尔值 boolean   | 在代码建议列表中显示每个建议的分数              |
+<!--rehype:className=left-align-->
 
 END... ENJOY YOURSELF
 ----

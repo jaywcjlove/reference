@@ -279,13 +279,26 @@ u := uint(i)
 s := string(i)
 ```
 
-#### 如何获取int字符串？
+#### 字符串与其他类型的相互转换
 
 ```go
-i := 90
-// 需要导入“strconv”
-s := strconv.Itoa(i)
-fmt.Println(s) // Outputs: 90
+// 字符串转其他类型
+str := "90"
+// 整数类型
+i, err := strconv.Atoi(str)
+if err != nil {
+    fmt.Println("转换错误:", err)
+} else {
+    fmt.Println(i)
+}
+// 浮点类型
+f, err := strconv.ParseFloat(str, 64)
+// []byte 类型
+bytes := []byte(str)
+// 其他类型转字符串
+str = strconv.Itoa(i)
+str = strconv.FormatFloat(f, 'f', 2, 64)
+str = string(bytes[:])
 ```
 
 Golang 字符串
@@ -837,6 +850,54 @@ ch <- 3
 ```
 
 参见：[缓冲通道](https://tour.golang.org/concurrency/3)
+
+### Context
+
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "time"
+)
+
+func main() {
+    // 创建根 context
+    ctx := context.Background() // 空 context，通常作为根 context
+    todo := context.TODO()      // 当不确定使用哪个 context 时使用
+
+    // 创建带取消功能的 context
+    ctx, cancel := context.WithCancel(context.Background())
+    defer cancel() // 确保所有路径都调用取消函数
+
+    // 创建带超时的 context
+    ctx, cancel = context.WithTimeout(context.Background(), 100*time.Millisecond)
+    defer cancel()
+
+    // 创建带截止时间的 context
+    deadline := time.Now().Add(200 * time.Millisecond)
+    ctx, cancel = context.WithDeadline(context.Background(), deadline)
+    defer cancel()
+
+    // 创建带值的 context
+    ctx = context.WithValue(context.Background(), "key", "value")
+    
+    // 从 context 获取值
+    value := ctx.Value("key")
+    fmt.Println(value)
+    
+    // 检查 context 是否已取消
+    select {
+    case <-ctx.Done():
+        fmt.Println("Context canceled:", ctx.Err())
+    default:
+        fmt.Println("Context still valid")
+    }
+}
+```
 
 Golang 错误控制
 --------

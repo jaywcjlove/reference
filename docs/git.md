@@ -167,6 +167,12 @@ $ git checkout -b new_branch
 $ git branch -d my_branch
 ```
 
+删除本地存在远程不存在的分支
+
+```shell
+$ git remote prune origin
+```
+
 将分支 `A` 合并到分支 `B`
 
 ```shell
@@ -564,6 +570,7 @@ $ git log Branch1 ^Branch2
 ```
 
 ### git 迁移
+<!--rehype:wrap-class=col-span-2-->
 
 - 从原地址克隆一份裸版本库
 
@@ -1129,6 +1136,7 @@ Host github.com
 <!--rehype:className=wrap-text-->
 
 ### Fork仓库同步上游仓库
+<!--rehype:wrap-class=col-span-2-->
 
 - 设置上游仓库
 
@@ -1278,6 +1286,55 @@ Conventional Commmits
 | `style:` | 变更不影响一些有意义的代码 (如: 删除空格、格式化代码、添加分号等) |
 | `test:` | 添加测试代码或修正已有的测试 |
 <!--rehype:className=left-align-->
+
+
+patch 补丁的使用
+----
+
+### 简单创建
+
+```bash
+$ git diff commit_id > my.patch
+```
+
+### 简单应用
+
+  - **检查**补丁
+
+    ```bash
+    # 检查下这个补丁能否被正常应用
+    $ git apply --check path/to/my.patch
+    ```
+    
+  - **使用**补丁
+
+    ```
+    # 检查通过使用该补丁
+    $ git apply < path/to/my.patch
+    ```
+
+  - 若有冲突则**解决**
+
+    ```
+    # 检查不通过可以自动合入patch不冲突的代码，同时保留冲突部分
+    $ git apply --reject path/to/my.patch
+    ```
+
+<!--rehype:className=style-timeline-->
+
+### Email patch 方式
+
+```bash
+# 创建指定 commit sha1 id 之前的 n 次提交补丁
+$ git format-patch commit_id -n
+# 创建 300f59991f22826c8478f0c019387c4ca815b085 这个提交的patch
+$ git format-patch commit_id -1
+# 提取当前分支最上面的3次提交，生成补丁
+$ git format-patch -3
+# 发送者可使用 git-send-email 发送 git format-patch 的结果给接收者
+# 接收者保存邮件到文件 email.txt，然后应用补丁创建一个提交，会自动包含作者的信息
+$ git am < email.txt
+```
 
 另见
 ---

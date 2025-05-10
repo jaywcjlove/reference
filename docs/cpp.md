@@ -30,7 +30,7 @@ Hello Quick Reference
 int number = 5;       // 整数
 float f = 0.95;       // 浮点数
 double PI = 3.14159;  // 浮点数
-char yes = 'Y';       // 特点
+char yes = 'Y';       // 字符
 std::string s = "ME"; // 字符串（文本）
 bool isRight = true;  // 布尔值
 // 常量
@@ -73,6 +73,11 @@ int a = 5, b = 10;
 std::swap(a, b);
 // 输出: a=10, b=5
 std::cout << "a=" << a << ", b=" << b;
+
+// 整数交换的奇技淫巧
+(x ^= y), (y ^= x), (x ^= y);
+// 注意！ 以下操作会造成  undefined behavior
+x ^= y ^= x ^= y;
 ```
 
 ### 注释
@@ -108,13 +113,13 @@ for (int i = 0; i < 10; i++) {
 
 ```cpp
 #include <iostream>
- 
+
 void hello();   // 声明
- 
+
 int main() {    // 主函数
     hello();    // 执行函数
 }
- 
+
 void hello() { // 定义
   std::cout << "Hello Quick Reference!\n";
 }
@@ -155,7 +160,7 @@ using namespace ns1;
 using namespace std;
 int main()
 {
-    cout << val(); 
+    cout << val();
 }
 ```
 
@@ -172,7 +177,7 @@ marks[0] = 92;
 marks[1] = 97;
 marks[2] = 98;
 // 定义和初始化
-std::array<int, 3> = {92, 97, 98};
+std::array<int, 3> marks = {92, 97, 98};
 // 有空成员
 std::array<int, 3> marks = {92, 97};
 std::cout << marks[2]; // 输出: 0
@@ -237,7 +242,7 @@ for (int i = 0; i < 2; ++i) {
         std::cout << x[i][j] << " ";
     }
 }
-// 输出: 1 2 3 4 5 6 6 5 4 3 2 1 
+// 输出: 1 2 3 4 5 6 6 5 4 3 2 1
 ```
 
 C++ 条件
@@ -317,19 +322,19 @@ else
 | Example        | Meaning                |
 |----------------|------------------------|
 | `exp1 && exp2` | Both are true _(AND)_  |
-| `exp1 || exp2` | Either is true _(OR)_  |
+| <code>exp1 &#124;&#124; exp2</code> | Either is true _(OR)_  |
 | `!exp`         | `exp` is false _(NOT)_ |
 
 #### 位运算符
 
-| Operator | Description             |
-|----------|-------------------------|
-| `a & b`  | Binary AND              |
-| `a | b`  | Binary OR               |
-| `a ^ b`  | Binary XOR              |
-| `a ~ b`  | Binary One's Complement |
-| `a << b` | Binary Shift Left       |
-| `a >> b` | Binary Shift Right      |
+| 运算符 | 描述 |
+|--------|------|
+| `a & b`  | 按位与 |
+| <code>a &#124; b</code>  | 按位或 |
+| `a ^ b`  | 按位异或 |
+| `~a`     | 按位取反 |
+| `a << b` | 左移 |
+| `a >> b` | 右移 |
 
 ### 三元运算符
 
@@ -475,7 +480,7 @@ for (char c: hello)
 {
     std::cout << c << " ";
 }
-// 输出: Q u i c k R e f . M E 
+// 输出: Q u i c k R e f . M E
 ```
 
 ### 中断语句
@@ -502,6 +507,16 @@ for (int i = 0, j = 2; i < 3; i++, j--){
 // 输出: i=0,j=2;i=1,j=1;i=2,j=0;
 ```
 
+### auto
+
+```cpp
+std:: string s = "hello world";
+for(auto c: s){
+    std:: cout << c << " ";
+}
+// 输出: h e l l o   w o r l d
+```
+
 C++ 函数
 ------------
 
@@ -510,10 +525,10 @@ C++ 函数
 ```cpp
 #include <iostream>
 int add(int a, int b) {
-    return a + b;  
+    return a + b;
 }
 int main() {
-    std::cout << add(10, 20); 
+    std::cout << add(10, 20);
 }
 ```
 
@@ -538,7 +553,7 @@ void fun(int a) {
 ```cpp
 #include <iostream>
 #include <cmath> // 导入库
- 
+
 int main() {
     // sqrt() 来自 cmath
     std::cout << sqrt(9);
@@ -599,16 +614,16 @@ auto func = []() -> return_type { };
       ```cpp
       int val1 = 123, val2 = 456;
       string str1("123"), str2(456);
-      
+    
       auto func1 = [=, &str1]() -> int
           {
-              return   val1 == std::stoi(str1) 
+              return   val1 == std::stoi(str1)
                     ? val1 : val2;
           };
-          
-      auto func2 = [&, val1]() -> int
+    
+      auto func2 = [&, val1]() -> string
           {
-              return   str1 == std::to_string(val1) 
+              return   str1 == std::to_string(val1)
                     ? str1 : str2;
           };
       ```
@@ -622,13 +637,135 @@ auto func = []() -> return_type { };
 
 ```cpp
 // vec中包含1, 2, 3, 4, 5
-std::vector<int> vec({1, 2, 3, 4, 5});  
-std::for_each(vec.begin(), vec.end(), 
+std::vector<int> vec({1, 2, 3, 4, 5});
+std::for_each(vec.begin(), vec.end(),
               [](int& ele) -> void
           {
-              std::cout << ele 
+              std::cout << ele
                           << " ";
           });
+```
+
+## C++智能指针
+
+### 智能指针基础
+<!--rehype:wrap-class=row-span-2-->
+
+```cpp
+#include <memory>
+
+// 创建独占所有权的指针
+std::unique_ptr<int> p1 = std::make_unique<int>(42);
+// 不能复制，只能移动
+std::unique_ptr<int> p2 = std::move(p1);
+// p1 现在为 nullptr
+
+// 创建共享所有权的指针
+std::shared_ptr<int> sp1 = std::make_shared<int>(42);
+// 可以复制，引用计数增加
+std::shared_ptr<int> sp2 = sp1;
+// 获取引用计数
+std::cout << sp1.use_count(); // 输出: 2
+
+// 创建弱引用，不增加引用计数
+std::weak_ptr<int> wp = sp1;
+```
+
+### unique_ptr
+
+```cpp
+// 创建方式1：使用 make_unique (C++14)
+auto p1 = std::make_unique<int>(42);
+
+// 创建方式2：直接构造
+std::unique_ptr<int> p2(new int(42));
+
+// 访问资源
+std::cout << *p1 << std::endl;
+*p1 = 100;
+
+// 获取原始指针（不转移所有权）
+int* raw = p1.get();
+
+// 释放所有权并返回原始指针
+int* released = p1.release();
+// p1 现在为 nullptr
+
+// 替换管理的对象
+p1.reset(new int(50));
+```
+
+### shared_ptr
+
+```cpp
+// 创建方式1：使用 make_shared
+auto sp1 = std::make_shared<int>(42);
+
+// 创建方式2：直接构造
+std::shared_ptr<int> sp2(new int(42));
+
+// 复制和共享所有权
+std::shared_ptr<int> sp3 = sp1;
+std::cout << sp1.use_count(); // 输出: 2
+
+// 访问资源
+std::cout << *sp1 << std::endl;
+*sp1 = 100; // 所有指向该资源的shared_ptr都会看到这个修改
+
+// 重置指针
+sp1.reset(); // sp1变为nullptr，引用计数减1
+```
+
+### weak_ptr
+
+```cpp
+std::shared_ptr<int> sp = std::make_shared<int>(42);
+std::weak_ptr<int> wp = sp;
+
+// 检查引用对象是否存在
+if (auto locked = wp.lock()) {
+    std::cout << *locked << std::endl; // 输出: 42
+} else {
+    std::cout << "对象已被销毁" << std::endl;
+}
+
+// 检查是否过期
+bool is_expired = wp.expired(); // false
+
+// 获取引用计数
+std::cout << wp.use_count(); // 输出: 1
+
+// 当所有shared_ptr都被销毁时
+sp.reset();
+if (wp.expired()) {
+    std::cout << "对象已被销毁" << std::endl;
+}
+```
+
+### 循环引用问题
+
+```cpp
+struct Node {
+    std::string name;
+    std::shared_ptr<Node> next;
+    // 使用weak_ptr避免循环引用
+    std::weak_ptr<Node> parent;
+    
+    Node(const std::string& n) : name(n) {}
+    ~Node() { std::cout << "销毁: " << name << std::endl; }
+};
+
+// 创建循环引用
+void createCycle() {
+    auto node1 = std::make_shared<Node>("Node1");
+    auto node2 = std::make_shared<Node>("Node2");
+    
+    node1->next = node2;
+    node2->parent = node1; // 使用weak_ptr避免循环引用
+    
+    // 函数结束时，node1和node2会被正确销毁
+    // 如果parent也是shared_ptr，则会造成内存泄漏
+}
 ```
 
 ## C++多线程
@@ -665,17 +802,17 @@ class Entry
 
 Entry entry;
 // 调用operator()()
-std::thread my_thread_1(entry);  
+std::thread my_thread_1(entry);
 // 调用Entry::entry_function
-std::thread my_thread_2(&Entry::entry_function, &entry);  
+std::thread my_thread_2(&Entry::entry_function, &entry);
 ```
 
 以lambda表达式作为线程入口函数：
 
 ```cpp
-std::thread my_thread([]() -> void 
+std::thread my_thread([]() -> void
       {
-         // ... 
+         // ...
       });
 ```
 
@@ -693,17 +830,17 @@ my_thread.detach();
 
 ```cpp
 // 获取当前线程ID
-std::this_thread::get_id();  
+std::this_thread::get_id();
 // 使当前线程休眠一段指定时间
-std::this_thread::sleep_for();  
+std::this_thread::sleep_for();
 // 使当前线程休眠到指定时间
 std::this_thread::sleep_until();
 // 暂停当前线程的执行，让别的线程执行
-std::this_thread::yield();    
+std::this_thread::yield();
 ```
 
 ### 锁
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=row-span-5-->
 
 > `#include <mutex>`
 
@@ -753,7 +890,7 @@ std::lock_guard<std::mutex> lock(m);
 ```cpp
 // 手动上锁
 m.lock();
-std::lock_guard<mutex> lock(m, 
+std::lock_guard<mutex> lock(m,
     std::adopt_lock);
 ```
 
@@ -773,7 +910,7 @@ std::unique_lock<mutex> lock(m);
 ```cpp
 // 手动上锁
 m.lock();
-std::unique_lock<mutex> lock(m, 
+std::unique_lock<mutex> lock(m,
     std::adopt_lock);
 ```
 
@@ -782,7 +919,7 @@ std::unique_lock<mutex> lock(m,
 尝试上锁，可以通过`std::unique_lock<Mutex>::owns_lock()`查看状态
 
 ```cpp
-std::unique_lock<mutex> lock(m, 
+std::unique_lock<mutex> lock(m,
     std::try_to_lock);
 if (lock.owns_lock())
 {
@@ -860,19 +997,19 @@ cond.wait(lock, predicate);
 唤醒所有调用 `wait` 的线程。
 
 ### 获取线程的运行结果
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-5-->
 
 > `#include <future>`
 
 #### 创建异步任务
 
 ```cpp
-double func(int val); 
+double func(int val);
 
 // 使用std::async创建异步任务
 // 使用std::future获取结果
 // future模板中存放返回值类型
-std::future<double> result = 
+std::future<double> result =
     std::async(func, 5);
 ```
 
@@ -910,8 +1047,8 @@ int val = result.get();
 ```cpp
 extern double foo(int val) {}
 
-std::future<double> result = 
-    async(foo, 5);
+std::future<double> result =
+    std::async(foo, 5);
 
 //返回值类型
 std::future_status status;
@@ -920,7 +1057,7 @@ status = result.wait_for(
   std::chrono::seconds(1)
   );
 // 等待到某一时间点
-status = result.wait_for(
+status = result.wait_until(
   std::chrono::now() +
     std::chrono::seconds(1)
   );
@@ -930,10 +1067,10 @@ status = result.wait_for(
 
 ```cpp
 // 返回值已经准备好
-if (status == 
+if (status ==
      std::future_status::ready)
 {
-    
+
 }
 // 超时：尚未准备好
 else if (status ==
@@ -947,13 +1084,105 @@ else if (status ==
 
 #### 多个返回值
 
+如果要多次获取结果，可以使用`std::shared_future`，其会返回结果的一个**拷贝**。
+
 ```cpp
 std::shared_future<T> result;
 ```
 
-如果要多次获取结果，可以使用`std::shared_future`，其会返回结果的一个**拷贝**。
-
 对于不可拷贝对象，可以在`std::shared_future`中存储对象的指针，而非指针本身。
+
+### 创建线程
+
+```cpp
+void threadFunction() {
+  // 线程函数体
+  std::cout << "From thread" << std::endl;
+}
+
+int main() {
+  // 创建线程并开始执行线程函数
+  std::thread t(threadFunction);
+  
+  // 等待线程执行完毕
+  t.join();
+  
+  return 0;
+}
+```
+
+### 传递参数给线程函数
+
+```cpp
+void threadFunction(int value) {
+  // 线程函数体
+  std::cout << "Received value: " << value << std::endl;
+}
+
+int main() {
+  int data = 42;
+  std::thread t(threadFunction, data);
+  t.join();
+  return 0;
+}
+```
+
+### 使用Lambda表达式创建线程
+
+```cpp
+int main() {
+  int data = 42;
+  std::thread t([data]() {
+      // Lambda 表达式作为线程函数
+      std::cout << "Received value: " << data << std::endl;
+  });
+  t.join();
+  return 0;
+}
+```
+
+### **处理线程间的同步：**
+
+```cpp
+#include <mutex>
+
+std::mutex mtx;
+
+void threadFunction() {
+  std::lock_guard<std::mutex> lock(mtx);
+  std::cout << "Thread safe output." << std::endl;
+}
+
+int main() {
+  std::thread t1(threadFunction);
+  std::thread t2(threadFunction);
+  t1.join();
+  t2.join();
+  return 0;
+}
+```
+
+### **使用`std::async`启动异步任务：**
+
+```cpp
+#include <future>
+
+int taskFunction() {
+  // 异步任务
+  return 42;
+}
+
+int main() {
+  // 启动异步任务
+  std::future<int> fut = std::async(std::launch::async, taskFunction);
+  
+  // 获取异步任务的结果
+  int result = fut.get();
+  
+  std::cout << "Result: " << result << std::endl;
+  return 0;
+}
+```
 
 C++ 预处理器
 ------------
@@ -1001,7 +1230,7 @@ C++ 预处理器
 
 ```cpp
 #ifdef DEBUG
-  console.log('hi');
+  std::cout << "hi" << std::endl;
 #elif defined VERBOSE
   ...
 #else

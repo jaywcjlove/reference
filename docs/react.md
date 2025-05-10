@@ -16,7 +16,7 @@ React 备忘清单
 
 React 是一个用于构建用户界面的 JavaScript 库
 
-- [React 官方文档](https://reactjs.org/) _(reactjs.org)_
+- [React 官方文档](https://react.dev) _(react.dev)_
 - [Styled Components 备忘清单](./styled-components.md) _(jaywcjlove.github.io)_
 - [TypeScript JSX 备忘清单](./typescript.md#jsx) _(jaywcjlove.github.io)_
 
@@ -539,6 +539,150 @@ function CustomButton(props) {
 function CustomButton() {
   const [color, setColor]=useState('blue')
   return <div>{color}</div>
+}
+```
+
+Props
+---
+
+### Props 的 Spread 运算符
+
+扩展运算符可用于一次传递所有 Props。
+
+```jsx
+function Profile(props) {
+  return <p>{props.name}, {props.age}</p>;
+}
+
+const user = { name: "John", age: 25 };
+<Profile {...user}/>
+```
+
+### 什么是 Props？
+
+- Props（“properties”的缩写）用于将数据从父组件传递到子组件。
+- 它们是只读的，不能在子组件内修改。
+
+```jsx
+<MyComponent propName="value" />
+```
+
+### 将 Pros 传递给组件
+
+您可以通过 JSX 中的属性将 props 从父组件传递到子组件。
+
+```jsx
+function ParentComponent() {
+  return <ChildComponent name="John" age={25} />;
+}
+
+function ChildComponent (props) {
+  return <div>Hello，{props.name}. You are {props.age} years old. </div>;
+}
+```
+
+### 解构 props
+
+props 可以解构以便于访问。
+
+```jsx
+function Greeting({ name }) {
+  return <h1>Hello, {name}!</h1>;
+}
+```
+
+### 访问功能组件中的 Props
+
+可以使用 props 对象在功能组件中访问 Props。
+
+```jsx
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+```
+
+### 使用 Pros 进行条件渲染
+
+道具可用于组件内部的条件渲染。
+
+```jsx
+function Greeting({ name, isLoggedIn }) {
+  return isLoggedIn ? <hl>Welcome back, {name}</h1>: <h1>Please log in</h1>;
+}
+```
+
+### Prop Drilling（属性传递）
+<!--rehype:wrap-class=row-span-2-->
+
+```js
+function Parent() {
+  const name = "John";
+  return <Child name={name}/>;
+}
+
+function Child({ name }) {
+  return <Grandchild name={name} />
+}
+
+function Grandchild({ name }) {
+  return <p>{name}</p>;
+}
+```
+
+将属性（props）在多个组件层级中逐层传递可能会变得繁琐。这种方式称为属性传递（prop drilling）。
+
+### Props 与 State
+<!--rehype:wrap-class=row-span-2-->
+
+- `props` 被传递给组件并且是不可变的。
+- `State` 是组件的本地状态，可以更改。
+
+```jsx
+function ChildComponent({ name }) {
+  return <h2>Hi,my name is {name}.</h2>;
+}
+
+function ParentComponent() {
+  // State to manage the name value
+  const ［name, setName］= usestate('John');
+  const changeName = () => {
+    setName('Jane');
+  };
+  return (
+    <div>
+      <ChildComponent name={name}/>
+      <button onClick={changeName}>
+        Change Names
+      </button>
+    </div>
+  );
+}
+```
+
+### 默认 props
+
+```jsx
+function Greeting({ name = "Bob" } = 0}) {
+  return <h1>Hello, {name}!</h1>;
+}
+// Renders "Hello, Bob!"
+< Greeting />
+```
+
+您可以为 `props` 设置默认值。
+
+### 使用 prop 处理事件
+
+你可以将事件处理程序作为 props 传递给 handle 用户交互。
+
+```jsx
+function Button({ onClick }) {
+  return < button onClick={onClick}>Click me</button>;
+}
+
+function App() {
+  const handleClick = () => alert("Button clicked!"):
+  return <Button onClick={handleClick} />;
 }
 ```
 
@@ -1213,7 +1357,7 @@ useEffect(
 `componentDidMount()`    | 在组件挂载后(插入 DOM 树中)立即调用 [#](https://reactjs.org/docs/react-component.html#componentdidmount)
 `UNSAFE_componentWillMount()` | 在挂载之前被调用，建议使用 `constructor()` [#](https://zh-hans.reactjs.org/docs/react-component.html#unsafe_componentwillmount)
 
-在 `constructor()` 上设置初始状态。在 `componentDidMount()` 上添加 DOM 事件处理程序、计时器（等），然后在 `componentWillUnmount()` 上删除它们。
+在 `constructor()` 上设置初始状态。在 `componentDidMount()` 上添加 DOM 事件处理程序、计时器(等），然后在 `componentWillUnmount()` 上删除它们。
 
 ### 卸载
 
