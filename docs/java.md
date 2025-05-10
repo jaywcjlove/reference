@@ -242,10 +242,12 @@ sb.append("!");
 ### 比较
 
 ```java
-String s1 = new String("QuickRef");
+String s1 = "QuickRef";
 String s2 = new String("QuickRef");
-s1 == s2          // false
-s1.equals(s2)     // true
+s1 == s2                     // false
+s1.equals(s2)                // true
+// intern 方法获得字符串常量池中的惟一引用
+s1 == s2.intern()            // true
 "AB".equalsIgnoreCase("ab")  // true
 ```
 
@@ -310,7 +312,7 @@ int[] a3 = new int[]{1, 2, 3};
 int[] a4 = new int[3];
 a4[0] = 1;
 a4[2] = 2;
-a4[3] = 3;
+a4[3] = 3; // 会出现索引越界异常
 ```
 
 ### 修改 Modify
@@ -347,16 +349,16 @@ for (int a: arr) {
 ### 二维数组 Multidimensional Arrays
 
 ```java
-int[][] matrix = { {1, 2, 3}, {4, 5} };
+int[][] matrix = {{1, 2, 3}, {4, 5}, {6}};
 int x = matrix[1][0];  // 4
-// [[1, 2, 3], [4, 5]]
-Arrays.deepToString(matrix)
-for (int i = 0; i < a.length; ++i) {
-  for(int j = 0; j < a[i].length; ++j) {
-    System.out.println(a[i][j]);
-  }
+System.out.Println(Arrays.deepToString(matrix));
+// 输出: [[1, 2, 3], [4, 5], [6]]
+for (int i = 0; i < matrix.length; ++i) {
+    for(int j = 0; j < matrix[i].length; ++j) {
+        System.out.println(matrix[i][j]);
+    }
 }
-// 输出: 1 2 3 4 5 6 7
+// 输出: 1 2 3 4 5 6
 ```
 
 ### 排序 Sort
@@ -561,7 +563,7 @@ do {
 // 输出: 01234
 ```
 
-### 继续声明
+### 继续语句
 
 ```java
 for (int i = 0; i < 5; i++) {
@@ -570,7 +572,7 @@ for (int i = 0; i < 5; i++) {
   }
   System.out.print(i);
 }
-// 输出: 01245
+// 输出: 0124
 ```
 
 ### 中断语句
@@ -1344,7 +1346,7 @@ Consumer<String> test = System.out::println;
 ```java
 Comparator<Integer> comparator = Math::max;
 
-int result = comparator.compare(1, 2); 
+int result = comparator.compare(1, 2);
 // 返回 2
 ```
 
@@ -1353,7 +1355,7 @@ int result = comparator.compare(1, 2);
 ```java
 String str = "HELLO";
 
-String lowerCase = str::toLowerCase; 
+String lowerCase = str::toLowerCase;
 // 返回 "hello"
 ```
 
@@ -1362,7 +1364,7 @@ String lowerCase = str::toLowerCase;
 ```java
 Supplier<String> supplier = String::new;
 
-String str = supplier.get(); 
+String str = supplier.get();
 // 返回一个空字符串
 ```
 
@@ -1372,7 +1374,7 @@ String str = supplier.get();
 Function<Integer, String[]> function = String[]::new;
 
 
-String[] array = function.apply(5); 
+String[] array = function.apply(5);
 // 返回 5 个空字符串的数组
 ```
 <!--rehype:className=wrap-text-->
@@ -1382,7 +1384,7 @@ String[] array = function.apply(5);
 ```java
 String someStr = "HELLO";
 
-String lowerCase = someStr::toLowerCase; 
+String lowerCase = someStr::toLowerCase;
 // 返回 "hello"
 ```
 
@@ -1391,7 +1393,7 @@ String lowerCase = someStr::toLowerCase;
 ```java
 SomeClass someObject = new SomeClass();
 
-int result = someObject::staticMethod; 
+int result = someObject::staticMethod;
 // 调用静态方法
 ```
 
@@ -1556,6 +1558,118 @@ list.add(3);
 list.add(3);
 int frequency = Collections
       .frequency(list, 2); // frequency = 2
+```
+
+操纵数据库
+----
+
+### JDBC
+
+```java
+String url = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
+String user = "root";
+String password = "123456";
+String sql = "SELECT 1 as a, '2' as b";
+String preparedSql = "SELECT * FROM t_user WHERE id = ?";
+
+Connection conn = null;
+Statement sm = null;
+ResultSet rs = null;
+try {
+  // 1.注册驱动
+  Class.forName("com.mysql.cj.jdbc.Driver");
+} catch (ClassNotFoundException e) {
+  // 驱动找不到
+  throw new RuntimeException(e);
+}
+
+// 2.建立连接
+try (Connection connection = DriverManager.getConnection(url, user, password)) {
+
+  conn = connection;
+
+  // 3.创建Statement对象
+  try (Statement statement = connection.createStatement()) {
+
+    sm = statement;
+
+    // 4.执行SQL语句
+    try (ResultSet resultSet = statement.executeQuery(sql)) {
+
+      rs = resultSet;
+
+      // 5.处理结果集
+      while (resultSet.next()) {
+        // 按照列名取值
+        System.out.println(resultSet.getLong("a"));
+        // 按照索引取值
+        System.out.println(resultSet.getString(2));
+      }
+    }
+  }
+
+  // 3.创建PreparedStatement对象
+  try (PreparedStatement preparedStatement = connection.prepareStatement(preparedSql)) {
+
+    sm = preparedStatement;
+
+    preparedStatement.setLong(1, 1_000L);
+    // 4.执行SQL语句
+    try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
+      rs = resultSet;
+
+      // 5.处理结果集
+      while (resultSet.next()) {
+        System.out.println(resultSet.getLong("id"));
+        System.out.println(resultSet.getString(2));
+      }
+    }
+  }
+} catch (SQLException e) {
+  // 数据库异常
+  throw new RuntimeException(e);
+} finally {
+  // 6.关闭资源
+  // 上面的try块里已经自动关闭，否则（JDK 7以前）按照以下顺序关闭
+  // 先打开的后关闭，后打开的先关闭
+  if (null != rs) {
+    try {
+      rs.close();
+    } catch (SQLException ignored) {
+    }
+  }
+
+  if (null != sm) {
+    try {
+      sm.close();
+    } catch (SQLException ignored) {
+    }
+  }
+
+  if (null != conn) {
+    try {
+      conn.close();
+    } catch (SQLException ignored) {
+    }
+  }
+
+  // 也可以直接工具类， 注意顺序
+  IOUtils.close(rs);
+  IOUtils.close(sm);
+  IOUtils.close(conn);
+}
+```
+
+### JDBC注册驱动
+
+```java
+Class.forName("com.mysql.cj.jdbc.Driver");
+
+DriverManager.registerDriver(new org.postgresql.Driver());
+
+// 支持多个同时注册
+System.setProperty("jdbc.drivers", "com.mysql.cj.jdbc.Driver:org.postgresql.Driver");
 ```
 
 另见

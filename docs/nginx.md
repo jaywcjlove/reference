@@ -892,6 +892,89 @@ location = /robots.txt {
 }
 ```
 
+### 获取请求ip
+<!--rehype:wrap-class=col-span-3-->
+
+```nginx
+server {
+  listen 80;
+  server_name xxx.top;
+
+  location / {
+    access_log /data/logs/nginx/json_ip.log json;
+    proxy_set_header Host $http_host;
+        proxy_set_header X-Real-Ip $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://127.0.0.1:9999;
+  }
+}
+
+server {
+  listen 9999;
+
+  location / {
+    access_log off;
+    default_type application/json;
+    return 200 "{\"ip\":\"$http_X_Real_Ip\"}";
+  }
+}
+```
+
+### 判断请求参数
+<!--rehype:wrap-class=col-span-3-->
+
+```nginx
+# 判断多个参数示例
+set $flagts 0;
+if ( $arg_aaa ~ "^aaa" ) {
+    set $flagts "${flagts}1";
+}
+if ( $arg_bbb ~ "^bbb" ) {
+    set $flagts "${flagts}1";
+}
+if ( $flagts = "011" ) {
+    return 200;
+}
+```
+
+### 流量镜像配置
+<!--rehype:wrap-class=col-span-3-->
+
+```nginx
+server {
+    listen       80;
+    server_name 192.168.1.1;
+
+    location = /mirror1 {
+        internal;
+        #### address1 ####
+        proxy_set_header Host mirror1.com;
+        proxy_pass http://127.0.0.1:8008/api/service/list;
+    }
+
+    location = /mirror2 {
+        internal;
+        #### address2 ####
+        proxy_set_header Host mirror2.com;
+        proxy_pass http://127.0.0.1:8009/api/service/list;
+    }
+
+    # 只转发这个接口
+    location /api/service/list {
+        access_log /data/logs/nginx/json_test_to_mirror.log json;
+        mirror /mirror1;
+        mirror /mirror2;
+        proxy_pass http://127.0.0.1:8007;
+    }
+
+    location / {
+        access_log /data/logs/nginx/json_test.log json;
+        proxy_pass http://192.168.1.1:8007;
+    }
+
+}
+```
+
 另见
 ---
 

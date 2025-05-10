@@ -197,7 +197,11 @@ t.n = t.n + 1  -- 改变 table
 
 ```lua
 -- 给多个变量赋值
-a, b = 10, 2*a  --> a=10; b=20
+-- 情况1：a 未定义过
+a, b = 10, 2*a  -- 报错：a 是 nil
+-- 情况2：a 已定义（比如 a=5）
+a = 5
+a, b = 10, 2*a  -- 右侧的 a=5，结果 a=10, b=10（不会报错）
 ```
 
 #### 交换变量
@@ -652,7 +656,7 @@ local g = math.max(1, 2, 3) -- 3
 local h = math.min(1, 2, 3) -- 1
 
 -- 返回参数的平方根
-local r = math.sqrt(3) -- 9
+local r = math.sqrt(9) -- 3
 ```
 
 ### 工具方法
@@ -701,10 +705,10 @@ math.cos(math.pi) -- -1.0
 math.tan(math.pi / 4) -- 1.0
 
 -- 反正弦方法（以下皆是以弧度表示）
-math.acos(1.0) -- 0.0
+math.asin(1.0) -- 1.5707963267949
 -- 反余弦方法
-math.acos(1.0) -- 1.5707963267949
--- 反正弦方法
+math.acos(1.0) -- 0.0
+-- 反正切方法
 math.atan(1.0) -- 0.78539816339745
 
 -- 角度转换为弧度
@@ -763,7 +767,7 @@ table["sex"] = "boy"
 
 -- 获取 table 的长度
 
-print(#table) -- 3
+print(#table) -- 0
 
 -- 如果想要删除一个 table，那么可以使用 nil 赋值
 table = nil

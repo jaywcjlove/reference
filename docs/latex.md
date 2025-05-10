@@ -11,9 +11,10 @@ LaTeX 备忘清单
 [LaTeX](https://www.latex-project.org/) 基于 TEX 的排版系统，适用于生成高印刷质量的科技和数学、物理文档。
 
 - [LaTeX 官网](https://www.latex-project.org/) _(latex-project.org)_
-- [KaTeX 官网](https://katex.org/) _(katex.org)_
 
 而 [KaTeX](https://katex.org/) 只处理 LaTeX 的数学符号的一个更小的子集，用于 web 上展示
+
+- [KaTeX 官网](https://katex.org/) _(katex.org)_
 
 ### 示例
 
@@ -21,7 +22,7 @@ LaTeX 备忘清单
 % \f is defined as #1f(#2) using the macro
 f\relax(x) = \int_{-\infty}^\infty
     f\hat\xi\,e^{2 \pi i \xi x}
-    \,d\xi
+    \,\mathrm{d}\xi
 ```
 
 ---
@@ -30,7 +31,7 @@ f\relax(x) = \int_{-\infty}^\infty
 % \f is defined as #1f(#2) using the macro
 f\relax(x) = \int_{-\infty}^\infty
     f\hat\xi\,e^{2 \pi i \xi x}
-    \,d\xi
+    \,\mathrm{d}\xi
 ```
 
 ### 行内展示
@@ -42,10 +43,10 @@ f\relax(x) = \int_{-\infty}^\infty
 
 基于 KaTeX 在一行展示示例： `KaTeX:\int_0^\infty x^2 dx`
 
-Supported Functions
+支持的语法
 ---
 
-### Accents
+### 标注符号
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
 :- | :- | :-
@@ -74,7 +75,7 @@ Supported Functions
 `KaTeX:\^{a}` <pur>`\^{a}`</pur> | `KaTeX:\u{a}` <pur>`\u{a}`</pur> |
 `KaTeX:\r{a}` <pur>`\r{a}`</pur> |
 
-### Delimiter Sizing
+### 定界符大小调整
 
 :-  |  :-
 :-  |  :-
@@ -90,7 +91,7 @@ Supported Functions
 `\right`  | `\bigg` | `\biggl` | `\biggm` | `\biggr`
 `\` | `\Bigg` | `\Biggl` | `\Biggm` | `\Biggr`
 
-### 希腊和希伯来字母 Greek and Hebrew letters
+### 希腊和希伯来字母
 <!--rehype:wrap-class=col-span-3-->
 
 预览 | 方法 | 预览 | 方法 | 预览 | 方法 | 预览| 方法 | 预览 | 方法 | 预览 | 方法
@@ -193,7 +194,7 @@ Supported Functions
 \sum_{\mathclap{1\le i\le j\le n}} x_{ij}
 ```
 
-### `KaTex:\LaTeX` math constructs
+### `KaTex:\LaTeX` 数学结构
 <!--rehype:wrap-class=col-span-3-->
 
 预览 | 方法 | 预览 | 方法 | 预览 | 方法
@@ -203,7 +204,7 @@ Supported Functions
 | `KaTex:\sqrt{abc}`        | <pur>`\sqrt{abc}`</pur>           | `KaTex:\widehat{abc}`      | <pur>`\widehat{abc}`</pur>       | `KaTex:\overbrace{abc}`          | <pur>`\overbrace{abc}`</pur>           |
 | `KaTex:\sqrt[n]{abc}`     | <pur>`\sqrt[n]{abc}`</pur>        | `KaTex:\widetilde{abc}`    | <pur>`\widetilde{abc}`</pur>     | `KaTex:\underbrace{abc}`         | <pur>`\underbrace{abc}`</pur>          |
 
-### 分隔符 Delimiters
+### 分隔符
 <!--rehype:wrap-class=col-span-3-->
 
 预览 | 方法 | 预览 | 方法 | 预览 | 方法 | 预览| 方法 | 预览 | 方法
@@ -547,10 +548,10 @@ Supported Functions
 `KaTex:\circledS` | <pur>`\circledS`</pur> | `KaTex:\spadesuit` | <pur>`\spadesuit`</pur> | `KaTex:\spades` | <pur>`\spades`</pur> |
 `KaTex:\text{\textcircled a}` | <pur>`\text{\textcircled a}`</pur> | `KaTex:\maltese` | <pur>`\maltese`</pur> | `KaTex:\minuso` | <pur>`\minuso`</pur> |
 
-Environments
+环境
 ---
 
-### Environments 1
+### 环境 1
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -569,7 +570,7 @@ Environments
 ```
 <!--rehype:style=flex:1;-->
 
-### Environments 2
+### 环境 2
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -587,7 +588,7 @@ Environments
 \end{array}
 ```
 
-### Environments 3
+### 环境 3
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -606,7 +607,7 @@ Environments
 ```
 <!--rehype:style=flex:1;-->
 
-### Environments 4
+### 环境 4
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -623,7 +624,7 @@ Environments
 \end{bmatrix}
 ```
 
-### Environments 5
+### 环境 5
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -642,7 +643,7 @@ Environments
 ```
 <!--rehype:style=flex:1;-->
 
-### Environments 6
+### 环境 6
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -661,7 +662,7 @@ Environments
 ```
 <!--rehype:style=flex:1;-->
 
-### Environments 7
+### 环境 7
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -678,7 +679,7 @@ Environments
 \end{Bmatrix}
 ```
 
-### Environments 8
+### 环境 8
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -702,7 +703,7 @@ Environments
 \end{array}
 ```
 
-### Environments 9
+### 环境 9
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -719,7 +720,7 @@ x = \begin{cases}
 \end{cases}
 ```
 
-### Environments 10
+### 环境 10
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -736,7 +737,7 @@ x = \begin{cases}
 \end{rcases}⇒…
 ```
 
-### Environments 11
+### 环境 11
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -754,7 +755,7 @@ x = \begin{cases}
 \end{smallmatrix}
 ```
 
-### Environments 12
+### 环境 12
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -774,7 +775,7 @@ x = \begin{cases}
 \end{subarray}}
 ```
 
-### Environments 13
+### 环境 13
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -794,7 +795,7 @@ x = \begin{cases}
 \end{equation}
 ```
 
-### Environments 14
+### 环境 14
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -812,7 +813,7 @@ x = \begin{cases}
 \end{align}
 ```
 
-### Environments 15
+### 环境 15
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -830,7 +831,7 @@ x = \begin{cases}
 \end{gather}
 ```
 
-### Environments 16
+### 环境 16
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -848,7 +849,7 @@ x = \begin{cases}
 \end{alignat}
 ```
 
-### Environments 17
+### 环境 17
 <!--rehype:body-style=display: flex;flex-direction: row;justify-content: flex-start;-->
 
 ```KaTeX
@@ -881,7 +882,7 @@ x = \begin{cases}
 `KaTex:\colorbox{aqua}{$F=ma$}` | <pur>`\colorbox{aqua}{$F=ma$}`</pur>
 `KaTex:\fcolorbox{red}{aqua}{$F=ma$}` | <pur>`\fcolorbox{red}{aqua}{$F=ma$}`</pur>
 
-### Font 字体
+### 字体
 <!--rehype:wrap-class=col-span-2-->
 
 :- | :- | :- | :- | :- | :-
@@ -892,7 +893,7 @@ x = \begin{cases}
 `KaTex:\Large AB` | <pur>`\Large AB`</pur> | `KaTex:\Large AB` | <pur>`\Large AB`</pur> | `KaTex:\scriptsize AB` | <pur>\scriptsize AB</pur>
 `KaTex:\large AB` | <pur>`\large AB`</pur> | `KaTex:\large AB` | <pur>`\large AB`</pur> | `KaTex:\tiny AB` | <pur>\tiny AB</pur>
 
-### Style 样式
+### 样式
 <!--rehype:wrap-class=col-span-3-->
 
 :- | :- | :- | :-

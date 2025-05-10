@@ -30,7 +30,7 @@ Hello Quick Reference
 int number = 5;       // 整数
 float f = 0.95;       // 浮点数
 double PI = 3.14159;  // 浮点数
-char yes = 'Y';       // 特点
+char yes = 'Y';       // 字符
 std::string s = "ME"; // 字符串（文本）
 bool isRight = true;  // 布尔值
 // 常量
@@ -177,7 +177,7 @@ marks[0] = 92;
 marks[1] = 97;
 marks[2] = 98;
 // 定义和初始化
-std::array<int, 3> = {92, 97, 98};
+std::array<int, 3> marks = {92, 97, 98};
 // 有空成员
 std::array<int, 3> marks = {92, 97};
 std::cout << marks[2]; // 输出: 0
@@ -322,19 +322,19 @@ else
 | Example        | Meaning                |
 |----------------|------------------------|
 | `exp1 && exp2` | Both are true _(AND)_  |
-| `exp1 || exp2` | Either is true _(OR)_  |
+| <code>exp1 &#124;&#124; exp2</code> | Either is true _(OR)_  |
 | `!exp`         | `exp` is false _(NOT)_ |
 
 #### 位运算符
 
-| Operator | Description             |
-|----------|-------------------------|
-| `a & b`  | Binary AND              |
-| `a | b`  | Binary OR               |
-| `a ^ b`  | Binary XOR              |
-| `a ~ b`  | Binary One's Complement |
-| `a << b` | Binary Shift Left       |
-| `a >> b` | Binary Shift Right      |
+| 运算符 | 描述 |
+|--------|------|
+| `a & b`  | 按位与 |
+| <code>a &#124; b</code>  | 按位或 |
+| `a ^ b`  | 按位异或 |
+| `~a`     | 按位取反 |
+| `a << b` | 左移 |
+| `a >> b` | 右移 |
 
 ### 三元运算符
 
@@ -614,14 +614,14 @@ auto func = []() -> return_type { };
       ```cpp
       int val1 = 123, val2 = 456;
       string str1("123"), str2(456);
-
+    
       auto func1 = [=, &str1]() -> int
           {
               return   val1 == std::stoi(str1)
                     ? val1 : val2;
           };
-
-      auto func2 = [&, val1]() -> int
+    
+      auto func2 = [&, val1]() -> string
           {
               return   str1 == std::to_string(val1)
                     ? str1 : str2;
@@ -644,6 +644,128 @@ std::for_each(vec.begin(), vec.end(),
               std::cout << ele
                           << " ";
           });
+```
+
+## C++智能指针
+
+### 智能指针基础
+<!--rehype:wrap-class=row-span-2-->
+
+```cpp
+#include <memory>
+
+// 创建独占所有权的指针
+std::unique_ptr<int> p1 = std::make_unique<int>(42);
+// 不能复制，只能移动
+std::unique_ptr<int> p2 = std::move(p1);
+// p1 现在为 nullptr
+
+// 创建共享所有权的指针
+std::shared_ptr<int> sp1 = std::make_shared<int>(42);
+// 可以复制，引用计数增加
+std::shared_ptr<int> sp2 = sp1;
+// 获取引用计数
+std::cout << sp1.use_count(); // 输出: 2
+
+// 创建弱引用，不增加引用计数
+std::weak_ptr<int> wp = sp1;
+```
+
+### unique_ptr
+
+```cpp
+// 创建方式1：使用 make_unique (C++14)
+auto p1 = std::make_unique<int>(42);
+
+// 创建方式2：直接构造
+std::unique_ptr<int> p2(new int(42));
+
+// 访问资源
+std::cout << *p1 << std::endl;
+*p1 = 100;
+
+// 获取原始指针（不转移所有权）
+int* raw = p1.get();
+
+// 释放所有权并返回原始指针
+int* released = p1.release();
+// p1 现在为 nullptr
+
+// 替换管理的对象
+p1.reset(new int(50));
+```
+
+### shared_ptr
+
+```cpp
+// 创建方式1：使用 make_shared
+auto sp1 = std::make_shared<int>(42);
+
+// 创建方式2：直接构造
+std::shared_ptr<int> sp2(new int(42));
+
+// 复制和共享所有权
+std::shared_ptr<int> sp3 = sp1;
+std::cout << sp1.use_count(); // 输出: 2
+
+// 访问资源
+std::cout << *sp1 << std::endl;
+*sp1 = 100; // 所有指向该资源的shared_ptr都会看到这个修改
+
+// 重置指针
+sp1.reset(); // sp1变为nullptr，引用计数减1
+```
+
+### weak_ptr
+
+```cpp
+std::shared_ptr<int> sp = std::make_shared<int>(42);
+std::weak_ptr<int> wp = sp;
+
+// 检查引用对象是否存在
+if (auto locked = wp.lock()) {
+    std::cout << *locked << std::endl; // 输出: 42
+} else {
+    std::cout << "对象已被销毁" << std::endl;
+}
+
+// 检查是否过期
+bool is_expired = wp.expired(); // false
+
+// 获取引用计数
+std::cout << wp.use_count(); // 输出: 1
+
+// 当所有shared_ptr都被销毁时
+sp.reset();
+if (wp.expired()) {
+    std::cout << "对象已被销毁" << std::endl;
+}
+```
+
+### 循环引用问题
+
+```cpp
+struct Node {
+    std::string name;
+    std::shared_ptr<Node> next;
+    // 使用weak_ptr避免循环引用
+    std::weak_ptr<Node> parent;
+    
+    Node(const std::string& n) : name(n) {}
+    ~Node() { std::cout << "销毁: " << name << std::endl; }
+};
+
+// 创建循环引用
+void createCycle() {
+    auto node1 = std::make_shared<Node>("Node1");
+    auto node2 = std::make_shared<Node>("Node2");
+    
+    node1->next = node2;
+    node2->parent = node1; // 使用weak_ptr避免循环引用
+    
+    // 函数结束时，node1和node2会被正确销毁
+    // 如果parent也是shared_ptr，则会造成内存泄漏
+}
 ```
 
 ## C++多线程
@@ -926,7 +1048,7 @@ int val = result.get();
 extern double foo(int val) {}
 
 std::future<double> result =
-    async(foo, 5);
+    std::async(foo, 5);
 
 //返回值类型
 std::future_status status;
@@ -935,7 +1057,7 @@ status = result.wait_for(
   std::chrono::seconds(1)
   );
 // 等待到某一时间点
-status = result.wait_for(
+status = result.wait_until(
   std::chrono::now() +
     std::chrono::seconds(1)
   );
@@ -1108,7 +1230,7 @@ C++ 预处理器
 
 ```cpp
 #ifdef DEBUG
-  console.log('hi');
+  std::cout << "hi" << std::endl;
 #elif defined VERBOSE
   ...
 #else

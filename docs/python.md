@@ -1817,7 +1817,7 @@ finally:                 # 在所有情况下执行
 ### pyenv & pipenv
 <!--rehype:wrap-class=col-span-3-->
 
-pvenv 用于管理python版本，pipenv 用于管理项目包版本
+pyenv 用于管理python版本，pipenv 用于管理项目包版本
 
 #### pyenv
 
@@ -1829,13 +1829,21 @@ curl https://pyenv.run | bash
 [更多安装方式](https://github.com/pyenv/pyenv#installation)
 
 ```shell
+# 查看 pyenv 可以安装的 python 版本列表
+pyenv install -l
+# 按照 3.10 的前缀显示 python 的最新版本
+pyenv latest 3.10
+
 # 安装 python 版本
-pyenv install 3.10.12
+pyenv install 3.10.14
+
+# 查看已安装的 python 版本
+pyenv versions
 
 # 设置 python 版本
-pyenv global 3.10.12 # 全局设置
-pyenv shell  3.10.12 # 针对当前 shell session
-pyenv local  3.10.12 # 针对当前目录 
+pyenv global 3.10.14 # 全局设置
+pyenv shell  3.10.14 # 针对当前 shell session
+pyenv local  3.10.14 # 针对当前目录 
 ```
 
 #### pipenv

@@ -156,7 +156,7 @@ div {
 ```css
 #container {
   display: grid;
-s  grid: repeat(2, 60px) / auto-flow 80px;
+  grid: repeat(2, 60px) / auto-flow 80px;
 }
 #container > div {
   background-color: #8ca0ff;
@@ -1976,6 +1976,16 @@ ul > li:not(:last-child)::after {
 ```
 
 使列表项看起来像一个真实的逗号分隔列表，使用 `:not()` 伪类，最后一项不会添加逗号
+
+### 表格中数字使用制表数字
+
+```css
+.revenue {
+    font-variant-numeric: tabular-nums;
+}
+```
+
+表格中一列数字列对其
 
 另见
 ---------
