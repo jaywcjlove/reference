@@ -21,6 +21,7 @@ Quick Reference
 非常感谢一直以来支持我开源项目的朋友们！如果您认可我的工作，欢迎通过 [赞助](https://wangchujiang.com/#/sponsor)<!--rehype:target=_blank--> 我或下载并使用我开发的 [macOS 应用](https://wangchujiang.com/#/app)<!--rehype:target=_blank--> 来支持我。以下是我个人独立开发的 macOS 应用列表：
 
 <p style="display: inline-block">
+  <a target="_blank" href="https://apps.apple.com/app/6745227444" title="Musicer for macOS"><img align="center" alt="Musicer" height="52" width="52" src="./appicon/musicer.png"></a>
   <a target="_blank" href="https://apps.apple.com/app/6743841447" title="Audioer for macOS"><img align="center" alt="Audioer" height="52" width="52" src="./appicon/audioer.png"></a>
   <a target="_blank" href="https://apps.apple.com/app/6744690194" title="FileSentinel for macOS"><img align="center" alt="FileSentinel" height="52" width="52" src="./appicon/file-sentinel.png"></a>
   <a target="_blank" href="https://apps.apple.com/app/6743495172" title="FocusCursor for macOS"><img align="center" alt="FocusCursor" height="52" width="52" src="./appicon/focus-cursor.png"></a>
