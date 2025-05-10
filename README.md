@@ -15,6 +15,38 @@ Quick Reference
 
 为了方便开发人员查阅技术栈，分享这份快速参考备忘清单【速查表】。这是英文版 [Reference](https://github.com/Randy8080/reference) 的中文翻译，旨在帮助自己更好地使用相关技术。如果您有自己的清单，也欢迎提供，我会抽时间搬运并立刻实现 :)。如果您发现这份备忘单中的内容不合适，可以通过提交 [PR](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md) 来修复或提供更好的备忘清单，主要面向【中文】用户。以下是一些开源天使提供的备忘清单和快速参考 :)。
 
+## 赞助支持
+<!--rehype:class=home-title-reset-->
+
+非常感谢一直以来支持我开源项目的朋友们！如果您认可我的工作，欢迎通过 [赞助](https://wangchujiang.com/#/sponsor)<!--rehype:target=_blank--> 我或下载并使用我开发的 [macOS 应用](https://wangchujiang.com/#/app)<!--rehype:target=_blank--> 来支持我。以下是我个人独立开发的 macOS 应用列表：
+
+<p style="display: inline-block">
+  <a target="_blank" href="https://apps.apple.com/app/6745227444" title="Musicer for macOS"><img align="center" alt="Musicer" height="52" width="52" src="./appicon/musicer.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6743841447" title="Audioer for macOS"><img align="center" alt="Audioer" height="52" width="52" src="./appicon/audioer.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6744690194" title="FileSentinel for macOS"><img align="center" alt="FileSentinel" height="52" width="52" src="./appicon/file-sentinel.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6743495172" title="FocusCursor for macOS"><img align="center" alt="FocusCursor" height="52" width="52" src="./appicon/focus-cursor.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6742680573" title="Videoer for macOS"><img align="center" alt="Videoer" height="52" width="52" src="./appicon/videoer.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6740425504" title="KeyClicker for macOS"><img align="center" alt="KeyClicker" height="50" width="50" src="./appicon/key-clicker.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6739052447" title="DayBar for macOS"><img align="center" alt="DayBar" height="50" width="50" src="./appicon/daybar.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6739444407" title="Iconed for macOS"><img align="center" alt="Iconed" height="50" width="50" src="./appicon/iconed.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6737160756" title="RightMenu Master for macOS"><img align="center" alt="RightMenu Master" height="50" width="50" src="./appicon/rightmenu-master.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6723903021" title="Paste Quick for macOS"><img align="center" alt="Paste Quick" height="50" width="50" src="./appicon/paste-quick.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6670696072" title="Quick RSS for macOS/iOS"><img align="center" alt="Quick RSS" height="50" width="50" src="./appicon/quick-rss.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6670167443" title="Web Serve for macOS"><img align="center" alt="Web Serve" height="50" width="50" src="./appicon/web-serve.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6503953628" title="Copybook Generator for macOS/iOS"><img align="center" alt="Copybook Generator" height="50" width="50" src="./appicon/copybook-generator.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6471227008" title="DevTutor for macOS/iOS"><img align="center" alt="DevTutor for SwiftUI" height="50" width="50" src="./appicon/devtutor.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6479819388" title="RegexMate for macOS/iOS"><img align="center" alt="RegexMate" height="50" width="50" src="./appicon/regex-mate.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6479194014" title="Time Passage for macOS/iOS"><img align="center" alt="Time Passage" height="50" width="50" src="./appicon/time-passage.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6478772538" title="IconizeFolder for macOS"><img align="center" alt="Iconize Folder" height="50" width="50" src="./appicon/iconize-folder.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6478511402" title="Textsound Saver for macOS/iOS"><img align="center" alt="Textsound Saver" height="50" width="50" src="./appicon/textsound-saver.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6476924627" title="Create Custom Symbols for macOS"><img align="center" alt="Create Custom Symbols" height="50" width="50" src="./appicon/create-custom-symbols.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6476452351" title="DevHub for macOS"><img align="center" alt="DevHub" height="50" width="50" src="./appicon/devhub.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6476400184" title="Resume Revise for macOS"><img align="center" alt="Resume Revise" height="50" width="50" src="./appicon/resume-revise.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6472593276" title="Palette Genius for macOS"><img align="center" alt="Palette Genius" height="50" width="50" src="./appicon/palette-genius.png"></a>
+  <a target="_blank" href="https://apps.apple.com/app/6470879005" title="Symbol Scribe for macOS"><img align="center" alt="Symbol Scribe" height="50" width="50" src="./appicon/symbol-scribe.png"></a>
+</p>
+<!--rehype:style=padding-top:1rem;-->
+
 ## 正在建设中...
 
 坑已挖，需要您的参与完善和[贡献](./docs/quickreference.md)！🙏
@@ -325,9 +357,9 @@ Quick Reference
 <a href="https://github.com/chaos-cn" title="chaos"><img src="https://avatars.githubusercontent.com/u/71205599?v=4" width="42;" alt="chaos"/></a>
 <a href="https://github.com/QinIndexCode" title="fault"><img src="https://avatars.githubusercontent.com/u/177287013?v=4" width="42;" alt="fault"/></a>
 <a href="https://github.com/wsypower" title="魏"><img src="https://avatars.githubusercontent.com/u/31298317?v=4" width="42;" alt="魏"/></a>
-<a href="https://github.com/wangdaodao" title="王叨叨"><img src="https://avatars.githubusercontent.com/u/2317442?v=4" width="42;" alt="王叨叨"/></a>
-<a href="https://github.com/itldg" title="老大哥"><img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/></a>
 <a href="https://github.com/buyfakett" title="buyfakett"><img src="https://avatars.githubusercontent.com/u/46560426?v=4" width="42;" alt="buyfakett"/></a>
+<a href="https://github.com/itldg" title="老大哥"><img src="https://avatars.githubusercontent.com/u/13432299?v=4" width="42;" alt="老大哥"/></a>
+<a href="https://github.com/wangdaodao" title="王叨叨"><img src="https://avatars.githubusercontent.com/u/2317442?v=4" width="42;" alt="王叨叨"/></a>
 <a href="https://github.com/catcto" title="小武Alan"><img src="https://avatars.githubusercontent.com/u/5467932?v=4" width="42;" alt="小武Alan"/></a>
 <a href="https://github.com/witt-bit" title="witt"><img src="https://avatars.githubusercontent.com/u/52407727?v=4" width="42;" alt="witt"/></a>
 <a href="https://github.com/ryanhex53" title="ryanhex53"><img src="https://avatars.githubusercontent.com/u/360426?v=4" width="42;" alt="ryanhex53"/></a>
@@ -341,13 +373,14 @@ Quick Reference
 <a href="https://github.com/ljq" title="Jack Liu"><img src="https://avatars.githubusercontent.com/u/7278286?v=4" width="42;" alt="Jack Liu"/></a>
 <a href="https://github.com/jasnzhuang" title="Jason Zhuang"><img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/></a>
 <a href="https://github.com/Jovins" title="Jovins"><img src="https://avatars.githubusercontent.com/u/17738992?v=4" width="42;" alt="Jovins"/></a>
-<a href="https://github.com/infanx" title="infanx"><img src="https://avatars.githubusercontent.com/u/65985757?v=4" width="42;" alt="infanx"/></a>
-<a href="https://github.com/greyhao" title="greyhao"><img src="https://avatars.githubusercontent.com/u/107107440?v=4" width="42;" alt="greyhao"/></a>
-<a href="https://github.com/izven" title="Zhang"><img src="https://avatars.githubusercontent.com/u/2149051?v=4" width="42;" alt="Zhang"/></a>
 <a href="https://github.com/Kisa-Dong" title="Kisa-Dong"><img src="https://avatars.githubusercontent.com/u/84782008?v=4" width="42;" alt="Kisa-Dong"/></a>
 <a href="https://github.com/SuperDiscovery" title="SuperDiscovery"><img src="https://avatars.githubusercontent.com/u/49646863?v=4" width="42;" alt="SuperDiscovery"/></a>
-<a href="https://github.com/XYZscratcher" title="XYZ"><img src="https://avatars.githubusercontent.com/u/108533817?v=4" width="42;" alt="XYZ"/></a>
 <a href="https://github.com/ThanatosXingYu" title="Thanatos"><img src="https://avatars.githubusercontent.com/u/53430376?v=4" width="42;" alt="Thanatos"/></a>
+<a href="https://github.com/XYZscratcher" title="XYZ"><img src="https://avatars.githubusercontent.com/u/108533817?v=4" width="42;" alt="XYZ"/></a>
+<a href="https://github.com/izven" title="Zhang"><img src="https://avatars.githubusercontent.com/u/2149051?v=4" width="42;" alt="Zhang"/></a>
+<a href="https://github.com/greyhao" title="greyhao"><img src="https://avatars.githubusercontent.com/u/107107440?v=4" width="42;" alt="greyhao"/></a>
+<a href="https://github.com/infanx" title="infanx"><img src="https://avatars.githubusercontent.com/u/65985757?v=4" width="42;" alt="infanx"/></a>
+<a href="https://github.com/hweining" title="hweining"><img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/></a>
 <a href="https://github.com/icer233" title="icer"><img src="https://avatars.githubusercontent.com/u/74440627?v=4" width="42;" alt="icer"/></a>
 <a href="https://github.com/auroraslot" title="irony"><img src="https://avatars.githubusercontent.com/u/48817882?v=4" width="42;" alt="irony"/></a>
 <a href="https://github.com/jlchen5" title="J.Chen"><img src="https://avatars.githubusercontent.com/u/61578993?v=4" width="42;" alt="J.Chen"/></a>
@@ -362,8 +395,6 @@ Quick Reference
 <a href="https://github.com/leauny" title="leauny"><img src="https://avatars.githubusercontent.com/u/42369176?v=4" width="42;" alt="leauny"/></a>
 <a href="https://github.com/liliangrong777" title="liliangrong777"><img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/></a>
 <a href="https://github.com/lozhu20" title="lozhu"><img src="https://avatars.githubusercontent.com/u/44923922?v=4" width="42;" alt="lozhu"/></a>
-<a href="https://github.com/Zeng-qh" title="都一样"><img src="https://avatars.githubusercontent.com/u/40046415?v=4" width="42;" alt="都一样"/></a>
-<a href="https://github.com/hweining" title="hweining"><img src="https://avatars.githubusercontent.com/u/8973985?v=4" width="42;" alt="hweining"/></a>
 <a href="https://github.com/yanxuplay" title="hupilan"><img src="https://avatars.githubusercontent.com/u/69749541?v=4" width="42;" alt="hupilan"/></a>
 <a href="https://github.com/hua03" title="hua03"><img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/></a>
 <a href="https://github.com/gzttcydxx" title="gzttcydxx"><img src="https://avatars.githubusercontent.com/u/50025185?v=4" width="42;" alt="gzttcydxx"/></a>
@@ -378,6 +409,8 @@ Quick Reference
 <a href="https://github.com/gaoxiaoduan" title="Coder Duan"><img src="https://avatars.githubusercontent.com/u/69953511?v=4" width="42;" alt="Coder Duan"/></a>
 <a href="https://github.com/lijc210" title="cizai"><img src="https://avatars.githubusercontent.com/u/10651081?v=4" width="42;" alt="cizai"/></a>
 <a href="https://github.com/chyok" title="chyok"><img src="https://avatars.githubusercontent.com/u/32629225?v=4" width="42;" alt="chyok"/></a>
+<a href="https://github.com/zlfyuan" title="bgbgPang"><img src="https://avatars.githubusercontent.com/u/19658018?v=4" width="42;" alt="bgbgPang"/></a>
+<a href="https://github.com/Zeng-qh" title="都一样"><img src="https://avatars.githubusercontent.com/u/40046415?v=4" width="42;" alt="都一样"/></a>
 <a href="https://github.com/binscor" title="binscor"><img src="https://avatars.githubusercontent.com/u/37325821?v=4" width="42;" alt="binscor"/></a>
 <a href="https://github.com/qwxingzhe" title="行者"><img src="https://avatars.githubusercontent.com/u/7071651?v=4" width="42;" alt="行者"/></a>
 <a href="https://github.com/lisheng741" title="芦荟柚子茶"><img src="https://avatars.githubusercontent.com/u/53617305?v=4" width="42;" alt="芦荟柚子茶"/></a>
@@ -439,7 +472,6 @@ Quick Reference
 <a href="https://github.com/dousha0w0" title="dousha0w0"><img src="https://avatars.githubusercontent.com/u/52566311?v=4" width="42;" alt="dousha0w0"/></a>
 <a href="https://github.com/JinchuanL" title="ANDY"><img src="https://avatars.githubusercontent.com/u/68026794?v=4" width="42;" alt="ANDY"/></a>
 <a href="https://github.com/13812700839" title="花殇"><img src="https://avatars.githubusercontent.com/u/58072506?v=4" width="42;" alt="花殇"/></a>
-<a href="https://github.com/zlfyuan" title="bgbgPang"><img src="https://avatars.githubusercontent.com/u/19658018?v=4" width="42;" alt="bgbgPang"/></a>
 <a href="https://github.com/Lmmmmmm-bb" title="_lmmmmmm"><img src="https://avatars.githubusercontent.com/u/54026110?v=4" width="42;" alt="_lmmmmmm"/></a>
 <a href="https://github.com/y52y" title="Zyj"><img src="https://avatars.githubusercontent.com/u/51304324?v=4" width="42;" alt="Zyj"/></a>
 <a href="https://github.com/Leaderzhangyi" title="ZinkCas"><img src="https://avatars.githubusercontent.com/u/46915666?v=4" width="42;" alt="ZinkCas"/></a>
@@ -447,6 +479,7 @@ Quick Reference
 <a href="https://github.com/yikuaibro" title="yikuaibro"><img src="https://avatars.githubusercontent.com/u/44493045?v=4" width="42;" alt="yikuaibro"/></a>
 <a href="https://github.com/HeZephyr" title="Zephyr He"><img src="https://avatars.githubusercontent.com/u/67893254?v=4" width="42;" alt="Zephyr He"/></a>
 <a href="https://github.com/dfshizhiqiang" title="Zech"><img src="https://avatars.githubusercontent.com/u/7030019?v=4" width="42;" alt="Zech"/></a>
+<a href="https://github.com/zkassing" title="You Kuan Zhang"><img src="https://avatars.githubusercontent.com/u/13414184?v=4" width="42;" alt="You Kuan Zhang"/></a>
 <a href="https://github.com/Yo-gurts" title="Yogurt"><img src="https://avatars.githubusercontent.com/u/44612841?v=4" width="42;" alt="Yogurt"/></a>
 <a href="https://github.com/hi-liyan" title="李李李"><img src="https://avatars.githubusercontent.com/u/40056492?v=4" width="42;" alt="李李李"/></a>
 <a href="https://github.com/BATTLEHAWK00" title="While True: learn()"><img src="https://avatars.githubusercontent.com/u/45313304?v=4" width="42;" alt="While True: learn()"/></a>
@@ -479,11 +512,10 @@ Quick Reference
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站(国内打不开的不再收录)。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/discussions/206#discussion-4625735)
 
-[dev.bi](https://dev.bi)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
+[zone.id](https://cyref.zone.id/)<!--rehype:target=_blank-->
 [docflow.cn](https://ref.docflow.cn)<!--rehype:target=_blank-->
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank-->
 [aibk.cn](https://quickref.aibk.cn)<!--rehype:target=_blank-->
-[ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank-->
 [quickref.hestudio.net](https://quickref.hestudio.net)<!--rehype:target=_blank&class=contributing&data-info=👆整点自动同步-->
 [qiubit.cc](http://ref.qiubit.cc)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
 [guoxudong.io](https://reference.guoxudong.io/)<!--rehype:target=_blank&class=contributing&data-info=👆每天自动同步-->
@@ -585,6 +617,8 @@ Quick Reference
 [pusukeji.com](https://reference.pusukeji.com/)<!--rehype:target=_blank-->
 [songbaixin.xin](https://home.songbaixin.xin:26009/)<!--rehype:target=_blank-->
 [78888889.xyz](https://reference.78888889.xyz)<!--rehype:target=_blank-->
+[dev.bi](https://dev.bi)<!--rehype:target=_blank-->
+[ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了，还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版。
@@ -594,37 +628,6 @@ Quick Reference
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
 - [Quick Reference for VSCode](https://marketplace.visualstudio.com/items?itemName=jackiotyu.quick-reference) 由 [jackiotyu](https://github.com/jackiotyu/vscode-quick-reference) 提供
-
-## 赞助支持
-<!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
-
-非常感谢那些一直支持我开源工作的朋友们。如果您对我的工作感到满意，可以选择在[这里进行赞助](https://wangchujiang.com/#/sponsor)<!--rehype:target=_blank-->。也可以通过下载并使用我开发的 [macOS 应用](https://wangchujiang.com/#/app)<!--rehype:target=_blank-->来支持我。以下是我个人开发的 macOS 应用：
-  
-<p style="display: inline-block">
-  <a target="_blank" href="https://wangchujiang.com/audioer/" title="Audioer for macOS"><img align="center" alt="Audioer" height="52" width="52" src="./appicon/audioer.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/file-sentinel/" title="FileSentinel for macOS"><img align="center" alt="FileSentinel" height="52" width="52" src="./appicon/file-sentinel.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/focus-cursor/" title="FocusCursor for macOS"><img align="center" alt="FocusCursor" height="52" width="52" src="./appicon/focus-cursor.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/videoer/" title="Videoer for macOS"><img align="center" alt="Videoer" height="52" width="52" src="./appicon/videoer.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/key-clicker/" title="KeyClicker for macOS"><img align="center" alt="KeyClicker" height="50" width="50" src="./appicon/key-clicker.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/daybar/" title="DayBar for macOS"><img align="center" alt="DayBar" height="50" width="50" src="./appicon/daybar.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/iconed/" title="Iconed for macOS"><img align="center" alt="Iconed" height="50" width="50" src="./appicon/iconed.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/rightmenu-master/" title="RightMenu Master for macOS"><img align="center" alt="RightMenu Master" height="50" width="50" src="./appicon/rightmenu-master.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/paste-quick/" title="Paste Quick for macOS"><img align="center" alt="Paste Quick" height="50" width="50" src="./appicon/paste-quick.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/quick-rss/" title="Quick RSS for macOS/iOS"><img align="center" alt="Quick RSS" height="50" width="50" src="./appicon/quick-rss.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/web-serve/" title="Web Serve for macOS"><img align="center" alt="Web Serve" height="50" width="50" src="./appicon/web-serve.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/copybook-generator/" title="Copybook Generator for macOS/iOS"><img align="center" alt="Copybook Generator" height="50" width="50" src="./appicon/copybook-generator.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/devtutor/" title="DevTutor for macOS/iOS"><img align="center" alt="DevTutor for SwiftUI" height="50" width="50" src="./appicon/devtutor.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/regex-mate/" title="RegexMate for macOS/iOS"><img align="center" alt="RegexMate" height="50" width="50" src="./appicon/regex-mate.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/time-passage/" title="Time Passage for macOS/iOS"><img align="center" alt="Time Passage" height="50" width="50" src="./appicon/time-passage.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/IconizeFolder/" title="IconizeFolder for macOS"><img align="center" alt="Iconize Folder" height="50" width="50" src="./appicon/iconize-folder.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/TextSoundSaver/" title="Textsound Saver for macOS/iOS"><img align="center" alt="Textsound Saver" height="50" width="50" src="./appicon/textsound-saver.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/create-custom-symbols/" title="Create Custom Symbols for macOS"><img align="center" alt="Create Custom Symbols" height="50" width="50" src="./appicon/create-custom-symbols.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/DevHub/" title="DevHub for macOS"><img align="center" alt="DevHub" height="50" width="50" src="./appicon/devhub.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/ResumeRevise/" title="Resume Revise for macOS"><img align="center" alt="Resume Revise" height="50" width="50" src="./appicon/resume-revise.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/palette-genius/" title="Palette Genius for macOS"><img align="center" alt="Palette Genius" height="50" width="50" src="./appicon/palette-genius.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/symbol-scribe/" title="Symbol Scribe for macOS"><img align="center" alt="Symbol Scribe" height="50" width="50" src="./appicon/symbol-scribe.png"></a>
-</p>
-<!--rehype:style=padding-top:1rem;max-width: 520px;margin: 0 auto;-->
 
 <!--rehype:ignore:start-->
 ## 开发
