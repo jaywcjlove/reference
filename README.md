@@ -15,6 +15,37 @@ Quick Reference
 
 为了方便开发人员查阅技术栈，分享这份快速参考备忘清单【速查表】。这是英文版 [Reference](https://github.com/Randy8080/reference) 的中文翻译，旨在帮助自己更好地使用相关技术。如果您有自己的清单，也欢迎提供，我会抽时间搬运并立刻实现 :)。如果您发现这份备忘单中的内容不合适，可以通过提交 [PR](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md) 来修复或提供更好的备忘清单，主要面向【中文】用户。以下是一些开源天使提供的备忘清单和快速参考 :)。
 
+## 赞助支持
+<!--rehype:class=home-title-reset-->
+
+非常感谢一直以来支持我开源项目的朋友们！如果您认可我的工作，欢迎通过 [赞助](https://wangchujiang.com/#/sponsor)<!--rehype:target=_blank--> 我或下载并使用我开发的 [macOS 应用](https://wangchujiang.com/#/app)<!--rehype:target=_blank--> 来支持我。以下是我个人独立开发的 macOS 应用列表：
+  
+<p style="display: inline-block">
+  <a target="_blank" href="https://wangchujiang.com/audioer/" title="Audioer for macOS"><img align="center" alt="Audioer" height="52" width="52" src="./appicon/audioer.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/file-sentinel/" title="FileSentinel for macOS"><img align="center" alt="FileSentinel" height="52" width="52" src="./appicon/file-sentinel.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/focus-cursor/" title="FocusCursor for macOS"><img align="center" alt="FocusCursor" height="52" width="52" src="./appicon/focus-cursor.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/videoer/" title="Videoer for macOS"><img align="center" alt="Videoer" height="52" width="52" src="./appicon/videoer.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/key-clicker/" title="KeyClicker for macOS"><img align="center" alt="KeyClicker" height="50" width="50" src="./appicon/key-clicker.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/daybar/" title="DayBar for macOS"><img align="center" alt="DayBar" height="50" width="50" src="./appicon/daybar.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/iconed/" title="Iconed for macOS"><img align="center" alt="Iconed" height="50" width="50" src="./appicon/iconed.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/rightmenu-master/" title="RightMenu Master for macOS"><img align="center" alt="RightMenu Master" height="50" width="50" src="./appicon/rightmenu-master.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/paste-quick/" title="Paste Quick for macOS"><img align="center" alt="Paste Quick" height="50" width="50" src="./appicon/paste-quick.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/quick-rss/" title="Quick RSS for macOS/iOS"><img align="center" alt="Quick RSS" height="50" width="50" src="./appicon/quick-rss.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/web-serve/" title="Web Serve for macOS"><img align="center" alt="Web Serve" height="50" width="50" src="./appicon/web-serve.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/copybook-generator/" title="Copybook Generator for macOS/iOS"><img align="center" alt="Copybook Generator" height="50" width="50" src="./appicon/copybook-generator.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/devtutor/" title="DevTutor for macOS/iOS"><img align="center" alt="DevTutor for SwiftUI" height="50" width="50" src="./appicon/devtutor.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/regex-mate/" title="RegexMate for macOS/iOS"><img align="center" alt="RegexMate" height="50" width="50" src="./appicon/regex-mate.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/time-passage/" title="Time Passage for macOS/iOS"><img align="center" alt="Time Passage" height="50" width="50" src="./appicon/time-passage.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/IconizeFolder/" title="IconizeFolder for macOS"><img align="center" alt="Iconize Folder" height="50" width="50" src="./appicon/iconize-folder.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/TextSoundSaver/" title="Textsound Saver for macOS/iOS"><img align="center" alt="Textsound Saver" height="50" width="50" src="./appicon/textsound-saver.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/create-custom-symbols/" title="Create Custom Symbols for macOS"><img align="center" alt="Create Custom Symbols" height="50" width="50" src="./appicon/create-custom-symbols.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/DevHub/" title="DevHub for macOS"><img align="center" alt="DevHub" height="50" width="50" src="./appicon/devhub.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/ResumeRevise/" title="Resume Revise for macOS"><img align="center" alt="Resume Revise" height="50" width="50" src="./appicon/resume-revise.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/palette-genius/" title="Palette Genius for macOS"><img align="center" alt="Palette Genius" height="50" width="50" src="./appicon/palette-genius.png"></a>
+  <a target="_blank" href="https://wangchujiang.com/symbol-scribe/" title="Symbol Scribe for macOS"><img align="center" alt="Symbol Scribe" height="50" width="50" src="./appicon/symbol-scribe.png"></a>
+</p>
+<!--rehype:style=padding-top:1rem;-->
+
 ## 正在建设中...
 
 坑已挖，需要您的参与完善和[贡献](./docs/quickreference.md)！🙏
@@ -596,37 +627,6 @@ Quick Reference
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
 - [Quick Reference for VSCode](https://marketplace.visualstudio.com/items?itemName=jackiotyu.quick-reference) 由 [jackiotyu](https://github.com/jackiotyu/vscode-quick-reference) 提供
-
-## 赞助支持
-<!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
-
-非常感谢那些一直支持我开源工作的朋友们。如果您对我的工作感到满意，可以选择在[这里进行赞助](https://wangchujiang.com/#/sponsor)<!--rehype:target=_blank-->。也可以通过下载并使用我开发的 [macOS 应用](https://wangchujiang.com/#/app)<!--rehype:target=_blank-->来支持我。以下是我个人开发的 macOS 应用：
-  
-<p style="display: inline-block">
-  <a target="_blank" href="https://wangchujiang.com/audioer/" title="Audioer for macOS"><img align="center" alt="Audioer" height="52" width="52" src="./appicon/audioer.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/file-sentinel/" title="FileSentinel for macOS"><img align="center" alt="FileSentinel" height="52" width="52" src="./appicon/file-sentinel.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/focus-cursor/" title="FocusCursor for macOS"><img align="center" alt="FocusCursor" height="52" width="52" src="./appicon/focus-cursor.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/videoer/" title="Videoer for macOS"><img align="center" alt="Videoer" height="52" width="52" src="./appicon/videoer.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/key-clicker/" title="KeyClicker for macOS"><img align="center" alt="KeyClicker" height="50" width="50" src="./appicon/key-clicker.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/daybar/" title="DayBar for macOS"><img align="center" alt="DayBar" height="50" width="50" src="./appicon/daybar.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/iconed/" title="Iconed for macOS"><img align="center" alt="Iconed" height="50" width="50" src="./appicon/iconed.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/rightmenu-master/" title="RightMenu Master for macOS"><img align="center" alt="RightMenu Master" height="50" width="50" src="./appicon/rightmenu-master.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/paste-quick/" title="Paste Quick for macOS"><img align="center" alt="Paste Quick" height="50" width="50" src="./appicon/paste-quick.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/quick-rss/" title="Quick RSS for macOS/iOS"><img align="center" alt="Quick RSS" height="50" width="50" src="./appicon/quick-rss.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/web-serve/" title="Web Serve for macOS"><img align="center" alt="Web Serve" height="50" width="50" src="./appicon/web-serve.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/copybook-generator/" title="Copybook Generator for macOS/iOS"><img align="center" alt="Copybook Generator" height="50" width="50" src="./appicon/copybook-generator.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/devtutor/" title="DevTutor for macOS/iOS"><img align="center" alt="DevTutor for SwiftUI" height="50" width="50" src="./appicon/devtutor.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/regex-mate/" title="RegexMate for macOS/iOS"><img align="center" alt="RegexMate" height="50" width="50" src="./appicon/regex-mate.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/time-passage/" title="Time Passage for macOS/iOS"><img align="center" alt="Time Passage" height="50" width="50" src="./appicon/time-passage.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/IconizeFolder/" title="IconizeFolder for macOS"><img align="center" alt="Iconize Folder" height="50" width="50" src="./appicon/iconize-folder.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/TextSoundSaver/" title="Textsound Saver for macOS/iOS"><img align="center" alt="Textsound Saver" height="50" width="50" src="./appicon/textsound-saver.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/create-custom-symbols/" title="Create Custom Symbols for macOS"><img align="center" alt="Create Custom Symbols" height="50" width="50" src="./appicon/create-custom-symbols.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/DevHub/" title="DevHub for macOS"><img align="center" alt="DevHub" height="50" width="50" src="./appicon/devhub.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/ResumeRevise/" title="Resume Revise for macOS"><img align="center" alt="Resume Revise" height="50" width="50" src="./appicon/resume-revise.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/palette-genius/" title="Palette Genius for macOS"><img align="center" alt="Palette Genius" height="50" width="50" src="./appicon/palette-genius.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/symbol-scribe/" title="Symbol Scribe for macOS"><img align="center" alt="Symbol Scribe" height="50" width="50" src="./appicon/symbol-scribe.png"></a>
-</p>
-<!--rehype:style=padding-top:1rem;max-width: 520px;margin: 0 auto;-->
 
 <!--rehype:ignore:start-->
 ## 开发
