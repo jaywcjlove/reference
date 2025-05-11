@@ -59,3 +59,10 @@ pip 备忘清单
 `pip install -i https://pypi.tuna.tsinghua.edu.cn/simple package`          | 使用清华镜像安装
 `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple` | 永久设置默认镜像
 <!--rehype:className=style-list-->
+
+
+另见
+---
+
+- [pip 官方文档](https://pip.pypa.io/en/stable/)  _(pypa.io)_
+- [Github 仓库](https://github.com/pypa/pip)  _(github.com)_
