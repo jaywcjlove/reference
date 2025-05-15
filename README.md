@@ -240,6 +240,7 @@ Quick Reference
 [Cargo](./docs/cargo.md)<!--rehype:style=background: rgb(71 71 71);&class=tag&data-lang=Rust-->  
 [Homebrew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87);&class=tag&data-lang=macOS-->  
 [Pacman](./docs/pacman.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=archlinux&class=contributing-->  
+[pip](./docs/pip.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=Python&class=contributing-->  
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123);-->  
 [SDKMAN](./docs/sdkman.md)<!--rehype:style=background: rgb(0 118 198);-->  
 <!--rehype:class=home-card-->
@@ -326,7 +327,8 @@ Quick Reference
 请参阅 [Quick Reference](./docs/quickreference.md) 了解如何开始。一如既往，感谢我们出色的[贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)！
 <!--rehype:style=padding-bottom:1rem;-->
 
-<!--GAMFC--><a href="https://github.com/jaywcjlove" title="小弟调调"><img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调"/></a>
+<!--GAMFC-->
+<a href="https://github.com/jaywcjlove" title="小弟调调"><img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调"/></a>
 <a href="https://github.com/fwqaaq" title="fwqaaq"><img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fwqaaq"/></a>
 <a href="https://github.com/zhangymPerson" title="zhangym"><img src="https://avatars.githubusercontent.com/u/40376181?v=4" width="42;" alt="zhangym"/></a>
 <a href="https://github.com/mofelee" title="mofelee"><img src="https://avatars.githubusercontent.com/u/5069410?v=4" width="42;" alt="mofelee"/></a>
@@ -502,7 +504,10 @@ Quick Reference
 <a href="https://github.com/mo3et" title="Monet Lee"><img src="https://avatars.githubusercontent.com/u/34803812?v=4" width="42;" alt="Monet Lee"/></a>
 <a href="https://github.com/Moeyuuko" title="Moeyuuko"><img src="https://avatars.githubusercontent.com/u/14266681?v=4" width="42;" alt="Moeyuuko"/></a>
 <a href="https://github.com/malcolmyu" title="Minghao Yu"><img src="https://avatars.githubusercontent.com/u/3203962?v=4" width="42;" alt="Minghao Yu"/></a>
-<a href="https://github.com/Mieriki" title="Mieriki"><img src="https://avatars.githubusercontent.com/u/142009318?v=4" width="42;" alt="Mieriki"/></a><!--GAMFC-END-->
+<a href="https://github.com/Mieriki" title="Mieriki"><img src="https://avatars.githubusercontent.com/u/142009318?v=4" width="42;" alt="Mieriki"/></a>
+
+
+<!--GAMFC-END-->
 
 [贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 根据提交次数的先后顺序自动生成
 <!--rehype:style=padding-top:1rem;-->
