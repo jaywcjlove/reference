@@ -73,7 +73,7 @@ f\relax(x) = \int_{-\infty}^\infty
 ``KaTeX:\\\`{a}`` <pur><code>\\&#96;{a}</code></pur> | `KaTeX:\={a}` <pur>`\={a}`</pur> |
 `KaTeX:\"{a}` <pur>`\"{a}`</pur> | `KaTeX:\v{a}` <pur>`\v{a}`</pur> |
 `KaTeX:\^{a}` <pur>`\^{a}`</pur> | `KaTeX:\u{a}` <pur>`\u{a}`</pur> |
-`KaTeX:\r{a}` <pur>`\r{a}`</pur> |
+`KaTeX:\r{a}` <pur>`\r{a}`</pur>
 
 ### 定界符大小调整
 
@@ -157,6 +157,7 @@ f\relax(x) = \int_{-\infty}^\infty
 `KaTex:\sout{abc}` | <pur>`\sout{abc}`</pur> | `KaTex:\boxed{\pi=\frac c d}` | <pur>`\boxed{\pi=\frac c d}`</pur>
 `KaTex:\$a_{\angl n}` _<red>MD语法冲突</red>_ | <pur>`$a_{\angl n}`</pur> | `KaTex:a_\angln` | <pur>`a_\angln`</pur>
 `KaTex:\phase{-78^\circ}` | <pur>`\phase{-78^\circ}`</pur>
+`KaTex:\overset{a}{B}` | <pur>`\overset{a}{B}`</pur> | `KaTex:\underset{a}{B}` | <pur>`\underset{a}{B}`</pur>
 
 <pur>\tag{hi} x+y^{2x}</pur>
 
@@ -203,6 +204,7 @@ f\relax(x) = \int_{-\infty}^\infty
 | `KaTex:f'`                | <pur>`f'`</pur>                   | `KaTex:\underline{abc}`    | <pur>`\underline{abc}`</pur>     | `KaTex:\overleftarrow{abc}`      | <pur>`\overleftarrow{abc}`</pur>       |
 | `KaTex:\sqrt{abc}`        | <pur>`\sqrt{abc}`</pur>           | `KaTex:\widehat{abc}`      | <pur>`\widehat{abc}`</pur>       | `KaTex:\overbrace{abc}`          | <pur>`\overbrace{abc}`</pur>           |
 | `KaTex:\sqrt[n]{abc}`     | <pur>`\sqrt[n]{abc}`</pur>        | `KaTex:\widetilde{abc}`    | <pur>`\widetilde{abc}`</pur>     | `KaTex:\underbrace{abc}`         | <pur>`\underbrace{abc}`</pur>          |
+|`KaTex:\frac{d^n y}{d x^n}`| <pur>`\frac{d^n y}{d x^n}`</pur>  | `KaTex:\int_{b}^{a}  \,dx` | <pur>`\int_{b}^{a}  \,dx`</pur>  | `KaTex:\lim_{x \to \infty}`      | <pur>`\lim_{x \to \infty}`</pur>       |
 
 ### 分隔符
 <!--rehype:wrap-class=col-span-3-->
@@ -892,6 +894,7 @@ x = \begin{cases}
 `KaTex:\LARGE AB` | <pur>`\LARGE AB`</pur> | `KaTex:\LARGE AB` | <pur>`\LARGE AB`</pur> | `KaTex:\footnotesize AB` | <pur>\footnotesize AB</pur>
 `KaTex:\Large AB` | <pur>`\Large AB`</pur> | `KaTex:\Large AB` | <pur>`\Large AB`</pur> | `KaTex:\scriptsize AB` | <pur>\scriptsize AB</pur>
 `KaTex:\large AB` | <pur>`\large AB`</pur> | `KaTex:\large AB` | <pur>`\large AB`</pur> | `KaTex:\tiny AB` | <pur>\tiny AB</pur>
+`KaTex:\mathcal{AB}` | <pur>`\mathcal{AB}`</pur> | `KaTex:\mathak{AB}` | <pur>`\mathak{AB}`</pur> | `KaTex:\mathbb{AB}` | <pur>`\mathbb{AB}`</pur> | `KaTex:\mathsf{AB}` | <pur>`\mathsf{AB}`</pur>
 
 ### 样式
 <!--rehype:wrap-class=col-span-3-->
@@ -901,7 +904,165 @@ x = \begin{cases}
 `KaTex:\displaystyle\sum_{i=1}^n` | <pur>\displaystyle\sum_{i=1}^n</pur> | `KaTex:\textstyle\sum_{i=1}^n` | <pur>\textstyle\sum_{i=1}^n</pur>
 `KaTex:\scriptstyle x` | <pur>\scriptstyle x</pur> | `KaTex:\scriptscriptstyle x` | <pur>\scriptscriptstyle x</pur>
 `KaTex:\lim\limits_x` | <pur>\lim\limits_x</pur> | `KaTex:\lim\nolimits_x` | <pur>\lim\nolimits_x</pur>
-`KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur>
+`KaTex:\verb!x^2!` | <pur>\verb!x^2!</pur> | `KaTeX:\mathbf{a}` <pur>`\textbf{a}`</pur> |
+`KaTeX:\mathit{a}` <pur>`\textit{a}`</pur> | `KaTeX:\textup{a}` <pur>`\textup{a}`</pur> | `KaTeX:\textsl{a}` <pur>`\textsl{a}`</pur> | `KaTeX:\textsc{a}` <pur>`\textsc{a}`</pur> | `KaTeX:\underline{a}` <pur>`\underline{a}`</pur>
+
+列表，图片，表格表示
+---
+
+### 列表
+
+```latex
+|   - First item  |
+|   - Second item |
+\begin{enumerate}
+  \item First item
+  \item Second item
+\end{enumerate}
+
+|   1. First item  |
+|   2. Second item |
+\begin{itemize}
+    \item First item
+    \item Second item
+\end{itemize}
+  
+|First item  |
+|Second item |
+\begin{description}
+    \item First item
+    \item Second item
+\end{description}
+```
+
+### 图片
+
+```latex
+% 展示单张图像
+\usepackage{graphicx}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{path/to/your/image.jpg}
+    \caption{Caption for the single figure.}
+    \label{fig:singlefig}
+\end{figure}
+  
+% 展示多张图像
+\usepackage{graphicx}
+\usepackage{subcaption}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{path/to/your/image1.jpg}
+        \caption{First subfigure}
+        \label{fig:sub1}
+    \end{subfigure}
+    \hfill  % 在子图之间添加水平间距
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{path/to/your/image2.jpg}
+        \caption{Second subfigure}
+        \label{fig:sub2}
+    \end{subfigure}
+    \caption{Caption for the entire figure}
+    \label{fig:mainfig}
+\end{figure}
+```
+
+### 表格
+
+```latex
+\begin{table}[hbpt]  % 使用 longtable 包创建可以跨页的表格
+   \centering  % 居中表格
+   \caption{Example Table}
+   \label{tab:example}
+   \begin{tabular}{|c|l|r|}  % 对齐列：居中、居左、居右
+      \hline  % 插入一条水平线
+      \textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\ \hline
+      Data 1 & Data 2 & Data 3 \\  % 数据
+      Data 4 & Data 5 & Data 6 \\ \hline
+   \end{tabular}
+\end{table}
+```
+
+LaTex排版
+----
+
+### 调整页边距和页面类型
+
+```latex
+\usepackage[left=3cm, right=3cm, top=2cm, bottom=2cm]{geometry} or \geometry{left=3cm, right=3cm, top=2cm, bottom=2cm}
+
+\usepackage[a4paper]{geometry} % 另有a5paper, b5paper, letterpaper等格式
+```
+
+### 页面分割和布局
+
+```latex
+\quad          |  添加空格
+\qquad         |  双空格
+\vspace{}      |  增加纵向间距
+\hspace{}      |  增加横向间距
+\newpage       |  开始新的一页
+\clearpage     |  清除当前页，并处理所有未处理的浮动体
+\vfill         |  在当前页面的剩余空间中插入垂直空白
+```
+
+### 页面页眉和页脚
+
+```latex
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}                       |  清除所有页眉和页脚字段
+\fancyhead[L]{Left header}       |  左页眉
+\fancyhead[C]{Center header}     |  中页眉
+\fancyhead[R]{Right header}      |  右页眉
+\fancyfoot[L]{Left footer}       |  左页脚
+\fancyfoot[C]{\thepage}          |  页脚中央的页码
+\fancyfoot[R]{Right footer}      |  右页脚
+```
+
+其他
+----
+
+### bib文献管理
+
+```latex
+\cite{example}                |  在文本中引用
+
+\bibliographystyle{plain}     |  设定引用格式
+\bibliography{references}     |  假设.bib文件名为 'references.bib'
+```
+
+### URL
+
+```latex
+\usepackage{hyperref}   |  加载 hyperref 包以增强 PDF 文档的交互性，如添加超链接和书签
+
+\href{URL}{text}        |  创建一个指向 URL 的超链接
+\url{URL}               |  显示 URL 并作为链接
+```
+
+### 颜色和盒子
+
+```latex
+\usepackage{color}   |  使用 color 包来给文本添加颜色
+
+\color{color}        |  设置文本颜色
+\fbox{content}       |  在内容周围创建一个边框
+```
+
+### 多栏布局
+
+```latex
+\usepackage{multicol}                           |  使用 multicol 包创建多栏文本
+
+\begin{multicols}{num} ... \end{multicols}      |  开始一个多栏环境，其中 num 指定列数
+\onecolumn                                      |  文档从当前位置开始变为单列格式
+\twocolumn                                      |  文档从当前位置开始变为双列格式
+```
 
 另见
 ----
