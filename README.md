@@ -189,7 +189,7 @@ Quick Reference
 [Cron](./docs/cron.md)<!--rehype:style=background: rgb(239 68 68);-->  
 [CMake](./docs/cmake.md)<!--rehype:style=background: rgb(92 107 192);&class=contributing-->  
 [CMD](./docs/cmd.md)<!--rehype:style=background: rgb(99 99 99);-->  
-[.NET CLI](./docs/dotnet-cli.md)<!--rehype:style=background: rgb(16 185 129);-->  
+[.NET CLI](./docs/dotnet-cli.md)<!--rehype:style=background: rgb(16 185 129);&class=contributing tag&data-lang=#C-->  
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129);-->  
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9);&class=contributing-->  
 [Gdb](./docs/gdb.md)<!--rehype:style=background: rgb(215 89 62);-->  
@@ -318,7 +318,7 @@ Quick Reference
 
 上面的列表没有看到你想要的？ 您是否正在寻找一些备忘清单或参考资料，或者您有一些片段备忘清单要分享，这是一个最好的机会！
 
-[`请求添加备忘单(速查表)`](https://github.com/jaywcjlove/reference/issues/new?title=【备忘清单】+请求%3A+&labels=request&template=cheatsheet-request.md&assignee=)<!--rehype:class=home-button&style=margin-top:2rem&target=__blank-->
+[`请求添加备忘单(速查表)`](https://github.com/jaywcjlove/reference/issues/new?template=cheatsheet-request.yml)<!--rehype:class=home-button&style=margin-top:2rem&target=__blank-->
 [`我有一张备忘单(速查表)`](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)<!--rehype:class=home-button text-grey&target=__blank-->
 <!--rehype:style=margin-top:3rem-->
 
