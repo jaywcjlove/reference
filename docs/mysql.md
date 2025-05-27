@@ -95,12 +95,35 @@ mysql> exit
 退出 `quit;` 或 `\q;` 一样的效果
 
 ### 备份
+<!--rehype:wrap-class=col-span-2-->
 
-创建备份
+备份特定表
 
-```sql
-mysqldump -u user -p db_name > db.sql
+```bash
+mysqldump -u user -p db_name table1 table2 > tables_backup.sql
 ```
+<!--rehype:className=wrap-text -->
+
+备份多个数据库
+
+```bash
+mysqldump -u user -p --databases db1 db2 > multi_backup.sql
+```
+<!--rehype:className=wrap-text -->
+
+备份所有数据库
+
+```bash
+mysqldump -u user -p --all-databases > all_backup.sql
+```
+<!--rehype:className=wrap-text -->
+
+备份时压缩
+
+```bash
+mysqldump -u user -p db_name | gzip > db_backup.sql.gz
+```
+<!--rehype:className=wrap-text -->
 
 导出不带架构的数据库
 
@@ -109,22 +132,117 @@ mysqldump -u user -p db_name --no-data=true --add-drop-table=false > db.sql
 ```
 <!--rehype:className=wrap-text -->
 
-恢复备份
+仅导出数据
 
-```shell
-mysql -u user -p db_name < db.sql
+```bash
+mysqldump -u user -p --no-create-info db_name > only_data.sql
+```
+<!--rehype:className=wrap-text -->
+
+仅导出结构
+
+```bash
+mysqldump -u user -p --no-data db_name > only_schema.sql
+```
+<!--rehype:className=wrap-text -->
+
+导出时忽略某些表
+
+```bash
+mysqldump -u user -p db_name --ignore-table=db_name.table1 --ignore-table=db_name.table2 > partial.sql
+```
+<!--rehype:className=wrap-text -->
+
+### 恢复备份
+<!--rehype:wrap-class=row-span-2-->
+
+恢复单个数据库备份
+
+```bash
+mysql -u user -p db_name < db_backup.sql
 ```
 
-### 错误处理 Error Handling
+恢复多个数据库（带 `--databases` 选项备份的）
 
-| 语句                     | 描述                           |
-| :----------------------- | :----------------------------- |
-| `SHOW ERRORS;`           | 显示最近的错误信息             |
-| `SHOW WARNINGS;`         | 显示最近的警告信息             |
-| `SHOW COUNT(*) ERRORS;`  | 返回最近语句的错误数量         |
-| `SHOW COUNT(*) WARNINGS;`| 返回最近语句的警告数量         |
-| `EXPLAIN`                | 分析 SQL 查询的执行计划，排查问题 |
-| `SHOW ENGINE INNODB STATUS;` | 显示 InnoDB 引擎状态，包括死锁等错误信息 |
+```bash
+mysql -u user -p < multi_backup.sql
+```
+
+恢复所有数据库（使用 `--all-databases` 备份的）
+
+```bash
+mysql -u user -p < all_backup.sql
+```
+
+从 gzip 压缩的备份恢复
+
+```bash
+gunzip < db_backup.sql.gz | mysql -u user -p db_name
+
+# 或：
+
+zcat db_backup.sql.gz | mysql -u user -p db_name
+```
+<!--rehype:className=wrap-text -->
+
+恢复单张表（从 `mysqldump` 单表导出文件）
+
+```bash
+mysql -u user -p db_name < table1_backup.sql
+```
+<!--rehype:className=wrap-text -->
+
+先创建数据库再导入（如果备份中不包含 CREATE DATABASE）
+
+```bash
+mysql -u user -p -e "CREATE DATABASE IF NOT EXISTS db_name;"
+
+mysql -u user -p db_name < db_backup.sql
+```
+<!--rehype:className=wrap-text -->
+
+恢复指定字符集（防止乱码）
+
+```bash
+mysql --default-character-set=utf8mb4 -u user -p db_name < db_backup.sql
+```
+<!--rehype:className=wrap-text -->
+
+恢复时跳过某些错误（如重复键）
+
+```bash
+mysql -u user -p --force db_name < db_backup.sql
+```
+<!--rehype:className=wrap-text -->
+
+恢复到远程主机数据库
+
+```bash
+mysql -h remote_host -u user -p db_name < db_backup.sql
+```
+<!--rehype:className=wrap-text -->
+
+
+### 错误处理（Error Handling）
+<!--rehype:wrap-class=col-span-2-->
+
+| 语句                          | 说明                             |
+| :--------------------------- | :------------------------------ |
+| `SHOW ERRORS;`               | 显示最近的错误                   |
+| `SHOW WARNINGS;`             | 显示最近的警告                   |
+| `SHOW COUNT(*) ERRORS;`      | 显示错误数量                     |
+| `SHOW COUNT(*) WARNINGS;`    | 显示警告数量                     |
+| `EXPLAIN SELECT ...;`        | 分析查询执行计划                 |
+| `SHOW ENGINE INNODB STATUS;` | 查看 InnoDB 状态和死锁信息       |
+| `SHOW PROFILE;` | 显示语句的资源消耗（需开启 profiling） |
+| `SHOW PROFILES;` | 显示所有已记录的 profiling 数据 |
+| `SHOW PROCESSLIST;` | 查看当前线程，排查长时间运行或阻塞的语句 |
+| `SHOW STATUS LIKE 'Last_error%';` | 查看上次语句执行的错误信息 |
+| `SHOW VARIABLES LIKE 'log_%';` | 查看错误日志相关配置 |
+| `SHOW BINARY LOGS;` | 查看二进制日志，排查事务或复制异常 |
+| `SHOW SLAVE STATUS\G` | 查看主从复制错误（用于主从复制场景） |
+| `SHOW MASTER STATUS;` | 查看主库状态，辅助分析复制问题 |
+<!--rehype:className=left-align-->
 
 MySQL 示例
 ------
