@@ -117,3 +117,10 @@ dotnet ./build_output/my_app.dll
 | `tool uninstall`   | 卸载已安装的工具                          | `dotnet tool uninstall -g dotnet-ef` |
 | `tool search`      | 搜索 NuGet 上可用的工具                   | `dotnet tool search dotnet-ef` |
 <!--rehype:className=left-align-->
+
+
+另请参阅
+---
+
+- [dotnet/sdk GitHub 存储库](https://github.com/dotnet/sdk/) _(github.com/dotnet)_
+- [.NET 安装指南](https://learn.microsoft.com/zh-cn/dotnet/core/install/windows) _(learn.microsoft.com)_
