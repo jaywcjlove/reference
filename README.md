@@ -597,9 +597,10 @@ Quick Reference
 [songbaixin.xin](https://home.songbaixin.xin:26009/)<!--rehype:target=_blank-->
 [dev.bi](https://dev.bi)<!--rehype:target=_blank-->
 [ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank-->
+[cnxiaobai.com](https://quickref.cnxiaobai.com)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
-下面网站暂时失联了
+下面网站暂时飞走了
 
 [lideshan.top](https://dev.lideshan.top/)<!--rehype:target=_blank-->
 [94vessel.com](https://book.94vessel.com)<!--rehype:target=_blank-->
