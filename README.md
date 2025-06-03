@@ -599,6 +599,7 @@ Quick Reference
 [dev.bi](https://dev.bi)<!--rehype:target=_blank-->
 [ecdata.cn](http://ref.ecdata.cn)<!--rehype:target=_blank-->
 [cnxiaobai.com](https://quickref.cnxiaobai.com)<!--rehype:target=_blank-->
+[web.app](https://reference-f1cf1.web.app)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 下面网站暂时飞走了
