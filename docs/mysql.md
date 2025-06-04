@@ -222,7 +222,6 @@ mysql -h remote_host -u user -p db_name < db_backup.sql
 ```
 <!--rehype:className=wrap-text -->
 
-
 ### 错误处理（Error Handling）
 <!--rehype:wrap-class=col-span-2-->
 
