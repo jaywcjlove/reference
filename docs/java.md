@@ -587,6 +587,171 @@ for (int i = 0; i < 5; i++) {
 // 输出: 0123
 ```
 
+Java 面向对象
+---
+
+### 类的定义
+
+```java
+public class Dog {
+  private String name;
+
+  // 构造方法无无返回值，方法名与类名相同
+  // 一个类可以有多个构造方法
+  //Java 默认提供一个构造方法
+  public Dog() {
+  }
+
+  public Dog(String name) {
+    this.name = name;
+  }
+}
+```
+
+### 类中的变量
+
+```java
+public class Dog {
+  // 成员变量
+  private String name;
+
+  // 类变量
+  // 多对象将会共享同一个类变量
+  static int val = 10;
+
+  public void Say() {
+    // 局部变量
+    String sentence = "hello";
+    System.out.Println(sentence);
+  }
+}
+```
+
+### 对象的创建
+
+```java
+Dog myDog = new Dog(); // 调用无参构造函数
+Dog myDog2 = new Dog("aaa"); // 调用对应参数列表的构造函数
+
+// 调用方法
+myDog.Say();
+```
+
+### 对象的继承
+
+```java
+public Animal() {
+
+ public String name;
+
+  public Animal(String name) {
+    this.name = name;
+  }
+
+  public void eat() {
+    System.out.Println("eat something");
+  }
+}
+
+// Dog类继承Animal类
+public Dog extends Animal(){
+  // 调用父类的构造函数
+  public Dog(String name){
+    super(name);
+  }
+}
+```
+
+请注意Java不支持多继承，只能够单继承，但支持多重继承
+即，一个类最多只有一个父类，但可以有爷爷类和太爷爷类
+
+#### Java继承的特点
+
+- 子类拥有父类的非private的属性、方法
+- 子类可以有自己的属性、方法
+- 子类可以重写父类的方法
+
+#### super 与 this
+
+super引用当前类的父类
+this引用自身
+
+```java
+class Animal {
+  void eat() {
+    System.out.println("animal : eat");
+  }
+}
+
+class Dog extends Animal {
+  void eat() {
+    System.out.println("dog : eat");
+  }
+  void eatTest() {
+    this.eat();   // this 调用自己的方法
+    super.eat();  // super 调用父类方法
+  }
+}
+```
+
+#### final 关键字
+
+被final 关键字修饰的类不能够被继承
+被final 关键字修饰的方法不能被子类重写
+
+### Java的重写(Override)与重载(Overload)
+
+#### 重写(Override)
+
+重写者位于被重写者的子类中
+重写者的签名必须与被重写者的签名相同
+
+```java
+class Animal {
+  // 被重写者
+  void Say(String sentence) {
+    System.out.println("Animal say: " + sentence);
+  }
+}
+
+class Dog extends Animal {
+  // 重写者
+  // 重写者位于被重写者的子类
+  void Say(String sentence) { // 签名与被重写者相同
+    System.out.println("Dog say: " + sentence);
+  }
+}
+```
+
+#### 重载(Overload)
+
+重载位于同一类内部
+签名必须不同
+
+```java
+public class Overloading {
+  public int test(){
+    System.out.println("test1");
+      return 1;
+  }
+
+  public void test(int a) {
+    System.out.println("test2");
+  }
+
+    //以下两个参数类型顺序不同
+  public String test(int a,String s){
+    System.out.println("test3");
+    return "returntest3";
+  }
+
+  public String test(String s,int a){
+    System.out.println("test4");
+    return "returntest4";
+  }
+}
+```
+
 Java 多线程
 ---
 

@@ -118,7 +118,6 @@ dotnet ./build_output/my_app.dll
 | `tool search`      | 搜索 NuGet 上可用的工具                   | `dotnet tool search dotnet-ef` |
 <!--rehype:className=left-align-->
 
-
 另请参阅
 ---
 

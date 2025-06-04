@@ -1287,7 +1287,6 @@ Conventional Commmits
 | `test:` | 添加测试代码或修正已有的测试 |
 <!--rehype:className=left-align-->
 
-
 patch 补丁的使用
 ----
 
@@ -1299,21 +1298,21 @@ $ git diff commit_id > my.patch
 
 ### 简单应用
 
-  - **检查**补丁
+- **检查**补丁
 
     ```bash
     # 检查下这个补丁能否被正常应用
     $ git apply --check path/to/my.patch
     ```
-    
-  - **使用**补丁
+
+- **使用**补丁
 
     ```
     # 检查通过使用该补丁
     $ git apply < path/to/my.patch
     ```
 
-  - 若有冲突则**解决**
+- 若有冲突则**解决**
 
     ```
     # 检查不通过可以自动合入patch不冲突的代码，同时保留冲突部分
