@@ -351,7 +351,7 @@ for (int a: arr) {
 ```java
 int[][] matrix = {{1, 2, 3}, {4, 5}, {6}};
 int x = matrix[1][0];  // 4
-System.out.Println(Arrays.deepToString(matrix));
+System.out.println(Arrays.deepToString(matrix));
 // 输出: [[1, 2, 3], [4, 5], [6]]
 for (int i = 0; i < matrix.length; ++i) {
     for(int j = 0; j < matrix[i].length; ++j) {
@@ -622,7 +622,7 @@ public class Dog {
   public void Say() {
     // 局部变量
     String sentence = "hello";
-    System.out.Println(sentence);
+    System.out.println(sentence);
   }
 }
 ```
@@ -649,7 +649,7 @@ public Animal() {
   }
 
   public void eat() {
-    System.out.Println("eat something");
+    System.out.println("eat something");
   }
 }
 
@@ -748,6 +748,89 @@ public class Overloading {
   public String test(String s,int a){
     System.out.println("test4");
     return "returntest4";
+  }
+}
+```
+
+### Java 抽象类
+
+抽象类不能被实例化为对象，因此，抽象类必须被继承才能够使用
+抽象类使用abstract 关键字进行修饰
+
+```java
+public abstract class Animal {
+  String name;
+
+  public Animal(String name) {
+    this.name = name;
+  }
+}
+
+public class Dog extends Animal {
+  public Dog(String name) {
+    super(name);
+  }
+}
+```
+
+使用abstract 关键字修饰的方法是抽象方法
+抽象方法必须包含在抽象类中
+子类必须重写父类中的所有抽象方法，除非子类也是抽象类
+
+```java
+public abstract class Animal {
+  String name;
+
+  public Animal(String name) {
+    this.name = name;
+  }
+
+  public abstract void Say();
+}
+
+public class Dog extends Animal {
+  public Dog(String name) {
+    super(name);
+  }
+
+  public void Say(){
+    System.out.println("Dog");
+  }
+
+}
+```
+
+### Java 接口
+
+#### 接口的定义
+
+与类的继承不同，接口可以继承多个接口
+
+```java
+[可见度] interface 接口名称 [extends 其他的接口名] {
+  // 声明变量
+  // 抽象方法
+}
+```
+
+#### 接口的实现
+
+一个类可以实现多个接口
+类必须实现接口的所有方法，除非该类是抽象类
+
+```java
+public interface Animal {
+  public void eat();
+  public void say();
+}
+
+public class Dog implements Animal {
+  public void eat() {
+    System.out.println("Dog eat something");
+  }
+
+  public void say() {
+    System.out.println("Dog say something");
   }
 }
 ```
