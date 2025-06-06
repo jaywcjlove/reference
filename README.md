@@ -218,7 +218,7 @@ Quick Reference
 [tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=解压缩-->
 [Yazi](./docs/yazi.md)<!--rehype:style=background: rgb(255 165 0);&class=tag&data-lang=文件管理器;&class=contributing-->
 [Zip](./docs/zip.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=解压缩-->
-[uv](./docs/uv.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=解压缩-->
+[uv](./docs/uv.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=Python-->
 <!--rehype:class=home-card-->
 
 ## 工具
