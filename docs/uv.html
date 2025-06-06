@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>uv 备忘清单
+ &#x26;  uv cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="一个用 Rust 编写的极快的 Python 包和项目管理工具
+
+安装，为开发人员分享快速参考备忘单。">
+<meta keywords="uv,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/uv.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.8.3"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="uv-备忘清单"><svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M-5.28619e-06 0.168629L0.0843098 20.1685L0.151762 36.1683C0.161075 38.3774 1.95947 40.1607 4.16859 40.1514L20.1684 40.084L30.1684 40.0418L31.1852 40.0375C33.3877 40.0282 35.1683 38.2026 35.1683 36V36L37.0003 36L37.0003 39.9992L40.1683 39.9996L39.9996 -9.94653e-07L21.5998 0.0775689L21.6774 16.0185L21.6774 25.9998L20.0774 25.9998L18.3998 25.9998L18.4774 16.032L18.3998 0.0910593L-5.28619e-06 0.168629Z" fill="#DE5FE9"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#uv-备忘清单"><span class="icon icon-link"></span></a>uv 备忘清单</h1><div class="wrap-body">
+<p>一个用 Rust 编写的极快的 Python 包和项目管理工具</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用独立安装程序安装">使用独立安装程序安装</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#macos-or-linux">macOS or Linux</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#windows">Windows</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通过pypi">通过PyPI</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建新项目">创建新项目</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#项目的结构">项目的结构</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#管理项目依赖">管理项目依赖</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#添加依赖">添加依赖</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#指定依赖版本或替代来源">指定依赖版本或替代来源</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#从requirementstxt迁移">从requirements.txt迁移</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#删除一个包">删除一个包</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#升级一个包">升级一个包</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#运行脚本">运行脚本</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#构建项目">构建项目</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="使用独立安装程序安装"><a aria-hidden="true" tabindex="-1" href="#使用独立安装程序安装"><span class="icon icon-link"></span></a>使用独立安装程序安装</h3><div class="wrap-body">
+<h4 id="macos-or-linux"><a aria-hidden="true" tabindex="-1" href="#macos-or-linux"><span class="icon icon-link"></span></a>macOS or Linux</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-LsSf</span> https://astral.sh/uv/install.sh <span class="token operator">|</span> <span class="token function">sh</span>
+</span></code></pre>
+<h4 id="windows"><a aria-hidden="true" tabindex="-1" href="#windows"><span class="icon icon-link"></span></a>Windows</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">powershell <span class="token parameter variable">-ExecutionPolicy</span> ByPass <span class="token parameter variable">-c</span> <span class="token string">"irm https://astral.sh/uv/install.ps1 | iex"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通过pypi"><a aria-hidden="true" tabindex="-1" href="#通过pypi"><span class="icon icon-link"></span></a>通过PyPI</h3><div class="wrap-body">
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># pip</span>
+</span><span class="code-line">pip <span class="token function">install</span> uv
+</span></code></pre>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># pipx</span>
+</span><span class="code-line">pipx <span class="token function">install</span> uv
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="创建新项目"><a aria-hidden="true" tabindex="-1" href="#创建新项目"><span class="icon icon-link"></span></a>创建新项目</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 创建一个目录作为项目的根目录</span>
+</span><span class="code-line">uv init project_name
+</span></code></pre>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 将当前目录作为项目的根目录</span>
+</span><span class="code-line">uv init
+</span></code></pre>
+<h4 id="项目的结构"><a aria-hidden="true" tabindex="-1" href="#项目的结构"><span class="icon icon-link"></span></a>项目的结构</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token builtin class-name">.</span>
+</span><span class="code-line">├── .venv <span class="token comment"># 项目的虚拟环境</span>
+</span><span class="code-line">│   ├── bin
+</span><span class="code-line">│   ├── lib
+</span><span class="code-line">│   └── pyvenv.cfg
+</span><span class="code-line">├── .python-version <span class="token comment"># 项目的 Python 版本</span>
+</span><span class="code-line">├── README.md
+</span><span class="code-line">├── main.py
+</span><span class="code-line">├── pyproject.toml <span class="token comment"># 项目的元数据</span>
+</span><span class="code-line">└── uv.lock <span class="token comment"># 项目的锁定文件, 用于锁定依赖版本,不应手动编辑</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="管理项目依赖"><a aria-hidden="true" tabindex="-1" href="#管理项目依赖"><span class="icon icon-link"></span></a>管理项目依赖</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="添加依赖"><a aria-hidden="true" tabindex="-1" href="#添加依赖"><span class="icon icon-link"></span></a>添加依赖</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">uv <span class="token function">add</span> requests
+</span></code></pre>
+<h4 id="指定依赖版本或替代来源"><a aria-hidden="true" tabindex="-1" href="#指定依赖版本或替代来源"><span class="icon icon-link"></span></a>指定依赖版本或替代来源</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 指定版本</span>
+</span><span class="code-line">uv <span class="token function">add</span> <span class="token string">'requests==2.28.1'</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 指定来源</span>
+</span><span class="code-line">uv <span class="token function">add</span> git+https://github.com/psf/requests
+</span></code></pre>
+<h4 id="从requirementstxt迁移"><a aria-hidden="true" tabindex="-1" href="#从requirementstxt迁移"><span class="icon icon-link"></span></a>从<code>requirements.txt</code>迁移</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">uv <span class="token function">add</span> <span class="token parameter variable">-r</span> requirements.txt
+</span></code></pre>
+<h4 id="删除一个包"><a aria-hidden="true" tabindex="-1" href="#删除一个包"><span class="icon icon-link"></span></a>删除一个包</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">uv remove requests
+</span></code></pre>
+<h4 id="升级一个包"><a aria-hidden="true" tabindex="-1" href="#升级一个包"><span class="icon icon-link"></span></a>升级一个包</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">uv lock --upgrade-package requests
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="运行脚本"><a aria-hidden="true" tabindex="-1" href="#运行脚本"><span class="icon icon-link"></span></a>运行脚本</h3><div class="wrap-body">
+<p>指定脚本运行</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">uv run main.py
+</span></code></pre>
+<p>指定Python版本运行</p>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">uv run <span class="token parameter variable">--python</span> <span class="token number">3.10</span> main.py
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="构建项目"><a aria-hidden="true" tabindex="-1" href="#构建项目"><span class="icon icon-link"></span></a>构建项目</h3><div class="wrap-body">
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">uv build
+</span></code></pre>
+<p>构建结果存储在<code>dist</code>目录下</p>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script src="../data.js?v=1.8.3" defer></script><script src="../js/fuse.min.js?v=1.8.3" defer></script><script src="../js/main.js?v=1.8.3" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
