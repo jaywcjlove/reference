@@ -193,6 +193,7 @@ Quick Reference
 [.NET CLI](./docs/dotnet-cli.md)<!--rehype:style=background: rgb(16 185 129);&class=contributing tag&data-lang=#C-->
 [Find](./docs/find.md)<!--rehype:style=background: rgb(16 185 129);-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background: rgb(0 193 9);&class=contributing-->
+[FTP](./docs/ftp.md)<!--rehype:style=background: rgb(99 99 99);-->
 [Gdb](./docs/gdb.md)<!--rehype:style=background: rgb(215 89 62);-->
 [Glances](./docs/glances.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Grep](./docs/grep.md)<!--rehype:style=background: rgb(16 185 129);-->
@@ -217,7 +218,7 @@ Quick Reference
 [tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=解压缩-->
 [Yazi](./docs/yazi.md)<!--rehype:style=background: rgb(255 165 0);&class=tag&data-lang=文件管理器;&class=contributing-->
 [Zip](./docs/zip.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=解压缩-->
-[FTP](./docs/ftp.md)<!--rehype:style=background: rgb(99 99 99);-->
+[uv](./docs/uv.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=解压缩-->
 <!--rehype:class=home-card-->
 
 ## 工具

@@ -7,6 +7,7 @@ uv 备忘清单
 ---
 
 ### 使用独立安装程序安装
+<!--rehype:wrap-class=col-span-2-->
 
 #### macOS or Linux
 
@@ -51,19 +52,20 @@ uv init
 
 ```sh
 .
-├── .venv # 项目的虚拟环境
-│   ├── bin
-│   ├── lib
-│   └── pyvenv.cfg
-├── .python-version # 项目的 Python 版本
-├── README.md
-├── main.py
-├── pyproject.toml # 项目的元数据
-└── uv.lock # 项目的锁定文件, 用于锁定依赖版本,不应手动编辑
+├── .venv/           # 虚拟环境目录
+│   ├── bin/         # 可执行文件
+│   ├── lib/         # 安装的库
+│   └── pyvenv.cfg   # 虚拟环境配置
+├── .python-version  # 指定 Python 版本
+├── README.md        # 项目说明文档
+├── main.py          # 主程序入口
+├── pyproject.toml   # 项目配置与依赖声明
+└── uv.lock          # 依赖锁定文件（自动生成）
 ```
 
 ### 管理项目依赖
 <!--rehype:wrap-class=row-span-2-->
+
 #### 添加依赖
 
 ```sh
