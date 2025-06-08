@@ -85,14 +85,8 @@ Quick Reference
 [C#](./docs/cs.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->
 [C++](./docs/cpp.md)<!--rehype:style=background: rgb(6 147 13);&class=contributing-->
 [Dart](./docs/dart.md)<!--rehype:style=background: rgb(64 196 255);-->
-[Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223);-->
-[Docker Compose](./docs/docker-compose.md)<!--rehype:style=background: rgb(72 143 223);&class=contributing tag&data-lang=Docker-->
-[Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->
-[Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python-->
 [Elixir](./docs/elixir.md)<!--rehype:style=background: rgb(124 26 156);&class=contributing tag&data-lang=Elixir-->
 [Erlang](./docs/erlang.md)<!--rehype:style=background: rgb(206 55 97);&class=contributing-->
-[Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->
-[FastAPI](./docs/fastapi.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->
 [Flutter](./docs/flutter.md)<!--rehype:style=background: rgb(150 220 254);&class=contributing tag&data-lang=Dart-->
 [Golang](./docs/golang.md)<!--rehype:style=background: rgb(39 160 193);-->
 [GraphQL](./docs/graphql.md)<!--rehype:style=background: rgb(214 66 146);-->
@@ -106,7 +100,6 @@ Quick Reference
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156);-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->
 [PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147);-->
-[Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132);-->
 [R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=contributing&data-info-->
 [Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45);-->
 [Rust](./docs/rust.md)<!--rehype:style=background: rgb(71 71 71);-->
@@ -115,9 +108,14 @@ Quick Reference
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->
 [Spring Boot](./docs/springboot.md)<!--rehype:style=background: rgb(0 149 0);&class=tag&data-lang=Java-->
 [Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->
-[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->
-[Jupyter](./docs/jupyter.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Python-->
 [Minio](./docs/minio.md)<!--rehype:style=background: rgb(3 3 128);-->
+<!--rehype:class=home-card-->
+
+## Docker
+
+[Docker](./docs/docker.md)<!--rehype:style=background: rgb(72 143 223);-->
+[Docker Compose](./docs/docker-compose.md)<!--rehype:style=background: rgb(72 143 223);&class=contributing tag&data-lang=Docker-->
+[Dockerfile](./docs/dockerfile.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Docker-->
 <!--rehype:class=home-card-->
 
 ## 配置
@@ -179,6 +177,19 @@ Quick Reference
 [Bun](./docs/bun.md)<!--rehype:style=background: rgb(157 49 81);-->
 <!--rehype:class=home-card-->
 
+## Python
+
+[Python](./docs/python.md)<!--rehype:style=background: rgb(43 91 132);-->
+[Django](./docs/django.md)<!--rehype:style=background: rgb(12 75 51);&class=contributing tag&data-lang=Python-->
+[Flask](./docs/flask.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->
+[FastAPI](./docs/fastapi.md)<!--rehype:style=background: rgb(210 168 255);&class=contributing tag&data-lang=Python-->
+[Pytorch](./docs/pytorch.md)<!--rehype:style=background: rgb(238 76 44);&class=contributing tag&data-lang=Python&data-info=👆看看还缺点儿什么？-->
+[Jupyter](./docs/jupyter.md)<!--rehype:style=background: rgb(0 72 153);&class=tag&data-lang=Python-->
+[Conda](./docs/conda.md)<!--rehype:style=background: rgb(68 168 51);&class=tag&data-lang=Python-->
+[pip](./docs/pip.md)<!--rehype:style=background: rgb(24 147 209);&class=tag contributing&data-lang=Python-->
+[uv](./docs/uv.md)<!--rehype:style=background: rgb(26 35 126);&class=tag contributing&data-lang=Python-->
+<!--rehype:class=home-card-->
+
 ## 命令
 
 [ADB, Android Debug Bridge](./docs/adb.md)<!--rehype:style=background: rgb(238 0 0);&class=contributing tag&data-lang=Android&data-info=👆看看还缺点儿什么？-->
@@ -218,7 +229,6 @@ Quick Reference
 [tar](./docs/tar.md)<!--rehype:style=background: rgb(215 89 62);&class=tag&data-lang=解压缩-->
 [Yazi](./docs/yazi.md)<!--rehype:style=background: rgb(255 165 0);&class=tag&data-lang=文件管理器;&class=contributing-->
 [Zip](./docs/zip.md)<!--rehype:style=background: rgb(99 99 99);&class=tag&data-lang=解压缩-->
-[uv](./docs/uv.md)<!--rehype:style=background: rgb(222 95 233);&class=tag&data-lang=Python-->
 <!--rehype:class=home-card-->
 
 ## 工具
@@ -238,15 +248,12 @@ Quick Reference
 
 [APT](./docs/apt.md)<!--rehype:style=background: rgb(30 144 255);-->
 [Conan](./docs/conan.md)<!--rehype:style=background: rgb(0 193 9);&class=tag&data-lang=C/C++-->
-[Conda](./docs/conda.md)<!--rehype:style=background: rgb(68 168 51);&class=tag&data-lang=Python-->
 [CocoaPods](./docs/cocoapods.md)<!--rehype:style=background: rgb(251 0 6);&class=tag&data-lang=C/C++-->
 [Cargo](./docs/cargo.md)<!--rehype:style=background: rgb(71 71 71);&class=tag&data-lang=Rust-->
 [Homebrew](./docs/homebrew.md)<!--rehype:style=background: rgb(252 185 87);&class=tag&data-lang=macOS-->
-[Pacman](./docs/pacman.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=archlinux&class=contributing-->
-[pip](./docs/pip.md)<!--rehype:style=background: rgb(24 147 209);&class=tag&data-lang=Python&class=contributing-->
+[Pacman](./docs/pacman.md)<!--rehype:style=background: rgb(24 147 209);&class=tag contributing&data-lang=Linux-->
 [YUM](./docs/yum.md)<!--rehype:style=background: rgb(86 86 123);-->
 [SDKMAN](./docs/sdkman.md)<!--rehype:style=background: rgb(0 118 198);-->
-[uv](./docs/uv.md)<!--rehype:style=background: rgb(26 35 126);&class=tag&data-lang=Python&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## Git 版本控制
@@ -605,6 +612,8 @@ Quick Reference
 [cnxiaobai.com](https://quickref.cnxiaobai.com)<!--rehype:target=_blank-->
 [web.app](https://reference-f1cf1.web.app)<!--rehype:target=_blank-->
 [OneNAS.space](https://ref.onenas.space)<!--rehype:target=_blank-->
+[leonus.cn](https://ref.leonus.cn/)<!--rehype:target=_blank-->
+[taotaome.com](http://www.taotaome.com/)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 下面网站暂时飞走了
