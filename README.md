@@ -592,7 +592,7 @@ Quick Reference
 [gistudy.net](https://reference.gistudy.net/)<!--rehype:target=_blank-->
 [deyout.com](https://ref.deyout.com)<!--rehype:target=_blank-->
 [const.team](https://reference.const.team)<!--rehype:target=_blank-->
-[liamng.top](https://refer.liamng.top/)<!--rehype:target=_blank-->
+[liamng.de](https://refer.liamng.de)<!--rehype:target=_blank-->
 [zcsk18.cn](https://reference.zcsk18.cn/)<!--rehype:target=_blank-->
 [hhxyrk.icu](http://hhxy.hhxyrk.icu/)<!--rehype:target=_blank-->
 [vhcffh.com](https://docs.vhcffh.com)<!--rehype:target=_blank-->
