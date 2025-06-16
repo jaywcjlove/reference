@@ -3,7 +3,7 @@ Wails V2 备忘清单
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/wailsapp/wails?style=flat)](https://github.com/wailsapp/wails)    [![GitHub release (latest by date)](https://img.shields.io/github/v/release/wailsapp/wails?style=flat)](https://github.com/wailsapp/wails/releases/latest)    [![Go Reference](https://pkg.go.dev/badge/github.com/wailsapp/wails/v2.svg)](https://pkg.go.dev/github.com/wailsapp/wails/v2)
 
-Wails 是一个利用 Golang 和 现代 Web 技术（如 Vue、React）构建跨平台桌面应用的开源框架，将它看作为 Go 的快并且轻量的 Electron 替代品
+Wails 是一个利用 Golang 和 现代 Web 技术（如 Vue、React）构建跨平台桌面应用的开源框架，作为 Go 的快并且轻量的 Electron 替代品
 
 下面是 Wails V2 的快速参考列表，包含常用命令和示例（Wails V3 仍处于开发测试阶段）
 
