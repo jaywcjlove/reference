@@ -163,7 +163,7 @@ Quick Reference
 [Electron](./docs/electron.md)<!--rehype:style=background: rgb(0 72 153);-->
 [React Native](./docs/react-native.md)<!--rehype:style=background: rgb(34 143 173);&class=tag&data-lang=React-->
 [Tauri](./docs/tauri.md)<!--rehype:style=background: rgb(103 214 237);&class=contributing-->
-[Wails](./docs/wails.md)<!--rehype:style=background: rgb(103 214 237);&class=contributing-->
+[Wails](./docs/wails.md)<!--rehype:style=background: rgb(194 106 107);&class=contributing-->
 <!--rehype:class=home-card-->
 
 ## Nodejs
