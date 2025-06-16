@@ -3,9 +3,7 @@ Wails V2 备忘清单
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/wailsapp/wails?style=flat)](https://github.com/wailsapp/wails)    [![GitHub release (latest by date)](https://img.shields.io/github/v/release/wailsapp/wails?style=flat)](https://github.com/wailsapp/wails/releases/latest)    [![Go Reference](https://pkg.go.dev/badge/github.com/wailsapp/wails/v2.svg)](https://pkg.go.dev/github.com/wailsapp/wails/v2)
 
-Wails 是一个利用 Golang 和 现代 Web 技术（如 Vue、React）构建跨平台桌面应用的开源框架，作为 Go 的快并且轻量的 Electron 替代品
-
-下面是 Wails V2 的快速参考列表，包含常用命令和示例（Wails V3 仍处于开发测试阶段）
+Wails 是一个基于 Go 和现代 Web 技术（如 Vue、React）构建跨平台桌面应用的轻量级开源框架，可作为 Electron 的替代方案，以下是 Wails v2 的常用命令和示例速查（v3 仍在开发中）。
 
 <!--rehype:style=padding-top: 12px;-->
 
@@ -19,29 +17,13 @@ $ go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 # 更新到最新稳定版
 $ wails update
-
 # 更新到最新预发布版
 $ wails update -pre
 ```
-
-### 项目命令
-
-```bash
-# 初始化新项目 (以 Vue 模板为例)
-$ wails init -n my-project -t vue
-
-# 进入项目目录并启动实时开发
-$ cd my-project
-$ wails dev
-
-# 构建生产版本 (以 Windows 平台为例)
-$ wails build -platform windows/amd64 -clean -upx
-
-# 检查环境依赖
-$ wails doctor
-```
+<!--rehype:className=wrap-text-->
 
 ### 常用命令参数
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 | 命令      | 参数                      | 描述                                                         |
 | ------- | ----------------------- | ---------------------------------------------------------- |
@@ -59,25 +41,42 @@ $ wails doctor
 |         | `-webview2`             | (Windows) WebView2 依赖处理策略 (`download`, `embed`, `browser`) |
 |         | `-debug`                | 保留调试信息                                                     |
 |         | `-devtools`             | 在生产版本中启用开发者工具                                              |
+<!--rehype:className=wrap-text left-align-->
 
-<!--rehype:className=wrap-text -->
+### 项目命令
+
+```bash
+# 初始化新项目 (以 Vue 模板为例)
+$ wails init -n my-project -t vue
+
+# 进入项目目录并启动实时开发
+$ cd my-project
+$ wails dev
+
+# 构建生产版本 (以 Windows 平台为例)
+$ wails build -platform windows/amd64 -clean -upx
+# 检查环境依赖
+$ wails doctor
+```
+<!--rehype:className=wrap-text-->
 
 ## 项目配置
 
 ### 项目结构
 
-```
+```shell
 my-project/
-├── build/                # 构建输出目录
-├── frontend/             # 前端源文件
-│   └── wailsjs/          # Wails 自动生成的模块
-├── app.go                # 应用核心逻辑
-├── main.go               # 应用入口
+├── build/          # 构建输出目录
+├── frontend/       # 前端源文件
+│   └── wailsjs/    # Wails 自动生成的模块
+├── app.go          # 应用核心逻辑
+├── main.go         # 应用入口
 ├── go.mod
-└── wails.json            # 项目配置文件
+└── wails.json      # 项目配置文件
 ```
 
 ### `wails.json` 详解
+<!--rehype:wrap-class=col-span-2-->
 
 | 配置项                    | 描述                           | 示例                          |
 | ---------------------- | ---------------------------- | --------------------------- |
@@ -89,8 +88,7 @@ my-project/
 | `wailsjsdir`           | 生成 JS 模块的目录                  | `"./frontend/wailsjs"`      |
 | `author.name`          | 作者名称，用于打包元数据                 | `"Your Name"`               |
 | `info`                 | (macOS) 用于 `Info.plist` 的元数据 | `{"CFBundleName": "MyApp"}` |
-
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text left-align-->
 
 ## 核心交互与生命周期
 
@@ -168,7 +166,9 @@ err := wails.Run(&options.App{
     OnStartup:     app.startup,
     OnDomReady:    app.domReady,
     OnShutdown:    app.shutdown,
-    OnBeforeClose: app.beforeClose, // 返回 bool 值决定是否关闭
+
+    // 返回 bool 值决定是否关闭
+    OnBeforeClose: app.beforeClose,
 })
 ```
 
@@ -178,12 +178,12 @@ err := wails.Run(&options.App{
 | `OnDomReady`    | 前端 DOM 加载完成后调用            |
 | `OnShutdown`    | 应用关闭前，在窗口销毁后调用            |
 | `OnBeforeClose` | 用户关闭窗口时调用，返回 `true` 可阻止关闭 |
-
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text left-align-->
 
 ## 运行时 API (Runtime)
 
 ### 窗口 (Window)
+<!--rehype:wrap-class=col-span-3-->
 
 | 功能            | Go 示例 (`runtime.*`)                   | JS 示例 (`runtime.*`)                           |
 | ------------- | ------------------------------------- | --------------------------------------------- |
@@ -195,10 +195,10 @@ err := wails.Run(&options.App{
 | **显示/隐藏**     | `WindowShow(ctx)` / `WindowHide(ctx)` | `WindowShow()` / `WindowHide()`               |
 | **设为置顶**      | `WindowSetAlwaysOnTop(ctx, true)`     | `WindowSetAlwaysOnTop(true)`                  |
 | **拖动窗口**      | (仅 JS)                                | 在 HTML 元素上设置 `style="--wails-draggable:drag"` |
-
-<!--rehype:className=wrap-text -->
+<!--rehype:className=wrap-text left-align-->
 
 ### 对话框 (Dialog)
+<!--rehype:wrap-class=col-span-3-->
 
 #### Go 端
 
@@ -213,6 +213,7 @@ filePath, err := runtime.OpenFileDialog(app.ctx, *dialogOpts)
 | **打开文件** | `OpenFileDialog(ctx, runtime.OpenDialogOptions{...})`      |
 | **保存文件** | `SaveFileDialog(ctx, runtime.SaveDialogOptions{...})`      |
 | **打开目录** | `OpenDirectoryDialog(ctx, runtime.OpenDialogOptions{...})` |
+<!--rehype:className=wrap-text left-align-->
 
 #### JavaScript 端
 
@@ -225,6 +226,7 @@ async function selectFile() {
 ```
 
 ### 菜单 (Menu)
+<!--rehype:wrap-class=col-span-2-->
 
 ```go
 // main.go
@@ -251,103 +253,142 @@ err := wails.Run(&options.App{
 
 ### 其他 Runtime API
 
-| 功能      | Go 示例 (`runtime.*`)             | JS 示例 (`runtime.*`)        |
-| ------- | ------------------------------- | -------------------------- |
-| **日志**  | `LogInfo(ctx, "Message")`       | `LogInfo("Message")`       |
-| **剪贴板** | `ClipboardSetText(ctx, "text")` | `ClipboardSetText("text")` |
+#### 日志
 
-<!--rehype:className=wrap-text -->
+```go
+// Go 示例 (`runtime.*`) 
+LogInfo(ctx, "Message") 
+// JS 示例 (`runtime.*`)
+LogInfo("Message")      
+```
 
-## 应用打包与分发
+#### 剪贴板
+
+```go
+// Go 示例 (`runtime.*`) 
+ClipboardSetText(ctx, "text")
+// JS 示例 (`runtime.*`)
+ClipboardSetText("text")
+```
+
+应用打包与分发
+---
 
 ### Windows 打包
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
-- **默认生成**: `.exe` 可执行文件。
+#### <red>▶</red> 默认生成: `.exe` 可执行文件。
+<!--rehype:style=text-align: left;font-weight: bold;-->
+  
+```bash
+$ wails build -platform windows/amd64
+```
+
+#### <red>▶</red> 生成 NSIS 安装程序:
+<!--rehype:style=text-align: left;font-weight: bold;-->
+
+**前提条件**: 需要预先安装 [NSIS (Nullsoft Scriptable Install System)](https://nsis.sourceforge.io/Download)。
+
+- **下载 NSIS**: 从 [NSIS 官方网站](https://nsis.sourceforge.io/Download) 下载最新版本的 NSIS 安装程序。
+- **安装 NSIS**: 运行安装程序并按照提示完成安装。**确保**在安装过程中选择将 NSIS 添加到系统的 `PATH` 环境变量中，以便 `makensis` 命令可以在命令行中全局访问。
+- **验证安装**:
   
   ```bash
-  wails build -platform windows/amd64
+  $ makensis -VERSION
   ```
-- **生成 NSIS 安装程序**:
-  - **前提条件**: 需要预先安装 [NSIS (Nullsoft Scriptable Install System)](https://nsis.sourceforge.io/Download)。
-    - **下载 NSIS**: 从 [NSIS 官方网站](https://nsis.sourceforge.io/Download) 下载最新版本的 NSIS 安装程序。
-    - **安装 NSIS**: 运行安装程序并按照提示完成安装。**确保**在安装过程中选择将 NSIS 添加到系统的 `PATH` 环境变量中，以便 `makensis` 命令可以在命令行中全局访问。
-    - **验证安装**:
-      
-      ```bash
-      makensis -VERSION
-      ```
-      
-      如果安装正确，您将看到 NSIS 的版本号输出。
-  - **生成安装程序**:
-    
-    ```bash
-    wails build -platform windows/amd64 -nsis
-    ```
-- **处理 WebView2 依赖**:
-  - `download`: 提示用户下载 WebView2。
-    
-    ```bash
-    wails build -platform windows/amd64 -webview2 download
-    ```
-  - `embed`: 将 WebView2 嵌入到应用中（推荐）。
-    
-    ```bash
-    wails build -platform windows/amd64 -webview2 embed
-    ```
-  - `browser`: 在浏览器中打开下载页面。
-    
-    ```bash
-    wails build -platform windows/amd64 -webview2 browser
-    ```
+
+  如果安装正确，您将看到 NSIS 的版本号输出。
+
+**生成安装程序**:
+
+```bash
+$ wails build -platform windows/amd64 -nsis
+```
+
+#### <red>▶</red> 处理 WebView2 依赖:
+<!--rehype:style=text-align: left;font-weight: bold;-->
+
+`download`: 提示用户下载 WebView2。
+
+```bash
+$ wails build -platform windows/amd64 -webview2 download
+```
+`embed`: 将 WebView2 嵌入到应用中（推荐）。
+
+```bash
+$ wails build -platform windows/amd64 -webview2 embed
+```
+`browser`: 在浏览器中打开下载页面。
+
+```bash
+$ wails build -platform windows/amd64 -webview2 browser
+```
 
 ### macOS 打包
 
-- **默认生成**: `.app` 应用程序包。
-  
-  ```bash
-  wails build -platform darwin/amd64
-  ```
-- **代码签名与公证**:
-  - 需要通过 Apple 开发者账户进行 **代码签名** 和 **公证** 才能分发。
-- **跳过打包成 `.app` 步骤**:
-  
-  ```bash
-  wails build -platform darwin/amd64 -skippackage
-  ```
+
+#### <red>▶</red> 默认生成: `.app` 应用程序包。
+<!--rehype:style=text-align: left;font-weight: bold;-->
+
+```bash
+$ wails build -platform darwin/amd64
+```
+
+#### <red>▶</red> 代码签名与公证:
+<!--rehype:style=text-align: left;font-weight: bold;-->
+
+需要通过 Apple 开发者账户进行 **代码签名** 和 **公证** 才能分发。
+
+#### <red>▶</red> 跳过打包成 `.app` 步骤:
+<!--rehype:style=text-align: left;font-weight: bold;-->
+
+```bash
+$ wails build -platform darwin/amd64 -skippackage
+```
+<!--rehype:className=wrap-text-->
 
 ### Linux 打包
 
-- **生成可执行文件**:
-  
-  ```bash
-  wails build -platform linux/amd64
-  ```
-- **打包成 `.deb`**:
-  
-  ```bash
-  wails build -platform linux/amd64 -deb
-  ```
-- **打包成 `.rpm`**:
-  
-  ```bash
-  wails build -platform linux/amd64 -rpm
-  ```
-- **AppImage 支持**:
-  - Wails 不直接内置对 AppImage 的支持，但可以使用外部工具手动创建。
-    - **使用 `appimagetool`**:
-      
-      ```bash
-      appimagetool ./your-app-dir
-      ```
-    - **安装 `appimagetool`**:
-      - 您可以从 [AppImage 官方网站](https://appimage.org/) 获取 `appimagetool`。
-      - 下载后，将其添加到您的 `PATH` 中以便全局访问。
+#### <red>▶</red> 生成可执行文件
+<!--rehype:style=text-align: left;font-weight: bold;-->
+
+```bash
+$ wails build -platform linux/amd64
+```
+
+#### <red>▶</red> 打包成 `.deb`
+<!--rehype:style=text-align: left;font-weight: bold;-->
+
+```bash
+$ wails build -platform linux/amd64 -deb
+```
+
+#### <red>▶</red> 打包成 `.rpm`
+<!--rehype:style=text-align: left;font-weight: bold;-->
+
+```bash
+$ wails build -platform linux/amd64 -rpm
+```
 
 ---
+
+#### AppImage 支持
+
+Wails 不直接内置对 AppImage 的支持，但可以使用外部工具手动创建。使用 `appimagetool`: 
+
+```shell
+appimagetool ./your-app-dir
+```
+
+**安装 `appimagetool`**:
+
+- 您可以从 [AppImage 官方网站](https://appimage.org/) 获取 `appimagetool`。
+- 下载后，将其添加到您的 `PATH` 中以便全局访问。
 
 ## 进阶主题与杂项
 
 ### 平台特定构建选项
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 在 `main.go` 的 `wails.Run()` 中为不同平台提供细粒度配置。
 
@@ -389,10 +430,9 @@ Wails 会自动为 Go 绑定的方法生成 TypeScript 定义。
 - **Go 部分**: 使用 `wails dev -debug` 启动并附加您的 Go 调试器。
 - **前端部分**: 在 `wails dev` 模式下，右键点击应用，选择“检查”打开浏览器开发者工具。
 
-## 参考资料
-
-- [Wails 官方文档](https://wails.io/)
-- [Wails GitHub 仓库](https://github.com/wailsapp/wails)
-- [Wails Discord 社区](https://discord.gg/4K6VHPkG5c)
-
+参考资料
 ---
+
+- [Wails 官方文档](https://wails.io/) _(wails.io)_
+- [Wails GitHub 仓库](https://github.com/wailsapp/wails) _(github.com)_
+- [Wails Discord 社区](https://discord.gg/4K6VHPkG5c) _discord.gg_
