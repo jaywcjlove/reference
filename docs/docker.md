@@ -692,7 +692,7 @@ $ docker run -d --name portainer \
   --restart=always \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $HOME/portainer:/data \
-    portainer/portainer-ee:latest
+    portainer/portainer-ce:latest
 ```
 
 ### Nginx
