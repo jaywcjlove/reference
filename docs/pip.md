@@ -10,7 +10,7 @@ pip 备忘清单
 <!--rehype:wrap-class=col-span-2-->
 
 命令 | 说明
-:- | :- 
+:- | :-
 `pip install package_name`   | 安装指定的包
 `pip install requests-2.22.0-py2.py3-none-any.whl`   | 从本地的 wheel 文件安装包
 `pip install git+https://github.com/psf/requests.git`   | 从 Git 仓库安装包
@@ -24,17 +24,17 @@ pip 备忘清单
 ### 版本控制
 
 命令 | 说明
-:- | :- 
-`pip install package==1.2.3`      | 安装指定版本   
+:- | :-
+`pip install package==1.2.3`      | 安装指定版本
 `pip install "package>=1.0,<2.0"` | 安装满足条件的版本
 `pip install package!=2.21.0` | 安装包，但排除某个特定版本
-`pip install --upgrade package`   | 升级包到最新版本 
+`pip install --upgrade package`   | 升级包到最新版本
 <!--rehype:className=style-list-->
 
 ### 依赖文件操作
 
 命令 | 说明
-:- | :- 
+:- | :-
 `pip freeze`                      | 导出当前环境的所有包及版本
 `pip freeze > requirements.txt`   | 保存依赖列表到文件
 `pip install -r requirements.txt` | 从文件安装依赖
@@ -43,7 +43,7 @@ pip 备忘清单
 ### 高级选项
 
 命令 | 说明
-:- | :- 
+:- | :-
 `pip install .`    | 安装当前目录中的包（`setup.py` 或 `pyproject.toml`）
 `pip install -e .` | 安装当前项目为可编辑模式（开发用）
 `pip cache dir`    | 查看 pip 缓存目录
@@ -54,12 +54,11 @@ pip 备忘清单
 ### 使用镜像源
 
 命令 | 说明
-:- | :- 
+:- | :-
 `pip install -i https://pypi.org/simple package`                           | 使用官方源安装
 `pip install -i https://pypi.tuna.tsinghua.edu.cn/simple package`          | 使用清华镜像安装
 `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple` | 永久设置默认镜像
 <!--rehype:className=style-list-->
-
 
 另见
 ---

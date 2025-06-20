@@ -209,7 +209,7 @@ attrib命令可以列出或修改磁盘上文件的属性，
 `cliconfg`     | SQL SERVER 客户端网络实用工具
 `cmstp`        | 连接管理器配置文件安装程序
 `compmgmt.msc` | 计算机管理
-`omexp.msc`    | 打开系统组件服务
+`comexp.msc`    | 打开系统组件服务
 `control`      | 控制面版
 
 ### 启动程序(二)

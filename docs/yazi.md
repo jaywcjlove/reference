@@ -51,34 +51,132 @@ yazi --help
 | `l` | 进入选中的目录或打开文件 |
 <!--rehype:className=shortcuts-->
 
-### 文件操作
+更多导航命令
 
-:- | :-
-:- | :-
-| `y` | 复制选中的文件或目录 |
-| `d` | 剪切选中的文件或目录 |
-| `p` | 粘贴文件或目录 |
-| `x` | 删除选中的文件或目录 |
-| `r` | 重命名选中的文件或目录 |
-<!--rehype:className=shortcuts-->
+| 快捷键                         | 操作说明                                                      |
+| --------------------------- | --------------------------------------------------------- |
+| `K`                | 在预览中向上移动 5 个单位                                            |
+| `J`                | 在预览中向下移动 5 个单位                                            |
+| `g` ⇒ `g` | 将光标移动到顶部                                                  |
+| `G`                | 将光标移动到底部                                                  |
+| `z`                | 通过 fzf 进入目录或显示文件（[cd](https://yazi-rs.github.io/docs/configuration/keymap#mgr.cd) 或 [reveal](https://yazi-rs.github.io/docs/configuration/keymap#mgr.reveal)） |
+| `Z`                | 通过 zoxide 进入目录（[cd](https://yazi-rs.github.io/docs/configuration/keymap#mgr.cd)）                            |
+<!--rehype:className=shortcuts left-align-->
+
+### 选择操作
+
+| 快捷键                          | 操作说明                                      |
+| ------------------------------ | --------------------------------------------- |
+| <kbd>Space</kbd>               | 切换当前悬停的文件/目录的选择状态             |
+| <kbd>v</kbd>                   | 进入可视模式（选择模式）                      |
+| <kbd>V</kbd>                   | 进入可视模式（取消模式）                      |
+| <kbd>Ctrl</kbd> + <kbd>a</kbd> | 选择所有文件                                  |
+| <kbd>Ctrl</kbd> + <kbd>r</kbd> | 反转当前所有文件的选择状态                    |
+| <kbd>Esc</kbd>                 | 取消所有选择                                  |
+<!--rehype:className=shortcuts left-align-->
+
+用于选择文件和目录的快捷键命令
+
+### 文件操作
+<!--rehype:wrap-class=row-span-4-->
+
+| 快捷键                              | 操作说明                                                                      |
+| ----------------------------------- | ----------------------------------------------------------------------------- |
+| <kbd>o</kbd>                        | 打开选中的文件                                                                |
+| <kbd>O</kbd>                        | 以交互方式打开选中的文件                                                     |
+| <kbd>Enter</kbd>                    | 打开选中的文件                                                                |
+| <kbd>Shift</kbd> + <kbd>Enter</kbd> | 以交互方式打开选中的文件（部分终端尚不支持）                                |
+| <kbd>Tab</kbd>                      | 显示文件信息                                                                  |
+| <kbd>y</kbd>                        | 复制选中的文件                                                                |
+| <kbd>x</kbd>                        | 剪切选中的文件                                                                |
+| <kbd>p</kbd>                        | 粘贴已复制/剪切的文件                                                         |
+| <kbd>P</kbd>                        | 粘贴已复制/剪切的文件（如目标存在则覆盖）                                    |
+| <kbd>Y</kbd> 或 <kbd>X</kbd>        | 取消已复制/剪切状态                                                           |
+| <kbd>d</kbd>                        | 将选中的文件移至回收站                                                        |
+| <kbd>D</kbd>                        | 彻底删除选中的文件                                                            |
+| <kbd>a</kbd>                        | 新建文件（以 / 结尾表示新建目录）                                             |
+| <kbd>r</kbd>                        | 重命名选中的文件                                                              |
+| <kbd>.</kbd>                        | 切换隐藏文件的显示状态                                                       |
+<!--rehype:className=shortcuts left-align-->
+
+更多文件操作命令如下：
+
+| 快捷键                          | 操作说明                                     |
+| ------------------------------ | -------------------------------------------- |
+| <kbd>;</kbd>                   | 执行一个 Shell 命令                          |
+| <kbd>:</kbd>                   | 执行一个 Shell 命令（阻塞，直到命令完成）    |
+| <kbd>-</kbd>                   | 创建已复制文件的绝对路径符号链接             |
+| <kbd>\_</kbd>                  | 创建已复制文件的相对路径符号链接             |
+| <kbd>Ctrl</kbd> + <kbd>-</kbd> | 创建已复制文件的硬链接                       |
+<!--rehype:className=shortcuts left-align-->
+
+要操作选中的文件或目录
+
+### 复制路径
+
+| 快捷键                       | 操作说明                           |
+| ---------------------------- | ---------------------------------- |
+| <kbd>c</kbd> ⇒ <kbd>c</kbd> | 复制文件路径                       |
+| <kbd>c</kbd> ⇒ <kbd>d</kbd> | 复制目录路径                       |
+| <kbd>c</kbd> ⇒ <kbd>f</kbd> | 复制文件名                         |
+| <kbd>c</kbd> ⇒ <kbd>n</kbd> | 复制不带扩展名的文件名             |
+<!--rehype:className=shortcuts left-align-->
+
+**复制路径** _说明：<kbd>c</kbd> ⇒ <kbd>d</kbd> 表示先按下 <kbd>c</kbd> 键，然后按下 <kbd>d</kbd> 键。_
 
 ### 搜索与过滤
 
-:- | :-
-:- | :-
-| `/` | 开始搜索模式 |
-| `n` | 在搜索模式中跳到下一个匹配项 |
-| `N` | 在搜索模式中跳到上一个匹配项 |
+| 快捷键       | 操作说明             |
+| ------------ | -------------------- |
+| <kbd>f</kbd> | 过滤文件     |
+| <kbd>/</kbd> | 查找下一个文件       |
+| <kbd>?</kbd> | 查找上一个文件       |
+| <kbd>n</kbd> | 跳转到下一个匹配项   |
+| <kbd>N</kbd> | 跳转到上一个匹配项   |
+<!--rehype:className=shortcuts left-align-->
+
+### 搜索文件
+
+| 快捷键                       | 操作说明                                                |
+| ---------------------------- | ------------------------------------------------------- |
+| <kbd>s</kbd>                 | 使用 [fd](https://github.com/sharkdp/fd) 按名称搜索文件 |
+| <kbd>S</kbd>                 | 使用 [ripgrep](https://github.com/BurntSushi/ripgrep) 按内容搜索文件 |
+| <kbd>Ctrl</kbd> + <kbd>s</kbd> | 取消当前进行中的搜索                                   |
 <!--rehype:className=shortcuts-->
 
-### 视图操作
+### 排序
+<!--rehype:wrap-class=row-span-2-->
 
-:- | :-
-:- | :-
-| `gg` | 跳到列表的顶部 |
-| `G`  | 跳到列表的底部 |
-| `Ctrl+f` | 向下滚动一页 |
-| `Ctrl+b` |  向上滚动一页 |
+| 快捷键                 | 操作说明                 |
+| ---------------------- | ------------------------ |
+| <kbd>,</kbd> ⇒ <kbd>m</kbd> | 按修改`时间`排序         |
+| <kbd>,</kbd> ⇒ <kbd>M</kbd> | 按修改`时间倒序`排序     |
+| <kbd>,</kbd> ⇒ <kbd>b</kbd> | 按`创建时间`排序         |
+| <kbd>,</kbd> ⇒ <kbd>B</kbd> | 按`创建时间`倒序排序     |
+| <kbd>,</kbd> ⇒ <kbd>e</kbd> | 按文件`扩展名`排序       |
+| <kbd>,</kbd> ⇒ <kbd>E</kbd> | 按文件`扩展名倒序`排序   |
+| <kbd>,</kbd> ⇒ <kbd>a</kbd> | 按`字母顺序`排序         |
+| <kbd>,</kbd> ⇒ <kbd>A</kbd> | 按`字母倒序`排序         |
+| <kbd>,</kbd> ⇒ <kbd>n</kbd> | 按`自然`排序             |
+| <kbd>,</kbd> ⇒ <kbd>N</kbd> | 按`自然倒序`排序         |
+| <kbd>,</kbd> ⇒ <kbd>s</kbd> | 按文件`大小`排序         |
+| <kbd>,</kbd> ⇒ <kbd>S</kbd> | 按文件`大小倒序`排序     |
+| <kbd>,</kbd> ⇒ <kbd>r</kbd> | `随机`排序               |
+<!--rehype:className=shortcuts left-align-->
+
+对文件/目录进行排序说明： _<kbd>,</kbd> ⇒ <kbd>a</kbd> 表示先按下 <kbd>,</kbd> 键，再按下 <kbd>a</kbd> 键。_
+
+### 多标签页
+
+| 快捷键                                      | 操作说明                     |
+| ------------------------------------------- | ---------------------------- |
+| <kbd>t</kbd>                                | 以当前工作目录创建新标签页  |
+| <kbd>1</kbd>, <kbd>2</kbd>, ..., <kbd>9</kbd> | 切换到第 N 个标签页         |
+| <kbd>[</kbd>                                | 切换到上一个标签页          |
+| <kbd>]</kbd>                                | 切换到下一个标签页          |
+| <kbd>{</kbd>                                | 当前标签页与上一个互换位置  |
+| <kbd>}</kbd>                                | 当前标签页与下一个互换位置  |
+| <kbd>Ctrl</kbd> + <kbd>c</kbd>              | 关闭当前标签页              |
 <!--rehype:className=shortcuts-->
 
 ## 自定义配置
@@ -98,38 +196,59 @@ yazi --help
 [general]
 # 设置主界面主题为 dark 或 light
 theme = "dark"
+```
 
-# 启动时的默认路径
+启动时的默认路径
+
+```toml
 default_path = "~"
+```
 
-# 是否启用自动保存配置
+是否启用自动保存配置
+
+```toml
 auto_save_config = true
+```
 
+自定义快捷键绑定
+
+```toml
 [keybindings]
-# 自定义快捷键绑定
 quit = "q"        # 退出
 copy = "y"        # 复制文件
 paste = "p"       # 粘贴文件
 delete = "d"      # 删除文件
+```
 
+界面相关配置
+
+```toml
 [ui]
-# 界面相关配置
 preview_enabled = true     # 是否启用文件预览
 show_hidden_files = true   # 显示隐藏文件
 columns = 2                # 文件列表列数
+```
 
+搜索行为配置
+
+```toml
 [search]
-# 搜索行为配置
 case_sensitive = false  # 搜索是否区分大小写
 search_timeout = 30     # 搜索超时时间（秒）
+```
 
+排序规则配置
+
+```toml
 [sorting]
-# 排序规则配置
 sort_by = "name" # 排序方式: name,size,date
 reverse_sort = false  # 是否反向排序
+```
 
+插件加载配置
+
+```toml
 [plugins]
-# 插件加载配置
 enabled_plugins = ["git", "archive"]
 ```
 
