@@ -621,6 +621,7 @@ Quick Reference
 [OneNAS.space](https://ref.onenas.space)<!--rehype:target=_blank-->
 [leonus.cn](https://ref.leonus.cn/)<!--rehype:target=_blank-->
 [taotaome.com](http://www.taotaome.com/)<!--rehype:target=_blank-->
+[hurcaguari.top](https://help.hurcaguari.top)<!--rehype:target=_blank-->
 <!--rehype:class=home-card home-links-->
 
 下面网站暂时飞走了
