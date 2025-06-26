@@ -623,6 +623,7 @@ Quick Reference
 [leonus.cn](https://ref.leonus.cn/)<!--rehype:target=_blank-->
 [taotaome.com](http://www.taotaome.com/)<!--rehype:target=_blank-->
 [hurcaguari.top](https://help.hurcaguari.top)<!--rehype:target=_blank-->
+[notes-bin.top](https://notes-bin.top:10443)<!--rehype:target=_blank&class=contributing&data-info=仅IPv6 👆每天自动同步-->
 <!--rehype:class=home-card home-links-->
 
 下面网站暂时飞走了
@@ -645,7 +646,6 @@ Quick Reference
 [longdada.me](https://ref.longdada.me)<!--rehype:target=_blank-->
 [chenze.cloud](https://quick.chenze.cloud)<!--rehype:target=_blank-->
 [lzzzt.cn](https://ref.lzzzt.cn)<!--rehype:target=_blank-->
-[notes-bin.top](https://notes-bin.top)<!--rehype:target=_blank-->
 [fifo.site](https://ref.fifo.site)<!--rehype:target=_blank-->
 [longdada.me](https://ref.longdada.me)<!--rehype:target=_blank-->
 [btaw.cn](https://btaw.cn/qr)<!--rehype:target=_blank-->
