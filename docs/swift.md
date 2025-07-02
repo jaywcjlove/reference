@@ -1859,7 +1859,9 @@ extension UIColor {
             return objc_getAssociatedObject(self, &fuchsiaKey) as? UIColor
         }
         set {
-            objc_setAssociatedObject(self, &fuchsiaKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self
+              , &fuchsiaKey, newValue
+              , .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }
@@ -1961,7 +1963,7 @@ print(floatBox.square()) // 输出 25.0
 
 为泛型类型创建别名`typealias`，这样可以给泛型类型起一个更具体的名字，使得代码更加清晰易懂
 
-- 示例1
+#### 示例1
 
 ```swift
 // 定义一个泛型类型别名 'IntBox'
@@ -1973,7 +1975,7 @@ print(intBox.value) // 输出 42
 
 ```
 
-- 示例2
+#### 示例2
 
 ```swift
 // 定义一个泛型类型别名 'StringBox'，其中 T 被约束为 String
@@ -2001,7 +2003,8 @@ class SimpleStorage<T>: Storage {
     }
 
     func retrieve() -> T? {
-        return items.isEmpty ? nil : items.removeLast()
+        return items.isEmpty 
+          ? nil : items.removeLast()
     }
 }
 
@@ -2010,6 +2013,87 @@ intStorage.store(item: 42)
 print(intStorage.retrieve() ?? "Empty")  
 // 打印: 42
 ```
+
+命令工具
+---
+
+### 工具比对
+<!--rehype:wrap-class=col-span-2-->
+
+工具 | 功能 | 使用场景
+:-- | :-- | :--
+`swift` | 交互式执行器 / 脚本运行器 | 快速测试、运行脚本
+`swiftc` | 编译器 | 编译源码为可执行文件
+`swift-inspect` | 模块/符号分析工具 | 检查模块结构/调试工具输出
+<!--rehype:className=show-header left-align-->
+
+
+### swift — 脚本执行 & REPL
+<!--rehype:wrap-class=row-span-3-->
+
+命令 | 说明
+:-- | :-- 
+`swift`                             | 启动交互式环境（REPL）
+`swift my_script.swift`             | 运行 Swift 脚本文件
+`swift build`                       | 使用 SwiftPM 编译项目
+`swift build --clean`               | 清理构建缓存
+`swift build --disable-sandbox`     | 在禁用沙盒模式下构建（CI 用）
+`swift run`                         | 构建并运行当前 SwiftPM 项目
+`swift run --configuration release` | 以 release 模式构建并运行
+`swift run --verbose`               | 输出详细构建信息
+`swift test`                        | 运行测试（SwiftPM 项目）
+`swift test --enable-code-coverage` | 测试覆盖率（Xcode 项目）
+`swift package resolve`             | 解析依赖
+<!--rehype:className=style-list-->
+
+#### 创建项目
+
+```shell
+$ swift package init --type executable
+$ swift package init --type library
+```
+
+#### 项目信息
+
+```shell
+# 查看项目描述
+$ swift package describe
+# 查看依赖树
+$ swift package show-dependencies
+# 导出 Package.swift 的 JSON 结构
+$ swift package dump-package
+```
+
+### swiftc — 编译器命令
+<!--rehype:wrap-class=col-span-2-->
+
+命令 | 说明
+:-- | :-- 
+`swiftc main.swift`                 | 编译为默认名 `main` 的可执行文件
+`swiftc main.swift -o myapp`        | 编译为 `myapp` 可执行文件
+`swiftc -c Foo.swift`               | 编译为中间的 `.o` 文件
+`swiftc Foo.swift Bar.swift -o app` | 编译多个文件成一个可执行文件
+`swiftc -emit-library Foo.swift`    | 编译为动态库 `.dylib`/`.so`
+`swiftc -emit-module Foo.swift`     | 仅生成 `.swiftmodule` 模块文件
+`swiftc -emit-sil Foo.swift`        | 输出 SIL（Swift Intermediate Language）
+`swiftc -emit-assembly Foo.swift`   | 输出汇编代码
+`swiftc -emit-object Foo.swift`     | 输出目标文件 `.o`
+<!--rehype:className=show-header left-align-->
+
+
+### swift-inspect
+<!--rehype:wrap-class=col-span-2-->
+
+命令 | 说明
+:-- | :-- 
+`swift-inspect MyApp`                          | 分析一个编译产物（如 `.app`、`.dylib`）
+`swift-inspect --symbols MyModule.swiftmodule` | 查看模块的符号信息
+`swift-inspect --help`                         | 查看所有可用选项
+`swift-inspect --types MyApp`                  | 查看类型信息
+`swift-inspect --protocols MyApp`              | 查看协议实现
+<!--rehype:className=show-header left-align-->
+
+模块与符号分析工具（macOS 14+）
 
 另见
 ----
