@@ -38,7 +38,7 @@ Systemd 备忘清单
 `systemctl restart service` | 重新启动正在运行的服务
 `systemctl reload service` | 重新加载服务中的所有配置文件
 `systemctl daemon-reload` | 必须运行以重新加载更改的单元文件
-`systemctl status` | service 查看服务是否正在运行/启用
+`systemctl status service` | 查看服务是否正在运行/启用
 `systemctl --failed` | 显示未能运行的服务
 `systemctl reset-failed` | 将任何单位从失败状态重置
 `systemctl enable service` | 使服务在启动时启动
