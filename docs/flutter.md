@@ -592,7 +592,7 @@ Container(
 
 ### Center
 
-Center 组件实际上继承于Align。用于专门剧中。
+Center 组件实际上继承于Align。用于专门居中。
 
 ```dart
 //与 Align中代码效果一致
