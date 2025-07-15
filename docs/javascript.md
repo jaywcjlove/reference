@@ -315,7 +315,7 @@ if (isMailSent) {
 ```javascript
 var age = 1;
 
-// => true
+// => false
 var status = (age >= 18) ? true : false;
 ```
 
