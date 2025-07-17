@@ -295,19 +295,25 @@ server {
 server {
   listen 443 ssl http2;
   server_name example.com;
-  ssl on;
 
   ssl_certificate /path/to/cert.pem;
   ssl_certificate_key /path/to/privkey.pem;
-
-  ssl_stapling on;
-  ssl_stapling_verify on;
-  ssl_trusted_certificate /path/to/fullchain.pem;
-
-  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+ 
+  # 优化 SSL 配置
+  ssl_protocols TLSv1.2 TLSv1.3;  # 禁用旧版 TLS
+  ssl_prefer_server_ciphers on;
+  ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256';
   ssl_session_timeout 1d;
-  ssl_session_cache shared:SSL:50m;
-  add_header Strict-Transport-Security max-age=15768000;
+  ssl_session_cache shared:SSL:10m;
+
+  # 其他配置（如根目录、代理等）
+  root /var/www/html;
+  index index.html;
+
+  location / {
+      try_files $uri $uri/ =404;
+  }
+ 
 }
 ```
 
