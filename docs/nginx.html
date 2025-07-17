@@ -365,19 +365,25 @@
 <pre class="language-nginx"><code class="language-nginx code-highlight"><span class="code-line"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">listen</span> <span class="token number">443</span> ssl http2</span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">server_name</span> example.com</span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
 </span><span class="code-line">
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_certificate</span> /path/to/cert.pem</span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_certificate_key</span> /path/to/privkey.pem</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_stapling</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_stapling_verify</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_trusted_certificate</span> /path/to/fullchain.pem</span><span class="token punctuation">;</span>
-</span><span class="code-line">
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_protocols</span> TLSv1 TLSv1.1 TLSv1.2</span><span class="token punctuation">;</span>
+</span><span class="code-line"> 
+</span><span class="code-line">  <span class="token comment"># 优化 SSL 配置</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_protocols</span> TLSv1.2 TLSv1.3</span><span class="token punctuation">;</span>  <span class="token comment"># 禁用旧版 TLS</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_prefer_server_ciphers</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_ciphers</span> <span class="token string">'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256'</span></span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_session_timeout</span> <span class="token number">1d</span></span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_session_cache</span> shared:SSL:50m</span><span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token directive"><span class="token keyword">add_header</span> Strict-Transport-Security max-age=15768000</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">ssl_session_cache</span> shared:SSL:10m</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment"># 其他配置（如根目录、代理等）</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">root</span> /var/www/html</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">index</span> index.html</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token directive"><span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span>/ =404</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"> 
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
 <p>您可以使用 Let's Encrypt 轻松保护您的网站/应用程序。去 <a href="https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx.html">lets-encrypt</a> 获取更多信息</p>
