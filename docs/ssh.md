@@ -246,6 +246,72 @@ $ ssh-keygen -R <ip/hostname>
 - PEM
 - PKCS8
 
+端口转发
+---------------
+<!--rehype:body-class=cols-6-->
+
+### 动态端口转发语法
+<!--rehype:wrap-class=col-span-3-->
+
+将本地端口变成一个 SOCKS 代理，自动转发任意目标地址的请求（适用于代理上网）。
+
+```shell
+$ ssh -D 本地SOCKS端口 用户名@SSH服务器 -N
+```
+
+示例：开启本地 1080 端口作为 SOCKS5 代理：
+
+```shell
+$ ssh -D 1080 -N user@example.com
+```
+
+### 验证 SOCKS5 代理
+<!--rehype:wrap-class=col-span-3-->
+
+使用 curl 命令验证 SOCKS5 代理是否工作正常：
+
+```shell
+# 设置
+$ ssh -D 1080 -N user@example.com
+# 验证
+$ curl --socks5 127.0.0.1:1080 https://ifconfig.me
+```
+
+如果返回的是 `example.com` 服务器的公网 IP，说明 SOCKS5 代理正常工作。
+
+### 本地端口转发
+<!--rehype:wrap-class=col-span-3-->
+
+将本地端口的流量通过 SSH 隧道转发到目标服务器（适用于访问远程/内网服务）。
+
+```shell
+$ ssh -L [本地IP:]本地端口:目标IP:目标端口 用户名@SSH服务器 -N
+```
+
+示例：将本地的 `4000` 端口转发到远程内网服务器 192.168.1.10:80：
+
+```shell
+$ ssh -L 4000:192.168.1.10:80 user@example.com -N
+```
+
+其中 `-N` 表示不执行远程命令，只是建立隧道。
+
+
+### 远程端口转发
+<!--rehype:wrap-class=col-span-3-->
+
+让远程 SSH 服务器上的端口转发到本地的某个服务（适用于让外部访问你本地服务）。
+
+```shell
+$ ssh -R [SSH服务器IP:]远程端口:本地IP:本地端口 用户名@SSH服务器 -N
+```
+
+示例：将远程服务器的 5000 端口映射到你本地的 localhost:3306（MySQL）：
+
+```shell
+$ ssh -R 5000:localhost:3306 user@example.com -N
+```
+
 另见
 --------
 
