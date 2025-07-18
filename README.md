@@ -690,12 +690,3 @@ $ open dist/index.html # 在浏览器打开生成 HTML
 
 MIT © [Kenny Wong](https://github.com/jaywcjlove)
 <!--rehype:ignore:end-->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9MWEWXSDQK');
-</script>
