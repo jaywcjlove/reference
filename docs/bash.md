@@ -1043,6 +1043,7 @@ echo "${args[@]}"
 将参数放入数组中，然后追加
 
 ### 调试模式
+<!--rehype:wrap-class=col-span-2-->
 
 启用调试模式，会把脚本中的每条命令的执行情况打印出来。它可以在整个会话或脚本上运行，也可以在脚本内以编程方式启用。
 
@@ -1056,10 +1057,22 @@ $ bash -x myscript.sh
 
 ```bash
 #!/bin/bash
-set -x   # Enable debugging
-# some code here
-set +x   # Disable debugging output.
+set -x   # 启用调试模式（显示执行的每一行命令）
+# 此处放置要执行的代码
+set +x   # 关闭调试输出（停止显示命令）
 ```
+
+### 命令行光标移动类
+
+| 快捷键      | 作用          |
+|----------|-------------|
+| `Ctrl` + `A` | 移动到命令行开头    |
+| `Ctrl` + `E` | 移动到命令行末尾    |
+| `Alt` + `B`  | 向左移动一个“词”   |
+| `Alt` + `F`  | 向右移动一个“词”   |
+| `Ctrl` + `B` | 向左移动一个字符（←） |
+| `Ctrl` + `F` | 向右移动一个字符（→） |
+<!--rehype:className=shortcuts left-align-->
 
 Bash 颜色
 ----
