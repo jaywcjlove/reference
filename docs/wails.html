@@ -5,7 +5,7 @@
 <title>Wails V2 备忘清单
  &#x26;  wails cheatsheet &#x26;  Quick Reference</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta description="Wails V2Wails 是一个基于 Go 和现代 Web 技术（如 Vue、React）构建跨平台桌面应用的轻量级开源框架，可作为 Electron 的替代方案，以下是 Wails v2 的常用命令和示例速查（v3 仍在开发中）。，为开发人员分享快速参考备忘单。">
+<meta description="Wails V2Wails 是一个基于 Go 和现代 Web 技术（如 Vue、React、Svelte 等）构建跨平台桌面应用的轻量级开源框架，可作为 Electron 的替代方案，以下是 Wails v2 的常用命令和示例速查（v3 仍在开发中）。，为开发人员分享快速参考备忘单。">
 <meta keywords="wails,reference,Quick,Reference,cheatsheet,cheat,sheet">
 <meta name="author" content="jaywcjlove">
 <meta name="license" content="MIT">
@@ -74,7 +74,7 @@
     </g>
 </svg><a aria-hidden="true" tabindex="-1" href="#wails-v2-备忘清单"><span class="icon icon-link"></span></a>Wails V2 备忘清单</h1><div class="wrap-body">
 <p><a href="https://github.com/wailsapp/wails"><img src="https://img.shields.io/github/stars/wailsapp/wails?style=flat" alt="GitHub Repo stars"></a>    <a href="https://github.com/wailsapp/wails/releases/latest"><img src="https://img.shields.io/github/v/release/wailsapp/wails?style=flat" alt="GitHub release (latest by date)"></a>    <a href="https://pkg.go.dev/github.com/wailsapp/wails/v2"><img src="https://pkg.go.dev/badge/github.com/wailsapp/wails/v2.svg" alt="Go Reference"></a></p>
-<p style="padding-top: 12px;">Wails 是一个基于 Go 和现代 Web 技术（如 Vue、React）构建跨平台桌面应用的轻量级开源框架，可作为 Electron 的替代方案，以下是 Wails v2 的常用命令和示例速查（v3 仍在开发中）。</p>
+<p style="padding-top: 12px;">Wails 是一个基于 Go 和现代 Web 技术（如 Vue、React、Svelte 等）构建跨平台桌面应用的轻量级开源框架，可作为 Electron 的替代方案，以下是 Wails v2 的常用命令和示例速查（v3 仍在开发中）。</p>
 <!--rehype:style=padding-top: 12px;-->
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
@@ -171,11 +171,34 @@
 
 
 
-<table class="wrap-text left-align"><thead><tr><th>命令</th><th>参数</th><th>描述</th></tr></thead><tbody><tr><td><code>init</code></td><td><code>-n</code></td><td><strong>项目名称 (必填)</strong></td></tr><tr><td></td><td><code>-t</code></td><td>模板名称 (<code>vue</code>, <code>react</code>) 或模板 URL</td></tr><tr><td></td><td><code>-ide</code></td><td>为 <code>vscode</code> 或 <code>goland</code> 生成 IDE 配置</td></tr><tr><td><code>dev</code></td><td><code>-browser</code></td><td>在浏览器中打开前端界面进行调试</td></tr><tr><td></td><td><code>-assetdir</code></td><td>指定前端资产目录的路径</td></tr><tr><td></td><td><code>-frontenddevserverurl</code></td><td>使用外部前端开发服务器的 URL</td></tr><tr><td></td><td><code>-wailsjsdir</code></td><td>指定生成的 Wails JS 模块目录</td></tr><tr><td><code>build</code></td><td><code>-platform</code></td><td>交叉编译目标平台, 如 <code>darwin/arm64</code></td></tr><tr><td></td><td><code>-clean</code></td><td>构建前清理 <code>build/bin</code> 目录</td></tr><tr><td></td><td><code>-upx</code></td><td>使用 UPX 压缩最终的二进制文件</td></tr><tr><td></td><td><code>-nsis</code></td><td>(Windows) 生成 NSIS 安装程序</td></tr><tr><td></td><td><code>-webview2</code></td><td>(Windows) WebView2 依赖处理策略 (<code>download</code>, <code>embed</code>, <code>browser</code>)</td></tr><tr><td></td><td><code>-debug</code></td><td>保留调试信息</td></tr><tr><td></td><td><code>-devtools</code></td><td>在生产版本中启用开发者工具</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="wrap-text left-align"><thead><tr><th>命令</th><th>参数</th><th>描述</th></tr></thead><tbody><tr><td><code>init</code></td><td><code>-n</code></td><td><strong>项目名称 (必填)</strong></td></tr><tr><td></td><td><code>-t</code></td><td>模板名称 (<code>vue</code>, <code>react</code>, <code>svelte</code>, <code>angular</code>) 或模板 URL</td></tr><tr><td></td><td><code>-ide</code></td><td>为 <code>vscode</code> 或 <code>goland</code> 生成 IDE 配置</td></tr><tr><td></td><td><code>-f</code></td><td>强制覆盖现有目录</td></tr><tr><td><code>dev</code></td><td><code>-browser</code></td><td>在浏览器中打开前端界面进行调试</td></tr><tr><td></td><td><code>-assetdir</code></td><td>指定前端资产目录的路径</td></tr><tr><td></td><td><code>-frontenddevserverurl</code></td><td>使用外部前端开发服务器的 URL</td></tr><tr><td></td><td><code>-wailsjsdir</code></td><td>指定生成的 Wails JS 模块目录</td></tr><tr><td></td><td><code>-reload</code></td><td>启用自动重载</td></tr><tr><td><code>build</code></td><td><code>-platform</code></td><td>交叉编译目标平台, 如 <code>darwin/arm64</code></td></tr><tr><td></td><td><code>-clean</code></td><td>构建前清理 <code>build/bin</code> 目录</td></tr><tr><td></td><td><code>-upx</code></td><td>使用 UPX 压缩最终的二进制文件</td></tr><tr><td></td><td><code>-nsis</code></td><td>(Windows) 生成 NSIS 安装程序</td></tr><tr><td></td><td><code>-webview2</code></td><td>(Windows) WebView2 依赖处理策略 (<code>download</code>, <code>embed</code>, <code>browser</code>)</td></tr><tr><td></td><td><code>-debug</code></td><td>保留调试信息</td></tr><tr><td></td><td><code>-devtools</code></td><td>在生产版本中启用开发者工具</td></tr><tr><td></td><td><code>-ldflags</code></td><td>传递给 Go 链接器的标志</td></tr><tr><td></td><td><code>-tags</code></td><td>构建标签</td></tr></tbody></table>
 <!--rehype:className=wrap-text left-align-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="项目命令"><a aria-hidden="true" tabindex="-1" href="#项目命令"><span class="icon icon-link"></span></a>项目命令</h3><div class="wrap-body">
 <pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 初始化新项目 (以 Vue 模板为例)</span>
 </span><span class="code-line">$ wails init <span class="token parameter variable">-n</span> my-project <span class="token parameter variable">-t</span> vue
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 使用自定义模板</span>
+</span><span class="code-line">$ wails init <span class="token parameter variable">-n</span> my-project <span class="token parameter variable">-t</span> https://github.com/user/template
 </span><span class="code-line">
 </span><span class="code-line"><span class="token comment"># 进入项目目录并启动实时开发</span>
 </span><span class="code-line">$ <span class="token builtin class-name">cd</span> my-project
@@ -183,8 +206,12 @@
 </span><span class="code-line">
 </span><span class="code-line"><span class="token comment"># 构建生产版本 (以 Windows 平台为例)</span>
 </span><span class="code-line">$ wails build <span class="token parameter variable">-platform</span> windows/amd64 <span class="token parameter variable">-clean</span> <span class="token parameter variable">-upx</span>
+</span><span class="code-line">
 </span><span class="code-line"><span class="token comment"># 检查环境依赖</span>
 </span><span class="code-line">$ wails doctor
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 生成绑定文件</span>
+</span><span class="code-line">$ wails generate module
 </span></code></pre>
 <!--rehype:className=wrap-text-->
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="项目配置"><a aria-hidden="true" tabindex="-1" href="#项目配置"><span class="icon icon-link"></span></a>项目配置</h2><div class="wrap-body">
@@ -250,7 +277,27 @@
 
 
 
-<table class="wrap-text left-align"><thead><tr><th>配置项</th><th>描述</th><th>示例</th></tr></thead><tbody><tr><td><code>name</code></td><td>项目名称</td><td><code>"my-app"</code></td></tr><tr><td><code>outputfilename</code></td><td>输出的二进制文件名</td><td><code>"my-app.exe"</code></td></tr><tr><td><code>frontend:install</code></td><td>前端依赖安装命令</td><td><code>"npm install"</code></td></tr><tr><td><code>frontend:build</code></td><td>前端构建命令</td><td><code>"npm run build"</code></td></tr><tr><td><code>frontend:dev:watcher</code></td><td>开发模式下运行的前端监视命令</td><td><code>"npm run dev"</code></td></tr><tr><td><code>wailsjsdir</code></td><td>生成 JS 模块的目录</td><td><code>"./frontend/wailsjs"</code></td></tr><tr><td><code>author.name</code></td><td>作者名称，用于打包元数据</td><td><code>"Your Name"</code></td></tr><tr><td><code>info</code></td><td>(macOS) 用于 <code>Info.plist</code> 的元数据</td><td><code>{"CFBundleName": "MyApp"}</code></td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="wrap-text left-align"><thead><tr><th>配置项</th><th>描述</th><th>示例</th></tr></thead><tbody><tr><td><code>name</code></td><td>项目名称</td><td><code>"my-app"</code></td></tr><tr><td><code>outputfilename</code></td><td>输出的二进制文件名</td><td><code>"my-app.exe"</code></td></tr><tr><td><code>frontend:install</code></td><td>前端依赖安装命令</td><td><code>"npm install"</code></td></tr><tr><td><code>frontend:build</code></td><td>前端构建命令</td><td><code>"npm run build"</code></td></tr><tr><td><code>frontend:dev:watcher</code></td><td>开发模式下运行的前端监视命令</td><td><code>"npm run dev"</code></td></tr><tr><td><code>frontend:dev:serverUrl</code></td><td>前端开发服务器 URL</td><td><code>"http://localhost:3000"</code></td></tr><tr><td><code>wailsjsdir</code></td><td>生成 JS 模块的目录</td><td><code>"./frontend/wailsjs"</code></td></tr><tr><td><code>assetdir</code></td><td>前端资产目录</td><td><code>"./frontend/dist"</code></td></tr><tr><td><code>reloaddirs</code></td><td>监听重载的目录</td><td><code>"frontend/src,app.go"</code></td></tr><tr><td><code>author.name</code></td><td>作者名称，用于打包元数据</td><td><code>"Your Name"</code></td></tr><tr><td><code>author.email</code></td><td>作者邮箱</td><td><code>"you@example.com"</code></td></tr><tr><td><code>info</code></td><td>(macOS) 用于 <code>Info.plist</code> 的元数据</td><td><code>{"CFBundleName": "MyApp"}</code></td></tr></tbody></table>
 <!--rehype:className=wrap-text left-align-->
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="核心交互与生命周期"><a aria-hidden="true" tabindex="-1" href="#核心交互与生命周期"><span class="icon icon-link"></span></a>核心交互与生命周期</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="方法绑定-go---js"><a aria-hidden="true" tabindex="-1" href="#方法绑定-go---js"><span class="icon icon-link"></span></a>方法绑定 (Go &#x3C;-> JS)</h3><div class="wrap-body">
