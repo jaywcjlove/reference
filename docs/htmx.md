@@ -18,7 +18,9 @@
 
 ```html
 <script
-  src="https://unpkg.com/htmx.org@1.8.4"
+  src="https://unpkg.com/htmx.org@2.0.6"
+  integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+  crossorigin="anonymous"
 >
 </script>
 <!-- 有一个按钮POST，通过AJAX点击 -->
@@ -206,11 +208,9 @@ API 参考
 `hx-put` | 向指定的 URL 发出 PUT
 `hx-replace-url` | 替换浏览器地址栏中的 URL
 `hx-request` | 配置请求的各个方面
-`hx-sse` | 已移至分机。 [旧版本的文档](https://htmx.org/attributes/hx-sse)
 `hx-sync` | 控制不同元素发出的请求如何同步
 `hx-validate` | 强制元素在请求之前验证自己
-~~`hx-vars`~~ | 将值动态添加到参数以随请求提交(已弃用，请使用 `hx-vals`)
-`hx-ws` | 已移至分机。[旧版本的文档](https://htmx.org/attributes/hx-ws)
+`hx-disabled-elt` | 禁用触发元素和指定的元素，在发出请求期间
 <!--rehype:className=left-align-->
 
 列出了 htmx 中可用的所有其他属性
@@ -323,6 +323,11 @@ Class | 说明
 [`HX-Replace-Url`](https://htmx.org/headers/hx-replace-url) | 替换地址栏中的当前 `URL`
 `HX-Reswap` | 允许您指定如何交换响应<br /> _有关可能的值，请参阅 [`hx-swap`](https://htmx.org/attributes/hx-swap)_
 `HX-Retarget` | 将内容更新的目标更新为页面上不同元素的 CSS 选择器
-[`HX-Trigger`](https://htmx.org/headers/hx-trigger) | 允许您触发客户端事件<br /> _请[参阅文档](https://htmx.org/headers/hx-trigger)以获取更多信息_
-[`HX-Trigger-After-Settle`](https://htmx.org/headers/hx-trigger) | 允许您触发客户端事件<br /> _请[参阅文档](https://htmx.org/headers/hx-trigger)以获取更多信息_
-[`HX-Trigger-After-Swap`](https://htmx.org/headers/hx-trigger) | 允许您触发客户端事件<br /> _请[参阅文档](https://htmx.org/headers/hx-trigger)以获取更多信息_
+[`HX-Trigger`](https://htmx.org/headers/hx-trigger) | 响应接收后立即触发事件<br /> _请[参阅文档](https://htmx.org/headers/hx-trigger)以获取更多信息_
+[`HX-Trigger-After-Settle`](https://htmx.org/headers/hx-trigger) | 在 settle 阶段之后触发事件<br /> _请[参阅文档](https://htmx.org/headers/hx-trigger)以获取更多信息_
+[`HX-Trigger-After-Swap`](https://htmx.org/headers/hx-trigger) | 在 swap 阶段之后触发事件<br /> _请[参阅文档](https://htmx.org/headers/hx-trigger)以获取更多信息_
+
+参考资料
+---
+
+- [HTMX 官方文档](https://htmx.org/docs/) _(htmx.org)_
