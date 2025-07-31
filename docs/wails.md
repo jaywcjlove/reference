@@ -413,15 +413,28 @@ err := wails.Run(&options.App{
     Windows: &windows.Options{
         WebviewIsTransparent: true, // WebView2 背景透明
         WindowIsTranslucent:  true, // 窗口背景透明
+        DisableWindowIcon:    false, // 禁用窗口图标
+        Theme:                windows.SystemDefault, // 主题设置
     },
     Mac: &mac.Options{
         TitleBar: &mac.TitleBar{
             TitlebarAppearsTransparent: true, // 透明标题栏
+            HideTitle:                  false, // 隐藏标题
+            HideTitleBar:               false, // 隐藏标题栏
+            FullSizeContent:            false, // 全尺寸内容
+            UseToolbar:                 false, // 使用工具栏
         },
         About: &mac.AboutInfo{
             Title:   "My Awesome App",
             Message: "© 2025 Me",
+            Icon:    icon, // 应用图标
         },
+        WebviewIsTransparent: true, // WebView 透明
+        WindowIsTranslucent:  false, // 窗口半透明
+    },
+    Linux: &linux.Options{
+        Icon: icon, // Linux 图标
+        WindowIsTranslucent: false, // 窗口半透明
     },
 })
 ```
@@ -440,14 +453,86 @@ Wails 会自动为 Go 绑定的方法生成 TypeScript 定义。
 }
 ```
 
+### 上下文 (Context)
+
+使用 Go 的 context 进行更好的资源管理和取消操作。
+
+```go
+// app.go
+func (a *App) LongRunningTask(ctx context.Context) error {
+    select {
+    case <-time.After(5 * time.Second):
+        return nil
+    case <-ctx.Done():
+        return ctx.Err() // 任务被取消
+    }
+}
+```
+
 ### 调试
 
 - **Go 部分**: 使用 `wails dev -debug` 启动并附加您的 Go 调试器。
 - **前端部分**: 在 `wails dev` 模式下，右键点击应用，选择“检查”打开浏览器开发者工具。
+
+
+### 性能优化
+
+#### 构建优化
+
+```bash
+# 使用构建标签优化
+$ wails build -tags production
+
+# 使用 ldflags 减小二进制文件大小
+$ wails build -ldflags "-s -w"
+
+# 使用 UPX 压缩
+$ wails build -upx
+
+# 组合使用多个优化选项
+$ wails build -ldflags "-s -w" -upx -tags production
+```
+
+#### 前端优化 (wails.json)
+
+```json
+{
+  "frontend:build": "npm run build:prod",
+  "frontend:dev:build": "npm run build:dev"
+}
+```
+
+### 常见问题与解决方案
+
+#### 构建问题
+
+```bash
+# 清理构建缓存
+$ wails build -clean
+
+# 强制重新生成绑定
+$ wails generate module -f
+
+# 检查环境配置
+$ wails doctor
+```
+
+#### 开发问题
+
+```bash
+# 重置前端依赖
+$ rm -rf frontend/node_modules
+$ wails dev
+
+# 使用外部开发服务器
+$ wails dev -frontenddevserverurl http://localhost:3000
+```
+
 
 参考资料
 ---
 
 - [Wails 官方文档](https://wails.io/) _(wails.io)_
 - [Wails GitHub 仓库](https://github.com/wailsapp/wails) _(github.com)_
-- [Wails Discord 社区](https://discord.gg/4K6VHPkG5c) _discord.gg_
+- [Wails Discord 社区](https://discord.gg/4K6VHPkG5c) _(discord.gg)_
+- [Wails 模板库](https://github.com/wailsapp/awesome-wails) _(github.com)_
