@@ -3,7 +3,7 @@ Wails V2 备忘清单
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/wailsapp/wails?style=flat)](https://github.com/wailsapp/wails)    [![GitHub release (latest by date)](https://img.shields.io/github/v/release/wailsapp/wails?style=flat)](https://github.com/wailsapp/wails/releases/latest)    [![Go Reference](https://pkg.go.dev/badge/github.com/wailsapp/wails/v2.svg)](https://pkg.go.dev/github.com/wailsapp/wails/v2)
 
-Wails 是一个基于 Go 和现代 Web 技术（如 Vue、React）构建跨平台桌面应用的轻量级开源框架，可作为 Electron 的替代方案，以下是 Wails v2 的常用命令和示例速查（v3 仍在开发中）。
+Wails 是一个基于 Go 和现代 Web 技术（如 Vue、React、Svelte 等）构建跨平台桌面应用的轻量级开源框架，可作为 Electron 的替代方案，以下是 Wails v2 的常用命令和示例速查（v3 仍在开发中）。
 
 <!--rehype:style=padding-top: 12px;-->
 
@@ -28,12 +28,14 @@ $ wails update -pre
 | 命令      | 参数                      | 描述                                                         |
 | ------- | ----------------------- | ---------------------------------------------------------- |
 | `init`  | `-n`                    | **项目名称 (必填)**                                              |
-|         | `-t`                    | 模板名称 (`vue`, `react`) 或模板 URL                              |
+|         | `-t`                    | 模板名称 (`vue`, `react`, `svelte`, `angular`) 或模板 URL                              |
 |         | `-ide`                  | 为 `vscode` 或 `goland` 生成 IDE 配置                            |
+|         | `-f`                    | 强制覆盖现有目录                                                   |
 | `dev`   | `-browser`              | 在浏览器中打开前端界面进行调试                                            |
 |         | `-assetdir`             | 指定前端资产目录的路径                                                |
 |         | `-frontenddevserverurl` | 使用外部前端开发服务器的 URL                                           |
 |         | `-wailsjsdir`           | 指定生成的 Wails JS 模块目录                                        |
+|         | `-reload`               | 启用自动重载                                                     |
 | `build` | `-platform`             | 交叉编译目标平台, 如 `darwin/arm64`                                 |
 |         | `-clean`                | 构建前清理 `build/bin` 目录                                       |
 |         | `-upx`                  | 使用 UPX 压缩最终的二进制文件                                          |
@@ -41,6 +43,8 @@ $ wails update -pre
 |         | `-webview2`             | (Windows) WebView2 依赖处理策略 (`download`, `embed`, `browser`) |
 |         | `-debug`                | 保留调试信息                                                     |
 |         | `-devtools`             | 在生产版本中启用开发者工具                                              |
+|         | `-ldflags`              | 传递给 Go 链接器的标志                                              |
+|         | `-tags`                 | 构建标签                                                       |
 <!--rehype:className=wrap-text left-align-->
 
 ### 项目命令
@@ -49,14 +53,21 @@ $ wails update -pre
 # 初始化新项目 (以 Vue 模板为例)
 $ wails init -n my-project -t vue
 
+# 使用自定义模板
+$ wails init -n my-project -t https://github.com/user/template
+
 # 进入项目目录并启动实时开发
 $ cd my-project
 $ wails dev
 
 # 构建生产版本 (以 Windows 平台为例)
 $ wails build -platform windows/amd64 -clean -upx
+
 # 检查环境依赖
 $ wails doctor
+
+# 生成绑定文件
+$ wails generate module
 ```
 <!--rehype:className=wrap-text-->
 
@@ -85,8 +96,12 @@ my-project/
 | `frontend:install`     | 前端依赖安装命令                     | `"npm install"`             |
 | `frontend:build`       | 前端构建命令                       | `"npm run build"`           |
 | `frontend:dev:watcher` | 开发模式下运行的前端监视命令               | `"npm run dev"`             |
+| `frontend:dev:serverUrl` | 前端开发服务器 URL                 | `"http://localhost:3000"`   |
 | `wailsjsdir`           | 生成 JS 模块的目录                  | `"./frontend/wailsjs"`      |
+| `assetdir`             | 前端资产目录                       | `"./frontend/dist"`         |
+| `reloaddirs`           | 监听重载的目录                      | `"frontend/src,app.go"`     |
 | `author.name`          | 作者名称，用于打包元数据                 | `"Your Name"`               |
+| `author.email`         | 作者邮箱                         | `"you@example.com"`         |
 | `info`                 | (macOS) 用于 `Info.plist` 的元数据 | `{"CFBundleName": "MyApp"}` |
 <!--rehype:className=wrap-text left-align-->
 
@@ -398,15 +413,28 @@ err := wails.Run(&options.App{
     Windows: &windows.Options{
         WebviewIsTransparent: true, // WebView2 背景透明
         WindowIsTranslucent:  true, // 窗口背景透明
+        DisableWindowIcon:    false, // 禁用窗口图标
+        Theme:                windows.SystemDefault, // 主题设置
     },
     Mac: &mac.Options{
         TitleBar: &mac.TitleBar{
             TitlebarAppearsTransparent: true, // 透明标题栏
+            HideTitle:                  false, // 隐藏标题
+            HideTitleBar:               false, // 隐藏标题栏
+            FullSizeContent:            false, // 全尺寸内容
+            UseToolbar:                 false, // 使用工具栏
         },
         About: &mac.AboutInfo{
             Title:   "My Awesome App",
             Message: "© 2025 Me",
+            Icon:    icon, // 应用图标
         },
+        WebviewIsTransparent: true, // WebView 透明
+        WindowIsTranslucent:  false, // 窗口半透明
+    },
+    Linux: &linux.Options{
+        Icon: icon, // Linux 图标
+        WindowIsTranslucent: false, // 窗口半透明
     },
 })
 ```
@@ -425,14 +453,86 @@ Wails 会自动为 Go 绑定的方法生成 TypeScript 定义。
 }
 ```
 
+### 上下文 (Context)
+
+使用 Go 的 context 进行更好的资源管理和取消操作。
+
+```go
+// app.go
+func (a *App) LongRunningTask(ctx context.Context) error {
+    select {
+    case <-time.After(5 * time.Second):
+        return nil
+    case <-ctx.Done():
+        return ctx.Err() // 任务被取消
+    }
+}
+```
+
 ### 调试
 
 - **Go 部分**: 使用 `wails dev -debug` 启动并附加您的 Go 调试器。
 - **前端部分**: 在 `wails dev` 模式下，右键点击应用，选择“检查”打开浏览器开发者工具。
+
+
+### 性能优化
+
+#### 构建优化
+
+```bash
+# 使用构建标签优化
+$ wails build -tags production
+
+# 使用 ldflags 减小二进制文件大小
+$ wails build -ldflags "-s -w"
+
+# 使用 UPX 压缩
+$ wails build -upx
+
+# 组合使用多个优化选项
+$ wails build -ldflags "-s -w" -upx -tags production
+```
+
+#### 前端优化 (wails.json)
+
+```json
+{
+  "frontend:build": "npm run build:prod",
+  "frontend:dev:build": "npm run build:dev"
+}
+```
+
+### 常见问题与解决方案
+
+#### 构建问题
+
+```bash
+# 清理构建缓存
+$ wails build -clean
+
+# 强制重新生成绑定
+$ wails generate module -f
+
+# 检查环境配置
+$ wails doctor
+```
+
+#### 开发问题
+
+```bash
+# 重置前端依赖
+$ rm -rf frontend/node_modules
+$ wails dev
+
+# 使用外部开发服务器
+$ wails dev -frontenddevserverurl http://localhost:3000
+```
+
 
 参考资料
 ---
 
 - [Wails 官方文档](https://wails.io/) _(wails.io)_
 - [Wails GitHub 仓库](https://github.com/wailsapp/wails) _(github.com)_
-- [Wails Discord 社区](https://discord.gg/4K6VHPkG5c) _discord.gg_
+- [Wails Discord 社区](https://discord.gg/4K6VHPkG5c) _(discord.gg)_
+- [Wails 模板库](https://github.com/wailsapp/awesome-wails) _(github.com)_
