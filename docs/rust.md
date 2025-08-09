@@ -349,7 +349,7 @@ println!("为开发者分享 {cs}");
 
 ```rust
 // 创建一个空字符串对象
-let my_string = String::new;
+let my_string = String::new();
 // 转换为字符串对象
 let S_string = a_string.to_string()
 // 创建一个初始化的字符串对象
