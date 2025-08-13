@@ -163,6 +163,7 @@ docker info --format '{{range .ClientInfo.Plugins}}{{if eq .Name "compose"}}{{.P
 <!--rehype:className=left-align-->
 
 ### 其他命令
+<!--rehype:wrap-class=col-span-3-->
 
 ```bash
 docker compose up -d --remove-orphans --pull always --force-recreate
