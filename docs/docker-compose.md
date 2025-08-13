@@ -30,6 +30,14 @@ Docker Compose 备忘清单
 ### 安装
 <!--rehype:wrap-class=row-span-2-->
 
+Docker 20.10 之后，Docker CLI 支持 插件机制。Compose 也被官方迁移为 CLI 插件。
+
+命令也尽量使用官方推荐的docker compose(中间用空格，没有横线)。建议尽早迁移，如果旧项目需要兼容docker-compose，可单独安装docker-compose-plugin插件，或者是用软链接。
+
+```bash
+sudo ln -s /usr/lib/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
+```
+
 对于 Ubuntu 和 Debian，运行：
 
 ```bash
@@ -152,6 +160,19 @@ docker info --format '{{range .ClientInfo.Plugins}}{{if eq .Name "compose"}}{{.P
 | `docker compose restart` | 重启容器         |
 | `docker compose run`     | 运行一个临时容器 |
 | `docker compose ps`      | 查看容器状态     |
+<!--rehype:className=left-align-->
+
+### 其他命令
+
+```bash
+docker compose up -d --remove-orphans --pull always --force-recreate
+```
+| 参数 | 说明|
+|-----|----|
+| -d / --detach     | 后台运行容器。|
+| --remove-orphans  | 删除孤儿容器和网络配置。|
+| --pull always     | 每次启动前都从远程仓库拉取最新镜像，确保使用最新镜像，而不是本地缓存。还可以用--pull missing（只拉不存在的镜像）或 --pull never（不拉取）。|
+| --force-recreate  | 强制重新创建容器，即使配置或镜像没有变化。|
 <!--rehype:className=left-align-->
 
 Docker Compose 配置
