@@ -30,6 +30,14 @@ Docker Compose 备忘清单
 ### 安装
 <!--rehype:wrap-class=row-span-2-->
 
+Docker 20.10 之后，Docker CLI 支持 插件机制。Compose 也被官方迁移为 CLI 插件。
+
+命令也尽量使用官方推荐的 `docker compose` (**中间用空格，没有横线**)。建议尽早迁移，如果旧项目需要兼容 `docker-compose`，可单独安装 `docker-compose-plugin` 插件，或者是用软链接。
+
+```bash
+sudo ln -s /usr/lib/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
+```
+
 对于 Ubuntu 和 Debian，运行：
 
 ```bash
@@ -154,13 +162,27 @@ docker info --format '{{range .ClientInfo.Plugins}}{{if eq .Name "compose"}}{{.P
 | `docker compose ps`      | 查看容器状态     |
 <!--rehype:className=left-align-->
 
+### 其他命令
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+docker compose up -d --remove-orphans --pull always --force-recreate
+```
+| 参数 | 说明|
+|-----|----|
+| -d / --detach     | 后台运行容器。|
+| --remove-orphans  | 删除孤儿容器和网络配置。|
+| --pull always     | 每次启动前都从远程仓库拉取最新镜像，确保使用最新镜像，而不是本地缓存。还可以用--pull missing（只拉不存在的镜像）或 --pull never（不拉取）。|
+| --force-recreate  | 强制重新创建容器，即使配置或镜像没有变化。|
+<!--rehype:className=left-align-->
+
 Docker Compose 配置
 ---
 
 ### 示例配置文件
 <!--rehype:wrap-class=col-span-2-->
 
-`docker-compose` 的配置文件是一个 `YAML` 文件，用于定义和运行多容器 Docker 应用程序。通常命名为 `docker-compose.yml`，它使用单一的 YAML 文件来定义多个容器的集合，以及它们之间的依赖关系和服务。以下是一份 `docker-compose.yml` 文件的配置模板，包含了常用配置项和解释：
+`docker-compose` 的配置文件是一个 `YAML` 文件，用于定义和运行多容器 Docker 应用程序。通常命名为 `docker-compose.yml` (现在新的版本建议实用 `compose.yaml` 代替之前的 `docker-compose.yaml`) ，它使用单一的 YAML 文件来定义多个容器的集合，以及它们之间的依赖关系和服务。以下是一份 `docker-compose.yml` 文件的配置模板，包含了常用配置项和解释：
 
 ```yml
 name: myapp
@@ -210,9 +232,9 @@ volumes:  # 定义数据卷
 - 使用 Docker-Compose 可以简化多容器应用程序的部署和管理，但需要注意容器之间的依赖关系和通信。
 - 配置文件中的缩进必须使用空格，不能使用制表符。
 - 可以使用环境变量来动态设置配置项，如数据库密码。
-- 当你修改了 `docker-compose.yml` 文件后，需要重新运行 `docker-compose up` 来使改动生效。
-- 使用 `docker-compose build` 仅重建镜像，而不启动容器。
-- 使用 `docker-compose restart` 重启容器。
+- 当你修改了 `dockercompose.yml` 文件后，需要重新运行 `docker compose up` 来使改动生效。
+- 使用 `docker compose build` 仅重建镜像，而不启动容器。
+- 使用 `docker compose restart` 重启容器。
 - 记得清理不再需要的容器和镜像，以避免磁盘空间不足。
 
 ### 使用环境变量
