@@ -233,7 +233,7 @@ volumes:  # 定义数据卷
 - 使用 Docker-Compose 可以简化多容器应用程序的部署和管理，但需要注意容器之间的依赖关系和通信。
 - 配置文件中的缩进必须使用空格，不能使用制表符。
 - 可以使用环境变量来动态设置配置项，如数据库密码。
-- 当你修改了 `dockercompose.yml` 文件后，需要重新运行 `docker compose up` 来使改动生效。
+- 当你修改了 `docker-compose.yml` 文件后，需要重新运行 `docker compose up` 来使改动生效。
 - 使用 `docker compose build` 仅重建镜像，而不启动容器。
 - 使用 `docker compose restart` 重启容器。
 - 记得清理不再需要的容器和镜像，以避免磁盘空间不足。
