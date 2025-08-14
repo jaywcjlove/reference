@@ -1,3 +1,20 @@
+<!--rehype:ignore:start-->
+<div align="center" markdown="1">
+  <sup>Special thanks to:</sup>
+  <br>
+  <br>
+  <a href="https://go.warp.dev/reference">
+    <img alt="Warp sponsorship" width="400" src="https://github.com/warpdotdev/brand-assets/blob/main/Github/Sponsor/Warp-Github-LG-01.png?raw=true">
+  </a>
+  <br>
+  <a href="https://go.warp.dev/reference"><b>Warp, the intelligent terminal for developers!</b></a><br>
+  <a href="https://go.warp.dev/reference">Available for MacOS, Linux, & Windows</a><br><br>
+
+  <br><br>
+</div>
+<hr>
+<!--rehype:ignore:end-->
+
 Quick Reference
 ===
 
@@ -49,6 +66,19 @@ Quick Reference
   <a target="_blank" href="https://apps.apple.com/app/6470879005" title="Symbol Scribe for macOS"><img align="center" alt="Symbol Scribe" height="50" width="50" src="./appicon/symbol-scribe.png"></a>
 </p>
 <!--rehype:style=padding-top:1rem;-->
+
+<div markdown="1">
+  <br>
+  <sup>特别感谢：</sup>
+  <br>
+  <p>
+    <a href="https://go.warp.dev/reference">
+      <img alt="Warp sponsorship" height="160" src="https://jaywcjlove.github.io/sponsor/Warp-Github-LG-01.png"><br>
+      <b>Warp, the intelligent terminal for developers!</b><br/>
+      Available for MacOS, Linux, & Windows<br/>
+    </a>
+  </p>
+</div>
 
 ## 正在建设中...
 
