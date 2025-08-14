@@ -4,7 +4,7 @@
   <br>
   <br>
   <a href="https://go.warp.dev/reference">
-    <img alt="Warp sponsorship" width="400" src="https://github.com/warpdotdev/brand-assets/blob/main/Github/Sponsor/Warp-Github-LG-01.png?raw=true">
+    <img alt="Warp sponsorship" width="400" src="./appicon/Warp-Github-LG-01.png">
   </a>
   <br>
   <a href="https://go.warp.dev/reference"><b>Warp, the intelligent terminal for developers!</b></a><br>
