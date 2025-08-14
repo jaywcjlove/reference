@@ -439,6 +439,7 @@ $ docker volume prune # 清理未使用的卷
 `docker secret`      | 管理 Docker 机密
 `docker system`      | 管理 Docker
 `docker volume`      | 管理卷
+`docker search`      | 搜索镜像
 <!--rehype:className=left-align-->
 
 ### 功能状态
