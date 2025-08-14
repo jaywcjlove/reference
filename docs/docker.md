@@ -393,26 +393,6 @@ $ docker volume prune # 清理未使用的卷
 `docker stack rm <appname>`                       | 拆掉一个应用程序
 <!--rehype:className=left-align-->
 
-### Docker Machine
-<!--rehype:wrap-class=col-span-2-->
-
-:- | :-
-:- | :-
-`docker-machine create --driver virtualbox myvm1`                           | 创建虚拟机（Mac、Win7、Linux）
-`docker-machine create -d hyperv --hyperv-virtual-switch "myswitch" myvm1`  | Win10
-`docker-machine env myvm1`                                                  | 查看有关您的节点的基本信息
-`docker-machine ssh myvm1 "docker node ls"`                                 | 列出集群中的节点
-`docker-machine ssh myvm1 "docker node inspect <node ID>"`                  | 检查节点
-`docker-machine ssh myvm1 "docker swarm join-token -q worker"`              | 查看加入令牌
-`docker-machine ssh myvm1`                                                  | 打开与 VM 的 SSH 会话； 输入“exit”结束
-`docker-machine ssh myvm2 "docker swarm leave"`                             | 让工人离开群体
-`docker-machine ssh myvm1 "docker swarm leave -f"`                          | 让主人离开，杀群
-`docker-machine start myvm1`                                                | 启动当前未运行的 VM
-`docker-machine stop $(docker-machine ls -q)`                               | 停止所有正在运行的虚拟机
-`docker-machine rm $(docker-machine ls -q)`                                 | 删除所有虚拟机及其磁盘映像
-`docker-machine scp docker-compose.yml myvm1:~`                             | 将文件复制到节点的主目录
-`docker-machine ssh myvm1 "docker stack deploy -c <file> <app>"`            | 部署应用
-<!--rehype:className=left-align-->
 
 ### docker 主要命令
 <!--rehype:wrap-class=row-span-3-->
@@ -476,13 +456,11 @@ $ docker volume prune # 清理未使用的卷
 `docker network`     | 管理网络
 `docker node`        | 管理 Swarm 节点
 `docker plugin`      | 管理插件
-`docker scan*`       | Docker 扫描（Docker Inc.，v0.16.0）
 `docker secret`      | 管理 Docker 机密
 `docker service`     | 管理服务
 `docker stack`       | 管理 Docker 堆栈
 `docker swarm`       | 管理群
 `docker system`      | 管理 Docker
-`docker trust`       | 管理对 Docker 映像的信任
 `docker volume`      | 管理卷
 <!--rehype:className=left-align-->
 
