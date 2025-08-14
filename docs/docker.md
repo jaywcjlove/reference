@@ -454,15 +454,33 @@ $ docker volume prune # 清理未使用的卷
 `docker image`       | 管理镜像
 `docker manifest`    | 管理 Docker 镜像清单和清单列表
 `docker network`     | 管理网络
-`docker node`        | 管理 Swarm 节点
-`docker plugin`      | 管理插件
 `docker secret`      | 管理 Docker 机密
-`docker service`     | 管理服务
-`docker stack`       | 管理 Docker 堆栈
-`docker swarm`       | 管理群
 `docker system`      | 管理 Docker
 `docker volume`      | 管理卷
 <!--rehype:className=left-align-->
+
+### 功能状态
+<!--rehype:wrap-class=row-span-3-->
+截至 2025 年 8 月最新官方信息，以下功能处于维护模式，建议迁移到Kubernetes，或者其他编排工具。
+
+| 命令               | 用途          | 状态说明       |
+| ---------------- | ----------- | ---------- |
+| `docker swarm`   | 管理 Swarm 集群 | 维护模式       |
+| `docker service` | Swarm 服务管理  | 维护模式       |
+| `docker stack`   | Swarm 多服务部署 | 维护模式       |
+| `docker node`    | Swarm 节点管理  | 维护模式       |
+| `docker plugin`  | 插件管理        | 生态活跃度低，维护中 |
+
+已废弃或被移除
+
+| 命令                     | 用途                | 取代方式                                           |
+| ---------------------- | ----------------- | ---------------------------------------------- |
+| `docker-machine`       | 创建/管理远程 Docker 主机 | 使用 cloud provider CLI 或 SSH + `docker context` |
+| `docker trust`         | 内容信任（Notary v1）   | 迁移到 **Notary v2**（镜像签名）                        |
+| `docker app`           | CNAB 应用包管理        | 已并入 Compose/其他工具                               |
+| `docker search`（旧 API） | Docker Hub 搜索     | 用 Hub Web API 或 CLI 插件                         |
+| `docker manifest`（旧版本） | 多平台镜像管理           | 已集成到 `docker buildx imagetools`                |
+
 
 ### docker 全局参数
 
