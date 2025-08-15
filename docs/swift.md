@@ -2027,12 +2027,11 @@ print(intStorage.retrieve() ?? "Empty")
 `swift-inspect` | 模块/符号分析工具 | 检查模块结构/调试工具输出
 <!--rehype:className=show-header left-align-->
 
-
 ### swift — 脚本执行 & REPL
 <!--rehype:wrap-class=row-span-3-->
 
 命令 | 说明
-:-- | :-- 
+:-- | :--
 `swift`                             | 启动交互式环境（REPL）
 `swift my_script.swift`             | 运行 Swift 脚本文件
 `swift build`                       | 使用 SwiftPM 编译项目
@@ -2068,7 +2067,7 @@ $ swift package dump-package
 <!--rehype:wrap-class=col-span-2-->
 
 命令 | 说明
-:-- | :-- 
+:-- | :--
 `swiftc main.swift`                 | 编译为默认名 `main` 的可执行文件
 `swiftc main.swift -o myapp`        | 编译为 `myapp` 可执行文件
 `swiftc -c Foo.swift`               | 编译为中间的 `.o` 文件
@@ -2080,12 +2079,11 @@ $ swift package dump-package
 `swiftc -emit-object Foo.swift`     | 输出目标文件 `.o`
 <!--rehype:className=show-header left-align-->
 
-
 ### swift-inspect
 <!--rehype:wrap-class=col-span-2-->
 
 命令 | 说明
-:-- | :-- 
+:-- | :--
 `swift-inspect MyApp`                          | 分析一个编译产物（如 `.app`、`.dylib`）
 `swift-inspect --symbols MyModule.swiftmodule` | 查看模块的符号信息
 `swift-inspect --help`                         | 查看所有可用选项

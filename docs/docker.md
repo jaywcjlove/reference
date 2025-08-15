@@ -351,24 +351,6 @@ $ docker volume ls    # 检查卷
 $ docker volume prune # 清理未使用的卷
 ```
 
-### Docker Compose
-<!--rehype:wrap-class=row-span-2-->
-
-:- | :-
-:- | :-
-`docker-compose up` | 创建和启动容器
-`docker-compose up -d` | 以分离模式创建和启动容器
-`docker-compose down` | 停止和删除容器、网络、映像和卷
-`docker-compose logs` | 查看容器的输出
-`docker-compose restart` | 重启所有服务
-`docker-compose pull` | 拉取所有服务的镜像
-`docker-compose build` | 构建所有服务的镜像
-`docker-compose config` | 验证并查看 Compose 文件
-`docker-compose scale <service_name>=<replica>` | 为服务指定容器个数
-`docker-compose top` | 显示正在运行的进程
-`docker-compose run -rm -p 2022:22 web bash` | 启动 Web 服务并运行 bash 作为其命令，删除旧容器
-<!--rehype:className=left-align-->
-
 ### Docker Services
 
 :- | :-
@@ -393,26 +375,6 @@ $ docker volume prune # 清理未使用的卷
 `docker stack rm <appname>`                       | 拆掉一个应用程序
 <!--rehype:className=left-align-->
 
-### Docker Machine
-<!--rehype:wrap-class=col-span-2-->
-
-:- | :-
-:- | :-
-`docker-machine create --driver virtualbox myvm1`                           | 创建虚拟机（Mac、Win7、Linux）
-`docker-machine create -d hyperv --hyperv-virtual-switch "myswitch" myvm1`  | Win10
-`docker-machine env myvm1`                                                  | 查看有关您的节点的基本信息
-`docker-machine ssh myvm1 "docker node ls"`                                 | 列出集群中的节点
-`docker-machine ssh myvm1 "docker node inspect <node ID>"`                  | 检查节点
-`docker-machine ssh myvm1 "docker swarm join-token -q worker"`              | 查看加入令牌
-`docker-machine ssh myvm1`                                                  | 打开与 VM 的 SSH 会话； 输入“exit”结束
-`docker-machine ssh myvm2 "docker swarm leave"`                             | 让工人离开群体
-`docker-machine ssh myvm1 "docker swarm leave -f"`                          | 让主人离开，杀群
-`docker-machine start myvm1`                                                | 启动当前未运行的 VM
-`docker-machine stop $(docker-machine ls -q)`                               | 停止所有正在运行的虚拟机
-`docker-machine rm $(docker-machine ls -q)`                                 | 删除所有虚拟机及其磁盘映像
-`docker-machine scp docker-compose.yml myvm1:~`                             | 将文件复制到节点的主目录
-`docker-machine ssh myvm1 "docker stack deploy -c <file> <app>"`            | 部署应用
-<!--rehype:className=left-align-->
 
 ### docker 主要命令
 <!--rehype:wrap-class=row-span-3-->
@@ -474,17 +436,34 @@ $ docker volume prune # 清理未使用的卷
 `docker image`       | 管理镜像
 `docker manifest`    | 管理 Docker 镜像清单和清单列表
 `docker network`     | 管理网络
-`docker node`        | 管理 Swarm 节点
-`docker plugin`      | 管理插件
-`docker scan*`       | Docker 扫描（Docker Inc.，v0.16.0）
 `docker secret`      | 管理 Docker 机密
-`docker service`     | 管理服务
-`docker stack`       | 管理 Docker 堆栈
-`docker swarm`       | 管理群
 `docker system`      | 管理 Docker
-`docker trust`       | 管理对 Docker 映像的信任
 `docker volume`      | 管理卷
+`docker search`      | 搜索镜像
 <!--rehype:className=left-align-->
+
+### 功能状态
+<!--rehype:wrap-class=row-span-3-->
+截至 2025 年 8 月最新官方信息，以下功能处于维护模式，建议迁移到Kubernetes，或者其他编排工具。
+
+| 命令               | 用途          | 状态说明       |
+| ---------------- | ----------- | ---------- |
+| `docker swarm`   | 管理 Swarm 集群 | 维护模式       |
+| `docker service` | Swarm 服务管理  | 维护模式       |
+| `docker stack`   | Swarm 多服务部署 | 维护模式       |
+| `docker node`    | Swarm 节点管理  | 维护模式       |
+| `docker plugin`  | 插件管理        | 生态活跃度低，维护中 |
+
+已废弃或被移除
+
+| 命令                     | 用途                | 取代方式                                           |
+| ---------------------- | ----------------- | ---------------------------------------------- |
+| `docker-machine`       | 创建/管理远程 Docker 主机 | 使用 cloud provider CLI 或 SSH + `docker context` |
+| `docker trust`         | 内容信任（Notary v1）   | 迁移到 **Notary v2**（镜像签名）                        |
+| `docker app`           | CNAB 应用包管理        | 已并入 Compose/其他工具                               |
+| `docker search`（旧 API） | Docker Hub 搜索     | 用 Hub Web API 或 CLI 插件                         |
+| `docker manifest`（旧版本） | 多平台镜像管理           | 已集成到 `docker buildx imagetools`                |
+
 
 ### docker 全局参数
 

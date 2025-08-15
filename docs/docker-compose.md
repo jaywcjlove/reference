@@ -8,17 +8,17 @@ Docker Compose 备忘清单
 
 ### Docker Compose 是什么？
 
-- `Docker-compsoe` 是一个开源项目，用于定义和运行多容器 `Docker` 应用程序的工具。由 `Docker` 社区维护。
-- 通过一个 `YAML` 文件来配置应用程序的服务，以便可以使用一个命令启动、停止和重启整个应用程序。
+- **Docker Compose** 是由 [Docker](./docker.md) 社区维护的开源工具，用于定义和运行多容器应用。
+- 通过单个 [YAML](./yaml.md) 文件配置服务，可用一条命令启动、停止或重启整个应用。
 - [Docker Compose 开源地址](https://github.com/docker/compose)
 - [Docker Compose 发行地址](https://github.com/docker/compose/releases) _github.com_
 
 ### 基本概念
 
 - **服务 (services):** 一个服务指的是一个容器，即一个应用程序的一个实例。
-- **容器 (container):** `Docker` 容器，其中运行着应用程序的一个实例。
-- **镜像 (image):** `Docker` 镜像，用于创建容器的模板。
-- **Docker-Compose 文件：** 一个 `YAML` 文件，描述了应用程序的各个服务以及它们之间的关系、配置等信息。
+- **容器 (container):** [Docker](./docker.md) 容器，其中运行着应用程序的一个实例。
+- **镜像 (image):** [Docker](./docker.md) 镜像，用于创建容器的模板。
+- **Docker-Compose 文件：** 一个 [YAML](./yaml.md) 文件，描述了应用程序的各个服务以及它们之间的关系、配置等信息。
 
 ### Docker-Compose 文件结构
 
@@ -29,6 +29,13 @@ Docker Compose 备忘清单
 
 ### 安装
 <!--rehype:wrap-class=row-span-2-->
+
+Docker 20.10 起，CLI 支持插件机制，官方已将 Compose 迁移为 CLI 插件。推荐使用 `docker compose`（空格，无横线），旧项目如需兼容 `docker-compose` 可安装 `docker-compose-plugin` 或使用软链接。
+
+```bash
+sudo ln -s /usr/lib/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
+```
+<!--rehype:className=wrap-text-->
 
 对于 Ubuntu 和 Debian，运行：
 
@@ -154,13 +161,29 @@ docker info --format '{{range .ClientInfo.Plugins}}{{if eq .Name "compose"}}{{.P
 | `docker compose ps`      | 查看容器状态     |
 <!--rehype:className=left-align-->
 
+### 其他命令
+<!--rehype:wrap-class=col-span-3-->
+
+```bash
+docker compose up -d --remove-orphans --pull always --force-recreate
+```
+
+| 参数 | 说明|
+|-----|----|
+| `-d / --detach`     | 后台运行容器。|
+| `--remove-orphans`  | 删除孤儿容器和网络配置。|
+| `--pull always`     | 每次启动前都从远程仓库拉取最新镜像，确保使用最新镜像，而不是本地缓存。还可以用--pull missing（只拉不存在的镜像）或 --pull never（不拉取）。|
+| `--force-recreate`  | 强制重新创建容器，即使配置或镜像没有变化。|
+<!--rehype:className=left-align-->
+
 Docker Compose 配置
 ---
 
 ### 示例配置文件
 <!--rehype:wrap-class=col-span-2-->
 
-`docker-compose` 的配置文件是一个 `YAML` 文件，用于定义和运行多容器 Docker 应用程序。通常命名为 `docker-compose.yml`，它使用单一的 YAML 文件来定义多个容器的集合，以及它们之间的依赖关系和服务。以下是一份 `docker-compose.yml` 文件的配置模板，包含了常用配置项和解释：
+`docker-compose` 使用 [YAML](./yaml.md) 文件定义和运行多容器应用，通常命名为 `docker-compose.yml`（新版本建议用 `compose.yaml`）。
+该文件集中描述多个容器的服务、依赖关系等。下面是一个包含常用配置项和说明的模板：
 
 ```yml
 name: myapp
@@ -210,9 +233,9 @@ volumes:  # 定义数据卷
 - 使用 Docker-Compose 可以简化多容器应用程序的部署和管理，但需要注意容器之间的依赖关系和通信。
 - 配置文件中的缩进必须使用空格，不能使用制表符。
 - 可以使用环境变量来动态设置配置项，如数据库密码。
-- 当你修改了 `docker-compose.yml` 文件后，需要重新运行 `docker-compose up` 来使改动生效。
-- 使用 `docker-compose build` 仅重建镜像，而不启动容器。
-- 使用 `docker-compose restart` 重启容器。
+- 当你修改了 `docker-compose.yml` 文件后，需要重新运行 `docker compose up` 来使改动生效。
+- 使用 `docker compose build` 仅重建镜像，而不启动容器。
+- 使用 `docker compose restart` 重启容器。
 - 记得清理不再需要的容器和镜像，以避免磁盘空间不足。
 
 ### 使用环境变量

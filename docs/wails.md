@@ -292,14 +292,14 @@ ClipboardSetText("text")
 ### Windows 打包
 <!--rehype:wrap-class=col-span-2 row-span-2-->
 
-#### <red>■</red> 默认生成: `.exe` 可执行文件。
+#### <red>■</red> 默认生成: `.exe` 可执行文件
 <!--rehype:style=text-align: left;font-weight: bold;-->
   
 ```bash
 $ wails build -platform windows/amd64
 ```
 
-#### <red>■</red> 生成 NSIS 安装程序:
+#### <red>■</red> 生成 NSIS 安装程序
 <!--rehype:style=text-align: left;font-weight: bold;-->
 
 **前提条件**: 需要预先安装 [NSIS (Nullsoft Scriptable Install System)](https://nsis.sourceforge.io/Download)。
@@ -320,7 +320,7 @@ $ wails build -platform windows/amd64
 $ wails build -platform windows/amd64 -nsis
 ```
 
-#### <red>■</red> 处理 WebView2 依赖:
+#### <red>■</red> 处理 WebView2 依赖
 <!--rehype:style=text-align: left;font-weight: bold;-->
 
 `download`: 提示用户下载 WebView2。
@@ -328,11 +328,13 @@ $ wails build -platform windows/amd64 -nsis
 ```bash
 $ wails build -platform windows/amd64 -webview2 download
 ```
+
 `embed`: 将 WebView2 嵌入到应用中（推荐）。
 
 ```bash
 $ wails build -platform windows/amd64 -webview2 embed
 ```
+
 `browser`: 在浏览器中打开下载页面。
 
 ```bash
@@ -341,20 +343,19 @@ $ wails build -platform windows/amd64 -webview2 browser
 
 ### macOS 打包
 
-
-#### <red>■</red> 默认生成: `.app` 应用程序包。
+#### <red>■</red> 默认生成: `.app` 应用程序包
 <!--rehype:style=text-align: left;font-weight: bold;-->
 
 ```bash
 $ wails build -platform darwin/amd64
 ```
 
-#### <red>■</red> 代码签名与公证:
+#### <red>■</red> 代码签名与公证
 <!--rehype:style=text-align: left;font-weight: bold;-->
 
 需要通过 Apple 开发者账户进行 **代码签名** 和 **公证** 才能分发。
 
-#### <red>■</red> 跳过打包成 `.app` 步骤:
+#### <red>■</red> 跳过打包成 `.app` 步骤
 <!--rehype:style=text-align: left;font-weight: bold;-->
 
 ```bash
@@ -389,7 +390,7 @@ $ wails build -platform linux/amd64 -rpm
 
 #### AppImage 支持
 
-Wails 不直接内置对 AppImage 的支持，但可以使用外部工具手动创建。使用 `appimagetool`: 
+Wails 不直接内置对 AppImage 的支持，但可以使用外部工具手动创建。使用 `appimagetool`:
 
 ```shell
 appimagetool ./your-app-dir
@@ -474,7 +475,6 @@ func (a *App) LongRunningTask(ctx context.Context) error {
 - **Go 部分**: 使用 `wails dev -debug` 启动并附加您的 Go 调试器。
 - **前端部分**: 在 `wails dev` 模式下，右键点击应用，选择“检查”打开浏览器开发者工具。
 
-
 ### 性能优化
 
 #### 构建优化
@@ -527,7 +527,6 @@ $ wails dev
 # 使用外部开发服务器
 $ wails dev -frontenddevserverurl http://localhost:3000
 ```
-
 
 参考资料
 ---
