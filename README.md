@@ -708,10 +708,12 @@ Quick Reference
 <!--rehype:class=home-card home-links-->
 
 ## 部署
+<!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 如果你有资源，可以很方便[部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)
-- GitHub Pages：这非常简单，只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务就可以了
-- [Docker](https://hub.docker.com/r/wcjiang/reference) ：快捷部署 web 版。
 - 一键部署到 [Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/jaywcjlove/reference)
+- [Docker](https://hub.docker.com/r/wcjiang/reference) ：快捷部署 web 版
+- GitHub Pages：克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支代码到你的静态服务
+
 
 ## 其它资源
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
