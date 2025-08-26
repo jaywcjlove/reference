@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Nix 备忘清单
+ &#x26;  nix cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="Nix 快速参考备忘单，旨在帮助编写基础的 Nix 代码。Nix 是一个纯函数式包管理器和 NixOS 系统的基础语言。
+
+类型与语法，为开发人员分享快速参考备忘单。">
+<meta keywords="nix,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/nix.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.9.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="nix-备忘清单"><svg fill="currentColor" height="1em" width="1em" viewBox="0 0 573 573" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-44, 0)" fill-rule="nonzero">
+            <g transform="translate(-0, 0)">
+                <g transform="translate(179.2478, 344.2665) rotate(60) translate(-179.2478, -344.2665)translate(39.4675, 217.9911)" fill="#7EBAE4">
+                    <polygon points="247.986334 -1.77635684e-15 165.324004 143.175778 7.10542736e-15 143.175778 31.5740916 197.862998 133.750004 197.862998 165.324004 252.550728 279.560554 54.68749"></polygon>
+                </g>
+                <g transform="translate(204.7907, 184.1915) rotate(120) translate(-204.7907, -184.1915)translate(65.0104, 57.9162)" fill="#5277C3">
+                    <polygon points="247.986334 -1.77635684e-15 165.324004 143.175778 7.10542736e-15 143.175778 31.5740916 197.862998 133.750004 197.862998 165.324004 252.550728 279.560554 54.68749"></polygon>
+                </g>
+                <g transform="translate(356.1917, 126.2754) rotate(180) translate(-356.1917, -126.2754)translate(216.4114, 0)" fill="#7EBAE4">
+                    <polygon points="247.986334 -1.77635684e-15 165.324004 143.175778 7.10542736e-15 143.175778 31.5740916 197.862998 133.750004 197.862998 165.324004 252.550728 279.560554 54.68749"></polygon>
+                </g>
+                <g transform="translate(482.0485, 228.4337) rotate(-120) translate(-482.0485, -228.4337)translate(342.2683, 102.1584)" fill="#5277C3">
+                    <polygon points="247.986334 -1.77635684e-15 165.324004 143.175778 7.10542736e-15 143.175778 31.5740916 197.862998 133.750004 197.862998 165.324004 252.550728 279.560554 54.68749"></polygon>
+                </g>
+                <g transform="translate(456.5059, 388.5084) rotate(-60) translate(-456.5059, -388.5084)translate(316.7256, 262.233)" fill="#7EBAE4">
+                    <polygon points="247.986334 -1.77635684e-15 165.324004 143.175778 7.10542736e-15 143.175778 31.5740916 197.862998 133.750004 197.862998 165.324004 252.550728 279.560554 54.68749"></polygon>
+                </g>
+                <g transform="translate(165.3253, 320.1492)" fill="#5277C3">
+                    <polygon points="247.986334 -1.77635684e-15 165.324004 143.175778 7.10542736e-15 143.175778 31.5740916 197.862998 133.750004 197.862998 165.324004 252.550728 279.560554 54.68749"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg><a aria-hidden="true" tabindex="-1" href="#nix-备忘清单"><span class="icon icon-link"></span></a>Nix 备忘清单</h1><div class="wrap-body">
+<p>Nix 快速参考备忘单，旨在帮助编写基础的 Nix 代码。Nix 是一个纯函数式包管理器和 NixOS 系统的基础语言。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#类型与语法">类型与语法</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串">字符串</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#字符串插值">字符串插值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#转义字符">转义字符</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#整数">整数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#浮点数">浮点数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#布尔值">布尔值</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#空值">空值</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#路径">路径</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#属性集">属性集</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#列表">列表</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#注释">注释</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-单行注释">↓ 单行注释</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-多行注释">↓ 多行注释</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#作用域管理">作用域管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#定义局部变量">定义局部变量</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#嵌套-let-表达式">嵌套 let 表达式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将变量添加到作用域">将变量添加到作用域</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-等价于">↓ 等价于</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#从属性集继承属性">从属性集继承属性</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#-等价于-1">↓ 等价于</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将所有属性引入作用域">将所有属性引入作用域</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#注意事项">注意事项</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#条件表达式">条件表达式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基本条件表达式">基本条件表达式</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#布尔条件判断">布尔条件判断</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#字符串条件判断">字符串条件判断</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#复杂条件判断">复杂条件判断</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#条件表达式中的属性集">条件表达式中的属性集</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#属性集-1">属性集</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#定义属性集">定义属性集</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#动态属性名">动态属性名</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更新属性集">更新属性集</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#深度合并">深度合并</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#检查属性是否存在">检查属性是否存在</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#访问属性">访问属性</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#可选属性访问">可选属性访问</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#连接与插值">连接与插值</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#连接列表">连接列表</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#连接路径与字符串">连接路径与字符串</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串插值-1">字符串插值</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#函数">函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#简单函数">简单函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命名参数">命名参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#忽略额外参数">忽略额外参数</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#默认参数值">默认参数值</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#绑定到变量">绑定到变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#多参数函数">多参数函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#高阶函数">高阶函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#递归函数">递归函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#条件函数">条件函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#函数工厂">函数工厂</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#函数式编程工具">函数式编程工具</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#内置函数">内置函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#类型检查函数">类型检查函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字符串操作函数">字符串操作函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#列表操作函数">列表操作函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#属性集操作函数">属性集操作函数</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#导入与模块">导入与模块</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#导入文件">导入文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模块定义">模块定义</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#包管理">包管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基本包定义">基本包定义</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#开发环境">开发环境</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#常用工具函数">常用工具函数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#递归函数-1">递归函数</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#错误处理">错误处理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#断言">断言</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#异常处理">异常处理</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#来源">来源</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="类型与语法"><a aria-hidden="true" tabindex="-1" href="#类型与语法"><span class="icon icon-link"></span></a>类型与语法</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="字符串"><a aria-hidden="true" tabindex="-1" href="#字符串"><span class="icon icon-link"></span></a>字符串</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token string">"单行字符串"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  y <span class="token operator">=</span> <span class="token string">''
+</span></span><span class="code-line"><span class="token string">    多行字符串
+</span></span><span class="code-line"><span class="token string">    支持换行和缩进
+</span></span><span class="code-line"><span class="token string">  ''</span><span class="token punctuation">;</span>
+</span><span class="code-line">  z <span class="token operator">=</span> <span class="token string">''
+</span></span><span class="code-line"><span class="token string">    前导空格会被自动处理
+</span></span><span class="code-line"><span class="token string">      这行会保持缩进
+</span></span><span class="code-line"><span class="token string">  ''</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+<h4 id="字符串插值"><a aria-hidden="true" tabindex="-1" href="#字符串插值"><span class="icon icon-link"></span></a>字符串插值</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  name <span class="token operator">=</span> <span class="token string">"世界"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  greeting <span class="token operator">=</span> <span class="token string">"你好，<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span>！"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+<h4 id="转义字符"><a aria-hidden="true" tabindex="-1" href="#转义字符"><span class="icon icon-link"></span></a>转义字符</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  escaped <span class="token operator">=</span> <span class="token string">''
+</span></span><span class="code-line"><span class="token string">    引号：\"hello\"，换行：\n，制表符：\t
+</span></span><span class="code-line"><span class="token string">  ''</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="整数"><a aria-hidden="true" tabindex="-1" href="#整数"><span class="icon icon-link"></span></a>整数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">123</span><span class="token punctuation">;</span>
+</span><span class="code-line">  y <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 支持不同进制</span>
+</span><span class="code-line">  hex <span class="token operator">=</span> 0xFF<span class="token punctuation">;</span>          <span class="token comment"># 十六进制: 255</span>
+</span><span class="code-line">  bin <span class="token operator">=</span> 0b1010<span class="token punctuation">;</span>        <span class="token comment"># 二进制: 10</span>
+</span><span class="code-line">  oct <span class="token operator">=</span> 0o755<span class="token punctuation">;</span>         <span class="token comment"># 八进制: 493</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="浮点数"><a aria-hidden="true" tabindex="-1" href="#浮点数"><span class="icon icon-link"></span></a>浮点数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">.</span><span class="token number">32</span><span class="token punctuation">;</span>
+</span><span class="code-line">  y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">.</span><span class="token number">45</span><span class="token punctuation">;</span>
+</span><span class="code-line">  scientific <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">.</span>23e<span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">;</span>    <span class="token comment"># 科学记数法</span>
+</span><span class="code-line">  inf <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token number">0</span> <span class="token url">/</span> <span class="token number">0</span><span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">;</span>         <span class="token comment"># 无穷大</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="布尔值"><a aria-hidden="true" tabindex="-1" href="#布尔值"><span class="icon icon-link"></span></a>布尔值</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">  y <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 布尔运算</span>
+</span><span class="code-line">  and_result <span class="token operator">=</span> <span class="token boolean">true</span> <span class="token operator">&#x26;&#x26;</span> <span class="token boolean">false</span><span class="token punctuation">;</span>   <span class="token comment"># false</span>
+</span><span class="code-line">  or_result <span class="token operator">=</span> <span class="token boolean">true</span> <span class="token operator">||</span> <span class="token boolean">false</span><span class="token punctuation">;</span>    <span class="token comment"># true</span>
+</span><span class="code-line">  not_result <span class="token operator">=</span> <span class="token operator">!</span><span class="token boolean">true</span><span class="token punctuation">;</span>           <span class="token comment"># false</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="空值"><a aria-hidden="true" tabindex="-1" href="#空值"><span class="icon icon-link"></span></a>空值</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># null 表示缺失值</span>
+</span><span class="code-line">  <span class="token comment"># 类似于其他语言的 None 或 undefined</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="路径"><a aria-hidden="true" tabindex="-1" href="#路径"><span class="icon icon-link"></span></a>路径</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  absolute <span class="token operator">=</span> <span class="token url">/usr/bin/env</span><span class="token punctuation">;</span>      <span class="token comment"># 绝对路径</span>
+</span><span class="code-line">  relative <span class="token operator">=</span> <span class="token url">./config.nix</span><span class="token punctuation">;</span>      <span class="token comment"># 相对路径</span>
+</span><span class="code-line">  home <span class="token operator">=</span> <span class="token url">~/Documents</span><span class="token punctuation">;</span>           <span class="token comment"># 家目录路径</span>
+</span><span class="code-line">  <span class="token comment"># 路径会在构建时自动复制到 Nix store</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="属性集"><a aria-hidden="true" tabindex="-1" href="#属性集"><span class="icon icon-link"></span></a>属性集</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    name <span class="token operator">=</span> <span class="token string">"张三"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    age <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
+</span><span class="code-line">    address <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      city <span class="token operator">=</span> <span class="token string">"北京"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      district <span class="token operator">=</span> <span class="token string">"朝阳区"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  y <span class="token operator">=</span> <span class="token punctuation">{</span> c <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 递归属性集</span>
+</span><span class="code-line">  rec_set <span class="token operator">=</span> rec <span class="token punctuation">{</span>
+</span><span class="code-line">    x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">    y <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>    <span class="token comment"># 可以引用同级属性</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+<p>参见 <a href="#%E5%B1%9E%E6%80%A7%E9%9B%86">属性集操作</a></p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="列表"><a aria-hidden="true" tabindex="-1" href="#列表"><span class="icon icon-link"></span></a>列表</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  numbers <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  mixed <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token number">1</span>
+</span><span class="code-line">    <span class="token string">"这是字符串"</span>
+</span><span class="code-line">    <span class="token number">23</span><span class="token punctuation">.</span><span class="token number">0</span>
+</span><span class="code-line">    <span class="token keyword">null</span>
+</span><span class="code-line">    <span class="token punctuation">{</span> name <span class="token operator">=</span> <span class="token string">"属性集"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 列表可以包含任意类型的元素</span>
+</span><span class="code-line">  nested <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token punctuation">]</span> <span class="token punctuation">[</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="注释"><a aria-hidden="true" tabindex="-1" href="#注释"><span class="icon icon-link"></span></a>注释</h3><div class="wrap-body">
+<h4 id="-单行注释"><a aria-hidden="true" tabindex="-1" href="#-单行注释"><span class="icon icon-link"></span></a>↓ 单行注释</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token comment"># 这是单行注释</span>
+</span><span class="code-line"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token keyword">in</span> x  <span class="token comment"># 行末注释</span>
+</span></code></pre>
+<h4 id="-多行注释"><a aria-hidden="true" tabindex="-1" href="#-多行注释"><span class="icon icon-link"></span></a>↓ 多行注释</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token comment">/*
+</span></span><span class="code-line"><span class="token comment">  这是多行注释
+</span></span><span class="code-line"><span class="token comment">  可以跨越多行
+</span></span><span class="code-line"><span class="token comment">  /* 可以嵌套 */</span>
+</span><span class="code-line">*<span class="token url">/</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="作用域管理"><a aria-hidden="true" tabindex="-1" href="#作用域管理"><span class="icon icon-link"></span></a>作用域管理</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="定义局部变量"><a aria-hidden="true" tabindex="-1" href="#定义局部变量"><span class="icon icon-link"></span></a>定义局部变量</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">  y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+</span><span class="code-line">  z <span class="token operator">=</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>    <span class="token comment"># 可以引用前面定义的变量</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  x <span class="token operator">+</span> y <span class="token operator">+</span> z     <span class="token comment"># 返回 6</span>
+</span></code></pre>
+<h4 id="嵌套-let-表达式"><a aria-hidden="true" tabindex="-1" href="#嵌套-let-表达式"><span class="icon icon-link"></span></a>嵌套 let 表达式</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  outer <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token keyword">let</span>
+</span><span class="code-line">    inner <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword">in</span>
+</span><span class="code-line">    outer <span class="token operator">+</span> inner   <span class="token comment"># 返回 15</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="将变量添加到作用域"><a aria-hidden="true" tabindex="-1" href="#将变量添加到作用域"><span class="icon icon-link"></span></a>将变量添加到作用域</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">  y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> x y<span class="token punctuation">;</span> <span class="token punctuation">}</span>    <span class="token comment"># 继承多个变量</span>
+</span></code></pre>
+<h4 id="-等价于"><a aria-hidden="true" tabindex="-1" href="#-等价于"><span class="icon icon-link"></span></a>↓ 等价于</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">  y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> x <span class="token operator">=</span> x<span class="token punctuation">;</span> y <span class="token operator">=</span> y<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="从属性集继承属性"><a aria-hidden="true" tabindex="-1" href="#从属性集继承属性"><span class="icon icon-link"></span></a>从属性集继承属性</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token punctuation">{</span> 
+</span><span class="code-line">    host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span> 
+</span><span class="code-line">    port <span class="token operator">=</span> <span class="token number">8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">    ssl <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> 
+</span><span class="code-line">    <span class="token keyword">inherit</span> <span class="token punctuation">(</span>config<span class="token punctuation">)</span> host port<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># 只继承特定属性</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="-等价于-1"><a aria-hidden="true" tabindex="-1" href="#-等价于-1"><span class="icon icon-link"></span></a>↓ 等价于</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token punctuation">{</span> 
+</span><span class="code-line">    host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span> 
+</span><span class="code-line">    port <span class="token operator">=</span> <span class="token number">8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">    ssl <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> 
+</span><span class="code-line">    host <span class="token operator">=</span> config<span class="token punctuation">.</span>host<span class="token punctuation">;</span> 
+</span><span class="code-line">    port <span class="token operator">=</span> config<span class="token punctuation">.</span>port<span class="token punctuation">;</span> 
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="将所有属性引入作用域"><a aria-hidden="true" tabindex="-1" href="#将所有属性引入作用域"><span class="icon icon-link"></span></a>将所有属性引入作用域</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token punctuation">{</span> 
+</span><span class="code-line">    host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span> 
+</span><span class="code-line">    port <span class="token operator">=</span> <span class="token number">8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">    database <span class="token operator">=</span> <span class="token string">"myapp"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token keyword">with</span> config<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token string">"<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>host<span class="token punctuation">}</span></span>:<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token function">toString</span> port<span class="token punctuation">}</span></span>/<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>database<span class="token punctuation">}</span></span>"</span>    <span class="token comment"># 返回 "localhost:8080/myapp"</span>
+</span></code></pre>
+<h4 id="注意事项"><a aria-hidden="true" tabindex="-1" href="#注意事项"><span class="icon icon-link"></span></a>注意事项</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">  attrs <span class="token operator">=</span> <span class="token punctuation">{</span> x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> y <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token keyword">with</span> attrs<span class="token punctuation">;</span>
+</span><span class="code-line">  x <span class="token operator">+</span> y    <span class="token comment"># x = 1 (局部变量优先级更高), y = 3</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="条件表达式"><a aria-hidden="true" tabindex="-1" href="#条件表达式"><span class="icon icon-link"></span></a>条件表达式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="基本条件表达式"><a aria-hidden="true" tabindex="-1" href="#基本条件表达式"><span class="icon icon-link"></span></a>基本条件表达式</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+</span><span class="code-line">  result <span class="token operator">=</span> <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">0</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token string">"正数"</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token keyword">if</span> x <span class="token operator">&#x3C;</span> <span class="token number">0</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token string">"负数"</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token string">"零"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  result
+</span></code></pre>
+<h4 id="布尔条件判断"><a aria-hidden="true" tabindex="-1" href="#布尔条件判断"><span class="icon icon-link"></span></a>布尔条件判断</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  isEnabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token keyword">if</span> isEnabled
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token punctuation">{</span> port <span class="token operator">=</span> <span class="token number">8080</span><span class="token punctuation">;</span> debug <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token punctuation">{</span> port <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span> debug <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  config
+</span></code></pre>
+<h4 id="字符串条件判断"><a aria-hidden="true" tabindex="-1" href="#字符串条件判断"><span class="icon icon-link"></span></a>字符串条件判断</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  env <span class="token operator">=</span> <span class="token string">"production"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  database <span class="token operator">=</span> <span class="token keyword">if</span> env <span class="token operator">==</span> <span class="token string">"production"</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token string">"prod-db.example.com"</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token keyword">if</span> env <span class="token operator">==</span> <span class="token string">"staging"</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token string">"staging-db.example.com"</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  database
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="复杂条件判断"><a aria-hidden="true" tabindex="-1" href="#复杂条件判断"><span class="icon icon-link"></span></a>复杂条件判断</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  user <span class="token operator">=</span> <span class="token punctuation">{</span> name <span class="token operator">=</span> <span class="token string">"张三"</span><span class="token punctuation">;</span> age <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span> isAdmin <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  message <span class="token operator">=</span> <span class="token keyword">if</span> user<span class="token punctuation">.</span>isAdmin <span class="token operator">&#x26;&#x26;</span> user<span class="token punctuation">.</span>age <span class="token operator">>=</span> <span class="token number">18</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token string">"管理员用户: <span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>user<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span>"</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token string">"普通用户: <span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>user<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span>"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  message
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="条件表达式中的属性集"><a aria-hidden="true" tabindex="-1" href="#条件表达式中的属性集"><span class="icon icon-link"></span></a>条件表达式中的属性集</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  env <span class="token operator">=</span> <span class="token string">"production"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token keyword">if</span> env <span class="token operator">==</span> <span class="token string">"development"</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      debug <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">      logLevel <span class="token operator">=</span> <span class="token string">"debug"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      database<span class="token punctuation">.</span>host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      debug <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line">      logLevel <span class="token operator">=</span> <span class="token string">"info"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      database<span class="token punctuation">.</span>host <span class="token operator">=</span> <span class="token string">"prod-db.example.com"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  config
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="属性集-1"><a aria-hidden="true" tabindex="-1" href="#属性集-1"><span class="icon icon-link"></span></a>属性集</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="定义属性集"><a aria-hidden="true" tabindex="-1" href="#定义属性集"><span class="icon icon-link"></span></a>定义属性集</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  person <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    name <span class="token operator">=</span> <span class="token string">"李四"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    age <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
+</span><span class="code-line">    skills <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token string">"编程"</span> <span class="token string">"设计"</span> <span class="token string">"管理"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">    contact <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      email <span class="token operator">=</span> <span class="token string">"lisi@example.com"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      phone <span class="token operator">=</span> <span class="token string">"138-0000-0000"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  person
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="动态属性名"><a aria-hidden="true" tabindex="-1" href="#动态属性名"><span class="icon icon-link"></span></a>动态属性名</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  key <span class="token operator">=</span> <span class="token string">"dynamicKey"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  attrs <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token antiquotation important">$</span><span class="token punctuation">{</span>key<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token string">"动态值"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token string">"static-key"</span> <span class="token operator">=</span> <span class="token string">"静态值"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  attrs    <span class="token comment"># { dynamicKey = "动态值"; static-key = "静态值"; }</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="更新属性集"><a aria-hidden="true" tabindex="-1" href="#更新属性集"><span class="icon icon-link"></span></a>更新属性集</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  base <span class="token operator">=</span> <span class="token punctuation">{</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  updated <span class="token operator">=</span> base <span class="token operator">//</span> <span class="token punctuation">{</span> y <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> z <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>   <span class="token comment"># 合并属性集</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  updated    <span class="token comment"># { x = 1; y = 3; z = 4; }</span>
+</span></code></pre>
+<h4 id="深度合并"><a aria-hidden="true" tabindex="-1" href="#深度合并"><span class="icon icon-link"></span></a>深度合并</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  config1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    server <span class="token operator">=</span> <span class="token punctuation">{</span> host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span> port <span class="token operator">=</span> <span class="token number">8080</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">    database <span class="token operator">=</span> <span class="token punctuation">{</span> name <span class="token operator">=</span> <span class="token string">"test"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  config2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    server <span class="token operator">=</span> <span class="token punctuation">{</span> port <span class="token operator">=</span> <span class="token number">9000</span><span class="token punctuation">;</span> ssl <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">    cache <span class="token operator">=</span> <span class="token punctuation">{</span> enabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 注意：// 操作符只进行浅合并</span>
+</span><span class="code-line">  merged <span class="token operator">=</span> config1 <span class="token operator">//</span> config2<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># server 属性会被完全替换，而不是深度合并</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  merged
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="检查属性是否存在"><a aria-hidden="true" tabindex="-1" href="#检查属性是否存在"><span class="icon icon-link"></span></a>检查属性是否存在</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  person <span class="token operator">=</span> <span class="token punctuation">{</span> name <span class="token operator">=</span> <span class="token string">"王五"</span><span class="token punctuation">;</span> age <span class="token operator">=</span> <span class="token number">28</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    hasName <span class="token operator">=</span> person <span class="token operator">?</span> name<span class="token punctuation">;</span>      <span class="token comment"># true</span>
+</span><span class="code-line">    hasEmail <span class="token operator">=</span> person <span class="token operator">?</span> email<span class="token punctuation">;</span>    <span class="token comment"># false</span>
+</span><span class="code-line">    hasNested <span class="token operator">=</span> person <span class="token operator">?</span> contact<span class="token punctuation">.</span>email<span class="token punctuation">;</span>  <span class="token comment"># false (嵌套检查)</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="访问属性"><a aria-hidden="true" tabindex="-1" href="#访问属性"><span class="icon icon-link"></span></a>访问属性</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    server <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      port <span class="token operator">=</span> <span class="token number">8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    host <span class="token operator">=</span> config<span class="token punctuation">.</span>server<span class="token punctuation">.</span>host<span class="token punctuation">;</span>     <span class="token comment"># 访问嵌套属性</span>
+</span><span class="code-line">    port <span class="token operator">=</span> config<span class="token punctuation">.</span>server<span class="token punctuation">.</span>port<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="可选属性访问"><a aria-hidden="true" tabindex="-1" href="#可选属性访问"><span class="icon icon-link"></span></a>可选属性访问</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token punctuation">{</span> server <span class="token operator">=</span> <span class="token punctuation">{</span> host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    port <span class="token operator">=</span> config<span class="token punctuation">.</span>server<span class="token punctuation">.</span>port <span class="token keyword">or</span> <span class="token number">3000</span><span class="token punctuation">;</span>        <span class="token comment"># 如果不存在则使用默认值</span>
+</span><span class="code-line">    timeout <span class="token operator">=</span> config<span class="token punctuation">.</span>timeout <span class="token keyword">or</span> <span class="token number">30</span><span class="token punctuation">;</span>           <span class="token comment"># 30</span>
+</span><span class="code-line">    ssl <span class="token operator">=</span> config<span class="token punctuation">.</span>server<span class="token punctuation">.</span>ssl <span class="token keyword">or</span> <span class="token boolean">false</span><span class="token punctuation">;</span>         <span class="token comment"># false</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="连接与插值"><a aria-hidden="true" tabindex="-1" href="#连接与插值"><span class="icon icon-link"></span></a>连接与插值</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="连接列表"><a aria-hidden="true" tabindex="-1" href="#连接列表"><span class="icon icon-link"></span></a>连接列表</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  list1 <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  list2 <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  combined <span class="token operator">=</span> list1 <span class="token operator">++</span> list2<span class="token punctuation">;</span>     <span class="token comment"># [ 1 2 3 4 5 6 ]</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 多个列表连接</span>
+</span><span class="code-line">  <span class="token function">all</span> <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">++</span> list1 <span class="token operator">++</span> list2 <span class="token operator">++</span> <span class="token punctuation">[</span> <span class="token number">7</span> <span class="token number">8</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token function">all</span>    <span class="token comment"># [ 0 1 2 3 4 5 6 7 8 ]</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="连接路径与字符串"><a aria-hidden="true" tabindex="-1" href="#连接路径与字符串"><span class="icon icon-link"></span></a>连接路径与字符串</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  base <span class="token operator">=</span> <span class="token url">/usr/bin</span><span class="token punctuation">;</span>
+</span><span class="code-line">  executable <span class="token operator">=</span> base <span class="token operator">+</span> <span class="token url">/python3</span><span class="token punctuation">;</span>           <span class="token comment"># /usr/bin/python3</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 路径与字符串连接</span>
+</span><span class="code-line">  config_path <span class="token operator">=</span> <span class="token url">/etc</span> <span class="token operator">+</span> <span class="token string">"/nginx/nginx.conf"</span><span class="token punctuation">;</span>   <span class="token comment"># /etc/nginx/nginx.conf</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 字符串连接</span>
+</span><span class="code-line">  greeting <span class="token operator">=</span> <span class="token string">"你好"</span> <span class="token operator">+</span> <span class="token string">"，世界！"</span><span class="token punctuation">;</span>            <span class="token comment"># "你好，世界！"</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> executable config_path greeting<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字符串插值-1"><a aria-hidden="true" tabindex="-1" href="#字符串插值-1"><span class="icon icon-link"></span></a>字符串插值</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  name <span class="token operator">=</span> <span class="token string">"张三"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  age <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
+</span><span class="code-line">  score <span class="token operator">=</span> <span class="token number">95</span><span class="token punctuation">.</span><span class="token number">5</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    greeting <span class="token operator">=</span> <span class="token string">"你好，<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span>！"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    info <span class="token operator">=</span> <span class="token string">"姓名：<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span>，年龄：<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token function">toString</span> age<span class="token punctuation">}</span></span>"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    result <span class="token operator">=</span> <span class="token string">"考试成绩：<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token function">toString</span> score<span class="token punctuation">}</span></span>分"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 复杂表达式插值</span>
+</span><span class="code-line">    status <span class="token operator">=</span> <span class="token string">"用户 <span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span> ${if age >= 18 then "</span>已成年<span class="token string">" else "</span>未成年<span class="token string">"}"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 路径插值</span>
+</span><span class="code-line">    config_file <span class="token operator">=</span> <span class="token string">"<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token url">./configs</span><span class="token punctuation">}</span></span>/<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span>.conf"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="函数"><a aria-hidden="true" tabindex="-1" href="#函数"><span class="icon icon-link"></span></a>函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="简单函数"><a aria-hidden="true" tabindex="-1" href="#简单函数"><span class="icon icon-link"></span></a>简单函数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 单参数函数</span>
+</span><span class="code-line">  increment <span class="token operator">=</span> x<span class="token punctuation">:</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">  double <span class="token operator">=</span> x<span class="token punctuation">:</span> x * <span class="token number">2</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 使用函数</span>
+</span><span class="code-line">  result1 <span class="token operator">=</span> increment <span class="token number">5</span><span class="token punctuation">;</span>    <span class="token comment"># 6</span>
+</span><span class="code-line">  result2 <span class="token operator">=</span> double <span class="token number">3</span><span class="token punctuation">;</span>       <span class="token comment"># 6</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> result1 result2<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist col-span-2 row-span-4"><div class="wrap-header h3wrap"><h3 id="命名参数"><a aria-hidden="true" tabindex="-1" href="#命名参数"><span class="icon icon-link"></span></a>命名参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-4-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 基本命名参数</span>
+</span><span class="code-line">  createUser <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> email<span class="token punctuation">}</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">inherit</span> name age email<span class="token punctuation">;</span>
+</span><span class="code-line">    id <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">hashString</span> <span class="token string">"md5"</span> email<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  user <span class="token operator">=</span> createUser <span class="token punctuation">{</span>
+</span><span class="code-line">    name <span class="token operator">=</span> <span class="token string">"张三"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    age <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
+</span><span class="code-line">    email <span class="token operator">=</span> <span class="token string">"zhangsan@example.com"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  user
+</span></code></pre>
+<h4 id="忽略额外参数"><a aria-hidden="true" tabindex="-1" href="#忽略额外参数"><span class="icon icon-link"></span></a>忽略额外参数</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 使用 ... 忽略额外的参数</span>
+</span><span class="code-line">  processConfig <span class="token operator">=</span> <span class="token punctuation">{</span>host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    url <span class="token operator">=</span> <span class="token string">"<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>host<span class="token punctuation">}</span></span>:<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token function">toString</span> port<span class="token punctuation">}</span></span>"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  result <span class="token operator">=</span> processConfig <span class="token punctuation">{</span>
+</span><span class="code-line">    host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    port <span class="token operator">=</span> <span class="token number">8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">    ssl <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token comment"># 会被忽略</span>
+</span><span class="code-line">    timeout <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>      <span class="token comment"># 会被忽略</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  result    <span class="token comment"># { url = "localhost:8080"; }</span>
+</span></code></pre>
+<h4 id="默认参数值"><a aria-hidden="true" tabindex="-1" href="#默认参数值"><span class="icon icon-link"></span></a>默认参数值</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 为参数提供默认值</span>
+</span><span class="code-line">  createServer <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    host <span class="token operator">?</span> <span class="token string">"localhost"</span><span class="token punctuation">,</span> 
+</span><span class="code-line">    port <span class="token operator">?</span> <span class="token number">8080</span><span class="token punctuation">,</span> 
+</span><span class="code-line">    ssl <span class="token operator">?</span> <span class="token boolean">false</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">inherit</span> host port ssl<span class="token punctuation">;</span>
+</span><span class="code-line">    url <span class="token operator">=</span> 
+</span><span class="code-line">      <span class="token keyword">let</span> proto <span class="token operator">=</span> <span class="token keyword">if</span> ssl <span class="token keyword">then</span> <span class="token string">"https"</span> <span class="token keyword">else</span> <span class="token string">"http"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token keyword">in</span> <span class="token string">"<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>proto<span class="token punctuation">}</span></span>://<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>host<span class="token punctuation">}</span></span>:<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token function">toString</span> port<span class="token punctuation">}</span></span>"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 使用所有默认值</span>
+</span><span class="code-line">  server1 <span class="token operator">=</span> createServer <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 只覆盖 port  </span>
+</span><span class="code-line">  server2 <span class="token operator">=</span> createServer <span class="token punctuation">{</span>port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token comment"># 覆盖多个参数</span>
+</span><span class="code-line">  server3 <span class="token operator">=</span> createServer <span class="token punctuation">{</span>                      
+</span><span class="code-line">    host <span class="token operator">=</span> <span class="token string">"example.com"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    port <span class="token operator">=</span> <span class="token number">443</span><span class="token punctuation">;</span>
+</span><span class="code-line">    ssl <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> server1 server2 server3<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="绑定到变量"><a aria-hidden="true" tabindex="-1" href="#绑定到变量"><span class="icon icon-link"></span></a>绑定到变量</h4>
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 将整个参数集绑定到变量，同时解构部分参数</span>
+</span><span class="code-line">  logMessage <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    level<span class="token punctuation">,</span> 
+</span><span class="code-line">    message<span class="token punctuation">,</span> 
+</span><span class="code-line">    timestamp <span class="token operator">?</span> <span class="token keyword">null</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token operator">@</span>args<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    formatted <span class="token operator">=</span> <span class="token string">"[<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>level<span class="token punctuation">}</span></span>] <span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>message<span class="token punctuation">}</span></span>"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    raw <span class="token operator">=</span> args<span class="token punctuation">;</span>  <span class="token comment"># 保留原始参数集</span>
+</span><span class="code-line">    hasTimestamp <span class="token operator">=</span> 
+</span><span class="code-line">      args <span class="token operator">?</span> timestamp <span class="token operator">&#x26;&#x26;</span> timestamp <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  log <span class="token operator">=</span> logMessage <span class="token punctuation">{</span>
+</span><span class="code-line">    level <span class="token operator">=</span> <span class="token string">"INFO"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    message <span class="token operator">=</span> <span class="token string">"服务器启动成功"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    user <span class="token operator">=</span> <span class="token string">"admin"</span><span class="token punctuation">;</span>  <span class="token comment"># 额外参数也会保存在 args 中</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  log
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="多参数函数"><a aria-hidden="true" tabindex="-1" href="#多参数函数"><span class="icon icon-link"></span></a>多参数函数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 柯里化函数</span>
+</span><span class="code-line">  <span class="token function">add</span> <span class="token operator">=</span> x<span class="token punctuation">:</span> y<span class="token punctuation">:</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+</span><span class="code-line">  multiply <span class="token operator">=</span> x<span class="token punctuation">:</span> y<span class="token punctuation">:</span> z<span class="token punctuation">:</span> x * y * z<span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 部分应用</span>
+</span><span class="code-line">  add10 <span class="token operator">=</span> <span class="token function">add</span> <span class="token number">10</span><span class="token punctuation">;</span>  <span class="token comment"># 等价于 y: 10 + y</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 使用示例</span>
+</span><span class="code-line">  result1 <span class="token operator">=</span> <span class="token function">add</span> <span class="token number">3</span> <span class="token number">4</span><span class="token punctuation">;</span>        <span class="token comment"># 7</span>
+</span><span class="code-line">  result2 <span class="token operator">=</span> add10 <span class="token number">5</span><span class="token punctuation">;</span>        <span class="token comment"># 15</span>
+</span><span class="code-line">  result3 <span class="token operator">=</span> multiply <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment"># 24</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> result1 result2 result3<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="高阶函数"><a aria-hidden="true" tabindex="-1" href="#高阶函数"><span class="icon icon-link"></span></a>高阶函数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 接受函数作为参数的高阶函数</span>
+</span><span class="code-line">  applyTwice <span class="token operator">=</span> f<span class="token punctuation">:</span> x<span class="token punctuation">:</span> f <span class="token punctuation">(</span>f x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 返回函数的高阶函数</span>
+</span><span class="code-line">  createMultiplier <span class="token operator">=</span> factor<span class="token punctuation">:</span> x<span class="token punctuation">:</span> x * factor<span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 函数组合</span>
+</span><span class="code-line">  compose <span class="token operator">=</span> f<span class="token punctuation">:</span> g<span class="token punctuation">:</span> x<span class="token punctuation">:</span> f <span class="token punctuation">(</span>g x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 使用示例</span>
+</span><span class="code-line">  double <span class="token operator">=</span> x<span class="token punctuation">:</span> x * <span class="token number">2</span><span class="token punctuation">;</span>
+</span><span class="code-line">  increment <span class="token operator">=</span> x<span class="token punctuation">:</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  result1 <span class="token operator">=</span> applyTwice double <span class="token number">3</span><span class="token punctuation">;</span>    <span class="token comment"># 12</span>
+</span><span class="code-line">  triple <span class="token operator">=</span> createMultiplier <span class="token number">3</span><span class="token punctuation">;</span>
+</span><span class="code-line">  result2 <span class="token operator">=</span> triple <span class="token number">5</span><span class="token punctuation">;</span>               <span class="token comment"># 15</span>
+</span><span class="code-line">  doubleAndIncrement <span class="token operator">=</span> 
+</span><span class="code-line">    compose increment double<span class="token punctuation">;</span>
+</span><span class="code-line">  result3 <span class="token operator">=</span> doubleAndIncrement <span class="token number">4</span><span class="token punctuation">;</span>   <span class="token comment"># 9</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> result1 result2 result3<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="递归函数"><a aria-hidden="true" tabindex="-1" href="#递归函数"><span class="icon icon-link"></span></a>递归函数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 计算阶乘</span>
+</span><span class="code-line">  factorial <span class="token operator">=</span> n<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> n <span class="token operator">&#x3C;=</span> <span class="token number">1</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token number">1</span>
+</span><span class="code-line">    <span class="token keyword">else</span> n * factorial <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 斐波那契数列</span>
+</span><span class="code-line">  fibonacci <span class="token operator">=</span> n<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> n <span class="token operator">&#x3C;=</span> <span class="token number">1</span>
+</span><span class="code-line">    <span class="token keyword">then</span> n
+</span><span class="code-line">    <span class="token keyword">else</span> fibonacci <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibonacci <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 列表长度计算</span>
+</span><span class="code-line">  listLength <span class="token operator">=</span> list<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> list <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token number">0</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token number">1</span> <span class="token operator">+</span> listLength <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">tail</span> list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 使用示例</span>
+</span><span class="code-line">  fact5 <span class="token operator">=</span> factorial <span class="token number">5</span><span class="token punctuation">;</span>        <span class="token comment"># 120</span>
+</span><span class="code-line">  fib7 <span class="token operator">=</span> fibonacci <span class="token number">7</span><span class="token punctuation">;</span>         <span class="token comment"># 13</span>
+</span><span class="code-line">  len <span class="token operator">=</span> listLength <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment"># 4</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> fact5 fib7 len<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="条件函数"><a aria-hidden="true" tabindex="-1" href="#条件函数"><span class="icon icon-link"></span></a>条件函数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">```nix
+</span><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 根据条件选择不同的处理函数</span>
+</span><span class="code-line">  processData <span class="token operator">=</span> condition<span class="token punctuation">:</span> data<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">let</span>
+</span><span class="code-line">      uppercaseProcessor <span class="token operator">=</span> str<span class="token punctuation">:</span> 
+</span><span class="code-line">        <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">replaceStrings</span> 
+</span><span class="code-line">          <span class="token punctuation">[</span><span class="token string">"a"</span> <span class="token string">"e"</span> <span class="token string">"i"</span> <span class="token string">"o"</span> <span class="token string">"u"</span><span class="token punctuation">]</span> 
+</span><span class="code-line">          <span class="token punctuation">[</span><span class="token string">"A"</span> <span class="token string">"E"</span> <span class="token string">"I"</span> <span class="token string">"O"</span> <span class="token string">"U"</span><span class="token punctuation">]</span> str<span class="token punctuation">;</span>
+</span><span class="code-line">      
+</span><span class="code-line">      lengthProcessor <span class="token operator">=</span> str<span class="token punctuation">:</span> 
+</span><span class="code-line">        <span class="token function">toString</span> <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">stringLength</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">      
+</span><span class="code-line">      reverseProcessor <span class="token operator">=</span> str<span class="token punctuation">:</span> 
+</span><span class="code-line">        <span class="token keyword">let</span>
+</span><span class="code-line">          len <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">stringLength</span> str<span class="token punctuation">;</span>
+</span><span class="code-line">          chars <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">genList</span> 
+</span><span class="code-line">            <span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">substring</span> 
+</span><span class="code-line">              <span class="token punctuation">(</span>len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">)</span> <span class="token number">1</span> str<span class="token punctuation">)</span> len<span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token keyword">in</span>
+</span><span class="code-line">          <span class="token keyword">builtins</span><span class="token punctuation">.</span>concatStringsSep <span class="token string">""</span> chars<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">in</span>
+</span><span class="code-line">      <span class="token keyword">if</span> condition <span class="token operator">==</span> <span class="token string">"uppercase"</span>
+</span><span class="code-line">      <span class="token keyword">then</span> uppercaseProcessor data
+</span><span class="code-line">      <span class="token keyword">else</span> <span class="token keyword">if</span> condition <span class="token operator">==</span> <span class="token string">"length"</span>
+</span><span class="code-line">      <span class="token keyword">then</span> lengthProcessor data
+</span><span class="code-line">      <span class="token keyword">else</span> <span class="token keyword">if</span> condition <span class="token operator">==</span> <span class="token string">"reverse"</span>
+</span><span class="code-line">      <span class="token keyword">then</span> reverseProcessor data
+</span><span class="code-line">      <span class="token keyword">else</span> data<span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 使用示例</span>
+</span><span class="code-line">  text <span class="token operator">=</span> <span class="token string">"hello world"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  result1 <span class="token operator">=</span> processData <span class="token string">"uppercase"</span> text<span class="token punctuation">;</span>
+</span><span class="code-line">  result2 <span class="token operator">=</span> processData <span class="token string">"length"</span> text<span class="token punctuation">;</span>
+</span><span class="code-line">  result3 <span class="token operator">=</span> processData <span class="token string">"reverse"</span> text<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> result1 result2 result3<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数工厂"><a aria-hidden="true" tabindex="-1" href="#函数工厂"><span class="icon icon-link"></span></a>函数工厂</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 创建验证器函数的工厂</span>
+</span><span class="code-line">  createValidator <span class="token operator">=</span> rules<span class="token punctuation">:</span> value<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">let</span>
+</span><span class="code-line">      checkRule <span class="token operator">=</span> rule<span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">if</span> rule<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">"minLength"</span>
+</span><span class="code-line">        <span class="token keyword">then</span> 
+</span><span class="code-line">          <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">stringLength</span> value <span class="token operator">>=</span> rule<span class="token punctuation">.</span>value
+</span><span class="code-line">        <span class="token keyword">else</span> <span class="token keyword">if</span> rule<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">"maxLength"</span>
+</span><span class="code-line">        <span class="token keyword">then</span> 
+</span><span class="code-line">          <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">stringLength</span> value <span class="token operator">&#x3C;=</span> rule<span class="token punctuation">.</span>value
+</span><span class="code-line">        <span class="token keyword">else</span> <span class="token keyword">if</span> rule<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">"contains"</span>
+</span><span class="code-line">        <span class="token keyword">then</span> 
+</span><span class="code-line">          <span class="token keyword">builtins</span><span class="token punctuation">.</span>match <span class="token string">".*<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>rule<span class="token punctuation">.</span>value<span class="token punctuation">}</span></span>.*"</span> value 
+</span><span class="code-line">          <span class="token operator">!=</span> <span class="token keyword">null</span>
+</span><span class="code-line">        <span class="token keyword">else</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</span><span class="code-line">      
+</span><span class="code-line">      results <span class="token operator">=</span> <span class="token function">map</span> checkRule rules<span class="token punctuation">;</span>
+</span><span class="code-line">      allValid <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">all</span> <span class="token punctuation">(</span>x<span class="token punctuation">:</span> x<span class="token punctuation">)</span> results<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">in</span>
+</span><span class="code-line">      <span class="token punctuation">{</span> 
+</span><span class="code-line">        valid <span class="token operator">=</span> allValid<span class="token punctuation">;</span> 
+</span><span class="code-line">        value <span class="token operator">=</span> value<span class="token punctuation">;</span>
+</span><span class="code-line">        errors <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">filter</span> 
+</span><span class="code-line">          <span class="token punctuation">(</span>rule<span class="token punctuation">:</span> <span class="token operator">!</span>checkRule rule<span class="token punctuation">)</span> rules<span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 创建特定的验证器</span>
+</span><span class="code-line">  emailValidator <span class="token operator">=</span> createValidator <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span> type <span class="token operator">=</span> <span class="token string">"minLength"</span><span class="token punctuation">;</span> value <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">{</span> type <span class="token operator">=</span> <span class="token string">"contains"</span><span class="token punctuation">;</span> value <span class="token operator">=</span> <span class="token string">"@"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">{</span> type <span class="token operator">=</span> <span class="token string">"contains"</span><span class="token punctuation">;</span> value <span class="token operator">=</span> <span class="token string">"."</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  passwordValidator <span class="token operator">=</span> createValidator <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span> type <span class="token operator">=</span> <span class="token string">"minLength"</span><span class="token punctuation">;</span> value <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">{</span> type <span class="token operator">=</span> <span class="token string">"maxLength"</span><span class="token punctuation">;</span> value <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 使用示例</span>
+</span><span class="code-line">  email_result <span class="token operator">=</span> emailValidator <span class="token string">"user@example.com"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  password_result <span class="token operator">=</span> passwordValidator <span class="token string">"mypassword123"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> email_result password_result<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="函数式编程工具"><a aria-hidden="true" tabindex="-1" href="#函数式编程工具"><span class="icon icon-link"></span></a>函数式编程工具</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 映射函数</span>
+</span><span class="code-line">  mapList <span class="token operator">=</span> f<span class="token punctuation">:</span> list<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> list <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token keyword">else</span> 
+</span><span class="code-line">      <span class="token keyword">let</span> <span class="token function">head</span> <span class="token operator">=</span> f <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">head</span> list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">          <span class="token function">tail</span> <span class="token operator">=</span> mapList f <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">tail</span> list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token keyword">in</span> <span class="token punctuation">[</span> <span class="token function">head</span> <span class="token punctuation">]</span> <span class="token operator">++</span> <span class="token function">tail</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 过滤函数</span>
+</span><span class="code-line">  filterList <span class="token operator">=</span> predicate<span class="token punctuation">:</span> list<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> list <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token keyword">else</span>
+</span><span class="code-line">      <span class="token keyword">let</span>
+</span><span class="code-line">        <span class="token function">head</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">head</span> list<span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token function">tail</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">tail</span> list<span class="token punctuation">;</span>
+</span><span class="code-line">        filtered_tail <span class="token operator">=</span> 
+</span><span class="code-line">          filterList predicate <span class="token function">tail</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token keyword">in</span>
+</span><span class="code-line">        <span class="token keyword">if</span> predicate <span class="token function">head</span>
+</span><span class="code-line">        <span class="token keyword">then</span> <span class="token punctuation">[</span> <span class="token function">head</span> <span class="token punctuation">]</span> <span class="token operator">++</span> filtered_tail
+</span><span class="code-line">        <span class="token keyword">else</span> filtered_tail<span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 归约函数</span>
+</span><span class="code-line">  reduceList <span class="token operator">=</span> f<span class="token punctuation">:</span> initial<span class="token punctuation">:</span> list<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> list <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token keyword">then</span> initial
+</span><span class="code-line">    <span class="token keyword">else</span> 
+</span><span class="code-line">      <span class="token keyword">let</span> <span class="token function">head</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">head</span> list<span class="token punctuation">;</span>
+</span><span class="code-line">          <span class="token function">tail</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">tail</span> list<span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token keyword">in</span> reduceList f <span class="token punctuation">(</span>f initial <span class="token function">head</span><span class="token punctuation">)</span> <span class="token function">tail</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 使用示例</span>
+</span><span class="code-line">  numbers <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  doubled <span class="token operator">=</span> mapList <span class="token punctuation">(</span>x<span class="token punctuation">:</span> x * <span class="token number">2</span><span class="token punctuation">)</span> numbers<span class="token punctuation">;</span>
+</span><span class="code-line">  evens <span class="token operator">=</span> filterList <span class="token punctuation">(</span>x<span class="token punctuation">:</span> x mod <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> numbers<span class="token punctuation">;</span>
+</span><span class="code-line">  sum <span class="token operator">=</span> reduceList <span class="token punctuation">(</span>acc<span class="token punctuation">:</span> x<span class="token punctuation">:</span> acc <span class="token operator">+</span> x<span class="token punctuation">)</span> <span class="token number">0</span> numbers<span class="token punctuation">;</span>
+</span><span class="code-line">  product <span class="token operator">=</span> reduceList <span class="token punctuation">(</span>acc<span class="token punctuation">:</span> x<span class="token punctuation">:</span> acc * x<span class="token punctuation">)</span> <span class="token number">1</span> numbers<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> doubled evens sum product<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="内置函数"><a aria-hidden="true" tabindex="-1" href="#内置函数"><span class="icon icon-link"></span></a>内置函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="类型检查函数"><a aria-hidden="true" tabindex="-1" href="#类型检查函数"><span class="icon icon-link"></span></a>类型检查函数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  value <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">isString</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isString</span> value<span class="token punctuation">;</span>      
+</span><span class="code-line">          <span class="token comment"># true</span>
+</span><span class="code-line">    <span class="token function">isInt</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isInt</span> value<span class="token punctuation">;</span>            
+</span><span class="code-line">          <span class="token comment"># false</span>
+</span><span class="code-line">    <span class="token function">isBool</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isBool</span> <span class="token boolean">true</span><span class="token punctuation">;</span>           
+</span><span class="code-line">          <span class="token comment"># true</span>
+</span><span class="code-line">    <span class="token function">isList</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isList</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        
+</span><span class="code-line">          <span class="token comment"># true</span>
+</span><span class="code-line">    <span class="token function">isAttrs</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isAttrs</span> <span class="token punctuation">{</span>x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>     
+</span><span class="code-line">          <span class="token comment"># true</span>
+</span><span class="code-line">    <span class="token function">isFunction</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isFunction</span> <span class="token punctuation">(</span>x<span class="token punctuation">:</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</span><span class="code-line">          <span class="token comment"># true</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="字符串操作函数"><a aria-hidden="true" tabindex="-1" href="#字符串操作函数"><span class="icon icon-link"></span></a>字符串操作函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  text <span class="token operator">=</span> <span class="token string">"Hello, Nix World!"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">length</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">stringLength</span> text<span class="token punctuation">;</span>     <span class="token comment"># 18</span>
+</span><span class="code-line">    <span class="token function">substring</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">substring</span> <span class="token number">7</span> <span class="token number">3</span> text<span class="token punctuation">;</span> <span class="token comment"># "Nix"</span>
+</span><span class="code-line">    split <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span>split <span class="token string">" "</span> text<span class="token punctuation">;</span>         <span class="token comment"># 分割字符串</span>
+</span><span class="code-line">    replace <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">replaceStrings</span> <span class="token punctuation">[</span><span class="token string">"Nix"</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token string">"世界"</span><span class="token punctuation">]</span> text<span class="token punctuation">;</span>  <span class="token comment"># "Hello, 世界 World!"</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 大小写转换需要自定义实现</span>
+</span><span class="code-line">    toLower <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">replaceStrings</span> 
+</span><span class="code-line">      <span class="token punctuation">[</span><span class="token string">"A"</span> <span class="token string">"B"</span> <span class="token string">"C"</span> <span class="token string">"D"</span> <span class="token string">"E"</span> <span class="token string">"F"</span> <span class="token string">"G"</span> <span class="token string">"H"</span> <span class="token string">"I"</span> <span class="token string">"J"</span> <span class="token string">"K"</span> <span class="token string">"L"</span> <span class="token string">"M"</span> 
+</span><span class="code-line">       <span class="token string">"N"</span> <span class="token string">"O"</span> <span class="token string">"P"</span> <span class="token string">"Q"</span> <span class="token string">"R"</span> <span class="token string">"S"</span> <span class="token string">"T"</span> <span class="token string">"U"</span> <span class="token string">"V"</span> <span class="token string">"W"</span> <span class="token string">"X"</span> <span class="token string">"Y"</span> <span class="token string">"Z"</span><span class="token punctuation">]</span>
+</span><span class="code-line">      <span class="token punctuation">[</span><span class="token string">"a"</span> <span class="token string">"b"</span> <span class="token string">"c"</span> <span class="token string">"d"</span> <span class="token string">"e"</span> <span class="token string">"f"</span> <span class="token string">"g"</span> <span class="token string">"h"</span> <span class="token string">"i"</span> <span class="token string">"j"</span> <span class="token string">"k"</span> <span class="token string">"l"</span> <span class="token string">"m"</span> 
+</span><span class="code-line">       <span class="token string">"n"</span> <span class="token string">"o"</span> <span class="token string">"p"</span> <span class="token string">"q"</span> <span class="token string">"r"</span> <span class="token string">"s"</span> <span class="token string">"t"</span> <span class="token string">"u"</span> <span class="token string">"v"</span> <span class="token string">"w"</span> <span class="token string">"x"</span> <span class="token string">"y"</span> <span class="token string">"z"</span><span class="token punctuation">]</span> 
+</span><span class="code-line">      <span class="token string">"HELLO"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="列表操作函数"><a aria-hidden="true" tabindex="-1" href="#列表操作函数"><span class="icon icon-link"></span></a>列表操作函数</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  strings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"apple"</span> <span class="token string">"banana"</span> <span class="token string">"cherry"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token function">length</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">length</span> numbers<span class="token punctuation">;</span>        <span class="token comment"># 5</span>
+</span><span class="code-line">    <span class="token function">head</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">head</span> numbers<span class="token punctuation">;</span>            <span class="token comment"># 1</span>
+</span><span class="code-line">    <span class="token function">tail</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">tail</span> numbers<span class="token punctuation">;</span>            <span class="token comment"># [2 3 4 5]</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 映射函数</span>
+</span><span class="code-line">    doubled <span class="token operator">=</span> <span class="token function">map</span> <span class="token punctuation">(</span>x<span class="token punctuation">:</span> x * <span class="token number">2</span><span class="token punctuation">)</span> numbers<span class="token punctuation">;</span>        <span class="token comment"># [2 4 6 8 10]</span>
+</span><span class="code-line">    <span class="token comment"># 过滤函数</span>
+</span><span class="code-line">    evens <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">filter</span> <span class="token punctuation">(</span>x<span class="token punctuation">:</span> x mod <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> numbers<span class="token punctuation">;</span>  <span class="token comment"># [2 4]</span>
+</span><span class="code-line">    <span class="token comment"># 折叠函数</span>
+</span><span class="code-line">    sum <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">foldl'</span> <span class="token punctuation">(</span>acc<span class="token punctuation">:</span> x<span class="token punctuation">:</span> acc <span class="token operator">+</span> x<span class="token punctuation">)</span> <span class="token number">0</span> numbers<span class="token punctuation">;</span>  <span class="token comment"># 15</span>
+</span><span class="code-line">    <span class="token comment"># 元素查找</span>
+</span><span class="code-line">    hasThree <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">elem</span> <span class="token number">3</span> numbers<span class="token punctuation">;</span>      <span class="token comment"># true</span>
+</span><span class="code-line">    <span class="token comment"># 排序</span>
+</span><span class="code-line">    sorted <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">sort</span> <span class="token punctuation">(</span>a<span class="token punctuation">:</span> b<span class="token punctuation">:</span> a <span class="token operator">&#x3C;</span> b<span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">3</span> <span class="token number">1</span> <span class="token number">4</span> <span class="token number">1</span> <span class="token number">5</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment"># [1 1 3 4 5 9]</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="属性集操作函数"><a aria-hidden="true" tabindex="-1" href="#属性集操作函数"><span class="icon icon-link"></span></a>属性集操作函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  attrs <span class="token operator">=</span> <span class="token punctuation">{</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> c <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    keys <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">attrNames</span> attrs<span class="token punctuation">;</span>         <span class="token comment"># ["a" "b" "c"]</span>
+</span><span class="code-line">    values <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">attrValues</span> attrs<span class="token punctuation">;</span>      <span class="token comment"># [1 2 3]</span>
+</span><span class="code-line">    <span class="token function">hasAttr</span> <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">hasAttr</span> <span class="token string">"b"</span> attrs<span class="token punctuation">;</span>    <span class="token comment"># true</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 映射属性值</span>
+</span><span class="code-line">    doubled <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span>mapAttrs <span class="token punctuation">(</span>name<span class="token punctuation">:</span> value<span class="token punctuation">:</span> value * <span class="token number">2</span><span class="token punctuation">)</span> attrs<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># { a = 2; b = 4; c = 6; }</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 过滤属性</span>
+</span><span class="code-line">    filtered <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span>filterAttrs <span class="token punctuation">(</span>name<span class="token punctuation">:</span> value<span class="token punctuation">:</span> value <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> attrs<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token comment"># { b = 2; c = 3; }</span>
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 移除属性</span>
+</span><span class="code-line">    removed <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">removeAttrs</span> attrs <span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment"># { a = 1; c = 3; }</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="导入与模块"><a aria-hidden="true" tabindex="-1" href="#导入与模块"><span class="icon icon-link"></span></a>导入与模块</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="导入文件"><a aria-hidden="true" tabindex="-1" href="#导入文件"><span class="icon icon-link"></span></a>导入文件</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 导入其他 Nix 文件</span>
+</span><span class="code-line">  utils <span class="token operator">=</span> <span class="token function">import</span> <span class="token url">./utils.nix</span><span class="token punctuation">;</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token function">import</span> <span class="token url">./config.nix</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 带参数导入</span>
+</span><span class="code-line">  lib <span class="token operator">=</span> <span class="token function">import</span> <span class="token operator">&#x3C;</span><span class="token url">nixpkgs/lib</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 导入并传递参数</span>
+</span><span class="code-line">  myModule <span class="token operator">=</span> <span class="token function">import</span> <span class="token url">./module.nix</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    pkgs <span class="token operator">=</span> <span class="token function">import</span> <span class="token operator">&#x3C;</span>nixpkgs<span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">    config <span class="token operator">=</span> <span class="token punctuation">{</span> enableFeature <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">inherit</span> utils config lib myModule<span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="模块定义"><a aria-hidden="true" tabindex="-1" href="#模块定义"><span class="icon icon-link"></span></a>模块定义</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token comment"># module.nix 示例</span>
+</span><span class="code-line"><span class="token punctuation">{</span> pkgs<span class="token punctuation">,</span> config<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span><span class="token punctuation">:</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment"># 模块选项</span>
+</span><span class="code-line">  options <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    services<span class="token punctuation">.</span>myapp <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      enable <span class="token operator">=</span> lib<span class="token punctuation">.</span>mkOption <span class="token punctuation">{</span>
+</span><span class="code-line">        type <span class="token operator">=</span> lib<span class="token punctuation">.</span>types<span class="token punctuation">.</span>bool<span class="token punctuation">;</span>
+</span><span class="code-line">        default <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line">        description <span class="token operator">=</span> <span class="token string">"启用 MyApp 服务"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">      
+</span><span class="code-line">      port <span class="token operator">=</span> lib<span class="token punctuation">.</span>mkOption <span class="token punctuation">{</span>
+</span><span class="code-line">        type <span class="token operator">=</span> lib<span class="token punctuation">.</span>types<span class="token punctuation">.</span>int<span class="token punctuation">;</span>
+</span><span class="code-line">        default <span class="token operator">=</span> <span class="token number">8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">        description <span class="token operator">=</span> <span class="token string">"MyApp 监听端口"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 模块配置</span>
+</span><span class="code-line">  config <span class="token operator">=</span> lib<span class="token punctuation">.</span>mkIf config<span class="token punctuation">.</span>services<span class="token punctuation">.</span>myapp<span class="token punctuation">.</span>enable <span class="token punctuation">{</span>
+</span><span class="code-line">    systemd<span class="token punctuation">.</span>services<span class="token punctuation">.</span>myapp <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      description <span class="token operator">=</span> <span class="token string">"MyApp 服务"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      after <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"network.target"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">      serviceConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        ExecStart <span class="token operator">=</span> <span class="token string">"<span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>pkgs<span class="token punctuation">.</span>myapp<span class="token punctuation">}</span></span>/bin/myapp --port <span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token function">toString</span> config<span class="token punctuation">.</span>services<span class="token punctuation">.</span>myapp<span class="token punctuation">.</span>port<span class="token punctuation">}</span></span>"</span><span class="token punctuation">;</span>
+</span><span class="code-line">        Restart <span class="token operator">=</span> <span class="token string">"always"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="包管理"><a aria-hidden="true" tabindex="-1" href="#包管理"><span class="icon icon-link"></span></a>包管理</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="基本包定义"><a aria-hidden="true" tabindex="-1" href="#基本包定义"><span class="icon icon-link"></span></a>基本包定义</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token comment"># default.nix 或 shell.nix</span>
+</span><span class="code-line"><span class="token punctuation">{</span> pkgs <span class="token operator">?</span> <span class="token function">import</span> <span class="token operator">&#x3C;</span>nixpkgs<span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">:</span>
+</span><span class="code-line">
+</span><span class="code-line">pkgs<span class="token punctuation">.</span>stdenv<span class="token punctuation">.</span>mkDerivation <span class="token punctuation">{</span>
+</span><span class="code-line">  pname <span class="token operator">=</span> <span class="token string">"my-app"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  version <span class="token operator">=</span> <span class="token string">"1.0.0"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  src <span class="token operator">=</span> <span class="token url">./.</span><span class="token punctuation">;</span>  <span class="token comment"># 当前目录作为源码</span>
+</span><span class="code-line">  
+</span><span class="code-line">  buildInputs <span class="token operator">=</span> <span class="token keyword">with</span> pkgs<span class="token punctuation">;</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    nodejs
+</span><span class="code-line">    yarn
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  buildPhase <span class="token operator">=</span> <span class="token string">''
+</span></span><span class="code-line"><span class="token string">    yarn install
+</span></span><span class="code-line"><span class="token string">    yarn build
+</span></span><span class="code-line"><span class="token string">  ''</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  installPhase <span class="token operator">=</span> <span class="token string">''
+</span></span><span class="code-line"><span class="token string">    mkdir -p $out/bin
+</span></span><span class="code-line"><span class="token string">    cp -r dist/* $out/
+</span></span><span class="code-line"><span class="token string">    makeWrapper <span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span>pkgs<span class="token punctuation">.</span>nodejs<span class="token punctuation">}</span></span>/bin/node $out/bin/my-app \
+</span></span><span class="code-line"><span class="token string">      --add-flags "$out/index.js"
+</span></span><span class="code-line"><span class="token string">  ''</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  meta <span class="token operator">=</span> <span class="token keyword">with</span> pkgs<span class="token punctuation">.</span>lib<span class="token punctuation">;</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    description <span class="token operator">=</span> <span class="token string">"我的应用程序"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    homepage <span class="token operator">=</span> <span class="token string">"https://example.com"</span><span class="token punctuation">;</span>
+</span><span class="code-line">    license <span class="token operator">=</span> licenses<span class="token punctuation">.</span>mit<span class="token punctuation">;</span>
+</span><span class="code-line">    maintainers <span class="token operator">=</span> <span class="token keyword">with</span> maintainers<span class="token punctuation">;</span> <span class="token punctuation">[</span> <span class="token string">"your-name"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="开发环境"><a aria-hidden="true" tabindex="-1" href="#开发环境"><span class="icon icon-link"></span></a>开发环境</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token comment"># shell.nix</span>
+</span><span class="code-line"><span class="token punctuation">{</span> pkgs <span class="token operator">?</span> <span class="token function">import</span> <span class="token operator">&#x3C;</span>nixpkgs<span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">:</span>
+</span><span class="code-line">
+</span><span class="code-line">pkgs<span class="token punctuation">.</span>mkShell <span class="token punctuation">{</span>
+</span><span class="code-line">  buildInputs <span class="token operator">=</span> <span class="token keyword">with</span> pkgs<span class="token punctuation">;</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token comment"># 开发工具</span>
+</span><span class="code-line">    git
+</span><span class="code-line">    nodejs
+</span><span class="code-line">    yarn
+</span><span class="code-line">    python3
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 系统库</span>
+</span><span class="code-line">    pkg<span class="token operator">-</span>config
+</span><span class="code-line">    openssl
+</span><span class="code-line">    
+</span><span class="code-line">    <span class="token comment"># 数据库</span>
+</span><span class="code-line">    postgresql
+</span><span class="code-line">    redis
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 环境变量</span>
+</span><span class="code-line">  shellHook <span class="token operator">=</span> <span class="token string">''
+</span></span><span class="code-line"><span class="token string">    echo "欢迎进入开发环境！"
+</span></span><span class="code-line"><span class="token string">    export DATABASE_URL="postgresql://localhost/myapp"
+</span></span><span class="code-line"><span class="token string">    export REDIS_URL="redis://localhost:6379"
+</span></span><span class="code-line"><span class="token string">    
+</span></span><span class="code-line"><span class="token string">    # 自动启动服务
+</span></span><span class="code-line"><span class="token string">    if ! pgrep -f "postgres" > /dev/null; then
+</span></span><span class="code-line"><span class="token string">      echo "启动 PostgreSQL..."
+</span></span><span class="code-line"><span class="token string">      postgres -D $HOME/postgres-data &#x26;
+</span></span><span class="code-line"><span class="token string">    fi
+</span></span><span class="code-line"><span class="token string">  ''</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="常用工具函数"><a aria-hidden="true" tabindex="-1" href="#常用工具函数"><span class="icon icon-link"></span></a>常用工具函数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="递归函数-1"><a aria-hidden="true" tabindex="-1" href="#递归函数-1"><span class="icon icon-link"></span></a>递归函数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 计算阶乘</span>
+</span><span class="code-line">  factorial <span class="token operator">=</span> n<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> n <span class="token operator">&#x3C;=</span> <span class="token number">1</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token number">1</span>
+</span><span class="code-line">    <span class="token keyword">else</span> n * factorial <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 列表求和</span>
+</span><span class="code-line">  sumList <span class="token operator">=</span> list<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> list <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token number">0</span>
+</span><span class="code-line">    <span class="token keyword">else</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">head</span> list <span class="token operator">+</span> sumList <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">tail</span> list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 深度合并属性集</span>
+</span><span class="code-line">  deepMerge <span class="token operator">=</span> a<span class="token punctuation">:</span> b<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">let</span>
+</span><span class="code-line">      mergeAttr <span class="token operator">=</span> name<span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">let</span>
+</span><span class="code-line">          aVal <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token antiquotation important">$</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">          bVal <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token antiquotation important">$</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token keyword">in</span>
+</span><span class="code-line">          <span class="token keyword">if</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isAttrs</span> aVal <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isAttrs</span> bVal
+</span><span class="code-line">          <span class="token keyword">then</span> deepMerge aVal bVal
+</span><span class="code-line">          <span class="token keyword">else</span> bVal<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">in</span>
+</span><span class="code-line">      a <span class="token operator">//</span> b <span class="token operator">//</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">listToAttrs</span> <span class="token punctuation">(</span>
+</span><span class="code-line">        <span class="token function">map</span> <span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token keyword">inherit</span> name<span class="token punctuation">;</span> value <span class="token operator">=</span> mergeAttr name<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">filter</span> <span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">hasAttr</span> name a<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">attrNames</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span>
+</span><span class="code-line">    fact5 <span class="token operator">=</span> factorial <span class="token number">5</span><span class="token punctuation">;</span>           <span class="token comment"># 120</span>
+</span><span class="code-line">    listSum <span class="token operator">=</span> sumList <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment"># 15</span>
+</span><span class="code-line">    merged <span class="token operator">=</span> deepMerge 
+</span><span class="code-line">      <span class="token punctuation">{</span> a <span class="token operator">=</span> <span class="token punctuation">{</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> c <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line">      <span class="token punctuation">{</span> a <span class="token operator">=</span> <span class="token punctuation">{</span> y <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span> z <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> d <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="错误处理"><a aria-hidden="true" tabindex="-1" href="#错误处理"><span class="icon icon-link"></span></a>错误处理</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="断言"><a aria-hidden="true" tabindex="-1" href="#断言"><span class="icon icon-link"></span></a>断言</h3><div class="wrap-body">
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  version <span class="token operator">=</span> <span class="token string">"1.2.3"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 基本断言</span>
+</span><span class="code-line">  validVersion <span class="token operator">=</span> <span class="token keyword">assert</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">stringLength</span> version <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> version<span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 带消息的断言（通过 throw 实现）</span>
+</span><span class="code-line">  checkPort <span class="token operator">=</span> port<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">if</span> port <span class="token operator">&#x3C;</span> <span class="token number">1</span> <span class="token operator">||</span> port <span class="token operator">></span> <span class="token number">65535</span>
+</span><span class="code-line">    <span class="token keyword">then</span> <span class="token function">throw</span> <span class="token string">"端口号必须在 1-65535 之间，当前值: <span class="token interpolation"><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token function">toString</span> port<span class="token punctuation">}</span></span>"</span>
+</span><span class="code-line">    <span class="token keyword">else</span> port<span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 条件检查</span>
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    port <span class="token operator">=</span> checkPort <span class="token number">8080</span><span class="token punctuation">;</span>
+</span><span class="code-line">    host <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">getEnv</span> <span class="token string">"HOST"</span> <span class="token operator">!=</span> <span class="token string">""</span> 
+</span><span class="code-line">           <span class="token keyword">then</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">getEnv</span> <span class="token string">"HOST"</span> 
+</span><span class="code-line">           <span class="token keyword">else</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  config
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="异常处理"><a aria-hidden="true" tabindex="-1" href="#异常处理"><span class="icon icon-link"></span></a>异常处理</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-nix"><code class="language-nix code-highlight"><span class="code-line"><span class="token keyword">let</span>
+</span><span class="code-line">  <span class="token comment"># 安全的属性访问</span>
+</span><span class="code-line">  safeGet <span class="token operator">=</span> attrs<span class="token punctuation">:</span> path<span class="token punctuation">:</span> default<span class="token punctuation">:</span>
+</span><span class="code-line">    <span class="token keyword">let</span>
+</span><span class="code-line">      keys <span class="token operator">=</span> <span class="token keyword">builtins</span><span class="token punctuation">.</span>split <span class="token string">"\\."</span> path<span class="token punctuation">;</span>
+</span><span class="code-line">      getValue <span class="token operator">=</span> obj<span class="token punctuation">:</span> keyList<span class="token punctuation">:</span>
+</span><span class="code-line">        <span class="token keyword">if</span> keyList <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">then</span> obj
+</span><span class="code-line">        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token operator">!</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">isAttrs</span> obj <span class="token keyword">then</span> default
+</span><span class="code-line">        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token operator">!</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">hasAttr</span> <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">head</span> keyList<span class="token punctuation">)</span> obj <span class="token keyword">then</span> default
+</span><span class="code-line">        <span class="token keyword">else</span> getValue <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token antiquotation important">$</span><span class="token punctuation">{</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">head</span> keyList<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">builtins</span><span class="token punctuation">.</span><span class="token function">tail</span> keyList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">in</span>
+</span><span class="code-line">      getValue attrs keys<span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  config <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    database <span class="token operator">=</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      host <span class="token operator">=</span> <span class="token string">"localhost"</span><span class="token punctuation">;</span>
+</span><span class="code-line">      port <span class="token operator">=</span> <span class="token number">5432</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">  
+</span><span class="code-line">  <span class="token comment"># 安全访问嵌套属性</span>
+</span><span class="code-line">  dbHost <span class="token operator">=</span> safeGet config <span class="token string">"database.host"</span> <span class="token string">"default-host"</span><span class="token punctuation">;</span>      <span class="token comment"># "localhost"</span>
+</span><span class="code-line">  dbUser <span class="token operator">=</span> safeGet config <span class="token string">"database.user"</span> <span class="token string">"default-user"</span><span class="token punctuation">;</span>      <span class="token comment"># "default-user"</span>
+</span><span class="code-line"><span class="token keyword">in</span>
+</span><span class="code-line">  <span class="token punctuation">{</span> <span class="token keyword">inherit</span> dbHost dbUser<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="来源"><a aria-hidden="true" tabindex="-1" href="#来源"><span class="icon icon-link"></span></a>来源</h2><div class="wrap-body">
+<ul>
+<li><a href="https://nixos.org/manual/nix/stable/">Nix 手册</a> - 官方用户手册</li>
+<li><a href="https://nixos.org/manual/nixos/stable/">NixOS 手册</a> - NixOS 系统配置指南</li>
+<li><a href="https://nixos.org/manual/nixpkgs/stable/">Nixpkgs 手册</a> - 包管理指南</li>
+<li><a href="https://github.com/NixOS/nixpkgs">NixOS/nixpkgs</a> - 官方包仓库</li>
+<li><a href="https://github.com/NixOS/nix">NixOS/nix</a> - Nix 包管理器源码</li>
+<li><a href="https://nixos.org/guides/nix-pills/">Nix Pills</a> - 深入学习 Nix 的教程</li>
+<li><a href="https://nixos.org/manual/nix/stable/command-ref/nix-shell.html">nix-shell</a> - 创建开发环境</li>
+<li><a href="https://nixos.org/manual/nix/stable/command-ref/nix-build.html">nix-build</a> - 构建包</li>
+<li><a href="https://nixos.org/manual/nix/stable/command-ref/nix-env.html">nix-env</a> - 用户环境管理</li>
+<li><a href="https://nixos.org/manual/nixos/stable/administration/administration.html">nixos-rebuild</a> - 系统重构建</li>
+<li><a href="https://github.com/nixos/marketing">NixOS/marketing</a> <em>(github.com)</em></li>
+<li><a href="https://nixos.org/manual/nix/stable/expressions/language-values.html">Nix 语言官方文档</a> <em>(nixos.org)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.9.1" defer></script><script src="../js/fuse.min.js?v=1.9.1" defer></script><script src="../js/main.js?v=1.9.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
