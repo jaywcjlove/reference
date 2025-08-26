@@ -129,8 +129,10 @@ Quick Reference
 [Kubernetes](./docs/kubernetes.md)<!--rehype:style=background: rgb(51 113 227);&class=contributing&data-info=👆看看还缺点儿什么？-->
 [LaTeX](./docs/latex.md)<!--rehype:style=background: rgb(0 128 128);&class=contributing-->
 [Laravel 8](./docs/laravel.md)<!--rehype:style=background: rgb(249 50 44);&class=contributing tag&data-lang=PHP-->
+[Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->
 [Markdown](./docs/markdown.md)<!--rehype:style=background: rgb(103 61 156);-->
 [MATLAB](./docs/matlab.md)<!--rehype:style=background: rgb(0 118 168);&class=contributing-->
+[Nix](./docs/nix.md)<!--rehype:style=background: rgb(9 90 125);&class=contributing-->
 [PHP](./docs/php.md)<!--rehype:style=background: rgb(79 91 147);-->
 [R 语言](./docs/r.md)<!--rehype:style=background: rgb(39 108 192);&class=contributing&data-info-->
 [Ruby](./docs/ruby.md)<!--rehype:style=background: rgb(204 52 45);-->
@@ -139,7 +141,6 @@ Quick Reference
 [Swift](./docs/swift.md)<!--rehype:style=background: rgb(240 81 57);-->
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background: rgb(10 127 247);&class=tag&data-lang=swift-->
 [Spring Boot](./docs/springboot.md)<!--rehype:style=background: rgb(0 149 0);&class=tag&data-lang=Java-->
-[Lua](./docs/lua.md)<!--rehype:style=background: rgb(3 3 128);-->
 [Minio](./docs/minio.md)<!--rehype:style=background: rgb(3 3 128);-->
 <!--rehype:class=home-card-->
 
