@@ -84,6 +84,12 @@ Quick Reference
       Available for MacOS, Linux, & Windows<br/>
     </a>
   </p>
+  <p>
+    <a href="https://tuple.app/reference">
+      <img alt="Warp sponsorship" height="160" src="https://jaywcjlove.github.io/sponsor/tuple.app.png"><br>
+      Tuple, the premier screen sharing app for developers on macOS and Windows.<br/>
+    </a>
+  </p>
 </div>
 
 ## 正在建设中...
