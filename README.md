@@ -10,11 +10,11 @@
   <a href="https://go.warp.dev/reference"><b>Warp, the intelligent terminal for developers!</b></a><br>
   <a href="https://go.warp.dev/reference">Available for MacOS, Linux, & Windows</a><br><br>
 
-  <a href="https://tuple.app/awesome-mac">
+  <a href="https://tuple.app/reference">
     <img alt="Zenquery sponsorship" width="400" src="https://jaywcjlove.github.io/sponsor/tuple.app.png">
   </a>
   <br>
-  <a href="https://tuple.app/awesome-mac">Tuple, the premier screen sharing app for developers on macOS and Windows.</a>
+  <a href="https://tuple.app/reference">Tuple, the premier screen sharing app for developers on macOS and Windows.</a>
 
   <br><br>
 </div>
