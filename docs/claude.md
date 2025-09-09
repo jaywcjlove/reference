@@ -430,3 +430,4 @@ Hooks 通过 `stdin` 接收包含会话信息和事件特定数据的 JSON 数�
 ----
 
 * [Claude 代码参考](https://docs.anthropic.com/zh-CN/docs/claude-code/cli-reference) _(docs.anthropic.com)_
+* [送你一张Claude Code速查表](https://mp.weixin.qq.com/s/LbQbzvXh49Qo22nArTv4Og) _(weixin.qq.com)_
