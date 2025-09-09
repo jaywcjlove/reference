@@ -375,7 +375,6 @@ $ docker volume prune # 清理未使用的卷
 `docker stack rm <appname>`                       | 拆掉一个应用程序
 <!--rehype:className=left-align-->
 
-
 ### docker 主要命令
 <!--rehype:wrap-class=row-span-3-->
 
@@ -463,7 +462,6 @@ $ docker volume prune # 清理未使用的卷
 | `docker app`           | CNAB 应用包管理        | 已并入 Compose/其他工具                               |
 | `docker search`（旧 API） | Docker Hub 搜索     | 用 Hub Web API 或 CLI 插件                         |
 | `docker manifest`（旧版本） | 多平台镜像管理           | 已集成到 `docker buildx imagetools`                |
-
 
 ### docker 全局参数
 
