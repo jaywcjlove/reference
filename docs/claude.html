@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>ClaudeCode 备忘清单
+ &#x26;  claude cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="ClaudeCode 命令行开发工具快速参考备忘单。
+
+CLI 参考，为开发人员分享快速参考备忘单。">
+<meta keywords="claude,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/claude.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.10.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="claudecode-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 40 40"><path fill="currentColor" d="M7.75,26.28 L15.52,21.92 L15.65,21.54 L15.52,21.33 L15.14,21.33 L13.84,21.25 L9.4,21.13 L5.55,20.97 L1.82,20.77 L0.88,20.57 L0,19.41 L0.09,18.83 L0.88,18.3 L2.01,18.4 L4.51,18.57 L8.26,18.83 L10.98,18.99 L15.01,19.41 L15.65,19.41 L15.74,19.15 L15.52,18.99 L15.35,18.83 L11.47,16.2 L7.27,13.42 L5.07,11.82 L3.88,11.01 L3.28,10.25 L3.02,8.59 L4.1,7.4 L5.55,7.5 L5.92,7.6 L7.39,8.73 L10.53,11.16 L14.63,14.18 L15.23,14.68 L15.47,14.51 L15.5,14.39 L15.23,13.94 L13,9.91 L10.62,5.81 L9.56,4.11 L9.28,3.09 C9.18,2.67 9.11,2.32 9.11,1.89 L10.34,0.22 L11.02,0 L12.66,0.22 L13.35,0.82 L14.37,3.15 L16.02,6.82 L18.58,11.81 L19.33,13.29 L19.73,14.66 L19.88,15.08 L20.14,15.08 L20.14,14.84 L20.35,12.03 L20.74,8.58 L21.12,4.14 L21.25,2.89 L21.87,1.39 L23.1,0.58 L24.06,1.04 L24.85,2.17 L24.74,2.9 L24.27,5.95 L23.35,10.73 L22.75,13.93 L23.1,13.93 L23.5,13.53 L25.12,11.38 L27.84,7.98 L29.04,6.63 L30.44,5.14 L31.34,4.43 L33.04,4.43 L34.29,6.29 L33.73,8.21 L31.98,10.43 L30.53,12.31 L28.45,15.11 L27.15,17.35 L27.27,17.53 L27.58,17.5 L32.28,16.5 L34.82,16.04 L37.85,15.52 L39.22,16.16 L39.37,16.81 L38.83,18.14 L35.59,18.94 L31.79,19.7 L26.13,21.04 L26.06,21.09 L26.14,21.19 L28.69,21.43 L29.78,21.49 L32.45,21.49 L37.42,21.86 L38.72,22.72 L39.5,23.77 L39.37,24.57 L37.37,25.59 L34.67,24.95 L28.37,23.45 L26.21,22.91 L25.91,22.91 L25.91,23.09 L27.71,24.85 L31.01,27.83 L35.14,31.67 L35.35,32.62 L34.82,33.37 L34.26,33.29 L30.63,30.56 L29.23,29.33 L26.06,26.66 L25.85,26.66 L25.85,26.94 L26.58,28.01 L30.44,33.81 L30.64,35.59 L30.36,36.17 L29.36,36.52 L28.26,36.32 L26,33.15 L23.67,29.58 L21.79,26.38 L21.56,26.51 L20.45,38.46 L19.93,39.07 L18.73,39.53 L17.73,38.77 L17.2,37.54 L17.73,35.11 L18.37,31.94 L18.89,29.42 L19.36,26.29 L19.64,25.25 L19.62,25.18 L19.39,25.21 L17.03,28.45 L13.44,33.3 L10.6,36.34 L9.92,36.61 L8.74,36 L8.85,34.91 L9.51,33.94 L13.44,28.94 L15.81,25.84 L17.34,24.05 L17.33,23.79 L17.24,23.79 L6.8,30.57 L4.94,30.81 L4.14,30.06 L4.24,28.83 L4.62,28.43 L7.76,26.27 L7.75,26.28 Z"></path></svg><a aria-hidden="true" tabindex="-1" href="#claudecode-备忘清单"><span class="icon icon-link"></span></a>ClaudeCode 备忘清单</h1><div class="wrap-body">
+<p>ClaudeCode 命令行开发工具快速参考备忘单。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#cli-参考">CLI 参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命令行">命令行</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cli-标志">CLI 标志</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#内置斜杠命令">内置斜杠命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#键盘快捷键">键盘快捷键</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#通用控制">通用控制</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#多行输入">多行输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#快速命令">快速命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#vim-编辑器模式">Vim 编辑器模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模式切换">模式切换</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#导航normal-模式">导航（NORMAL 模式）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#编辑normal-模式">编辑（NORMAL 模式）</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#hooks-参考">Hooks 参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置">配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#结构">结构</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#matcher-匹配工具名称的模式区分大小写仅适用于-pretooluse-和-posttooluse">matcher 匹配工具名称的模式，区分大小写（仅适用于 PreToolUse 和 PostToolUse）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#hooks-当模式匹配时要执行的命令数组">hooks 当模式匹配时要执行的命令数组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#项目特定的-hook-脚本">项目特定的 Hook 脚本</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#hook-事件">Hook 事件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pretooluse">PreToolUse</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#常见匹配器">常见匹配器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#其它-hook">其它 Hook</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#notification">Notification</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#precompact">​PreCompact</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#匹配器">匹配器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#sessionstart">SessionStart</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#匹配器-1">匹配器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#sessionend">SessionEnd</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#hook-输入中的-reason-字段将是以下之一">hook 输入中的 reason 字段将是以下之一</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#hook-输入">Hook 输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#pretooluse-输入">PreToolUse 输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#posttooluse-输入">PostToolUse 输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#notification-输入">Notification 输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#userpromptsubmit-输入">UserPromptSubmit 输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#stop-和-subagentstop-输入">Stop 和 SubagentStop 输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#precompact-输入">PreCompact 输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#sessionstart-输入">SessionStart 输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#sessionend-输入">SessionEnd 输入</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="cli-参考"><a aria-hidden="true" tabindex="-1" href="#cli-参考"><span class="icon icon-link"></span></a>CLI 参考</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="命令行"><a aria-hidden="true" tabindex="-1" href="#命令行"><span class="icon icon-link"></span></a>命令行</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>命令</th><th>描述</th><th>示例</th></tr></thead><tbody><tr><td><code>claude</code></td><td>启动交互式 REPL</td><td><code>claude</code></td></tr><tr><td><code>claude "query"</code></td><td>使用初始提示启动 REPL</td><td><code>claude "explain this project"</code></td></tr><tr><td><code>claude -p "query"</code></td><td>通过 SDK 查询，然后退出</td><td><code>claude -p "explain this function"</code></td></tr><tr><td><code>cat file | claude -p "query"</code></td><td>处理管道内容</td><td><code>cat logs.txt | claude -p "explain"</code></td></tr><tr><td><code>claude -c</code></td><td>继续最近的对话</td><td><code>claude -c</code></td></tr><tr><td><code>claude -c -p "query"</code></td><td>通过 SDK 继续</td><td><code>claude -c -p "Check for type errors"</code></td></tr><tr><td><code>claude -r "&#x3C;session-id>" "query"</code></td><td>通过 ID 恢复会话</td><td><code>claude -r "abc123" "Finish this PR"</code></td></tr><tr><td><code>claude update</code></td><td>更新到最新版本</td><td><code>claude update</code></td></tr><tr><td><code>claude mcp</code></td><td>配置模型上下文协议 (MCP) 服务器</td><td>请参阅 <a href="https://docs.anthropic.com/zh-CN/docs/claude-code/mcp">Claude Code MCP 文档</a>。</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="cli-标志"><a aria-hidden="true" tabindex="-1" href="#cli-标志"><span class="icon icon-link"></span></a>CLI 标志</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>使用这些命令行标志自定义 Claude Code 的行为：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow squarefill"><thead><tr><th>标志</th><th>描述</th><th>示例</th></tr></thead><tbody><tr><td><code>--add-dir</code></td><td>添加额外的工作目录供 Claude 访问（验证每个路径是否作为目录存在）</td><td><code>claude --add-dir ../apps ../lib</code></td></tr><tr><td><code>--allowedTools</code></td><td>除了 <a href="https://docs.anthropic.com/zh-CN/docs/claude-code/settings">settings.json 文件</a> 之外，应该在不提示用户许可的情况下允许的工具列表</td><td><code>"Bash(git log:*)" "Bash(git diff:*)" "Read"</code></td></tr><tr><td><code>--disallowedTools</code></td><td>除了 <a href="https://docs.anthropic.com/zh-CN/docs/claude-code/settings">settings.json 文件</a> 之外，应该在不提示用户许可的情况下禁止的工具列表</td><td><code>"Bash(git log:*)" "Bash(git diff:*)" "Edit"</code></td></tr><tr><td><code>--print</code>, <code>-p</code></td><td>打印响应而不使用交互模式（有关编程使用详细信息，请参阅 <a href="https://docs.anthropic.com/zh-CN/docs/claude-code/sdk">SDK 文档</a>）</td><td><code>claude -p "query"</code></td></tr><tr><td><code>--append-system-prompt</code></td><td>附加到系统提示（仅与 <code>--print</code> 一起使用）</td><td><code>claude --append-system-prompt "Custom instruction"</code></td></tr><tr><td><code>--output-format</code></td><td>为打印模式指定输出格式（选项：<code>text</code>、<code>json</code>、<code>stream-json</code>）</td><td><code>claude -p "query" --output-format json</code></td></tr><tr><td><code>--input-format</code></td><td>为打印模式指定输入格式（选项：<code>text</code>、<code>stream-json</code>）</td><td><code>claude -p --output-format json --input-format stream-json</code></td></tr><tr><td><code>--verbose</code></td><td>启用详细日志记录，显示完整的轮次输出（在打印和交互模式中都有助于调试）</td><td><code>claude --verbose</code></td></tr><tr><td><code>--max-turns</code></td><td>在非交互模式下限制代理轮次数量</td><td><code>claude -p --max-turns 3 "query"</code></td></tr><tr><td><code>--model</code></td><td>使用最新模型的别名（<code>sonnet</code> 或 <code>opus</code>）或模型的全名为当前会话设置模型</td><td><code>claude --model claude-sonnet-4-20250514</code></td></tr><tr><td><code>--permission-mode</code></td><td>在指定的<a href="iam#permission-modes">权限模式</a>下开始</td><td><code>claude --permission-mode plan</code></td></tr><tr><td><code>--permission-prompt-tool</code></td><td>指定一个 MCP 工具来处理非交互模式下的权限提示</td><td><code>claude -p --permission-prompt-tool mcp_auth_tool "query"</code></td></tr><tr><td><code>--resume</code></td><td>通过 ID 恢复特定会话，或在交互模式下选择</td><td><code>claude --resume abc123 "query"</code></td></tr><tr><td><code>--continue</code></td><td>在当前目录中加载最近的对话</td><td><code>claude --continue</code></td></tr><tr><td><code>--dangerously-skip-permissions</code></td><td>跳过权限提示（谨慎使用）</td><td><code>claude --dangerously-skip-permissions</code></td></tr></tbody></table>
+<!--rehype:className=style-list-arrow squarefill-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="内置斜杠命令"><a aria-hidden="true" tabindex="-1" href="#内置斜杠命令"><span class="icon icon-link"></span></a>内置斜杠命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>命令</th><th>用途</th></tr></thead><tbody><tr><td><code>/add-dir</code></td><td>添加额外的工作目录</td></tr><tr><td><code>/agents</code></td><td>管理用于专门任务的自定义AI子代理</td></tr><tr><td><code>/bug</code></td><td>报告错误（将对话发送给Anthropic）</td></tr><tr><td><code>/clear</code></td><td>清除对话历史</td></tr><tr><td><code>/compact [instructions]</code></td><td>压缩对话，可选择性地提供重点指令</td></tr><tr><td><code>/config</code></td><td>查看/修改配置</td></tr><tr><td><code>/cost</code></td><td>显示令牌使用统计（请参阅<a href="https://docs.anthropic.com/zh-CN/docs/claude-code/costs#using-the-cost-command">成本跟踪指南</a>了解订阅特定详情）</td></tr><tr><td><code>/doctor</code></td><td>检查您的Claude Code安装的健康状况</td></tr><tr><td><code>/help</code></td><td>获取使用帮助</td></tr><tr><td><code>/init</code></td><td>使用CLAUDE.md指南初始化项目</td></tr><tr><td><code>/login</code></td><td>切换Anthropic账户</td></tr><tr><td><code>/logout</code></td><td>从您的Anthropic账户登出</td></tr><tr><td><code>/mcp</code></td><td>管理MCP服务器连接和OAuth身份验证</td></tr><tr><td><code>/memory</code></td><td>编辑CLAUDE.md内存文件</td></tr><tr><td><code>/model</code></td><td>选择或更改AI模型</td></tr><tr><td><code>/permissions</code></td><td>查看或更新<a href="https://docs.anthropic.com/zh-CN/docs/claude-code/iam#configuring-permissions">权限</a></td></tr><tr><td><code>/pr_comments</code></td><td>查看拉取请求评论</td></tr><tr><td><code>/review</code></td><td>请求代码审查</td></tr><tr><td><code>/status</code></td><td>查看账户和系统状态</td></tr><tr><td><code>/terminal-setup</code></td><td>安装Shift+Enter键绑定用于换行（仅限iTerm2和VSCode）</td></tr><tr><td><code>/vim</code></td><td>进入vim模式以在插入和命令模式之间切换</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="键盘快捷键"><a aria-hidden="true" tabindex="-1" href="#键盘快捷键"><span class="icon icon-link"></span></a>键盘快捷键</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="通用控制"><a aria-hidden="true" tabindex="-1" href="#通用控制"><span class="icon icon-link"></span></a>通用控制</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align shortcuts"><thead><tr><th>快捷键</th><th>描述</th><th>上下文</th></tr></thead><tbody><tr><td><code>Ctrl+C</code></td><td>取消当前输入或生成</td><td>标准中断</td></tr><tr><td><code>Ctrl+D</code></td><td>退出 Claude Code 会话</td><td>EOF 信号</td></tr><tr><td><code>Ctrl+L</code></td><td>清除终端屏幕</td><td>保留对话历史</td></tr><tr><td><code>上/下箭头</code></td><td>导航命令历史</td><td>回调之前的输入</td></tr><tr><td><code>Esc</code> + <code>Esc</code></td><td>编辑上一条消息</td><td>双击 Esc 键修改</td></tr><tr><td><code>Shift+Tab</code></td><td>切换权限模式</td><td>在自动接受模式、计划模式和正常模式之间切换</td></tr></tbody></table>
+<!--rehype:className=left-align shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="多行输入"><a aria-hidden="true" tabindex="-1" href="#多行输入"><span class="icon icon-link"></span></a>多行输入</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align shortcuts"><thead><tr><th>方法</th><th>快捷键</th><th>上下文</th></tr></thead><tbody><tr><td>快速转义</td><td><code>\</code> + <code>Enter</code></td><td>在所有终端中有效</td></tr><tr><td>macOS 默认</td><td><code>Option+Enter</code></td><td>macOS 上的默认设置</td></tr><tr><td>终端设置</td><td><code>Shift+Enter</code></td><td>在 <code>/terminal-setup</code> 之后</td></tr><tr><td>控制序列</td><td><code>Ctrl+J</code></td><td>多行换行符</td></tr><tr><td>粘贴模式</td><td>直接粘贴</td><td>用于代码块、日志</td></tr></tbody></table>
+<!--rehype:className=left-align shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="快速命令"><a aria-hidden="true" tabindex="-1" href="#快速命令"><span class="icon icon-link"></span></a>快速命令</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align shortcuts"><thead><tr><th>快捷键</th><th>描述</th><th>注释</th></tr></thead><tbody><tr><td>开头的 <code>#</code></td><td>内存快捷键 - 添加到 CLAUDE.md</td><td>提示文件选择</td></tr><tr><td>开头的 <code>/</code></td><td>斜杠命令</td><td>参见<a href="https://docs.anthropic.com/zh-CN/docs/claude-code/slash-commands">斜杠命令</a></td></tr><tr><td>开头的 <code>!</code></td><td>Bash 模式</td><td>直接运行命令并将执行输出添加到会话中</td></tr></tbody></table>
+<!--rehype:className=left-align shortcuts-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="vim-编辑器模式"><a aria-hidden="true" tabindex="-1" href="#vim-编辑器模式"><span class="icon icon-link"></span></a>Vim 编辑器模式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="模式切换"><a aria-hidden="true" tabindex="-1" href="#模式切换"><span class="icon icon-link"></span></a>模式切换</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>操作</th><th>从模式</th></tr></thead><tbody><tr><td><code>Esc</code></td><td>进入 NORMAL 模式</td><td>INSERT</td></tr><tr><td><code>i</code></td><td>在光标前插入</td><td>NORMAL</td></tr><tr><td><code>I</code></td><td>在行首插入</td><td>NORMAL</td></tr><tr><td><code>a</code></td><td>在光标后插入</td><td>NORMAL</td></tr><tr><td><code>A</code></td><td>在行尾插入</td><td>NORMAL</td></tr><tr><td><code>o</code></td><td>在下方打开新行</td><td>NORMAL</td></tr><tr><td><code>O</code></td><td>在上方打开新行</td><td>NORMAL</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="导航normal-模式"><a aria-hidden="true" tabindex="-1" href="#导航normal-模式"><span class="icon icon-link"></span></a>导航（NORMAL 模式）</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>操作</th></tr></thead><tbody><tr><td><code>h</code>/<code>j</code>/<code>k</code>/<code>l</code></td><td>向左/下/上/右移动</td></tr><tr><td><code>w</code></td><td>下一个单词</td></tr><tr><td><code>e</code></td><td>单词末尾</td></tr><tr><td><code>b</code></td><td>上一个单词</td></tr><tr><td><code>0</code></td><td>行首</td></tr><tr><td><code>$</code></td><td>行尾</td></tr><tr><td><code>^</code></td><td>第一个非空白字符</td></tr><tr><td><code>gg</code></td><td>输入开头</td></tr><tr><td><code>G</code></td><td>输入末尾</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="编辑normal-模式"><a aria-hidden="true" tabindex="-1" href="#编辑normal-模式"><span class="icon icon-link"></span></a>编辑（NORMAL 模式）</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>操作</th></tr></thead><tbody><tr><td><code>x</code></td><td>删除字符</td></tr><tr><td><code>dd</code></td><td>删除行</td></tr><tr><td><code>D</code></td><td>删除到行尾</td></tr><tr><td><code>dw</code>/<code>de</code>/<code>db</code></td><td>删除单词/到末尾/向后</td></tr><tr><td><code>cc</code></td><td>更改行</td></tr><tr><td><code>C</code></td><td>更改到行尾</td></tr><tr><td><code>cw</code>/<code>ce</code>/<code>cb</code></td><td>更改单词/到末尾/向后</td></tr><tr><td><code>.</code></td><td>重复上次更改</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="hooks-参考"><a aria-hidden="true" tabindex="-1" href="#hooks-参考"><span class="icon icon-link"></span></a>Hooks 参考</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置"><a aria-hidden="true" tabindex="-1" href="#配置"><span class="icon icon-link"></span></a>配置</h3><div class="wrap-body">
+<ul>
+<li><code>~/.claude/settings.json</code> 用户设置</li>
+<li><code>.claude/settings.json</code> 项目设置</li>
+<li><code>.claude/settings.local.json</code> 本地项目设置（不提交）</li>
+<li>企业管理策略设置</li>
+</ul>
+</div></div></div><div class="wrap h3body-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="结构"><a aria-hidden="true" tabindex="-1" href="#结构"><span class="icon icon-link"></span></a>结构</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"hooks"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"EventName"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">            <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token property">"matcher"</span><span class="token operator">:</span> <span class="token string">"ToolPattern"</span><span class="token punctuation">,</span>
+</span><span class="code-line">                <span class="token property">"hooks"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">                    <span class="token punctuation">{</span> <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"command"</span><span class="token punctuation">,</span> <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"your-command-here"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">                <span class="token punctuation">]</span>
+</span><span class="code-line">            <span class="token punctuation">}</span>
+</span><span class="code-line">        <span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="matcher-匹配工具名称的模式区分大小写仅适用于-pretooluse-和-posttooluse"><a aria-hidden="true" tabindex="-1" href="#matcher-匹配工具名称的模式区分大小写仅适用于-pretooluse-和-posttooluse"><span class="icon icon-link"></span></a><pur>matcher</pur> 匹配工具名称的模式，区分大小写（仅适用于 <code>PreToolUse</code> 和 <code>PostToolUse</code>）</h4>
+<ul>
+<li>简单字符串精确匹配：<code>Write</code> 仅匹配 Write 工具</li>
+<li>支持正则表达式：<code>Edit|Write</code> 或 <code>Notebook.*</code></li>
+<li>使用 <code>*</code> 匹配所有工具。您也可以使用空字符串（<code>""</code>）或留空 <code>matcher</code>。</li>
+</ul>
+<h4 id="hooks-当模式匹配时要执行的命令数组"><a aria-hidden="true" tabindex="-1" href="#hooks-当模式匹配时要执行的命令数组"><span class="icon icon-link"></span></a><pur>hooks</pur> 当模式匹配时要执行的命令数组</h4>
+<ul>
+<li><code>type</code>：目前仅支持 <code>"command"</code></li>
+<li><code>command</code>：要执行的 bash 命令（可以使用 <code>$CLAUDE_PROJECT_DIR</code> 环境变量）</li>
+<li><code>timeout</code>：（可选）命令应该运行多长时间（以秒为单位），在取消该特定命令之前。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="项目特定的-hook-脚本"><a aria-hidden="true" tabindex="-1" href="#项目特定的-hook-脚本"><span class="icon icon-link"></span></a>项目特定的 Hook 脚本</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"hooks"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"PostToolUse"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">      <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"matcher"</span><span class="token operator">:</span> <span class="token string">"Write|Edit"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"hooks"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"command"</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">    <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"$CLAUDE_PROJECT_DIR/.claude/hooks/check-style.sh"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">        <span class="token punctuation">]</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>可通过环境变量 <code>CLAUDE_PROJECT_DIR</code> 引用项目中的脚本，确保无论 Claude 当前目录如何都能正常使用（仅在生成 hook 命令时可用）</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="hook-事件"><a aria-hidden="true" tabindex="-1" href="#hook-事件"><span class="icon icon-link"></span></a>Hook 事件</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="pretooluse"><a aria-hidden="true" tabindex="-1" href="#pretooluse"><span class="icon icon-link"></span></a>PreToolUse</h3><div class="wrap-body">
+<h4 id="常见匹配器"><a aria-hidden="true" tabindex="-1" href="#常见匹配器"><span class="icon icon-link"></span></a>常见匹配器</h4>
+<ul>
+<li><code>Task</code> - 子代理任务（参见<a href="https://docs.anthropic.com/zh-CN/docs/claude-code/sub-agents">子代理文档</a>）</li>
+<li><code>Bash</code> - Shell 命令</li>
+<li><code>Glob</code> - 文件模式匹配</li>
+<li><code>Grep</code> - 内容搜索</li>
+<li><code>Read</code> - 文件读取</li>
+<li><code>Edit</code>、<code>MultiEdit</code> - 文件编辑</li>
+<li><code>Write</code> - 文件写入</li>
+<li><code>WebFetch</code>、<code>WebSearch</code> - Web 操作</li>
+</ul>
+<p>在 Claude 创建工具参数之后、处理工具调用之前运行。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="其它-hook"><a aria-hidden="true" tabindex="-1" href="#其它-hook"><span class="icon icon-link"></span></a>其它 Hook</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow square"><thead><tr><th>Hook</th><th>描述</th></tr></thead><tbody><tr><td><code>PostToolUse</code></td><td>在工具成功完成后立即运行。</td></tr><tr><td><code>UserPromptSubmit</code></td><td>当用户提交提示时、Claude 处理之前运行。这允许您根据提示/对话添加额外的上下文、验证提示或阻止某些类型的提示。</td></tr><tr><td><code>Stop</code></td><td>当主 Claude Code 代理完成响应时运行。如果停止是由于用户中断而发生的，则不会运行。</td></tr><tr><td><code>SubagentStop</code></td><td>当 Claude Code 子代理（Task 工具调用）完成响应时运行。</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow square-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="notification"><a aria-hidden="true" tabindex="-1" href="#notification"><span class="icon icon-link"></span></a>Notification</h3><div class="wrap-body">
+<p>当 Claude Code 发送通知时运行。通知在以下情况下发送：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow square"><thead><tr><th>Hook</th><th>描述</th></tr></thead><tbody><tr><td>Claude 需要您的权限来使用工具。</td><td>示例：“Claude needs your permission to use Bash”</td></tr><tr><td>提示输入已空闲至少 <code>60</code> 秒。</td><td>“Claude is waiting for your input”</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow square-->
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="precompact"><a aria-hidden="true" tabindex="-1" href="#precompact"><span class="icon icon-link"></span></a>​PreCompact</h3><div class="wrap-body">
+<p>在 Claude Code 即将运行压缩操作之前运行。</p>
+<h4 style="text-align:left;" id="匹配器"><a aria-hidden="true" tabindex="-1" href="#匹配器"><span class="icon icon-link"></span></a>匹配器</h4>
+<!--rehype:style=text-align:left;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow square"><thead><tr><th>Hook</th><th>描述</th></tr></thead><tbody><tr><td><code>manual</code></td><td>从 <code>/compact</code> 调用</td></tr><tr><td><code>auto</code></td><td>从自动压缩调用（由于上下文窗口已满）</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow square-->
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="sessionstart"><a aria-hidden="true" tabindex="-1" href="#sessionstart"><span class="icon icon-link"></span></a>SessionStart</h3><div class="wrap-body">
+<p>当 Claude Code 启动新会话或恢复现有会话时运行（目前确实会在底层启动新会话）</p>
+<h4 style="text-align:left;" id="匹配器-1"><a aria-hidden="true" tabindex="-1" href="#匹配器-1"><span class="icon icon-link"></span></a>匹配器</h4>
+<!--rehype:style=text-align:left;-->
+<ul>
+<li><code>startup</code> - 从启动调用</li>
+<li><code>resume</code> - 从 <code>--resume</code>、<code>--continue</code> 或 <code>/resume</code> 调用</li>
+<li><code>clear</code> - 从 <code>/clear</code> 调用</li>
+<li><code>compact</code> - 从自动或手动压缩调用。</li>
+</ul>
+<p>对于加载开发上下文（如现有问题或代码库的最近更改）很有用。</p>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="sessionend"><a aria-hidden="true" tabindex="-1" href="#sessionend"><span class="icon icon-link"></span></a>SessionEnd</h3><div class="wrap-body">
+<h4 style="text-align:left;" id="hook-输入中的-reason-字段将是以下之一"><a aria-hidden="true" tabindex="-1" href="#hook-输入中的-reason-字段将是以下之一"><span class="icon icon-link"></span></a>hook 输入中的 reason 字段将是以下之一</h4>
+<!--rehype:style=text-align:left;-->
+<ul>
+<li><code>clear</code> - 使用 /clear 命令清除会话</li>
+<li><code>logout</code> - 用户注销</li>
+<li><code>prompt_input_exit</code> - 用户在提示输入可见时退出</li>
+<li><code>other</code> - 其他退出原因</li>
+</ul>
+<p>当 Claude Code 会话结束时运行。对于清理任务、记录会话统计信息或保存会话状态很有用。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="hook-输入"><a aria-hidden="true" tabindex="-1" href="#hook-输入"><span class="icon icon-link"></span></a>Hook 输入</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h3><div class="wrap-body">
+<p>Hooks 通过 <code>stdin</code> 接收包含会话信息和事件特定数据的 JSON 数据：</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token comment">// 通用字段</span>
+</span><span class="code-line">  session_id<span class="token operator">:</span> string
+</span><span class="code-line">  <span class="token comment">// 对话 JSON 的路径</span>
+</span><span class="code-line">  transcript_path<span class="token operator">:</span> string  
+</span><span class="code-line">  <span class="token comment">// 调用 hook 时的当前工作目录</span>
+</span><span class="code-line">  cwd<span class="token operator">:</span> string              
+</span><span class="code-line">
+</span><span class="code-line">  <span class="token comment">// 事件特定字段</span>
+</span><span class="code-line">  hook_event_name<span class="token operator">:</span> string
+</span><span class="code-line">  ...
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="pretooluse-输入"><a aria-hidden="true" tabindex="-1" href="#pretooluse-输入"><span class="icon icon-link"></span></a>PreToolUse 输入</h3><div class="wrap-body">
+<p><code>tool_input</code> 的确切模式取决于工具。</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"/Users/.../.claude/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"/Users/..."</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"PreToolUse"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"tool_name"</span><span class="token operator">:</span> <span class="token string">"Write"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"tool_input"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"file_path"</span><span class="token operator">:</span> <span class="token string">"/path/to/file.txt"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"content"</span><span class="token operator">:</span> <span class="token string">"file content"</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="posttooluse-输入"><a aria-hidden="true" tabindex="-1" href="#posttooluse-输入"><span class="icon icon-link"></span></a>PostToolUse 输入</h3><div class="wrap-body">
+<p><code>tool_input</code> 和 <code>tool_response</code> 的确切模式取决于工具。</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"/Users/.../.claude/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"/Users/..."</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"PostToolUse"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"tool_name"</span><span class="token operator">:</span> <span class="token string">"Write"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"tool_input"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"file_path"</span><span class="token operator">:</span> <span class="token string">"/path/to/file.txt"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"content"</span><span class="token operator">:</span> <span class="token string">"file content"</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"tool_response"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"filePath"</span><span class="token operator">:</span> <span class="token string">"/path/to/file.txt"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"success"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="notification-输入"><a aria-hidden="true" tabindex="-1" href="#notification-输入"><span class="icon icon-link"></span></a>Notification 输入</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"/Users/.../.claude/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"/Users/..."</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"Notification"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"Task completed successfully"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="userpromptsubmit-输入"><a aria-hidden="true" tabindex="-1" href="#userpromptsubmit-输入"><span class="icon icon-link"></span></a>UserPromptSubmit 输入</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"/Users/.../.claude/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"/Users/..."</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"UserPromptSubmit"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"prompt"</span><span class="token operator">:</span> <span class="token string">"Write a function to calculate the factorial of a number"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="stop-和-subagentstop-输入"><a aria-hidden="true" tabindex="-1" href="#stop-和-subagentstop-输入"><span class="icon icon-link"></span></a>Stop 和 SubagentStop 输入</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"~/.claude/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl"</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"Stop"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"stop_hook_active"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>当 Claude Code 已经因为 <code>stop hook</code> 而继续时，<code>stop_hook_active</code> 为 <code>true</code>。检查此值或处理记录以防止 Claude Code 无限运行。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="precompact-输入"><a aria-hidden="true" tabindex="-1" href="#precompact-输入"><span class="icon icon-link"></span></a>PreCompact 输入</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"~/.claude/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl"</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"PreCompact"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"trigger"</span><span class="token operator">:</span> <span class="token string">"manual"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"custom_instructions"</span><span class="token operator">:</span> <span class="token string">""</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>对于 <code>manual</code>，<code>custom_instructions</code> 来自用户传递给 <code>/compact</code> 的内容。对于 <code>auto</code>，<code>custom_instructions</code> 为空。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="sessionstart-输入"><a aria-hidden="true" tabindex="-1" href="#sessionstart-输入"><span class="icon icon-link"></span></a>SessionStart 输入</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"~/.claude/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl"</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"SessionStart"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"source"</span><span class="token operator">:</span> <span class="token string">"startup"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="sessionend-输入"><a aria-hidden="true" tabindex="-1" href="#sessionend-输入"><span class="icon icon-link"></span></a>SessionEnd 输入</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"abc123"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"~/.claude/projects/.../00893aaf-19fa-41d2-8238-13269b9b3ca0.jsonl"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"/Users/..."</span><span class="token punctuation">,</span>
+</span><span class="code-line highlight-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"SessionEnd"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"reason"</span><span class="token operator">:</span> <span class="token string">"exit"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://docs.anthropic.com/zh-CN/docs/claude-code/cli-reference">Claude 代码参考</a> <em>(docs.anthropic.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.10.1" defer></script><script src="../js/fuse.min.js?v=1.10.1" defer></script><script src="../js/main.js?v=1.10.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
