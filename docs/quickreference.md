@@ -252,6 +252,26 @@ LICENSE=Copyright (c) <b>2022</b> 小弟调调™
 
 在项目根目录中创建 <pur>**.env**</pur> 文件
 
+### 图片
+
+![alt text](../icons/favicon.svg)
+<img src="../icons/favicon.svg?#sss=1" alt="alt text" height="95" width="95" />
+
+<hr />
+
+```markdown
+![alt text](./quickreference.svg?#sss=1)
+
+<img
+  src="./quickreference.svg?#sss=1"
+  alt="alt text"
+  height="95"
+  width="95"
+/>
+```
+
+在 Markdown 中引入图片
+
 Markdown 语法注释
 ---
 
