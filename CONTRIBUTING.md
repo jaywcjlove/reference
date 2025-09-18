@@ -402,7 +402,7 @@ jobs:
 <a href="https://github.com/kcmeven" title="Evan-k"><img src="https://avatars.githubusercontent.com/u/48147837?v=4" width="42;" alt="Evan-k"/></a>
 <a href="https://github.com/kdxcxs" title="kdxcxs"><img src="https://avatars.githubusercontent.com/u/18746192?v=4" width="42;" alt="kdxcxs"/></a>
 <a href="https://github.com/kubeme" title="kubernetes for me"><img src="https://avatars.githubusercontent.com/u/16346220?v=4" width="42;" alt="kubernetes for me"/></a>
-<a href="https://github.com/larry-xue" title="yujian(larry) xue"><img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="yujian(larry) xue"/></a>
+<a href="https://github.com/larry-xue" title="yujian"><img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="yujian"/></a>
 <a href="https://github.com/leauny" title="leauny"><img src="https://avatars.githubusercontent.com/u/42369176?v=4" width="42;" alt="leauny"/></a>
 <a href="https://github.com/liliangrong777" title="liliangrong777"><img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/></a>
 <a href="https://github.com/lozhu20" title="lozhu"><img src="https://avatars.githubusercontent.com/u/44923922?v=4" width="42;" alt="lozhu"/></a>
@@ -481,7 +481,7 @@ jobs:
 <a href="https://github.com/Brid9e" title="Joe"><img src="https://avatars.githubusercontent.com/u/85558909?v=4" width="42;" alt="Joe"/></a>
 <a href="https://github.com/ch3nnn" title="chentong"><img src="https://avatars.githubusercontent.com/u/40114564?v=4" width="42;" alt="chentong"/></a>
 <a href="https://github.com/CharlotteZeng" title="hanchZ"><img src="https://avatars.githubusercontent.com/u/19461184?v=4" width="42;" alt="hanchZ"/></a>
-<a href="https://github.com/ohto-ai" title="Choo"><img src="https://avatars.githubusercontent.com/u/46275725?v=4" width="42;" alt="Choo"/></a>
+<a href="https://github.com/ohto-ai" title="AI"><img src="https://avatars.githubusercontent.com/u/46275725?v=4" width="42;" alt="AI"/></a>
 <a href="https://github.com/chinaphp" title="Coffee"><img src="https://avatars.githubusercontent.com/u/520827?v=4" width="42;" alt="Coffee"/></a>
 <a href="https://github.com/DEEMO101" title="DEEMO101"><img src="https://avatars.githubusercontent.com/u/35123091?v=4" width="42;" alt="DEEMO101"/></a>
 <a href="https://github.com/EyeReflection" title="EyeReflection"><img src="https://avatars.githubusercontent.com/u/221274482?v=4" width="42;" alt="EyeReflection"/></a>
