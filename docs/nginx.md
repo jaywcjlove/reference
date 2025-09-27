@@ -73,6 +73,9 @@ $ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d ngin
 - `/var/www/html` _(default docroot)_
 - `logs`: `/var/log/nginx/access.log`, `/var/log/nginx/error.log`
 
+配置
+---
+
 ### 全局变量
 <!--rehype:wrap-class=col-span-2 row-span-4-->
 
@@ -351,6 +354,41 @@ server {
 ```
 
 您可以使用 Let's Encrypt 轻松保护您的网站/应用程序。去 [lets-encrypt](https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx.html) 获取更多信息
+
+虚拟主机与重定向
+---
+
+### 基础服务器块
+
+```nginx
+server {
+  listen 80;
+  server_name example.com www.example.com;
+  root /var/www/example/public;
+  index index.html index.htm;
+}
+```
+
+### HTTP→HTTPS 重定向
+
+```nginx
+server {
+  listen 80;
+  server_name demo.com www.demo.com;
+  return 301 https://demo.com$request_uri;
+}
+```
+
+### 规范主机
+
+```nginx
+# Force non-www
+server {
+  listen 80;
+  server_name www.demo.com;
+  return 301 $scheme://demo.com$request_uri;
+}
+```
 
 ### 重定向(301永久)
 <!--rehype:wrap-class=row-span-2-->
