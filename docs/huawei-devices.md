@@ -8,16 +8,13 @@ Huawei 网络设备备忘清单
 
 ### VRP
 
-是华为数据通信产品的通用网络操作平台，可通过它对设备进行操作
-
-可进行简化输入，输入命令时，若不记得，可通过命令行获取相关提示
-
-例如 `undo in en` 取消系统信息显示，完整命令为 `undo info-center enable`
-
-如果简写有歧义，那么需要输入更完整的部分。
+- 华为数据通信产品的通用网络操作平台，可用于设备管理和配置  
+- 支持命令简写，输入命令时可通过提示获取完整写法  
+- 例如：`undo in en` 取消系统信息显示，完整命令为 `undo info-center enable`  
+- 如果简写存在歧义，则需要输入更完整的命令  
 
 ### 视图
-<!--rehype:wrap-class=col-span-3-->
+<!--rehype:wrap-class=col-span-2-->
 
 视图（View）是指命令行界面（CLI）的操作层级，不同视图可执行不同范围的命令。
 
@@ -328,7 +325,12 @@ duplex full | half
 ```sh
 interface g0/0/1 # 进入接口
 port link-type trunk # 接口模式为 trunk
-port trunk allow-pass vlan VlanId | all # all 为通过所有vlan, VlanId 为指定 vlan，多个vlan以空格隔开
+```
+
+`all` 为通过所有 `vlan`, VlanId 为指定 vlan，多个vlan以空格隔开
+
+```sh
+port trunk allow-pass vlan VlanId | all 
 ```
 
 ### vlan 配置
@@ -340,55 +342,45 @@ port trunk allow-pass vlan VlanId | all # all 为通过所有vlan, VlanId 为指
 #### 创建 vlan
 
 ```sh
-vlan VlanId # VlanId 自定义vlanid 1 ~ 4094
-description VLANNAME # VLANNAME 自定义的 vlan 名称
+# VlanId 自定义vlanid 1 ~ 4094
+vlan VlanId 
+# VLANNAME 自定义的 vlan 名称
+description VLANNAME 
 
-undo vlan VlanId # 删除vlan
+# 删除vlan
+undo vlan VlanId 
 
-vlan batch 10 20 30 # 创建 10,20,30 vlan
-vlan batch 10 to 30 # 创建 10 ~ 30 vlan
+# 创建 10,20,30 vlan
+vlan batch 10 20 30 
+# 创建 10 ~ 30 vlan
+vlan batch 10 to 30 
 ```
 
 #### 分配 vlan
 
 ```sh
-interface E0/0/1 # 进入接口
-port link-type access # 接口模式设为 access
-port default vlan 10 # 划分到 vlan 10 中
+# 进入接口
+interface E0/0/1 
+# 接口模式设为 access
+port link-type access 
+# 划分到 vlan 10 中
+port default vlan 10 
 
-port-group 1 # 创建接口组 1
-group-member e0/0/5 to e0/0/8 # 组成员为 e0/0/5 - e0/0/8 .... 5,6,7,8
-port link-type access # 组成员接口模式设为 access
-port default vlan 10 # 组成员划分到 vlan 10 中
+# 创建接口组 1
+port-group 1
+# 组成员为 e0/0/5 - e0/0/8 .... 5,6,7,8
+group-member e0/0/5 to e0/0/8
+# 组成员接口模式设为 access
+port link-type access
+# 组成员划分到 vlan 10 中
+port default vlan 10
 ```
 
 交换机配置
 ---
 
-### 链路聚合
-<!--rehype:wrap-class=col-span-2-->
-
-又称接口汇聚，指两台交换机之间物理上多个接口链接起来，将多条链路聚合为一条逻辑链路
-
-从而增加链路宽带，使链路之间可以互相冗余备份
-
-```shell
-interface eth-trunk 1 # 创建 id 为 1 的 eth-trunk 聚合接口
-quit
-interface g0/0/1
-eth-trunk 1 # 加入 g/0/01 到 eth-trunk 1 中
-# 添加完毕成员后
-# eth-trunk 接口下
-port link-type trunk # 设置接口链路类型为 trunk
-
-# 在聚合接口下添加成员
-trunkport g0/0/1
-trunkport g0/0/1 to g0/0/2
-# 删除用 undo
-```
-
 ### STP (Spanning Tree Protocol)
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 即生成树协议
 
@@ -428,17 +420,37 @@ stp priority 0
 stp root primary
 # 备用根交换机
 stp root secondary
-# #
 ```
 
+### 链路聚合
+
+```shell
+# 创建 id 为 1 的 eth-trunk 聚合接口
+interface eth-trunk 1 
+quit
+interface g0/0/1
+eth-trunk 1 # 加入 g/0/01 到 eth-trunk 1 中
+# 添加完毕成员后
+# eth-trunk 接口下
+# 设置接口链路类型为 trunk
+port link-type trunk 
+```
+
+在聚合接口下添加成员
+
+```sh
+trunkport g0/0/1
+trunkport g0/0/1 to g0/0/2
+# 删除用 undo
+```
+
+`接口汇聚`是将交换机间的多条物理链路合并为一条逻辑链路，以提升带宽并实现链路冗余备份。
+
 ### RSTP（Rapid Spanning Tree Protocol）
-<!--rehype:wrap-class=col-span-2-->
 
-即快速生成树协议
-
-发生网络故障时，STP 的网络拓扑结构会发生变化，网络收敛需要较长时间，RSTP 改进了 STP，收敛速度可缩短至一秒内
-
-与 STP 配置基本相同
+- RSTP（快速生成树协议）是对 STP 的改进版  
+- 当网络故障发生时，STP 的拓扑结构需要较长时间收敛，而 RSTP 可在 1 秒内完成  
+- 配置方式与 STP 基本一致  
 
 不同点：
 
@@ -734,11 +746,9 @@ port-security aging-time 300
 ```
 
 ### 访问控制列表（Access Control List）
-<!--rehype:wrap-class=col-span-3-->
 
-由一系列规则组成的集合，通过规则对报文分类处理。
-
-通常由若干条 deny（拒绝） | permit（允许） 语句组成。
+- 由一系列规则组成的集合，通过规则对报文分类处理。
+- 通常由若干条 <red>deny</red>（拒绝） | <code>permit</code>（允许） 语句组成。
 
 ### 基本访问控制列表
 
@@ -762,10 +772,6 @@ traffic-filter outbound acl 2000
 
 范围 3000 - 3999。
 
-需要尽量应用在靠近源地址的接口，允许某个网段后需要拒绝其他网段。
-
-对于 FTP 须指定 FTP（21）和 FTP-DATA（20）。
-
 ```shell
 # 系统视图下
 acl 3000
@@ -776,3 +782,5 @@ rule 5 deny tcp source IP-ADDRESS MASK destination IP-ADDRESS MASK destination-p
 # lt 小于
 rule 10 permit tcp source IP-ADDRESS MASK destination IP-ADDRESS MASK destination-port eq 80
 ```
+
+应尽量在靠近源地址的接口上应用；允许某个网段后，应拒绝其他网段。对于 FTP，需要同时指定 FTP（21）和 FTP-DATA（20）端口。  
