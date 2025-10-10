@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Cisco 网络设备备忘清单
+ &#x26;  cisco cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="本清单提供了 Cisco 网络设备常用命令示例
+
+清单内容基于 Cisco Packet Tracer 进行
+
+模式，为开发人员分享快速参考备忘单。">
+<meta keywords="cisco,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/cisco.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="cisco-网络设备备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#cisco-网络设备备忘清单"><span class="icon icon-link"></span></a>Cisco 网络设备备忘清单</h1><div class="wrap-body">
+<p>本清单提供了 Cisco 网络设备常用命令示例</p>
+<p>清单内容基于 <a href="https://www.netacad.com/cisco-packet-tracer"><strong>Cisco Packet Tracer</strong></a> 进行</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#模式">模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模式简介">模式简介</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#进入特权模式">进入特权模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#进入全局模式">进入全局模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#进入-line-模式">进入 line 模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#退回上级模式">退回上级模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#强制执行">强制执行</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#取消命令">取消命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#基本操作">基本操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#修改主机名称">修改主机名称</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看设备配置">查看设备配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#关闭端口">关闭端口</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置进入特权模式密码">设置进入特权模式密码</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#明文密码">明文密码</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#密文密码">密文密码</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#vlan-配置">vlan 配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建并进入-vlan">创建并进入 vlan</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#修改-vlan-名称">修改 vlan 名称</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#取消-vlan">取消 vlan</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置-vlan-trunk">配置 vlan trunk</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#首先创建需要配置的对应-vlan">首先创建需要配置的对应 vlan</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#添加端口到-vlan-当中">添加端口到 vlan 当中</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#进入接口后">进入接口后</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#进入两个交换机相连接口">进入两个交换机相连接口</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#在-trunk-中-添加或删除-vlan">在 trunk 中 添加或删除 vlan</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#查看-trunk-配置">查看 trunk 配置</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#接口操作">接口操作</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#进入接口">进入接口</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#单个接口">单个接口</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#多个接口">多个接口</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#添加接口到-vlan-中">添加接口到 vlan 中</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将接口从-vlan-中移出">将接口从 vlan 中移出</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#设备调试">设备调试</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置-console-口令">配置 console 口令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置远程">配置远程</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#配置远程用户">配置远程用户</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#配置接口">配置接口</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#连接远程">连接远程</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#路由配置">路由配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#静态路由">静态路由</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#默认路由">默认路由</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#单臂路由">单臂路由</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#动态路由">动态路由</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ospf-配置">OSPF 配置</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#交换机配置">交换机配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#vtp协议">VTP协议</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#stp-协议">STP 协议</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#三层交换机">三层交换机</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#三层交换机dhcp配置">三层交换机DHCP配置</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="模式"><a aria-hidden="true" tabindex="-1" href="#模式"><span class="icon icon-link"></span></a>模式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="模式简介"><a aria-hidden="true" tabindex="-1" href="#模式简介"><span class="icon icon-link"></span></a>模式简介</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+<p>是指命令行界面的操作层级，不同模式可执行不同范围的命令</p>
+<p>以下列出了一些基本的模式</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="center">模式</th><th align="center">命令提示符</th><th align="center">进入方式</th></tr></thead><tbody><tr><td align="center">用户模式</td><td align="center"><code>用户名称></code></td><td align="center">默认进入</td></tr><tr><td align="center">特权模式</td><td align="center"><code>用户名称#</code></td><td align="center">通过 enable 进入</td></tr><tr><td align="center">全局配置模式</td><td align="center"><code>用户名称(config)#</code></td><td align="center">通过 config terminal 进入</td></tr><tr><td align="center">VLAN 模式</td><td align="center"><code>用户名称(config-vlan)#</code></td><td align="center">通过 vlan vlan-ID 进入</td></tr><tr><td align="center">接口配置模式</td><td align="center"><code>用户名称(config-if)#</code></td><td align="center">通过 interface 接口 进入</td></tr><tr><td align="center">Line 模式</td><td align="center"><code>用户名称(config-line)#</code></td><td align="center">通过 line vty 端口 进入</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="进入特权模式"><a aria-hidden="true" tabindex="-1" href="#进入特权模式"><span class="icon icon-link"></span></a>进入特权模式</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token builtin class-name">enable</span> <span class="token comment"># 进入到特权模式</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="进入全局模式"><a aria-hidden="true" tabindex="-1" href="#进入全局模式"><span class="icon icon-link"></span></a>进入全局模式</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">configure terminal <span class="token comment"># 进入到全局模式</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="进入-line-模式"><a aria-hidden="true" tabindex="-1" href="#进入-line-模式"><span class="icon icon-link"></span></a>进入 line 模式</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">line vty <span class="token number">0</span> <span class="token comment"># 进入 line 模式 的 0 端口</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="退回上级模式"><a aria-hidden="true" tabindex="-1" href="#退回上级模式"><span class="icon icon-link"></span></a>退回上级模式</h3><div class="wrap-body">
+<p>退回到上一级模式， 如全局模式退到特权模式，特权模式退到普通模式</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token builtin class-name">exit</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="强制执行"><a aria-hidden="true" tabindex="-1" href="#强制执行"><span class="icon icon-link"></span></a>强制执行</h3><div class="wrap-body">
+<p>在任何模式下均可</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token keyword">do</span> ~ <span class="token comment"># 强制执行 ~</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="取消命令"><a aria-hidden="true" tabindex="-1" href="#取消命令"><span class="icon icon-link"></span></a>取消命令</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">no ~ <span class="token comment"># 取消命令 ~</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="基本操作"><a aria-hidden="true" tabindex="-1" href="#基本操作"><span class="icon icon-link"></span></a>基本操作</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="修改主机名称"><a aria-hidden="true" tabindex="-1" href="#修改主机名称"><span class="icon icon-link"></span></a>修改主机名称</h3><div class="wrap-body">
+<p>需要在全局模式下进行</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">hostname</span> NAME <span class="token comment"># 修改名称为 NAME</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看设备配置"><a aria-hidden="true" tabindex="-1" href="#查看设备配置"><span class="icon icon-link"></span></a>查看设备配置</h3><div class="wrap-body">
+<p>需要在特权模式下进行</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">show running-config <span class="token comment"># 查看设备配置</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="关闭端口"><a aria-hidden="true" tabindex="-1" href="#关闭端口"><span class="icon icon-link"></span></a>关闭端口</h3><div class="wrap-body">
+<p>需要在接口配置模式下进行</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">shutdown</span> ~ <span class="token comment"># 关闭端口 ~</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="设置进入特权模式密码"><a aria-hidden="true" tabindex="-1" href="#设置进入特权模式密码"><span class="icon icon-link"></span></a>设置进入特权模式密码</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>需要在全局模式下进行</p>
+<h4 id="明文密码"><a aria-hidden="true" tabindex="-1" href="#明文密码"><span class="icon icon-link"></span></a>明文密码</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token builtin class-name">enable</span> password PASSWORD <span class="token comment"># 设置进入 特权模式 的密码为 PASSWORD</span>
+</span></code></pre>
+<h4 id="密文密码"><a aria-hidden="true" tabindex="-1" href="#密文密码"><span class="icon icon-link"></span></a>密文密码</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token builtin class-name">enable</span> secret PASSWORD <span class="token comment"># 设置进入 特权模式 的密码为 PASSWORD</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="vlan-配置"><a aria-hidden="true" tabindex="-1" href="#vlan-配置"><span class="icon icon-link"></span></a>vlan 配置</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="创建并进入-vlan"><a aria-hidden="true" tabindex="-1" href="#创建并进入-vlan"><span class="icon icon-link"></span></a>创建并进入 vlan</h3><div class="wrap-body">
+<p>需要在全局模式下进行</p>
+<p>vlan-ID 可以是任何符合 vlan 范围的数字，如果 vlan 存在，则直接进入</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">vlan vlan-ID
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="修改-vlan-名称"><a aria-hidden="true" tabindex="-1" href="#修改-vlan-名称"><span class="icon icon-link"></span></a>修改 vlan 名称</h3><div class="wrap-body">
+<p>在进入 vlan 后，将当前 vlan 名称变更为 NAME</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">name NAME
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="取消-vlan"><a aria-hidden="true" tabindex="-1" href="#取消-vlan"><span class="icon icon-link"></span></a>取消 vlan</h3><div class="wrap-body">
+<p>需要离开 vlan 后，在全局模式下才能取消 vlan</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">no vlan vlan-ID
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="配置-vlan-trunk"><a aria-hidden="true" tabindex="-1" href="#配置-vlan-trunk"><span class="icon icon-link"></span></a>配置 vlan trunk</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<h4 id="首先创建需要配置的对应-vlan"><a aria-hidden="true" tabindex="-1" href="#首先创建需要配置的对应-vlan"><span class="icon icon-link"></span></a>首先创建需要配置的对应 vlan</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line">vlan vlan-id
+</span></code></pre>
+<h4 id="添加端口到-vlan-当中"><a aria-hidden="true" tabindex="-1" href="#添加端口到-vlan-当中"><span class="icon icon-link"></span></a>添加端口到 vlan 当中</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 进入 范围在 1 - 10 的所有接口</span>
+</span><span class="code-line">interface range f0/1 - <span class="token number">10</span>
+</span><span class="code-line"><span class="token comment"># 进入 范围在 1 - 10 的所有接口 和 单独的 f0/12 接口</span>
+</span><span class="code-line">interface range f0/1 - <span class="token number">11</span>, f0/12
+</span><span class="code-line"><span class="token comment"># 进入 单个 接口 f0/1</span>
+</span><span class="code-line">interface f0/1
+</span></code></pre>
+<h4 id="进入接口后"><a aria-hidden="true" tabindex="-1" href="#进入接口后"><span class="icon icon-link"></span></a>进入接口后</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># vlan-id 为 需要将 当前接口 添加到 的 vlan id，为数字</span>
+</span><span class="code-line">switchport access vlan vlan-id
+</span></code></pre>
+<h4 id="进入两个交换机相连接口"><a aria-hidden="true" tabindex="-1" href="#进入两个交换机相连接口"><span class="icon icon-link"></span></a>进入两个交换机相连接口</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 设置模式 trunk</span>
+</span><span class="code-line">switchport mode trunk
+</span></code></pre>
+<h4 id="在-trunk-中-添加或删除-vlan"><a aria-hidden="true" tabindex="-1" href="#在-trunk-中-添加或删除-vlan"><span class="icon icon-link"></span></a>在 trunk 中 添加或删除 vlan</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 首先需要进入 配置 trunk 的接口</span>
+</span><span class="code-line">switchport trunk allowed vlan <span class="token function">add</span> vlan-id
+</span><span class="code-line">switchport trunk allowed vlan remove vlan-id
+</span></code></pre>
+<h4 id="查看-trunk-配置"><a aria-hidden="true" tabindex="-1" href="#查看-trunk-配置"><span class="icon icon-link"></span></a>查看 trunk 配置</h4>
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 特权模式下</span>
+</span><span class="code-line"><span class="token comment"># interface-id 为配置 trunk 的接口名称</span>
+</span><span class="code-line">show interfaces interface-id switchport
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="接口操作"><a aria-hidden="true" tabindex="-1" href="#接口操作"><span class="icon icon-link"></span></a>接口操作</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="进入接口"><a aria-hidden="true" tabindex="-1" href="#进入接口"><span class="icon icon-link"></span></a>进入接口</h3><div class="wrap-body">
+<p>需要在全局模式下进行</p>
+<h4 id="单个接口"><a aria-hidden="true" tabindex="-1" href="#单个接口"><span class="icon icon-link"></span></a>单个接口</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 进入单个接口</span>
+</span><span class="code-line"><span class="token comment"># 进入接口 f0/1</span>
+</span><span class="code-line">interface f0/1
+</span></code></pre>
+<h4 id="多个接口"><a aria-hidden="true" tabindex="-1" href="#多个接口"><span class="icon icon-link"></span></a>多个接口</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 进入接口 f0/1 直到 f0/8 和 f0/10</span>
+</span><span class="code-line">interface range f0/1 - <span class="token number">8</span>, f0/10
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="添加接口到-vlan-中"><a aria-hidden="true" tabindex="-1" href="#添加接口到-vlan-中"><span class="icon icon-link"></span></a>添加接口到 vlan 中</h3><div class="wrap-body">
+<p>将进入到的当前接口添加到对应 vlan-ID 的 vlan 中</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">switchport access vlan vlan-ID
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将接口从-vlan-中移出"><a aria-hidden="true" tabindex="-1" href="#将接口从-vlan-中移出"><span class="icon icon-link"></span></a>将接口从 vlan 中移出</h3><div class="wrap-body">
+<p>取消添加到对应 vlan-ID 的 vlan 的接口</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">no switchport access vlan vlan-ID
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="设备调试"><a aria-hidden="true" tabindex="-1" href="#设备调试"><span class="icon icon-link"></span></a>设备调试</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置-console-口令"><a aria-hidden="true" tabindex="-1" href="#配置-console-口令"><span class="icon icon-link"></span></a>配置 console 口令</h3><div class="wrap-body">
+<p>设置进入终端的密码</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 配置端口</span>
+</span><span class="code-line">line console <span class="token number">0</span>
+</span><span class="code-line"><span class="token comment"># 设置密码为 123</span>
+</span><span class="code-line">password <span class="token number">123</span>
+</span><span class="code-line"><span class="token comment"># 载入</span>
+</span><span class="code-line">login
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist row-span-2 col-span-2"><div class="wrap-header h3wrap"><h3 id="配置远程"><a aria-hidden="true" tabindex="-1" href="#配置远程"><span class="icon icon-link"></span></a>配置远程</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2 col-span-2-->
+<h4 id="配置远程用户"><a aria-hidden="true" tabindex="-1" href="#配置远程用户"><span class="icon icon-link"></span></a>配置远程用户</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 0 为一个用户</span>
+</span><span class="code-line"><span class="token comment"># 0 - 2 为 0， 1， 2 三个用户</span>
+</span><span class="code-line"><span class="token comment"># 0 - 15 为 16 个用户</span>
+</span><span class="code-line">line vty <span class="token number">0</span>
+</span><span class="code-line">line vty <span class="token number">0</span> - <span class="token number">2</span>
+</span><span class="code-line">line vty <span class="token number">0</span> - <span class="token number">15</span>
+</span><span class="code-line"><span class="token comment"># 配置密码为 123456</span>
+</span><span class="code-line">password <span class="token number">123456</span>
+</span><span class="code-line"><span class="token comment"># 载入设置</span>
+</span><span class="code-line">login
+</span></code></pre>
+<h4 id="配置接口"><a aria-hidden="true" tabindex="-1" href="#配置接口"><span class="icon icon-link"></span></a>配置接口</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 进入 vlan 1</span>
+</span><span class="code-line">interface vlan <span class="token number">1</span>
+</span><span class="code-line"><span class="token comment"># 配置 ip 地址</span>
+</span><span class="code-line"><span class="token comment"># 192.168.100.254 为需要配置的 ip 地址</span>
+</span><span class="code-line"><span class="token comment"># 255.255.255.0 为子网掩码</span>
+</span><span class="code-line"><span class="token function">ip</span> address <span class="token number">192.168</span>.100.254 <span class="token number">255.255</span>.255.0
+</span><span class="code-line"><span class="token comment"># 启动远程</span>
+</span><span class="code-line"><span class="token comment"># no 为取消 ~</span>
+</span><span class="code-line"><span class="token comment"># shutdown 为关闭</span>
+</span><span class="code-line"><span class="token comment"># no shutdown 就是取消关闭，即启动</span>
+</span><span class="code-line">no <span class="token function">shutdown</span>
+</span></code></pre>
+<h4 id="连接远程"><a aria-hidden="true" tabindex="-1" href="#连接远程"><span class="icon icon-link"></span></a>连接远程</h4>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 需要先配置远程的电脑 ip 地址</span>
+</span><span class="code-line"><span class="token comment"># 需要与 配置的 远程 ip 地址频段一致</span>
+</span><span class="code-line"><span class="token comment"># 如 远程 ip 地址为 192.168.100.254</span>
+</span><span class="code-line"><span class="token comment"># 电脑 ip 地址需要与 远程 ip 地址在同一频段 即 192.168.100.~</span>
+</span><span class="code-line"><span class="token comment"># 然后通过在 电脑 的命令提示行使用 ping 命令查看是否连接成功</span>
+</span><span class="code-line"><span class="token comment"># 连接成功之后通过 telnet 访问远程</span>
+</span><span class="code-line">telnet <span class="token number">192.168</span>.100.254
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="路由配置"><a aria-hidden="true" tabindex="-1" href="#路由配置"><span class="icon icon-link"></span></a>路由配置</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="静态路由"><a aria-hidden="true" tabindex="-1" href="#静态路由"><span class="icon icon-link"></span></a>静态路由</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 首先需要配置 IP 地址</span>
+</span><span class="code-line"><span class="token comment">## 电脑配置</span>
+</span><span class="code-line"><span class="token comment">### IP地址配置 （假设为：192.168.1.1）</span>
+</span><span class="code-line"><span class="token comment">### 默认网关 （需与IP地址同段，假设为：192.168.1.254）</span>
+</span><span class="code-line"><span class="token comment">## 路由器配置</span>
+</span><span class="code-line"><span class="token comment">### 首先进入与电脑连接的接口 （假设为 f0/0）</span>
+</span><span class="code-line"><span class="token comment">### 需在 全局模式 下</span>
+</span><span class="code-line">interface f0/0
+</span><span class="code-line"><span class="token comment">### 进入接口后</span>
+</span><span class="code-line"><span class="token comment">### 在 接口模式 下</span>
+</span><span class="code-line"><span class="token function">ip</span> address <span class="token number">192.168</span>.1.254 <span class="token number">255.255</span>.255.0
+</span><span class="code-line"><span class="token comment">### 192.168.1.254 为 在 电脑所配置的默认网关</span>
+</span><span class="code-line"><span class="token comment">### 255.255.255.0 为 子网掩码</span>
+</span><span class="code-line"><span class="token comment">### 然后启动接口 否则无法连接</span>
+</span><span class="code-line">no <span class="token function">shutdown</span>
+</span><span class="code-line"><span class="token comment">### 进入两个路由器相连的接口 （假设为 s1/0）</span>
+</span><span class="code-line">interface s1/0
+</span><span class="code-line"><span class="token comment">### 同样需要配置 IP地址</span>
+</span><span class="code-line"><span class="token function">ip</span> address <span class="token number">10.10</span>.10.1 <span class="token number">255.0</span>.0.0
+</span><span class="code-line"><span class="token comment">### 然后配置时钟</span>
+</span><span class="code-line">clock rate <span class="token number">64000</span>
+</span><span class="code-line"><span class="token comment">### 64000 为 时钟速率</span>
+</span><span class="code-line"><span class="token comment">### 同时也需要启动接口</span>
+</span><span class="code-line">no <span class="token function">shutdown</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 配置跳转路由</span>
+</span><span class="code-line"><span class="token comment">## 在 全局模式 下</span>
+</span><span class="code-line"><span class="token function">ip</span> route <span class="token number">192.168</span>.1.0 <span class="token number">255.255</span>.255.0 <span class="token number">10.10</span>.10.1
+</span><span class="code-line"><span class="token comment">### 其中 192.168.1.0 为 需要到达的目标 IP地址</span>
+</span><span class="code-line"><span class="token comment">### 第四位 0 表示无指定值，即 1 - 254 的值都能匹配</span>
+</span><span class="code-line"><span class="token comment">### 255.255.255.0 为 子网掩码</span>
+</span><span class="code-line"><span class="token comment">### 目标地址有几位明确的，就需要几位255</span>
+</span><span class="code-line"><span class="token comment">### 10.10.10.1 为 下一跳地址</span>
+</span><span class="code-line"><span class="token comment">### 下一跳可以理解为 公交车的下一站</span>
+</span><span class="code-line"><span class="token comment">### 而目标 IP地址则为公交车的终点站</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="默认路由"><a aria-hidden="true" tabindex="-1" href="#默认路由"><span class="icon icon-link"></span></a>默认路由</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 首先需要清空所有路由</span>
+</span><span class="code-line"><span class="token comment">## 然后重新配置</span>
+</span><span class="code-line"><span class="token function">ip</span> route <span class="token number">0.0</span>.0.0 <span class="token number">0.0</span>.0.0 <span class="token number">0.0</span>.0.0
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 第一个 0.0.0.0 为 目标 IP地址 固定不变</span>
+</span><span class="code-line"><span class="token comment">## 0 表示无指定目标，因此匹配所有 IP地址</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 第二个 0.0.0.0 为 目标地址的子网掩码 固定不变</span>
+</span><span class="code-line"><span class="token comment">## 目标 IP地址 有几位不为 0 则有几位是 255</span>
+</span><span class="code-line"><span class="token comment">## 如：目标 IP地址 为：10.10.0.0</span>
+</span><span class="code-line"><span class="token comment">## 则 子网掩码为 255.255.0.0</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 第三个 0.0.0.0 为 下一跳的 IP地址 随下一跳地址变化</span>
+</span><span class="code-line"><span class="token comment">## 如：下一跳地址为 10.10.10.1 则 命令为</span>
+</span><span class="code-line"><span class="token function">ip</span> route <span class="token number">0.0</span>.0.0 <span class="token number">0.0</span>.0.0 <span class="token number">10.10</span>.10.1
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="单臂路由"><a aria-hidden="true" tabindex="-1" href="#单臂路由"><span class="icon icon-link"></span></a>单臂路由</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 首先需要在 PC 配置IP和网关 （假设分别为 192.168.1.1、192.168.1.254）</span>
+</span><span class="code-line"><span class="token comment"># 然后进入交换机创建 vlan （假设 vlan 为 1）</span>
+</span><span class="code-line">vlan <span class="token number">1</span>
+</span><span class="code-line"><span class="token comment">## 并将与PC相连的接口 添加到 vlan 当中 （假设接口为 f0/1）</span>
+</span><span class="code-line">interface f0/1
+</span><span class="code-line"><span class="token comment">## 配置接口为access口</span>
+</span><span class="code-line">switchport mode access
+</span><span class="code-line">switchport access vlan <span class="token number">1</span>
+</span><span class="code-line"><span class="token comment">## 然后在于路由器相连的接口中放通vlan （假设为 g0/0接口）</span>
+</span><span class="code-line">int g0/0
+</span><span class="code-line"><span class="token comment">## 设置 trunk</span>
+</span><span class="code-line">switchport mode trunk
+</span><span class="code-line"><span class="token comment">## 放通所有vlan</span>
+</span><span class="code-line">switchport trunk allowed vlan all
+</span><span class="code-line"><span class="token comment"># 进入路由器</span>
+</span><span class="code-line"><span class="token comment">## 首先需要开启</span>
+</span><span class="code-line"><span class="token comment">### 需要进入与交换机相连的接口 （假设为 f0/1）</span>
+</span><span class="code-line">interface f0/1
+</span><span class="code-line"><span class="token comment">### 开启接口</span>
+</span><span class="code-line">no <span class="token function">sh</span>
+</span><span class="code-line"><span class="token comment">## 然后进入 f0/1.1 (f0/1.1 为 f0/1 的子接口)</span>
+</span><span class="code-line">int f0/1.1
+</span><span class="code-line"><span class="token comment">## 配置封装 trunk 到 vlan 中 （假设 vlan 为 1）</span>
+</span><span class="code-line">encapsulation dot1Q <span class="token number">1</span>
+</span><span class="code-line"><span class="token comment">## 随后配置 IP 和 掩码</span>
+</span><span class="code-line"><span class="token function">ip</span> address <span class="token number">192.168</span>.1.254 <span class="token number">255.255</span>.255.0
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="动态路由"><a aria-hidden="true" tabindex="-1" href="#动态路由"><span class="icon icon-link"></span></a>动态路由</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 首先配置电脑IP及网关 （假设为 192.168.1.1、192.168.1.254）</span>
+</span><span class="code-line"><span class="token comment"># 然后配置路由器</span>
+</span><span class="code-line"><span class="token comment">## 进入与电脑相连的接口 （假设为 f0/1），开启，并配置IP地址</span>
+</span><span class="code-line">int f0/1
+</span><span class="code-line">no <span class="token function">sh</span>
+</span><span class="code-line"><span class="token function">ip</span> address <span class="token number">192.168</span>.1.254 <span class="token number">255.255</span>.255.0
+</span><span class="code-line"><span class="token comment">## 然后进入与其它路由器相连的接口 （假设为 f0/0），开启</span>
+</span><span class="code-line"><span class="token comment">## 并为接口配置IP （假设为 10.10.10.1）</span>
+</span><span class="code-line">int f0/0
+</span><span class="code-line"><span class="token function">ip</span> address <span class="token number">10.10</span>.10.1 <span class="token number">255.0</span>.0.0
+</span><span class="code-line"><span class="token comment">## 然后回到全局模式开始RIP配置</span>
+</span><span class="code-line">route rip
+</span><span class="code-line">network <span class="token number">192.168</span>.1.0
+</span><span class="code-line"><span class="token comment">## network 后面跟的IP地址为与当前路由器所相连的接口所配置的IP，0表示全网段</span>
+</span><span class="code-line"><span class="token comment">## 即 network 后，所有在 192.168.1.1 - 254 这个范围的IP都能联通</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="ospf-配置"><a aria-hidden="true" tabindex="-1" href="#ospf-配置"><span class="icon icon-link"></span></a>OSPF 配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 添加环回地址</span>
+</span><span class="code-line"><span class="token comment">## 进入环回接口</span>
+</span><span class="code-line">interface loopback <span class="token number">0</span>
+</span><span class="code-line"><span class="token comment">## 配置ip</span>
+</span><span class="code-line"><span class="token function">ip</span> address IP-Address subnet-mask
+</span><span class="code-line"><span class="token comment">## 配置 ospf 点对点</span>
+</span><span class="code-line"><span class="token function">ip</span> ospf network point-to-point
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># OSPF 路由进程</span>
+</span><span class="code-line"><span class="token comment">## 进程号可自定义</span>
+</span><span class="code-line"><span class="token comment">## 用于识别当前路由器上的多个进程</span>
+</span><span class="code-line">router ospf 进程号
+</span><span class="code-line"><span class="token comment">## 发布网段在区域</span>
+</span><span class="code-line"><span class="token comment">### 网段 如：192.168.10.~</span>
+</span><span class="code-line"><span class="token comment">### 网段可以是与子网地址，网络地址，接口地址...</span>
+</span><span class="code-line"><span class="token comment">### 正向掩码若为 255.0.0.0 则反向掩码为 0.255.255.255</span>
+</span><span class="code-line"><span class="token comment">### 255.255.255.192 - 0.0.0.63</span>
+</span><span class="code-line"><span class="token comment">### 区域号可自定义</span>
+</span><span class="code-line">network 网段 反向掩码 area 区域号
+</span><span class="code-line"><span class="token comment">## 设置 router ID</span>
+</span><span class="code-line"><span class="token comment">### ID 为 IP地址</span>
+</span><span class="code-line"><span class="token comment">### 是在 OSPF区域当中唯一标识路由器的IP地址</span>
+</span><span class="code-line"><span class="token comment">### 优先选取最大的环回接口IP</span>
+</span><span class="code-line"><span class="token comment">### 若没有则选取最大物理接口IP</span>
+</span><span class="code-line">router-id ID
+</span><span class="code-line"><span class="token comment">## 修改 接口 cost值</span>
+</span><span class="code-line"><span class="token comment">### OSPF 使用 cost值来决定最佳路径</span>
+</span><span class="code-line"><span class="token comment">### cost值类似权重值</span>
+</span><span class="code-line"><span class="token comment">### 需要首先进入对应接口当中</span>
+</span><span class="code-line"><span class="token function">ip</span> ospf cost cost值
+</span><span class="code-line"><span class="token comment">## 配置 OSPF计时器</span>
+</span><span class="code-line"><span class="token comment">### TIME 为 时间 单位为 s</span>
+</span><span class="code-line"><span class="token function">ip</span> ospf hello-interval TIME<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token function">ip</span> ospf dead-interval TIME<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="交换机配置"><a aria-hidden="true" tabindex="-1" href="#交换机配置"><span class="icon icon-link"></span></a>交换机配置</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="vtp协议"><a aria-hidden="true" tabindex="-1" href="#vtp协议"><span class="icon icon-link"></span></a>VTP协议</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 可以通过 VTP协议 在一台交换机上集中进行配置变更</span>
+</span><span class="code-line"><span class="token comment"># 所做的变更会自动传播到当前网络中的所有交换机上</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># VTP 域</span>
+</span><span class="code-line"><span class="token comment">## 域内的每台交换机必须使用相同 VTP域名</span>
+</span><span class="code-line"><span class="token comment">## 一台交换机只能加入一个 VTP域</span>
+</span><span class="code-line"><span class="token comment">## 交换机必须是相连的，且之间须启用 Trunk 中继</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># VTP 模式</span>
+</span><span class="code-line"><span class="token comment">## 服务器模式</span>
+</span><span class="code-line">vtp mode server
+</span><span class="code-line"><span class="token comment">### 充当VTP服务器，控制它所在域中的VLAN生成和修改，并向外发送VTP通告</span>
+</span><span class="code-line"><span class="token comment">## 客户机模式</span>
+</span><span class="code-line">vtp mode client
+</span><span class="code-line"><span class="token comment">### 此模式的交换机不允许增删VLAN，监听其它交换机的VTP通告，并修改对应配置</span>
+</span><span class="code-line"><span class="token comment">## 透明模式</span>
+</span><span class="code-line">vtp mode transparent
+</span><span class="code-line"><span class="token comment">### 不参与VTP，可增删本地VLAN，但不向外通告，也不接受VTP通告修改自身VLAN数据库，可转发VTP通告</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 流程</span>
+</span><span class="code-line"><span class="token comment">## 首先创建一个 VTP服务器</span>
+</span><span class="code-line">vtp mode server
+</span><span class="code-line"><span class="token comment">### 配置 VTP域名 为 VTP</span>
+</span><span class="code-line">vtp domain VTP
+</span><span class="code-line"><span class="token comment">## 然后创建 VTP客户端</span>
+</span><span class="code-line">vtp mode client
+</span><span class="code-line"><span class="token comment">### 需要在创建 VTP客户端前 先配置 trunk</span>
+</span><span class="code-line"><span class="token comment">### 进入当前交换机与 VTP服务器交换机 相连的接口 （假设为 f0/24）</span>
+</span><span class="code-line">int f0/24
+</span><span class="code-line">switchport mode trunk
+</span><span class="code-line"><span class="token comment">### VTP服务器交换机 与 当前交换机相连接口 在 f0/24 设 trunk 时自动变为 trunk</span>
+</span><span class="code-line"><span class="token comment">### 不需要再手动配置 trunk</span>
+</span><span class="code-line"><span class="token comment">### 并将客户端配置到 VTP 这个 VTP域名 下</span>
+</span><span class="code-line">vtp domain VTP
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># VTP 相关命令</span>
+</span><span class="code-line"><span class="token comment">## 查看配置</span>
+</span><span class="code-line"><span class="token keyword">do</span> <span class="token function">sh</span> vtp status
+</span><span class="code-line"><span class="token comment">## VTP 版本</span>
+</span><span class="code-line">vtp version versions
+</span><span class="code-line"><span class="token comment">### VTP 版本号大的 VLAN信息 将覆盖 VTP版本号低的</span>
+</span><span class="code-line"><span class="token comment">## 设置VTP口令 为 VTPPASSWORD</span>
+</span><span class="code-line">vtp password VTPPASSWORD
+</span><span class="code-line"><span class="token comment">### 只有在 域名和口令 相同的情况下 才会同步 vlan</span>
+</span><span class="code-line">
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="stp-协议"><a aria-hidden="true" tabindex="-1" href="#stp-协议"><span class="icon icon-link"></span></a>STP 协议</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 概念</span>
+</span><span class="code-line"><span class="token comment">## RB（Root Bridge） 根网桥</span>
+</span><span class="code-line"><span class="token comment">### 网络中倒数的根，整个网络中只存在一个根</span>
+</span><span class="code-line"><span class="token comment">## RP（Root Port）根端口</span>
+</span><span class="code-line"><span class="token comment">## DP（design Port）指定端口</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 命令</span>
+</span><span class="code-line"><span class="token comment">## 查看STP的配置</span>
+</span><span class="code-line">show spanning-tree
+</span><span class="code-line"><span class="token comment">## 查看 f0/0 端口状态</span>
+</span><span class="code-line">show spanning-tree interface f0/0
+</span><span class="code-line"><span class="token comment">## 查看某个 vlan 下的 stp 配置信息</span>
+</span><span class="code-line">show spanning-tree vlan vlan-id
+</span><span class="code-line"><span class="token comment">## 配置生成树模式为 STP 或 RSTP</span>
+</span><span class="code-line">spanning-tree mode pvst
+</span><span class="code-line">spanning-tree mode rapid-pvst
+</span><span class="code-line"><span class="token comment">## 配置交换机在 VLAN1 中的优先级</span>
+</span><span class="code-line">spanning-tree vlan <span class="token number">1</span> priority <span class="token operator">&#x3C;</span><span class="token number">0</span>-6144<span class="token operator"><span class="token file-descriptor important">0</span>></span>
+</span><span class="code-line"><span class="token comment">## 配置为 vlan1 的根网桥</span>
+</span><span class="code-line">spanning-tree vlan root primary
+</span><span class="code-line"><span class="token comment">## 配置为 vlan1 的次根网桥</span>
+</span><span class="code-line">spanning-tree vlan <span class="token number">1</span> root secondary
+</span><span class="code-line"><span class="token comment">## 将 f0/0 接口在 vlan1 生成树的路径开销变更为 18</span>
+</span><span class="code-line">interface f0/0
+</span><span class="code-line">spanning-tree vlan <span class="token number">1</span> cost <span class="token number">18</span>
+</span><span class="code-line"><span class="token comment">## 将 f0/0 接口在 vlan1 生成树的端口优先级变更为 16</span>
+</span><span class="code-line">interface f0/0
+</span><span class="code-line">spanning-tree vlan <span class="token number">1</span> port-priority <span class="token number">16</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="三层交换机"><a aria-hidden="true" tabindex="-1" href="#三层交换机"><span class="icon icon-link"></span></a>三层交换机</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token comment"># 首先在三层交换机上启动路由</span>
+</span><span class="code-line"><span class="token function">ip</span> routing
+</span><span class="code-line"><span class="token comment"># 然后配置vlan的ip地址</span>
+</span><span class="code-line">int vlan vlan-id
+</span><span class="code-line"><span class="token comment">## 添加IP地址</span>
+</span><span class="code-line"><span class="token function">ip</span> address ip-address subnet-mask
+</span><span class="code-line"><span class="token comment">## 启动当前接口</span>
+</span><span class="code-line">no <span class="token function">sh</span>
+</span><span class="code-line"><span class="token comment"># 然后进入交换机与添加到vlan中的ip地址一致的终端相连的接口</span>
+</span><span class="code-line"><span class="token comment">## 将当前接口添加到赋予当前接口连接的终端ip地址一致的vlan中</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="三层交换机dhcp配置"><a aria-hidden="true" tabindex="-1" href="#三层交换机dhcp配置"><span class="icon icon-link"></span></a>三层交换机DHCP配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token comment"># 首先创建与连接的电脑终端数量一致的vlan</span>
+</span><span class="code-line"><span class="token comment"># 然后进入到与中介交换机相连的接口</span>
+</span><span class="code-line"><span class="token comment">## 使用trunk 放通创建的vlan</span>
+</span><span class="code-line">switchport trunk allowed vlan vlan-id/all
+</span><span class="code-line"><span class="token comment"># 进入创建的vlan当中</span>
+</span><span class="code-line">int vlan vlan-id
+</span><span class="code-line"><span class="token comment">## 配置当前vlan的IP为对应当前vlan的终端IP</span>
+</span><span class="code-line"><span class="token function">ip</span> address IP-Address subnet-mask
+</span><span class="code-line"><span class="token comment">## 开启当前vlan接口</span>
+</span><span class="code-line">no <span class="token function">sh</span>
+</span><span class="code-line"><span class="token comment"># 对 DHCP 地址池地址进行排除</span>
+</span><span class="code-line"><span class="token comment">## 排除的为vlan的ip地址</span>
+</span><span class="code-line"><span class="token function">ip</span> dhcp exculded-address IP-Address
+</span><span class="code-line"><span class="token comment"># 创建DHCP地址池</span>
+</span><span class="code-line"><span class="token comment">## DHCP_AddressName 为可自定义的地址名称</span>
+</span><span class="code-line"><span class="token function">ip</span> dhcp pool DHCP_AddressName
+</span><span class="code-line"><span class="token comment">## 设置当前DHCP地址池网段</span>
+</span><span class="code-line"><span class="token comment">### ip-address 为可自定义的ip地址</span>
+</span><span class="code-line"><span class="token comment">### subnet-mask 为可自定义的子网掩码</span>
+</span><span class="code-line"><span class="token comment">### 需要注意，子网掩码需要与对应vlan的子网掩码一致</span>
+</span><span class="code-line"><span class="token comment">### 否则无法接通</span>
+</span><span class="code-line">network ip-address subnet-mask
+</span><span class="code-line"><span class="token comment">## 设置DNS DNS-Address 为可自定义的 dns 地址</span>
+</span><span class="code-line">dns-server DNS-Address
+</span><span class="code-line"><span class="token comment">## 设置默认网关 IP-Address 为可自定义的IP地址</span>
+</span><span class="code-line">default-route IP-Address
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 进入中介交换机</span>
+</span><span class="code-line"><span class="token comment">## 创建与三层交换机相同的vlan</span>
+</span><span class="code-line"><span class="token comment">## 进入与三层交换机相连的接口</span>
+</span><span class="code-line"><span class="token comment">### 将接口模式设为 trunk 并 放通创建的vlan</span>
+</span><span class="code-line"><span class="token comment">### 可使用 all 代替全部vlan</span>
+</span><span class="code-line">switchport mode trunk
+</span><span class="code-line">switchport trunk allowed vlan vlan-id,vlan-id<span class="token punctuation">..</span>.
+</span><span class="code-line"><span class="token comment">## 进入与电脑终端相连的接口</span>
+</span><span class="code-line"><span class="token comment">### 将接口分配到指定ip的vlan下</span>
+</span><span class="code-line"><span class="token comment">### 最后在电脑终端IP配置为DHCP即可</span>
+</span></code></pre>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
