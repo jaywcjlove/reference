@@ -19,10 +19,10 @@ Cisco 网络设备备忘清单
 | :-: | :-: | :-: |
 | 用户模式 | `用户名称>` | 默认进入 |
 | 特权模式 | `用户名称#` | 通过 enable 进入 |
-| 全局配置模式 | `用户名称(config)#` | 通过 config  terminal 进入 |
+| 全局配置模式 | `用户名称(config)#` | 通过 config terminal 进入 |
 | VLAN 模式 | `用户名称(config-vlan)#` | 通过 vlan vlan-ID 进入 |
-| 接口配置模式 | `用户名称(config-if)#` | 通过 interface fastEthernet 接口 进入 |
-| Line 模式 | `用户名称(config-line)#` | 通过 line vty 0 端口 进入 |
+| 接口配置模式 | `用户名称(config-if)#` | 通过 interface 接口 进入 |
+| Line 模式 | `用户名称(config-line)#` | 通过 line vty 端口 进入 |
 <!--rehype:className=show-header-->
 
 ### 进入特权模式
