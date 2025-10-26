@@ -605,6 +605,7 @@ Quick Reference
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站(国内打不开的不再收录)。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/discussions/206#discussion-4625735)
 
+[doc.xyz.sb](https://doc.xyz.sb)<!--rehype:target=_blank-->
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank-->
 [axchen.top](https://ref.tool.axchen.top)<!--rehype:target=_blank-->
 [tamamo.top](https://ref.tamamo.top)<!--rehype:target=_blank-->
