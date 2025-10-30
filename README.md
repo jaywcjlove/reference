@@ -81,17 +81,18 @@ Quick Reference
   <br>
   <p>
     <a href="https://go.warp.dev/reference">
-      <img alt="Warp sponsorship" height="160" src="https://jaywcjlove.github.io/sponsor/Warp-Github-LG-01.png"><br>
+      <img alt="Warp sponsorship" width="230" src="https://jaywcjlove.github.io/sponsor/Warp-Github-LG-01.png"><br>
       <b>Warp, the intelligent terminal for developers!</b><br/>
       Available for MacOS, Linux, & Windows<br/>
     </a>
-  </p>
-  <p>
+    <!--rehype:style=width: 230px;font-size: 14px;-->
     <a href="https://tuple.app/reference">
-      <img alt="Warp sponsorship" height="160" src="https://jaywcjlove.github.io/sponsor/tuple.app.png"><br>
+      <img alt="Warp sponsorship" width="230" src="https://jaywcjlove.github.io/sponsor/tuple.app.png"><br>
       Tuple, the premier screen sharing app for developers on macOS and Windows.<br/>
     </a>
+    <!--rehype:style=width: 230px;font-size: 14px;-->
   </p>
+  <!--rehype:style=display:flex;gap:21px;-->
 </div>
 
 ## 正在建设中...
