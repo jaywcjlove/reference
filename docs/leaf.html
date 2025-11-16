@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Leaf 备忘清单
+ &#x26;  leaf cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="Leaf 是 Vapor 的轻量级模板引擎，用于在服务端生成动态 HTML 页面。
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="leaf,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/leaf.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="leaf-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 44 50"><g fill="none" fill-rule="evenodd"><polygon fill="#FFF" points="0 18.234 21.191 0 43.403 18.234 43.403 18.365 21.702 35.818 0 18.365"></polygon><path fill="#40C4FF" d="M21.8169,35.8142 L21.9452,35.8142 C21.9452,35.8142 21.9868,39.0876 21.9452,40.6557 C21.9036,42.2237 21.8169,40.6557 21.8169,40.6557 L0,23.1217 L0,18.2803 L21.8169,35.8142 Z"></path><polygon fill="#3DC4FF" points="21.817 40.525 21.945 40.525 21.945 45.235 21.817 45.366 0 27.832 0 22.991"></polygon><polygon fill="#FFF" fill-opacity="0.25" points="21.817 40.525 21.945 40.525 21.945 45.235 21.817 45.366 0 27.832 0 22.991"></polygon><polygon fill="#3DC4FF" points="21.817 45.236 21.945 45.105 21.945 49.684 21.817 49.815 0 32.281 0 27.702"></polygon><polygon fill="#FFF" fill-opacity="0.5" points="21.817 45.236 21.945 45.105 21.945 49.684 21.817 49.815 0 32.281 0 27.702"></polygon><polygon fill="#E040FB" points="21.656 35.814 21.656 40.656 43.403 23.122 43.403 18.28"></polygon><polygon fill="#E040FB" points="21.656 40.525 21.656 45.366 43.403 27.832 43.403 22.991"></polygon><polygon fill="#FFF" fill-opacity="0.25" points="21.656 40.525 21.656 45.366 43.403 27.832 43.403 22.991"></polygon><polygon fill="#E040FB" points="21.656 45.236 21.656 49.815 43.403 32.412 43.403 27.702"></polygon><polygon fill="#FFF" fill-opacity="0.5" points="21.656 45.236 21.656 49.815 43.403 32.412 43.403 27.702"></polygon><path fill="#1C1C1F" fill-rule="nonzero" d="M14.559,11.6222 C14.559,11.6222 24.812,11.948 27.5377,14.2818 C30.2635,16.6157 30.6498,20.725 28.4006,23.4601 C26.1514,26.1953 22.1185,26.5206 19.3927,24.1868 C16.667,21.8529 14.559,11.6222 14.559,11.6222 Z"></path></g></svg><a aria-hidden="true" tabindex="-1" href="#leaf-备忘清单"><span class="icon icon-link"></span></a>Leaf 备忘清单</h1><div class="wrap-body">
+<p><a href="https://github.com/vapor/leaf">Leaf</a> 是 <a href="https://github.com/vapor/vapor">Vapor</a> 的轻量级模板引擎，用于在服务端生成动态 HTML 页面。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#leaf">Leaf</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#package">Package</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置">配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#目录结构">目录结构</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#渲染视图">渲染视图</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#leaf-概述">Leaf 概述</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模板语法">模板语法</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#内置标签示例">内置标签示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#表达式">表达式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文">上下文</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#条件">条件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#elseif">#elseif</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#循环">循环</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模板示例">模板示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#扩展模板">扩展模板</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#count">#count</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#lowercased">#lowercased</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#capitalized">#capitalized</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#contains">#contains</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#date">#date</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#unsafehtml">#unsafeHTML</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#dumpcontext">#dumpContext</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#自定义标签">自定义标签</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#leaftag">LeafTag</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置标签">配置标签</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上下文属性">上下文属性</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#parameters-包含标签参数的数组">parameters： 包含标签参数的数组</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#使用-datarender__-方法作为上下文视图的数据">使用 Data，render(_:_:) 方法作为上下文视图的数据</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="leaf"><a aria-hidden="true" tabindex="-1" href="#leaf"><span class="icon icon-link"></span></a>Leaf</h3><div class="wrap-body">
+<p><code>Leaf</code> 是一种强大的模板语言，其语法受 <code>Swift</code> 启发。</p>
+<ul>
+<li><a href="https://docs.vapor.codes/zh/leaf/getting-started/">Leaf 模板语言官方文档</a> <em>(vapor.codes)</em></li>
+<li><a href="https://github.com/vapor/leaf-kit"><strong>LeafKit</strong>：Swift 模板引擎库</a> <em>(github.com)</em></li>
+<li><a href="https://github.com/vapor/leaf"><strong>Leaf</strong>：LeafKit 的 Vapor 集成模板系统</a> <em>(github.com)</em></li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="package"><a aria-hidden="true" tabindex="-1" href="#package"><span class="icon icon-link"></span></a>Package</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token comment">// swift-tools-version:5.2</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token class-name">PackageDescription</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">let</span> package <span class="token operator">=</span> <span class="token class-name">Package</span><span class="token punctuation">(</span>
+</span><span class="code-line">    name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"MyApp"</span></span><span class="token punctuation">,</span>
+</span><span class="code-line">    platforms<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token punctuation">.</span><span class="token function">macOS</span><span class="token punctuation">(</span><span class="token punctuation">.</span>v10_15<span class="token punctuation">)</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">    dependencies<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token comment">/// 添加其它依赖</span>
+</span><span class="code-line">        <span class="token punctuation">.</span><span class="token function">package</span><span class="token punctuation">(</span>url<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"https://github.com/vapor/leaf.git"</span></span><span class="token punctuation">,</span> from<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"4.0.0"</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">    targets<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token punctuation">.</span><span class="token function">target</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"App"</span></span><span class="token punctuation">,</span> dependencies<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token punctuation">.</span><span class="token function">product</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"Leaf"</span></span><span class="token punctuation">,</span> package<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"leaf"</span></span><span class="token punctuation">)</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置"><a aria-hidden="true" tabindex="-1" href="#配置"><span class="icon icon-link"></span></a>配置</h3><div class="wrap-body">
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token keyword">import</span> <span class="token class-name">Vapor</span>
+</span><span class="code-line"><span class="token keyword">import</span> <span class="token class-name">Leaf</span>
+</span></code></pre>
+<p>设置工作目录</p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line">app<span class="token punctuation">.</span>directory<span class="token punctuation">.</span>workingDirectory <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"...."</span></span>
+</span></code></pre>
+<p>设置模板目录</p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line">app<span class="token punctuation">.</span>directory<span class="token punctuation">.</span>viewsDirectory <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"...."</span></span>
+</span></code></pre>
+<p>设置模板引擎</p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line">app<span class="token punctuation">.</span>views<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">.</span>leaf<span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="目录结构"><a aria-hidden="true" tabindex="-1" href="#目录结构"><span class="icon icon-link"></span></a>目录结构</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">VaporApp
+</span><span class="code-line">├── Package.swift
+</span><span class="code-line">├── Resources
+</span><span class="code-line">│   ├── Views
+</span><span class="code-line">│   │   └── hello.leaf
+</span><span class="code-line">├── Public
+</span><span class="code-line">│   ├── images (images 资源)
+</span><span class="code-line">│   ├── styles (css 资源)
+</span><span class="code-line">└── Sources
+</span><span class="code-line">    └── ...
+</span></code></pre>
+<ul>
+<li>Views 文件夹来存储 <code>.leaf</code> 文件</li>
+<li>配置 <a href="https://api.vapor.codes/vapor/documentation/vapor/filemiddleware/"><code>FileMiddleware</code></a> 提供静态文件</li>
+</ul>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line">app<span class="token punctuation">.</span>middleware<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token class-name">FileMiddleware</span><span class="token punctuation">(</span>
+</span><span class="code-line">    publicDirectory<span class="token punctuation">:</span> 
+</span><span class="code-line">        app<span class="token punctuation">.</span>directory<span class="token punctuation">.</span>publicDirectory
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="渲染视图"><a aria-hidden="true" tabindex="-1" href="#渲染视图"><span class="icon icon-link"></span></a>渲染视图</h3><div class="wrap-body">
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"hello"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+</span><span class="code-line">    req <span class="token operator">-></span> <span class="token class-name">EventLoopFuture</span><span class="token operator">&#x3C;</span><span class="token class-name">View</span><span class="token operator">></span> <span class="token keyword">in</span>
+</span><span class="code-line">    <span class="token keyword">return</span> req<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"hello"</span></span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token string-literal"><span class="token string">"name"</span></span><span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"Leaf"</span></span>
+</span><span class="code-line">    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token comment">// 或</span>
+</span><span class="code-line">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"hello"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+</span><span class="code-line">    req <span class="token keyword">async</span> <span class="token keyword">throws</span> <span class="token operator">-></span> <span class="token class-name">View</span> <span class="token keyword">in</span>
+</span><span class="code-line">    <span class="token keyword">return</span> <span class="token keyword">try</span> <span class="token keyword">await</span> req<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
+</span><span class="code-line">        <span class="token string-literal"><span class="token string">"hello"</span></span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"name"</span></span><span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"Leaf"</span></span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>在 <code>hello.leaf</code> 模板中使用 <code>name</code></p>
+<pre><code class="code-highlight"><span class="code-line">Hello, #(name)!
+</span></code></pre>
+<p>打开浏览器访问 <code>/hello</code> 显示 <code>Hello, Leaf!</code>。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="leaf-概述"><a aria-hidden="true" tabindex="-1" href="#leaf-概述"><span class="icon icon-link"></span></a>Leaf 概述</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="模板语法"><a aria-hidden="true" tabindex="-1" href="#模板语法"><span class="icon icon-link"></span></a>模板语法</h3><div class="wrap-body">
+<p>一个基本的 <code>Leaf</code> 标签使用示例</p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token class-name">There</span> are <span class="token other-directive property">#count</span><span class="token punctuation">(</span>users<span class="token punctuation">)</span> users<span class="token punctuation">.</span>
+</span></code></pre>
+<p>可以使用冒号和结束标签为某些标签提供可选的正文。</p>
+<ul>
+<li>标记 <code>#</code>：这表示 leaf 解析器开始寻找的标记。</li>
+<li>名称 <code>count</code>：标签的标识符。</li>
+<li>参数列表 (<code>users</code>)：可以接受零个或多个参数。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="内置标签示例"><a aria-hidden="true" tabindex="-1" href="#内置标签示例"><span class="icon icon-link"></span></a>内置标签示例</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#(variable)
+</span><span class="code-line">#extend("template"): 添加到模板中！#endextend
+</span><span class="code-line">#export("title"): 欢迎使用 Vapor #endexport
+</span><span class="code-line">#import("body")
+</span><span class="code-line">#count(friends)
+</span><span class="code-line">#for(friend in friends): 
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>li</span><span class="token punctuation">></span></span>#(friend.name)<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>li</span><span class="token punctuation">></span></span> 
+</span><span class="code-line">#endfor
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="表达式"><a aria-hidden="true" tabindex="-1" href="#表达式"><span class="icon icon-link"></span></a>表达式</h3><div class="wrap-body">
+<ul class="cols-3 style-none">
+<li><code>+</code></li>
+<li><code>%</code></li>
+<li><code>></code></li>
+<li><code>==</code></li>
+<li><code>||</code></li>
+</ul>
+<!--rehype:className=cols-3 style-none-->
+<pre><code class="language-leaf code-highlight"><span class="code-line">#if(1 + 1 == 2):
+</span><span class="code-line">    Hello!
+</span><span class="code-line">#endif
+</span><span class="code-line">
+</span><span class="code-line">#if(index % 2 == 0):
+</span><span class="code-line">    This is even index.
+</span><span class="code-line">#else:
+</span><span class="code-line">    This is odd index.
+</span><span class="code-line">#endif
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="上下文"><a aria-hidden="true" tabindex="-1" href="#上下文"><span class="icon icon-link"></span></a>上下文</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>Leaf 推荐用 <code>Encodable</code> 结构体传数据，数组需包装，<code>[String: Any]</code> 不支持。</p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">WelcomeContext</span><span class="token punctuation">:</span> <span class="token class-name">Encodable</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">var</span> title<span class="token punctuation">:</span> <span class="token class-name">String</span>
+</span><span class="code-line">    <span class="token keyword">var</span> numbers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">Int</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">return</span> req<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"home"</span></span><span class="token punctuation">,</span> 
+</span><span class="code-line">    <span class="token class-name">WelcomeContext</span><span class="token punctuation">(</span>
+</span><span class="code-line">        title<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"Hello!"</span></span><span class="token punctuation">,</span> 
+</span><span class="code-line">        numbers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">9001</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>title</code> 和 <code>numbers</code> 将暴露给 <code>Leaf</code> 模板，就可以在标签中使用这些变量。</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span>#(title)<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+</span><span class="code-line">#for(number in numbers):
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>#(number)<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">#endfor
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="条件"><a aria-hidden="true" tabindex="-1" href="#条件"><span class="icon icon-link"></span></a>条件</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>变量是否存在</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#if(title):
+</span><span class="code-line">    The title is #(title)
+</span><span class="code-line">#endif
+</span></code></pre>
+<p>比较</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#if(title == "Welcome"):
+</span><span class="code-line">    This is a friendly web page.
+</span><span class="code-line">#endif
+</span></code></pre>
+<p>使用另一个标签作为判断条件的一部分，内部标签应该省略 <code>#</code></p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#if(count(users) > 0):
+</span><span class="code-line">    You have users!
+</span><span class="code-line">#else:
+</span><span class="code-line">    There are no users yet :(
+</span><span class="code-line">#endif
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="elseif"><a aria-hidden="true" tabindex="-1" href="#elseif"><span class="icon icon-link"></span></a>#elseif</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#if(title == "Welcome"):
+</span><span class="code-line">    Hello new user!
+</span><span class="code-line">#elseif(title == "Welcome back!"):
+</span><span class="code-line">    Hello old user
+</span><span class="code-line">#else:
+</span><span class="code-line">    Unexpected page!
+</span><span class="code-line">#endif
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="循环"><a aria-hidden="true" tabindex="-1" href="#循环"><span class="icon icon-link"></span></a>循环</h3><div class="wrap-body">
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">SolarSystem</span><span class="token punctuation">:</span> <span class="token class-name">Codable</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">let</span> planets <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"Venus"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"Earth"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"Mars"</span></span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token keyword">return</span> req<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token string-literal"><span class="token string">"solarSystem"</span></span><span class="token punctuation">,</span> <span class="token class-name">SolarSystem</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>在 <code>Leaf</code> 中循环它们：</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span><span class="token punctuation">></span></span>
+</span><span class="code-line">#for(planet in planets):
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>li</span><span class="token punctuation">></span></span>#(planet)<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>li</span><span class="token punctuation">></span></span>
+</span><span class="code-line">#endfor
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ul</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-4"><div class="wrap-header h3wrap"><h3 id="模板示例"><a aria-hidden="true" tabindex="-1" href="#模板示例"><span class="icon icon-link"></span></a>模板示例</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-4-->
+<p>入口页面，通过 <code>#extend("main")</code> 将 <code>mainleaf</code> 模板的内容复制到当前模板中使用</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#extend("main"):
+</span><span class="code-line">  #export("body"):
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>Welcome to Vapor!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  #endexport
+</span><span class="code-line">#endextend
+</span></code></pre>
+<p>在公共模板 <code>main.leaf</code> 中</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>head</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>title</span><span class="token punctuation">></span></span>#(name)<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>title</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>head</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>#import("body")<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>html</span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>呈现如下内容：</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>html</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>head</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>title</span><span class="token punctuation">></span></span>Leaf<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>title</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>head</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>Welcome to Vapor!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>html</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="扩展模板"><a aria-hidden="true" tabindex="-1" href="#扩展模板"><span class="icon icon-link"></span></a>扩展模板</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+<p>在模板中使用 <code>#export</code> 存储名为 <code>body</code> 的一些 HTML</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#export("body"):
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span><span class="token punctuation">></span></span>Welcome to Vapor!<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</span><span class="code-line">#endexport
+</span></code></pre>
+<p>使用 <code>#import</code> 获取传递给 <code>#extend</code> 标签的内容</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>body</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  #import("body")
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>body</span><span class="token punctuation">></span></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="count"><a aria-hidden="true" tabindex="-1" href="#count"><span class="icon icon-link"></span></a>#count</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">Your search matched #count(matches) pages.
+</span></code></pre>
+<p><code>#count</code> 标签返回数组中的项目数量</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="lowercased"><a aria-hidden="true" tabindex="-1" href="#lowercased"><span class="icon icon-link"></span></a>#lowercased</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#lowercased(name)
+</span></code></pre>
+<p><code>#lowercased</code> 标签将字符串转成小写字母。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="capitalized"><a aria-hidden="true" tabindex="-1" href="#capitalized"><span class="icon icon-link"></span></a>#capitalized</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#capitalized(name)
+</span></code></pre>
+<p><code>#capitalized</code> 标签将字符串中每个单词的首字母大写，其他字母小写。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="contains"><a aria-hidden="true" tabindex="-1" href="#contains"><span class="icon icon-link"></span></a>#contains</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">#if(contains(planets, "Earth")):
+</span><span class="code-line">    Earth is here!
+</span><span class="code-line">#else:
+</span><span class="code-line">    Earth is not in this array.
+</span><span class="code-line">#endif
+</span></code></pre>
+<p><code>#contains</code> 标签接受一个数组和一个值作为其两个参数，如果参数一中的数组包含参数二中的值，则返回 true。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="date"><a aria-hidden="true" tabindex="-1" href="#date"><span class="icon icon-link"></span></a>#date</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p><code>#date</code> 标签将日期格式化为可读的字符串。默认情况下，它使用 ISO8601 格式。</p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"now"</span></span><span class="token punctuation">:</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>模板中使用</p>
+<pre><code class="code-highlight"><span class="code-line">The time is #date(now)
+</span></code></pre>
+<p>你可以传自定义日期格式作为第二参数，详见 <a href="https://developer.apple.com/documentation/foundation/dateformatter">Swift DateFormatter</a>。</p>
+<pre><code class="code-highlight"><span class="code-line">The date is #date(now, "yyyy-MM-dd")
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="unsafehtml"><a aria-hidden="true" tabindex="-1" href="#unsafehtml"><span class="icon icon-link"></span></a>#unsafeHTML</h3><div class="wrap-body">
+<p>标签就像一个变量标签 - 例如 <code>#(variable)</code>。</p>
+<pre><code class="code-highlight"><span class="code-line">The time is #unsafeHTML(styledTitle)
+</span></code></pre>
+<p>它不会转义任何 <code>variable</code> 可能包含的 HTML 标签</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="dumpcontext"><a aria-hidden="true" tabindex="-1" href="#dumpcontext"><span class="icon icon-link"></span></a>#dumpContext</h3><div class="wrap-body">
+<p><code>#dumpContext</code> 标签将整个上下文渲染为可读的字符串。使用此标记来调试作为上下文提供给当前渲染的内容。</p>
+<pre><code class="code-highlight"><span class="code-line">Hello, world!
+</span><span class="code-line">#dumpContext
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="自定义标签"><a aria-hidden="true" tabindex="-1" href="#自定义标签"><span class="icon icon-link"></span></a>自定义标签</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="leaftag"><a aria-hidden="true" tabindex="-1" href="#leaftag"><span class="icon icon-link"></span></a>LeafTag</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>创建一个名为 <code>NowTag</code> 的类并遵循 <code>LeafTag</code> 协议</p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">NowTag</span><span class="token punctuation">:</span> <span class="token class-name">LeafTag</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">func</span> <span class="token function-definition function">render</span><span class="token punctuation">(</span><span class="token omit keyword">_</span> ctx<span class="token punctuation">:</span> <span class="token class-name">LeafContext</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token operator">-></span> <span class="token class-name">LeafData</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token operator">...</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>实现 <code>render(_:)</code> 方法。传递给该方法的 <code>LeafContext</code> 参数包含了我们需要的所有内容。</p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token keyword">enum</span> <span class="token class-name">NowTagError</span><span class="token punctuation">:</span> <span class="token class-name">Error</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">case</span> invalidFormatParameter
+</span><span class="code-line">    <span class="token keyword">case</span> tooManyParameters
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">NowTag</span><span class="token punctuation">:</span> <span class="token class-name">LeafTag</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">func</span> <span class="token function-definition function">render</span><span class="token punctuation">(</span><span class="token omit keyword">_</span> ctx<span class="token punctuation">:</span> <span class="token class-name">LeafContext</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token operator">-></span> <span class="token class-name">LeafData</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">let</span> formatter <span class="token operator">=</span> <span class="token class-name">DateFormatter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token keyword">switch</span> ctx<span class="token punctuation">.</span>parameters<span class="token punctuation">.</span>count <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">case</span> <span class="token number">0</span><span class="token punctuation">:</span> formatter<span class="token punctuation">.</span>dateFormat <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"yyyy-MM-dd HH:mm:ss"</span></span>
+</span><span class="code-line">        <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
+</span><span class="code-line">            <span class="token keyword">guard</span> <span class="token keyword">let</span> string <span class="token operator">=</span> ctx<span class="token punctuation">.</span>parameters<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>string <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">                <span class="token keyword">throw</span> <span class="token class-name">NowTagError</span><span class="token punctuation">.</span>invalidFormatParameter
+</span><span class="code-line">            <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">            formatter<span class="token punctuation">.</span>dateFormat <span class="token operator">=</span> string
+</span><span class="code-line">        <span class="token keyword">default</span><span class="token punctuation">:</span>
+</span><span class="code-line">            <span class="token keyword">throw</span> <span class="token class-name">NowTagError</span><span class="token punctuation">.</span>tooManyParameters
+</span><span class="code-line">        <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">        <span class="token keyword">let</span> dateAsString <span class="token operator">=</span> formatter<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span>from<span class="token punctuation">:</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token keyword">return</span> <span class="token class-name">LeafData</span><span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span>dateAsString<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置标签"><a aria-hidden="true" tabindex="-1" href="#配置标签"><span class="icon icon-link"></span></a>配置标签</h3><div class="wrap-body">
+<p>实现了 <code>NowTag</code>，告诉 <code>Leaf</code> 并设置标签名称为 <code>#now</code></p>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line">app<span class="token punctuation">.</span>leaf<span class="token punctuation">.</span>tags<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"now"</span></span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">NowTag</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>现在可以在 Leaf 中使用我们的自定义标签 <code>#now</code> 了</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line">The time is #now()
+</span></code></pre>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="上下文属性"><a aria-hidden="true" tabindex="-1" href="#上下文属性"><span class="icon icon-link"></span></a>上下文属性</h3><div class="wrap-body">
+<h4 id="parameters-包含标签参数的数组"><a aria-hidden="true" tabindex="-1" href="#parameters-包含标签参数的数组"><span class="icon icon-link"></span></a><code>parameters</code>： 包含标签参数的数组</h4>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">NowTag</span><span class="token punctuation">:</span> <span class="token class-name">LeafTag</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">func</span> <span class="token function-definition function">render</span><span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token omit keyword">_</span> ctx<span class="token punctuation">:</span> <span class="token class-name">LeafContext</span>
+</span><span class="code-line">  <span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token operator">-></span> <span class="token class-name">LeafData</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token comment">/// ctx.parameters</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="使用-datarender__-方法作为上下文视图的数据"><a aria-hidden="true" tabindex="-1" href="#使用-datarender__-方法作为上下文视图的数据"><span class="icon icon-link"></span></a>使用 Data，<code>render(_:_:)</code> 方法作为上下文视图的数据</h4>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token keyword">return</span> <span class="token keyword">try</span> <span class="token keyword">await</span> req<span class="token punctuation">.</span>view<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
+</span><span class="code-line">  <span class="token string-literal"><span class="token string">"home"</span></span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"name"</span></span><span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"John"</span></span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<pre class="language-swift"><code class="language-swift code-highlight"><span class="code-line"><span class="token keyword">struct</span> <span class="token class-name">NowTag</span><span class="token punctuation">:</span> <span class="token class-name">LeafTag</span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">func</span> <span class="token function-definition function">render</span><span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token omit keyword">_</span> ctx<span class="token punctuation">:</span> <span class="token class-name">LeafContext</span>
+</span><span class="code-line">  <span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token operator">-></span> <span class="token class-name">LeafData</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token keyword">let</span> name <span class="token operator">=</span> ctx<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"name"</span></span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">.</span>string
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p><code>LeafContext</code> 包含两个重要的属性</p>
+</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
