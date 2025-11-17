@@ -138,6 +138,14 @@ There are #count(users) users.
 #endfor
 ```
 
+文件夹中的模板
+
+```html
+#extend("partials/detail-layout"):
+    #export("body"): 详情页面 #endexport
+#endextend
+```
+
 ### 表达式
 
 - `+`
