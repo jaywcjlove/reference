@@ -58,6 +58,12 @@ app.directory.viewsDirectory = "...."
 app.views.use(.leaf)
 ```
 
+配置自定义标签
+
+```swift
+app.leaf.tags["relative"] = CustomTag()
+```
+
 ### 目录结构
 
 ```
@@ -220,6 +226,14 @@ return req.view.render("home",
     You have users!
 #else:
     There are no users yet :(
+#endif
+```
+
+多个条件满足时才渲染内容的模板
+
+```html
+#if(title == "user" && count(users) > 0):
+    You have users!
 #endif
 ```
 
@@ -469,6 +483,8 @@ return try await req.view.render(
 )
 ```
 
+自定义标签使用 `Data`
+
 ```swift
 struct NowTag: LeafTag {
   func render(
@@ -480,3 +496,44 @@ struct NowTag: LeafTag {
 ```
 
 `LeafContext` 包含两个重要的属性
+
+### 相对路径拼接标签
+<!--rehype:wrap-class=col-span-2-->
+
+```swift
+struct RelativePathTag: LeafTag {
+    func render(_ ctx: LeafContext) throws -> LeafData {
+        guard ctx.parameters.count == 1, let filename = ctx.parameters[0].string else {
+            throw "Missing #relative parameters"
+        }
+        if let filepath = ctx.request?.url.path, filename.hasPrefix("/") == false {
+            return .string("\(relativePrefix(for: filepath, targetFile: filename))")
+        }
+        return .string("\(filename)")
+    }
+    private func relativePrefix(for pagePath: String, targetFile: String) -> String {
+        var components = pagePath
+            .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+            .split(separator: "/")
+        if let last = components.last, last.contains(".") {
+            components = components.dropLast()
+        }
+        let cleanTarget = targetFile.hasPrefix("./") 
+            ? String(targetFile.dropFirst(2)) 
+            : targetFile
+        return String(repeating: "../", count: components.count) + cleanTarget
+    }
+}
+```
+
+配置标签
+
+```swift
+app.leaf.tags["relative"] = RelativePathTag()
+```
+
+现在可以在 Leaf 中使用我们的自定义标签了
+
+```html
+<link rel="stylesheet" href="#relative("main.css")" />
+```
