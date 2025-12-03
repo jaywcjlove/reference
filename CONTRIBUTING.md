@@ -405,7 +405,7 @@ jobs:
 <a href="https://github.com/larry-xue" title="yujian"><img src="https://avatars.githubusercontent.com/u/48818060?v=4" width="42;" alt="yujian"/></a>
 <a href="https://github.com/leauny" title="leauny"><img src="https://avatars.githubusercontent.com/u/42369176?v=4" width="42;" alt="leauny"/></a>
 <a href="https://github.com/liliangrong777" title="liliangrong777"><img src="https://avatars.githubusercontent.com/u/58727146?v=4" width="42;" alt="liliangrong777"/></a>
-<a href="https://github.com/lozhu20" title="lozhu"><img src="https://avatars.githubusercontent.com/u/44923922?v=4" width="42;" alt="lozhu"/></a>
+<a href="https://github.com/qiukuip" title="qiukuip | 秋葵Pie"><img src="https://avatars.githubusercontent.com/u/44923922?v=4" width="42;" alt="qiukuip | 秋葵Pie"/></a>
 <a href="https://github.com/lykjjj" title="lykjjj"><img src="https://avatars.githubusercontent.com/u/58510058?v=4" width="42;" alt="lykjjj"/></a>
 <a href="https://github.com/yanxuplay" title="hupilan"><img src="https://avatars.githubusercontent.com/u/69749541?v=4" width="42;" alt="hupilan"/></a>
 <a href="https://github.com/hua03" title="hua03"><img src="https://avatars.githubusercontent.com/u/19561959?v=4" width="42;" alt="hua03"/></a>
