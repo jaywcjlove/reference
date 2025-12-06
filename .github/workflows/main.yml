@@ -1,0 +1,69 @@
+name: 姣?2灏忔椂鏇存柊涓€娆eference
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+  SERVER_IP: 139.155.76.158
+  DEPLOY_PATH: /www/wwwroot
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 馃殰 鎷夊彇鏈€鏂颁唬鐮?
+        uses: actions/checkout@v3
+        with:
+          ref: 'main'
+          repository: 'jaywcjlove/reference'
+
+      - name: 鈾伙笍 缂栬瘧闈欐€佹枃浠?
+        run: |
+          echo -e 'REF_URL=https://reference.hanacloud.site\nREF_LABEL=缃戠珯棣栭〉' > .env
+          npm install
+          npm run build
+          
+      - name: 馃搳 妫€鏌ユ枃浠跺ぇ灏?
+        run: du -sh dist
+          
+      - name: 馃摝 鍘嬬缉鏋勫缓鏂囦欢
+        run: |
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          tar -czf dist-$TIMESTAMP.tar.gz -C dist .
+          echo "鍘嬬缉瀹屾垚锛屾枃浠跺ぇ灏?"
+          du -sh dist-$TIMESTAMP.tar.gz
+
+      - name: 馃殌 涓婁紶鍘嬬缉鍖呭埌鏈嶅姟鍣?
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ env.SERVER_IP }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "dist-*.tar.gz"
+          target: "/tmp/"
+          rm: true
+
+      - name: 馃洜锔?鏈嶅姟鍣ㄧ瑙ｅ帇閮ㄧ讲
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.SERVER_IP }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 2683
+          script: |
+            LATEST_TAR=$(ls -t /tmp/dist-*.tar.gz | head -1)
+      
+            echo "瑙ｅ帇鏂扮増鏈? $LATEST_TAR"
+            tar -xzf "$LATEST_TAR" -C ${{ env.DEPLOY_PATH }} --strip-components=0
+            
+            echo "娓呯悊涓存椂鏂囦欢..."
+            rm -f "$LATEST_TAR"
+            
+            chown -R www:www ${{ env.DEPLOY_PATH }}
+            chmod -R 755 ${{ env.DEPLOY_PATH }}
+            
+            echo "鉁?閮ㄧ讲瀹屾垚锛?
+            echo "澶囦唤浣嶇疆: $BACKUP_DIR"
