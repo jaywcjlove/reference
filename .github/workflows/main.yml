@@ -13,29 +13,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 馃殰 鎷夊彇鏈€鏂颁唬鐮?
+      - name: 获取代码仓库
         uses: actions/checkout@v3
         with:
           ref: 'main'
           repository: 'jaywcjlove/reference'
 
-      - name: 鈾伙笍 缂栬瘧闈欐€佹枃浠?
+      - name: 配置环境变量并构建项目
         run: |
-          echo -e 'REF_URL=https://reference.hanacloud.site\nREF_LABEL=缃戠珯棣栭〉' > .env
+          echo -e 'REF_URL=https://reference.hanacloud.site\nREF_LABEL=项目版本' > .env
           npm install
           npm run build
           
-      - name: 馃搳 妫€鏌ユ枃浠跺ぇ灏?
+      - name: 查看构建文件大小
         run: du -sh dist
           
-      - name: 馃摝 鍘嬬缉鏋勫缓鏂囦欢
+      - name: 打包构建文件
         run: |
           TIMESTAMP=$(date +%Y%m%d%H%M%S)
           tar -czf dist-$TIMESTAMP.tar.gz -C dist .
-          echo "鍘嬬缉瀹屾垚锛屾枃浠跺ぇ灏?"
+          echo "打包完成，文件大小："
           du -sh dist-$TIMESTAMP.tar.gz
 
-      - name: 馃殌 涓婁紶鍘嬬缉鍖呭埌鏈嶅姟鍣?
+      - name: 上传打包文件到服务器
         uses: appleboy/scp-action@master
         with:
           host: ${{ env.SERVER_IP }}
@@ -46,7 +46,7 @@ jobs:
           target: "/tmp/"
           rm: true
 
-      - name: 馃洜锔?鏈嶅姟鍣ㄧ瑙ｅ帇閮ㄧ讲
+      - name: 在服务器上解压文件
         uses: appleboy/ssh-action@master
         with:
           host: ${{ env.SERVER_IP }}
@@ -56,14 +56,14 @@ jobs:
           script: |
             LATEST_TAR=$(ls -t /tmp/dist-*.tar.gz | head -1)
       
-            echo "瑙ｅ帇鏂扮増鏈? $LATEST_TAR"
+            echo "解压文件: $LATEST_TAR"
             tar -xzf "$LATEST_TAR" -C ${{ env.DEPLOY_PATH }} --strip-components=0
             
-            echo "娓呯悊涓存椂鏂囦欢..."
+            echo "清理临时文件..."
             rm -f "$LATEST_TAR"
             
             chown -R www:www ${{ env.DEPLOY_PATH }}
             chmod -R 755 ${{ env.DEPLOY_PATH }}
             
-            echo "鉁?閮ㄧ讲瀹屾垚锛?
-            echo "澶囦唤浣嶇疆: $BACKUP_DIR"
+            echo "部署完成"
+            echo "备份路径: $BACKUP_DIR"
