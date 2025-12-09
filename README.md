@@ -705,6 +705,7 @@ Quick Reference
 [cutterman.cn](https://blog.cutterman.cn/reference/index.html)<!--rehype:target=_blank-->
 [notes-bin.top](https://notes-bin.top:10443)<!--rehype:target=_blank&class=contributing&data-info=仅IPv6 👆每天自动同步-->
 [dongdong741236.cn](https://code.dongdong741236.cn/)<!--rehype:target=_blank-->
+[ljdyjh.cn](https://ref.ljdyjh.cn/)<!--rehype:target=_blank&class=contributing&data-info=仅IPv6 👆每天自动同步-->
 <!--rehype:class=home-card home-links-->
 
 下面网站暂时飞走了
