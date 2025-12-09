@@ -1,0 +1,69 @@
+name: 自动拉取更新
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+  SERVER_IP: 139.155.76.158
+  DEPLOY_PATH: /www/wwwroot/reference
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 获取代码仓库
+        uses: actions/checkout@v3
+        with:
+          ref: 'main'
+          repository: 'jaywcjlove/reference'
+
+      - name: 配置环境变量并构建项目
+        run: |
+          echo -e 'REF_URL=https://reference.hanacloud.site\nREF_LABEL=项目版本' > .env
+          npm install
+          npm run build
+          
+      - name: 查看构建文件大小
+        run: du -sh dist
+          
+      - name: 打包构建文件
+        run: |
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          tar -czf dist-$TIMESTAMP.tar.gz -C dist .
+          echo "打包完成，文件大小："
+          du -sh dist-$TIMESTAMP.tar.gz
+
+      - name: 上传打包文件到服务器
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ env.SERVER_IP }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 2683
+          source: "dist-*.tar.gz"
+          target: "/tmp/"
+          rm: true
+
+      - name: 在服务器上解压文件
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.SERVER_IP }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 2683
+          script: |
+            LATEST_TAR=$(ls -t /tmp/dist-*.tar.gz | head -1)
+      
+            echo "解压文件: $LATEST_TAR"
+            tar -xzf "$LATEST_TAR" -C ${{ env.DEPLOY_PATH }} --strip-components=0
+            
+            echo "清理临时文件..."
+            rm -f "$LATEST_TAR"
+            
+            chown -R www:www ${{ env.DEPLOY_PATH }}
+            chmod -R 755 ${{ env.DEPLOY_PATH }}
+            
+            echo "部署完成"
+            echo "备份路径: $BACKUP_DIR"
