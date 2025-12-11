@@ -71,6 +71,20 @@ Glances 的配置文件位于 `~/.config/glances/glances.conf`。通过编辑这
 ```ini
 [global]
 refresh=2      # 设置刷新间隔（以秒为单位）
+
+[alert]
+enable = True
+
+# 邮件告警配置（放在 alert 下）
+mail = True
+mail_from = 
+mail_to = 
+mail_server = 
+mail_port = 465
+mail_user = 
+mail_password = 
+mail_tls = True
+
 [cpu]
 enable=true    # 显示 CPU 负载平均值
 [mem]
