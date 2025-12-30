@@ -619,7 +619,7 @@ Quick Reference
 [tamamo.top](https://ref.tamamo.top)<!--rehype:target=_blank-->
 [sakuraovo.site](https://quick-re.site-ali.sakuraovo.site)<!--rehype:target=_blank-->
 [nyanon.online](https://quick-re.nyanon.online)<!--rehype:target=_blank-->
-[dotcube.cc](https://reference.dotcube.cc)<!--rehype:target=_blank-->
+[0x0f.dev](https://ref.0x0f.dev)<!--rehype:target=_blank-->
 [78888889.xyz](https://reference.78888889.xyz)<!--rehype:target=_blank-->
 [pusukeji.com](https://reference.pusukeji.com/)<!--rehype:target=_blank-->
 [magese.com](https://ref.magese.com)<!--rehype:target=_blank-->
