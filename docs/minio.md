@@ -181,13 +181,13 @@ mc rb myminio/mybucket/folder
 移动文件夹
 
 ```sh
-mc mv myminio/mybucket/folder myminio/mybucket/newfolder
+mc mv -r myminio/mybucket/folder myminio/mybucket/newfolder
 ```
 
 拷贝文件夹
 
 ```sh
-mc cp myminio/mybucket/folder myminio/mybucket/newfolder
+mc cp -r myminio/mybucket/folder myminio/mybucket/newfolder
 ```
 
 删除文件夹中的所有文件
