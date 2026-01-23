@@ -616,7 +616,7 @@ Quick Reference
 [chanlun.pro](https://ref.chanlun.pro)<!--rehype:target=_blank-->
 [ljdyjh.cn](https://ref.ljdyjh.cn)<!--rehype:target=_blank-->
 [szsyw.cn](https://projects.szsyw.cn/reference/)<!--rehype:target=_blank-->
-[hanacloud.site](https://reference.hanacloud.site)<!--rehype:target=_blank-->
+[hanauta.icu](https://ref.hanauta.icu)<!--rehype:target=_blank-->
 [doc.xyz.sb](https://doc.xyz.sb)<!--rehype:target=_blank-->
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank-->
 [axchen.top](https://ref.tool.axchen.top)<!--rehype:target=_blank-->
