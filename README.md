@@ -458,7 +458,7 @@ Quick Reference
 <a href="https://github.com/AmosHuKe" title="Amos"><img src="https://avatars.githubusercontent.com/u/32262985?v=4" width="42;" alt="Amos"/></a>
 <a href="https://github.com/qjksxy" title="Apin"><img src="https://avatars.githubusercontent.com/u/81305669?v=4" width="42;" alt="Apin"/></a>
 <a href="https://github.com/BlacAmDK" title="BlacAmDK"><img src="https://avatars.githubusercontent.com/u/10971397?v=4" width="42;" alt="BlacAmDK"/></a>
-<a href="https://github.com/KinoWard" title="Kino Ward"><img src="https://avatars.githubusercontent.com/u/33886943?v=4" width="42;" alt="Kino Ward"/></a>
+<a href="https://github.com/kinoward" title="Kino Ward"><img src="https://avatars.githubusercontent.com/u/33886943?v=4" width="42;" alt="Kino Ward"/></a>
 <a href="https://github.com/InkSha" title="InkSha"><img src="https://avatars.githubusercontent.com/u/79246657?v=4" width="42;" alt="InkSha"/></a>
 <a href="https://github.com/ljq" title="Jaco Liu"><img src="https://avatars.githubusercontent.com/u/7278286?v=4" width="42;" alt="Jaco Liu"/></a>
 <a href="https://github.com/jasnzhuang" title="Jason Zhuang"><img src="https://avatars.githubusercontent.com/u/16612921?v=4" width="42;" alt="Jason Zhuang"/></a>
