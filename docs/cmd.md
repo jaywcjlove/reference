@@ -192,6 +192,15 @@ attrib命令可以列出或修改磁盘上文件的属性，
 `netstat -s`        | 查看正在使用的所有协议使用情况
 `nbtstat -A ip`     | 对方136到139其中一个端口开了的话，就可查看对方最近登陆的用户名
 
+### taskkill 命令
+参数 | action
+:--- | :--
+`taskkill /f          | 强制终止进程（最常用，防止进程无响应）
+`taskkill /im 映像名`  | 通过进程名称结束，例如：taskkill /im notepad.exe
+`taskkill /pid 进程号` |  通过 PID 结束，通常配合 netstat -ano 查询到的 PID 使用
+`taskkill /t`         | 终止指定的进程及其子进程
+`taskkill /s 远程IP`   | 结束远程指定机器上的任务
+
 启动程序
 --------
 
