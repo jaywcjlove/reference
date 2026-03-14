@@ -26,6 +26,7 @@ Quick Reference
 
 <!--rehype:ignore:start-->
 [![Buy me a coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://jaywcjlove.github.io/#/sponsor)
+[![Follow On X](https://img.shields.io/badge/Follow%20on%20X-333333?logo=x&logoColor=white)](https://x.com/jaywcjlove)
 [![CI](https://github.com/jaywcjlove/reference/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/reference/actions/workflows/ci.yml)
 [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
