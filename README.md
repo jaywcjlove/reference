@@ -3,12 +3,13 @@
   <sup>Special thanks to:</sup>
   <br>
   <br>
-  <a href="https://go.warp.dev/reference">
-    <img alt="Warp sponsorship" width="400" src="./appicon/Warp-Github-LG-01.png">
+  
+  <a href="https://screensage.pro/" target="_blank">
+    <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
   </a>
   <br>
-  <a href="https://go.warp.dev/reference"><b>Warp, the intelligent terminal for developers!</b></a><br>
-  <a href="https://go.warp.dev/reference">Available for MacOS, Linux, & Windows</a><br><br>
+  <a href="https://screensage.pro/">ScreenSage Pro, record beautiful screen recordings in minutes on macOS</a>
+  <br><br>
 
 </div>
 <hr>
@@ -78,8 +79,8 @@ Quick Reference
   <sup>特别感谢：</sup>
   <br>
   <p>
-    <a href="https://go.warp.dev/reference">
-      <img alt="Warp sponsorship" width="230" src="https://jaywcjlove.github.io/sponsor/Warp-Github-LG-01.png"><br>
+    <a href="https://screensage.pro/" target="_blank">
+      <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png"><br>
       <b>Warp, the intelligent terminal for developers!</b><br/>
       Available for MacOS, Linux, & Windows<br/>
     </a>
