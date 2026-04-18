@@ -12,8 +12,7 @@ Java 备忘清单
 ```java
 public class Hello {
   // 主要方法
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) {
     // 输出: Hello, world!
     System.out.println("Hello, world!");
   }
