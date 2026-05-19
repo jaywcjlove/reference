@@ -3,6 +3,13 @@
   <sup>Special thanks to:</sup>
   <br>
   <br>
+
+  <a href="https://github.com/Doloffer-g/guide">
+    <img alt="doloffer sponsorship" width="400" src="./template/img/doloffer.jpg">
+  </a>
+  <br>
+  <a href="https://github.com/Doloffer-g/guide"><b>DolOffer - 一站式数字订阅充值平台</b></a><br>
+  <a href="https://doloffer.com">主营 GPT、Claude 等 AI 多类数字服务会员正版订阅，9 折优惠码 AI8888，极速发货，售后无忧</a><br><br>
   
   <a href="https://screensage.pro/" target="_blank">
     <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
@@ -81,8 +88,13 @@ Quick Reference
   <p>
     <a href="https://screensage.pro/" target="_blank">
       <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png"><br>
-      <b>Warp, the intelligent terminal for developers!</b><br/>
-      Available for MacOS, Linux, & Windows<br/>
+      <b>ScreenSage Pro，在 macOS 上几分钟内录制精美的屏幕录像</b>
+    </a>
+    <!--rehype:style=width: 230px;font-size: 14px;-->
+    <a href="https://doloffer.com/" target="_blank">
+      <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg"><br>
+      <b>DolOffer - 一站式数字订阅充值平台</b><br/>
+      主营 GPT、Claude 等 AI 多类数字服务会员正版订阅，9 折优惠码 AI8888，极速发货，售后无忧<br/>
     </a>
     <!--rehype:style=width: 230px;font-size: 14px;-->
   </p>
