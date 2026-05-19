@@ -87,12 +87,17 @@ Quick Reference
   <br>
   <p>
     <a href="https://screensage.pro/" target="_blank">
-      <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png"><br>
+      <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
+      <!--rehype:style=width: 230px;-->
+      <br>
       <b>ScreenSage Pro，在 macOS 上几分钟内录制精美的屏幕录像</b>
     </a>
     <!--rehype:style=width: 230px;font-size: 14px;-->
+    <br/>
     <a href="https://doloffer.com/" target="_blank">
-      <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg"><br>
+      <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
+      <!--rehype:style=width: 230px;-->
+      <br>
       <b>DolOffer - 一站式数字订阅充值平台</b><br/>
       主营 GPT、Claude 等 AI 多类数字服务会员正版订阅，9 折优惠码 AI8888，极速发货，售后无忧<br/>
     </a>
