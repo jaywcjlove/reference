@@ -3,6 +3,13 @@
   <sup>Special thanks to:</sup>
   <br>
   <br>
+  
+  <a href="https://screensage.pro/" target="_blank">
+    <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
+  </a>
+  <br>
+  <a href="https://screensage.pro/">ScreenSage Pro，在 macOS 上几分钟内录制精美的屏幕录像</a>
+  <br><br>
 
   <a href="https://github.com/Doloffer-g/guide">
     <img alt="doloffer sponsorship" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
@@ -10,13 +17,6 @@
   <br>
   <a href="https://github.com/Doloffer-g/guide"><b>DolOffer - 一站式数字订阅充值平台</b></a><br>
   <a href="https://doloffer.com">主营 GPT、Claude 等 AI 多类数字服务会员正版订阅，9 折优惠码 AI8888，极速发货，售后无忧</a><br><br>
-  
-  <a href="https://screensage.pro/" target="_blank">
-    <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
-  </a>
-  <br>
-  <a href="https://screensage.pro/">ScreenSage Pro, record beautiful screen recordings in minutes on macOS</a>
-  <br><br>
 
 </div>
 <hr>
