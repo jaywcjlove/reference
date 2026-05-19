@@ -94,6 +94,7 @@ Quick Reference
     </a>
     <!--rehype:style=width: 230px;font-size: 14px;-->
     <br/>
+    <br/>
     <a href="https://doloffer.com/" target="_blank">
       <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
       <!--rehype:style=width: 230px;-->
