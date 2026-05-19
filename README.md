@@ -5,7 +5,7 @@
   <br>
 
   <a href="https://github.com/Doloffer-g/guide">
-    <img alt="doloffer sponsorship" width="400" src="./template/img/doloffer.jpg">
+    <img alt="doloffer sponsorship" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
   </a>
   <br>
   <a href="https://github.com/Doloffer-g/guide"><b>DolOffer - 一站式数字订阅充值平台</b></a><br>
