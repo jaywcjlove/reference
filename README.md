@@ -97,7 +97,7 @@ Quick Reference
     <br/>
     <br/>
     <a href="https://doloffer.com/" target="_blank">
-      <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
+      <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
       <!--rehype:style=width: 230px;-->
       <br>
       <b>DolOffer - 一站式数字订阅充值平台</b><br/>
