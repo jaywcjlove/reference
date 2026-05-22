@@ -3,7 +3,8 @@ Gemma 4 备忘清单
 
 [Gemma 4](https://deepmind.google/models/gemma/gemma-4/) 是 Google DeepMind 基于 Apache 2.0 发布的开放权重多模态大语言模型家族，覆盖从移动端边缘部署到服务器级部署的四种规模，并具备前沿智能能力。
 
-## 快速开始
+快速开始
+---
 <!--rehype:body-class=cols-7-->
 
 ### 快速上手
@@ -93,7 +94,8 @@ $ pip install -U transformers torch accelerate
 - 训练数据中包含 75%+ 的 CoT 数据以保持推理能力
 - 仅文本微调时冻结视觉层
 
-## 模型家族
+模型家族
+---
 
 ### 模型规格
 <!--rehype:wrap-class=col-span-2-->
@@ -160,7 +162,8 @@ $ pip install -U transformers torch accelerate
 | 48–80 GB        | 31B (BF16)  |
 | 高吞吐场景      | 26B A4B     |
 
-## 基准测试
+基准测试
+---
 <!--rehype:body-class=cols-4-->
 
 ### 核心基准
@@ -210,7 +213,8 @@ OmniDocBench = 文档编辑距离（越低越好）。
 | Gemma 4 31B     | 1452 | #3        |
 | Gemma 4 26B A4B | 1441 | #6        |
 
-## Thinking 模式
+Thinking 模式
+---
 <!--rehype:body-class=cols-4-->
 
 ### Thinking 控制
@@ -282,7 +286,8 @@ E2B/E4B 在关闭时会完全跳过空标签。
 - 复杂推理任务建议提高 `max_new_tokens`
 - AIME、证明题、调试等任务建议 `enable_thinking=True`
 
-## 多模态
+多模态
+---
 
 ### 图片输入
 <!--rehype:wrap-class=row-span-2-->
@@ -370,7 +375,8 @@ content = [
 ]
 ```
 
-## 部署
+部署
+---
 
 ### HuggingFace
 <!--rehype:wrap-class=row-span-2-->
@@ -466,7 +472,8 @@ OpenAI 兼容 API 地址：`http://localhost:8000/v1`
 | llama.cpp        | CPU/GPU 混合      |
 <!--rehype:className=left-align show-header-->
 
-## 微调
+微调
+---
 
 ### QLoRA 配置
 <!--rehype:wrap-class=row-span-2-->
@@ -536,7 +543,8 @@ model, tokenizer = FastVisionModel.from_pretrained(
 4. 仅在领域图像任务中解冻视觉层
 5. 训练时使用较低 token 预算（70–280）可节省 VRAM
 
-## Gemmaverse
+Gemmaverse
+---
 
 ### 专项模型
 <!--rehype:wrap-class=col-span-2-->
