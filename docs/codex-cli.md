@@ -362,7 +362,7 @@ $ codex --disable shell_snapshot
 
 ## 约定
 
-- TypeScript strict mode
+- TypeScript 严格模式
 - 日志中不得包含 PII
 - 所有路由都需鉴权中间件
 
@@ -394,8 +394,7 @@ my-skill/
 ```markdown
 ---
 name: commit
-description: Stage and commit changes
-  in semantic groups.
+description: 按语义分组暂存并提交变更。
 ---
 
 1. 按逻辑分组暂存文件。
