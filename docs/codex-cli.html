@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Codex CLI 备忘清单
+ &#x26;  codex-cli cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="OpenAI Codex CLI（v0.116+）是一个开源 AI 编程代理，可直接在终端中读取、修改并运行代码。参见官方文档。
+
+快速开始，为开发人员分享快速参考备忘单。">
+<meta keywords="codex-cli,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/codex-cli.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="codex-cli-备忘清单"><svg width="1em" height="1em" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="1.5" class="h-6 w-6">
+    <path d="M37.5324 16.8707C37.9808 15.5241 38.1363 14.0974 37.9886 12.6859C37.8409 11.2744 37.3934 9.91076 36.676 8.68622C35.6126 6.83404 33.9882 5.3676 32.0373 4.4985C30.0864 3.62941 27.9098 3.40259 25.8215 3.85078C24.8796 2.7893 23.7219 1.94125 22.4257 1.36341C21.1295 0.785575 19.7249 0.491269 18.3058 0.500197C16.1708 0.495044 14.0893 1.16803 12.3614 2.42214C10.6335 3.67624 9.34853 5.44666 8.6917 7.47815C7.30085 7.76286 5.98686 8.3414 4.8377 9.17505C3.68854 10.0087 2.73073 11.0782 2.02839 12.312C0.956464 14.1591 0.498905 16.2988 0.721698 18.4228C0.944492 20.5467 1.83612 22.5449 3.268 24.1293C2.81966 25.4759 2.66413 26.9026 2.81182 28.3141C2.95951 29.7256 3.40701 31.0892 4.12437 32.3138C5.18791 34.1659 6.8123 35.6322 8.76321 36.5013C10.7141 37.3704 12.8907 37.5973 14.9789 37.1492C15.9208 38.2107 17.0786 39.0587 18.3747 39.6366C19.6709 40.2144 21.0755 40.5087 22.4946 40.4998C24.6307 40.5054 26.7133 39.8321 28.4418 38.5772C30.1704 37.3223 31.4556 35.5506 32.1119 33.5179C33.5027 33.2332 34.8167 32.6547 35.9659 31.821C37.115 30.9874 38.0728 29.9178 38.7752 28.684C39.8458 26.8371 40.3023 24.6979 40.0789 22.5748C39.8556 20.4517 38.9639 18.4544 37.5324 16.8707ZM22.4978 37.8849C20.7443 37.8874 19.0459 37.2733 17.6994 36.1501C17.7601 36.117 17.8666 36.0586 17.936 36.0161L25.9004 31.4156C26.1003 31.3019 26.2663 31.137 26.3813 30.9378C26.4964 30.7386 26.5563 30.5124 26.5549 30.2825V19.0542L29.9213 20.998C29.9389 21.0068 29.9541 21.0198 29.9656 21.0359C29.977 21.052 29.9842 21.0707 29.9867 21.0902V30.3889C29.9842 32.375 29.1946 34.2791 27.7909 35.6841C26.3872 37.0892 24.4838 37.8806 22.4978 37.8849ZM6.39227 31.0064C5.51397 29.4888 5.19742 27.7107 5.49804 25.9832C5.55718 26.0187 5.66048 26.0818 5.73461 26.1244L13.699 30.7248C13.8975 30.8408 14.1233 30.902 14.3532 30.902C14.583 30.902 14.8088 30.8408 15.0073 30.7248L24.731 25.1103V28.9979C24.7321 29.0177 24.7283 29.0376 24.7199 29.0556C24.7115 29.0736 24.6988 29.0893 24.6829 29.1012L16.6317 33.7497C14.9096 34.7416 12.8643 35.0097 10.9447 34.4954C9.02506 33.9811 7.38785 32.7263 6.39227 31.0064ZM4.29707 13.6194C5.17156 12.0998 6.55279 10.9364 8.19885 10.3327C8.19885 10.4013 8.19491 10.5228 8.19491 10.6071V19.808C8.19351 20.0378 8.25334 20.2638 8.36823 20.4629C8.48312 20.6619 8.64893 20.8267 8.84863 20.9404L18.5723 26.5542L15.206 28.4979C15.1894 28.5089 15.1703 28.5155 15.1505 28.5173C15.1307 28.5191 15.1107 28.516 15.0924 28.5082L7.04046 23.8557C5.32135 22.8601 4.06716 21.2235 3.55289 19.3046C3.03862 17.3858 3.30624 15.3413 4.29707 13.6194ZM31.955 20.0556L22.2312 14.4411L25.5976 12.4981C25.6142 12.4872 25.6333 12.4805 25.6531 12.4787C25.6729 12.4769 25.6928 12.4801 25.7111 12.4879L33.7631 17.1364C34.9967 17.849 36.0017 18.8982 36.6606 20.1613C37.3194 21.4244 37.6047 22.849 37.4832 24.2684C37.3617 25.6878 36.8382 27.0432 35.9743 28.1759C35.1103 29.3086 33.9415 30.1717 32.6047 30.6641C32.6047 30.5947 32.6047 30.4733 32.6047 30.3889V21.188C32.6066 20.9586 32.5474 20.7328 32.4332 20.5338C32.319 20.3348 32.154 20.1698 31.955 20.0556ZM35.3055 15.0128C35.2464 14.9765 35.1431 14.9142 35.069 14.8717L27.1045 10.2712C26.906 10.1554 26.6803 10.0943 26.4504 10.0943C26.2206 10.0943 25.9948 10.1554 25.7963 10.2712L16.0726 15.8858V11.9982C16.0715 11.9783 16.0753 11.9585 16.0837 11.9405C16.0921 11.9225 16.1048 11.9068 16.1207 11.8949L24.1719 7.25025C25.4053 6.53903 26.8158 6.19376 28.2383 6.25482C29.6608 6.31589 31.0364 6.78077 32.2044 7.59508C33.3723 8.40939 34.2842 9.53945 34.8334 10.8531C35.3826 12.1667 35.5464 13.6095 35.3055 15.0128ZM14.2424 21.9419L10.8752 19.9981C10.8576 19.9893 10.8423 19.9763 10.8309 19.9602C10.8195 19.9441 10.8122 19.9254 10.8098 19.9058V10.6071C10.8107 9.18295 11.2173 7.78848 11.9819 6.58696C12.7466 5.38544 13.8377 4.42659 15.1275 3.82264C16.4173 3.21869 17.8524 2.99464 19.2649 3.1767C20.6775 3.35876 22.0089 3.93941 23.1034 4.85067C23.0427 4.88379 22.937 4.94215 22.8668 4.98473L14.9024 9.58517C14.7025 9.69878 14.5366 9.86356 14.4215 10.0626C14.3065 10.2616 14.2466 10.4877 14.2479 10.7175L14.2424 21.9419ZM16.071 17.9991L20.4018 15.4978L24.7325 17.9975V22.9985L20.4018 25.4983L16.071 22.9985V17.9991Z" fill="currentColor"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#codex-cli-备忘清单"><span class="icon icon-link"></span></a>Codex CLI 备忘清单</h1><div class="wrap-body">
+<p>OpenAI Codex CLI（v0.116+）是一个开源 AI 编程代理，可直接在终端中读取、修改并运行代码。参见<a href="https://developers.openai.com/codex/cli">官方文档</a>。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#快速开始">快速开始</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装与运行">安装与运行</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#npm推荐">npm（推荐）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#homebrewmacos">Homebrew（macOS）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#首次运行">首次运行</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#shell-自动补全">Shell 自动补全</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#平台支持">平台支持</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#身份认证">身份认证</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#子命令">子命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命令参考">命令参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#exec非交互">Exec（非交互）</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#全局选项">全局选项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#全部参数-row-span-3">全部参数 {.row-span-3}</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用示例">使用示例</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#沙箱与审批">沙箱与审批</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#沙箱模式">沙箱模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#审批策略">审批策略</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#预设-primary">预设 {.primary}</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#slash-命令">Slash 命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#会话控制">会话控制</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#审查与代码">审查与代码</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#工具与调试">工具与调试</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#模型">模型</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#可用模型">可用模型</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#选择模型">选择模型</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#配置">配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#configtoml-关键项">config.toml 关键项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#特性开关">特性开关</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置位置">配置位置</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#自定义">自定义</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#agentsmd">AGENTS.md</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#skills">Skills</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#mcp-servers">MCP Servers</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#会话管理">会话管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#恢复会话">恢复会话</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#分叉会话">分叉会话</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#图片输入">图片输入</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#cloud-与-github">Cloud 与 GitHub</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cloud-任务">Cloud 任务</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#github-集成">GitHub 集成</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#子代理工作流">子代理工作流</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#子代理指南">子代理指南</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#推理强度">推理强度</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#延伸阅读">延伸阅读</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装与运行"><a aria-hidden="true" tabindex="-1" href="#安装与运行"><span class="icon icon-link"></span></a>安装与运行</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="npm推荐"><a aria-hidden="true" tabindex="-1" href="#npm推荐"><span class="icon icon-link"></span></a>npm（推荐）</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> @openai/codex
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> @openai/codex@latest   <span class="token comment"># 升级</span>
+</span></code></pre>
+<h4 id="homebrewmacos"><a aria-hidden="true" tabindex="-1" href="#homebrewmacos"><span class="icon icon-link"></span></a>Homebrew（macOS）</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ brew <span class="token function">install</span> codex
+</span></code></pre>
+<h4 id="首次运行"><a aria-hidden="true" tabindex="-1" href="#首次运行"><span class="icon icon-link"></span></a>首次运行</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ codex                          <span class="token comment"># 启动交互式 TUI</span>
+</span><span class="code-line">$ codex <span class="token string">"Explain this codebase"</span>  <span class="token comment"># 带初始提示</span>
+</span></code></pre>
+<p>首次运行时会提示你通过 ChatGPT 账号或 API key 登录。</p>
+<h4 id="shell-自动补全"><a aria-hidden="true" tabindex="-1" href="#shell-自动补全"><span class="icon icon-link"></span></a>Shell 自动补全</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># Zsh - 添加到 ~/.zshrc</span>
+</span><span class="code-line">$ <span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>codex completion <span class="token function">zsh</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Bash - 添加到 ~/.bashrc</span>
+</span><span class="code-line">$ <span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>codex completion <span class="token function">bash</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Fish</span>
+</span><span class="code-line">$ codex completion fish <span class="token operator">|</span> <span class="token builtin class-name">source</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="平台支持"><a aria-hidden="true" tabindex="-1" href="#平台支持"><span class="icon icon-link"></span></a>平台支持</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>平台</th><th>状态</th></tr></thead><tbody><tr><td>macOS</td><td>稳定</td></tr><tr><td>Linux</td><td>稳定</td></tr><tr><td>Windows (WSL)</td><td>推荐</td></tr><tr><td>Windows（原生）</td><td>实验性</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="身份认证"><a aria-hidden="true" tabindex="-1" href="#身份认证"><span class="icon icon-link"></span></a>身份认证</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ codex login                <span class="token comment"># ChatGPT OAuth</span>
+</span><span class="code-line">$ codex login --device-auth  <span class="token comment"># 设备码登录流程</span>
+</span></code></pre>
+<p>从环境变量管道传入 API key</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">printenv</span> OPENAI_API_KEY <span class="token operator">|</span> codex login --with-api-key
+</span><span class="code-line">$ codex login status         <span class="token comment"># 检查登录状态</span>
+</span><span class="code-line">$ codex <span class="token builtin class-name">logout</span>               <span class="token comment"># 移除凭据</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="子命令"><a aria-hidden="true" tabindex="-1" href="#子命令"><span class="icon icon-link"></span></a>子命令</h2><div class="wrap-body">
+<!--rehype:body-class=cols-5-->
+</div></div><div class="h2wrap-body cols-5"><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="命令参考"><a aria-hidden="true" tabindex="-1" href="#命令参考"><span class="icon icon-link"></span></a>命令参考</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>命令</th><th>别名</th><th>状态</th><th>说明</th></tr></thead><tbody><tr><td><code>codex</code></td><td></td><td>稳定</td><td>启动交互式 TUI</td></tr><tr><td><code>codex exec</code></td><td><code>codex e</code></td><td>稳定</td><td>以非交互模式运行（脚本化）</td></tr><tr><td><code>codex review</code></td><td></td><td>稳定</td><td>非交互代码审查</td></tr><tr><td><code>codex resume</code></td><td></td><td>稳定</td><td>恢复历史会话</td></tr><tr><td><code>codex fork</code></td><td></td><td>稳定</td><td>分叉会话到新线程</td></tr><tr><td><code>codex apply</code></td><td><code>codex a</code></td><td>稳定</td><td>将 Cloud 任务 diff 应用到本地</td></tr><tr><td><code>codex login</code></td><td></td><td>稳定</td><td>登录 Codex</td></tr><tr><td><code>codex logout</code></td><td></td><td>稳定</td><td>删除已保存凭据</td></tr><tr><td><code>codex completion</code></td><td></td><td>稳定</td><td>生成 shell 自动补全</td></tr><tr><td><code>codex features</code></td><td></td><td>稳定</td><td>管理特性开关</td></tr><tr><td><code>codex app</code></td><td></td><td>稳定</td><td>启动 Codex 桌面应用</td></tr><tr><td><code>codex mcp</code></td><td></td><td>实验性</td><td>管理 MCP 服务器</td></tr><tr><td><code>codex mcp-server</code></td><td></td><td>实验性</td><td>将 Codex 作为 MCP 服务器运行</td></tr><tr><td><code>codex cloud</code></td><td></td><td>实验性</td><td>浏览并执行 Cloud 任务</td></tr><tr><td><code>codex sandbox</code></td><td></td><td>实验性</td><td>在沙箱中运行命令</td></tr><tr><td><code>codex debug</code></td><td></td><td>实验性</td><td>调试工具</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="exec非交互"><a aria-hidden="true" tabindex="-1" href="#exec非交互"><span class="icon icon-link"></span></a>Exec（非交互）</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 基础非交互运行</span>
+</span><span class="code-line">$ codex <span class="token builtin class-name">exec</span> <span class="token string">"Fix the race condition"</span>
+</span><span class="code-line">$ codex e <span class="token string">"Add unit tests for utils"</span>
+</span></code></pre>
+<p>从 stdin 读取提示词</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">"Explain main.go"</span> <span class="token operator">|</span> codex <span class="token builtin class-name">exec</span> -
+</span></code></pre>
+<p>Prompt-plus-stdin（0.118+）：既传入管道数据，也传入提示词</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">cat</span> error.log <span class="token operator">|</span> codex <span class="token builtin class-name">exec</span> <span class="token string">"Diagnose this log"</span> -
+</span></code></pre>
+<p>输出选项</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ codex <span class="token builtin class-name">exec</span> <span class="token parameter variable">--json</span> <span class="token string">"Audit security"</span>
+</span><span class="code-line">$ codex <span class="token builtin class-name">exec</span> <span class="token parameter variable">-o</span> last.txt <span class="token string">"Summarize"</span>
+</span></code></pre>
+<p>恢复之前的 exec 会话</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ codex <span class="token builtin class-name">exec</span> resume <span class="token parameter variable">--last</span> <span class="token string">"Fix the bugs"</span>
+</span><span class="code-line">$ codex <span class="token builtin class-name">exec</span> resume <span class="token operator">&#x3C;</span>SESSION_ID<span class="token operator">></span> <span class="token string">"Implement"</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="全局选项"><a aria-hidden="true" tabindex="-1" href="#全局选项"><span class="icon icon-link"></span></a>全局选项</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="全部参数-row-span-3"><a aria-hidden="true" tabindex="-1" href="#全部参数-row-span-3"><span class="icon icon-link"></span></a>全部参数 {.row-span-3}</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>参数</th><th>取值</th><th>说明</th></tr></thead><tbody><tr><td><code>-m, --model</code></td><td>string</td><td>覆盖模型（例如 <code>gpt-5.4</code>）</td></tr><tr><td><code>-s, --sandbox</code></td><td>见下文</td><td>沙箱策略</td></tr><tr><td><code>-a, --ask-for-approval</code></td><td>见下文</td><td>审批策略</td></tr><tr><td><code>--full-auto</code></td><td>flag</td><td>workspace-write + on-request</td></tr><tr><td><code>--yolo</code></td><td>flag</td><td>跳过全部审批和沙箱</td></tr><tr><td><code>-i, --image</code></td><td>path</td><td>给初始提示附加图片</td></tr><tr><td><code>-c, --config</code></td><td><code>key=val</code></td><td>覆盖配置项</td></tr><tr><td><code>-C, --cd</code></td><td>path</td><td>Agent 工作目录</td></tr><tr><td><code>-p, --profile</code></td><td>string</td><td>配置档名称</td></tr><tr><td><code>--search</code></td><td>flag</td><td>启用实时网页搜索</td></tr><tr><td><code>--add-dir</code></td><td>path</td><td>追加可写目录权限</td></tr><tr><td><code>--oss</code></td><td>flag</td><td>使用本地 OSS provider</td></tr><tr><td><code>--local-provider</code></td><td>lmstudio/ollama</td><td>指定 OSS provider</td></tr><tr><td><code>--enable</code></td><td>feature</td><td>启用特性开关</td></tr><tr><td><code>--disable</code></td><td>feature</td><td>禁用特性开关</td></tr><tr><td><code>--no-alt-screen</code></td><td>flag</td><td>内联 TUI 模式（禁用 alt screen）</td></tr><tr><td><code>--remote</code></td><td>ws://host:port</td><td>连接远程 app server</td></tr><tr><td><code>--remote-auth-token-env</code></td><td>ENV_VAR</td><td>远程 WS 的 Bearer Token 环境变量</td></tr><tr><td><code>-V, --version</code></td><td></td><td>输出版本</td></tr><tr><td><code>-h, --help</code></td><td></td><td>输出帮助</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="使用示例"><a aria-hidden="true" tabindex="-1" href="#使用示例"><span class="icon icon-link"></span></a>使用示例</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 指定模型</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">-m</span> gpt-5.4 <span class="token string">"Refactor the auth module"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 自动模式（低摩擦）</span>
+</span><span class="code-line">$ codex --full-auto <span class="token string">"Run tests and fix failures"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 附加截图</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">-i</span> mockup.png <span class="token string">"Implement this UI"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 命令行临时覆盖配置</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">-c</span> <span class="token assign-left variable">model</span><span class="token operator">=</span><span class="token string">"gpt-5.4-mini"</span> <span class="token string">"Quick scan"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 实时网页搜索</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">--search</span> <span class="token string">"Find the latest async syntax"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 设置工作目录</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">-C</span> ~/projects/api <span class="token string">"Review this codebase"</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="沙箱与审批"><a aria-hidden="true" tabindex="-1" href="#沙箱与审批"><span class="icon icon-link"></span></a>沙箱与审批</h2><div class="wrap-body">
+<!--rehype:body-class=cols-3-->
+</div></div><div class="h2wrap-body cols-3"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="沙箱模式"><a aria-hidden="true" tabindex="-1" href="#沙箱模式"><span class="icon icon-link"></span></a>沙箱模式</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模式</th><th>说明</th></tr></thead><tbody><tr><td><code>read-only</code></td><td>仅查看，不经批准不修改</td></tr><tr><td><code>workspace-write</code></td><td>可改工作区并运行本地命令</td></tr><tr><td><code>danger-full-access</code></td><td>无限制（仅建议在强化隔离环境中使用）</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="审批策略"><a aria-hidden="true" tabindex="-1" href="#审批策略"><span class="icon icon-link"></span></a>审批策略</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>策略</th><th>说明</th></tr></thead><tbody><tr><td><code>untrusted</code></td><td>所有非可信命令执行前都询问</td></tr><tr><td><code>on-request</code></td><td>超出沙箱边界时询问</td></tr><tr><td><code>never</code></td><td>从不询问；所有命令自动执行</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="预设-primary"><a aria-hidden="true" tabindex="-1" href="#预设-primary"><span class="icon icon-link"></span></a>预设 {.primary}</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>预设</th><th>等价设置</th></tr></thead><tbody><tr><td><code>--full-auto</code></td><td><code>workspace-write</code> + <code>on-request</code></td></tr><tr><td><code>--yolo</code></td><td>无沙箱 + 无审批</td></tr></tbody></table>
+<p>可在 TUI 中使用 <code>/permissions</code> 在会话中途切换模式。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="slash-命令"><a aria-hidden="true" tabindex="-1" href="#slash-命令"><span class="icon icon-link"></span></a>Slash 命令</h2><div class="wrap-body">
+<!--rehype:body-class=cols-3-->
+</div></div><div class="h2wrap-body cols-3"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="会话控制"><a aria-hidden="true" tabindex="-1" href="#会话控制"><span class="icon icon-link"></span></a>会话控制</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><code>/model</code></td><td>切换模型/推理强度</td></tr><tr><td><code>/fast</code></td><td>切换 GPT-5.4 Fast 模式</td></tr><tr><td><code>/permissions</code></td><td>调整审批模式</td></tr><tr><td><code>/personality</code></td><td>设置响应风格</td></tr><tr><td><code>/plan</code></td><td>进入计划模式</td></tr><tr><td><code>/status</code></td><td>显示模型、tokens、配置</td></tr><tr><td><code>/compact</code></td><td>压缩总结以释放上下文</td></tr><tr><td><code>/clear</code></td><td>清空聊天并重新开始</td></tr><tr><td><code>/new</code></td><td>新建聊天，保留 CLI 会话</td></tr><tr><td><code>/fork</code></td><td>分叉当前会话</td></tr><tr><td><code>/resume</code></td><td>恢复已保存会话</td></tr><tr><td><code>/exit</code> / <code>/quit</code></td><td>退出 CLI</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="审查与代码"><a aria-hidden="true" tabindex="-1" href="#审查与代码"><span class="icon icon-link"></span></a>审查与代码</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><code>/review</code></td><td>启动代码审查</td></tr><tr><td><code>/diff</code></td><td>显示 Git diff</td></tr><tr><td><code>/copy</code></td><td>复制最新 Codex 输出</td></tr><tr><td><code>/mention</code></td><td>向会话附加文件</td></tr><tr><td><code>/init</code></td><td>生成 AGENTS.md 模板</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="工具与调试"><a aria-hidden="true" tabindex="-1" href="#工具与调试"><span class="icon icon-link"></span></a>工具与调试</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><code>/agent</code></td><td>切换当前 agent 线程</td></tr><tr><td><code>/mcp</code></td><td>列出 MCP 工具</td></tr><tr><td><code>/apps</code></td><td>浏览连接器应用</td></tr><tr><td><code>/experimental</code></td><td>切换实验性特性</td></tr><tr><td><code>/statusline</code></td><td>配置 TUI 底栏</td></tr><tr><td><code>/ps</code></td><td>显示后台终端</td></tr><tr><td><code>/sandbox-add-read-dir</code></td><td>添加可读目录（Windows）</td></tr><tr><td><code>/feedback</code></td><td>向维护者发送日志</td></tr><tr><td><code>/plugins</code></td><td>浏览并管理插件</td></tr><tr><td><code>/title</code></td><td>为当前会话设置终端标题</td></tr><tr><td><code>/debug-config</code></td><td>输出配置诊断信息</td></tr><tr><td><code>/logout</code></td><td>退出 Codex 登录</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="模型"><a aria-hidden="true" tabindex="-1" href="#模型"><span class="icon icon-link"></span></a>模型</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="可用模型"><a aria-hidden="true" tabindex="-1" href="#可用模型"><span class="icon icon-link"></span></a>可用模型</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>模型</th><th>速度</th><th>适用场景</th></tr></thead><tbody><tr><td><code>gpt-5.4</code></td><td>★★★</td><td>默认：编码 + 推理 + 工作流</td></tr><tr><td><code>gpt-5.4-mini</code></td><td>★★★★★</td><td>子代理、轻量任务、更高配额</td></tr><tr><td><code>gpt-5.3-codex</code></td><td>★★★★</td><td>复杂软件工程任务</td></tr><tr><td><code>gpt-5.3-codex-spark</code></td><td>★★★★★</td><td>近实时迭代（仅 Pro）</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="选择模型"><a aria-hidden="true" tabindex="-1" href="#选择模型"><span class="icon icon-link"></span></a>选择模型</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ codex <span class="token parameter variable">-m</span> gpt-5.4 <span class="token string">"Your prompt"</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">-m</span> gpt-5.4-mini <span class="token string">"Quick task"</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">--oss</span>    <span class="token comment"># local Ollama / LM Studio</span>
+</span><span class="code-line"><span class="token comment"># 会话中途可在 TUI 输入 /model</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="配置"><a aria-hidden="true" tabindex="-1" href="#配置"><span class="icon icon-link"></span></a>配置</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="configtoml-关键项"><a aria-hidden="true" tabindex="-1" href="#configtoml-关键项"><span class="icon icon-link"></span></a>config.toml 关键项</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token comment"># ~/.codex/config.toml</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 模型设置</span>
+</span><span class="code-line"><span class="token key property">model</span> <span class="token punctuation">=</span> <span class="token string">"gpt-5.4"</span>
+</span><span class="code-line"><span class="token key property">model_provider</span> <span class="token punctuation">=</span> <span class="token string">"openai"</span>
+</span><span class="code-line"><span class="token key property">model_reasoning_effort</span> <span class="token punctuation">=</span> <span class="token string">"medium"</span>  <span class="token comment"># low | medium | high</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 沙箱与审批</span>
+</span><span class="code-line"><span class="token key property">sandbox_mode</span> <span class="token punctuation">=</span> <span class="token string">"workspace-write"</span>
+</span><span class="code-line"><span class="token key property">approval_policy</span> <span class="token punctuation">=</span> <span class="token string">"on-request"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 网页搜索：cached | live | disabled</span>
+</span><span class="code-line"><span class="token key property">web_search</span> <span class="token punctuation">=</span> <span class="token string">"cached"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 审查模型覆盖</span>
+</span><span class="code-line"><span class="token key property">review_model</span> <span class="token punctuation">=</span> <span class="token string">"gpt-5.4"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># TUI 外观</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">tui</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">theme</span> <span class="token punctuation">=</span> <span class="token string">"dark"</span>
+</span><span class="code-line"><span class="token key property">alternate_screen</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 配置档示例</span>
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">profile.ci</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">model</span> <span class="token punctuation">=</span> <span class="token string">"gpt-5.4-mini"</span>
+</span><span class="code-line"><span class="token key property">approval_policy</span> <span class="token punctuation">=</span> <span class="token string">"never"</span>
+</span><span class="code-line"><span class="token key property">sandbox_mode</span> <span class="token punctuation">=</span> <span class="token string">"workspace-write"</span>
+</span></code></pre>
+<p>使用 <code>-p ci</code> 启用该配置档。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="特性开关"><a aria-hidden="true" tabindex="-1" href="#特性开关"><span class="icon icon-link"></span></a>特性开关</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ codex features list
+</span><span class="code-line">$ codex features <span class="token builtin class-name">enable</span> unified_exec
+</span><span class="code-line">$ codex features disable shell_snapshot
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 仅当前会话生效（不持久化）</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">--enable</span> unified_exec
+</span><span class="code-line">$ codex <span class="token parameter variable">--disable</span> shell_snapshot
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置位置"><a aria-hidden="true" tabindex="-1" href="#配置位置"><span class="icon icon-link"></span></a>配置位置</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>文件</th><th>用途</th></tr></thead><tbody><tr><td><code>~/.codex/config.toml</code></td><td>全局默认配置</td></tr><tr><td><code>~/.codex/AGENTS.md</code></td><td>个人指令</td></tr><tr><td><code>~/.agents/skills/</code></td><td>个人技能</td></tr><tr><td><code>.agents/skills/</code></td><td>仓库级技能</td></tr><tr><td><code>AGENTS.md</code></td><td>仓库指令</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="自定义"><a aria-hidden="true" tabindex="-1" href="#自定义"><span class="icon icon-link"></span></a>自定义</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="agentsmd"><a aria-hidden="true" tabindex="-1" href="#agentsmd"><span class="icon icon-link"></span></a>AGENTS.md</h3><div class="wrap-body">
+<p>可随代码一同提交的仓库级持久指令：</p>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line"><span class="token title important"><span class="token punctuation">##</span> 构建与测试命令</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token list punctuation">-</span> 安装：<span class="token code-snippet code keyword">`npm install`</span>
+</span><span class="code-line"><span class="token list punctuation">-</span> 测试：<span class="token code-snippet code keyword">`npm test`</span>
+</span><span class="code-line"><span class="token list punctuation">-</span> Lint：<span class="token code-snippet code keyword">`npm run lint`</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token title important"><span class="token punctuation">##</span> 约定</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token list punctuation">-</span> TypeScript 严格模式
+</span><span class="code-line"><span class="token list punctuation">-</span> 日志中不得包含 PII
+</span><span class="code-line"><span class="token list punctuation">-</span> 所有路由都需鉴权中间件
+</span><span class="code-line">
+</span><span class="code-line"><span class="token title important"><span class="token punctuation">##</span> 审查准则</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token list punctuation">-</span> 标记未处理的 Promise rejection
+</span></code></pre>
+<p>建议添加规则的场景：</p>
+<ul>
+<li>Agent 重复犯错</li>
+<li>PR 审查反馈反复出现</li>
+<li>在 GitHub 使用 <code>@codex add to AGENTS.md</code> 标签</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="skills"><a aria-hidden="true" tabindex="-1" href="#skills"><span class="icon icon-link"></span></a>Skills</h3><div class="wrap-body">
+<p>可复用工作流可打包为 <code>SKILL.md</code>：</p>
+<pre><code class="code-highlight"><span class="code-line">my-skill/
+</span><span class="code-line">  SKILL.md      ← 元数据 + 指令
+</span><span class="code-line">  scripts/      ← 可选辅助脚本
+</span><span class="code-line">  references/   ← 可选文档
+</span><span class="code-line">  assets/       ← 可选模板
+</span></code></pre>
+<p><code>SKILL.md</code> 示例：</p>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line"><span class="token front-matter-block"><span class="token punctuation">---</span>
+</span></span><span class="code-line"><span class="token front-matter-block"><span class="token front-matter yaml language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> commit
+</span></span></span><span class="code-line"><span class="token front-matter-block"><span class="token front-matter yaml language-yaml"><span class="token key atrule">description</span><span class="token punctuation">:</span> 按语义分组暂存并提交变更。</span>
+</span></span><span class="code-line"><span class="token front-matter-block"><span class="token punctuation">---</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token list punctuation">1.</span> 按逻辑分组暂存文件。
+</span><span class="code-line"><span class="token list punctuation">2.</span> 分组顺序：feat → test → docs → chore
+</span><span class="code-line"><span class="token list punctuation">3.</span> 编写简洁的提交信息。
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="mcp-servers"><a aria-hidden="true" tabindex="-1" href="#mcp-servers"><span class="icon icon-link"></span></a>MCP Servers</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 添加 stdio 服务器</span>
+</span><span class="code-line">$ codex mcp <span class="token function">add</span> myserver -- npx my-mcp-server
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 添加 HTTP 服务器</span>
+</span><span class="code-line">$ codex mcp <span class="token function">add</span> myserver <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--url</span> https://api.example.com/mcp
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 带认证 token</span>
+</span><span class="code-line">$ codex mcp <span class="token function">add</span> myserver <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--url</span> https://api.example.com/mcp <span class="token punctuation">\</span>
+</span><span class="code-line">    --bearer-token-env-var MY_TOKEN
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出 / 删除</span>
+</span><span class="code-line">$ codex mcp list
+</span><span class="code-line">$ codex mcp remove myserver
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 将 Codex 自身作为 MCP 服务器运行</span>
+</span><span class="code-line">$ codex mcp-server
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="会话管理"><a aria-hidden="true" tabindex="-1" href="#会话管理"><span class="icon icon-link"></span></a>会话管理</h2><div class="wrap-body">
+<!--rehype:body-class=cols-3-->
+</div></div><div class="h2wrap-body cols-3"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="恢复会话"><a aria-hidden="true" tabindex="-1" href="#恢复会话"><span class="icon icon-link"></span></a>恢复会话</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ codex resume        <span class="token comment"># 会话选择器</span>
+</span><span class="code-line">$ codex resume <span class="token parameter variable">--last</span> <span class="token comment"># 最近一次会话</span>
+</span><span class="code-line">$ codex resume <span class="token parameter variable">--all</span>  <span class="token comment"># 跨目录查找</span>
+</span><span class="code-line">$ codex resume <span class="token operator">&#x3C;</span>ID<span class="token operator">></span> <span class="token string">"Continue fixing tests"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>会话保存在 <code>~/.codex/sessions/</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="分叉会话"><a aria-hidden="true" tabindex="-1" href="#分叉会话"><span class="icon icon-link"></span></a>分叉会话</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ codex fork             <span class="token comment"># 从选择器分叉</span>
+</span><span class="code-line">$ codex fork <span class="token parameter variable">--last</span>      <span class="token comment"># 分叉最近一次</span>
+</span><span class="code-line">$ codex fork <span class="token operator">&#x3C;</span>SESSION_ID<span class="token operator">></span> <span class="token string">"New direction"</span>
+</span></code></pre>
+<p>分叉会保留原始会话记录，并开启一条新分支。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="图片输入"><a aria-hidden="true" tabindex="-1" href="#图片输入"><span class="icon icon-link"></span></a>图片输入</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 单张图片</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">-i</span> screenshot.png <span class="token string">"Fix this error"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 多张图片</span>
+</span><span class="code-line">$ codex <span class="token parameter variable">--image</span> img1.png,img2.jpg <span class="token string">"Compare"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 或将图片直接拖入 TUI 输入框</span>
+</span></code></pre>
+<p>支持 PNG、JPEG 等常见格式。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="cloud-与-github"><a aria-hidden="true" tabindex="-1" href="#cloud-与-github"><span class="icon icon-link"></span></a>Cloud 与 GitHub</h2><div class="wrap-body">
+<!--rehype:body-class=cols-3-->
+</div></div><div class="h2wrap-body cols-3"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="cloud-任务"><a aria-hidden="true" tabindex="-1" href="#cloud-任务"><span class="icon icon-link"></span></a>Cloud 任务</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 浏览 Cloud 环境</span>
+</span><span class="code-line">$ codex cloud
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 提交 Cloud 任务</span>
+</span><span class="code-line">$ codex cloud <span class="token builtin class-name">exec</span> <span class="token parameter variable">--env</span> <span class="token operator">&#x3C;</span>ENV_ID<span class="token operator">></span> <span class="token string">"Fix bug"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 多次尝试（best-of-N）</span>
+</span><span class="code-line">$ codex cloud <span class="token builtin class-name">exec</span> <span class="token parameter variable">--env</span> <span class="token operator">&#x3C;</span>ENV_ID<span class="token operator">></span> <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--attempts</span> <span class="token number">3</span> <span class="token string">"Write failing tests"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出最近任务</span>
+</span><span class="code-line">$ codex cloud list
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 查看任务状态</span>
+</span><span class="code-line">$ codex cloud status <span class="token operator">&#x3C;</span>TASK_ID<span class="token operator">></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 查看任务 diff</span>
+</span><span class="code-line">$ codex cloud <span class="token function">diff</span> <span class="token operator">&#x3C;</span>TASK_ID<span class="token operator">></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 将 diff 应用到本地工作树</span>
+</span><span class="code-line">$ codex apply <span class="token operator">&#x3C;</span>TASK_ID<span class="token operator">></span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="github-集成"><a aria-hidden="true" tabindex="-1" href="#github-集成"><span class="icon icon-link"></span></a>GitHub 集成</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 在 PR 评论中触发代码审查：</span>
+</span><span class="code-line">@codex review
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 自定义关注点：</span>
+</span><span class="code-line">@codex review <span class="token keyword">for</span> security regressions
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 基于 PR 上下文委派任意任务：</span>
+</span><span class="code-line">@codex fix the CI failures
+</span><span class="code-line">@codex <span class="token function">add</span> tests <span class="token keyword">for</span> the new endpoint
+</span></code></pre>
+<p>在 Codex Settings → Code review → 你的仓库中启用；开启 Automatic reviews 后，可自动审查每个新 PR。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="子代理工作流"><a aria-hidden="true" tabindex="-1" href="#子代理工作流"><span class="icon icon-link"></span></a>子代理工作流</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="子代理指南"><a aria-hidden="true" tabindex="-1" href="#子代理指南"><span class="icon icon-link"></span></a>子代理指南</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>将噪声任务分发给并行代理，以避免<strong>上下文污染</strong>和<strong>上下文老化</strong>：</p>
+<pre><code class="code-highlight"><span class="code-line">codex "Review this branch with parallel agents.
+</span><span class="code-line">Spawn one for security risks, one for test gaps,
+</span><span class="code-line">and one for maintainability. Wait for all three,
+</span><span class="code-line">then summarize findings with file references."
+</span></code></pre>
+<ul>
+<li>适用于：探索、测试、分诊、日志分析</li>
+<li>避免并行执行大量写入任务（易冲突）</li>
+<li>每个子代理都会额外消耗 tokens</li>
+</ul>
+<p><strong>子代理模型建议：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>角色</th><th>模型</th><th>推理强度</th></tr></thead><tbody><tr><td>主协调代理</td><td><code>gpt-5.4</code></td><td>medium</td></tr><tr><td>快速探索代理</td><td><code>gpt-5.4-mini</code></td><td>low</td></tr><tr><td>安全/逻辑审查代理</td><td><code>gpt-5.4</code></td><td>high</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="推理强度"><a aria-hidden="true" tabindex="-1" href="#推理强度"><span class="icon icon-link"></span></a>推理强度</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>等级</th><th>适用场景</th></tr></thead><tbody><tr><td><code>high</code></td><td>复杂逻辑、安全审计</td></tr><tr><td><code>medium</code></td><td>通用任务（默认）</td></tr><tr><td><code>low</code></td><td>简单任务或对速度敏感的任务</td></tr></tbody></table>
+<p>可在 <code>config.toml</code> 中设置：</p>
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token key property">model_reasoning_effort</span> <span class="token punctuation">=</span> <span class="token string">"medium"</span>
+</span></code></pre>
+<p>也可命令行临时指定：<code>-c model_reasoning_effort="high"</code></p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="延伸阅读"><a aria-hidden="true" tabindex="-1" href="#延伸阅读"><span class="icon icon-link"></span></a>延伸阅读</h2><div class="wrap-body">
+<ul>
+<li><a href="https://developers.openai.com/codex/cli">Codex 官方文档</a> <em>(developers.openai.com)</em></li>
+<li><a href="https://github.com/openai/codex">Codex CLI GitHub</a> <em>(github.com)</em></li>
+<li><a href="https://developers.openai.com/codex/pricing">Codex 计费说明</a> <em>(developers.openai.com)</em></li>
+<li><a href="https://developers.openai.com/codex/concepts/customization">自定义指南</a> <em>(developers.openai.com)</em></li>
+<li><a href="https://developers.openai.com/codex/prompting">提示词最佳实践</a> <em>(developers.openai.com)</em></li>
+<li><a href="https://developers.openai.com/codex/workflows">工作流与示例</a> <em>(developers.openai.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
