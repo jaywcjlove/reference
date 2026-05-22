@@ -564,7 +564,7 @@ jobs:
 <a href="https://github.com/dogxii" title="Dogxi"><img src="https://avatars.githubusercontent.com/u/106546046?v=4" width="42;" alt="Dogxi"/></a>
 <a href="https://github.com/YLee9527" title="Terry Young"><img src="https://avatars.githubusercontent.com/u/18697332?v=4" width="42;" alt="Terry Young"/></a>
 <a href="https://github.com/whb1998a" title="Wafer"><img src="https://avatars.githubusercontent.com/u/44045064?v=4" width="42;" alt="Wafer"/></a>
-<a href="https://github.com/dwgeneral" title="Happy-Engineer"><img src="https://avatars.githubusercontent.com/u/8654993?v=4" width="42;" alt="Happy-Engineer"/></a>
+<a href="https://github.com/dwgeneral" title="Way"><img src="https://avatars.githubusercontent.com/u/8654993?v=4" width="42;" alt="Way"/></a>
 <a href="https://github.com/BATTLEHAWK00" title="While True: learn()"><img src="https://avatars.githubusercontent.com/u/45313304?v=4" width="42;" alt="While True: learn()"/></a>
 <a href="https://github.com/hi-liyan" title="李李李"><img src="https://avatars.githubusercontent.com/u/40056492?v=4" width="42;" alt="李李李"/></a>
 <a href="https://github.com/Yo-gurts" title="Yogurt"><img src="https://avatars.githubusercontent.com/u/44612841?v=4" width="42;" alt="Yogurt"/></a>
