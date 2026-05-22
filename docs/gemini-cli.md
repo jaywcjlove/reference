@@ -88,7 +88,7 @@ Vertex AI 还需要 `GOOGLE_CLOUD_PROJECT` 与 `GOOGLE_CLOUD_LOCATION`。
 | Sessions    | 可恢复的已保存会话历史                          |
 <!--rehype:className=left-align-->
 
-CLI 选项 {.cols-2}
+CLI 选项
 ---
 <!--rehype:body-class=cols-4-->
 
@@ -175,7 +175,7 @@ $ gemini hooks migrate
 交互命令
 ---
 
-### Slash 命令 `/` {.row-span-3}
+### Slash 命令 `/`
 <!--rehype:wrap-class=row-span-3-->
 
 | 命令                 | 说明                            |
@@ -448,7 +448,7 @@ MCP 服务器
 
 ### 管理服务器
 
-```bash {.wrap}
+```bash
 # 添加 stdio 服务器
 $ gemini mcp add myserver npx -y my-mcp-package
 
