@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Grok CLI
+ &#x26;  grok-cli cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="Grok CLI 是一个由 X.AI 的 Grok 模型驱动的对话式 AI 终端工具，支持文件操作、代码分析、Plan Mode 与 MCP。
+
+快速开始，为开发人员分享快速参考备忘单。">
+<meta keywords="grok-cli,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/grok-cli.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="grok-cli"><svg fill="currentColor" fill-rule="evenodd" height="1em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Grok</title><path d="M9.27 15.29l7.978-5.897c.391-.29.95-.177 1.137.272.98 2.369.542 5.215-1.41 7.169-1.951 1.954-4.667 2.382-7.149 1.406l-2.711 1.257c3.889 2.661 8.611 2.003 11.562-.953 2.341-2.344 3.066-5.539 2.388-8.42l.006.007c-.983-4.232.242-5.924 2.75-9.383.06-.082.12-.164.179-.248l-3.301 3.305v-.01L9.267 15.292M7.623 16.723c-2.792-2.67-2.31-6.801.071-9.184 1.761-1.763 4.647-2.483 7.166-1.425l2.705-1.25a7.808 7.808 0 00-1.829-1A8.975 8.975 0 005.984 5.83c-2.533 2.536-3.33 6.436-1.962 9.764 1.022 2.487-.653 4.246-2.34 6.022-.599.63-1.199 1.259-1.682 1.925l7.62-6.815"></path></svg><a aria-hidden="true" tabindex="-1" href="#grok-cli"><span class="icon icon-link"></span></a>Grok CLI</h1><div class="wrap-body">
+<p><a href="https://www.grokcli.dev/docs/">Grok CLI</a> 是一个由 X.AI 的 Grok 模型驱动的对话式 AI 终端工具，支持文件操作、代码分析、Plan Mode 与 MCP。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#快速开始">快速开始</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#快速上手">快速上手</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#认证">认证</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装方式">安装方式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ai-模型">AI 模型</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#cli-选项">CLI 选项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#全部选项">全部选项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#子命令">子命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#交互模式">交互模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#键盘快捷键">键盘快捷键</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#slash-命令">Slash 命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置文件">配置文件</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#工具">工具</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心工具">核心工具</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#高级工具">高级工具</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ide-工具">IDE 工具</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#plan-mode">Plan Mode</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#启用-plan-mode">启用 Plan Mode</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#plan-mode-阶段">Plan Mode 阶段</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#plan-mode-建议">Plan Mode 建议</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#mcp-服务器">MCP 服务器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#管理-mcp-服务器">管理 MCP 服务器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#mcp-配置结构">MCP 配置结构</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#添加服务器参数">添加服务器参数</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#故障排查">故障排查</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常见问题">常见问题</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用环境变量">常用环境变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#git-智能推送">Git 智能推送</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#延伸阅读">延伸阅读</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="快速上手"><a aria-hidden="true" tabindex="-1" href="#快速上手"><span class="icon icon-link"></span></a>快速上手</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 立即运行（无需安装）</span>
+</span><span class="code-line">$ <span class="token assign-left variable">GROK_API_KEY</span><span class="token operator">=</span>your_key npx <span class="token parameter variable">-y</span> grok-cli-hurry-mode@latest
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 全局安装</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> grok-cli-hurry-mode@latest
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 启动交互会话</span>
+</span><span class="code-line">$ grok
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 发送初始消息</span>
+</span><span class="code-line">$ grok <span class="token string">"Help me understand this project"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 无头 / 非交互模式</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"explain the auth module"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 指定模型</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-m</span> grok-4-latest <span class="token string">"refactor this file"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 设置工作目录</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-d</span> /path/to/project
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 设置最大工具轮次</span>
+</span><span class="code-line">$ grok --max-tool-rounds <span class="token number">100</span> <span class="token string">"rewrite the API"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="认证"><a aria-hidden="true" tabindex="-1" href="#认证"><span class="icon icon-link"></span></a>认证</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>方式</th><th>用法</th></tr></thead><tbody><tr><td>环境变量</td><td><code>export GROK_API_KEY=your_key</code></td></tr><tr><td>内联（npx）</td><td><code>GROK_API_KEY=key npx grok-cli-hurry-mode@latest</code></td></tr><tr><td>CLI 参数</td><td><code>grok --api-key your_key</code></td></tr><tr><td>配置文件</td><td>在 <code>~/.grok/user-settings.json</code> 设置 <code>apiKey</code></td></tr></tbody></table>
+<p>从 <a href="https://console.x.ai">console.x.ai</a> 获取 API key。</p>
+<p>写入 shell 配置以持久生效：</p>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token builtin class-name">echo</span> <span class="token string">'export GROK_API_KEY=your_key'</span> <span class="token operator">>></span> ~/.zshrc
+</span><span class="code-line"><span class="token builtin class-name">source</span> ~/.zshrc
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装方式"><a aria-hidden="true" tabindex="-1" href="#安装方式"><span class="icon icon-link"></span></a>安装方式</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list wrap-text"><thead><tr><th>方式</th><th>命令</th></tr></thead><tbody><tr><td>npm（推荐）</td><td><code>npm install -g grok-cli-hurry-mode@latest</code></td></tr><tr><td>npx（免安装）</td><td><code>npx grok-cli-hurry-mode@latest</code></td></tr><tr><td>yarn</td><td><code>yarn global add grok-cli-hurry-mode@latest</code></td></tr><tr><td>pnpm</td><td><code>pnpm add -g grok-cli-hurry-mode@latest</code></td></tr><tr><td>bun</td><td><code>bun add -g grok-cli-hurry-mode@latest</code></td></tr><tr><td>自动脚本</td><td><code>curl -fsSL https://raw.githubusercontent.com/hinetapora/grok-cli-hurry-mode/main/install.sh | bash</code></td></tr></tbody></table>
+<!--rehype:className=style-list wrap-text-->
+<p><strong>要求：</strong> Node.js（最新 LTS）、npm/yarn/pnpm、可用网络连接。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ai-模型"><a aria-hidden="true" tabindex="-1" href="#ai-模型"><span class="icon icon-link"></span></a>AI 模型</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模型</th><th>说明</th></tr></thead><tbody><tr><td><code>grok-code-fast-1</code></td><td>默认，针对代码任务优化</td></tr><tr><td><code>grok-4-latest</code></td><td>最新版本，能力增强</td></tr><tr><td><code>grok-3-fast</code></td><td>更快，通用场景</td></tr></tbody></table>
+<p>可通过 <code>-m</code>、<code>GROK_MODEL</code> 环境变量或 <code>~/.grok/user-settings.json</code> 覆盖默认模型。</p>
+<p>自定义基础 URL：<code>-u https://api.x.ai/v1</code> 或 <code>GROK_BASE_URL</code>。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="cli-选项"><a aria-hidden="true" tabindex="-1" href="#cli-选项"><span class="icon icon-link"></span></a>CLI 选项</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="全部选项"><a aria-hidden="true" tabindex="-1" href="#全部选项"><span class="icon icon-link"></span></a>全部选项</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>选项</th><th>别名</th><th>说明</th></tr></thead><tbody><tr><td><code>--api-key &#x3C;key></code></td><td><code>-k</code></td><td>Grok API key</td></tr><tr><td><code>--base-url &#x3C;url></code></td><td><code>-u</code></td><td>API 基础 URL</td></tr><tr><td><code>--model &#x3C;model></code></td><td><code>-m</code></td><td>指定模型</td></tr><tr><td><code>--prompt &#x3C;text></code></td><td><code>-p</code></td><td>无头模式提示词</td></tr><tr><td><code>--directory &#x3C;dir></code></td><td><code>-d</code></td><td>设置工作目录</td></tr><tr><td><code>--max-tool-rounds &#x3C;n></code></td><td></td><td>最大工具轮次（默认：400）</td></tr><tr><td><code>--version</code></td><td><code>-V</code></td><td>显示版本</td></tr><tr><td><code>--help</code></td><td><code>-h</code></td><td>显示帮助</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p><strong>环境变量：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>变量</th><th>用途</th></tr></thead><tbody><tr><td><code>GROK_API_KEY</code></td><td>API key（必需）</td></tr><tr><td><code>GROK_MODEL</code></td><td>默认模型</td></tr><tr><td><code>GROK_BASE_URL</code></td><td>自定义 API 端点</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="子命令"><a aria-hidden="true" tabindex="-1" href="#子命令"><span class="icon icon-link"></span></a>子命令</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># AI 生成提交并推送</span>
+</span><span class="code-line">$ grok <span class="token function">git</span> commit-and-push
+</span><span class="code-line">$ grok <span class="token function">git</span> commit-and-push <span class="token parameter variable">-d</span> /path/to/repo
+</span><span class="code-line">$ grok <span class="token function">git</span> commit-and-push <span class="token parameter variable">-m</span> grok-4-latest
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># MCP 服务器管理</span>
+</span><span class="code-line">$ grok mcp <span class="token function">add</span> <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span><span class="code-line">$ grok mcp add-json <span class="token operator">&#x3C;</span>name<span class="token operator">></span> <span class="token operator">&#x3C;</span>json<span class="token operator">></span>
+</span><span class="code-line">$ grok mcp remove <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span><span class="code-line">$ grok mcp list
+</span><span class="code-line">$ grok mcp <span class="token builtin class-name">test</span> <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span></code></pre>
+<p><code>git commit-and-push</code> 支持与主命令相同的 <code>-d</code>、<code>-k</code>、<code>-u</code>、<code>-m</code>、<code>--max-tool-rounds</code> 参数。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="交互模式"><a aria-hidden="true" tabindex="-1" href="#交互模式"><span class="icon icon-link"></span></a>交互模式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="键盘快捷键"><a aria-hidden="true" tabindex="-1" href="#键盘快捷键"><span class="icon icon-link"></span></a>键盘快捷键</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th>按键</th><th>操作</th></tr></thead><tbody><tr><td><code>Shift+Tab</code> 连按两次</td><td>进入 Plan Mode</td></tr><tr><td><code>Shift+Tab</code></td><td>切换自动编辑模式</td></tr><tr><td><code>Ctrl+I</code></td><td>上下文提示（工作区信息）</td></tr><tr><td><code>Ctrl+C</code></td><td>清空当前输入</td></tr><tr><td><code>Esc</code></td><td>中断当前操作</td></tr><tr><td><code>↑</code> / <code>↓</code></td><td>浏览输入历史</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+<p><strong>自动编辑模式：</strong> 免确认文件编辑，AI 会直接修改文件而不弹出确认提示。</p>
+<p><strong>上下文提示（<code>Ctrl+I</code>）：</strong> 显示项目统计、git 分支、内存压力与会话信息。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="slash-命令"><a aria-hidden="true" tabindex="-1" href="#slash-命令"><span class="icon icon-link"></span></a>Slash 命令</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><code>/help</code></td><td>显示可用命令</td></tr><tr><td><code>/clear</code></td><td>清空终端屏幕</td></tr><tr><td><code>/models</code></td><td>列出可用模型</td></tr><tr><td><code>/exit</code></td><td>退出应用</td></tr><tr><td><code>/compact</code></td><td>压缩会话上下文</td></tr><tr><td><code>/commit-and-push</code></td><td>AI 生成提交信息并推送</td></tr><tr><td><code>/init-agent</code></td><td>初始化 agent 文档</td></tr><tr><td><code>/docs</code></td><td>打开文档</td></tr><tr><td><code>/readme</code></td><td>生成 README</td></tr><tr><td><code>/api-docs</code></td><td>生成 API 文档</td></tr><tr><td><code>/changelog</code></td><td>生成变更日志</td></tr><tr><td><code>/comments</code></td><td>添加代码注释</td></tr><tr><td><code>/update-agent-docs</code></td><td>更新 agent 文档</td></tr><tr><td><code>/heal</code></td><td>自愈系统检查</td></tr><tr><td><code>/guardrails</code></td><td>显示护栏状态</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置文件"><a aria-hidden="true" tabindex="-1" href="#配置文件"><span class="icon icon-link"></span></a>配置文件</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>文件</th><th>用途</th></tr></thead><tbody><tr><td><code>~/.grok/user-settings.json</code></td><td>全局用户配置</td></tr><tr><td><code>.grok/settings.json</code></td><td>项目级配置</td></tr><tr><td><code>.grok/GROK.md</code></td><td>提供给 AI 的项目上下文</td></tr></tbody></table>
+<p><strong>user-settings.json 示例：</strong></p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"your_api_key"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"grok-code-fast-1"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"baseURL"</span><span class="token operator">:</span> <span class="token string">"https://api.x.ai/v1"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p><strong>创建项目上下文：</strong></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 为 Plan Mode 添加自定义上下文</span>
+</span><span class="code-line">$ <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> .grok
+</span><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">"# Project Rules"</span> <span class="token operator">></span> .grok/GROK.md
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="工具"><a aria-hidden="true" tabindex="-1" href="#工具"><span class="icon icon-link"></span></a>工具</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="核心工具"><a aria-hidden="true" tabindex="-1" href="#核心工具"><span class="icon icon-link"></span></a>核心工具</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>工具</th><th>用途</th></tr></thead><tbody><tr><td><strong>Read</strong></td><td>读取文件：文本、图片、PDF、notebook</td></tr><tr><td><strong>Write</strong></td><td>创建或覆盖文件</td></tr><tr><td><strong>Edit</strong></td><td>精确字符串查找替换</td></tr><tr><td><strong>Bash</strong></td><td>执行 shell 命令</td></tr><tr><td><strong>Grep</strong></td><td>通过 ripgrep 进行正则搜索</td></tr><tr><td><strong>Glob</strong></td><td>文件模式匹配</td></tr><tr><td><strong>LS</strong></td><td>目录列表</td></tr></tbody></table>
+<p><strong>Read</strong> 支持大文件的行偏移/行数限制，并可直接显示图片。</p>
+<p><strong>Edit</strong> 支持：</p>
+<ul>
+<li>精确字符串替换</li>
+<li>正则模式</li>
+<li>单次或全量替换</li>
+</ul>
+<p><strong>Bash</strong> 支持：</p>
+<ul>
+<li>stdout/stderr 捕获</li>
+<li>后台进程</li>
+<li>超时管理</li>
+<li>环境变量处理</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="高级工具"><a aria-hidden="true" tabindex="-1" href="#高级工具"><span class="icon icon-link"></span></a>高级工具</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>工具</th><th>用途</th></tr></thead><tbody><tr><td><strong>MultiEdit</strong></td><td>原子化多文件编辑（支持回滚）</td></tr><tr><td><strong>WebFetch</strong></td><td>抓取并解析网页内容</td></tr><tr><td><strong>WebSearch</strong></td><td>实时网页搜索</td></tr><tr><td><strong>Task</strong></td><td>委派给专用子代理</td></tr><tr><td><strong>TodoWrite</strong></td><td>任务追踪与进度管理</td></tr></tbody></table>
+<p><strong>MultiEdit</strong> 操作包括：创建、编辑、删除、重命名、移动，均在一次原子事务中完成。</p>
+<p><strong>Task</strong>（子代理委派）：</p>
+<ul>
+<li>面向 token 成本优化</li>
+<li>复杂调研与分析</li>
+<li>自动完成并输出报告</li>
+</ul>
+<p><strong>WebFetch：</strong> 支持 HTML 到 Markdown 转换，并带 AI 内容提取与缓存。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ide-工具"><a aria-hidden="true" tabindex="-1" href="#ide-工具"><span class="icon icon-link"></span></a>IDE 工具</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>工具</th><th>用途</th></tr></thead><tbody><tr><td><strong>NotebookEdit</strong></td><td>编辑 Jupyter notebook 单元</td></tr><tr><td><strong>BashOutput</strong></td><td>流式查看后台进程输出</td></tr><tr><td><strong>KillBash</strong></td><td>终止后台进程</td></tr></tbody></table>
+<p>AI 会为你的请求<strong>自动选择</strong>合适的工具组合，无需手动调用。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="plan-mode"><a aria-hidden="true" tabindex="-1" href="#plan-mode"><span class="icon icon-link"></span></a>Plan Mode</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="启用-plan-mode"><a aria-hidden="true" tabindex="-1" href="#启用-plan-mode"><span class="icon icon-link"></span></a>启用 Plan Mode</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>快速连续按下 <strong><code>Shift+Tab</code> 两次</strong>：</p>
+<pre><code class="code-highlight"><span class="code-line">🎯 Plan Mode: Analysis
+</span><span class="code-line">📊 Exploring codebase and gathering insights...
+</span></code></pre>
+<p><strong>或使用无头模式：</strong></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"analyze changes in this PR and create plan"</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"check if changes follow architecture guidelines"</span>
+</span></code></pre>
+<p><strong>Plan Mode 下会被阻止的操作：</strong></p>
+<ul>
+<li>所有文件写入/编辑操作</li>
+<li>破坏性 bash 命令</li>
+<li>任何修改状态的操作</li>
+</ul>
+<p><strong>Plan Mode 下允许的操作：</strong></p>
+<ul>
+<li>读取文件（<code>ls</code>、<code>cat</code>、<code>grep</code>）</li>
+<li>Web 搜索与抓取</li>
+<li>项目结构分析</li>
+<li>生成计划（仅写入计划输出）</li>
+</ul>
+<p><strong>退出 Plan Mode：</strong></p>
+<ul>
+<li><code>Enter</code>：确认并执行计划</li>
+<li><code>Esc</code>：不执行直接退出</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="plan-mode-阶段"><a aria-hidden="true" tabindex="-1" href="#plan-mode-阶段"><span class="icon icon-link"></span></a>Plan Mode 阶段</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header left-align"><thead><tr><th>阶段</th><th>时长</th><th>发生内容</th></tr></thead><tbody><tr><td>🔍 Analysis</td><td>1–5 秒</td><td>项目类型、结构、依赖分析</td></tr><tr><td>🧠 Strategy</td><td>5–15 秒</td><td>AI 生成实施计划</td></tr><tr><td>📋 Presentation</td><td>1–2 秒</td><td>整理计划供审阅</td></tr><tr><td>✅ Approval</td><td>用户控制</td><td>审阅、确认或细化</td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+<p>Plan Mode 会分析：项目类型（Node/Python/React 等）、目录结构、关键组件、依赖、入口点、模块与架构模式。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="plan-mode-建议"><a aria-hidden="true" tabindex="-1" href="#plan-mode-建议"><span class="icon icon-link"></span></a>Plan Mode 建议</h3><div class="wrap-body">
+<p>Plan Mode 适用于：</p>
+<ul>
+<li>复杂的多文件功能开发</li>
+<li>大规模重构</li>
+<li>探索陌生代码库</li>
+<li>变更前风险评估</li>
+</ul>
+<p><strong>建议：</strong></p>
+<ul>
+<li>明确描述你的目标</li>
+<li>批准前先审阅计划</li>
+<li>出问题时可使用 <code>/heal</code></li>
+<li>通过 <code>.grok/GROK.md</code> 提供自定义上下文</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="mcp-服务器"><a aria-hidden="true" tabindex="-1" href="#mcp-服务器"><span class="icon icon-link"></span></a>MCP 服务器</h2><div class="wrap-body">
+<!--rehype:body-class=cols-4-->
+</div></div><div class="h2wrap-body cols-4"><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="管理-mcp-服务器"><a aria-hidden="true" tabindex="-1" href="#管理-mcp-服务器"><span class="icon icon-link"></span></a>管理 MCP 服务器</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 添加 stdio 服务器</span>
+</span><span class="code-line">$ grok mcp <span class="token function">add</span> myserver <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-t</span> stdio <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-c</span> npx <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-a</span> <span class="token parameter variable">-y</span> my-mcp-package
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 添加 HTTP/SSE 服务器</span>
+</span><span class="code-line">$ grok mcp <span class="token function">add</span> myserver <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-t</span> http <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-u</span> https://api.example.com/mcp
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 携带环境变量和请求头添加</span>
+</span><span class="code-line">$ grok mcp <span class="token function">add</span> myserver <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-t</span> http <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-u</span> https://api.example.com/mcp <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-e</span> <span class="token assign-left variable">API_KEY</span><span class="token operator">=</span>secret <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token parameter variable">-h</span> <span class="token assign-left variable">Authorization</span><span class="token operator">=</span><span class="token string">"Bearer token"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 从原始 JSON 添加</span>
+</span><span class="code-line">$ grok mcp add-json myserver <span class="token punctuation">\</span>
+</span><span class="code-line">  <span class="token string">'{"transport":{"type":"stdio","command":"npx","args":["-y","pkg"]}}'</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出全部服务器</span>
+</span><span class="code-line">$ grok mcp list
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 测试连接</span>
+</span><span class="code-line">$ grok mcp <span class="token builtin class-name">test</span> myserver
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 删除服务器</span>
+</span><span class="code-line">$ grok mcp remove myserver
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="mcp-配置结构"><a aria-hidden="true" tabindex="-1" href="#mcp-配置结构"><span class="icon icon-link"></span></a>MCP 配置结构</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p><strong>在 <code>.grok/settings.json</code> 中：</strong></p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"mcpServers"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"my-server"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"transport"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"stdio"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"npx"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"-y"</span><span class="token punctuation">,</span> <span class="token string">"my-mcp-package"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"KEY"</span><span class="token operator">:</span> <span class="token string">"value"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"remote-server"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"transport"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"http"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://api.example.com/mcp"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"headers"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"Authorization"</span><span class="token operator">:</span> <span class="token string">"Bearer $TOKEN"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p><strong>传输类型：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>类型</th><th>适用场景</th></tr></thead><tbody><tr><td><code>stdio</code></td><td>本地子进程（默认）</td></tr><tr><td><code>http</code></td><td>远程 HTTP 端点</td></tr><tr><td><code>sse</code></td><td>Server-Sent Events</td></tr><tr><td><code>streamable_http</code></td><td>流式 HTTP</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="添加服务器参数"><a aria-hidden="true" tabindex="-1" href="#添加服务器参数"><span class="icon icon-link"></span></a>添加服务器参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>选项</th><th>别名</th><th>说明</th></tr></thead><tbody><tr><td><code>--transport &#x3C;type></code></td><td><code>-t</code></td><td>stdio / http / sse / streamable_http</td></tr><tr><td><code>--command &#x3C;cmd></code></td><td><code>-c</code></td><td>可执行命令（仅 stdio）</td></tr><tr><td><code>--args [args...]</code></td><td><code>-a</code></td><td>命令参数（仅 stdio）</td></tr><tr><td><code>--url &#x3C;url></code></td><td><code>-u</code></td><td>服务器 URL（http/sse）</td></tr><tr><td><code>--headers [kv...]</code></td><td><code>-h</code></td><td>HTTP 请求头（<code>key=value</code>）</td></tr><tr><td><code>--env [kv...]</code></td><td><code>-e</code></td><td>环境变量（<code>key=value</code>）</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="故障排查"><a aria-hidden="true" tabindex="-1" href="#故障排查"><span class="icon icon-link"></span></a>故障排查</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="常见问题"><a aria-hidden="true" tabindex="-1" href="#常见问题"><span class="icon icon-link"></span></a>常见问题</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p><strong>找不到 API key：</strong></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 检查环境变量是否已设置</span>
+</span><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token variable">$GROK_API_KEY</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 或内联设置</span>
+</span><span class="code-line">$ <span class="token assign-left variable">GROK_API_KEY</span><span class="token operator">=</span>key grok <span class="token string">"hello"</span>
+</span></code></pre>
+<p><strong>安装后命令找不到：</strong></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 将 npm 全局 bin 目录加入 PATH</span>
+</span><span class="code-line">$ <span class="token builtin class-name">echo</span> <span class="token string">'export PATH="$(npm config get prefix)/bin:$PATH"'</span> <span class="token operator">>></span> ~/.zshrc
+</span><span class="code-line">$ <span class="token builtin class-name">source</span> ~/.zshrc
+</span><span class="code-line">$ <span class="token function">which</span> grok
+</span></code></pre>
+<p><strong>安装时报权限错误：</strong></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 使用 sudo（不推荐）或 Node 版本管理器</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> grok-cli-hurry-mode <span class="token parameter variable">--force</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 或使用 nvm/fnm（无 sudo）</span>
+</span><span class="code-line">$ nvm use <span class="token parameter variable">--lts</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> grok-cli-hurry-mode
+</span></code></pre>
+<p><strong>安装卡住 / 缓存问题：</strong></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">pkill</span> <span class="token parameter variable">-f</span> grok
+</span><span class="code-line">$ <span class="token function">npm</span> uninstall <span class="token parameter variable">-g</span> grok-cli-hurry-mode
+</span><span class="code-line">$ <span class="token function">npm</span> cache clean <span class="token parameter variable">--force</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> grok-cli-hurry-mode@latest
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常用环境变量"><a aria-hidden="true" tabindex="-1" href="#常用环境变量"><span class="icon icon-link"></span></a>常用环境变量</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>变量</th><th>说明</th></tr></thead><tbody><tr><td><code>GROK_API_KEY</code></td><td>API key（必需）</td></tr><tr><td><code>GROK_MODEL</code></td><td>覆盖默认模型</td></tr><tr><td><code>GROK_BASE_URL</code></td><td>自定义 API 端点</td></tr></tbody></table>
+<p><strong>默认 API 端点：</strong> <code>https://api.x.ai/v1</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="git-智能推送"><a aria-hidden="true" tabindex="-1" href="#git-智能推送"><span class="icon icon-link"></span></a>Git 智能推送</h3><div class="wrap-body">
+<p>自动发布系统会创建版本号变更提交，因此请始终使用 smart push 以避免冲突：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 正确：可处理自动版本变更</span>
+</span><span class="code-line">$ <span class="token function">npm</span> run smart-push
+</span><span class="code-line">$ <span class="token function">git</span> pushup
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 错误：会触发 "fetch first" 报错</span>
+</span><span class="code-line">$ <span class="token function">git</span> push origin main
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="延伸阅读"><a aria-hidden="true" tabindex="-1" href="#延伸阅读"><span class="icon icon-link"></span></a>延伸阅读</h2><div class="wrap-body">
+<ul>
+<li><a href="https://www.grokcli.dev/docs/">官方文档</a> <em>(grokcli.dev)</em></li>
+<li><a href="https://www.grokcli.dev/docs/guides/plan-mode">Plan Mode 指南</a> <em>(grokcli.dev)</em></li>
+<li><a href="https://www.grokcli.dev/docs/tools/overview">工具总览</a> <em>(grokcli.dev)</em></li>
+<li><a href="https://www.grokcli.dev/docs/architecture/overview">架构总览</a> <em>(grokcli.dev)</em></li>
+<li><a href="https://github.com/hinetapora/grok-cli-hurry-mode">GitHub 仓库</a> <em>(github.com)</em></li>
+<li><a href="https://console.x.ai">xAI API Console</a> <em>(console.x.ai)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>

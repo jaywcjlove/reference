@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Gemma 4 备忘清单
+ &#x26;  gemma4 cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="Gemma 4Gemma 4 是 Google DeepMind 基于 Apache 2.0 发布的开放权重多模态大语言模型家族，覆盖从移动端边缘部署到服务器级部署的四种规模，并具备前沿智能能力。
+
+快速开始，为开发人员分享快速参考备忘单。">
+<meta keywords="gemma4,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/gemma4.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="gemma-4-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
+  <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#gemma-4-备忘清单"><span class="icon icon-link"></span></a>Gemma 4 备忘清单</h1><div class="wrap-body">
+<p><a href="https://deepmind.google/models/gemma/gemma-4/">Gemma 4</a> 是 Google DeepMind 基于 Apache 2.0 发布的开放权重多模态大语言模型家族，覆盖从移动端边缘部署到服务器级部署的四种规模，并具备前沿智能能力。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#快速开始">快速开始</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#快速上手">快速上手</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#简介">简介</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#采样参数">采样参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#最佳实践">最佳实践</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#模型家族">模型家族</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模型规格">模型规格</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#架构特性">架构特性</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#混合注意力">混合注意力</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#ple--边缘模型e2be4b">PLE — 边缘模型（E2B/E4B）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#p-rope--shared-kv-cache">p-RoPE &#x26; Shared KV Cache</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#moe--26b-a4b">MoE — 26B A4B</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#显存需求">显存需求</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#选型建议">选型建议</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#基准测试">基准测试</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心基准">核心基准</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#视觉基准">视觉基准</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#长上下文">长上下文</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#arena-ai-lmsys-elo">Arena AI (LMSYS ELO)</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#thinking-模式">Thinking 模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#thinking-控制">Thinking 控制</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#thinking-输出结构">Thinking 输出结构</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#关闭-thinking-时的行为">关闭 thinking 时的行为</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#控制-token">控制 Token</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#多轮对话规则">多轮对话规则</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#多模态">多模态</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#图片输入">图片输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#音频输入">音频输入</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#asr-提示词">ASR 提示词</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#翻译提示词">翻译提示词</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#视频输入">视频输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模态顺序">模态顺序</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#部署">部署</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#huggingface">HuggingFace</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#bf16默认">BF16（默认）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#4-bit-量化">4-bit 量化</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ollama">Ollama</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#自定义-ggufmodelfile">自定义 GGUF（Modelfile）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#vllm-server">vLLM Server</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cloud--api">Cloud &#x26; API</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#边缘与移动端">边缘与移动端</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#微调">微调</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#qlora-配置">QLoRA 配置</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#视觉微调e2b--e4b">视觉微调（E2B / E4B）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#moe-微调">MoE 微调</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#数据要求">数据要求</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#视觉微调建议">视觉微调建议</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#gemmaverse">Gemmaverse</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#专项模型">专项模型</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#生态">生态</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#延伸阅读">延伸阅读</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h2><div class="wrap-body">
+<!--rehype:body-class=cols-7-->
+</div></div><div class="h2wrap-body cols-7"><div class="wrap h3body-not-exist row-span-2 col-span-3"><div class="wrap-header h3wrap"><h3 id="快速上手"><a aria-hidden="true" tabindex="-1" href="#快速上手"><span class="icon icon-link"></span></a>快速上手</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2 col-span-3-->
+<pre class="wrap-text"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> transformers <span class="token keyword">import</span> AutoProcessor<span class="token punctuation">,</span> AutoModelForCausalLM
+</span><span class="code-line"><span class="token keyword">import</span> torch
+</span><span class="code-line">
+</span><span class="code-line">MODEL_ID <span class="token operator">=</span> <span class="token string">"google/gemma-4-E4B-it"</span>
+</span><span class="code-line">
+</span><span class="code-line">processor <span class="token operator">=</span> AutoProcessor<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>MODEL_ID<span class="token punctuation">)</span>
+</span><span class="code-line">model <span class="token operator">=</span> AutoModelForCausalLM<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>
+</span><span class="code-line">    MODEL_ID<span class="token punctuation">,</span>
+</span><span class="code-line">    dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>bfloat16<span class="token punctuation">,</span>
+</span><span class="code-line">    device_map<span class="token operator">=</span><span class="token string">"auto"</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">messages <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"system"</span><span class="token punctuation">,</span> <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"You are helpful."</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span>   <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"Explain MoE briefly."</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line">text <span class="token operator">=</span> processor<span class="token punctuation">.</span>apply_chat_template<span class="token punctuation">(</span>
+</span><span class="code-line">    messages<span class="token punctuation">,</span>
+</span><span class="code-line">    tokenize<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+</span><span class="code-line">    add_generation_prompt<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+</span><span class="code-line">    enable_thinking<span class="token operator">=</span><span class="token boolean">False</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">inputs <span class="token operator">=</span> processor<span class="token punctuation">(</span>
+</span><span class="code-line">    text<span class="token operator">=</span>text<span class="token punctuation">,</span> return_tensors<span class="token operator">=</span><span class="token string">"pt"</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>model<span class="token punctuation">.</span>device<span class="token punctuation">)</span>
+</span><span class="code-line">input_len <span class="token operator">=</span> inputs<span class="token punctuation">[</span><span class="token string">"input_ids"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line">outputs <span class="token operator">=</span> model<span class="token punctuation">.</span>generate<span class="token punctuation">(</span><span class="token operator">**</span>inputs<span class="token punctuation">,</span> max_new_tokens<span class="token operator">=</span><span class="token number">512</span><span class="token punctuation">)</span>
+</span><span class="code-line">response <span class="token operator">=</span> processor<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>
+</span><span class="code-line">    outputs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>input_len<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> skip_special_tokens<span class="token operator">=</span><span class="token boolean">False</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">result <span class="token operator">=</span> processor<span class="token punctuation">.</span>parse_response<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># result["thinking"]  → 内部推理链</span>
+</span><span class="code-line"><span class="token comment"># result["response"] → 展示给用户的最终回答</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="简介"><a aria-hidden="true" tabindex="-1" href="#简介"><span class="icon icon-link"></span></a>简介</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<ul>
+<li><a href="https://ai.google.dev/gemma/docs/core">文档</a> <em>(ai.google.dev)</em></li>
+<li><a href="https://ai.google.dev/gemma/docs/core/model_card_4">模型卡</a> <em>(ai.google.dev)</em></li>
+<li><a href="https://huggingface.co/google">HuggingFace</a> <em>(huggingface.co)</em></li>
+<li><a href="https://github.com/google-gemma/gemma-cookbook">实战手册</a> <em>(github.com)</em></li>
+</ul>
+<p>发布于 2026-03-31 · Apache 2.0 · 基于 Gemini 3 研究构建 · 支持 140+ 语言</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ pip <span class="token function">install</span> <span class="token parameter variable">-U</span> transformers torch accelerate
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>全部模型均可在 HuggingFace 通过 <code>google/&#x3C;model-id></code> 获取</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>规格</th><th>Model ID</th></tr></thead><tbody><tr><td>E2B</td><td><code>gemma-4-E2B-it</code></td></tr><tr><td>E4B</td><td><code>gemma-4-E4B-it</code></td></tr><tr><td>31B</td><td><code>gemma-4-31b-it</code></td></tr><tr><td>26B A4B</td><td><code>gemma-4-26b-a4b-it</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="采样参数"><a aria-hidden="true" tabindex="-1" href="#采样参数"><span class="icon icon-link"></span></a>采样参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>参数</th><th>值</th></tr></thead><tbody><tr><td><code>temperature</code></td><td><code>1.0</code></td></tr><tr><td><code>top_p</code></td><td><code>0.95</code></td></tr><tr><td><code>top_k</code></td><td><code>64</code></td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="最佳实践"><a aria-hidden="true" tabindex="-1" href="#最佳实践"><span class="icon icon-link"></span></a>最佳实践</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<ul>
+<li>任意提示中都应将图片/音频放在文本<strong>之前</strong></li>
+<li>多轮对话时：在历史中省略思考块（thought blocks）</li>
+<li>训练数据中包含 75%+ 的 CoT 数据以保持推理能力</li>
+<li>仅文本微调时冻结视觉层</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="模型家族"><a aria-hidden="true" tabindex="-1" href="#模型家族"><span class="icon icon-link"></span></a>模型家族</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="模型规格"><a aria-hidden="true" tabindex="-1" href="#模型规格"><span class="icon icon-link"></span></a>模型规格</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>模型</th><th>架构</th><th>总参数</th><th>每 Token 激活</th><th>层数</th><th>上下文</th><th>模态</th></tr></thead><tbody><tr><td>E2B</td><td>Dense+PLE</td><td>5.1B (2.3B eff)</td><td>2.3B</td><td>35</td><td>128K</td><td>Text+Image+Audio</td></tr><tr><td>E4B</td><td>Dense+PLE</td><td>8B (4.5B eff)</td><td>4.5B</td><td>42</td><td>128K</td><td>Text+Image+Audio</td></tr><tr><td>31B</td><td>Dense</td><td>30.7B</td><td>30.7B</td><td>60</td><td>256K</td><td>Text+Image</td></tr><tr><td>26B A4B</td><td>MoE</td><td>25.2B</td><td>3.8B</td><td>30</td><td>256K</td><td>Text+Image</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>滑动窗口：512 tokens（E2B/E4B）· 1024 tokens（31B/26B）· 词表：262K（全模型一致）</p>
+</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="架构特性"><a aria-hidden="true" tabindex="-1" href="#架构特性"><span class="icon icon-link"></span></a>架构特性</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<h4 id="混合注意力"><a aria-hidden="true" tabindex="-1" href="#混合注意力"><span class="icon icon-link"></span></a>混合注意力</h4>
+<ul>
+<li><strong>Local</strong> 层：滑动窗口（512 或 1024 tokens）</li>
+<li><strong>Global</strong> 层：全局上下文，与 local 层交错排列</li>
+<li>最后一层始终是 global attention 层</li>
+</ul>
+<h4 id="ple--边缘模型e2be4b"><a aria-hidden="true" tabindex="-1" href="#ple--边缘模型e2be4b"><span class="icon icon-link"></span></a>PLE — 边缘模型（E2B/E4B）</h4>
+<ul>
+<li>Per-Layer Embeddings：每个解码层都有自己的小型 embedding 表</li>
+<li>大型静态表通过快速查表，不走稠密矩阵乘法</li>
+<li>有效计算参数远小于加载总参数</li>
+<li>可在 1.5 GB 以下 VRAM（4-bit 量化）进行推理</li>
+</ul>
+<h4 id="p-rope--shared-kv-cache"><a aria-hidden="true" tabindex="-1" href="#p-rope--shared-kv-cache"><span class="icon icon-link"></span></a>p-RoPE &#x26; Shared KV Cache</h4>
+<ul>
+<li>在 global 层使用 Proportional RoPE（p-RoPE）提升长程一致性</li>
+<li>global 层共享 KV Cache，降低峰值显存占用</li>
+<li>在 256K 上下文下保持稳定性能</li>
+</ul>
+<h4 id="moe--26b-a4b"><a aria-hidden="true" tabindex="-1" href="#moe--26b-a4b"><span class="icon icon-link"></span></a>MoE — 26B A4B</h4>
+<ul>
+<li>128 个专家 + 1 个始终激活的共享专家</li>
+<li>推理时每个 token 激活 8 个专家</li>
+<li>速度接近 4B 稠密模型，质量接近 30B</li>
+<li>视觉编码器约 5.5 亿参数（与 31B 相同）</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="显存需求"><a aria-hidden="true" tabindex="-1" href="#显存需求"><span class="icon icon-link"></span></a>显存需求</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>模型</th><th>BF16（16-bit）</th><th>8-bit</th><th>4-bit</th></tr></thead><tbody><tr><td>E2B</td><td>9.6 GB</td><td>4.6 GB</td><td>3.2 GB</td></tr><tr><td>E4B</td><td>15 GB</td><td>7.5 GB</td><td>5 GB</td></tr><tr><td>31B</td><td>58.3 GB</td><td>30.4 GB</td><td>17.4 GB</td></tr><tr><td>26B A4B</td><td>48 GB</td><td>25 GB</td><td>15.6 GB</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>仅为基础权重显存，不含 KV cache 额外占用。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="选型建议"><a aria-hidden="true" tabindex="-1" href="#选型建议"><span class="icon icon-link"></span></a>选型建议</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>可用 VRAM</th><th>推荐模型</th></tr></thead><tbody><tr><td>&#x3C; 5 GB</td><td>E2B (4-bit)</td></tr><tr><td>5–8 GB</td><td>E4B (4-bit)</td></tr><tr><td>15–20 GB</td><td>E4B (BF16)</td></tr><tr><td>24–32 GB</td><td>31B (4-bit)</td></tr><tr><td>48–80 GB</td><td>31B (BF16)</td></tr><tr><td>高吞吐场景</td><td>26B A4B</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="基准测试"><a aria-hidden="true" tabindex="-1" href="#基准测试"><span class="icon icon-link"></span></a>基准测试</h2><div class="wrap-body">
+<!--rehype:body-class=cols-4-->
+</div></div><div class="h2wrap-body cols-4"><div class="wrap h3body-not-exist col-span-4"><div class="wrap-header h3wrap"><h3 id="核心基准"><a aria-hidden="true" tabindex="-1" href="#核心基准"><span class="icon icon-link"></span></a>核心基准</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-4-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>基准项</th><th>31B</th><th>26B A4B</th><th>E4B</th><th>E2B</th><th>Gemma 3 27B</th></tr></thead><tbody><tr><td>MMLU Pro</td><td>85.2%</td><td>82.6%</td><td>69.4%</td><td>60.0%</td><td>67.6%</td></tr><tr><td>MMMLU (multilingual)</td><td>88.4%</td><td>86.3%</td><td>76.6%</td><td>67.4%</td><td>70.7%</td></tr><tr><td>AIME 2026 (math)</td><td>89.2%</td><td>88.3%</td><td>42.5%</td><td>37.5%</td><td>20.8%</td></tr><tr><td>GPQA Diamond</td><td>84.3%</td><td>82.3%</td><td>58.6%</td><td>43.4%</td><td>42.4%</td></tr><tr><td>LiveCodeBench v6</td><td>80.0%</td><td>77.1%</td><td>52.0%</td><td>44.0%</td><td>29.1%</td></tr><tr><td>Codeforces ELO</td><td>2150</td><td>1718</td><td>940</td><td>633</td><td>110</td></tr><tr><td>BigBench Extra Hard</td><td>74.4%</td><td>64.8%</td><td>33.1%</td><td>21.9%</td><td>19.3%</td></tr><tr><td>Tau2 avg (agentic)</td><td>76.9%</td><td>68.2%</td><td>42.2%</td><td>24.5%</td><td>16.2%</td></tr><tr><td>HLE no tools</td><td>19.5%</td><td>8.7%</td><td>—</td><td>—</td><td>—</td></tr><tr><td>HLE with search</td><td>26.5%</td><td>17.2%</td><td>—</td><td>—</td><td>—</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>以上结果均基于启用 thinking 模式的指令微调模型。</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="视觉基准"><a aria-hidden="true" tabindex="-1" href="#视觉基准"><span class="icon icon-link"></span></a>视觉基准</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>基准项</th><th>31B</th><th>26B A4B</th><th>E4B</th><th>E2B</th></tr></thead><tbody><tr><td>MMMU Pro</td><td>76.9%</td><td>73.8%</td><td>52.6%</td><td>44.2%</td></tr><tr><td>MATH-Vision</td><td>85.6%</td><td>82.4%</td><td>59.5%</td><td>52.4%</td></tr><tr><td>MedXPertQA MM</td><td>61.3%</td><td>58.1%</td><td>28.7%</td><td>23.5%</td></tr><tr><td>OmniDocBench↓</td><td>0.131</td><td>0.149</td><td>0.181</td><td>0.290</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<p>OmniDocBench = 文档编辑距离（越低越好）。</p>
+</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="长上下文"><a aria-hidden="true" tabindex="-1" href="#长上下文"><span class="icon icon-link"></span></a>长上下文</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>基准项</th><th>31B</th><th>26B A4B</th><th>E4B</th><th>E2B</th></tr></thead><tbody><tr><td>MRCR v2 128K</td><td>66.4%</td><td>44.1%</td><td>25.4%</td><td>19.1%</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+<h4 id="arena-ai-lmsys-elo"><a aria-hidden="true" tabindex="-1" href="#arena-ai-lmsys-elo"><span class="icon icon-link"></span></a>Arena AI (LMSYS ELO)</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Model</th><th>ELO</th><th>Open Rank</th></tr></thead><tbody><tr><td>Gemma 4 31B</td><td>1452</td><td>#3</td></tr><tr><td>Gemma 4 26B A4B</td><td>1441</td><td>#6</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="thinking-模式"><a aria-hidden="true" tabindex="-1" href="#thinking-模式"><span class="icon icon-link"></span></a>Thinking 模式</h2><div class="wrap-body">
+<!--rehype:body-class=cols-4-->
+</div></div><div class="h2wrap-body cols-4"><div class="wrap h3body-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="thinking-控制"><a aria-hidden="true" tabindex="-1" href="#thinking-控制"><span class="icon icon-link"></span></a>Thinking 控制</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p>在 system prompt <strong>开头</strong>加上 <code>&#x3C;|think|></code>：</p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line">messages <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"system"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"&#x3C;|think|>You are a math expert."</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span> <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"Solve: 3x + 7 = 22"</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line">text <span class="token operator">=</span> processor<span class="token punctuation">.</span>apply_chat_template<span class="token punctuation">(</span>
+</span><span class="code-line">    messages<span class="token punctuation">,</span>
+</span><span class="code-line">    tokenize<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+</span><span class="code-line">    add_generation_prompt<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+</span><span class="code-line">    enable_thinking<span class="token operator">=</span><span class="token boolean">True</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">outputs <span class="token operator">=</span> model<span class="token punctuation">.</span>generate<span class="token punctuation">(</span><span class="token operator">**</span>inputs<span class="token punctuation">,</span> max_new_tokens<span class="token operator">=</span><span class="token number">2048</span><span class="token punctuation">)</span>
+</span><span class="code-line">response <span class="token operator">=</span> processor<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>
+</span><span class="code-line">    outputs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>input_len<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> skip_special_tokens<span class="token operator">=</span><span class="token boolean">False</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">result <span class="token operator">=</span> processor<span class="token punctuation">.</span>parse_response<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token comment"># result["thinking"]  → 分步推理</span>
+</span><span class="code-line"><span class="token comment"># result["response"] → 最终回答</span>
+</span></code></pre>
+<h4 id="thinking-输出结构"><a aria-hidden="true" tabindex="-1" href="#thinking-输出结构"><span class="icon icon-link"></span></a>Thinking 输出结构</h4>
+<pre><code class="code-highlight"><span class="code-line">&#x3C;|channel>thought
+</span><span class="code-line">[内部逐步推理 - 对用户隐藏]
+</span><span class="code-line">&#x3C;channel|>
+</span><span class="code-line">[对用户可见的最终回答]
+</span></code></pre>
+<h4 id="关闭-thinking-时的行为"><a aria-hidden="true" tabindex="-1" href="#关闭-thinking-时的行为"><span class="icon icon-link"></span></a>关闭 thinking 时的行为</h4>
+<p>对 31B/26B A4B 来说，即使 <code>enable_thinking=False</code>，仍会输出空标签：</p>
+<pre><code class="code-highlight"><span class="code-line">&#x3C;|channel>thought
+</span><span class="code-line">&#x3C;channel|>
+</span><span class="code-line">[最终回答]
+</span></code></pre>
+<p>E2B/E4B 在关闭时会完全跳过空标签。</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="控制-token"><a aria-hidden="true" tabindex="-1" href="#控制-token"><span class="icon icon-link"></span></a>控制 Token</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Token</th><th>作用</th></tr></thead><tbody><tr><td><code>&#x3C;|think|></code></td><td>在 system prompt 启用 thinking</td></tr><tr><td><code>&#x3C;|channel>thought\n</code></td><td>打开内部思考块</td></tr><tr><td><code>&#x3C;channel|></code></td><td>关闭思考块</td></tr><tr><td><code>&#x3C;|turn></code></td><td>打开一轮对话</td></tr><tr><td><code>&#x3C;turn|></code></td><td>关闭一轮对话</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="多轮对话规则"><a aria-hidden="true" tabindex="-1" href="#多轮对话规则"><span class="icon icon-link"></span></a>多轮对话规则</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<ul>
+<li><strong>不要</strong>把 thought 内容写入会话历史</li>
+<li>仅将 <code>result["response"]</code> 作为模型轮次内容传回</li>
+<li>复杂推理任务建议提高 <code>max_new_tokens</code></li>
+<li>AIME、证明题、调试等任务建议 <code>enable_thinking=True</code></li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="多模态"><a aria-hidden="true" tabindex="-1" href="#多模态"><span class="icon icon-link"></span></a>多模态</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="图片输入"><a aria-hidden="true" tabindex="-1" href="#图片输入"><span class="icon icon-link"></span></a>图片输入</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>支持可变宽高比 + 可配置的<strong>视觉 token 预算</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>预算</th><th>适用场景</th></tr></thead><tbody><tr><td>70</td><td>快速分类、视频帧</td></tr><tr><td>140</td><td>图像描述、缩略图</td></tr><tr><td>280</td><td>通用图像理解</td></tr><tr><td>560</td><td>图表、示意图</td></tr><tr><td>1120</td><td>OCR、PDF 解析、细节识别</td></tr></tbody></table>
+<pre class="wrap-text"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># 图片必须在文本之前（硬性要求）</span>
+</span><span class="code-line">messages <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"role"</span><span class="token punctuation">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span> <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">  <span class="token punctuation">{</span><span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"image"</span><span class="token punctuation">,</span> <span class="token string">"image"</span><span class="token punctuation">:</span> image<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token punctuation">{</span><span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"text"</span><span class="token punctuation">,</span>  <span class="token string">"text"</span><span class="token punctuation">:</span> <span class="token string">"Describe this chart."</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+</span><span class="code-line">inputs <span class="token operator">=</span> processor<span class="token punctuation">(</span>
+</span><span class="code-line">  text<span class="token operator">=</span>text<span class="token punctuation">,</span>
+</span><span class="code-line">  images<span class="token operator">=</span>image<span class="token punctuation">,</span>
+</span><span class="code-line">  return_tensors<span class="token operator">=</span><span class="token string">"pt"</span>
+</span><span class="code-line"><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>model<span class="token punctuation">.</span>device<span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>视觉编码器：约 1.5 亿参数（E2B/E4B）· 约 5.5 亿参数（31B/26B）</p>
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="音频输入"><a aria-hidden="true" tabindex="-1" href="#音频输入"><span class="icon icon-link"></span></a>音频输入</h3><div class="wrap-body">
+<p><strong>仅 E2B 与 E4B 支持</strong>（约 3 亿参数音频编码器）</p>
+<ul>
+<li>音频最长：<strong>30 秒</strong></li>
+<li>支持任务：ASR 与语音翻译</li>
+</ul>
+<h4 id="asr-提示词"><a aria-hidden="true" tabindex="-1" href="#asr-提示词"><span class="icon icon-link"></span></a>ASR 提示词</h4>
+<pre><code class="code-highlight"><span class="code-line">Transcribe the following speech in
+</span><span class="code-line">{LANGUAGE} into {LANGUAGE} text.
+</span></code></pre>
+<h4 id="翻译提示词"><a aria-hidden="true" tabindex="-1" href="#翻译提示词"><span class="icon icon-link"></span></a>翻译提示词</h4>
+<pre><code class="code-highlight"><span class="code-line">Transcribe in {SRC_LANG}, then
+</span><span class="code-line">translate to {TARGET_LANG}.
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="视频输入"><a aria-hidden="true" tabindex="-1" href="#视频输入"><span class="icon icon-link"></span></a>视频输入</h3><div class="wrap-body">
+<p>按<strong>连续图像帧</strong>处理：</p>
+<ul>
+<li>最大：<strong>60 秒</strong>，1 fps 即 60 帧</li>
+<li>每帧建议使用<strong>低 token 预算</strong>（70-140）</li>
+<li>E2B/E4B 可同时处理音轨</li>
+</ul>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># 将帧作为图像列表传入</span>
+</span><span class="code-line">inputs <span class="token operator">=</span> processor<span class="token punctuation">(</span>
+</span><span class="code-line">    text<span class="token operator">=</span>text<span class="token punctuation">,</span>
+</span><span class="code-line">    images<span class="token operator">=</span><span class="token punctuation">[</span>frame1<span class="token punctuation">,</span> frame2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> frame60<span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">    return_tensors<span class="token operator">=</span><span class="token string">"pt"</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="模态顺序"><a aria-hidden="true" tabindex="-1" href="#模态顺序"><span class="icon icon-link"></span></a>模态顺序</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>内容中始终将<strong>图片/音频放在文本前面</strong>：</p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token comment"># ✅ 正确顺序</span>
+</span><span class="code-line">content <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"image"</span><span class="token punctuation">,</span> <span class="token string">"image"</span><span class="token punctuation">:</span> img<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"text"</span><span class="token punctuation">,</span>  <span class="token string">"text"</span><span class="token punctuation">:</span> <span class="token string">"Describe it."</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># ❌ 文本在前会导致对齐问题</span>
+</span><span class="code-line">content <span class="token operator">=</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"text"</span><span class="token punctuation">,</span>  <span class="token string">"text"</span><span class="token punctuation">:</span> <span class="token string">"Describe it."</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token punctuation">{</span><span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"image"</span><span class="token punctuation">,</span> <span class="token string">"image"</span><span class="token punctuation">:</span> img<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">]</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="部署"><a aria-hidden="true" tabindex="-1" href="#部署"><span class="icon icon-link"></span></a>部署</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="huggingface"><a aria-hidden="true" tabindex="-1" href="#huggingface"><span class="icon icon-link"></span></a>HuggingFace</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ pip <span class="token function">install</span> <span class="token parameter variable">-U</span> transformers accelerate
+</span></code></pre>
+<h4 id="bf16默认"><a aria-hidden="true" tabindex="-1" href="#bf16默认"><span class="icon icon-link"></span></a>BF16（默认）</h4>
+<pre class="wrap-text"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> transformers <span class="token keyword">import</span> <span class="token punctuation">(</span>
+</span><span class="code-line">    AutoProcessor<span class="token punctuation">,</span> AutoModelForCausalLM
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">import</span> torch
+</span><span class="code-line">
+</span><span class="code-line">mid <span class="token operator">=</span> <span class="token string">"google/gemma-4-31b-it"</span>
+</span><span class="code-line">processor <span class="token operator">=</span> AutoProcessor<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>mid<span class="token punctuation">)</span>
+</span><span class="code-line">model <span class="token operator">=</span> AutoModelForCausalLM<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>
+</span><span class="code-line">    mid<span class="token punctuation">,</span>
+</span><span class="code-line">    torch_dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>bfloat16<span class="token punctuation">,</span>
+</span><span class="code-line">    device_map<span class="token operator">=</span><span class="token string">"auto"</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<h4 id="4-bit-量化"><a aria-hidden="true" tabindex="-1" href="#4-bit-量化"><span class="icon icon-link"></span></a>4-bit 量化</h4>
+<pre class="wrap-text"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> transformers <span class="token keyword">import</span> BitsAndBytesConfig
+</span><span class="code-line">
+</span><span class="code-line">bnb <span class="token operator">=</span> BitsAndBytesConfig<span class="token punctuation">(</span>load_in_4bit<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</span><span class="code-line">model <span class="token operator">=</span> AutoModelForCausalLM<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>
+</span><span class="code-line">    mid<span class="token punctuation">,</span>
+</span><span class="code-line">    quantization_config<span class="token operator">=</span>bnb<span class="token punctuation">,</span>
+</span><span class="code-line">    device_map<span class="token operator">=</span><span class="token string">"auto"</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="ollama"><a aria-hidden="true" tabindex="-1" href="#ollama"><span class="icon icon-link"></span></a>Ollama</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ollama pull gemma4     <span class="token comment"># 31B（默认）</span>
+</span><span class="code-line">$ ollama pull gemma4:e4b <span class="token comment"># 边缘 4B 版本</span>
+</span><span class="code-line">$ ollama pull gemma4:e2b <span class="token comment"># 边缘 2B 版本</span>
+</span><span class="code-line">$ ollama run  gemma4     <span class="token comment"># 交互聊天</span>
+</span></code></pre>
+<h4 id="自定义-ggufmodelfile"><a aria-hidden="true" tabindex="-1" href="#自定义-ggufmodelfile"><span class="icon icon-link"></span></a>自定义 GGUF（Modelfile）</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">FROM /path/to/fine-tuned.gguf
+</span><span class="code-line">SYSTEM <span class="token string">"You are a coding assistant."</span>
+</span></code></pre>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ ollama create mygemma <span class="token parameter variable">-f</span> Modelfile
+</span><span class="code-line">$ ollama run mygemma
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="vllm-server"><a aria-hidden="true" tabindex="-1" href="#vllm-server"><span class="icon icon-link"></span></a>vLLM Server</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ vllm serve google/gemma-4-31B-it <span class="token punctuation">\</span>
+</span><span class="code-line">  --max-model-len <span class="token number">8192</span> <span class="token punctuation">\</span>
+</span><span class="code-line">  --enable-auto-tool-choice <span class="token punctuation">\</span>
+</span><span class="code-line">  --tool-call-parser gemma4 <span class="token punctuation">\</span>
+</span><span class="code-line">  --reasoning-parser gemma4
+</span></code></pre>
+<p>OpenAI 兼容 API 地址：<code>http://localhost:8000/v1</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cloud--api"><a aria-hidden="true" tabindex="-1" href="#cloud--api"><span class="icon icon-link"></span></a>Cloud &#x26; API</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align show-header"><thead><tr><th>平台</th><th>说明</th></tr></thead><tbody><tr><td>Gemini API</td><td><code>gemma-4-31b-it</code></td></tr><tr><td>AI Studio</td><td>浏览器 Playground</td></tr><tr><td>Vertex AI</td><td>自定义端点</td></tr><tr><td>Cloud Run</td><td>Serverless GPU</td></tr><tr><td>GKE + vLLM</td><td>自动伸缩</td></tr></tbody></table>
+<!--rehype:className=left-align show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="边缘与移动端"><a aria-hidden="true" tabindex="-1" href="#边缘与移动端"><span class="icon icon-link"></span></a>边缘与移动端</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align show-header"><thead><tr><th>运行时</th><th>适用场景</th></tr></thead><tbody><tr><td>AICore (Android)</td><td>系统级 API</td></tr><tr><td>LiteRT-LM</td><td>IoT、Raspberry Pi</td></tr><tr><td>AI Edge Gallery</td><td>端侧评测</td></tr><tr><td>LM Studio</td><td>桌面图形界面</td></tr><tr><td>llama.cpp</td><td>CPU/GPU 混合</td></tr></tbody></table>
+<!--rehype:className=left-align show-header-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="微调"><a aria-hidden="true" tabindex="-1" href="#微调"><span class="icon icon-link"></span></a>微调</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="qlora-配置"><a aria-hidden="true" tabindex="-1" href="#qlora-配置"><span class="icon icon-link"></span></a>QLoRA 配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<p>单张 <strong>16 GB GPU</strong>（T4 / 免费 Colab / Kaggle）即可：</p>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> unsloth <span class="token keyword">import</span> FastModel
+</span><span class="code-line">
+</span><span class="code-line">model<span class="token punctuation">,</span> tokenizer <span class="token operator">=</span> FastModel<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token string">"google/gemma-4-E4B-it"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    load_in_4bit<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+</span><span class="code-line">    max_seq_length<span class="token operator">=</span><span class="token number">4096</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line">model <span class="token operator">=</span> FastModel<span class="token punctuation">.</span>get_peft_model<span class="token punctuation">(</span>
+</span><span class="code-line">    model<span class="token punctuation">,</span>
+</span><span class="code-line">    r<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span>
+</span><span class="code-line">    lora_alpha<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span>
+</span><span class="code-line">    lora_dropout<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>
+</span><span class="code-line">    target_modules<span class="token operator">=</span><span class="token punctuation">[</span>
+</span><span class="code-line">        <span class="token string">"q_proj"</span><span class="token punctuation">,</span> <span class="token string">"k_proj"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"v_proj"</span><span class="token punctuation">,</span> <span class="token string">"o_proj"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token string">"gate_proj"</span><span class="token punctuation">,</span> <span class="token string">"up_proj"</span><span class="token punctuation">,</span> <span class="token string">"down_proj"</span>
+</span><span class="code-line">    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<h4 id="视觉微调e2b--e4b"><a aria-hidden="true" tabindex="-1" href="#视觉微调e2b--e4b"><span class="icon icon-link"></span></a>视觉微调（E2B / E4B）</h4>
+<pre class="language-python"><code class="language-python code-highlight"><span class="code-line"><span class="token keyword">from</span> unsloth <span class="token keyword">import</span> FastVisionModel
+</span><span class="code-line">
+</span><span class="code-line">model<span class="token punctuation">,</span> tokenizer <span class="token operator">=</span> FastVisionModel<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span>
+</span><span class="code-line">    <span class="token string">"google/gemma-4-E4B-it"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    finetune_vision_layers<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>   <span class="token comment"># 冻结视觉编码器</span>
+</span><span class="code-line">    finetune_language_layers<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+</span><span class="code-line">    load_in_4bit<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="moe-微调"><a aria-hidden="true" tabindex="-1" href="#moe-微调"><span class="icon icon-link"></span></a>MoE 微调</h3><div class="wrap-body">
+<p>对于 <strong>26B A4B</strong>，全量微调会破坏专家路由：</p>
+<ul>
+<li>仅使用 <strong>LoRA bf16</strong>（不要做 FFT）</li>
+<li>建议从 <code>r=16</code>、<code>lora_alpha=16</code> 起步</li>
+<li>在 loss 收敛后再逐步增大上下文长度</li>
+<li>避免训练专家路由相关权重矩阵</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="数据要求"><a aria-hidden="true" tabindex="-1" href="#数据要求"><span class="icon icon-link"></span></a>数据要求</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align show-header"><thead><tr><th>要求</th><th>建议值</th></tr></thead><tbody><tr><td>CoT 数据占比</td><td>≥ 75% 的训练集</td></tr><tr><td>Thinking 格式</td><td>包含 <code>&#x3C;|think|></code> 触发标记</td></tr><tr><td>多模态顺序</td><td>图片/音频在文本前</td></tr><tr><td>Chat 模板</td><td>ShareGPT 或 OpenAI 格式</td></tr><tr><td>RL 奖励</td><td>可验证的最终答案</td></tr></tbody></table>
+<!--rehype:className=left-align show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="视觉微调建议"><a aria-hidden="true" tabindex="-1" href="#视觉微调建议"><span class="icon icon-link"></span></a>视觉微调建议</h3><div class="wrap-body">
+<ol>
+<li><strong>先冻结视觉层</strong> — <code>finetune_vision_layers=False</code></li>
+<li>仅微调 LLM + attention + MLP projector</li>
+<li>解冻前先验证文本域质量</li>
+<li>仅在领域图像任务中解冻视觉层</li>
+<li>训练时使用较低 token 预算（70–280）可节省 VRAM</li>
+</ol>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="gemmaverse"><a aria-hidden="true" tabindex="-1" href="#gemmaverse"><span class="icon icon-link"></span></a>Gemmaverse</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="专项模型"><a aria-hidden="true" tabindex="-1" href="#专项模型"><span class="icon icon-link"></span></a>专项模型</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th>模型</th><th>领域</th><th>说明</th></tr></thead><tbody><tr><td>MedGemma 4B</td><td>医学影像</td><td>多模态 X-ray/MRI 分析</td></tr><tr><td>MedGemma 27B</td><td>临床文本</td><td>EHR + 医疗报告推理</td></tr><tr><td>CodeGemma</td><td>编程</td><td>代码补全与重构</td></tr><tr><td>PaliGemma 2</td><td>视觉语言</td><td>细粒度 VLM 与视觉推理</td></tr><tr><td>ShieldGemma</td><td>安全</td><td>LLM 输出安全分类器</td></tr><tr><td>DataGemma</td><td>事实数据</td><td>基于 Google Data Commons 对齐</td></tr><tr><td>FunctionGemma</td><td>工具调用</td><td>低资源函数调用解析</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="生态"><a aria-hidden="true" tabindex="-1" href="#生态"><span class="icon icon-link"></span></a>生态</h3><div class="wrap-body">
+<p><strong>库与框架</strong></p>
+<ul>
+<li>ADK (Agent Development Kit)</li>
+<li>JAX Gemma Library (<code>google-deepmind/gemma</code>)</li>
+<li>Gemma Cookbook (<code>google-gemma/gemma-cookbook</code>)</li>
+<li><code>google/adk-samples</code> starter agents</li>
+</ul>
+<p><strong>社区变体</strong></p>
+<ul>
+<li>100K+ 社区微调衍生模型</li>
+<li>RecurrentGemma (Griffin architecture)</li>
+<li>EmbeddingGemma, T5Gemma 2</li>
+<li>VaultGemma (differential privacy)</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="延伸阅读"><a aria-hidden="true" tabindex="-1" href="#延伸阅读"><span class="icon icon-link"></span></a>延伸阅读</h2><div class="wrap-body">
+<ul>
+<li><a href="https://ai.google.dev/gemma/docs/core">官方文档</a> <em>(ai.google.dev)</em></li>
+<li><a href="https://ai.google.dev/gemma/docs/core/model_card_4">模型卡</a> <em>(ai.google.dev)</em></li>
+<li><a href="https://deepmind.google/models/gemma/gemma-4/">DeepMind 模型页</a> <em>(deepmind.google)</em></li>
+<li><a href="https://huggingface.co/google">HuggingFace</a> <em>(huggingface.co)</em></li>
+<li><a href="https://github.com/google-gemma/gemma-cookbook">Gemma 实战手册</a> <em>(github.com)</em></li>
+<li><a href="https://github.com/google-deepmind/gemma">JAX Gemma 库</a> <em>(github.com)</em></li>
+<li><a href="https://docs.vllm.ai/projects/recipes/en/latest/Google/Gemma4.html">vLLM 使用指南</a> <em>(docs.vllm.ai)</em></li>
+<li><a href="https://ollama.com/library/gemma4">Ollama 模型库</a> <em>(ollama.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
