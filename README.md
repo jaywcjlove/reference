@@ -175,6 +175,14 @@ Quick Reference
 [Minio](./docs/minio.md)<!--rehype:style=background:rgb(3 3 128);-->
 <!--rehype:class=home-card-->
 
+
+## AI
+
+[ChatGPT](./docs/chatgpt.md)<!--rehype:style=background:rgb(74 161 129);&class=tag&data-lang=AI-->
+[Claude Code](./docs/claude.md)<!--rehype:style=background:rgb(217 119 87);&class=tag&data-lang=AI-->
+[Codex CLI](./docs/codex-cli.md)<!--rehype:style=background:rgb(74 161 129);&class=tag&data-lang=AI-->
+<!--rehype:class=home-card-->
+
 ## Docker
 
 [Docker](./docs/docker.md)<!--rehype:style=background:rgb(72 143 223);-->
@@ -303,8 +311,6 @@ Quick Reference
 
 ## 工具
 
-[ChatGPT](./docs/chatgpt.md)<!--rehype:style=background:rgb(74 161 129);&class=tag&data-lang=AI-->
-[Claude Code](./docs/claude.md)<!--rehype:style=background:rgb(217 119 87);&class=tag&data-lang=AI-->
 [Emacs](./docs/emacs.md)<!--rehype:style=background:rgb(98 36 134);-->
 [Linux Command](./docs/linux-command.md)<!--rehype:style=background:rgb(215 89 62);&class=tag&data-lang=命令速查-->
 [Mitmproxy](./docs/mitmproxy.md)<!--rehype:style=background:rgb(4 92 135);-->
