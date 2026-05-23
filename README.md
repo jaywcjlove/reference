@@ -394,6 +394,7 @@ Quick Reference
 [Quick Reference](./docs/quickreference.md)<!--rehype:style=\-\-bg\-opacity: 0.75;background-image: linear-gradient(to left, rgba(108 223 95 / var(--bg-opacity)), rgba(51 195 253 / var(--bg-opacity)));&class=tag&data-lang=排版说明-->
 [Aspect Ratio](./docs/aspect-ratio.md)<!--rehype:style=background: rgb(16 185 129);-->
 [ASCII Code](./docs/ascii-code.md)<!--rehype:style=background: rgb(16 185 129);-->
+[Excel 函数](./docs/excel-fn.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Symbol Code](./docs/symbol-code.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=CSS-->
 [Google Search](./docs/google-search.md)<!--rehype:style=background: rgb(16 185 129);-->
