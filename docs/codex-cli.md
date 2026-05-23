@@ -136,7 +136,7 @@ $ codex exec resume <SESSION_ID> "Implement"
 ---
 <!--rehype:body-class=cols-2-->
 
-### 全部参数 {.row-span-3}
+### 全部参数
 
 | 参数                      | 取值            | 说明                               |
 | ------------------------- | --------------- | ---------------------------------- |
@@ -164,7 +164,7 @@ $ codex exec resume <SESSION_ID> "Implement"
 
 ### 使用示例
 
-```bash {.wrap}
+```bash
 # 指定模型
 $ codex -m gpt-5.4 "Refactor the auth module"
 
@@ -204,7 +204,7 @@ $ codex -C ~/projects/api "Review this codebase"
 | `on-request` | 超出沙箱边界时询问                        |
 | `never`      | 从不询问；所有命令自动执行                |
 
-### 预设 {.primary}
+### 预设
 
 | 预设          | 等价设置                         |
 | ------------- | -------------------------------- |

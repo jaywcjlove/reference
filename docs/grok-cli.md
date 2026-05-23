@@ -266,7 +266,7 @@ Plan Mode
 
 **或使用无头模式：**
 
-```bash {.wrap}
+```bash
 $ grok -p "analyze changes in this PR and create plan"
 $ grok -p "check if changes follow architecture guidelines"
 ```
@@ -426,7 +426,7 @@ $ GROK_API_KEY=key grok "hello"
 
 **安装后命令找不到：**
 
-```bash {.wrap}
+```bash
 # 将 npm 全局 bin 目录加入 PATH
 $ echo 'export PATH="$(npm config get prefix)/bin:$PATH"' >> ~/.zshrc
 $ source ~/.zshrc
