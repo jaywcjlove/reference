@@ -1,0 +1,1408 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Gemini CLI 备忘清单
+ &#x26;  gemini-cli cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="Gemini CLI 可将 Google Gemini 模型直接带入终端，用于代码理解、任务自动化与工作流构建。
+
+快速开始，为开发人员分享快速参考备忘单。">
+<meta keywords="gemini-cli,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/gemini-cli.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="gemini-cli-备忘清单"><svg width="1em" height="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 65"><mask id="maskme" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"><path d="M32.447 0c.68 0 1.273.465 1.439 1.125a38.904 38.904 0 001.999 5.905c2.152 5 5.105 9.376 8.854 13.125 3.751 3.75 8.126 6.703 13.125 8.855a38.98 38.98 0 005.906 1.999c.66.166 1.124.758 1.124 1.438 0 .68-.464 1.273-1.125 1.439a38.902 38.902 0 00-5.905 1.999c-5 2.152-9.375 5.105-13.125 8.854-3.749 3.751-6.702 8.126-8.854 13.125a38.973 38.973 0 00-2 5.906 1.485 1.485 0 01-1.438 1.124c-.68 0-1.272-.464-1.438-1.125a38.913 38.913 0 00-2-5.905c-2.151-5-5.103-9.375-8.854-13.125-3.75-3.749-8.125-6.702-13.125-8.854a38.973 38.973 0 00-5.905-2A1.485 1.485 0 010 32.448c0-.68.465-1.272 1.125-1.438a38.903 38.903 0 005.905-2c5-2.151 9.376-5.104 13.125-8.854 3.75-3.749 6.703-8.125 8.855-13.125a38.972 38.972 0 001.999-5.905A1.485 1.485 0 0132.447 0z" fill="#000"></path><path d="M32.447 0c.68 0 1.273.465 1.439 1.125a38.904 38.904 0 001.999 5.905c2.152 5 5.105 9.376 8.854 13.125 3.751 3.75 8.126 6.703 13.125 8.855a38.98 38.98 0 005.906 1.999c.66.166 1.124.758 1.124 1.438 0 .68-.464 1.273-1.125 1.439a38.902 38.902 0 00-5.905 1.999c-5 2.152-9.375 5.105-13.125 8.854-3.749 3.751-6.702 8.126-8.854 13.125a38.973 38.973 0 00-2 5.906 1.485 1.485 0 01-1.438 1.124c-.68 0-1.272-.464-1.438-1.125a38.913 38.913 0 00-2-5.905c-2.151-5-5.103-9.375-8.854-13.125-3.75-3.749-8.125-6.702-13.125-8.854a38.973 38.973 0 00-5.905-2A1.485 1.485 0 010 32.448c0-.68.465-1.272 1.125-1.438a38.903 38.903 0 005.905-2c5-2.151 9.376-5.104 13.125-8.854 3.75-3.749 6.703-8.125 8.855-13.125a38.972 38.972 0 001.999-5.905A1.485 1.485 0 0132.447 0z" fill="url(#prefix__paint0_linear_2001_67)"></path></mask><g mask="url(#maskme)"><g filter="url(#prefix__filter0_f_2001_67)"><path d="M-5.859 50.734c7.498 2.663 16.116-2.33 19.249-11.152 3.133-8.821-.406-18.131-7.904-20.794-7.498-2.663-16.116 2.33-19.25 11.151-3.132 8.822.407 18.132 7.905 20.795z" fill="#FFE432"></path></g><g filter="url(#prefix__filter1_f_2001_67)"><path d="M27.433 21.649c10.3 0 18.651-8.535 18.651-19.062 0-10.528-8.35-19.062-18.651-19.062S8.78-7.94 8.78 2.587c0 10.527 8.35 19.062 18.652 19.062z" fill="#FC413D"></path></g><g filter="url(#prefix__filter2_f_2001_67)"><path d="M20.184 82.608c10.753-.525 18.918-12.244 18.237-26.174-.68-13.93-9.95-24.797-20.703-24.271C6.965 32.689-1.2 44.407-.519 58.337c.681 13.93 9.95 24.797 20.703 24.271z" fill="#00B95C"></path></g><g filter="url(#prefix__filter3_f_2001_67)"><path d="M20.184 82.608c10.753-.525 18.918-12.244 18.237-26.174-.68-13.93-9.95-24.797-20.703-24.271C6.965 32.689-1.2 44.407-.519 58.337c.681 13.93 9.95 24.797 20.703 24.271z" fill="#00B95C"></path></g><g filter="url(#prefix__filter4_f_2001_67)"><path d="M30.954 74.181c9.014-5.485 11.427-17.976 5.389-27.9-6.038-9.925-18.241-13.524-27.256-8.04-9.015 5.486-11.428 17.977-5.39 27.902 6.04 9.924 18.242 13.523 27.257 8.038z" fill="#00B95C"></path></g><g filter="url(#prefix__filter5_f_2001_67)"><path d="M67.391 42.993c10.132 0 18.346-7.91 18.346-17.666 0-9.757-8.214-17.667-18.346-17.667s-18.346 7.91-18.346 17.667c0 9.757 8.214 17.666 18.346 17.666z" fill="#3186FF"></path></g><g filter="url(#prefix__filter6_f_2001_67)"><path d="M-13.065 40.944c9.33 7.094 22.959 4.869 30.442-4.972 7.483-9.84 5.987-23.569-3.343-30.663C4.704-1.786-8.924.439-16.408 10.28c-7.483 9.84-5.986 23.57 3.343 30.664z" fill="#FBBC04"></path></g><g filter="url(#prefix__filter7_f_2001_67)"><path d="M34.74 51.43c11.135 7.656 25.896 5.524 32.968-4.764 7.073-10.287 3.779-24.832-7.357-32.488C49.215 6.52 34.455 8.654 27.382 18.94c-7.072 10.288-3.779 24.833 7.357 32.49z" fill="#3186FF"></path></g><g filter="url(#prefix__filter8_f_2001_67)"><path d="M54.984-2.336c2.833 3.852-.808 11.34-8.131 16.727-7.324 5.387-15.557 6.631-18.39 2.78-2.833-3.853.807-11.342 8.13-16.728 7.324-5.387 15.558-6.631 18.39-2.78z" fill="#749BFF"></path></g><g filter="url(#prefix__filter9_f_2001_67)"><path d="M31.727 16.104C43.053 5.598 46.94-8.626 40.41-15.666c-6.53-7.04-21.006-4.232-32.332 6.274s-15.214 24.73-8.683 31.77c6.53 7.04 21.006 4.232 32.332-6.274z" fill="#FC413D"></path></g><g filter="url(#prefix__filter10_f_2001_67)"><path d="M8.51 53.838c6.732 4.818 14.46 5.55 17.262 1.636 2.802-3.915-.384-10.994-7.116-15.812-6.731-4.818-14.46-5.55-17.261-1.636-2.802 3.915.383 10.994 7.115 15.812z" fill="#FFEE48"></path></g></g><defs><filter id="prefix__filter0_f_2001_67" x="-19.824" y="13.152" width="39.274" height="43.217" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="2.46" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter1_f_2001_67" x="-15.001" y="-40.257" width="84.868" height="85.688" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="11.891" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter2_f_2001_67" x="-20.776" y="11.927" width="79.454" height="90.916" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="10.109" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter3_f_2001_67" x="-20.776" y="11.927" width="79.454" height="90.916" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="10.109" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter4_f_2001_67" x="-19.845" y="15.459" width="79.731" height="81.505" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="10.109" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter5_f_2001_67" x="29.832" y="-11.552" width="75.117" height="73.758" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="9.606" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter6_f_2001_67" x="-38.583" y="-16.253" width="78.135" height="78.758" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="8.706" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter7_f_2001_67" x="8.107" y="-5.966" width="78.877" height="77.539" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="7.775" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter8_f_2001_67" x="13.587" y="-18.488" width="56.272" height="51.81" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="6.957" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter9_f_2001_67" x="-15.526" y="-31.297" width="70.856" height="69.306" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="5.876" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><filter id="prefix__filter10_f_2001_67" x="-14.168" y="20.964" width="55.501" height="51.571" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="7.273" result="effect1_foregroundBlur_2001_67"></feGaussianBlur></filter><linearGradient id="prefix__paint0_linear_2001_67" x1="18.447" y1="43.42" x2="52.153" y2="15.004" gradientUnits="userSpaceOnUse"><stop stop-color="#4893FC"></stop><stop offset=".27" stop-color="#4893FC"></stop><stop offset=".777" stop-color="#969DFF"></stop><stop offset="1" stop-color="#BD99FE"></stop></linearGradient></defs></svg><a aria-hidden="true" tabindex="-1" href="#gemini-cli-备忘清单"><span class="icon icon-link"></span></a>Gemini CLI 备忘清单</h1><div class="wrap-body">
+<p><a href="https://geminicli.com/docs/">Gemini CLI</a> 可将 Google Gemini 模型直接带入终端，用于代码理解、任务自动化与工作流构建。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#快速开始">快速开始</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#快速上手">快速上手</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#认证">认证</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装方式">安装方式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模型别名">模型别名</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心概念">核心概念</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#cli-选项">CLI 选项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心选项">核心选项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#子命令">子命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#无头模式输出格式">无头模式输出格式</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#交互命令">交互命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#slash-命令-">Slash 命令 /</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#-命令">@ 命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#shell-模式-">Shell 模式 !</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#键盘快捷键">键盘快捷键</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#光标与编辑">光标与编辑</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文本输入">文本输入</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#应用控制">应用控制</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#会话与历史">会话与历史</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#会话管理">会话管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#rewind-工作流">Rewind 工作流</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#分叉会话">分叉会话</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#上下文与记忆">上下文与记忆</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#geminimd-层级">GEMINI.md 层级</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#记忆命令">记忆命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#忽略文件">忽略文件</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#mcp-服务器">MCP 服务器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#mcp-配置">MCP 配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#管理服务器">管理服务器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#mcp-服务器配置字段">MCP 服务器配置字段</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#mcp-资源">MCP 资源</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#扩展与-skills">扩展与 Skills</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#管理扩展">管理扩展</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#agent-skills">Agent Skills</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自定义命令">自定义命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#plan-mode">Plan Mode</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#启用-plan-mode">启用 Plan Mode</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#plan-mode-工具">Plan Mode 工具</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#plan-mode-工作流">Plan Mode 工作流</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#配置">配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置文件位置">设置文件位置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#关键环境变量">关键环境变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#沙箱选项">沙箱选项</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#hooks">Hooks</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hook-事件">Hook 事件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hook-io-协议">Hook I/O 协议</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#延伸阅读">延伸阅读</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="快速上手"><a aria-hidden="true" tabindex="-1" href="#快速上手"><span class="icon icon-link"></span></a>快速上手</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 全局安装</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> @google/gemini-cli
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 或通过 Homebrew 安装</span>
+</span><span class="code-line">$ brew <span class="token function">install</span> gemini-cli
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 或免安装直接运行</span>
+</span><span class="code-line">$ npx @google/gemini-cli
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 启动交互会话</span>
+</span><span class="code-line">$ gemini
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 非交互模式（无头模式）</span>
+</span><span class="code-line">$ gemini <span class="token parameter variable">-p</span> <span class="token string">"summarize README.md"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 将内容管道传给 Gemini</span>
+</span><span class="code-line">$ <span class="token function">cat</span> logs.txt <span class="token operator">|</span> gemini <span class="token parameter variable">-p</span> <span class="token string">"find errors"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 先执行提示词，再继续交互</span>
+</span><span class="code-line">$ gemini <span class="token parameter variable">-i</span> <span class="token string">"explain this project"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 恢复最近一次会话</span>
+</span><span class="code-line">$ gemini <span class="token parameter variable">-r</span> latest
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 恢复后附加新提示词</span>
+</span><span class="code-line">$ gemini <span class="token parameter variable">-r</span> latest <span class="token string">"check for type errors"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="认证"><a aria-hidden="true" tabindex="-1" href="#认证"><span class="icon icon-link"></span></a>认证</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>方式</th><th>用法</th></tr></thead><tbody><tr><td>Google 账号</td><td>运行 <code>gemini</code>，选择 “Sign in with Google”</td></tr><tr><td>API Key</td><td>设置 <code>GEMINI_API_KEY</code> 环境变量</td></tr><tr><td>Vertex AI (ADC)</td><td><code>gcloud auth application-default login</code></td></tr><tr><td>Vertex AI (SA)</td><td>设置 <code>GOOGLE_APPLICATION_CREDENTIALS</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p>Vertex AI 还需要 <code>GOOGLE_CLOUD_PROJECT</code> 与 <code>GOOGLE_CLOUD_LOCATION</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装方式"><a aria-hidden="true" tabindex="-1" href="#安装方式"><span class="icon icon-link"></span></a>安装方式</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>方式</th><th>命令</th></tr></thead><tbody><tr><td>npm</td><td><code>npm install -g @google/gemini-cli</code></td></tr><tr><td>Homebrew</td><td><code>brew install gemini-cli</code></td></tr><tr><td>MacPorts</td><td><code>sudo port install gemini-cli</code></td></tr><tr><td>npx（免安装）</td><td><code>npx @google/gemini-cli</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p><strong>系统要求：</strong> Node.js 20+、macOS 15+、Windows 11 24H2+ 或 Ubuntu 20.04+</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="模型别名"><a aria-hidden="true" tabindex="-1" href="#模型别名"><span class="icon icon-link"></span></a>模型别名</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align show-header"><thead><tr><th>别名</th><th>模型</th><th>适用场景</th></tr></thead><tbody><tr><td><code>auto</code></td><td>gemini-2.5-pro / gemini-3-pro</td><td>默认，平衡</td></tr><tr><td><code>pro</code></td><td>gemini-2.5-pro / gemini-3-pro</td><td>复杂推理</td></tr><tr><td><code>flash</code></td><td>gemini-2.5-flash</td><td>快速，平衡</td></tr><tr><td><code>flash-lite</code></td><td>gemini-2.5-flash-lite</td><td>简单场景，最快</td></tr></tbody></table>
+<!--rehype:className=left-align show-header-->
+<p>可通过 <code>-m flash</code> 或 <code>GEMINI_MODEL</code> 环境变量设置。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="核心概念"><a aria-hidden="true" tabindex="-1" href="#核心概念"><span class="icon icon-link"></span></a>核心概念</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>概念</th><th>说明</th></tr></thead><tbody><tr><td><code>GEMINI.md</code></td><td>自动加载的项目上下文文件</td></tr><tr><td>Skills</td><td>通过 <code>activate_skill</code> 按需加载的专长能力</td></tr><tr><td>Extensions</td><td>由提示词、MCP 服务器、工具组成的扩展包</td></tr><tr><td>MCP Servers</td><td>通过 Model Context Protocol 接入的外部工具</td></tr><tr><td>Plan Mode</td><td>编码前用于规划的只读模式</td></tr><tr><td>Hooks</td><td>在 agent 生命周期关键节点运行的脚本</td></tr><tr><td>Headless</td><td>通过 <code>-p</code> 参数启用的非交互模式</td></tr><tr><td>Sessions</td><td>可恢复的已保存会话历史</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="cli-选项"><a aria-hidden="true" tabindex="-1" href="#cli-选项"><span class="icon icon-link"></span></a>CLI 选项</h2><div class="wrap-body">
+<!--rehype:body-class=cols-4-->
+</div></div><div class="h2wrap-body cols-4"><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="核心选项"><a aria-hidden="true" tabindex="-1" href="#核心选项"><span class="icon icon-link"></span></a>核心选项</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>选项</th><th>别名</th><th>说明</th></tr></thead><tbody><tr><td><code>--prompt &#x3C;text></code></td><td><code>-p</code></td><td>非交互提示词</td></tr><tr><td><code>--prompt-interactive</code></td><td><code>-i</code></td><td>先发提示词，再继续交互</td></tr><tr><td><code>--model &#x3C;name></code></td><td><code>-m</code></td><td>指定模型</td></tr><tr><td><code>--worktree [name]</code></td><td><code>-w</code></td><td>在新的 git worktree 中启动</td></tr><tr><td><code>--sandbox</code></td><td><code>-s</code></td><td>启用沙箱执行</td></tr><tr><td><code>--approval-mode &#x3C;mode></code></td><td></td><td>default / auto_edit / yolo / plan</td></tr><tr><td><code>--yolo</code></td><td><code>-y</code></td><td>自动批准全部操作（已弃用，请改用 <code>--approval-mode=yolo</code>）</td></tr><tr><td><code>--resume &#x3C;id></code></td><td><code>-r</code></td><td>通过 ID 或 <code>latest</code> 恢复会话</td></tr><tr><td><code>--list-sessions</code></td><td></td><td>列出会话后退出</td></tr><tr><td><code>--delete-session &#x3C;n></code></td><td></td><td>按索引删除会话</td></tr><tr><td><code>--output-format &#x3C;fmt></code></td><td><code>-o</code></td><td>text / json / stream-json</td></tr><tr><td><code>--extensions &#x3C;list></code></td><td><code>-e</code></td><td>要加载的扩展</td></tr><tr><td><code>--list-extensions</code></td><td><code>-l</code></td><td>列出扩展后退出</td></tr><tr><td><code>--include-directories</code></td><td></td><td>额外工作区目录</td></tr><tr><td><code>--allowed-mcp-server-names</code></td><td></td><td>限制可用 MCP 服务器名称</td></tr><tr><td><code>--screen-reader</code></td><td></td><td>启用无障碍模式</td></tr><tr><td><code>--acp</code></td><td></td><td>以 ACP（Agent Code Pilot）模式启动</td></tr><tr><td><code>--debug</code></td><td><code>-d</code></td><td>输出详细调试日志</td></tr><tr><td><code>--version</code></td><td><code>-v</code></td><td>显示版本</td></tr><tr><td><code>--help</code></td><td><code>-h</code></td><td>显示帮助</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="子命令"><a aria-hidden="true" tabindex="-1" href="#子命令"><span class="icon icon-link"></span></a>子命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<p>MCP 服务器管理</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ gemini mcp <span class="token function">add</span> <span class="token operator">&#x3C;</span>name<span class="token operator">></span> <span class="token operator">&#x3C;</span>cmd-or-url<span class="token operator">></span>
+</span><span class="code-line">$ gemini mcp remove <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span><span class="code-line">$ gemini mcp list
+</span><span class="code-line">$ gemini mcp <span class="token builtin class-name">enable</span> <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span><span class="code-line">$ gemini mcp disable <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span></code></pre>
+<p>扩展管理</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ gemini extensions <span class="token function">install</span> <span class="token operator">&#x3C;</span>source<span class="token operator">></span>
+</span><span class="code-line">$ gemini extensions uninstall <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span><span class="code-line">$ gemini extensions list
+</span><span class="code-line">$ gemini extensions update <span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token punctuation">[</span>--all<span class="token punctuation">]</span>
+</span><span class="code-line">$ gemini extensions enable/disable <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span><span class="code-line">$ gemini extensions <span class="token function">link</span> <span class="token operator">&#x3C;</span>path<span class="token operator">></span>
+</span><span class="code-line">$ gemini extensions new <span class="token operator">&#x3C;</span>path<span class="token operator">></span>
+</span></code></pre>
+<p>Skills 管理</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ gemini skills list <span class="token punctuation">[</span>--all<span class="token punctuation">]</span>
+</span><span class="code-line">$ gemini skills <span class="token function">install</span> <span class="token operator">&#x3C;</span>source<span class="token operator">></span>
+</span><span class="code-line">$ gemini skills <span class="token function">link</span> <span class="token operator">&#x3C;</span>path<span class="token operator">></span>
+</span><span class="code-line">$ gemini skills uninstall <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span><span class="code-line">$ gemini skills enable/disable <span class="token operator">&#x3C;</span>name<span class="token operator">></span>
+</span></code></pre>
+<p>Hooks</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ gemini hooks migrate
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="无头模式输出格式"><a aria-hidden="true" tabindex="-1" href="#无头模式输出格式"><span class="icon icon-link"></span></a>无头模式输出格式</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>格式</th><th>说明</th></tr></thead><tbody><tr><td><code>text</code></td><td>纯文本（默认）</td></tr><tr><td><code>json</code></td><td>单个 JSON 对象，包含 <code>response</code> 与 <code>stats</code></td></tr><tr><td><code>stream-json</code></td><td>JSONL: <code>init</code> · <code>message</code> · <code>tool_use</code> · <code>tool_result</code> · <code>error</code> · <code>result</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p><strong>退出码：</strong> <code>0</code> 成功 · <code>1</code> 错误 · <code>42</code> 输入无效 · <code>53</code> 超出轮次限制</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="交互命令"><a aria-hidden="true" tabindex="-1" href="#交互命令"><span class="icon icon-link"></span></a>交互命令</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="slash-命令-"><a aria-hidden="true" tabindex="-1" href="#slash-命令-"><span class="icon icon-link"></span></a>Slash 命令 <code>/</code></h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><code>/help</code></td><td>显示全部命令</td></tr><tr><td><code>/quit</code> <code>/exit</code></td><td>退出 Gemini CLI</td></tr><tr><td><code>/clear</code></td><td>清空终端屏幕</td></tr><tr><td><code>/about</code></td><td>显示版本信息</td></tr><tr><td><code>/auth</code></td><td>切换认证方式</td></tr><tr><td><code>/model</code></td><td>设置 / 管理模型</td></tr><tr><td><code>/settings</code></td><td>打开设置编辑器</td></tr><tr><td><code>/theme</code></td><td>切换视觉主题</td></tr><tr><td><code>/vim</code></td><td>切换 vim 模式</td></tr><tr><td><code>/plan [goal]</code></td><td>进入 Plan Mode</td></tr><tr><td><code>/compress</code></td><td>压缩聊天上下文</td></tr><tr><td><code>/copy</code></td><td>复制上一条输出到剪贴板</td></tr><tr><td><code>/init</code></td><td>为项目生成 GEMINI.md</td></tr><tr><td><code>/docs</code></td><td>打开文档</td></tr><tr><td><code>/bug</code></td><td>提交 GitHub issue</td></tr><tr><td><code>/stats</code></td><td>会话 / 模型 / 工具统计</td></tr><tr><td><code>/tools</code></td><td>列出可用工具</td></tr><tr><td><code>/memory show</code></td><td>显示全部上下文文件</td></tr><tr><td><code>/memory add &#x3C;text></code></td><td>写入全局 GEMINI.md</td></tr><tr><td><code>/memory reload</code></td><td>重新加载上下文文件</td></tr><tr><td><code>/resume</code></td><td>浏览并恢复会话</td></tr><tr><td><code>/rewind</code></td><td>回退会话历史</td></tr><tr><td><code>/restore</code></td><td>恢复工具执行前的文件状态</td></tr><tr><td><code>/hooks list</code></td><td>列出已配置 hooks</td></tr><tr><td><code>/mcp list</code></td><td>列出 MCP 服务器</td></tr><tr><td><code>/mcp reload</code></td><td>重启 MCP 服务器</td></tr><tr><td><code>/skills list</code></td><td>列出可用 skills</td></tr><tr><td><code>/extensions list</code></td><td>列出扩展</td></tr><tr><td><code>/permissions trust</code></td><td>信任当前目录</td></tr><tr><td><code>/policies list</code></td><td>列出当前生效策略</td></tr><tr><td><code>/directory add</code></td><td>添加工作区目录</td></tr><tr><td><code>/ide status</code></td><td>IDE 集成状态</td></tr><tr><td><code>/shells</code></td><td>切换后台 shell</td></tr><tr><td><code>/terminal-setup</code></td><td>配置多行输入快捷键</td></tr><tr><td><code>/setup-github</code></td><td>配置 GitHub Actions</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p>重载命令：<code>/skills reload</code>、<code>/agents reload</code>、<code>/commands reload</code>、<code>/memory reload</code>、<code>/mcp reload</code>、<code>/extensions reload</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="-命令"><a aria-hidden="true" tabindex="-1" href="#-命令"><span class="icon icon-link"></span></a><code>@</code> 命令</h3><div class="wrap-body">
+<p>可在提示词中包含文件或目录内容：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 引入单个文件</span>
+</span><span class="code-line">@src/main.ts fix the bug on line <span class="token number">42</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 引入一个目录</span>
+</span><span class="code-line">@src/ what does this module do?
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 引入多个路径</span>
+</span><span class="code-line">@package.json @src/ audit dependencies
+</span></code></pre>
+<p>具备 Git 感知能力：目录引入时会遵守 <code>.gitignore</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="shell-模式-"><a aria-hidden="true" tabindex="-1" href="#shell-模式-"><span class="icon icon-link"></span></a>Shell 模式 <code>!</code></h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 运行单条 shell 命令</span>
+</span><span class="code-line"><span class="token operator">!</span>ls <span class="token parameter variable">-la</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 切换持久 shell 模式</span>
+</span><span class="code-line"><span class="token operator">!</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 将 shell 输出注入上下文</span>
+</span><span class="code-line"><span class="token operator">!</span>git <span class="token function">diff</span> HEAD~1
+</span></code></pre>
+<p>所有 shell 子进程都会自动设置 <code>GEMINI_CLI=1</code>。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="键盘快捷键"><a aria-hidden="true" tabindex="-1" href="#键盘快捷键"><span class="icon icon-link"></span></a>键盘快捷键</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="光标与编辑"><a aria-hidden="true" tabindex="-1" href="#光标与编辑"><span class="icon icon-link"></span></a>光标与编辑</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts left-align"><thead><tr><th>按键</th><th>操作</th></tr></thead><tbody><tr><td><code>Ctrl+A</code> / <code>Home</code></td><td>移动到行首</td></tr><tr><td><code>Ctrl+E</code> / <code>End</code></td><td>移动到行尾</td></tr><tr><td><code>Ctrl+←</code> / <code>Alt+B</code></td><td>向左移动一个单词</td></tr><tr><td><code>Ctrl+→</code> / <code>Alt+F</code></td><td>向右移动一个单词</td></tr><tr><td><code>Ctrl+K</code></td><td>删除到行尾</td></tr><tr><td><code>Ctrl+U</code></td><td>删除到行首</td></tr><tr><td><code>Ctrl+W</code> / <code>Alt+Bksp</code></td><td>删除左侧单词</td></tr><tr><td><code>Alt+D</code></td><td>删除右侧单词</td></tr><tr><td><code>Backspace</code></td><td>删除左侧字符</td></tr><tr><td><code>Delete</code> / <code>Ctrl+D</code></td><td>删除右侧字符</td></tr><tr><td><code>Cmd+Z</code></td><td>撤销</td></tr><tr><td><code>Ctrl+Shift+Z</code></td><td>重做</td></tr></tbody></table>
+<!--rehype:className=shortcuts left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="文本输入"><a aria-hidden="true" tabindex="-1" href="#文本输入"><span class="icon icon-link"></span></a>文本输入</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts left-align"><thead><tr><th>按键</th><th>操作</th></tr></thead><tbody><tr><td><code>Enter</code></td><td>提交消息</td></tr><tr><td><code>Ctrl/Cmd+Enter</code></td><td>插入换行</td></tr><tr><td><code>Tab</code></td><td>排队发送消息</td></tr><tr><td><code>Ctrl+X</code></td><td>打开外部编辑器</td></tr><tr><td><code>Ctrl+V</code></td><td>粘贴</td></tr><tr><td><code>Ctrl+R</code></td><td>反向历史搜索</td></tr><tr><td><code>Ctrl+P</code></td><td>上一条历史记录</td></tr><tr><td><code>Ctrl+N</code></td><td>下一条历史记录</td></tr></tbody></table>
+<!--rehype:className=shortcuts left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="应用控制"><a aria-hidden="true" tabindex="-1" href="#应用控制"><span class="icon icon-link"></span></a>应用控制</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts left-align"><thead><tr><th>按键</th><th>操作</th></tr></thead><tbody><tr><td><code>Shift+Tab</code></td><td>循环切换审批模式</td></tr><tr><td><code>Ctrl+T</code></td><td>切换 todos 面板</td></tr><tr><td><code>Alt+M</code></td><td>切换 markdown 渲染</td></tr><tr><td><code>Ctrl+Y</code></td><td>切换 YOLO 模式</td></tr><tr><td><code>Ctrl+L</code></td><td>清屏</td></tr><tr><td><code>Ctrl+Z</code></td><td>挂起进程</td></tr><tr><td><code>F12</code></td><td>显示错误详情</td></tr><tr><td><code>Esc</code> 连按两次</td><td>打开 rewind 对话框</td></tr><tr><td><code>Ctrl+C</code></td><td>取消 / 退出</td></tr><tr><td><code>Ctrl+D</code></td><td>退出</td></tr></tbody></table>
+<!--rehype:className=shortcuts left-align-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="会话与历史"><a aria-hidden="true" tabindex="-1" href="#会话与历史"><span class="icon icon-link"></span></a>会话与历史</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="会话管理"><a aria-hidden="true" tabindex="-1" href="#会话管理"><span class="icon icon-link"></span></a>会话管理</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出全部会话</span>
+</span><span class="code-line">$ gemini --list-sessions
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 恢复最近一次会话</span>
+</span><span class="code-line">$ gemini <span class="token parameter variable">-r</span> latest
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 恢复指定会话</span>
+</span><span class="code-line">$ gemini <span class="token parameter variable">-r</span> <span class="token operator">&#x3C;</span>session-id<span class="token operator">></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 按索引删除</span>
+</span><span class="code-line">$ gemini --delete-session <span class="token number">3</span>
+</span></code></pre>
+<p><strong>在 <code>/resume</code> 浏览器中：</strong></p>
+<ul>
+<li><code>↑↓</code>：浏览会话</li>
+<li><code>Enter</code>：恢复选中会话</li>
+<li><code>x</code>：删除会话</li>
+<li>直接输入可搜索</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="rewind-工作流"><a aria-hidden="true" tabindex="-1" href="#rewind-工作流"><span class="icon icon-link"></span></a>Rewind 工作流</h3><div class="wrap-body">
+<p>输入 <code>/rewind</code> 或连按两次 <code>Esc</code> 可打开 rewind 对话框：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>选项</th><th>效果</th></tr></thead><tbody><tr><td>Rewind + Revert</td><td>重置聊天历史和文件变更</td></tr><tr><td>Rewind only</td><td>重置聊天历史，保留文件</td></tr><tr><td>Revert only</td><td>恢复文件，保留聊天历史</td></tr><tr><td>Do nothing</td><td>取消（Esc）</td></tr></tbody></table>
+<p>仅作用于 AI 造成的文件变更，不影响手动编辑或 <code>!</code> shell 命令。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="分叉会话"><a aria-hidden="true" tabindex="-1" href="#分叉会话"><span class="icon icon-link"></span></a>分叉会话</h3><div class="wrap-body">
+<p>通过保存和恢复命名检查点来探索多种方案：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 1. 保存当前状态</span>
+</span><span class="code-line">/resume save my-decision-point
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 2. 尝试方案 A...</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 3. 恢复到保存状态</span>
+</span><span class="code-line">/resume resume my-decision-point
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 4. 尝试方案 B...</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="上下文与记忆"><a aria-hidden="true" tabindex="-1" href="#上下文与记忆"><span class="icon icon-link"></span></a>上下文与记忆</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="geminimd-层级"><a aria-hidden="true" tabindex="-1" href="#geminimd-层级"><span class="icon icon-link"></span></a>GEMINI.md 层级</h3><div class="wrap-body">
+<p>上下文文件按以下顺序加载（最终会合并）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>优先级</th><th>位置</th></tr></thead><tbody><tr><td>1. 全局</td><td><code>~/.gemini/GEMINI.md</code></td></tr><tr><td>2. 父目录</td><td>从工作区向上扫描</td></tr><tr><td>3. 工作区</td><td><code>.gemini/GEMINI.md</code></td></tr><tr><td>4. JIT（按需）</td><td>工具访问目录时即时扫描</td></tr></tbody></table>
+<pre class="language-markdown"><code class="language-markdown code-highlight"><span class="code-line"><span class="token title important"><span class="token punctuation">#</span> 在 GEMINI.md 中导入其他文件</span>
+</span><span class="code-line">
+</span><span class="code-line">@./docs/architecture.md
+</span><span class="code-line">@./docs/conventions.md
+</span></code></pre>
+<p>可通过 <code>settings.json</code> 中的 <code>context.fileName</code> 自定义文件名（也可设为数组：<code>["AGENTS.md", "GEMINI.md"]</code>）。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="记忆命令"><a aria-hidden="true" tabindex="-1" href="#记忆命令"><span class="icon icon-link"></span></a>记忆命令</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 显示全部已加载上下文</span>
+</span><span class="code-line">/memory show
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 强制重载全部上下文文件</span>
+</span><span class="code-line">/memory reload
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 向全局 GEMINI.md 追加文本</span>
+</span><span class="code-line">/memory <span class="token function">add</span> <span class="token string">"Always use TypeScript strict mode"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 生成项目级 GEMINI.md</span>
+</span><span class="code-line">/init
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="忽略文件"><a aria-hidden="true" tabindex="-1" href="#忽略文件"><span class="icon icon-link"></span></a>忽略文件</h3><div class="wrap-body">
+<p>在项目根目录创建 <code>.geminiignore</code>（遵循 <code>.gitignore</code> 语法）：</p>
+<pre class="language-gitignore"><code class="language-gitignore code-highlight"><span class="code-line"><span class="token comment"># 排除一个目录</span>
+</span><span class="code-line"><span class="token entry string"><span class="token punctuation">/</span>packages<span class="token punctuation">/</span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 排除指定文件</span>
+</span><span class="code-line"><span class="token entry string">apikeys.txt</span>
+</span><span class="code-line"><span class="token entry string"><span class="token operator">*</span>.log</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 排除所有 .md，但保留 README</span>
+</span><span class="code-line"><span class="token entry string"><span class="token operator">*</span>.md</span>
+</span><span class="code-line"><span class="token entry string"><span class="token operator">!</span>README.md</span>
+</span></code></pre>
+<p>这些文件会对 CLI 工具隐藏，但对 Git 和其他服务仍然可见。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="mcp-服务器"><a aria-hidden="true" tabindex="-1" href="#mcp-服务器"><span class="icon icon-link"></span></a>MCP 服务器</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="mcp-配置"><a aria-hidden="true" tabindex="-1" href="#mcp-配置"><span class="icon icon-link"></span></a>MCP 配置</h3><div class="wrap-body">
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"mcpServers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"my-server"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"npx"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"-y"</span><span class="token punctuation">,</span> <span class="token string">"my-mcp-package"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"API_KEY"</span><span class="token operator">:</span> <span class="token string">"$MY_API_KEY"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"timeout"</span><span class="token operator">:</span> <span class="token number">30000</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"trust"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"includeTools"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"tool1"</span><span class="token punctuation">,</span> <span class="token string">"tool2"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"excludeTools"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"dangerous-tool"</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"remote-server"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://api.example.com/mcp"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"headers"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"Authorization"</span><span class="token operator">:</span> <span class="token string">"Bearer $TOKEN"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>环境变量支持 <code>$VAR</code>、<code>${VAR}</code> 和 <code>%VAR%</code>（Windows）展开。</p>
+<p>工具 FQN 格式：<code>mcp_{serverName}_{toolName}</code></p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="管理服务器"><a aria-hidden="true" tabindex="-1" href="#管理服务器"><span class="icon icon-link"></span></a>管理服务器</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 添加 stdio 服务器</span>
+</span><span class="code-line">$ gemini mcp <span class="token function">add</span> myserver npx <span class="token parameter variable">-y</span> my-mcp-package
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 添加 HTTP 服务器</span>
+</span><span class="code-line">$ gemini mcp <span class="token function">add</span> myserver https://api.example.com/mcp
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 带参数添加</span>
+</span><span class="code-line">$ gemini mcp <span class="token function">add</span> myserver cmd <span class="token parameter variable">--transport</span> http <span class="token parameter variable">--trust</span> <span class="token parameter variable">--timeout</span> <span class="token number">30000</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出全部服务器</span>
+</span><span class="code-line">$ gemini mcp list
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 删除服务器</span>
+</span><span class="code-line">$ gemini mcp remove myserver
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 启用 / 禁用</span>
+</span><span class="code-line">$ gemini mcp <span class="token builtin class-name">enable</span> myserver
+</span><span class="code-line">$ gemini mcp disable myserver <span class="token parameter variable">--session</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="mcp-服务器配置字段"><a aria-hidden="true" tabindex="-1" href="#mcp-服务器配置字段"><span class="icon icon-link"></span></a>MCP 服务器配置字段</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td><code>command</code></td><td>stdio 传输使用的可执行命令</td></tr><tr><td><code>args</code></td><td>参数数组</td></tr><tr><td><code>url</code></td><td>SSE 传输的 URL</td></tr><tr><td><code>httpUrl</code></td><td>Streamable HTTP 的 URL</td></tr><tr><td><code>env</code></td><td>环境变量</td></tr><tr><td><code>cwd</code></td><td>工作目录</td></tr><tr><td><code>timeout</code></td><td>连接超时（毫秒，默认 600000）</td></tr><tr><td><code>trust</code></td><td>跳过所有工具确认</td></tr><tr><td><code>includeTools</code></td><td>指定工具白名单</td></tr><tr><td><code>excludeTools</code></td><td>指定工具黑名单</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="mcp-资源"><a aria-hidden="true" tabindex="-1" href="#mcp-资源"><span class="icon icon-link"></span></a>MCP 资源</h3><div class="wrap-body">
+<p>可在提示词中引用 MCP 资源：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 引用一个资源</span>
+</span><span class="code-line">@server://resource/path summarize this
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 调用 MCP prompt 提供的 slash 命令</span>
+</span><span class="code-line">/prompt-name <span class="token parameter variable">--arg</span><span class="token operator">=</span>value
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="扩展与-skills"><a aria-hidden="true" tabindex="-1" href="#扩展与-skills"><span class="icon icon-link"></span></a>扩展与 Skills</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="管理扩展"><a aria-hidden="true" tabindex="-1" href="#管理扩展"><span class="icon icon-link"></span></a>管理扩展</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 从 GitHub 安装</span>
+</span><span class="code-line">$ gemini extensions <span class="token function">install</span> https://github.com/org/ext
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 从本地路径安装</span>
+</span><span class="code-line">$ gemini extensions <span class="token function">install</span> ./my-extension
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出已安装扩展</span>
+</span><span class="code-line">$ gemini extensions list
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 更新全部扩展</span>
+</span><span class="code-line">$ gemini extensions update <span class="token parameter variable">--all</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 更新指定扩展</span>
+</span><span class="code-line">$ gemini extensions update my-ext
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 启用 / 禁用</span>
+</span><span class="code-line">$ gemini extensions <span class="token builtin class-name">enable</span> my-ext
+</span><span class="code-line">$ gemini extensions disable my-ext <span class="token parameter variable">--scope</span> user
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 以链接方式用于开发</span>
+</span><span class="code-line">$ gemini extensions <span class="token function">link</span> ./dev-extension
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 创建新扩展</span>
+</span><span class="code-line">$ gemini extensions new ./my-new-ext
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 校验结构</span>
+</span><span class="code-line">$ gemini extensions validate ./my-ext
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p>扩展可打包：提示词、MCP 服务器、自定义命令、主题、hooks、子代理与 skills。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="agent-skills"><a aria-hidden="true" tabindex="-1" href="#agent-skills"><span class="icon icon-link"></span></a>Agent Skills</h3><div class="wrap-body">
+<p>Skills 提供按需加载的专长能力，只有在调用 <code>activate_skill</code> 时才会加载。</p>
+<p><strong>发现位置（按优先级）：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>层级</th><th>路径</th></tr></thead><tbody><tr><td>工作区</td><td><code>.gemini/skills/</code> 或 <code>.agents/skills/</code></td></tr><tr><td>用户</td><td><code>~/.gemini/skills/</code> 或 <code>~/.agents/skills/</code></td></tr><tr><td>扩展</td><td>扩展包内部自带</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出全部 skills</span>
+</span><span class="code-line">$ gemini skills list <span class="token parameter variable">--all</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 从 Git 或本地安装</span>
+</span><span class="code-line">$ gemini skills <span class="token function">install</span> https://github.com/org/skill
+</span><span class="code-line">$ gemini skills <span class="token function">install</span> ./local-skill
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 以链接方式用于开发</span>
+</span><span class="code-line">$ gemini skills <span class="token function">link</span> ./my-skill
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 启用 / 禁用</span>
+</span><span class="code-line">$ gemini skills <span class="token builtin class-name">enable</span> my-skill
+</span><span class="code-line">$ gemini skills disable my-skill
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="自定义命令"><a aria-hidden="true" tabindex="-1" href="#自定义命令"><span class="icon icon-link"></span></a>自定义命令</h3><div class="wrap-body">
+<p>可将可复用提示词保存为 slash 命令。</p>
+<p><strong>文件位置：</strong></p>
+<ul>
+<li>用户：<code>~/.gemini/commands/</code></li>
+<li>项目：<code>.gemini/commands/</code></li>
+</ul>
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token comment"># .gemini/commands/git/commit.toml</span>
+</span><span class="code-line"><span class="token key property">description</span> <span class="token punctuation">=</span> <span class="token string">"生成提交信息"</span>
+</span><span class="code-line"><span class="token key property">prompt</span> <span class="token punctuation">=</span> <span class="token string">"""
+</span></span><span class="code-line"><span class="token string">请为以下内容生成一条 conventional commit 提交信息：
+</span></span><span class="code-line"><span class="token string">
+</span></span><span class="code-line"><span class="token string">!{git diff --staged}
+</span></span><span class="code-line"><span class="token string">
+</span></span><span class="code-line"><span class="token string">{{args}}
+</span></span><span class="code-line"><span class="token string">"""</span>
+</span></code></pre>
+<p>该命令会变成 <code>/git:commit</code>。子目录 <code>/</code> 会映射成 <code>:</code> 命名空间。</p>
+<p><strong>占位符：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>占位符</th><th>含义</th></tr></thead><tbody><tr><td><code>{{args}}</code></td><td>注入用户参数</td></tr><tr><td><code>!{cmd}</code></td><td>执行 shell 并注入输出</td></tr><tr><td><code>@{path}</code></td><td>嵌入文件内容</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="plan-mode"><a aria-hidden="true" tabindex="-1" href="#plan-mode"><span class="icon icon-link"></span></a>Plan Mode</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="启用-plan-mode"><a aria-hidden="true" tabindex="-1" href="#启用-plan-mode"><span class="icon icon-link"></span></a>启用 Plan Mode</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 通过参数一次性启用</span>
+</span><span class="code-line">$ gemini --approval-mode<span class="token operator">=</span>plan
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 自然语言触发</span>
+</span><span class="code-line"><span class="token operator">></span> let's plan the refactor first
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Slash 命令触发</span>
+</span><span class="code-line">/plan redesign the auth module
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 会话中可用 Shift+Tab 循环切换模式</span>
+</span></code></pre>
+<p>可在 <code>settings.json</code> 中设为默认：</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"general"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"defaultApprovalMode"</span><span class="token operator">:</span> <span class="token string">"plan"</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="plan-mode-工具"><a aria-hidden="true" tabindex="-1" href="#plan-mode-工具"><span class="icon icon-link"></span></a>Plan Mode 工具</h3><div class="wrap-body">
+<p><strong>只读工具（始终可用）：</strong></p>
+<ul>
+<li><code>read_file</code>, <code>list_directory</code>, <code>glob</code></li>
+<li><code>grep_search</code>, <code>google_web_search</code></li>
+<li><code>web_fetch</code> (with confirmation)</li>
+<li><code>codebase_investigator</code>, <code>cli_help</code></li>
+<li><code>ask_user</code></li>
+</ul>
+<p><strong>写入工具（受限）：</strong></p>
+<ul>
+<li><code>write_file</code>, <code>replace</code> — only for <code>.md</code> files inside plans directory</li>
+</ul>
+<p><strong>记忆相关：</strong></p>
+<ul>
+<li><code>save_memory</code>, <code>activate_skill</code></li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="plan-mode-工作流"><a aria-hidden="true" tabindex="-1" href="#plan-mode-工作流"><span class="icon icon-link"></span></a>Plan Mode 工作流</h3><div class="wrap-body">
+<pre><code class="code-highlight"><span class="code-line">1. 设定目标
+</span><span class="code-line">  └─ 使用自然语言或 /plan &#x3C;goal>
+</span><span class="code-line">
+</span><span class="code-line">2. 讨论策略
+</span><span class="code-line">  └─ Gemini 可能会提出澄清问题
+</span><span class="code-line">
+</span><span class="code-line">3. 审阅计划
+</span><span class="code-line">  └─ Markdown 文件会写入 plans 目录
+</span><span class="code-line">  └─ 可用 Ctrl+X 在外部编辑器中修改
+</span><span class="code-line">
+</span><span class="code-line">4. 批准或继续迭代
+</span><span class="code-line">
+</span><span class="code-line">5. 切换到 YOLO/auto_edit 执行实现
+</span></code></pre>
+<p>自动模型路由：规划阶段使用 Pro，实施阶段切换到 Flash。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="配置"><a aria-hidden="true" tabindex="-1" href="#配置"><span class="icon icon-link"></span></a>配置</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="设置文件位置"><a aria-hidden="true" tabindex="-1" href="#设置文件位置"><span class="icon icon-link"></span></a>设置文件位置</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>作用域</th><th>路径</th></tr></thead><tbody><tr><td>用户</td><td><code>~/.gemini/settings.json</code></td></tr><tr><td>项目</td><td><code>.gemini/settings.json</code></td></tr><tr><td>系统（Linux）</td><td><code>/etc/gemini-cli/settings.json</code></td></tr><tr><td>系统（macOS）</td><td><code>/Library/Application Support/GeminiCli/</code></td></tr><tr><td>系统（Windows）</td><td><code>C:\ProgramData\gemini-cli\settings.json</code></td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p><strong>优先级（越靠前越高）：</strong>
+CLI 参数 → 环境变量 → 系统设置 → 项目设置 → 用户设置 → 系统默认值</p>
+<p><strong>常见设置：</strong></p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"general"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"defaultApprovalMode"</span><span class="token operator">:</span> <span class="token string">"default"</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"checkpointing"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"ui"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"theme"</span><span class="token operator">:</span> <span class="token string">"dark"</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"model"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"auto"</span>
+</span><span class="code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"tools"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"sandbox"</span><span class="token operator">:</span> <span class="token string">"docker"</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>可通过 <code>/settings</code> 打开可视化编辑器。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="关键环境变量"><a aria-hidden="true" tabindex="-1" href="#关键环境变量"><span class="icon icon-link"></span></a>关键环境变量</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow circle"><thead><tr><th>变量</th><th>用途</th></tr></thead><tbody><tr><td><code>GEMINI_API_KEY</code></td><td>Gemini API 认证</td></tr><tr><td><code>GEMINI_MODEL</code></td><td>覆盖默认模型</td></tr><tr><td><code>GEMINI_CLI_HOME</code></td><td>覆盖配置目录</td></tr><tr><td><code>GOOGLE_CLOUD_PROJECT</code></td><td>Vertex AI 项目</td></tr><tr><td><code>GOOGLE_CLOUD_LOCATION</code></td><td>Vertex AI 区域</td></tr><tr><td><code>GOOGLE_APPLICATION_CREDENTIALS</code></td><td>服务账号 JSON 路径</td></tr><tr><td><code>GOOGLE_API_KEY</code></td><td>Google Cloud API key</td></tr><tr><td><code>GEMINI_SANDBOX</code></td><td>Sandbox type: <code>true</code>, <code>docker</code>, <code>podman</code>, <code>runsc</code></td></tr><tr><td><code>GEMINI_SYSTEM_MD</code></td><td>system prompt 文件路径</td></tr><tr><td><code>NO_COLOR</code></td><td>禁用彩色输出</td></tr><tr><td><code>CLI_TITLE</code></td><td>覆盖终端窗口标题</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow circle-->
+<p>可持久写入 <code>~/.bashrc</code>、<code>~/.zshrc</code> 或 <code>.gemini/.env</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="沙箱选项"><a aria-hidden="true" tabindex="-1" href="#沙箱选项"><span class="icon icon-link"></span></a>沙箱选项</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow circle"><thead><tr><th>方式</th><th>平台</th><th>启用方式</th></tr></thead><tbody><tr><td>macOS Seatbelt</td><td>仅 macOS</td><td><code>GEMINI_SANDBOX=sandbox-exec</code></td></tr><tr><td>Docker/Podman</td><td>跨平台</td><td><code>--sandbox</code> 或 <code>GEMINI_SANDBOX=docker</code></td></tr><tr><td>gVisor (runsc)</td><td>仅 Linux</td><td><code>GEMINI_SANDBOX=runsc</code></td></tr><tr><td>LXC/LXD</td><td>Linux 实验性</td><td><code>GEMINI_SANDBOX=lxc</code></td></tr><tr><td>Windows Sandbox</td><td>仅 Windows</td><td><code>GEMINI_SANDBOX=true</code></td></tr></tbody></table>
+<!--rehype:className=style-list-arrow circle-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="hooks"><a aria-hidden="true" tabindex="-1" href="#hooks"><span class="icon icon-link"></span></a>Hooks</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="hook-事件"><a aria-hidden="true" tabindex="-1" href="#hook-事件"><span class="icon icon-link"></span></a>Hook 事件</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>事件</th><th>触发时机</th><th>可否阻断</th></tr></thead><tbody><tr><td><code>SessionStart</code></td><td>会话开始时</td><td>否（提示性）</td></tr><tr><td><code>SessionEnd</code></td><td>会话结束时</td><td>否（尽力执行）</td></tr><tr><td><code>BeforeAgent</code></td><td>规划开始前</td><td>是（退出码 2）</td></tr><tr><td><code>AfterAgent</code></td><td>agent 循环结束后</td><td>是（强制重试）</td></tr><tr><td><code>BeforeModel</code></td><td>LLM 调用前</td><td>是（退出码 2）</td></tr><tr><td><code>AfterModel</code></td><td>每个 LLM chunk 后</td><td>是（退出码 2）</td></tr><tr><td><code>BeforeToolSelection</code></td><td>工具选择前</td><td>可过滤工具</td></tr><tr><td><code>BeforeTool</code></td><td>工具运行前</td><td>是（退出码 2）</td></tr><tr><td><code>AfterTool</code></td><td>工具运行后</td><td>是（隐藏结果）</td></tr><tr><td><code>PreCompress</code></td><td>压缩前</td><td>否（提示性）</td></tr><tr><td><code>Notification</code></td><td>系统通知</td><td>否</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p><strong>退出码：</strong> <code>0</code> = 成功 · <code>2</code> = 阻断/严重问题 · 其他 = 警告</p>
+<p><strong><code>settings.json</code> 中的 Hook 配置：</strong></p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"hooks"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"BeforeTool"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">      <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"command"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"~/.gemini/hooks/validate-tool.sh"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"matcher"</span><span class="token operator">:</span> <span class="token string">"write_file"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"timeout"</span><span class="token operator">:</span> <span class="token number">10000</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">    <span class="token property">"SessionStart"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">      <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"command"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"echo '{\"systemMessage\": \"Be concise.\"}'"</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">]</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="hook-io-协议"><a aria-hidden="true" tabindex="-1" href="#hook-io-协议"><span class="icon icon-link"></span></a>Hook I/O 协议</h3><div class="wrap-body">
+<p>所有 hooks 都会通过 <strong>stdin</strong> 接收 JSON：</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"session_id"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"transcript_path"</span><span class="token operator">:</span> <span class="token string">"/path/to/transcript"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"/project/dir"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"hook_event_name"</span><span class="token operator">:</span> <span class="token string">"BeforeTool"</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token string">"2026-01-01T00:00:00Z"</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>并通过 <strong>stdout</strong> 返回 JSON：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td><code>decision</code></td><td><code>"allow"</code> 或 <code>"deny"</code></td></tr><tr><td><code>reason</code></td><td>拒绝时展示给用户</td></tr><tr><td><code>systemMessage</code></td><td>注入上下文</td></tr><tr><td><code>suppressOutput</code></td><td>隐藏 hook 输出</td></tr><tr><td><code>continue</code></td><td><code>false</code> 表示中止 agent</td></tr></tbody></table>
+<p><strong>BeforeTool</strong> 附加字段：<code>hookSpecificOutput.tool_input</code> 可覆盖参数。</p>
+<p><strong>AfterTool</strong> 附加字段：<code>hookSpecificOutput.additionalContext</code> 会追加到结果。</p>
+<p><strong>BeforeAgent</strong> 附加字段：<code>hookSpecificOutput.additionalContext</code> 会追加到提示词。</p>
+<p><strong>可用环境变量：</strong>
+<code>GEMINI_PROJECT_DIR</code>, <code>GEMINI_SESSION_ID</code>, <code>GEMINI_CWD</code></p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="延伸阅读"><a aria-hidden="true" tabindex="-1" href="#延伸阅读"><span class="icon icon-link"></span></a>延伸阅读</h2><div class="wrap-body">
+<ul>
+<li><a href="https://geminicli.com/docs/">官方文档</a> <em>(geminicli.com)</em></li>
+<li><a href="https://geminicli.com/docs/cli/cli-reference">CLI 速查表</a> <em>(geminicli.com)</em></li>
+<li><a href="https://geminicli.com/docs/reference/keyboard-shortcuts">键盘快捷键参考</a> <em>(geminicli.com)</em></li>
+<li><a href="https://geminicli.com/docs/reference/configuration">配置参考</a> <em>(geminicli.com)</em></li>
+<li><a href="https://geminicli.com/docs/hooks/reference">Hooks 参考</a> <em>(geminicli.com)</em></li>
+<li><a href="https://github.com/google-gemini/gemini-cli">GitHub 仓库</a> <em>(github.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>

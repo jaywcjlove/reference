@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Cursor CLI 备忘清单
+ &#x26;  cursor-cli cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="Cursor CLI (agent) 是 Cursor AI 编码代理的终端接口，可在命令行中运行代理任务、脚本和 CI 流水线。
+
+快速开始，为开发人员分享快速参考备忘单。">
+<meta keywords="cursor-cli,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/cursor-cli.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="cursor-cli-备忘清单"><svg width="1em" height="1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 466.73 532.09">
+  <path d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"></path>
+</svg><a aria-hidden="true" tabindex="-1" href="#cursor-cli-备忘清单"><span class="icon icon-link"></span></a>Cursor CLI 备忘清单</h1><div class="wrap-body">
+<p><a href="https://cursor.com/docs/cli/overview">Cursor CLI</a> (<code>agent</code>) 是 Cursor AI 编码代理的终端接口，可在命令行中运行代理任务、脚本和 CI 流水线。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#快速开始">快速开始</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hello-world">Hello World</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#macos--linux--wsl">macOS / Linux / WSL</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#windows-powershell">Windows (PowerShell)</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#安装后">安装后</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心概念">核心概念</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#cli-参数">CLI 参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#会话与模式">会话与模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#worktree-与沙箱">Worktree 与沙箱</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#输出与权限">输出与权限</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#命令">命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#全部子命令">全部子命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#会话管理">会话管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#认证与账号">认证与账号</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#执行模式">执行模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#agent-模式">Agent 模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#plan-mode">Plan Mode</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ask-mode">Ask Mode</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#无头模式与脚本化">无头模式与脚本化</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#管道与脚本用法">管道与脚本用法</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ci--cd-用法">CI / CD 用法</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#worktree">Worktree</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#隔离环境">隔离环境</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#worktree-文件">Worktree 文件</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#shell-模式">Shell 模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#shell-执行">Shell 执行</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#shell-说明">Shell 说明</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#mcp-服务器">MCP 服务器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置-mcp">配置 MCP</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#stdio-服务器nodejs">stdio 服务器（Node.js）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#stdio-服务器python">stdio 服务器（Python）</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#http--sse-服务器">HTTP / SSE 服务器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#mcp-命令">MCP 命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#acp-协议">ACP 协议</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#acp-概览">ACP 概览</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#acp-扩展方法">ACP 扩展方法</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#云端代理">云端代理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#云端模式">云端模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#子代理类型">子代理类型</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#延伸阅读">延伸阅读</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="hello-world"><a aria-hidden="true" tabindex="-1" href="#hello-world"><span class="icon icon-link"></span></a>Hello World</h3><div class="wrap-body">
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 交互式代理会话</span>
+</span><span class="code-line">$ agent
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 单次提示（打印模式）</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"List all TODO comments in this repo"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 提问（只读）</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">--mode</span><span class="token operator">=</span>ask <span class="token string">"How does auth work here?"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 仅规划（不改代码）</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">--plan</span> <span class="token string">"Refactor the payment module"</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<h4 id="macos--linux--wsl"><a aria-hidden="true" tabindex="-1" href="#macos--linux--wsl"><span class="icon icon-link"></span></a>macOS / Linux / WSL</h4>
+<pre class="wrap-text"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">curl</span> https://cursor.com/install <span class="token parameter variable">-fsS</span> <span class="token operator">|</span> <span class="token function">bash</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<h4 id="windows-powershell"><a aria-hidden="true" tabindex="-1" href="#windows-powershell"><span class="icon icon-link"></span></a>Windows (PowerShell)</h4>
+<pre class="wrap-text"><code class="language-powershell code-highlight"><span class="code-line"><span class="token function">irm</span> <span class="token string">'https://cursor.com/install?win32=true'</span> <span class="token punctuation">|</span> <span class="token function">iex</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<h4 id="安装后"><a aria-hidden="true" tabindex="-1" href="#安装后"><span class="icon icon-link"></span></a>安装后</h4>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 如有需要，加入 PATH</span>
+</span><span class="code-line"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"<span class="token environment constant">$HOME</span>/.local/bin:<span class="token environment constant">$PATH</span>"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 验证</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">--version</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 更新</span>
+</span><span class="code-line">$ agent update
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="核心概念"><a aria-hidden="true" tabindex="-1" href="#核心概念"><span class="icon icon-link"></span></a>核心概念</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>概念</th><th>说明</th></tr></thead><tbody><tr><td>Agent mode</td><td>完整权限：读、写、执行 shell</td></tr><tr><td>Plan mode</td><td>只读分析，不进行编辑</td></tr><tr><td>Ask mode</td><td>问答 / 解释，仅只读</td></tr><tr><td>Cloud agent</td><td>委派到远端 Cursor 云端执行</td></tr><tr><td>Session</td><td>带历史记录的已保存会话</td></tr><tr><td>Worktree</td><td>隔离的 git 分支环境</td></tr><tr><td>ACP</td><td>Agent Client Protocol（JSON-RPC）</td></tr><tr><td>MCP</td><td>外部工具 / 数据集成</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="cli-参数"><a aria-hidden="true" tabindex="-1" href="#cli-参数"><span class="icon icon-link"></span></a>CLI 参数</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="会话与模式"><a aria-hidden="true" tabindex="-1" href="#会话与模式"><span class="icon icon-link"></span></a>会话与模式</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="style-list-arrow"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>--mode=plan</code></td><td>Plan 模式（只读，不编辑）</td></tr><tr><td><code>--mode=ask</code></td><td>Ask 模式（问答，只读）</td></tr><tr><td><code>--plan</code></td><td><code>--mode=plan</code> 的简写</td></tr><tr><td><code>-p, --print</code></td><td>无头/打印模式（非交互）</td></tr><tr><td><code>-c, --cloud</code></td><td>以云端代理模式启动</td></tr><tr><td><code>--continue</code></td><td>继续上一次会话</td></tr><tr><td><code>--resume [chatId]</code></td><td>恢复指定会话</td></tr><tr><td><code>-n, --name</code></td><td>设置会话名称</td></tr><tr><td><code>--workspace &#x3C;path></code></td><td>设置工作区目录</td></tr><tr><td><code>--model &#x3C;model></code></td><td>指定模型（如 <code>sonnet-4</code>）</td></tr><tr><td><code>--list-models</code></td><td>列出可用模型并退出</td></tr></tbody></table>
+<!--rehype:className=style-list-arrow-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="worktree-与沙箱"><a aria-hidden="true" tabindex="-1" href="#worktree-与沙箱"><span class="icon icon-link"></span></a>Worktree 与沙箱</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align style-list-arrow"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>-w, --worktree [name]</code></td><td>在隔离的 git worktree 中启动</td></tr><tr><td><code>--worktree-base &#x3C;ref></code></td><td>指定 worktree 基于的分支/引用</td></tr><tr><td><code>--skip-worktree-setup</code></td><td>跳过 <code>.cursor/worktrees.json</code> 脚本</td></tr><tr><td><code>--sandbox &#x3C;mode></code></td><td><code>enabled</code> 或 <code>disabled</code></td></tr><tr><td><code>--trust</code></td><td>信任工作区且不再提示确认</td></tr><tr><td><code>--approve-mcps</code></td><td>自动批准全部 MCP 服务器</td></tr></tbody></table>
+<!--rehype:className=left-align style-list-arrow-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="输出与权限"><a aria-hidden="true" tabindex="-1" href="#输出与权限"><span class="icon icon-link"></span></a>输出与权限</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align style-list-arrow"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>--output-format &#x3C;fmt></code></td><td><code>text</code> | <code>json</code> | <code>stream-json</code></td></tr><tr><td><code>--stream-partial-output</code></td><td>流式输出文本增量（仅 stream-json）</td></tr><tr><td><code>-f, --force</code></td><td>除非明确拒绝，否则允许执行命令</td></tr><tr><td><code>--yolo</code></td><td><code>--force</code> 的别名</td></tr><tr><td><code>--api-key &#x3C;key></code></td><td>认证密钥（或 <code>CURSOR_API_KEY</code>）</td></tr><tr><td><code>-H, --header &#x3C;h></code></td><td>自定义请求头（<code>Name: Value</code>）</td></tr></tbody></table>
+<!--rehype:className=left-align style-list-arrow-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="命令"><a aria-hidden="true" tabindex="-1" href="#命令"><span class="icon icon-link"></span></a>命令</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="全部子命令"><a aria-hidden="true" tabindex="-1" href="#全部子命令"><span class="icon icon-link"></span></a>全部子命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><code>agent [prompt]</code></td><td>启动交互会话或打印会话</td></tr><tr><td><code>agent ls</code></td><td>列出可恢复的会话</td></tr><tr><td><code>agent resume</code></td><td>恢复最近一次聊天会话</td></tr><tr><td><code>agent login</code></td><td>登录 Cursor</td></tr><tr><td><code>agent logout</code></td><td>退出登录并清理认证信息</td></tr><tr><td><code>agent status</code></td><td>查看认证状态 / whoami</td></tr><tr><td><code>agent update</code></td><td>更新到最新版本</td></tr><tr><td><code>agent about</code></td><td>显示版本、系统、账号信息</td></tr><tr><td><code>agent models</code></td><td>列出可用模型</td></tr><tr><td><code>agent create-chat</code></td><td>创建新的空聊天并返回 ID</td></tr><tr><td><code>agent rule</code></td><td>交互式生成新的 Cursor 规则</td></tr><tr><td><code>agent mcp</code></td><td>管理 MCP 服务器</td></tr><tr><td><code>agent mcp list</code></td><td>列出已配置的 MCP 服务器</td></tr><tr><td><code>agent mcp list-tools &#x3C;id></code></td><td>列出指定 MCP 服务器的工具</td></tr><tr><td><code>agent mcp enable &#x3C;id></code></td><td>将 MCP 服务器加入批准列表</td></tr><tr><td><code>agent mcp disable &#x3C;id></code></td><td>禁用 MCP 服务器</td></tr><tr><td><code>agent mcp login &#x3C;id></code></td><td>对 MCP 服务器进行认证</td></tr><tr><td><code>agent install-shell-integration</code></td><td>安装 shell 集成到 <code>~/.zshrc</code></td></tr><tr><td><code>agent uninstall-shell-integration</code></td><td>移除 shell 集成</td></tr><tr><td><code>agent acp</code></td><td>启动 ACP 服务器（stdio 上的 JSON-RPC）</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="会话管理"><a aria-hidden="true" tabindex="-1" href="#会话管理"><span class="icon icon-link"></span></a>会话管理</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出可恢复会话</span>
+</span><span class="code-line">$ agent <span class="token function">ls</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 继续上一次会话</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">--continue</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 按 ID 恢复指定会话</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">--resume</span> abc123
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 恢复最近会话</span>
+</span><span class="code-line">$ agent resume
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="认证与账号"><a aria-hidden="true" tabindex="-1" href="#认证与账号"><span class="icon icon-link"></span></a>认证与账号</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ agent login
+</span><span class="code-line">$ agent <span class="token builtin class-name">logout</span>
+</span><span class="code-line">$ agent status     <span class="token comment"># 或：agent whoami</span>
+</span><span class="code-line">$ agent about      <span class="token comment"># 版本 + 账号信息</span>
+</span><span class="code-line">$ agent models     <span class="token comment"># 列出可用模型</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="执行模式"><a aria-hidden="true" tabindex="-1" href="#执行模式"><span class="icon icon-link"></span></a>执行模式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="agent-模式"><a aria-hidden="true" tabindex="-1" href="#agent-模式"><span class="icon icon-link"></span></a>Agent 模式</h3><div class="wrap-body">
+<p>具备完整代理权限，可读取文件、编写代码、执行 shell 命令，并使用全部工具。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ agent
+</span><span class="code-line">$ agent <span class="token string">"Fix the bug in auth.ts"</span>
+</span></code></pre>
+<p>未指定 <code>--mode</code> 时默认使用该模式。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="plan-mode"><a aria-hidden="true" tabindex="-1" href="#plan-mode"><span class="icon icon-link"></span></a>Plan Mode</h3><div class="wrap-body">
+<p>只读分析。仅给出规划，不会对代码库做任何修改。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ agent <span class="token parameter variable">--plan</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">--mode</span><span class="token operator">=</span>plan <span class="token string">"Refactor auth"</span>
+</span></code></pre>
+<p>不能修改文件，也不能执行命令。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ask-mode"><a aria-hidden="true" tabindex="-1" href="#ask-mode"><span class="icon icon-link"></span></a>Ask Mode</h3><div class="wrap-body">
+<p>问答模式。用于解释代码、回答问题，不编辑文件，也不执行 shell。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ agent <span class="token parameter variable">--mode</span><span class="token operator">=</span>ask
+</span><span class="code-line">$ agent <span class="token parameter variable">--mode</span><span class="token operator">=</span>ask <span class="token string">"How does caching work?"</span>
+</span></code></pre>
+<p>适合在零改动风险下理解代码。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="无头模式与脚本化"><a aria-hidden="true" tabindex="-1" href="#无头模式与脚本化"><span class="icon icon-link"></span></a>无头模式与脚本化</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="管道与脚本用法"><a aria-hidden="true" tabindex="-1" href="#管道与脚本用法"><span class="icon icon-link"></span></a>管道与脚本用法</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 总结 diff</span>
+</span><span class="code-line">$ <span class="token function">git</span> <span class="token function">diff</span> <span class="token operator">|</span> agent <span class="token parameter variable">-p</span> <span class="token string">"Summarize these changes"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 审查文件</span>
+</span><span class="code-line">$ <span class="token function">cat</span> src/auth.ts <span class="token operator">|</span> agent <span class="token parameter variable">-p</span> <span class="token string">"Find security issues"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 处理日志</span>
+</span><span class="code-line">$ <span class="token function">tail</span> <span class="token parameter variable">-200</span> app.log <span class="token operator">|</span> agent <span class="token parameter variable">-p</span> <span class="token string">"Identify errors"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 在提示词中引用图片</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"Describe this diagram: /path/to/image.png"</span>
+</span></code></pre>
+<p>输出格式：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 纯文本（默认）</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"task"</span> --output-format text
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 完整 JSON 响应</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"task"</span> --output-format json
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 流式 JSON 增量</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"task"</span> --output-format stream-json
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 按到达顺序流式输出文本片段</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"task"</span> --output-format stream-json <span class="token punctuation">\</span>
+</span><span class="code-line">    --stream-partial-output
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ci--cd-用法"><a aria-hidden="true" tabindex="-1" href="#ci--cd-用法"><span class="icon icon-link"></span></a>CI / CD 用法</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 允许所有文件修改</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"Update changelog"</span> <span class="token parameter variable">--force</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 使用环境变量中的 API key 运行</span>
+</span><span class="code-line">$ <span class="token assign-left variable">CURSOR_API_KEY</span><span class="token operator">=</span>xxx agent <span class="token parameter variable">-p</span> <span class="token string">"Run tests"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 信任工作区（跳过提示）</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"Deploy"</span> <span class="token parameter variable">--trust</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 指定工作区目录</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-p</span> <span class="token string">"Analyze"</span> <span class="token parameter variable">--workspace</span> /repo
+</span></code></pre>
+<p>批处理：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token keyword">for</span> <span class="token for-or-select variable">f</span> <span class="token keyword">in</span> src/**/*.ts<span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line">  agent <span class="token parameter variable">-p</span> <span class="token string">"Add JSDoc to <span class="token variable">$f</span>"</span> <span class="token parameter variable">--force</span>
+</span><span class="code-line"><span class="token keyword">done</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="worktree"><a aria-hidden="true" tabindex="-1" href="#worktree"><span class="icon icon-link"></span></a>Worktree</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="隔离环境"><a aria-hidden="true" tabindex="-1" href="#隔离环境"><span class="icon icon-link"></span></a>隔离环境</h3><div class="wrap-body">
+<p>Worktree 会在 <code>~/.cursor/worktrees/&#x3C;repo>/&#x3C;name></code> 创建隔离的 git 分支环境，从而保持主工作区干净。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 自动命名 worktree</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-w</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 指定名称的 worktree</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-w</span> feature-auth
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 从指定分支创建 worktree</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-w</span> fix --worktree-base main
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 跳过初始化脚本</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-w</span> feature --skip-worktree-setup
+</span></code></pre>
+<p><code>.cursor/worktrees.json</code> 中的 worktree 配置：</p>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"setup"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"npm install"</span><span class="token punctuation">,</span> <span class="token string">"cp .env.example .env"</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="worktree-文件"><a aria-hidden="true" tabindex="-1" href="#worktree-文件"><span class="icon icon-link"></span></a>Worktree 文件</h3><div class="wrap-body">
+<p>控制哪些文件会被复制到新 worktree：</p>
+<pre><code class="code-highlight"><span class="code-line"># .worktreeinclude（glob 模式）
+</span><span class="code-line">.env
+</span><span class="code-line">.env.local
+</span><span class="code-line">secrets/
+</span><span class="code-line">node_modules/
+</span></code></pre>
+<p>创建新 worktree 时，匹配这些模式的文件会从主工作区复制过去。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="shell-模式"><a aria-hidden="true" tabindex="-1" href="#shell-模式"><span class="icon icon-link"></span></a>Shell 模式</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="shell-执行"><a aria-hidden="true" tabindex="-1" href="#shell-执行"><span class="icon icon-link"></span></a>Shell 执行</h3><div class="wrap-body">
+<p>Shell 模式在 <code>$SHELL</code> 中执行。可通过 <code>cd</code> 与命令链式切换目录：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 先切目录再执行</span>
+</span><span class="code-line"><span class="token builtin class-name">cd</span> /my/project <span class="token operator">&#x26;&#x26;</span> agent <span class="token string">"optimize this"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 会话中的 shell 命令</span>
+</span><span class="code-line">$ <span class="token function">ls</span> <span class="token parameter variable">-la</span>              <span class="token comment"># 在 $SHELL 中运行</span>
+</span><span class="code-line">$ <span class="token function">npm</span> <span class="token builtin class-name">test</span>            <span class="token comment"># 运行测试</span>
+</span><span class="code-line">$ <span class="token function">git</span> status          <span class="token comment"># git 操作</span>
+</span></code></pre>
+<p>Shell 快捷键：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="shortcuts"><thead><tr><th>按键</th><th>操作</th></tr></thead><tbody><tr><td><code>Ctrl+C</code></td><td>取消当前 shell 命令</td></tr><tr><td><code>Ctrl+O</code></td><td>展开 / 查看完整输出</td></tr><tr><td><code>Tab</code></td><td>将命令加入允许列表</td></tr></tbody></table>
+<!--rehype:className=shortcuts-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="shell-说明"><a aria-hidden="true" tabindex="-1" href="#shell-说明"><span class="icon icon-link"></span></a>Shell 说明</h3><div class="wrap-body">
+<ul>
+<li>每条命令都在 <code>$SHELL</code>（zsh/bash/fish）中执行</li>
+<li>每条命令默认 30 秒超时</li>
+<li>对目录敏感的命令建议用 <code>cd dir &#x26;&#x26; cmd</code></li>
+<li>安装 shell 集成可增强上下文感知：</li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ agent install-shell-integration
+</span><span class="code-line"><span class="token comment"># 会向 ~/.zshrc 写入 hooks</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="mcp-服务器"><a aria-hidden="true" tabindex="-1" href="#mcp-服务器"><span class="icon icon-link"></span></a>MCP 服务器</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="配置-mcp"><a aria-hidden="true" tabindex="-1" href="#配置-mcp"><span class="icon icon-link"></span></a>配置 MCP</h3><div class="wrap-body">
+<p>用户级配置位于 <code>~/.cursor/mcp.json</code>，项目级配置位于 <code>.cursor/mcp.json</code>：</p>
+<h4 id="stdio-服务器nodejs"><a aria-hidden="true" tabindex="-1" href="#stdio-服务器nodejs"><span class="icon icon-link"></span></a>stdio 服务器（Node.js）</h4>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"mcpServers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"my-tool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"npx"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"-y"</span><span class="token punctuation">,</span> <span class="token string">"my-mcp-server"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"API_KEY"</span><span class="token operator">:</span> <span class="token string">"value"</span> <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="stdio-服务器python"><a aria-hidden="true" tabindex="-1" href="#stdio-服务器python"><span class="icon icon-link"></span></a>stdio 服务器（Python）</h4>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"mcpServers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"my-tool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"python"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"-m"</span><span class="token punctuation">,</span> <span class="token string">"my_mcp_server"</span><span class="token punctuation">]</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h4 id="http--sse-服务器"><a aria-hidden="true" tabindex="-1" href="#http--sse-服务器"><span class="icon icon-link"></span></a>HTTP / SSE 服务器</h4>
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"mcpServers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token property">"remote-tool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://my-server.com/mcp"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="mcp-命令"><a aria-hidden="true" tabindex="-1" href="#mcp-命令"><span class="icon icon-link"></span></a>MCP 命令</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 列出全部已配置服务器</span>
+</span><span class="code-line">$ agent mcp list
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 列出某个服务器的工具</span>
+</span><span class="code-line">$ agent mcp list-tools my-tool
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 批准一个服务器</span>
+</span><span class="code-line">$ agent mcp <span class="token builtin class-name">enable</span> my-tool
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 禁用一个服务器</span>
+</span><span class="code-line">$ agent mcp disable my-tool
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 对服务器进行认证</span>
+</span><span class="code-line">$ agent mcp login my-tool
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 在当前会话中自动批准全部</span>
+</span><span class="code-line">$ agent --approve-mcps
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="acp-协议"><a aria-hidden="true" tabindex="-1" href="#acp-协议"><span class="icon icon-link"></span></a>ACP 协议</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="acp-概览"><a aria-hidden="true" tabindex="-1" href="#acp-概览"><span class="icon icon-link"></span></a>ACP 概览</h3><div class="wrap-body">
+<p>ACP（Agent Client Protocol）通过 <strong>stdio</strong> 将 Cursor 代理暴露为 JSON-RPC 2.0 服务，可用于构建自定义 IDE 集成或无头客户端。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 启动 ACP 服务器</span>
+</span><span class="code-line">$ agent acp
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 使用 API key</span>
+</span><span class="code-line">$ agent --api-key <span class="token string">"<span class="token variable">$CURSOR_API_KEY</span>"</span> acp
+</span></code></pre>
+<p><strong>请求流程：</strong></p>
+<pre><code class="code-highlight"><span class="code-line">initialize
+</span><span class="code-line">authenticate (cursor_login)
+</span><span class="code-line">session/new  or  session/load
+</span><span class="code-line">session/prompt
+</span><span class="code-line">  → session/update（流式分片）
+</span><span class="code-line">  → session/request_permission（工具审批）
+</span><span class="code-line">session/cancel（可选）
+</span></code></pre>
+<p>权限返回结果：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>响应</th><th>效果</th></tr></thead><tbody><tr><td><code>allow-once</code></td><td>仅本次批准</td></tr><tr><td><code>allow-always</code></td><td>始终批准该工具</td></tr><tr><td><code>reject-once</code></td><td>仅本次拒绝</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="acp-扩展方法"><a aria-hidden="true" tabindex="-1" href="#acp-扩展方法"><span class="icon icon-link"></span></a>ACP 扩展方法</h3><div class="wrap-body">
+<p>通过 ACP 发送的 Cursor 扩展方法：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align show-header"><thead><tr><th>方法</th><th>类型</th><th>用途</th></tr></thead><tbody><tr><td><code>cursor/ask_question</code></td><td>Blocking</td><td>多选提问</td></tr><tr><td><code>cursor/create_plan</code></td><td>Blocking</td><td>请求计划审批</td></tr><tr><td><code>cursor/update_todos</code></td><td>Notify</td><td>更新待办列表状态</td></tr><tr><td><code>cursor/task</code></td><td>Notify</td><td>子代理任务状态</td></tr><tr><td><code>cursor/generate_image</code></td><td>Notify</td><td>图片生成事件</td></tr></tbody></table>
+<!--rehype:className=left-align show-header-->
+<p>最小 Node.js 客户端示例：</p>
+<pre class="wrap-text"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword">const</span> agent <span class="token operator">=</span> <span class="token function">spawn</span><span class="token punctuation">(</span><span class="token string">'agent'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'acp'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token literal-property property">stdio</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'pipe'</span><span class="token punctuation">,</span> <span class="token string">'pipe'</span><span class="token punctuation">,</span> <span class="token string">'inherit'</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 发送 initialize → authenticate → session/new → session/prompt</span>
+</span></code></pre>
+<!--rehype:className=wrap-text-->
+<p><strong>通过 ACP 可集成到以下 IDE：</strong></p>
+<ul>
+<li>JetBrains（IntelliJ、WebStorm、PyCharm）</li>
+<li>Neovim（通过 <code>avante.nvim</code> 插件）</li>
+<li>Zed 编辑器扩展</li>
+<li>任何支持扩展机制的编辑器</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="云端代理"><a aria-hidden="true" tabindex="-1" href="#云端代理"><span class="icon icon-link"></span></a>云端代理</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="云端模式"><a aria-hidden="true" tabindex="-1" href="#云端模式"><span class="icon icon-link"></span></a>云端模式</h3><div class="wrap-body">
+<p>云端代理会在 Cursor 基础设施上远程执行任务，适合长耗时或并行工作负载。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 打开云端代理选择器</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-c</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">--cloud</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 携带提示词启动云端代理</span>
+</span><span class="code-line">$ agent <span class="token parameter variable">-c</span> <span class="token string">"Migrate all tests to Vitest"</span>
+</span></code></pre>
+<p>云端代理支持：</p>
+<ul>
+<li>远程执行（不占本地资源）</li>
+<li>并行任务委派</li>
+<li>更长时长的工作流</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="子代理类型"><a aria-hidden="true" tabindex="-1" href="#子代理类型"><span class="icon icon-link"></span></a>子代理类型</h3><div class="wrap-body">
+<p>使用 ACP 或云端模式时，可指定子代理类型：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>explore</code></td><td>代码库探索</td></tr><tr><td><code>browser_use</code></td><td>网页浏览器自动化</td></tr><tr><td><code>computer_use</code></td><td>桌面 GUI 操作</td></tr><tr><td><code>shell</code></td><td>Shell 命令执行</td></tr><tr><td><code>video_review</code></td><td>视频内容分析</td></tr><tr><td><code>{ custom: "type" }</code></td><td>自定义子代理类型</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="延伸阅读"><a aria-hidden="true" tabindex="-1" href="#延伸阅读"><span class="icon icon-link"></span></a>延伸阅读</h2><div class="wrap-body">
+<ul>
+<li><a href="https://cursor.com/docs/cli/overview">Cursor CLI 文档</a> <em>(cursor.com)</em></li>
+<li><a href="https://cursor.com/docs/cli/acp">ACP 协议文档</a> <em>(cursor.com)</em></li>
+<li><a href="https://cursor.com/marketplace">Cursor Marketplace</a> <em>(cursor.com)</em></li>
+<li><a href="https://cursor.com/docs/mcp">MCP 概览</a> <em>(cursor.com)</em></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
