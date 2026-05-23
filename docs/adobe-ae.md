@@ -455,3 +455,8 @@ Adobe After Effects 中键盘快捷键的可视化备忘单
 | `Command` `Shift` `D` | 复制渲染项目并保留输出文件名 |
 | `Command` `Option` `M` | 将合成添加到 Adobe Media Encoder 编码队列 |
 <!--rehype:className=shortcuts left-align-->
+
+另见
+---
+
+- [After Effects 中的键盘快捷键](https://helpx.adobe.com/cn/after-effects/using/keyboard-shortcuts-reference.html)  _(helpx.adobe.com)_
