@@ -396,6 +396,7 @@ Quick Reference
 [ASCII Code](./docs/ascii-code.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Symbol Code](./docs/symbol-code.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Colors Named](./docs/colors-named.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=CSS-->
+[Google Search](./docs/google-search.md)<!--rehype:style=background: rgb(16 185 129);-->
 [HTTP 状态码](./docs/http-status-code.md)<!--rehype:style=background: rgb(16 185 129);-->
 [HTML 字符实体](./docs/html-char.md)<!--rehype:style=background: rgb(16 185 129);&class=tag&data-lang=HTML-->
 [ISO-3166 国家代码](./docs/iso-3166-1.md)<!--rehype:style=background: rgb(16 185 129);-->
