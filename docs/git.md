@@ -8,181 +8,82 @@ Git 备忘清单
 
 ### 创建存储库
 
-创建一个新的本地存储库
-
 ```shell
+# 创建一个新的本地存储库
 $ git init [项目名称]
-```
-
-克隆存储库(代码仓库)
-
-```shell
+# 克隆存储库(代码仓库)
 $ git clone <git_url>
-```
-
-将存储库克隆到指定目录
-
-```shell
+# 将存储库克隆到指定目录
 $ git clone <git_url> 指定目录
-```
-
-将存储库克隆到指定目录，并指定分支
-
-```shell
+# 将存储库克隆到指定目录，并指定分支
 $ git clone <git_url> -b <分支名称> 指定目录
 ```
 
 ### 做出改变
 <!--rehype:wrap-class=row-span-3-->
 
-在工作目录中**显示**修改后的文件，为您的下一次提交暂存
-
 ```shell
+# 在工作目录中`显示`修改后的文件，
+# 为您的下一次提交暂存
 $ git status
-```
-
-暂存文件，准备提交
-
-```shell
+# 暂存文件，准备提交
 $ git add [file]
-```
-
-暂存**所有**更改的文件，准备提交
-
-```shell
+# 暂存**所有**更改的文件，准备提交
 $ git add .
-```
-
-将所有暂存文件提交到版本化历史记录
-
-```shell
+# 将所有暂存文件提交到版本化历史记录
 $ git commit -m "commit message"
-```
-
-将所有跟踪的文件提交到版本化历史记录
-
-```shell
+# 将所有跟踪的文件提交到版本化历史记录
 $ git commit -am "commit message"
-```
-
-取消暂存文件，保留文件更改
-
-```shell
+# 取消暂存文件，保留文件更改
 $ git reset [file]
-```
-
-将所有内容恢复到最后一次提交
-
-```shell
+# 将所有内容恢复到最后一次提交
 $ git reset --hard
-```
-
-已更改但未暂存内容的差异
-
-```shell
+# 已更改但未暂存内容的差异
 $ git diff
-```
-
-已 commited 但尚未提交的内容的差异
-
-```shell
+# 已 commited 但尚未提交的内容的差异
 $ git diff --staged
-```
-
-在指定分支之前应用当前分支的任何提交
-
-```shell
+# 在指定分支之前应用当前分支的任何提交
 $ git rebase [branch]
 ```
 
 ### 配置
 <!--rehype:wrap-class=row-span-2-->
 
-设置将附加到您的提交和标签的名称
-
 ```shell
+# 设置将附加到您的提交和标签的名称
 $ git config --global user.name "name"
-```
-
-设置将附加到您的提交和标签 tags 的**电子邮件地址**
-
-```shell
+# 设置将附加到您的提交和标签 tags 的`电子邮件地址`
 $ git config --global user.email "email"
-```
-
-启用 Git 输出的一些着色
-
-```shell
+# 启用 Git 输出的一些着色
 $ git config --global color.ui auto
-```
-
-在文本编辑器中编辑全局配置文件
-
-```shell
+# 在文本编辑器中编辑全局配置文件
 $ git config --global --edit
-```
-
-显示本地 `repo` 配置设置
-
-```shell
+# 显示本地 `repo` 配置设置
 $ git config --list
-```
-
-删除全局设置
-
-```bash
+# 删除全局设置
 $ git config --global --unset <entry-name>
 ```
 
 ### 使用分支
-<!--rehype:wrap-class=row-span-3-->
-
-列出所有本地分支
+<!--rehype:wrap-class=row-span-4-->
 
 ```shell
+# 列出所有本地分支
 $ git branch
-```
-
-列出所有分支，本地和远程
-
-```shell
+# 列出所有分支，本地和远程
 $ git branch -av
-```
-
-切换到 `my_branch`，并更新工作目录
-
-```shell
+# 切换到 `my_branch`，并更新工作目录
 $ git checkout my_branch
-```
-
-创建并切换到新分支`new_branch`
-
-```shell
+# 创建并切换到新分支`new_branch`
 $ git checkout -b new_branch
-```
-
-删除名为 `my_branch` 的分支
-
-```shell
+# 删除名为 `my_branch` 的分支
 $ git branch -d my_branch
-```
-
-删除本地存在远程不存在的分支
-
-```shell
+# 删除本地存在远程不存在的分支
 $ git remote prune origin
-```
-
-将分支 `A` 合并到分支 `B`
-
-```shell
+# 将分支 `A` 合并到分支 `B`
 $ git checkout branchB
 $ git merge branchA
-```
-
-标记当前提交
-
-```shell
+# 标记当前提交
 $ git tag my_tag
 ```
 
@@ -213,38 +114,21 @@ $ git stash clear
 ### 观察你的存储库
 <!--rehype:wrap-class=row-span-2-->
 
-显示当前活动分支的提交历史
-
 ```shell
+# 显示当前活动分支的提交历史
 $ git log
-```
-
-显示 branchA 上不在 branchB 上的提交
-
-```shell
+# 显示 branchA 上不在 branchB 上的提交
 $ git log branchB..branchA
-```
-
-显示更改文件的提交，即使跨重命名
-
-```shell
+# 显示更改文件的提交，即使跨重命名
 $ git log --follow [file]
-```
-
-显示 branchA 中的内容与 branchB 中的内容的差异
-
-```shell
+# 显示 branchA 中的内容与 branchB 中的内容的差异
 $ git diff branchB...branchA
-```
-
-以人类可读的格式显示 Git 中的任何对象
-
-```shell
+# 以人类可读的格式显示 Git 中的任何对象
 $ git show [SHA]
 ```
 
 ### 忽略文件 .gitignore
-<!--rehype:wrap-class=row-span-4-->
+<!--rehype:wrap-class=row-span-5-->
 
 文件 `.gitignore` 指定了 `Git` 应该忽略的 **未跟踪的** 文件
 
@@ -262,6 +146,7 @@ $ git show [SHA]
 空行 | 不匹配任何文件
 行尾空格 | 默认被忽略，可使用`\`进行转义
 行首空格 | 被正常处理，不会被忽略
+<!--rehype:className=left-align-->
 
 当前 `.gitignore` 文件定义规则的优先级高于上级路径 `.gitignore` 定义规则的优先级；后定义的规则优先级高于前面定义规则的优先级
 
@@ -297,16 +182,14 @@ target/
 ```bash
 # 从工作目录中删除文件并暂存删除
 git rm <filename>
-
 # 从版本控制中删除文件但在本地保留文件
 git rm --cached <filename>
-
 # 更改文件名并准备提交
 git mv <filename-orig> <filename-renamed>
 ```
 
 ### 同步
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-3-->
 
 从该 Git 远程获取所有分支
 
@@ -345,33 +228,16 @@ $ git cherry-pick [commit_id]
 ### 远程
 <!--rehype:wrap-class=row-span-2-->
 
-添加一个 git URL 作为别名
-
 ```shell
+# 添加一个 git URL 作为别名
 $ git remote add [alias] [url]
-```
-
-显示您设置的远程存储库的名称
-
-```shell
+# 显示您设置的远程存储库的名称
 $ git remote
-```
-
-显示远程存储库的名称和 URL
-
-```shell
+# 显示远程存储库的名称和 URL
 $ git remote -v
-```
-
-删除远程存储库
-
-```shell
+# 删除远程存储库
 $ git remote rm [remote repo name]
-```
-
-更改 git repo 的 URL
-
-```shell
+# 更改 git repo 的 URL
 $ git remote set-url origin [git_url]
 ```
 
@@ -447,15 +313,10 @@ Commit
 ### 改写历史
 <!--rehype:wrap-class=row-span-2-->
 
-重写最后的提交消息
-
 ```shell
+# 重写最后的提交消息
 $ git commit --amend -m "new message"
-```
-
-修改最新的提交而不更改提交消息
-
-```shell
+# 修改最新的提交而不更改提交消息
 $ git commit --amend --no-edit
 ```
 
@@ -466,7 +327,7 @@ $ git log --show-signature
 ```
 
 ### 修改远程 Commit 记录
-<!--rehype:wrap-class=row-span-5-->
+<!--rehype:wrap-class=row-span-6-->
 
 ```shell
 $ git rebase -i HEAD~3
@@ -477,7 +338,6 @@ pick f1cce8a 提交 commit 描述内容 2
 pick 6293516 提交 commit 描述内容 3
 # Rebase eeb03a4..6293516 onto eeb03a4
 #                     (3 commands)
-#
 # Commands:
 # p, pick = 使用提交
 # r, reword = 使用提交，但编辑提交消息
@@ -508,6 +368,7 @@ $ git rebase --continue
 # 最后，确保没有人提交进行推送，最好不要加 -f 强制推送
 $ git push -f origin master
 ```
+<!--rehype:className=wrap-text-->
 
 ### Commit
 
@@ -572,29 +433,15 @@ $ git log Branch1 ^Branch2
 ### git 迁移
 <!--rehype:wrap-class=col-span-2-->
 
-- 从原地址克隆一份裸版本库
-
 ```bash
+# 从原地址克隆一份裸版本库
 $ git clone --bare https://github.com/username/project.git
-```
-
-- 然后新建一个地址，比如一下
-
-```bash
+# 然后新建一个地址，比如一下
 $ https://gitee.com/username/newproject.git
-```
-
-- 进入project.git这个全裸版本库，以镜像推送的方式上传代码到newproject上。
-
-```
+# 进入project.git这个全裸版本库，以镜像推送的方式上传代码到newproject上。
 $ cd project.git
-
 $ git push --mirror https://gitee.com/username/newproject.git
-```
-
-- 使用新地址，直接 Clone 到本地就可以了。
-
-```
+# 使用新地址，直接 Clone 到本地就可以了。
 $ git clone https://gitee.com/username/newproject.git
 ```
 
