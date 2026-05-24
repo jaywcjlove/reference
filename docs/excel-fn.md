@@ -3,7 +3,178 @@ Excel 函数备忘清单
 
 这是 Excel 按类别（例如逻辑函数或文本函数）列出所有 Excel 函数。
 
-Excel 函数
+常用函数示例
+---
+
+### 特色函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=SUM(B2:B100)` | 区间求和 |
+| `=IF(E2>=60,"通过","未通过")` | 条件判断 |
+| `=SUMIFS(D:D,A:A,"华东",C:C,">=2026/1/1")` | 多条件求和 |
+| `=XLOOKUP(A2,商品表!A:A,商品表!C:C,"未找到")` | 精确查找 |
+| `=FILTER(A2:D100,D2:D100>=90,"无结果")` | 条件筛选动态数组 |
+| `=UNIQUE(B2:B500)` | 去重输出唯一值 |
+| `=TEXTBEFORE(A2,"-")` | 提取分隔符前文本 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 兼容性函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=NORMDIST(A2,0,1,TRUE)` | 旧版正态分布累计概率 |
+| `=NORMINV(0.95,0,1)` | 旧版正态分布反函数 |
+| `=RANK(A2,$A$2:$A$100)` | 旧版排名计算 |
+| `=STDEV(B2:B100)` | 旧版样本标准差 |
+| `=PERCENTILE(C2:C100,0.9)` | 旧版百分位数 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 多维数据集函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=CUBEMEMBER("ThisWorkbookDataModel","[产品].[品类].&[手机]")` | 获取数据模型成员 |
+| `=CUBEVALUE("ThisWorkbookDataModel",$B$2,$C$2)` | 获取多维汇总值 |
+| `=CUBESET("ThisWorkbookDataModel","[地区].[地区].Children","区域集合")` | 创建成员集合 |
+| `=CUBESETCOUNT($D$2)` | 统计集合成员个数 |
+| `=CUBERANKEDMEMBER("ThisWorkbookDataModel",$D$2,1)` | 返回集合第 1 名成员 |
+<!--rehype:className=style-list-arrow squarefill wrap-text-->
+
+### 数据库函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=DSUM(A1:F100,"销售额",H1:J2)` | 按条件汇总字段 |
+| `=DCOUNT(A1:F100,"订单号",H1:J2)` | 按条件计数 |
+| `=DAVERAGE(A1:F100,"毛利率",H1:J2)` | 按条件求平均 |
+| `=DMAX(A1:F100,"销售额",H1:J2)` | 按条件取最大值 |
+| `=DGET(A1:F100,"负责人",H1:J2)` | 提取唯一匹配记录 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 日期和时间函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=DATEDIF(B2,TODAY(),"Y")` | 计算工龄（年） |
+| `=EDATE(A2,6)` | 计算到期日 |
+| `=EOMONTH(A2,0)` | 获取当月最后一天 |
+| `=NETWORKDAYS(B2,C2,节假日!A:A)` | 计算工作日天数 |
+| `=IF(WEEKDAY(A2,2)>5,"周末","工作日")` | 判断是否周末 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 工程函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=CONVERT(100,"km","m")` | 单位换算 |
+| `=BIN2DEC("101101")` | 二进制转十进制 |
+| `=DEC2HEX(255)` | 十进制转十六进制 |
+| `=COMPLEX(3,4,"i")` | 生成复数字符串 |
+| `=DELTA(A2,B2)` | 判断两个值是否相等 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 财务函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=PMT(0.05/12,36,-100000)` | 计算等额月供 |
+| `=NPV(0.08,C2:C8)+C1` | 计算净现值 |
+| `=IRR(B2:B8)` | 计算内部收益率 |
+| `=FV(0.03/12,60,-2000,0)` | 计算未来值 |
+| `=RATE(36,-3000,100000)` | 反推每期利率 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 信息函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=ISBLANK(A2)` | 判断单元格是否为空 |
+| `=ISNUMBER(B2)` | 判断是否数值 |
+| `=ISTEXT(C2)` | 判断是否文本 |
+| `=ISERROR(D2)` | 判断是否错误值 |
+| `=CELL("address",A2)` | 返回单元格地址 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 逻辑函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=IF(E2>=60,"通过","未通过")` | 条件判断 |
+| `=IFS(E2>=90,"A",E2>=80,"B",E2>=70,"C",TRUE,"D")` | 多条件分级 |
+| `=IFERROR(VLOOKUP(A2,商品表!A:C,3,FALSE),"未找到")` | 错误兜底 |
+| `=AND(B2>0,C2="在职")` | 同时满足多个条件 |
+| `=OR(D2="加急",E2="VIP")` | 任一条件满足 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 查找和引用函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=XLOOKUP(A2,商品库!A:A,商品库!D:D,"未匹配")` | 精确查找并返回价格 |
+| `=INDEX(C:C,MATCH(A2,A:A,0))` | 经典组合查找 |
+| `=FILTER(A2:E200,(B2:B200="华北")*(D2:D200="在售"),"无数据")` | 多条件筛选返回明细 |
+| `=UNIQUE(B2:B500)` | 提取唯一值列表 |
+| `=SORT(UNIQUE(C2:C200))` | 去重后排序输出 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 数学和三角函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=SUM(B2:B100)` | 区间求和 |
+| `=ROUND(C2,2)` | 保留两位小数 |
+| `=SUMPRODUCT(B2:B100,C2:C100)` | 数量乘单价后求和 |
+| `=MOD(A2,7)` | 取余计算周期 |
+| `=ABS(D2-E2)` | 计算绝对偏差 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 统计函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=COUNTIFS(B:B,"销售",C:C,">=10000")` | 多条件计数 |
+| `=AVERAGEIFS(F:F,C:C,"已成交")` | 条件平均值 |
+| `=MAX(D2:D200)` | 取最大值 |
+| `=MIN(D2:D200)` | 取最小值 |
+| `=MEDIAN(D2:D200)` | 取中位数 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 文本函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=TRIM(A2)` | 去除首尾空格 |
+| `=TEXTBEFORE(A2,"-")` | 提取分隔符前文本 |
+| `=TEXTAFTER(A2,"-")` | 提取分隔符后文本 |
+| `=TEXTSPLIT(A2,"-")` | 按分隔符拆分文本 |
+| `=TEXTJOIN("-",TRUE,B2,C2)` | 拼接多个字段 |
+| `=LEFT(A2,6)` | 提取固定长度前缀 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### 与加载项一起安装的用户定义的函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=MYDISCOUNT(B2,C2)` | 使用加载项提供的折扣函数 |
+| `=MYTAX(A2,"CN")` | 使用加载项计算税额 |
+| `=MYSCORE(D2:E2)` | 使用加载项进行自定义评分 |
+| `=IFERROR(MYRISK(A2:B2),"请先启用加载项")` | 未安装时给出提示 |
+| `=MYFORECAST(F2:F13,12)` | 使用加载项做预测 |
+<!--rehype:className=style-list-arrow squarefill-->
+
+### Web 函数
+
+| 示例 | 场景 |
+| --- | --- |
+| `=WEBSERVICE("https://api.exchangerate.host/latest?base=CNY")` | 获取网页/API 原始数据 |
+| `=FILTERXML(B2,"//rate[@currency='USD']")` | 从 XML 中提取节点值 |
+| `=ENCODEURL(A2)` | URL 参数编码 |
+| `=NUMBERVALUE(FILTERXML(WEBSERVICE("https://example.com/data.xml"),"//price"))` | 抓取并转换网页数字 |
+| `=IFERROR(FILTERXML(WEBSERVICE(A2),"//title"),"抓取失败")` | 抓取失败时容错 |
+<!--rehype:className=style-list-arrow squarefill wrap-text-->
+
+Excel 函数索引
 ---
 <!--rehype:body-class=cols-2-->
 
