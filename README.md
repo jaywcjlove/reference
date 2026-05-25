@@ -370,6 +370,7 @@ Quick Reference
 [Adobe After Effects](./docs/adobe-ae.md)<!--rehype:style=background: rgb(111 111 228);-->
 [Android Studio](./docs/android-studio.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Blender](./docs/blender.md)<!--rehype:style=background: rgb(16 185 129);-->
+[CorelDRAW](./docs/coreldraw.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Firefox](./docs/firefox.md)<!--rehype:style=background: rgb(253 53 76);-->
 [Finder](./docs/finder.md)<!--rehype:style=background: rgb(253 53 76);&class=tag&data-lang=macOS-->
 [Figma](./docs/figma.md)<!--rehype:style=background: rgb(147 90 238);-->
