@@ -22,29 +22,25 @@
 <hr>
 <!--rehype:ignore:end-->
 
-# Quick Reference
+Quick Reference
+===
 
 <!--rehype:ignore:start-->
-
 [![Buy me a coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://jaywcjlove.github.io/#/sponsor)
 [![Follow On X](https://img.shields.io/badge/Follow%20on%20X-333333?logo=x&logoColor=white)](https://x.com/jaywcjlove)
 [![CI](https://github.com/jaywcjlove/reference/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/reference/actions/workflows/ci.yml)
 [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wcjiang/reference)](https://hub.docker.com/r/wcjiang/reference)
-
 <!--rehype:ignore:end-->
 
 <!--rehype:ignore:start-->
-
 [![Quick Reference](https://user-images.githubusercontent.com/1680273/201931931-d8559417-0a15-46af-a009-ec1e56e5b778.png)](https://jaywcjlove.github.io/reference)
-
 <!--rehype:ignore:end-->
 
 这是一份为中文开发者整理的技术栈速查清单，基于英文版 [Reference](https://github.com/Randy8080/reference) 翻译扩展而来，新增了更多实用内容，旨在提升查阅效率与使用体验。欢迎分享你的清单，我会尽量搬运实现；如发现内容不妥，也可通过提交 [PR](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md) 进行修复或完善。项目持续更新，欢迎参与贡献！
 
 ## 赞助支持
-
 <!--rehype:class=home-title-reset-->
 
 非常感谢一直以来支持我开源项目的朋友们！如果您认可我的工作，欢迎通过 [赞助](https://wangchujiang.com/#/sponsor)<!--rehype:target=_blank--> 我或下载并使用我开发的 [macOS 应用](https://wangchujiang.com/#/app)<!--rehype:target=_blank--> 来支持我。以下是我个人独立开发的 macOS 应用列表：
@@ -115,7 +111,6 @@
 ## 正在建设中...
 
 坑已挖，需要您的参与完善和[贡献](./docs/quickreference.md)！🙏
-
 <!--rehype:style=padding-bottom: 23px;-->
 
 [Ansible](./docs/ansible.md)<!--rehype:style=background:rgb(238 0 0);&class=contributing tag&data-lang=RedHat&data-info=👆看看还缺点儿什么？-->
@@ -137,8 +132,8 @@
 [Tauri](./docs/tauri.md)<!--rehype:style=background:rgb(103 214 237);&class=contributing-->
 [Cisco 网络设备](./docs/cisco-devices.md)<!--rehype:style=background: rgb(4 159 217);&class=contributing&data-info=👆看看还缺点儿什么？-->
 [Huawei 网络设备](./docs/huawei-devices.md)<!--rehype:style=background: rgb(222 0 8);&class=contributing&data-info=👆看看还缺点儿什么？-->
-
 <!--rehype:class=home-card-->
+
 
 ## AI
 
@@ -149,7 +144,6 @@
 [Gemma 4](./docs/gemma4.md)<!--rehype:style=background:rgb(87 132 217);&class=tag&data-lang=AI-->
 [Gemini CLI](./docs/gemini-cli.md)<!--rehype:style=background:rgb(217 87 96);&class=tag&data-lang=AI-->
 [Grok CLI](./docs/grok-cli.md)<!--rehype:style=background:rgb(122 87 217);&class=tag&data-lang=AI-->
-
 <!--rehype:class=home-card-->
 
 ## 编程
@@ -186,7 +180,6 @@
 [SwiftUI](./docs/swiftui.md)<!--rehype:style=background:rgb(10 127 247);&class=tag&data-lang=swift-->
 [Spring Boot](./docs/springboot.md)<!--rehype:style=background:rgb(0 149 0);&class=tag&data-lang=Java-->
 [Minio](./docs/minio.md)<!--rehype:style=background:rgb(3 3 128);-->
-
 <!--rehype:class=home-card-->
 
 ## Docker
@@ -194,7 +187,6 @@
 [Docker](./docs/docker.md)<!--rehype:style=background:rgb(72 143 223);-->
 [Docker Compose](./docs/docker-compose.md)<!--rehype:style=background:rgb(72 143 223);&class=contributing tag&data-lang=Docker-->
 [Dockerfile](./docs/dockerfile.md)<!--rehype:style=background:rgb(0 72 153);&class=tag&data-lang=Docker-->
-
 <!--rehype:class=home-card-->
 
 ## 配置
@@ -203,7 +195,6 @@
 [JSON](./docs/json.md)<!--rehype:style=background:rgb(57 59 60);-->
 [TOML](./docs/toml.md)<!--rehype:style=background:rgb(132 132 132);-->
 [YAML](./docs/yaml.md)<!--rehype:style=background:rgb(91 163 230);-->
-
 <!--rehype:class=home-card-->
 
 ## 前端
@@ -224,7 +215,6 @@
 [Vue 3](./docs/vue.md)<!--rehype:style=background:rgb(64 184 131);&class=tag&class=contributing tag&data-lang=Vue-->
 [</> htmx](./docs/htmx.md)<!--rehype:style=background:rgb(52 101 164);&class=contributing-->
 [Pinia](./docs/pinia.md)<!--rehype:style=background:rgb(44 136 50);&class=tag&data-lang=Vue-->
-
 <!--rehype:class=home-card-->
 
 ## CSS
@@ -236,7 +226,6 @@
 [Less.js](./docs/lessjs.md)<!--rehype:style=background:rgb(29 54 93);&class=tag&data-lang=CSS-->
 [Tailwind CSS](./docs/tailwindcss.md)<!--rehype:style=background:rgb(49 120 198);&class=tag&data-lang=CSS-->
 [StyleX](./docs/stylex.md)<!--rehype:style=background:rgb(91 79 163);&class=tag&data-lang=CSS-->
-
 <!--rehype:class=home-card-->
 
 ## 客户端
@@ -245,7 +234,6 @@
 [React Native](./docs/react-native.md)<!--rehype:style=background:rgb(34 143 173);&class=tag&data-lang=React-->
 [Tauri](./docs/tauri.md)<!--rehype:style=background:rgb(103 214 237);&class=contributing-->
 [Wails](./docs/wails.md)<!--rehype:style=background:rgb(194 106 107);&class=contributing-->
-
 <!--rehype:class=home-card-->
 
 ## Nodejs
@@ -263,7 +251,6 @@
 [nvm](./docs/nvm.md)<!--rehype:style=background:rgb(132 132 132);-->
 [pnpm](./docs/pnpm.md)<!--rehype:style=background:rgb(191 133 0);-->
 [Bun](./docs/bun.md)<!--rehype:style=background:rgb(157 49 81);-->
-
 <!--rehype:class=home-card-->
 
 ## Python
@@ -277,7 +264,6 @@
 [Conda](./docs/conda.md)<!--rehype:style=background:rgb(68 168 51);&class=tag&data-lang=Python-->
 [pip](./docs/pip.md)<!--rehype:style=background:rgb(24 147 209);&class=tag contributing&data-lang=Python-->
 [uv](./docs/uv.md)<!--rehype:style=background:rgb(26 35 126);&class=tag contributing&data-lang=Python-->
-
 <!--rehype:class=home-card-->
 
 ## 命令
@@ -320,7 +306,6 @@
 [7zip](./docs/7zip.md)<!--rehype:style=background:rgb(99 99 99);&class=tag&data-lang=解压缩-->
 [Yazi](./docs/yazi.md)<!--rehype:style=background:rgb(255 165 0);&class=tag&data-lang=文件管理器;&class=contributing-->
 [Zip](./docs/zip.md)<!--rehype:style=background:rgb(99 99 99);&class=tag&data-lang=解压缩-->
-
 <!--rehype:class=home-card-->
 
 ## 工具
@@ -333,7 +318,6 @@
 [Semver 语义化版本](./docs/semver.md)<!--rehype:style=background:rgb(106 111 141);-->
 [Vim](./docs/vim.md)<!--rehype:style=background:rgb(9 150 8);-->
 [XPath](./docs/xpath.md)<!--rehype:style=background:rgb(91 163 230);-->
-
 <!--rehype:class=home-card-->
 
 ## 软件包管理器
@@ -346,7 +330,6 @@
 [Pacman](./docs/pacman.md)<!--rehype:style=background:rgb(24 147 209);&class=tag contributing&data-lang=Linux-->
 [YUM](./docs/yum.md)<!--rehype:style=background:rgb(86 86 123);-->
 [SDKMAN](./docs/sdkman.md)<!--rehype:style=background:rgb(0 118 198);-->
-
 <!--rehype:class=home-card-->
 
 ## Git 版本控制
@@ -358,7 +341,6 @@
 [Github Actions](./docs/github-actions.md)<!--rehype:style=background:rgb(121 184 255);-->
 [Gitlab CI/CD](./docs/gitlab-ci.md)<!--rehype:style=background:rgb(226 67 41);&class=contributing-->
 [Subversion (SVN)](./docs/subversion.md)<!--rehype:style=background:rgb(99 99 99);&class=tag&data-lang=版本控制-->
-
 <!--rehype:class=home-card-->
 
 ## 数据库
@@ -371,7 +353,6 @@
 [Elasticsearch](./docs/elasticsearch.md)<!--rehype:style=background:rgb(36 187 177);-->
 [Neo4j](./docs/neo4j.md)<!--rehype:style=background:rgb(86 86 123);-->
 [SQLite](./docs/sqlite.md)<!--rehype:style=background:rgb(0 59 90);-->
-
 <!--rehype:class=home-card-->
 
 ## 网络设备
@@ -408,7 +389,6 @@
 [WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220);-->
 [Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233);&class=tag&data-lang=macOS-->
 [Zed](./docs/zed.md)<!--rehype:style=background: rgb(71 71 71);-->
-
 <!--rehype:class=home-card-->
 
 ## 其它
@@ -429,30 +409,24 @@
 [Resolutions](./docs/resolutions.md)<!--rehype:style=background: rgb(16 185 129);-->
 [时区列表](./docs/time-zones.md)<!--rehype:style=background: rgb(16 185 129);-->
 [常见端口对照](./docs/ports.md)<!--rehype:style=background: rgb(16 185 129);-->
-
 <!--rehype:class=home-card-->
 
 ## 看到缺少什么了吗？
-
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;padding-top:4rem;&class=home-title-reset-->
 
 上面的列表没有看到你想要的？ 您是否正在寻找一些备忘清单或参考资料，或者您有一些片段备忘清单要分享，这是一个最好的机会！
 
 [`请求添加备忘单(速查表)`](https://github.com/jaywcjlove/reference/issues/new?template=cheatsheet-request.yml)<!--rehype:class=home-button&style=margin-top:2rem&target=__blank-->
 [`我有一张备忘单(速查表)`](https://github.com/jaywcjlove/reference/blob/main/CONTRIBUTING.md)<!--rehype:class=home-button text-grey&target=__blank-->
-
 <!--rehype:style=margin-top:3rem-->
 
 ## 感谢所有贡献者
-
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
 请参阅 [Quick Reference](./docs/quickreference.md) 了解如何开始。一如既往，感谢我们出色的[贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)！
-
 <!--rehype:style=padding-bottom:1rem;-->
 
 <!--GAMFC-->
-
 <a href="https://github.com/jaywcjlove" title="小弟调调"><img src="https://avatars.githubusercontent.com/u/1680273?v=4" width="42;" alt="小弟调调"/></a>
 <a href="https://github.com/fwqaaq" title="fwqaaq"><img src="https://avatars.githubusercontent.com/u/82551626?v=4" width="42;" alt="fwqaaq"/></a>
 <a href="https://github.com/zhangymPerson" title="zhangym"><img src="https://avatars.githubusercontent.com/u/40376181?v=4" width="42;" alt="zhangym"/></a>
@@ -652,14 +626,13 @@
 <a href="https://github.com/N0x-xOn" title="shawing"><img src="https://avatars.githubusercontent.com/u/107191230?v=4" width="42;" alt="shawing"/></a>
 <a href="https://github.com/TRDSCSH" title="TRDSCSH"><img src="https://avatars.githubusercontent.com/u/125717891?v=4" width="42;" alt="TRDSCSH"/></a>
 
+
 <!--GAMFC-END-->
 
 [贡献者](https://github.com/jaywcjlove/reference/graphs/contributors)列表，由 [contributors](https://github.com/jaywcjlove/github-action-contributors) 根据提交次数的先后顺序自动生成
-
 <!--rehype:style=padding-top:1rem;-->
 
 ## 国内镜像网站
-
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站(国内打不开的不再收录)。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/discussions/206#discussion-4625735)
@@ -764,7 +737,6 @@
 [cutterman.cn](https://blog.cutterman.cn/reference/index.html)<!--rehype:target=_blank-->
 [notes-bin.top](https://notes-bin.top:10443)<!--rehype:target=_blank&class=contributing&data-info=仅IPv6 👆每天自动同步-->
 [dongdong741236.cn](https://code.dongdong741236.cn/)<!--rehype:target=_blank-->
-
 <!--rehype:class=home-card home-links-->
 
 下面网站暂时飞走了
@@ -797,7 +769,6 @@
 [xiechengqi.top](https://ref.xiechengqi.top)<!--rehype:target=_blank-->
 [bingchunmoli.com](https://reference.bingchunmoli.com/)<!--rehype:target=_blank&class=contributing&data-info=境内CDN-->
 [131414.xyz](https://reference.131414.xyz/)<!--rehype:target=_blank&class=contributing&data-info=境外CDN-->
-
 <!--rehype:class=home-card home-links-->
 
 如果你有资源，可以很方便地 [部署 web 版](https://github.com/jaywcjlove/reference/issues/102#issue-1451649637)，这一过程非常简单。只需要克隆 [gh-pages](https://github.com/jaywcjlove/reference/tree/gh-pages) 分支的代码到你的静态服务即可。
@@ -805,14 +776,12 @@
 你还可以使用 [docker](https://hub.docker.com/r/wcjiang/reference) 快捷部署 web 版，或者直接一键部署到 [Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/jaywcjlove/reference)。
 
 ## 其它资源
-
 <!--rehype:wrap-style=text-align: center;max-width: 650px;margin: 0 auto;&class=home-title-reset-->
 
 - [Quick Reference for VSCode](https://marketplace.visualstudio.com/items?itemName=jackiotyu.quick-reference) 由 [jackiotyu](https://github.com/jackiotyu/vscode-quick-reference) 提供
 - [懒猫微服应用商店](https://appstore.lazycat.cloud/#/shop/detail/io.zeroc.app.quickref)
 
 <!--rehype:ignore:start-->
-
 ## 开发
 
 ```sh
@@ -826,5 +795,4 @@ $ open dist/index.html # 在浏览器打开生成 HTML
 ## License
 
 MIT © [Kenny Wong](https://github.com/jaywcjlove)
-
 <!--rehype:ignore:end-->
