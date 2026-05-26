@@ -368,6 +368,7 @@ Quick Reference
 [Adobe Photoshop](./docs/adobe-photoshop.md)<!--rehype:style=background: rgb(49 168 255);-->
 [Adobe XD](./docs/adobe-xd.md)<!--rehype:style=background: rgb(255 97 246);-->
 [Adobe After Effects](./docs/adobe-ae.md)<!--rehype:style=background: rgb(111 111 228);-->
+[Adobe Premiere](./docs/adobe-pr.md)<!--rehype:style=background: rgb(111 111 228);-->
 [Android Studio](./docs/android-studio.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Blender](./docs/blender.md)<!--rehype:style=background: rgb(16 185 129);-->
 [CorelDRAW](./docs/coreldraw.md)<!--rehype:style=background: rgb(16 185 129);-->
