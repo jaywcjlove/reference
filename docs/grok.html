@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Grok CLI 备忘清单（官方）
+ &#x26;  grok cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="这是一份基于官方文档的 Grok CLI 中文速查，覆盖安装认证、交互与无头模式、权限会话、自定义模型与 ACP 集成。
+
+入门，为开发人员分享快速参考备忘单。">
+<meta keywords="grok,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/grok.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="grok-cli-备忘清单官方"><svg fill="currentColor" fill-rule="evenodd" height="1em" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Grok</title><path d="M9.27 15.29l7.978-5.897c.391-.29.95-.177 1.137.272.98 2.369.542 5.215-1.41 7.169-1.951 1.954-4.667 2.382-7.149 1.406l-2.711 1.257c3.889 2.661 8.611 2.003 11.562-.953 2.341-2.344 3.066-5.539 2.388-8.42l.006.007c-.983-4.232.242-5.924 2.75-9.383.06-.082.12-.164.179-.248l-3.301 3.305v-.01L9.267 15.292M7.623 16.723c-2.792-2.67-2.31-6.801.071-9.184 1.761-1.763 4.647-2.483 7.166-1.425l2.705-1.25a7.808 7.808 0 00-1.829-1A8.975 8.975 0 005.984 5.83c-2.533 2.536-3.33 6.436-1.962 9.764 1.022 2.487-.653 4.246-2.34 6.022-.599.63-1.199 1.259-1.682 1.925l7.62-6.815"></path></svg><a aria-hidden="true" tabindex="-1" href="#grok-cli-备忘清单官方"><span class="icon icon-link"></span></a>Grok CLI 备忘清单（官方）</h1><div class="wrap-body">
+<p>这是一份基于官方文档的 Grok CLI 中文速查，覆盖安装认证、交互与无头模式、权限会话、自定义模型与 ACP 集成。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#交互模式">交互模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#单次执行脚本">单次执行（脚本）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#会话续跑">会话续跑</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模型与检查">模型与检查</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#acp">ACP</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#快速开始">快速开始</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装-1">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#交互式会话">交互式会话</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常见入口命令">常见入口命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#无头模式脚本ci">无头模式（脚本/CI）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心参数">核心参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#输出格式">输出格式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#脚本环境建议">脚本环境建议</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#会话续跑示例">会话续跑示例</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#模式与权限">模式与权限</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#会话模式">会话模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#默认权限配置">默认权限配置</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#slash-命令tui">Slash 命令（TUI）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心命令">核心命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#扩展入口与-shell-提供命令">扩展入口与 shell 提供命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#自定义模型">自定义模型</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置位置">配置位置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置自定义">配置自定义</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#字段说明">字段说明</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#多模型示例">多模型示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用与切换">使用与切换</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#快速排查">快速排查</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#acpagent-client-protocol">ACP（Agent Client Protocol）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#是什么">是什么</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#启动-agent">启动 Agent</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#认证方式">认证方式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#最小调用流程官方思路">最小调用流程（官方思路）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#精简-js-示例快速接入">精简 JS 示例（快速接入）</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自动化场景建议">自动化场景建议</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://x.ai/cli/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="交互模式"><a aria-hidden="true" tabindex="-1" href="#交互模式"><span class="icon icon-link"></span></a>交互模式</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">grok
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="单次执行脚本"><a aria-hidden="true" tabindex="-1" href="#单次执行脚本"><span class="icon icon-link"></span></a>单次执行（脚本）</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">grok <span class="token parameter variable">-p</span> <span class="token string">"Explain this repository"</span>
+</span><span class="code-line">grok <span class="token parameter variable">-p</span> <span class="token string">"List TODO comments"</span> --output-format json
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="会话续跑"><a aria-hidden="true" tabindex="-1" href="#会话续跑"><span class="icon icon-link"></span></a>会话续跑</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">grok <span class="token parameter variable">-s</span> my-session <span class="token parameter variable">-p</span> <span class="token string">"Draft plan"</span>
+</span><span class="code-line">grok <span class="token parameter variable">-s</span> my-session <span class="token parameter variable">-p</span> <span class="token string">"Implement step 1"</span>
+</span><span class="code-line">grok <span class="token parameter variable">-c</span> <span class="token parameter variable">-p</span> <span class="token string">"Continue from latest"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="模型与检查"><a aria-hidden="true" tabindex="-1" href="#模型与检查"><span class="icon icon-link"></span></a>模型与检查</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">grok inspect
+</span><span class="code-line">grok <span class="token parameter variable">-p</span> <span class="token string">"Hello"</span> <span class="token parameter variable">-m</span> my-model
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="acp"><a aria-hidden="true" tabindex="-1" href="#acp"><span class="icon icon-link"></span></a>ACP</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">grok agent stdio
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装-1"><a aria-hidden="true" tabindex="-1" href="#安装-1"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># macOS / Linux / WSL</span>
+</span><span class="code-line">$ <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://x.ai/cli/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+</span><span class="code-line"><span class="token comment"># Windows PowerShell</span>
+</span><span class="code-line"><span class="token operator">></span> irm https://x.ai/cli/install.ps1 <span class="token operator">|</span> iex
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="交互式会话"><a aria-hidden="true" tabindex="-1" href="#交互式会话"><span class="icon icon-link"></span></a>交互式会话</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">cd</span> your-project
+</span><span class="code-line">$ grok
+</span></code></pre>
+<p>首次启动会打开浏览器做认证。无浏览器环境可直接使用 API Key：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">XAI_API_KEY</span><span class="token operator">=</span><span class="token string">"xai-..."</span>
+</span><span class="code-line">$ grok
+</span></code></pre>
+<p>常用首轮提示词：</p>
+<pre class="language-text"><code class="language-text code-highlight"><span class="code-line">Explain this repo.
+</span><span class="code-line">@src/main.rs Walk me through this file.
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常见入口命令"><a aria-hidden="true" tabindex="-1" href="#常见入口命令"><span class="icon icon-link"></span></a>常见入口命令</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ grok                     <span class="token comment"># 进入 TUI</span>
+</span><span class="code-line">$ grok inspect             <span class="token comment"># 查看当前目录被发现的配置/技能/插件/MCP 等</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"Explain this codebase"</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"Explain architecture"</span> --output-format streaming-json
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="无头模式脚本ci"><a aria-hidden="true" tabindex="-1" href="#无头模式脚本ci"><span class="icon icon-link"></span></a>无头模式（脚本/CI）</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="核心参数"><a aria-hidden="true" tabindex="-1" href="#核心参数"><span class="icon icon-link"></span></a>核心参数</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>-p, --single &#x3C;PROMPT></code></td><td>发送单次提示并返回</td></tr><tr><td><code>-m, --model &#x3C;MODEL></code></td><td>指定模型</td></tr><tr><td><code>-s, --session-id &#x3C;ID></code></td><td>创建或复用一个命名会话</td></tr><tr><td><code>-r, --resume &#x3C;ID></code></td><td>恢复指定会话</td></tr><tr><td><code>-c, --continue</code></td><td>继续当前目录最近会话</td></tr><tr><td><code>--cwd &#x3C;PATH></code></td><td>指定工作目录</td></tr><tr><td><code>--output-format &#x3C;FMT></code></td><td>输出格式：<code>plain</code> / <code>json</code> / <code>streaming-json</code></td></tr><tr><td><code>--always-approve</code></td><td>自动批准工具执行</td></tr><tr><td><code>--no-alt-screen</code></td><td>内联运行（不接管全屏 TUI）</td></tr><tr><td><code>--no-auto-update</code></td><td>禁用自动更新检查（脚本/CI 推荐）</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="输出格式"><a aria-hidden="true" tabindex="-1" href="#输出格式"><span class="icon icon-link"></span></a>输出格式</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"List TODO comments"</span> --output-format json
+</span><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"Explain the architecture"</span> --output-format streaming-json
+</span></code></pre>
+<ul>
+<li><code>plain</code>：人类可读文本</li>
+<li><code>json</code>：末尾输出一个 JSON 对象</li>
+<li><code>streaming-json</code>：按行输出增量 JSON 事件</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="脚本环境建议"><a aria-hidden="true" tabindex="-1" href="#脚本环境建议"><span class="icon icon-link"></span></a>脚本环境建议</h3><div class="wrap-body">
+<p>在脚本、CI 或 ACP 场景可加上 <code>--no-auto-update</code>，避免后台更新检查影响稳定性：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ grok --no-auto-update <span class="token parameter variable">-p</span> <span class="token string">"Run static analysis summary"</span>
+</span></code></pre>
+<p>也可在 <code>~/.grok/config.toml</code> 全局关闭：</p>
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">cli</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">auto_update</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="会话续跑示例"><a aria-hidden="true" tabindex="-1" href="#会话续跑示例"><span class="icon icon-link"></span></a>会话续跑示例</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 用命名会话连续执行多轮任务</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-s</span> refactor-auth <span class="token parameter variable">-p</span> <span class="token string">"Analyze auth module and list issues"</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-s</span> refactor-auth <span class="token parameter variable">-p</span> <span class="token string">"Apply fix for issue 1"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 指定恢复某个会话 ID</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-r</span> <span class="token operator">&#x3C;</span>SESSION_ID<span class="token operator">></span> <span class="token parameter variable">-p</span> <span class="token string">"Continue and add tests"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 继续当前目录最近会话</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-c</span> <span class="token parameter variable">-p</span> <span class="token string">"Summarize what changed"</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="模式与权限"><a aria-hidden="true" tabindex="-1" href="#模式与权限"><span class="icon icon-link"></span></a>模式与权限</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="会话模式"><a aria-hidden="true" tabindex="-1" href="#会话模式"><span class="icon icon-link"></span></a>会话模式</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>模式</th><th>说明</th></tr></thead><tbody><tr><td>Plan</td><td>先规划后执行；写工具被限制（除计划文件）</td></tr><tr><td>Always-approve</td><td>跳过工具权限确认</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p>启动 Always-approve：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ grok --always-approve
+</span></code></pre>
+<p>TUI 内可用 <code>/always-approve</code> 切换。<code>Shift+Tab</code> 可循环切换模式。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="默认权限配置"><a aria-hidden="true" tabindex="-1" href="#默认权限配置"><span class="icon icon-link"></span></a>默认权限配置</h3><div class="wrap-body">
+<p>在 <code>~/.grok/config.toml</code> 设置默认权限行为（官方建议放用户级配置，不放项目级）：</p>
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">ui</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">permission_mode</span> <span class="token punctuation">=</span> <span class="token string">"ask"</span>
+</span><span class="code-line"><span class="token comment"># 或 permission_mode = "always-approve"</span>
+</span></code></pre>
+<p>说明：旧键 <code>approval_mode</code> 与 <code>yolo = true</code> 仍可识别，但以 <code>permission_mode</code> 为准。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="slash-命令tui"><a aria-hidden="true" tabindex="-1" href="#slash-命令tui"><span class="icon icon-link"></span></a>Slash 命令（TUI）</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="核心命令"><a aria-hidden="true" tabindex="-1" href="#核心命令"><span class="icon icon-link"></span></a>核心命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>/quit</code> / <code>/exit</code></td><td>退出</td></tr><tr><td><code>/home</code></td><td>返回欢迎页</td></tr><tr><td><code>/new</code></td><td>新建会话</td></tr><tr><td><code>/resume</code></td><td>恢复会话</td></tr><tr><td><code>/sessions</code></td><td>浏览历史会话</td></tr><tr><td><code>/fork</code></td><td>从当前会话分叉</td></tr><tr><td><code>/rename &#x3C;title></code></td><td>重命名会话</td></tr><tr><td><code>/share</code></td><td>分享当前会话链接</td></tr><tr><td><code>/session-info</code></td><td>查看会话信息</td></tr><tr><td><code>/context</code></td><td>查看上下文使用情况</td></tr><tr><td><code>/model &#x3C;name></code></td><td>切换模型</td></tr><tr><td><code>/always-approve</code></td><td>切换自动批准</td></tr><tr><td><code>/multiline</code></td><td>切换多行输入</td></tr><tr><td><code>/compact [context]</code></td><td>压缩会话历史</td></tr><tr><td><code>/compact-mode</code></td><td>切换紧凑 UI</td></tr><tr><td><code>/theme [name]</code></td><td>切换主题</td></tr><tr><td><code>/feedback [text]</code></td><td>提交会话反馈</td></tr><tr><td><code>/plan</code></td><td>查看当前计划</td></tr><tr><td><code>/btw &#x3C;question></code></td><td>侧路提问，不打断主任务</td></tr><tr><td><code>/rewind</code></td><td>回退到更早对话点</td></tr><tr><td><code>/usage</code></td><td>查看 token/credits 使用</td></tr><tr><td><code>/logout</code></td><td>登出</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="扩展入口与-shell-提供命令"><a aria-hidden="true" tabindex="-1" href="#扩展入口与-shell-提供命令"><span class="icon icon-link"></span></a>扩展入口与 shell 提供命令</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>/hooks</code></td><td>打开扩展面板 Hooks 页</td></tr><tr><td><code>/plugins</code></td><td>打开扩展面板 Plugins 页</td></tr><tr><td><code>/skills</code></td><td>打开扩展面板 Skills 页</td></tr><tr><td><code>/mcps</code></td><td>打开扩展面板 MCP 页</td></tr><tr><td><code>/flush</code></td><td>立即将会话内存落盘</td></tr><tr><td><code>/memory</code></td><td>搜索/编辑持久内存</td></tr><tr><td><code>/dream</code></td><td>触发离线内存整合</td></tr><tr><td><code>/imagine &#x3C;prompt></code></td><td>文生图</td></tr><tr><td><code>/imagine-video &#x3C;prompt></code></td><td>文生视频</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+<p>任意可调用 skill 也可作为 slash 命令（如 <code>/&#x3C;skill-name></code>）。重名时可用限定名（如 <code>/local:commit</code>）。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="自定义模型"><a aria-hidden="true" tabindex="-1" href="#自定义模型"><span class="icon icon-link"></span></a>自定义模型</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置位置"><a aria-hidden="true" tabindex="-1" href="#配置位置"><span class="icon icon-link"></span></a>配置位置</h3><div class="wrap-body">
+<p>自定义模型写在用户级配置文件中：</p>
+<pre class="language-text"><code class="language-text code-highlight"><span class="code-line">~/.grok/config.toml
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置自定义"><a aria-hidden="true" tabindex="-1" href="#配置自定义"><span class="icon icon-link"></span></a>配置自定义</h3><div class="wrap-body">
+<p>在配置中声明自定义模型并设为默认：</p>
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">model.my-model</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">model</span> <span class="token punctuation">=</span> <span class="token string">"model-id"</span>
+</span><span class="code-line"><span class="token key property">base_url</span> <span class="token punctuation">=</span> <span class="token string">"https://api.example.com/v1"</span>
+</span><span class="code-line"><span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"Display Name"</span>
+</span><span class="code-line"><span class="token key property">env_key</span> <span class="token punctuation">=</span> <span class="token string">"API_KEY"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">models</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">default</span> <span class="token punctuation">=</span> <span class="token string">"my-model"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="字段说明"><a aria-hidden="true" tabindex="-1" href="#字段说明"><span class="icon icon-link"></span></a>字段说明</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>字段</th><th>含义</th></tr></thead><tbody><tr><td><code>[model.my-model]</code></td><td>本地别名（你在 CLI/TUI 里使用的名字）</td></tr><tr><td><code>model</code></td><td>实际模型 ID</td></tr><tr><td><code>base_url</code></td><td>该模型对应 API 基础地址</td></tr><tr><td><code>name</code></td><td>在 UI 中显示的名称</td></tr><tr><td><code>env_key</code></td><td>读取 API Key 的环境变量名</td></tr><tr><td><code>[models].default</code></td><td>默认使用的模型别名</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="多模型示例"><a aria-hidden="true" tabindex="-1" href="#多模型示例"><span class="icon icon-link"></span></a>多模型示例</h3><div class="wrap-body">
+<pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">model.fast</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">model</span> <span class="token punctuation">=</span> <span class="token string">"grok-build-0.1"</span>
+</span><span class="code-line"><span class="token key property">base_url</span> <span class="token punctuation">=</span> <span class="token string">"https://api.x.ai/v1"</span>
+</span><span class="code-line"><span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"Fast Build"</span>
+</span><span class="code-line"><span class="token key property">env_key</span> <span class="token punctuation">=</span> <span class="token string">"XAI_API_KEY"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">model.strict</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">model</span> <span class="token punctuation">=</span> <span class="token string">"my-strict-model"</span>
+</span><span class="code-line"><span class="token key property">base_url</span> <span class="token punctuation">=</span> <span class="token string">"https://api.example.com/v1"</span>
+</span><span class="code-line"><span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"Strict Review"</span>
+</span><span class="code-line"><span class="token key property">env_key</span> <span class="token punctuation">=</span> <span class="token string">"EXAMPLE_API_KEY"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token punctuation">[</span><span class="token table class-name">models</span><span class="token punctuation">]</span>
+</span><span class="code-line"><span class="token key property">default</span> <span class="token punctuation">=</span> <span class="token string">"fast"</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="使用与切换"><a aria-hidden="true" tabindex="-1" href="#使用与切换"><span class="icon icon-link"></span></a>使用与切换</h3><div class="wrap-body">
+<p>检查生效并调用：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ grok inspect
+</span><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"Hello"</span> <span class="token parameter variable">-m</span> my-model
+</span></code></pre>
+<p>也可以在 TUI 中用 <code>/model &#x3C;name></code> 切换。</p>
+<hr>
+<p>常用方式：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 使用默认模型</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"Summarize this repo"</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 临时指定模型别名</span>
+</span><span class="code-line">$ grok <span class="token parameter variable">-p</span> <span class="token string">"Review this patch"</span> <span class="token parameter variable">-m</span> strict
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="快速排查"><a aria-hidden="true" tabindex="-1" href="#快速排查"><span class="icon icon-link"></span></a>快速排查</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 1) 检查当前目录发现到的模型/配置来源</span>
+</span><span class="code-line">$ grok inspect
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 2) 检查对应 key 是否存在</span>
+</span><span class="code-line">$ <span class="token function">printenv</span> XAI_API_KEY
+</span></code></pre>
+<p>若模型无法选择，优先检查：</p>
+<ul>
+<li><code>env_key</code> 对应环境变量是否已导出。</li>
+<li><code>base_url</code> 和 <code>model</code> 是否拼写正确。</li>
+<li><code>default</code> 是否引用了已定义别名。</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="acpagent-client-protocol"><a aria-hidden="true" tabindex="-1" href="#acpagent-client-protocol"><span class="icon icon-link"></span></a>ACP（Agent Client Protocol）</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="是什么"><a aria-hidden="true" tabindex="-1" href="#是什么"><span class="icon icon-link"></span></a>是什么</h3><div class="wrap-body">
+<p>ACP 适合把 Grok 接入 IDE、脚本平台或你自己的工具链。运行方式是 JSON-RPC over stdio。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="启动-agent"><a aria-hidden="true" tabindex="-1" href="#启动-agent"><span class="icon icon-link"></span></a>启动 Agent</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ grok agent stdio
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="认证方式"><a aria-hidden="true" tabindex="-1" href="#认证方式"><span class="icon icon-link"></span></a>认证方式</h3><div class="wrap-body">
+<ul>
+<li>已登录本机账号：可直接使用本地缓存凭据。</li>
+<li>无本地登录态：设置环境变量 <code>XAI_API_KEY</code>。</li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">XAI_API_KEY</span><span class="token operator">=</span><span class="token string">"xai-..."</span>
+</span><span class="code-line">$ grok agent stdio
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="最小调用流程官方思路"><a aria-hidden="true" tabindex="-1" href="#最小调用流程官方思路"><span class="icon icon-link"></span></a>最小调用流程（官方思路）</h3><div class="wrap-body">
+<ol>
+<li><code>initialize</code>：声明客户端能力并读取可用认证方法。</li>
+<li><code>authenticate</code>：使用 <code>cached_token</code> 或 <code>xai.api_key</code>。</li>
+<li><code>session/new</code>：创建会话并指定 <code>cwd</code>。</li>
+<li><code>session/prompt</code>：发送提示。</li>
+<li>监听 <code>session/update</code>：增量接收 <code>agent_message_chunk</code> 文本。</li>
+</ol>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="精简-js-示例快速接入"><a aria-hidden="true" tabindex="-1" href="#精简-js-示例快速接入"><span class="icon icon-link"></span></a>精简 JS 示例（快速接入）</h3><div class="wrap-body">
+<p>保存为 <code>acp-quick.mjs</code> 后可直接运行：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">node</span> acp-quick.mjs
+</span></code></pre>
+<pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> spawn <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"node:child_process"</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword module">import</span> <span class="token imports">readline</span> <span class="token keyword module">from</span> <span class="token string">"node:readline"</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token function">spawn</span><span class="token punctuation">(</span><span class="token string">"grok"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"agent"</span><span class="token punctuation">,</span> <span class="token string">"stdio"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">stdio</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"pipe"</span><span class="token punctuation">,</span> <span class="token string">"pipe"</span><span class="token punctuation">,</span> <span class="token string">"pipe"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">const</span> rl <span class="token operator">=</span> readline<span class="token punctuation">.</span><span class="token method function property-access">createInterface</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">input</span><span class="token operator">:</span> p<span class="token punctuation">.</span><span class="token property-access">stdout</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">rl<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"line"</span><span class="token punctuation">,</span> <span class="token parameter">line</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token keyword">const</span> m <span class="token operator">=</span> <span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">parse</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token property-access">method</span> <span class="token operator">===</span> <span class="token string">"session/update"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">const</span> u <span class="token operator">=</span> m<span class="token punctuation">.</span><span class="token property-access">params</span><span class="token operator">?.</span>update<span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>u<span class="token operator">?.</span>sessionUpdate <span class="token operator">===</span> <span class="token string">"agent_message_chunk"</span> <span class="token operator">&#x26;&#x26;</span> u<span class="token punctuation">.</span><span class="token property-access">content</span><span class="token operator">?.</span>text<span class="token punctuation">)</span> text <span class="token operator">+=</span> u<span class="token punctuation">.</span><span class="token property-access">content</span><span class="token punctuation">.</span><span class="token property-access">text</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>u<span class="token operator">?.</span>sessionUpdate <span class="token operator">===</span> <span class="token string">"done"</span><span class="token punctuation">)</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token method function property-access">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">  <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">const</span> <span class="token function-variable function">send</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">method<span class="token punctuation">,</span> params</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span>
+</span><span class="code-line">  p<span class="token punctuation">.</span><span class="token property-access">stdin</span><span class="token punctuation">.</span><span class="token method function property-access">write</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">jsonrpc</span><span class="token operator">:</span> <span class="token string">"2.0"</span><span class="token punctuation">,</span> <span class="token literal-property property">id</span><span class="token operator">:</span> id<span class="token operator">++</span><span class="token punctuation">,</span> method<span class="token punctuation">,</span> params <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"initialize"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">protocolVersion</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">clientCapabilities</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">terminal</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"authenticate"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">methodId</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token property-access">env</span><span class="token punctuation">.</span><span class="token constant">XAI_API_KEY</span> <span class="token operator">?</span> <span class="token string">"xai.api_key"</span> <span class="token operator">:</span> <span class="token string">"cached_token"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"session/new"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">cwd</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token method function property-access">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">mcpServers</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token comment">// 实际接入时，拿到 sessionId 后再发送 session/prompt</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="自动化场景建议"><a aria-hidden="true" tabindex="-1" href="#自动化场景建议"><span class="icon icon-link"></span></a>自动化场景建议</h3><div class="wrap-body">
+<ul>
+<li>在 CI/脚本里配合 <code>--no-auto-update</code>，减少额外噪音和不确定性。</li>
+<li>若只需要一次性结果，用 <code>grok -p</code> 更简单；需要双向协议集成时再用 ACP。</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
+<ul>
+<li><a href="https://docs.x.ai/build/overview">Overview</a></li>
+<li><a href="https://docs.x.ai/build/modes-and-commands">Modes and Commands</a></li>
+<li><a href="https://docs.x.ai/build/cli/headless-scripting">Headless &#x26; Scripting</a></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
