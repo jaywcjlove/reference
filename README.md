@@ -144,6 +144,7 @@ Quick Reference
 [Gemma 4](./docs/gemma4.md)<!--rehype:style=background:rgb(87 132 217);&class=tag&data-lang=AI-->
 [Gemini CLI](./docs/gemini-cli.md)<!--rehype:style=background:rgb(217 87 96);&class=tag&data-lang=AI-->
 [Grok CLI](./docs/grok-cli.md)<!--rehype:style=background:rgb(122 87 217);&class=tag&data-lang=AI-->
+[Grok](./docs/grok.md)<!--rehype:style=background:rgb(84 84 84);&class=tag&data-lang=官方-->
 <!--rehype:class=home-card-->
 
 ## 编程
