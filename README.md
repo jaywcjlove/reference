@@ -360,7 +360,6 @@ Quick Reference
 
 [Cisco 网络设备](./docs/cisco-devices.md)<!--rehype:style=background: rgb(4 159 217);&class=contributing&data-info=👆看看还缺点儿什么？-->
 [Huawei 网络设备](./docs/huawei-devices.md)<!--rehype:style=background: rgb(222 0 8);&class=contributing&data-info=👆看看还缺点儿什么？-->
-
 <!--rehype:class=home-card-->
 
 ## 快捷键 - 创意设计
@@ -374,7 +373,6 @@ Quick Reference
 [CorelDRAW](./docs/coreldraw.md)<!--rehype:style=background: rgb(16 185 129);-->
 [Figma](./docs/figma.md)<!--rehype:style=background: rgb(147 90 238);-->
 [Sketch](./docs/sketch.md)<!--rehype:style=background: rgb(223 148 0);&class=tag&data-lang=macOS-->
-
 <!--rehype:class=home-card-->
 
 ## 快捷键 - 开发工具 / IDE
@@ -388,30 +386,17 @@ Quick Reference
 [WebStorm](./docs/webstorm.md)<!--rehype:style=background: rgb(32 148 220);-->
 [Xcode](./docs/xcode.md)<!--rehype:style=background: rgb(24 151 233);&class=tag&data-lang=macOS-->
 [Zed](./docs/zed.md)<!--rehype:style=background: rgb(71 71 71);-->
-
 <!--rehype:class=home-card-->
 
-## 快捷键 - 浏览器 / 网页工具
+## 快捷键 - 其它
 
 [Firefox](./docs/firefox.md)<!--rehype:style=background: rgb(253 53 76);-->
 [Google Chrome](./docs/google-chrome.md)<!--rehype:style=background: rgb(29 116 232);-->
 [Vimium](./docs/vimium.md)<!--rehype:style=background: rgb(49 168 255);&class=contributing&class=tag&data-lang=浏览器插件-->
-
-<!--rehype:class=home-card-->
-
-## 快捷键 - 操作系统 / 系统功能
-
 [Finder](./docs/finder.md)<!--rehype:style=background: rgb(253 53 76);&class=tag&data-lang=macOS-->
-
-<!--rehype:class=home-card-->
-
-## 快捷键 - 在线服务 / 效率工具
-
 [Gmail](./docs/gmail.md)<!--rehype:style=background: rgb(234 67 54);-->
 [Gitlab](./docs/gitlab.md)<!--rehype:style=background: rgb(226 67 41);-->
 [Twitter(X)](./docs/twitter.md)<!--rehype:style=background: rgb(91 163 230);-->
-
-
 <!--rehype:class=home-card-->
 
 ## 其它
