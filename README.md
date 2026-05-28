@@ -363,7 +363,7 @@ Quick Reference
 
 <!--rehype:class=home-card-->
 
-## 软件 - 创意设计
+## 快捷键 - 创意设计
 
 [Adobe Lightroom](./docs/adobe-lightroom.md)<!--rehype:style=background: rgb(49 168 255);-->
 [Adobe Photoshop](./docs/adobe-photoshop.md)<!--rehype:style=background: rgb(49 168 255);-->
