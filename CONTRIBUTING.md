@@ -249,7 +249,6 @@ REF_LABEL=网站首页
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站。
 
-[object.cool](https://r.object.cool)
 [baiyapeng.cc](https://ref.cc.baiyapeng.cc)
 [stacktao.cn](https://ref.stacktao.cn)
 [chanlun.pro](https://ref.chanlun.pro)
