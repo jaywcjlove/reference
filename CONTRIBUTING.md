@@ -261,7 +261,6 @@ REF_LABEL=网站首页
 [tamamo.top](https://ref.tamamo.top)
 [sakuraovo.site](https://quick-re.site-ali.sakuraovo.site)
 [nyanon.online](https://quick-re.nyanon.online)
-[0x0f.dev](https://ref.0x0f.dev)
 [78888889.xyz](https://reference.78888889.xyz)
 [pusukeji.com](https://reference.pusukeji.com/)
 [magese.com](https://ref.magese.com)
