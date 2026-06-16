@@ -269,7 +269,7 @@ Quick Reference
 
 ## 命令
 
-[ADB, Android Debug Bridge](./docs/adb.md)<!--rehype:style=background:rgb(238 0 0);&class=contributing tag&data-lang=Android&data-info=👆看看还缺点儿什么？-->
+[ADB, Android Debug Bridge](./docs/adb.md)<!--rehype:style=background:rgb(238 0 0);&class=tag&data-lang=Android-->
 [Ansible](./docs/ansible.md)<!--rehype:style=background:rgb(238 0 0);&class=contributing tag&data-lang=RedHat&data-info=👆看看还缺点儿什么？-->
 [Awk](./docs/awk.md)<!--rehype:style=background:rgb(16 185 129);-->
 [Curl](./docs/curl.md)<!--rehype:style=background:rgb(16 185 129);-->

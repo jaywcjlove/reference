@@ -1,387 +1,358 @@
 Android Debug Bridge 备忘清单
 ===
 
-[ADB](https://developer.android.com/studio/command-line/adb.html) 既 Android Debug Bridge，是 Google 的 Android SDK 中的一个命令行工具，可让您的计算机控制 Android 设备执行各种设备操作。以下是您可以与 [ADB](https://developer.android.com/studio/command-line/adb.html) 一起使用的一些最常见的命令及其用法
+[Android Debug Bridge](https://developer.android.com/tools/adb)（`adb`）是 Android SDK Platform Tools 中的命令行工具，用于与 Android 设备或模拟器通信。它可以安装和调试应用、复制文件、打开设备 Shell、采集日志、生成错误报告，以及执行常见的设备诊断操作。
 
 入门
 ----
 
-### 设备基础
+### 安装与环境
+
+:-- | --
+:-- | --
+`adb version` | 查看当前 `adb` 版本
+`adb help` | 查看 `adb` 命令帮助
+`adb start-server` | 启动本机 `adb` server
+`adb kill-server` | 停止本机 `adb` server
+`adb server-status` | 查看 server 状态与无线调试相关配置
+`adb reconnect` | 重新连接设备
+`adb reconnect device` | 重新连接设备端连接
+`adb reconnect offline` | 重新连接处于 `offline` 状态的设备
+<!--rehype:className=left-align code-nowrap-->
+
+`adb` 位于 `android_sdk/platform-tools/`。命令行使用时通常需要把该目录加入 `PATH`，也建议设置 `ANDROID_HOME` 指向 SDK 安装目录。
+
+### 设备列表与状态
 <!--rehype:wrap-class=row-span-2-->
 
 :-- | --
 :-- | --
-`adb devices`                     | 列出已连接的设备
-`adb devices -l`                  | 列出已连接的设备和种类
-`adb connect [IP:PORT]`           | 连接到指定 IP 和端口的设备
-`adb disconnect [IP:PORT]`        | 断开指定 IP 和端口的设备连接，若未指定，则断开所有连接
-`adb root`                        | 以 `root` 权限重新启动 `adbd`
-`adb start-server`                | 启动 `adb` 服务
-`adb kill-server`                 | 停止 `adb` 服务
-`adb remount`                     | 重新挂载具有读/写访问权限的文件系统
-`adb reboot`                      | 重启设备
-`adb reboot bootloader`           | 将设备重启到 fastboot 模式
-`adb reboot recovery`             | 将设备重启到恢复模式
-`adb disable-verity`              | 禁用设备的 dm-verity 安全特性
+`adb devices` | 列出连接到 server 的设备
+`adb devices -l` | 列出设备并显示产品、型号等详细信息
+`adb get-state` | 输出设备状态
+`adb get-serialno` | 输出设备序列号
+`adb wait-for-device <command>` | 等到设备连接后再执行命令
+`adb -s <serial> <command>` | 指定某一台设备执行命令
+`adb -d <command>` | 指定唯一 USB 设备执行命令
+`adb -e <command>` | 指定唯一模拟器执行命令
 <!--rehype:className=left-align code-nowrap-->
 
----
+设备常见状态：
 
-- `wait-for-device` 可以在 `adb` 之后指定，以确保该命令在设备连接后运行
-- `-s` 可用于在多个连接时将命令发送到特定设备
+- `device`：已连接到 `adb` server，可执行命令
+- `offline`：设备未响应，常见于授权弹窗未确认或连接异常
+- `unauthorized`：设备未授权当前电脑调试
+- `no device`：没有连接到设备
+<!--rehype:className=cols-2 style-none-->
 
 #### 示例
 
 ```bash
-$ adb wait-for-device devices
- List of devices attached
- somedevice-1234 device
- someotherdevice-1234 device
+$ adb devices -l
+$ adb -s emulator-5554 shell getprop ro.product.model
+$ adb wait-for-device shell getprop sys.boot_completed
 ```
 
+### 重启与权限
+
+:-- | --
+:-- | --
+`adb reboot` | 重启设备
+`adb reboot bootloader` | 重启到 bootloader / fastboot 模式
+`adb reboot recovery` | 重启到 recovery 模式
+`adb root` | 以 root 权限重启 `adbd`，仅部分开发镜像支持
+`adb unroot` | 以非 root 权限重启 `adbd`
+`adb remount` | 重新挂载分区为可写，通常需要 root
+`adb disable-verity` | 禁用 verified boot 检查，通常仅调试镜像可用
+<!--rehype:className=left-align code-nowrap-->
+
+应用与文件
+----
+
+### 安装与卸载
+
+:-- | --
+:-- | --
+`adb install app.apk` | 安装 APK 到设备
+`adb install -r app.apk` | 覆盖安装，保留应用数据
+`adb install -d app.apk` | 允许安装低版本 APK
+`adb install -g app.apk` | 安装后授予清单中的运行时权限
+`adb install-multiple base.apk split.apk` | 安装多 APK / split APK
+`adb uninstall <package>` | 卸载应用
+`adb uninstall -k <package>` | 卸载应用但保留数据和缓存目录
+<!--rehype:className=left-align code-nowrap-->
+
+#### 示例
+
 ```bash
-$ adb -s somedevice-1234 root
+$ adb install -r app-debug.apk
+$ adb install-multiple base.apk config.arm64_v8a.apk
+$ adb uninstall com.example.app
 ```
+
+### 包管理
+<!--rehype:wrap-class=row-span-2-->
+
+:-- | --
+:-- | --
+`adb shell pm list packages` | 列出包名
+`adb shell pm list packages -3` | 仅列出第三方应用
+`adb shell pm list packages -s` | 仅列出系统应用
+`adb shell pm list packages -f` | 列出包名和 APK 路径
+`adb shell pm list packages -d` | 列出已停用应用
+`adb shell pm list packages -e` | 列出已启用应用
+`adb shell pm path <package>` | 查看 APK 文件路径
+`adb shell dumpsys package <package>` | 查看包的详细信息
+`adb shell am force-stop <package>` | 强制停止应用
+`adb shell monkey -p <package> 1` | 启动指定包的默认入口
+<!--rehype:className=left-align code-nowrap-->
+
+### 文件传输
+
+:-- | --
+:-- | --
+`adb push <local> <remote>` | 从电脑复制文件到设备
+`adb pull <remote> [local]` | 从设备复制文件到电脑
+`adb sync` | 同步构建输出到设备，常用于平台开发
+`adb shell ls <path>` | 列出设备目录
+`adb shell rm <path>` | 删除设备文件
+`adb shell mkdir -p <path>` | 创建设备目录
+<!--rehype:className=left-align code-nowrap-->
+
+#### 示例
+
+```bash
+$ adb push app.apk /sdcard/Download/
+$ adb pull /sdcard/Download/log.txt .
+$ adb shell ls -lah /sdcard/Download
+```
+
+Shell 与交互
+----
+
+### 远程 Shell
+
+:-- | --
+:-- | --
+`adb shell` | 打开交互式设备 Shell
+`adb shell <command>` | 在设备上执行单条命令
+`adb exec-out <command>` | 执行命令并将原始输出写到本机 stdout
+`adb shell getprop` | 查看系统属性
+`adb shell getprop <key>` | 查看指定系统属性
+`adb shell setprop <key> <value>` | 设置系统属性
+`adb shell settings list global` | 查看 global 设置
+`adb shell settings put global http_proxy host:port` | 设置全局 HTTP 代理
+`adb shell settings put global http_proxy :0` | 清除全局 HTTP 代理
+<!--rehype:className=left-align code-nowrap-->
+
+### 输入与界面控制
+
+:-- | --
+:-- | --
+`adb shell input tap <x> <y>` | 点击屏幕坐标
+`adb shell input swipe x1 y1 x2 y2` | 滑动屏幕
+`adb shell input text <text>` | 输入文本，空格常写作 `%s`
+`adb shell input keyevent 66` | 发送按键事件，`66` 为回车
+`adb shell wm size` | 查看屏幕分辨率
+`adb shell wm density` | 查看屏幕密度
+`adb shell wm size 1080x1920` | 临时修改分辨率
+`adb shell wm size reset` | 重置分辨率
+<!--rehype:className=left-align code-nowrap-->
+
+#### 示例
+
+```bash
+$ adb shell input tap 540 1800
+$ adb shell input text "Hello%sAndroid"
+$ adb shell input keyevent KEYCODE_HOME
+```
+
+### Activity 与 Intent
+<!--rehype:wrap-class=row-span-2-->
+
+:-- | --
+:-- | --
+`adb shell am start -n <package>/<activity>` | 启动指定 Activity
+`adb shell am start -a android.intent.action.VIEW -d <url>` | 打开 URL
+`adb shell am start -a android.intent.action.VIEW -t image/*` | 打开图片查看器
+`adb shell am broadcast -a <action>` | 发送广播
+`adb shell am startservice -n <component>` | 启动服务
+`adb shell am force-stop <package>` | 强制停止应用
+`adb shell pidof <package>` | 查看进程 PID
+<!--rehype:className=left-align code-nowrap-->
+
+#### 示例
+
+```bash
+$ adb shell am start -a android.intent.action.VIEW -d https://developer.android.com
+$ adb shell am force-stop com.example.app
+```
+
+日志与诊断
+----
 
 ### Logcat
 <!--rehype:wrap-class=row-span-2-->
 
 :-- | --
 :-- | --
-`adb logcat`                         | 将日志消息打印到标准输出
-`adb logcat -g`                      | 显示当前日志缓冲区大小
-`adb logcat -G <size>`               | 设置缓冲区大小（K 或 M）
-`adb logcat -c`                      | 清除日志缓冲区
-`adb logcat *:V`                     | 启用所有日志消息（详细）
-`adb logcat -f <filename>`           | 将日志转储到指定文件
+`adb logcat` | 打印设备日志，等同于 `adb shell logcat`
+`adb logcat --help` | 查看当前设备支持的 logcat 选项
+`adb logcat -c` | 清空日志缓冲区
+`adb logcat -g` | 查看日志缓冲区大小
+`adb logcat -G 16M` | 设置日志缓冲区大小
+`adb logcat -d` | 输出现有日志后退出
+`adb logcat -f /sdcard/log.txt` | 在设备上写入日志文件
+`adb logcat -v time` | 使用带时间的输出格式
+`adb logcat --pid=<pid>` | 仅显示指定 PID 的日志
+<!--rehype:className=left-align code-nowrap-->
+
+Logcat 过滤表达式格式为 `tag:priority`。优先级从低到高为：
+
+- `V`：Verbose
+- `D`：Debug
+- `I`：Info
+- `W`：Warning
+- `E`：Error
+- `F`：Fatal
+- `S`：Silent，不输出任何日志
+<!--rehype:className=cols-2 style-none-->
+
+#### 示例
+
+```bash
+$ adb logcat "*:W"
+$ adb logcat ActivityManager:I MyApp:D "*:S"
+$ adb shell pidof -s com.example.app
+$ adb logcat --pid=$(adb shell pidof -s com.example.app)
+```
+
+### dumpsys
+
+:-- | --
+:-- | --
+`adb shell dumpsys` | 输出所有系统服务诊断信息
+`adb shell dumpsys -l` | 列出可用系统服务
+`adb shell dumpsys <service>` | 输出指定服务信息
+`adb shell dumpsys <service> -h` | 查看指定服务的帮助
+`adb shell dumpsys battery` | 查看电池状态
+`adb shell dumpsys meminfo <package>` | 查看应用内存信息
+`adb shell dumpsys activity activities` | 查看 Activity 栈
+`adb shell dumpsys window displays` | 查看显示窗口信息
+<!--rehype:className=left-align code-nowrap-->
+
+### bugreport 与诊断文件
+
+:-- | --
+:-- | --
+`adb bugreport` | 生成完整错误报告
+`adb bugreport <path>` | 将错误报告保存到指定路径
+`adb shell screencap /sdcard/screen.png` | 在设备上保存截图
+`adb exec-out screencap -p > screen.png` | 直接保存截图到电脑
+`adb shell screenrecord /sdcard/demo.mp4` | 录制屏幕视频
+`adb shell screenrecord --time-limit 30 /sdcard/demo.mp4` | 限制录屏时长
+<!--rehype:className=left-align code-nowrap-->
+
+`screenrecord` 默认最长录制 3 分钟，不录制音频。录制完成后可用 `adb pull` 下载到电脑。
+
+网络调试
+----
+
+### Android 11 及以上无线调试
+<!--rehype:wrap-class=row-span-2-->
+
+Android 11（API 30）及以上支持通过无线调试配对，不需要先使用 USB 线连接。电脑和设备需要在同一无线网络内，并使用最新 SDK Platform Tools。
+
+:-- | --
+:-- | --
+`adb pair <ip>:<pairing-port>` | 使用设备上显示的配对端口进行配对
+`adb connect <ip>:<debug-port>` | 连接已配对设备的调试端口
+`adb disconnect <ip>:<debug-port>` | 断开指定无线设备
+`adb mdns services` | 查看 mDNS 发现的 adb 服务
+`adb mdns track-services --proto-text` | 持续查看 mDNS 服务详情
 <!--rehype:className=left-align code-nowrap-->
 
 #### 示例
 
 ```bash
-$ adb logcat -G 16M
-$ adb logcat *:V > output.log
+$ adb pair 192.168.1.20:37123
+# 输入设备上显示的配对码
+$ adb connect 192.168.1.20:42115
+$ adb devices
 ```
 
-#### 过滤日志输出
+### Android 10 及以下 TCP 调试
 
-- `V` 最详细的信息(最低优先级)
-- `D` 调试信息
-- `I` 普通信息
-- `W` 警告信息
-- `E` 错误信息
-- `F` 致命错误信息
-- `S` 静默(最高优先级)
-<!--rehype:className=cols-2 shortcuts style-none-->
-
-例如，要显示优先级不低于 `警告` 的所有标记的所有日志消息，可以使用以下命令：
-
-```bash
-$ adb logcat *:W
-```
-
-### 文件管理
-
-:-- | --
-:-- | --
-`adb push <local> <remote>` | 将本地文件复制到远程设备
-`adb pull <remote> <local>` | 将远程设备文件复制到本地
-<!--rehype:className=left-align code-nowrap-->
-
-#### 示例
-
-```bash
-$ echo "This is a test" > test.txt
-$ adb push  test.txt /sdcard/test.txt
-$ adb pull /sdcard/test.txt pulledTest.txt
-```
-
-### 远程 Shell
-
-:-- | --
-:-- | --
-`adb shell <command>`                  | 在设备上运行指定的命令（大多数 Unix 命令在这里工作）
-`adb shell wm size`                    | 显示当前屏幕分辨率
-`adb shell wm size WxH`                | 将分辨率设置为 WxH
-`adb shell pm list packages`           | 列出所有已安装的应用包
-`adb shell pm list packages -3`        | 列出所有已安装的第三方的应用包
-`adb shell monkey -p app.package.name <count>` | 启动指定包名的应用程序, 并执行测试
-<!--rehype:className=style-list-arrow-->
-
-### 包安装
-
-:-- | --
-:-- | --
-`adb install <apk>`          | 安装应用程序
-`adb install <path>`         | 从手机路径安装应用
-`adb install -r <path>`      | 从手机路径安装应用（允许覆盖安装）
-`adb uninstall <name>`       | 卸载应用程序
-<!--rehype:className=left-align code-nowrap-->
-
-### Paths
-<!--rehype:wrap-class=row-span-2-->
-
-:-- | --
-:-- | --
-`/data/data/<package>/databases` | 应用程序数据库
-`/data/data/<package>/shared_prefs/` | 共享偏好设置
-`/data/app` | 用户安装的 APK
-`/system/app` | 系统预装的 APK 文件
-`/mnt/asec` | 加密的应用程序（App2SD）
-`/mnt/emmc` | 内部 SD 卡
-`/mnt/sdcard` | 外部/内部 SD 卡
-`/mnt/sdcard/external_sd` | 外置 SD 卡
-<!--rehype:className=style-list-arrow-->
-
----
-
-:-- | --
-:-- | --
-`adb shell ls` | 列出目录内容
-`adb shell ls -s` | 每个文件的打印尺寸
-`adb shell ls -R` | 递归列出子目录
-<!--rehype:className=left-align code-nowrap-->
-
-### 手机信息
-<!--rehype:wrap-class=row-span-2-->
-
-:-- | --
-:-- | --
-`adb get-statе` | 打印设备状态
-`adb get-serialno` | 获取设备的序列号
-`adb shell dumpsys iphonesybinfo` | 获取设备的 IMEI 信息
-`adb shell netstat` | 列出设备上的所有 TCP 连接
-`adb shell pwd` | 打印当前工作目录
-`adb shell dumpsys battery` | 获取设备电池状态
-`adb shell pm list features` |列出设备支持的所有功能
-`adb shell service list` | 列出设备上运行的所有服务
-`adb shell dumpsys activity <package>/<activity>` | 获取指定包和活动的信息
-`adb shell ps` | 打印设备上所有运行的进程状态
-`adb shell wm size` | 显示当前设备的屏幕分辨率
-`dumpsys window windows` \| `grep -E 'mCurrentFocus\|mFocusedApp'` | 打印当前应用程序的打开活动的信息
-<!--rehype:className=style-list-arrow-->
-
-### 包信息
-
-:-- | --
-:-- | --
-`adb shell pm list packages` | 列出包名称
-`adb shell pm list packages -f` | 列出包名 + apks 的路径
-`adb shell pm list packages -3` | 列出第三方包名称
-`adb shell pm list packages -s` | 仅列出系统包
-`adb shell pm list packages -u` | 列出出包和未安装包
-`adb shell pm list packages -i` | 列出包名称 + 安装来源
-`adb shell pm list packages -e` | 列出启用的包
-`adb shell pm list packages -d` | 列出禁用的包
-`adb shell dumpsys package packages` | 列出所有应用程序的信息
-`adb shell dumpsys package <name>` | 列出一个包的信息
-`adb shell pm path <package>` | 列出 APK 文件的路径
-<!--rehype:className=style-list-arrow-->
-
-### 设备相关命令
-<!--rehype:wrap-class=col-span-2 row-span-2-->
-
-:-- | --
-:-- | --
-`adb reboot recovery` | 重启设备进入恢复模式
-`adb reboot fastboot` | 重启设备进入恢复模式
-`adb shell screencap -p "/path/to/screenshot.png"` | 截图
-`adb shell screenrecord "/path/to/record.mp4"` | 录制设备屏幕
-`adb backup -apk -all -f backup.ab` | 备份设置和应用程序
-`adb backup -apk -shared -all -f backup.ab` | 备份设置、应用程序和共享存储
-`adb backup -apk -nosystem -all -f backup.ab` | 仅备份非系统应用程序
-`adb restore backup.ab` | 恢复以前的备份
-`adb shell am start -a android.intent.action.VIEW -d URL` | 打开网址
-`adb shell am start -t image/* -a android.intent.action.VIEW` | 打开画廊
-<!--rehype:className=code-nowrap left-align-->
-
-### 权限
-
-:-- | --
-:-- | --
-`adb shell permissions groups` | 列出所有已定义的权限组
-`adb shell list permissions -g -r` | 列出了所有权限的详细信息
-<!--rehype:className=style-list-arrow-->
-
-### Logs
-
-:-- | --
-:-- | --
-`adb logcat [options] [filter] [filter]` | 查看设备日志
-`adb bugreport` | 打印错误报告
-<!--rehype:className=style-list-arrow-->
-
-常见的 ADB 命令
----
-
-### 将文件推送到 Android 设备的下载文件夹
-
-```bash
-$ adb push example.apk /sdcard/Download/
-```
-
-### 列出所有已安装的包并获取完整路径
-
-```bash
-$ adb shell pm list packages -f
-```
-
-### 从安卓设备中提取文件
-
-```bash
-$ adb pull /sdcard/Download/example.apk
-```
-
-### 从主机安装 APK 到 Android 设备
-
-```bash
-$ adb install example.apk
-```
-
-### 从 Android 设备存储安装 APK
-
-```bash
-$ adb install /sdcard/Download/example.apk
-```
-
-### 设置网络代理
-
-```bash
-$ adb shell settings put global http_proxy <address>:<port>
-```
-
-### 禁用网络代理
-
-```bash
-$ adb shell settings put global http_proxy :0
-```
-
-### 显示连接的设备并指定一个设备进行 Shell
+旧设备通常需要先通过 USB 连接，然后把 `adbd` 切换到 TCP 端口：
 
 ```bash
 $ adb devices
-$ adb -s 7f1c864e shell
-```
-
-`7f1c864e` 是设备 `ID`
-
-### 通过 IP 地址连接到设备
-
-```bash
-$ adb connect 192.168.56.101:5555
-```
-
-### 通过 Wi-Fi 连接 ADB
-<!--rehype:wrap-class=row-span-5-->
-
-我们可以通过 `Wi-Fi` 或专门使用 `tcp` 连接使用 `adb`。 要通过 `Wi-Fi` 使用 `adb`，首先通过 `USB` 连接手机并启用 `USB` 调试。然后列出所有设备：
-
-```bash
-$ adb devices
-# 这应该给出这样的输出：
-# device_id    device
-```
-
-现在检查 `Android` 设备的 `IP`：
-
-```bash
-$ adb shell ifconfig
-# 输出:
-
-wlan0  Link encap:UNSPEC    Driver icnss
-       inet addr:XXX.XXX.X.XX  Bcast:XXX.XXX.X.XXX
-```
-
-记下 `inet addr` 后的 `IP` 地址。稍后要用。现在在某个端口重新启动 `tcpip`：
-
-```bash
-$ adb tcpip $port
-```
-
-例如 5555：
-
-```bash
 $ adb tcpip 5555
+$ adb shell ip addr show wlan0
+$ adb connect 192.168.1.20:5555
 ```
 
-您现在可以断开 USB 线缆使用。 若要连接到设备请键入以下命令：
+完成后可断开 USB。调试结束建议执行：
 
 ```bash
-$ adb connect $ip:$port
+$ adb disconnect 192.168.1.20:5555
+$ adb usb
 ```
 
-例如:
+常用流程
+----
+
+### 安装、启动并看日志
 
 ```bash
-$ adb connect 192.168.1.4:5555
+$ adb install -r app-debug.apk
+$ adb shell monkey -p com.example.app 1
+$ adb logcat MyApp:D "*:S"
 ```
 
-### 将计算机上的 APK 文件安装到设备
+### 抓取截图和录屏
 
 ```bash
-$ adb install /Users/dev/projects/myapp.apk
+$ adb exec-out screencap -p > screen.png
+$ adb shell screenrecord --time-limit 30 /sdcard/demo.mp4
+$ adb pull /sdcard/demo.mp4 .
 ```
 
-### 查找应用的 APK 路径
+### 查找应用 APK 并导出
 
 ```bash
-$ adb shell pm path com.example.myapp
+$ adb shell pm path com.example.app
+$ adb pull /data/app/~~xxx/base.apk ./example.apk
 ```
 
-将 `com.example.myapp` 替换为您自己的应用程序包名称
-
-### 通过名称查找应用的包名
+### 查看前台 Activity
 
 ```bash
-$ adb shell pm list packages | grep app_name
+$ adb shell dumpsys activity activities | grep mResumedActivity
 ```
 
-### 从设备提取 APK 到您的计算机
+在 Windows PowerShell 中可改用：
 
-```bash
-$ adb pull /data/app/com.example.myapp.apk ./
+```powershell
+$ adb shell dumpsys activity activities | Select-String "mResumedActivity"
 ```
 
-### 将文件从计算机复制到设备
+### 常见排障
 
-```bash
-$ adb push path/to/local/file /sdcard/foo.txt
-```
+:-- | --
+:-- | --
+`unauthorized` | 解锁设备并确认 RSA 授权弹窗；必要时撤销 USB 调试授权后重连
+`offline` | 重新插拔、执行 `adb reconnect`，或重启 `adb` server
+无线调试找不到设备 | 确认同一网络、mDNS 可用，并检查 `adb server-status`
+多个设备冲突 | 使用 `adb -s <serial>` 指定设备
+命令无权限 | 需要 root、debuggable 应用或对应系统权限时，普通设备可能无法执行
+日志太多 | 使用 `tag:priority` 过滤，并用 `"*:S"` 收窄范围
+<!--rehype:className=left-align-->
 
-### 滚动屏幕
+参考资料
+----
 
-```bash
-$ adb shell input swipe 300 300 500 1000 # 上
-$ adb shell input swipe 500 1000 300 300 # 下
-```
-
-### 发文本
-
-使用虚拟键盘发送文本：
-
-```bash
-$ adb shell input text "Hello World"
-```
-
-### 发送按键事件
-
-```bash
-$ adb shell input keyevent 66
-# 66 是回车键码
-```
-
-### 发送点击
-
-点击屏幕：
-
-```bash
-$ adb shell input tap x y
-```
-
-### 查看包的日志
-
-```bash
-$ adb shell 'logcat --pid=$(pidof -s <package_name>)'
-```
-
-查看特定包的日志
+- [Android Debug Bridge (adb)](https://developer.android.com/tools/adb)
+- [Logcat command-line tool](https://developer.android.com/tools/logcat)
+- [dumpsys](https://developer.android.com/tools/dumpsys)
+- [Android command-line tools](https://developer.android.com/tools)
