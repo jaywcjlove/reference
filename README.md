@@ -114,7 +114,6 @@ Quick Reference
 <!--rehype:style=padding-bottom: 23px;-->
 
 [Ansible](./docs/ansible.md)<!--rehype:style=background:rgb(238 0 0);&class=contributing tag&data-lang=RedHat&data-info=👆看看还缺点儿什么？-->
-[CMake](./docs/cmake.md)<!--rehype:style=background:rgb(92 107 192);&class=contributing-->
 [C#](./docs/cs.md)<!--rehype:style=background:rgb(6 147 13);&class=contributing-->
 [Django](./docs/django.md)<!--rehype:style=background:rgb(12 75 51);&class=contributing tag&data-lang=Python-->
 [Flask](./docs/flask.md)<!--rehype:style=background:rgb(210 168 255);&class=contributing tag&data-lang=Python-->
@@ -275,7 +274,7 @@ Quick Reference
 [Chmod](./docs/chmod.md)<!--rehype:style=background:rgb(16 185 129);-->
 [Chown](./docs/chown.md)<!--rehype:style=background:rgb(12 75 51/var(\-\-bg\-opacity));-->
 [Cron](./docs/cron.md)<!--rehype:style=background:rgb(239 68 68);-->
-[CMake](./docs/cmake.md)<!--rehype:style=background:rgb(92 107 192);&class=contributing-->
+[CMake](./docs/cmake.md)<!--rehype:style=background:rgb(92 107 192);-->
 [CMD](./docs/cmd.md)<!--rehype:style=background:rgb(99 99 99);-->
 [.NET CLI](./docs/dotnet-cli.md)<!--rehype:style=background:rgb(16 185 129);&class=contributing tag&data-lang=#C-->
 [Find](./docs/find.md)<!--rehype:style=background:rgb(16 185 129);-->
