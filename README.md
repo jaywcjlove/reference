@@ -135,6 +135,7 @@ Quick Reference
 
 ## AI
 
+[AI 工具](./docs/ai-tools.md)<!--rehype:style=background:rgb(74 161 129);&class=tag&data-lang=AI-->
 [ChatGPT](./docs/chatgpt.md)<!--rehype:style=background:rgb(74 161 129);&class=tag&data-lang=AI-->
 [Codex CLI](./docs/codex-cli.md)<!--rehype:style=background:rgb(74 161 129);&class=tag&data-lang=AI-->
 [Claude Code](./docs/claude.md)<!--rehype:style=background:rgb(217 119 87);&class=tag&data-lang=AI-->
