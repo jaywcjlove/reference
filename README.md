@@ -278,7 +278,7 @@ Quick Reference
 [Cron](./docs/cron.md)<!--rehype:style=background:rgb(239 68 68);-->
 [CMake](./docs/cmake.md)<!--rehype:style=background:rgb(92 107 192);&class=contributing-->
 [CMD](./docs/cmd.md)<!--rehype:style=background:rgb(99 99 99);-->
-[.NET CLI](./docs/dotnet-cli.md)<!--rehype:style=background:rgb(16 185 129);&class=contributing tag&data-lang=#C-->
+[.NET CLI](./docs/dotnet-cli.md)<!--rehype:style=background:rgb(16 185 129);&class=tag&data-lang=#C-->
 [Find](./docs/find.md)<!--rehype:style=background:rgb(16 185 129);-->
 [FFmpeg](./docs/ffmpeg.md)<!--rehype:style=background:rgb(0 193 9);&class=contributing-->
 [FTP](./docs/ftp.md)<!--rehype:style=background:rgb(99 99 99);-->
