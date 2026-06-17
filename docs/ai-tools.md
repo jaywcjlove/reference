@@ -7,7 +7,7 @@ AI 工具 备忘清单
 ---
 
 ### 常见场景
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 | 场景 | 优先查看 | 验证重点 |
 | --- | --- | --- |
@@ -22,17 +22,18 @@ AI 工具 备忘清单
 
 ### 验证顺序
 
-1. 先读官方 Docs / Help Center / Learn 文档，确认产品定位与能力边界。
-2. 查看 Pricing、Terms、Privacy、Security、Release notes 或 Status 页面。
-3. 用真实任务小样本验证：同一输入至少跑 3 次，记录输出质量、延迟与成本。
-4. 对接代码、文档或企业数据前，确认权限、日志、数据保留和训练开关。
-5. 上线前保留人工审核、回滚方案和替代模型路径。
+- 先读官方 Docs / Help Center / Learn 文档，确认产品定位与能力边界。
+- 查看 Pricing、Terms、Privacy、Security、Release notes 或 Status 页面。
+- 用真实任务小样本验证：同一输入至少跑 3 次，记录输出质量、延迟与成本。
+- 对接代码、文档或企业数据前，确认权限、日志、数据保留和训练开关。
+- 上线前保留人工审核、回滚方案和替代模型路径。
+<!--rehype:className=style-round-->
 
 通用聊天与搜索
 ---
 
 ### 全球常用助手
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=col-span-3-->
 
 | 工具 | 适合 | 官方入口/文档 |
 | --- | --- | --- |
@@ -47,6 +48,7 @@ AI 工具 备忘清单
 <!--rehype:className=left-align show-header-->
 
 ### 中文与开源生态
+<!--rehype:wrap-class=col-span-3-->
 
 | 工具 | 适合 | 官方入口/文档 |
 | --- | --- | --- |
@@ -64,7 +66,7 @@ AI 工具 备忘清单
 ---
 
 ### 编码助手
-<!--rehype:wrap-class=row-span-3-->
+<!--rehype:wrap-class=col-span-3-->
 
 | 工具 | 适合 | 官方入口/文档 |
 | --- | --- | --- |
@@ -76,6 +78,7 @@ AI 工具 备忘清单
 <!--rehype:className=left-align show-header-->
 
 ### 应用生成与自动开发
+<!--rehype:wrap-class=col-span-3-->
 
 | 工具 | 适合 | 官方入口/文档 |
 | --- | --- | --- |
@@ -91,7 +94,7 @@ AI 工具 备忘清单
 ---
 
 ### 图像与设计
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=col-span-3-->
 
 | 工具 | 适合 | 官方入口/文档 |
 | --- | --- | --- |
@@ -102,6 +105,7 @@ AI 工具 备忘清单
 <!--rehype:className=left-align show-header-->
 
 ### 视频、语音与音乐
+<!--rehype:wrap-class=col-span-3-->
 
 | 工具 | 适合 | 官方入口/文档 |
 | --- | --- | --- |
@@ -116,7 +120,7 @@ AI 工具 备忘清单
 ---
 
 ### 本地运行
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=col-span-3-->
 
 | 工具 | 适合 | 官方入口/文档 |
 | --- | --- | --- |
@@ -133,6 +137,7 @@ AI 工具 备忘清单
 ---
 
 ### 文档与团队知识
+<!--rehype:wrap-class=col-span-3-->
 
 | 工具 | 适合 | 官方入口/文档 |
 | --- | --- | --- |
@@ -146,7 +151,7 @@ AI 工具 备忘清单
 ---
 
 ### 必查项
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 | 检查项 | 要确认的问题 |
 | --- | --- |
@@ -178,12 +183,10 @@ AI 工具 备忘清单
 复核：
 - 记录模型/工具版本、时间、成本、失败样例和人工修正点。
 ```
+<!--rehype:className=wrap-text-->
 
 参考资料
 ---
-
-### 官方文档入口
-<!--rehype:wrap-class=row-span-3-->
 
 - OpenAI: [ChatGPT Help](https://help.openai.com/en/collections/3742473-chatgpt)、[Codex Docs](https://developers.openai.com/codex/)、[Images Guide](https://platform.openai.com/docs/guides/image-generation)
 - Anthropic: [Claude Docs](https://platform.claude.com/docs/en/home)、[Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code/overview)
