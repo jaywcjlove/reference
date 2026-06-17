@@ -3,315 +3,317 @@ PM2 备忘清单
 
 [![NPM version](https://img.shields.io/npm/v/pm2.svg?style=flat)](https://npmjs.org/package/pm2)
 [![Downloads](https://img.shields.io/npm/dm/pm2.svg?style=flat)](https://www.npmjs.com/package/pm2)
-[![Repo Dependents](https://badgen.net/github/dependents-repo/Unitech/pm2)](https://github.com/Unitech/pm2/network/dependents)
-[![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/Unitech/pm2)
 
-[PM2](https://pm2.keymetrics.io/) 是一个守护进程管理器，它将帮助您管理和保持您的应用程序在线。PM2 入门非常简单，它以简单直观的 CLI 形式提供
+[PM2](https://pm2.keymetrics.io/) 是 Node.js / Bun 应用常用的生产进程管理器，提供守护进程、自动重启、日志、监控、集群模式、开机自启和配置文件管理能力。它也可以启动脚本、Python 程序或二进制文件。
 <!--rehype:style=padding-top: 12px;-->
 
 入门
------
+----
 
-### 安装
+### 安装与版本
 
-最新的 PM2 版本可通过 NPM 或 Yarn 安装
+:-- | --
+:-- | --
+`npm install pm2@latest -g` | 使用 npm 全局安装最新版
+`yarn global add pm2` | 使用 Yarn 全局安装
+`pm2 -v` | 查看 PM2 版本
+`pm2 update` | 更新内存中的 PM2 daemon
+`pm2 ping` | 检查 PM2 daemon 是否可用
+`pm2 kill` | 停止 PM2 daemon 和所有受管进程
+<!--rehype:className=left-align code-nowrap-->
 
-```shell
-$ npm install pm2@latest -g
-```
+升级全局包后执行 `pm2 update`，让正在运行的 daemon 使用新版本。
 
-或者
-
-```shell
-$ yarn global add pm2
-```
-
-### 启动应用程序
-
-启动、守护进程和监视应用程序的最简单方法是使用此命令行
-
-```shell
-$ pm2 start app.js
-```
-
-或者轻松启动任何其他应用程序
-
-```shell
-$ pm2 start bashscript.sh
-$ pm2 start python-app.py --watch
-$ pm2 start binary-file -- --port 1520
-```
-
-### 您可以传递给 CLI 的一些选项
-<!--rehype:wrap-class=row-span-3-->
-
-指定应用名称
-
-```shell
---name <app_name>
-```
-
-文件更改时监视并重新启动应用程序
-
-```shell
---watch
-```
-
-设置应用重新加载的内存阈值
-
-```shell
---max-memory-restart <200MB>
-```
-
-指定日志文件
-
-```shell
---log <log_path>
-```
-
-将额外的参数传递给脚本
-
-```shell
--- arg1 arg2 arg3
-```
-
-自动重启之间的延迟
-
-```shell
---restart-delay <delay in ms>
-```
-
-带时间的前缀日志
-
-```shell
---time
-```
-
-不要自动重启应用程序
-
-```shell
---no-autorestart
-```
-
-指定 cron 强制重启
-
-```shell
---cron <cron_pattern>
-```
-
-附加到应用程序日志
-
-```shell
---no-daemon
-```
-
-### 管理流程
-
-管理应用程序状态很简单，这里是命令
-
-```shell
-$ pm2 restart app_name
-$ pm2 reload app_name
-$ pm2 stop app_name
-$ pm2 delete app_name
-```
-
-#### 你可以传递而不是 app_name
-
-- `all` 作用于所有进程
-- `id` 作用于特定的进程 ID
-
-### 检查状态、日志、指标
+### 启动应用
 <!--rehype:wrap-class=row-span-2-->
 
-现在您已经启动了这个应用程序，您可以检查它的状态、日志、指标，甚至可以使用 [pm2.io](https://pm2.io/) 获取在线仪表板
+:-- | --
+:-- | --
+`pm2 start app.js` | 启动 Node.js 应用
+`pm2 start app.js --name api` | 指定应用名称
+`pm2 start app.js --watch` | 文件变化时自动重启
+`pm2 start app.js --time` | 日志输出添加时间前缀
+`pm2 start app.js --no-autorestart` | 禁用自动重启
+`pm2 start app.js --max-memory-restart 300M` | 超过内存阈值后重启
+`pm2 start script.sh` | 启动 Shell 脚本
+`pm2 start worker.py --interpreter python3` | 指定解释器启动脚本
+`pm2 start app.js -- --port 3000` | `--` 后参数传给应用
+<!--rehype:className=left-align code-nowrap-->
 
-列出PM2管理的所有应用的状态
+#### 示例
 
-```shell
-$ pm2 [list|ls|status]
+```bash
+$ pm2 start app.js --name api --time
+$ pm2 start server.js --watch --ignore-watch="node_modules logs"
+$ pm2 start app.js -- --port 3000
 ```
 
-实时显示日志
+### 进程操作
 
-```shell
-$ pm2 logs
-```
+:-- | --
+:-- | --
+`pm2 list` \| `pm2 ls` \| `pm2 status` | 列出受管进程
+`pm2 restart <name|id|all>` | 重启进程
+`pm2 reload <name|id|all>` | 零停机 reload，适合网络服务
+`pm2 stop <name|id|all>` | 停止进程
+`pm2 delete <name|id|all>` | 从 PM2 列表删除进程
+`pm2 describe <name|id>` | 查看进程详细信息
+`pm2 reset <name|id|all>` | 重置重启次数等元数据
+<!--rehype:className=left-align code-nowrap-->
 
-挖掘旧日志
+`reload` 与 `restart` 不同：`reload` 会尝试平滑替换进程；若超时或不适用，PM2 会回退到普通重启。
 
-```shell
-$ pm2 logs --lines 200
-```
+日志与监控
+----
 
-这是一个直接适合您的终端的实时仪表板
-
-```shell
-$ pm2 monit
-```
-
-基于 Web 的仪表板，具有诊断系统的跨服务器
-
-```shell
-$ pm2 plus
-```
-
-### 集群模式
-
-对于 Node.js 应用程序，PM2 包括一个自动负载均衡器，它将在每个衍生进程之间共享所有 HTTP[s]/Websocket/TCP/UDP 连接
-
-以集群模式启动应用程序
-
-```shell
-$ pm2 start app.js -i max
-```
-
-在 [此处](https://pm2.keymetrics.io/docs/usage/quick-start/) 阅读有关集群模式的更多信息
-
-### 生态系统文件
+### 日志
 <!--rehype:wrap-class=row-span-2-->
 
-您还可以创建一个称为生态系统文件的配置文件来管理多个应用程序。生成生态系统文件
+:-- | --
+:-- | --
+`pm2 logs` | 实时查看所有进程日志
+`pm2 logs api` | 查看指定应用日志
+`pm2 logs --lines 200` | 输出最近 200 行后继续跟随
+`pm2 logs --nostream` | 只打印日志，不持续跟随
+`pm2 logs --json` | 以 JSON 格式输出日志
+`pm2 logs --err` | 只显示错误输出
+`pm2 logs --out` | 只显示标准输出
+`pm2 flush` | 清空所有日志
+`pm2 flush api` | 清空指定应用日志
+`pm2 reloadLogs` | 重新打开日志文件，常用于 logrotate 后
+<!--rehype:className=left-align code-nowrap-->
 
-```shell
-$ pm2 ecosystem
-```
+日志默认位于 `$HOME/.pm2/logs`。启动时可用 `--log`、`--output`、`--error`、`--time`、`--log-date-format`、`--merge-logs` 控制日志路径和格式。
 
-这将生成一个 `ecosystem.config.js` 文件
+### 监控
+
+:-- | --
+:-- | --
+`pm2 monit` | 打开终端实时监控面板
+`pm2 show api` | 查看指定应用状态、日志路径、环境等信息
+`pm2 prettylist` | 以格式化 JSON 输出进程列表
+`pm2 jlist` | 输出原始 JSON 进程列表
+`pm2 report` | 生成诊断报告
+`pm2 plus` | 连接 PM2 Plus / PM2.io 在线监控
+<!--rehype:className=left-align code-nowrap-->
+
+集群与扩缩容
+----
+
+### Cluster 模式
+
+:-- | --
+:-- | --
+`pm2 start app.js -i max` | 根据可用 CPU 数启动实例
+`pm2 start app.js -i 0` | 与 `max` 类似，启动尽可能多实例
+`pm2 start app.js -i 4` | 启动 4 个实例
+`pm2 reload api` | 对应用做零停机 reload
+`pm2 scale api +2` | 增加 2 个实例
+`pm2 scale api 4` | 调整到总共 4 个实例
+<!--rehype:className=left-align code-nowrap-->
+
+Cluster 模式适合监听 HTTP、TCP、UDP 等网络端口的 Node.js 应用。配置文件中需要显式设置 `exec_mode: "cluster"`，否则默认不会启用负载均衡。
+
+### Cluster 配置示例
 
 ```js
 module.exports = {
-  apps : [{
-    name: "app",
-    script: "./app.js",
-    env: {
-      NODE_ENV: "development",
-    },
-    env_production: {
-      NODE_ENV: "production",
-    }
-  }, {
-     name: 'worker',
-     script: 'worker.js'
+  apps: [{
+    name: "api",
+    script: "./server.js",
+    instances: "max",
+    exec_mode: "cluster"
   }]
 }
 ```
 
-并轻松启动
+配置文件
+----
 
-```shell
-$ pm2 start ecosystem.config.js
+### ecosystem.config.js
+<!--rehype:wrap-class=row-span-2-->
+
+:-- | --
+:-- | --
+`pm2 init simple` | 生成基础 `ecosystem.config.js`
+`pm2 start ecosystem.config.js` | 启动配置文件中的应用
+`pm2 restart ecosystem.config.js` | 重启配置文件中的应用
+`pm2 reload ecosystem.config.js` | reload 配置文件中的应用
+`pm2 stop ecosystem.config.js` | 停止配置文件中的应用
+`pm2 delete ecosystem.config.js` | 删除配置文件中的应用
+`pm2 start ecosystem.config.js --only api` | 只操作指定应用
+`pm2 start ecosystem.config.js --env production` | 使用 `env_production`
+<!--rehype:className=left-align code-nowrap-->
+
+配置文件建议以 `.config.js` 结尾，便于 PM2 识别。
+
+### 配置示例
+
+```js
+module.exports = {
+  apps: [{
+    name: "api",
+    script: "./server.js",
+    instances: 2,
+    exec_mode: "cluster",
+    watch: false,
+    max_memory_restart: "300M",
+    env: {
+      NODE_ENV: "development",
+      PORT: 3000
+    },
+    env_production: {
+      NODE_ENV: "production",
+      PORT: 8080
+    }
+  }, {
+    name: "worker",
+    script: "./worker.js",
+    autorestart: true
+  }]
+}
 ```
 
-在 [此处](https://pm2.keymetrics.io/docs/usage/application-declaration/) 阅读有关应用程序声明的更多信息
+### 环境变量
 
-### 设置启动脚本
-<!--rehype:wrap-class=col-span-2-->
+:-- | --
+:-- | --
+`env` | 默认环境变量
+`env_production` | `--env production` 时注入
+`env_staging` | `--env staging` 时注入
+`NODE_APP_INSTANCE` | PM2 为每个实例注入的实例编号
+`instance_var` | 重命名实例编号变量
+`increment_var` | 为每个实例递增某个环境变量
+`--update-env` | 重启时更新环境变量
+<!--rehype:className=left-align code-nowrap-->
 
-使用您在服务器启动/重新启动时管理的进程重新启动 PM2 至关重要。为了解决这个问题，只需运行这个命令来生成一个活动的启动脚本
+#### 示例
 
-```shell
+```bash
+$ PORT=4000 pm2 restart api --update-env
+$ pm2 start ecosystem.config.js --env production
+```
+
+重启策略
+----
+
+### 常见策略
+<!--rehype:wrap-class=row-span-2-->
+
+:-- | --
+:-- | --
+`pm2 start app.js --watch` | 文件变化时自动重启
+`pm2 stop app --watch` | 停止并禁用 watch 重启
+`pm2 restart app --watch` | 切换 watch 选项
+`pm2 start app.js --restart-delay=3000` | 自动重启前等待 3000ms
+`pm2 start app.js --cron-restart="0 0 * * *"` | 每天 0 点重启
+`pm2 restart app --cron-restart 0` | 禁用 cron 重启
+`pm2 start app.js --exp-backoff-restart-delay=100` | 使用指数退避重启
+`pm2 start app.js --stop-exit-codes 0` | 退出码为 0 时不自动重启
+<!--rehype:className=left-align code-nowrap-->
+
+PM2 默认会在应用崩溃、退出或 Node.js 事件循环为空时尝试重启。重启策略可以在 CLI 中设置，也可以写入配置文件。
+
+### 配置字段
+
+:-- | --
+:-- | --
+`watch: true` | 启用文件监听
+`ignore_watch: ["node_modules"]` | 忽略监听目录
+`watch_delay: 1000` | 文件变化后延迟重启
+`max_memory_restart: "300M"` | 达到内存阈值后重启
+`restart_delay: 3000` | 重启延迟
+`cron_restart: "0 0 * * *"` | cron 定时重启
+`autorestart: false` | 禁用自动重启
+`stop_exit_codes: [0]` | 指定退出码不触发重启
+`exp_backoff_restart_delay: 100` | 指数退避重启初始延迟
+<!--rehype:className=left-align code-nowrap-->
+
+持久化与开机自启
+----
+
+### 启动脚本
+<!--rehype:wrap-class=row-span-2-->
+
+:-- | --
+:-- | --
+`pm2 startup` | 生成当前平台的开机启动命令
+`pm2 startup systemd -u www --hp /home/www` | 指定 systemd 用户和家目录
+`pm2 save` | 保存当前进程列表，用于重启后恢复
+`pm2 resurrect` | 手动恢复上次保存的进程列表
+`pm2 unstartup` | 删除当前开机启动配置
+`systemctl status pm2-<user>` | 查看 systemd 服务状态
+`journalctl -u pm2-<user>` | 查看 systemd 启动日志
+<!--rehype:className=left-align code-nowrap-->
+
+典型生产流程：
+
+```bash
+$ pm2 start ecosystem.config.js --env production
+$ pm2 save
+$ pm2 startup
+# 复制并执行 pm2 startup 输出的 sudo 命令
+```
+
+升级 Node.js 后需要重新生成启动脚本，避免开机时仍使用旧 Node.js 路径。
+
+常用流程
+----
+
+### 部署后平滑更新
+
+```bash
+$ git pull
+$ npm ci
+$ npm run build
+$ pm2 reload ecosystem.config.js --env production
 $ pm2 save
 ```
 
-在 [此处](https://pm2.keymetrics.io/docs/usage/startup/) 阅读有关启动脚本生成器的更多信息
-
-### 重新启动应用程序更改
-<!--rehype:wrap-class=col-span-2-->
-
-使用 `--watch` 选项非常简单
-
-```shell
-$ cd /path/to/my/app
-$ pm2 start env.js --watch --ignore-watch="node_modules"
-```
-
-这将在当前目录 `+` 所有子文件夹中的任何文件更改时监视并重新启动应用程序，并且它将忽略 `node_modules` 文件夹中的任何更改 `--ignore-watch="node_modules"`。
+### 单机快速启动 API
 
 ```bash
-$ pm2 logs
+$ pm2 start server.js --name api --time --max-memory-restart 300M
+$ pm2 logs api --lines 100
 ```
 
-然后，您可以使用上面命令来检查重新启动的应用程序日志。
+### 查看异常原因
 
-PM2 CheatSheet
----
-<!--rehype:body-class=cols-2-->
-
-以下是一些值得了解的命令。 只需使用示例应用程序或开发机器上当前的 Web 应用程序来尝试它们
-
-### PM2 分叉模式
-
-```shell
-$ pm2 start app.js --name my-api # 名称进程
+```bash
+$ pm2 describe api
+$ pm2 logs api --err --lines 200
+$ pm2 report
 ```
 
-### PM2 集群模式
+### 清理不再需要的进程
 
-```shell
-$ pm2 start app.js -i 0     # 将根据可用的 CPU 使用 LB 启动最大进程
-$ pm2 start app.js -i max   # 与上面相同，但已弃用。
-$ pm2 scale app +3          # 将 `app` 增加 3 名工人
-$ pm2 scale app 2           # 将 `app` 向上或向下扩展到总共 2 个工人
+```bash
+$ pm2 stop old-api
+$ pm2 delete old-api
+$ pm2 save
 ```
 
-### PM2 清单
+### 常见排障
 
-```shell
-$ pm2 list        # 显示所有进程状态
-$ pm2 jlist       # 以原始 JSON 格式打印进程列表
-$ pm2 prettylist  # 以美化JSON打印进程列表
-$ pm2 describe 0  # 显示有关特定进程的所有信息
-$ pm2 monit       # 监控所有进程
-```
+:-- | --
+:-- | --
+重启后进程丢失 | 启动或删除进程后忘记执行 `pm2 save`
+开机自启使用旧 Node.js | Node.js 升级后重新执行 `pm2 unstartup` 和 `pm2 startup`
+环境变量不更新 | 使用 `pm2 restart <app> --update-env`
+日志文件过大 | 使用 `pm2 flush`、`pm2 reloadLogs`，并配置外部 logrotate
+watch 停止后仍会重启 | 使用 `pm2 stop app --watch` 彻底关闭 watch
+Cluster 未负载均衡 | 配置文件里确认 `exec_mode: "cluster"`
+reload 变成 restart | 应用未能及时优雅退出，检查连接关闭与超时
+<!--rehype:className=left-align-->
 
-### PM2 日志
+参考资料
+----
 
-```shell
-$ pm2 logs [--raw]  # 在流中显示所有进程日志
-$ pm2 flush         # 清空所有日志文件
-$ pm2 reloadLogs    # 重新加载所有日志
-```
-
-### PM2 动作
-
-```shell
-$ pm2 stop all     # 停止所有进程
-$ pm2 restart all  # 重启所有进程
-$ pm2 reload all   # 将 0s 停机时间重新加载（对于 NETWORKED 应用程序）
-$ pm2 stop 0       # 停止特定进程 ID
-$ pm2 restart 0    # 重启特定进程id
-$ pm2 delete 0     # 将从 pm2 列表中删除进程
-$ pm2 delete all   # 将从 pm2 列表中删除所有进程
-```
-
-### PM2 杂项
-
-```shell
-$ pm2 reset <process>    # 重置元数据（重启时间...）
-$ pm2 updatePM2          # 更新内存 pm2
-$ pm2 ping               # 确保 pm2 守护进程已经启动
-$ pm2 sendSignal SIGUSR2 my-app # 向脚本发送系统信号
-$ pm2 start app.js --no-daemon
-$ pm2 start app.js --no-vizion
-$ pm2 start app.js --no-autorestart
-```
-
-### 更新 PM2
-
-我们让它变得简单，版本之间没有重大变化，过程很简单
-
-```shell
-$ npm install pm2@latest -g
-```
-
-然后更新内存中的PM2
-
-```shell
-$ pm2 update
-```
-
-另见
---------
-
-- [QUICK START](https://pm2.keymetrics.io/docs/usage/quick-start/) _(pm2.keymetrics.io)_
+- [PM2 Quick Start](https://pm2.keymetrics.io/docs/usage/quick-start/)
+- [PM2 Process Management](https://pm2.keymetrics.io/docs/usage/process-management/)
+- [PM2 Ecosystem File](https://pm2.keymetrics.io/docs/usage/application-declaration/)
+- [PM2 Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/)
+- [PM2 Logs](https://pm2.keymetrics.io/docs/usage/log-management/)
+- [PM2 Restart Strategies](https://pm2.keymetrics.io/docs/usage/restart-strategies/)
+- [PM2 Startup Script](https://pm2.keymetrics.io/docs/usage/startup/)
+- [PM2 Environment Variables](https://pm2.keymetrics.io/docs/usage/environment/)
