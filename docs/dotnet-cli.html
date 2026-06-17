@@ -5,9 +5,9 @@
 <title>.NET CLI 备忘清单
  &#x26;  dotnet-cli cheatsheet &#x26;  Quick Reference</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta description="本备忘单总结了 .NET 命令行接口 (CLI) 工具，以供快速参考
+<meta description="这份快速参考备忘单整理了 .NET 命令行接口的项目创建、还原、构建、运行、测试、发布、包管理、工具、工作负荷和诊断命令
 
-.NET CLI 备忘清单，为开发人员分享快速参考备忘单。">
+入门，为开发人员分享快速参考备忘单。">
 <meta keywords="dotnet-cli,reference,Quick,Reference,cheatsheet,cheat,sheet">
 <meta name="author" content="jaywcjlove">
 <meta name="license" content="MIT">
@@ -37,22 +37,38 @@
 </button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="net-cli-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
   <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
 </svg><a aria-hidden="true" tabindex="-1" href="#net-cli-备忘清单"><span class="icon icon-link"></span></a>.NET CLI 备忘清单</h1><div class="wrap-body">
-<p>本备忘单总结了 <a href="https://learn.microsoft.com/zh-cn/dotnet/core/tools/">.NET</a> 命令行接口 (CLI) 工具，以供快速参考</p>
+<p>这份快速参考备忘单整理了 .NET 命令行接口的项目创建、还原、构建、运行、测试、发布、包管理、工具、工作负荷和诊断命令</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#net-cli-备忘清单-1">.NET CLI 备忘清单</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基本命令">基本命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#项目修改命令">项目修改命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#工作负荷管理命令">工作负荷管理命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#nuget-命令">NuGet 命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#高级命令">高级命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#工具管理命令">工具管理命令</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另请参阅">另请参阅</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 style="display: none;" id="net-cli-备忘清单-1"><a aria-hidden="true" tabindex="-1" href="#net-cli-备忘清单-1"><span class="icon icon-link"></span></a>.NET CLI 备忘清单</h2><div class="wrap-body">
-<!--rehype:style=display: none;-->
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#命令结构">命令结构</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用流程">常用流程</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#项目命令">项目命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#基础命令">基础命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建项目">创建项目</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#构建">构建</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#运行">运行</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#测试">测试</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#发布">发布</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#包与引用">包与引用</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#nuget-包引用">NuGet 包引用</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包版本与源">包版本与源</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#项目引用">项目引用</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#nuget-源">NuGet 源</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包发布与签名">包发布与签名</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#解决方案与工具">解决方案与工具</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#解决方案">解决方案</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#net-工具">.NET 工具</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#工作负荷">工作负荷</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#诊断与高级">诊断与高级</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#sdk-与运行时">SDK 与运行时</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#msbuild">MSBuild</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#构建服务器">构建服务器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#开发证书">开发证书</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装脚本">安装脚本</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#常见场景">常见场景</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ci-构建">CI 构建</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#多目标框架">多目标框架</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#指定运行时">指定运行时</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
 </div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
-<p><code>.NET CLI</code> 命令由 <strong>驱动程序（<code>dotnet</code>）</strong>、<strong>命令</strong>、<strong>参数</strong> 和 <strong>选项</strong> 组成。典型流程如下：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 创建控制台应用</span>
-</span><span class="code-line">dotnet new console 
-</span><span class="code-line"><span class="token comment"># 构建并指定输出目录</span>
-</span><span class="code-line">dotnet build <span class="token parameter variable">--output</span> ./build_output 
-</span><span class="code-line"><span class="token comment"># 运行构建结果</span>
-</span><span class="code-line">dotnet ./build_output/my_app.dll 
+<p><code>.NET CLI</code> 是随 .NET SDK 提供的跨平台工具链，用于开发、构建、运行、测试和发布 .NET 应用。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet <span class="token parameter variable">--info</span>
+</span><span class="code-line">$ dotnet <span class="token parameter variable">--version</span>
+</span><span class="code-line">$ dotnet --list-sdks
+</span><span class="code-line">$ dotnet --list-runtimes
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="基本命令"><a aria-hidden="true" tabindex="-1" href="#基本命令"><span class="icon icon-link"></span></a>基本命令</h3><div class="wrap-body">
-<!--rehype:wrap-class=col-span-2 row-span-2-->
+<p><code>dotnet</code> 既可以运行 .NET 应用，也可以执行项目相关命令。所有命令都支持 <code>--help</code> 查看简要帮助。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="命令结构"><a aria-hidden="true" tabindex="-1" href="#命令结构"><span class="icon icon-link"></span></a>命令结构</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet <span class="token operator">&#x3C;</span>command<span class="token operator">></span> <span class="token punctuation">[</span>arguments<span class="token punctuation">]</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span>
+</span><span class="code-line">$ dotnet build <span class="token parameter variable">--configuration</span> Release
+</span><span class="code-line">$ dotnet run <span class="token parameter variable">--project</span> src/MyApp
+</span><span class="code-line">$ dotnet MyApp.dll
+</span></code></pre>
+<p>常见短选项包括 <code>-c|--configuration</code>、<code>-f|--framework</code>、<code>-o|--output</code>、<code>-r|--runtime</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常用流程"><a aria-hidden="true" tabindex="-1" href="#常用流程"><span class="icon icon-link"></span></a>常用流程</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet new console <span class="token parameter variable">-n</span> HelloCli
+</span><span class="code-line">$ <span class="token builtin class-name">cd</span> HelloCli
+</span><span class="code-line">$ dotnet restore
+</span><span class="code-line">$ dotnet build
+</span><span class="code-line">$ dotnet run
+</span><span class="code-line">$ dotnet <span class="token builtin class-name">test</span>
+</span><span class="code-line">$ dotnet publish <span class="token parameter variable">-c</span> Release <span class="token parameter variable">-o</span> ./publish
+</span></code></pre>
+<p>多数命令会按需触发还原。CI 或离线场景中可显式使用 <code>dotnet restore</code> 并在后续命令中配合 <code>--no-restore</code>。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="项目命令"><a aria-hidden="true" tabindex="-1" href="#项目命令"><span class="icon icon-link"></span></a>项目命令</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="基础命令"><a aria-hidden="true" tabindex="-1" href="#基础命令"><span class="icon icon-link"></span></a>基础命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
 
 
 
@@ -123,25 +139,112 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="left-align "><thead><tr><th>命令</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>new</code></td><td>创建新项目或文件模板</td><td><code>dotnet new console</code></td></tr><tr><td><code>restore</code></td><td>还原项目依赖项</td><td><code>dotnet restore</code></td></tr><tr><td><code>build</code></td><td>构建项目</td><td><code>dotnet build</code></td></tr><tr><td><code>publish</code></td><td>发布应用以部署</td><td><code>dotnet publish -c Release -o ./publish</code></td></tr><tr><td><code>run</code></td><td>运行项目</td><td><code>dotnet run</code></td></tr><tr><td><code>test</code></td><td>运行测试（使用 xUnit/NUnit 等）</td><td><code>dotnet test</code></td></tr><tr><td><code>vstest</code></td><td>运行已编译的测试程序集</td><td><code>dotnet vstest ./bin/Debug/test.dll</code></td></tr><tr><td><code>pack</code></td><td>打包为 NuGet 包</td><td><code>dotnet pack</code></td></tr><tr><td><code>migrate</code></td><td>迁移旧版项目（已弃用）</td><td><code>dotnet migrate</code></td></tr><tr><td><code>clean</code></td><td>清理构建输出</td><td><code>dotnet clean</code></td></tr><tr><td><code>sln</code></td><td>管理 <code>.sln</code> 解决方案文件</td><td><code>dotnet sln add ./MyApp/MyApp.csproj</code></td></tr><tr><td><code>help</code></td><td>显示帮助信息</td><td><code>dotnet help build</code></td></tr><tr><td><code>store</code></td><td>预编译和缓存程序集（高级用法）</td><td><code>dotnet store</code></td></tr><tr><td><code>watch</code></td><td>监视文件更改并自动运行命令</td><td><code>dotnet watch run</code></td></tr><tr><td><code>format</code></td><td>格式化代码（自 .NET 6 起支持）</td><td><code>dotnet format</code></td></tr></tbody></table>
-<!--rehype:className=left-align -->
-</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="项目修改命令"><a aria-hidden="true" tabindex="-1" href="#项目修改命令"><span class="icon icon-link"></span></a>项目修改命令</h3><div class="wrap-body">
+<table class="show-header left-align"><thead><tr><th align="left">命令</th><th align="left">说明</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left"><code>new</code></td><td align="left">基于模板创建项目或文件</td><td align="left"><code>dotnet new webapi -n Api</code></td></tr><tr><td align="left"><code>restore</code></td><td align="left">还原项目依赖</td><td align="left"><code>dotnet restore</code></td></tr><tr><td align="left"><code>build</code></td><td align="left">构建项目、解决方案或文件应用</td><td align="left"><code>dotnet build -c Release</code></td></tr><tr><td align="left"><code>run</code></td><td align="left">从源码构建并运行项目</td><td align="left"><code>dotnet run --project src/App</code></td></tr><tr><td align="left"><code>test</code></td><td align="left">运行测试项目</td><td align="left"><code>dotnet test --logger trx</code></td></tr><tr><td align="left"><code>publish</code></td><td align="left">生成可部署输出</td><td align="left"><code>dotnet publish -c Release -o ./publish</code></td></tr><tr><td align="left"><code>pack</code></td><td align="left">创建 NuGet 包</td><td align="left"><code>dotnet pack -c Release</code></td></tr><tr><td align="left"><code>clean</code></td><td align="left">清理构建输出</td><td align="left"><code>dotnet clean</code></td></tr><tr><td align="left"><code>sln</code></td><td align="left">管理解决方案文件</td><td align="left"><code>dotnet sln add src/App/App.csproj</code></td></tr><tr><td align="left"><code>format</code></td><td align="left">格式化代码</td><td align="left"><code>dotnet format</code></td></tr><tr><td align="left"><code>watch</code></td><td align="left">监听文件变化并执行命令</td><td align="left"><code>dotnet watch run</code></td></tr><tr><td align="left"><code>vstest</code></td><td align="left">运行已编译测试程序集</td><td align="left"><code>dotnet vstest tests.dll</code></td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+<p><code>dotnet run</code> 适合开发迭代，不推荐作为生产运行方式。部署时应使用 <code>dotnet publish</code> 输出。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="创建项目"><a aria-hidden="true" tabindex="-1" href="#创建项目"><span class="icon icon-link"></span></a>创建项目</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet new list
+</span><span class="code-line">$ dotnet new console <span class="token parameter variable">-n</span> HelloCli
+</span><span class="code-line">$ dotnet new webapi <span class="token parameter variable">-n</span> Api
+</span><span class="code-line">$ dotnet new classlib <span class="token parameter variable">-n</span> Core
+</span><span class="code-line">$ dotnet new gitignore
+</span></code></pre>
+<p><code>dotnet new</code> 使用模板引擎创建项目或其他文件。可通过 <code>dotnet new search &#x3C;关键字></code> 查找模板。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="构建"><a aria-hidden="true" tabindex="-1" href="#构建"><span class="icon icon-link"></span></a>构建</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet build
+</span><span class="code-line">$ dotnet build MyApp.sln <span class="token parameter variable">-c</span> Release
+</span><span class="code-line">$ dotnet build src/App/App.csproj <span class="token parameter variable">-f</span> net8.0
+</span><span class="code-line">$ dotnet build --no-restore
+</span></code></pre>
+<p><code>dotnet build</code> 使用 MSBuild 构建项目并支持 MSBuild 属性，例如 <code>-p:Version=1.2.3</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="运行"><a aria-hidden="true" tabindex="-1" href="#运行"><span class="icon icon-link"></span></a>运行</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet run
+</span><span class="code-line">$ dotnet run <span class="token parameter variable">--project</span> src/App
+</span><span class="code-line">$ dotnet run <span class="token parameter variable">--configuration</span> Release -- arg1 arg2
+</span><span class="code-line">$ dotnet run --no-build
+</span></code></pre>
+<p>应用参数放在 <code>--</code> 后面，避免与 <code>dotnet run</code> 自身选项混淆。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="测试"><a aria-hidden="true" tabindex="-1" href="#测试"><span class="icon icon-link"></span></a>测试</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet <span class="token builtin class-name">test</span>
+</span><span class="code-line">$ dotnet <span class="token builtin class-name">test</span> <span class="token parameter variable">-c</span> Release
+</span><span class="code-line">$ dotnet <span class="token builtin class-name">test</span> <span class="token parameter variable">--filter</span> FullyQualifiedName~Unit
+</span><span class="code-line">$ dotnet <span class="token builtin class-name">test</span> <span class="token parameter variable">--collect</span> <span class="token string">"XPlat Code Coverage"</span>
+</span></code></pre>
+<p><code>dotnet test</code> 会运行测试项目，并把参数传递给测试平台。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="发布"><a aria-hidden="true" tabindex="-1" href="#发布"><span class="icon icon-link"></span></a>发布</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet publish <span class="token parameter variable">-c</span> Release <span class="token parameter variable">-o</span> ./publish
+</span><span class="code-line">$ dotnet publish <span class="token parameter variable">-c</span> Release <span class="token parameter variable">-r</span> win-x64 --self-contained <span class="token boolean">true</span>
+</span><span class="code-line">$ dotnet publish <span class="token parameter variable">-c</span> Release <span class="token parameter variable">-r</span> linux-x64 --self-contained <span class="token boolean">false</span>
+</span></code></pre>
+<p><code>dotnet publish</code> 会编译应用、读取依赖并生成可部署输出，是官方支持的部署准备方式。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet publish <span class="token parameter variable">-c</span> Release <span class="token parameter variable">-p:PublishSingleFile</span><span class="token operator">=</span>true
+</span><span class="code-line">$ dotnet publish <span class="token parameter variable">-c</span> Release <span class="token parameter variable">-p:PublishTrimmed</span><span class="token operator">=</span>true
+</span><span class="code-line">$ dotnet publish <span class="token parameter variable">-c</span> Release <span class="token parameter variable">-p:PublishReadyToRun</span><span class="token operator">=</span>true
+</span></code></pre>
+<p>单文件、裁剪和 ReadyToRun 等选项会影响输出大小、启动速度和兼容性，发布前应在目标环境测试。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="包与引用"><a aria-hidden="true" tabindex="-1" href="#包与引用"><span class="icon icon-link"></span></a>包与引用</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="nuget-包引用"><a aria-hidden="true" tabindex="-1" href="#nuget-包引用"><span class="icon icon-link"></span></a>NuGet 包引用</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header left-align"><thead><tr><th align="left">命令</th><th align="left">说明</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left"><code>dotnet add package</code></td><td align="left">.NET 9 及更早版本添加包</td><td align="left"><code>dotnet add package Newtonsoft.Json</code></td></tr><tr><td align="left"><code>dotnet package add</code></td><td align="left">.NET 10 起添加或更新包</td><td align="left"><code>dotnet package add Newtonsoft.Json</code></td></tr><tr><td align="left"><code>dotnet list package</code></td><td align="left">.NET 9 及更早版本列出包</td><td align="left"><code>dotnet list package</code></td></tr><tr><td align="left"><code>dotnet package list</code></td><td align="left">.NET 10 起列出包</td><td align="left"><code>dotnet package list</code></td></tr><tr><td align="left"><code>dotnet remove package</code></td><td align="left">移除包引用</td><td align="left"><code>dotnet remove package Newtonsoft.Json</code></td></tr><tr><td align="left"><code>dotnet package search</code></td><td align="left">搜索 NuGet 包</td><td align="left"><code>dotnet package search Newtonsoft.Json</code></td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+<p>.NET 10 引入了更一致的“名词优先”命令顺序。维护旧项目时仍常见 <code>dotnet add package</code> 和 <code>dotnet list package</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="包版本与源"><a aria-hidden="true" tabindex="-1" href="#包版本与源"><span class="icon icon-link"></span></a>包版本与源</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet <span class="token function">add</span> package Serilog <span class="token parameter variable">--version</span> <span class="token number">4.0</span>.0
+</span><span class="code-line">$ dotnet package <span class="token function">add</span> Serilog <span class="token parameter variable">--version</span> <span class="token number">4.0</span>.0
+</span><span class="code-line">$ dotnet restore <span class="token parameter variable">--source</span> https://api.nuget.org/v3/index.json
+</span></code></pre>
+<p>添加包时 CLI 会检查包与项目目标框架的兼容性，并把 <code>PackageReference</code> 写入项目文件。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="项目引用"><a aria-hidden="true" tabindex="-1" href="#项目引用"><span class="icon icon-link"></span></a>项目引用</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet <span class="token function">add</span> app/app.csproj reference lib/lib.csproj
+</span><span class="code-line">$ dotnet reference <span class="token function">add</span> lib/lib.csproj <span class="token parameter variable">--project</span> app/app.csproj
+</span><span class="code-line">$ dotnet list reference
+</span><span class="code-line">$ dotnet reference list <span class="token parameter variable">--project</span> app/app.csproj
+</span><span class="code-line">$ dotnet remove reference lib/lib.csproj
+</span></code></pre>
+<p>项目引用会在 <code>.csproj</code> 中生成 <code>ProjectReference</code>。CLI 不提供添加任意程序集引用的命令，需手动编辑项目文件。</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="nuget-源"><a aria-hidden="true" tabindex="-1" href="#nuget-源"><span class="icon icon-link"></span></a>NuGet 源</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
 
 
 
@@ -187,9 +290,26 @@
 
 
 
-<table class="left-align style-list-arrow"><thead><tr><th>命令</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>package add</code></td><td>添加 NuGet 包依赖</td><td><code>dotnet add package Newtonsoft.Json</code></td></tr><tr><td><code>package list</code></td><td>列出项目中的所有包依赖</td><td><code>dotnet list package</code></td></tr><tr><td><code>package remove</code></td><td>移除 NuGet 包依赖</td><td><code>dotnet remove package Newtonsoft.Json</code></td></tr><tr><td><code>package search</code></td><td>搜索 NuGet 包</td><td><code>dotnet search package Newtonsoft.Json</code></td></tr><tr><td><code>reference add</code></td><td>添加项目引用（*.csproj）</td><td><code>dotnet add reference ../CommonLib/CommonLib.csproj</code></td></tr><tr><td><code>reference list</code></td><td>列出当前项目引用的其他项目</td><td><code>dotnet list reference</code></td></tr><tr><td><code>reference remove</code></td><td>移除项目引用</td><td><code>dotnet remove reference ../CommonLib/CommonLib.csproj</code></td></tr></tbody></table>
-<!--rehype:className=left-align style-list-arrow-->
-</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="工作负荷管理命令"><a aria-hidden="true" tabindex="-1" href="#工作负荷管理命令"><span class="icon icon-link"></span></a>工作负荷管理命令</h3><div class="wrap-body">
+<table class="show-header left-align"><thead><tr><th align="left">命令</th><th align="left">说明</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left"><code>nuget list source</code></td><td align="left">列出源</td><td align="left"><code>dotnet nuget list source</code></td></tr><tr><td align="left"><code>nuget add source</code></td><td align="left">添加源</td><td align="left"><code>dotnet nuget add source &#x3C;url> -n Private</code></td></tr><tr><td align="left"><code>nuget update source</code></td><td align="left">更新源</td><td align="left"><code>dotnet nuget update source Private -s &#x3C;url></code></td></tr><tr><td align="left"><code>nuget enable source</code></td><td align="left">启用源</td><td align="left"><code>dotnet nuget enable source Private</code></td></tr><tr><td align="left"><code>nuget disable source</code></td><td align="left">禁用源</td><td align="left"><code>dotnet nuget disable source Private</code></td></tr><tr><td align="left"><code>nuget remove source</code></td><td align="left">移除源</td><td align="left"><code>dotnet nuget remove source Private</code></td></tr><tr><td align="left"><code>nuget locals</code></td><td align="left">查看或清理缓存</td><td align="left"><code>dotnet nuget locals all --clear</code></td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="包发布与签名"><a aria-hidden="true" tabindex="-1" href="#包发布与签名"><span class="icon icon-link"></span></a>包发布与签名</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet pack <span class="token parameter variable">-c</span> Release
+</span><span class="code-line">$ dotnet nuget push bin/Release/MyLib.1.0.0.nupkg <span class="token parameter variable">-k</span> API_KEY <span class="token parameter variable">-s</span> https://api.nuget.org/v3/index.json
+</span><span class="code-line">$ dotnet nuget delete MyLib <span class="token number">1.0</span>.0 <span class="token parameter variable">-s</span> https://api.nuget.org/v3/index.json <span class="token parameter variable">-k</span> API_KEY
+</span><span class="code-line">$ dotnet nuget verify MyLib.1.0.0.nupkg
+</span><span class="code-line">$ dotnet nuget sign MyLib.1.0.0.nupkg --certificate-path cert.pfx
+</span></code></pre>
+<p>发布到 nuget.org 时建议使用 scoped API key，并避免把密钥写入仓库。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="解决方案与工具"><a aria-hidden="true" tabindex="-1" href="#解决方案与工具"><span class="icon icon-link"></span></a>解决方案与工具</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="解决方案"><a aria-hidden="true" tabindex="-1" href="#解决方案"><span class="icon icon-link"></span></a>解决方案</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet new sln <span class="token parameter variable">-n</span> MySolution
+</span><span class="code-line">$ dotnet sln <span class="token function">add</span> src/App/App.csproj
+</span><span class="code-line">$ dotnet sln <span class="token function">add</span> tests/App.Tests/App.Tests.csproj
+</span><span class="code-line">$ dotnet sln list
+</span><span class="code-line">$ dotnet sln remove tests/App.Tests/App.Tests.csproj
+</span></code></pre>
+<p>解决方案文件用于组织多个项目，方便统一构建和测试。</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="net-工具"><a aria-hidden="true" tabindex="-1" href="#net-工具"><span class="icon icon-link"></span></a>.NET 工具</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
 
 
@@ -241,188 +361,76 @@
 
 
 
-
-
-
-
-
-<table class="left-align"><thead><tr><th>命令</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>workload</code></td><td>顶级命令，显示所有 workload 子命令</td><td><code>dotnet workload --help</code></td></tr><tr><td><code>workload install</code></td><td>安装指定的工作负荷（如 MAUI、Web 等）</td><td><code>dotnet workload install maui</code></td></tr><tr><td><code>workload uninstall</code></td><td>卸载指定的工作负荷</td><td><code>dotnet workload uninstall maui</code></td></tr><tr><td><code>workload update</code></td><td>更新所有已安装的工作负荷</td><td><code>dotnet workload update</code></td></tr><tr><td><code>workload list</code></td><td>显示当前已安装的工作负荷</td><td><code>dotnet workload list</code></td></tr><tr><td><code>workload restore</code></td><td>还原项目所需的工作负荷</td><td><code>dotnet workload restore</code></td></tr><tr><td><code>workload search</code></td><td>搜索可用的工作负荷</td><td><code>dotnet workload search</code></td></tr><tr><td><code>workload repair</code></td><td>修复已安装的工作负荷</td><td><code>dotnet workload repair</code></td></tr><tr><td><code>workload config</code></td><td>配置自定义源、缓存路径等（.NET 8.0.400+）</td><td><code>dotnet workload config list</code></td></tr></tbody></table>
-<!--rehype:className=left-align-->
-</div></div></div><div class="wrap h3body-not-exist col-span-3"><div class="wrap-header h3wrap"><h3 id="nuget-命令"><a aria-hidden="true" tabindex="-1" href="#nuget-命令"><span class="icon icon-link"></span></a>NuGet 命令</h3><div class="wrap-body">
-<!--rehype:wrap-class=col-span-3-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="left-align"><thead><tr><th>命令</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>nuget delete</code></td><td>从源中删除一个 NuGet 包</td><td><code>dotnet nuget delete MyLib 1.0.0 -s https://api.nuget.org/v3/index.json</code></td></tr><tr><td><code>nuget locals</code></td><td>清理 NuGet 缓存</td><td><code>dotnet nuget locals all --clear</code></td></tr><tr><td><code>nuget push</code></td><td>将 NuGet 包推送到服务器（如 nuget.org）</td><td><code>dotnet nuget push MyLib.1.0.0.nupkg -k API_KEY -s https://api.nuget.org/v3/index.json</code></td></tr><tr><td><code>nuget add source</code></td><td>添加一个新的 NuGet 源</td><td><code>dotnet nuget add source https://myserver/index.json -n MySource</code></td></tr><tr><td><code>nuget disable source</code></td><td>禁用一个现有的 NuGet 源</td><td><code>dotnet nuget disable source MySource</code></td></tr><tr><td><code>nuget enable source</code></td><td>启用已禁用的 NuGet 源</td><td><code>dotnet nuget enable source MySource</code></td></tr><tr><td><code>nuget list source</code></td><td>列出所有已配置的 NuGet 源</td><td><code>dotnet nuget list source</code></td></tr><tr><td><code>nuget remove source</code></td><td>移除已配置的 NuGet 源</td><td><code>dotnet nuget remove source MySource</code></td></tr><tr><td><code>nuget update source</code></td><td>更新现有 NuGet 源信息</td><td><code>dotnet nuget update source MySource -s https://new-url</code></td></tr><tr><td><code>nuget verify</code></td><td>验证 NuGet 包签名（.NET 5+）</td><td><code>dotnet nuget verify MyLib.1.0.0.nupkg</code></td></tr><tr><td><code>nuget trust</code></td><td>管理受信任的签名证书（.NET 5+）</td><td><code>dotnet nuget trust list</code></td></tr><tr><td><code>nuget sign</code></td><td>对 NuGet 包进行签名（.NET 6+）</td><td><code>dotnet nuget sign MyLib.1.0.0.nupkg --certificate-path cert.pfx</code></td></tr><tr><td><code>package search</code></td><td>搜索 NuGet 包（.NET 8.0.2xx+）</td><td><code>dotnet package search Newtonsoft.Json</code></td></tr><tr><td><code>nuget why</code></td><td>显示为什么某个包被安装（.NET 8.0.4xx+）</td><td><code>dotnet nuget why Newtonsoft.Json</code></td></tr></tbody></table>
-<!--rehype:className=left-align-->
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="高级命令"><a aria-hidden="true" tabindex="-1" href="#高级命令"><span class="icon icon-link"></span></a>高级命令</h3><div class="wrap-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="left-align style-list-arrow"><thead><tr><th>命令</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>sdk check</code></td><td>显示可用的 SDK/运行时版本，并检测更新</td><td><code>dotnet sdk check</code></td></tr><tr><td><code>msbuild</code></td><td>使用 MSBuild 构建项目（提供更多构建自定义性）</td><td><code>dotnet msbuild /t:Clean;Build /p:Configuration=Release</code></td></tr><tr><td><code>build-server</code></td><td>管理后端构建服务器（如清理缓存、关闭等）</td><td><code>dotnet build-server shutdown</code></td></tr><tr><td><code>dev-certs</code></td><td>管理开发 HTTPS 证书</td><td><code>dotnet dev-certs https --trust</code></td></tr><tr><td><code>dotnet install script</code></td><td>获取可安装指定版本 .NET 的脚本（Linux/macOS）</td><td><code>curl -sSL https://dot.net/v1/dotnet-install.sh | bash</code></td></tr></tbody></table>
-<!--rehype:className=left-align style-list-arrow-->
-</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="工具管理命令"><a aria-hidden="true" tabindex="-1" href="#工具管理命令"><span class="icon icon-link"></span></a>工具管理命令</h3><div class="wrap-body">
-<!--rehype:wrap-class=col-span-2-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="left-align"><thead><tr><th>命令</th><th>说明</th><th>示例</th></tr></thead><tbody><tr><td><code>tool install</code></td><td>安装 .NET 工具（本地或全局）</td><td><code>dotnet tool install -g dotnet-ef</code></td></tr><tr><td><code>tool list</code></td><td>列出已安装的工具</td><td><code>dotnet tool list -g</code></td></tr><tr><td><code>tool update</code></td><td>更新指定工具</td><td><code>dotnet tool update -g dotnet-ef</code></td></tr><tr><td><code>tool restore</code></td><td>恢复项目中定义的工具（基于 manifest）</td><td><code>dotnet tool restore</code></td></tr><tr><td><code>tool run</code></td><td>运行本地安装的工具</td><td><code>dotnet tool run my-tool</code></td></tr><tr><td><code>tool uninstall</code></td><td>卸载已安装的工具</td><td><code>dotnet tool uninstall -g dotnet-ef</code></td></tr><tr><td><code>tool search</code></td><td>搜索 NuGet 上可用的工具</td><td><code>dotnet tool search dotnet-ef</code></td></tr></tbody></table>
-<!--rehype:className=left-align-->
-</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另请参阅"><a aria-hidden="true" tabindex="-1" href="#另请参阅"><span class="icon icon-link"></span></a>另请参阅</h2><div class="wrap-body">
+<table class="show-header left-align"><thead><tr><th align="left">命令</th><th align="left">说明</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left"><code>tool install -g</code></td><td align="left">安装全局工具</td><td align="left"><code>dotnet tool install -g dotnet-ef</code></td></tr><tr><td align="left"><code>tool install --local</code></td><td align="left">安装本地工具</td><td align="left"><code>dotnet tool install --local dotnet-ef</code></td></tr><tr><td align="left"><code>tool list</code></td><td align="left">列出工具</td><td align="left"><code>dotnet tool list -g</code></td></tr><tr><td align="left"><code>tool update</code></td><td align="left">更新工具</td><td align="left"><code>dotnet tool update -g dotnet-ef</code></td></tr><tr><td align="left"><code>tool restore</code></td><td align="left">还原本地工具</td><td align="left"><code>dotnet tool restore</code></td></tr><tr><td align="left"><code>tool run</code></td><td align="left">运行本地工具</td><td align="left"><code>dotnet tool run dotnet-ef</code></td></tr><tr><td align="left"><code>tool uninstall</code></td><td align="left">卸载工具</td><td align="left"><code>dotnet tool uninstall -g dotnet-ef</code></td></tr><tr><td align="left"><code>tool search</code></td><td align="left">搜索工具</td><td align="left"><code>dotnet tool search format</code></td></tr></tbody></table>
+<!--rehype:className=show-header left-align-->
+<p>本地工具依赖 <code>.config/dotnet-tools.json</code> manifest，适合团队项目固定工具版本。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="工作负荷"><a aria-hidden="true" tabindex="-1" href="#工作负荷"><span class="icon icon-link"></span></a>工作负荷</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet workload list
+</span><span class="code-line">$ dotnet workload search maui
+</span><span class="code-line">$ dotnet workload <span class="token function">install</span> maui
+</span><span class="code-line">$ dotnet workload update
+</span><span class="code-line">$ dotnet workload restore
+</span><span class="code-line">$ dotnet workload repair
+</span><span class="code-line">$ dotnet workload uninstall maui
+</span></code></pre>
+<p>工作负荷用于安装 MAUI、Android、iOS、WebAssembly 等 SDK 扩展。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="诊断与高级"><a aria-hidden="true" tabindex="-1" href="#诊断与高级"><span class="icon icon-link"></span></a>诊断与高级</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="sdk-与运行时"><a aria-hidden="true" tabindex="-1" href="#sdk-与运行时"><span class="icon icon-link"></span></a>SDK 与运行时</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet <span class="token parameter variable">--info</span>
+</span><span class="code-line">$ dotnet --list-sdks
+</span><span class="code-line">$ dotnet --list-runtimes
+</span><span class="code-line">$ dotnet sdk check
+</span></code></pre>
+<p><code>dotnet sdk check</code> 会显示已安装 SDK/运行时以及可用更新。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="msbuild"><a aria-hidden="true" tabindex="-1" href="#msbuild"><span class="icon icon-link"></span></a>MSBuild</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet msbuild
+</span><span class="code-line">$ dotnet msbuild /t:Clean,Build /p:Configuration<span class="token operator">=</span>Release
+</span><span class="code-line">$ dotnet build <span class="token parameter variable">-p:TreatWarningsAsErrors</span><span class="token operator">=</span>true
+</span></code></pre>
+<p><code>dotnet build</code> 内部使用 MSBuild；需要更细粒度控制时可直接使用 <code>dotnet msbuild</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="构建服务器"><a aria-hidden="true" tabindex="-1" href="#构建服务器"><span class="icon icon-link"></span></a>构建服务器</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet build-server list
+</span><span class="code-line">$ dotnet build-server <span class="token function">shutdown</span>
+</span></code></pre>
+<p>构建服务器缓存可能影响诊断结果。遇到奇怪的构建缓存问题时，可以先关闭构建服务器后重试。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="开发证书"><a aria-hidden="true" tabindex="-1" href="#开发证书"><span class="icon icon-link"></span></a>开发证书</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet dev-certs https <span class="token parameter variable">--check</span>
+</span><span class="code-line">$ dotnet dev-certs https <span class="token parameter variable">--trust</span>
+</span><span class="code-line">$ dotnet dev-certs https <span class="token parameter variable">--clean</span>
+</span></code></pre>
+<p>HTTPS 开发证书常用于 ASP.NET Core 本地开发。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装脚本"><a aria-hidden="true" tabindex="-1" href="#安装脚本"><span class="icon icon-link"></span></a>安装脚本</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://dot.net/v1/dotnet-install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+</span><span class="code-line">$ powershell <span class="token parameter variable">-ExecutionPolicy</span> Bypass <span class="token parameter variable">-File</span> dotnet-install.ps1 <span class="token parameter variable">-Channel</span> <span class="token number">8.0</span>
+</span></code></pre>
+<p>安装脚本适合 CI 或用户级安装。生产机器更推荐使用系统包管理器或官方安装程序。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="常见场景"><a aria-hidden="true" tabindex="-1" href="#常见场景"><span class="icon icon-link"></span></a>常见场景</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ci-构建"><a aria-hidden="true" tabindex="-1" href="#ci-构建"><span class="icon icon-link"></span></a>CI 构建</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet restore
+</span><span class="code-line">$ dotnet build --no-restore <span class="token parameter variable">-c</span> Release
+</span><span class="code-line">$ dotnet <span class="token builtin class-name">test</span> --no-build <span class="token parameter variable">-c</span> Release
+</span><span class="code-line">$ dotnet publish --no-build <span class="token parameter variable">-c</span> Release <span class="token parameter variable">-o</span> ./publish
+</span></code></pre>
+<p>把还原、构建、测试和发布拆开，能减少重复工作并让失败位置更清晰。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="多目标框架"><a aria-hidden="true" tabindex="-1" href="#多目标框架"><span class="icon icon-link"></span></a>多目标框架</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet build <span class="token parameter variable">-f</span> net8.0
+</span><span class="code-line">$ dotnet <span class="token builtin class-name">test</span> <span class="token parameter variable">-f</span> net8.0
+</span></code></pre>
+<p>当项目配置多个目标框架时，可用 <code>-f|--framework</code> 指定要构建或测试的目标框架。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="指定运行时"><a aria-hidden="true" tabindex="-1" href="#指定运行时"><span class="icon icon-link"></span></a>指定运行时</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ dotnet publish <span class="token parameter variable">-r</span> win-x64
+</span><span class="code-line">$ dotnet publish <span class="token parameter variable">-r</span> linux-arm64 --self-contained <span class="token boolean">true</span>
+</span></code></pre>
+<p><code>-r|--runtime</code> 使用 Runtime Identifier。自包含发布会把 .NET 运行时一起带上。</p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
-<li><a href="https://github.com/dotnet/sdk/">dotnet/sdk GitHub 存储库</a> <em>(github.com/dotnet)</em></li>
-<li><a href="https://learn.microsoft.com/zh-cn/dotnet/core/install/windows">.NET 安装指南</a> <em>(learn.microsoft.com)</em></li>
+<li><a href="https://learn.microsoft.com/dotnet/core/tools/">.NET CLI 官方文档</a></li>
+<li><a href="https://learn.microsoft.com/dotnet/core/tools/dotnet">dotnet 命令</a></li>
+<li><a href="https://learn.microsoft.com/dotnet/core/tools/dotnet-build">dotnet build</a></li>
+<li><a href="https://learn.microsoft.com/dotnet/core/tools/dotnet-run">dotnet run</a></li>
+<li><a href="https://learn.microsoft.com/dotnet/core/tools/dotnet-publish">dotnet publish</a></li>
+<li><a href="https://learn.microsoft.com/dotnet/core/tools/dotnet-package-add">dotnet package add</a></li>
+<li><a href="https://learn.microsoft.com/dotnet/core/tools/dotnet-package-list">dotnet package list</a></li>
 </ul>
 </div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
