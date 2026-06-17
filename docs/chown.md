@@ -111,6 +111,7 @@ $ sudo chown -R alice:staff project/
 ```shell
 $ sudo chown --preserve-root -R alice:staff /srv/app
 ```
+<!--rehype:className=wrap-text-->
 
 递归处理重要路径时可加 `--preserve-root`，降低误把根目录作为目标的风险。
 
@@ -120,12 +121,14 @@ $ sudo chown --preserve-root -R alice:staff /srv/app
 ```shell
 $ sudo chown --from=root:root app:app config.yml
 ```
+<!--rehype:className=wrap-text-->
 
 只有当 `config.yml` 当前所有者和属组都是 `root` 时，才改为 `app:app`。
 
 ```shell
 $ sudo chown --from=:oldgroup :newgroup *.log
 ```
+<!--rehype:className=wrap-text-->
 
 只要求当前属组匹配 `oldgroup`，匹配后把属组改为 `newgroup`。
 
@@ -134,6 +137,7 @@ $ sudo chown --from=:oldgroup :newgroup *.log
 ```shell
 $ sudo chown --reference=template.txt target.txt
 ```
+<!--rehype:className=wrap-text-->
 
 把 `target.txt` 的所有者和属组改成与 `template.txt` 相同。
 
@@ -170,6 +174,7 @@ $ sudo chown -R www-data:www-data /var/www/example
 ```shell
 $ sudo chown -R www-data:www-data /var/www/example/uploads
 ```
+<!--rehype:className=wrap-text-->
 
 只给需要写入的目录设置 Web 服务用户归属，其他代码目录应尽量保持只读权限。
 
@@ -178,6 +183,7 @@ $ sudo chown -R www-data:www-data /var/www/example/uploads
 ```shell
 $ sudo chown -R "$USER":"$USER" ~/.config/my-tool
 ```
+<!--rehype:className=wrap-text-->
 
 当配置目录被 `sudo` 创建后，可把它恢复为当前用户拥有。
 
