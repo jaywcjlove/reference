@@ -5,7 +5,7 @@
 <title>\&#x3C;/> htmx 备忘清单
  &#x26;  htmx cheatsheet &#x26;  Quick Reference</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta description="适合初学者的综合 htmx 备忘清单
+<meta description="htmx 是一个面向浏览器、无运行时依赖的 JavaScript 库。它通过 hx- HTML 属性让页面直接发起 AJAX 请求、局部替换 HTML、处理 CSS 过渡，并通过扩展支持 WebSocket、SSE 等能力。
 
 
 入门，为开发人员分享快速参考备忘单。">
@@ -38,167 +38,429 @@
 </button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="-htmx-备忘清单"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" width="1em">
   <path d="M107.946667 838.4l57.173333 23.893333v-385.28l-103.68 250.026667c-17.493333 43.52 3.413333 93.44 46.506667 111.36z m832-157.866667L728.32 169.813333a85.888 85.888 0 0 0-77.226667-52.48c-11.093333 0-22.613333 1.706667-33.706666 6.4L302.933333 253.866667a85.290667 85.290667 0 0 0-46.08 110.933333l211.626667 510.72a85.248 85.248 0 0 0 110.933333 46.08l314.026667-130.133333a85.077333 85.077333 0 0 0 46.506667-110.933334zM336.213333 373.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666s19.2-42.666667 42.666666-42.666667 42.666667 19.2 42.666667 42.666667-19.2 42.666667-42.666667 42.666666z m-85.333333 469.333334c0 46.933333 38.4 85.333333 85.333333 85.333333h61.866667l-147.2-355.84v270.506667z"></path>
 </svg><a aria-hidden="true" tabindex="-1" href="#-htmx-备忘清单"><span class="icon icon-link"></span></a>&#x3C;/> htmx 备忘清单</h1><div class="wrap-body">
-<p><a href="https://npmjs.org/package/htmx.org"><img src="https://img.shields.io/npm/v/htmx.org.svg?style=flat" alt="NPM version"></a>
-<a href="https://www.npmjs.com/package/htmx.org"><img src="https://img.shields.io/npm/dm/htmx.org.svg?style=flat" alt="Downloads"></a>
-<a href="https://github.com/bigskysoftware/htmx/network/dependents"><img src="https://badgen.net/github/dependents-repo/bigskysoftware/htmx" alt="Repo Dependents"></a>
-<a href="https://github.com/bigskysoftware/htmx"><img src="https://badgen.net/badge/icon/Github?icon=github&#x26;label" alt="Github repo"></a></p>
-<p style="padding-top: 12px;">适合初学者的综合 <a href="https://htmx.org/">htmx</a> 备忘清单</p>
+<p style="padding-top: 12px;"><a href="https://htmx.org/">htmx</a> 是一个面向浏览器、无运行时依赖的 JavaScript 库。它通过 <code>hx-*</code> HTML 属性让页面直接发起 AJAX 请求、局部替换 HTML、处理 CSS 过渡，并通过扩展支持 WebSocket、SSE 等能力。</p>
 <!--rehype:style=padding-top: 12px;-->
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#快速开始">快速开始</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#点击编辑提交">点击编辑提交</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除行">删除行</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#延迟加载">延迟加载</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hx-swap">hx-swap</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#api-参考">API 参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心属性参考">核心属性参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#附加属性参考">附加属性参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#css-类参考">CSS 类参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#事件参考">事件参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#javascript-api-参考">JavaScript API 参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#请求标头参考">请求标头参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#响应标头参考">响应标头参考</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#参考资料">参考资料</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="快速开始"><a aria-hidden="true" tabindex="-1" href="#快速开始"><span class="icon icon-link"></span></a>快速开始</h3><div class="wrap-body">
-<p><a href="https://htmx.org/">htmx</a> 是 <a href="http://intercoolerjs.org/">intercooler.js</a> 的继承者</p>
-<pre class="wrap-text"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span>
-</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/htmx.org@2.0.6<span class="token punctuation">"</span></span>
-</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm<span class="token punctuation">"</span></span>
-</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span>
-</span></span><span class="code-line"><span class="token tag"><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-</span></span></span><span class="code-line"><span class="token script"><span class="token language-javascript"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
-</span><span class="code-line"><span class="token comment">&#x3C;!-- 有一个按钮POST，通过AJAX点击 --></span>
-</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span>
-</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">hx-post</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/clicked<span class="token punctuation">"</span></span>
-</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">hx-swap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outerHTML<span class="token punctuation">"</span></span>
-</span></span><span class="code-line"><span class="token tag"><span class="token punctuation">></span></span>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#第一个请求">第一个请求</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ajax-方法">AJAX 方法</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#请求与交换">请求与交换</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hx-trigger">hx-trigger</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hx-target">hx-target</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hx-swap">hx-swap</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#选择与带外交换">选择与带外交换</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#参数与表单">参数与表单</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#参数提交">参数提交</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#文件上传">文件上传</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#确认与提示">确认与提示</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#常见模式">常见模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#点击编辑">点击编辑</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#删除行">删除行</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#延迟加载与轮询">延迟加载与轮询</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#请求指示器">请求指示器</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#api-参考">API 参考</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心属性">核心属性</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#附加属性">附加属性</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#css-类">CSS 类</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用事件">常用事件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#javascript-api">JavaScript API</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#请求头">请求头</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#响应头">响应头</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#扩展与调试">扩展与调试</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#扩展">扩展</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#调试">调试</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#全局配置">全局配置</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#参考资料">参考资料</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left">CDN</td><td><code>&#x3C;script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js">&#x3C;/script></code></td></tr><tr><td align="left">下载文件</td><td>下载 <code>htmx.min.js</code> 后用普通 <code>&#x3C;script></code> 引入</td></tr><tr><td align="left">npm</td><td><code>npm install htmx.org@2.0.10</code></td></tr><tr><td align="left">Webpack / bundler</td><td><code>import "htmx.org";</code></td></tr><tr><td align="left">全局变量</td><td><code>window.htmx = require("htmx.org");</code></td></tr><tr><td align="left">扩展</td><td>先加载 htmx，再加载扩展并使用 <code>hx-ext</code></td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+<p>htmx 2.x 是当前主线；1.x 仍支持 IE11。生产环境使用 CDN 时建议固定版本，并按官方下载页更新 <code>integrity</code> 值。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="第一个请求"><a aria-hidden="true" tabindex="-1" href="#第一个请求"><span class="icon icon-link"></span></a>第一个请求</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">hx-post</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/clicked<span class="token punctuation">"</span></span> <span class="token attr-name">hx-swap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outerHTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 </span><span class="code-line">  点击我
 </span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
 </span></code></pre>
-<!--rehype:className=wrap-text-->
-<p><code>hx-post</code> 和 <code>hx-swap</code> 属性告诉 <code>htmx</code>：</p>
-<blockquote>
-<p>当用户单击此按钮时，向 <code>/clicked</code> 发出 <code>AJAX</code> 请求，并用响应替换整个按钮</p>
-</blockquote>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">npm</span> <span class="token function">install</span> htmx.org
+<p>当按钮被点击时，htmx 会向 <code>/clicked</code> 发出 <code>POST</code> 请求，并用响应 HTML 替换整个按钮。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ajax-方法"><a aria-hidden="true" tabindex="-1" href="#ajax-方法"><span class="icon icon-link"></span></a>AJAX 方法</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>hx-get="/url"</code></td><td>发起 <code>GET</code> 请求</td></tr><tr><td align="left"><code>hx-post="/url"</code></td><td>发起 <code>POST</code> 请求</td></tr><tr><td align="left"><code>hx-put="/url"</code></td><td>发起 <code>PUT</code> 请求</td></tr><tr><td align="left"><code>hx-patch="/url"</code></td><td>发起 <code>PATCH</code> 请求</td></tr><tr><td align="left"><code>hx-delete="/url"</code></td><td>发起 <code>DELETE</code> 请求</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+<p>默认触发事件按元素类型决定：<code>input</code>、<code>textarea</code>、<code>select</code> 为 <code>change</code>，<code>form</code> 为 <code>submit</code>，其他元素为 <code>click</code>。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="请求与交换"><a aria-hidden="true" tabindex="-1" href="#请求与交换"><span class="icon icon-link"></span></a>请求与交换</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="hx-trigger"><a aria-hidden="true" tabindex="-1" href="#hx-trigger"><span class="icon icon-link"></span></a>hx-trigger</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>hx-trigger="click"</code></td><td>点击时触发</td></tr><tr><td align="left"><code>hx-trigger="mouseenter"</code></td><td>鼠标进入时触发</td></tr><tr><td align="left"><code>hx-trigger="load"</code></td><td>元素加载后触发</td></tr><tr><td align="left"><code>hx-trigger="every 2s"</code></td><td>每 2 秒轮询</td></tr><tr><td align="left"><code>hx-trigger="keyup changed delay:500ms"</code></td><td>值变化且停止输入 500ms 后触发</td></tr><tr><td align="left"><code>hx-trigger="click once"</code></td><td>只触发一次</td></tr><tr><td align="left"><code>hx-trigger="click[ctrlKey]"</code></td><td>满足事件过滤表达式才触发</td></tr><tr><td align="left"><code>hx-trigger="load, click delay:1s"</code></td><td>多个触发器组合</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+<p>常用修饰符：</p>
+<ul class="cols-2 style-none">
+<li><code>once</code>：只触发一次</li>
+<li><code>changed</code>：值变化时才触发</li>
+<li><code>delay:&#x3C;time></code>：延迟触发，期间再次触发会重置计时</li>
+<li><code>throttle:&#x3C;time></code>：节流触发</li>
+<li><code>from:&#x3C;selector></code>：监听其他元素上的事件</li>
+<li><code>target:&#x3C;selector></code>：只处理来自匹配目标的事件</li>
+</ul>
+<!--rehype:className=cols-2 style-none-->
+</div></div></div><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="hx-target"><a aria-hidden="true" tabindex="-1" href="#hx-target"><span class="icon icon-link"></span></a>hx-target</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>hx-target="#result"</code></td><td>将响应换入指定元素</td></tr><tr><td align="left"><code>hx-target="this"</code></td><td>目标为当前元素</td></tr><tr><td align="left"><code>hx-target="closest tr"</code></td><td>目标为最近的表格行</td></tr><tr><td align="left"><code>hx-target="next .panel"</code></td><td>目标为后续匹配元素</td></tr><tr><td align="left"><code>hx-target="previous .item"</code></td><td>目标为前一个匹配元素</td></tr><tr><td align="left"><code>hx-target="find .body"</code></td><td>目标为当前元素内的匹配子元素</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+<h4 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h4>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>q<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">hx-get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/search<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">hx-trigger</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>keyup changed delay:500ms<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">hx-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#search-results<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>搜索<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>search-results<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
 </span></code></pre>
-<p>安装 <code>htmx</code> 将导入添加到您的 <code>index.js</code></p>
-<pre class="language-js"><code class="language-js code-highlight"><span class="code-line"><span class="token keyword module">import</span> <span class="token string">'htmx.org'</span><span class="token punctuation">;</span>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="hx-swap"><a aria-hidden="true" tabindex="-1" href="#hx-swap"><span class="icon icon-link"></span></a>hx-swap</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>innerHTML</code></td><td>默认，替换目标元素内部 HTML</td></tr><tr><td align="left"><code>outerHTML</code></td><td>替换整个目标元素</td></tr><tr><td align="left"><code>beforebegin</code></td><td>插入到目标元素之前</td></tr><tr><td align="left"><code>afterbegin</code></td><td>插入到目标元素内部开头</td></tr><tr><td align="left"><code>beforeend</code></td><td>插入到目标元素内部结尾</td></tr><tr><td align="left"><code>afterend</code></td><td>插入到目标元素之后</td></tr><tr><td align="left"><code>delete</code></td><td>删除目标元素</td></tr><tr><td align="left"><code>none</code></td><td>不换入主体内容，仍处理带外交换</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+<p>常用修饰符：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>swap:1s</code></td><td>收到响应后延迟 1 秒再交换</td></tr><tr><td align="left"><code>settle:500ms</code></td><td>交换后等待 500ms 再 settle</td></tr><tr><td align="left"><code>transition:true</code></td><td>使用 View Transitions API</td></tr><tr><td align="left"><code>ignoreTitle:true</code></td><td>忽略响应中的 <code>&#x3C;title></code></td></tr><tr><td align="left"><code>scroll:bottom</code></td><td>交换后滚动到底部</td></tr><tr><td align="left"><code>show:top</code></td><td>交换后显示目标顶部</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="选择与带外交换"><a aria-hidden="true" tabindex="-1" href="#选择与带外交换"><span class="icon icon-link"></span></a>选择与带外交换</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>hx-select="#content"</code></td><td>从响应中选择局部内容换入</td></tr><tr><td align="left"><code>hx-select-oob="#alert"</code></td><td>从响应中挑选带外内容</td></tr><tr><td align="left"><code>hx-swap-oob="true"</code></td><td>响应片段按 <code>id</code> 直接更新页面其他位置</td></tr><tr><td align="left"><code>hx-preserve</code></td><td>在交换中保留元素</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+<p>表格中的 <code>tr</code>、<code>td</code> 等片段用于带外交换时，建议用 <code>&#x3C;template></code> 包裹，避免浏览器解析 HTML 时丢失结构。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="参数与表单"><a aria-hidden="true" tabindex="-1" href="#参数与表单"><span class="icon icon-link"></span></a>参数与表单</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="参数提交"><a aria-hidden="true" tabindex="-1" href="#参数提交"><span class="icon icon-link"></span></a>参数提交</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left">普通输入元素</td><td>如果元素有 <code>name</code> 和值，会随请求提交</td></tr><tr><td align="left"><code>form</code></td><td>提交表单内所有输入值</td></tr><tr><td align="left">非 <code>GET</code> 请求</td><td>会包含关联表单的输入值</td></tr><tr><td align="left"><code>hx-include="#extra"</code></td><td>额外包含其他元素的值</td></tr><tr><td align="left"><code>hx-params="not csrf"</code></td><td>过滤请求参数</td></tr><tr><td align="left"><code>hx-vals='{"page": 1}'</code></td><td>添加 JSON 格式的额外值</td></tr><tr><td align="left"><code>htmx:configRequest</code></td><td>发请求前用事件修改参数或请求头</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="文件上传"><a aria-hidden="true" tabindex="-1" href="#文件上传"><span class="icon icon-link"></span></a>文件上传</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">hx-post</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/upload<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">hx-encoding</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>multipart/form-data<span class="token punctuation">"</span></span>
+</span></span><span class="code-line"><span class="token tag">  <span class="token attr-name">hx-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#result<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span><span class="token punctuation">></span></span>上传<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>progress</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>progress<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>progress</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>result<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="点击编辑提交"><a aria-hidden="true" tabindex="-1" href="#点击编辑提交"><span class="icon icon-link"></span></a>点击编辑提交</h3><div class="wrap-body">
+<p>上传时可监听 <code>htmx:xhr:progress</code> 显示进度。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="确认与提示"><a aria-hidden="true" tabindex="-1" href="#确认与提示"><span class="icon icon-link"></span></a>确认与提示</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>hx-confirm="确定删除？"</code></td><td>请求前显示确认框</td></tr><tr><td align="left"><code>hx-prompt="请输入名称"</code></td><td>请求前显示提示框</td></tr><tr><td align="left"><code>htmx:confirm</code></td><td>自定义异步确认流程</td></tr><tr><td align="left"><code>HX-Prompt</code></td><td>请求头中包含用户对 prompt 的响应</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="常见模式"><a aria-hidden="true" tabindex="-1" href="#常见模式"><span class="icon icon-link"></span></a>常见模式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="点击编辑"><a aria-hidden="true" tabindex="-1" href="#点击编辑"><span class="icon icon-link"></span></a>点击编辑</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2-->
-<p>有一个按钮，可以从 <code>/contacts/1/edit</code> 获取联系人的编辑 UI</p>
 <pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">hx-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>this<span class="token punctuation">"</span></span> <span class="token attr-name">hx-swap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outerHTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 </span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>名字<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>: Joe<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>姓<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>: Blow<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>邮箱<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>: joe@blow.com<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">hx-get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/contact/1/edit<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">    点击编辑
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>邮箱<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>: joe@example.com<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">hx-get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/contacts/1/edit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>编辑<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
 </span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
 </span></code></pre>
-<p>这将返回一个可用于编辑联系人的表单</p>
-<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span> <span class="token attr-name">hx-put</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/contact/1<span class="token punctuation">"</span></span> <span class="token attr-name">hx-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>this<span class="token punctuation">"</span></span> <span class="token attr-name">hx-swap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outerHTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>名字<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>firstName<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Joe<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>姓<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lastName<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Blow<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>邮箱<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>joe@blow.com<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>提交<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">hx-get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/contact/1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>取消<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
-</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span> 
+<p>服务器返回表单：</p>
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span> <span class="token attr-name">hx-put</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/contacts/1<span class="token punctuation">"</span></span> <span class="token attr-name">hx-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>this<span class="token punctuation">"</span></span> <span class="token attr-name">hx-swap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outerHTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>firstName<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Joe<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>joe@example.com<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span><span class="token punctuation">></span></span>保存<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">hx-get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/contacts/1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>取消<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span>
 </span></code></pre>
-<p>表单按照通常的 <code>REST-ful</code> 模式将 <code>PUT</code> 发回 <code>/contacts/1</code></p>
-</div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="删除行"><a aria-hidden="true" tabindex="-1" href="#删除行"><span class="icon icon-link"></span></a>删除行</h3><div class="wrap-body">
-<!--rehype:wrap-class=col-span-2 row-span-2-->
-<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>table delete-row-example<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>thead</span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>tr</span><span class="token punctuation">></span></span>
-</span><span class="code-line">      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>th</span><span class="token punctuation">></span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>th</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>th</span><span class="token punctuation">></span></span>Email<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>th</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>th</span><span class="token punctuation">></span></span>Status<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>th</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>th</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>th</span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>tr</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>thead</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>tbody</span> <span class="token attr-name">hx-confirm</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Are you sure?<span class="token punctuation">"</span></span> <span class="token attr-name">hx-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>closest tr<span class="token punctuation">"</span></span> <span class="token attr-name">hx-swap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outerHTML swap:1s<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">    ...
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>tbody</span><span class="token punctuation">></span></span>
-</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>table</span><span class="token punctuation">></span></span>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="删除行"><a aria-hidden="true" tabindex="-1" href="#删除行"><span class="icon icon-link"></span></a>删除行</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>tbody</span> <span class="token attr-name">hx-confirm</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>确定删除？<span class="token punctuation">"</span></span> <span class="token attr-name">hx-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>closest tr<span class="token punctuation">"</span></span> <span class="token attr-name">hx-swap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outerHTML swap:1s<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>tr</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>td</span><span class="token punctuation">></span></span>Joe<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>td</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>td</span><span class="token punctuation">></span></span>joe@example.com<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>td</span><span class="token punctuation">></span></span>
+</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">hx-delete</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/contacts/1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>删除<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>td</span><span class="token punctuation">></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>tr</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>tbody</span><span class="token punctuation">></span></span>
 </span></code></pre>
-<p>表体有一个 <code>hx-confirm</code> 属性来确认删除动作。 它还将所有按钮的目标设置为最近的 <code>tr</code>，即最近的表格行（<code>hx-target</code> 继承自 DOM 中的父级）<code>hx-swap</code> 中的交换规范表示将整个目标换出并收到响应后等待 1 秒。最后一点是为了让我们可以使用以下 CSS：</p>
 <pre class="language-css"><code class="language-css code-highlight"><span class="code-line"><span class="token selector">tr<span class="token class">.htmx-swapping</span> td</span> <span class="token punctuation">{</span>
 </span><span class="code-line">  <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
 </span><span class="code-line">  <span class="token property">transition</span><span class="token punctuation">:</span> opacity <span class="token number">1</span><span class="token unit">s</span> ease-out<span class="token punctuation">;</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
-<p>在交换/删除之前淡出该行。每行都有一个带有 <code>hx-delete</code> 属性的按钮，该属性包含发出 <code>DELETE</code> 请求以从服务器中删除该行的 <code>url</code>。此请求以空内容响应，表明该行应替换为空内容</p>
-<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>tr</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>td</span><span class="token punctuation">></span></span>Angie MacDowell<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>td</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>td</span><span class="token punctuation">></span></span>angie@macdowell.org<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>td</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>td</span><span class="token punctuation">></span></span>Active<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>td</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>td</span><span class="token punctuation">></span></span>
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn btn-danger<span class="token punctuation">"</span></span> <span class="token attr-name">hx-delete</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/contact/1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">      Delete
-</span><span class="code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>td</span><span class="token punctuation">></span></span>
-</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>tr</span><span class="token punctuation">></span></span>
-</span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="延迟加载"><a aria-hidden="true" tabindex="-1" href="#延迟加载"><span class="icon icon-link"></span></a>延迟加载</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="延迟加载与轮询"><a aria-hidden="true" tabindex="-1" href="#延迟加载与轮询"><span class="icon icon-link"></span></a>延迟加载与轮询</h3><div class="wrap-body">
 <pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">hx-get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/graph<span class="token punctuation">"</span></span> <span class="token attr-name">hx-trigger</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>load<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span>
-</span></span><span class="code-line"><span class="token tag">    <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>正在加载中...<span class="token punctuation">"</span></span>
-</span></span><span class="code-line"><span class="token tag">    <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>htmx-indicator<span class="token punctuation">"</span></span>
-</span></span><span class="code-line"><span class="token tag">    <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span>
-</span></span><span class="code-line"><span class="token tag">    <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/img/bars.svg<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+</span><span class="code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>htmx-indicator<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/spinner.svg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>加载中<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 </span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">hx-get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/news<span class="token punctuation">"</span></span> <span class="token attr-name">hx-trigger</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>every 2s<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
 </span></code></pre>
-<p>当我们加载图表时显示进度指示器。 然后通过稳定的 CSS(<code>htmx-settling</code>) 过渡加载图形并逐渐淡入视图</p>
-<pre class="language-css"><code class="language-css code-highlight"><span class="code-line"><span class="token selector"><span class="token class">.htmx-settling</span> img</span> <span class="token punctuation">{</span>
-</span><span class="code-line">  <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
-</span><span class="code-line"><span class="token punctuation">}</span>
-</span><span class="code-line"><span class="token selector">img</span> <span class="token punctuation">{</span>
-</span><span class="code-line">  <span class="token property">transition</span><span class="token punctuation">:</span> opacity <span class="token number">300</span><span class="token unit">ms</span> ease-in<span class="token punctuation">;</span>
-</span><span class="code-line"><span class="token punctuation">}</span>
+<p>服务器可返回 HTTP <code>286</code> 来停止轮询。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="请求指示器"><a aria-hidden="true" tabindex="-1" href="#请求指示器"><span class="icon icon-link"></span></a>请求指示器</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">hx-get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/save<span class="token punctuation">"</span></span> <span class="token attr-name">hx-indicator</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#indicator<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</span><span class="code-line">  保存
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+</span><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>indicator<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>htmx-indicator<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/spinner.svg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>加载中<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 </span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="hx-swap"><a aria-hidden="true" tabindex="-1" href="#hx-swap"><span class="icon icon-link"></span></a>hx-swap</h3><div class="wrap-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="left-align"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>innerHTML</code></td><td>默认，替换目标元素的内部 <code>html</code></td></tr><tr><td align="left"><code>outerHTML</code></td><td>用响应替换整个目标元素</td></tr><tr><td align="left"><code>beforebegin</code></td><td>在目标元素之前插入响应</td></tr><tr><td align="left"><code>afterbegin</code></td><td>目标元素的第一个子元素之前插入响应</td></tr><tr><td align="left"><code>beforeend</code></td><td>目标元素的最后一个子元素之后插入响应</td></tr><tr><td align="left"><code>afterend</code></td><td>在目标元素之后插入响应</td></tr><tr><td align="left"><code>delete</code></td><td>无论响应如何，都删除目标元素</td></tr><tr><td align="left"><code>none</code></td><td>不附加来自响应的内容 <br><em>(带外项目仍将被处理)</em></td></tr></tbody></table>
-<!--rehype:className=left-align-->
+<p>请求期间 htmx 会添加 <code>htmx-request</code> 类，默认会让 <code>.htmx-indicator</code> 显示出来。</p>
 </div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="api-参考"><a aria-hidden="true" tabindex="-1" href="#api-参考"><span class="icon icon-link"></span></a>API 参考</h2><div class="wrap-body">
 <!--rehype:body-class=cols-2-->
-</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="核心属性参考"><a aria-hidden="true" tabindex="-1" href="#核心属性参考"><span class="icon icon-link"></span></a>核心属性参考</h3><div class="wrap-body">
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="核心属性"><a aria-hidden="true" tabindex="-1" href="#核心属性"><span class="icon icon-link"></span></a>核心属性</h3><div class="wrap-body">
 
 
 
@@ -252,10 +514,17 @@
 
 
 
-<table class="left-align"><thead><tr><th align="left">属性</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>hx-boost</code></td><td>添加或删除链接和表单的<a href="https://en.wikipedia.org/wiki/Progressive_enhancement">渐进增强</a></td></tr><tr><td align="left"><code>hx-get</code></td><td>向指定的 URL 发出 <code>GET</code></td></tr><tr><td align="left"><code>hx-post</code></td><td>向指定的 URL 发出 <code>POST</code></td></tr><tr><td align="left"><code>hx-push-url</code></td><td>将 URL 推入浏览器地址栏，创建一个新的历史条目</td></tr><tr><td align="left"><code>hx-select</code></td><td>从响应中选择要换入的内容</td></tr><tr><td align="left"><code>hx-select-oob</code></td><td>从带外(目标以外的某个地方)的响应中选择要换入的内容</td></tr><tr><td align="left"><code>hx-swap</code></td><td>控制内容的交换方式(<code>outerHTML</code>、<code>beforeEnd</code>、<code>afterend</code>，...)</td></tr><tr><td align="left"><code>hx-swap-oob</code></td><td>将响应中的内容标记为带外(应该在目标以外的地方交换)</td></tr><tr><td align="left"><code>hx-target</code></td><td>指定要交换的目标元素</td></tr><tr><td align="left"><code>hx-trigger</code></td><td>指定触发请求的事件</td></tr><tr><td align="left"><code>hx-vals</code></td><td>向参数添加值以随请求一起提交(JSON 格式)</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+<table class="left-align"><thead><tr><th align="left">属性</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>hx-boost</code></td><td>增强链接和表单，使用 AJAX 替代整页跳转</td></tr><tr><td align="left"><code>hx-get</code></td><td>发起 <code>GET</code> 请求</td></tr><tr><td align="left"><code>hx-post</code></td><td>发起 <code>POST</code> 请求</td></tr><tr><td align="left"><code>hx-put</code></td><td>发起 <code>PUT</code> 请求</td></tr><tr><td align="left"><code>hx-patch</code></td><td>发起 <code>PATCH</code> 请求</td></tr><tr><td align="left"><code>hx-delete</code></td><td>发起 <code>DELETE</code> 请求</td></tr><tr><td align="left"><code>hx-trigger</code></td><td>指定触发请求的事件</td></tr><tr><td align="left"><code>hx-target</code></td><td>指定响应内容换入的目标</td></tr><tr><td align="left"><code>hx-swap</code></td><td>指定内容交换方式</td></tr><tr><td align="left"><code>hx-select</code></td><td>从响应中选择要换入的内容</td></tr><tr><td align="left"><code>hx-push-url</code></td><td>将 URL 推入浏览器历史</td></tr><tr><td align="left"><code>hx-replace-url</code></td><td>替换当前浏览器 URL</td></tr><tr><td align="left"><code>hx-swap-oob</code></td><td>处理响应中的带外交换</td></tr></tbody></table>
 <!--rehype:className=left-align-->
-<p>使用 htmx 时最常用的属性</p>
-</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="附加属性参考"><a aria-hidden="true" tabindex="-1" href="#附加属性参考"><span class="icon icon-link"></span></a>附加属性参考</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="附加属性"><a aria-hidden="true" tabindex="-1" href="#附加属性"><span class="icon icon-link"></span></a>附加属性</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
 
 
@@ -338,18 +607,9 @@
 
 
 
-
-
-
-
-
-
-
-
-<table class="left-align"><thead><tr><th align="left">属性</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>hx-confirm</code></td><td>在发出请求之前显示一个 <code>confim()</code> 对话框</td></tr><tr><td align="left"><code>hx-delete</code></td><td>向指定的 URL 发出 <code>DELETE</code></td></tr><tr><td align="left"><code>hx-disable</code></td><td>禁用给定节点和任何子节点的 htmx 处理</td></tr><tr><td align="left"><code>hx-disinherit</code></td><td>控制和禁用子节点的自动属性继承</td></tr><tr><td align="left"><code>hx-encoding</code></td><td>更改请求编码类型</td></tr><tr><td align="left"><code>hx-ext</code></td><td>用于此元素的扩展</td></tr><tr><td align="left"><code>hx-headers</code></td><td>添加到将与请求一起提交的标头</td></tr><tr><td align="left"><code>hx-history-elt</code></td><td>在历史导航期间要快照和恢复的元素</td></tr><tr><td align="left"><code>hx-include</code></td><td>在请求中包含额外数据</td></tr><tr><td align="left"><code>hx-indicator</code></td><td>在请求期间放置 <code>htmx-request</code> 类的元素</td></tr><tr><td align="left"><code>hx-params</code></td><td>过滤将与请求一起提交的参数</td></tr><tr><td align="left"><code>hx-patch</code></td><td>向指定的 URL 发出 PATCH</td></tr><tr><td align="left"><code>hx-preserve</code></td><td>指定在请求之间保持不变的元素</td></tr><tr><td align="left"><code>hx-prompt</code></td><td>在提交请求之前显示一个 <code>prompt()</code></td></tr><tr><td align="left"><code>hx-put</code></td><td>向指定的 URL 发出 PUT</td></tr><tr><td align="left"><code>hx-replace-url</code></td><td>替换浏览器地址栏中的 URL</td></tr><tr><td align="left"><code>hx-request</code></td><td>配置请求的各个方面</td></tr><tr><td align="left"><code>hx-sync</code></td><td>控制不同元素发出的请求如何同步</td></tr><tr><td align="left"><code>hx-validate</code></td><td>强制元素在请求之前验证自己</td></tr><tr><td align="left"><code>hx-disabled-elt</code></td><td>禁用触发元素和指定的元素，在发出请求期间</td></tr></tbody></table>
+<table class="left-align"><thead><tr><th align="left">属性</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>hx-confirm</code></td><td>请求前显示确认对话框</td></tr><tr><td align="left"><code>hx-disabled-elt</code></td><td>请求期间禁用触发元素或指定元素</td></tr><tr><td align="left"><code>hx-disable</code></td><td>禁用当前节点及子节点的 htmx 处理</td></tr><tr><td align="left"><code>hx-disinherit</code></td><td>禁用属性继承</td></tr><tr><td align="left"><code>hx-encoding</code></td><td>设置请求编码，如 <code>multipart/form-data</code></td></tr><tr><td align="left"><code>hx-ext</code></td><td>启用扩展</td></tr><tr><td align="left"><code>hx-headers</code></td><td>添加请求头</td></tr><tr><td align="left"><code>hx-history-elt</code></td><td>指定历史快照元素</td></tr><tr><td align="left"><code>hx-include</code></td><td>包含额外输入值</td></tr><tr><td align="left"><code>hx-indicator</code></td><td>指定请求期间显示状态的元素</td></tr><tr><td align="left"><code>hx-params</code></td><td>过滤请求参数</td></tr><tr><td align="left"><code>hx-preserve</code></td><td>交换时保留元素</td></tr><tr><td align="left"><code>hx-prompt</code></td><td>请求前显示提示框</td></tr><tr><td align="left"><code>hx-request</code></td><td>配置请求行为</td></tr><tr><td align="left"><code>hx-select-oob</code></td><td>从响应中选择带外交换内容</td></tr><tr><td align="left"><code>hx-sync</code></td><td>控制多个请求之间的同步</td></tr><tr><td align="left"><code>hx-validate</code></td><td>请求前触发表单验证</td></tr><tr><td align="left"><code>hx-vals</code></td><td>添加 JSON 格式参数</td></tr></tbody></table>
 <!--rehype:className=left-align-->
-<p>列出了 htmx 中可用的所有其他属性</p>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="css-类参考"><a aria-hidden="true" tabindex="-1" href="#css-类参考"><span class="icon icon-link"></span></a>CSS 类参考</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="css-类"><a aria-hidden="true" tabindex="-1" href="#css-类"><span class="icon icon-link"></span></a>CSS 类</h3><div class="wrap-body">
 
 
 
@@ -379,9 +639,9 @@
 
 
 
-<table><thead><tr><th align="left">Class</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>htmx-added</code></td><td>在交换之前应用于新的内容，在它被解决之后移除</td></tr><tr><td align="left"><code>htmx-indicator</code></td><td>一个动态生成的类，当存在 <code>htmx-request</code> 类时将切换可见<br> <em>(不透明度：<code>1</code>)</em></td></tr><tr><td align="left"><code>htmx-request</code></td><td>在请求进行时应用于元素或使用 <code>hx-indicator</code> 指定的元素</td></tr><tr><td align="left"><code>htmx-settling</code></td><td>内容交换后应用于目标，内容确定后删除。<br> <em>可以通过 <code>hx-swap</code> 修改持续时间</em></td></tr><tr><td align="left"><code>htmx-swapping</code></td><td>在交换任何内容之前应用于目标，在交换之后移除。<br> <em>可以通过 <code>hx-swap</code> 修改持续时间</em></td></tr></tbody></table>
-</div></div></div><div class="wrap h3body-not-exist row-span-3"><div class="wrap-header h3wrap"><h3 id="事件参考"><a aria-hidden="true" tabindex="-1" href="#事件参考"><span class="icon icon-link"></span></a>事件参考</h3><div class="wrap-body">
-<!--rehype:wrap-class=row-span-3-->
+<table><thead><tr><th align="left">Class</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>htmx-added</code></td><td>新内容换入前添加，settle 后移除</td></tr><tr><td align="left"><code>htmx-indicator</code></td><td>请求指示器元素，默认隐藏</td></tr><tr><td align="left"><code>htmx-request</code></td><td>请求期间添加到触发元素或指示器元素</td></tr><tr><td align="left"><code>htmx-settling</code></td><td>内容交换后、settle 前添加</td></tr><tr><td align="left"><code>htmx-swapping</code></td><td>swap 前添加，可用于离场动画</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="常用事件"><a aria-hidden="true" tabindex="-1" href="#常用事件"><span class="icon icon-link"></span></a>常用事件</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
 
 
 
@@ -443,6 +703,9 @@
 
 
 
+<table><thead><tr><th align="left">事件</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>htmx:beforeRequest</code></td><td>发出请求前触发</td></tr><tr><td align="left"><code>htmx:configRequest</code></td><td>请求前配置参数和请求头</td></tr><tr><td align="left"><code>htmx:beforeSend</code></td><td>XHR 发送前触发</td></tr><tr><td align="left"><code>htmx:afterRequest</code></td><td>请求完成后触发</td></tr><tr><td align="left"><code>htmx:beforeSwap</code></td><td>交换前触发，可改变目标或 swap 方式</td></tr><tr><td align="left"><code>htmx:afterSwap</code></td><td>内容换入后触发</td></tr><tr><td align="left"><code>htmx:afterSettle</code></td><td>DOM settle 后触发</td></tr><tr><td align="left"><code>htmx:load</code></td><td>新内容加入 DOM 后触发</td></tr><tr><td align="left"><code>htmx:confirm</code></td><td>请求确认阶段触发</td></tr><tr><td align="left"><code>htmx:responseError</code></td><td>HTTP 错误响应时触发</td></tr><tr><td align="left"><code>htmx:sendError</code></td><td>网络发送失败时触发</td></tr><tr><td align="left"><code>htmx:timeout</code></td><td>请求超时时触发</td></tr><tr><td align="left"><code>htmx:xhr:progress</code></td><td>XHR 进度事件，常用于上传</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="javascript-api"><a aria-hidden="true" tabindex="-1" href="#javascript-api"><span class="icon icon-link"></span></a>JavaScript API</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
 
 
 
@@ -512,6 +775,8 @@
 
 
 
+<table><thead><tr><th align="left">方法</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>htmx.ajax()</code></td><td>发起 htmx 风格 AJAX 请求</td></tr><tr><td align="left"><code>htmx.trigger()</code></td><td>触发元素事件</td></tr><tr><td align="left"><code>htmx.on()</code></td><td>添加事件监听器</td></tr><tr><td align="left"><code>htmx.off()</code></td><td>移除事件监听器</td></tr><tr><td align="left"><code>htmx.onLoad()</code></td><td>监听 htmx 加载的新内容</td></tr><tr><td align="left"><code>htmx.process()</code></td><td>处理动态加入的 DOM</td></tr><tr><td align="left"><code>htmx.find()</code></td><td>查找单个元素</td></tr><tr><td align="left"><code>htmx.findAll()</code></td><td>查找多个元素</td></tr><tr><td align="left"><code>htmx.closest()</code></td><td>查找最近祖先元素</td></tr><tr><td align="left"><code>htmx.addClass()</code></td><td>添加类</td></tr><tr><td align="left"><code>htmx.removeClass()</code></td><td>移除类</td></tr><tr><td align="left"><code>htmx.toggleClass()</code></td><td>切换类</td></tr><tr><td align="left"><code>htmx.takeClass()</code></td><td>从同级元素中取得唯一类</td></tr><tr><td align="left"><code>htmx.logAll()</code></td><td>打开所有 htmx 事件日志</td></tr><tr><td align="left"><code>htmx.logger</code></td><td>自定义日志函数</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="请求头"><a aria-hidden="true" tabindex="-1" href="#请求头"><span class="icon icon-link"></span></a>请求头</h3><div class="wrap-body">
 
 
 
@@ -551,10 +816,11 @@
 
 
 
-<table><thead><tr><th align="left">事件</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>htmx:abort</code></td><td>将此事件发送到元素以中止请求</td></tr><tr><td align="left"><code>htmx:afterOnLoad</code></td><td>AJAX 请求完成处理成功响应后触发</td></tr><tr><td align="left"><code>htmx:afterProcessNode</code></td><td>在 htmx 初始化节点后触发</td></tr><tr><td align="left"><code>htmx:afterRequest</code></td><td>AJAX 请求完成后触发</td></tr><tr><td align="left"><code>htmx:afterSettle</code></td><td>DOM 稳定后触发</td></tr><tr><td align="left"><code>htmx:afterSwap</code></td><td>换入新内容后触发</td></tr><tr><td align="left"><code>htmx:beforeOnLoad</code></td><td>在任何响应处理发生之前触发</td></tr><tr><td align="left"><code>htmx:beforeProcessNode</code></td><td>在 htmx 初始化节点之前触发</td></tr><tr><td align="left"><code>htmx:beforeRequest</code></td><td>在发出 AJAX 请求之前触发</td></tr><tr><td align="left"><code>htmx:beforeSwap</code></td><td>在交换完成之前触发，允许您配置交换</td></tr><tr><td align="left"><code>htmx:beforeSend</code></td><td>在发送 ajax 请求之前触发</td></tr><tr><td align="left"><code>htmx:configRequest</code></td><td>在请求之前触发，允许您自定义参数、标头</td></tr><tr><td align="left"><code>htmx:confirm</code></td><td>在元素上发生触发器后触发<br> <em>允许您取消(或延迟)发出 AJAX 请求</em></td></tr><tr><td align="left"><code>htmx:historyCacheError</code></td><td>在缓存写入期间因错误而触发</td></tr><tr><td align="left"><code>htmx:historyCacheMiss</code></td><td>在历史子系统中的缓存未命中时触发</td></tr><tr><td align="left"><code>htmx:historyCacheMissError</code></td><td>远程检索不成功时触发</td></tr><tr><td align="left"><code>htmx:historyCacheMissLoad</code></td><td>在成功的远程检索时触发</td></tr><tr><td align="left"><code>htmx:historyRestore</code></td><td>当 htmx 处理历史恢复操作时触发</td></tr><tr><td align="left"><code>htmx:beforeHistorySave</code></td><td>在内容保存到历史缓存之前触发</td></tr><tr><td align="left"><code>htmx:load</code></td><td>当新内容添加到 DOM 时触发</td></tr><tr><td align="left"><code>htmx:noSSESourceError</code></td><td>当元素在其触发器中引用 SSE 事件<br> <em>但未定义父 SSE 源时触发</em></td></tr><tr><td align="left"><code>htmx:onLoadError</code></td><td>htmx中onLoad处理异常时触发</td></tr><tr><td align="left"><code>htmx:oobAfterSwap</code></td><td>在交换了一个带元素之后触发</td></tr><tr><td align="left"><code>htmx:oobBeforeSwap</code></td><td>在带外元素交换完成之前触发，允许您配置交换</td></tr><tr><td align="left"><code>htmx:oobErrorNoTarget</code></td><td>当带外元素在当前 DOM 中没有匹配的 ID 时触发</td></tr><tr><td align="left"><code>htmx:prompt</code></td><td>显示提示后触发</td></tr><tr><td align="left"><code>htmx:pushedIntoHistory</code></td><td>在 url 被推送到历史记录后触发</td></tr><tr><td align="left"><code>htmx:responseError</code></td><td>当发生 HTTP 响应错误<br> <em>(非 200 或 300 响应代码)时触发</em></td></tr><tr><td align="left"><code>htmx:sendError</code></td><td>当网络错误阻止 HTTP 请求发生时触发</td></tr><tr><td align="left"><code>htmx:sseError</code></td><td>当 SSE 源发生错误时触发</td></tr><tr><td align="left"><code>htmx:swapError</code></td><td>在交换阶段发生错误时触发</td></tr><tr><td align="left"><code>htmx:targetError</code></td><td>指定无效目标时触发</td></tr><tr><td align="left"><code>htmx:timeout</code></td><td>发生请求超时时触发</td></tr><tr><td align="left"><code>htmx:validation:validate</code></td><td>在验证元素之前触发</td></tr><tr><td align="left"><code>htmx:validation:failed</code></td><td>当元素验证失败时触发</td></tr><tr><td align="left"><code>htmx:validation:halted</code></td><td>当请求由于验证错误而停止时触发</td></tr><tr><td align="left"><code>htmx:xhr:abort</code></td><td>当 <code>ajax</code> 请求中止时触发</td></tr><tr><td align="left"><code>htmx:xhr:loadend</code></td><td><code>ajax</code> 请求结束时触发</td></tr><tr><td align="left"><code>htmx:xhr:loadstart</code></td><td><code>ajax</code> 请求开始时触发</td></tr><tr><td align="left"><code>htmx:xhr:progress</code></td><td>在支持进度事件的 <code>ajax</code> 请求期间定期触发</td></tr></tbody></table>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="javascript-api-参考"><a aria-hidden="true" tabindex="-1" href="#javascript-api-参考"><span class="icon icon-link"></span></a>JavaScript API 参考</h3><div class="wrap-body">
 
 
+<table><thead><tr><th align="left">标头</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>HX-Boosted</code></td><td>请求来自 <code>hx-boost</code></td></tr><tr><td align="left"><code>HX-Current-URL</code></td><td>当前浏览器 URL</td></tr><tr><td align="left"><code>HX-History-Restore-Request</code></td><td>历史恢复请求</td></tr><tr><td align="left"><code>HX-Prompt</code></td><td>用户对 <code>hx-prompt</code> 的响应</td></tr><tr><td align="left"><code>HX-Request</code></td><td>htmx 请求总是为 <code>true</code></td></tr><tr><td align="left"><code>HX-Target</code></td><td>目标元素 id</td></tr><tr><td align="left"><code>HX-Trigger-Name</code></td><td>触发元素 name</td></tr><tr><td align="left"><code>HX-Trigger</code></td><td>触发元素 id</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="响应头"><a aria-hidden="true" tabindex="-1" href="#响应头"><span class="icon icon-link"></span></a>响应头</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
 
 
 
@@ -608,6 +874,9 @@
 
 
 
+<table><thead><tr><th align="left">标头</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>HX-Location</code></td><td>客户端跳转但不整页刷新</td></tr><tr><td align="left"><code>HX-Push-Url</code></td><td>推入新的浏览器历史 URL</td></tr><tr><td align="left"><code>HX-Redirect</code></td><td>浏览器重定向到新地址</td></tr><tr><td align="left"><code>HX-Refresh</code></td><td>值为 <code>true</code> 时刷新整页</td></tr><tr><td align="left"><code>HX-Replace-Url</code></td><td>替换当前浏览器 URL</td></tr><tr><td align="left"><code>HX-Reswap</code></td><td>覆盖客户端 <code>hx-swap</code></td></tr><tr><td align="left"><code>HX-Retarget</code></td><td>覆盖客户端目标元素</td></tr><tr><td align="left"><code>HX-Reselect</code></td><td>覆盖客户端 <code>hx-select</code></td></tr><tr><td align="left"><code>HX-Trigger</code></td><td>响应收到后触发事件</td></tr><tr><td align="left"><code>HX-Trigger-After-Swap</code></td><td>swap 后触发事件</td></tr><tr><td align="left"><code>HX-Trigger-After-Settle</code></td><td>settle 后触发事件</td></tr></tbody></table>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="扩展与调试"><a aria-hidden="true" tabindex="-1" href="#扩展与调试"><span class="icon icon-link"></span></a>扩展与调试</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="扩展"><a aria-hidden="true" tabindex="-1" href="#扩展"><span class="icon icon-link"></span></a>扩展</h3><div class="wrap-body">
 
 
 
@@ -641,6 +910,10 @@
 
 
 
+<table class="left-align code-nowrap"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>hx-ext="response-targets"</code></td><td>按 HTTP 状态码选择目标</td></tr><tr><td align="left"><code>hx-ext="sse"</code></td><td>Server-Sent Events 支持</td></tr><tr><td align="left"><code>hx-ext="ws"</code></td><td>WebSocket 支持</td></tr><tr><td align="left"><code>hx-ext="preload"</code></td><td>预加载内容</td></tr><tr><td align="left"><code>hx-ext="head-support"</code></td><td>合并响应中的 head 信息</td></tr><tr><td align="left"><code>hx-ext="htmx-1-compat"</code></td><td>恢复部分 htmx 1.x 行为</td></tr></tbody></table>
+<!--rehype:className=left-align code-nowrap-->
+<p>扩展必须在核心 htmx 之后加载，社区扩展可能有不同安装方式，使用前应查看对应扩展仓库。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="调试"><a aria-hidden="true" tabindex="-1" href="#调试"><span class="icon icon-link"></span></a>调试</h3><div class="wrap-body">
 
 
 
@@ -654,8 +927,6 @@
 
 
 
-<table><thead><tr><th align="left">方法</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>htmx.addClass()</code></td><td>向给定元素添加一个类</td></tr><tr><td align="left"><code>htmx.ajax()</code></td><td>发出一个 htmx 风格的 ajax 请求</td></tr><tr><td align="left"><code>htmx.closest()</code></td><td>找到与选择器匹配的给定元素的最近父级</td></tr><tr><td align="left"><code>htmx.config</code></td><td>保存当前 htmx 配置对象的属性</td></tr><tr><td align="left"><code>htmx.createEventSource</code></td><td>包含为 htmx 创建 SSE EventSource 对象的函数的属性</td></tr><tr><td align="left"><code>htmx.createWebSocket</code></td><td>包含为 htmx 创建 WebSocket 对象的函数的属性</td></tr><tr><td align="left"><code>htmx.defineExtension()</code></td><td>定义一个 htmx 扩展</td></tr><tr><td align="left"><code>htmx.find()</code></td><td>查找与选择器匹配的单个元素</td></tr><tr><td align="left"><code>htmx.findAll()</code> | <code>htmx.findAll(elt, selector)</code></td><td>查找与给定选择器匹配的所有元素</td></tr><tr><td align="left"><code>htmx.logAll()</code></td><td>安装将记录所有 htmx 事件的记录器</td></tr><tr><td align="left"><code>htmx.logger</code></td><td>设置为当前记录器的属性（默认为空）</td></tr><tr><td align="left"><code>htmx.off()</code></td><td>从给定元素中删除事件侦听器</td></tr><tr><td align="left"><code>htmx.on()</code></td><td>在给定元素上创建事件侦听器，并返回它</td></tr><tr><td align="left"><code>htmx.onLoad()</code></td><td>为 htmx:load 事件添加回调处理程序</td></tr><tr><td align="left"><code>htmx.parseInterval()</code></td><td>将间隔声明解析为毫秒值</td></tr><tr><td align="left"><code>htmx.process()</code></td><td>处理给定元素及其子元素，连接任何 htmx 行为</td></tr><tr><td align="left"><code>htmx.remove()</code></td><td>删除给定的元素</td></tr><tr><td align="left"><code>htmx.removeClass()</code></td><td>从给定元素中删除一个类</td></tr><tr><td align="left"><code>htmx.removeExtension()</code></td><td>删除一个 htmx 扩展</td></tr><tr><td align="left"><code>htmx.takeClass()</code></td><td>从给定元素的其他元素中获取一个类</td></tr><tr><td align="left"><code>htmx.toggleClass()</code></td><td>从给定元素切换一个类</td></tr><tr><td align="left"><code>htmx.trigger()</code></td><td>在元素上触发事件</td></tr><tr><td align="left"><code>htmx.values()</code></td><td>返回与给定元素关联的输入值</td></tr></tbody></table>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="请求标头参考"><a aria-hidden="true" tabindex="-1" href="#请求标头参考"><span class="icon icon-link"></span></a>请求标头参考</h3><div class="wrap-body">
 
 
 
@@ -676,82 +947,21 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">标头</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>HX-Boosted</code></td><td>表示请求是通过使用 <code>hx-boost</code> 的元素发出的</td></tr><tr><td align="left"><code>HX-Current-URL</code></td><td>浏览器的当前 <code>URL</code></td></tr><tr><td align="left"><code>HX-History-Restore-Request</code></td><td>如果请求是在本地历史缓存未命中后进行历史恢复，则为 <code>true</code></td></tr><tr><td align="left"><code>HX-Prompt</code></td><td>用户对 <code>hx</code> 提示的响应</td></tr><tr><td align="left"><code>HX-Request</code></td><td>总是 <code>true</code></td></tr><tr><td align="left"><code>HX-Target</code></td><td>目标元素的 id(如果存在)</td></tr><tr><td align="left"><code>HX-Trigger-Name</code></td><td>触发元素的名称(如果存在)</td></tr><tr><td align="left"><code>HX-Trigger</code></td><td>触发元素的 id(如果存在)</td></tr></tbody></table>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="响应标头参考"><a aria-hidden="true" tabindex="-1" href="#响应标头参考"><span class="icon icon-link"></span></a>响应标头参考</h3><div class="wrap-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">标头</th><th>说明</th></tr></thead><tbody><tr><td align="left"><a href="https://htmx.org/headers/hx-location"><code>HX-Location</code></a></td><td>允许您执行不执行整页重新加载的客户端重定向</td></tr><tr><td align="left"><a href="https://htmx.org/headers/hx-push-url"><code>HX-Push-Url</code></a></td><td>将一个新的 <code>url</code> 推入历史堆栈</td></tr><tr><td align="left"><code>HX-Redirect</code></td><td>可用于将客户端重定向到新位置</td></tr><tr><td align="left"><code>HX-Refresh</code></td><td>如果设置为 <code>true</code>，客户端将完全刷新页面</td></tr><tr><td align="left"><a href="https://htmx.org/headers/hx-replace-url"><code>HX-Replace-Url</code></a></td><td>替换地址栏中的当前 <code>URL</code></td></tr><tr><td align="left"><code>HX-Reswap</code></td><td>允许您指定如何交换响应<br> <em>有关可能的值，请参阅 <a href="https://htmx.org/attributes/hx-swap"><code>hx-swap</code></a></em></td></tr><tr><td align="left"><code>HX-Retarget</code></td><td>将内容更新的目标更新为页面上不同元素的 CSS 选择器</td></tr><tr><td align="left"><a href="https://htmx.org/headers/hx-trigger"><code>HX-Trigger</code></a></td><td>响应接收后立即触发事件<br> <em>请<a href="https://htmx.org/headers/hx-trigger">参阅文档</a>以获取更多信息</em></td></tr><tr><td align="left"><a href="https://htmx.org/headers/hx-trigger"><code>HX-Trigger-After-Settle</code></a></td><td>在 settle 阶段之后触发事件<br> <em>请<a href="https://htmx.org/headers/hx-trigger">参阅文档</a>以获取更多信息</em></td></tr><tr><td align="left"><a href="https://htmx.org/headers/hx-trigger"><code>HX-Trigger-After-Swap</code></a></td><td>在 swap 阶段之后触发事件<br> <em>请<a href="https://htmx.org/headers/hx-trigger">参阅文档</a>以获取更多信息</em></td></tr></tbody></table>
+<table class="left-align"><thead><tr><th align="left">:--</th><th>--</th></tr></thead><tbody><tr><td align="left"><code>htmx.logAll()</code></td><td>在控制台记录所有 htmx 事件</td></tr><tr><td align="left"><code>htmx.logger = fn</code></td><td>自定义日志输出</td></tr><tr><td align="left"><code>HX-Request: true</code></td><td>服务端识别 htmx 请求</td></tr><tr><td align="left">Network 面板</td><td>查看 <code>HX-*</code> 请求头和响应头</td></tr><tr><td align="left"><code>htmx:beforeSwap</code></td><td>调试目标、响应和交换行为</td></tr><tr><td align="left"><code>htmx:responseError</code></td><td>处理非 2xx/3xx 响应</td></tr></tbody></table>
+<!--rehype:className=left-align-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="全局配置"><a aria-hidden="true" tabindex="-1" href="#全局配置"><span class="icon icon-link"></span></a>全局配置</h3><div class="wrap-body">
+<pre class="language-html"><code class="language-html code-highlight"><span class="code-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>htmx-config<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>{"defaultSwapStyle":"outerHTML"}<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
+</span></code></pre>
+<p>也可以直接修改 <code>htmx.config</code>。常见配置包括默认 swap 样式、请求超时、是否允许属性继承、是否携带跨站凭据等。</p>
 </div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="参考资料"><a aria-hidden="true" tabindex="-1" href="#参考资料"><span class="icon icon-link"></span></a>参考资料</h2><div class="wrap-body">
 <ul>
-<li><a href="https://htmx.org/docs/">HTMX 官方文档</a> <em>(htmx.org)</em></li>
+<li><a href="https://htmx.org/docs/">htmx Documentation</a></li>
+<li><a href="https://htmx.org/reference/">htmx Reference</a></li>
+<li><a href="https://htmx.org/attributes/hx-trigger/">hx-trigger</a></li>
+<li><a href="https://htmx.org/attributes/hx-swap/">hx-swap</a></li>
+<li><a href="https://htmx.org/attributes/hx-target/">hx-target</a></li>
+<li><a href="https://htmx.org/events/">htmx Events</a></li>
+<li><a href="https://htmx.org/headers/hx-trigger/">HX-Trigger Response Headers</a></li>
 </ul>
 </div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
