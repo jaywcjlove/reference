@@ -48,7 +48,7 @@ $ dotnet publish -c Release -o ./publish
 ---
 
 ### 基础命令
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 命令 | 说明 | 示例
 :- | :- | :-
@@ -91,30 +91,8 @@ $ dotnet build --no-restore
 
 `dotnet build` 使用 MSBuild 构建项目并支持 MSBuild 属性，例如 `-p:Version=1.2.3`。
 
-### 运行
-
-```shell
-$ dotnet run
-$ dotnet run --project src/App
-$ dotnet run --configuration Release -- arg1 arg2
-$ dotnet run --no-build
-```
-
-应用参数放在 `--` 后面，避免与 `dotnet run` 自身选项混淆。
-
-### 测试
-
-```shell
-$ dotnet test
-$ dotnet test -c Release
-$ dotnet test --filter FullyQualifiedName~Unit
-$ dotnet test --collect "XPlat Code Coverage"
-```
-
-`dotnet test` 会运行测试项目，并把参数传递给测试平台。
-
 ### 发布
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 ```shell
 $ dotnet publish -c Release -o ./publish
@@ -132,11 +110,35 @@ $ dotnet publish -c Release -p:PublishReadyToRun=true
 
 单文件、裁剪和 ReadyToRun 等选项会影响输出大小、启动速度和兼容性，发布前应在目标环境测试。
 
+### 运行
+
+```shell
+$ dotnet run
+$ dotnet run --project src/App
+$ dotnet run --configuration Release -- arg1 arg2
+$ dotnet run --no-build
+```
+<!--rehype:className=wrap-text-->
+
+应用参数放在 `--` 后面，避免与 `dotnet run` 自身选项混淆。
+
+### 测试
+
+```shell
+$ dotnet test
+$ dotnet test -c Release
+$ dotnet test --filter FullyQualifiedName~Unit
+$ dotnet test --collect "XPlat Code Coverage"
+```
+<!--rehype:className=wrap-text-->
+
+`dotnet test` 会运行测试项目，并把参数传递给测试平台。
+
 包与引用
 ---
 
 ### NuGet 包引用
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 命令 | 说明 | 示例
 :- | :- | :-
@@ -157,6 +159,7 @@ $ dotnet add package Serilog --version 4.0.0
 $ dotnet package add Serilog --version 4.0.0
 $ dotnet restore --source https://api.nuget.org/v3/index.json
 ```
+<!--rehype:className=wrap-text-->
 
 添加包时 CLI 会检查包与项目目标框架的兼容性，并把 `PackageReference` 写入项目文件。
 
@@ -169,6 +172,7 @@ $ dotnet list reference
 $ dotnet reference list --project app/app.csproj
 $ dotnet remove reference lib/lib.csproj
 ```
+<!--rehype:className=wrap-text-->
 
 项目引用会在 `.csproj` 中生成 `ProjectReference`。CLI 不提供添加任意程序集引用的命令，需手动编辑项目文件。
 
@@ -195,6 +199,7 @@ $ dotnet nuget delete MyLib 1.0.0 -s https://api.nuget.org/v3/index.json -k API_
 $ dotnet nuget verify MyLib.1.0.0.nupkg
 $ dotnet nuget sign MyLib.1.0.0.nupkg --certificate-path cert.pfx
 ```
+<!--rehype:className=wrap-text-->
 
 发布到 nuget.org 时建议使用 scoped API key，并避免把密钥写入仓库。
 
@@ -214,7 +219,7 @@ $ dotnet sln remove tests/App.Tests/App.Tests.csproj
 解决方案文件用于组织多个项目，方便统一构建和测试。
 
 ### .NET 工具
-<!--rehype:wrap-class=col-span-2-->
+<!--rehype:wrap-class=col-span-2 row-span-2-->
 
 命令 | 说明 | 示例
 :- | :- | :-
@@ -259,6 +264,7 @@ $ dotnet sdk check
 `dotnet sdk check` 会显示已安装 SDK/运行时以及可用更新。
 
 ### MSBuild
+<!--rehype:wrap-class=col-span-2-->
 
 ```shell
 $ dotnet msbuild
@@ -277,6 +283,16 @@ $ dotnet build-server shutdown
 
 构建服务器缓存可能影响诊断结果。遇到奇怪的构建缓存问题时，可以先关闭构建服务器后重试。
 
+### 安装脚本
+<!--rehype:wrap-class=col-span-2-->
+
+```shell
+$ curl -sSL https://dot.net/v1/dotnet-install.sh | bash
+$ powershell -ExecutionPolicy Bypass -File dotnet-install.ps1 -Channel 8.0
+```
+
+安装脚本适合 CI 或用户级安装。生产机器更推荐使用系统包管理器或官方安装程序。
+
 ### 开发证书
 
 ```shell
@@ -286,15 +302,6 @@ $ dotnet dev-certs https --clean
 ```
 
 HTTPS 开发证书常用于 ASP.NET Core 本地开发。
-
-### 安装脚本
-
-```shell
-$ curl -sSL https://dot.net/v1/dotnet-install.sh | bash
-$ powershell -ExecutionPolicy Bypass -File dotnet-install.ps1 -Channel 8.0
-```
-
-安装脚本适合 CI 或用户级安装。生产机器更推荐使用系统包管理器或官方安装程序。
 
 常见场景
 ---
