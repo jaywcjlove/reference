@@ -101,7 +101,7 @@ $ python manage.py runserver # Unix/MacOS
 
 ```bash
 (myproject) C:\Users\Your Name>django-admin --version
-# 4.0.3
+# 6.0.x
 ```
 
 ### 创建应用
@@ -308,6 +308,328 @@ CREATE TABLE "members_members" (
   "lastname" varchar(255) NOT NULL
 );
 ```
+
+常用命令
+---
+
+### django-admin 与 manage.py
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+| 命令 | 说明 |
+| :- | :- |
+| `django-admin startproject mysite` | 创建项目骨架 |
+| `python manage.py startapp blog` | 创建应用 |
+| `python manage.py runserver` | 启动开发服务器 |
+| `python manage.py makemigrations` | 根据模型变更生成迁移 |
+| `python manage.py migrate` | 执行数据库迁移 |
+| `python manage.py showmigrations` | 查看迁移状态 |
+| `python manage.py createsuperuser` | 创建后台管理员 |
+| `python manage.py collectstatic` | 收集静态文件到 `STATIC_ROOT` |
+| `python manage.py shell` | 打开 Django 上下文中的 Python Shell |
+| `python manage.py test` | 运行测试 |
+| `python manage.py check` | 运行系统检查 |
+| `python manage.py check --deploy` | 运行部署安全检查 |
+<!--rehype:className=show-header-->
+
+`manage.py` 会自动设置 `DJANGO_SETTINGS_MODULE`，适合项目内命令；`django-admin` 更适合创建项目或在显式指定设置模块时使用。
+
+### 设置清单
+<!--rehype:wrap-class=row-span-2-->
+
+| 设置 | 用途 |
+| :- | :- |
+| `INSTALLED_APPS` | 启用 Django 内置应用和项目应用 |
+| `MIDDLEWARE` | 按顺序处理请求和响应 |
+| `ROOT_URLCONF` | 根 URL 配置模块 |
+| `TEMPLATES` | 模板后端、目录和上下文处理器 |
+| `DATABASES` | 数据库连接配置 |
+| `STATIC_URL` | 静态文件 URL 前缀 |
+| `STATIC_ROOT` | `collectstatic` 输出目录 |
+| `MEDIA_URL` / `MEDIA_ROOT` | 用户上传文件 URL 与存储目录 |
+| `SECRET_KEY` | 加密签名密钥，生产环境必须保密 |
+| `DEBUG` | 生产环境必须关闭 |
+| `ALLOWED_HOSTS` | 允许访问的 Host 列表 |
+<!--rehype:className=show-header-->
+
+ORM 与模型
+---
+
+### 字段与关系
+<!--rehype:wrap-class=row-span-2-->
+
+```py
+from django.db import models
+
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Article(models.Model):
+    title = models.CharField(max_length=200)
+    body = models.TextField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="articles")
+    tags = models.ManyToManyField("Tag", blank=True)
+    published_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+```
+
+常用关系字段：
+
+- `ForeignKey`：多对一关系，必须设置 `on_delete`
+- `OneToOneField`：一对一关系，常用于扩展用户资料
+- `ManyToManyField`：多对多关系，可用 `through` 指定中间表
+
+### 查询速查
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+
+```py
+from django.utils import timezone
+from blog.models import Article, Author
+
+# 创建
+author = Author.objects.create(name="Ada", email="ada@example.com")
+Article.objects.create(title="Django", body="...", author=author)
+
+# 查询
+Article.objects.all()
+Article.objects.filter(title__icontains="django")
+Article.objects.exclude(published_at__isnull=True)
+Article.objects.get(pk=1)
+
+# 排序与切片
+Article.objects.order_by("-created_at")[:10]
+
+# 更新与删除
+Article.objects.filter(pk=1).update(published_at=timezone.now())
+Article.objects.filter(published_at__isnull=True).delete()
+
+# 关系预加载，减少 N+1 查询
+Article.objects.select_related("author")
+Article.objects.prefetch_related("tags")
+```
+
+### QuerySet 方法
+
+| 方法 | 用途 |
+| :- | :- |
+| `filter()` | 添加查询条件 |
+| `exclude()` | 排除查询条件 |
+| `get()` | 获取单个对象，不存在或多个会抛异常 |
+| `order_by()` | 排序 |
+| `values()` | 返回字典序列 |
+| `values_list()` | 返回元组或字段列表 |
+| `select_related()` | 通过 SQL JOIN 预加载外键/一对一 |
+| `prefetch_related()` | 额外查询并预加载多对多/反向关系 |
+| `annotate()` | 添加聚合或表达式字段 |
+| `aggregate()` | 返回聚合结果 |
+| `exists()` | 判断是否存在匹配记录 |
+<!--rehype:className=show-header-->
+
+### 事务
+
+```py
+from django.db import transaction
+
+with transaction.atomic():
+    author = Author.objects.create(name="Grace", email="grace@example.com")
+    Article.objects.create(title="Atomic", body="...", author=author)
+```
+
+在同一业务动作中需要同时写入多张表时，使用 `transaction.atomic()` 保证要么全部成功，要么全部回滚。
+
+视图与表单
+---
+
+### 快捷函数
+<!--rehype:wrap-class=row-span-2-->
+
+```py
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .models import Article
+
+def detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    return render(request, "blog/detail.html", {"article": article})
+
+def go_home(request):
+    return redirect("home")
+```
+
+### 表单处理
+<!--rehype:wrap-class=col-span-2 row-span-3-->
+
+```py
+# forms.py
+from django import forms
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField(widget=forms.Textarea)
+    sender = forms.EmailField()
+```
+
+```py
+# views.py
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
+from .forms import ContactForm
+
+def contact(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data["subject"]
+            return HttpResponseRedirect("/thanks/")
+    else:
+        form = ContactForm()
+
+    return render(request, "contact.html", {"form": form})
+```
+
+```django
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">提交</button>
+</form>
+```
+
+处理会修改数据的表单时使用 `POST`，模板中加入 `{% csrf_token %}`。
+
+### ModelForm
+
+```py
+from django.forms import ModelForm
+
+from .models import Article
+
+class ArticleForm(ModelForm):
+    class Meta:
+        model = Article
+        fields = ["title", "body", "tags"]
+```
+
+`ModelForm` 会根据模型字段生成表单，并可通过 `form.save()` 创建或更新模型实例。
+
+### 类视图
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```py
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView, ListView
+
+from .models import Article
+
+class ArticleListView(ListView):
+    model = Article
+    paginate_by = 20
+    template_name = "blog/article_list.html"
+
+class ArticleDetailView(DetailView):
+    model = Article
+    template_name = "blog/article_detail.html"
+
+class ArticleCreateView(CreateView):
+    model = Article
+    fields = ["title", "body", "tags"]
+    success_url = reverse_lazy("article-list")
+```
+
+```py
+from django.urls import path
+
+from .views import ArticleCreateView, ArticleDetailView, ArticleListView
+
+urlpatterns = [
+    path("articles/", ArticleListView.as_view(), name="article-list"),
+    path("articles/new/", ArticleCreateView.as_view(), name="article-create"),
+    path("articles/<int:pk>/", ArticleDetailView.as_view(), name="article-detail"),
+]
+```
+
+后台、认证与测试
+---
+
+### Admin
+<!--rehype:wrap-class=row-span-2-->
+
+```py
+from django.contrib import admin
+
+from .models import Article
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ["title", "author", "published_at"]
+    list_filter = ["published_at"]
+    search_fields = ["title", "body"]
+```
+
+```bash
+$ python manage.py createsuperuser
+$ python manage.py runserver
+```
+
+访问 `/admin/` 管理数据。生产环境应限制后台入口、启用 HTTPS 并保护管理员账号。
+
+### 认证装饰器
+
+```py
+from django.contrib.auth.decorators import login_required, permission_required
+
+@login_required
+def profile(request):
+    ...
+
+@permission_required("blog.add_article", raise_exception=True)
+def create_article(request):
+    ...
+```
+
+### 测试
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+```py
+from django.test import TestCase
+from django.urls import reverse
+
+from .models import Author
+
+class ArticleTests(TestCase):
+    def test_article_list_page(self):
+        Author.objects.create(name="Ada", email="ada@example.com")
+        response = self.client.get(reverse("article-list"))
+        self.assertEqual(response.status_code, 200)
+```
+
+```bash
+$ python manage.py test
+$ python manage.py test blog.tests.ArticleTests
+```
+
+部署检查
+---
+
+### 上线前必查
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+| 检查项 | 建议 |
+| :- | :- |
+| `DEBUG` | 生产环境设置为 `False` |
+| `SECRET_KEY` | 从环境变量或密钥管理系统读取 |
+| `ALLOWED_HOSTS` | 只允许真实域名和必要的主机名 |
+| HTTPS | 设置 `SECURE_SSL_REDIRECT`、Cookie Secure 选项 |
+| CSRF | 配置可信来源并保留中间件 |
+| 静态文件 | 配置 `STATIC_ROOT` 并运行 `collectstatic` |
+| 数据库 | 使用生产数据库账号、备份和迁移流程 |
+| 日志 | 配置 `LOGGING`，保存错误与审计信息 |
+| 系统检查 | 执行 `python manage.py check --deploy` |
+<!--rehype:className=show-header-->
 
 Django 模板
 ---
@@ -775,7 +1097,11 @@ function myFunction() {
 ----
 
 - [Django 官网](https://www.djangoproject.com/) _(djangoproject.com)_
-- [Django 教程](https://www.runoob.com/django/django-tutorial.html) _(runoob.com)_
-- [Django 框架教程](http://c.biancheng.net/django/) _(biancheng.net)_
-- [Django 4 中文教程](https://www.w3cschool.cn/django4/) _(w3cschool.cn)_
-- [Django Tutorial](https://www.w3schools.com/django/index.php) _(w3schools.com)_
+- [Django 6.0 文档](https://docs.djangoproject.com/en/6.0/) _(docs.djangoproject.com)_
+- [安装指南](https://docs.djangoproject.com/en/6.0/intro/install/) _(docs.djangoproject.com)_
+- [模型](https://docs.djangoproject.com/en/6.0/topics/db/models/) _(docs.djangoproject.com)_
+- [查询](https://docs.djangoproject.com/en/6.0/topics/db/queries/) _(docs.djangoproject.com)_
+- [表单](https://docs.djangoproject.com/en/6.0/topics/forms/) _(docs.djangoproject.com)_
+- [类视图](https://docs.djangoproject.com/en/6.0/topics/class-based-views/) _(docs.djangoproject.com)_
+- [测试](https://docs.djangoproject.com/en/6.0/topics/testing/overview/) _(docs.djangoproject.com)_
+- [部署检查清单](https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/) _(docs.djangoproject.com)_
