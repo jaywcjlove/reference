@@ -193,20 +193,24 @@
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> alice:staff project/
 </span></code></pre>
 <p>递归修改 <code>project/</code> 目录及其所有内容的所有者和属组。</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> --preserve-root <span class="token parameter variable">-R</span> alice:staff /srv/app
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> --preserve-root <span class="token parameter variable">-R</span> alice:staff /srv/app
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 <p>递归处理重要路径时可加 <code>--preserve-root</code>，降低误把根目录作为目标的风险。</p>
 </div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="按当前归属条件修改"><a aria-hidden="true" tabindex="-1" href="#按当前归属条件修改"><span class="icon icon-link"></span></a>按当前归属条件修改</h3><div class="wrap-body">
 <!--rehype:wrap-class=row-span-2-->
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--from</span><span class="token operator">=</span>root:root app:app config.yml
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--from</span><span class="token operator">=</span>root:root app:app config.yml
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 <p>只有当 <code>config.yml</code> 当前所有者和属组都是 <code>root</code> 时，才改为 <code>app:app</code>。</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--from</span><span class="token operator">=</span>:oldgroup :newgroup *.log
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--from</span><span class="token operator">=</span>:oldgroup :newgroup *.log
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 <p>只要求当前属组匹配 <code>oldgroup</code>，匹配后把属组改为 <code>newgroup</code>。</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="参照其他文件"><a aria-hidden="true" tabindex="-1" href="#参照其他文件"><span class="icon icon-link"></span></a>参照其他文件</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--reference</span><span class="token operator">=</span>template.txt target.txt
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--reference</span><span class="token operator">=</span>template.txt target.txt
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 <p>把 <code>target.txt</code> 的所有者和属组改成与 <code>template.txt</code> 相同。</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="修改符号链接本身"><a aria-hidden="true" tabindex="-1" href="#修改符号链接本身"><span class="icon icon-link"></span></a>修改符号链接本身</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-h</span> alice:staff current-link
@@ -223,12 +227,14 @@
 </span></code></pre>
 <p>把应用目录交给运行服务的用户和属组，避免用 <code>root</code> 直接运行应用进程。</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上传目录"><a aria-hidden="true" tabindex="-1" href="#上传目录"><span class="icon icon-link"></span></a>上传目录</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> www-data:www-data /var/www/example/uploads
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> www-data:www-data /var/www/example/uploads
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 <p>只给需要写入的目录设置 Web 服务用户归属，其他代码目录应尽量保持只读权限。</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="恢复当前用户归属"><a aria-hidden="true" tabindex="-1" href="#恢复当前用户归属"><span class="icon icon-link"></span></a>恢复当前用户归属</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token string">"<span class="token environment constant">$USER</span>"</span><span class="token builtin class-name">:</span><span class="token string">"<span class="token environment constant">$USER</span>"</span> ~/.config/my-tool
+<pre class="wrap-text"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token string">"<span class="token environment constant">$USER</span>"</span><span class="token builtin class-name">:</span><span class="token string">"<span class="token environment constant">$USER</span>"</span> ~/.config/my-tool
 </span></code></pre>
+<!--rehype:className=wrap-text-->
 <p>当配置目录被 <code>sudo</code> 创建后，可把它恢复为当前用户拥有。</p>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="避免通配符误伤"><a aria-hidden="true" tabindex="-1" href="#避免通配符误伤"><span class="icon icon-link"></span></a>避免通配符误伤</h3><div class="wrap-body">
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> app:app /srv/app/
