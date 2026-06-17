@@ -5,6 +5,7 @@ Chown 备忘清单
 
 入门
 --------
+<!--rehype:body-class=cols-2-->
 
 ### 语法
 
@@ -13,7 +14,7 @@ $ chown [选项]... [所有者][:[属组]] 文件...
 $ chown [选项]... --reference=参考文件 文件...
 ```
 
-`chown` 用于修改文件或目录的所有者，也可以同时修改属组。修改文件所有者通常需要管理员权限。
+`chown` 命令可修改文件或目录的所有者及属组，执行该操作一般需要管理员权限。
 
 #### 示例
 
@@ -25,7 +26,6 @@ $ sudo chown --reference=template.txt target.txt
 ```
 
 ### 所有者与属组
-<!--rehype:wrap-class=col-span-2-->
 
 写法 | 含义
 :- | :-
@@ -35,7 +35,7 @@ $ sudo chown --reference=template.txt target.txt
 `:staff` | 只把属组改为 `staff`，效果类似 `chgrp staff`
 `:` | 不改变所有者或属组
 `+1001:+1001` | 使用数字 UID/GID，`+` 可避免与同名用户或组混淆
-<!--rehype:className=show-header-->
+<!--rehype:className=show-header left-align-->
 
 ### 常用选项
 
@@ -51,7 +51,7 @@ $ sudo chown --reference=template.txt target.txt
 `--no-preserve-root` | 不对 `/` 做特殊保护
 `--help` | 显示帮助
 `--version` | 显示版本
-<!--rehype:className=show-header-->
+<!--rehype:className=show-header left-align-->
 
 ### 符号链接
 
@@ -62,7 +62,7 @@ $ sudo chown --reference=template.txt target.txt
 `-H` | 与 `-R` 一起使用；命令行参数中的目录符号链接会被遍历
 `-L` | 与 `-R` 一起使用；遍历遇到的每个目录符号链接
 `-P` | 与 `-R` 一起使用；不遍历任何符号链接，GNU 默认值
-<!--rehype:className=show-header-->
+<!--rehype:className=show-header left-align-->
 
 常用示例
 --------
