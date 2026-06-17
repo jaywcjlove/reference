@@ -23,7 +23,7 @@ Android Debug Bridge 备忘清单
 `adb` 位于 `android_sdk/platform-tools/`。命令行使用时通常需要把该目录加入 `PATH`，也建议设置 `ANDROID_HOME` 指向 SDK 安装目录。
 
 ### 设备列表与状态
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 :-- | --
 :-- | --
@@ -43,7 +43,6 @@ Android Debug Bridge 备忘清单
 - `offline`：设备未响应，常见于授权弹窗未确认或连接异常
 - `unauthorized`：设备未授权当前电脑调试
 - `no device`：没有连接到设备
-<!--rehype:className=cols-2 style-none-->
 
 #### 示例
 
@@ -70,6 +69,7 @@ $ adb wait-for-device shell getprop sys.boot_completed
 ----
 
 ### 安装与卸载
+<!--rehype:wrap-class=row-span-2-->
 
 :-- | --
 :-- | --
@@ -80,7 +80,7 @@ $ adb wait-for-device shell getprop sys.boot_completed
 `adb install-multiple base.apk split.apk` | 安装多 APK / split APK
 `adb uninstall <package>` | 卸载应用
 `adb uninstall -k <package>` | 卸载应用但保留数据和缓存目录
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 #### 示例
 
@@ -89,9 +89,9 @@ $ adb install -r app-debug.apk
 $ adb install-multiple base.apk config.arm64_v8a.apk
 $ adb uninstall com.example.app
 ```
+<!--rehype:className=wrap-text-->
 
 ### 包管理
-<!--rehype:wrap-class=row-span-2-->
 
 :-- | --
 :-- | --
@@ -105,7 +105,7 @@ $ adb uninstall com.example.app
 `adb shell dumpsys package <package>` | 查看包的详细信息
 `adb shell am force-stop <package>` | 强制停止应用
 `adb shell monkey -p <package> 1` | 启动指定包的默认入口
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 ### 文件传输
 
@@ -117,7 +117,7 @@ $ adb uninstall com.example.app
 `adb shell ls <path>` | 列出设备目录
 `adb shell rm <path>` | 删除设备文件
 `adb shell mkdir -p <path>` | 创建设备目录
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 #### 示例
 
@@ -143,7 +143,7 @@ Shell 与交互
 `adb shell settings list global` | 查看 global 设置
 `adb shell settings put global http_proxy host:port` | 设置全局 HTTP 代理
 `adb shell settings put global http_proxy :0` | 清除全局 HTTP 代理
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 ### 输入与界面控制
 
@@ -157,7 +157,7 @@ Shell 与交互
 `adb shell wm density` | 查看屏幕密度
 `adb shell wm size 1080x1920` | 临时修改分辨率
 `adb shell wm size reset` | 重置分辨率
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 #### 示例
 
@@ -168,7 +168,6 @@ $ adb shell input keyevent KEYCODE_HOME
 ```
 
 ### Activity 与 Intent
-<!--rehype:wrap-class=row-span-2-->
 
 :-- | --
 :-- | --
@@ -179,7 +178,7 @@ $ adb shell input keyevent KEYCODE_HOME
 `adb shell am startservice -n <component>` | 启动服务
 `adb shell am force-stop <package>` | 强制停止应用
 `adb shell pidof <package>` | 查看进程 PID
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 #### 示例
 
@@ -187,12 +186,13 @@ $ adb shell input keyevent KEYCODE_HOME
 $ adb shell am start -a android.intent.action.VIEW -d https://developer.android.com
 $ adb shell am force-stop com.example.app
 ```
+<!--rehype:className=wrap-text-->
 
 日志与诊断
 ----
 
 ### Logcat
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 :-- | --
 :-- | --
@@ -205,7 +205,7 @@ $ adb shell am force-stop com.example.app
 `adb logcat -f /sdcard/log.txt` | 在设备上写入日志文件
 `adb logcat -v time` | 使用带时间的输出格式
 `adb logcat --pid=<pid>` | 仅显示指定 PID 的日志
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 Logcat 过滤表达式格式为 `tag:priority`。优先级从低到高为：
 
@@ -239,7 +239,7 @@ $ adb logcat --pid=$(adb shell pidof -s com.example.app)
 `adb shell dumpsys meminfo <package>` | 查看应用内存信息
 `adb shell dumpsys activity activities` | 查看 Activity 栈
 `adb shell dumpsys window displays` | 查看显示窗口信息
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 ### bugreport 与诊断文件
 
@@ -251,7 +251,7 @@ $ adb logcat --pid=$(adb shell pidof -s com.example.app)
 `adb exec-out screencap -p > screen.png` | 直接保存截图到电脑
 `adb shell screenrecord /sdcard/demo.mp4` | 录制屏幕视频
 `adb shell screenrecord --time-limit 30 /sdcard/demo.mp4` | 限制录屏时长
-<!--rehype:className=left-align code-nowrap-->
+<!--rehype:className=style-list-arrow-->
 
 `screenrecord` 默认最长录制 3 分钟，不录制音频。录制完成后可用 `adb pull` 下载到电脑。
 
@@ -259,7 +259,7 @@ $ adb logcat --pid=$(adb shell pidof -s com.example.app)
 ----
 
 ### Android 11 及以上无线调试
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=col-span-2-->
 
 Android 11（API 30）及以上支持通过无线调试配对，不需要先使用 USB 线连接。电脑和设备需要在同一无线网络内，并使用最新 SDK Platform Tools。
 
@@ -317,6 +317,7 @@ $ adb exec-out screencap -p > screen.png
 $ adb shell screenrecord --time-limit 30 /sdcard/demo.mp4
 $ adb pull /sdcard/demo.mp4 .
 ```
+<!--rehype:className=wrap-text-->
 
 ### 查找应用 APK 并导出
 
@@ -324,20 +325,24 @@ $ adb pull /sdcard/demo.mp4 .
 $ adb shell pm path com.example.app
 $ adb pull /data/app/~~xxx/base.apk ./example.apk
 ```
+<!--rehype:className=wrap-text-->
 
 ### 查看前台 Activity
 
 ```bash
 $ adb shell dumpsys activity activities | grep mResumedActivity
 ```
+<!--rehype:className=wrap-text-->
 
 在 Windows PowerShell 中可改用：
 
 ```powershell
 $ adb shell dumpsys activity activities | Select-String "mResumedActivity"
 ```
+<!--rehype:className=wrap-text-->
 
 ### 常见排障
+<!--rehype:wrap-class=col-span-2-->
 
 :-- | --
 :-- | --
