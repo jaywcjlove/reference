@@ -1,7 +1,7 @@
 jq 备忘清单
 ===
 
-这个快速参考备忘单提供了使用 [jq](https://stedolan.github.io/jq/) 命令的各种方法。
+这个快速参考备忘单提供了使用 [jq](https://jqlang.org/) 命令的各种方法。
 
 入门
 ----
@@ -10,7 +10,8 @@ jq 备忘清单
 
 jq 就像用于 JSON 数据的 [sed](./sed.md) - 您可以使用它来切片、过滤、映射和转换结构化数据
 
-- [jq 官网](https://stedolan.github.io/jq/) _(stedolan.github.io)_
+- [jq 官网](https://jqlang.org/) _(jqlang.org)_
+- [jq Manual](https://jqlang.org/manual/) _(jqlang.org)_
 - [jq 命令使用](https://jaywcjlove.github.io/linux-command/c/jq.html) _(jaywcjlove.github.io)_
 
 安装
@@ -263,5 +264,6 @@ echo "$(jq '.name = "@scope/package"' package.json)" > package.json
 另见
 ----
 
-- [jq 官网](https://stedolan.github.io/jq/) _(stedolan.github.io)_
+- [jq 官网](https://jqlang.org/) _(jqlang.org)_
+- [jq Manual](https://jqlang.org/manual/) _(jqlang.org)_
 - [jq 命令使用](https://jaywcjlove.github.io/linux-command/c/jq.html) _(jaywcjlove.github.io)_
