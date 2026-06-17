@@ -305,7 +305,7 @@ Quick Reference
 [Taskset](./docs/taskset.md)<!--rehype:style=background:rgb(99 99 99);-->
 [tar](./docs/tar.md)<!--rehype:style=background:rgb(215 89 62);&class=tag&data-lang=解压缩-->
 [7zip](./docs/7zip.md)<!--rehype:style=background:rgb(99 99 99);&class=tag&data-lang=解压缩-->
-[Yazi](./docs/yazi.md)<!--rehype:style=background:rgb(255 165 0);&class=tag&data-lang=文件管理器;-->
+[Yazi](./docs/yazi.md)<!--rehype:style=background:rgb(255 165 0);&class=tag&data-lang=文件管理器-->
 [Zip](./docs/zip.md)<!--rehype:style=background:rgb(99 99 99);&class=tag&data-lang=解压缩-->
 <!--rehype:class=home-card-->
 

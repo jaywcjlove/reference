@@ -18,6 +18,25 @@ $ yazi --help
 
 默认使用三栏视图：父目录、当前目录和预览面板。推荐把它与 shell wrapper 搭配使用，这样退出后可以回到 Yazi 中最后所在目录。
 
+### 安装
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+系统 | 命令
+:- | :-
+Arch Linux | `sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick`
+Homebrew | `brew install yazi ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font`
+MacPorts | `sudo port install yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide ImageMagick`
+Windows Scoop | `scoop install yazi`
+Windows WinGet | `winget install sxyazi.yazi`
+Snap | `sudo snap install yazi --classic`
+Flatpak | `flatpak run io.github.sxyazi.yazi`
+PyPI | `pipx install yazi-bin`
+Cargo | `cargo install --force yazi-build`
+源码构建 | `cargo build --release --locked`
+<!--rehype:className=show-header left-align-->
+
+发行版包多数由社区维护，版本可能滞后。需要最新版本时可使用官方 GitHub Releases、nightly 或源码构建。
+
 ### 可选依赖
 
 工具 | 用途
@@ -34,27 +53,8 @@ $ yazi --help
 `zoxide` | 智能目录跳转
 <!--rehype:className=show-header-->
 
-### 安装
-<!--rehype:wrap-class=col-span-2-->
-
-系统 | 命令
-:- | :-
-Arch Linux | `sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick`
-Homebrew | `brew install yazi ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font`
-MacPorts | `sudo port install yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide ImageMagick`
-Windows Scoop | `scoop install yazi`
-Windows WinGet | `winget install sxyazi.yazi`
-Snap | `sudo snap install yazi --classic`
-Flatpak | `flatpak run io.github.sxyazi.yazi`
-PyPI | `pipx install yazi-bin`
-Cargo | `cargo install --force yazi-build`
-源码构建 | `cargo build --release --locked`
-<!--rehype:className=show-header-->
-
-发行版包多数由社区维护，版本可能滞后。需要最新版本时可使用官方 GitHub Releases、nightly 或源码构建。
-
 ### Windows 注意事项
-<!--rehype:wrap-class=row-span-2-->
+<!--rehype:wrap-class=row-span-2 col-span-2-->
 
 Yazi 依赖 `file(1)` 检测 MIME 类型。Windows 上官方推荐使用 Git for Windows 附带的 `file.exe`。
 
@@ -90,9 +90,9 @@ function y() {
 
 快捷键
 ----
-<!--rehype:body-class=cols-2-->
 
 ### 导航
+<!--rehype:wrap-class=row-span-2-->
 
 键位 | 操作
 :- | :-
@@ -163,6 +163,7 @@ function y() {
 <!--rehype:className=shortcuts left-align-->
 
 ### 搜索与过滤
+<!--rehype:wrap-class=row-span-2-->
 
 键位 | 操作
 :- | :-
@@ -288,6 +289,15 @@ $ ya --help
 
 `ya` 是 Yazi 的辅助命令，负责插件管理、主题管理和 DDS 消息发布订阅等功能。`ya` 与 `yazi` 版本必须一致。
 
+### 安装 Flavor
+<!--rehype:wrap-class=col-span-2-->
+
+```shell
+$ ya pkg add yazi-rs/flavors:catppuccin-mocha
+```
+
+如果只想使用某个 flavor，`theme.toml` 中通常只需要 `[flavor]` 配置；需要微调时再添加覆盖项。
+
 ### 插件管理
 
 ```shell
@@ -324,14 +334,6 @@ light = "catppuccin-mocha"
 
 Flavor 是可复用的预制主题，通常放在 `flavors/` 子目录中，并可由 `ya pkg` 管理。用户自己的 `theme.toml` 会覆盖 flavor 的同名配置。
 
-### 安装 Flavor
-
-```shell
-$ ya pkg add yazi-rs/flavors:catppuccin-mocha
-```
-
-如果只想使用某个 flavor，`theme.toml` 中通常只需要 `[flavor]` 配置；需要微调时再添加覆盖项。
-
 排错
 ----
 
@@ -345,6 +347,7 @@ $ ya --help
 先确认 `yazi` 和 `ya` 都在 `PATH` 中，并且两者版本一致。
 
 ### Windows 无法识别类型
+<!--rehype:wrap-class=col-span-2-->
 
 ```powershell
 $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
@@ -361,6 +364,7 @@ $ YAZI_CONFIG_HOME=~/.config/yazi-alt yazi
 用独立配置目录启动可以排查现有配置、插件或主题是否导致问题。
 
 ### 主题校验
+<!--rehype:wrap-class=col-span-2-->
 
 ```shell
 $ taplo check --schema https://yazi-rs.github.io/schemas/theme.json theme.toml
