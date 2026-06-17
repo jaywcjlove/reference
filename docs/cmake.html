@@ -5,7 +5,7 @@
 <title>CMake 备忘清单
  &#x26;  cmake cheatsheet &#x26;  Quick Reference</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta description="本清单提供了对 CMake 的入门简要概述，以及 CMake 常用示例
+<meta description="这份快速参考备忘单整理了 CMake 项目配置、生成、构建、测试、安装、目标管理与 Presets 的常用命令和写法
 
 入门，为开发人员分享快速参考备忘单。">
 <meta keywords="cmake,reference,Quick,Reference,cheatsheet,cheat,sheet">
@@ -38,116 +38,414 @@
   <path d="M11.769.066.067 23.206l12.76-10.843zm11.438 23.868L7.471 17.587 0 23.934zm.793-.198L12.298.463l1.719 19.24zM12.893 12.959l-5.025 4.298 5.62 2.248z"></path>
 </svg>
 <a aria-hidden="true" tabindex="-1" href="#cmake-备忘清单"><span class="icon icon-link"></span></a>CMake 备忘清单</h1><div class="wrap-body">
-<p>本清单提供了对 CMake 的入门简要概述，以及 CMake 常用示例</p>
+<p>这份快速参考备忘单整理了 CMake 项目配置、生成、构建、测试、安装、目标管理与 Presets 的常用命令和写法</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#hello-cmake">Hello CMake</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#cmakeliststxt">CMakeLists.txt</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#maincpp">main.cpp</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#编译示例">编译示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cmake">cmake</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#常用参数">常用参数</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="hello-cmake"><a aria-hidden="true" tabindex="-1" href="#hello-cmake"><span class="icon icon-link"></span></a>Hello CMake</h3><div class="wrap-body">
-<p>CMake 是一个用于配置跨平台源代码项目应该如何配置的工具建立在给定的平台上。</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">├── CMakeLists.txt  <span class="token comment"># 希望运行的 CMake命令</span>
-</span><span class="code-line">├── main.cpp        <span class="token comment"># 带有main 的源文件</span>
-</span><span class="code-line">├── include         <span class="token comment"># 头文件目录</span>
-</span><span class="code-line">│   └── header.h
-</span><span class="code-line">└── src             <span class="token comment"># 源代码目录</span>
-</span><span class="code-line">    ├── a.c
-</span><span class="code-line">    └── b.c
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cmake-是什么">CMake 是什么</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#最小项目">最小项目</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置与构建">配置与构建</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#指定生成器">指定生成器</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#命令行">命令行</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用命令">常用命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#配置变量">配置变量</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#单配置与多配置">单配置与多配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#工具链与编译器">工具链与编译器</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装">安装</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#cmakelists">CMakeLists</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#项目声明">项目声明</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#可执行文件">可执行文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#静态库与共享库">静态库与共享库</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#链接目标">链接目标</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#作用域">作用域</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#包含目录">包含目录</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#编译特性">编译特性</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#编译定义">编译定义</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#编译选项">编译选项</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#依赖">依赖</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查找包">查找包</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#可选依赖">可选依赖</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#子目录">子目录</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#fetchcontent">FetchContent</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#测试与安装">测试与安装</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#ctest">CTest</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装目标">安装目标</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#生成配置头">生成配置头</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#presets">Presets</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#cmakepresetsjson">CMakePresets.json</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用-presets">使用 Presets</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#常见模式">常见模式</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#选项开关">选项开关</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#源文件收集">源文件收集</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#平台判断">平台判断</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#构建类型判断">构建类型判断</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#排错">排错</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-cache">查看 Cache</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#清理重新配置">清理重新配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#输出调试信息">输出调试信息</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#跟踪变量来源">跟踪变量来源</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="cmake-是什么"><a aria-hidden="true" tabindex="-1" href="#cmake-是什么"><span class="icon icon-link"></span></a>CMake 是什么</h3><div class="wrap-body">
+<p>CMake 用来描述项目如何配置和生成构建系统。它不会直接替代编译器，而是为 Ninja、Makefile、Visual Studio、Xcode 等生成对应的构建文件。</p>
+<pre class="language-text"><code class="language-text code-highlight"><span class="code-line">.
+</span><span class="code-line">├── CMakeLists.txt
+</span><span class="code-line">├── include/
+</span><span class="code-line">│   └── hello.hpp
+</span><span class="code-line">└── src/
+</span><span class="code-line">    ├── hello.cpp
+</span><span class="code-line">    └── main.cpp
 </span></code></pre>
-<p>在此项目上运行 <code>CMake</code> 时，系统会要求您提供二进制目录，运行 <code>CMake</code> 不会创建最终的可执行文件，而是会为 <code>Visual Studio</code>、<code>XCode</code> 或 <code>makefile</code> 生成项目文件。 使用这些工具构建该项目</p>
-<h4 id="cmakeliststxt"><a aria-hidden="true" tabindex="-1" href="#cmakeliststxt"><span class="icon icon-link"></span></a>CMakeLists.txt</h4>
-<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token comment"># 设置可以使用的最低 CMake 版本</span>
-</span><span class="code-line"><span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.5</span><span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token comment"># 设置项目名称</span>
-</span><span class="code-line"><span class="token keyword">project</span> <span class="token punctuation">(</span>hello_cmake<span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token comment"># 添加可执行文件</span>
-</span><span class="code-line"><span class="token keyword">add_executable</span><span class="token punctuation">(</span>hello_cmake main.cpp<span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token comment"># 添加头文件目录</span>
-</span><span class="code-line"><span class="token keyword">target_include_directories</span><span class="token punctuation">(</span>hello_cmake <span class="token namespace">PRIVATE</span> ./include<span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token comment"># 批量添加源文件</span>
-</span><span class="code-line"><span class="token keyword">file</span><span class="token punctuation">(</span>GLOB SRCS CONFIGURE_DEPENDS ./src/*.cpp<span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token keyword">target_sources</span><span class="token punctuation">(</span>hello_cmake <span class="token namespace">PUBLIC</span> <span class="token punctuation">${</span>SRCS<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token comment"># 添加第三方库</span>
-</span><span class="code-line"><span class="token keyword">find_package</span><span class="token punctuation">(</span>OpenGL CONFIG REQUIRED<span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token comment"># 链接第三方库</span>
-</span><span class="code-line"><span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>hello_cmake <span class="token namespace">PRIVATE</span> OpenGL<span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token comment"># 指定输出路径</span>
-</span><span class="code-line"><span class="token keyword">set_property</span><span class="token punctuation">(</span>TARGET hello_cmake <span class="token punctuation">${</span><span class="token variable">CMAKE_SOURCE_DIR</span><span class="token punctuation">}</span>/bin<span class="token punctuation">)</span>
+<p>推荐把源码目录和构建目录分离，避免把生成文件写进源码树。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="最小项目"><a aria-hidden="true" tabindex="-1" href="#最小项目"><span class="icon icon-link"></span></a>最小项目</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.20</span><span class="token punctuation">)</span>
 </span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">project</span><span class="token punctuation">(</span>hello_cmake
+</span><span class="code-line">  <span class="token property">VERSION</span> <span class="token number">1.0</span>
+</span><span class="code-line">  LANGUAGES CXX
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">add_executable</span><span class="token punctuation">(</span>hello_cmake<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">target_sources</span><span class="token punctuation">(</span>hello_cmake
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    src/main.cpp
+</span><span class="code-line">    src/hello.cpp
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">target_include_directories</span><span class="token punctuation">(</span>hello_cmake
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    include
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">target_compile_features</span><span class="token punctuation">(</span>hello_cmake
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    <span class="token property">cxx_std_17</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">set_target_properties</span><span class="token punctuation">(</span>hello_cmake <span class="token namespace">PROPERTIES</span>
+</span><span class="code-line">  <span class="token property">RUNTIME_OUTPUT_DIRECTORY</span> <span class="token string">"<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">CMAKE_BINARY_DIR</span><span class="token punctuation">}</span></span>/bin"</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
 </span></code></pre>
-<h4 id="maincpp"><a aria-hidden="true" tabindex="-1" href="#maincpp"><span class="icon icon-link"></span></a>main.cpp</h4>
-<pre class="language-c"><code class="language-c code-highlight"><span class="code-line"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&#x3C;iostream></span></span>
+<p>优先使用 <code>target_*</code> 命令给目标设置属性，让包含目录、编译特性和链接依赖跟随目标传播。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置与构建"><a aria-hidden="true" tabindex="-1" href="#配置与构建"><span class="icon icon-link"></span></a>配置与构建</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build
+</span><span class="code-line">$ cmake <span class="token parameter variable">--build</span> build
+</span><span class="code-line">$ ./build/bin/hello_cmake
+</span></code></pre>
+<p><code>-S</code> 指定源码目录，<code>-B</code> 指定构建目录。后续构建直接使用 <code>cmake --build build</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="指定生成器"><a aria-hidden="true" tabindex="-1" href="#指定生成器"><span class="icon icon-link"></span></a>指定生成器</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-G</span> Ninja
+</span><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-G</span> <span class="token string">"Unix Makefiles"</span>
+</span><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-G</span> <span class="token string">"Visual Studio 17 2022"</span>
+</span></code></pre>
+<p>生成器决定 CMake 输出哪一种构建系统。Windows 上 Visual Studio 生成器通常是多配置生成器。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="命令行"><a aria-hidden="true" tabindex="-1" href="#命令行"><span class="icon icon-link"></span></a>命令行</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="常用命令"><a aria-hidden="true" tabindex="-1" href="#常用命令"><span class="icon icon-link"></span></a>常用命令</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">命令</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>cmake -S . -B build</code></td><td align="left">配置项目并生成构建系统</td></tr><tr><td align="left"><code>cmake --build build</code></td><td align="left">构建项目</td></tr><tr><td align="left"><code>cmake --build build --target app</code></td><td align="left">构建指定目标</td></tr><tr><td align="left"><code>cmake --build build --parallel</code></td><td align="left">并行构建</td></tr><tr><td align="left"><code>cmake --install build</code></td><td align="left">安装项目</td></tr><tr><td align="left"><code>ctest --test-dir build</code></td><td align="left">运行测试</td></tr><tr><td align="left"><code>cmake -P script.cmake</code></td><td align="left">执行 CMake 脚本</td></tr><tr><td align="left"><code>cmake -E &#x3C;command></code></td><td align="left">运行跨平台辅助命令</td></tr><tr><td align="left"><code>cmake --open build</code></td><td align="left">用关联 IDE 打开生成的项目</td></tr><tr><td align="left"><code>cmake --help</code></td><td align="left">查看帮助</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置变量"><a aria-hidden="true" tabindex="-1" href="#配置变量"><span class="icon icon-link"></span></a>配置变量</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-DCMAKE_BUILD_TYPE</span><span class="token operator">=</span>Release
+</span><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-DCMAKE_INSTALL_PREFIX</span><span class="token operator">=</span>/opt/myapp
+</span><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-DBUILD_TESTING</span><span class="token operator">=</span>ON
+</span></code></pre>
+<p><code>-D名称=值</code> 会写入 CMake cache。重新配置同一构建目录时，cache 中的值会被复用。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="单配置与多配置"><a aria-hidden="true" tabindex="-1" href="#单配置与多配置"><span class="icon icon-link"></span></a>单配置与多配置</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-DCMAKE_BUILD_TYPE</span><span class="token operator">=</span>Debug
+</span><span class="code-line">$ cmake <span class="token parameter variable">--build</span> build
+</span></code></pre>
+<p>Ninja、Unix Makefiles 等单配置生成器通常用 <code>CMAKE_BUILD_TYPE</code> 选择 <code>Debug</code>、<code>Release</code>、<code>RelWithDebInfo</code> 或 <code>MinSizeRel</code>。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-G</span> <span class="token string">"Visual Studio 17 2022"</span>
+</span><span class="code-line">$ cmake <span class="token parameter variable">--build</span> build <span class="token parameter variable">--config</span> Release
+</span><span class="code-line">$ ctest --test-dir build <span class="token parameter variable">-C</span> Release
+</span></code></pre>
+<p>Visual Studio、Xcode、Ninja Multi-Config 等多配置生成器通常在构建或测试阶段用 <code>--config</code> / <code>-C</code> 选择配置。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="工具链与编译器"><a aria-hidden="true" tabindex="-1" href="#工具链与编译器"><span class="icon icon-link"></span></a>工具链与编译器</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-DCMAKE_TOOLCHAIN_FILE</span><span class="token operator">=</span>/path/to/toolchain.cmake
+</span><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-DCMAKE_C_COMPILER</span><span class="token operator">=</span>clang <span class="token parameter variable">-DCMAKE_CXX_COMPILER</span><span class="token operator">=</span>clang++
+</span></code></pre>
+<p>工具链文件和编译器通常应在第一次配置构建目录时指定。已配置过的构建目录更换工具链时，建议新建构建目录。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装"><span class="icon icon-link"></span></a>安装</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">--install</span> build
+</span><span class="code-line">$ cmake <span class="token parameter variable">--install</span> build <span class="token parameter variable">--prefix</span> /tmp/package
+</span><span class="code-line">$ cmake <span class="token parameter variable">--install</span> build <span class="token parameter variable">--config</span> Release
+</span></code></pre>
+<p><code>--prefix</code> 可在安装阶段临时覆盖 <code>CMAKE_INSTALL_PREFIX</code>。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="cmakelists"><a aria-hidden="true" tabindex="-1" href="#cmakelists"><span class="icon icon-link"></span></a>CMakeLists</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="项目声明"><a aria-hidden="true" tabindex="-1" href="#项目声明"><span class="icon icon-link"></span></a>项目声明</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.20</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">project</span><span class="token punctuation">(</span>myapp <span class="token property">VERSION</span> <span class="token number">1.2.0</span> LANGUAGES C CXX<span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>cmake_minimum_required()</code> 应放在顶层 <code>CMakeLists.txt</code> 靠前位置，用来声明所需最低 CMake 版本并设置策略。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="可执行文件"><a aria-hidden="true" tabindex="-1" href="#可执行文件"><span class="icon icon-link"></span></a>可执行文件</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">add_executable</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
 </span><span class="code-line">
-</span><span class="code-line"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token punctuation">{</span>
-</span><span class="code-line">  std<span class="token operator">::</span>cout <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">"Hello CMake!"</span> <span class="token operator">&#x3C;&#x3C;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
-</span><span class="code-line">  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">target_sources</span><span class="token punctuation">(</span>app
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    src/main.cpp
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>可先创建目标，再用 <code>target_sources()</code> 追加源文件，便于大型项目分块维护。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="静态库与共享库"><a aria-hidden="true" tabindex="-1" href="#静态库与共享库"><span class="icon icon-link"></span></a>静态库与共享库</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">add_library</span><span class="token punctuation">(</span>core <span class="token namespace">STATIC</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">target_sources</span><span class="token punctuation">(</span>core <span class="token namespace">PRIVATE</span> src/core.cpp<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">add_library</span><span class="token punctuation">(</span>plugin <span class="token namespace">SHARED</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">target_sources</span><span class="token punctuation">(</span>plugin <span class="token namespace">PRIVATE</span> src/plugin.cpp<span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>STATIC</code> 生成静态库，<code>SHARED</code> 生成动态库。不指定类型时由 <code>BUILD_SHARED_LIBS</code> 影响默认行为。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="链接目标"><a aria-hidden="true" tabindex="-1" href="#链接目标"><span class="icon icon-link"></span></a>链接目标</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">add_executable</span><span class="token punctuation">(</span>app src/main.cpp<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">add_library</span><span class="token punctuation">(</span>core src/core.cpp<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>app
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    core
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>链接 CMake 目标时，目标的公开包含目录、编译定义等用法需求会按 <code>PUBLIC</code> / <code>INTERFACE</code> 传播。</p>
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="作用域"><a aria-hidden="true" tabindex="-1" href="#作用域"><span class="icon icon-link"></span></a>作用域</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">作用域</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left"><code>PRIVATE</code></td><td align="left">只用于当前目标本身</td></tr><tr><td align="left"><code>PUBLIC</code></td><td align="left">用于当前目标，并传播给依赖它的目标</td></tr><tr><td align="left"><code>INTERFACE</code></td><td align="left">不用于当前目标，只传播给依赖它的目标</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="包含目录"><a aria-hidden="true" tabindex="-1" href="#包含目录"><span class="icon icon-link"></span></a>包含目录</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">target_include_directories</span><span class="token punctuation">(</span>core
+</span><span class="code-line">  <span class="token namespace">PUBLIC</span>
+</span><span class="code-line">    include
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    src
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>库的公共头文件目录通常使用 <code>PUBLIC</code> 或 <code>INTERFACE</code>，内部实现目录使用 <code>PRIVATE</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="编译特性"><a aria-hidden="true" tabindex="-1" href="#编译特性"><span class="icon icon-link"></span></a>编译特性</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">target_compile_features</span><span class="token punctuation">(</span>core <span class="token namespace">PUBLIC</span> <span class="token property">cxx_std_20</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>相比手动设置 <code>CMAKE_CXX_STANDARD</code>，<code>target_compile_features()</code> 更适合按目标声明需要的语言特性。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="编译定义"><a aria-hidden="true" tabindex="-1" href="#编译定义"><span class="icon icon-link"></span></a>编译定义</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">target_compile_definitions</span><span class="token punctuation">(</span>core
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span> CORE_BUILDING
+</span><span class="code-line">  <span class="token namespace">PUBLIC</span> CORE_ENABLE_LOGGING
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>这会为目标添加预处理宏，相当于编译器参数中的 <code>-DCORE_BUILDING</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="编译选项"><a aria-hidden="true" tabindex="-1" href="#编译选项"><span class="icon icon-link"></span></a>编译选项</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">target_compile_options</span><span class="token punctuation">(</span>core
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    <span class="token punctuation">$&#x3C;</span><span class="token punctuation">$&#x3C;</span>CXX_COMPILER_ID:GNU,Clang<span class="token punctuation">></span>:-Wall;-Wextra<span class="token punctuation">></span>
+</span><span class="code-line">    <span class="token punctuation">$&#x3C;</span><span class="token punctuation">$&#x3C;</span>CXX_COMPILER_ID:<span class="token variable">MSVC</span><span class="token punctuation">></span>:/W4<span class="token punctuation">></span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>生成器表达式可按编译器、平台、配置等条件启用不同选项。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="依赖"><a aria-hidden="true" tabindex="-1" href="#依赖"><span class="icon icon-link"></span></a>依赖</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查找包"><a aria-hidden="true" tabindex="-1" href="#查找包"><span class="icon icon-link"></span></a>查找包</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">find_package</span><span class="token punctuation">(</span>OpenGL REQUIRED<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>app
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    <span class="token inserted class-name">OpenGL::GL</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>现代 CMake 包通常提供导入目标，例如 <code>OpenGL::GL</code>。优先链接导入目标，而不是手动拼 include 路径和库路径。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="可选依赖"><a aria-hidden="true" tabindex="-1" href="#可选依赖"><span class="icon icon-link"></span></a>可选依赖</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">find_package</span><span class="token punctuation">(</span>ZLIB<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">if</span><span class="token punctuation">(</span>ZLIB_FOUND<span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>app <span class="token namespace">PRIVATE</span> <span class="token inserted class-name">ZLIB::ZLIB</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">target_compile_definitions</span><span class="token punctuation">(</span>app <span class="token namespace">PRIVATE</span> HAVE_ZLIB<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">endif</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>未加 <code>REQUIRED</code> 时，找不到包不会立即失败，可以用 <code>&#x3C;PackageName>_FOUND</code> 判断。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="子目录"><a aria-hidden="true" tabindex="-1" href="#子目录"><span class="icon icon-link"></span></a>子目录</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">add_subdirectory</span><span class="token punctuation">(</span>third_party/fmt<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>app <span class="token namespace">PRIVATE</span> <span class="token inserted class-name">fmt::fmt</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>add_subdirectory()</code> 会把子项目加入当前构建，适合 vendored 依赖或同仓库子模块。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="fetchcontent"><a aria-hidden="true" tabindex="-1" href="#fetchcontent"><span class="icon icon-link"></span></a>FetchContent</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">include</span><span class="token punctuation">(</span>FetchContent<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">FetchContent_Declare</span><span class="token punctuation">(</span>
+</span><span class="code-line">  fmt
+</span><span class="code-line">  GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+</span><span class="code-line">  GIT_TAG <span class="token number">10.2.1</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token function">FetchContent_MakeAvailable</span><span class="token punctuation">(</span>fmt<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>app <span class="token namespace">PRIVATE</span> <span class="token inserted class-name">fmt::fmt</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>FetchContent</code> 会在配置阶段获取依赖。生产项目建议固定版本标签或提交哈希，避免构建结果随远端变化。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="测试与安装"><a aria-hidden="true" tabindex="-1" href="#测试与安装"><span class="icon icon-link"></span></a>测试与安装</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="ctest"><a aria-hidden="true" tabindex="-1" href="#ctest"><span class="icon icon-link"></span></a>CTest</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">include</span><span class="token punctuation">(</span>CTest<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">add_executable</span><span class="token punctuation">(</span>core_tests tests/core_tests.cpp<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>core_tests <span class="token namespace">PRIVATE</span> core<span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">add_test</span><span class="token punctuation">(</span><span class="token property">NAME</span> core_tests COMMAND core_tests<span class="token punctuation">)</span>
+</span></code></pre>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-DBUILD_TESTING</span><span class="token operator">=</span>ON
+</span><span class="code-line">$ cmake <span class="token parameter variable">--build</span> build
+</span><span class="code-line">$ ctest --test-dir build --output-on-failure
+</span></code></pre>
+<p><code>include(CTest)</code> 会定义 <code>BUILD_TESTING</code> 选项，常用于统一开关测试目标。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装目标"><a aria-hidden="true" tabindex="-1" href="#安装目标"><span class="icon icon-link"></span></a>安装目标</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">install</span><span class="token punctuation">(</span>TARGETS app core
+</span><span class="code-line">  RUNTIME DESTINATION bin
+</span><span class="code-line">  LIBRARY DESTINATION lib
+</span><span class="code-line">  ARCHIVE DESTINATION lib
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">install</span><span class="token punctuation">(</span>DIRECTORY include/
+</span><span class="code-line">  DESTINATION include
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>RUNTIME</code> 对应可执行文件，<code>LIBRARY</code> 对应共享库，<code>ARCHIVE</code> 对应静态库或导入库。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="生成配置头"><a aria-hidden="true" tabindex="-1" href="#生成配置头"><span class="icon icon-link"></span></a>生成配置头</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">configure_file</span><span class="token punctuation">(</span>
+</span><span class="code-line">  config.hpp.in
+</span><span class="code-line">  generated/config.hpp
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">target_include_directories</span><span class="token punctuation">(</span>app
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    <span class="token string">"<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">CMAKE_CURRENT_BINARY_DIR</span><span class="token punctuation">}</span></span>/generated"</span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>configure_file()</code> 可把版本号、开关等配置写入生成头文件。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="presets"><a aria-hidden="true" tabindex="-1" href="#presets"><span class="icon icon-link"></span></a>Presets</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="cmakepresetsjson"><a aria-hidden="true" tabindex="-1" href="#cmakepresetsjson"><span class="icon icon-link"></span></a>CMakePresets.json</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-json"><code class="language-json code-highlight"><span class="code-line"><span class="token punctuation">{</span>
+</span><span class="code-line">  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"configurePresets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"dev"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"displayName"</span><span class="token operator">:</span> <span class="token string">"Dev"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"generator"</span><span class="token operator">:</span> <span class="token string">"Ninja"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"binaryDir"</span><span class="token operator">:</span> <span class="token string">"${sourceDir}/build/dev"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"cacheVariables"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"CMAKE_BUILD_TYPE"</span><span class="token operator">:</span> <span class="token string">"Debug"</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token property">"BUILD_TESTING"</span><span class="token operator">:</span> <span class="token string">"ON"</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"buildPresets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"dev"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"configurePreset"</span><span class="token operator">:</span> <span class="token string">"dev"</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line">  <span class="token property">"testPresets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line">    <span class="token punctuation">{</span>
+</span><span class="code-line">      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"dev"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"configurePreset"</span><span class="token operator">:</span> <span class="token string">"dev"</span><span class="token punctuation">,</span>
+</span><span class="code-line">      <span class="token property">"output"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token property">"outputOnFailure"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line">      <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">  <span class="token punctuation">]</span>
 </span><span class="code-line"><span class="token punctuation">}</span>
 </span></code></pre>
-<h4 id="编译示例"><a aria-hidden="true" tabindex="-1" href="#编译示例"><span class="icon icon-link"></span></a>编译示例</h4>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">mkdir</span> build   <span class="token comment"># 创建 build 目录</span>
-</span><span class="code-line">$ <span class="token builtin class-name">cd</span> build      <span class="token comment"># 进入目录</span>
-</span><span class="code-line">$ cmake <span class="token punctuation">..</span>      <span class="token comment"># 目录的上一级目录运行命令</span>
-</span><span class="code-line">$ <span class="token function">make</span>          <span class="token comment"># 使用对应的编译工具</span>
-</span><span class="code-line">$ ./hello_cmake <span class="token comment"># 运行生成的 hello_cmake</span>
-</span><span class="code-line">Hello CMake<span class="token operator">!</span>
+<p>Presets 用来共享常用配置。团队可提交 <code>CMakePresets.json</code>，把个人路径和本地偏好放进 <code>CMakeUserPresets.json</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="使用-presets"><a aria-hidden="true" tabindex="-1" href="#使用-presets"><span class="icon icon-link"></span></a>使用 Presets</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake --list-presets
+</span><span class="code-line">$ cmake <span class="token parameter variable">--preset</span> dev
+</span><span class="code-line">$ cmake <span class="token parameter variable">--build</span> <span class="token parameter variable">--preset</span> dev
+</span><span class="code-line">$ ctest <span class="token parameter variable">--preset</span> dev
 </span></code></pre>
-</div></div></div><div class="wrap h3body-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="cmake"><a aria-hidden="true" tabindex="-1" href="#cmake"><span class="icon icon-link"></span></a>cmake</h3><div class="wrap-body">
-<!--rehype:wrap-class=col-span-2-->
-<p>生成项目构建系统</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>options<span class="token operator">></span><span class="token punctuation">]</span> <span class="token operator">&#x3C;</span>path-to-source <span class="token operator">|</span> path-to-existing-build<span class="token operator">></span>bash
-</span><span class="code-line">$ cmake <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>options<span class="token operator">></span><span class="token punctuation">]</span> <span class="token parameter variable">-S</span> <span class="token operator">&#x3C;</span>path-to-source<span class="token operator">></span> <span class="token parameter variable">-B</span> <span class="token operator">&#x3C;</span>path-to-build<span class="token operator">></span>
-</span></code></pre>
-<p>建立一个项目</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">--build</span> <span class="token operator">&#x3C;</span>dir<span class="token operator">></span> <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>options<span class="token operator">></span><span class="token punctuation">]</span> <span class="token punctuation">[</span>-- <span class="token operator">&#x3C;</span>build-tool-options<span class="token operator">></span><span class="token punctuation">]</span>
-</span></code></pre>
-<p>安装项目</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">--install</span> <span class="token operator">&#x3C;</span>dir<span class="token operator">></span> <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>options<span class="token operator">></span><span class="token punctuation">]</span>
-</span></code></pre>
-<p>运行指定项目</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">cmake <span class="token parameter variable">--build</span> <span class="token operator">&#x3C;</span>dir<span class="token operator">></span> <span class="token parameter variable">--target</span> <span class="token operator">&#x3C;</span>project<span class="token operator">></span>
-</span></code></pre>
-<p>打开一个项目</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">--open</span> <span class="token operator">&#x3C;</span>dir<span class="token operator">></span>
-</span></code></pre>
-<p>运行脚本</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake <span class="token punctuation">[</span>-D <span class="token operator">&#x3C;</span>var<span class="token operator">>=</span><span class="token operator">&#x3C;</span>value<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token parameter variable">-P</span> <span class="token operator">&#x3C;</span>cmake-script-file<span class="token operator">></span>
-</span></code></pre>
-<p>运行命令行工具</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-E</span> <span class="token operator">&#x3C;</span>command<span class="token operator">></span> <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>options<span class="token operator">></span><span class="token punctuation">]</span>
-</span></code></pre>
-<p>运行查找包工具</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake --find-package <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>options<span class="token operator">></span><span class="token punctuation">]</span>
-</span></code></pre>
-<p>运行工作流预设</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">--workflow</span> <span class="token punctuation">[</span><span class="token operator">&#x3C;</span>options<span class="token operator">></span><span class="token punctuation">]</span>
-</span></code></pre>
-<p>查看帮助</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ cmake --help<span class="token punctuation">[</span>-<span class="token operator">&#x3C;</span>topic<span class="token operator">></span><span class="token punctuation">]</span>
-</span></code></pre>
-<h4 id="常用参数"><a aria-hidden="true" tabindex="-1" href="#常用参数"><span class="icon icon-link"></span></a>常用参数</h4>
-<ul>
-<li>方式一: 在<code>CMakeLists.txt</code>中使用<code>set(KEY VAL)</code>函数</li>
-<li>方式二: 在执行<code>cmake ...</code> -D<arg> 指定(只需一次,推荐)</arg></li>
-</ul>
-<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token comment"># 指定编译参数(Debug/Release/MinSizeRel/RelWithDebInfo)</span>
-</span><span class="code-line">$ cmake ... -D <span class="token variable">CMAKE_BUILD_TYPE</span>=DEBUG
-</span><span class="code-line"><span class="token comment"># 指定编译链工具(windows下vcpkg需要)</span>
-</span><span class="code-line">$ cmake ... -D <span class="token variable">CMAKE_TOOLCHAIN_FILE</span>=&#x3C;vcpkg_path<span class="token punctuation">></span>/scripts/buildsystems/vcpkg.cmake
-</span><span class="code-line"><span class="token comment"># 指定编译器</span>
-</span><span class="code-line">$ cmake ... -D CAMKE_C_COMPILER=...
-</span><span class="code-line">$ cmake ... -D CAMKE_CXX_COMPILER=...
-</span><span class="code-line"><span class="token comment"># 指定生成器</span>
-</span><span class="code-line">$ cmake .. -G <span class="token string">"Unix Makefile"</span>
-</span><span class="code-line">$ cmake .. -G <span class="token string">"Ninja"</span>
-</span><span class="code-line">$ cmake .. -G <span class="token string">"Visual Studio 17 2022"</span>
+<p>Presets 可覆盖配置、构建、测试、打包和工作流等常用步骤。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="常见模式"><a aria-hidden="true" tabindex="-1" href="#常见模式"><span class="icon icon-link"></span></a>常见模式</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="选项开关"><a aria-hidden="true" tabindex="-1" href="#选项开关"><span class="icon icon-link"></span></a>选项开关</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">option</span><span class="token punctuation">(</span>MYAPP_BUILD_TOOLS <span class="token string">"Build command line tools"</span> <span class="token boolean">ON</span><span class="token punctuation">)</span>
 </span><span class="code-line">
-</span><span class="code-line"><span class="token comment"># 设置Cpp标准</span>
-</span><span class="code-line"><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_CXX_STANDARD</span> <span class="token number">17</span><span class="token punctuation">)</span>
-</span><span class="code-line"><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_CXX_STANDARD_REQUIRED</span> <span class="token boolean">ON</span><span class="token punctuation">)</span> <span class="token comment"># 在检测到不支持时出错</span>
-</span><span class="code-line"><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_CXX_EXTENSIONS</span> <span class="token boolean">ON</span><span class="token punctuation">)</span> <span class="token comment">#一般设为off，否则在msvc上没有特性会出错</span>
+</span><span class="code-line"><span class="token keyword">if</span><span class="token punctuation">(</span>MYAPP_BUILD_TOOLS<span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">add_executable</span><span class="token punctuation">(</span>mytool tools/mytool.cpp<span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>mytool <span class="token namespace">PRIVATE</span> core<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">endif</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span></code></pre>
+<p><code>option()</code> 会创建布尔 cache 变量，用户可通过 <code>-DMYAPP_BUILD_TOOLS=OFF</code> 覆盖。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="源文件收集"><a aria-hidden="true" tabindex="-1" href="#源文件收集"><span class="icon icon-link"></span></a>源文件收集</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">target_sources</span><span class="token punctuation">(</span>app
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    src/main.cpp
+</span><span class="code-line">    src/app.cpp
+</span><span class="code-line">    src/app.hpp
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>显式列出源文件最稳定。<code>file(GLOB CONFIGURE_DEPENDS ...)</code> 可减少维护成本，但新增文件触发重新配置的行为依赖生成器支持。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="平台判断"><a aria-hidden="true" tabindex="-1" href="#平台判断"><span class="icon icon-link"></span></a>平台判断</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">WIN32</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">target_compile_definitions</span><span class="token punctuation">(</span>app <span class="token namespace">PRIVATE</span> APP_PLATFORM_WINDOWS<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">elseif</span><span class="token punctuation">(</span><span class="token variable">APPLE</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">target_compile_definitions</span><span class="token punctuation">(</span>app <span class="token namespace">PRIVATE</span> APP_PLATFORM_APPLE<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">elseif</span><span class="token punctuation">(</span><span class="token variable">UNIX</span><span class="token punctuation">)</span>
+</span><span class="code-line">  <span class="token keyword">target_compile_definitions</span><span class="token punctuation">(</span>app <span class="token namespace">PRIVATE</span> APP_PLATFORM_UNIX<span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">endif</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p>平台条件适合处理系统 API、路径和链接库差异。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="构建类型判断"><a aria-hidden="true" tabindex="-1" href="#构建类型判断"><span class="icon icon-link"></span></a>构建类型判断</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">target_compile_definitions</span><span class="token punctuation">(</span>app
+</span><span class="code-line">  <span class="token namespace">PRIVATE</span>
+</span><span class="code-line">    <span class="token punctuation">$&#x3C;</span><span class="token punctuation">$&#x3C;</span>CONFIG:Debug<span class="token punctuation">></span>:APP_DEBUG_BUILD<span class="token punctuation">></span>
+</span><span class="code-line"><span class="token punctuation">)</span>
+</span></code></pre>
+<p>用生成器表达式判断配置，比读取 <code>CMAKE_BUILD_TYPE</code> 更适合多配置生成器。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="排错"><a aria-hidden="true" tabindex="-1" href="#排错"><span class="icon icon-link"></span></a>排错</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看-cache"><a aria-hidden="true" tabindex="-1" href="#查看-cache"><span class="icon icon-link"></span></a>查看 Cache</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build <span class="token parameter variable">-LAH</span>
+</span></code></pre>
+<p><code>-L</code> 列出 cache 变量，<code>-A</code> 显示高级变量，<code>-H</code> 显示帮助说明。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="清理重新配置"><a aria-hidden="true" tabindex="-1" href="#清理重新配置"><span class="icon icon-link"></span></a>清理重新配置</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">--fresh</span> <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build
+</span></code></pre>
+<p><code>--fresh</code> 会删除已有 <code>CMakeCache.txt</code> 和 <code>CMakeFiles/</code> 后重新配置，适合解决 cache 污染。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="输出调试信息"><a aria-hidden="true" tabindex="-1" href="#输出调试信息"><span class="icon icon-link"></span></a>输出调试信息</h3><div class="wrap-body">
+<pre class="language-cmake"><code class="language-cmake code-highlight"><span class="code-line"><span class="token keyword">message</span><span class="token punctuation">(</span>STATUS <span class="token string">"CMAKE_CXX_COMPILER=<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">CMAKE_CXX_COMPILER</span><span class="token punctuation">}</span></span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token keyword">message</span><span class="token punctuation">(</span>STATUS <span class="token string">"CMAKE_BUILD_TYPE=<span class="token interpolation"><span class="token punctuation">${</span><span class="token variable">CMAKE_BUILD_TYPE</span><span class="token punctuation">}</span></span>"</span><span class="token punctuation">)</span>
+</span></code></pre>
+<p><code>message(STATUS ...)</code> 适合在配置阶段打印变量，定位路径、选项和依赖查找问题。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="跟踪变量来源"><a aria-hidden="true" tabindex="-1" href="#跟踪变量来源"><span class="icon icon-link"></span></a>跟踪变量来源</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build --trace-expand
+</span><span class="code-line">$ cmake <span class="token parameter variable">-S</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-B</span> build --debug-find
+</span></code></pre>
+<p><code>--trace-expand</code> 用于查看 CMake 脚本执行过程，<code>--debug-find</code> 用于排查 <code>find_package()</code> 和 <code>find_*()</code> 的搜索路径。</p>
 </div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
-<li><a href="http://ttroy50.github.io/cmake-examples/">CMake Examples</a> <em>(ttroy50.github.io)</em></li>
+<li><a href="https://cmake.org/cmake/help/latest/">CMake 官方文档</a></li>
+<li><a href="https://cmake.org/cmake/help/latest/manual/cmake.1.html">cmake(1) 命令行手册</a></li>
+<li><a href="https://cmake.org/cmake/help/latest/guide/tutorial/index.html">CMake Tutorial</a></li>
+<li><a href="https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html">cmake-presets(7)</a></li>
+<li><a href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">cmake-toolchains(7)</a></li>
 </ul>
 </div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}

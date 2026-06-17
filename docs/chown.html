@@ -5,7 +5,7 @@
 <title>Chown 备忘清单
  &#x26;  chown cheatsheet &#x26;  Quick Reference</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta description="这份快速参考备忘单提供了改变文件或目录的所有者的简要概述，以及 chown 命令的操作
+<meta description="这份快速参考备忘单整理了 chown 修改文件所有者和属组的常用语法、选项、递归行为与安全示例
 
 入门，为开发人员分享快速参考备忘单。">
 <meta keywords="chown,reference,Quick,Reference,cheatsheet,cheat,sheet">
@@ -35,90 +35,227 @@
   <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
 </svg>
 </button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="chown-备忘清单"><svg viewBox="0 0 1024 1024" version="1.1" fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em"><path d="M912.9 130.6c-26.1 4.5-52.8 6.9-80.2 6.9-115.4 0-221.1-41.9-302.6-111.2-10.6-9-26.2-9-36.8 0-81.5 69.4-187.2 111.2-302.6 111.2-27 0-53.5-2.3-79.2-6.7-17.2-2.9-32.9 10.4-33 27.9-0.2 109.1-0.4 238.1-0.4 242.5 0 471 394.5 592.7 431 603 1.8 0.5 3.6 0.5 5.4 0C550.9 994 943 873 945.5 405.7l0.4-247c0-17.6-15.8-31.1-33-28.1zM546 568.9v154.5c0 18.8-15.2 34-34 34s-34-15.2-34-34V568.9c-68.2-15.5-119.1-76.4-119.1-149.3 0-84.5 68.5-153.1 153.1-153.1S665.1 335 665.1 419.6c0 72.9-50.9 133.9-119.1 149.3z"></path></svg><a aria-hidden="true" tabindex="-1" href="#chown-备忘清单"><span class="icon icon-link"></span></a>Chown 备忘清单</h1><div class="wrap-body">
-<p>这份快速参考备忘单提供了改变文件或目录的所有者的简要概述，以及 chown 命令的操作</p>
+<p>这份快速参考备忘单整理了 <code>chown</code> 修改文件所有者和属组的常用语法、选项、递归行为与安全示例</p>
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#介绍">介绍</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#选项">选项</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#示例-1">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更改文件所有者">更改文件所有者</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#仅更改所有者">仅更改所有者</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#递归更改目录及其内容的所有者">递归更改目录及其内容的所有者</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更改所有者为当前用户">更改所有者为当前用户</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#递归并且不显示错误信息">递归并且不显示错误信息</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#仅更改组">仅更改组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#变更符号链接的所有者">变更符号链接的所有者</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#更改所有者为根用户">更改所有者为根用户</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#递归更改所有者为当前用户">递归更改所有者为当前用户</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将文件所有者更改为其他用户但保留组">将文件所有者更改为其他用户，但保留组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#将文件所有者更改为其他用户同时更改组">将文件所有者更改为其他用户，同时更改组</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="介绍"><a aria-hidden="true" tabindex="-1" href="#介绍"><span class="icon icon-link"></span></a>介绍</h3><div class="wrap-body">
-<p>Linux/Unix 系统中的一个命令，全称为 <code>change owner</code>，用于改变文件或目录的所有者</p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">chown</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> <span class="token punctuation">[</span>所有者<span class="token punctuation">]</span><span class="token punctuation">[</span>:<span class="token punctuation">[</span>组<span class="token punctuation">]</span><span class="token punctuation">]</span> 文件或目录名
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#入门">入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#语法">语法</a><a aria-hidden="true" class="leve4 tocs-link" data-num="4" href="#示例">示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#所有者与属组">所有者与属组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用选项">常用选项</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#符号链接">符号链接</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#常用示例">常用示例</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#修改文件所有者">修改文件所有者</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#同时修改所有者和属组">同时修改所有者和属组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#只修改属组">只修改属组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#使用登录属组">使用登录属组</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#递归修改目录">递归修改目录</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#按当前归属条件修改">按当前归属条件修改</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#参照其他文件">参照其他文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#修改符号链接本身">修改符号链接本身</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#递归时不遍历符号链接">递归时不遍历符号链接</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#实践">实践</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#web-应用目录">Web 应用目录</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#上传目录">上传目录</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#恢复当前用户归属">恢复当前用户归属</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#避免通配符误伤">避免通配符误伤</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#排错">排错</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看当前归属">查看当前归属</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#找出归属不正确的文件">找出归属不正确的文件</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#批量修复特定归属">批量修复特定归属</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#另见">另见</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="入门"><a aria-hidden="true" tabindex="-1" href="#入门"><span class="icon icon-link"></span></a>入门</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="语法"><a aria-hidden="true" tabindex="-1" href="#语法"><span class="icon icon-link"></span></a>语法</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token punctuation">[</span>所有者<span class="token punctuation">]</span><span class="token punctuation">[</span>:<span class="token punctuation">[</span>属组<span class="token punctuation">]</span><span class="token punctuation">]</span> 文件<span class="token punctuation">..</span>.
+</span><span class="code-line">$ <span class="token function">chown</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token parameter variable">--reference</span><span class="token operator">=</span>参考文件 文件<span class="token punctuation">..</span>.
 </span></code></pre>
-<p>命令可以更改某个文件或目录的属主（owner），也可以同时更改其属组（group）</p>
+<p><code>chown</code> 用于修改文件或目录的所有者，也可以同时修改属组。修改文件所有者通常需要管理员权限。</p>
 <h4 id="示例"><a aria-hidden="true" tabindex="-1" href="#示例"><span class="icon icon-link"></span></a>示例</h4>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> :groupname file1.txt
-</span><span class="code-line">$ <span class="token function">chown</span> <span class="token parameter variable">-R</span> username:groupname *
-</span><span class="code-line">$ <span class="token function">chown</span> <span class="token environment constant">$USER</span> file.txt
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> alice report.txt
+</span><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> alice:staff report.txt
+</span><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> alice:staff project/
+</span><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--reference</span><span class="token operator">=</span>template.txt target.txt
 </span></code></pre>
-<p><code>注意</code> 只有超级用户(root)才有权限改变文件或目录的所有者</p>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="选项"><a aria-hidden="true" tabindex="-1" href="#选项"><span class="icon icon-link"></span></a>选项</h3><div class="wrap-body">
+</div></div></div><div class="wrap h3body-not-exist col-span-2"><div class="wrap-header h3wrap"><h3 id="所有者与属组"><a aria-hidden="true" tabindex="-1" href="#所有者与属组"><span class="icon icon-link"></span></a>所有者与属组</h3><div class="wrap-body">
+<!--rehype:wrap-class=col-span-2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">写法</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left"><code>alice</code></td><td align="left">只把所有者改为 <code>alice</code>，属组保持不变</td></tr><tr><td align="left"><code>alice:staff</code></td><td align="left">所有者改为 <code>alice</code>，属组改为 <code>staff</code></td></tr><tr><td align="left"><code>alice:</code></td><td align="left">所有者改为 <code>alice</code>，属组改为 <code>alice</code> 的登录属组</td></tr><tr><td align="left"><code>:staff</code></td><td align="left">只把属组改为 <code>staff</code>，效果类似 <code>chgrp staff</code></td></tr><tr><td align="left"><code>:</code></td><td align="left">不改变所有者或属组</td></tr><tr><td align="left"><code>+1001:+1001</code></td><td align="left">使用数字 UID/GID，<code>+</code> 可避免与同名用户或组混淆</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常用选项"><a aria-hidden="true" tabindex="-1" href="#常用选项"><span class="icon icon-link"></span></a>常用选项</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>-c</code>, <code>--changes</code></td><td align="left">只在发生变更时输出信息</td></tr><tr><td align="left"><code>-f</code>, <code>--silent</code>, <code>--quiet</code></td><td align="left">抑制大多数错误信息</td></tr><tr><td align="left"><code>-v</code>, <code>--verbose</code></td><td align="left">为每个处理的文件输出诊断信息</td></tr><tr><td align="left"><code>-R</code>, <code>--recursive</code></td><td align="left">递归处理目录及其内容</td></tr><tr><td align="left"><code>--from=当前所有者:当前属组</code></td><td align="left">仅当当前所有者或属组匹配时才修改</td></tr><tr><td align="left"><code>--reference=参考文件</code></td><td align="left">使用参考文件的所有者和属组</td></tr><tr><td align="left"><code>--preserve-root</code></td><td align="left">递归操作 <code>/</code> 时失败，防止误操作根目录</td></tr><tr><td align="left"><code>--no-preserve-root</code></td><td align="left">不对 <code>/</code> 做特殊保护</td></tr><tr><td align="left"><code>--help</code></td><td align="left">显示帮助</td></tr><tr><td align="left"><code>--version</code></td><td align="left">显示版本</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="符号链接"><a aria-hidden="true" tabindex="-1" href="#符号链接"><span class="icon icon-link"></span></a>符号链接</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="show-header"><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>--dereference</code></td><td align="left">修改符号链接指向的目标，这是默认行为</td></tr><tr><td align="left"><code>-h</code>, <code>--no-dereference</code></td><td align="left">修改符号链接本身，而不是它指向的目标</td></tr><tr><td align="left"><code>-H</code></td><td align="left">与 <code>-R</code> 一起使用；命令行参数中的目录符号链接会被遍历</td></tr><tr><td align="left"><code>-L</code></td><td align="left">与 <code>-R</code> 一起使用；遍历遇到的每个目录符号链接</td></tr><tr><td align="left"><code>-P</code></td><td align="left">与 <code>-R</code> 一起使用；不遍历任何符号链接，GNU 默认值</td></tr></tbody></table>
+<!--rehype:className=show-header-->
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="常用示例"><a aria-hidden="true" tabindex="-1" href="#常用示例"><span class="icon icon-link"></span></a>常用示例</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="修改文件所有者"><a aria-hidden="true" tabindex="-1" href="#修改文件所有者"><span class="icon icon-link"></span></a>修改文件所有者</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> alice report.txt
+</span></code></pre>
+<p>把 <code>report.txt</code> 的所有者改为 <code>alice</code>，文件属组保持不变。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="同时修改所有者和属组"><a aria-hidden="true" tabindex="-1" href="#同时修改所有者和属组"><span class="icon icon-link"></span></a>同时修改所有者和属组</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> alice:staff report.txt
+</span></code></pre>
+<p>把 <code>report.txt</code> 的所有者改为 <code>alice</code>，属组改为 <code>staff</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="只修改属组"><a aria-hidden="true" tabindex="-1" href="#只修改属组"><span class="icon icon-link"></span></a>只修改属组</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> :staff report.txt
+</span></code></pre>
+<p>不改变文件所有者，只把属组改为 <code>staff</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="使用登录属组"><a aria-hidden="true" tabindex="-1" href="#使用登录属组"><span class="icon icon-link"></span></a>使用登录属组</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> alice: report.txt
+</span></code></pre>
+<p>所有者改为 <code>alice</code>，属组改为 <code>alice</code> 的登录属组。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="递归修改目录"><a aria-hidden="true" tabindex="-1" href="#递归修改目录"><span class="icon icon-link"></span></a>递归修改目录</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> alice:staff project/
+</span></code></pre>
+<p>递归修改 <code>project/</code> 目录及其所有内容的所有者和属组。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> --preserve-root <span class="token parameter variable">-R</span> alice:staff /srv/app
+</span></code></pre>
+<p>递归处理重要路径时可加 <code>--preserve-root</code>，降低误把根目录作为目标的风险。</p>
+</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="按当前归属条件修改"><a aria-hidden="true" tabindex="-1" href="#按当前归属条件修改"><span class="icon icon-link"></span></a>按当前归属条件修改</h3><div class="wrap-body">
+<!--rehype:wrap-class=row-span-2-->
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--from</span><span class="token operator">=</span>root:root app:app config.yml
+</span></code></pre>
+<p>只有当 <code>config.yml</code> 当前所有者和属组都是 <code>root</code> 时，才改为 <code>app:app</code>。</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--from</span><span class="token operator">=</span>:oldgroup :newgroup *.log
+</span></code></pre>
+<p>只要求当前属组匹配 <code>oldgroup</code>，匹配后把属组改为 <code>newgroup</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="参照其他文件"><a aria-hidden="true" tabindex="-1" href="#参照其他文件"><span class="icon icon-link"></span></a>参照其他文件</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">--reference</span><span class="token operator">=</span>template.txt target.txt
+</span></code></pre>
+<p>把 <code>target.txt</code> 的所有者和属组改成与 <code>template.txt</code> 相同。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="修改符号链接本身"><a aria-hidden="true" tabindex="-1" href="#修改符号链接本身"><span class="icon icon-link"></span></a>修改符号链接本身</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-h</span> alice:staff current-link
+</span></code></pre>
+<p>修改符号链接 <code>current-link</code> 自身的所有者和属组，而不是它指向的目标文件。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="递归时不遍历符号链接"><a aria-hidden="true" tabindex="-1" href="#递归时不遍历符号链接"><span class="icon icon-link"></span></a>递归时不遍历符号链接</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token parameter variable">-P</span> app:app /srv/app
+</span></code></pre>
+<p><code>-P</code> 会让递归过程不进入符号链接指向的目录，适合多数需要避免越界修改的场景。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="实践"><a aria-hidden="true" tabindex="-1" href="#实践"><span class="icon icon-link"></span></a>实践</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="web-应用目录"><a aria-hidden="true" tabindex="-1" href="#web-应用目录"><span class="icon icon-link"></span></a>Web 应用目录</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> app:app /srv/app
+</span><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> www-data:www-data /var/www/example
+</span></code></pre>
+<p>把应用目录交给运行服务的用户和属组，避免用 <code>root</code> 直接运行应用进程。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="上传目录"><a aria-hidden="true" tabindex="-1" href="#上传目录"><span class="icon icon-link"></span></a>上传目录</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> www-data:www-data /var/www/example/uploads
+</span></code></pre>
+<p>只给需要写入的目录设置 Web 服务用户归属，其他代码目录应尽量保持只读权限。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="恢复当前用户归属"><a aria-hidden="true" tabindex="-1" href="#恢复当前用户归属"><span class="icon icon-link"></span></a>恢复当前用户归属</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token string">"<span class="token environment constant">$USER</span>"</span><span class="token builtin class-name">:</span><span class="token string">"<span class="token environment constant">$USER</span>"</span> ~/.config/my-tool
+</span></code></pre>
+<p>当配置目录被 <code>sudo</code> 创建后，可把它恢复为当前用户拥有。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="避免通配符误伤"><a aria-hidden="true" tabindex="-1" href="#避免通配符误伤"><span class="icon icon-link"></span></a>避免通配符误伤</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> app:app /srv/app/
+</span><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> app:app ./
+</span></code></pre>
+<p>递归操作前优先使用明确路径。避免在不确定的工作目录中直接执行 <code>chown -R user:group *</code>。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="排错"><a aria-hidden="true" tabindex="-1" href="#排错"><span class="icon icon-link"></span></a>排错</h2><div class="wrap-body">
+</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看当前归属"><a aria-hidden="true" tabindex="-1" href="#查看当前归属"><span class="icon icon-link"></span></a>查看当前归属</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">ls</span> <span class="token parameter variable">-l</span> report.txt
+</span><span class="code-line">$ <span class="token function">stat</span> report.txt
+</span></code></pre>
+<p><code>ls -l</code> 适合快速查看，<code>stat</code> 会显示更完整的 UID、GID 与文件元数据。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="找出归属不正确的文件"><a aria-hidden="true" tabindex="-1" href="#找出归属不正确的文件"><span class="icon icon-link"></span></a>找出归属不正确的文件</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">find</span> /srv/app <span class="token parameter variable">-not</span> <span class="token parameter variable">-user</span> app <span class="token parameter variable">-ls</span>
+</span><span class="code-line">$ <span class="token function">find</span> /srv/app <span class="token parameter variable">-not</span> <span class="token parameter variable">-group</span> app <span class="token parameter variable">-ls</span>
+</span></code></pre>
+<p>用 <code>find</code> 先列出目标，再决定是否批量修复，能减少递归修改的风险。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="批量修复特定归属"><a aria-hidden="true" tabindex="-1" href="#批量修复特定归属"><span class="icon icon-link"></span></a>批量修复特定归属</h3><div class="wrap-body">
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">sudo</span> <span class="token function">find</span> /srv/app <span class="token parameter variable">-user</span> root <span class="token parameter variable">-exec</span> <span class="token function">chown</span> app:app <span class="token punctuation">{</span><span class="token punctuation">}</span> +
+</span></code></pre>
+<p>只修复当前所有者为 <code>root</code> 的文件，避免无差别覆盖整个目录树。</p>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="另见"><a aria-hidden="true" tabindex="-1" href="#另见"><span class="icon icon-link"></span></a>另见</h2><div class="wrap-body">
 <ul>
-<li><code>-c</code> : 显示更改的部分的信息</li>
-<li><code>-f</code> : 忽略错误信息</li>
-<li><code>-h</code> :修复符号链接</li>
-<li><code>-v</code> : 显示详细的处理信息</li>
-<li><code>-R</code> : 处理指定目录以及其子目录下的所有文件</li>
-<li><code>--help</code> : 显示辅助说明</li>
-<li><code>--version</code> : 显示版本</li>
+<li><a href="https://www.gnu.org/s/coreutils/manual/html_node/chown-invocation.html">GNU Coreutils: chown invocation</a></li>
+<li><a href="https://www.gnu.org/software/coreutils/manual/html_node/File-permissions.html">GNU Coreutils: File permissions</a></li>
 </ul>
-</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="示例-1"><a aria-hidden="true" tabindex="-1" href="#示例-1"><span class="icon icon-link"></span></a>示例</h2><div class="wrap-body">
-</div></div><div class="h2wrap-body"><div class="wrap h3body-exist"><div class="wrap-header h3wrap"><h3 id="更改文件所有者"><a aria-hidden="true" tabindex="-1" href="#更改文件所有者"><span class="icon icon-link"></span></a>更改文件所有者</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> root /var/run/httpd.pid
-</span></code></pre>
-<p>把 <code>/var/run/httpd.pid</code> 的所有者设为 <code>root</code></p>
-<h4 id="仅更改所有者"><a aria-hidden="true" tabindex="-1" href="#仅更改所有者"><span class="icon icon-link"></span></a>仅更改所有者</h4>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">chown</span> new_owner file.txt
-</span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="递归更改目录及其内容的所有者"><a aria-hidden="true" tabindex="-1" href="#递归更改目录及其内容的所有者"><span class="icon icon-link"></span></a>递归更改目录及其内容的所有者</h3><div class="wrap-body">
-<!--rehype:wrap-class=row-span-2-->
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line"><span class="token function">chown</span> <span class="token parameter variable">-R</span> new_owner:new_group directory/
-</span></code></pre>
-<p>将文件夹 <code>directory</code> 的拥有者设为 <code>new_owner</code> ，群体的使用者设为 <code>new_group</code></p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> username:groupname file1.txt
-</span></code></pre>
-<p>将文件 file1.txt 的拥有者设为 <code>username</code> ，群体的使用者设为 <code>groupname</code></p>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token parameter variable">-R</span> username:groupname *
-</span></code></pre>
-<p>将当前目录以及子目录的所有文件的拥有者设为 <code>username</code> ，群体的使用者设为 <code>groupname</code></p>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="更改所有者为当前用户"><a aria-hidden="true" tabindex="-1" href="#更改所有者为当前用户"><span class="icon icon-link"></span></a>更改所有者为当前用户</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token environment constant">$USER</span> file.txt
-</span></code></pre>
-<p>递归更改目录及其内容的所有者为当前用户</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token environment constant">$USER</span> directory/
-</span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="递归并且不显示错误信息"><a aria-hidden="true" tabindex="-1" href="#递归并且不显示错误信息"><span class="icon icon-link"></span></a>递归并且不显示错误信息</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token parameter variable">-f</span> new_owner:new_group directory/
-</span></code></pre>
-<p>更改目录及其内容的所有者和组为 <code>alice</code></p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">chown</span> <span class="token parameter variable">-R</span> alice: directory/
-</span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="仅更改组"><a aria-hidden="true" tabindex="-1" href="#仅更改组"><span class="icon icon-link"></span></a>仅更改组</h3><div class="wrap-body">
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">chown</span> :groupname file1.txt
-</span></code></pre>
-<p>不修改文件 <code>file1.txt</code> 的拥有者，将文件使用群体改为 <code>groupname</code></p>
-</div></div></div><div class="wrap h3body-not-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="变更符号链接的所有者"><a aria-hidden="true" tabindex="-1" href="#变更符号链接的所有者"><span class="icon icon-link"></span></a>变更符号链接的所有者</h3><div class="wrap-body">
-<!--rehype:wrap-class=row-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token parameter variable">-h</span> new_owner:new_group symlink
-</span></code></pre>
-<p>变更符号链接的所有者而不是链接指向的文件</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ <span class="token function">chown</span> <span class="token parameter variable">-h</span> manager symlink
-</span></code></pre>
-<p>更改符号链接的所有者为"manager"</p>
-</div></div></div><div class="wrap h3body-exist row-span-2"><div class="wrap-header h3wrap"><h3 id="更改所有者为根用户"><a aria-hidden="true" tabindex="-1" href="#更改所有者为根用户"><span class="icon icon-link"></span></a>更改所有者为根用户</h3><div class="wrap-body">
-<!--rehype:wrap-class=row-span-2-->
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">chown</span> root:root file.txt
-</span></code></pre>
-<h4 id="递归更改所有者为当前用户"><a aria-hidden="true" tabindex="-1" href="#递归更改所有者为当前用户"><span class="icon icon-link"></span></a>递归更改所有者为当前用户</h4>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token environment constant">$USER</span> directory/
-</span><span class="code-line"><span class="token comment"># 更改目录及其内容的所有者和组为"alice":</span>
-</span><span class="code-line"><span class="token function">chown</span> <span class="token parameter variable">-R</span> alice: directory/
-</span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将文件所有者更改为其他用户但保留组"><a aria-hidden="true" tabindex="-1" href="#将文件所有者更改为其他用户但保留组"><span class="icon icon-link"></span></a>将文件所有者更改为其他用户，但保留组</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">chown</span> new_owner file.txt
-</span></code></pre>
-</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="将文件所有者更改为其他用户同时更改组"><a aria-hidden="true" tabindex="-1" href="#将文件所有者更改为其他用户同时更改组"><span class="icon icon-link"></span></a>将文件所有者更改为其他用户，同时更改组</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">chown</span> new_owner:new_group file.txt
-</span></code></pre>
-</div></div></div></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
