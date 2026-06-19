@@ -1,7 +1,7 @@
 FastAPI 备忘清单
 ===
 
-一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 3.6+ 并基于标准的 Python 类型提示
+一个用于构建 API 的现代、快速（高性能）的 web 框架，使用 Python 类型提示。新版本要求请以 FastAPI 官方文档和发布说明为准。
 
 入门
 ---
@@ -31,9 +31,8 @@ $ pip install "uvicorn[standard]"
 
 ```shell
 $ uvicorn main:app --reload
+$ python -m pip show fastapi # 确认本地安装版本
 ```
-
-Python: `3.9.5` FastAPI: `0.103.1`
 
 ### 最小程序
 
@@ -678,3 +677,4 @@ FastAPI 默认支持 HTTPS，你只需要提供证书和私钥即可。
 
 - [Python 备忘清单](./python.md) _(jaywcjlove.github.io)_
 - [FastAPI 官方文档](https://fastapi.tiangolo.com/zh/tutorial/) _(fastapi.tiangolo.com)_
+- [FastAPI 版本说明](https://fastapi.tiangolo.com/release-notes/) _(fastapi.tiangolo.com)_
