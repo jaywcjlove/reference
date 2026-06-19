@@ -244,7 +244,7 @@ Quick Reference
 [Lerna](./docs/lerna.md)<!--rehype:style=background:rgb(192 132 252);-->
 [npm](./docs/npm.md)<!--rehype:style=background:rgb(203 2 0);-->
 [NestJS](./docs/nestjs.md)<!--rehype:style=background:rgb(237 21 67);&class=contributing-->
-[PM2](./docs/pm2.md)<!--rehype:style=background:rgb(73 117 241);&class=contributing-->
+[PM2](./docs/pm2.md)<!--rehype:style=background:rgb(73 117 241);-->
 [package.json](./docs/package.json.md)<!--rehype:style=background:rgb(132 132 132);-->
 [Yarn](./docs/yarn.md)<!--rehype:style=background:rgb(33 136 182);-->
 [nvm](./docs/nvm.md)<!--rehype:style=background:rgb(132 132 132);-->
