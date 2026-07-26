@@ -33,10 +33,10 @@ $ rbenv install -l
 # 列出所有本地版本
 $ rbenv install -L
 # 安装 Ruby 版本
-$ rbenv install 3.1.2
-$ rbenv global 3.1.2 # 为这台机器设置默认Ruby版本
+$ rbenv install 3.4.1
+$ rbenv global 3.4.1 # 为这台机器设置默认Ruby版本
 # 或者
-$ rbenv local 3.1.2 # 设置此目录的 Ruby 版本
+$ rbenv local 3.4.1 # 设置此目录的 Ruby 版本
 $ rbenv local --unset
 $ rbenv version # 显示当前活动的 Ruby 版本
 => 1.9.3-p327 (set by /Users/sam/.rbenv/version)
@@ -69,7 +69,7 @@ $ gem uninstall bundler
 
 ```ruby
 # 在项目根目录的 Gemfile 中指定 gem
-ruby '2.5.6'
+ruby '3.4.1'
 
 source 'https://rubygems.org'
 gem 'nokogiri'
@@ -2444,15 +2444,17 @@ false
 ---
 
 - [Ruby 官网](https://www.ruby-lang.org/en/) _(ruby-lang.org)_
+- [Ruby 官方文档](https://www.ruby-lang.org/en/documentation/) _(ruby-lang.org)_
+- [Ruby 3.4 API](https://docs.ruby-lang.org/en/3.4/) _(docs.ruby-lang.org)_
 - [Ruby Cheatsheet](https://github.com/lifeparticle/Ruby-Cheatsheet) _(github.com)_
 
-[2]: https://ruby-doc.org/core-3.1.2/Integer.html
-[3]: https://ruby-doc.org/core-3.1.2/Float.html
-[4]: https://ruby-doc.org/core-3.1.2/String.html
-[5]: https://ruby-doc.org/core-3.1.2/Array.html
-[6]: https://ruby-doc.org/core-3.1.2/Hash.html
-[7]: https://ruby-doc.org/core-3.1.2/TrueClass.html
-[8]: https://ruby-doc.org/core-3.1.2/FalseClass.html
-[9]: https://ruby-doc.org/core-3.1.2/Symbol.html
-[10]: https://ruby-doc.org/core-3.1.2/Range.html
-[11]: https://ruby-doc.org/core-3.1.2/NilClass.html
+[2]: https://docs.ruby-lang.org/en/3.4/Integer.html
+[3]: https://docs.ruby-lang.org/en/3.4/Float.html
+[4]: https://docs.ruby-lang.org/en/3.4/String.html
+[5]: https://docs.ruby-lang.org/en/3.4/Array.html
+[6]: https://docs.ruby-lang.org/en/3.4/Hash.html
+[7]: https://docs.ruby-lang.org/en/3.4/TrueClass.html
+[8]: https://docs.ruby-lang.org/en/3.4/FalseClass.html
+[9]: https://docs.ruby-lang.org/en/3.4/Symbol.html
+[10]: https://docs.ruby-lang.org/en/3.4/Range.html
+[11]: https://docs.ruby-lang.org/en/3.4/NilClass.html
