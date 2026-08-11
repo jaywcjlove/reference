@@ -99,7 +99,7 @@ Quick Reference
       <!--rehype:style=width: 230px;-->
       <br>
       <b>getapps.cafe</b><br/>
-      60+ native Mac apps across utilities, office, creative, and productivity categories, all running locally so your data never leaves your machine.<br/>
+      60 多款原生 Mac 应用，涵盖实用工具、办公、创意和生产力等类别，全部在本地运行，确保你的数据永远不会离开你的设备。<br/>
     </a>
     <!--rehype:style=width: 230px;font-size: 14px;-->
     <br/>
