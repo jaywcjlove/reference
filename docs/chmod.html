@@ -472,7 +472,7 @@
   // define a function that runs when a change occures
   function change_occured(caller_was_check, caller_was_num, caller_was_let) {
     let num1 = 0, num2 = 0, num3 = 0; // these are the three numbers for the octal
-    let perm_string = ''; // holds the permision string ex. rw-x--r--
+    let perm_string = ''; // holds the permission string ex. rw-x--r--
     if (caller_was_check) {
       // loop over all the check boxes and get the permisions
       for (let i = 1; i < 10; i++) {
@@ -491,7 +491,7 @@
           perm_string += '-';
         }
       }
-      // set the permision input text
+      // set the permission input text
       document.getElementById('let').value = perm_string;
       document.getElementById('num').value = `${num1}${num2}${num3}`;
     } else if (caller_was_num) {
@@ -504,7 +504,7 @@
       perm_string += octal_to_check_and_txt(num1, 0); //Owner
       perm_string += octal_to_check_and_txt(num2, 1); //Owner
       perm_string += octal_to_check_and_txt(num3, 2); //Owner
-      // set the permision input text
+      // set the permission input text
       document.getElementById('let').value = perm_string;
     } else if (caller_was_let) {
       // get the text input
