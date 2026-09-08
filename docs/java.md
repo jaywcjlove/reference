@@ -864,7 +864,7 @@ public class CallableTask implements Callable<T> {
 }
 ```
 
-继承Thrad类
+继承Thread类
 
 ```java
 public class ExtendsThread extends Thread {
