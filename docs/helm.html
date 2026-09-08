@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Helm 备忘清单
+ &#x26;  helm cheatsheet &#x26;  Quick Reference</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta description="这是 Helm 的快速参考备忘单。Helm 是 Kubernetes 的包管理器，用于查找、安装、升级、回滚和发布 Chart。示例以 Helm 4 为主，并标注常见的 Helm 3 差异。
+
+快速入门，为开发人员分享快速参考备忘单。">
+<meta keywords="helm,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<meta name="author" content="jaywcjlove">
+<meta name="license" content="MIT">
+<meta name="funding" content="https://jaywcjlove.github.io/#/sponsor">
+<meta rel="apple-touch-icon" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="152x152" href="../icons/touch-icon-ipad.png">
+<meta rel="apple-touch-icon" sizes="180x180" href="../icons/touch-icon-iphone.png">
+<meta rel="apple-touch-icon" sizes="167x167" href="../icons/touch-icon-ipad-retina.png">
+<meta rel="apple-touch-icon" sizes="120x120" href="../icons/touch-icon-iphone-retina.png">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link href="../style/style.css" rel="stylesheet">
+<link href="../style/katex.css" rel="stylesheet">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/jaywcjlove/reference/blob/main/docs/helm.md" class="edit" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>编辑</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../js/dark.js?v=1.11.1"></script><a href="https://github.com/jaywcjlove/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="helm-备忘清单"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" height="1em" width="1em">
+  <circle cx="12" cy="12" r="5"></circle>
+  <circle cx="12" cy="12" r="1.6"></circle>
+  <path d="M12 2v5m0 10v5M2 12h5m10 0h5M4.93 4.93l3.54 3.54m7.06 7.06 3.54 3.54M19.07 4.93l-3.54 3.54m-7.06 7.06-3.54 3.54"></path>
+  <path d="m10.8 2 1.2-1 1.2 1M10.8 22l1.2 1 1.2-1M2 10.8 1 12l1 1.2M22 10.8l1 1.2-1 1.2"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#helm-备忘清单"><span class="icon icon-link"></span></a>Helm 备忘清单</h1><div class="wrap-body">
+<p>这是 <a href="https://helm.sh/">Helm</a> 的快速参考备忘单。Helm 是 Kubernetes 的包管理器，用于查找、安装、升级、回滚和发布 Chart。示例以 Helm 4 为主，并标注常见的 Helm 3 差异。</p>
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#快速入门">快速入门</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装与检查">安装与检查</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#核心概念">核心概念</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#最短工作流">最短工作流</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#仓库与-chart">仓库与 Chart</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#仓库管理">仓库管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#搜索-chart">搜索 Chart</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看-chart">查看 Chart</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#下载-chart">下载 Chart</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#安装与升级">安装与升级</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安装-release">安装 Release</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常用安装参数">常用安装参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#升级-release">升级 Release</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#预览变更">预览变更</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#values-配置">Values 配置</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#设置-values">设置 Values</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#values-优先级">Values 优先级</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#获取生效的-values">获取生效的 Values</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#release-管理">Release 管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#列出-release">列出 Release</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#查看状态与部署内容">查看状态与部署内容</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#历史与回滚">历史与回滚</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#测试与卸载">测试与卸载</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#chart-开发">Chart 开发</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#创建-chart">创建 Chart</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#依赖管理">依赖管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#模板调试">模板调试</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#打包与验证">打包与验证</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#oci-registry">OCI Registry</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#登录与退出">登录与退出</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#推送-chart">推送 Chart</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#拉取查看和安装-oci-chart">拉取、查看和安装 OCI Chart</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#实用命令">实用命令</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#全局参数">全局参数</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#自动补全">自动补全</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#插件管理">插件管理</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#常见排错">常见排错</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#安全部署范式">安全部署范式</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#参考资料">参考资料</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="快速入门"><a aria-hidden="true" tabindex="-1" href="#快速入门"><span class="icon icon-link"></span></a>快速入门</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装与检查"><a aria-hidden="true" tabindex="-1" href="#安装与检查"><span class="icon icon-link"></span></a>安装与检查</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># macOS</span>
+</span><span class="code-line">$ brew <span class="token function">install</span> helm
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Windows</span>
+</span><span class="code-line">$ winget <span class="token function">install</span> Helm.Helm
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 查看版本、帮助和客户端环境</span>
+</span><span class="code-line">$ helm version
+</span><span class="code-line">$ helm <span class="token builtin class-name">help</span>
+</span><span class="code-line">$ helm <span class="token function">env</span>
+</span></code></pre>
+<p>Helm 使用当前 <code>kubectl</code> 上下文访问集群。执行部署前可先运行：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ kubectl config current-context
+</span><span class="code-line">$ kubectl cluster-info
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="核心概念"><a aria-hidden="true" tabindex="-1" href="#核心概念"><span class="icon icon-link"></span></a>核心概念</h3><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>名称</th><th>说明</th></tr></thead><tbody><tr><td>Chart</td><td>一组 Kubernetes 资源模板组成的应用包</td></tr><tr><td>Repository</td><td>存放和分发 Chart 的仓库</td></tr><tr><td>Release</td><td>Chart 安装到集群后形成的实例</td></tr><tr><td>Revision</td><td>Release 每次安装、升级或回滚产生的版本</td></tr><tr><td>Values</td><td>用于覆盖 Chart 默认配置的值</td></tr></tbody></table>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="最短工作流"><a aria-hidden="true" tabindex="-1" href="#最短工作流"><span class="icon icon-link"></span></a>最短工作流</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 添加仓库并刷新索引</span>
+</span><span class="code-line">$ helm repo <span class="token function">add</span> bitnami https://charts.bitnami.com/bitnami
+</span><span class="code-line">$ helm repo update
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 搜索、查看配置并安装</span>
+</span><span class="code-line">$ helm search repo bitnami/nginx
+</span><span class="code-line">$ helm show values bitnami/nginx <span class="token operator">></span> values.yaml
+</span><span class="code-line">$ helm <span class="token function">install</span> my-nginx bitnami/nginx <span class="token parameter variable">-f</span> values.yaml
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 查看、升级和卸载</span>
+</span><span class="code-line">$ helm status my-nginx
+</span><span class="code-line">$ helm upgrade my-nginx bitnami/nginx <span class="token parameter variable">-f</span> values.yaml
+</span><span class="code-line">$ helm uninstall my-nginx
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="仓库与-chart"><a aria-hidden="true" tabindex="-1" href="#仓库与-chart"><span class="icon icon-link"></span></a>仓库与 Chart</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="仓库管理"><a aria-hidden="true" tabindex="-1" href="#仓库管理"><span class="icon icon-link"></span></a>仓库管理</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm repo <span class="token function">add</span> stable https://example.com/charts
+</span><span class="code-line">$ helm repo <span class="token function">add</span> private https://example.com/charts <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--username</span> <span class="token operator">&#x3C;</span>username<span class="token operator">></span> <span class="token parameter variable">--password</span> <span class="token operator">&#x3C;</span>password<span class="token operator">></span>
+</span><span class="code-line">$ helm repo list
+</span><span class="code-line">$ helm repo update
+</span><span class="code-line">$ helm repo update stable
+</span><span class="code-line">$ helm repo remove stable
+</span></code></pre>
+<p><code>--force-update</code> 可覆盖同名仓库配置：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm repo <span class="token function">add</span> stable https://new.example.com/charts --force-update
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="搜索-chart"><a aria-hidden="true" tabindex="-1" href="#搜索-chart"><span class="icon icon-link"></span></a>搜索 Chart</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 搜索已添加的本地仓库索引</span>
+</span><span class="code-line">$ helm search repo nginx
+</span><span class="code-line">$ helm search repo nginx <span class="token parameter variable">--versions</span>
+</span><span class="code-line">$ helm search repo nginx <span class="token parameter variable">--version</span> <span class="token string">'^15.0.0'</span>
+</span><span class="code-line">$ helm search repo nginx <span class="token parameter variable">--devel</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 搜索 Artifact Hub</span>
+</span><span class="code-line">$ helm search hub nginx
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看-chart"><a aria-hidden="true" tabindex="-1" href="#查看-chart"><span class="icon icon-link"></span></a>查看 Chart</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm show chart bitnami/nginx
+</span><span class="code-line">$ helm show values bitnami/nginx
+</span><span class="code-line">$ helm show readme bitnami/nginx
+</span><span class="code-line">$ helm show crds bitnami/nginx
+</span><span class="code-line">$ helm show all bitnami/nginx
+</span></code></pre>
+<p>指定 Chart 版本：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm show values bitnami/nginx <span class="token parameter variable">--version</span> <span class="token number">15.0</span>.0
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="下载-chart"><a aria-hidden="true" tabindex="-1" href="#下载-chart"><span class="icon icon-link"></span></a>下载 Chart</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm pull bitnami/nginx
+</span><span class="code-line">$ helm pull bitnami/nginx <span class="token parameter variable">--version</span> <span class="token number">15.0</span>.0
+</span><span class="code-line">$ helm pull bitnami/nginx <span class="token parameter variable">--untar</span>
+</span><span class="code-line">$ helm pull bitnami/nginx <span class="token parameter variable">--untar</span> <span class="token parameter variable">--untardir</span> ./charts
+</span><span class="code-line">$ helm pull bitnami/nginx <span class="token parameter variable">--verify</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="安装与升级"><a aria-hidden="true" tabindex="-1" href="#安装与升级"><span class="icon icon-link"></span></a>安装与升级</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安装-release"><a aria-hidden="true" tabindex="-1" href="#安装-release"><span class="icon icon-link"></span></a>安装 Release</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm <span class="token function">install</span> <span class="token operator">&#x3C;</span>release<span class="token operator">></span> <span class="token operator">&#x3C;</span>chart<span class="token operator">></span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./mychart
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./mychart-0.1.0.tgz
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app bitnami/nginx <span class="token parameter variable">--version</span> <span class="token number">15.0</span>.0
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app bitnami/nginx <span class="token parameter variable">-n</span> production --create-namespace
+</span></code></pre>
+<p>让 Helm 自动生成 Release 名称：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm <span class="token function">install</span> bitnami/nginx --generate-name
+</span><span class="code-line">$ helm <span class="token function">install</span> bitnami/nginx --generate-name --name-template <span class="token string">'web-{{ now | unixEpoch }}'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常用安装参数"><a aria-hidden="true" tabindex="-1" href="#常用安装参数"><span class="icon icon-link"></span></a>常用安装参数</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--namespace</span> production <span class="token punctuation">\</span>
+</span><span class="code-line">    --create-namespace <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--values</span> values.yaml <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--set</span> <span class="token assign-left variable">image.tag</span><span class="token operator">=</span><span class="token number">1.2</span>.3 <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--wait</span> <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--timeout</span> 10m <span class="token punctuation">\</span>
+</span><span class="code-line">    --rollback-on-failure
+</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td><code>-n, --namespace</code></td><td>指定命名空间</td></tr><tr><td><code>--create-namespace</code></td><td>命名空间不存在时创建</td></tr><tr><td><code>-f, --values</code></td><td>读取自定义 Values 文件，可多次指定</td></tr><tr><td><code>--set</code></td><td>从命令行设置值，可多次指定</td></tr><tr><td><code>--wait</code></td><td>等待资源达到就绪状态</td></tr><tr><td><code>--timeout</code></td><td>设置单次 Kubernetes 操作超时</td></tr><tr><td><code>--rollback-on-failure</code></td><td>失败时回滚或删除安装，并自动启用等待</td></tr><tr><td><code>--dry-run=client</code></td><td>仅在客户端模拟，不连接集群</td></tr><tr><td><code>--dry-run=server</code></td><td>在服务端模拟和校验，需要连接集群</td></tr></tbody></table>
+<p>Helm 3 使用 <code>--atomic</code> 表示失败时自动回滚；Helm 4 已将它替换为含义更清晰的 <code>--rollback-on-failure</code>。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="升级-release"><a aria-hidden="true" tabindex="-1" href="#升级-release"><span class="icon icon-link"></span></a>升级 Release</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm upgrade my-app ./chart
+</span><span class="code-line">$ helm upgrade my-app bitnami/nginx <span class="token parameter variable">--version</span> <span class="token number">15.0</span>.0
+</span><span class="code-line">$ helm upgrade my-app ./chart <span class="token parameter variable">-f</span> values.yaml <span class="token parameter variable">--set</span> <span class="token assign-left variable">image.tag</span><span class="token operator">=</span><span class="token number">1.2</span>.4
+</span><span class="code-line">$ helm upgrade my-app ./chart --reuse-values
+</span><span class="code-line">$ helm upgrade my-app ./chart --reset-values
+</span></code></pre>
+<p>Release 不存在时安装，存在时升级：</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm upgrade <span class="token parameter variable">--install</span> my-app ./chart <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">-n</span> production --create-namespace <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">-f</span> values.yaml <span class="token parameter variable">--wait</span> --rollback-on-failure
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="预览变更"><a aria-hidden="true" tabindex="-1" href="#预览变更"><span class="icon icon-link"></span></a>预览变更</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 仅在本地渲染模板</span>
+</span><span class="code-line">$ helm template my-app ./chart <span class="token parameter variable">-f</span> values.yaml
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 模拟安装或升级，并输出调试信息</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart --dry-run<span class="token operator">=</span>client <span class="token parameter variable">--debug</span>
+</span><span class="code-line">$ helm upgrade my-app ./chart --dry-run<span class="token operator">=</span>client <span class="token parameter variable">--debug</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 使用服务端模拟与校验</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart --dry-run<span class="token operator">=</span>server <span class="token parameter variable">--debug</span>
+</span></code></pre>
+<p>模拟命令可能输出 Secret 内容，不要把结果直接写入公开日志；Helm 4 可添加 <code>--hide-secret</code> 隐藏 Secret。</p>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="values-配置"><a aria-hidden="true" tabindex="-1" href="#values-配置"><span class="icon icon-link"></span></a>Values 配置</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="设置-values"><a aria-hidden="true" tabindex="-1" href="#设置-values"><span class="icon icon-link"></span></a>设置 Values</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 单个或多个值</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart <span class="token parameter variable">--set</span> <span class="token assign-left variable">replicaCount</span><span class="token operator">=</span><span class="token number">3</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart <span class="token parameter variable">--set</span> <span class="token assign-left variable">image.repository</span><span class="token operator">=</span>nginx,image.tag<span class="token operator">=</span><span class="token number">1.27</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 强制按字符串处理</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart --set-string <span class="token assign-left variable">service.annotations.version</span><span class="token operator">=</span>01
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 从文件内容赋值</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart --set-file <span class="token assign-left variable">config</span><span class="token operator">=</span>./app.conf
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># JSON 数组或对象</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart --set-json <span class="token string">'tolerations=[{"key":"dedicated"}]'</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 数组和特殊字符</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart <span class="token parameter variable">--set</span> <span class="token string">'ports[0]=80,ports[1]=443'</span>
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./chart <span class="token parameter variable">--set</span> <span class="token string">'nodeSelector.kubernetes\.io/role=worker'</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="values-优先级"><a aria-hidden="true" tabindex="-1" href="#values-优先级"><span class="icon icon-link"></span></a>Values 优先级</h3><div class="wrap-body">
+<p>优先级从低到高：Chart 默认 <code>values.yaml</code>、父 Chart Values、<code>-f</code> 文件、<code>--set</code> 参数。后出现的同类参数覆盖前面的值。</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm upgrade <span class="token parameter variable">--install</span> my-app ./chart <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">-f</span> values-common.yaml <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">-f</span> values-production.yaml <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--set</span> <span class="token assign-left variable">image.tag</span><span class="token operator">=</span><span class="token number">1.2</span>.3
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="获取生效的-values"><a aria-hidden="true" tabindex="-1" href="#获取生效的-values"><span class="icon icon-link"></span></a>获取生效的 Values</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 用户提供的值</span>
+</span><span class="code-line">$ helm get values my-app
+</span><span class="code-line">$ helm get values my-app <span class="token parameter variable">-n</span> production <span class="token parameter variable">-o</span> yaml
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 合并 Chart 默认值后的全部值</span>
+</span><span class="code-line">$ helm get values my-app <span class="token parameter variable">-n</span> production <span class="token parameter variable">--all</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="release-管理"><a aria-hidden="true" tabindex="-1" href="#release-管理"><span class="icon icon-link"></span></a>Release 管理</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="列出-release"><a aria-hidden="true" tabindex="-1" href="#列出-release"><span class="icon icon-link"></span></a>列出 Release</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm list
+</span><span class="code-line">$ helm list <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm list --all-namespaces
+</span><span class="code-line">$ helm list <span class="token parameter variable">--all</span>
+</span><span class="code-line">$ helm list <span class="token parameter variable">--pending</span>
+</span><span class="code-line">$ helm list <span class="token parameter variable">--failed</span>
+</span><span class="code-line">$ helm list <span class="token parameter variable">--deployed</span>
+</span><span class="code-line">$ helm list <span class="token parameter variable">--filter</span> <span class="token string">'^my-'</span>
+</span><span class="code-line">$ helm list <span class="token parameter variable">-o</span> json
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="查看状态与部署内容"><a aria-hidden="true" tabindex="-1" href="#查看状态与部署内容"><span class="icon icon-link"></span></a>查看状态与部署内容</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm status my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm get all my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm get manifest my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm get notes my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm get hooks my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm get metadata my-app <span class="token parameter variable">-n</span> production
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="历史与回滚"><a aria-hidden="true" tabindex="-1" href="#历史与回滚"><span class="icon icon-link"></span></a>历史与回滚</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm <span class="token function">history</span> my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm <span class="token function">history</span> my-app <span class="token parameter variable">-n</span> production <span class="token parameter variable">--max</span> <span class="token number">20</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 回滚到指定 Revision</span>
+</span><span class="code-line">$ helm rollback my-app <span class="token number">2</span> <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm rollback my-app <span class="token number">2</span> <span class="token parameter variable">-n</span> production <span class="token parameter variable">--wait</span> <span class="token parameter variable">--timeout</span> 10m
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 回滚到上一个 Revision</span>
+</span><span class="code-line">$ helm rollback my-app <span class="token number">0</span> <span class="token parameter variable">-n</span> production
+</span></code></pre>
+<p>执行回滚前先用 <code>helm history</code> 确认目标 Revision。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="测试与卸载"><a aria-hidden="true" tabindex="-1" href="#测试与卸载"><span class="icon icon-link"></span></a>测试与卸载</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm <span class="token builtin class-name">test</span> my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm <span class="token builtin class-name">test</span> my-app <span class="token parameter variable">-n</span> production <span class="token parameter variable">--logs</span>
+</span><span class="code-line">$ helm uninstall my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm uninstall my-app <span class="token parameter variable">-n</span> production --keep-history
+</span><span class="code-line">$ helm uninstall my-app <span class="token parameter variable">-n</span> production --dry-run
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="chart-开发"><a aria-hidden="true" tabindex="-1" href="#chart-开发"><span class="icon icon-link"></span></a>Chart 开发</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="创建-chart"><a aria-hidden="true" tabindex="-1" href="#创建-chart"><span class="icon icon-link"></span></a>创建 Chart</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm create mychart
+</span><span class="code-line">$ helm lint ./mychart
+</span><span class="code-line">$ helm lint ./mychart <span class="token parameter variable">-f</span> values-production.yaml <span class="token parameter variable">--strict</span>
+</span><span class="code-line">$ helm template my-app ./mychart
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./mychart --dry-run <span class="token parameter variable">--debug</span>
+</span></code></pre>
+<p>常见目录结构：</p>
+<pre class="language-text"><code class="language-text code-highlight"><span class="code-line">mychart/
+</span><span class="code-line">├── Chart.yaml          # Chart 元数据和依赖
+</span><span class="code-line">├── values.yaml         # 默认配置
+</span><span class="code-line">├── charts/             # 依赖 Chart
+</span><span class="code-line">├── crds/               # CustomResourceDefinition
+</span><span class="code-line">├── templates/          # Kubernetes 模板
+</span><span class="code-line">└── templates/NOTES.txt # 安装后的提示
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="依赖管理"><a aria-hidden="true" tabindex="-1" href="#依赖管理"><span class="icon icon-link"></span></a>依赖管理</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm dependency list ./mychart
+</span><span class="code-line">$ helm dependency update ./mychart
+</span><span class="code-line">$ helm dependency build ./mychart
+</span></code></pre>
+<ul>
+<li><code>update</code> 根据 <code>Chart.yaml</code> 解析依赖，更新 <code>Chart.lock</code> 和 <code>charts/</code>。</li>
+<li><code>build</code> 根据现有 <code>Chart.lock</code> 重建 <code>charts/</code>，适合可复现构建。</li>
+</ul>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="模板调试"><a aria-hidden="true" tabindex="-1" href="#模板调试"><span class="icon icon-link"></span></a>模板调试</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 输出所有渲染结果</span>
+</span><span class="code-line">$ helm template my-app ./mychart <span class="token parameter variable">--debug</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 只渲染指定模板</span>
+</span><span class="code-line">$ helm template my-app ./mychart <span class="token punctuation">\</span>
+</span><span class="code-line">    --show-only templates/deployment.yaml
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 模拟 Kubernetes 版本或 API</span>
+</span><span class="code-line">$ helm template my-app ./mychart --kube-version <span class="token number">1.34</span>.0
+</span><span class="code-line">$ helm template my-app ./mychart --api-versions example.com/v1
+</span></code></pre>
+<p>模板中常用对象：</p>
+<pre class="language-yaml"><code class="language-yaml code-highlight"><span class="code-line"><span class="token punctuation">{</span><span class="token punctuation">{</span> .Release.Name <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token punctuation">{</span> .Release.Namespace <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token punctuation">{</span> .Chart.Name <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token punctuation">{</span> .Chart.AppVersion <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token punctuation">{</span> .Values.image.repository <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token punctuation">{</span> include "mychart.fullname" . <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token punctuation">{</span> required "image.tag is required" .Values.image.tag <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">{</span><span class="token punctuation">{</span> .Values.config <span class="token punctuation">|</span> toYaml <span class="token punctuation">|</span> nindent 2 <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="打包与验证"><a aria-hidden="true" tabindex="-1" href="#打包与验证"><span class="icon icon-link"></span></a>打包与验证</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm package ./mychart
+</span><span class="code-line">$ helm package ./mychart <span class="token parameter variable">--destination</span> ./dist
+</span><span class="code-line">$ helm package ./mychart <span class="token parameter variable">--version</span> <span class="token number">1.2</span>.3 --app-version <span class="token number">2.0</span>.0
+</span><span class="code-line">$ helm package ./mychart --dependency-update
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 使用 provenance 文件验证包</span>
+</span><span class="code-line">$ helm verify ./mychart-1.2.3.tgz
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app ./mychart-1.2.3.tgz <span class="token parameter variable">--verify</span>
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="oci-registry"><a aria-hidden="true" tabindex="-1" href="#oci-registry"><span class="icon icon-link"></span></a>OCI Registry</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="登录与退出"><a aria-hidden="true" tabindex="-1" href="#登录与退出"><span class="icon icon-link"></span></a>登录与退出</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm registry login registry.example.com
+</span><span class="code-line">$ helm registry login registry.example.com <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--username</span> <span class="token operator">&#x3C;</span>username<span class="token operator">></span> --password-stdin
+</span><span class="code-line">$ helm registry <span class="token builtin class-name">logout</span> registry.example.com
+</span></code></pre>
+<p>登录地址只填写主机名和可选端口，不添加 <code>https://</code> 或仓库路径。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="推送-chart"><a aria-hidden="true" tabindex="-1" href="#推送-chart"><span class="icon icon-link"></span></a>推送 Chart</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm package ./mychart
+</span><span class="code-line">$ helm push mychart-1.2.3.tgz oci://registry.example.com/helm
+</span></code></pre>
+<p>推送目标不包含 Chart 名称和版本；Helm 会从包内元数据生成它们。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="拉取查看和安装-oci-chart"><a aria-hidden="true" tabindex="-1" href="#拉取查看和安装-oci-chart"><span class="icon icon-link"></span></a>拉取、查看和安装 OCI Chart</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm pull oci://registry.example.com/helm/mychart <span class="token parameter variable">--version</span> <span class="token number">1.2</span>.3
+</span><span class="code-line">$ helm show values oci://registry.example.com/helm/mychart <span class="token parameter variable">--version</span> <span class="token number">1.2</span>.3
+</span><span class="code-line">$ helm <span class="token function">install</span> my-app oci://registry.example.com/helm/mychart <span class="token parameter variable">--version</span> <span class="token number">1.2</span>.3
+</span><span class="code-line">$ helm upgrade <span class="token parameter variable">--install</span> my-app <span class="token punctuation">\</span>
+</span><span class="code-line">    oci://registry.example.com/helm/mychart <span class="token parameter variable">--version</span> <span class="token number">1.2</span>.3
+</span></code></pre>
+</div></div></div></div></div><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="实用命令"><a aria-hidden="true" tabindex="-1" href="#实用命令"><span class="icon icon-link"></span></a>实用命令</h2><div class="wrap-body">
+<!--rehype:body-class=cols-2-->
+</div></div><div class="h2wrap-body cols-2"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="全局参数"><a aria-hidden="true" tabindex="-1" href="#全局参数"><span class="icon icon-link"></span></a>全局参数</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm <span class="token operator">&#x3C;</span>command<span class="token operator">></span> <span class="token parameter variable">--namespace</span> production
+</span><span class="code-line">$ helm <span class="token operator">&#x3C;</span>command<span class="token operator">></span> --kube-context <span class="token operator">&#x3C;</span>context<span class="token operator">></span>
+</span><span class="code-line">$ helm <span class="token operator">&#x3C;</span>command<span class="token operator">></span> <span class="token parameter variable">--kubeconfig</span> ./kubeconfig
+</span><span class="code-line">$ helm <span class="token operator">&#x3C;</span>command<span class="token operator">></span> <span class="token parameter variable">--debug</span>
+</span><span class="code-line">$ helm <span class="token operator">&#x3C;</span>command<span class="token operator">></span> <span class="token parameter variable">--qps</span> <span class="token number">20</span> --burst-limit <span class="token number">50</span>
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="自动补全"><a aria-hidden="true" tabindex="-1" href="#自动补全"><span class="icon icon-link"></span></a>自动补全</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># Bash</span>
+</span><span class="code-line">$ <span class="token builtin class-name">source</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span>helm completion <span class="token function">bash</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Zsh</span>
+</span><span class="code-line">$ <span class="token builtin class-name">source</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span>helm completion <span class="token function">zsh</span><span class="token punctuation">)</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># Fish</span>
+</span><span class="code-line">$ helm completion fish <span class="token operator">|</span> <span class="token builtin class-name">source</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># PowerShell</span>
+</span><span class="code-line">PS<span class="token operator">></span> helm completion powershell <span class="token operator">|</span> Out-String <span class="token operator">|</span> Invoke-Expression
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="插件管理"><a aria-hidden="true" tabindex="-1" href="#插件管理"><span class="icon icon-link"></span></a>插件管理</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm plugin list
+</span><span class="code-line">$ helm plugin <span class="token function">install</span> <span class="token operator">&#x3C;</span>plugin-url<span class="token operator">></span>
+</span><span class="code-line">$ helm plugin update <span class="token operator">&#x3C;</span>plugin-name<span class="token operator">></span>
+</span><span class="code-line">$ helm plugin uninstall <span class="token operator">&#x3C;</span>plugin-name<span class="token operator">></span>
+</span></code></pre>
+<p>插件由第三方代码组成，安装前应检查来源、权限和兼容版本。</p>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="常见排错"><a aria-hidden="true" tabindex="-1" href="#常见排错"><span class="icon icon-link"></span></a>常见排错</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token comment"># 检查当前集群和 Helm 环境</span>
+</span><span class="code-line">$ kubectl config current-context
+</span><span class="code-line">$ helm <span class="token function">env</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 查看失败状态、历史和渲染后的资源</span>
+</span><span class="code-line">$ helm status my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm <span class="token function">history</span> my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ helm get manifest my-app <span class="token parameter variable">-n</span> production
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 检查集群事件和工作负载</span>
+</span><span class="code-line">$ kubectl get events <span class="token parameter variable">-n</span> production --sort-by<span class="token operator">=</span>.lastTimestamp
+</span><span class="code-line">$ kubectl get pods <span class="token parameter variable">-n</span> production
+</span><span class="code-line">$ kubectl describe pod <span class="token operator">&#x3C;</span>pod-name<span class="token operator">></span> <span class="token parameter variable">-n</span> production
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="安全部署范式"><a aria-hidden="true" tabindex="-1" href="#安全部署范式"><span class="icon icon-link"></span></a>安全部署范式</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">$ helm upgrade <span class="token parameter variable">--install</span> my-app ./chart <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--namespace</span> production <span class="token punctuation">\</span>
+</span><span class="code-line">    --create-namespace <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--values</span> values-production.yaml <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--wait</span> <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token parameter variable">--timeout</span> 10m <span class="token punctuation">\</span>
+</span><span class="code-line">    --rollback-on-failure <span class="token punctuation">\</span>
+</span><span class="code-line">    --history-max <span class="token number">10</span>
+</span></code></pre>
+<ul>
+<li>在生产环境固定 <code>--version</code> 和镜像标签，避免隐式升级。</li>
+<li>先执行 <code>helm lint</code> 和 <code>helm template</code>，再部署到集群。</li>
+<li>使用 <code>--rollback-on-failure</code> 前确认失败后自动回滚或删除符合预期；Helm 3 对应参数为 <code>--atomic</code>。</li>
+<li>不要把密码直接放入 <code>--set</code>、Shell 历史或 CI 日志。</li>
+<li>卸载不会保证删除 PVC、CRD 和外部资源，操作后应单独检查。</li>
+</ul>
+</div></div></div></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="参考资料"><a aria-hidden="true" tabindex="-1" href="#参考资料"><span class="icon icon-link"></span></a>参考资料</h2><div class="wrap-body">
+<ul>
+<li><a href="https://helm.sh/docs/">Helm 官方文档</a> <em>(helm.sh)</em></li>
+<li><a href="https://helm.sh/docs/helm/">Helm 命令参考</a> <em>(helm.sh)</em></li>
+<li><a href="https://helm.sh/docs/chart_template_guide/">Chart 模板指南</a> <em>(helm.sh)</em></li>
+<li><a href="https://helm.sh/docs/topics/registries/">OCI Registry 使用指南</a> <em>(helm.sh)</em></li>
+<li><a href="./kubernetes.html">Kubernetes 备忘清单</a></li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div></div><script src="https://giscus.app/client.js" data-repo="jaywcjlove/reference" data-repo-id="R_kgDOID2-Mw" data-category="Q&#x26;A" data-category-id="DIC_kwDOID2-M84CS5wo" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="zh-CN" crossorigin="anonymous" async></script><div class="giscus"></div></div><footer class="footer-wrap"><footer class="max-container">© 2022 <a href="https://wangchujiang.com/#/app" target="_blank">Kenny Wang</a>.</footer></footer><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MWEWXSDQK"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9MWEWXSDQK');</script><script src="../data.js?v=1.11.1" defer></script><script src="../js/fuse.min.js?v=1.11.1" defer></script><script src="../js/main.js?v=1.11.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
