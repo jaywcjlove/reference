@@ -180,6 +180,7 @@ Quick Reference
 [Julia](./docs/julia.md)<!--rehype:style=background:rgb(26 188 156);&class=contributing&data-info=👆看看还缺点儿什么？-->
 [Kotlin](./docs/kotlin.md)<!--rehype:style=background:rgb(211 55 49);&class=contributing&data-info=👆看看还缺点儿什么？-->
 [Kubernetes](./docs/kubernetes.md)<!--rehype:style=background:rgb(51 113 227);&class=contributing&data-info=👆看看还缺点儿什么？-->
+[Helm](./docs/helm.md)<!--rehype:style=background:rgb(15 43 91);&class=tag&data-lang=Kubernetes-->
 [LaTeX](./docs/latex.md)<!--rehype:style=background:rgb(0 128 128);&class=contributing-->
 [Laravel 8](./docs/laravel.md)<!--rehype:style=background:rgb(249 50 44);&class=contributing tag&data-lang=PHP-->
 [Leaf](./docs/leaf.md)<!--rehype:style=background:rgb(106 105 254);&class=contributing tag&data-lang=Swift-->
