@@ -71,9 +71,12 @@ docker version
 ### 独立安装 Compose
 
 ```sh
-curl -SL https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+curl -SL https://github.com/docker/compose/releases/download/v5.1.2/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 ```
 <!--rehype:className=wrap-text-->
+
+独立版用于兼容旧项目中的 `docker-compose` 命令；如果要安装其他版本，请将 `v5.1.2` 替换为 [Compose releases](https://github.com/docker/compose/releases) 中的目标版本。
 
 如果命令 `docker-compose` 安装失败，请检查你的路径。你也可以创建一个符号链接，指向 `/usr/bin` 或路径中的任何其他目录。例如
 

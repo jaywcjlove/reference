@@ -1,7 +1,7 @@
 Gemini CLI 备忘清单
 ===
 
-[Gemini CLI](https://geminicli.com/docs/) 可将 Google Gemini 模型直接带入终端，用于代码理解、任务自动化与工作流构建。
+[Gemini CLI](https://github.com/google-gemini/gemini-cli) 是 Google 开源的终端 AI 代理，可将 Gemini 模型带入命令行，用于代码理解、任务自动化与工作流构建。
 
 快速开始
 ---
@@ -813,9 +813,5 @@ Hooks
 延伸阅读
 ---
 
-- [官方文档](https://geminicli.com/docs/) _(geminicli.com)_
-- [CLI 速查表](https://geminicli.com/docs/cli/cli-reference) _(geminicli.com)_
-- [键盘快捷键参考](https://geminicli.com/docs/reference/keyboard-shortcuts) _(geminicli.com)_
-- [配置参考](https://geminicli.com/docs/reference/configuration) _(geminicli.com)_
-- [Hooks 参考](https://geminicli.com/docs/hooks/reference) _(geminicli.com)_
 - [GitHub 仓库](https://github.com/google-gemini/gemini-cli) _(github.com)_
+- [Google Cloud Gemini CLI 文档](https://docs.cloud.google.com/gemini/docs/codeassist/gemini-cli) _(cloud.google.com)_
