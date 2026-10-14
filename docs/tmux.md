@@ -241,3 +241,4 @@ Tmux 命令模式
 
 - [Tmux 开源仓库](https://github.com/tmux/tmux) _(github.com)_
 - [Tmux Cheat Sheet & Quick Reference](https://tmuxcheatsheet.com/) _(tmuxcheatsheet.com)_
+- [nvim-edu 交互式 tmux 快捷键练习](https://s3onghyun.github.io/nvim-edu/) _(github.io)_
