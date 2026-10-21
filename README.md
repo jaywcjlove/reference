@@ -107,43 +107,43 @@ Quick Reference
   <p>
     <a href="https://www.enconvo.com/zh-CN" target="_blank">
       <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/enconvo.com.png">
-      <!--rehype:style=width: 230px;-->
+      <!--rehype:style=width: 210px;-->
       <br>
       <b>Enconvo</b> - 遍布整个 Mac 的 AI 智能体<br/>
       它能看到您的屏幕，在您的应用中工作，并真正把事情做完。<br/>
     </a>
-    <!--rehype:style=width: 230px;font-size: 14px;-->
+    <!--rehype:style=width: 210px;font-size: 14px;-->
     <br/>
     <br/>
     <a href="https://getapps.cafe" target="_blank">
       <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/getapps.cafe.png">
-      <!--rehype:style=width: 230px;-->
+      <!--rehype:style=width: 210px;-->
       <br>
       <b>getapps.cafe</b><br/>
       60 多款原生 Mac 应用，涵盖实用工具、办公、创意和生产力等类别，全部在本地运行，确保你的数据永远不会离开你的设备。<br/>
     </a>
-    <!--rehype:style=width: 230px;font-size: 14px;-->
+    <!--rehype:style=width: 210px;font-size: 14px;-->
     <br/>
     <br/>
     <a href="https://screensage.pro/" target="_blank">
       <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
-      <!--rehype:style=width: 230px;-->
+      <!--rehype:style=width: 210px;-->
       <br>
       <b>ScreenSage Pro，在 macOS 上几分钟内录制精美的屏幕录像</b>
     </a>
-    <!--rehype:style=width: 230px;font-size: 14px;-->
+    <!--rehype:style=width: 210px;font-size: 14px;-->
     <br/>
     <br/>
     <a href="https://doloffer.com/" target="_blank">
       <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
-      <!--rehype:style=width: 230px;-->
+      <!--rehype:style=width: 210px;-->
       <br>
       <b>DolOffer - 一站式数字订阅充值平台</b><br/>
       主营 GPT、Claude 等 AI 多类数字服务会员正版订阅，9 折优惠码 AI8888，极速发货，售后无忧<br/>
     </a>
-    <!--rehype:style=width: 230px;font-size: 14px;-->
+    <!--rehype:style=width: 210px;font-size: 14px;-->
   </p>
-  <!--rehype:style=display:flex;gap:21px;flex-wrap: wrap;-->
+  <!--rehype:style=display:flex;gap:12px;flex-wrap: wrap;-->
 </div>
 
 ## 正在建设中...
