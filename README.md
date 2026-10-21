@@ -4,6 +4,15 @@
   <br>
   <br>
 
+  <a href="https://www.enconvo.com/zh-CN" target="_blank">
+    <img alt="getapps.cafe" width="400" src="https://jaywcjlove.github.io/sponsor/enconvo.com.png">
+  </a>
+  <br>
+  <a href="https://www.enconvo.com/zh-CN" target="_blank"><b>Enconvo</b> - 遍布整个 Mac 的 AI 智能体</a><br/>
+  <a href="https://www.enconvo.com/zh-CN" target="_blank">它能看到您的屏幕，在您的应用中工作，并真正把事情做完。</a>
+  <br><br>
+
+
   <a href="https://getapps.cafe/">
     <img alt="getapps.cafe" width="400" src="https://jaywcjlove.github.io/sponsor/getapps.cafe.png">
   </a>
@@ -11,12 +20,14 @@
   <a href="https://getapps.cafe/">getapps.cafe，60 多款原生 Mac 应用，涵盖实用工具、办公、创意和生产力等类别，全部在本地运行，确保你的数据永远不会离开你的设备。</a>
   <br><br>
 
+
   <a href="https://screensage.pro/" target="_blank">
     <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
   </a>
   <br>
   <a href="https://screensage.pro/">ScreenSage Pro，在 macOS 上几分钟内录制精美的屏幕录像</a>
   <br><br>
+
 
   <a href="https://github.com/Doloffer-g/guide">
     <img alt="doloffer sponsorship" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
@@ -94,6 +105,16 @@ Quick Reference
   <sup>特别感谢：</sup>
   <br>
   <p>
+    <a href="https://www.enconvo.com/zh-CN" target="_blank">
+      <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/enconvo.com.png">
+      <!--rehype:style=width: 230px;-->
+      <br>
+      <b>Enconvo</b> - 遍布整个 Mac 的 AI 智能体<br/>
+      它能看到您的屏幕，在您的应用中工作，并真正把事情做完。<br/>
+    </a>
+    <!--rehype:style=width: 230px;font-size: 14px;-->
+    <br/>
+    <br/>
     <a href="https://getapps.cafe" target="_blank">
       <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/getapps.cafe.png">
       <!--rehype:style=width: 230px;-->
