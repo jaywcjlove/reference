@@ -105,7 +105,7 @@ Quick Reference
   <sup>特别感谢：</sup>
   <br>
   <p>
-    <a href="https://www.enconvo.com/zh-CN" target="_blank">
+    <a href="https://enconvo.com/?via=kennyiseeyou" target="_blank">
       <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/enconvo.com.png">
       <!--rehype:style=width: 210px;-->
       <br>
