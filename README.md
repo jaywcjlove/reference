@@ -100,16 +100,6 @@ Quick Reference
       <b>ScreenSage Pro，在 macOS 上几分钟内录制精美的屏幕录像</b>
     </a>
     <!--rehype:style=width: 210px;font-size: 14px;-->
-    <br/>
-    <br/>
-    <a href="https://doloffer.com/" target="_blank">
-      <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/doloffer.jpg">
-      <!--rehype:style=width: 210px;-->
-      <br>
-      <b>DolOffer - 一站式数字订阅充值平台</b><br/>
-      主营 GPT、Claude 等 AI 多类数字服务会员正版订阅，9 折优惠码 AI8888，极速发货，售后无忧<br/>
-    </a>
-    <!--rehype:style=width: 210px;font-size: 14px;-->
   </p>
   <!--rehype:style=display:flex;gap:12px;flex-wrap: wrap;-->
 </div>
