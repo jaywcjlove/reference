@@ -64,7 +64,7 @@ Quick Reference
   <br>
   <p>
     <a href="https://amical.ai/?utm_source=awesome-mac" target="_blank">
-      <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/amical.ai.jpg">
+      <img alt="Amical" width="400" src="https://jaywcjlove.github.io/sponsor/amical.ai.jpg">
       <!--rehype:style=width: 210px;-->
       <br>
       <b>Amical</b> - 语音输入，让文字自然呈现。<br/>
@@ -74,7 +74,7 @@ Quick Reference
     <br/>
     <br/>
     <a href="https://enconvo.com/?via=kennyiseeyou" target="_blank">
-      <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/enconvo.com.png">
+      <img alt="Enconvo" width="400" src="https://jaywcjlove.github.io/sponsor/enconvo.com.png">
       <!--rehype:style=width: 210px;-->
       <br>
       <b>Enconvo</b> - 遍布整个 Mac 的 AI 智能体<br/>
