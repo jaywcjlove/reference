@@ -71,8 +71,8 @@ Quick Reference
       按下快捷键，自然地说出你想表达的内容，文字会自动适配当前应用的格式。使用本地 AI 模型，支持离线运行，免费且开源。<br/>
     </a>
     <!--rehype:style=width: 210px;font-size: 14px;-->
-    <br/>
-    <br/>
+    <br/><!--rehype:style=display: none;-->
+    <br/><!--rehype:style=display: none;-->
     <a href="https://enconvo.com/?via=kennyiseeyou" target="_blank">
       <img alt="Enconvo" width="400" src="https://jaywcjlove.github.io/sponsor/enconvo.com.png">
       <!--rehype:style=width: 210px;-->
@@ -81,8 +81,8 @@ Quick Reference
       它能看到您的屏幕，在您的应用中工作，并真正把事情做完。<br/>
     </a>
     <!--rehype:style=width: 210px;font-size: 14px;-->
-    <br/>
-    <br/>
+    <br/><!--rehype:style=display: none;-->
+    <br/><!--rehype:style=display: none;-->
     <a href="https://getapps.cafe" target="_blank">
       <img alt="DolOffer" width="400" src="https://jaywcjlove.github.io/sponsor/getapps.cafe.png">
       <!--rehype:style=width: 210px;-->
@@ -91,8 +91,8 @@ Quick Reference
       60 多款原生 Mac 应用，涵盖实用工具、办公、创意和生产力等类别，全部在本地运行，确保你的数据永远不会离开你的设备。<br/>
     </a>
     <!--rehype:style=width: 210px;font-size: 14px;-->
-    <br/>
-    <br/>
+    <br/><!--rehype:style=display: none;-->
+    <br/><!--rehype:style=display: none;-->
     <a href="https://screensage.pro/" target="_blank">
       <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
       <!--rehype:style=width: 210px;-->
