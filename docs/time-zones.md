@@ -101,7 +101,6 @@ UTC-5 | America/Toronto | Canada | Toronto, Montréal, Ottawa, Mississauga, Bram
 UTC-4 | America/Anguilla | Anguilla | The Valley, Blowing Point Village, Sandy Ground Village, The Quarter, Sandy Hill
 UTC-4 | America/Antigua | Antigua and Barbuda | Saint John’s, Piggotts, Bolands, Codrington, Parham
 UTC-4 | America/Aruba | Aruba | Oranjestad, Tanki Leendert, San Nicolas, Santa Cruz, Paradera
-UTC-4 | America/Asuncion | Paraguay | Asunción, Ciudad del Este, San Lorenzo, Capiatá, Lambaré
 UTC-4 | America/Barbados | Barbados | Bridgetown, Speightstown, Oistins, Bathsheba, Holetown
 UTC-4 | America/Blanc-Sablon | Canada |
 UTC-4 | America/Boa_Vista | Brazil | Boa Vista
@@ -151,6 +150,7 @@ UTC-3 | America/Argentina/San_Juan | Argentina | San Juan, Chimbas, Santa Lucía
 UTC-3 | America/Argentina/San_Luis | Argentina | San Luis, Villa Mercedes, La Punta, Merlo, Justo Daract
 UTC-3 | America/Argentina/Tucuman | Argentina | San Miguel de Tucumán, Yerba Buena, Tafí Viejo, Alderetes, Aguilares
 UTC-3 | America/Argentina/Ushuaia | Argentina | Ushuaia, Río Grande
+UTC-3 | America/Asuncion | Paraguay | Asunción, Ciudad del Este, San Lorenzo, Capiatá, Lambaré
 UTC-3 | America/Bahia | Brazil | Salvador, Feira de Santana, Vitória da Conquista, Itabuna, Camaçari
 UTC-3 | America/Belem | Brazil | Belém, Macapá, Ananindeua, Parauapebas, Marabá
 UTC-3 | America/Cayenne | French Guiana | Cayenne, Matoury, Saint-Laurent-du-Maroni, Kourou, Rémire-Montjoly
@@ -168,8 +168,8 @@ UTC-3 | Antarctica/Rothera | Antarctica |
 UTC-3 | Atlantic/Stanley | Falkland Islands | Stanley
 UTC-2 | America/Noronha | Brazil |
 UTC-2 | America/Nuuk | Greenland | Nuuk, Sisimiut, Ilulissat, Qaqortoq, Aasiaat
+UTC-2 | America/Scoresbysund | Greenland |
 UTC-2 | Atlantic/South_Georgia | South Georgia and the South Sandwich Islands | Grytviken
-UTC-1 | America/Scoresbysund | Greenland |
 UTC-1 | Atlantic/Azores | Portugal | Ponta Delgada, Lagoa, Angra do Heroísmo, Rosto de Cão, Rabo de Peixe
 UTC-1 | Atlantic/Cape_Verde | Cabo Verde | Praia, Mindelo, Espargos, Assomada, Tarrafal
 UTC+0 | Africa/Abidjan | Ivory Coast | Abidjan, Abobo, Bouaké, Korhogo, Daloa
@@ -214,7 +214,6 @@ UTC+1 | Africa/Ndjamena | Chad | N'Djamena, Moundou, Abéché, Sarh, Kelo
 UTC+1 | Africa/Niamey | Niger | Niamey, Zinder, Maradi, Agadez, Alaghsas
 UTC+1 | Africa/Porto-Novo | Benin | Cotonou, Abomey-Calavi, Porto-Novo, Parakou, Godomè
 UTC+1 | Africa/Tunis | Tunisia | Tunis, Sfax, Sousse, Kairouan, Bizerte
-UTC+1 | Africa/Windhoek | Namibia | Windhoek, Rundu, Walvis Bay, Oshakati, Swakopmund
 UTC+1 | Arctic/Longyearbyen | Svalbard and Jan Mayen | Longyearbyen, Olonkinbyen
 UTC+1 | Europe/Amsterdam | The Netherlands | Amsterdam, Rotterdam, The Hague, Utrecht, Groningen
 UTC+1 | Europe/Andorra | Andorra | Andorra la Vella, les Escaldes, Encamp, Sant Julià de Lòria, la Massana
@@ -261,6 +260,7 @@ UTC+2 | Africa/Maputo | Mozambique | Maputo, Matola, Nampula, Beira, Chimoio
 UTC+2 | Africa/Maseru | Lesotho | Maseru, Maputsoe, Mohale's Hoek, Mafeteng, Hlotse
 UTC+2 | Africa/Mbabane | Eswatini | Manzini, Mbabane, Big Bend, Malkerns, Nhlangano
 UTC+2 | Africa/Tripoli | Libya | Tripoli, Benghazi, Misratah, Zliten, Al Khums
+UTC+2 | Africa/Windhoek | Namibia | Windhoek, Rundu, Walvis Bay, Oshakati, Swakopmund
 UTC+2 | Asia/Beirut | Lebanon | Beirut, Ra’s Bayrūt, Tripoli, Sidon, Tyre
 UTC+2 | Asia/Famagusta | Cyprus | Famagusta, Kyrenia, Égkomi, Protaras, Paralímni
 UTC+2 | Asia/Gaza | Palestinian Territory | Gaza, Khān Yūnis, Jabālyā, Rafaḩ, Dayr al Balaḩ
@@ -318,6 +318,8 @@ UTC+4 | Indian/Mauritius | Mauritius | Port Louis, Vacoas, Beau Bassin-Rose Hill
 UTC+4 | Indian/Reunion | Reunion | Saint-Denis, Saint-Paul, Le Tampon, Saint-Pierre, Saint-André
 UTC+4:30 | Asia/Kabul | Afghanistan | Kabul, Herāt, Mazār-e Sharīf, Kandahār, Jalālābād
 UTC+5 | Antarctica/Mawson | Antarctica |
+UTC+5 | Antarctica/Vostok | Antarctica |
+UTC+5 | Asia/Almaty | Kazakhstan | Almaty, Shymkent, Karagandy, Taraz, Astana
 UTC+5 | Asia/Aqtau | Kazakhstan | Shevchenko, Zhanaozen, Beyneu, Shetpe, Kuryk
 UTC+5 | Asia/Aqtobe | Kazakhstan | Aktobe, Kandyagash, Shalqar, Khromtau, Embi
 UTC+5 | Asia/Ashgabat | Turkmenistan | Ashgabat, Türkmenabat, Daşoguz, Mary, Balkanabat
@@ -325,6 +327,7 @@ UTC+5 | Asia/Atyrau | Kazakhstan | Atyrau, Qulsary, Shalkar, Balykshi, Maqat
 UTC+5 | Asia/Dushanbe | Tajikistan | Dushanbe, Isfara, Istaravshan, Kŭlob, Konibodom
 UTC+5 | Asia/Karachi | Pakistan | Karachi, Lahore, Faisalabad, Rawalpindi, Multan
 UTC+5 | Asia/Oral | Kazakhstan | Oral, Aqsay, Zhanibek, Tasqala, Zhumysker
+UTC+5 | Asia/Qostanay | Kazakhstan | Kostanay, Rudnyy, Baikonur, Zhitikara, Arkalyk
 UTC+5 | Asia/Qyzylorda | Kazakhstan | Kyzylorda, Novokazalinsk, Aral, Shiyeli, Zhangaqorghan
 UTC+5 | Asia/Samarkand | Uzbekistan | Samarkand, Nukus, Bukhara, Qarshi, Tirmiz
 UTC+5 | Asia/Tashkent | Uzbekistan | Tashkent, Namangan, Andijon, Fergana, Qo‘qon
@@ -334,12 +337,9 @@ UTC+5 | Indian/Maldives | Maldives | Male, Fuvahmulah, Hithadhoo, Kulhudhuffushi
 UTC+5:30 | Asia/Colombo | Sri Lanka | Colombo, Dehiwala-Mount Lavinia, Maharagama, Jaffna, Moratuwa
 UTC+5:30 | Asia/Kolkata | India | Mumbai, Delhi, Bengaluru, Hyderābād, Ahmedabad
 UTC+5:45 | Asia/Kathmandu | Nepal | Kathmandu, Bharatpur, Pātan, Birgañj, Biratnagar
-UTC+6 | Antarctica/Vostok | Antarctica |
-UTC+6 | Asia/Almaty | Kazakhstan | Almaty, Shymkent, Karagandy, Taraz, Astana
 UTC+6 | Asia/Bishkek | Kyrgyzstan | Bishkek, Osh, Jalal-Abad, Karakol, Tokmok
 UTC+6 | Asia/Dhaka | Bangladesh | Dhaka, Chattogram, Khulna, Rangpur, Comilla
 UTC+6 | Asia/Omsk | Russia | Omsk, Tara, Kalachinsk, Znamenskoye, Tavricheskoye
-UTC+6 | Asia/Qostanay | Kazakhstan | Kostanay, Rudnyy, Baikonur, Zhitikara, Arkalyk
 UTC+6 | Asia/Thimphu | Bhutan | Thimphu, Phuntsholing, Tsirang, Punākha, Pemagatshel
 UTC+6 | Asia/Urumqi | China | Ürümqi, Shihezi, Korla, Aksu, Kashgar
 UTC+6 | Indian/Chagos | British Indian Ocean Territory |
@@ -359,6 +359,7 @@ UTC+7 | Asia/Pontianak | Indonesia | Pontianak, Palangkaraya, Singkawang, Sampit
 UTC+7 | Asia/Tomsk | Russia | Tomsk, Seversk, Strezhevoy, Kolpashevo, Asino
 UTC+7 | Asia/Vientiane | Laos | Vientiane, Savannakhet, Pakse, Thakhèk, Luang Prabang
 UTC+7 | Indian/Christmas | Christmas Island | Flying Fish Cove
+UTC+8 | Antarctica/Casey | Antarctica |
 UTC+8 | Asia/Brunei | Brunei | Bandar Seri Begawan, Kuala Belait, Seria, Tutong, Bangar
 UTC+8 | Asia/Choibalsan | Mongolia | Baruun-Urt, Choibalsan
 UTC+8 | Asia/Hong_Kong | Hong Kong | Hong Kong, Kowloon, Victoria, Tuen Mun, Sha Tin
@@ -400,7 +401,6 @@ UTC+10 | Pacific/Guam | Guam | Dededo Village, Yigo Village, Tamuning, Tamuning-
 UTC+10 | Pacific/Port_Moresby | Papua New Guinea | Port Moresby, Lae, Mount Hagen, Popondetta, Madang
 UTC+10 | Pacific/Saipan | Northern Mariana Islands | Saipan, San Jose Village
 UTC+10:30 | Australia/Lord_Howe | Australia |
-UTC+11 | Antarctica/Casey | Antarctica |
 UTC+11 | Asia/Magadan | Russia | Magadan, Ust-Nera, Susuman, Ola
 UTC+11 | Asia/Sakhalin | Russia | Yuzhno-Sakhalinsk, Korsakov, Kholmsk, Okha, Nevel’sk
 UTC+11 | Asia/Srednekolymsk | Russia |
