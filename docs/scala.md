@@ -4,7 +4,7 @@ Scala
 [![Repo Dependents](https://badgen.net/github/dependents-repo/scala/scala)](https://github.com/scala/scala/network/dependents)
 [![Github repo](https://badgen.net/badge/icon/Github?icon=github&label)](https://github.com/scala/scala)
 
-本速查表可以用于快速地查找 [Scala](https://github.com/scala/scala) 语法结构
+本速查表可以用于快速地查找 [Scala](https://www.scala-lang.org/) 语法结构
 <!--rehype:style=padding-top: 12px;-->
 
 入门
@@ -12,7 +12,9 @@ Scala
 
 ### 介绍
 
-- [Scala](https://github.com/scala/scala) 官网  _(github.com)_
+- [Scala 官网](https://www.scala-lang.org/) _(scala-lang.org)_
+- [Scala 文档](https://docs.scala-lang.org/) _(docs.scala-lang.org)_
+- [Scala 标准库 API](https://www.scala-lang.org/api/) _(scala-lang.org)_
 
 ### 函数
 <!--rehype:wrap-class=col-span-2 row-span-4-->
