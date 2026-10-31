@@ -22,7 +22,6 @@ HTML 字符实体引用
 | `&ast;`    | *          | `&#42;`  | 星号             | u+002A ISOnum | \\002a           | <a href='javascript:alert(&quot;\52&quot;)'>\52</a>    |
 | `&plus;`   | +          | `&#43;`  | 加号             | u+002B ISOnum | \\002b           | <a href='javascript:alert(&quot;\53&quot;)'>\53</a>    |
 | `&comma;`  | ,          | `&#44;`  | 逗号             | u+002C ISOnum | \\002c           | <a href='javascript:alert(&quot;\54&quot;)'>\54</a>    |
-| `&minus;`  | -          | `&#45;`  | 连字符减号        | u+002D ISOnum | \\002d           | <a href='javascript:alert(&quot;\55&quot;)'>\55</a>    |
 | `&period;` | .          | `&#46;`  | 句号             | u+002E ISOnum | \\002e           | <a href='javascript:alert(&quot;\56&quot;)'>\56</a>    |
 | `&sol;`    | /          | `&#47;`  | 固相线           | u+002F ISOnum | \\002f           | <a href='javascript:alert(&quot;\57&quot;)'>\57</a>    |
 | `&colon;`  | :          | `&#58;`  | 冒号             | u+003A ISOnum | \\003a           | <a href='javascript:alert(&quot;\72&quot;)'>\72</a>    |
@@ -173,7 +172,7 @@ HTML 字符实体引用
 |------------------|--------|--------------|-----------------------------------|------------------|-----------|---------------------|
 | `&Alpha;`    | Α    | `&#913;` | greek capital letter alpha      | u+0391 | \\0391   | <a href='javascript:alert(&quot;\u0391&quot;)'>\u0391</a> |
 | `&Beta;`     | Β    | `&#914;` | greek capital letter beta       | u+0392 | \\0392   | <a href='javascript:alert(&quot;\u0392&quot;)'>\u0392</a> |
-| `&Gamma;`    | Γ    | `&#915;` | greek capital letter gamma      | u+0393 ISOgrk3 | \\0393   | <a href='javascript:alert(&quot;\u0395&quot;)'>\u0395</a> |
+| `&Gamma;`    | Γ    | `&#915;` | greek capital letter gamma      | u+0393 ISOgrk3 | \\0393   | <a href='javascript:alert(&quot;\u0393&quot;)'>\u0393</a> |
 | `&Delta;`    | Δ    | `&#916;` | greek capital letter delta      | u+0394 ISOgrk3 | \\0394   | <a href='javascript:alert(&quot;\u0394&quot;)'>\u0394</a> |
 | `&Epsilon;`  | Ε    | `&#917;` | greek capital letter epsilon    | u+0395 | \\0395   | <a href='javascript:alert(&quot;\u0395&quot;)'>\u0395</a> |
 | `&Zeta;`     | Ζ    | `&#918;` | greek capital letter zeta       | u+0396 | \\0396   | <a href='javascript:alert(&quot;\u0396&quot;)'>\u0396</a> |
@@ -216,7 +215,7 @@ HTML 字符实体引用
 | `&sigma;`    | σ    | `&#963;` | greek small letter sigma        | u+03C3 ISOgrk3 | \\03C3   | <a href='javascript:alert(&quot;\u03c3&quot;)'>\u03c3</a> |
 | `&tau;`      | τ    | `&#964;` | greek small letter tau          | u+03C4 ISOgrk3 | \\03C4   | <a href='javascript:alert(&quot;\u03c4&quot;)'>\u03c4</a> |
 | `&upsilon;`  | υ    | `&#965;` | greek small letter upsilon      | u+03C5 ISOgrk3 | \\03C5   | <a href='javascript:alert(&quot;\u03c5&quot;)'>\u03c5</a> |
-| `&phi;`      | φ    | `&#966;` | greek small letter phi          | u+03C6 ISOgrk3 | \\03C6   | <a href='javascript:alert(&quot;\03c6&quot;)'>\03c6</a>  |
+| `&phi;`      | φ    | `&#966;` | greek small letter phi          | u+03C6 ISOgrk3 | \\03C6   | <a href='javascript:alert(&quot;\u03c6&quot;)'>\u03c6</a> |
 | `&chi;`      | χ    | `&#967;` | greek small letter chi          | u+03C7 ISOgrk3 | \\03C7   | <a href='javascript:alert(&quot;\u03c7&quot;)'>\u03c7</a> |
 | `&psi;`      | ψ    | `&#968;` | greek small letter psi          | u+03C8 ISOgrk3 | \\03C8   | <a href='javascript:alert(&quot;\u03c8&quot;)'>\u03c8</a> |
 | `&omega;`    | ω    | `&#969;` | greek small letter omega        | u+03C9 ISOgrk3 | \\03C9   | <a href='javascript:alert(&quot;\u03c9&quot;)'>\u03c9</a> |
@@ -249,12 +248,12 @@ HTML 字符实体引用
 | `&permil;` | ‰    | `&#8240;` | per mille sign                                      | u+2030 ISOtech | \\2030   | <a href='javascript:alert(&quot;\u2030&quot;)'>\u2030</a> |
 | `&lsaquo;` | ‹    | `&#8249;` | single left-pointing angle quotation mark           | u+2039 ISO proposed | \\2039   | <a href='javascript:alert(&quot;\u2039&quot;)'>\u2039</a> |
 | `&rsaquo;` | ›    | `&#8250;` | single right-pointing angle quotation mark          | u+203A ISO proposed | \\203A   | <a href='javascript:alert(&quot;\u203a&quot;)'>\u203a</a> |
-| `&bull;`   | •    | `&#8226;` | bullet, aka. black small circle                     | u+2022 ISOpub | \\2022   | <a href='javascript:alert(&quot;\u2219&quot;)'>\u2219</a> |
+| `&bull;`   | •    | `&#8226;` | bullet, aka. black small circle                     | u+2022 ISOpub | \\2022   | <a href='javascript:alert(&quot;\u2022&quot;)'>\u2022</a> |
 | `&hellip;` | …    | `&#8230;` | horizontal ellipsis, aka three dot leader           | u+2026 ISOpub | \\2026   | <a href='javascript:alert(&quot;\u2026&quot;)'>\u2026</a> |
 | `&prime;`  | ′    | `&#8242;` | prime, aka minutes, aka feet                        | u+2032 ISOtech | \\2032   | <a href='javascript:alert(&quot;\u2032&quot;)'>\u2032</a> |
 | `&Prime;`  | ″    | `&#8243;` | double prime, aka seconds, aka inches               | u+2033 ISOtech | \\2033   | <a href='javascript:alert(&quot;\u2033&quot;)'>\u2033</a> |
 | `&oline;`  | ‾    | `&#8254;` | overline, aka spacing overscore                     | u+203E NEW | \\203E   | <a href='javascript:alert(&quot;\u203e&quot;)'>\u203e</a> |
-| `&frasl;`  | ⁄    | `&#8260;` | fraction slash                                      | u+2044 NEW | \\2044   | <a href='javascript:alert(&quot;\u8260&quot;)'>\u8260</a> |
+| `&frasl;`  | ⁄    | `&#8260;` | fraction slash                                      | u+2044 NEW | \\2044   | <a href='javascript:alert(&quot;\u2044&quot;)'>\u2044</a> |
 <!--rehype:className=show-header-->
 
 ### HTML Letter-like Symbols
@@ -265,7 +264,7 @@ HTML 字符实体引用
 | `&image;`   | ℑ    | `&#8465;` | blackletter capital I, aka imaginary part             | u+2111 ISOamso | \\2111   | <a href='javascript:alert(&quot;\u2111&quot;)'>\u2111</a> |
 | `&real;`    | ℜ    | `&#8476;` | blackletter capital R, aka real part symbol           | u+211C ISOamso | \\211C   | <a href='javascript:alert(&quot;\u211c&quot;)'>\u211c</a> |
 | `&trade;`   | ™    | `&#8482;` | trade mark sign                                          | u+2122 ISOnum | \\2122   | <a href='javascript:alert(&quot;\u2122&quot;)'>\u2122</a> |
-| `&alefsym;` | ℵ    | `&#8501;` | alef symbol                                              | u+2135 NEW | \\2135   | <a href='javascript:alert(&quot;\u&quot;)'>\u</a>     |
+| `&alefsym;` | ℵ    | `&#8501;` | alef symbol                                              | u+2135 NEW | \\2135   | <a href='javascript:alert(&quot;\u2135&quot;)'>\u2135</a> |
 <!--rehype:className=show-header-->
 
 ### HTML Arrows
@@ -281,12 +280,12 @@ HTML 字符实体引用
 | `&lArr;`  | ⇐           | `&#8656;` | leftwards double arrow can be used for ‘is implied by’           | u+21D0 ISOtech | \\21D0             | <a href='javascript:alert(&quot;\u21d0&quot;)'>\u21d0</a> |
 | `&uArr;`  | ⇑           | `&#8657;` | upwards double arrow                                          | u+21D1 ISOamsa | \\21D1             | <a href='javascript:alert(&quot;\u21d1&quot;)'>\u21d1</a> |
 | `&rArr;`  | ⇒           | `&#8658;` | rightwards double arrow                                       | u+21D2 ISOtech | \\21D2             | <a href='javascript:alert(&quot;\u21d2&quot;)'>\u21d2</a> |
-| `&dArr;`  | ⇓           | `&#8659;` | downwards double arrow                                        | u+21D3 ISOamsa | \\21D3             | <a href='javascript:alert(&quot;\ud1d3&quot;)'>\ud1d3</a> |
+| `&dArr;`  | ⇓           | `&#8659;` | downwards double arrow                                        | u+21D3 ISOamsa | \\21D3             | <a href='javascript:alert(&quot;\u21d3&quot;)'>\u21d3</a> |
 | `&hArr;`  | ⇔           | `&#8660;` | left right double arrow                                       | u+21D4 ISOamsa | \\21D4             | <a href='javascript:alert(&quot;\u21d4&quot;)'>\u21d4</a> |
-|           |    ◄        | `&#9668;` | black left pointing triangle  | U+25C0 | \\25C0          | <a href='javascript:alert(&quot;\u25c0&quot;)'>\u25c0</a> |
-|           |    ►        | `&#9658;` | black right pointing triangle | u+25B6 | \\25b6          | <a href='javascript:alert(&quot;\u25b6&quot;)'>\u25b6</a> |
-|           |    ▲        | `&#9650;` | black up pointing triangle    | u+25B2 | \\25b2          | <a href='javascript:alert(&quot;\25b2&quot;)'>\25b2</a>  |
-|           |    ▼        | `&#9660;` | black down pointing triangle  | u+25BC | \\25bc          | <a href='javascript:alert(&quot;\25bc&quot;)'>\25bc</a>  |
+|           |    ◀        | `&#9664;` | black left pointing triangle  | U+25C0 | \\25C0          | <a href='javascript:alert(&quot;\u25c0&quot;)'>\u25c0</a> |
+|           |    ▶        | `&#9654;` | black right pointing triangle | u+25B6 | \\25b6          | <a href='javascript:alert(&quot;\u25b6&quot;)'>\u25b6</a> |
+|           |    ▲        | `&#9650;` | black up pointing triangle    | u+25B2 | \\25b2          | <a href='javascript:alert(&quot;\u25b2&quot;)'>\u25b2</a> |
+|           |    ▼        | `&#9660;` | black down pointing triangle  | u+25BC | \\25bc          | <a href='javascript:alert(&quot;\u25bc&quot;)'>\u25bc</a> |
 <!--rehype:className=show-header-->
 
 ### HTML 数学运算符
@@ -301,16 +300,16 @@ HTML 字符实体引用
 | `&isin;`   | ∈    | `&#8712;` | element of                                  | u+2208 ISOtech | \\2208   | <a href='javascript:alert(&quot;\u2208&quot;)'>\u2208</a> |
 | `&notin;`  | ∉    | `&#8713;` | not an element of                           | u+2209 ISOtech | \\2209   | <a href='javascript:alert(&quot;\u2209&quot;)'>\u2209</a> |
 | `&ni;`     | ∋    | `&#8715;` | contains as member                          | u+220B ISOtech | \\220B   | <a href='javascript:alert(&quot;\u220b&quot;)'>\u220b</a> |
-| `&prod;`   | ∏    | `&#8719;` | n-ary product, aka product sign          | u+220F ISOamsb | \\220F   | <a href='javascript:alert(&quot;\u03a0&quot;)'>\u03a0</a> |
-| `&sum;`    | ∑    | `&#8721;` | n-ary sumation                              | u+2211 ISOamsb | \\2211   | <a href='javascript:alert(&quot;\u03a3&quot;)'>\u03a3</a> |
+| `&prod;`   | ∏    | `&#8719;` | n-ary product, aka product sign          | u+220F ISOamsb | \\220F   | <a href='javascript:alert(&quot;\u220f&quot;)'>\u220f</a> |
+| `&sum;`    | ∑    | `&#8721;` | n-ary sumation                              | u+2211 ISOamsb | \\2211   | <a href='javascript:alert(&quot;\u2211&quot;)'>\u2211</a> |
 | `&minus;`  | −    | `&#8722;` | minus sign                                  | u+2212 ISOtech | \\2212   | <a href='javascript:alert(&quot;\u2212&quot;)'>\u2212</a> |
 | `&lowast;` | ∗    | `&#8727;` | asterisk operator                           | u+2217 ISOtech | \\2217   | <a href='javascript:alert(&quot;\u2217&quot;)'>\u2217</a> |
 | `&radic;`  | √    | `&#8730;` | square root, aka radical sign            | u+221A ISOtech | \\221A   | <a href='javascript:alert(&quot;\u221a&quot;)'>\u221a</a> |
 | `&prop;`   | ∝    | `&#8733;` | proportional to                             | u+221D ISOtech | \\221D   | <a href='javascript:alert(&quot;\u221d&quot;)'>\u221d</a> |
 | `&infin;`  | ∞    | `&#8734;` | infinity                                    | u+221E ISOtech | \\221E   | <a href='javascript:alert(&quot;\u221e&quot;)'>\u221e</a> |
 | `&ang;`    | ∠    | `&#8736;` | angle                                       | u+2220 ISOamso | \\2220   | <a href='javascript:alert(&quot;\u2220&quot;)'>\u2220</a> |
-| `&and;`    | ⊥    | `&#8869;` | logical and, aka wedge                   | u+2227 ISOtech | \\2227   | <a href='javascript:alert(&quot;\u2227&quot;)'>\u2227</a> |
-| `&or;`     | ⊦    | `&#8870;`  | logical or, aka vee                      | u+2228 ISOtech | \\2228   | <a href='javascript:alert(&quot;\u2228&quot;)'>\u2228</a> |
+| `&and;`    | ∧    | `&#8743;` | logical and, aka wedge                   | u+2227 ISOtech | \\2227   | <a href='javascript:alert(&quot;\u2227&quot;)'>\u2227</a> |
+| `&or;`     | ∨    | `&#8744;` | logical or, aka vee                      | u+2228 ISOtech | \\2228   | <a href='javascript:alert(&quot;\u2228&quot;)'>\u2228</a> |
 | `&cap;`    | ∩    | `&#8745;` | intersection, aka cap                    | u+2229 ISOtech | \\2229   | <a href='javascript:alert(&quot;\u2229&quot;)'>\u2229</a> |
 | `&cup;`    | ∪    | `&#8746;` | union, aka cup                           | u+222A ISOtech | \\222A   | <a href='javascript:alert(&quot;\u222a&quot;)'>\u222a</a> |
 | `&int;`    | ∫    | `&#8747;` | integral                                    | u+222B ISOtech | \\222B   | <a href='javascript:alert(&quot;\u222b&quot;)'>\u222b</a> |
@@ -341,8 +340,8 @@ HTML 字符实体引用
 | `&rceil;`  | ⌉    | `&#8969;` | right ceiling                    | u+2309 ISOamsc | \\2309   | <a href='javascript:alert(&quot;\u2309&quot;)'>\u2309</a> |
 | `&lfloor;` | ⌊    | `&#8970;` | left floor, aka apl downstile | u+230A ISOamsc | \\230A   | <a href='javascript:alert(&quot;\u230a&quot;)'>\u230a</a> |
 | `&rfloor;` | ⌋    | `&#8971;` | right floor                      | u+230B ISOamsc | \\230B   | <a href='javascript:alert(&quot;\u230b&quot;)'>\u230b</a> |
-| `&lang;`   | 〈    | `&#9001;` | left-pointing angle bracket      | u+2329 ISOtech | \\2329   | <a href='javascript:alert(&quot;\u2329&quot;)'>\u2329</a> |
-| `&rang;`   | 〉    | `&#9002;` | right-pointing angle bracket     | u+232A ISOtech | \\232A   | <a href='javascript:alert(&quot;\u232a&quot;)'>\u232a</a> |
+| `&lang;`   | ⟨    | `&#10216;` | mathematical left angle bracket  | u+27E8 ISOtech | \\27E8   | <a href='javascript:alert(&quot;\u27e8&quot;)'>\u27e8</a> |
+| `&rang;`   | ⟩    | `&#10217;` | mathematical right angle bracket | u+27E9 ISOtech | \\27E9   | <a href='javascript:alert(&quot;\u27e9&quot;)'>\u27e9</a> |
 <!--rehype:className=show-header-->
 
 ### HTML 杂项
