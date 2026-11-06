@@ -994,3 +994,4 @@ Github emoji 图标标记
 - [Emojis 🌱☀️ - Copy & Paste Online 🕵️‍♀️ | Quicktools by Picsart](https://tools.picsart.com/text/emojis/) _(tools.picsart.com)_
 - [Emojihub 😀 - All Emojis To Copy And Paste](https://emojihub.org/) _(emojihub.org)_
 - [All Emojis – Emoji List for Copy and Paste](https://www.freecodecamp.org/news/all-emojis-emoji-list-for-copy-and-paste/) _(freecodecamp.org)_
+- [EmojiDig: Emoji Copy and Paste, Find Any Emoji Fast](https://emojidig.com/) _(emojidig.com)_
