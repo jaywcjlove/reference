@@ -450,7 +450,7 @@ function CustomTextInput(props) {
 - [检测过时的 context API](https://zh-hans.reactjs.org/docs/strict-mode.html#detecting-legacy-context-api)
 - [确保可复用的状态](https://zh-hans.reactjs.org/docs/strict-mode.html#ensuring-reusable-state)
 
-突出显示应用程序中潜在问题的工具。请参阅：[严格模式](https://zh-hans.reactjs.org/docs/strict-mode.html)
+突出显示应用程序中潜在问题的工具。请参阅：[StrictMode](https://react.dev/reference/react/StrictMode)
 
 ### Profiler
 <!--rehype:wrap-class=col-span-2-->
@@ -1679,7 +1679,8 @@ MyComponent.propTypes = {
 另见
 ----
 
-- [React 官方中文文档](https://zh-hans.reactjs.org/) _(zh-hans.reactjs.org)_
+- [React 官方文档](https://react.dev/) _(react.dev)_
+- [StrictMode](https://react.dev/reference/react/StrictMode) _(react.dev)_
 - [反应生命周期方法图](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) _(projects.wojtekmaj.pl)_
 - [React 16 Cheat Sheet](https://reactcheatsheet.com)
 - [Awesome React](https://github.com/enaqx/awesome-react) _(github.com)_
