@@ -84,75 +84,75 @@
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ <span class="token function">scp</span> user@server:/dir/* <span class="token builtin class-name">.</span>
 </span></code></pre>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置位置"><a aria-hidden="true" tabindex="-1" href="#配置位置"><span class="icon icon-link"></span></a>配置位置</h3><div class="wrap-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">文件路径</th><th>说明</th></tr></thead><tbody><tr><td align="left"><code>/etc/ssh/ssh_config</code></td><td>系统范围的配置</td></tr><tr><td align="left"><code>~/.ssh/config</code></td><td>用户特定的配置</td></tr><tr><td align="left"><code>~/.ssh/id_{type}</code></td><td>私钥</td></tr><tr><td align="left"><code>~/.ssh/id_{type}.pub</code></td><td>公钥</td></tr><tr><td align="left"><code>~/.ssh/known_hosts</code></td><td>登录主机</td></tr><tr><td align="left"><code>~/.ssh/authorized_keys</code></td><td>授权登录密钥</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">文件路径</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>/etc/ssh/ssh_config</code></td>
+<td>系统范围的配置</td>
+</tr>
+<tr>
+<td align="left"><code>~/.ssh/config</code></td>
+<td>用户特定的配置</td>
+</tr>
+<tr>
+<td align="left"><code>~/.ssh/id_{type}</code></td>
+<td>私钥</td>
+</tr>
+<tr>
+<td align="left"><code>~/.ssh/id_{type}.pub</code></td>
+<td>公钥</td>
+</tr>
+<tr>
+<td align="left"><code>~/.ssh/known_hosts</code></td>
+<td>登录主机</td>
+</tr>
+<tr>
+<td align="left"><code>~/.ssh/authorized_keys</code></td>
+<td>授权登录密钥</td>
+</tr>
+</tbody>
+</table>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="scp-选项"><a aria-hidden="true" tabindex="-1" href="#scp-选项"><span class="icon icon-link"></span></a>SCP 选项</h3><div class="wrap-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">选项</th><th>说明</th></tr></thead><tbody><tr><td align="left">scp <code>-r</code></td><td>递归复制整个目录</td></tr><tr><td align="left">scp <code>-C</code></td><td>压缩数据</td></tr><tr><td align="left">scp <code>-v</code></td><td>打印详细信息</td></tr><tr><td align="left">scp <code>-P</code> 8080</td><td>使用特定端口</td></tr><tr><td align="left">scp <code>-B</code></td><td>批处理模式_（防止密码）_</td></tr><tr><td align="left">scp <code>-p</code></td><td>保留时间和模式</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">scp <code>-r</code></td>
+<td>递归复制整个目录</td>
+</tr>
+<tr>
+<td align="left">scp <code>-C</code></td>
+<td>压缩数据</td>
+</tr>
+<tr>
+<td align="left">scp <code>-v</code></td>
+<td>打印详细信息</td>
+</tr>
+<tr>
+<td align="left">scp <code>-P</code> 8080</td>
+<td>使用特定端口</td>
+</tr>
+<tr>
+<td align="left">scp <code>-B</code></td>
+<td>批处理模式_（防止密码）_</td>
+</tr>
+<tr>
+<td align="left">scp <code>-p</code></td>
+<td>保留时间和模式</td>
+</tr>
+</tbody>
+</table>
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="配置示例"><a aria-hidden="true" tabindex="-1" href="#配置示例"><span class="icon icon-link"></span></a>配置示例</h3><div class="wrap-body">
 <pre class="language-toml"><code class="language-toml code-highlight"><span class="code-line">Host server1 
 </span><span class="code-line">    HostName <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">1.5</span>
@@ -191,32 +191,32 @@
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line">$ ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-b</span> <span class="token number">4096</span> <span class="token parameter variable">-C</span> <span class="token string">"your@mail.com"</span> 
 </span></code></pre>
 <hr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>-</th><th>-</th><th>-</th></tr></thead><tbody><tr><td></td><td><code>-t</code></td><td><a href="#%E9%92%A5%E5%8C%99%E7%B1%BB%E5%9E%8B">类型</a> 键</td></tr><tr><td></td><td><code>-b</code></td><td>密钥中的位数</td></tr><tr><td></td><td><code>-C</code></td><td>提供新评论</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>-</th>
+<th>-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><code>-t</code></td>
+<td><a href="#%E9%92%A5%E5%8C%99%E7%B1%BB%E5%9E%8B">类型</a> 键</td>
+</tr>
+<tr>
+<td></td>
+<td><code>-b</code></td>
+<td>密钥中的位数</td>
+</tr>
+<tr>
+<td></td>
+<td><code>-C</code></td>
+<td>提供新评论</td>
+</tr>
+</tbody>
+</table>
 <p>生成带有电子邮件作为注释的 RSA 4096 位密钥</p>
 </div></div></div><div class="wrap h3body-not-exist col-span-2 row-span-2"><div class="wrap-header h3wrap"><h3 id="产生"><a aria-hidden="true" tabindex="-1" href="#产生"><span class="icon icon-link"></span></a>产生</h3><div class="wrap-body">
 <!--rehype:wrap-class=col-span-2 row-span-2-->

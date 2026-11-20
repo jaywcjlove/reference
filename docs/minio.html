@@ -176,68 +176,68 @@ MinIO 快速参考，为开发人员分享快速参考备忘单。">
 <!--rehype:wrap-class=col-span-3-->
 <p><code>mc admin</code> 用于管理 MinIO 服务端（需要具备相应管理权限的账号/策略）。</p>
 <h4 id="常用全局参数mc-全局对-mc-admin-同样适用"><a aria-hidden="true" tabindex="-1" href="#常用全局参数mc-全局对-mc-admin-同样适用"><span class="icon icon-link"></span></a>常用全局参数（<code>mc</code> 全局，对 <code>mc admin</code> 同样适用）</h4>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="show-header left-align"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>--json</code></td><td>输出 JSON，便于脚本解析与自动化处理</td></tr><tr><td><code>--debug</code></td><td>打印调试信息（排查权限/网络/签名等问题）</td></tr><tr><td><code>--insecure</code></td><td>跳过 TLS 证书校验（自签名证书/测试环境常用）</td></tr><tr><td><code>-C, --config-dir &#x3C;DIR></code></td><td>指定 <code>mc</code> 配置目录（多环境隔离）</td></tr><tr><td><code>-q, --quiet</code></td><td>静默模式，减少非必要输出</td></tr><tr><td><code>--no-color</code></td><td>禁用彩色输出（CI/日志更友好）</td></tr><tr><td><code>--dp, --disable-pager</code></td><td>禁用分页器（管道/重定向场景更稳定）</td></tr><tr><td><code>-H, --custom-header '&#x3C;key>:&#x3C;value>'</code></td><td>追加自定义 HTTP Header</td></tr></tbody></table>
+<table class="show-header left-align">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--json</code></td>
+<td>输出 JSON，便于脚本解析与自动化处理</td>
+</tr>
+<tr>
+<td><code>--debug</code></td>
+<td>打印调试信息（排查权限/网络/签名等问题）</td>
+</tr>
+<tr>
+<td><code>--insecure</code></td>
+<td>跳过 TLS 证书校验（自签名证书/测试环境常用）</td>
+</tr>
+<tr>
+<td><code>-C, --config-dir &#x3C;DIR></code></td>
+<td>指定 <code>mc</code> 配置目录（多环境隔离）</td>
+</tr>
+<tr>
+<td><code>-q, --quiet</code></td>
+<td>静默模式，减少非必要输出</td>
+</tr>
+<tr>
+<td><code>--no-color</code></td>
+<td>禁用彩色输出（CI/日志更友好）</td>
+</tr>
+<tr>
+<td><code>--dp, --disable-pager</code></td>
+<td>禁用分页器（管道/重定向场景更稳定）</td>
+</tr>
+<tr>
+<td><code>-H, --custom-header '&#x3C;key>:&#x3C;value>'</code></td>
+<td>追加自定义 HTTP Header</td>
+</tr>
+</tbody>
+</table>
 <!--rehype:className=show-header left-align-->
 </div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="mc-admin-info节点集群信息"><a aria-hidden="true" tabindex="-1" href="#mc-admin-info节点集群信息"><span class="icon icon-link"></span></a>mc admin info（节点/集群信息）</h3><div class="wrap-body">
 <p>查看 MinIO 服务信息（集群/节点/版本等）。</p>
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin info <span class="token punctuation">[</span>--offline<span class="token punctuation">]</span> TARGET
 </span></code></pre>
 <p>常用参数：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="show-header left-align"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>--offline</code></td><td>允许在部分节点离线的情况下返回可用信息（排障场景常用）</td></tr></tbody></table>
+<table class="show-header left-align">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--offline</code></td>
+<td>允许在部分节点离线的情况下返回可用信息（排障场景常用）</td>
+</tr>
+</tbody>
+</table>
 <!--rehype:className=show-header left-align-->
 <p>示例：</p>
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin info myminio
@@ -250,24 +250,24 @@ MinIO 快速参考，为开发人员分享快速参考备忘单。">
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin logs <span class="token punctuation">[</span>--last <span class="token operator">&#x3C;</span>N<span class="token operator">></span><span class="token punctuation">]</span> <span class="token punctuation">[</span>--type <span class="token operator">&#x3C;</span>TYPE<span class="token operator">></span><span class="token punctuation">]</span> TARGET <span class="token punctuation">[</span>NODE<span class="token punctuation">]</span>
 </span></code></pre>
 <p>常用参数：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="show-header left-align"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>-l, --last &#x3C;N></code></td><td>返回最近 N 条日志</td></tr><tr><td><code>-t, --type &#x3C;TYPE></code></td><td>指定服务类型（常见：<code>minio</code>）</td></tr></tbody></table>
+<table class="show-header left-align">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-l, --last &#x3C;N></code></td>
+<td>返回最近 N 条日志</td>
+</tr>
+<tr>
+<td><code>-t, --type &#x3C;TYPE></code></td>
+<td>指定服务类型（常见：<code>minio</code>）</td>
+</tr>
+</tbody>
+</table>
 <!--rehype:className=show-header left-align-->
 <p>示例：</p>
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin logs myminio
@@ -287,44 +287,44 @@ MinIO 快速参考，为开发人员分享快速参考备忘单。">
 </span><span class="code-line"><span class="token function">mc</span> admin accesskey create <span class="token punctuation">[</span>FLAGS<span class="token punctuation">]</span> TARGET <span class="token punctuation">[</span>USERNAME<span class="token punctuation">]</span>
 </span></code></pre>
 <p>常用参数：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="show-header left-align"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>--access-key &#x3C;ACCESSKEY></code></td><td>指定 Access Key（不指定则自动生成）</td></tr><tr><td><code>--secret-key &#x3C;SECRETKEY></code></td><td>指定 Secret Key（不指定则自动生成）</td></tr><tr><td><code>--comment &#x3C;TEXT></code></td><td>为该密钥添加备注</td></tr><tr><td><code>--expiry &#x3C;DURATION></code></td><td>设置过期时间/有效期（不指定则为永久有效）</td></tr><tr><td><code>--policy &#x3C;JSON></code></td><td>直接传入策略 JSON（为该密钥绑定权限）</td></tr><tr><td><code>--policy-file &#x3C;FILE></code></td><td>从文件加载策略 JSON</td></tr><tr><td><code>--description &#x3C;TEXT></code></td><td>描述信息</td></tr></tbody></table>
+<table class="show-header left-align">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--access-key &#x3C;ACCESSKEY></code></td>
+<td>指定 Access Key（不指定则自动生成）</td>
+</tr>
+<tr>
+<td><code>--secret-key &#x3C;SECRETKEY></code></td>
+<td>指定 Secret Key（不指定则自动生成）</td>
+</tr>
+<tr>
+<td><code>--comment &#x3C;TEXT></code></td>
+<td>为该密钥添加备注</td>
+</tr>
+<tr>
+<td><code>--expiry &#x3C;DURATION></code></td>
+<td>设置过期时间/有效期（不指定则为永久有效）</td>
+</tr>
+<tr>
+<td><code>--policy &#x3C;JSON></code></td>
+<td>直接传入策略 JSON（为该密钥绑定权限）</td>
+</tr>
+<tr>
+<td><code>--policy-file &#x3C;FILE></code></td>
+<td>从文件加载策略 JSON</td>
+</tr>
+<tr>
+<td><code>--description &#x3C;TEXT></code></td>
+<td>描述信息</td>
+</tr>
+</tbody>
+</table>
 <!--rehype:className=show-header left-align-->
 <p>示例：</p>
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin accesskey create myminio
@@ -335,36 +335,36 @@ MinIO 快速参考，为开发人员分享快速参考备忘单。">
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin accesskey edit <span class="token punctuation">[</span>FLAGS<span class="token punctuation">]</span> TARGET ACCESSKEY
 </span></code></pre>
 <p>常用参数：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="show-header left-align"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>--comment &#x3C;TEXT></code></td><td>更新备注</td></tr><tr><td><code>--expiry &#x3C;DURATION></code></td><td>更新过期时间/有效期</td></tr><tr><td><code>--policy &#x3C;JSON></code></td><td>更新策略 JSON</td></tr><tr><td><code>--policy-file &#x3C;FILE></code></td><td>从文件更新策略 JSON</td></tr><tr><td><code>--description &#x3C;TEXT></code></td><td>更新描述信息</td></tr></tbody></table>
+<table class="show-header left-align">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--comment &#x3C;TEXT></code></td>
+<td>更新备注</td>
+</tr>
+<tr>
+<td><code>--expiry &#x3C;DURATION></code></td>
+<td>更新过期时间/有效期</td>
+</tr>
+<tr>
+<td><code>--policy &#x3C;JSON></code></td>
+<td>更新策略 JSON</td>
+</tr>
+<tr>
+<td><code>--policy-file &#x3C;FILE></code></td>
+<td>从文件更新策略 JSON</td>
+</tr>
+<tr>
+<td><code>--description &#x3C;TEXT></code></td>
+<td>更新描述信息</td>
+</tr>
+</tbody>
+</table>
 <!--rehype:className=show-header left-align-->
 <p>示例：</p>
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin accesskey edit <span class="token parameter variable">--comment</span> <span class="token string">"rotate-2026-01"</span> myminio <span class="token string">"<span class="token variable">$AK</span>"</span>
@@ -381,36 +381,36 @@ MinIO 快速参考，为开发人员分享快速参考备忘单。">
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin accesskey <span class="token function">ls</span> <span class="token punctuation">[</span>FLAGS<span class="token punctuation">]</span> TARGET <span class="token punctuation">[</span>USERNAME<span class="token punctuation">]</span>
 </span></code></pre>
 <p>常用参数：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="show-header left-align"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>--all</code></td><td>列出所有用户（含临时用户）</td></tr><tr><td><code>--self</code></td><td>仅列出当前用户</td></tr><tr><td><code>--svcacc-only</code></td><td>仅列出临时 STS Key</td></tr><tr><td><code>--temp-only</code></td><td>仅列出有 Access Key 的用户（只返回存在关联密钥的用户）</td></tr><tr><td><code>--users-only</code></td><td>仅列出用户（不含临时 Key）</td></tr></tbody></table>
+<table class="show-header left-align">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--all</code></td>
+<td>列出所有用户（含临时用户）</td>
+</tr>
+<tr>
+<td><code>--self</code></td>
+<td>仅列出当前用户</td>
+</tr>
+<tr>
+<td><code>--svcacc-only</code></td>
+<td>仅列出临时 STS Key</td>
+</tr>
+<tr>
+<td><code>--temp-only</code></td>
+<td>仅列出有 Access Key 的用户（只返回存在关联密钥的用户）</td>
+</tr>
+<tr>
+<td><code>--users-only</code></td>
+<td>仅列出用户（不含临时 Key）</td>
+</tr>
+</tbody>
+</table>
 <!--rehype:className=show-header left-align-->
 <p>示例：</p>
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin accesskey <span class="token function">ls</span> myminio
@@ -437,28 +437,28 @@ MinIO 快速参考，为开发人员分享快速参考备忘单。">
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin accesskey sts-revoke <span class="token punctuation">[</span>FLAGS<span class="token punctuation">]</span> TARGET <span class="token punctuation">[</span>STS-KEY <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
 </span></code></pre>
 <p>常用参数：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="show-header left-align"><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td><code>--all</code></td><td>撤销全部 STS Key</td></tr><tr><td><code>--self</code></td><td>撤销当前用户的 STS Key</td></tr><tr><td><code>--token-type &#x3C;TYPE></code></td><td>仅撤销指定类型的 Token（例如 <code>web</code>、<code>api</code>）</td></tr></tbody></table>
+<table class="show-header left-align">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--all</code></td>
+<td>撤销全部 STS Key</td>
+</tr>
+<tr>
+<td><code>--self</code></td>
+<td>撤销当前用户的 STS Key</td>
+</tr>
+<tr>
+<td><code>--token-type &#x3C;TYPE></code></td>
+<td>仅撤销指定类型的 Token（例如 <code>web</code>、<code>api</code>）</td>
+</tr>
+</tbody>
+</table>
 <!--rehype:className=show-header left-align-->
 <p>示例：</p>
 <pre class="language-sh"><code class="language-sh code-highlight"><span class="code-line"><span class="token function">mc</span> admin accesskey sts-revoke <span class="token parameter variable">--self</span> myminio
