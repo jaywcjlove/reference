@@ -417,3 +417,4 @@ console.log('After subscribe');
 - [RxJS 官方文档](https://rxjs.dev/)
 - [RxJS 学习资源](https://rxjs.dev/guide/overview)
 - [RxJS 操作符参考](https://rxjs.dev/guide/operators)
+- [switchMap、mergeMap、concatMap、exhaustMap 交互式对比](https://frontendatlas.com/angular/trivia/rxjs-switchmap-mergemap-exhaustmap-concatmap-angular-when-to-use) _(frontendatlas.com)_
